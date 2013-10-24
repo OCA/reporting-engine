@@ -12,6 +12,14 @@ class py3o_report(report_sxw):
 #     def __init__(self, name, table):
 #         super(py3o_report, self).__init__(name, table)
 
+    def get_values(self, cr, uid, ids, data, context):
+        ''' Override this function to customize the dictionary given to the
+        py3o.template renderer. '''
+
+        return {
+            'objects': self.getObjects(cr, uid, ids, context),
+        }
+
     def create(self, cr, uid, ids, data, context=None):
         # Find the report definition to get its settings.
         pool = pooler.get_pool(cr.dbname)
@@ -36,9 +44,9 @@ class py3o_report(report_sxw):
 
             template = Template(template_path, temp_file.name)
 
-            template.render({})
+            template.render(self.get_values(cr, uid, ids, data, context))
 
             temp_file.seek(0)
             return temp_file.read(), 'odt'
 
-        return (False, False)
+        return False, False
