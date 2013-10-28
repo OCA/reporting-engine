@@ -5,9 +5,8 @@
 Generation of LibreOffice/OpenOffice reports using LibreOffice/OpenOffice
 templates.
 
-py3o.template is used internally; install it with:
+The py3o.template package is required; install it with:
     pip install py3o.template
-    pip install pyjon.utils
 ''',
     'version': '0.1',
     'category': 'Reporting',
