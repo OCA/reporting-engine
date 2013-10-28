@@ -17,8 +17,20 @@ class py3o_report(report_sxw):
         py3o.template renderer. '''
 
         return {
+            'lang': self.get_lang(cr, uid, context),
             'objects': self.getObjects(cr, uid, ids, context),
         }
+
+    def get_lang(self, cr, uid, context):
+        pool = pooler.get_pool(cr.dbname)
+        lang_obj = pool.get('res.lang')
+        user_obj = pool.get('res.users')
+
+        lang_code = user_obj.browse(cr, uid, uid, context=context).lang
+        lang = lang_obj.search(cr, uid,
+                               [('code', '=', lang_code)],
+                               context=context)[0]
+        return lang_obj.browse(cr, uid, lang, context=context)
 
     def create(self, cr, uid, ids, data, context=None):
         # Find the report definition to get its settings.
