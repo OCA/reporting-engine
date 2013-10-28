@@ -14,7 +14,8 @@
                         attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
 
                         <field name="py3o_filename" invisible="1" />
-                        <field name="py3o_template" filename="py3o_filename" />
+                        <field name="py3o_template" filename="py3o_filename"
+                            attrs="{'invisible': [('py3o_template_data', '!=', False)]}" />
                         <field name="py3o_template_data" filename="py3o_filename" />
 
                     </page>

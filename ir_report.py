@@ -24,8 +24,8 @@ class report_xml(osv.osv):
         empty; in that case, read the template file. '''
 
         return {
-                br.id: (br.py3o_template_data if br.py3o_template_data
-                        else b64encode(file(addons.get_module_resource(
+                br.id: (br.py3o_template_data or
+                        b64encode(file(addons.get_module_resource(
                             *br.report_file.split('/')), 'rb').read()))
                 for br in self.browse(cr, uid, ids, context=context)
                 if br.report_type == 'py3o'
