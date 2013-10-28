@@ -1,6 +1,7 @@
+from base64 import b64decode
 from tempfile import NamedTemporaryFile
 
-from openerp import addons, pooler
+from openerp import pooler
 from openerp.report.report_sxw import *
 from openerp.tools.translate import _
 from openerp.osv.osv import except_osv
@@ -46,19 +47,20 @@ class py3o_report(report_sxw):
                                            report_xml_ids[0],
                                            context=context)
 
-        # Get the template file.
-        template_path = addons.get_module_resource(
-            *report_xml.report_file.split('/'))
+        # py3o.template operates on filenames so create temporary files.
+        with NamedTemporaryFile(suffix='.odt', prefix='py3o-template-') as \
+            in_temp, \
+            NamedTemporaryFile(suffix='.odt', prefix='py3o-report-') as \
+            out_temp:
 
-        # py3o.template operates on filenames so create a temporary file.
-        with NamedTemporaryFile(suffix='.odt', prefix='py3o-report-') as \
-              temp_file:
+            in_temp.write(b64decode(report_xml.py3o_template))
+            in_temp.flush()
 
-            template = Template(template_path, temp_file.name)
+            template = Template(in_temp.name, out_temp.name)
 
             template.render(self.get_values(cr, uid, ids, data, context))
 
-            temp_file.seek(0)
-            return temp_file.read(), 'odt'
+            out_temp.seek(0)
+            return out_temp.read(), 'odt'
 
         return False, False

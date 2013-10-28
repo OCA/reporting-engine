@@ -16,6 +16,7 @@ The py3o.template package is required; install it with:
         'base'
     ],
     'data': [
+        'ir_report.xml',
     ],
     'installable': True,
 }
