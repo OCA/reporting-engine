@@ -25,9 +25,10 @@ from StringIO import StringIO
 
 from openerp.netsvc import ExportService
 from openerp.report import report_sxw
-from openerp import pooler, sql_db
+from openerp import pooler
 
 _POLLING_DELAY = 0.25
+
 
 def assemble_pdf(pdf_list):
     """
@@ -53,6 +54,7 @@ def assemble_pdf(pdf_list):
     output.write(s)
     return s.getvalue()
 
+
 class PDFReportAssembler(report_sxw.report_sxw):
     """ PDFReportAssembler allows to put 2 invoice reports in one single pdf"""
 
@@ -61,7 +63,6 @@ class PDFReportAssembler(report_sxw.report_sxw):
         Return a list of pdf encoded in base64
         """
         pool = pooler.get_pool(cr.dbname)
-        db = sql_db.db_connect(cr.dbname)
         report_obj = pool.get('ir.actions.report.xml')
 
         spool = ExportService._services['report']
@@ -70,7 +71,8 @@ class PDFReportAssembler(report_sxw.report_sxw):
         report_list = report_obj.browse(cr, uid, report_ids, context=context)
         for report in report_list:
 
-            report_key = spool.exp_report(cr.dbname, uid, report.report_name, ids, datas=data, context=context)
+            report_key = spool.exp_report(cr.dbname, uid, report.report_name,
+                                          ids, datas=data, context=context)
             while 1:
                 res = spool.exp_report_get(cr.dbname, uid, report_key)
                 if res.get('state'):
@@ -116,7 +118,7 @@ class PDFReportAssembler(report_sxw.report_sxw):
             report_xml.report_sxw = None
         else:
             return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
-        if report_xml.report_type != 'assemblage' :
+        if report_xml.report_type != 'assemblage':
             return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
         result = self.create_source_pdf(cr, uid, ids, data, report_xml, context)
         if not result:

@@ -18,11 +18,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 from openerp.osv import orm
 from openerp import netsvc
 from openerp.report.report_sxw import rml_parse
 from report_assembler import PDFReportAssembler
+
 
 def register_report(name, model, parser=rml_parse):
     """Register the report into the services"""
@@ -46,7 +46,7 @@ class ReportAssembleXML(orm.Model):
     def __init__(self, pool, cr):
         super(ReportAssembleXML, self).__init__(pool, cr)
 
-    def register_all(self,cursor):
+    def register_all(self, cursor):
         value = super(ReportAssembleXML, self).register_all(cursor)
         cursor.execute("SELECT * FROM ir_act_report_xml WHERE report_type = 'assemblage'")
         records = cursor.dictfetchall()
@@ -69,42 +69,40 @@ class ReportAssembleXML(orm.Model):
         # report will fail so it's ok.
 
         res = super(ReportAssembleXML, self).unlink(
-                                            cursor,
-                                            user,
-                                            ids,
-                                            context
-                                        )
+            cursor,
+            user,
+            ids,
+            context)
         return res
 
     def create(self, cursor, user, vals, context=None):
         "Create report and register it"
         res = super(ReportAssembleXML, self).create(cursor, user, vals, context)
-        if vals.get('report_type','') == 'assemblage':
+        if vals.get('report_type', '') == 'assemblage':
             # I really look forward to virtual functions :S
             register_report(
-                        vals['report_name'],
-                        vals['model'],
-                        )
+                vals['report_name'],
+                vals['model'])
         return res
 
     def write(self, cr, uid, ids, vals, context=None):
         "Edit report and manage its registration"
         if isinstance(ids, (int, long)):
-            ids = [ids,]
+            ids = [ids]
         for rep in self.browse(cr, uid, ids, context=context):
             if rep.report_type != 'assemblage':
                 continue
-            if vals.get('report_name', False) and \
-                vals['report_name'] != rep.report_name:
+            if (vals.get('report_name', False)
+                    and vals['report_name'] != rep.report_name):
                 report_name = vals['report_name']
             else:
                 report_name = rep.report_name
 
             register_report(
-                        report_name,
-                        vals.get('model', rep.model),
-                        False
-                        )
+                report_name,
+                vals.get('model', rep.model),
+                False
+                )
         res = super(ReportAssembleXML, self).write(cr, uid, ids, vals, context)
         return res
 

@@ -20,15 +20,17 @@
 ##############################################################################
 from openerp.osv import orm, fields
 
+
 class AssembledReport(orm.Model):
     _name = 'assembled.report'
 
     _order = 'sequence'
 
     _columns = {
-        'report_id': fields.many2one('ir.actions.report.xml', 'Report',
+        'report_id': fields.many2one(
+            'ir.actions.report.xml', 'Report',
             domain="[('model', '=', model),"
-                    "('report_type', '!=', 'assemblage')]", required=True),
+                   "('report_type', '!=', 'assemblage')]", required=True),
         'model': fields.char('Object model'),
         'sequence': fields.integer('Sequence', required=True),
         'company_id': fields.many2one('res.company', 'Company', required=True),
@@ -36,5 +38,5 @@ class AssembledReport(orm.Model):
 
     _defaults = {
         'sequence': 1,
-        'company_id': lambda s,cr,uid,c: s.pool.get('res.company')._company_default_get(cr, uid, 'assembled.report', context=c)
+        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(cr, uid, 'assembled.report', context=c)
         }
