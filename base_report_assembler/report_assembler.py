@@ -23,8 +23,6 @@ import base64
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from StringIO import StringIO
 
-from openerp.service.web_services import report_spool
-from openerp.netsvc import Service
 from openerp.netsvc import ExportService
 from openerp.report import report_sxw
 from openerp import pooler, sql_db
@@ -81,18 +79,6 @@ class PDFReportAssembler(report_sxw.report_sxw):
             pdf = base64.b64decode(res.get('result'))
             pdf_reports.append(pdf)
         return pdf_reports
-
-        #pdf_reports = {}
-        #report_list = report_obj.browse(cr, uid, report_ids, context=context)
-        #report_obj = pool.get('ir.actions.report.xml')
-        #pool = pooler.get_pool(cr.dbname)
-        #for report in report_list:
-
-            #report_parser = Service._services['report.%s' %report.report_name]
-            #pdf_reports[report.id] = report_parser.create_single_pdf(cr, uid, ids, data, report, context=context)[0]
-        #return pdf_reports
-
-
 
     def _get_report_ids(self, cr, uid, ids, context=None):
         """
