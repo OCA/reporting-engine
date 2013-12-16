@@ -15,6 +15,9 @@ The py3o.template package is required; install it with:
     'depends': [
         'base'
     ],
+    'external_dependencies': {
+        'python': ['py3o.template']
+    },
     'data': [
         'ir_report.xml',
     ],

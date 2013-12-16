@@ -32,7 +32,7 @@ class py3o_report(report_sxw):
                                [('code', '=', lang_code)],
                                context=context)[0]
         return lang_obj.browse(cr, uid, lang, context=context)
-    
+
     def format_date(self, date, values):
         ''' Return a date formatted according to the language extracted from
         the "values" argument (which should be the result of get_values). '''
