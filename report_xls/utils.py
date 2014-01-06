@@ -12,17 +12,18 @@
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-#
+
 
 def _render(code):
-    return compile(code, '<string>', 'eval') 
+    return compile(code, '<string>', 'eval')
+
 
 def rowcol_to_cell(row, col, row_abs=False, col_abs=False):
     # Code based upon utils from xlwt distribution
@@ -41,9 +42,9 @@ def rowcol_to_cell(row, col, row_abs=False, col_abs=False):
     else:
         col_abs = ''
     if d > 0:
-        chr1 = chr(ord('A') + d  - 1)
+        chr1 = chr(ord('A') + d - 1)
     chr2 = chr(ord('A') + m)
     # Zero index to 1-index
     return col_abs + chr1 + chr2 + row_abs + str(row + 1)
-               
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
