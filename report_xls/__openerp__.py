@@ -34,7 +34,6 @@ In order to generate an XLS export you can define a report of type 'xls' or alte
           
     """,
     'depends': ['base'],
-    'external_dependencies': {'python': ['xlwt']},
     'demo_xml': [],
     'init_xml': [],
     'update_xml' : [],
