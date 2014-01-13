@@ -28,7 +28,7 @@ msgstr "Séquence"
 #. module: base_report_assembler
 #: field:assembled.report,company_id:0
 msgid "Company"
-msgstr "Companie"
+msgstr "Société"
 
 #. module: base_report_assembler
 #: field:assembled.report,report_id:0
