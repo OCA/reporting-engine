@@ -21,7 +21,22 @@
 {'name' : 'Base Report Assembler',
  'version' : '1.0',
  'category': 'Report',
- 'description': """Defines a new type of report which is an assemblage of multiple other reports""",
+ 'description': """
+Base Report Assembler
+=====================
+
+Defines a new type of report which is an assemblage of multiple other reports
+of the same object.
+
+For example you can merge the pdf output of a rml invoice report with the pdf
+output of a webkit payment slip.
+
+To install this assemblage option for specific object you can install
+the folling module(s):
+
+- Invoices: invoice_report_assemble (lp:account-invoice-report)
+
+""",
  'author' : 'Camptocamp',
  'maintainer': 'Camptocamp',
  'website': 'http://www.camptocamp.com/',
