@@ -25,7 +25,7 @@ from report_assembler import PDFReportAssembler
 
 
 def register_report(name, model, parser=rml_parse):
-    """Register the report into the services"""
+    """ Register the report into the services """
     name = 'report.%s' % name
     if netsvc.Service._services.get(name, False):
         service = netsvc.Service._services[name]
@@ -55,7 +55,7 @@ class ReportAssembleXML(orm.Model):
         return value
 
     def unlink(self, cursor, user, ids, context=None):
-        """Delete report and unregister it"""
+        """ Delete report and unregister it """
         trans_obj = self.pool.get('ir.translation')
         trans_ids = trans_obj.search(
             cursor,
@@ -76,7 +76,7 @@ class ReportAssembleXML(orm.Model):
         return res
 
     def create(self, cursor, user, vals, context=None):
-        "Create report and register it"
+        """ Create report and register it """
         res = super(ReportAssembleXML, self).create(cursor, user, vals, context)
         if vals.get('report_type', '') == 'assemblage':
             # I really look forward to virtual functions :S
@@ -86,7 +86,7 @@ class ReportAssembleXML(orm.Model):
         return res
 
     def write(self, cr, uid, ids, vals, context=None):
-        "Edit report and manage its registration"
+        """ Edit report and manage its registration """
         if isinstance(ids, (int, long)):
             ids = [ids]
         for rep in self.browse(cr, uid, ids, context=context):
