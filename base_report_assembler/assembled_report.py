@@ -20,7 +20,6 @@
 ##############################################################################
 from openerp.osv import orm, fields
 
-
 class AssembledReport(orm.Model):
     _name = 'assembled.report'
 
@@ -38,5 +37,6 @@ class AssembledReport(orm.Model):
 
     _defaults = {
         'sequence': 1,
-        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(cr, uid, 'assembled.report', context=c)
+        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(
+            cr, uid, 'assembled.report', context=c)
         }

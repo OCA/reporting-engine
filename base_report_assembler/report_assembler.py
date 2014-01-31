@@ -56,7 +56,7 @@ def assemble_pdf(pdf_list):
 
 
 class PDFReportAssembler(report_sxw.report_sxw):
-    """ PDFReportAssembler allows to put 2 invoice reports in one single pdf"""
+    """ PDFReportAssembler allows to put 2 pdf reports in one single pdf"""
 
     def _generate_all_pdf(self, cr, uid, ids, data, report_ids, context=None):
         """
