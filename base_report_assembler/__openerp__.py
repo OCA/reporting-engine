@@ -18,8 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{'name' : 'Base Report Assembler',
- 'version' : '1.0',
+{'name': 'Base Report Assembler',
+ 'version': '1.0',
  'category': 'Report',
  'description': """
 Base Report Assembler
@@ -37,10 +37,10 @@ the folling module(s):
 - Invoices: invoice_report_assemble (lp:account-invoice-report)
 
 """,
- 'author' : 'Camptocamp',
+ 'author': 'Camptocamp',
  'maintainer': 'Camptocamp',
  'website': 'http://www.camptocamp.com/',
- 'depends' : ['base'],
+ 'depends': ['base'],
  'data': [],
  'test': [],
  'installable': True,
