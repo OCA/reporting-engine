@@ -24,6 +24,7 @@ import xlwt
 from xlwt.Style import default_style
 import cStringIO
 from datetime import datetime
+from openerp.osv.fields import datetime as datetime_field
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import inspect
 from types import CodeType
@@ -58,7 +59,6 @@ class report_xls(report_sxw):
     # TO DO: move parameters infra to configurable data
 
     # header/footer
-    DT_FORMAT = '%Y-%m-%d %H:%M:%S'
     hf_params = {
     'font_size': 8,
     'font_style': 'I',  # B: Bold, I:  Italic, U: Underline
@@ -120,8 +120,9 @@ class report_xls(report_sxw):
         self.xls_headers = {
             'standard': '',
         }
+        report_date = datetime_field.context_timestamp(cr, uid, datetime.now(), context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         self.xls_footers = {
-            'standard': ('&L&%(font_size)s&%(font_style)s' + datetime.now().strftime(DEFAULT_SERVER_DATETIME_FORMAT) +
+            'standard': ('&L&%(font_size)s&%(font_style)s' + report_date +
                          '&R&%(font_size)s&%(font_style)s&P / &N') % self.hf_params,
         }
         self.generate_xls_report(_p, _xs, data, objs, wb)
