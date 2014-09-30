@@ -77,6 +77,6 @@ Excel reports in odoo.
     'depends': ['base'],
     'external_dependencies': {'python': ['xlwt']},
     'active': False,
-    'installable': False,
+    'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
