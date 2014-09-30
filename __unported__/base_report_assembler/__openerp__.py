@@ -43,7 +43,7 @@ the folling module(s):
  'depends': ['base'],
  'data': [],
  'test': [],
- 'installable': True,
+ 'installable': False,
  'auto_install': False,
  'application': False,
  }
