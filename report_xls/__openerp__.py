@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Excel report engine',
-    'version': '0.4.1',
+    'version': '0.6',
     'license': 'AGPL-3',
     'author': 'Noviat',
     'website': 'http://www.noviat.com',
@@ -30,7 +30,8 @@
 Excel report engine
 ===================
 
-This module adds Excel export capabilities to the standard OpenERP reporting engine.
+This module adds Excel export capabilities to the standard OpenERP reporting
+engine.
 
 Report development
 ''''''''''''''''''
@@ -38,8 +39,8 @@ In order to create an Excel report you can\n
 - define a report of type 'xls'
 - pass ``{'xls_export': 1}`` via the context to the report create method
 
-The ``report_xls`` class contains a number of attributes and methods to facilitate
-the creation XLS reports in OpenERP.
+The ``report_xls`` class contains a number of attributes and methods to
+facilitate the creation XLS reports in OpenERP.
 
 * cell types
 
@@ -52,28 +53,29 @@ the creation XLS reports in OpenERP.
 
 * cell formulas
 
-  Cell formulas can be easily added with the help of the ``rowcol_to_cell()`` function which
-  you can import from the ``utils.py`` module.
+  Cell formulas can be easily added with the help of the ``rowcol_to_cell()``
+  function which you can import from the ``utils.py`` module.
 
 * Excel templates
 
-  It is possible to define Excel templates which can be adapted by 'inherited' modules.
-  Download the ``account_move_line_report_xls`` module from http://apps.openerp.com
-  as example.
+  It is possible to define Excel templates which can be adapted
+  by 'inherited' modules.
+  Download the ``account_move_line_report_xls`` module
+  from http://apps.openerp.com as example.
 
 * XLS with multiple sheets
 
-  Download the ``account_journal_report_xls`` module from http://apps.openerp.com as example.
+  Download the ``account_journal_report_xls`` module
+  from http://apps.openerp.com as example.
 
 Development assistance
 ''''''''''''''''''''''
-Contact info@noviat.com for help with the development of Excel reports in OpenERP.
+Contact info@noviat.com for help with the development of
+Excel reports in OpenERP.
 
     """,
     'depends': ['base'],
     'external_dependencies': {'python': ['xlwt']},
-    'demo': [],
-    'data': [],
     'active': False,
     'installable': True,
 }
