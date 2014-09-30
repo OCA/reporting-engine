@@ -20,5 +20,6 @@
 #
 ##############################################################################
 
+from . import ir_report
 from . import report_xls
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

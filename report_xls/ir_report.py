@@ -20,32 +20,17 @@
 #
 ##############################################################################
 
-
-def _render(code):
-    return compile(code, '<string>', 'eval')
+from openerp.osv import fields, orm
 
 
-def rowcol_to_cell(row, col, row_abs=False, col_abs=False):
-    # Code based upon utils from xlwt distribution
-    """
-    Convert numeric row/col notation to an Excel cell
-    reference string in A1 notation.
-    """
-    d = col // 26
-    m = col % 26
-    chr1 = ""    # Most significant character in AA1
-    if row_abs:
-        row_abs = '$'
-    else:
-        row_abs = ''
-    if col_abs:
-        col_abs = '$'
-    else:
-        col_abs = ''
-    if d > 0:
-        chr1 = chr(ord('A') + d - 1)
-    chr2 = chr(ord('A') + m)
-    # Zero index to 1-index
-    return col_abs + chr1 + chr2 + row_abs + str(row + 1)
+class ir_actions_report_xml(orm.Model):
+    _inherit = 'ir.actions.report.xml'
+
+    def _check_selection_field_value(self, cr, uid,
+                                     field, value, context=None):
+        if field == 'report_type' and value == 'xls':
+            return
+        return super(ir_actions_report_xml, self)._check_selection_field_value(
+            cr, uid, field, value, context=context)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
