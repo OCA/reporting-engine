@@ -3,7 +3,7 @@
 #
 #    OpenERP, Open Source Management Solution
 #
-#    Copyright (c) 2013 Noviat nv/sa (www.noviat.com). All rights reserved.
+#    Copyright (c) 2014 Noviat nv/sa (www.noviat.com). All rights reserved.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -16,7 +16,7 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
@@ -60,8 +60,8 @@ class report_xls(report_sxw):
 
     # header/footer
     hf_params = {
-    'font_size': 8,
-    'font_style': 'I',  # B: Bold, I:  Italic, U: Underline
+        'font_size': 8,
+        'font_style': 'I',  # B: Bold, I:  Italic, U: Underline
     }
 
     # styles
@@ -77,8 +77,12 @@ class report_xls(report_sxw):
         'fill': 'pattern: pattern solid, fore_color %s;' % _pfc,
         'fill_blue': 'pattern: pattern solid, fore_color 27;',
         'fill_grey': 'pattern: pattern solid, fore_color 22;',
-        'borders_all': 'borders: left thin, right thin, top thin, bottom thin, '
-            'left_colour %s, right_colour %s, top_colour %s, bottom_colour %s;' % (_bc, _bc, _bc, _bc),
+        'borders_all':
+            'borders: '
+            'left thin, right thin, top thin, bottom thin, '
+            'left_colour %s, right_colour %s, '
+            'top_colour %s, bottom_colour %s;'
+            % (_bc, _bc, _bc, _bc),
         'left': 'align: horz left;',
         'center': 'align: horz center;',
         'right': 'align: horz right;',
@@ -93,15 +97,17 @@ class report_xls(report_sxw):
         self.cr = cr
         self.uid = uid
         report_obj = self.pool.get('ir.actions.report.xml')
-        report_ids = report_obj.search(cr, uid,
-                [('report_name', '=', self.name[7:])], context=context)
+        report_ids = report_obj.search(
+            cr, uid, [('report_name', '=', self.name[7:])], context=context)
         if report_ids:
-            report_xml = report_obj.browse(cr, uid, report_ids[0], context=context)
+            report_xml = report_obj.browse(
+                cr, uid, report_ids[0], context=context)
             self.title = report_xml.name
             if report_xml.report_type == 'xls':
                 return self.create_source_xls(cr, uid, ids, data, context)
         elif context.get('xls_export'):
-            self.table = data.get('model') or self.table   # use model from 'data' when no ir.actions.report.xml entry
+            # use model from 'data' when no ir.actions.report.xml entry
+            self.table = data.get('model') or self.table
             return self.create_source_xls(cr, uid, ids, data, context)
         return super(report_xls, self).create(cr, uid, ids, data, context)
 
@@ -110,6 +116,7 @@ class report_xls(report_sxw):
             context = {}
         parser_instance = self.parser(cr, uid, self.name2, context)
         self.parser_instance = parser_instance
+        self.context = context
         objs = self.getObjects(cr, uid, ids, context)
         parser_instance.set_context(objs, data, ids, 'xls')
         objs = parser_instance.localcontext['objects']
@@ -120,10 +127,14 @@ class report_xls(report_sxw):
         self.xls_headers = {
             'standard': '',
         }
-        report_date = datetime_field.context_timestamp(cr, uid, datetime.now(), context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+        report_date = datetime_field.context_timestamp(
+            cr, uid, datetime.now(), context)
+        report_date = report_date.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         self.xls_footers = {
-            'standard': ('&L&%(font_size)s&%(font_style)s' + report_date +
-                         '&R&%(font_size)s&%(font_style)s&P / &N') % self.hf_params,
+            'standard': (
+                '&L&%(font_size)s&%(font_style)s' + report_date +
+                '&R&%(font_size)s&%(font_style)s&P / &N'
+                ) % self.hf_params,
         }
         self.generate_xls_report(_p, _xs, data, objs, wb)
         wb.save(n)
@@ -138,7 +149,8 @@ class report_xls(report_sxw):
         - wanted: element from the wanted_list
         - col_specs : cf. specs[1:] documented in xls_row_template method
         - rowtype : 'header' or 'data'
-        - render_space : type dict, (caller_space + localcontext) if not specified
+        - render_space : type dict, (caller_space + localcontext)
+                         if not specified
         """
         if render_space == 'empty':
             render_space = {}
@@ -151,7 +163,6 @@ class report_xls(report_sxw):
             if isinstance(row[i], CodeType):
                 row[i] = eval(row[i], render_space)
         row.insert(0, wanted)
-        #_logger.warn('row O = %s', row)
         return row
 
     def generate_xls_report(self, parser, xls_styles, data, objects, wb):
@@ -163,11 +174,13 @@ class report_xls(report_sxw):
         Returns a row template.
 
         Input :
-        - 'wanted_list': list of Columns that will be returned in the row_template
+        - 'wanted_list': list of Columns that will be returned in the
+                         row_template
         - 'specs': list with Column Characteristics
             0: Column Name (from wanted_list)
             1: Column Colspan
-            2: Column Size (unit = the width of the character ’0′ as it appears in the sheet’s default font)
+            2: Column Size (unit = the width of the character ’0′
+                            as it appears in the sheet’s default font)
             3: Column Type
             4: Column Data
             5: Column Formula (or 'None' for Data)
@@ -186,7 +199,8 @@ class report_xls(report_sxw):
                     if s_len > 5 and s[5] is not None:
                         c.append({'formula': s[5]})
                     else:
-                        c.append({'write_cell_func': report_xls.xls_types[c[3]]})
+                        c.append({
+                            'write_cell_func': report_xls.xls_types[c[3]]})
                     # Set custom cell style
                     if s_len > 6 and s[6] is not None:
                         c.append(s[6])
@@ -201,23 +215,28 @@ class report_xls(report_sxw):
                     col += c[1]
                     break
             if not found:
-                _logger.warn("report_xls.xls_row_template, column '%s' not found in specs", w)
+                _logger.warn("report_xls.xls_row_template, "
+                             "column '%s' not found in specs", w)
         return r
 
-    def xls_write_row(self, ws, row_pos, row_data, row_style=default_style, set_column_size=False):
+    def xls_write_row(self, ws, row_pos, row_data,
+                      row_style=default_style, set_column_size=False):
         r = ws.row(row_pos)
         for col, size, spec in row_data:
             data = spec[4]
-            formula = spec[5].get('formula') and xlwt.Formula(spec[5]['formula']) or None
+            formula = spec[5].get('formula') and \
+                xlwt.Formula(spec[5]['formula']) or None
             style = spec[6] and spec[6] or row_style
             if not data:
                 # if no data, use default values
                 data = report_xls.xls_types_default[spec[3]]
             if size != 1:
                 if formula:
-                    ws.write_merge(row_pos, row_pos, col, col + size - 1, data, style)
+                    ws.write_merge(
+                        row_pos, row_pos, col, col + size - 1, data, style)
                 else:
-                    ws.write_merge(row_pos, row_pos, col, col + size - 1, data, style)
+                    ws.write_merge(
+                        row_pos, row_pos, col, col + size - 1, data, style)
             else:
                 if formula:
                     ws.write(row_pos, col, formula, style)
