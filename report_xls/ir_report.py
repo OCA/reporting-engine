@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from openerp.osv import orm
 
 
 class ir_actions_report_xml(orm.Model):
