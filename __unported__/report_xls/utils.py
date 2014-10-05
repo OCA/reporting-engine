@@ -48,4 +48,5 @@ def rowcol_to_cell(row, col, row_abs=False, col_abs=False):
     # Zero index to 1-index
     return col_abs + chr1 + chr2 + row_abs + str(row + 1)
 
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
