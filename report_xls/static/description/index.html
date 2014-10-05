@@ -1,0 +1,84 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Excel report engine</h2>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="open_receivables.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+              <br><br>This module adds Excel export capabilities to the standard odoo reporting engine.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_spaced oe_container oe_dark">
+    <div class="oe_row">
+        <h2 class="oe_slogan">Report development</h2>
+        <p class="oe_mt32">
+          In order to create an Excel report you can
+          <ul>
+            <li>define a report of type 'xls'</li>
+            <li>pass <code>{'xls_export': 1}</code> via the context to the report create method</li>
+          </ul>
+        </p>
+        <p class="oe_mt32">
+           The <code>report_xls</code> class contains a number of attributes and methods to facilitate the creation XLS reports in odoo.
+          <ul>
+            <li>
+              cell types
+              <br>Supported cell types : text, number, boolean, date.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              cell styles
+              <br>The predefined cell style definitions result in a consistent look and feel of the odoo Excel reports.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              cell formulas
+              <br>Cell formulas can be easily added with the help of the <code>rowcol_to_cell()</code> function which you can import from the <code>utils.py</code> module.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Excel templates
+              <br>It is possible to define Excel templates which can be adapted by 'inherited' modules.
+              <br>Download the <b>account_move_line_report_xls</b> module from <a href="http://apps.odoo.com">http://apps.odoo.com</a> as example.
+            </li>
+          </ul>
+          <ul>
+            <li>
+              XLS with multiple sheets
+              <br>Download the <b>account_journal_report_xls</b> module from <a href="http://apps.odoo.com">http://apps.odoo.com</a> as example.
+            </li>
+          </ul>
+        </p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Development assistance</h2>
+        </div>
+        <div class="oe_span6">
+            <br>
+            <div class="oe_picture">
+                <center><img src="help.png" height="150"></center>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+              <br><br>Contact <a href="mailto:info@noviat.com">info@noviat.com</a> for help with the development of Excel reports in odoo.
+            </p>
+        </div>
+    </div>
+</section>
+
