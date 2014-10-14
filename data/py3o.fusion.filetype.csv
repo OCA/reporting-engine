@@ -1,0 +1,6 @@
+id,fusion_ext,human_ext
+py3o_fusion_filetype_odt,ODT,odt
+py3o_fusion_filetype_ods,ODS,ods
+py3o_fusion_filetype_doc,DOC,doc
+py3o_fusion_filetype_docx,DOCX,docx
+py3o_fusion_filetype_pdf,PDF,pdf
