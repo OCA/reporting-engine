@@ -1,2 +1,5 @@
 import ir_report
 import py3o_report
+import py3o_template
+import py3o_server
+import py3o_fusion_filetype

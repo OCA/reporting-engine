@@ -8,6 +8,8 @@ from openerp.osv.osv import except_osv
 
 from py3o.template import Template
 
+import requests
+
 
 class py3o_report(report_sxw):
 #     def __init__(self, name, table):
@@ -52,13 +54,16 @@ class py3o_report(report_sxw):
                                            report_xml_ids[0],
                                            context=context)
 
+        template = report_xml.py3o_template_id
+        filetype = report_xml.py3o_fusion_filetype
+
         # py3o.template operates on filenames so create temporary files.
         with NamedTemporaryFile(suffix='.odt', prefix='py3o-template-') as \
             in_temp, \
             NamedTemporaryFile(suffix='.odt', prefix='py3o-report-') as \
             out_temp:
 
-            in_temp.write(b64decode(report_xml.py3o_template))
+            in_temp.write(b64decode(template.py3o_template_data))
             in_temp.flush()
 
             template = Template(in_temp.name, out_temp.name)
@@ -66,6 +71,34 @@ class py3o_report(report_sxw):
             template.render(self.get_values(cr, uid, ids, data, context))
 
             out_temp.seek(0)
+            
+            if filetype.human_ext != 'odt':
+                # Now we ask fusion server to convert our template
+                fusion_server_obj = pool['py3o.server']
+                fusion_server_id = fusion_server_obj.search(
+                    cr, uid, [], context=context
+                )[0]
+                fusion_server = fusion_server_obj.browse(
+                    cr, uid, fusion_server_id, context=context
+                )
+                files = {
+                    'tmpl_file': out_temp,
+                }
+                fields = {
+                    "targetformat": filetype.fusion_ext,
+                    "datadict": "{}",
+                    "image_mapping": "{}",
+                }
+                r = requests.post(fusion_server.url, data=fields, files=files)
+                chunk_size = 1024
+                with NamedTemporaryFile(
+                    suffix=filetype.human_ext,
+                    prefix='py3o-template-') as fd:
+                    for chunk in r.iter_content(chunk_size):
+                        fd.write(chunk)
+                    fd.seek(0)
+                    return fd.read(), filetype.human_ext
+
             return out_temp.read(), 'odt'
 
         return False, False
