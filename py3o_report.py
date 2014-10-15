@@ -88,6 +88,7 @@ class py3o_report(report_sxw):
                     "targetformat": filetype.fusion_ext,
                     "datadict": "{}",
                     "image_mapping": "{}",
+                    "skipfusion": True,
                 }
                 r = requests.post(fusion_server.url, data=fields, files=files)
                 chunk_size = 1024

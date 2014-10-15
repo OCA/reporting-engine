@@ -24,6 +24,7 @@ The py3o.template package is required; install it with:
         'py3o_template.xml',
         'py3o_server.xml',
         'data/py3o.fusion.filetype.csv',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
 }
