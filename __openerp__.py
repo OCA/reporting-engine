@@ -8,7 +8,7 @@ templates.
 The py3o.template package is required; install it with:
     pip install py3o.template
 ''',
-    'version': '1.2.1',
+    'version': '1.2.2',
     'category': 'Reporting',
     'author': 'XCG Consulting',
     'website': 'http://www.openerp-experts.com/',
