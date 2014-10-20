@@ -3,7 +3,7 @@
 #
 #    OpenERP, Open Source Management Solution
 #
-#    Copyright (c) 2013 Noviat nv/sa (www.noviat.com). All rights reserved.
+#    Copyright (c) 2013-2014 Noviat nv/sa (www.noviat.com). All rights reserved.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -12,31 +12,70 @@
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 {
-    'name': 'XLS report engine',
-    'version': '0.3',
+    'name': 'Excel report engine',
+    'version': '0.6',
     'license': 'AGPL-3',
     'author': 'Noviat',
     'website': 'http://www.noviat.com',
     'category': 'Reporting',
-    'description': """ 
+    'description': """
+Excel report engine
+===================
 
-This module adds XLS export capabilities to the standard OpenERP reporting engine.
-    
-In order to generate an XLS export you can define a report of type 'xls' or alternatively pass {'xls_export' : 1) via the context to create method of the report.
-          
+This module adds Excel export capabilities to the standard OpenERP reporting
+engine.
+
+Report development
+''''''''''''''''''
+In order to create an Excel report you can\n
+- define a report of type 'xls'
+- pass ``{'xls_export': 1}`` via the context to the report create method
+
+The ``report_xls`` class contains a number of attributes and methods to
+facilitate the creation XLS reports in OpenERP.
+
+* cell types
+
+  Supported cell types : text, number, boolean, date.
+
+* cell styles
+
+  The predefined cell style definitions result in a consistent
+  look and feel of the OpenERP Excel reports.
+
+* cell formulas
+
+  Cell formulas can be easily added with the help of the ``rowcol_to_cell()``
+  function which you can import from the ``utils.py`` module.
+
+* Excel templates
+
+  It is possible to define Excel templates which can be adapted
+  by 'inherited' modules.
+  Download the ``account_move_line_report_xls`` module
+  from http://apps.openerp.com as example.
+
+* XLS with multiple sheets
+
+  Download the ``account_journal_report_xls`` module
+  from http://apps.openerp.com as example.
+
+Development assistance
+''''''''''''''''''''''
+Contact info@noviat.com for help with the development of
+Excel reports in OpenERP.
+
     """,
     'depends': ['base'],
-    'demo_xml': [],
-    'init_xml': [],
-    'update_xml' : [],
+    'external_dependencies': {'python': ['xlwt']},
     'active': False,
     'installable': True,
 }
