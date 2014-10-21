@@ -28,7 +28,8 @@ def _render(code):
 def rowcol_to_cell(row, col, row_abs=False, col_abs=False):
     # Code based upon utils from xlwt distribution
     """
-    Convert numeric row/col notation to an Excel cell reference string in A1 notation.
+    Convert numeric row/col notation to an Excel cell
+    reference string in A1 notation.
     """
     d = col // 26
     m = col % 26
