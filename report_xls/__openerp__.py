@@ -75,7 +75,6 @@ Excel reports in odoo.
 
     """,
     'depends': ['base'],
-    'external_dependencies': {'python': ['xlwt']},
     'active': False,
     'installable': True,
 }
