@@ -1,16 +1,11 @@
 from base64 import b64decode
 from tempfile import NamedTemporaryFile
 
-from openerp import pooler
 from openerp.report.report_sxw import *
-from openerp.tools.translate import _
-from openerp.osv.osv import except_osv
 
 from py3o.template import Template
 
 import requests
-from collections import defaultdict
-import json
 
 
 class py3o_report(report_sxw):
@@ -26,7 +21,8 @@ class py3o_report(report_sxw):
             'objects': self.getObjects(cr, uid, ids, context),
         }
 
-    def get_lang(self, cr, uid, context):
+    @staticmethod
+    def get_lang(cr, uid, context):
         pool = pooler.get_pool(cr.dbname)
         lang_obj = pool.get('res.lang')
         user_obj = pool.get('res.users')
@@ -37,7 +33,8 @@ class py3o_report(report_sxw):
                                context=context)[0]
         return lang_obj.browse(cr, uid, lang, context=context)
 
-    def format_date(self, date, values):
+    @staticmethod
+    def format_date(date, values):
         """ Return a date formatted according to the language extracted from
         the "values" argument (which should be the result of get_values). """
         return date.strftime(values['lang'].date_format)
