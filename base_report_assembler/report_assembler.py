@@ -38,12 +38,12 @@ def assemble_pdf(pdf_list):
     # as this issue still exists in mostly used wktohtml reports version
     # http://code.google.com/p/wkhtmltopdf/issues/detail?id=635
     #merger = PdfFileMerger()
-    #merger.append(fileobj=StringIO(invoice_pdf))
-    #merger.append(fileobj=StringIO(bvr_pdf))
+    # merger.append(fileobj=StringIO(invoice_pdf))
+    # merger.append(fileobj=StringIO(bvr_pdf))
 
-    #with tempfile.TemporaryFile() as merged_pdf:
-        #merger.write(merged_pdf)
-        #return merged_pdf.read(), 'pdf'
+    # with tempfile.TemporaryFile() as merged_pdf:
+    # merger.write(merged_pdf)
+    # return merged_pdf.read(), 'pdf'
 
     output = PdfFileWriter()
     for pdf in pdf_list:
@@ -56,6 +56,7 @@ def assemble_pdf(pdf_list):
 
 
 class PDFReportAssembler(report_sxw.report_sxw):
+
     """ PDFReportAssembler allows to put 2 pdf reports in one single pdf"""
 
     def _generate_all_pdf(self, cr, uid, ids, data, report_ids, context=None):
@@ -93,7 +94,8 @@ class PDFReportAssembler(report_sxw.report_sxw):
 
         report_ids = self._get_report_ids(cr, uid, ids, context=context)
 
-        pdf_reports = self._generate_all_pdf(cr, uid, ids, data, report_ids, context=context)
+        pdf_reports = self._generate_all_pdf(
+            cr, uid, ids, data, report_ids, context=context)
 
         pdf_assemblage = assemble_pdf(pdf_reports)
         return pdf_assemblage, 'pdf'
@@ -104,7 +106,7 @@ class PDFReportAssembler(report_sxw.report_sxw):
         pool = pooler.get_pool(cr.dbname)
         ir_obj = pool.get('ir.actions.report.xml')
         report_xml_ids = ir_obj.search(cr, uid,
-                [('report_name', '=', self.name[7:])], context=context)
+                                       [('report_name', '=', self.name[7:])], context=context)
         if report_xml_ids:
 
             report_xml = ir_obj.browse(cr,
@@ -120,7 +122,8 @@ class PDFReportAssembler(report_sxw.report_sxw):
             return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
         if report_xml.report_type != 'assemblage':
             return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
-        result = self.create_source_pdf(cr, uid, ids, data, report_xml, context)
+        result = self.create_source_pdf(
+            cr, uid, ids, data, report_xml, context)
         if not result:
             return (False, False)
         return result

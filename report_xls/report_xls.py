@@ -30,12 +30,12 @@ import inspect
 from types import CodeType
 from openerp.report.report_sxw import *
 from openerp import pooler
-from openerp.tools.translate import translate, _
 import logging
 _logger = logging.getLogger(__name__)
 
 
 class AttrDict(dict):
+
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
         self.__dict__ = self
@@ -134,7 +134,7 @@ class report_xls(report_sxw):
             'standard': (
                 '&L&%(font_size)s&%(font_style)s' + report_date +
                 '&R&%(font_size)s&%(font_style)s&P / &N'
-                ) % self.hf_params,
+            ) % self.hf_params,
         }
         self.generate_xls_report(_p, _xs, data, objs, wb)
         wb.save(n)
