@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="view_base_comment_template_search">
+      <field name="name">base.comment.template.search</field>
+      <field name="model">base.comment.template</field>
+      <field name="arch" type="xml">
+        <search string="Comment Templates">
+          <field name="name"/>
+          <field name="position"/>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_base_comment_template_form">
+      <field name="name">base.comment.template.form</field>
+      <field name="model">base.comment.template</field>
+      <field name="arch" type="xml">
+        <form string="Comment Templates">
+          <group>
+            <field name="name"/>
+            <field name="position"/>
+            <field name="text" colspan="4"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_base_comment_template_tree">
+      <field name="name">account.comment.template.list</field>
+      <field name="model">base.comment.template</field>
+      <field name="priority" eval="6"/>
+      <field name="arch" type="xml">
+        <tree string="Comment Templates">
+          <field name="name"/>
+          <field name="position"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_base_comment_template">
+      <field name="name">Comment Templates</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">base.comment.template</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_base_comment_template_tree"/>
+    </record>
+
+  </data>
+</openerp>

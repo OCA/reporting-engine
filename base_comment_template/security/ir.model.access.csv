@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_base_comment_template,access_base_comment_template no one,model_base_comment_template,base.group_no_one,1,1,1,1
