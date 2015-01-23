@@ -25,15 +25,6 @@
     "author": "Therp BV",
     "license": "AGPL-3",
     "complexity": "normal",
-    "description": """
-This addon allows for custom filenames for reports. Currently, only old-style
-reports (ir.actions.report.xml) are supported, it should be simple to add
-support for qweb reports.
-
-Acknowledgements
-================
-Icon courtesy of http://www.picol.org/ (download_settings.svg)
-    """,
     "category": "Reporting",
     "depends": [
         'web',
