@@ -18,4 +18,22 @@ class report_xml(osv.Model):
             'py3o.template',
             u"Template",
         ),
+        'report_type': fields.selection(
+            [
+                ('qweb-pdf', u"PDF"),
+                ('qweb-html', u"HTML"),
+                ('controller', u"Controller"),
+                ('pdf', u"RML pdf (deprecated)"),
+                ('sxw', u"RML sxw (deprecated)"),
+                ('webkit', u"Webkit (deprecated)"),
+                ('py3o', u"Py3o"),
+            ],
+            string=u"Report Type",
+            required=True,
+            help=u"HTML will open the report directly in your browser, "
+                 u"PDF will use wkhtmltopdf to render the HTML into a PDF "
+                 u"file and let you download it, Controller allows you to "
+                 u"define the url of a custom controller outputting "
+                 u"any kind of report.",
+        )
     }

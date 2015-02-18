@@ -3,6 +3,6 @@
     <data>
         <menuitem id="py3o_config_menu"
             name="Py3o Configuration"
-            parent="base.menu_config" />
+            parent="base.menu_custom" />
     </data>
 </openerp>
