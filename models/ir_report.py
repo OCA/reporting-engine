@@ -1,7 +1,7 @@
 import os
 from openerp.osv import fields, osv
 from openerp.report.interface import report_int
-from .py3o_parser import Py3oParser
+from ..py3o_parser import Py3oParser
 from openerp import addons
 
 

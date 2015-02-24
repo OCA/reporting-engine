@@ -1,5 +1,9 @@
+from base64 import b64decode
+import requests
+from tempfile import NamedTemporaryFile
 from openerp.report.report_sxw import report_sxw, rml_parse
 from openerp import registry
+from py3o.template import Template
 
 
 _extender_functions = {}
@@ -64,7 +68,7 @@ class Py3oParser(report_sxw):
             model_data = pool['ir.model.data'].browse(
                 cr, uid, model_data_ids[0], context=context
             )
-            xml_id = '%s,%s' % (model_data.module, model_data.name)
+            xml_id = '%s.%s' % (model_data.module, model_data.name)
 
         parser_instance = self.parser(cr, uid, self.name2, context=context)
         parser_instance.set_context(
@@ -74,7 +78,57 @@ class Py3oParser(report_sxw):
 
         if xml_id in _extender_functions:
             for fct in _extender_functions[xml_id]:
-                pass
+                fct(pool, cr, uid, parser_instance.localcontext, context)
+
+        template = report_xml.py3o_template_id
+        filetype = report_xml.py3o_fusion_filetype
+
+# py3o.template operates on filenames so create temporary files.
+        with NamedTemporaryFile(suffix='.odt', prefix='py3o-template-') as \
+            in_temp, \
+            NamedTemporaryFile(suffix='.odt', prefix='py3o-report-') as \
+            out_temp:
+
+            in_temp.write(b64decode(template.py3o_template_data))
+            in_temp.flush()
+
+            template = Template(in_temp.name, out_temp.name)
+
+            print parser_instance.localcontext
+            template.render(parser_instance.localcontext)
+
+            out_temp.seek(0)
+
+            if filetype.human_ext != 'odt':
+                # Now we ask fusion server to convert our template
+                fusion_server_obj = pool['py3o.server']
+                fusion_server_id = fusion_server_obj.search(
+                    cr, uid, [], context=context
+                )[0]
+                fusion_server = fusion_server_obj.browse(
+                    cr, uid, fusion_server_id, context=context
+                )
+                files = {
+                    'tmpl_file': out_temp,
+                }
+                fields = {
+                    "targetformat": filetype.fusion_ext,
+                    "datadict": "{}",
+                    "image_mapping": "{}",
+                    "skipfusion": True,
+                }
+                r = requests.post(fusion_server.url, data=fields, files=files)
+                chunk_size = 1024
+                with NamedTemporaryFile(
+                    suffix=filetype.human_ext,
+                    prefix='py3o-template-'
+                ) as fd:
+                    for chunk in r.iter_content(chunk_size):
+                        fd.write(chunk)
+                    fd.seek(0)
+                    return fd.read(), filetype.human_ext
+
+            return out_temp.read(), 'odt'
 
     def create(self, cr, uid, ids, data, context=None):
         """ Override this function to handle our py3o report

@@ -41,9 +41,12 @@ The py3o.template package is required; install it with:
         'python': ['py3o.template']
     },
     'data': [
-        'menu.xml',
-        'ir_report.xml',
         'security/ir.model.access.csv',
+
+        'views/py3o_template.xml',
+        'views/py3o_server.xml',
+        'views/ir_report.xml',
+        'views/menu.xml',
     ],
     'installable': True,
 }
