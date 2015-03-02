@@ -22,7 +22,7 @@
     "name": "Custom report filenames",
     "summary": "Configure the filename to use when downloading a report",
     "version": "1.0",
-    "author": "Therp BV",
+    "author": "Therp BV,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "complexity": "normal",
     "category": "Reporting",

@@ -37,7 +37,7 @@ the folling module(s):
 - Invoices: invoice_report_assemble (lp:account-invoice-report)
 
 """,
- 'author': 'Camptocamp',
+ 'author': "Camptocamp,Odoo Community Association (OCA)",
  'maintainer': 'Camptocamp',
  'website': 'http://www.camptocamp.com/',
  'depends': ['base'],
