@@ -23,7 +23,7 @@
     'name': 'Excel report engine',
     'version': '0.6',
     'license': 'AGPL-3',
-    'author': 'Noviat',
+    'author': "Noviat,Odoo Community Association (OCA)",
     'website': 'http://www.noviat.com',
     'category': 'Reporting',
     'description': """
