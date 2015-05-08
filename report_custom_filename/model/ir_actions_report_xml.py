@@ -18,18 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields
+from openerp.osv import fields, orm
 
 
-class IrActionsReportXml(models.Model):
+class IrActionsReportXml(orm.Model):
     _inherit = 'ir.actions.report.xml'
 
-    download_filename = fields.Char(
-        'Download filename',
-        help='Fill in this field to have a custom file name when downloading '
-        'this report. This string is evaluated as a jinja2 expression.\n'
-        'You can use python expressions, `objects` is a browse record list of '
-        'the objects for which the report is being generated.\n'
-        'Check for this list\'s length to determine if it is a report being '
-        'printed for multiple records or not. You also have access to `o`, '
-        'which is the first record in the list')
+    _columns = {
+        'download_filename': fields.char(
+            'Download filename',
+            help='Fill in this field to have a custom file name when '
+            'downloading this report. This string is evaluated as a jinja2 '
+            'expression.\nYou can use python expressions, `objects` is a '
+            'browse record list of the objects for which the report is being '
+            'generated.\nCheck for this list\'s length to determine if it is '
+            'a report being printed for multiple records or not. You also '
+            'have access to `o`, which is the first record in the list')
+        }

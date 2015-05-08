@@ -19,35 +19,35 @@
 #
 ##############################################################################
 import simplejson
-from openerp import http
+from openerp.addons.web import http
 from openerp.addons.web.controllers import main
 from openerp.addons.email_template import email_template
 
 
 class Reports(main.Reports):
-    @http.route('/web/report', type='http', auth="user")
-    @main.serialize_exception
-    def index(self, action, token):
-        result = super(Reports, self).index(action, token)
+
+    @http.httprequest
+    def index(self, req, action, token):
+        result = super(Reports, self).index(req, action, token)
         action = simplejson.loads(action)
-        context = dict(http.request.context)
+        context = dict(req.context)
         context.update(action["context"])
-        report_xml = http.request.session.model('ir.actions.report.xml')
+        report_xml = req.session.model('ir.actions.report.xml')
         report_ids = report_xml.search(
             [('report_name', '=', action['report_name'])],
             0, False, False, context)
-        for report in report_xml.browse(report_ids):
-            if not report.download_filename:
+        for report in report_xml.read(report_ids, fields=['download_filename']):
+            if not report['download_filename']:
                 continue
-            objects = http.request.session.model(context['active_model'])\
+            objects = req.session.model(context['active_model'])\
                 .browse(context['active_ids'])
             generated_filename = email_template.mako_template_env\
-                .from_string(report.download_filename)\
+                .from_string(report['download_filename'])\
                 .render({
                     'objects': objects,
                     'o': objects[0],
                     'object': objects[0],
                 })
             result.headers['Content-Disposition'] = main.content_disposition(
-                generated_filename)
+                generated_filename, req)
         return result
