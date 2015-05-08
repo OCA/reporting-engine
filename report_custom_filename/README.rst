@@ -20,6 +20,7 @@ Contributors
 ------------
 
 * Holger Brunn <hbrunn@therp.nl>
+* Sébastien Beau <sebastien.beau@akretion.com>
 
 Icon
 ----
