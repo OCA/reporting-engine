@@ -35,7 +35,8 @@ The py3o.template package is required; install it with:
     'author': 'XCG Consulting',
     'website': 'http://odoo.consulting/',
     'depends': [
-        'base'
+        'base',
+        'report'
     ],
     'external_dependencies': {
         'python': ['py3o.template']
