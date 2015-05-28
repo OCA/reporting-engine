@@ -1,9 +1,12 @@
 from base64 import b64decode
+import json
 from tempfile import NamedTemporaryFile
 
 from openerp.report.report_sxw import *
+from openerp import pooler
 
 from py3o.template import Template
+from py3o.template.helpers import Py3oConvertor
 
 import requests
 
@@ -43,21 +46,26 @@ class py3o_report(report_sxw):
         # Find the report definition to get its settings.
         pool = pooler.get_pool(cr.dbname)
         report_xml_obj = pool.get('ir.actions.report.xml')
-        report_xml_ids = report_xml_obj.search(cr, uid,
-                                               [('report_name', '=', self.name[7:])], # Ignore "report."
-                                               context=context)
+        report_xml_ids = report_xml_obj.search(
+            cr, uid, [('report_name', '=', self.name[7:])],  # Ignore "report."
+            context=context
+        )
         if not report_xml_ids:
-            return super(py3o_report, self).create(cr, uid, ids, data,
-                                                   context=context)
-        report_xml = report_xml_obj.browse(cr, uid,
-                                           report_xml_ids[0],
-                                           context=context)
+            return super(py3o_report, self).create(
+                cr, uid, ids, data, context=context
+            )
+        report_xml = report_xml_obj.browse(
+            cr, uid, report_xml_ids[0], context=context
+        )
 
         template = report_xml.py3o_template_id
         filetype = report_xml.py3o_fusion_filetype
 
         # py3o.template operates on filenames so create temporary files.
-        with NamedTemporaryFile(suffix='.odt', prefix='py3o-template-') as in_temp:
+        with NamedTemporaryFile(
+                suffix='.odt',
+                prefix='py3o-template-',
+        ) as in_temp:
 
             in_temp.write(b64decode(template.py3o_template_data))
             in_temp.flush()
@@ -65,10 +73,14 @@ class py3o_report(report_sxw):
 
             template = Template(in_temp.name, None)
 
-            user_instruction_mapping = template.get_user_instructions_mapping()
-            values = user_instruction_mapping.jsonify(
+            expressions = template.get_all_user_python_expression()
+            py_expr = template.convert_py3o_to_python_ast(expressions)
+            p = Py3oConvertor()
+            res = p(py_expr)
+
+            values = json.dumps(res.jsonify(
                 self.get_values(cr, uid, ids, data, context)
-            )
+            ))
 
             fusion_server_obj = pool['py3o.server']
             fusion_server_id = fusion_server_obj.search(
@@ -89,7 +101,8 @@ class py3o_report(report_sxw):
             chunk_size = 1024
             with NamedTemporaryFile(
                     suffix=filetype.human_ext,
-                    prefix='py3o-template-') as fd:
+                    prefix='py3o-template-'
+            ) as fd:
                 for chunk in r.iter_content(chunk_size):
                     fd.write(chunk)
                 fd.seek(0)
