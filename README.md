@@ -13,6 +13,6 @@ Requirements
 ============
 
 The py3o.template package is required; install it with:
-    pip install py3o.template
+    easy_install -UZ py3o.template
 
 
