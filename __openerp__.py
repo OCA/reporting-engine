@@ -48,6 +48,8 @@ The py3o.template package is required; install it with:
         'views/py3o_template.xml',
         'views/py3o_server.xml',
         'views/ir_report.xml',
+
+        'data/py3o.fusion.filetype.csv',
     ],
     'installable': True,
 }
