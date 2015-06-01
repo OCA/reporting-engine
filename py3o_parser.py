@@ -37,7 +37,7 @@ def py3o_report_extender(report_name):
 
 class Py3oParser(report_sxw):
     """Custom class that use Py3o to render libroffice reports.
-        Code partially taken from CampToCamp."""
+        Code partially taken from CampToCamp's webkit_report."""
 
     def __init__(self, name, table, rml=False, parser=rml_parse,
                  header=False, store=False, register=True):
@@ -84,10 +84,11 @@ class Py3oParser(report_sxw):
         filetype = report_xml.py3o_fusion_filetype
 
 # py3o.template operates on filenames so create temporary files.
-        with NamedTemporaryFile(suffix='.odt', prefix='py3o-template-') as \
-            in_temp, \
-            NamedTemporaryFile(suffix='.odt', prefix='py3o-report-') as \
-            out_temp:
+        with NamedTemporaryFile(
+            suffix='.odt',
+            prefix='py3o-template-') as in_temp, NamedTemporaryFile(
+                suffix='.odt',
+                prefix='py3o-report-') as out_temp:
 
             in_temp.write(b64decode(template.py3o_template_data))
             in_temp.flush()
