@@ -1,0 +1,70 @@
+# -*- encoding: utf-8 -*-
+
+# Odoo, Open Source Management Solution
+# Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+from openerp import api, fields, models
+
+
+class ReportAction(models.Model):
+    _inherit = "ir.actions.report.xml"
+
+    report_type = fields.Selection(selection_add=[("qweb-xml", "XML")])
+
+    def _lookup_report(self, cr, name):
+        """Enable ``qweb-xml`` report lookup."""
+        try:
+            super(ReportAction, self)._lookup_report(cr, name)
+        except Exception as ex:
+            # Somebody thought it was a good idea to use standard exceptions
+            if "qweb-xml" not in ex.message:
+                raise ex
+            else:
+                cr.execute(
+                    "SELECT * FROM ir_act_report_xml WHERE report_name=%s",
+                    (name,))
+                return cr.dictfetchone()["report_name"]
+
+    @api.model
+    def render_report(self, res_ids, name, data):
+        """Special handling for ``qweb-xml`` reports."""
+        if data.get("report_type") == u"qweb-xml":
+            new_report = self._lookup_report(name)
+            recs = self.env[self.env.context["active_model"]].browse(res_ids)
+            result = self.env["report"].get_html(recs, new_report, data=data)
+
+            # XML with spaces before the <?xml tag will fail, and trailing ones
+            # do nothing, so let's strip them and make everyone happier
+            result = (result.strip(), "xml")
+        else:
+            result = super(ReportAction, self).render_report(
+                res_ids, name, data)
+
+        return result
+
+
+class ReportGenerator(models.Model):
+    _inherit = "report"
+
+    @api.model
+    def _get_report_from_name(self, report_name):
+        """Allow to view ``qweb-xml`` reports as web pages."""
+        try:
+            super(ReportGenerator, self)._get_report_from_name(report_name)
+        except IndexError:
+            return self.env["ir.actions.report.xml"].search(
+                [("report_type", "=", "qweb-xml"),
+                 ("report_name", "=", report_name)])[0]
