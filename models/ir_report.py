@@ -17,6 +17,7 @@ class report_xml(osv.Model):
         'py3o_fusion_filetype': fields.many2one(
             'py3o.fusion.filetype',
             u"Output Format",
+            required=True,
         ),
         'py3o_template_id': fields.many2one(
             'py3o.template',
