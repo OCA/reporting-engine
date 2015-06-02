@@ -44,8 +44,7 @@ class report_xml(osv.Model):
     }
 
     def _lookup_report(self, cr, name):
-        """
-        Look up a report definition.
+        """Look up a report definition.
         """
 
         # First lookup in the deprecated place, because if the report
