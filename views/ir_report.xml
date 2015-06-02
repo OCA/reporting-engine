@@ -16,6 +16,8 @@
                         <group>
                             <field name="py3o_fusion_filetype" />
                             <field name="py3o_template_id" />
+                            <field name="module" />
+                            <field name="py3o_template_fallback" />
                         </group>
 
                     </page>

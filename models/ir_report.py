@@ -23,6 +23,18 @@ class report_xml(osv.Model):
             'py3o.template',
             u"Template",
         ),
+        'module': fields.char(
+            u"Module",
+            size=64,
+            help=u"The implementer module that provides this report",
+        ),
+        'py3o_template_fallback': fields.char(
+            u"Fallback",
+            size=128,
+            help=(u"If the user does not provide a template this will be used "
+                  u"it should be a relattive path to root of YOUR module",
+                  ),
+        ),
         'report_type': fields.selection(
             [
                 ('qweb-pdf', u"PDF"),

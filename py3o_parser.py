@@ -1,12 +1,23 @@
+# -*- encoding: utf-8 -*-
+import pkg_resources
+import os
+import sys
 from base64 import b64decode
 import requests
 from tempfile import NamedTemporaryFile
+from openerp import _
 from openerp.report.report_sxw import report_sxw, rml_parse
 from openerp import registry
+from openerp.exceptions import DeferredException
+
 from py3o.template import Template
 
 
 _extender_functions = {}
+
+
+class TemplateNotFound(DeferredException):
+    pass
 
 
 def py3o_report_extender(report_name):
@@ -23,7 +34,7 @@ def py3o_report_extender(report_name):
     Method copied from CampToCamp report_webkit module.
 
     :param report_name: xml id of the report
-    :return:
+    :return: a decorated class
     """
     def fct1(fct):
         lst = _extender_functions.get(report_name)
@@ -46,6 +57,55 @@ class Py3oParser(report_sxw):
             name, table, rml=rml, parser=parser,
             header=header, store=store, register=register
         )
+
+    def get_template(self, report_obj):
+        """private helper to fetch the template data either from the database
+        or from the default template file provided by the implementer.
+
+        ATM this method takes a report definition recordset
+        to try and fetch the report template from database. If not found it will
+        fallback to the template file referenced in the report definition.
+
+        @param report_obj: a recordset representing the report defintion
+        @type report_obj: openerp.model.recordset instance
+
+        @returns: string or buffer containing the template data
+
+        @raises: TemplateNotFound which is a subclass of
+        openerp.exceptions.DeferredException
+        """
+
+        tmpl_data = None
+
+        if report_obj.py3o_template_id and report_obj.py3o_template_id.id:
+            # if a user gave a report template
+            tmpl_data = b64decode(
+                report_obj.py3o_template_id.py3o_template_data
+            )
+
+        elif report_obj.py3o_template_fallback and report_obj.module:
+            # if the default is defined
+            flbk_filename = pkg_resources.resource_filename(
+                "openerp.addons.%s" % report_obj.module,
+                report_obj.py3o_template_fallback,
+            )
+            if os.path.exists(flbk_filename):
+                # and it exists on the fileystem
+                with open(flbk_filename, 'r') as tmpl:
+                    tmpl_data = tmpl.read()
+
+        if tmpl_data is None:
+            # if for any reason the template is not found
+            print("*"*35)
+            print("Template filename: %s" % flbk_filename)
+            print("*"*35)
+
+            raise TemplateNotFound(
+                _(u'No template found. Aborting.'),
+                sys.exc_info(),
+            )
+
+        return tmpl_data
 
     def create_single_pdf(self, cr, uid, ids, data, report_xml, context=None):
         """ Overide this function to generate our py3o report
@@ -83,6 +143,8 @@ class Py3oParser(report_sxw):
         template = report_xml.py3o_template_id
         filetype = report_xml.py3o_fusion_filetype
 
+        tmpl_data = self.get_template(report_xml)
+
 # py3o.template operates on filenames so create temporary files.
         with NamedTemporaryFile(
             suffix='.odt',
@@ -90,12 +152,10 @@ class Py3oParser(report_sxw):
                 suffix='.odt',
                 prefix='py3o-report-') as out_temp:
 
-            in_temp.write(b64decode(template.py3o_template_data))
+            in_temp.write(tmpl_data)
             in_temp.flush()
 
             template = Template(in_temp.name, out_temp.name)
-
-            print parser_instance.localcontext
             template.render(parser_instance.localcontext)
 
             out_temp.seek(0)
