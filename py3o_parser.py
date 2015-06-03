@@ -8,7 +8,7 @@ from tempfile import NamedTemporaryFile
 from openerp import _
 from openerp.report.report_sxw import report_sxw, rml_parse
 from openerp import registry
-from openerp.exceptions import DeferredException
+from openerp.exceptions import ValidationError
 
 from py3o.template import Template
 
@@ -16,7 +16,7 @@ from py3o.template import Template
 _extender_functions = {}
 
 
-class TemplateNotFound(DeferredException):
+class TemplateNotFound(Exception):
     pass
 
 
@@ -96,10 +96,6 @@ class Py3oParser(report_sxw):
 
         if tmpl_data is None:
             # if for any reason the template is not found
-            print("*"*35)
-            print("Template filename: %s" % flbk_filename)
-            print("*"*35)
-
             raise TemplateNotFound(
                 _(u'No template found. Aborting.'),
                 sys.exc_info(),
@@ -160,6 +156,10 @@ class Py3oParser(report_sxw):
 
             out_temp.seek(0)
 
+            # TODO: use py3o.formats to know native formats instead
+            # of hardcoding this value
+            # TODO: why use the human readable form when you're a machine?
+            # this is non-sense AND dangerous... please use technical name
             if filetype.human_ext != 'odt':
                 # Now we ask fusion server to convert our template
                 fusion_server_obj = pool['py3o.server']
@@ -178,16 +178,26 @@ class Py3oParser(report_sxw):
                     "image_mapping": "{}",
                     "skipfusion": True,
                 }
+                # Here is a little joke about Odoo
+                # we do nice chunked reading from the network...
                 r = requests.post(fusion_server.url, data=fields, files=files)
-                chunk_size = 1024
-                with NamedTemporaryFile(
-                    suffix=filetype.human_ext,
-                    prefix='py3o-template-'
-                ) as fd:
-                    for chunk in r.iter_content(chunk_size):
-                        fd.write(chunk)
-                    fd.seek(0)
-                    return fd.read(), filetype.human_ext
+                if r.status_code == 400:
+                    # server says we have an issue... let's to that
+                    raise ValidationError(
+                        r.json(),
+                    )
+
+                else:
+                    chunk_size = 1024
+                    with NamedTemporaryFile(
+                        suffix=filetype.human_ext,
+                        prefix='py3o-template-'
+                    ) as fd:
+                        for chunk in r.iter_content(chunk_size):
+                            fd.write(chunk)
+                        fd.seek(0)
+                        # ... but odoo wants the whole data in memory anyways :)
+                        return fd.read(), filetype.human_ext
 
             return out_temp.read(), 'odt'
 
