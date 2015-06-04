@@ -14,10 +14,10 @@ class report_xml(osv.Model):
     _inherit = 'ir.actions.report.xml'
 
     _columns = {
+        # TODO required when report_type type is py3o, add python constraint
         'py3o_fusion_filetype': fields.many2one(
             'py3o.fusion.filetype',
             u"Output Format",
-            required=True,
         ),
         'py3o_template_id': fields.many2one(
             'py3o.template',
