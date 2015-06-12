@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from lxml import etree
 from openerp import api, fields, models
 
 
@@ -68,3 +69,33 @@ class ReportGenerator(models.Model):
             return self.env["ir.actions.report.xml"].search(
                 [("report_type", "=", "qweb-xml"),
                  ("report_name", "=", report_name)])[0]
+
+
+class XSDCheckedReport(models.AbstractModel):
+    """Check XML report against a XSD schema before downloading it.
+
+    This is an Abstract Model to be inherited by the real report models, which
+    must implement :meth:`.xsd` and have a ``_name`` in the form
+    ``report.<module>.<report_name>``.
+    """
+    _name = "report_xml.xsd_checked_report"
+    _description = "Base model for reports that need XSD checking"
+
+    @api.multi
+    def xsd(self):
+        """Return the XSD schema contents."""
+        raise NotImplementedError
+
+    @api.multi
+    def render_html(self, data=None):
+        """Return the XML report after checking it against an XSD."""
+        docargs = {"docs": (self.env[self.env.context["active_model"]]
+                            .browse(self.env.context["active_ids"]))}
+        xsd = etree.XMLSchema(etree.XML(self.xsd()))
+        parser = etree.XMLParser(schema=xsd)
+        result = (self.env["report"]
+                  .render(self._name[len("report."):], docargs)
+                  .strip())
+        etree.fromstring(result, parser)
+
+        return result
