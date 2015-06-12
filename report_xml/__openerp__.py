@@ -29,4 +29,7 @@
     "depends": [
         "report",
     ],
+    "data": [
+        "views/report_xml_templates.xml",
+    ]
 }
