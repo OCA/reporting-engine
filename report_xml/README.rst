@@ -42,6 +42,9 @@ as for HTML reports, and the method that you must override is also called
 You can visit http://<server-address>/report/xml/<module.report_name>/<ids>
 to see your XML report online as a web page.
 
+If you are a developer and you want a sample module to know how to use this
+reporting engine, you can review `l10n_es_training`_.
+
 For further information, please visit:
 
 * https://www.odoo.com/forum/help-1
@@ -81,4 +84,5 @@ To contribute to this module, please visit http://odoo-community.org.
 .. _reporting-engine: https://github.com/OCA/reporting-engine
 .. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
 .. _custom report: https://www.odoo.com/documentation/8.0/reference/reports.html#custom-reports
+.. _l10n_es_training: https://github.com/grupoesoc/l10n-spain/tree/l10n_es_training/l10n_es_training
 .. _lxml: http://lxml.de/
