@@ -81,8 +81,8 @@ promote its widespread use.
 To contribute to this module, please visit http://odoo-community.org.
 
 
-.. _reporting-engine: https://github.com/OCA/reporting-engine
-.. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
 .. _custom report: https://www.odoo.com/documentation/8.0/reference/reports.html#custom-reports
+.. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
+.. _reporting-engine: https://github.com/OCA/reporting-engine
 .. _l10n_es_training: https://github.com/grupoesoc/l10n-spain/tree/l10n_es_training/l10n_es_training
 .. _lxml: http://lxml.de/
