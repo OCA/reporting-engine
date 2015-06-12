@@ -13,6 +13,7 @@ Installation
 
 To install this module, you need to:
 
+* Install lxml_ in Odoo's ``$PYTHONPATH``.
 * Install the repository `reporting-engine`_.
 
 Configuration
@@ -80,3 +81,4 @@ To contribute to this module, please visit http://odoo-community.org.
 .. _reporting-engine: https://github.com/OCA/reporting-engine
 .. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
 .. _custom report: https://www.odoo.com/documentation/8.0/reference/reports.html#custom-reports
+.. _lxml: http://lxml.de/
