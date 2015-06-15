@@ -89,8 +89,9 @@ class XSDCheckedReport(models.AbstractModel):
     @api.multi
     def render_html(self, data=None):
         """Return the XML report after checking it against an XSD."""
-        docargs = {"docs": (self.env[self.env.context["active_model"]]
-                            .browse(self.env.context["active_ids"]))}
+        docargs = self.env.context.get("docargs", dict())
+        docargs["docs"] = (self.env[self.env.context["active_model"]]
+                           .browse(self.env.context["active_ids"]))
         xsd = etree.XMLSchema(etree.XML(self.xsd()))
         parser = etree.XMLParser(schema=xsd)
         result = (self.env["report"]
