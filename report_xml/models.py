@@ -88,11 +88,16 @@ class XSDCheckedReport(models.AbstractModel):
 
     @api.multi
     def render_html(self, data=None):
-        """Return the XML report after checking it against an XSD."""
+        """Return the XML report after checking it against an XSD.
+
+        If ``context`` contains a dict called ``docargs``, it will be used as
+        the Qweb context. The special key ``docs`` will be added to ``docargs``
+        automatically if missing.
         docargs = self.env.context.get("docargs", dict())
-        docargs["docs"] = (self.env[self.env.context["active_model"]]
-                           .browse(self.env.context["active_ids"]))
         xsd = etree.XMLSchema(etree.XML(self.xsd()))
+        if "docs" not in docargs:
+            docargs["docs"] = (self.env[self.env.context["active_model"]]
+                               .browse(self.env.context["active_ids"]))
         parser = etree.XMLParser(schema=xsd)
         result = (self.env["report"]
                   .render(self._name[len("report."):], docargs)
