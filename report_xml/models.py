@@ -16,8 +16,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 from lxml import etree
 from openerp import api, fields, models
+
+
+_logger = logging.getLogger(__name__)
 
 
 class ReportAction(models.Model):
@@ -93,15 +97,29 @@ class XSDCheckedReport(models.AbstractModel):
         If ``context`` contains a dict called ``docargs``, it will be used as
         the Qweb context. The special key ``docs`` will be added to ``docargs``
         automatically if missing.
+        """
+        # Qweb context
         docargs = self.env.context.get("docargs", dict())
-        xsd = etree.XMLSchema(etree.XML(self.xsd()))
         if "docs" not in docargs:
             docargs["docs"] = (self.env[self.env.context["active_model"]]
                                .browse(self.env.context["active_ids"]))
+
+        # Load XSD
+        xsd = etree.XML(self.xsd())
+        _logger.debug("XSD schema contents: %s", etree.tostring(xsd))
+        xsd = etree.XMLSchema(xsd)
         parser = etree.XMLParser(schema=xsd)
+
+        # Generate XML report
         result = (self.env["report"]
                   .render(self._name[len("report."):], docargs)
                   .strip())
-        etree.fromstring(result, parser)
+
+        # Validate XML with XSD
+        try:
+            etree.fromstring(result, parser)
+        except Exception as error:
+            _logger.error(result)
+            raise error
 
         return result
