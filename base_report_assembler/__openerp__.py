@@ -44,7 +44,7 @@ the folling module(s):
  'license': 'AGPL-3',
  'website': 'http://www.camptocamp.com/',
  'depends': ['base'],
- 'data': [],
+ 'data': ['security/ir.model.access.csv'],
  'test': [],
  'installable': True,
  'auto_install': False,
