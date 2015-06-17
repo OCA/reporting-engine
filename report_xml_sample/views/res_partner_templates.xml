@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- Basic XML report -->
+<report
+    id="sample_report_action"
+    name="report_xml_sample.sample_report"
+    string="XML Report Sample"
+    report_type="qweb-xml"
+    model="res.partner"/>
+
+<template id="sample_report">
+    <t t-call="report_xml.utf8_header">
+        <partners>
+            <partner t-foreach="docs" t-as="p">
+                <id t-esc="p.id"/>
+                <name t-esc="p.name"/>
+                <children t-if="p.child_ids">
+                    <partner t-foreach="p.child_ids" t-as="c">
+                        <id t-esc="c.id"/>
+                        <name t-esc="c.name"/>
+                    </partner>
+                </children>
+            </partner>
+        </partners>
+    </t>
+</template>
+
+<!-- Report checked against an XSD (see also ``../models.py``) -->
+<report
+    id="xsd_sample_report_action"
+    name="report_xml_sample.xsd_sample_report"
+    string="XSD-Checked XML Report Sample"
+    report_type="qweb-xml"
+    model="res.partner"/>
+
+<template id="xsd_sample_report">
+    <t t-call="report_xml_sample.sample_report"/>
+</template>
+
+</data>
+</openerp>
