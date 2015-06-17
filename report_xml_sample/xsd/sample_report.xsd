@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Complex types -->
+	<xs:complexType name="t_partners">
+		<xs:sequence>
+			<xs:element name="partner"
+						type="t_partner"
+						minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="t_partner">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="children" type="t_partners" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Schema -->
+	<xs:element name="partners" type="t_partners"/>
+</xs:schema>
