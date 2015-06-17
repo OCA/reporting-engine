@@ -16,6 +16,9 @@ To install this module, you need to:
 * Install lxml_ in Odoo's ``$PYTHONPATH``.
 * Install the repository `reporting-engine`_.
 
+But this module does nothing for the end user by itself, so if you have it
+installed it's probably because there is another module that depends on it.
+
 Configuration
 =============
 
@@ -24,10 +27,18 @@ No manual configuration is needed.
 Usage
 =====
 
-This module is technical, so its usage instructions are intended for module
-developers.
+If you are a user
+-----------------
 
-To use this module, you need to:
+You will be able to download XML reports from the *Print* menu found on form
+and list views.
+
+If you are a developer
+----------------------
+
+To learn from an example, just check the `sample module`_.
+
+To develop with this module, you need to:
 
 * Create a module.
 * Make it depend on this one.
@@ -39,11 +50,13 @@ In case you want to create a `custom report`_, the instructions remain the same
 as for HTML reports, and the method that you must override is also called
 ``render_html``, even when this time you are creating a XML report.
 
-You can visit http://<server-address>/report/xml/<module.report_name>/<ids>
-to see your XML report online as a web page.
+You can make your custom report inherit ``report_xml.xsd_checked_report``, name
+it like your XML ``<template>`` id prepended by ``report.``, add a ``xsd()``
+method that returns a XSD in a string, and have XSD automatic checking for
+free.
 
-If you are a developer and you want a sample module to know how to use this
-reporting engine, you can review `l10n_es_training`_.
+You can visit ``http://<server-address>/report/xml/<module.report_name>/<ids>``
+to see your XML report online as a web page.
 
 For further information, please visit:
 
@@ -84,5 +97,5 @@ To contribute to this module, please visit http://odoo-community.org.
 .. _custom report: https://www.odoo.com/documentation/8.0/reference/reports.html#custom-reports
 .. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
 .. _reporting-engine: https://github.com/OCA/reporting-engine
-.. _l10n_es_training: https://github.com/grupoesoc/l10n-spain/tree/l10n_es_training/l10n_es_training
+.. _sample module: https://github.com/OCA/reporting-engine/tree/8.0/report_xml_sample
 .. _lxml: http://lxml.de/
