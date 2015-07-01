@@ -21,4 +21,3 @@
 from . import report_assembler
 from . import assembled_report
 from . import ir_report
-
