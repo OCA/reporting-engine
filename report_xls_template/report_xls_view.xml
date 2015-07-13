@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherited Views -->
+        <!-- ir.actions.report.xml -->
+        <record id="view_action_report_form" model="ir.ui.view">
+            <field name="name">Report XLS Options</field>
+            <field name="model">ir.actions.report.xml</field>
+            <field name="inherit_id" ref="report.act_report_xml_view_inherit"/>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='associated_view']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('report_type', 'not in', ['qweb-pdf','qweb-html','qweb-xls','qweb-ods'])]}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
