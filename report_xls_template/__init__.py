@@ -20,6 +20,6 @@
 #
 ##############################################################################
 
-import report
-import controllers
-import ir_actions_report_xml
+from . import report
+from . import controllers
+from . import ir_actions_report_xml

@@ -51,10 +51,10 @@ class Report(models.Model):
                 report_obj = self.pool[report.model]
                 docs = report_obj.browse(cr, uid, ids, context=context)
                 docargs = {
-                           'doc_ids': ids,
-                           'doc_model': report.model,
-                           'docs': docs,
-                           }
+                    'doc_ids': ids,
+                    'doc_model': report.model,
+                    'docs': docs,
+                }
                 return self.pool.get('report').render(
                     cr, uid, [], report.report_name, docargs, context=context)
         else:
@@ -285,7 +285,7 @@ class Report(models.Model):
                             'name', _('Data') + str(worksheet_counter))):
                         raise Warning(_('Invalid worksheet name.'))
                     worksheet = workbook.add_sheet(div_worksheet.get(
-                            'name', _('Data') + str(worksheet_counter)))
+                        'name', _('Data') + str(worksheet_counter)))
                 except (Warning, Exception) as exc:
                     raise Warning(exc.message)
                 # Set number of pages

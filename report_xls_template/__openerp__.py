@@ -42,9 +42,9 @@ Main Features
     'images': [],
     'depends': ['report'],
     'data': [
-             'report_xls_view.xml',
-             'views/assets.xml',
-             ],
+        'report_xls_view.xml',
+        'views/assets.xml',
+    ],
     'test': [],
     'demo': [],
     'installable': True,
