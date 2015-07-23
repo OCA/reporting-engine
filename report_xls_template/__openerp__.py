@@ -26,20 +26,8 @@
     'category': 'Base',
     'sequence': 16,
     'summary': 'XLS format QWeb Reports',
-    'description': """
-Reports in XLS format
-=====================
-Allow you to print reports on xls format.
-
-Main Features
--------------
-* Uses QWeb templates
-* Allows the creation of worksheets
-* Supports base 64 encoded 24 bits True Color bitmaps""",
     'author': 'ClearCorp',
     'website': 'http://clearcorp.co.cr',
-    'complexity': 'normal',
-    'images': [],
     'depends': ['report'],
     'data': [
         'report_xls_view.xml',

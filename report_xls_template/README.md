@@ -3,6 +3,12 @@ Report XLS Template
 
 This module generates xls reports based on custom qweb views
 
+Main Features
+-------------
+* Uses QWeb templates
+* Allows the creation of worksheets
+* Supports base 64 encoded 24 bits True Color bitmaps
+
 Sample report
 -------------
 
@@ -88,5 +94,3 @@ Sample report
     </data>
 </openerp>
 ```
-
-Complete sample module (report_xls_template_example) can be found [here](https://github.com/ClearCorp/odoo-clearcorp)
