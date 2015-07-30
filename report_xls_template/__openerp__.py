@@ -26,7 +26,7 @@
     'category': 'Base',
     'sequence': 16,
     'summary': 'XLS format QWeb Reports',
-    'author': 'ClearCorp',
+    'author': 'ClearCorp,Odoo Community Association (OCA)',
     'website': 'http://clearcorp.co.cr',
     'depends': ['report'],
     'data': [
