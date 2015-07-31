@@ -47,7 +47,8 @@ class pdf_form_fill(orm.Model):
             (u'There is no file path method for the given model.')
         )
 
-    def download_pdf_form(self, cr, uid, ids, context=None):
+    def download_pdf_form(self, cr, uid, ids,
+                          field_name=None, arg=None, context=None):
         file_path = self.get_pdf_file_path(cr, uid, ids, context=context)
         fields = self.prepare_pdf_fields(cr, uid, ids, context=context)
 

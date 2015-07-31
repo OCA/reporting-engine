@@ -2,8 +2,8 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2010-2013 OpenERP s.a. (<http://openerp.com>).
-#    Copyright (C) 2013 initOS GmbH & Co. KG (<http://www.initos.com>).
+#    Copyright (C) 2010-2014 OpenERP s.a. (<http://openerp.com>).
+#    Copyright (C) 2015 initOS GmbH & Co. KG (<http://www.initos.com>).
 #    Author Nikolina Todorova <nikolina.todorova@initos.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,4 +20,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import pdf_form_fill
+{
+    "name": "Pdf Form Fill Test",
+    "version": "1.0",
+    "depends": [
+        "base",
+        "pdf_form_fill"
+    ],
+    "author": "Nikolina Todorova - InitOS GmbH & Co. KG",
+    "description": """
+This module is example of the use of the pdf_form_fill module.
+    """,
+    "website": "http://www.initos.com",
+    "data": [
+        "pdf_form_fill_test_view.xml",
+    ],
+    "installable": True,
+    "license": "GPL-3",
+
+}
