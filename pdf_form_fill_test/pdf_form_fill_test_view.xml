@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
 <data>
-    <record model="ir.ui.view" id="pdf_form_fill_test_view_tree">
+    <record id="pdf_form_fill_test_view_tree" model="ir.ui.view">
         <field name="name">pdf.form.fill.test.view.tree</field>
         <field name="model">pdf.form.fill.test</field>
         <field name="arch" type="xml">
@@ -12,18 +12,20 @@
              </tree>
         </field>
     </record>
-    <record model="ir.ui.view" id="pdf_form_fill_test_view_form">
+    <record id="pdf_form_fill_test_view_form" model="ir.ui.view">
         <field name="name">pdf.form.fill.test.view.form</field>
         <field name="model">pdf.form.fill.test</field>
         <field name="arch" type="xml">
             <form string="Pdf Form Fill Test Form" version="7.0">
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="pdf_file"/>
+                <group>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="pdf_file"/>
+                </group>
             </form>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="pdf_form_fill_test_action">
+    <record id="pdf_form_fill_test_action" model="ir.actions.act_window">
         <field name="name">pdf.form.fill.test.action</field>
         <field name="view_id" ref="pdf_form_fill_test_view_tree"/>
         <field name="res_model">pdf.form.fill.test</field>
@@ -31,7 +33,7 @@
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem id="main_menu" name="Pdf Form Fill Test Main Menu"/>
-    <menuitem id="section_main_menu" parent="main_menu"/>
-    <menuitem id="action_menu" parent="section_main_menu" action="pdf_form_fill_test_action"/>
+    <menuitem id="section_main_menu" parent="main_menu" name="Pdf Form Fill Test"/>
+    <menuitem id="action_menu" parent="section_main_menu" action="pdf_form_fill_test_action" name="Pdf Form Fill Test"/>
 </data>
 </openerp>
