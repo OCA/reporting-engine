@@ -21,5 +21,6 @@
 ##############################################################################
 
 from . import report
+from . import abstract_report
 from . import controllers
 from . import ir_actions_report_xml

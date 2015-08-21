@@ -94,3 +94,5 @@ Sample report
     </data>
 </openerp>
 ```
+
+For old style report parsers use ```python _report_render_type = 'qweb-xls'```
