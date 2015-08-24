@@ -6,13 +6,7 @@ This addon allows for custom filenames for reports.
 Configuration
 =============
 
-To configure this module, open the report whose filename you want to change and fill in the `Download filename` field. This field is evaluated as jinja2 template with `objects` being a list of browse records of the records to print, and `o` the first record.
-
-Known issues / Roadmap
-======================
-
- * Currently, only old-style reports (ir.actions.report.xml) are supported, it should be simple to add support for qweb reports.
-
+To configure this module, open the report whose filename you want to change and fill in the `Download filename` field. This field is evaluated as jinja2 template with `objects` being a list of browse records of the records to print, and `o` the first record. If your model contains a name field, you might write something like `${o.name}_report.pdf` as filename.
 
 Bug Tracker
 ===========
@@ -22,6 +16,9 @@ In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
 `here <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_custom_filename%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+    :alt: Try me on Runbot
+    :target: https://runbot.odoo-community.org/runbot/143/8.0
 
 Credits
 =======
