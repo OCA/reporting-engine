@@ -28,7 +28,7 @@ from openerp.osv.fields import datetime as datetime_field
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import inspect
 from types import CodeType
-from openerp.report.report_sxw import *
+from openerp.report.report_sxw import report_sxw
 from openerp import pooler
 from openerp.tools.translate import translate, _
 import logging
