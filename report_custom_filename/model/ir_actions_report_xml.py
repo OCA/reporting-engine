@@ -32,4 +32,6 @@ class IrActionsReportXml(models.Model):
         'the objects for which the report is being generated.\n'
         'Check for this list\'s length to determine if it is a report being '
         'printed for multiple records or not. You also have access to `o`, '
-        'which is the first record in the list')
+        'which is the first record in the list.\n'
+        'For qweb reports, the variable `ext` gives you the requested format'
+        '\'s extension')
