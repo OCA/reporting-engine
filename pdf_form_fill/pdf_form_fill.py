@@ -20,8 +20,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+try:
+    from fdfgen import forge_fdf
+except ImportError:
+    forge_fdf = False
 from openerp.osv import orm
-from fdfgen import forge_fdf
 from tempfile import NamedTemporaryFile
 import subprocess
 import base64
@@ -61,6 +64,11 @@ class pdf_form_fill(orm.Model):
         fields = map(_transform_field, fields)
 
         # create the fdf file for filling the form
+        if not forge_fdf:
+            raise orm.except_orm(
+                (u'Missing fdfgen library.'),
+                (u'You need to install python fdfgen library.')
+            )
         fdf = forge_fdf("", fields, [], [], [])
         fdf_file = NamedTemporaryFile(mode='wb', delete=False)
         fdf_file.write(fdf)
