@@ -1,0 +1,26 @@
+language: python
+python:
+  - "2.7"
+
+addons:
+  apt:
+    packages:
+      - expect-dev  # provides unbuffer utility
+      - python-lxml  # because pip installation is slow
+
+virtualenv:
+  system_site_packages: true
+
+install:
+ - pip install fdfgen
+ - git clone https://github.com/OCA/maintainer-quality-tools.git $HOME/maintainer-quality-tools
+ - export PATH=$HOME/maintainer-quality-tools/travis:$PATH
+ - travis_install_nightly 7.0
+ - pip install coveralls flake8
+
+script:
+    - travis_run_flake8
+    - travis_run_tests 7.0
+
+after_success:
+  coveralls
