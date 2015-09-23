@@ -15,6 +15,22 @@ The convention is to use a suffix to each module to indicate that it's for using
 
 It can contain also another utilities directly involved with reports (like merge/split utils, checkers, signing tools and so on).
 
+[//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[report_custom_filename](report_custom_filename/) | 1.0 | Configure the filename to use when downloading a report
+[report_xls](report_xls/) | 0.6 | Excel report engine
+
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[base_report_assembler](__unported__/base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+
+[//]: # (end addons)
+
 ----
 
 OCA, or the Odoo Community Association, is a nonprofit organization whose 
