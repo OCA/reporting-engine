@@ -120,7 +120,9 @@ class report_xls(report_sxw):
         parser_instance.set_context(objs, data, ids, 'xls')
         objs = parser_instance.localcontext['objects']
         n = cStringIO.StringIO()
-        wb = xlwt.Workbook(encoding='utf-8')
+        # prevent style make error
+        # http://stackoverflow.com/questions/17130516/xlwt-set-style-making-error-more-than-4094-xfs-styles
+        wb = xlwt.Workbook(encoding='utf-8', style_compression=2)
         _p = AttrDict(parser_instance.localcontext)
         _xs = self.xls_styles
         self.xls_headers = {
