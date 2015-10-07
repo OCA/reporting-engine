@@ -61,6 +61,5 @@ class pdf_form_fill_test(orm.Model):
 
     def get_pdf_file_path(self, cr, uid, ids, context=None):
         """Overwrite this to return the specific pdf file path."""
-        obj = self.browse(cr, uid, ids, context=context)
         return os.path.join(os.path.join(self.get_directory_name(),
                                          "data/pdf_form_fill_test_form.pdf"))
