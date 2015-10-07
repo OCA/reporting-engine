@@ -19,6 +19,7 @@
 #
 ##############################################################################
 {'name': 'Base Report Assembler',
+ 'summary': 'Assemble multiple reports in one PDF',
  'version': '1.0',
  'category': 'Report',
  'description': """
@@ -34,14 +35,16 @@ output of a webkit payment slip.
 To install this assemblage option for specific object you can install
 the folling module(s):
 
-- Invoices: invoice_report_assemble (lp:account-invoice-report)
+- Assemble invoice report: `invoice_report_assemble`
+(git@github.com:OCA/account-invoice-report)
 
 """,
  'author': "Camptocamp,Odoo Community Association (OCA)",
  'maintainer': 'Camptocamp',
+ 'license': 'AGPL-3',
  'website': 'http://www.camptocamp.com/',
  'depends': ['base'],
- 'data': [],
+ 'data': ['security/ir.model.access.csv'],
  'test': [],
  'installable': True,
  'auto_install': False,
