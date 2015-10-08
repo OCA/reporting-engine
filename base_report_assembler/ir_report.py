@@ -21,7 +21,7 @@
 from openerp.osv import orm
 from openerp import netsvc
 from openerp.report.report_sxw import rml_parse
-from report_assembler import PDFReportAssembler
+from .report_assembler import PDFReportAssembler
 
 
 def register_report(name, model, parser=rml_parse):
@@ -30,7 +30,7 @@ def register_report(name, model, parser=rml_parse):
     if netsvc.Service._services.get(name, False):
         service = netsvc.Service._services[name]
         if isinstance(service, PDFReportAssembler):
-            #already instantiated properly, skip it
+            # already instantiated properly, skip it
             return
         if hasattr(service, 'parser'):
             parser = service.parser
@@ -48,7 +48,8 @@ class ReportAssembleXML(orm.Model):
 
     def register_all(self, cursor):
         value = super(ReportAssembleXML, self).register_all(cursor)
-        cursor.execute("SELECT * FROM ir_act_report_xml WHERE report_type = 'assemblage'")
+        cursor.execute(
+            "SELECT * FROM ir_act_report_xml WHERE report_type = 'assemblage'")
         records = cursor.dictfetchall()
         for record in records:
             register_report(record['report_name'], record['model'])
@@ -77,7 +78,8 @@ class ReportAssembleXML(orm.Model):
 
     def create(self, cursor, user, vals, context=None):
         """ Create report and register it """
-        res = super(ReportAssembleXML, self).create(cursor, user, vals, context)
+        res = super(ReportAssembleXML, self).create(
+            cursor, user, vals, context)
         if vals.get('report_type', '') == 'assemblage':
             # I really look forward to virtual functions :S
             register_report(
@@ -105,6 +107,3 @@ class ReportAssembleXML(orm.Model):
                 )
         res = super(ReportAssembleXML, self).write(cr, uid, ids, vals, context)
         return res
-
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
