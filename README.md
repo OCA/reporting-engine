@@ -20,8 +20,8 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[report_custom_filename](report_custom_filename/) | 1.0 | Configure the filename to use when downloading a report
-[report_xls](report_xls/) | 0.6 | Excel report engine
+[report_custom_filename](report_custom_filename/) | 8.0.1.0.0 | Configure the filename to use when downloading a report
+[report_xls](report_xls/) | 8.0.0.6.0 | Excel report engine
 
 Unported addons
 ---------------

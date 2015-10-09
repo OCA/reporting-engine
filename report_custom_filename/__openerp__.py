@@ -21,7 +21,7 @@
 {
     "name": "Custom report filenames",
     "summary": "Configure the filename to use when downloading a report",
-    "version": "1.0",
+    "version": "8.0.1.0.0",
     "author": "Therp BV,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "complexity": "normal",
