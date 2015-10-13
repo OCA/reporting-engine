@@ -27,7 +27,7 @@ Unported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[base_report_assembler](__unported__/base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+[base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
 
 [//]: # (end addons)
 
