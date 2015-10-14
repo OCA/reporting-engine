@@ -16,6 +16,14 @@ The convention is to use a suffix to each module to indicate that it's for using
 It can contain also another utilities directly involved with reports (like merge/split utils, checkers, signing tools and so on).
 
 [//]: # (addons)
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+[report_custom_filename](report_custom_filename/) | 8.0.1.0.0 (unported) | Configure the filename to use when downloading a report
+[report_xls](report_xls/) | 8.0.0.6.0 (unported) | Excel report engine
+
 [//]: # (end addons)
 
 ----
