@@ -17,7 +17,7 @@ class ReportAction(models.Model):
     def _lookup_report(self, cr, name):
         """Enable ``qweb-xml`` report lookup."""
         try:
-            super(ReportAction, self)._lookup_report(cr, name)
+            return super(ReportAction, self)._lookup_report(cr, name)
         except Exception as ex:
             # Somebody thought it was a good idea to use standard exceptions
             if "qweb-xml" not in ex.message:
@@ -53,7 +53,8 @@ class ReportGenerator(models.Model):
     def _get_report_from_name(self, report_name):
         """Allow to view ``qweb-xml`` reports as web pages."""
         try:
-            super(ReportGenerator, self)._get_report_from_name(report_name)
+            return (super(ReportGenerator, self)
+                    ._get_report_from_name(report_name))
         except IndexError:
             return self.env["ir.actions.report.xml"].search(
                 [("report_type", "=", "qweb-xml"),
