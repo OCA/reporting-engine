@@ -36,7 +36,8 @@ class Reports(main.Reports):
         report_ids = report_xml.search(
             [('report_name', '=', action['report_name'])],
             0, False, False, context)
-        for report in report_xml.read(report_ids, fields=['download_filename']):
+        for report in report_xml.read(report_ids,
+                                      fields=['download_filename']):
             if not report.get('download_filename'):
                 continue
             objects = req.session.model(context['active_model'])\
