@@ -30,6 +30,7 @@ virtualenv:
   system_site_packages: true
 
 install:
+  - pip install PyPDF2
   - pip install pypdf
   - pip install fdfgen
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
