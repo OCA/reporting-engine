@@ -3,7 +3,7 @@
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2010-2014 OpenERP s.a. (<http://openerp.com>).
-#    Copyright (C) 2015 initOS GmbH & Co. KG (<http://www.initos.com>).
+#    Copyright (C) 2015 initOS GmbH(<http://www.initos.com>).
 #    Author Nikolina Todorova <nikolina.todorova@initos.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
         "base",
         "pdf_form_fill"
     ],
-    "author": "Nikolina Todorova - InitOS GmbH & Co. KG",
+    "author": "initOS GmbH",
     "description": """
 This module is example of the use of the pdf_form_fill module.
     """,
