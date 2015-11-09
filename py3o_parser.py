@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+from cStringIO import StringIO
+import json
 import pkg_resources
 import os
 import sys
@@ -6,10 +8,12 @@ from base64 import b64decode
 import requests
 from tempfile import NamedTemporaryFile
 from openerp import _
+from openerp import exceptions
 from openerp.report.report_sxw import report_sxw, rml_parse
 from openerp import registry
 from openerp.exceptions import ValidationError
 
+from py3o.template.helpers import Py3oConvertor
 from py3o.template import Template
 
 
@@ -120,11 +124,14 @@ class Py3oParser(report_sxw):
         )
 
         xml_id = None
-        if model_data_ids:
-            model_data = pool['ir.model.data'].browse(
-                cr, uid, model_data_ids[0], context=context
+        if not model_data_ids:
+            raise exceptions.MissingError(
+                _(u"Report %s not found" % report_xml)
             )
-            xml_id = '%s.%s' % (model_data.module, model_data.name)
+        model_data = pool['ir.model.data'].browse(
+            cr, uid, model_data_ids[0], context=context
+        )
+        xml_id = '%s.%s' % (model_data.module, model_data.name)
 
         parser_instance = self.parser(cr, uid, self.name2, context=context)
         parser_instance.set_context(
@@ -136,70 +143,64 @@ class Py3oParser(report_sxw):
             for fct in _extender_functions[xml_id]:
                 fct(pool, cr, uid, parser_instance.localcontext, context)
 
-        template = report_xml.py3o_template_id
-        filetype = report_xml.py3o_fusion_filetype
-
         tmpl_data = self.get_template(report_xml)
 
-# py3o.template operates on filenames so create temporary files.
+        in_stream = StringIO(tmpl_data)
+        out_stream = StringIO()
+        template = Template(in_stream, out_stream)
+        expressions = template.get_all_user_python_expression()
+        py_expression = template.convert_py3o_to_python_ast(expressions)
+        convertor = Py3oConvertor()
+        data_struct = convertor(py_expression)
+
+        filetype = report_xml.py3o_fusion_filetype
+
+        datadict = parser_instance.localcontext
+
+        res = data_struct.render(datadict)
+
+        fusion_server_obj = pool.get('py3o.server')
+        fusion_server_ids = fusion_server_obj.search(
+            cr, uid, [], context=context
+        )
+        if not fusion_server_ids:
+            raise exceptions.MissingError(
+                _(u"No Py3o server configuration found")
+            )
+        fusion_server_id = fusion_server_ids[0]
+
+        fusion_server = fusion_server_obj.browse(
+            cr, uid, fusion_server_id, context=context
+        )
+        in_stream.seek(0)
+        files = {
+            'tmpl_file': in_stream,
+        }
+        fields = {
+            "targetformat": filetype.fusion_ext,
+            "datadict": json.dumps(res),
+            "image_mapping": "{}",
+        }
+        r = requests.post(fusion_server.url, data=fields, files=files)
+        if r.status_code != 200:
+            # server says we have an issue... let's tell that to enduser
+            raise exceptions.Warning(
+                _('Fusion server error'),
+                r.text,
+            )
+
+        # Here is a little joke about Odoo
+        # we do nice chunked reading from the network...
+        chunk_size = 1024
         with NamedTemporaryFile(
-            suffix='.odt',
-            prefix='py3o-template-') as in_temp, NamedTemporaryFile(
-                suffix='.odt',
-                prefix='py3o-report-') as out_temp:
-
-            in_temp.write(tmpl_data)
-            in_temp.flush()
-
-            template = Template(in_temp.name, out_temp.name)
-            template.render(parser_instance.localcontext)
-
-            out_temp.seek(0)
-
-            # TODO: use py3o.formats to know native formats instead
-            # of hardcoding this value
-            # TODO: why use the human readable form when you're a machine?
-            # this is non-sense AND dangerous... please use technical name
-            if filetype.human_ext != 'odt':
-                # Now we ask fusion server to convert our template
-                fusion_server_obj = pool['py3o.server']
-                fusion_server_id = fusion_server_obj.search(
-                    cr, uid, [], context=context
-                )[0]
-                fusion_server = fusion_server_obj.browse(
-                    cr, uid, fusion_server_id, context=context
-                )
-                files = {
-                    'tmpl_file': out_temp,
-                }
-                fields = {
-                    "targetformat": filetype.fusion_ext,
-                    "datadict": "{}",
-                    "image_mapping": "{}",
-                    "skipfusion": True,
-                }
-                # Here is a little joke about Odoo
-                # we do nice chunked reading from the network...
-                r = requests.post(fusion_server.url, data=fields, files=files)
-                if r.status_code == 400:
-                    # server says we have an issue... let's to that
-                    raise ValidationError(
-                        r.json(),
-                    )
-
-                else:
-                    chunk_size = 1024
-                    with NamedTemporaryFile(
-                        suffix=filetype.human_ext,
-                        prefix='py3o-template-'
-                    ) as fd:
-                        for chunk in r.iter_content(chunk_size):
-                            fd.write(chunk)
-                        fd.seek(0)
-                        # ... but odoo wants the whole data in memory anyways :)
-                        return fd.read(), filetype.human_ext
-
-            return out_temp.read(), 'odt'
+                suffix=filetype.human_ext,
+                prefix='py3o-template-'
+        ) as fd:
+            for chunk in r.iter_content(chunk_size):
+                fd.write(chunk)
+            fd.seek(0)
+            # ... but odoo wants the whole data in memory anyways :)
+            return fd.read(), filetype.human_ext
 
     def create(self, cr, uid, ids, data, context=None):
         """ Override this function to handle our py3o report
