@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+© 2015 Antiun Ingenieria S.L. - Antonio Espinosa
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp>
+<data>
+
+<template id="report_partner_demo_document">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <div class="row">
+                <div class="col-md-12">
+                    This is a sample report for testing PDF certificates
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Partner:</strong> <span t-field="o.name"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="report_partner_demo">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'lang', 'report_qweb_signer.report_partner_demo_document')"/>
+        </t>
+    </t>
+</template>
+
+<report
+    id="partner_demo"
+    model="res.partner"
+    string="Test PDF certificate"
+    report_type="qweb-pdf"
+    name="report_qweb_signer.report_partner_demo"
+    file="report_qweb_signer.report_partner_demo"
+    attachment_use="True"
+    attachment="'test_' + (object.name or '').replace(' ', '_').lower() + '.pdf'"
+/>
+
+</data>
+</openerp>
