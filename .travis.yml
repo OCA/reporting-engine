@@ -13,9 +13,15 @@ python:
   - "2.7"
 
 env:
-  - VERSION="8.0" LINT_CHECK="1"
-  - VERSION="8.0" ODOO_REPO="odoo/odoo" LINT_CHECK="0"
-  - VERSION="8.0" ODOO_REPO="OCA/OCB" LINT_CHECK="0"
+  - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  # Transifex settings
+  - TRANSIFEX_USER='transbot@odoo-community.org'
+  - secure: NUsXwVrMntcqge1ozKW+DSkP7dq+Rla6JVvFF2c89/g+zJaIqQRi8EQBLoqNwCdMk+rjpQeZt/JPELjH+EzPcmGddhDxOgVB3nUT9LvFXGCHF+NjmHXqyba4tuc7BnpG1WDD+rSlxVCt1aIjNIhhaZ4ic0rCWpKNYu/yFTsmChc=
+  matrix:
+  - LINT_CHECK="1"
+  - TRANSIFEX="1"
+  - TESTS="1" ODOO_REPO="odoo/odoo"
+  - TESTS="1" ODOO_REPO="OCA/OCB"
 
 virtualenv:
   system_site_packages: true
