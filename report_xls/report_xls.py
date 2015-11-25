@@ -30,7 +30,6 @@ import inspect
 from types import CodeType
 from openerp.report.report_sxw import report_sxw
 from openerp import pooler
-from openerp.tools.translate import translate, _
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -77,12 +76,11 @@ class report_xls(report_sxw):
         'fill': 'pattern: pattern solid, fore_color %s;' % _pfc,
         'fill_blue': 'pattern: pattern solid, fore_color 27;',
         'fill_grey': 'pattern: pattern solid, fore_color 22;',
-        'borders_all':
-            'borders: '
-            'left thin, right thin, top thin, bottom thin, '
-            'left_colour %s, right_colour %s, '
-            'top_colour %s, bottom_colour %s;'
-            % (_bc, _bc, _bc, _bc),
+        'borders_all': 'borders: '
+                       'left thin, right thin, top thin, bottom thin, '
+                       'left_colour %s, right_colour %s, '
+                       'top_colour %s, bottom_colour %s;'
+                       % (_bc, _bc, _bc, _bc),
         'left': 'align: horz left;',
         'center': 'align: horz center;',
         'right': 'align: horz right;',
