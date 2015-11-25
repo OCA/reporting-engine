@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="utf8_header">
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    <t t-raw="0"/>
+</template>
+
+</data>
+</openerp>
