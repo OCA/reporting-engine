@@ -21,7 +21,10 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [report_custom_filename](report_custom_filename/) | 8.0.1.0.0 | Configure the filename to use when downloading a report
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 8.0.1.0.0 | Report Qweb Element Page Visibility
 [report_xls](report_xls/) | 8.0.0.6.0 | Excel report engine
+[report_xml](report_xml/) | 1.0 | Allow to generate XML reports
+[report_xml_sample](report_xml_sample/) | 1.0 | For developers who want an example
 
 Unported addons
 ---------------
