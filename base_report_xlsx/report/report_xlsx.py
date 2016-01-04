@@ -2,10 +2,17 @@
 # Copyright 2015 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import xlsxwriter
 from openerp.report.report_sxw import report_sxw
 from openerp.api import Environment
 from cStringIO import StringIO
+
+import logging
+_logger = logging.getLogger(__name__)
+
+try:
+    import xlsxwriter
+except ImportError:
+    _logger.debug('Can not import xlsxwriter`.')
 
 
 class ReportXlsx(report_sxw):
