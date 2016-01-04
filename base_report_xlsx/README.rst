@@ -6,7 +6,7 @@
 Base report xlsx
 ================
 
-This module was written to provide a basic report class to generate xlsx report.
+This module provides a basic report class to generate xlsx report.
 
 Usage
 =====
@@ -14,10 +14,6 @@ Usage
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/143/9.0
-
-For further information, please visit:
-
- * https://www.odoo.com/forum/help-1
 
 Bug Tracker
 ===========
@@ -46,4 +42,4 @@ This module is maintained by the OCA.
 
 OCA, or the Odoo Community Association, is a nonprofit organization whose mission is to support the collaborative development of Odoo features and promote its widespread use.
 
-To contribute to this module, please visit http://odoo-community.org.
+To contribute to this module, please visit https://odoo-community.org.
