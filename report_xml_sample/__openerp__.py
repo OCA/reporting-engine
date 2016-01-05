@@ -5,9 +5,10 @@
     "name": "Qweb XML Sample Report",
     "version": "1.0",
     "category": "Reporting",
-    "author": "Odoo Community Association (OCA), Grupo ESOC",
+    "website": "https://grupoesoc.es",
+    "author": "Grupo ESOC Ingeniería de Servicios, "
+              "Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "website": "https://odoo-community.org/",
     "installable": True,
     "application": False,
     "summary": "For developers who want an example",
