@@ -116,8 +116,8 @@ class Report(models.Model):
             })
         except AccessError:
             raise Warning(
-                _('Saving signed report (PDF):') + '\n',
-                _('You do not have enought access rights to save attachments'))
+                _('Saving signed report (PDF): '
+                  'You do not have enought access rights to save attachments'))
         else:
             _logger.info(
                 "The signed PDF document '%s' is now saved in the database",
@@ -126,7 +126,9 @@ class Report(models.Model):
 
     def _signer_bin(self, opts):
         me = os.path.dirname(__file__)
-        return 'java -jar {}/../static/jar/jPdfSign.jar '.format(me) + opts
+        java_bin = 'java -jar -Xms4M -Xmx4M'
+        jar = '{}/../static/jar/jPdfSign.jar'.format(me)
+        return '%s %s %s' % (java_bin, jar, opts)
 
     def pdf_sign(self, pdf, certificate):
         pdfsigned = pdf + '.signed.pdf'
@@ -134,8 +136,8 @@ class Report(models.Model):
         passwd = _normalize_filepath(certificate.password_file)
         if not (p12 and passwd):
             raise Warning(
-                _('Signing report (PDF)'),
-                _('Certificate or password file not found'))
+                _('Signing report (PDF): '
+                  'Certificate or password file not found'))
         signer_opts = '"%s" "%s" "%s" "%s"' % (p12, pdf, pdfsigned, passwd)
         signer = self._signer_bin(signer_opts)
         process = subprocess.Popen(
@@ -143,9 +145,9 @@ class Report(models.Model):
         out, err = process.communicate()
         if process.returncode:
             raise Warning(
-                _('Signing report (PDF)'),
-                _('jPdfSign failed (error code: %s). '
-                  'Message: %s') % (str(process.returncode), err))
+                _('Signing report (PDF): jPdfSign failed (error code: %s). '
+                  'Message: %s. Output: %s') %
+                (process.returncode, err, out))
         return pdfsigned
 
     @api.v7
