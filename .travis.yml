@@ -22,6 +22,7 @@ virtualenv:
 
 install:
   - pip install xlwt
+  - pip install xlsxwriter
   - git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly ${VERSION}
