@@ -30,7 +30,7 @@ templates.
 The py3o.template package is required; install it with:
     pip install py3o.template
 ''',
-    'version': '2.0',
+    'version': '8.0.2.1',
     'category': 'Reporting',
     'author': 'XCG Consulting',
     'website': 'http://odoo.consulting/',

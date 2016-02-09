@@ -124,14 +124,11 @@ class Py3oParser(report_sxw):
         )
 
         xml_id = None
-        if not model_data_ids:
-            raise exceptions.MissingError(
-                _(u"Report %s not found" % report_xml)
+        if model_data_ids:
+            model_data = pool['ir.model.data'].browse(
+                cr, uid, model_data_ids[0], context=context
             )
-        model_data = pool['ir.model.data'].browse(
-            cr, uid, model_data_ids[0], context=context
-        )
-        xml_id = '%s.%s' % (model_data.module, model_data.name)
+            xml_id = '%s.%s' % (model_data.module, model_data.name)
 
         parser_instance = self.parser(cr, uid, self.name2, context=context)
         parser_instance.set_context(

@@ -51,6 +51,7 @@ class py3o_report(report_sxw):
         report_xml_ids = report_xml_obj.search(cr, uid,
             [('report_name', '=', self.name[7:])],  # Ignore "report."
             context=context)
+
         if not report_xml_ids:
             return super(py3o_report, self).create(cr, uid, ids, data,
                                                    context=context)
