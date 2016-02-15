@@ -19,6 +19,7 @@
 #
 ##############################################################################
 from openerp.osv import fields, orm
+from openerp.addons.email_template.email_template import mako_template_env
 
 
 class IrActionsReportXml(orm.Model):
@@ -35,3 +36,19 @@ class IrActionsReportXml(orm.Model):
             'a report being printed for multiple records or not. You also '
             'have access to `o`, which is the first record in the list')
         }
+
+    def generate_filename(self, cr, uid, report_name, context=None):
+        report_ids = self.search(
+            cr, uid, [('report_name', '=', report_name),
+                      ('download_filename', '!=', False)],
+            limit=1, context=context)
+        for report in self.browse(cr, uid, report_ids, context=context):
+            objects = self.pool[context['active_model']].browse(
+                cr, uid, context['active_ids'], context=context)
+            return mako_template_env.from_string(
+                report.download_filename).render({
+                'objects': objects,
+                'o': objects[0],
+                'object': objects[0],
+            })
+        return False
