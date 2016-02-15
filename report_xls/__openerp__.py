@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Excel report engine',
-    'version': '8.0.0.6.0',
+    'version': '8.0.0.6.1',
     'license': 'AGPL-3',
     'author': "Noviat,Odoo Community Association (OCA)",
     'website': 'http://www.noviat.com',
