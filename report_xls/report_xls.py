@@ -26,6 +26,7 @@ import cStringIO
 from datetime import datetime
 from openerp.osv.fields import datetime as datetime_field
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from openerp.tools.safe_eval import safe_eval
 import inspect
 from types import CodeType
 from openerp.report.report_sxw import report_sxw
@@ -162,7 +163,7 @@ class report_xls(report_sxw):
         row = col_specs[wanted][rowtype][:]
         for i in range(len(row)):
             if isinstance(row[i], CodeType):
-                row[i] = eval(row[i], render_space)
+                row[i] = safe_eval(row[i], render_space)
         row.insert(0, wanted)
         return row
 
