@@ -6,7 +6,41 @@
 BI View Editor
 ==============
 
-This module creates views for Odoo 8. You can build relevant queries including security.
+The module BI View Editor is user-friendly tool (Query Builder) integrated in Odoo.
+It creates views for Odoo 8, allowing the user to specify graphically the sources
+and the attributes of the data-set to analyze, automating all the operations for
+creating all the necessary low level Odoo objects.
+
+
+It is intended for:
+
+ - Graphically define your analysis data-set
+ - Add new computed information to your data set
+ - Specify the visualization attributes
+ - Create the basis for a new data exploration method in Odoo
+
+
+Benefits would be:
+
+ - More freedom to consultants or end users to customize views
+ - No more external tools for data analysis
+ - Easy update of your BI reports
+ - No more external tools for data analysis
+
+
+
+Usage
+=====
+
+
+To graphically design your analysis data-set:
+
+ - From the Reporting menu, select "Custom BI Views"
+ - Browse trough the business objects in the Query tab
+ - Pick the interesting fields (Drag & Drop)
+ - Save and click "Generate BI View"
+
+
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -15,7 +49,9 @@ This module creates views for Odoo 8. You can build relevant queries including s
 Known issues / Roadmap
 ======================
 
-* Not stored fields are not supported yet
+* Non-stored fields are not supported yet
+* Provide graph view for table relations (would be a "nice to have")
+* Porting to Odoo 9.0
 
 Bug Tracker
 ===========
@@ -41,6 +77,7 @@ Contributors
 ------------
 
 * Diego Luis Neto <diegoluis.neto@gmail.com>
+* Dennis Sluijk <d.sluijk@onestein.nl>
 * Kevin Graveman <k.graveman@onestein.nl>
 * Richard Dijkstra <r.dijkstra@onestein.nl>
 * Andrea Stirpe <a.stirpe@onestein.nl>
