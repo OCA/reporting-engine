@@ -19,6 +19,7 @@ class py3o_template(osv.Model):
                 ('ods', u"ODF Spreadsheet"),
             ],
             u"LibreOffice Template File Type",
+            required=True,
         ),
     }
 

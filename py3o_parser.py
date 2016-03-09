@@ -156,20 +156,21 @@ class Py3oParser(report_sxw):
 
         parsed_datadict = data_struct.render(datadict)
 
-        if filetype.fusion_ext == report_xml.py3o_template_id.filetype:
-            # No format conversion is needed, render the template directly
-            template.render(parsed_datadict)
-            res = out_stream.getvalue()
-
-        else:  # Call py3o.server to render the template in the desired format
-            fusion_server_obj = pool.get('py3o.server')
-            fusion_server_ids = fusion_server_obj.search(
-                cr, uid, [], context=context
-            )
-            if not fusion_server_ids:
+        fusion_server_obj = pool.get('py3o.server')
+        fusion_server_ids = fusion_server_obj.search(
+            cr, uid, [], context=context, limit=1
+        )
+        if not fusion_server_ids:
+            if filetype.fusion_ext == report_xml.py3o_template_id.filetype:
+                # No format conversion is needed, render the template directly
+                template.render(parsed_datadict)
+                res = out_stream.getvalue()
+            else:
                 raise exceptions.MissingError(
                     _(u"No Py3o server configuration found")
                 )
+
+        else:  # Call py3o.server to render the template in the desired format
             fusion_server_id = fusion_server_ids[0]
 
             fusion_server = fusion_server_obj.browse(
