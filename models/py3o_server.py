@@ -9,4 +9,11 @@ class py3o_server(osv.Model):
             u"URL",
             size=256,
         ),
+        'is_active': fields.boolean(
+            u"Active",
+        )
+    }
+
+    _defaults = {
+        'is_active': True,
     }

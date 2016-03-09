@@ -158,7 +158,7 @@ class Py3oParser(report_sxw):
 
         fusion_server_obj = pool.get('py3o.server')
         fusion_server_ids = fusion_server_obj.search(
-            cr, uid, [], context=context, limit=1
+            cr, uid, [('is_active', '=', True)], context=context, limit=1
         )
         if not fusion_server_ids:
             if filetype.fusion_ext == report_xml.py3o_template_id.filetype:

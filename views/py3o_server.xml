@@ -9,6 +9,7 @@
                     <sheet>
                         <group>
                             <field name="url" />
+                            <field name="is_active" />
                         </group>
                     </sheet>
                 </form>
@@ -21,6 +22,7 @@
             <field name="arch" type="xml">
                 <tree string="Py3o Server Configuration" version="7.0">
                     <field name="url" />
+                    <field name="is_active" />
                 </tree>
             </field>
         </record>
