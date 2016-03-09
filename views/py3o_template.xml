@@ -9,6 +9,7 @@
                     <sheet>
                         <group>
                             <field name="name" />
+                            <field name="filetype" />
                             <field name="py3o_template_data" />
                         </group>
                     </sheet>
@@ -22,6 +23,7 @@
             <field name="arch" type="xml">
                 <tree string="Py3o Templates Configuration" version="7.0">
                     <field name="name" />
+                    <field name="filetype" />
                 </tree>
             </field>
         </record>

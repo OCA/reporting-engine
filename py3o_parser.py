@@ -154,50 +154,58 @@ class Py3oParser(report_sxw):
 
         datadict = parser_instance.localcontext
 
-        res = data_struct.render(datadict)
+        parsed_datadict = data_struct.render(datadict)
 
-        fusion_server_obj = pool.get('py3o.server')
-        fusion_server_ids = fusion_server_obj.search(
-            cr, uid, [], context=context
-        )
-        if not fusion_server_ids:
-            raise exceptions.MissingError(
-                _(u"No Py3o server configuration found")
+        if filetype.fusion_ext == report_xml.py3o_template_id.filetype:
+            # No format conversion is needed, render the template directly
+            template.render(parsed_datadict)
+            res = out_stream.getvalue()
+
+        else:  # Call py3o.server to render the template in the desired format
+            fusion_server_obj = pool.get('py3o.server')
+            fusion_server_ids = fusion_server_obj.search(
+                cr, uid, [], context=context
             )
-        fusion_server_id = fusion_server_ids[0]
+            if not fusion_server_ids:
+                raise exceptions.MissingError(
+                    _(u"No Py3o server configuration found")
+                )
+            fusion_server_id = fusion_server_ids[0]
 
-        fusion_server = fusion_server_obj.browse(
-            cr, uid, fusion_server_id, context=context
-        )
-        in_stream.seek(0)
-        files = {
-            'tmpl_file': in_stream,
-        }
-        fields = {
-            "targetformat": filetype.fusion_ext,
-            "datadict": json.dumps(res),
-            "image_mapping": "{}",
-        }
-        r = requests.post(fusion_server.url, data=fields, files=files)
-        if r.status_code != 200:
-            # server says we have an issue... let's tell that to enduser
-            raise exceptions.Warning(
-                _('Fusion server error'),
-                r.text,
+            fusion_server = fusion_server_obj.browse(
+                cr, uid, fusion_server_id, context=context
             )
+            in_stream.seek(0)
+            files = {
+                'tmpl_file': in_stream,
+            }
+            fields = {
+                "targetformat": filetype.fusion_ext,
+                "datadict": json.dumps(parsed_datadict),
+                "image_mapping": "{}",
+            }
+            r = requests.post(fusion_server.url, data=fields, files=files)
+            if r.status_code != 200:
+                # server says we have an issue... let's tell that to enduser
+                raise exceptions.Warning(
+                    _('Fusion server error'),
+                    r.text,
+                )
 
-        # Here is a little joke about Odoo
-        # we do nice chunked reading from the network...
-        chunk_size = 1024
-        with NamedTemporaryFile(
-                suffix=filetype.human_ext,
-                prefix='py3o-template-'
-        ) as fd:
-            for chunk in r.iter_content(chunk_size):
-                fd.write(chunk)
-            fd.seek(0)
-            # ... but odoo wants the whole data in memory anyways :)
-            return fd.read(), filetype.human_ext
+            # Here is a little joke about Odoo
+            # we do nice chunked reading from the network...
+            chunk_size = 1024
+            with NamedTemporaryFile(
+                    suffix=filetype.human_ext,
+                    prefix='py3o-template-'
+            ) as fd:
+                for chunk in r.iter_content(chunk_size):
+                    fd.write(chunk)
+                fd.seek(0)
+                # ... but odoo wants the whole data in memory anyways :)
+                res = fd.read()
+
+        return res, filetype.human_ext
 
     def create(self, cr, uid, ids, data, context=None):
         """ Override this function to handle our py3o report
