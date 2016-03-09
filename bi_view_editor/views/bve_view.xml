@@ -19,7 +19,7 @@
                 <form string="Custom Object">
                     <header>
                       <button name="action_reset" type="object" states="created" string="Reset to Draft"/>
-                      <button name="action_create" type="object" states="draft" string="Generate BI View" class="oe_highlight"/>
+                      <button name="action_create" type="object" states="draft" string="Generate BI View" class="oe_highlight" context="{'bve':True}"/>
                       <button name="open_view" type="object" states="created" string="Open BI View" class="oe_highlight"/>
                       <field name="state" widget="statusbar" statusbar_visible="draft,created" statusbar_colors='{"draft":"blue","created":"blue"}'/>
                     </header>
