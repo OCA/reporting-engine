@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <record id="py3o_template_configuration_search_view" model="ir.ui.view">
+            <field name="name">py3o.template.configuration.search.view</field>
+            <field name="model">py3o.template</field>
+            <field name="arch" type="xml">
+                <search string="Py3o Templates Configuration" version="7.0">
+                    <field name="name" />
+                    <field name="filetype" />
+                </search>
+            </field>
+        </record>
+
         <record id="py3o_template_configuration_form_view" model="ir.ui.view">
             <field name="name">py3o.template.configuration.form.view</field>
             <field name="model">py3o.template</field>
