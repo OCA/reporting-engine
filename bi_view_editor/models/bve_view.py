@@ -255,9 +255,10 @@ class BveView(models.Model):
         _build_access_rules(obj)
         self.env.cr.commit()
 
-        api.Environment.reset()
         from openerp.modules.registry import RegistryManager
+        self.env.registry = RegistryManager.new(self.env.cr.dbname)
         RegistryManager.signal_registry_change(self.env.cr.dbname)
+        self.pool = self.env.registry
 
         view_id = self.pool.get('ir.ui.view').create(
             self.env.cr, SUPERUSER_ID,
