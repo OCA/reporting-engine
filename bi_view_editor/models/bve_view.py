@@ -257,7 +257,6 @@ class BveView(models.Model):
 
         api.Environment.reset()
         from openerp.modules.registry import RegistryManager
-        RegistryManager.new(self.env.cr.dbname)
         RegistryManager.signal_registry_change(self.env.cr.dbname)
 
         view_id = self.pool.get('ir.ui.view').create(
