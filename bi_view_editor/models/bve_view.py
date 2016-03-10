@@ -89,8 +89,10 @@ class BveView(models.Model):
                 self.action_id.view_id.sudo().unlink()
             self.action_id.sudo().unlink()
 
-        self.env['ir.model'].sudo().search(
-            [('model', '=', self.model_name)]).unlink()
+        models = self.env['ir.model'].sudo().search(
+            [('model', '=', self.model_name)])
+        for model in models:
+            model.sudo().unlink()
 
         table_name = self.model_name.replace(".", "_")
         tools.drop_view_if_exists(self.env.cr, table_name)
@@ -253,9 +255,10 @@ class BveView(models.Model):
         _build_access_rules(obj)
         self.env.cr.commit()
 
+        api.Environment.reset()
         from openerp.modules.registry import RegistryManager
-        self.env.registry = RegistryManager.new(self.env.cr.dbname)
-        self.pool = self.env.registry
+        RegistryManager.new(self.env.cr.dbname)
+        RegistryManager.signal_registry_change(self.env.cr.dbname)
 
         view_id = self.pool.get('ir.ui.view').create(
             self.env.cr, SUPERUSER_ID,
