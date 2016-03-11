@@ -79,7 +79,7 @@ class IrModel(models.Model):
         """
         model_names = dict([(model.id, model.model)
                             for model in self.env['ir.model'].sudo().search(
-                [('id', 'in', model_ids.values())])])
+            [('id', 'in', model_ids.values())])])
         filter_bi_fields = self._filter_bi_fields
         if filter_bi_fields:
             rfields = [

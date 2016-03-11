@@ -7,7 +7,7 @@ import json
 from openerp import tools
 from openerp import SUPERUSER_ID
 from openerp import models, fields, api
-from openerp.exceptions import Warning
+from openerp.exceptions import Warning as UserError
 from openerp.tools.translate import _
 
 
@@ -66,7 +66,7 @@ class BveView(models.Model):
     def unlink(self):
         for view in self:
             if view.state == 'created':
-                raise Warning(
+                raise UserError(
                     _('Error'),
                     _('You cannot delete a created view! '
                       'Reset the view to draft first.'))
@@ -109,8 +109,8 @@ class BveView(models.Model):
             (field_info['row'] and 'row') or
             (field_info['column'] and 'col') or
             (field_info['measure'] and 'measure'))
-                for field_info in fields_info if field_info['row'] or
-                field_info['column'] or field_info['measure']]
+            for field_info in fields_info if field_info['row'] or
+            field_info['column'] or field_info['measure']]
 
     @api.multi
     def action_create(self):
