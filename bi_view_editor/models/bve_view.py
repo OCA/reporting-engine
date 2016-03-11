@@ -36,7 +36,7 @@ class BveView(models.Model):
         default="draft")
     data = fields.Text(
         string="Data",
-        help="Use the special Onestein query builder to define the query "
+        help="Use the special query builder to define the query "
              "to generate your report dataset. "
              "NOTE: Te be edited, the query should be in 'Draft' status.")
 
