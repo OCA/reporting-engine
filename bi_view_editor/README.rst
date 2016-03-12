@@ -76,6 +76,7 @@ Images
 Contributors
 ------------
 
+* Simon Janssens <s.janssens@onestein.nl>
 * Diego Luis Neto <diegoluis.neto@gmail.com>
 * Dennis Sluijk <d.sluijk@onestein.nl>
 * Kevin Graveman <k.graveman@onestein.nl>
