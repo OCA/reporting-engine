@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_custom_filename
+# 
+# Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: reporting-engine (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-11 15:45+0000\n"
+"PO-Revision-Date: 2016-03-12 06:30+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. module: report_custom_filename
+#: field:ir.actions.report.xml,download_filename:0
+msgid "Download filename"
+msgstr "Naziv prenesene datoteke"
+
+#. module: report_custom_filename
+#: help:ir.actions.report.xml,download_filename:0
+msgid ""
+"Fill in this field to have a custom file name when downloading this report. This string is evaluated as a jinja2 expression.\n"
+"You can use python expressions, `objects` is a browse record list of the objects for which the report is being generated.\n"
+"Check for this list's length to determine if it is a report being printed for multiple records or not. You also have access to `o`, which is the first record in the list.\n"
+"For qweb reports, the variable `ext` gives you the requested format's extension"
+msgstr "Izpolnite to polje, če želite naziv datoteke po meri pri prenosu tega poročila. Ta niz se vrednoti kot jinja2 izraz.\nUporabljate lahko python izraze, `objects` je brskalni seznam zapisov objektov, za katere se poročilo ustvarja.\nPreverite dolžino tega seznama, da bi ugotovili, če se tiska poročilo za več zapisov ali ne. Dostop imate tudi do `o`, ki je prvi zapis na seznamu.\nZa qweb poročila spremenljivka `ext` daje zahtevano končnico formata"

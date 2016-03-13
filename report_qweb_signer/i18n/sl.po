@@ -3,71 +3,72 @@
 # * report_qweb_signer
 # 
 # Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-11 15:45+0000\n"
-"PO-Revision-Date: 2016-03-11 15:45+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es/)\n"
+"PO-Revision-Date: 2016-03-12 06:38+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #. module: report_qweb_signer
 #: field:report.certificate,allow_only_one:0
 msgid "Allow only one document"
-msgstr "Sólo un documento"
+msgstr "Dovoli le en dokument"
 
 #. module: report_qweb_signer
 #: field:report.certificate,path:0
 msgid "Certificate file path"
-msgstr "Ruta al certificado"
+msgstr "Pot do datoteke certifikata"
 
 #. module: report_qweb_signer
 #: view:res.company:report_qweb_signer.view_company_form
 msgid "Certificates"
-msgstr "Certificados"
+msgstr "Certifikati"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_res_company
 msgid "Companies"
-msgstr "Compañías"
+msgstr "Družbe"
 
 #. module: report_qweb_signer
 #: field:report.certificate,company_id:0
 msgid "Company"
-msgstr "Compañía"
+msgstr "Družba"
 
 #. module: report_qweb_signer
 #: field:report.certificate,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Ustvaril"
 
 #. module: report_qweb_signer
 #: field:report.certificate,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Ustvarjeno"
 
 #. module: report_qweb_signer
 #: field:report.certificate,domain:0
 msgid "Domain"
-msgstr "Dominio"
+msgstr "Domena"
 
 #. module: report_qweb_signer
 #: help:report.certificate,domain:0
 msgid "Domain for filtering if sign or not the document"
-msgstr "Dominio para filrar si firmar o no el documento"
+msgstr "Domena, ki določa če naj se dokument podpiše ali ne"
 
 #. module: report_qweb_signer
 #: help:report.certificate,attachment:0
 msgid ""
 "Filename used to store signed document as attachment. Keep empty to not save"
 " signed document."
-msgstr "Nombre de fichero usado para guardar el documento firmado como adjunto. Dejar en blanco para no guardar el documento firmado."
+msgstr "Naziv datoteke za shranjevanje podpisanega dokumenta kot priponke. Da bi pustili dokument nepodpisan pustite prazno."
 
 #. module: report_qweb_signer
 #: field:report.certificate,id:0
@@ -79,79 +80,79 @@ msgstr "ID"
 msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
-msgstr ""
+msgstr "Če pravilno, se tega certifikata ne more uporabljati za podpisovanje PDF iz več dokumentov."
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Zadnji posodobil"
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_date:0
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Zadnjič posodobljeno"
 
 #. module: report_qweb_signer
 #: field:report.certificate,model_id:0
 msgid "Model"
-msgstr "Modelo"
+msgstr "Model"
 
 #. module: report_qweb_signer
 #: help:report.certificate,model_id:0
 msgid "Model where apply this certificate"
-msgstr "Modelo en el que usar este certificado para firmar"
+msgstr "Model, na katerega se uveljavi ta certifikat"
 
 #. module: report_qweb_signer
 #: field:report.certificate,name:0
 msgid "Name"
-msgstr "Nombre"
+msgstr "Naziv"
 
 #. module: report_qweb_signer
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate
 #: model:ir.ui.menu,name:report_qweb_signer.menu_report_certificate
 msgid "PDF certificates"
-msgstr "Certificados PDF"
+msgstr "PDF certifikati"
 
 #. module: report_qweb_signer
 #: view:report.certificate:report_qweb_signer.view_report_certificate_form
 msgid "PDF report certificate"
-msgstr "Certificado de informe PDF"
+msgstr "Certifikat PDF poročila"
 
 #. module: report_qweb_signer
 #: view:report.certificate:report_qweb_signer.view_report_certificate_tree
 #: field:res.company,report_certificate_ids:0
 msgid "PDF report certificates"
-msgstr "Certificados de informes PDF"
+msgstr "Certifikati PDF poročil"
 
 #. module: report_qweb_signer
 #: view:website:report_qweb_signer.report_partner_demo_document
 msgid "Partner:"
-msgstr ""
+msgstr "Partner:"
 
 #. module: report_qweb_signer
 #: field:report.certificate,password_file:0
 msgid "Password file path"
-msgstr "Ruta al fichero de contraseña"
+msgstr "Pot do datoteke gesla"
 
 #. module: report_qweb_signer
 #: help:report.certificate,path:0
 msgid "Path to PKCS#12 certificate file"
-msgstr "Ruta al fichero de certificado PKCS#12"
+msgstr "Pot do datoteke PKCS#12"
 
 #. module: report_qweb_signer
 #: help:report.certificate,password_file:0
 msgid "Path to certificate password file"
-msgstr "Ruta al fichero que contiene la contraseña con la que se proteje el fichero de certificado"
+msgstr "Pot do datoteke gesla certifikata"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report
 msgid "Report"
-msgstr "Informe"
+msgstr "Poročilo"
 
 #. module: report_qweb_signer
 #: field:report.certificate,attachment:0
 msgid "Save as attachment"
-msgstr "Salvar como adjunto"
+msgstr "Shrani kot priponko"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:119
@@ -159,18 +160,18 @@ msgstr "Salvar como adjunto"
 msgid ""
 "Saving signed report (PDF): You do not have enought access rights to save "
 "attachments"
-msgstr ""
+msgstr "Shranjevanje podpisanega poročila (PDF): Nimate dovolj pravic za shranjevanje priponk."
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Zaporedje"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:139
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
-msgstr ""
+msgstr "Podpisovanje poročila (PDF): certifikat ali datoteka z geslom nista najdena"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:148
@@ -178,14 +179,14 @@ msgstr ""
 msgid ""
 "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
 " %s"
-msgstr ""
+msgstr "Podpisovanje poročila (PDF): jPdfSign neuspešno (koda napake: %s). Sporočilo: %s. Izid: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo
 msgid "Test PDF certificate"
-msgstr ""
+msgstr "Testiranje PDF certifikata"
 
 #. module: report_qweb_signer
 #: view:website:report_qweb_signer.report_partner_demo_document
 msgid "This is a sample report for testing PDF certificates"
-msgstr ""
+msgstr "Vzorec poročila za testiranje PDF certifikatov"
