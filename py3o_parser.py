@@ -11,7 +11,6 @@ from openerp import _
 from openerp import exceptions
 from openerp.report.report_sxw import report_sxw, rml_parse
 from openerp import registry
-from openerp.exceptions import ValidationError
 
 from py3o.template.helpers import Py3oConvertor
 from py3o.template import Template
@@ -189,8 +188,7 @@ class Py3oParser(report_sxw):
             if r.status_code != 200:
                 # server says we have an issue... let's tell that to enduser
                 raise exceptions.Warning(
-                    _('Fusion server error'),
-                    r.text,
+                    _('Fusion server error %s') % r.text,
                 )
 
             # Here is a little joke about Odoo
