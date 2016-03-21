@@ -13,16 +13,18 @@ from openerp.tools.translate import _
 
 class BveView(models.Model):
     _name = 'bve.view'
+    _description = "BI View Editor"
 
     @api.depends('group_ids')
-    @api.one
+    @api.multi
     def _compute_users(self):
-        if self.sudo().group_ids:
-            self.user_ids = self.env['res.users'].sudo().browse(
-                list(set([u.id for group in self.sudo().group_ids
-                          for u in group.users])))
-        else:
-            self.user_ids = self.env['res.users'].sudo().search([])
+        for bve_view in self:
+            if bve_view.sudo().group_ids:
+                bve_view.user_ids = self.env['res.users'].sudo().browse(
+                    list(set([u.id for group in bve_view.sudo().group_ids
+                              for u in group.users])))
+            else:
+                bve_view.user_ids = self.env['res.users'].sudo().search([])
 
     name = fields.Char(size=128, string="Name", required=True)
     model_name = fields.Char(size=128, string="Model Name")
