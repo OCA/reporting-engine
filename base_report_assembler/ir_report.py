@@ -94,8 +94,8 @@ class ReportAssembleXML(orm.Model):
         for rep in self.browse(cr, uid, ids, context=context):
             if rep.report_type != 'assemblage':
                 continue
-            if (vals.get('report_name', False)
-                    and vals['report_name'] != rep.report_name):
+            if (vals.get('report_name', False) and
+                    vals['report_name'] != rep.report_name):
                 report_name = vals['report_name']
             else:
                 report_name = rep.report_name
