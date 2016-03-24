@@ -47,8 +47,8 @@ class IrActionsReportXml(orm.Model):
                 cr, uid, context['active_ids'], context=context)
             return mako_template_env.from_string(
                 report.download_filename).render({
-                'objects': objects,
-                'o': objects[0],
-                'object': objects[0],
-            })
+                    'objects': objects,
+                    'o': objects[0],
+                    'object': objects[0],
+                })
         return False
