@@ -33,7 +33,7 @@ class report_xml(osv.Model):
             size=128,
             help=(
                 u"If the user does not provide a template this will be used "
-                u"it should be a relative path to root of YOUR module",
+                u"it should be a relative path to root of YOUR module"
             )
         ),
         'report_type': fields.selection(
