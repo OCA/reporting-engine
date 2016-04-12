@@ -24,11 +24,15 @@ class ReportXlsx(report_sxw):
         if report.ids:
             self.title = report.name
             if report.report_type == 'xlsx':
-                objs = self.env[self.table].browse(ids)
-                return self.create_xlsx_report(data, objs)
+                return self.create_xlsx_report(ids, data, report)
         return super(ReportXlsx, self).create(cr, uid, ids, data, context)
 
-    def create_xlsx_report(self, data, objs):
+    def create_xlsx_report(self, ids, data, report):
+        self.parser_instance = self.parser(
+            self.env.cr, self.env.uid, self.name2, self.env.context)
+        objs = self.getObjects(
+            self.env.cr, self.env.uid, ids, self.env.context)
+        self.parser_instance.set_context(objs, data, objs.ids, 'xlsx')
         file_data = StringIO()
         workbook = xlsxwriter.Workbook(file_data)
         self.generate_xlsx_report(workbook, data, objs)
