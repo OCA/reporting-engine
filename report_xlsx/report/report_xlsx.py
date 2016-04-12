@@ -2,9 +2,10 @@
 # Copyright 2015 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from cStringIO import StringIO
+
 from openerp.report.report_sxw import report_sxw
 from openerp.api import Environment
-from cStringIO import StringIO
 
 import logging
 _logger = logging.getLogger(__name__)
