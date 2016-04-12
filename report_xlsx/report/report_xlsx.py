@@ -2,9 +2,10 @@
 # Copyright 2015 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from cStringIO import StringIO
+
 from openerp.report.report_sxw import report_sxw
 from openerp.api import Environment
-from cStringIO import StringIO
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -24,11 +25,15 @@ class ReportXlsx(report_sxw):
         if report.ids:
             self.title = report.name
             if report.report_type == 'xlsx':
-                objs = self.env[self.table].browse(ids)
-                return self.create_xlsx_report(data, objs)
+                return self.create_xlsx_report(ids, data, report)
         return super(ReportXlsx, self).create(cr, uid, ids, data, context)
 
-    def create_xlsx_report(self, data, objs):
+    def create_xlsx_report(self, ids, data, report):
+        self.parser_instance = self.parser(
+            self.env.cr, self.env.uid, self.name2, self.env.context)
+        objs = self.getObjects(
+            self.env.cr, self.env.uid, ids, self.env.context)
+        self.parser_instance.set_context(objs, data, ids, 'xlsx')
         file_data = StringIO()
         workbook = xlsxwriter.Workbook(file_data)
         self.generate_xlsx_report(workbook, data, objs)
