@@ -8,6 +8,13 @@ Base report xlsx
 
 This module provides a basic report class to generate xlsx report.
 
+Installation
+============
+
+Make sure you have ``xlsxwriter`` Python module installed::
+
+$ pip install xlsxwriter
+
 Usage
 =====
 
@@ -30,6 +37,9 @@ A python class ::
 
     partner_xlsx('report.res.partner.xlsx',
                  'res.partner')
+
+To manipulate the ``workbook`` and ``sheet`` objects, refer to the
+`documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
 
 A report XML record ::
 
