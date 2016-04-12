@@ -8,6 +8,13 @@ Base report xlsx
 
 This module provides a basic report class to generate xlsx report.
 
+Installation
+============
+
+Make sure you have ``xlsxwriter`` Python module installed::
+
+$ pip install xlsxwriter
+
 Usage
 =====
 
@@ -18,7 +25,7 @@ A python class ::
     from openerp.addons.report_xlsx.report.report_xlsx import ReportXlsx
 
     class partner_xlsx(ReportXlsx):
-    
+
         def generate_xlsx_report(self, workbook, data, partners):
             for obj in partners:
                 report_name = obj.name
@@ -31,9 +38,12 @@ A python class ::
     partner_xlsx('report.res.partner.xlsx',
                  'res.partner')
 
+To manipulate the ``workbook`` and ``sheet`` objects, refer to the
+`documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
+
 A report XML record ::
 
-    <report 
+    <report
         id="partner_xlsx"
         model="res.partner"
         string="Print to XLSX"
@@ -45,7 +55,7 @@ A report XML record ::
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/9.0
+   :target: https://runbot.odoo-community.org/runbot/143/8.0
 
 Bug Tracker
 ===========
@@ -53,10 +63,12 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
-`here <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xlsx%0Aversion:%209.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`here <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xlsx%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Credits
 =======
+
+* Icon taken from http://www.icons101.com/icon/id_67712/setid_2096/Boxed_Metal_by_Martin/xlsx.
 
 Contributors
 ------------
