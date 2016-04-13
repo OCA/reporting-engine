@@ -33,7 +33,7 @@ class ReportXlsx(report_sxw):
             self.env.cr, self.env.uid, self.name2, self.env.context)
         objs = self.getObjects(
             self.env.cr, self.env.uid, ids, self.env.context)
-        self.parser_instance.set_context(objs, data, objs.ids, 'xlsx')
+        self.parser_instance.set_context(objs, data, ids, 'xlsx')
         file_data = StringIO()
         workbook = xlsxwriter.Workbook(file_data)
         self.generate_xlsx_report(workbook, data, objs)
