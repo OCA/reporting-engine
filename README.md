@@ -16,6 +16,12 @@ The convention is to use a suffix to each module to indicate that it's for using
 It can contain also another utilities directly involved with reports (like merge/split utils, checkers, signing tools and so on).
 
 [//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[report_xlsx](report_xlsx/) | 9.0.1.0.0 | Base module to create xlsx report
+
 Unported addons
 ---------------
 addon | version | summary
