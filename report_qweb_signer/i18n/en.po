@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 15:45+0000\n"
-"PO-Revision-Date: 2016-03-11 15:45+0000\n"
+"POT-Creation-Date: 2016-05-04 02:44+0000\n"
+"PO-Revision-Date: 2016-05-03 10:21+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: English (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/en/)\n"
 "MIME-Version: 1.0\n"
@@ -53,6 +53,11 @@ msgid "Created on"
 msgstr "Created on"
 
 #. module: report_qweb_signer
+#: field:report.certificate,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: report_qweb_signer
 #: field:report.certificate,domain:0
 msgid "Domain"
 msgstr "Domain"
@@ -80,6 +85,11 @@ msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
 msgstr "If True, this certificate can not be useb to sign a PDF from several documents."
+
+#. module: report_qweb_signer
+#: field:report.certificate,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_uid:0
