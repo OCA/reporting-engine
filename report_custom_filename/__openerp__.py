@@ -21,14 +21,13 @@
 {
     "name": "Custom report filenames",
     "summary": "Configure the filename to use when downloading a report",
-    "version": "8.0.1.0.0",
+    "version": "9.0.1.0.0",
     "author": "Therp BV,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "complexity": "normal",
     "category": "Reporting",
     "depends": [
         'web',
-        'email_template',
     ],
     "data": [
         "view/ir_actions_report_xml.xml",
@@ -36,7 +35,7 @@
     "test": [
     ],
     "auto_install": False,
-    'installable': False,
+    'installable': True,
     "application": False,
     "external_dependencies": {
         'python': ['jinja2'],

@@ -19,9 +19,10 @@
 #
 ##############################################################################
 from openerp import http
-from openerp.addons.email_template import email_template
 from openerp.addons.report.controllers.main import ReportController
 from openerp.addons.web.controllers.main import content_disposition
+from openerp.tools.safe_eval import safe_eval
+import time
 
 
 class ReportController(ReportController):
@@ -38,18 +39,12 @@ class ReportController(ReportController):
         report_ids = report_xml.search(
             [('report_name', '=', reportname)])
         for report in report_xml.browse(report_ids):
-            if not report.download_filename:
+            if not report.download_filename or len(docids) != 1:
                 continue
             objects = http.request.session.model(report.model)\
                 .browse(docids or [])
-            generated_filename = email_template.mako_template_env\
-                .from_string(report.download_filename)\
-                .render({
-                    'objects': objects,
-                    'o': objects[:1],
-                    'object': objects[:1],
-                    'ext': report.report_type.replace('qweb-', ''),
-                })
+            generated_filename = safe_eval(report.download_filename,
+                                           {'object': objects, 'time': time})
             response.headers['Content-Disposition'] = content_disposition(
                 generated_filename)
         return response
