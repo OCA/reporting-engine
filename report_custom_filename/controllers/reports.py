@@ -45,9 +45,10 @@ class Reports(main.Reports):
             # context['active_ids'] has the ID of the sale order
             # cf https://github.com/OCA/reporting-engine/issues/56
             # That's why we use report.model instead of context['active_model']
-            # together with context['active_ids']
+            # together with action['datas']['ids'] or context['active_ids']
             objects = http.request.session.model(report.model)\
-                .browse(context['active_ids'])
+                .browse(action.get('datas', {}).get(
+                    'ids', context['active_ids']))
             generated_filename = email_template.mako_template_env\
                 .from_string(report.download_filename)\
                 .render({
