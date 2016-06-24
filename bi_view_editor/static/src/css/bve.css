@@ -7,7 +7,7 @@
     width: 100%;
     height: 50px;
     background-color: #7c7bad;
-    color: #fff;
+    color: #000;
 }
 
 .oe_form_field_bi_editor .footer {
@@ -123,6 +123,7 @@
     border: none;
     background-image: none;
 	padding: 0;
+	cursor: pointer;
 }
 
 .oe_form_field_bi_editor .body .right .field-list tbody tr:hover {
