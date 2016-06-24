@@ -1,4 +1,3 @@
-
 openerp.bi_view_editor = function (instance, local) {
 
     instance.bi_view_editor.BVEEditor = instance.web.form.AbstractField.extend({
@@ -146,6 +145,7 @@ openerp.bi_view_editor = function (instance, local) {
                 var index = self.activeModelMenus.indexOf(item.find(".class").data('model-data').id);
                 if(index != -1 && !self.get("effective_readonly")) {
                     model.call("get_fields", [self.activeModelMenus[index]], { context: new instance.web.CompoundContext() }).then(function(result) {
+                        console.log(result);
                         var item = self.$el.find(".class-list #bve-class-" + result[0].model_id);
                         for (var o = 0; o < result.length; o++) {
 							if(self.$el.find(".field-list tbody [name=label-" + result[o].id + "]").length > 0) continue;
@@ -196,7 +196,7 @@ openerp.bi_view_editor = function (instance, local) {
             var delete_button = "";
             var disabled = " disabled=\"disabled\" ";
             if (!this.get("effective_readonly")) { 
-                delete_button = "<button id=\"delete-" + data.id + "\" class=\"delete-button oe_i\">d</button>";
+                delete_button = "<span id=\"delete-" + data.id + "\" class=\"delete-button fa fa-trash-o\"/>";
                 disabled = "";
             }
 
@@ -365,7 +365,7 @@ openerp.bi_view_editor = function (instance, local) {
                     self.internal_set_value(JSON.stringify(self.get_fields()));
                     //self.load_classes(data);
                 } else if (result.length > 1) {
-                    var pop = new instance.bi_view_editor.JoinNodePopup(self);
+                    var pop = new local.JoinNodePopup(self);
                     pop.display_popup(result, self.get_model_data(), self.add_field_and_join_node.bind(self), data);
                 } else {
                     // first field and table only.
@@ -430,7 +430,8 @@ openerp.bi_view_editor = function (instance, local) {
             var dialog = new instance.web.Dialog(this, {
                         dialogClass: 'oe_act_window',
                         title: "Choose Join Node",
-            }, this.$el).open();
+                        $content: this.$el
+            }).open();
 
             joinnodes.find('a').click(function() {
                 callback(callback_data, choices[$(this).data('idx')]);

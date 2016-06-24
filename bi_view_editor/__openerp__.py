@@ -13,7 +13,7 @@
     'version': '9.0.1.0.0',
     'depends': [
         'base',
-        'web',
+        'web'
     ],
     'data': [
         'security/ir.model.access.csv',
