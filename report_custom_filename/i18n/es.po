@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_custom_filename
+# 
+# Translators:
+# Eduardo Rodríguez Crespo <erocre@gmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: reporting-engine (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-08 09:43+0000\n"
+"PO-Revision-Date: 2016-06-13 21:42+0000\n"
+"Last-Translator: Eduardo Rodríguez Crespo <erocre@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: report_custom_filename
+#: field:ir.actions.report.xml,download_filename:0
+msgid "Download filename"
+msgstr "Nombre de la descarga"
+
+#. module: report_custom_filename
+#: help:ir.actions.report.xml,download_filename:0
+msgid ""
+"Fill in this field to have a custom file name when downloading this report. This string is evaluated as a jinja2 expression.\n"
+"You can use python expressions, `objects` is a browse record list of the objects for which the report is being generated.\n"
+"Check for this list's length to determine if it is a report being printed for multiple records or not. You also have access to `o`, which is the first record in the list.\n"
+"For qweb reports, the variable `ext` gives you the requested format's extension"
+msgstr "Rellena este campo para tener un nombre de archivo personalizado cuando descargues este informe. Esta cadena es evaluada como una expresión jinja2.\nPuedes usar expresiones python, 'objects' es una lista de búsqueda de registros de los objetos para los cuales el informe está siendo generado.\nComprueba la longitud de esta lista para determinar si un informe está siendo impreso para múltiples registros o no. También tienes acceso a 'o', que es el primer registro de la lista.\nPara los informes qweb, la variable 'ext' te da la extensión del formato requerido"

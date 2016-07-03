@@ -3,13 +3,14 @@
 # * report_qweb_signer
 # 
 # Translators:
+# Eduardo Rodríguez Crespo <erocre@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 15:45+0000\n"
-"PO-Revision-Date: 2016-03-11 15:45+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2016-05-08 09:43+0000\n"
+"PO-Revision-Date: 2016-06-13 21:48+0000\n"
+"Last-Translator: Eduardo Rodríguez Crespo <erocre@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,6 +54,11 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: report_qweb_signer
+#: field:report.certificate,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: report_qweb_signer
 #: field:report.certificate,domain:0
 msgid "Domain"
 msgstr "Dominio"
@@ -79,7 +85,12 @@ msgstr "ID"
 msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
-msgstr ""
+msgstr "Si Verdadero, este certificado no puede ser usado para firmar un PDF desde varios documentos."
+
+#. module: report_qweb_signer
+#: field:report.certificate,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_uid:0
@@ -126,7 +137,7 @@ msgstr "Certificados de informes PDF"
 #. module: report_qweb_signer
 #: view:website:report_qweb_signer.report_partner_demo_document
 msgid "Partner:"
-msgstr ""
+msgstr "Empresa:"
 
 #. module: report_qweb_signer
 #: field:report.certificate,password_file:0
@@ -159,7 +170,7 @@ msgstr "Salvar como adjunto"
 msgid ""
 "Saving signed report (PDF): You do not have enought access rights to save "
 "attachments"
-msgstr ""
+msgstr "Guardar informe firmado (PDF): no tienes suficientes permisos de acceso para guardar adjuntos"
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
@@ -170,7 +181,7 @@ msgstr "Secuencia"
 #: code:addons/report_qweb_signer/models/report.py:139
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
-msgstr ""
+msgstr "Firmar informes (PDF): Certificado o archivo contraseña no encontrado"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:148
@@ -178,14 +189,14 @@ msgstr ""
 msgid ""
 "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
 " %s"
-msgstr ""
+msgstr "Firmar informes (PDF): jPdfSign falló (código de error: %s). Mensaje: %s. Salida: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo
 msgid "Test PDF certificate"
-msgstr ""
+msgstr "Test certificado PDF"
 
 #. module: report_qweb_signer
 #: view:website:report_qweb_signer.report_partner_demo_document
 msgid "This is a sample report for testing PDF certificates"
-msgstr ""
+msgstr "Esta es una plantilla de informe para probar los certificados PDF"
