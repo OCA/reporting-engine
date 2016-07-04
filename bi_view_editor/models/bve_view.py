@@ -187,6 +187,8 @@ class BveView(models.Model):
                     "size": field.size,
                     'state': "manual"
                 }
+                if vals['ttype'] == 'monetary':
+                    vals.update({'ttype': 'float'})                
                 if field.ttype == 'selection' and not field.selection:
                     model_obj = self.env[field.model_id.model]
                     selection = model_obj._columns[field.name].selection
