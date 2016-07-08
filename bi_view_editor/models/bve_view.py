@@ -255,10 +255,14 @@ class BveView(models.Model):
             [x for x in self.name.lower()
              if x.isalnum()]).replace("_", ".").replace(" ", ".")
 
-        _build_query()
-        obj = _build_object()
-        _build_access_rules(obj)
-        self.env.cr.commit()
+        try:
+            with self.env.cr.savepoint():
+                _build_query()
+                obj = _build_object()
+                _build_access_rules(obj)
+        except Exception, e:
+            raise UserError(
+                _('Generic error. Unable to create the view!'))
 
         from openerp.modules.registry import RegistryManager
         self.env.registry = RegistryManager.new(self.env.cr.dbname)
