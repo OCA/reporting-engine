@@ -34,6 +34,7 @@ openerp.bi_view_editor = function (instance, local) {
                 this.$el.find(".body .right").droppable("option", "disabled", false);
                 this.$el.find('#clear').css('display', 'inline-block').click(function () {
                     self.set_fields([]);
+                    self.internal_set_value('[]');
                 });
                 this.$el.find('.search-bar input').keyup(function(e) {
                     //Local filter
