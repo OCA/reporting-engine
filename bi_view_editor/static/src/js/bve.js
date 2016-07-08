@@ -239,7 +239,7 @@ openerp.bi_view_editor = function (instance, local) {
                     else
                         contextMenu.find('#measure-checkbox').attr('checked', false);
                         
-                    if(currentFieldData.type == "float" || currentFieldData.type == "integer") {
+                    if(currentFieldData.type == "float" || currentFieldData.type == "integer" || currentFieldData.type == "monetary") {
                         contextMenu.find('#column-checkbox').attr('disabled', true);
                         contextMenu.find('#row-checkbox').attr('disabled', true);
                         contextMenu.find('#measure-checkbox').attr('disabled', false);
