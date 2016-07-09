@@ -38,8 +38,8 @@ To graphically design your analysis data-set:
 - From the Reporting menu, select "Custom BI Views"
 - Browse trough the business objects in the Query tab
 - Pick the interesting fields (Drag & Drop)
+- For each selected field, right-click on the Options column and select whether it's a row, column or measure
 - Save and click "Generate BI View"
-
 
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
@@ -49,9 +49,12 @@ To graphically design your analysis data-set:
 Known issues / Roadmap
 ======================
 
-* Non-stored fields are not supported yet
-* Provide graph view for table relations (would be a "nice to have")
-* Porting to Odoo 9.0
+* Non-stored fields are not supported
+* Provide graph view for table relations
+* Use the same concept (dinamically create list views) to build reports: generate an ad-hoc query object that displays the fields that you want for the report, for a given join query
+* Add possibility to store the BI view in user dashboard, like any other graph or cross table
+* Provide a tutorial (eg. a working example of usage)
+
 
 Bug Tracker
 ===========
