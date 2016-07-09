@@ -8,6 +8,7 @@ from openerp import tools
 from openerp import SUPERUSER_ID
 from openerp import models, fields, api
 from openerp.exceptions import Warning as UserError
+from openerp.modules.registry import RegistryManager
 from openerp.tools.translate import _
 
 
@@ -188,7 +189,7 @@ class BveView(models.Model):
                     'state': "manual"
                 }
                 if vals['ttype'] == 'monetary':
-                    vals.update({'ttype': 'float'})                
+                    vals.update({'ttype': 'float'})
                 if field.ttype == 'selection' and not field.selection:
                     model_obj = self.env[field.model_id.model]
                     selection = model_obj._columns[field.name].selection
@@ -262,9 +263,8 @@ class BveView(models.Model):
                 _build_access_rules(obj)
         except Exception, e:
             raise UserError(
-                _('Generic error. Unable to create the view!'))
+                _('Generic error. Unable to create the view! %s') % e)
 
-        from openerp.modules.registry import RegistryManager
         self.env.registry = RegistryManager.new(self.env.cr.dbname)
         RegistryManager.signal_registry_change(self.env.cr.dbname)
         self.pool = self.env.registry
