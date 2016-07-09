@@ -204,17 +204,12 @@ class IrModel(models.Model):
             self.instanciate(cr, user, vals['model'], context)
             self.pool.setup_models(cr, partial=(not self.pool.ready))
 
-            # update database schema
-            # model = self.pool[vals['model']]
-            # ctx = dict(
-            #     context,
-            #     field_name=vals['name'],
-            #     field_state='manual',
-            #     select=vals.get('select_level', '0'),
-            #     update_custom_fields=True)
             RegistryManager.signal_registry_change(cr.dbname)
 
-#        self.write(cr, user, [res], {'state': 'manual'})
+        # Following commented line (write method) is not working anymore
+        # as in Odoo V9 a new orm constraint is restricting the modification
+        # of the state while updating ir.model
+        # self.write(cr, user, [res], {'state': 'manual'})
         q = ("""UPDATE ir_model SET state = 'manual'
                WHERE id = """ + str(res))
 

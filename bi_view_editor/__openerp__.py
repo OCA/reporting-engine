@@ -27,8 +27,4 @@
     'js': [
         'static/src/js/bve.js'
     ],
-    'demo': [],
-    'installable': True,
-    'auto_install': False,
-    'application': False,
 }

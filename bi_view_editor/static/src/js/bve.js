@@ -28,9 +28,9 @@ openerp.bi_view_editor = function (instance, local) {
                 }
             });
             if (!this.get("effective_readonly")) {
-				this.$el.find('.search-bar').attr('disabled', false);
-				this.$el.find('.class-list').css('opacity', '1');
-				this.$el.find('.class-list .class').css('cursor', 'pointer');
+                this.$el.find('.search-bar').attr('disabled', false);
+                this.$el.find('.class-list').css('opacity', '1');
+                this.$el.find('.class-list .class').css('cursor', 'pointer');
                 this.$el.find(".body .right").droppable("option", "disabled", false);
                 this.$el.find('#clear').css('display', 'inline-block').click(function () {
                     self.set_fields([]);
@@ -43,9 +43,9 @@ openerp.bi_view_editor = function (instance, local) {
             } else {
                 this.$el.find(".body .right").droppable("option", "disabled", true);
                 this.$el.find('#clear').css('display', 'none');
-				this.$el.find('.search-bar').attr('disabled', true);
-				this.$el.find('.class-list').css('opacity', '.35');
-				this.$el.find('.class-list .class').css('cursor', 'default');
+                this.$el.find('.search-bar').attr('disabled', true);
+                this.$el.find('.class-list').css('opacity', '.35');
+                this.$el.find('.class-list .class').css('cursor', 'default');
             }
         },
         filter: function(val) {
@@ -79,18 +79,16 @@ openerp.bi_view_editor = function (instance, local) {
             this.set_fields(JSON.parse(this.get('value')));
         },
         load_classes: function(scrollTo) {
-			scrollTo = (typeof scrollTo == 'undefined') ? false : scrollTo;
+            scrollTo = (typeof scrollTo == 'undefined') ? false : scrollTo;
             var self = this;
             var model = new instance.web.Model("ir.model");
             if (this.$el.find(".field-list tbody tr").length > 0) {
                 model.call("get_related_models", [this.get_model_ids()], { context: new instance.web.CompoundContext() }).then(function(result) {
                     self.show_classes(result);
-					//if(scrollTo) self.$el.find('.class-list').scrollTo('#bve-class-' + scrollTo.model_id);
                 });                
             } else {
                 model.call("get_models", { context: new instance.web.CompoundContext() }).then(function(result) {
                     self.show_classes(result);
-					//if(scrollTo) self.$el.find('.class-list').scrollTo('#bve-class-' + scrollTo.model_id);
                 });
             }
         },
@@ -99,13 +97,13 @@ openerp.bi_view_editor = function (instance, local) {
             var model = new instance.web.Model("ir.model");
             self.$el.find(".class-list .class").remove();
             self.$el.find(".class-list .field").remove();
-			var css = this.get('effective_readonly') ? 'cursor: default' : 'cursor: pointer'
-			
+            var css = this.get('effective_readonly') ? 'cursor: default' : 'cursor: pointer';
+
             for (var i = 0; i < result.length; i++) {
-                var item = $("<div style=\"" + css + "\" class=\"class\" title=\"" + result[i]["model"]  + "\" id=\"bve-class-" + result[i]["id"] + "\">" + result[i]["name"] + "</div>")
+                var item = $("<div style=\"" + css + "\" class=\"class\" title=\"" + result[i].model  + "\" id=\"bve-class-" + result[i].id + "\">" + result[i].name + "</div>")
                             .data('model-data', result[i])
                             .click(function (evt) {
-								if(self.get("effective_readonly")) return;
+                                if(self.get("effective_readonly")) return;
                                 var classel = $(this);
                                 
                                 if (classel.data('bve-processed')) {
@@ -114,12 +112,12 @@ openerp.bi_view_editor = function (instance, local) {
                                     var index = self.activeModelMenus.indexOf(classel.data('model-data').id);
                                     if(index != -1) self.activeModelMenus.splice(index, 1);
                                 } else {
-									self.activeModelMenus.push(classel.data('model-data').id);
+                                    self.activeModelMenus.push(classel.data('model-data').id);
                                     model.call("get_fields", [classel.data('model-data').id], { context: new instance.web.CompoundContext() }).then(function(result) {
                                         for (var i = 0; i < result.length; i++) {
-											classel.find("#bve-field-" + result[i]["name"]).remove();
-											if(self.$el.find(".field-list tbody [name=label-" + result[i].id + "]").length > 0) continue;
-                                            classel.after($("<div class=\"field\" title=\"" + result[i]["name"] + "\" id=\"bve-field-" + result[i]["name"] + "\">" + result[i]["description"] + "</div>")
+                                            classel.find("#bve-field-" + result[i].name).remove();
+                                            if(self.$el.find(".field-list tbody [name=label-" + result[i].id + "]").length > 0) continue;
+                                            classel.after($("<div class=\"field\" title=\"" + result[i].name + "\" id=\"bve-field-" + result[i].name + "\">" + result[i].description + "</div>")
                                                           .data('field-data', result[i])
                                                           .click(function () {
                                                               if (!self.get("effective_readonly")) {
@@ -133,7 +131,7 @@ openerp.bi_view_editor = function (instance, local) {
                                                               'appendTo': 'body',
                                                               'containment': 'window'
                                                           })
-														  );
+                                                          );
                                         }
                                     });
                                     
@@ -149,8 +147,8 @@ openerp.bi_view_editor = function (instance, local) {
                         console.log(result);
                         var item = self.$el.find(".class-list #bve-class-" + result[0].model_id);
                         for (var o = 0; o < result.length; o++) {
-							if(self.$el.find(".field-list tbody [name=label-" + result[o].id + "]").length > 0) continue;
-                            item.after($("<div class=\"field\" title=\"" + result[o]["name"] + "\" id=\"bve-field-" + result[o]["name"] + "\">" + result[o]["description"] + "</div>")
+                            if(self.$el.find(".field-list tbody [name=label-" + result[o].id + "]").length > 0) continue;
+                            item.after($("<div class=\"field\" title=\"" + result[o].name + "\" id=\"bve-field-" + result[o].name + "\">" + result[o].description + "</div>")
                                        .data('field-data', result[o])
                                        .click(function () {
                                            if (!self.get("effective_readonly")) {
@@ -173,7 +171,7 @@ openerp.bi_view_editor = function (instance, local) {
             
         },
         add_field_to_table: function(data, options) {
-			var self = this;
+            var self = this;
             if (typeof data.row == 'undefined') {
                 data.row = false;
             }
@@ -206,7 +204,7 @@ openerp.bi_view_editor = function (instance, local) {
                 .data('field-data', data)
                 .contextmenu(function(e) {
                     e.preventDefault();
-					if (self.get("effective_readonly")) return;
+                    if (self.get("effective_readonly")) return;
                     var target = $(e.currentTarget);
                     var currentFieldData = target.data('field-data');
                     
@@ -272,29 +270,29 @@ openerp.bi_view_editor = function (instance, local) {
                         self.update_field_view(target);
                         self.internal_set_value(JSON.stringify(self.get_fields()));
                     });
-                    contextMenu.show();  
-                           
+                    contextMenu.show();
+
                     $(document).mouseup(function (e) {
                         var container = $(".context-menu");
-                    
-                        if (!container.is(e.target) // if the target of the click isn't the container...
-                            && container.has(e.target).length === 0) // ... nor a descendant of the container
+
+                        // if the target of the click isn't the container nor a descendant of the container
+                        if (!container.is(e.target) && container.has(e.target).length === 0)
                         {
                             container.hide();
                         }
-                    });    
-                    
+                    });
+
                 })
-			 );
-			 
-			self.$el.find('.delete-button').unbind("click");
+             );
+
+            self.$el.find('.delete-button').unbind("click");
             self.$el.find('.delete-button').click(function() {
                 $(this).closest('tr').remove();
                 self.clean_join_nodes();
                 self.internal_set_value(JSON.stringify(self.get_fields()));                
                 self.load_classes();
                 return false;
-            })
+            });
         },
         clean_join_nodes: function () {
             var aliases = $.makeArray(this.$el.find(".field-list tbody tr").map(function (idx, el) {
@@ -359,8 +357,7 @@ openerp.bi_view_editor = function (instance, local) {
             var field_data = this.get_fields();
             var self = this;
             model.call('get_join_nodes', [field_data, data], {context: new instance.web.CompoundContext()}).then(function(result) {
-				//self.$el.find(".search-bar").val("");
-				//self.filter("");
+
                 if (result.length == 1) {
                     self.add_field_and_join_node(data, result[0]);
                     self.internal_set_value(JSON.stringify(self.get_fields()));
@@ -386,7 +383,7 @@ openerp.bi_view_editor = function (instance, local) {
             }));
         },
         set_fields: function(values) {
-			this.activeModelMenus = [];
+            this.activeModelMenus = [];
             if (!values) {
                 values = [];
             }
@@ -417,9 +414,9 @@ openerp.bi_view_editor = function (instance, local) {
                     description = "Use the field on table " + model_data[choices[i].table_alias].model_name;
                 } else {
                     if (choices[i].join_node == -1) {
-                        description = "Join using the field '" + choices[i]['description'] + "' from model '" + choices[i]['model_name'] + "'";
+                        description = "Join using the field '" + choices[i].description + "' from model '" + choices[i].model_name + "'";
                     } else {
-                        description = "Join using the field '" + choices[i]['description'] + "' from new model '" + choices[i]['model_name'] + "'";
+                        description = "Join using the field '" + choices[i].description + "' from new model '" + choices[i].model_name + "'";
                     }
                 }
                 joinnodes.append($("<a>" + description+ "</a>")
@@ -437,12 +434,8 @@ openerp.bi_view_editor = function (instance, local) {
             joinnodes.find('a').click(function() {
                 callback(callback_data, choices[$(this).data('idx')]);
                 dialog.close();
-            })
+            });
 
-            //dialog.on('closing', this, function (e){
-            //    self.check_exit(true);
-            //});
-            //this.$buttonpane = dialog.$buttons;
             this.start();
         }
     });
