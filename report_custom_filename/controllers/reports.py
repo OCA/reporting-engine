@@ -39,8 +39,16 @@ class Reports(main.Reports):
         for report in report_xml.browse(report_ids):
             if not report.download_filename:
                 continue
-            objects = http.request.session.model(context['active_model'])\
-                .browse(context['active_ids'])
+            # When you are on the form view of a customer and you
+            # click on the "Sales" button, context['active_model']
+            # is still res.partner (probably a bug...) but
+            # context['active_ids'] has the ID of the sale order
+            # cf https://github.com/OCA/reporting-engine/issues/56
+            # That's why we use report.model instead of context['active_model']
+            # together with action['datas']['ids'] or context['active_ids']
+            objects = http.request.session.model(report.model)\
+                .browse(action.get('datas', {}).get(
+                    'ids', context['active_ids']))
             generated_filename = email_template.mako_template_env\
                 .from_string(report.download_filename)\
                 .render({
