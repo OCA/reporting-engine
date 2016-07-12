@@ -117,9 +117,14 @@ class BveView(models.Model):
 
     def _create_tree_view(self):
         fields_info = json.loads(self.data)
-        view = ["""<field name="x_{}"/>""".format(field_info['name'])
-                for field_info in fields_info if field_info['name']]
-        return view
+        view_fields = ["""<field name="x_{}" type="{}" />""".format(
+            field_info['name'],
+            (field_info['row'] and 'row') or
+            (field_info['column'] and 'col') or
+            (field_info['measure'] and 'measure'))
+            for field_info in fields_info if field_info['row'] or
+            field_info['column'] or field_info['measure']]
+        return view_fields
 
     @api.multi
     def action_create(self):
