@@ -6,27 +6,20 @@
 BI View Editor
 ==============
 
-The module BI View Editor is user-friendly tool (Query Builder) integrated in Odoo.
-It creates views for Odoo 9, allowing the user to specify graphically the sources
-and the attributes of the data-set to analyze, automating all the operations for
-creating all the necessary low level Odoo objects.
+BI View Editor is a tool integrated in Odoo that allows users define and
+execute their own reports without the need to code.
 
+Purpose:
 
-It is intended for:
+* The BI View Editor is used to create reports not already contained in the
+  standard Odoo, combining data from existing sources.
 
-- Graphically define your analysis data-set
-- Add new computed information to your data set
-- Specify the visualization attributes
-- Create the basis for a new data exploration method in Odoo
+* It has been designed to be used by users with little or no knowledge of
+  the technical architecture of Odoo. Users visually link business objects
+  and select the fields to visualize.
 
-
-Benefits would be:
-
-- More freedom to consultants or end users to customize views
-- No more external tools for data analysis
-- Easy update of your BI reports
-- No more external tools for data analysis
-
+* The BI View Editor offers users different types of representations,
+  including tree, graph, pivot views.
 
 
 Usage
@@ -51,7 +44,7 @@ Known issues / Roadmap
 
 * Non-stored fields are not supported
 * Provide graph view for table relations
-* Use the same concept (dinamically create list views) to build reports: generate an ad-hoc query object that displays the fields that you want for the report, for a given join query
+* Extend the capabilities of the tree views (e.g. add sums)
 * Add possibility to store the BI view in user dashboard, like any other graph or cross table
 * Provide a tutorial (eg. a working example of usage)
 
@@ -74,6 +67,7 @@ Contributors
 * Richard Dijkstra <r.dijkstra@onestein.nl>
 * Andrea Stirpe <a.stirpe@onestein.nl>
 * Antonio Esposito <a.esposito@onestein.nl>
+* Jordi Ballester Alomar <jordi.ballester@eficent.com>
 
 Maintainer
 ----------
