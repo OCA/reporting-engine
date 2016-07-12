@@ -106,13 +106,20 @@ class BveView(models.Model):
 
     def _create_graph_view(self):
         fields_info = json.loads(self.data)
-        return ["""<field name="x_{}" type="{}" />""".format(
+        view_fields = ["""<field name="x_{}" type="{}" />""".format(
             field_info['name'],
             (field_info['row'] and 'row') or
             (field_info['column'] and 'col') or
             (field_info['measure'] and 'measure'))
             for field_info in fields_info if field_info['row'] or
             field_info['column'] or field_info['measure']]
+        return view_fields
+
+    def _create_tree_view(self):
+        fields_info = json.loads(self.data)
+        view = ["""<field name="x_{}"/>""".format(field_info['name'])
+                for field_info in fields_info if field_info['name']]
+        return view
 
     @api.multi
     def action_create(self):
@@ -265,25 +272,57 @@ class BveView(models.Model):
         RegistryManager.signal_registry_change(self.env.cr.dbname)
         self.pool = self.env.registry
 
+        ui_view_obj = self.pool.get('ir.ui.view')
+        view_ids = ui_view_obj.search(
+            self.env.cr, SUPERUSER_ID, [('model', '=', self.model_name)],
+            context={})
+
+        [ui_view_obj.unlink(self.env.cr, SUPERUSER_ID, view_id, context={})
+         for view_id in view_ids]
+
+        view_ids = []
         view_id = self.pool.get('ir.ui.view').create(
             self.env.cr, SUPERUSER_ID,
-            {'name': "Analysis",
+            {'name': "Pivot Analysis",
+             'type': 'pivot',
+             'model': self.model_name,
+             'priority': 16,
+             'arch': """<?xml version="1.0"?>
+                        <pivot string="Pivot Analysis"> {} </pivot>
+                     """.format("".join(self._create_graph_view()))
+             }, context={})
+        view_ids.append(view_id)
+        view_id = self.pool.get('ir.ui.view').create(
+            self.env.cr, SUPERUSER_ID,
+            {'name': "Graph Analysis",
              'type': 'graph',
              'model': self.model_name,
              'priority': 16,
              'arch': """<?xml version="1.0"?>
-                        <graph string="Analysis"
-                               type="pivot"
+                        <graph string="Graph Analysis"
+                               type="bar"
                                stacked="True"> {} </graph>
                      """.format("".join(self._create_graph_view()))
              }, context={})
-        view_ids = [view_id]
+        view_ids.append(view_id)
+
+        view_id = self.pool.get('ir.ui.view').create(
+            self.env.cr, SUPERUSER_ID,
+            {'name': "Tree Analysis",
+             'type': 'tree',
+             'model': self.model_name,
+             'priority': 16,
+             'arch': """<?xml version="1.0"?>
+                        <tree string="List Analysis" create="false"> {} </tree>
+                     """.format("".join(self._create_tree_view()))
+             }, context={})
+        view_ids.append(view_id)
 
         action_vals = {'name': self.name,
                        'res_model': self.model_name,
                        'type': 'ir.actions.act_window',
                        'view_type': 'form',
-                       'view_mode': 'graph',
+                       'view_mode': 'tree,graph,pivot',
                        'view_id': view_ids and view_ids[0] or 0,
                        'context': "{'service_name': '%s'}" % self.name,
                        }
@@ -303,6 +342,6 @@ class BveView(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'res_model': self.model_name,
-            'view_type': 'graph',
-            'view_mode': 'graph',
+            'view_type': 'form',
+            'view_mode': 'tree,graph,pivot',
         }
