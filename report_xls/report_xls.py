@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -20,8 +20,6 @@
 #
 ##############################################################################
 
-import xlwt
-from xlwt.Style import default_style
 import cStringIO
 from datetime import datetime
 from openerp.osv.fields import datetime as datetime_field
@@ -33,6 +31,12 @@ from openerp import pooler
 import logging
 _logger = logging.getLogger(__name__)
 
+try:
+    import xlwt
+    from xlwt.Style import default_style
+except ImportError:
+    _logger.debug("Cannot import xlwt. This module will not be functional.")
+
 
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
@@ -40,7 +44,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-class report_xls(report_sxw):
+class ReportXls(report_sxw):
 
     xls_types = {
         'bool': xlwt.Row.set_cell_boolean,
@@ -108,7 +112,7 @@ class report_xls(report_sxw):
             # use model from 'data' when no ir.actions.report.xml entry
             self.table = data.get('model') or self.table
             return self.create_source_xls(cr, uid, ids, data, context)
-        return super(report_xls, self).create(cr, uid, ids, data, context)
+        return super(ReportXls, self).create(cr, uid, ids, data, context)
 
     def create_source_xls(self, cr, uid, ids, data, context=None):
         if not context:
@@ -162,7 +166,8 @@ class report_xls(report_sxw):
         row = col_specs[wanted][rowtype][:]
         for i in range(len(row)):
             if isinstance(row[i], CodeType):
-                row[i] = eval(row[i], render_space)
+                # TODO Use safe_eval or document why not and remove pylint hack
+                row[i] = eval(row[i], render_space)  # pylint: disable=W0123
         row.insert(0, wanted)
         return row
 
@@ -201,7 +206,7 @@ class report_xls(report_sxw):
                         c.append({'formula': s[5]})
                     else:
                         c.append({
-                            'write_cell_func': report_xls.xls_types[c[3]]})
+                            'write_cell_func': ReportXls.xls_types[c[3]]})
                     # Set custom cell style
                     if s_len > 6 and s[6] is not None:
                         c.append(s[6])
@@ -216,7 +221,7 @@ class report_xls(report_sxw):
                     col += c[1]
                     break
             if not found:
-                _logger.warn("report_xls.xls_row_template, "
+                _logger.warn("ReportXls.xls_row_template, "
                              "column '%s' not found in specs", w)
         return r
 
@@ -230,7 +235,7 @@ class report_xls(report_sxw):
             style = spec[6] and spec[6] or row_style
             if not data:
                 # if no data, use default values
-                data = report_xls.xls_types_default[spec[3]]
+                data = ReportXls.xls_types_default[spec[3]]
             if size != 1:
                 if formula:
                     ws.write_merge(
@@ -246,5 +251,3 @@ class report_xls(report_sxw):
             if set_column_size:
                 ws.col(col).width = spec[2] * 256
         return row_pos + 1
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
