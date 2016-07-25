@@ -20,8 +20,6 @@
 #
 ##############################################################################
 
-import xlwt
-from xlwt.Style import default_style
 import cStringIO
 from datetime import datetime
 from openerp.osv.fields import datetime as datetime_field
@@ -32,6 +30,12 @@ from openerp.report.report_sxw import report_sxw
 from openerp import pooler
 import logging
 _logger = logging.getLogger(__name__)
+
+try:
+    import xlwt
+    from xlwt.Style import default_style
+except ImportError:
+    _logger.debug("Cannot import xlwt. This module will not be functional.")
 
 
 class AttrDict(dict):
