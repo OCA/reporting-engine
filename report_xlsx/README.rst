@@ -24,7 +24,7 @@ A python class ::
 
     from openerp.addons.report_xlsx.report.report_xlsx import ReportXlsx
 
-    class partner_xlsx(ReportXlsx):
+    class PartnerXlsx(ReportXlsx):
     
         def generate_xlsx_report(self, workbook, data, partners):
             for obj in partners:
@@ -35,8 +35,8 @@ A python class ::
                 sheet.write(0, 0, obj.name, bold)
 
 
-    partner_xlsx('report.res.partner.xlsx',
-                 'res.partner')
+    PartnerXlsx('report.res.partner.xlsx',
+                'res.partner')
 
 To manipulate the ``workbook`` and ``sheet`` objects, refer to the
 `documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
