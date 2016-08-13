@@ -49,7 +49,7 @@ try:
         'text': xlwt.Row.set_cell_text,
         'number': xlwt.Row.set_cell_number,
     }
-except ImportError:
+except ImportError:  # pragma: no cover
     _logger.debug("Cannot import xlwt. This module will not be functional.")
     xls_types = xls_types_default
 
