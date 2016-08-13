@@ -29,13 +29,29 @@ from types import CodeType
 from openerp.report.report_sxw import report_sxw
 from openerp import pooler
 import logging
+
 _logger = logging.getLogger(__name__)
+
+xls_types_default = {
+    'bool': False,
+    'date': None,
+    'text': '',
+    'number': 0,
+}
 
 try:
     import xlwt
     from xlwt.Style import default_style
-except ImportError:
+
+    xls_types = {
+        'bool': xlwt.Row.set_cell_boolean,
+        'date': xlwt.Row.set_cell_date,
+        'text': xlwt.Row.set_cell_text,
+        'number': xlwt.Row.set_cell_number,
+    }
+except ImportError:  # pragma: no cover
     _logger.debug("Cannot import xlwt. This module will not be functional.")
+    xls_types = xls_types_default
 
 
 class AttrDict(dict):
@@ -45,22 +61,7 @@ class AttrDict(dict):
 
 
 class report_xls(report_sxw):
-
-    xls_types = {
-        'bool': xlwt.Row.set_cell_boolean,
-        'date': xlwt.Row.set_cell_date,
-        'text': xlwt.Row.set_cell_text,
-        'number': xlwt.Row.set_cell_number,
-    }
-    xls_types_default = {
-        'bool': False,
-        'date': None,
-        'text': '',
-        'number': 0,
-    }
-
     # TO DO: move parameters infra to configurable data
-
     # header/footer
     hf_params = {
         'font_size': 8,
