@@ -1,3 +1,4 @@
+[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/143/9.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-reporting-engine-143)
 [![Build Status](https://travis-ci.org/OCA/reporting-engine.svg?branch=9.0)](https://travis-ci.org/OCA/reporting-engine)
 [![Coverage Status](https://img.shields.io/coveralls/OCA/reporting-engine.svg)](https://coveralls.io/r/OCA/reporting-engine?branch=9.0)
 
