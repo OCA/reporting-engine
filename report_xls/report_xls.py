@@ -52,6 +52,7 @@ try:
 except ImportError:  # pragma: no cover
     _logger.debug("Cannot import xlwt. This module will not be functional.")
     xls_types = xls_types_default
+    default_style = None
 
 
 class AttrDict(dict):
