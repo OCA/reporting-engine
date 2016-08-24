@@ -12,6 +12,7 @@ import subprocess
 import base64
 import os
 
+
 class pdf_form_fill(orm.Model):
     _name = 'pdf.form.fill'
 
@@ -44,7 +45,6 @@ class pdf_form_fill(orm.Model):
             return (k, v)
         fields = map(_transform_field, fields)
 
-        
         # create the fdf file for filling the form
         if not forge_fdf:
             raise orm.except_orm(

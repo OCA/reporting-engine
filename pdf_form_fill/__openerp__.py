@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Pdf form fill',
-    'version': '0.1.0',
+    'version': '7.0.1.0',
     'author': 'initOS GmbH, Odoo Community Association (OCA)',
     'description': """
 The user should be able to fill .pdf form by mapping the fields from a record.
