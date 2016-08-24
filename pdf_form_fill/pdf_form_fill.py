@@ -1,35 +1,16 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2010-2013 OpenERP s.a. (<http://openerp.com>).
-#    Copyright (C) 2013 initOS GmbH(<http://www.initos.com>).
-#    Author Nikolina Todorova <nikolina.todorova@initos.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © initOS GmbH 2013
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 try:
     from fdfgen import forge_fdf
 except ImportError:
     forge_fdf = False
 from openerp.osv import orm
+from openerp.tools.translate import _
 from tempfile import NamedTemporaryFile
 import subprocess
 import base64
 import os
-
 
 class pdf_form_fill(orm.Model):
     _name = 'pdf.form.fill'
@@ -46,8 +27,8 @@ class pdf_form_fill(orm.Model):
     def get_pdf_file_path(self, cr, uid, ids, context=None):
         """Overwrite this to return the specific pdf file path."""
         raise orm.except_orm(
-            (u'Not implemented Error'),
-            (u'There is no file path method for the given model.')
+            _(u'Not implemented Error'),
+            _(u'There is no file path method for the given model.')
         )
 
     def download_pdf_form(self, cr, uid, ids,
@@ -63,26 +44,29 @@ class pdf_form_fill(orm.Model):
             return (k, v)
         fields = map(_transform_field, fields)
 
+        
         # create the fdf file for filling the form
         if not forge_fdf:
             raise orm.except_orm(
-                (u'Missing fdfgen library.'),
-                (u'You need to install python fdfgen library.')
+                _(u'Missing fdfgen library.'),
+                _(u'You need to install python fdfgen library.')
             )
-        fdf = forge_fdf("", fields, [], [], [])
-        fdf_file = NamedTemporaryFile(mode='wb', delete=False)
-        fdf_file.write(fdf)
-        fdf_file.close()
+        try:
+            fdf = forge_fdf("", fields, [], [], [])
+            fdf_file = NamedTemporaryFile(mode='wb', delete=False)
+            fdf_file.write(fdf)
+            fdf_file.close()
 
-        outpu_file = NamedTemporaryFile(mode='r+')
-        subprocess.call(['pdftk',
-                         file_path,
-                         'fill_form',
-                         fdf_file.name,
-                         'output',
-                         outpu_file.name,
-                         'flatten'])
-        os.remove(fdf_file.name)  # remove the temp file after we use it
+            outpu_file = NamedTemporaryFile(mode='r+')
+            subprocess.call(['pdftk',
+                             file_path,
+                             'fill_form',
+                             fdf_file.name,
+                             'output',
+                             outpu_file.name,
+                             'flatten'])
+        finally:
+            os.remove(fdf_file.name)  # remove the temp file after we use it
 
         result = {}
         result[ids[0]] = base64.encodestring(outpu_file.read())
