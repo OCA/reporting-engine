@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
-<data>
+<odoo>
 
   <template id="minimal_layout" inherit_id="report.minimal_layout">
     <xpath expr="//t[@t-if='subst is True']" position="replace">
@@ -44,5 +43,4 @@
     </xpath>
   </template>
 
-</data>
-</openerp>
+</odoo>
