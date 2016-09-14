@@ -39,7 +39,7 @@ The py3o.template package is required; install it with:
         'report'
     ],
     'external_dependencies': {
-        'python': ['py3o.template']
+        'python': ['py3o.template', 'oe_json_serializer']
     },
     'data': [
         'security/ir.model.access.csv',

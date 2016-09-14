@@ -83,7 +83,7 @@ class py3o_report(report_sxw):
         #TODO: Find a way to avoid calling Template
         t = Template(in_temp.name, out_temp.name)
         # Remove 'py3o.'
-        user_variable = [x[5:] for x in t.get_user_variable()]
+        user_variable = [x[5:] for x in t.get_user_variables()]
         print user_variable
 
         values = self.get_values(cr, uid, ids, data, context)
