@@ -1,0 +1,29 @@
+<openerp>
+    <data>
+
+        <!-- Inherit from base.act_report_xml_view to add py3o-related settings. -->
+
+        <record id="py3o_report_view" model="ir.ui.view">
+            <field name="name">py3o_report_view</field>
+            <field name="model">ir.actions.report.xml</field>
+            <field name="inherit_id" ref="base.act_report_xml_view" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@string='Security']" position="before">
+                    <page string="LibreOffice template"
+                        attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
+
+                        <group>
+                            <field name="py3o_fusion_filetype" />
+                            <field name="py3o_template_id" />
+                            <field name="module" />
+                            <field name="py3o_template_fallback" />
+                        </group>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>
