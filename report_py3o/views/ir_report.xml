@@ -9,7 +9,7 @@
             <field name="inherit_id" ref="base.act_report_xml_view" />
             <field name="arch" type="xml">
 
-                <xpath expr="//page[@string='Security']" position="before">
+                <xpath expr="//page[@name='security']" position="before">
                     <page string="LibreOffice template"
                         attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
 
