@@ -1,0 +1,24 @@
+syntax: glob
+**/*.pyc
+*.pyc
+*.pyo
+*.swp
+.tmp*
+*~
+*.egg-info
+dist/*
+build/*
+lib/*
+output/*
+*.orig
+*.log
+.settings/*
+storage/*
+.project
+.idea
+.pydevproject
+*.db
+.ropeproject/*
+.mob
+
+
