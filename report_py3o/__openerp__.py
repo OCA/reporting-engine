@@ -24,11 +24,11 @@ The py3o.template package is required; install it with:
     },
     'data': [
         'security/ir.model.access.csv',
-
         'views/menu.xml',
         'views/py3o_template.xml',
         'views/py3o_server.xml',
         'views/ir_report.xml',
+        'demo/report_py3o.xml',
     ],
     'installable': True,
 }
