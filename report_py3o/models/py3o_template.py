@@ -8,7 +8,7 @@ class Py3oTemplate(models.Model):
     _name = 'py3o.template'
 
     name = fields.Char(required=True)
-    py3o_template_data = fields.Binary("LibreOffice template")
+    py3o_template_data = fields.Binary("LibreOffice Template")
     filetype = fields.Selection(
         selection=[
             ('odt', "ODF Text Document"),

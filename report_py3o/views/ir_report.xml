@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
 
@@ -10,7 +11,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//page[@name='security']" position="before">
-                    <page string="LibreOffice template"
+                    <page string="LibreOffice Template"
                         attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
 
                         <group>

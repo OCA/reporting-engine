@@ -3,20 +3,16 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'LibreOffice Report Engine',
-    'description': '''
-Generation of LibreOffice/OpenOffice reports using LibreOffice/OpenOffice
-templates.
-
-The py3o.template package is required; install it with:
-    pip install py3o.template
-''',
+    'summary': 'Reporting engine based on Libreoffice (ODT -> ODT, '
+               'ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)',
     'version': '9.0.1.0.0',
     'category': 'Reporting',
-    'author': 'XCG Consulting',
+    'license': 'AGPL-3',
+    'author': 'XCG Consulting,Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
     'depends': [
         'base',
-        'report'
+        'report',
     ],
     'external_dependencies': {
         'python': ['py3o.template',
