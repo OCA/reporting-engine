@@ -61,7 +61,7 @@ class ReportXml(models.Model):
              "the template.",
         default=True)
     py3o_server_id = fields.Many2one(
-        "py3o.server"
+        "py3o.server",
         "Fusion server")
     module = fields.Char(
         "Module",
