@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
     <data>
 
         <!-- Inherit from base.act_report_xml_view to add py3o-related settings. -->
@@ -28,4 +28,4 @@
             </field>
         </record>
     </data>
-</openerp>
+</odoo>
