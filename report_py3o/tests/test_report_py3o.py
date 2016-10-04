@@ -14,14 +14,14 @@ import openerp.tests
 class TestReportPy3o(TransactionCase):
 
     def test_reports(self):
-        domain = [('report_type', '=', 'py3o'),
-                  ('report_name', '=', 'py3o_user_info')]
-        reports = self.env['ir.actions.report.xml'].search(domain)
-        self.assertEqual(1, len(reports))
-        for r in reports:
-            with mock.patch('openerp.addons.report_py3o.py3o_parser.'
-                            'Py3oParser.create_single_pdf') as patched_pdf:
-                r.render_report(self.env.user.ids,
-                                r.report_name,
-                                {})
-                self.assertEqual(1, patched_pdf.call_count)
+        report = self.env.ref("report_py3o.res_users_report_py3o")
+        with mock.patch('openerp.addons.report_py3o.py3o_parser.'
+                        'Py3oParser.create_single_pdf') as patched_pdf:
+            # test the call the the create method inside our custom parser
+            report.render_report(self.env.user.ids,
+                            report.report_name,
+                            {})
+            self.assertEqual(1, patched_pdf.call_count)
+        res = report.render_report(
+            self.env.user.ids, report.report_name, {})
+        self.assertTrue(res)
