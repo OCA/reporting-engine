@@ -14,7 +14,7 @@
                         attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
 
                         <group>
-                            <field name="py3o_fusion_filetype" />
+                            <field name="py3o_filetype" />
                             <field name="py3o_is_local_fusion"/>
                             <field name="py3o_server_id" />
                             <field name="py3o_template_id" />
