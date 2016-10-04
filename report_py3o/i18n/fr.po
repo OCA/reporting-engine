@@ -102,7 +102,7 @@ msgid "No Py3o server configuration found"
 msgstr "Pas de configuration trouvée du serveur Py3o"
 
 #. module: report_py3o
-#: field:ir.actions.report.xml,py3o_fusion_filetype:0
+#: field:ir.actions.report.xml,py3o_filetype:0
 msgid "Output Format"
 msgstr "Format de sortie"
 

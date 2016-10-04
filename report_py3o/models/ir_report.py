@@ -19,17 +19,17 @@ class ReportXml(models.Model):
     _inherit = 'ir.actions.report.xml'
 
     @api.one
-    @api.constrains("py3o_fusion_filetype", "report_type")
-    def _check_py3o_fusion_filetype(self):
-        if self.report_type == "py3o" and not self.py3o_fusion_filetype:
+    @api.constrains("py3o_filetype", "report_type")
+    def _check_py3o_filetype(self):
+        if self.report_type == "py3o" and not self.py3o_filetype:
             raise ValidationError(
                 "Field 'Output Format' is required for Py3O report")
 
     @api.one
     @api.constrains("py3o_is_local_fusion", "py3o_server_id",
-                    "py3o_fusion_filetype")
+                    "py3o_filetype")
     def _check_py3o_server_id(self):
-        is_native = Formats().get_format(self.py3o_fusion_filetype)
+        is_native = Formats().get_format(self.py3o_filetype)
         if ((not is_native or not self.py3o_is_local_fusion) and
                 not self.py3o_server_id):
             raise ValidationError(
@@ -37,7 +37,7 @@ class ReportXml(models.Model):
                 "Please specify a Fusion Server")
 
     @api.model
-    def _get_py3o_fusion_filetypes(self):
+    def _get_py3o_filetypes(self):
         formats = Formats()
         names = formats.get_known_format_names()
         selections = []
@@ -48,8 +48,8 @@ class ReportXml(models.Model):
             selections.append((name, description))
         return selections
 
-    py3o_fusion_filetype = fields.Selection(
-        selection="_get_py3o_fusion_filetypes",
+    py3o_filetype = fields.Selection(
+        selection="_get_py3o_filetypes",
         string="Output Format")
     py3o_template_id = fields.Many2one(
         'py3o.template',
