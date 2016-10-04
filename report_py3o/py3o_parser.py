@@ -180,7 +180,7 @@ class Py3oParser(report_sxw):
             # we do nice chunked reading from the network...
             chunk_size = 1024
             with NamedTemporaryFile(
-                    suffix=filetype.human_ext,
+                    suffix=filetype,
                     prefix='py3o-template-'
             ) as fd:
                 for chunk in r.iter_content(chunk_size):
