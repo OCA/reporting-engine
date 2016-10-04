@@ -5,9 +5,13 @@
             <field name="name">py3o.template.configuration.search.view</field>
             <field name="model">py3o.template</field>
             <field name="arch" type="xml">
-                <search string="Py3o Templates Configuration" version="7.0">
+                <search string="Py3o Templates Configuration">
                     <field name="name" />
                     <field name="filetype" />
+                    <group string="Group By" name="groupby">
+                        <filter name="filetype_groupby" string="File Type"
+                        context="{'group_by': 'filetype'}"/>
+                    </group>
                 </search>
             </field>
         </record>
@@ -16,14 +20,12 @@
             <field name="name">py3o.template.configuration.form.view</field>
             <field name="model">py3o.template</field>
             <field name="arch" type="xml">
-                <form string="Py3o Templates Configuration" version="7.0">
-                    <sheet>
-                        <group>
-                            <field name="name" />
-                            <field name="filetype" />
-                            <field name="py3o_template_data" />
-                        </group>
-                    </sheet>
+                <form string="Py3o Templates Configuration">
+                    <group>
+                        <field name="name" />
+                        <field name="filetype" />
+                        <field name="py3o_template_data" />
+                    </group>
                 </form>
             </field>
         </record>
@@ -32,7 +34,7 @@
             <field name="name">py3o.template.configuration.tree.view</field>
             <field name="model">py3o.template</field>
             <field name="arch" type="xml">
-                <tree string="Py3o Templates Configuration" version="7.0">
+                <tree string="Py3o Templates Configuration">
                     <field name="name" />
                     <field name="filetype" />
                 </tree>
@@ -40,14 +42,12 @@
         </record>
 
         <record id="py3o_template_configuration_action" model="ir.actions.act_window">
-            <field name="name">Py3o Templates Configuration</field>
+            <field name="name">Py3o Templates</field>
             <field name="res_model">py3o.template</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <menuitem id="py3o_template_configuration_menu"
-            name="Py3o Templates"
             parent="py3o_config_menu"
             action="py3o_template_configuration_action" />
     </data>
