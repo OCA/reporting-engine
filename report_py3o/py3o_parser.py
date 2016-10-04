@@ -1,4 +1,6 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
+# Copyright 2013 XCG Consulting (http://odoo.consulting)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from cStringIO import StringIO
 import json
 import pkg_resources
@@ -66,8 +68,8 @@ class Py3oParser(report_sxw):
         or from the default template file provided by the implementer.
 
         ATM this method takes a report definition recordset
-        to try and fetch the report template from database. If not found it will
-        fallback to the template file referenced in the report definition.
+        to try and fetch the report template from database. If not found it
+        will fallback to the template file referenced in the report definition.
 
         @param report_obj: a recordset representing the report defintion
         @type report_obj: openerp.model.recordset instance
