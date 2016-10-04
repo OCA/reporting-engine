@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import os
 from py3o.formats import Formats
-from openerp import api, fields, models
+from openerp import api, fields, models, _
 from openerp.report.interface import report_int
 from openerp.exceptions import ValidationError
 from openerp import addons
@@ -42,7 +42,10 @@ class ReportXml(models.Model):
         names = formats.get_known_format_names()
         selections = []
         for name in names:
-            selections.append((name, name))
+            description = name
+            if formats.get_format(name).native:
+                description = description + " " + _("(Native)")
+            selections.append((name, description))
         return selections
 
     py3o_fusion_filetype = fields.Selection(
@@ -53,9 +56,10 @@ class ReportXml(models.Model):
         "Template")
     py3o_is_local_fusion = fields.Boolean(
         "Local fusion",
-        help="Odt to Odt will be processed without sever. You must use this "
-             "mode if you call methods on your model into the template.",
-        default=False)
+        help="Native formats will be processed without a server. "
+             "You must use this mode if you call methods on your model into "
+             "the template.",
+        default=True)
     py3o_server_id = fields.Many2one(
         "py3o.server"
         "Fusion server")
