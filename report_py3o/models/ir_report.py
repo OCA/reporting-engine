@@ -55,14 +55,14 @@ class ReportXml(models.Model):
         'py3o.template',
         "Template")
     py3o_is_local_fusion = fields.Boolean(
-        "Local fusion",
+        "Local Fusion",
         help="Native formats will be processed without a server. "
              "You must use this mode if you call methods on your model into "
              "the template.",
         default=True)
     py3o_server_id = fields.Many2one(
         "py3o.server",
-        "Fusion server")
+        "Fusion Server")
     module = fields.Char(
         "Module",
         help="The implementer module that provides this report")
