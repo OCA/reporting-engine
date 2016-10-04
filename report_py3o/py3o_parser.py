@@ -143,26 +143,27 @@ class Py3oParser(report_sxw):
         localcontext = parser_instance.localcontext
         if report_xml.py3o_is_local_fusion:
             template.render(localcontext)
-            input = out_stream.getvalue()
+            in_stream = out_stream
+            datadict = {}
         else:
             expressions = template.get_all_user_python_expression()
             py_expression = template.convert_py3o_to_python_ast(expressions)
             convertor = Py3oConvertor()
             data_struct = convertor(py_expression)
-            input = data_struct.render(localcontext)
+            datadict = data_struct.render(localcontext)
 
-        filetype = report_xml.py3o_fusion_filetype
+        filetype = report_xml.py3o_filetype
         is_native = Formats().get_format(filetype).native
         if is_native:
-            res = input
+            res = out_stream.getvalue()
         else:  # Call py3o.server to render the template in the desired format
             in_stream.seek(0)
             files = {
                 'tmpl_file': in_stream,
             }
             fields = {
-                "targetformat": filetype.fusion_ext,
-                "datadict": json.dumps(input),
+                "targetformat": filetype,
+                "datadict": json.dumps(datadict),
                 "image_mapping": "{}",
             }
             r = requests.post(
