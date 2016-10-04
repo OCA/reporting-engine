@@ -166,6 +166,8 @@ class Py3oParser(report_sxw):
                 "datadict": json.dumps(datadict),
                 "image_mapping": "{}",
             }
+            if report_xml.py3o_is_local_fusion:
+                fields['skipfusion'] = '1'
             r = requests.post(
                 report_xml.py3o_server_id.url, data=fields, files=files)
             if r.status_code != 200:
@@ -178,7 +180,7 @@ class Py3oParser(report_sxw):
             # we do nice chunked reading from the network...
             chunk_size = 1024
             with NamedTemporaryFile(
-                    suffix=filetype.human_ext,
+                    suffix=filetype,
                     prefix='py3o-template-'
             ) as fd:
                 for chunk in r.iter_content(chunk_size):
