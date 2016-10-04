@@ -11,8 +11,8 @@ class Py3oTemplate(models.Model):
     py3o_template_data = fields.Binary("LibreOffice template")
     filetype = fields.Selection(
         selection=[
-            ('odt', u"ODF Text Document"),
-            ('ods', u"ODF Spreadsheet"),
+            ('odt', "ODF Text Document"),
+            ('ods', "ODF Spreadsheet"),
         ],
         string="LibreOffice Template File Type",
         required=True,
