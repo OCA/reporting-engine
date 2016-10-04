@@ -38,7 +38,8 @@ class ReportXml(models.Model):
         size=128,
         help=(
             "If the user does not provide a template this will be used "
-            "it should be a relative path to root of YOUR module"
+            "it should be a relative path to root of YOUR module "
+            "or an absolute path on your server."
         ))
     report_type = fields.Selection(selection_add=[('py3o', "Py3o")])
 
