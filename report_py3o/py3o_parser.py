@@ -88,16 +88,22 @@ class Py3oParser(report_sxw):
                 report_obj.py3o_template_id.py3o_template_data
             )
 
-        elif report_obj.py3o_template_fallback and report_obj.module:
-            # if the default is defined
-            flbk_filename = pkg_resources.resource_filename(
-                "openerp.addons.%s" % report_obj.module,
-                report_obj.py3o_template_fallback,
-            )
-            if os.path.exists(flbk_filename):
-                # and it exists on the fileystem
-                with open(flbk_filename, 'r') as tmpl:
-                    tmpl_data = tmpl.read()
+        elif report_obj.py3o_template_fallback:
+            tmpl_name = report_obj.py3o_template_fallback
+            flbk_filename = None
+            if report_obj.module:
+                # if the default is defined
+                flbk_filename = pkg_resources.resource_filename(
+                    "openerp.addons.%s" % report_obj.module,
+                    tmpl_name,
+                )
+            elif os.path.isabs(tmpl_name):
+                # It is an absolute path
+                flbk_filename = os.path.normcase(os.path.normpath(tmpl_name))
+            if flbk_filename and os.path.exists(flbk_filename):
+               # and it exists on the fileystem
+               with open(flbk_filename, 'r') as tmpl:
+                   tmpl_data = tmpl.read()
 
         if tmpl_data is None:
             # if for any reason the template is not found
