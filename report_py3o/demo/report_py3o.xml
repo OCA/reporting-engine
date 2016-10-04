@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="res_users_report_py3o" model="ir.actions.report.xml">
+      <field name="name">Py3o Demo Report</field>
+      <field name="type">ir.actions.report.xml</field>
+      <field name="model">res.users</field>
+      <field name="report_name">py3o_user_info</field>
+      <field name="report_type">py3o</field>
+      <field name="py3o_filetype">odt</field>
+      <field name="py3o_is_local_fusion" eval="1"/>
+      <field name="py3o_filetype">odt</field>
+      <field name="module">report_py3o</field>
+      <field name="py3o_template_fallback">demo/res_user.odt</field>
+    </record>
+
+    <record id="res_users_report_py3o_print_action" model="ir.values">
+      <field eval="'action'" name="key" />
+      <field eval="'client_print_multi'" name="key2" />
+      <field name="model">res.users</field>
+      <field name="name">Py3o Demo Report</field>
+      <field eval="'ir.actions.report.xml,'+str(res_users_report_py3o)" name="value" />
+    </record>
+
+</odoo>
