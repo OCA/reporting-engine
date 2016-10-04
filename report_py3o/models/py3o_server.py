@@ -1,19 +1,11 @@
-from openerp.osv import fields, osv
+# -*- coding: utf-8 -*-
+# Copyright 2013 XCG Consulting (http://odoo.consulting)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from openerp import fields, models
 
 
-class py3o_server(osv.Model):
+class Py3oServer(models.Model):
     _name = 'py3o.server'
 
-    _columns = {
-        'url': fields.char(
-            u"URL",
-            size=256,
-        ),
-        'is_active': fields.boolean(
-            u"Active",
-        )
-    }
-
-    _defaults = {
-        'is_active': True,
-    }
+    url = fields.Char("URL", required=True)
+    is_active = fields.Boolean("Active", default=True)

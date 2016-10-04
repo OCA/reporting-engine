@@ -1,28 +1,19 @@
-from openerp.osv import fields, osv
+# -*- coding: utf-8 -*-
+# Copyright 2013 XCG Consulting (http://odoo.consulting)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from openerp import fields, models
 
 
-class py3o_template(osv.Model):
+class Py3oTemplate(models.Model):
     _name = 'py3o.template'
 
-    _columns = {
-        'name': fields.char(
-            u"Name",
-        ),
-
-        'py3o_template_data': fields.binary(
-            u"LibreOffice template",
-        ),
-
-        'filetype': fields.selection(
-            [
-                ('odt', u"ODF Text Document"),
-                ('ods', u"ODF Spreadsheet"),
-            ],
-            u"LibreOffice Template File Type",
-            required=True,
-        ),
-    }
-
-    _defaults = {
-        'filetype': 'odt'
-    }
+    name = fields.Char(required=True)
+    py3o_template_data = fields.Binary("LibreOffice template")
+    filetype = fields.Selection(
+        selection=[
+            ('odt', u"ODF Text Document"),
+            ('ods', u"ODF Spreadsheet"),
+        ],
+        string="LibreOffice Template File Type",
+        required=True,
+        default='odt')
