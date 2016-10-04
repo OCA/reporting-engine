@@ -43,7 +43,7 @@ def py3o_report_extender(report_xml_id=None):
     global _extender_functions
 
     def fct1(fct):
-        _extender_functions.setdefault(report_xml_id,[]).append(fct)
+        _extender_functions.setdefault(report_xml_id, []).append(fct)
         return fct
     return fct1
 
@@ -152,7 +152,7 @@ class Py3oParser(report_sxw):
             input = data_struct.render(localcontext)
 
         filetype = report_xml.py3o_fusion_filetype
-        is_native = Formats().get_format(filetype)
+        is_native = Formats().get_format(filetype).native
         if is_native:
             res = input
         else:  # Call py3o.server to render the template in the desired format
