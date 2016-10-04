@@ -2,11 +2,12 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import os
+from py3o.formats import Formats
 from openerp import api, fields, models
 from openerp.report.interface import report_int
-from ..py3o_parser import Py3oParser
 from openerp.exceptions import ValidationError
 from openerp import addons
+from ..py3o_parser import Py3oParser
 
 
 class ReportXml(models.Model):
@@ -24,12 +25,40 @@ class ReportXml(models.Model):
             raise ValidationError(
                 "Field 'Output Format' is required for Py3O report")
 
-    py3o_fusion_filetype = fields.Many2one(
-        'py3o.fusion.filetype',
-        "Output Format")
+    @api.one
+    @api.constrains("py3o_is_local_fusion", "py3o_server_id",
+                    "py3o_fusion_filetype")
+    def _check_py3o_server_id(self):
+        is_native = Formats().get_format(self.py3o_fusion_filetype)
+        if ((not is_native or not self.py3o_is_local_fusion) and
+                not self.py3o_server_id):
+            raise ValidationError(
+                "Can not use not native format in local fusion. "
+                "Please specify a Fusion Server")
+
+    @api.model
+    def _get_py3o_fusion_filetypes(self):
+        formats = Formats()
+        names = formats.get_known_format_names()
+        selections = []
+        for name in names:
+            selections.append((name, name))
+        return selections
+
+    py3o_fusion_filetype = fields.Selection(
+        selection="_get_py3o_fusion_filetypes",
+        string="Output Format")
     py3o_template_id = fields.Many2one(
         'py3o.template',
         "Template")
+    py3o_is_local_fusion = fields.Boolean(
+        "Local fusion",
+        help="Odt to Odt will be processed without sever. You must use this "
+             "mode if you call methods on your model into the template.",
+        default=False)
+    py3o_server_id = fields.Many2one(
+        "py3o.server"
+        "Fusion server")
     module = fields.Char(
         "Module",
         help="The implementer module that provides this report")
