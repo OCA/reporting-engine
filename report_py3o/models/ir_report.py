@@ -2,15 +2,22 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import os
-from py3o.formats import Formats
 from openerp import api, fields, models, _
 from openerp.report.interface import report_int
 from openerp.exceptions import ValidationError
 from openerp import addons
 from ..py3o_parser import Py3oParser
+import logging
+
+logger = logging.getLogger(__name__)
+
+try:
+    from py3o.formats import Formats
+except ImportError:
+    logger.debug('Cannot import py3o.formats')
 
 
-class ReportXml(models.Model):
+class IrActionsReportXml(models.Model):
     """ Inherit from ir.actions.report.xml to allow customizing the template
     file. The user cam chose a template from a list.
     The list is configurable in the configuration tab, see py3o_template.py
@@ -22,8 +29,8 @@ class ReportXml(models.Model):
     @api.constrains("py3o_filetype", "report_type")
     def _check_py3o_filetype(self):
         if self.report_type == "py3o" and not self.py3o_filetype:
-            raise ValidationError(
-                "Field 'Output Format' is required for Py3O report")
+            raise ValidationError(_(
+                "Field 'Output Format' is required for Py3O report"))
 
     @api.one
     @api.constrains("py3o_is_local_fusion", "py3o_server_id",
@@ -32,9 +39,9 @@ class ReportXml(models.Model):
         is_native = Formats().get_format(self.py3o_filetype)
         if ((not is_native or not self.py3o_is_local_fusion) and
                 not self.py3o_server_id):
-            raise ValidationError(
+            raise ValidationError(_(
                 "Can not use not native format in local fusion. "
-                "Please specify a Fusion Server")
+                "Please specify a Fusion Server"))
 
     @api.model
     def _get_py3o_filetypes(self):
@@ -55,14 +62,14 @@ class ReportXml(models.Model):
         'py3o.template',
         "Template")
     py3o_is_local_fusion = fields.Boolean(
-        "Local fusion",
+        "Local Fusion",
         help="Native formats will be processed without a server. "
              "You must use this mode if you call methods on your model into "
              "the template.",
         default=True)
     py3o_server_id = fields.Many2one(
         "py3o.server",
-        "Fusion server")
+        "Fusion Server")
     module = fields.Char(
         "Module",
         help="The implementer module that provides this report")
@@ -116,4 +123,4 @@ class ReportXml(models.Model):
         if new_report:
             return new_report
         else:
-            return super(ReportXml, self)._lookup_report(cr, name)
+            return super(IrActionsReportXml, self)._lookup_report(cr, name)

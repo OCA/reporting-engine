@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="py3o_server_configuration_form_view" model="ir.ui.view">
-            <field name="name">py3o.server.configuration.form.view</field>
-            <field name="model">py3o.server</field>
-            <field name="arch" type="xml">
-                <form string="Py3o Server Configuration" version="7.0">
-                    <sheet>
-                        <group>
-                            <field name="url" />
-                            <field name="is_active" />
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
 
-        <record id="py3o_server_configuration_tree_view" model="ir.ui.view">
-            <field name="name">py3o.server.configuration.tree.view</field>
-            <field name="model">py3o.server</field>
-            <field name="arch" type="xml">
-                <tree string="Py3o Server Configuration" version="7.0">
-                    <field name="url" />
+    <record id="py3o_server_configuration_form_view" model="ir.ui.view">
+        <field name="name">py3o.server.configuration.form.view</field>
+        <field name="model">py3o.server</field>
+        <field name="arch" type="xml">
+            <form string="Py3o Server Configuration">
+                <group name="main">
+                    <field name="url" widget="url"/>
                     <field name="is_active" />
-                </tree>
-            </field>
-        </record>
+                </group>
+            </form>
+        </field>
+    </record>
 
-        <record id="py3o_server_configuration_action" model="ir.actions.act_window">
-            <field name="name">py3o.server.configuration.action</field>
-            <field name="res_model">py3o.server</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+    <record id="py3o_server_configuration_tree_view" model="ir.ui.view">
+        <field name="name">py3o.server.configuration.tree.view</field>
+        <field name="model">py3o.server</field>
+        <field name="arch" type="xml">
+            <tree string="Py3o Servers Configuration">
+                <field name="url" />
+                <field name="is_active" />
+            </tree>
+        </field>
+    </record>
 
-        <menuitem id="py3o_server_configuration_menu"
-            name="Py3o Server Configuration"
-            parent="py3o_config_menu"
-            action="py3o_server_configuration_action" />
-    </data>
+    <record id="py3o_server_configuration_action" model="ir.actions.act_window">
+        <field name="name">Py3o Servers</field>
+        <field name="res_model">py3o.server</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="py3o_server_configuration_menu"
+        parent="py3o_config_menu"
+        action="py3o_server_configuration_action" />
+
 </odoo>
