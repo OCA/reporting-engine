@@ -9,14 +9,23 @@ import sys
 from base64 import b64decode
 import requests
 from tempfile import NamedTemporaryFile
-from py3o.template.helpers import Py3oConvertor
-from py3o.template import Template
-from py3o.formats import Formats
-
 from openerp import _
 from openerp import exceptions
 from openerp.report.report_sxw import report_sxw
 from openerp import registry
+import logging
+
+logger = logging.getLogger(__name__)
+
+try:
+    from py3o.template.helpers import Py3oConvertor
+    from py3o.template import Template
+except ImportError:
+    logger.debug('Cannot import py3o.template')
+try:
+    from py3o.formats import Formats
+except ImportError:
+    logger.debug('Cannot import py3o.formats')
 
 
 _extender_functions = {}
