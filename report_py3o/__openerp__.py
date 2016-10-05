@@ -2,7 +2,7 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    'name': 'LibreOffice Report Engine',
+    'name': 'Py3o Report Engine',
     'summary': 'Reporting engine based on Libreoffice (ODT -> ODT, '
                'ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)',
     'version': '9.0.1.0.0',
@@ -10,10 +10,7 @@
     'license': 'AGPL-3',
     'author': 'XCG Consulting,Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
-    'depends': [
-        'base',
-        'report',
-    ],
+    'depends': ['report'],
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats']
