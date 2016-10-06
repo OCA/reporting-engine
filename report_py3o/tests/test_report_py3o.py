@@ -9,8 +9,6 @@ from openerp.tests.common import TransactionCase
 import openerp.tests
 
 
-@openerp.tests.common.at_install(False)
-@openerp.tests.common.post_install(True)
 class TestReportPy3o(TransactionCase):
 
     def test_reports(self):
