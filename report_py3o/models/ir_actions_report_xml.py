@@ -2,12 +2,12 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import os
-from openerp import api, fields, models, _
+import logging
+from openerp import api, fields, models, SUPERUSER_ID, _
 from openerp.report.interface import report_int
 from openerp.exceptions import ValidationError
 from openerp import addons
 from ..py3o_parser import Py3oParser
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +36,7 @@ class IrActionsReportXml(models.Model):
     @api.constrains("py3o_is_local_fusion", "py3o_server_id",
                     "py3o_filetype")
     def _check_py3o_server_id(self):
-        is_native = Formats().get_format(self.py3o_filetype)
+        is_native = Formats().get_format(self.py3o_filetype).native
         if ((not is_native or not self.py3o_is_local_fusion) and
                 not self.py3o_server_id):
             raise ValidationError(_(
@@ -97,23 +97,23 @@ class IrActionsReportXml(models.Model):
             if not isinstance(new_report, Py3oParser):
                 new_report = None
         else:
-            cr.execute(
-                'SELECT * '
-                'FROM ir_act_report_xml '
-                'WHERE report_name=%s AND report_type=%s',
-                (name, 'py3o')
-            )
-            r = cr.dictfetchone()
-            if r:
+            report_data = self.search_read(
+                cr, SUPERUSER_ID,
+                [("report_name", "=", name),
+                 ("report_type", "=", "py3o")],
+                ['parser', 'model', 'report_name', 'report_rml', 'header'],
+                limit=1)
+            if report_data:
+                report_data = report_data[0]
                 kwargs = {}
-                if r['parser']:
-                    kwargs['parser'] = getattr(addons, r['parser'])
+                if report_data['parser']:
+                    kwargs['parser'] = getattr(addons, report_data['parser'])
 
                 new_report = Py3oParser(
-                    'report.' + r['report_name'],
-                    r['model'],
-                    os.path.join('addons', r['report_rml'] or '/'),
-                    header=r['header'],
+                    'report.' + report_data['report_name'],
+                    report_data['model'],
+                    os.path.join('addons', report_data['report_rml'] or '/'),
+                    header=report_data['header'],
                     register=False,
                     **kwargs
                 )
