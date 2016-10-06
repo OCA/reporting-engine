@@ -10,7 +10,7 @@
     "website": "https://odoo-community.org/",
     "license": "AGPL-3",
     "application": False,
-    "installable": True,
+    'installable': False,
     'data': [
         'views/layouts.xml',
     ],
