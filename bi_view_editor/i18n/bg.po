@@ -10,11 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Finnish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/fi/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fi\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_view_editor
@@ -46,12 +46,12 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,create_uid:0
 msgid "Created by"
-msgstr "Luonut"
+msgstr "Създадено от"
 
 #. module: bi_view_editor
 #: field:bve.view,create_date:0
 msgid "Created on"
-msgstr "Luotu"
+msgstr "Създадено на"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
@@ -87,7 +87,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr "Nimi"
+msgstr ""
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -118,17 +118,17 @@ msgstr "ID"
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
 msgid "Last Modified on"
-msgstr "Viimeksi muokattu"
+msgstr "Последно обновено на"
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
 msgid "Last Updated by"
-msgstr "Viimeksi päivittänyt"
+msgstr "Последно обновено от"
 
 #. module: bi_view_editor
 #: field:bve.view,write_date:0
 msgid "Last Updated on"
-msgstr "Viimeksi päivitetty"
+msgstr "Последно обновено на"
 
 #. module: bi_view_editor
 #: field:bve.view,model_name:0
@@ -138,12 +138,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr "Mallit"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -174,7 +174,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr "Tila"
+msgstr ""
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
