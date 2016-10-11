@@ -22,7 +22,7 @@ An example of XLSX report for partners:
 
 A python class ::
 
-    from openerp.addons.report_xlsx.report.report_xlsx import ReportXlsx
+    from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
 
     class PartnerXlsx(ReportXlsx):
     
