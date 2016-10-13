@@ -4,8 +4,8 @@
 
 from cStringIO import StringIO
 
-from openerp.report.report_sxw import report_sxw
-from openerp.api import Environment
+from odoo.report.report_sxw import report_sxw
+from odoo.api import Environment
 
 import logging
 _logger = logging.getLogger(__name__)
