@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from openerp import fields, models
+from odoo import fields, models
 
 
 class Py3oServer(models.Model):
