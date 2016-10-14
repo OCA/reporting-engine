@@ -10,7 +10,7 @@
               'Odoo Community Association (OCA)',
     'website': "http://acsone.eu",
     'category': 'Reporting',
-    'version': '9.0.1.0.0',
+    'version': '9.0.1.0.1',
     'license': 'AGPL-3',
     'external_dependencies': {'python': ['xlsxwriter']},
     'depends': [
