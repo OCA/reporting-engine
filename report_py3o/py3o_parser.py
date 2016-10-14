@@ -9,10 +9,9 @@ import sys
 from base64 import b64decode
 import requests
 from tempfile import NamedTemporaryFile
-from openerp import _
-from openerp import exceptions
-from openerp.report.report_sxw import report_sxw
-from openerp import registry
+from odoo import api, _
+from odoo import exceptions
+from odoo.report.report_sxw import report_sxw
 import logging
 
 logger = logging.getLogger(__name__)
@@ -77,12 +76,12 @@ class Py3oParser(report_sxw):
         will fallback to the template file referenced in the report definition.
 
         @param report_obj: a recordset representing the report defintion
-        @type report_obj: openerp.model.recordset instance
+        @type report_obj: odoo.model.recordset instance
 
         @returns: string or buffer containing the template data
 
         @raises: TemplateNotFound which is a subclass of
-        openerp.exceptions.DeferredException
+        odoo.exceptions.DeferredException
         """
 
         tmpl_data = None
@@ -99,7 +98,7 @@ class Py3oParser(report_sxw):
             if report_obj.module:
                 # if the default is defined
                 flbk_filename = pkg_resources.resource_filename(
-                    "openerp.addons.%s" % report_obj.module,
+                    "odoo.addons.%s" % report_obj.module,
                     tmpl_name,
                 )
             elif os.path.isabs(tmpl_name):
@@ -203,22 +202,16 @@ class Py3oParser(report_sxw):
     def create(self, cr, uid, ids, data, context=None):
         """ Override this function to handle our py3o report
         """
-        pool = registry(cr.dbname)
-        ir_action_report_obj = pool['ir.actions.report.xml']
-        report_xml_ids = ir_action_report_obj.search(
-            cr, uid, [('report_name', '=', self.name[7:])], context=context
-        )
-        if not report_xml_ids:
+        env = api.Environment(cr, uid, context)
+        report_xmls = env['ir.actions.report.xml'].search(
+            [('report_name', '=', self.name[7:])])
+        if not report_xmls:
             return super(Py3oParser, self).create(
                 cr, uid, ids, data, context=context
             )
 
-        report_xml = ir_action_report_obj.browse(
-            cr, uid, report_xml_ids[0], context=context
-        )
-
         result = self.create_source_pdf(
-            cr, uid, ids, data, report_xml, context
+            cr, uid, ids, data, report_xmls[0], context
         )
 
         if not result:
