@@ -3,10 +3,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import os
 import logging
-from openerp import api, fields, models, SUPERUSER_ID, _
-from openerp.report.interface import report_int
-from openerp.exceptions import ValidationError
-from openerp import addons
+from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo.report.interface import report_int
+from odoo.exceptions import ValidationError
+from odoo import addons
 from ..py3o_parser import Py3oParser
 
 logger = logging.getLogger(__name__)
@@ -85,11 +85,12 @@ class IrActionsReportXml(models.Model):
         ))
     report_type = fields.Selection(selection_add=[('py3o', "Py3o")])
 
-    @api.cr
-    def _lookup_report(self, cr, name):
+    @api.model_cr
+    def _lookup_report(self, name):
         """Look up a report definition.
         """
-
+        # START section copied from odoo/addons/base/ir/ir_actions.py
+        # with small adaptations
         # First lookup in the deprecated place, because if the report
         # definition has not been updated, it is more likely the correct
         # definition is there. Only reports with custom parser
@@ -99,14 +100,12 @@ class IrActionsReportXml(models.Model):
             if not isinstance(new_report, Py3oParser):
                 new_report = None
         else:
-            report_data = self.search_read(
-                cr, SUPERUSER_ID,
-                [("report_name", "=", name),
-                 ("report_type", "=", "py3o")],
-                ['parser', 'model', 'report_name', 'report_rml', 'header'],
-                limit=1)
+            self._cr.execute(
+                "SELECT * FROM ir_act_report_xml "
+                "WHERE report_name=%s AND report_type=%s", (name, 'py3o'))
+            report_data = self._cr.dictfetchone()
+            # END section copied from odoo/addons/base/ir/ir_actions.py
             if report_data:
-                report_data = report_data[0]
                 kwargs = {}
                 if report_data['parser']:
                     kwargs['parser'] = getattr(addons, report_data['parser'])
@@ -125,4 +124,4 @@ class IrActionsReportXml(models.Model):
         if new_report:
             return new_report
         else:
-            return super(IrActionsReportXml, self)._lookup_report(cr, name)
+            return super(IrActionsReportXml, self)._lookup_report(name)
