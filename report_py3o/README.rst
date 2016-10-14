@@ -34,20 +34,134 @@ You must install 2 additionnal python libs:
   pip install py3o.template
   pip install py3o.formats
 
-If you want to convert the ODT or ODS report in another format, you need several additionnal components and Python libs:
+To allow the conversion of ODT or ODS reports to other formats (PDF, DOC, DOCX, etc.), you must install several additionnal components and Python libs:
 
-* `Py3o Fusion server <https://bitbucket.org/faide/py3o.fusion>`_
-* `Py3o render server <https://bitbucket.org/faide/py3o.renderserver>`_
-* Libreoffice started in the background in headless mode.
+* `Py3o Fusion server <https://bitbucket.org/faide/py3o.fusion>`_,
+* `Py3o render server <https://bitbucket.org/faide/py3o.renderserver>`_,
+* a Java Runtime Environment (JRE), which can be OpenJDK,
+* Libreoffice started in the background in headless mode,
+* the Java driver for Libreoffice (Juno).
 
-TODO : continue
+It is also possible to use the Python driver for Libreoffice (PyUNO), but it is recommended to use the Java driver because it is more stable.
+
+The installation procedure below uses the Java driver. It has been successfully tested on Ubuntu 16.04 LTS ; if you use another OS, you may have to change a few details.
+
+Installation of py3o.fusion:
+
+.. code::
+
+  pip install py3o.fusion
+  pip install service-identity
+
+Installation of py3o.renderserver:
+
+.. code::
+
+  pip install py3o.renderserver
+
+Installation of Libreoffice and JRE on Debian/Ubuntu:
+
+.. code::
+
+  sudo apt-get install default-jre ure libreoffice-java-common libreoffice-writer
+
+At the end, with the dependencies, you should have 6 py3o python libs:
+
+.. code::
+
+  % pip freeze | grep py3o
+  py3o.formats==0.3
+  py3o.fusion==0.8.6.dev1
+  py3o.renderclient==0.2
+  py3o.renderers.juno==0.7
+  py3o.renderserver==0.5.1.dev1
+  py3o.template==0.9.10.dev1
+  py3o.types==0.1.1
+
+Start the Py3o Fusion server:
+
+.. code::
+
+  start-py3o-fusion --debug -s localhost
+
+Start the Py3o render server:
+
+.. code::
+
+  start-py3o-renderserver --java=/usr/lib/jvm/default-java/jre/lib/amd64/server/libjvm.so --ure=/usr/lib --office=/usr/lib/libreoffice --driver=juno --sofficeport=8997
+
+On the output of the Py3o render server, the first line looks like:
+
+.. code::
+
+  DEBUG:root:Starting JVM: /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/libjvm.so with options: -Djava.class.path=/usr/local/lib/python2.7/dist-packages/py3o/renderers/juno/py3oconverter.jar:/usr/lib/ure/share/java/juh.jar:/usr/lib/ure/share/java/jurt.jar:/usr/lib/ure/share/java/ridl.jar:/usr/lib/ure/share/java/unoloader.jar:/usr/lib/ure/share/java/java_uno.jar:/usr/lib/libreoffice/program/classes/unoil.jar -Xmx150M
+
+After **-Djava.class.path**, there is a list of Java libs with *.jar* extension ; check that each JAR file is really present on your filesystem. On Ubuntu 16.04 LTS, the package *ure* installs several libs in another directory:
+
+* /usr/lib/ure/share/java/juh.jar is located in /usr/share/java/juh.jar
+* /usr/lib/ure/share/java/jurt.jar is located in /usr/share/java/jurt.jar
+* /usr/lib/ure/share/java/ridl.jar is located in /usr/share/java/ridl.jar
+* /usr/lib/ure/share/java/unoloader.jar is located in /usr/share/java/unoloader.jar
+* /usr/lib/ure/share/java/java_uno.jar is located in /usr/share/java/java_uno.jar
+
+To work around this problem, you can create a symlink:
+
+.. code::
+
+  sudo ln -s /usr /ure
+
+and then use **--ure=/** instead of **--ure=/usr/lib** in the command line of *start-py3o-renderserver*.
+
+To check that the Py3o Fusion server is running fine, visit the URL http://<IP_address>:8765/form. On this web page, under the section *Target format*, make sure that you have a line *This server currently supports these formats: ods, odt, docx, doc, html, docbook, pdf, xls.*.
 
 Configuration
 =============
 
-If you want to convert the report in another format, go to the menu *Configuration > Technical > Reports > Py3o > Py3o Servers* and create a new Py3o server with its URL (for example:  http://localhost:8765/form).
+For example, to replace the native invoice report by a custom py3o report, add the following XML file in your custom module:
 
-TODO: continue
+.. code::
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+
+  <record id="account.account_invoices" model="ir.actions.report.xml">
+      <field name="name">Invoice</field>
+      <field name="model">account.invoice</field>
+      <field name="report_name">account.report_invoice</field>
+      <field name="report_type">py3o</field>
+      <field name="py3o_filetype">odt</field>
+      <field name="module">my_custom_module_base</field>
+      <field name="py3o_template_fallback">report/account_invoice.odt</field>
+  </record>
+
+  </odoo>
+
+where *my_custom_module_base* is the name of the custom Odoo module. In this example, the invoice ODT file is located in *my_custom_module_base/report/account_invoice.odt*.
+
+If you want an invoice in PDF format instead of ODT format, the XML file should look like:
+
+.. code::
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+
+  <record id="local_py3o_server" model="py3o.server">
+      <field name="url">http://localhost:8765/form</field>
+  </record>
+
+  <record id="account.account_invoices" model="ir.actions.report.xml">
+      <field name="name">Invoice</field>
+      <field name="model">account.invoice</field>
+      <field name="report_name">account.report_invoice</field>
+      <field name="report_type">py3o</field>
+      <field name="py3o_filetype">pdf</field>
+      <field name="py3o_server_id" ref="local_py3o_server"/>
+      <field name="module">my_custom_module_base</field>
+      <field name="py3o_template_fallback">report/account_invoice.odt</field>
+  </record>
+
+  </odoo>
+
 
 Usage
 =====
