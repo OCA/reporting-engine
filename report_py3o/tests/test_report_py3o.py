@@ -8,8 +8,8 @@ import pkg_resources
 
 from py3o.formats import Formats
 
-from openerp.tests.common import TransactionCase
-from openerp.exceptions import ValidationError
+from odoo.tests.common import TransactionCase
+from odoo.exceptions import ValidationError
 
 from ..py3o_parser import TemplateNotFound
 from base64 import b64encode
@@ -57,7 +57,7 @@ class TestReportPy3o(TransactionCase):
 
     def test_reports(self):
         report = self.env.ref("report_py3o.res_users_report_py3o")
-        with mock.patch('openerp.addons.report_py3o.py3o_parser.'
+        with mock.patch('odoo.addons.report_py3o.py3o_parser.'
                         'Py3oParser.create_single_pdf') as patched_pdf:
             # test the call the the create method inside our custom parser
             report.render_report(self.env.user.ids,
@@ -86,7 +86,7 @@ class TestReportPy3o(TransactionCase):
         # path
         tmpl_name = report.py3o_template_fallback
         flbk_filename = pkg_resources.resource_filename(
-            "openerp.addons.%s" % report.module,
+            "odoo.addons.%s" % report.module,
             tmpl_name)
         self.assertTrue(os.path.exists(flbk_filename))
         res = report.render_report(
