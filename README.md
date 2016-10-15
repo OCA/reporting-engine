@@ -22,7 +22,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 9.0.1.0.0 | Report Qweb Element Page Visibility
-[report_xlsx](report_xlsx/) | 9.0.1.0.0 | Base module to create xlsx report
+[report_xlsx](report_xlsx/) | 9.0.1.0.1 | Base module to create xlsx report
 
 Unported addons
 ---------------
