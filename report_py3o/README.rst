@@ -8,7 +8,7 @@ Report Py3o
 
 The py3o reporting engine is a reporting engine for Odoo based on `Libreoffice <http://www.libreoffice.org/>`_:
 
-* the report is created with Libreoffice (ODT or ODS),
+* the report is created with Libreoffice (ODT or ODS files) or any other software that generate files in `OpenDocument <https://en.wikipedia.org/wiki/OpenDocument>`_ format,
 * the report is stored on the server in OpenDocument format (.odt or .ods file)
 * the report is sent to the user in OpenDocument format or in any output format supported by Libreoffice (PDF, HTML, DOC, DOCX, Docbook, XLS, etc.)
 
@@ -111,6 +111,12 @@ To work around this problem, you can create a symlink:
   sudo ln -s /usr /ure
 
 and then use **--ure=/** instead of **--ure=/usr/lib** in the command line of *start-py3o-renderserver*.
+
+Start Libreoffice in headless mode:
+
+.. code::
+
+  libreoffice --nologo --norestore --invisible --headless --nocrashreport --nofirststartwizard --nodefault --accept="socket,host=localhost,port=8997;urp;"
 
 To check that the Py3o Fusion server is running fine, visit the URL http://<IP_address>:8765/form. On this web page, under the section *Target format*, make sure that you have a line *This server currently supports these formats: ods, odt, docx, doc, html, docbook, pdf, xls.*.
 
