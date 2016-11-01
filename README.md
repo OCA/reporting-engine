@@ -17,6 +17,21 @@ The convention is to use a suffix to each module to indicate that it's for using
 It can contain also another utilities directly involved with reports (like merge/split utils, checkers, signing tools and so on).
 
 [//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[report_xlsx](report_xlsx/) | 10.0.1.0.0 | Base module to create xlsx report
+
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+[report_custom_filename](report_custom_filename/) | 8.0.1.0.0 (unported) | Configure the filename to use when downloading a report
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 9.0.1.0.0 (unported) | Report Qweb Element Page Visibility
+[report_xls](report_xls/) | 8.0.0.6.1 (unported) | Excel report engine
+
 [//]: # (end addons)
 
 ----
