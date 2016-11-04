@@ -65,7 +65,7 @@ Installation of Libreoffice and JRE on Debian/Ubuntu:
 
   sudo apt-get install default-jre ure libreoffice-java-common libreoffice-writer
 
-At the end, with the dependencies, you should have 6 py3o python libs:
+At the end, with the dependencies, you should have the following py3o python libs:
 
 .. code::
 
