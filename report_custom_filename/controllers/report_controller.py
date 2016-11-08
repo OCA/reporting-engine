@@ -19,7 +19,7 @@
 #
 ##############################################################################
 from openerp import http
-from openerp.addons.email_template import email_template
+from openerp.addons.mail.models import mail_template
 from openerp.addons.report.controllers.main import ReportController
 from openerp.addons.web.controllers.main import content_disposition
 
@@ -42,7 +42,7 @@ class ReportController(ReportController):
                 continue
             objects = http.request.session.model(report.model)\
                 .browse(docids or [])
-            generated_filename = email_template.mako_template_env\
+            generated_filename = mail_template.mako_template_env\
                 .from_string(report.download_filename)\
                 .render({
                     'objects': objects,

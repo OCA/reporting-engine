@@ -21,7 +21,7 @@
 import simplejson
 from openerp import http
 from openerp.addons.web.controllers import main
-from openerp.addons.email_template import email_template
+from openerp.addons.mail.models import mail_template
 
 
 class Reports(main.Reports):
@@ -41,7 +41,7 @@ class Reports(main.Reports):
                 continue
             objects = http.request.session.model(context['active_model'])\
                 .browse(context['active_ids'])
-            generated_filename = email_template.mako_template_env\
+            generated_filename = mail_template.mako_template_env\
                 .from_string(report.download_filename)\
                 .render({
                     'objects': objects,
