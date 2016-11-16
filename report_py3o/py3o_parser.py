@@ -148,7 +148,7 @@ class Py3oParser(report_sxw):
 
         in_stream = StringIO(tmpl_data)
         out_stream = StringIO()
-        template = Template(in_stream, out_stream)
+        template = Template(in_stream, out_stream, escape_false=True)
         localcontext = parser_instance.localcontext
         if report_xml.py3o_is_local_fusion:
             template.render(localcontext)
