@@ -10,12 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2016-08-15 22:02+0000\n"
 "PO-Revision-Date: 2016-03-28 12:30+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Croatian (http://www.transifex.com/oca/OCA-reporting-engine-7-0/language/hr/)\n"
+"Language-Team: Spanish (Peru) (http://www.transifex.com/oca/OCA-reporting-engine-7-0/language/es_PE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: hr\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: es_PE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: base_report_assembler
 #: field:assembled.report,model:0
@@ -25,12 +25,12 @@ msgstr ""
 #. module: base_report_assembler
 #: field:assembled.report,sequence:0
 msgid "Sequence"
-msgstr "Sekvenca"
+msgstr "Secuencia"
 
 #. module: base_report_assembler
 #: field:assembled.report,company_id:0
 msgid "Company"
-msgstr "Poduzeće"
+msgstr ""
 
 #. module: base_report_assembler
 #: model:ir.model,name:base_report_assembler.model_assembled_report
@@ -45,4 +45,4 @@ msgstr ""
 #. module: base_report_assembler
 #: model:ir.model,name:base_report_assembler.model_ir_actions_report_xml
 msgid "ir.actions.report.xml"
-msgstr "ir.actions.report.xml"
+msgstr ""
