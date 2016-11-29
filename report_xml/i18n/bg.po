@@ -25,7 +25,7 @@ msgstr ""
 #. module: report_xml
 #: field:report_xml.xsd_checked_report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Име за Показване"
 
 #. module: report_xml
 #: field:report_xml.xsd_checked_report,id:0

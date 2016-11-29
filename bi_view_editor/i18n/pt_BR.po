@@ -31,7 +31,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,action_id:0
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
@@ -92,7 +92,7 @@ msgstr "Nome para Mostrar"
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
-msgstr ""
+msgstr "Rascunho"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:72
@@ -143,7 +143,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -174,7 +174,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
@@ -193,7 +193,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
 msgid "Users"
-msgstr ""
+msgstr "Usuários"
 
 #. module: bi_view_editor
 #: field:bve.view,view_id:0

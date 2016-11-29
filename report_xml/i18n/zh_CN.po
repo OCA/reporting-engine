@@ -25,7 +25,7 @@ msgstr ""
 #. module: report_xml
 #: field:report_xml.xsd_checked_report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "显示名称"
 
 #. module: report_xml
 #: field:report_xml.xsd_checked_report,id:0
@@ -35,7 +35,7 @@ msgstr "ID"
 #. module: report_xml
 #: field:report_xml.xsd_checked_report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "最后修改时间"
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_report

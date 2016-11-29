@@ -87,7 +87,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "显示名称"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -118,7 +118,7 @@ msgstr "ID"
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "最后修改时间"
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
@@ -143,7 +143,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -169,7 +169,7 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "安全"
 
 #. module: bi_view_editor
 #: field:bve.view,state:0

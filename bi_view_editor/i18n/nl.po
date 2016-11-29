@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 19:59+0000\n"
+"POT-Creation-Date: 2016-09-18 04:34+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Dutch (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/nl/)\n"
@@ -46,12 +46,12 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: bi_view_editor
 #: field:bve.view,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
@@ -113,7 +113,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
@@ -123,12 +123,12 @@ msgstr "Laatst bijgewerkt op"
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: bi_view_editor
 #: field:bve.view,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: bi_view_editor
 #: field:bve.view,model_name:0

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2016-09-25 14:00+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Създадено на"
 #. module: report_qweb_signer
 #: field:report.certificate,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Име за Показване"
 
 #. module: report_qweb_signer
 #: field:report.certificate,domain:0
@@ -174,7 +174,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Последователност"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:139

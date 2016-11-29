@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "Ultimo aggiornamento il"
 #. module: report_qweb_signer
 #: field:report.certificate,model_id:0
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 #. module: report_qweb_signer
 #: help:report.certificate,model_id:0
@@ -114,7 +114,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: field:report.certificate,name:0
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: report_qweb_signer
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate

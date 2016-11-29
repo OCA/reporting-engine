@@ -143,7 +143,7 @@ msgstr "Modeli"
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -169,12 +169,12 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "Sigurnost"
 
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0

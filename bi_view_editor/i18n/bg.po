@@ -87,7 +87,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Име за Показване"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -169,7 +169,7 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "Защита"
 
 #. module: bi_view_editor
 #: field:bve.view,state:0
