@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 04:34+0000\n"
+"POT-Creation-Date: 2016-11-29 16:14+0000\n"
 "PO-Revision-Date: 2016-03-11 15:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: French (Switzerland) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/fr_CH/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. module: report_xml_sample
 #: field:report.report_xml_sample.xsd_sample_report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: report_xml_sample
 #: field:report.report_xml_sample.xsd_sample_report,id:0
@@ -35,7 +35,7 @@ msgstr "ID"
 #. module: report_xml_sample
 #: field:report.report_xml_sample.xsd_sample_report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: report_xml_sample
 #: model:ir.actions.report.xml,name:report_xml_sample.sample_report_action
