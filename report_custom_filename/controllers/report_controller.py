@@ -1,25 +1,9 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2015 Therp BV (<http://therp.nl>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2014 Therp BV (<http://therp.nl>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from openerp import http
-from openerp.addons.email_template import email_template
+from openerp.addons.mail.models import mail_template
 from openerp.addons.report.controllers.main import ReportController
 from openerp.addons.web.controllers.main import content_disposition
 
@@ -42,7 +26,7 @@ class ReportController(ReportController):
                 continue
             objects = http.request.session.model(report.model)\
                 .browse(docids or [])
-            generated_filename = email_template.mako_template_env\
+            generated_filename = mail_template.mako_template_env\
                 .from_string(report.download_filename)\
                 .render({
                     'objects': objects,
