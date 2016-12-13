@@ -75,9 +75,11 @@ class Report(models.Model):
                          'all but the first one will be ignored')
 
         for page in PdfFileReader(StringIO(result)).pages:
-            watermark_page = pdf_watermark.getPage(0)
+            watermark_page = pdf.addBlankPage(
+                page.mediaBox.getWidth(), page.mediaBox.getHeight()
+            )
+            watermark_page.mergePage(pdf_watermark.getPage(0))
             watermark_page.mergePage(page)
-            pdf.addPage(watermark_page)
 
         pdf_content = StringIO()
         pdf.write(pdf_content)
