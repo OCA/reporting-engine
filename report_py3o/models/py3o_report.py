@@ -1,24 +1,29 @@
 # -*- coding: utf-8 -*-
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
+# Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+import base64
+from base64 import b64decode
 from cStringIO import StringIO
 import json
-import pkg_resources
+import logging
 import os
-import sys
-from base64 import b64decode
+import pkg_resources
 import requests
+import sys
 from tempfile import NamedTemporaryFile
-from odoo import api, _
 from odoo import exceptions
 from odoo.report.report_sxw import report_sxw
 import logging
+from zipfile import ZipFile, ZIP_DEFLATED
+from openerp import api, fields, models, _
 
 logger = logging.getLogger(__name__)
 
 try:
     from py3o.template.helpers import Py3oConvertor
     from py3o.template import Template
+    from py3o import formats
 except ImportError:
     logger.debug('Cannot import py3o.template')
 try:
@@ -64,11 +69,18 @@ def defautl_extend(report_xml, localcontext):
     localcontext['report_xml'] = report_xml
 
 
-class Py3oParser(report_sxw):
-    """Custom class that use Py3o to render libroffice reports.
-        Code partially taken from CampToCamp's webkit_report."""
+class Py3oReport(models.TransientModel):
+    _name = "py3o.report"
+    _inherit = 'report'
+    _description = "Report Py30"
 
-    def get_template(self, report_obj):
+    ir_actions_report_xml_id = fields.Many2one(
+        comodel_name="ir.actions.report.xml",
+        required=True
+    )
+
+    @api.multi
+    def get_template(self):
         """private helper to fetch the template data either from the database
         or from the default template file provided by the implementer.
 
@@ -76,30 +88,27 @@ class Py3oParser(report_sxw):
         to try and fetch the report template from database. If not found it
         will fallback to the template file referenced in the report definition.
 
-        @param report_obj: a recordset representing the report defintion
-        @type report_obj: odoo.model.recordset instance
-
         @returns: string or buffer containing the template data
 
         @raises: TemplateNotFound which is a subclass of
         odoo.exceptions.DeferredException
         """
-
+        self.ensure_one()
         tmpl_data = None
-
-        if report_obj.py3o_template_id and report_obj.py3o_template_id.id:
+        report_xml = self.ir_actions_report_xml_id
+        if report_xml.py3o_template_id and report_xml.py3o_template_id.id:
             # if a user gave a report template
             tmpl_data = b64decode(
-                report_obj.py3o_template_id.py3o_template_data
+                report_xml.py3o_template_id.py3o_template_data
             )
 
-        elif report_obj.py3o_template_fallback:
-            tmpl_name = report_obj.py3o_template_fallback
+        elif report_xml.py3o_template_fallback:
+            tmpl_name = report_xml.py3o_template_fallback
             flbk_filename = None
-            if report_obj.module:
+            if report_xml.module:
                 # if the default is defined
                 flbk_filename = pkg_resources.resource_filename(
-                    "odoo.addons.%s" % report_obj.module,
+                    "odoo.addons.%s" % report_xml.module,
                     tmpl_name,
                 )
             elif os.path.isabs(tmpl_name):
@@ -119,37 +128,54 @@ class Py3oParser(report_sxw):
 
         return tmpl_data
 
-    def _extend_parser_context(self, parser_instance, report_xml):
+    @api.multi
+    def _extend_parser_context(self, context_instance, report_xml):
         # add default extenders
         for fct in _extender_functions.get(None, []):
-            fct(report_xml, parser_instance.localcontext)
+            fct(report_xml, context_instance.localcontext)
         # add extenders for registered on the template
         xml_id = report_xml.get_external_id().get(report_xml.id)
         if xml_id in _extender_functions:
             for fct in _extender_functions[xml_id]:
-                fct(report_xml, parser_instance.localcontext)
+                fct(report_xml, context_instance.localcontext)
 
-    def create_single_pdf(self, cr, uid, ids, data, report_xml, context=None):
-        """ Overide this function to generate our py3o report
+    @api.multi
+    def _get_parser_context(self, model_instance, data):
+        report_xml = self.ir_actions_report_xml_id
+        context_instance = rml_parse(self.env.cr, self.env.uid,
+                                     report_xml.name,
+                                     context=self.env.context)
+        context_instance.set_context(model_instance, data, model_instance.ids,
+                                     report_xml.report_type)
+        self._extend_parser_context(context_instance, report_xml)
+        return context_instance.localcontext
+
+    @api.multi
+    def _postprocess_report(self, content, res_id, save_in_attachment):
+        if save_in_attachment.get(res_id):
+            attachment = {
+                'name': save_in_attachment.get(res_id),
+                'datas': base64.encodestring(content),
+                'datas_fname': save_in_attachment.get(res_id),
+                'res_model': save_in_attachment.get('model'),
+                'res_id': res_id,
+            }
+            return self.env['ir.attachment'].create(attachment)
+        return False
+
+    @api.multi
+    def _create_single_report(self, model_instance, data, save_in_attachment):
+        """ This function to generate our py3o report
         """
-        if report_xml.report_type != 'py3o':
-            return super(Py3oParser, self).create_single_pdf(
-                cr, uid, ids, data, report_xml, context=context
-            )
+        self.ensure_one()
+        report_xml = self.ir_actions_report_xml_id
 
-        parser_instance = self.parser(cr, uid, self.name2, context=context)
-        parser_instance.set_context(
-            self.getObjects(cr, uid, ids, context),
-            data, ids, report_xml.report_type
-        )
-        self._extend_parser_context(parser_instance, report_xml)
-
-        tmpl_data = self.get_template(report_xml)
+        tmpl_data = self.get_template()
 
         in_stream = StringIO(tmpl_data)
         out_stream = StringIO()
         template = Template(in_stream, out_stream, escape_false=True)
-        localcontext = parser_instance.localcontext
+        localcontext = self._get_parser_context(model_instance, data)
         if report_xml.py3o_is_local_fusion:
             template.render(localcontext)
             in_stream = out_stream
@@ -181,7 +207,7 @@ class Py3oParser(report_sxw):
                 report_xml.py3o_server_id.url, data=fields, files=files)
             if r.status_code != 200:
                 # server says we have an issue... let's tell that to enduser
-                raise exceptions.Warning(
+                raise UserError(
                     _('Fusion server error %s') % r.text,
                 )
 
@@ -189,32 +215,79 @@ class Py3oParser(report_sxw):
             # we do nice chunked reading from the network...
             chunk_size = 1024
             with NamedTemporaryFile(
-                    suffix=filetype,
-                    prefix='py3o-template-'
+                suffix=filetype,
+                prefix='py3o-template-'
             ) as fd:
                 for chunk in r.iter_content(chunk_size):
                     fd.write(chunk)
                 fd.seek(0)
                 # ... but odoo wants the whole data in memory anyways :)
                 res = fd.read()
+        self._postprocess_report(
+            res, model_instance.id, save_in_attachment)
+        return res, "." + self.ir_actions_report_xml_id.py3o_filetype
 
-        return res, filetype
+    @api.multi
+    def _get_or_create_single_report(self, model_instance, data,
+                                     save_in_attachment):
+        self.ensure_one()
+        if save_in_attachment and save_in_attachment[
+                'loaded_documents'].get(model_instance.id):
+            d = save_in_attachment[
+                'loaded_documents'].get(model_instance.id)
+            return d, self.ir_actions_report_xml_id.py3o_filetype
+        return self._create_single_report(
+            model_instance, data, save_in_attachment)
 
-    def create(self, cr, uid, ids, data, context=None):
+    @api.multi
+    def _zip_results(self, results):
+        self.ensure_one()
+        zfname_prefix = self.ir_actions_report_xml_id.name
+        with NamedTemporaryFile(suffix="zip", prefix='py3o-zip-result') as fd:
+            with ZipFile(fd, 'w', ZIP_DEFLATED) as zf:
+                cpt = 0
+                for r, ext in results:
+                    fname = "%s_%d.%s" % (zfname_prefix, cpt, ext)
+                    zf.writestr(fname, r)
+                    cpt += 1
+            fd.seek(0)
+            return fd.read(), 'zip'
+
+    @api.multi
+    def _merge_pdfs(self, results):
+        from pyPdf import PdfFileWriter, PdfFileReader
+        output = PdfFileWriter()
+        for r in results:
+            reader = PdfFileReader(StringIO(r[0]))
+            for page in range(reader.getNumPages()):
+                output.addPage(reader.getPage(page))
+        s = StringIO()
+        output.write(s)
+        return s.getvalue(), formats.FORMAT_PDF
+
+    @api.multi
+    def _merge_results(self, results):
+        self.ensure_one()
+        if not results:
+            return False, False
+        if len(results) == 1:
+            return results[0]
+        filetype = self.ir_actions_report_xml_id.py3o_filetype
+        if filetype == formats.FORMAT_PDF:
+            return self._merge_pdfs(results)
+        else:
+            return self._zip_results(results)
+
+    @api.multi
+    def create_report(self, res_ids, data):
         """ Override this function to handle our py3o report
         """
-        env = api.Environment(cr, uid, context)
-        report_xmls = env['ir.actions.report.xml'].search(
-            [('report_name', '=', self.name[7:])])
-        if not report_xmls:
-            return super(Py3oParser, self).create(
-                cr, uid, ids, data, context=context
-            )
-
-        result = self.create_source_pdf(
-            cr, uid, ids, data, report_xmls[0], context
-        )
-
-        if not result:
-            return False, False
-        return result
+        model_instances = self.env[self.ir_actions_report_xml_id.model].browse(
+            res_ids)
+        save_in_attachment = self._check_attachment_use(
+            model_instances, self.ir_actions_report_xml_id) or {}
+        results = []
+        for model_instance in model_instances:
+            results.append(self._get_or_create_single_report(
+                model_instance, data, save_in_attachment))
+        return self._merge_results(results)
