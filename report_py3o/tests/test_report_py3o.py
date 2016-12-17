@@ -11,7 +11,7 @@ from py3o.formats import Formats
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 
-from ..py3o_parser import TemplateNotFound
+from ..models.py3o_report import TemplateNotFound
 from base64 import b64encode
 
 
@@ -56,9 +56,10 @@ class TestReportPy3o(TransactionCase):
             "Field 'Output Format' is required for Py3O report")
 
     def test_reports(self):
+        py3o_report = self.env['py3o.report']
         report = self.env.ref("report_py3o.res_users_report_py3o")
-        with mock.patch('odoo.addons.report_py3o.py3o_parser.'
-                        'Py3oParser.create_single_pdf') as patched_pdf:
+        with mock.patch.object(
+                py3o_report.__class__, '_create_single_report') as patched_pdf:
             # test the call the the create method inside our custom parser
             report.render_report(self.env.user.ids,
                                  report.report_name,
@@ -98,7 +99,7 @@ class TestReportPy3o(TransactionCase):
             report.render_report(
                 self.env.user.ids, report.report_name, {})
 
-        # the template can also be provivided as an abspaath
+        # the template can also be provided as an abspaath
         report.py3o_template_fallback = flbk_filename
         res = report.render_report(
             self.env.user.ids, report.report_name, {})
