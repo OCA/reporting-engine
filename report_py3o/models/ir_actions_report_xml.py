@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-import os
 import logging
 from odoo import api, fields, models, _
 from odoo.report.interface import report_int
 from odoo.exceptions import ValidationError
 from odoo import addons
-from ..py3o_parser import Py3oParser
 
 logger = logging.getLogger(__name__)
 
@@ -85,43 +83,14 @@ class IrActionsReportXml(models.Model):
         ))
     report_type = fields.Selection(selection_add=[('py3o', "Py3o")])
 
-    @api.model_cr
-    def _lookup_report(self, name):
-        """Look up a report definition.
-        """
-        # START section copied from odoo/addons/base/ir/ir_actions.py
-        # with small adaptations
-        # First lookup in the deprecated place, because if the report
-        # definition has not been updated, it is more likely the correct
-        # definition is there. Only reports with custom parser
-        # specified in Python are still there.
-        if 'report.' + name in report_int._reports:
-            new_report = report_int._reports['report.' + name]
-            if not isinstance(new_report, Py3oParser):
-                new_report = None
-        else:
-            self._cr.execute(
-                "SELECT * FROM ir_act_report_xml "
-                "WHERE report_name=%s AND report_type=%s", (name, 'py3o'))
-            report_data = self._cr.dictfetchone()
-            # END section copied from odoo/addons/base/ir/ir_actions.py
-            if report_data:
-                kwargs = {}
-                if report_data['parser']:
-                    kwargs['parser'] = getattr(addons, report_data['parser'])
-
-                new_report = Py3oParser(
-                    'report.' + report_data['report_name'],
-                    report_data['model'],
-                    os.path.join('addons', report_data['report_rml'] or '/'),
-                    header=report_data['header'],
-                    register=False,
-                    **kwargs
-                )
-            else:
-                new_report = None
-
-        if new_report:
-            return new_report
-        else:
-            return super(IrActionsReportXml, self)._lookup_report(name)
+    @api.model
+    def render_report(self, res_ids, name, data):
+        action_py3o_report = self.search(
+            [("report_name", "=", name),
+             ("report_type", "=", "py3o")])
+        if action_py3o_report:
+            return self.env['py3o.report'].create({
+                'ir_actions_report_xml_id': action_py3o_report.id
+            }).create_report(res_ids, data)
+        return super(IrActionsReportXml, self).render_report(
+            res_ids, name, data)
