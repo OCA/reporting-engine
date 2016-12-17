@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_custom_filename
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: reporting-engine (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-03 04:09+0000\n"
+"PO-Revision-Date: 2016-03-11 15:45+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/pt_PT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: report_custom_filename
+#: field:ir.actions.report.xml,download_filename:0
+msgid "Download filename"
+msgstr "Nome do ficheiro para descarregamento"
+
+#. module: report_custom_filename
+#: help:ir.actions.report.xml,download_filename:0
+msgid ""
+"Fill in this field to have a custom file name when downloading this report. This string is evaluated as a jinja2 expression.\n"
+"You can use python expressions, `objects` is a browse record list of the objects for which the report is being generated.\n"
+"Check for this list's length to determine if it is a report being printed for multiple records or not. You also have access to `o`, which is the first record in the list.\n"
+"For qweb reports, the variable `ext` gives you the requested format's extension"
+msgstr "Preencha este campo para obter um nome de ficheiro personalizado quando descarregar este relatório. O texto será avaliado como uma expressão jinja2. \nPode usar expressões python e, nesse caso, `objects` é uma lista dos objetos para os quais o relatório está a ser gerado.\nCheck for this list's length to determine if it is a report being printed for multiple records or not. You also have access to `o`, which is the first record in the list.\nEm relatórios qweb, a variável `ext` fornece-lhe a extensão do formato requerido."

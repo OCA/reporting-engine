@@ -138,7 +138,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modèles"
 
 #. module: bi_view_editor
 #: field:bve.view,name:0
