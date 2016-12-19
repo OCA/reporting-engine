@@ -61,6 +61,7 @@ def defautl_extend(report_xml, localcontext):
     # add the base64decode function to be able do decode binary fields into
     # the template
     localcontext['b64decode'] = b64decode
+    localcontext['report_xml'] = report_xml
 
 
 class Py3oParser(report_sxw):
