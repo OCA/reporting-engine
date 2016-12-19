@@ -197,7 +197,7 @@ class Py3oParser(report_sxw):
                 # ... but odoo wants the whole data in memory anyways :)
                 res = fd.read()
 
-        return res, "." + filetype
+        return res, filetype
 
     def create(self, cr, uid, ids, data, context=None):
         """ Override this function to handle our py3o report
