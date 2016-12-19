@@ -2,7 +2,7 @@
 # Copyright 2014 Therp BV (<http://therp.nl>).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import simplejson
+import json
 from openerp import http
 from openerp.addons.web.controllers import main
 from openerp.addons.mail.models import mail_template
@@ -13,7 +13,7 @@ class Reports(main.Reports):
     @main.serialize_exception
     def index(self, action, token):
         result = super(Reports, self).index(action, token)
-        action = simplejson.loads(action)
+        action = json.loads(action)
         context = dict(http.request.context)
         context.update(action["context"])
         report_xml = http.request.session.model('ir.actions.report.xml')
