@@ -78,7 +78,7 @@ class TestReportPy3o(TransactionCase):
             magick_response.iter_content.return_value = "test result"
             res = report.render_report(
                 self.env.user.ids, report.report_name, {})
-            self.assertEqual(('test result', '.pdf'), res)
+            self.assertEqual(('test result', 'pdf'), res)
 
     def test_report_template_configs(self):
         report = self.env.ref("report_py3o.res_users_report_py3o")
