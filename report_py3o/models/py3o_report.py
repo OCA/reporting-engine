@@ -12,11 +12,12 @@ import pkg_resources
 import requests
 import sys
 from tempfile import NamedTemporaryFile
-from odoo import exceptions
-from odoo.report.report_sxw import report_sxw
 import logging
 from zipfile import ZipFile, ZIP_DEFLATED
+
+from odoo.exceptions import UserError
 from openerp import api, fields, models, _
+from odoo.report.report_sxw import rml_parse
 
 logger = logging.getLogger(__name__)
 
