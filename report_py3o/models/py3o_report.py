@@ -8,16 +8,18 @@ from cStringIO import StringIO
 import json
 import logging
 import os
+from contextlib import closing
+
 import pkg_resources
 import requests
 import sys
-from tempfile import NamedTemporaryFile
-import logging
+import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 
+from odoo.exceptions import AccessError
 from odoo.exceptions import UserError
-from openerp import api, fields, models, _
 from odoo.report.report_sxw import rml_parse
+from odoo import api, fields, models, _
 
 logger = logging.getLogger(__name__)
 
@@ -151,18 +153,40 @@ class Py3oReport(models.TransientModel):
         self._extend_parser_context(context_instance, report_xml)
         return context_instance.localcontext
 
-    @api.multi
-    def _postprocess_report(self, content, res_id, save_in_attachment):
+    @api.model
+    def _get_report_from_name(self, report_name):
+        """Get the first record of ir.actions.report.xml having the
+        ``report_name`` as value for the field report_name.
+        """
+        res = super(Py3oReport, self)._get_report_from_name(report_name)
+        if res:
+            return res
+        # maybe a py3o reprot
+        report_obj = self.env['ir.actions.report.xml']
+        return report_obj.search(
+            [('report_type', '=', 'py3o'),
+             ('report_name', '=', report_name)])
+
+    @api.model
+    def _postprocess_report(self, report_path, res_id, save_in_attachment):
         if save_in_attachment.get(res_id):
-            attachment = {
-                'name': save_in_attachment.get(res_id),
-                'datas': base64.encodestring(content),
-                'datas_fname': save_in_attachment.get(res_id),
-                'res_model': save_in_attachment.get('model'),
-                'res_id': res_id,
-            }
-            return self.env['ir.attachment'].create(attachment)
-        return False
+            with open(report_path, 'rb') as pdfreport:
+                attachment = {
+                    'name': save_in_attachment.get(res_id),
+                    'datas': base64.encodestring(pdfreport.read()),
+                    'datas_fname': save_in_attachment.get(res_id),
+                    'res_model': save_in_attachment.get('model'),
+                    'res_id': res_id,
+                }
+                try:
+                    self.env['ir.attachment'].create(attachment)
+                except AccessError:
+                    logger.info("Cannot save PDF report %r as attachment",
+                                attachment['name'])
+                else:
+                    logger.info(
+                        'The PDF document %s is now saved in the database',
+                        attachment['name'])
 
     @api.multi
     def _create_single_report(self, model_instance, data, save_in_attachment):
@@ -170,30 +194,31 @@ class Py3oReport(models.TransientModel):
         """
         self.ensure_one()
         report_xml = self.ir_actions_report_xml_id
-
+        filetype = report_xml.py3o_filetype
+        result_fd, result_path = tempfile.mkstemp(
+            suffix='.' + filetype, prefix='p3o.report.tmp.')
         tmpl_data = self.get_template()
 
         in_stream = StringIO(tmpl_data)
-        out_stream = StringIO()
-        template = Template(in_stream, out_stream, escape_false=True)
-        localcontext = self._get_parser_context(model_instance, data)
-        if report_xml.py3o_is_local_fusion:
-            template.render(localcontext)
-            in_stream = out_stream
-            datadict = {}
-        else:
-            expressions = template.get_all_user_python_expression()
-            py_expression = template.convert_py3o_to_python_ast(expressions)
-            convertor = Py3oConvertor()
-            data_struct = convertor(py_expression)
-            datadict = data_struct.render(localcontext)
+        with closing(os.fdopen(result_fd, 'w+')) as out_stream:
+            template = Template(in_stream, out_stream, escape_false=True)
+            localcontext = self._get_parser_context(model_instance, data)
+            is_native = Formats().get_format(filetype).native
+            if report_xml.py3o_is_local_fusion:
+                template.render(localcontext)
+                out_stream.seek(0)
+                in_stream = out_stream.read()
+                datadict = {}
+            else:
+                expressions = template.get_all_user_python_expression()
+                py_expression = template.convert_py3o_to_python_ast(
+                    expressions)
+                convertor = Py3oConvertor()
+                data_struct = convertor(py_expression)
+                datadict = data_struct.render(localcontext)
 
-        filetype = report_xml.py3o_filetype
-        is_native = Formats().get_format(filetype).native
-        if is_native:
-            res = out_stream.getvalue()
-        else:  # Call py3o.server to render the template in the desired format
-            in_stream.seek(0)
+        if not is_native or not report_xml.py3o_is_local_fusion:
+            # Call py3o.server to render the template in the desired format
             files = {
                 'tmpl_file': in_stream,
             }
@@ -212,21 +237,13 @@ class Py3oReport(models.TransientModel):
                     _('Fusion server error %s') % r.text,
                 )
 
-            # Here is a little joke about Odoo
-            # we do nice chunked reading from the network...
             chunk_size = 1024
-            with NamedTemporaryFile(
-                suffix=filetype,
-                prefix='py3o-template-'
-            ) as fd:
+            with open(result_path, 'w+') as fd:
                 for chunk in r.iter_content(chunk_size):
                     fd.write(chunk)
-                fd.seek(0)
-                # ... but odoo wants the whole data in memory anyways :)
-                res = fd.read()
         self._postprocess_report(
-            res, model_instance.id, save_in_attachment)
-        return res, "." + self.ir_actions_report_xml_id.py3o_filetype
+            result_path, model_instance.id, save_in_attachment)
+        return result_path
 
     @api.multi
     def _get_or_create_single_report(self, model_instance, data,
@@ -241,43 +258,42 @@ class Py3oReport(models.TransientModel):
             model_instance, data, save_in_attachment)
 
     @api.multi
-    def _zip_results(self, results):
+    def _zip_results(self, reports_path):
         self.ensure_one()
         zfname_prefix = self.ir_actions_report_xml_id.name
-        with NamedTemporaryFile(suffix="zip", prefix='py3o-zip-result') as fd:
-            with ZipFile(fd, 'w', ZIP_DEFLATED) as zf:
-                cpt = 0
-                for r, ext in results:
-                    fname = "%s_%d.%s" % (zfname_prefix, cpt, ext)
-                    zf.writestr(fname, r)
-                    cpt += 1
-            fd.seek(0)
-            return fd.read(), 'zip'
+        result_path = tempfile.mktemp(suffix="zip", prefix='py3o-zip-result')
+        with ZipFile(result_path, 'w', ZIP_DEFLATED) as zf:
+            cpt = 0
+            for report in reports_path:
+                fname = "%s_%d.%s" % (
+                    zfname_prefix, cpt, report.split('.')[-1])
+                zf.write(report, fname)
+
+                cpt += 1
+        return result_path
 
     @api.multi
-    def _merge_pdfs(self, results):
-        from pyPdf import PdfFileWriter, PdfFileReader
-        output = PdfFileWriter()
-        for r in results:
-            reader = PdfFileReader(StringIO(r[0]))
-            for page in range(reader.getNumPages()):
-                output.addPage(reader.getPage(page))
-        s = StringIO()
-        output.write(s)
-        return s.getvalue(), formats.FORMAT_PDF
-
-    @api.multi
-    def _merge_results(self, results):
+    def _merge_results(self, reports_path):
         self.ensure_one()
-        if not results:
-            return False, False
-        if len(results) == 1:
-            return results[0]
         filetype = self.ir_actions_report_xml_id.py3o_filetype
+        if not reports_path:
+            return False, False
+        if len(reports_path) == 1:
+            return reports_path[0], filetype
         if filetype == formats.FORMAT_PDF:
-            return self._merge_pdfs(results)
+            return self._merge_pdf(reports_path), formats.FORMAT_PDF
         else:
-            return self._zip_results(results)
+            return self._zip_results(reports_path), 'zip'
+
+    @api.model
+    def _cleanup_tempfiles(self, temporary_files):
+        # Manual cleanup of the temporary files
+        for temporary_file in temporary_files:
+            try:
+                os.unlink(temporary_file)
+            except (OSError, IOError):
+                logger.error(
+                    'Error when trying to remove file %s' % temporary_file)
 
     @api.multi
     def create_report(self, res_ids, data):
@@ -287,8 +303,21 @@ class Py3oReport(models.TransientModel):
             res_ids)
         save_in_attachment = self._check_attachment_use(
             model_instances, self.ir_actions_report_xml_id) or {}
-        results = []
+        reports_path = []
         for model_instance in model_instances:
-            results.append(self._get_or_create_single_report(
-                model_instance, data, save_in_attachment))
-        return self._merge_results(results)
+            reports_path.append(
+                self._get_or_create_single_report(
+                    model_instance, data, save_in_attachment))
+
+        result_path, filetype = self._merge_results(reports_path)
+        reports_path.append(result_path)
+
+        # Here is a little joke about Odoo
+        # we do all the generation process using files to avoid memory
+        # consumption...
+        # ... but odoo wants the whole data in memory anyways :)
+
+        with open(result_path, 'r+b') as fd:
+            res = fd.read()
+        self._cleanup_tempfiles(set(reports_path))
+        return res, filetype
