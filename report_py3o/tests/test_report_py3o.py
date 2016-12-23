@@ -5,6 +5,7 @@
 import mock
 import os
 import pkg_resources
+import tempfile
 
 from py3o.formats import Formats
 
@@ -60,11 +61,17 @@ class TestReportPy3o(TransactionCase):
         report = self.env.ref("report_py3o.res_users_report_py3o")
         with mock.patch.object(
                 py3o_report.__class__, '_create_single_report') as patched_pdf:
+            result = tempfile.mktemp('.txt')
+            with open(result, 'w') as fp:
+                fp.write('dummy')
+            patched_pdf.return_value = result
             # test the call the the create method inside our custom parser
             report.render_report(self.env.user.ids,
                                  report.report_name,
                                  {})
             self.assertEqual(1, patched_pdf.call_count)
+            # generated files no more exists
+            self.assertFalse(os.path.exists(result))
         res = report.render_report(
             self.env.user.ids, report.report_name, {})
         self.assertTrue(res)
