@@ -17,10 +17,10 @@ class Reports(main.Reports):
         context = dict(http.request.context)
         context.update(action["context"])
         report_xml = http.request.session.model('ir.actions.report.xml')
-        report_ids = report_xml.search(
+        reports = report_xml.search(
             [('report_name', '=', action['report_name'])],
             0, False, False, context)
-        for report in report_xml.browse(report_ids):
+        for report in reports:
             if not report.download_filename:
                 continue
             objects = http.request.session.model(context['active_model'])\
