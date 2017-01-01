@@ -11,5 +11,6 @@
     'author': 'Akretion,Odoo Community Association (OCA)',
     'website': 'http://www.akretion.com',
     'depends': ['report'],
+    'demo': ['demo/report.xml', 'demo/res_users_report.xml'],
     'installable': True,
 }
