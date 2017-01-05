@@ -17,11 +17,10 @@ class Reports(main.Reports):
         context = dict(http.request.context)
         context.update(action["context"])
         report_xml = http.request.env['ir.actions.report.xml']
-        reports = report_xml.search(
-            [('report_name', '=', action['report_name'])])
+        reports = report_xml.search([
+            ('report_name', '=', action['report_name']),
+            ('download_filename', '!=', False)])
         for report in reports:
-            if not report.download_filename:
-                continue
             objects = http.request.session.model(context['active_model'])\
                 .browse(context['active_ids'])
             generated_filename = mail_template.mako_template_env\
