@@ -3,19 +3,20 @@
 # * bi_view_editor
 # 
 # Translators:
+# Ozge Altinisik <ozge@altinkaya.com.tr>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-31 06:53+0000\n"
-"PO-Revision-Date: 2016-03-21 15:33+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Turkish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/tr/)\n"
+"PO-Revision-Date: 2017-01-04 14:44+0000\n"
+"Last-Translator: Ozge Altinisik <ozge@altinkaya.com.tr>\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
@@ -41,7 +42,7 @@ msgstr ""
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Created"
-msgstr ""
+msgstr "Oluşturuldu"
 
 #. module: bi_view_editor
 #: field:bve.view,create_uid:0
@@ -51,7 +52,7 @@ msgstr "Oluşturan"
 #. module: bi_view_editor
 #: field:bve.view,create_date:0
 msgid "Created on"
-msgstr "Oluşturuldu"
+msgstr "Oluşturulma tarihi"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
@@ -82,12 +83,12 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,data:0
 msgid "Data"
-msgstr ""
+msgstr "Veri"
 
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr "Görünen İsim"
+msgstr "Görünen ad"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -98,7 +99,7 @@ msgstr "Taslak"
 #: code:addons/bi_view_editor/models/bve_view.py:72
 #, python-format
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -113,37 +114,37 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,id:0
 msgid "ID"
-msgstr "ID"
+msgstr "Kimlik"
 
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
 msgid "Last Modified on"
-msgstr "Son değişiklik"
+msgstr "En son güncelleme tarihi"
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
 msgid "Last Updated by"
-msgstr "Son güncelleyen"
+msgstr "En son güncelleyen "
 
 #. module: bi_view_editor
 #: field:bve.view,write_date:0
 msgid "Last Updated on"
-msgstr "Son güncelleme"
+msgstr "En son güncelleme tarihi"
 
 #. module: bi_view_editor
 #: field:bve.view,model_name:0
 msgid "Model Name"
-msgstr ""
+msgstr "Tip adı"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Tipler"
 
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr "Adı"
+msgstr "Ad"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -159,7 +160,7 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query"
-msgstr ""
+msgstr "Soru"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -169,12 +170,12 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "Güvenlik"
 
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr "Durum"
+msgstr "Hal"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
@@ -188,7 +189,7 @@ msgstr ""
 msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
-msgstr ""
+msgstr "Kullanıcı grupları oluşturulan raporu görebilir; eğer hiçbir grup belirlenmemişse rapor herkes tarafından görüntülenebilir."
 
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
@@ -198,10 +199,10 @@ msgstr "Kullanıcılar"
 #. module: bi_view_editor
 #: field:bve.view,view_id:0
 msgid "View"
-msgstr ""
+msgstr "Görüntüle"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:73
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
-msgstr ""
+msgstr "Oluşturulmuş görüntüyü silemezsiniz! İlk önce taslak hazırlamak için görüntüyü sıfırla. "
