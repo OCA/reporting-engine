@@ -3,9 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
 from odoo import api, fields, models, _
-from odoo.report.interface import report_int
 from odoo.exceptions import ValidationError
-from odoo import addons
 
 logger = logging.getLogger(__name__)
 
