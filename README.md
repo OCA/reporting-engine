@@ -23,6 +23,7 @@ addon | version | summary
 --- | --- | ---
 [report_custom_filename](report_custom_filename/) | 9.0.1.0.0 | Configure the filename to use when downloading a report
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 9.0.1.0.0 | Report Qweb Element Page Visibility
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 9.0.1.0.0 | Add watermarks to your QWEB PDF reports
 [report_xlsx](report_xlsx/) | 9.0.1.0.1 | Base module to create xlsx report
 
 Unported addons
