@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 19:59+0000\n"
+"POT-Creation-Date: 2017-01-07 05:41+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/ca/)\n"
@@ -87,7 +87,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -98,7 +98,7 @@ msgstr ""
 #: code:addons/bi_view_editor/models/bve_view.py:72
 #, python-format
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -118,7 +118,7 @@ msgstr "ID"
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
@@ -174,7 +174,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Estat"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
