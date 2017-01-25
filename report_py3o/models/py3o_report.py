@@ -83,7 +83,41 @@ class Py3oReport(models.TransientModel):
     )
 
     @api.multi
-    def get_template(self):
+    def _get_template_from_path(self, tmpl_name):
+        """"Return the template from the path to root of the module if specied
+        or an absolute path on your server
+        """
+        if not tmpl_name:
+            return None
+        report_xml = self.ir_actions_report_xml_id
+        flbk_filename = None
+        if report_xml.module:
+            # if the default is defined
+            flbk_filename = pkg_resources.resource_filename(
+                "odoo.addons.%s" % report_xml.module,
+                tmpl_name,
+            )
+        elif os.path.isabs(tmpl_name):
+            # It is an absolute path
+            flbk_filename = os.path.normcase(os.path.normpath(tmpl_name))
+        if flbk_filename and os.path.exists(flbk_filename):
+            # and it exists on the fileystem
+            with open(flbk_filename, 'r') as tmpl:
+                return tmpl.read()
+        return None
+
+    @api.multi
+    def _get_template_fallback(self, model_instance):
+        """
+        Return the template referenced in the report definition
+        :return:
+        """
+        self.ensure_one()
+        report_xml = self.ir_actions_report_xml_id
+        return self._get_template_from_path(report_xml.py3o_template_fallback)
+
+    @api.multi
+    def get_template(self, model_instance):
         """private helper to fetch the template data either from the database
         or from the default template file provided by the implementer.
 
@@ -97,7 +131,6 @@ class Py3oReport(models.TransientModel):
         odoo.exceptions.DeferredException
         """
         self.ensure_one()
-        tmpl_data = None
         report_xml = self.ir_actions_report_xml_id
         if report_xml.py3o_template_id and report_xml.py3o_template_id.id:
             # if a user gave a report template
@@ -105,22 +138,8 @@ class Py3oReport(models.TransientModel):
                 report_xml.py3o_template_id.py3o_template_data
             )
 
-        elif report_xml.py3o_template_fallback:
-            tmpl_name = report_xml.py3o_template_fallback
-            flbk_filename = None
-            if report_xml.module:
-                # if the default is defined
-                flbk_filename = pkg_resources.resource_filename(
-                    "odoo.addons.%s" % report_xml.module,
-                    tmpl_name,
-                )
-            elif os.path.isabs(tmpl_name):
-                # It is an absolute path
-                flbk_filename = os.path.normcase(os.path.normpath(tmpl_name))
-            if flbk_filename and os.path.exists(flbk_filename):
-                # and it exists on the fileystem
-                with open(flbk_filename, 'r') as tmpl:
-                    tmpl_data = tmpl.read()
+        else:
+            tmpl_data = self._get_template_fallback(model_instance)
 
         if tmpl_data is None:
             # if for any reason the template is not found
@@ -197,7 +216,7 @@ class Py3oReport(models.TransientModel):
         filetype = report_xml.py3o_filetype
         result_fd, result_path = tempfile.mkstemp(
             suffix='.' + filetype, prefix='p3o.report.tmp.')
-        tmpl_data = self.get_template()
+        tmpl_data = self.get_template(model_instance)
 
         in_stream = StringIO(tmpl_data)
         with closing(os.fdopen(result_fd, 'w+')) as out_stream:
