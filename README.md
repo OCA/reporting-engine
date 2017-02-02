@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
 [report_xlsx](report_xlsx/) | 10.0.1.0.0 | Base module to create xlsx report
 
 Unported addons
@@ -29,7 +30,6 @@ addon | version | summary
 --- | --- | ---
 [base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
 [report_custom_filename](report_custom_filename/) | 8.0.1.0.0 (unported) | Configure the filename to use when downloading a report
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 9.0.1.0.0 (unported) | Report Qweb Element Page Visibility
 [report_xls](report_xls/) | 8.0.0.6.1 (unported) | Excel report engine
 
 [//]: # (end addons)
