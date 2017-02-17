@@ -2,8 +2,10 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
+import time
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 logger = logging.getLogger(__name__)
 
@@ -88,13 +90,29 @@ class IrActionsReportXml(models.Model):
         "generate instead a single report for the selected records.")
 
     @api.model
+    def get_from_report_name(self, report_name, report_type):
+        return self.search(
+            [("report_name", "=", report_name),
+             ("report_type", "=", report_type)])
+
+    @api.model
     def render_report(self, res_ids, name, data):
-        action_py3o_report = self.search(
-            [("report_name", "=", name),
-             ("report_type", "=", "py3o")])
+        action_py3o_report = self.get_from_report_name(name, "py3o")
         if action_py3o_report:
             return self.env['py3o.report'].create({
                 'ir_actions_report_xml_id': action_py3o_report.id
             }).create_report(res_ids, data)
         return super(IrActionsReportXml, self).render_report(
             res_ids, name, data)
+
+    @api.multi
+    def gen_report_download_filename(self, res_ids, data):
+        """Override this function to change the name of the downloaded report
+        """
+        self.ensure_one()
+        report = self.get_from_report_name(self.report_name, self.report_type)
+        if report.print_report_name and not len(res_ids) > 1:
+            obj = self.env[self.model].browse(res_ids)
+            return safe_eval(report.print_report_name,
+                             {'object': obj, 'time': time})
+        return "%s.%s" % (self.name, self.py3o_filetype)
