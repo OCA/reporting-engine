@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 06:04+0000\n"
+"POT-Creation-Date: 2017-01-21 05:51+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/fi/)\n"
@@ -164,7 +164,7 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Palauta luonnokseksi"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
