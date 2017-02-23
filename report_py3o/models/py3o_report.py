@@ -321,7 +321,7 @@ class Py3oReport(models.TransientModel):
         model_instances = self.env[self.ir_actions_report_xml_id.model].browse(
             res_ids)
         save_in_attachment = self._check_attachment_use(
-            model_instances, self.ir_actions_report_xml_id) or {}
+            res_ids, self.ir_actions_report_xml_id) or {}
         reports_path = []
         for model_instance in model_instances:
             reports_path.append(
