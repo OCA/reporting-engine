@@ -2,6 +2,7 @@
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
+from base64 import b64decode
 import mock
 import os
 import pkg_resources
@@ -87,6 +88,34 @@ class TestReportPy3o(TransactionCase):
             res = report.render_report(
                 self.env.user.ids, report.report_name, {})
             self.assertEqual(('test result', 'pdf'), res)
+
+    def test_report_post_process(self):
+        """
+        By default the post_process method is in charge to save the
+        generated report into an ir.attachment if requested.
+        """
+        report = self.env.ref("report_py3o.res_users_report_py3o")
+        report.attachment = "object.name + '.txt'"
+        py3o_server = self.env['py3o.server'].create({"url": "http://dummy"})
+        # check the call to the fusion server
+        report.write({"py3o_filetype": "pdf",
+                      "py3o_server_id": py3o_server.id})
+        ir_attachment = self.env['ir.attachment']
+        attachements = ir_attachment.search([(1, '=', 1)])
+        with mock.patch('requests.post') as patched_post:
+            magick_response = mock.MagicMock()
+            magick_response.status_code = 200
+            patched_post.return_value = magick_response
+            magick_response.iter_content.return_value = "test result"
+            res = report.render_report(
+                self.env.user.ids, report.report_name, {})
+            self.assertEqual(('test result', 'pdf'), res)
+        attachements = ir_attachment.search([(1, '=', 1)]) - attachements
+        self.assertEqual(1, len(attachements.ids))
+        self.assertEqual(self.env.user.name + '.txt', attachements.name)
+        self.assertEqual(self.env.user._name, attachements.res_model)
+        self.assertEqual(self.env.user.id, attachements.res_id)
+        self.assertEqual('test result', b64decode(attachements.datas))
 
     def test_report_template_configs(self):
         report = self.env.ref("report_py3o.res_users_report_py3o")
