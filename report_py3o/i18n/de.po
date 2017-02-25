@@ -3,20 +3,20 @@
 # * report_py3o
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
+# Niki Waibel <niki.waibel@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-23 01:39+0000\n"
 "PO-Revision-Date: 2017-02-23 01:39+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Last-Translator: Niki Waibel <niki.waibel@gmail.com>, 2017\n"
+"Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:52
@@ -42,14 +42,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_uid
 msgid "Created by"
-msgstr "Créé par "
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_date
 msgid "Created on"
-msgstr "Créé le "
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_display_name
@@ -61,7 +61,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
 msgid "Fallback"
-msgstr "Procédure de recours"
+msgstr ""
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:28
@@ -95,7 +95,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -128,14 +128,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par "
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le "
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
@@ -156,12 +156,12 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_module
 msgid "Module"
-msgstr "Module"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
@@ -189,12 +189,12 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_filetype
 msgid "Output Format"
-msgstr "Format de sortie"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
-msgstr "Py3o"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.actions.report.xml,name:report_py3o.res_users_report_py3o
@@ -214,7 +214,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.py3o_server_configuration_form_view
 msgid "Py3o Server Configuration"
-msgstr "Configuration du serveur Py3o"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.actions.act_window,name:report_py3o.py3o_server_configuration_action
@@ -234,7 +234,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
-msgstr "Py3o Templates"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
@@ -244,17 +244,17 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_id
 msgid "Template"
-msgstr "Template"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_module
 msgid "The implementer module that provides this report"
-msgstr "The implementer module that provides this report"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report_xml
 msgid "ir.actions.report.xml"
-msgstr ""
+msgstr "ir.actions.report.xml"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_server
