@@ -1,108 +1,193 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* report_py3o
-#
+# * report_py3o
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-16 11:15+0000\n"
-"PO-Revision-Date: 2015-11-27 14:56+0100\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2017-02-23 01:39+0000\n"
+"PO-Revision-Date: 2017-02-23 01:39+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: \n"
 "Language: fr\n"
-"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: report_py3o
-#: code:addons/report_py3o/py3o_parser.py:169
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:52
 #, python-format
-msgid "Configuration Error"
-msgstr "Erreur de configuration "
+msgid "(Native)"
+msgstr ""
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,create_uid:0 field:py3o.server,create_uid:0
-#: field:py3o.template,create_uid:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_is_active
+msgid "Active"
+msgstr ""
+
+#. module: report_py3o
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:40
+#, python-format
+msgid ""
+"Can not use not native format in local fusion. Please specify a Fusion "
+"Server"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_uid
 msgid "Created by"
 msgstr "Cr???? par "
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,create_date:0 field:py3o.server,create_date:0
-#: field:py3o.template,create_date:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_date
 msgid "Created on"
 msgstr "Cr???? le "
 
 #. module: report_py3o
-#: field:ir.actions.report.xml,py3o_template_fallback:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_display_name
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_display_name
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
 msgid "Fallback"
 msgstr "Proc??dure de recours"
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,fusion_ext:0
-msgid "Fusion Extension"
-msgstr "Fusion Extension"
-
-#. module: report_py3o
-#: code:addons/report_py3o/py3o_parser.py:190
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:28
 #, python-format
-msgid "Fusion Server Says Error"
-msgstr "Serveur Fusion affiche Erreur"
+msgid "Field 'Output Format' is required for Py3O report"
+msgstr ""
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,human_ext:0
-msgid "Human readble extension"
-msgstr "Extension facilement lisible"
+#: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
+msgid "File Type"
+msgstr ""
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,id:0 field:py3o.server,id:0
-#: field:py3o.template,id:0
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_server_id
+msgid "Fusion Server"
+msgstr ""
+
+#. module: report_py3o
+#: code:addons/report_py3o/models/py3o_report.py:256
+#, python-format
+msgid "Fusion server error %s"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
+msgid "Group By"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_id
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
 msgstr "ID"
 
 #. module: report_py3o
-#: help:ir.actions.report.xml,py3o_template_fallback:0
-msgid "If the user does not provide a template this will be used it should be a relative path to root of YOUR module"
-msgstr "If the user does not provide a template this will be used it should be a relative path to root of YOUR module"
+#: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
+msgid ""
+"If the user does not provide a template this will be used it should be a "
+"relative path to root of YOUR module or an absolute path on your server."
+msgstr ""
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,write_uid:0 field:py3o.server,write_uid:0
-#: field:py3o.template,write_uid:0
+#: model:ir.model.fields,help:report_py3o.field_py3o_server_url
+msgid ""
+"If your Py3o Fusion server is on the same machine and runs on the default "
+"port, the URL is http://localhost:8765/form"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_ir_actions_report_xml_id
+msgid "Ir actions report xml id"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report___last_update
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server___last_update
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
 msgstr "Derni??re mise ?? jour par "
 
 #. module: report_py3o
-#: field:py3o.fusion.filetype,write_date:0 field:py3o.server,write_date:0
-#: field:py3o.template,write_date:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
 msgstr "Derni??re mise ?? jour le "
 
 #. module: report_py3o
-#: view:ir.actions.report.xml:report_py3o.py3o_report_view
-#: field:py3o.template,py3o_template_data:0
-msgid "LibreOffice template"
-msgstr "LibreOffice template"
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
+#: model:ir.ui.view,arch_db:report_py3o.py3o_report_view
+msgid "LibreOffice Template"
+msgstr ""
 
 #. module: report_py3o
-#: field:ir.actions.report.xml,module:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_filetype
+msgid "LibreOffice Template File Type"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
+msgid "Local Fusion"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_module
 msgid "Module"
 msgstr "Module"
 
 #. module: report_py3o
-#: field:py3o.template,name:0
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
 msgstr "Nom"
 
 #. module: report_py3o
-#: code:addons/report_py3o/py3o_parser.py:170
-#, python-format
-msgid "No Py3o server configuration found"
-msgstr "Pas de configuration trouv??e du serveur Py3o"
+#: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
+msgid ""
+"Native formats will be processed without a server. You must use this mode if"
+" you call methods on your model into the template."
+msgstr ""
 
 #. module: report_py3o
-#: field:ir.actions.report.xml,py3o_filetype:0
+#: code:addons/report_py3o/models/py3o_report.py:147
+#, python-format
+msgid "No template found. Aborting."
+msgstr ""
+
+#. module: report_py3o
+#: selection:py3o.template,filetype:0
+msgid "ODF Spreadsheet"
+msgstr ""
+
+#. module: report_py3o
+#: selection:py3o.template,filetype:0
+msgid "ODF Text Document"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_filetype
 msgid "Output Format"
 msgstr "Format de sortie"
 
@@ -112,52 +197,71 @@ msgid "Py3o"
 msgstr "Py3o"
 
 #. module: report_py3o
-#: model:ir.ui.menu,name:report_py3o.py3o_server_configuration_menu
-#: view:py3o.server:report_py3o.py3o_server_configuration_form_view
-#: view:py3o.server:report_py3o.py3o_server_configuration_tree_view
+#: model:ir.actions.report.xml,name:report_py3o.res_users_report_py3o
+msgid "Py3o Demo Report"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_server_url
+msgid "Py3o Fusion Server URL"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
+msgid "Py3o Reports"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.ui.view,arch_db:report_py3o.py3o_server_configuration_form_view
 msgid "Py3o Server Configuration"
 msgstr "Configuration du serveur Py3o"
 
 #. module: report_py3o
+#: model:ir.actions.act_window,name:report_py3o.py3o_server_configuration_action
+#: model:ir.ui.menu,name:report_py3o.py3o_server_configuration_menu
+msgid "Py3o Servers"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.ui.view,arch_db:report_py3o.py3o_server_configuration_tree_view
+msgid "Py3o Servers Configuration"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
+#: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
+#: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
+#: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr "Py3o Templates"
 
 #. module: report_py3o
-#: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
-#: view:py3o.template:report_py3o.py3o_template_configuration_form_view
-#: view:py3o.template:report_py3o.py3o_template_configuration_tree_view
-msgid "Py3o Templates Configuration"
-msgstr "Py3o Templates Configuration"
+#: model:ir.model,name:report_py3o.model_py3o_report
+msgid "Report Py30"
+msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/py3o_parser.py:130
-#, python-format
-msgid "Report definition %s not found"
-msgstr "Report definition %s not found"
-
-#. module: report_py3o
-#: field:ir.actions.report.xml,py3o_template_id:0
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_id
 msgid "Template"
 msgstr "Template"
 
 #. module: report_py3o
-#: code:addons/report_py3o/py3o_parser.py:105
-#, python-format
-msgid "Template Not Found"
-msgstr "Template non trouv??"
-
-#. module: report_py3o
-#: help:ir.actions.report.xml,module:0
+#: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_module
 msgid "The implementer module that provides this report"
 msgstr "The implementer module that provides this report"
 
 #. module: report_py3o
-#: field:py3o.server,url:0
-msgid "URL"
-msgstr "URL"
+#: model:ir.model,name:report_py3o.model_ir_actions_report_xml
+msgid "ir.actions.report.xml"
+msgstr ""
 
 #. module: report_py3o
-#: model:ir.actions.act_window,name:report_py3o.py3o_server_configuration_action
-msgid "py3o.server.configuration.action"
-msgstr "py3o.server.configuration.action"
+#: model:ir.model,name:report_py3o.model_py3o_server
+msgid "py3o.server"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model,name:report_py3o.model_py3o_template
+msgid "py3o.template"
+msgstr ""
