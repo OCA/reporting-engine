@@ -13,6 +13,9 @@ class Reports(main.Reports):
     @main.serialize_exception
     def index(self, action, token):
         result = super(Reports, self).index(action, token)
+        if result.status_code != 200:
+            # In case of error don't change the response.
+            return result
         action = json.loads(action)
         context = dict(http.request.context)
         context.update(action["context"])
