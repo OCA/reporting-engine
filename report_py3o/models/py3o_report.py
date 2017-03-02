@@ -173,20 +173,6 @@ class Py3oReport(models.TransientModel):
         return context_instance.localcontext
 
     @api.model
-    def _get_report_from_name(self, report_name):
-        """Get the first record of ir.actions.report.xml having the
-        ``report_name`` as value for the field report_name.
-        """
-        res = super(Py3oReport, self)._get_report_from_name(report_name)
-        if res:
-            return res
-        # maybe a py3o reprot
-        report_obj = self.env['ir.actions.report.xml']
-        return report_obj.search(
-            [('report_type', '=', 'py3o'),
-             ('report_name', '=', report_name)])
-
-    @api.model
     def _postprocess_report(self, report_path, res_id, save_in_attachment):
         if save_in_attachment.get(res_id):
             with open(report_path, 'rb') as pdfreport:
