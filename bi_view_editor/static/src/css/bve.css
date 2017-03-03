@@ -32,7 +32,7 @@
 }
 
 .oe_form_field_bi_editor .body {
-    padding-bottom: 0px;    
+    padding-bottom: 0;
 }
 
 .oe_form_field_bi_editor .body .left {
@@ -50,15 +50,15 @@
 
 .oe_form_field_bi_editor .body .left .search-bar input {
     width: 100%;
-    border-radius: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
     padding-left: 18px;
     padding-top: 4px;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     z-index: 1;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .oe_form_field_bi_editor .body .left .class-list {
-    height: 400px; /* FIXME */
+    height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -100,7 +100,7 @@
     width: 70%;
     float: left;
     box-sizing: border-box;
-    height: 423px; /* FIXME */
+    height: 423px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -138,7 +138,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     border: 1px solid #DDDDDD;
     list-style-type: none;
-    padding: 0px;
+    padding: 0;
     width: 175px;
     
 }
