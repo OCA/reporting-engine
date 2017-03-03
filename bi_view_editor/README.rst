@@ -33,7 +33,8 @@ To graphically design your analysis data-set:
 - Pick the interesting fields (Drag & Drop)
 - For each selected field, right-click on the Options column and select whether it's a row, column or measure
 - Save and click "Generate BI View"
-
+- Click "Open BI View" to view the result
+- If module Dashboard (board) is installed, the standard "Add to My Dashboard" functionality would be available
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -45,9 +46,15 @@ Known issues / Roadmap
 * Non-stored fields are not supported
 * Provide graph view for table relations
 * Extend the capabilities of the tree views (e.g. add sums)
-* Add possibility to store the BI view in user dashboard, like any other graph or cross table
 * Provide a tutorial (eg. a working example of usage)
 
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/reporting-engine/issues>`_. In case of trouble, please
+check there if your issue has already been reported. If you spotted it first,
+help us smash it by providing detailed and welcomed feedback.
 
 Credits
 =======
