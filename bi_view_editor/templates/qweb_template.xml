@@ -2,7 +2,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="JoinNodePopup">
         <div class="oe_form_nosheet">
-            <p>Please choose the join node</p>
             <div id="join-nodes">
             </div>
         </div>
@@ -44,9 +43,10 @@
             </div>
             <ul class="context-menu">
 
-                 <li><input type="checkbox" id="column-checkbox"/> Column</li>
-                 <li><input type="checkbox" id="row-checkbox"/> Row</li>
-                 <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
+                <li><input type="checkbox" id="column-checkbox"/> Column</li>
+                <li><input type="checkbox" id="row-checkbox"/> Row</li>
+                <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
+                <li><input type="checkbox" id="list-checkbox"/> List</li>
 
             </ul>
         </div>
