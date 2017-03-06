@@ -2,8 +2,8 @@
 # Copyright 2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase, at_install, post_install
-from openerp.exceptions import Warning as UserError
+from odoo.tests.common import TransactionCase, at_install, post_install
+from odoo.exceptions import UserError
 
 
 class TestBiViewEditor(TransactionCase):
@@ -66,6 +66,7 @@ class TestBiViewEditor(TransactionCase):
              'table_alias': 't0',
              'row': 0,
              'column': 1,
+             'list': 1,
              'measure': 0
              },
             {'model_id': self.partner_model.id,
@@ -81,6 +82,7 @@ class TestBiViewEditor(TransactionCase):
              'description': self.partner_company_field.field_description,
              'row': 0,
              'column': 0,
+             'list': 1,
              'measure': 0
              },
             {'model_id': self.company_model.id,
@@ -94,6 +96,7 @@ class TestBiViewEditor(TransactionCase):
              'table_alias': 't1',
              'row': 1,
              'column': 0,
+             'list': 0,
              'measure': 0
              }
         ]
