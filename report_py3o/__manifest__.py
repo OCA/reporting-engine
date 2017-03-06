@@ -8,7 +8,9 @@
     'version': '10.0.1.0.0',
     'category': 'Reporting',
     'license': 'AGPL-3',
-    'author': 'XCG Consulting,Odoo Community Association (OCA)',
+    'author': 'XCG Consulting,'
+              'ACSONE SA/NV,'
+              'Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
     'depends': ['report'],
     'external_dependencies': {
