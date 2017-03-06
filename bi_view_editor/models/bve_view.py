@@ -4,9 +4,9 @@
 
 import json
 
-from openerp import api, fields, models, tools
-from openerp.exceptions import Warning as UserError
-from openerp.tools.translate import _
+from odoo import api, fields, models, tools
+from odoo.exceptions import Warning as UserError
+from odoo.tools.translate import _
 
 
 class BveView(models.Model):
@@ -23,11 +23,17 @@ class BveView(models.Model):
             else:
                 bve_view.user_ids = self.env['res.users'].sudo().search([])
 
+    @api.depends('name')
+    @api.multi
+    def _compute_model_name(self):
+        for bve_view in self:
+            name = [x for x in bve_view.name.lower() if x.isalnum()]
+            model_name = ''.join(name).replace('_', '.').replace(' ', '.')
+            bve_view.model_name = 'x_bve.' + model_name
+
     name = fields.Char(required=True, copy=False)
-    model_name = fields.Char()
-
+    model_name = fields.Char(compute='_compute_model_name', store=True)
     note = fields.Text(string='Notes')
-
     state = fields.Selection(
         [('draft', 'Draft'),
          ('created', 'Created')],
@@ -37,21 +43,18 @@ class BveView(models.Model):
         help="Use the special query builder to define the query "
              "to generate your report dataset. "
              "NOTE: Te be edited, the query should be in 'Draft' status.")
-
     action_id = fields.Many2one('ir.actions.act_window', string='Action')
     view_id = fields.Many2one('ir.ui.view', string='View')
-
     group_ids = fields.Many2many(
         'res.groups',
         string='Groups',
         help="User groups allowed to see the generated report; "
              "if NO groups are specified the report will be public "
              "for everyone.")
-
     user_ids = fields.Many2many(
         'res.users',
         string='Users',
-        compute=_compute_users,
+        compute='_compute_users',
         store=True)
 
     _sql_constraints = [
@@ -60,40 +63,23 @@ class BveView(models.Model):
          _('Custom BI View names must be unique!')),
     ]
 
-    @api.multi
-    def unlink(self):
-        for view in self:
-            if view.state == 'created':
-                raise UserError(
-                    _('You cannot delete a created view! '
-                      'Reset the view to draft first.'))
-        return super(BveView, self).unlink()
-
-    @api.multi
-    def action_reset(self):
-        self.ensure_one()
-        if self.action_id:
-            if self.action_id.view_id:
-                self.action_id.view_id.sudo().unlink()
-            self.action_id.sudo().unlink()
-
-        models = self.env['ir.model'].sudo().search(
-            [('model', '=', self.model_name)])
-        for model in models:
-            model.sudo().unlink()
-
-        table_name = self.model_name.replace('.', '_')
-        tools.drop_view_if_exists(self.env.cr, table_name)
-
-        self.state = 'draft'
+    @api.model
+    def _get_format_data(self, data):
+        data = data.replace('\'', '"')
+        data = data.replace(': u"', ':"')
+        return data
 
     @api.multi
     def _create_view_arch(self):
         self.ensure_one()
 
-        def _get_field_def(field_name, def_type):
+        def _get_field_def(name, type=False):
+            if not type:
+                return """<field name="x_{}" />""".format(
+                    name
+                )
             return """<field name="x_{}" type="{}" />""".format(
-                field_name, def_type
+                name, type
             )
 
         def _get_field_type(field_info):
@@ -102,28 +88,32 @@ class BveView(models.Model):
             measure = field_info['measure'] and 'measure'
             return row or column or measure
 
-        fields_info = json.loads(self._get_format_data(self.data))
-        view_fields = []
-        for field_info in fields_info:
-            field_name = field_info['name']
-            def_type = _get_field_type(field_info)
-            if def_type:
+        def _get_field_list(fields_info):
+            view_fields = []
+            all_fields = []
+            for field_info in fields_info:
+                field_name = field_info['name']
+                field_type = field_info['type']
+                def_type = _get_field_type(field_info)
                 field_def = _get_field_def(field_name, def_type)
-                view_fields.append(field_def)
+                if def_type:
+                    view_fields.append(field_def)
+                if field_type not in ['many2one', 'one2many', 'many2many']:
+                    all_fields.append(field_def)
+            return view_fields, all_fields
+
+        fields_info = json.loads(self._get_format_data(self.data))
+        is_tree_view = self._context.get('no_empty')
+
+        view_fields, all_fields = _get_field_list(fields_info)
+        if not view_fields and is_tree_view:
+            view_fields = all_fields
         return view_fields
 
-    @api.model
-    def _get_format_data(self, data):
-        data = data.replace('\'', '"')
-        data = data.replace(': u"', ':"')
-        return data
-
     @api.multi
-    def action_create(self):
+    def _create_tree_view_arch(self):
         self.ensure_one()
-
-        self._create_bve_object()
-        self._create_bve_view()
+        return self.with_context(no_empty=True)._create_view_arch()
 
     @api.multi
     def _create_bve_view(self):
@@ -140,18 +130,31 @@ class BveView(models.Model):
             'model': self.model_name,
             'priority': 16,
             'arch': """<?xml version="1.0"?>
-                            <pivot string="Pivot Analysis"> {} </pivot>
-                            """.format("".join(self._create_view_arch()))
+                       <pivot string="Pivot Analysis">
+                       {}
+                       </pivot>
+                    """.format("".join(self._create_view_arch()))
         }, {
             'name': 'Graph Analysis',
             'type': 'graph',
             'model': self.model_name,
             'priority': 16,
             'arch': """<?xml version="1.0"?>
-                            <graph string="Graph Analysis"
-                               type="bar"
-                               stacked="True"> {} </graph>
-                         """.format("".join(self._create_view_arch()))
+                       <graph string="Graph Analysis"
+                        type="bar" stacked="True">
+                        {}
+                       </graph>
+                    """.format("".join(self._create_view_arch()))
+        }, {
+            'name': 'Search BI View',
+            'type': 'search',
+            'model': self.model_name,
+            'priority': 16,
+            'arch': """<?xml version="1.0"?>
+                       <search string="Search BI View">
+                       {}
+                       </search>
+                    """.format("".join(self._create_view_arch()))
         }]
 
         for vals in view_vals:
@@ -164,8 +167,10 @@ class BveView(models.Model):
              'model': self.model_name,
              'priority': 16,
              'arch': """<?xml version="1.0"?>
-                        <tree string="List Analysis" create="false"> {} </tree>
-                     """.format("".join(self._create_view_arch()))
+                        <tree string="List Analysis" create="false">
+                        {}
+                        </tree>
+                     """.format("".join(self._create_tree_view_arch()))
              })
 
         # set the Tree view as the default one
@@ -188,10 +193,52 @@ class BveView(models.Model):
         })
 
     @api.multi
-    def _create_bve_object(self):
+    def _build_access_rules(self, model):
         self.ensure_one()
 
-        def _get_fields_info(fields_data):
+        def group_ids_with_access(model_name, access_mode):
+            self.env.cr.execute('''SELECT
+                  g.id
+                FROM
+                  ir_model_access a
+                  JOIN ir_model m ON (a.model_id=m.id)
+                  JOIN res_groups g ON (a.group_id=g.id)
+                  LEFT JOIN ir_module_category c ON (c.id=g.category_id)
+                WHERE
+                  m.model=%s AND
+                  a.active IS True AND
+                  a.perm_''' + access_mode, (model_name,))
+            return [x[0] for x in self.env.cr.fetchall()]
+
+        info = json.loads(self._get_format_data(self.data))
+        models = list(set([f['model'] for f in info]))
+        read_groups = set.intersection(*[set(
+            group_ids_with_access(model_name, 'read')
+        ) for model_name in models])
+
+        # read access
+        for group in read_groups:
+            self.env['ir.model.access'].sudo().create({
+                'name': 'read access to ' + self.model_name,
+                'model_id': model.id,
+                'group_id': group,
+                'perm_read': True,
+            })
+
+        # read and write access
+        for group in self.group_ids:
+            self.env['ir.model.access'].sudo().create({
+                'name': 'read-write access to ' + self.model_name,
+                'model_id': model.id,
+                'group_id': group.id,
+                'perm_read': True,
+                'perm_write': True,
+            })
+
+    @api.model
+    def _create_sql_view(self):
+
+        def get_fields_info(fields_data):
             fields_info = []
             for field_data in fields_data:
                 field = self.env['ir.model.fields'].browse(field_data['id'])
@@ -208,46 +255,62 @@ class BveView(models.Model):
                 fields_info.append(vals)
             return fields_info
 
-        def _build_query():
-            data = self.data
-            if not data:
-                raise UserError(_('No data to process.'))
-
-            formatted_data = json.loads(self._get_format_data(data))
-            info = _get_fields_info(formatted_data)
-            fields = [("{}.{}".format(f['table_alias'],
-                                      f['select_field']),
-                       f['as_field']) for f in info if 'join_node' not in f]
-            tables = set([(f['table'], f['table_alias']) for f in info])
+        def get_join_nodes(info):
             join_nodes = [
                 (f['table_alias'],
                  f['join'],
                  f['select_field']) for f in info if f['join'] is not False]
+            return join_nodes
 
-            table_name = self.model_name.replace('.', '_')
-            tools.drop_view_if_exists(self.env.cr, table_name)
+        def get_tables(info):
+            tables = set([(f['table'], f['table_alias']) for f in info])
+            return tables
 
-            basic_fields = [
-                ("t0.id", "id"),
-                ("t0.write_uid", "write_uid"),
-                ("t0.write_date", "write_date"),
-                ("t0.create_uid", "create_uid"),
-                ("t0.create_date", "create_date")
-            ]
+        def get_fields(info):
+            fields = [("{}.{}".format(f['table_alias'],
+                                      f['select_field']),
+                       f['as_field']) for f in info if 'join_node' not in f]
+            return fields
 
-            q = """CREATE or REPLACE VIEW %s as (
-                SELECT %s
-                FROM  %s
-                WHERE %s
-                )""" % (table_name, ','.join(
-                ["{} AS {}".format(f[0], f[1])
-                 for f in basic_fields + fields]), ','.join(
-                ["{} AS {}".format(t[0], t[1])
-                 for t in list(tables)]), " AND ".join(
-                ["{}.{} = {}.id".format(j[0], j[2], j[1])
-                 for j in join_nodes] + ["TRUE"]))
+        def check_empty_data(data):
+            if not data:
+                raise UserError(_('No data to process.'))
 
-            self.env.cr.execute(q)
+        check_empty_data(self.data)
+
+        formatted_data = json.loads(self._get_format_data(self.data))
+        info = get_fields_info(formatted_data)
+        fields = get_fields(info)
+        tables = get_tables(info)
+        join_nodes = get_join_nodes(info)
+
+        table_name = self.model_name.replace('.', '_')
+        tools.drop_view_if_exists(self.env.cr, table_name)
+
+        # this line is only for robustness in case something goes wrong
+        self._cr.execute('DROP TABLE IF EXISTS "%s"' % table_name)
+
+        basic_fields = [
+            ("t0.id", "id")
+        ]
+
+        q = """CREATE or REPLACE VIEW %s as (
+            SELECT %s
+            FROM  %s
+            WHERE %s
+            )""" % (table_name, ','.join(
+            ["{} AS {}".format(f[0], f[1])
+             for f in basic_fields + fields]), ','.join(
+            ["{} AS {}".format(t[0], t[1])
+             for t in list(tables)]), " AND ".join(
+            ["{}.{} = {}.id".format(j[0], j[2], j[1])
+             for j in join_nodes] + ["TRUE"]))
+
+        self.env.cr.execute(q)
+
+    @api.multi
+    def action_create(self):
+        self.ensure_one()
 
         def _prepare_field(field_data):
             if not field_data['custom']:
@@ -268,87 +331,69 @@ class BveView(models.Model):
                     vals.update({'ttype': 'float'})
                 if field.ttype == 'selection' and not field.selection:
                     model_obj = self.env[field.model_id.model]
-                    selection = model_obj._columns[field.name].selection
+                    selection = model_obj._fields[field.name].selection
                     selection_domain = str(selection)
                     vals.update({'selection': selection_domain})
                 return vals
 
-        def _prepare_object():
-            data = json.loads(self._get_format_data(self.data))
-            return {
-                'name': self.name,
-                'model': self.model_name,
-                'field_id': [
-                    (0, 0, _prepare_field(field))
-                    for field in data
-                    if 'join_node' not in field]
-            }
+        # create sql view
+        self._create_sql_view()
 
-        def _build_object():
-            vals = _prepare_object()
-            Model = self.env['ir.model']
-            res_id = Model.sudo().with_context(bve=True).create(vals)
-            return res_id
+        # create model and fields
+        data = json.loads(self._get_format_data(self.data))
+        model_vals = {
+            'name': self.name,
+            'model': self.model_name,
+            'state': 'manual',
+            'field_id': [
+                (0, 0, _prepare_field(field))
+                for field in data
+                if 'join_node' not in field]
+        }
+        model = self.env['ir.model'].sudo().create(model_vals)
 
-        def group_ids_with_access(model_name, access_mode):
-            self.env.cr.execute('''SELECT
-                  g.id
-                FROM
-                  ir_model_access a
-                  JOIN ir_model m ON (a.model_id=m.id)
-                  JOIN res_groups g ON (a.group_id=g.id)
-                  LEFT JOIN ir_module_category c ON (c.id=g.category_id)
-                WHERE
-                  m.model=%s AND
-                  a.active IS True AND
-                  a.perm_''' + access_mode, (model_name,))
-            return [x[0] for x in self.env.cr.fetchall()]
+        # give access rights
+        self._build_access_rules(model)
 
-        def _build_access_rules(obj):
-            info = json.loads(self._get_format_data(self.data))
-            models = list(set([f['model'] for f in info]))
-            read_groups = set.intersection(*[set(
-                group_ids_with_access(model, 'read')) for model in models])
-
-            # read access
-            for group in read_groups:
-                self.env['ir.model.access'].sudo().create({
-                    'name': 'read access to ' + self.model_name,
-                    'model_id': obj.id,
-                    'group_id': group,
-                    'perm_read': True,
-                })
-
-            # read and write access
-            for group in self.group_ids:
-                self.env['ir.model.access'].sudo().create({
-                    'name': 'read-write access to ' + self.model_name,
-                    'model_id': obj.id,
-                    'group_id': group.id,
-                    'perm_read': True,
-                    'perm_write': True,
-                })
-
-        self.model_name = 'x_bve.' + ''.join(
-            [x for x in self.name.lower()
-             if x.isalnum()]).replace('_', '.').replace(' ', '.')
-        _build_query()
-        obj = _build_object()
-        _build_access_rules(obj)
+        # create tree, graph and pivot views
+        self._create_bve_view()
 
     @api.multi
     def open_view(self):
         self.ensure_one()
-        return {
-            'name': _('BI View'),
-            'type': 'ir.actions.act_window',
-            'res_model': self.model_name,
-            'view_type': 'form',
-            'view_mode': 'tree,graph,pivot',
-        }
+        [action] = self.action_id.read()
+        action['display_name'] = _('BI View')
+        return action
 
     @api.multi
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or {}, name=_("%s (copy)") % self.name)
         return super(BveView, self).copy(default=default)
+
+    @api.multi
+    def action_reset(self):
+        self.ensure_one()
+        if self.action_id:
+            if self.action_id.view_id:
+                self.action_id.view_id.sudo().unlink()
+            self.action_id.sudo().unlink()
+
+        models = self.env['ir.model'].sudo().search(
+            [('model', '=', self.model_name)])
+        for model in models:
+            model.sudo().unlink()
+
+        table_name = self.model_name.replace('.', '_')
+        tools.drop_view_if_exists(self.env.cr, table_name)
+
+        self.state = 'draft'
+
+    @api.multi
+    def unlink(self):
+        for view in self:
+            if view.state == 'created':
+                raise UserError(
+                    _('You cannot delete a created view! '
+                      'Reset the view to draft first.'))
+        return super(BveView, self).unlink()

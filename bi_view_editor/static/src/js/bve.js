@@ -1,15 +1,67 @@
-openerp.bi_view_editor = function (instance, local) {
+odoo.define('bi_view_editor', function (require) {
+"use strict";
 
-    instance.bi_view_editor.BVEEditor = instance.web.form.AbstractField.extend({
+    var Core = require("web.core");
+    var FormCommon = require('web.form_common');
+    var Model = require('web.Model');
+    var Data = require('web.data');
+    var Widget = require('web.Widget');
+    var Dialog = require("web.Dialog");
+    var _t = Core._t;
+
+    var JoinNodePopup = Widget.extend({
+        template: "JoinNodePopup",
+        start: function() {
+            var self = this;
+        },
+
+        display_popup: function(choices, model_data, callback, callback_data) {
+            var self = this;
+            this.renderElement();
+            var joinnodes = this.$el.find('#join-nodes');
+            joinnodes.empty();
+            for (var i=0; i<choices.length; i++) {
+                var description = "";
+                if (choices[i].join_node !== -1 && choices[i].table_alias !== -1) {
+                    description = "Use the field on table " + model_data[choices[i].table_alias].model_name;
+                } else {
+                    var new_str = "";
+                    if (choices[i].join_node !== -1) {
+                        new_str = "new ";
+                    }
+                    description = "Join using the field '" + choices[i].description + "' from " + new_str + "model '" + choices[i].model_name + "'";
+                }
+                joinnodes.append($("<a>" + description+ "</a>")
+                                 .data('idx', i)
+                                 .wrap("<p></p>")
+                                 .parent());
+
+            }
+            var dialog = new Dialog(this, {
+                        dialogClass: 'oe_act_window',
+                        title: "Choose Join Node",
+                        $content: this.$el
+            }).open();
+
+            joinnodes.find('a').click(function() {
+                callback(callback_data, choices[$(this).data('idx')]);
+                dialog.close();
+            });
+
+            this.start();
+        }
+    });
+
+    var BiViewEditor = FormCommon.AbstractField.extend({
         template: "BVEEditor",
         activeModelMenus: [],
         currentFilter: "",
-        init: function(parent, action) {
+        init: function() {
             this._super.apply(this, arguments);
         },
         start: function() {
             this._super();
-            this.on("change:effective_readonly", this, function() {
+            this.view.on("change:effective_readonly", this, function() {
                 this.display_field();
                 this.render_value();
             });
@@ -80,20 +132,20 @@ openerp.bi_view_editor = function (instance, local) {
         load_classes: function(scrollTo) {
             scrollTo = (typeof scrollTo === 'undefined') ? false : scrollTo;
             var self = this;
-            var model = new instance.web.Model("ir.model");
+            var model = new Model("ir.model");
             if (this.$el.find(".field-list tbody tr").length > 0) {
-                model.call("get_related_models", [this.get_model_ids()], { context: new instance.web.CompoundContext() }).then(function(result) {
+                model.call("get_related_models", [this.get_model_ids()], { context: new Data.CompoundContext() }).then(function(result) {
                     self.show_classes(result);
                 });
             } else {
-                model.call("get_models", { context: new instance.web.CompoundContext() }).then(function(result) {
+                model.call("get_models", { context: new Data.CompoundContext() }).then(function(result) {
                     self.show_classes(result);
                 });
             }
         },
         show_classes: function (result) {
             var self = this;
-            var model = new instance.web.Model("ir.model");
+            var model = new Model("ir.model");
             self.$el.find(".class-list .class").remove();
             self.$el.find(".class-list .field").remove();
             var css = this.get('effective_readonly') ? 'cursor: default' : 'cursor: pointer';
@@ -112,7 +164,7 @@ openerp.bi_view_editor = function (instance, local) {
                     if(index !== -1) self.activeModelMenus.splice(index, 1);
                 } else {
                     self.activeModelMenus.push(classel.data('model-data').id);
-                    model.call("get_fields", [classel.data('model-data').id], { context: new instance.web.CompoundContext() }).then(function(result) {
+                    model.call("get_fields", [classel.data('model-data').id], { context: new Data.CompoundContext() }).then(function(result) {
                         for (var i = 0; i < result.length; i++) {
                             classel.find("#bve-field-" + result[i].name).remove();
                             self._render_field(self, i, result, classel, addField)
@@ -138,7 +190,7 @@ openerp.bi_view_editor = function (instance, local) {
 
                 var index = self.activeModelMenus.indexOf(item.find(".class").data('model-data').id);
                 if(index !== -1 && !self.get("effective_readonly")) {
-                    model.call("get_fields", [self.activeModelMenus[index]], { context: new instance.web.CompoundContext() }).then(renderFields);
+                    model.call("get_fields", [self.activeModelMenus[index]], { context: new Data.CompoundContext() }).then(renderFields);
                 }
                 self.filter();
             }
@@ -321,18 +373,18 @@ openerp.bi_view_editor = function (instance, local) {
         },
         add_field: function(field) {
             var data = field.data('field-data');
-            var model = new instance.web.Model("ir.model");
+            var model = new Model("ir.model");
             var model_ids = this.get_model_ids();
             var field_data = this.get_fields();
             var self = this;
-            model.call('get_join_nodes', [field_data, data], {context: new instance.web.CompoundContext()}).then(function(result) {
+            model.call('get_join_nodes', [field_data, data], {context: new Data.CompoundContext()}).then(function(result) {
 
                 if (result.length === 1) {
                     self.add_field_and_join_node(data, result[0]);
                     self.internal_set_value(JSON.stringify(self.get_fields()));
                     //self.load_classes(data);
                 } else if (result.length > 1) {
-                    var pop = new local.JoinNodePopup(self);
+                    var pop = new JoinNodePopup(self);
                     pop.display_popup(result, self.get_model_data(), self.add_field_and_join_node.bind(self), data);
                 } else {
                     // first field and table only.
@@ -363,49 +415,6 @@ openerp.bi_view_editor = function (instance, local) {
             this.load_classes();
         }
     });
-    instance.web.form.widgets.add('BVEEditor', 'instance.bi_view_editor.BVEEditor');
+    Core.form_widget_registry.add('BVEEditor', BiViewEditor);
 
-    local.JoinNodePopup = instance.web.Widget.extend({
-        template: "JoinNodePopup",
-        start: function() {
-            var self = this;
-        },
-
-        display_popup: function(choices, model_data, callback, callback_data) {
-            var self = this;
-            this.renderElement();
-            var joinnodes = this.$el.find('#join-nodes');
-            joinnodes.empty();
-            for (var i=0; i<choices.length; i++) {
-                var description = "";
-                if (choices[i].join_node !== -1 && choices[i].table_alias !== -1) {
-                    description = "Use the field on table " + model_data[choices[i].table_alias].model_name;
-                } else {
-                    var new_str = "";
-                    if (choices[i].join_node !== -1) {
-                        new_str = "new ";
-                    }
-                    description = "Join using the field '" + choices[i].description + "' from " + new_str + "model '" + choices[i].model_name + "'";
-                }
-                joinnodes.append($("<a>" + description+ "</a>")
-                                 .data('idx', i)
-                                 .wrap("<p></p>")
-                                 .parent());
-
-            }
-            var dialog = new instance.web.Dialog(this, {
-                        dialogClass: 'oe_act_window',
-                        title: "Choose Join Node",
-                        $content: this.$el
-            }).open();
-
-            joinnodes.find('a').click(function() {
-                callback(callback_data, choices[$(this).data('idx')]);
-                dialog.close();
-            });
-
-            this.start();
-        }
-    });
-
-};
+});

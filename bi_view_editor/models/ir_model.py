@@ -2,8 +2,7 @@
 # Copyright 2015-2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
-from openerp.modules.registry import RegistryManager
+from odoo import api, models
 
 NO_BI_MODELS = [
     'temp.range',
@@ -42,19 +41,16 @@ def dict_for_field(field):
     }
 
 
+def dict_for_model(model):
+    return {
+        'id': model.id,
+        'name': model.name,
+        'model': model.model
+    }
+
+
 class IrModel(models.Model):
     _inherit = 'ir.model'
-
-    @api.model
-    def _filter_bi_fields(self, ir_model_field_obj):
-        name = ir_model_field_obj.name
-        model = ir_model_field_obj.model_id
-        model_name = model.model
-        Model = self.env[model_name]
-        if name in Model._columns:
-            f = Model._columns[name]
-            return f._classic_write
-        return False
 
     @api.model
     def _filter_bi_models(self, model):
@@ -97,91 +93,72 @@ class IrModel(models.Model):
         return False
 
     @api.model
+    def sort_filter_models(self, models_list):
+        res = sorted(
+            filter(self._filter_bi_models, models_list),
+            key=lambda x: x['name'])
+        return res
+
+    @api.model
+    def _search_fields(self, domain):
+        Fields = self.env['ir.model.fields']
+        fields = Fields.sudo().search(domain)
+        return fields
+
+    @api.model
     def get_related_fields(self, model_ids):
         """ Return list of field dicts for all fields that can be
             joined with models in model_ids
         """
-        Model = self.env['ir.model']
-        domain = [('id', 'in', model_ids.values())]
-        models = Model.sudo().search(domain)
-        model_names = {}
-        for model in models:
-            model_names.update({model.id: model.model})
 
-        related_fields = self._get_related_fields_list(model_ids, model_names)
-        return related_fields
-
-    @api.model
-    def _get_related_fields_list(self, model_ids, model_names):
-
-        def _get_right_fields(model_ids, model_names):
-            Fields = self.env['ir.model.fields']
-            rfields = []
+        def get_model_list(model_ids):
+            model_list = []
             domain = [('model_id', 'in', model_ids.values()),
+                      ('store', '=', True),
                       ('ttype', 'in', ['many2one'])]
-            for field in filter(
-                    self._filter_bi_fields,
-                    Fields.sudo().search(domain)):
-                for model in model_ids.items():
+            filtered_fields = self._search_fields(domain)
+            for model in model_ids.items():
+                for field in filtered_fields:
                     if model[1] == field.model_id.id:
-                        rfields.append(
+                        model_list.append(
                             dict(dict_for_field(field),
                                  join_node=-1,
                                  table_alias=model[0])
                         )
-            return rfields
+            return model_list
 
-        def _get_left_fields(model_ids, model_names):
-            Fields = self.env['ir.model.fields']
-            lfields = []
+        def get_relation_list(model_ids, model_names):
+            relation_list = []
             domain = [('relation', 'in', model_names.values()),
+                      ('store', '=', True),
                       ('ttype', 'in', ['many2one'])]
-            for field in filter(
-                    self._filter_bi_fields,
-                    Fields.sudo().search(domain)):
-                for model in model_ids.items():
+            filtered_fields = self._search_fields(domain)
+            for model in model_ids.items():
+                for field in filtered_fields:
                     if model_names[model[1]] == field['relation']:
-                        lfields.append(
+                        relation_list.append(
                             dict(dict_for_field(field),
                                  join_node=model[0],
                                  table_alias=-1)
                         )
-            return lfields
-
-        def _get_relation_list(model_ids, model_names, lfields):
-            relation_list = []
-            for model in model_ids.items():
-                for field in lfields:
-                    if model_names[model[1]] == field['relation']:
-                        relation_list.append(
-                            dict(field, join_node=model[0])
-                        )
             return relation_list
 
-        def _get_model_list(model_ids, rfields):
-            model_list = []
-            for model in model_ids.items():
-                for field in rfields:
-                    if model[1] == field['model_id']:
-                        model_list.append(
-                            dict(field, table_alias=model[0])
-                        )
-            return model_list
+        models = self.sudo().browse(model_ids.values())
+        model_names = {}
+        for model in models:
+            model_names.update({model.id: model.model})
 
-        lfields = _get_left_fields(model_ids, model_names)
-        rfields = _get_right_fields(model_ids, model_names)
+        model_list = get_model_list(model_ids)
+        relation_list = get_relation_list(model_ids, model_names)
 
-        relation_list = _get_relation_list(model_ids, model_names, lfields)
-        model_list = _get_model_list(model_ids, rfields)
-
-        related_fields = relation_list + model_list
-        return related_fields
+        return relation_list + model_list
 
     @api.model
     def get_related_models(self, model_ids):
         """ Return list of model dicts for all models that can be
-            joined with models in model_ids
+            joined with the already selected models.
         """
+
         def _get_field(fields, orig, target):
             field_list = []
             for f in fields:
@@ -205,35 +182,19 @@ class IrModel(models.Model):
         domain = ['|',
                   ('id', 'in', list_id),
                   ('model', 'in', list_model)]
-        models = self.env['ir.model'].sudo().search(domain)
-        for model in models:
-            models_list.append({
-                'id': model.id,
-                'name': model.name,
-                'model': model.model
-            })
-        return sorted(
-            filter(self._filter_bi_models, models_list),
-            key=lambda x: x['name']
-        )
+        for model in self.sudo().search(domain):
+            models_list.append(dict_for_model(model))
+        return self.sort_filter_models(models_list)
 
     @api.model
     def get_models(self):
         """ Return list of model dicts for all available models.
         """
-        def dict_for_model(model):
-            return {
-                'id': model.id,
-                'name': model.name,
-                'model': model.model
-            }
 
-        models_domain = [('transient', '=', False)]
-        return sorted(filter(
-            self._filter_bi_models,
-            [dict_for_model(model)
-                for model in self.search(models_domain)]),
-            key=lambda x: x['name'])
+        models_list = []
+        for model in self.search([('transient', '=', False)]):
+            models_list.append(dict_for_model(model))
+        return self.sort_filter_models(models_list)
 
     @api.model
     def get_join_nodes(self, field_data, new_field):
@@ -252,15 +213,12 @@ class IrModel(models.Model):
             for alias, model_id in model_ids.items():
                 if model_id == new_field['model_id']:
                     join_nodes.append({'table_alias': alias})
-            for dict_field in self.get_related_fields(model_ids):
-                condition = [
-                    dict_field['join_node'] == -1,
-                    dict_field['table_alias'] == -1
-                ]
-                relation = (new_field['model'] == dict_field['relation'])
-                model = (new_field['model_id'] == dict_field['model_id'])
-                if (relation and condition[0]) or (model and condition[1]):
-                    join_nodes.append(dict_field)
+            for field in self.get_related_fields(model_ids):
+                c = [field['join_node'] == -1, field['table_alias'] == -1]
+                a = (new_field['model'] == field['relation'])
+                b = (new_field['model_id'] == field['model_id'])
+                if (a and c[0]) or (b and c[1]):
+                    join_nodes.append(field)
             return join_nodes
 
         model_ids = _get_model_ids(field_data)
@@ -273,18 +231,15 @@ class IrModel(models.Model):
 
     @api.model
     def get_fields(self, model_id):
-        bi_field_domain = [
+        domain = [
             ('model_id', '=', model_id),
+            ('store', '=', True),
             ('name', 'not in', NO_BI_FIELDS),
             ('ttype', 'not in', NO_BI_TTYPES)
         ]
-        Fields = self.env['ir.model.fields']
-        fields = filter(
-            self._filter_bi_fields,
-            Fields.sudo().search(bi_field_domain)
-        )
         fields_dict = []
-        for field in fields:
+        filtered_fields = self._search_fields(domain)
+        for field in filtered_fields:
             fields_dict.append(
                 {'id': field.id,
                  'model_id': model_id,
@@ -302,26 +257,3 @@ class IrModel(models.Model):
             reverse=True
         )
         return sorted_fields
-
-    @api.model
-    def create(self, vals):
-        if self._context and self._context.get('bve'):
-            vals['state'] = 'base'
-        res = super(IrModel, self).create(vals)
-
-        # this sql update is necessary since a write method here would
-        # be not working (an orm constraint is restricting the modification
-        # of the state field while updating ir.model)
-        q = ("""UPDATE ir_model SET state = 'manual'
-               WHERE id = """ + str(res.id))
-        self.env.cr.execute(q)
-
-        # update registry
-        if self._context.get('bve'):
-            # setup models; this reloads custom models in registry
-            self.pool.setup_models(self._cr, partial=(not self.pool.ready))
-
-            # signal that registry has changed
-            RegistryManager.signal_registry_change(self.env.cr.dbname)
-
-        return res
