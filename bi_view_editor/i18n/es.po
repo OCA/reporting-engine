@@ -181,7 +181,7 @@ msgstr "Estado"
 #: help:bve.view,data:0
 msgid ""
 "Use the special query builder to define the query to generate your report "
-"dataset. NOTE: Te be edited, the query should be in 'Draft' status."
+"dataset. NOTE: To be edited, the query should be in 'Draft' status."
 msgstr "Usa el constructor especial de consultas para definir la consulta del informe de datos. NOTA: para ser editada, la consulta debe estar en estado 'Borrador'"
 
 #. module: bi_view_editor
