@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <template id="assets_backend" name="bi_view_editor assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/bi_view_editor/static/src/css/bve.css"/>
+                <script type="text/javascript" src="/bi_view_editor/static/src/js/bve.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
