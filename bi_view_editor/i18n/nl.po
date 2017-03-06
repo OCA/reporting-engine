@@ -1,16 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_view_editor
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-07 05:41+0000\n"
-"PO-Revision-Date: 2016-03-21 15:33+0000\n"
+"PO-Revision-Date: 2017-03-14 19:54+0100\n"
 "Last-Translator: <>\n"
-"Language-Team: Dutch (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/oca/OCA-reporting-engine-10-0/"
+"language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -27,21 +28,27 @@ msgid ""
 "              </p>\n"
 "            "
 msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Klik om een nieuwe custom query object te maken.\n"
+"              </p><p>\n"
+"\n"
+"              </p>\n"
+"            "
 
 #. module: bi_view_editor
 #: field:bve.view,action_id:0
 msgid "Action"
-msgstr ""
+msgstr "Actie"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
 msgid "BI View Editor"
-msgstr ""
+msgstr "BI Weergave bewerker"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Created"
-msgstr ""
+msgstr "Aangemaakt"
 
 #. module: bi_view_editor
 #: field:bve.view,create_uid:0
@@ -56,33 +63,33 @@ msgstr "Aangemaakt op"
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
 msgid "Custom BI View"
-msgstr ""
+msgstr "Aangepaste BI Weergave"
 
 #. module: bi_view_editor
 #: sql_constraint:bve.view:0
 msgid "Custom BI View names must be unique!"
-msgstr ""
+msgstr "Aangepaste BI Weergave moet uniek zijn!"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
 msgid "Custom BI Views"
-msgstr ""
+msgstr "Aangepaste BI Weergaves"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Custom Object"
-msgstr ""
+msgstr "Aangepast object"
 
 #. module: bi_view_editor
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
 msgid "Custom Reports"
-msgstr ""
+msgstr "Aangepaste rapporten"
 
 #. module: bi_view_editor
 #: field:bve.view,data:0
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
@@ -92,23 +99,23 @@ msgstr "Te tonen naam"
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
-msgstr ""
+msgstr "Concept"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:72
 #, python-format
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Generate BI View"
-msgstr ""
+msgstr "Genereer BI Weergave"
 
 #. module: bi_view_editor
 #: field:bve.view,group_ids:0
 msgid "Groups"
-msgstr ""
+msgstr "Groepen"
 
 #. module: bi_view_editor
 #: field:bve.view,id:0
@@ -133,12 +140,12 @@ msgstr "Laatst bijgewerkt op"
 #. module: bi_view_editor
 #: field:bve.view,model_name:0
 msgid "Model Name"
-msgstr ""
+msgstr "Model naam"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modellen"
 
 #. module: bi_view_editor
 #: field:bve.view,name:0
@@ -149,39 +156,42 @@ msgstr "Naam"
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 #: field:bve.view,note:0
 msgid "Notes"
-msgstr ""
+msgstr "Notities"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Open BI View"
-msgstr ""
+msgstr "Open BI Weergave"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query"
-msgstr ""
+msgstr "Query"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Terug naar concept"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "Beveiliging"
 
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
 msgid ""
 "Use the special query builder to define the query to generate your report "
-"dataset. NOTE: Te be edited, the query should be in 'Draft' status."
+"dataset. NOTE: To be edited, the query should be in 'Draft' status."
 msgstr ""
+"Gebruik de speciale query bouwer om queries te definiëren voor uw "
+"rapportage dataset. LET OP: Om te bewerken moet de query in de 'Concept\" "
+"status zijn. "
 
 #. module: bi_view_editor
 #: help:bve.view,group_ids:0
@@ -189,6 +199,8 @@ msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
 msgstr ""
+"Gebruikers groepen die de gegenereerde rapporten kunnen zijn; wanneer geen "
+"groepen ingesteld zijn is het rapport zichtbaar voor alle gebruikers."
 
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
@@ -198,10 +210,12 @@ msgstr "Gebruikers"
 #. module: bi_view_editor
 #: field:bve.view,view_id:0
 msgid "View"
-msgstr ""
+msgstr "Weergave"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:73
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
+"U kunt een aangemaakte weergave niet verwijderen. Reset de weergave eerst "
+"naar de concept fase."
