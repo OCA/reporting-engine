@@ -18,6 +18,7 @@
                     <button name="action_reset" type="object" states="created" string="Reset to Draft"/>
                     <button name="action_create" type="object" states="draft" string="Generate BI View" class="oe_highlight"/>
                     <button name="open_view" type="object" states="created" string="Open BI View" class="oe_highlight"/>
+                    <button name="%(base.act_menu_create)d" type="action" states="created" groups="base.group_no_one" icon="fa-align-justify" string="Create a Menu" target="new"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,created" statusbar_colors='{"draft":"blue","created":"blue"}'/>
                 </header>
                 <sheet>

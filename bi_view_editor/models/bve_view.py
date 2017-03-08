@@ -72,7 +72,14 @@ class BveView(models.Model):
     @api.multi
     def action_reset(self):
         self.ensure_one()
+
         if self.action_id:
+            action = 'ir.actions.act_window,%d' % (self.action_id.id,)
+            menus = self.env['ir.ui.menu'].sudo().search(
+                [('action', '=', action)]
+            )
+            menus.sudo().unlink()
+
             if self.action_id.view_id:
                 self.action_id.view_id.sudo().unlink()
             self.action_id.sudo().unlink()
