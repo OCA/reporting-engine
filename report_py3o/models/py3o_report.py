@@ -19,7 +19,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 from odoo.exceptions import AccessError
 from odoo.exceptions import UserError
 from odoo.report.report_sxw import rml_parse
-from odoo import api, fields, models, _
+from odoo import api, fields, models, tools, _
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ try:
 except ImportError:
     logger.debug('Cannot import py3o.template')
 try:
-    from py3o.formats import Formats
+    from py3o.formats import Formats, UnkownFormatException
 except ImportError:
     logger.debug('Cannot import py3o.formats')
 
@@ -83,8 +83,45 @@ class Py3oReport(models.TransientModel):
     )
 
     @api.multi
+    def _is_valid_template_path(self, path):
+        """ Check if the path is a trusted path for py3o templates.
+        """
+        real_path = os.path.realpath(path)
+        root_path = tools.config.get_misc('report_py3o', 'root_tmpl_path')
+        if not root_path:
+            logger.warning(
+                "You must provide a root template path into odoo.cfg to be "
+                "able to use py3o template configured with an absolute path "
+                "%s", real_path)
+            return False
+        is_valid = real_path.startswith(root_path + os.path.sep)
+        if not is_valid:
+            logger.warning(
+                "Py3o template path is not valid. %s is not a child of root "
+                "path %s", real_path, root_path)
+        return is_valid
+
+    @api.multi
+    def _is_valid_template_filename(self, filename):
+        """ Check if the filename can be used as py3o template
+        """
+        if filename and os.path.isfile(filename):
+            fname, ext = os.path.splitext(filename)
+            ext = ext.replace('.', '')
+            try:
+                fformat = Formats().get_format(ext)
+                if fformat and fformat.native:
+                    return True
+            except UnkownFormatException:
+                logger.warning("Invalid py3o template %s", filename,
+                               exc_info=1)
+        logger.warning(
+            '%s is not a valid Py3o template filename', filename)
+        return False
+
+    @api.multi
     def _get_template_from_path(self, tmpl_name):
-        """"Return the template from the path to root of the module if specied
+        """ Return the template from the path to root of the module if specied
         or an absolute path on your server
         """
         if not tmpl_name:
@@ -97,11 +134,9 @@ class Py3oReport(models.TransientModel):
                 "odoo.addons.%s" % report_xml.module,
                 tmpl_name,
             )
-        elif os.path.isabs(tmpl_name):
-            # It is an absolute path
-            flbk_filename = os.path.normcase(os.path.normpath(tmpl_name))
-        if flbk_filename and os.path.exists(flbk_filename):
-            # and it exists on the fileystem
+        elif self._is_valid_template_path(tmpl_name):
+            flbk_filename = os.path.realpath(tmpl_name)
+        if self._is_valid_template_filename(flbk_filename):
             with open(flbk_filename, 'r') as tmpl:
                 return tmpl.read()
         return None

@@ -127,6 +127,36 @@ For example, to replace the native invoice report by a custom py3o report, add t
 
 where *my_custom_module_base* is the name of the custom Odoo module. In this example, the invoice ODT file is located in *my_custom_module_base/report/account_invoice.odt*.
 
+It's also possible to reference a template located in a trusted path of your
+Odoo server. In this case you must let the *module* entry empty and specify
+the path to the template as *py3o_template_fallback*.
+
+.. code::
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <odoo>
+
+  <record id="account.account_invoices" model="ir.actions.report.xml">
+      <field name="report_type">py3o</field>
+      <field name="py3o_filetype">odt</field>
+      <field name="module">/field>
+      <field name="py3o_template_fallback">/odoo/templates/py3o/report/account_invoice.odt</field>
+  </record>
+
+  </odoo>
+
+Moreover you must also modify the odoo server configuration file to declare
+the allowed root directory for your py3o templates. Only templates located
+into this directory can be loaded by py3o report.
+
+.. code::
+
+  [options]
+  ...
+
+  [report_py3o]
+  root_tmpl_path=/odoo/templates/py3o
+
 If you want an invoice in PDF format instead of ODT format, the XML file should look like:
 
 .. code::
