@@ -35,6 +35,7 @@ To graphically design your analysis data-set:
 - Save and click "Generate BI View"
 - Click "Open BI View" to view the result
 - If module Dashboard (board) is installed, the standard "Add to My Dashboard" functionality would be available
+- Click "Create a menu" to create a new menu item directly linked to your new BI view (this feature is available in developer mode)
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
