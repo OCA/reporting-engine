@@ -73,11 +73,13 @@ class BveView(models.Model):
     def action_reset(self):
         self.ensure_one()
 
+        has_menus = False
         if self.action_id:
             action = 'ir.actions.act_window,%d' % (self.action_id.id,)
             menus = self.env['ir.ui.menu'].sudo().search(
                 [('action', '=', action)]
             )
+            has_menus = True if menus else False
             menus.sudo().unlink()
 
             if self.action_id.view_id:
@@ -93,6 +95,9 @@ class BveView(models.Model):
         tools.drop_view_if_exists(self.env.cr, table_name)
 
         self.state = 'draft'
+
+        if has_menus:
+            return {'type': 'ir.actions.client', 'tag': 'reload'}
 
     @api.multi
     def _create_view_arch(self):
