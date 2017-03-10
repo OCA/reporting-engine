@@ -20,6 +20,11 @@ class Base(models.AbstractModel):
             super(Base, self)._auto_end()
 
     @api.model
+    def _auto_init(self):
+        if not self._bi_view():
+            super(Base, self)._auto_init()
+
+    @api.model
     def _setup_complete(self):
         if not self._bi_view():
             super(Base, self)._setup_complete()

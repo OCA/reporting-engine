@@ -61,7 +61,7 @@ odoo.define('bi_view_editor', function (require) {
         },
         start: function() {
             this._super();
-            this.view.on("change:effective_readonly", this, function() {
+            this.on("change:effective_readonly", this, function() {
                 this.display_field();
                 this.render_value();
             });
@@ -120,6 +120,8 @@ odoo.define('bi_view_editor', function (require) {
                 icons += "<span class='fa fa-bars' title='Row'></span> ";
             if(field.measure)
                 icons += "<span class='fa fa-bar-chart-o' title='Measure'></span> ";
+            if(field.list)
+                icons += "<span class='fa fa-list' title='List'></span> ";
 
             return icons;
         },
@@ -217,15 +219,19 @@ odoo.define('bi_view_editor', function (require) {
                 _contextMenu.find(identifier).attr('checked', false);
         },
         _false_if_undefined: function(to_check) {
-            if (typeof check === 'undefined') return false;
-            return check;
+            if (typeof to_check === 'undefined') return false;
+            return to_check;
+        },
+        _true_if_undefined: function(to_check) {
+            if (typeof to_check === 'undefined') return true;
+            return to_check;
         },
         add_field_to_table: function(data, options) {
             var self = this;
-
             data.row = self._false_if_undefined(data.row);
             data.column = self._false_if_undefined(data.column);
             data.measure = self._false_if_undefined(data.measure);
+            data.list = self._true_if_undefined(data.list);
 
             var n = 1;
             var name = data.name;
@@ -272,10 +278,11 @@ odoo.define('bi_view_editor', function (require) {
                     self.set_checkbox(currentFieldData.column, '#column-checkbox', contextMenu);
                     self.set_checkbox(currentFieldData.row, '#row-checkbox', contextMenu);
                     self.set_checkbox(currentFieldData.measure, '#measure-checkbox', contextMenu);
+                    self.set_checkbox(currentFieldData.list, '#list-checkbox', contextMenu);
 
                     var to_disable = false;
                     if(currentFieldData.type === "float" || currentFieldData.type === "integer" || currentFieldData.type === "monetary") to_disable = true;
-                    var identifiers = [['#column-checkbox', 'column', to_disable], ['#row-checkbox', 'row', to_disable], ['#measure-checkbox', 'measure', !to_disable]];
+                    var identifiers = [['#column-checkbox', 'column', to_disable], ['#row-checkbox', 'row', to_disable], ['#measure-checkbox', 'measure', !to_disable], ['#list-checkbox', 'list', false]];
                     identifiers.forEach(function (element) {
                         contextMenu.find(element[0]).attr('disabled', element[2]);
                     });
