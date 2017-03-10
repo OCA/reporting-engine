@@ -124,6 +124,29 @@ class BveView(models.Model):
                 view_fields.append(field_def)
         return view_fields
 
+    @api.multi
+    def _create_tree_view_arch(self):
+        self.ensure_one()
+
+        def _get_field_def(name):
+            return """<field name="x_{}" />""".format(
+                name
+            )
+
+        def _get_field_list(fields_info):
+            view_fields = []
+            for field_info in fields_info:
+                field_name = field_info['name']
+                if field_info['list'] and 'join_node' not in field_info:
+                    field_def = _get_field_def(field_name)
+                    view_fields.append(field_def)
+            return view_fields
+
+        fields_info = json.loads(self._get_format_data(self.data))
+
+        view_fields = _get_field_list(fields_info)
+        return view_fields
+
     @api.model
     def _get_format_data(self, data):
         data = data.replace('\'', '"')
@@ -177,7 +200,7 @@ class BveView(models.Model):
              'priority': 16,
              'arch': """<?xml version="1.0"?>
                         <tree string="List Analysis" create="false"> {} </tree>
-                     """.format("".join(self._create_view_arch()))
+                     """.format("".join(self._create_tree_view_arch()))
              })
 
         # set the Tree view as the default one
