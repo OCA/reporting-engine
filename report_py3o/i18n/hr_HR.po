@@ -3,13 +3,14 @@
 # * report_py3o
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-23 01:39+0000\n"
-"PO-Revision-Date: 2017-02-23 01:39+0000\n"
+"POT-Creation-Date: 2017-03-06 11:30+0000\n"
+"PO-Revision-Date: 2017-03-06 11:30+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,12 +23,12 @@ msgstr ""
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:52
 #, python-format
 msgid "(Native)"
-msgstr ""
+msgstr "(Izvorno)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_is_active
 msgid "Active"
-msgstr ""
+msgstr "Aktivan"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:40
@@ -42,21 +43,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Kreirao"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Kreirano"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -72,7 +73,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "File Type"
-msgstr ""
+msgstr "Tip datoteke"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_server_id
@@ -88,14 +89,14 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "Group By"
-msgstr ""
+msgstr "Grupiraj po"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -121,27 +122,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server___last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zadnje modificirano"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji ažurirao"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ažurirano"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
 #: model:ir.ui.view,arch_db:report_py3o.py3o_report_view
 msgid "LibreOffice Template"
-msgstr ""
+msgstr "LibreOffice Predložak"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_filetype
@@ -156,12 +157,12 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_module
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
@@ -179,7 +180,7 @@ msgstr ""
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Spreadsheet"
-msgstr ""
+msgstr "ODF Proračunska tablica"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
@@ -189,7 +190,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_filetype
 msgid "Output Format"
-msgstr ""
+msgstr "Izlazni format"
 
 #. module: report_py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
@@ -244,7 +245,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_id
 msgid "Template"
-msgstr ""
+msgstr "Predložak"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_module
@@ -259,9 +260,9 @@ msgstr "ir.actions.report.xml"
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_server
 msgid "py3o.server"
-msgstr ""
+msgstr "py3o.server"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
 msgid "py3o.template"
-msgstr ""
+msgstr "py3o.template"
