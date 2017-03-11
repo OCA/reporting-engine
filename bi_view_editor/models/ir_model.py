@@ -50,10 +50,11 @@ class IrModel(models.Model):
         name = ir_model_field_obj.name
         model = ir_model_field_obj.model_id
         model_name = model.model
-        Model = self.env[model_name]
-        if name in Model._columns:
-            f = Model._columns[name]
-            return f._classic_write
+        if model_name[0:6] != 'x_bve.':
+            Model = self.env[model_name]
+            if name in Model._columns:
+                f = Model._columns[name]
+                return f._classic_write
         return False
 
     @api.model
