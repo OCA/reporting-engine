@@ -78,7 +78,6 @@ odoo.define('bi_view_editor', function (require) {
                 drop: function (event, ui) {
                     self.add_field(ui.draggable);
                     ui.draggable.draggable('option', 'revert', false );
-                    ui.draggable.remove();
                 }
             });
             if (!this.get("effective_readonly")) {
