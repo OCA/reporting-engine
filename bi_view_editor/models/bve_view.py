@@ -42,7 +42,7 @@ class BveView(models.Model):
     data = fields.Text(
         help="Use the special query builder to define the query "
              "to generate your report dataset. "
-             "NOTE: Te be edited, the query should be in 'Draft' status.")
+             "NOTE: To be edited, the query should be in 'Draft' status.")
     action_id = fields.Many2one('ir.actions.act_window', string='Action')
     view_id = fields.Many2one('ir.ui.view', string='View')
     group_ids = fields.Many2many(

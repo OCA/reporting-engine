@@ -43,10 +43,10 @@
             </div>
             <ul class="context-menu">
 
-                 <li><input type="checkbox" id="column-checkbox"/> Column</li>
-                 <li><input type="checkbox" id="row-checkbox"/> Row</li>
-                 <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
-                 <li><input type="checkbox" id="list-checkbox"/> List</li>
+                <li><input type="checkbox" id="column-checkbox"/> Column</li>
+                <li><input type="checkbox" id="row-checkbox"/> Row</li>
+                <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
+                <li><input type="checkbox" id="list-checkbox"/> List</li>
 
             </ul>
         </div>
