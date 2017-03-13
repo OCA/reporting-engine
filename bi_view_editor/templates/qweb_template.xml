@@ -2,7 +2,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="JoinNodePopup">
         <div class="oe_form_nosheet">
-            <p>Please choose the join node</p>
             <div id="join-nodes">
             </div>
         </div>
