@@ -2,7 +2,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="JoinNodePopup">
         <div class="oe_form_nosheet">
-            <p>Please choose the join node</p>
             <div id="join-nodes">
             </div>
         </div>
@@ -11,17 +10,7 @@
 
     <t t-name="BVEEditor">
         <div class="oe_form_field_bi_editor">
-          <!--
-            <div class="header">
-                <div class="left">
-                    <h2>Query</h2>
-                </div>
-                <div class="right">
-                    <button><span class="fa fa-plus"></span> Custom field</button>
-                </div>
-            </div>
-          -->
-            
+
             <div class="body">
                 
                 <div class="left">
@@ -53,25 +42,12 @@
                 <div class="right"><button id="clear"><span class="fa fa-eraser"></span> Clear</button></div>
             </div>
             <ul class="context-menu">
-                <!--
-                <li>View Param
-                    <ul>
-                -->
-                        <li><input type="checkbox" id="column-checkbox"/> Column</li>
-                        <li><input type="checkbox" id="row-checkbox"/> Row</li>
-                        <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
-                <!--
-                    </ul>
-                </li>
-                -->
-                <!--
-                <li>
-                    Filters
-                </li>
-                <li>
-                    Operations
-                </li>
-                -->
+
+                <li><input type="checkbox" id="column-checkbox"/> Column</li>
+                <li><input type="checkbox" id="row-checkbox"/> Row</li>
+                <li><input type="checkbox" id="measure-checkbox"/> Measure</li>
+                <li><input type="checkbox" id="list-checkbox"/> List</li>
+
             </ul>
         </div>
     </t>
