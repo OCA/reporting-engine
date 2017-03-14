@@ -1,4 +1,5 @@
 openerp.bi_view_editor = function (instance, local) {
+    var _t = instance.web._t;
 
     instance.bi_view_editor.BVEEditor = instance.web.form.AbstractField.extend({
         template: "BVEEditor",
@@ -385,19 +386,18 @@ openerp.bi_view_editor = function (instance, local) {
             for (var i=0; i<choices.length; i++) {
                 var description = "";
                 if (choices[i].join_node !== -1 && choices[i].table_alias !== -1) {
-                    description = "Use the field on table " + model_data[choices[i].table_alias].model_name;
+                    description = _t("Use the field on model") + " <b>" + model_data[choices[i].table_alias].model_name + "</b>";
                 } else {
                     var new_str = "";
                     if (choices[i].join_node !== -1) {
-                        new_str = "new ";
+                        new_str = "<b>" + _t("new") + "</b> ";
                     }
-                    description = "Join using the field '" + choices[i].description + "' from " + new_str + "model '" + choices[i].model_name + "'";
+                    description = _t("<b>Join</b> using the field") + " <u><b>" + choices[i].description + "</b></u> " + _t("on ") + new_str + _t("model") +" <b>" + choices[i].model_name + "</b>";
                 }
-                joinnodes.append($("<a>" + description+ "</a>")
+                joinnodes.append($('<a><input type="radio">' + description+ '</a>')
                                  .data('idx', i)
-                                 .wrap("<p></p>")
+                                 .wrap('<p></p>')
                                  .parent());
-
             }
             var dialog = new instance.web.Dialog(this, {
                         dialogClass: 'oe_act_window',
