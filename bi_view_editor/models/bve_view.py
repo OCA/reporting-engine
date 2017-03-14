@@ -281,7 +281,7 @@ class BveView(models.Model):
             return fields
 
         def check_empty_data(data):
-            if not data:
+            if not data or data == '[]':
                 raise UserError(_('No data to process.'))
 
         check_empty_data(self.data)
