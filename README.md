@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[bi_view_editor](bi_view_editor/) | 9.0.1.0.0 | Graphical BI views builder for Odoo
 [report_custom_filename](report_custom_filename/) | 9.0.1.0.0 | Configure the filename to use when downloading a report
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 9.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 9.0.1.0.0 | Add watermarks to your QWEB PDF reports
