@@ -221,10 +221,22 @@ class IrModel(models.Model):
                     join_nodes.append(field)
             return join_nodes
 
+        def remove_duplicate_nodes(join_nodes):
+            seen = set()
+            nodes_list = []
+            for node in join_nodes:
+                node_tuple = tuple(node.items())
+                if node_tuple not in seen:
+                    seen.add(node_tuple)
+                    nodes_list.append(node)
+            return nodes_list
+
         model_ids = _get_model_ids(field_data)
         keys = [(field['table_alias'], field['id'])
                 for field in field_data if field.get('join_node', -1) != -1]
         join_nodes = _get_join_nodes_dict(model_ids, new_field)
+        join_nodes = remove_duplicate_nodes(join_nodes)
+
         return filter(
             lambda x: 'id' not in x or
                       (x['table_alias'], x['id']) not in keys, join_nodes)
