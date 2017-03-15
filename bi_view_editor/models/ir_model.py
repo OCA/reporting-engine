@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models
+from odoo.modules.registry import RegistryManager
 
 NO_BI_MODELS = [
     'temp.range',
@@ -269,3 +270,26 @@ class IrModel(models.Model):
             reverse=True
         )
         return sorted_fields
+
+    @api.model
+    def create(self, vals):
+        if self._context and self._context.get('bve'):
+            vals['state'] = 'base'
+        res = super(IrModel, self).create(vals)
+
+        # this sql update is necessary since a write method here would
+        # be not working (an orm constraint is restricting the modification
+        # of the state field while updating ir.model)
+        q = ("""UPDATE ir_model SET state = 'manual'
+               WHERE id = """ + str(res.id))
+        self.env.cr.execute(q)
+
+        # # update registry
+        if self._context.get('bve'):
+            # setup models; this reloads custom models in registry
+            self.pool.setup_models(self._cr, partial=(not self.pool.ready))
+
+            # signal that registry has changed
+            RegistryManager.signal_registry_change(self.env.cr.dbname)
+
+        return res
