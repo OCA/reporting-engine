@@ -280,9 +280,8 @@ class IrModel(models.Model):
         # this sql update is necessary since a write method here would
         # be not working (an orm constraint is restricting the modification
         # of the state field while updating ir.model)
-        q = ("""UPDATE ir_model SET state = 'manual'
-               WHERE id = """ + str(res.id))
-        self.env.cr.execute(q)
+        q = "UPDATE ir_model SET state = 'manual' WHERE id = %s"
+        self.env.cr.execute(q, (res.id, ))
 
         # # update registry
         if self._context.get('bve'):
