@@ -4,18 +4,19 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Peter Hageman <hageman.p@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 03:52+0000\n"
-"PO-Revision-Date: 2017-03-14 03:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Venezuela) (https://www.transifex.com/oca/teams/23907/es_VE/)\n"
+"POT-Creation-Date: 2017-09-02 12:12+0000\n"
+"PO-Revision-Date: 2017-09-02 12:12+0000\n"
+"Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es_VE\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_view_editor
@@ -52,7 +53,7 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/js/bve.js:43
 #, python-format
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Verwijderen"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -79,12 +80,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Aangemaakt door"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Aangemaakt op"
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
@@ -121,12 +122,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_display_name
 msgid "Display Name"
-msgstr "Mostrar nombre"
+msgstr "Weergavenaam"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -146,17 +147,17 @@ msgstr "ID"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view___last_update
 msgid "Last Modified on"
-msgstr "Modificada por última vez"
+msgstr "Laatst gewijzigd op"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización realizada por"
+msgstr "Laatst bijgewerkt door"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
 msgid "Last Updated on"
-msgstr "Ultima actualizacion en"
+msgstr "Laatst bijgewerkt op"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_model_name
@@ -171,7 +172,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_name
 msgid "Name"
-msgstr "Nombre"
+msgstr "Naam"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:249
@@ -183,7 +184,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_note
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Notes"
-msgstr "Notas"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -203,12 +204,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr "Seguridad"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_state
 msgid "State"
-msgstr "Provincia"
+msgstr "Provincie"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -239,7 +240,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_view_id
 msgid "View"
-msgstr "Vista"
+msgstr ""
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:68
