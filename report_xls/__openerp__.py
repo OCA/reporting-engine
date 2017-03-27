@@ -21,7 +21,7 @@
 ##############################################################################
 {
     'name': 'Excel report engine',
-    'version': '8.0.0.6.1',
+    'version': '0.6',
     'license': 'AGPL-3',
     'author': "Noviat,Odoo Community Association (OCA)",
     'website': 'http://www.noviat.com',
@@ -77,6 +77,6 @@ Excel reports in odoo.
     'depends': ['base'],
     'external_dependencies': {'python': ['xlwt']},
     'active': False,
-    'installable': False,
+    'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
