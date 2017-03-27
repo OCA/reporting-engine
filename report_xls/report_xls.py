@@ -70,12 +70,19 @@ class report_xls(report_sxw):
     date_format = 'YYYY-MM-DD'
     xls_styles = {
         'xls_title': 'font: bold true, height 240;',
+        'normal': '',
         'bold': 'font: bold true;',
         'underline': 'font: underline true;',
         'italic': 'font: italic true;',
         'fill': 'pattern: pattern solid, fore_color %s;' % _pfc,
+        'fill_white': 'pattern: pattern solid, fore_color white;',
         'fill_blue': 'pattern: pattern solid, fore_color 27;',
         'fill_grey': 'pattern: pattern solid, fore_color 22;',
+        'colour_index_black': 'font: colour_index black;',
+        'colour_index_blue': 'font: colour_index blue;',
+        'colour_index_red': 'font: colour_index red;',
+        'colour_index_grey': 'font: colour_index grey;',
+        'borders_top_bottom': 'borders: bottom thin, top thin;',
         'borders_all':
             'borders: '
             'left thin, right thin, top thin, bottom thin, '
