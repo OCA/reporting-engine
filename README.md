@@ -26,6 +26,7 @@ addon | version | summary
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
 [report_xlsx](report_xlsx/) | 10.0.1.0.1 | Base module to create xlsx report
 
+
 Unported addons
 ---------------
 addon | version | summary
