@@ -31,6 +31,7 @@ addon | version | summary
 [report_xml](report_xml/) | 8.0.1.0.0 | Allow to generate XML reports
 [report_xml_sample](report_xml_sample/) | 8.0.1.0.0 | For developers who want an example
 
+
 Unported addons
 ---------------
 addon | version | summary
