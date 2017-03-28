@@ -27,6 +27,7 @@ Contributors
 ------------
 
 * Holger Brunn <hbrunn@therp.nl>
+* Jairo Llopis <jairo.llopis@tecnativa.com>
 
 Icon
 ----
