@@ -28,6 +28,7 @@ addon | version | summary
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 9.0.1.0.0 | Add watermarks to your QWEB PDF reports
 [report_xlsx](report_xlsx/) | 9.0.1.0.1 | Base module to create xlsx report
 
+
 Unported addons
 ---------------
 addon | version | summary
