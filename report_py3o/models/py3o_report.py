@@ -247,7 +247,7 @@ class Py3oReport(models.TransientModel):
             if report_xml.py3o_is_local_fusion:
                 template.render(localcontext)
                 out_stream.seek(0)
-                in_stream = out_stream.read()
+                tmpl_data = out_stream.read()
                 datadict = {}
             else:
                 expressions = template.get_all_user_python_expression()
@@ -260,7 +260,7 @@ class Py3oReport(models.TransientModel):
         if not is_native or not report_xml.py3o_is_local_fusion:
             # Call py3o.server to render the template in the desired format
             files = {
-                'tmpl_file': in_stream,
+                'tmpl_file': tmpl_data,
             }
             fields = {
                 "targetformat": filetype,
