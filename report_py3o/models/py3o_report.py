@@ -266,6 +266,7 @@ class Py3oReport(models.TransientModel):
                 "targetformat": filetype,
                 "datadict": json.dumps(datadict),
                 "image_mapping": "{}",
+                "escape_false": "on",
             }
             if report_xml.py3o_is_local_fusion:
                 fields['skipfusion'] = '1'
