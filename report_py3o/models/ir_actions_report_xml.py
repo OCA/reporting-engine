@@ -80,6 +80,12 @@ class IrActionsReportXml(models.Model):
             "or an absolute path on your server."
         ))
     report_type = fields.Selection(selection_add=[('py3o', "Py3o")])
+    py3o_multi_in_one = fields.Boolean(
+        string='Multiple Records in a Single Report',
+        help="If you execute a report on several records, "
+        "by default Odoo will generate a ZIP file that contains as many "
+        "files as selected records. If you enable this option, Odoo will "
+        "generate instead a single report for the selected records.")
 
     @api.model
     def render_report(self, res_ids, name, data):

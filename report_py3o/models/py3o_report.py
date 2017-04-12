@@ -282,8 +282,9 @@ class Py3oReport(models.TransientModel):
             with open(result_path, 'w+') as fd:
                 for chunk in r.iter_content(chunk_size):
                     fd.write(chunk)
-        self._postprocess_report(
-            result_path, model_instance.id, save_in_attachment)
+        if len(model_instance) == 1:
+            self._postprocess_report(
+                result_path, model_instance.id, save_in_attachment)
         return result_path
 
     @api.multi
@@ -345,10 +346,17 @@ class Py3oReport(models.TransientModel):
         save_in_attachment = self._check_attachment_use(
             res_ids, self.ir_actions_report_xml_id) or {}
         reports_path = []
-        for model_instance in model_instances:
+        if (
+                len(res_ids) > 1 and
+                self.ir_actions_report_xml_id.py3o_multi_in_one):
             reports_path.append(
-                self._get_or_create_single_report(
-                    model_instance, data, save_in_attachment))
+                self._create_single_report(
+                    model_instances, data, save_in_attachment))
+        else:
+            for model_instance in model_instances:
+                reports_path.append(
+                    self._get_or_create_single_report(
+                        model_instance, data, save_in_attachment))
 
         result_path, filetype = self._merge_results(reports_path)
         reports_path.append(result_path)
