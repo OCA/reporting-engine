@@ -22,11 +22,8 @@ class TestReportQwebPdfWatermark(TransactionCase):
         self._test_report_images(3)
 
     def _test_report_images(self, number):
-        pdf = self.registry['report'].get_pdf(
-            self.cr,
-            self.uid,
+        pdf = self.env['report'].get_pdf(
             self.env['res.users'].search([]).ids,
             'report_qweb_pdf_watermark.demo_report_view',
-            context={}
         )
         self.assertEqual(pdf.count('/Subtype /Image'), number)
