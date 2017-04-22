@@ -41,6 +41,9 @@ class ReportController(ReportController):
     @http.route(['/report/download'])
     def report_download(self, data, token):
         response = super(ReportController, self).report_download(data, token)
+        if response.status_code != 200:
+            # In case of error don't change the response.
+            return response
         # if we got another content disposition before, ditch the one added
         # by super()
         last_index = None
