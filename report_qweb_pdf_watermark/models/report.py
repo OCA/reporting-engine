@@ -7,32 +7,25 @@ from pyPdf import PdfFileWriter, PdfFileReader
 from pyPdf.utils import PdfReadError
 from PIL import Image
 from StringIO import StringIO
-from openerp import api, models, tools
+from odoo import api, models, tools
 logger = getLogger(__name__)
 
 
 class Report(models.Model):
     _inherit = 'report'
 
-    @api.v7
-    def get_pdf(
-        self, cr, uid, ids, report_name, html=None, data=None, context=None
-    ):
-        # pylint: disable=R8110
-        # this override cannot be done in v8 api
+    @api.model
+    def get_pdf(self, docids, report_name, html=None, data=None):
         result = super(Report, self).get_pdf(
-            cr, uid, ids, report_name, html=html, data=data,
-            context=context
-        )
-        report = self._get_report_from_name(cr, uid, report_name)
+            docids, report_name, html=html, data=data)
+        report = self._get_report_from_name(report_name)
         watermark = None
         if report.pdf_watermark:
             watermark = b64decode(report.pdf_watermark)
         else:
-            env = api.Environment(cr, uid, context)
             watermark = tools.safe_eval(
                 report.pdf_watermark_expression or 'None',
-                dict(env=env, docs=env[report.model].browse(ids)),
+                dict(env=self.env, docs=self.env[report.model].browse(docids)),
             )
             if watermark:
                 watermark = b64decode(watermark)
