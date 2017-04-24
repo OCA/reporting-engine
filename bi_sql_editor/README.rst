@@ -114,7 +114,7 @@ Known issues / Roadmap
 
 * Add 'interval', after type (row/col/measure) field for date(time) fields.
 
-* Dinamically change displayed action name to mention the last refresh of the
+* Dynamically change displayed action name to mention the last refresh of the
   materialized view.
 
 * Create ir.rule to limit access. (for company_id for exemple)
