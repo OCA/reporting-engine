@@ -21,6 +21,10 @@ To use this module, you need to:
     :alt: Try me on Runbot
     :target: https://runbot.odoo-community.org/runbot/143/8.0
 
+Known Issues
+============
+This module depends on support for transparent backgrounds in Wkhtmltopdf, which has been flaky in the past. This module has been reported to work with Wkhtmltopdf 0.12.4.
+
 Bug Tracker
 ===========
 
