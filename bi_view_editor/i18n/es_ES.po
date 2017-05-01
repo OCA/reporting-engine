@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-21 05:51+0000\n"
+"POT-Creation-Date: 2017-03-28 06:59+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es_ES/)\n"
@@ -92,7 +92,7 @@ msgstr "Nombre para mostrar"
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:72
