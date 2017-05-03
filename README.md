@@ -24,6 +24,7 @@ addon | version | summary
 --- | --- | ---
 [report_py3o](report_py3o/) | 10.0.1.1.0 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
+[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 10.0.1.0.1 | Base module to create xlsx report
 
 
