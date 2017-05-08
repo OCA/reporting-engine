@@ -15,6 +15,11 @@ try:
 except ImportError:
     _logger.debug('Can not import xlsxwriter`.')
 
+AVAILABLE_COLORS = ('cyan', 'black', 'blue', 'brown', 'cadet blue',
+                    'dark green', 'magenta', 'green', 'lime', 'navy',
+                    'orange', 'pink', 'purple', 'red', 'silver', 'white',
+                    'yellow')
+
 
 class ReportXlsx(report_sxw):
 
