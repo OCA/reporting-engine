@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -23,14 +23,14 @@
 from openerp.osv import orm
 
 
-class ir_actions_report_xml(orm.Model):
+class IrActionsReportXml(orm.Model):
     _inherit = 'ir.actions.report.xml'
 
     def _check_selection_field_value(self, cr, uid,
                                      field, value, context=None):
         if field == 'report_type' and value == 'xls':
             return
-        return super(ir_actions_report_xml, self)._check_selection_field_value(
+        return super(IrActionsReportXml, self)._check_selection_field_value(
             cr, uid, field, value, context=context)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -40,7 +40,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-class report_xls(report_sxw):
+class ReportXls(report_sxw):
 
     xls_types = {
         'bool': xlwt.Row.set_cell_boolean,
@@ -70,12 +70,19 @@ class report_xls(report_sxw):
     date_format = 'YYYY-MM-DD'
     xls_styles = {
         'xls_title': 'font: bold true, height 240;',
+        'normal': '',
         'bold': 'font: bold true;',
         'underline': 'font: underline true;',
         'italic': 'font: italic true;',
         'fill': 'pattern: pattern solid, fore_color %s;' % _pfc,
+        'fill_white': 'pattern: pattern solid, fore_color white;',
         'fill_blue': 'pattern: pattern solid, fore_color 27;',
         'fill_grey': 'pattern: pattern solid, fore_color 22;',
+        'colour_index_black': 'font: colour_index black;',
+        'colour_index_blue': 'font: colour_index blue;',
+        'colour_index_red': 'font: colour_index red;',
+        'colour_index_grey': 'font: colour_index grey;',
+        'borders_top_bottom': 'borders: bottom thin, top thin;',
         'borders_all':
             'borders: '
             'left thin, right thin, top thin, bottom thin, '
@@ -108,7 +115,7 @@ class report_xls(report_sxw):
             # use model from 'data' when no ir.actions.report.xml entry
             self.table = data.get('model') or self.table
             return self.create_source_xls(cr, uid, ids, data, context)
-        return super(report_xls, self).create(cr, uid, ids, data, context)
+        return super(ReportXls, self).create(cr, uid, ids, data, context)
 
     def create_source_xls(self, cr, uid, ids, data, context=None):
         if not context:
@@ -199,7 +206,7 @@ class report_xls(report_sxw):
                         c.append({'formula': s[5]})
                     else:
                         c.append({
-                            'write_cell_func': report_xls.xls_types[c[3]]})
+                            'write_cell_func': ReportXls.xls_types[c[3]]})
                     # Set custom cell style
                     if s_len > 6 and s[6] is not None:
                         c.append(s[6])
@@ -214,7 +221,7 @@ class report_xls(report_sxw):
                     col += c[1]
                     break
             if not found:
-                _logger.warn("report_xls.xls_row_template, "
+                _logger.warn("ReportXls.xls_row_template, "
                              "column '%s' not found in specs", w)
         return r
 
@@ -228,7 +235,7 @@ class report_xls(report_sxw):
             style = spec[6] and spec[6] or row_style
             if not data:
                 # if no data, use default values
-                data = report_xls.xls_types_default[spec[3]]
+                data = ReportXls.xls_types_default[spec[3]]
             if size != 1:
                 if formula:
                     ws.write_merge(
