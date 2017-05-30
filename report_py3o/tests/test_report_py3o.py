@@ -2,6 +2,7 @@
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
+import base64
 from base64 import b64decode
 import mock
 import os
@@ -105,6 +106,52 @@ class TestReportPy3o(TransactionCase):
             res = self.report.render_report(
                 self.env.user.ids, self.report.report_name, {})
             self.assertEqual(('test result', 'pdf'), res)
+
+    def test_report_load_from_attachment(self):
+        py3o_report = self.env['py3o.report']
+        with mock.patch.object(
+                py3o_report.__class__, '_create_single_report') as patched_pdf:
+            result = tempfile.mktemp('.txt')
+            with open(result, 'w') as fp:
+                fp.write('dummy')
+            patched_pdf.return_value = result
+            # test the call the the create method inside our custom parser
+            self.report.render_report(self.env.user.ids,
+                                      self.report.report_name,
+                                      {})
+            self.assertEqual(1, patched_pdf.call_count)
+            # generated files no more exists
+            self.assertFalse(os.path.exists(result))
+        res = self.report.render_report(
+            self.env.user.ids, self.report.report_name, {})
+        self.assertTrue(res)
+        py3o_server = self.env['py3o.server'].create({"url": "http://dummy"})
+        # check the call to the fusion server
+        self.report.write({"py3o_filetype": "pdf",
+                           "py3o_server_id": py3o_server.id,
+                           "attachment_use": True,
+                           "attachment": "'my_saved_report'"})
+        attachments = self.env['ir.attachment'].search([])
+        with mock.patch('requests.post') as patched_post:
+            magick_response = mock.MagicMock()
+            magick_response.status_code = 200
+            patched_post.return_value = magick_response
+            magick_response.iter_content.return_value = "test result"
+            res = self.report.render_report(
+                self.env.user.ids, self.report.report_name, {})
+            self.assertEqual(('test result', 'pdf'), res)
+        new_attachments = self.env['ir.attachment'].search([])
+        created_attachement = new_attachments - attachments
+        self.assertEqual(1, len(created_attachement))
+        content = b64decode(created_attachement.datas)
+        self.assertEqual("test result", content)
+        # put a new content into tha attachement and check that the next
+        # time we ask the report we received the saved attachment not a newly
+        # generated document
+        created_attachement.datas = base64.encodestring("new content")
+        res = self.report.render_report(
+            self.env.user.ids, self.report.report_name, {})
+        self.assertEqual(('new content', 'pdf'), res)
 
     def test_report_post_process(self):
         """
