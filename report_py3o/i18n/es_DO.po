@@ -11,23 +11,23 @@ msgstr ""
 "POT-Creation-Date: 2017-08-17 02:52+0000\n"
 "PO-Revision-Date: 2017-08-17 02:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
+"Language-Team: Spanish (Dominican Republic) (https://www.transifex.com/oca/teams/23907/es_DO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: es_DO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:54
 #, python-format
 msgid "(Native)"
-msgstr "(Nativo)"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_is_active
 msgid "Active"
-msgstr "Ativo"
+msgstr ""
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:42
@@ -36,29 +36,27 @@ msgid ""
 "Can not use not native format in local fusion. Please specify a Fusion "
 "Server"
 msgstr ""
-"Não foi possível utilizar o formato nativo no servidor local Fusion. Por "
-"favor especificar um Servidor Fusion Externo"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_uid
 msgid "Created by"
-msgstr "Criado por"
+msgstr "Creado por"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_date
 msgid "Created on"
-msgstr "Criado em"
+msgstr "Creado en"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_display_name
 msgid "Display Name"
-msgstr "Nome de Exibição"
+msgstr "Nombre mostrado"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -97,7 +95,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
-msgstr "Identificação"
+msgstr "ID"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -132,21 +130,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server___last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template___last_update
 msgid "Last Modified on"
-msgstr "Última atualização em"
+msgstr "Última modificación en"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
-msgstr "Última atualização por"
+msgstr "Última actualización de"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
-msgstr "Última atualização em"
+msgstr "Última actualización en"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
@@ -177,7 +175,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
-msgstr "Nome"
+msgstr "Nombre"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
@@ -255,7 +253,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_report
 msgid "Report"
-msgstr "Relatório"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
