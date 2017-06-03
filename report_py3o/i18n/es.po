@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-23 00:38+0000\n"
-"PO-Revision-Date: 2017-04-23 00:38+0000\n"
+"POT-Creation-Date: 2017-05-31 03:52+0000\n"
+"PO-Revision-Date: 2017-05-31 03:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:52
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:54
 #, python-format
 msgid "(Native)"
 msgstr "(Originario)"
@@ -30,7 +30,7 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:40
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:42
 #, python-format
 msgid ""
 "Can not use not native format in local fusion. Please specify a Fusion "
@@ -66,7 +66,7 @@ msgid "Fallback"
 msgstr "Retroceder"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:28
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:30
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
 msgstr "Campo 'Formato de salida' es necesario para el informe Py3O"
@@ -107,6 +107,15 @@ msgid ""
 msgstr ""
 "Si el usuario no proporciona una plantilla se utilizará una ruta relativa a "
 "la raíz de SU módulo o una ruta absoluta en SU servidor."
+
+#. module: report_py3o
+#: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_multi_in_one
+msgid ""
+"If you execute a report on several records, by default Odoo will generate a "
+"ZIP file that contains as many files as selected records. If you enable this"
+" option, Odoo will generate instead a single report for the selected "
+"records."
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_py3o_server_url
@@ -163,6 +172,11 @@ msgstr "Fusión Local"
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_module
 msgid "Module"
 msgstr "Módulo"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_multi_in_one
+msgid "Multiple Records in a Single Report"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
@@ -247,7 +261,7 @@ msgstr "Modelos Py3o"
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_report
 msgid "Report"
-msgstr ""
+msgstr "Informe"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
