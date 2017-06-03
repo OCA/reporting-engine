@@ -3,14 +3,14 @@
 # * report_py3o
 # 
 # Translators:
-# Cezar Jos?? Sant Anna Junior <cezar.santanna@gmail.com>, 2017
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-19 10:15+0000\n"
-"PO-Revision-Date: 2017-05-19 10:15+0000\n"
-"Last-Translator: Cezar Jos?? Sant Anna Junior <cezar.santanna@gmail.com>, 2017\n"
+"POT-Creation-Date: 2017-08-17 02:52+0000\n"
+"PO-Revision-Date: 2017-08-17 02:52+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:52
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:54
 #, python-format
 msgid "(Native)"
 msgstr "(Nativo)"
@@ -30,7 +30,7 @@ msgid "Active"
 msgstr "Ativo"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:40
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:42
 #, python-format
 msgid ""
 "Can not use not native format in local fusion. Please specify a Fusion "
@@ -66,7 +66,7 @@ msgid "Fallback"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:28
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:30
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
 msgstr ""
@@ -97,7 +97,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
-msgstr ""
+msgstr "Identifica????o"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -132,21 +132,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server___last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "??ltima atualiza????o em"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "??ltima atualiza????o por"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "??ltima atualiza????o em"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
@@ -177,7 +177,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
@@ -255,7 +255,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_report
 msgid "Report"
-msgstr ""
+msgstr "Relat??rio"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
