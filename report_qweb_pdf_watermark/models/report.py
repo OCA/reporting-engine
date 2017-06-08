@@ -3,16 +3,22 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from base64 import b64decode
 from logging import getLogger
-from pyPdf import PdfFileWriter, PdfFileReader
-from pyPdf.utils import PdfReadError
 from PIL import Image
 from StringIO import StringIO
-from odoo import api, models, tools
-from PIL import PdfImagePlugin # flake8: noqa
 
-# PdfImagePlugin must be loaded in order to work PNG to PDF transformation
-# This issue is related to Pillow creation, as can be seen in its source code:
-# https://github.com/python-pillow/Pillow/blob/master/PIL/PdfImagePlugin.py
+from pyPdf import PdfFileWriter, PdfFileReader
+from pyPdf.utils import PdfReadError
+try:
+    from PyPDF2 import PdfFileWriter, PdfFileReader  # pylint: disable=W0404
+    from PyPDF2.utils import PdfReadError  # pylint: disable=W0404
+except ImportError:
+    pass
+try:
+    # we need this to be sure PIL has loaded PDF support
+    from PIL import PdfImagePlugin  # noqa: F401
+except ImportError:
+    pass
+from odoo import api, models, tools
 
 logger = getLogger(__name__)
 
