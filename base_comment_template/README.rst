@@ -1,5 +1,5 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
 =======================
@@ -10,8 +10,8 @@ Add a new model to define templates of comments to print on
 documents.
 
 Two positions are available for the comments:
-- above document lines
-- below document lines
+* above document lines
+* below document lines
 
 This module is the base module for following modules:
 
@@ -19,13 +19,20 @@ This module is the base module for following modules:
 * purchase_comment_template
 * invoice_comment_template
 
-Credits
-=======
+Usage
+=====
 
-Images
-------
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/94/10.0
 
-* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/account-invoice-reporting/issues>`_. In case of trouble, please
+check there if your issue has already been reported. If you spotted it first,
+help us smash it by providing detailed and welcomed feedback.
 
 Contributors
 ------------
@@ -33,6 +40,9 @@ Contributors
 * Nicolas Bessi <nicolas.bessi@camptocamp.com>
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
 * Guewen Baconnier <guewen.baconnier@camptocamp.com>
+* Simone Rubino <simone.rubino@agilebg.com>
+
+Do not contact contributors directly about support or help with technical issues.
 
 Maintainer
 ----------
