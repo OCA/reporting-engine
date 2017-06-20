@@ -3,9 +3,17 @@ cache: pip
 
 addons:
   apt:
+    sources:
+      - pov-wkhtmltopdf
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml # because pip installation is slow
+      - wkhtmltopdf  # only add if needed and check the before_install section below
+
+# set up an X server to run wkhtmltopdf.
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 language: python
 
