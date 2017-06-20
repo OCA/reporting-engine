@@ -4,7 +4,8 @@
 {
     "name": "Pdf watermark",
     "version": "10.0.1.0.0",
-    "author": "Therp BV,Odoo Community Association (OCA)",
+    "author": "Therp BV, "
+              "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Reporting",
     "summary": "Add watermarks to your QWEB PDF reports",
