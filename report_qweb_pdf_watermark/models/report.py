@@ -8,6 +8,12 @@ from pyPdf.utils import PdfReadError
 from PIL import Image
 from StringIO import StringIO
 from odoo import api, models, tools
+from PIL import PdfImagePlugin # flake8: noqa
+
+# PdfImagePlugin must be loaded in order to work PNG to PDF transformation
+# This issue is related to Pillow creation, as can be seen in its source code:
+# https://github.com/python-pillow/Pillow/blob/master/PIL/PdfImagePlugin.py
+
 logger = getLogger(__name__)
 
 
@@ -40,6 +46,7 @@ class Report(models.Model):
         except PdfReadError:
             # let's see if we can convert this with pillow
             try:
+                Image.init()
                 image = Image.open(StringIO(watermark))
                 pdf_buffer = StringIO()
                 if image.mode != 'RGB':
