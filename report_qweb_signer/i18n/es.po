@@ -168,9 +168,9 @@ msgstr "Salvar como adjunto"
 #: code:addons/report_qweb_signer/models/report.py:119
 #, python-format
 msgid ""
-"Saving signed report (PDF): You do not have enought access rights to save "
+"Saving signed report (PDF): You do not have enough access rights to save "
 "attachments"
-msgstr "Guardar informe firmado (PDF): no tienes suficientes permisos de acceso para guardar adjuntos"
+msgstr "Guardar informe firmado (PDF): no tiene suficientes permisos de acceso para guardar adjuntos"
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
