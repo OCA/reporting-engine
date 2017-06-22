@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-© 2015 Antiun Ingenieria S.L. - Antonio Espinosa
+Copyright 2015 Tecnativa - Antonio Espinosa
+Copyright 2017 Tecnativa - Pedro M. Baeza
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp>
-<data>
+<odoo>
 
 <record id="view_report_certificate_form" model="ir.ui.view">
     <field name="name">report.certificate.form</field>
@@ -62,5 +62,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
           parent="report.reporting_menuitem"
           action="action_report_certificate"/>
 
-</data>
-</openerp>
+</odoo>
