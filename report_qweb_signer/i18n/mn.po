@@ -3,14 +3,15 @@
 # * report_qweb_signer
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: reporting-engine (8.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 06:59+0000\n"
-"PO-Revision-Date: 2017-04-25 10:44+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Mongolian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/mn/)\n"
+"POT-Creation-Date: 2017-08-17 02:52+0000\n"
+"PO-Revision-Date: 2017-08-17 02:52+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Mongolian (https://www.transifex.com/oca/teams/23907/mn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -18,18 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_signer
-#: field:report.certificate,allow_only_one:0
+#: model:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<span>This is a sample report for testing PDF certificates.</span>"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<strong>Partner:</strong>"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_allow_only_one
 msgid "Allow only one document"
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,path:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_path
 msgid "Certificate file path"
 msgstr ""
 
 #. module: report_qweb_signer
-#: view:res.company:report_qweb_signer.view_company_form
-msgid "Certificates"
+#: model:ir.ui.view,arch_db:report_qweb_signer.view_company_form
+msgid "Certificates (PDF signing)"
 msgstr ""
 
 #. module: report_qweb_signer
@@ -38,81 +49,81 @@ msgid "Companies"
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,company_id:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_company_id
 msgid "Company"
 msgstr "Компани"
 
 #. module: report_qweb_signer
-#: field:report.certificate,create_uid:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_create_uid
 msgid "Created by"
 msgstr "Үүсгэгч"
 
 #. module: report_qweb_signer
-#: field:report.certificate,create_date:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_create_date
 msgid "Created on"
 msgstr "Үүсгэсэн"
 
 #. module: report_qweb_signer
-#: field:report.certificate,display_name:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_display_name
 msgid "Display Name"
 msgstr "Дэлгэцийн Нэр"
 
 #. module: report_qweb_signer
-#: field:report.certificate,domain:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_domain
 msgid "Domain"
 msgstr ""
 
 #. module: report_qweb_signer
-#: help:report.certificate,domain:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_domain
 msgid "Domain for filtering if sign or not the document"
 msgstr ""
 
 #. module: report_qweb_signer
-#: help:report.certificate,attachment:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_attachment
 msgid ""
 "Filename used to store signed document as attachment. Keep empty to not save"
 " signed document."
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,id:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_id
 msgid "ID"
 msgstr "ID"
 
 #. module: report_qweb_signer
-#: help:report.certificate,allow_only_one:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_allow_only_one
 msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,__last_update:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate___last_update
 msgid "Last Modified on"
 msgstr "Сүүлийн засвар хийсэн огноо"
 
 #. module: report_qweb_signer
-#: field:report.certificate,write_uid:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_write_uid
 msgid "Last Updated by"
 msgstr "Сүүлийн засвар хийсэн"
 
 #. module: report_qweb_signer
-#: field:report.certificate,write_date:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_write_date
 msgid "Last Updated on"
 msgstr "Сүүлийн засвар хийсэн огноо"
 
 #. module: report_qweb_signer
-#: field:report.certificate,model_id:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_model_id
 msgid "Model"
 msgstr ""
 
 #. module: report_qweb_signer
-#: help:report.certificate,model_id:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_model_id
 msgid "Model where apply this certificate"
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,name:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_name
 msgid "Name"
 msgstr "Нэр"
 
@@ -123,33 +134,28 @@ msgid "PDF certificates"
 msgstr ""
 
 #. module: report_qweb_signer
-#: view:report.certificate:report_qweb_signer.view_report_certificate_form
+#: model:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_form
 msgid "PDF report certificate"
 msgstr ""
 
 #. module: report_qweb_signer
-#: view:report.certificate:report_qweb_signer.view_report_certificate_tree
-#: field:res.company,report_certificate_ids:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company_report_certificate_ids
+#: model:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_tree
 msgid "PDF report certificates"
 msgstr ""
 
 #. module: report_qweb_signer
-#: view:website:report_qweb_signer.report_partner_demo_document
-msgid "Partner:"
-msgstr ""
-
-#. module: report_qweb_signer
-#: field:report.certificate,password_file:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_password_file
 msgid "Password file path"
 msgstr ""
 
 #. module: report_qweb_signer
-#: help:report.certificate,path:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_path
 msgid "Path to PKCS#12 certificate file"
 msgstr ""
 
 #. module: report_qweb_signer
-#: help:report.certificate,password_file:0
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_password_file
 msgid "Path to certificate password file"
 msgstr ""
 
@@ -159,31 +165,31 @@ msgid "Report"
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,attachment:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_attachment
 msgid "Save as attachment"
 msgstr ""
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/report.py:119
+#: code:addons/report_qweb_signer/models/report.py:105
 #, python-format
 msgid ""
-"Saving signed report (PDF): You do not have enought access rights to save "
+"Saving signed report (PDF): You do not have enough access rights to save "
 "attachments"
 msgstr ""
 
 #. module: report_qweb_signer
-#: field:report.certificate,sequence:0
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate_sequence
 msgid "Sequence"
 msgstr "Дараалал"
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/report.py:139
+#: code:addons/report_qweb_signer/models/report.py:121
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
 msgstr ""
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/report.py:148
+#: code:addons/report_qweb_signer/models/report.py:130
 #, python-format
 msgid ""
 "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
@@ -191,11 +197,11 @@ msgid ""
 msgstr ""
 
 #. module: report_qweb_signer
-#: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo
+#: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo_report
 msgid "Test PDF certificate"
 msgstr ""
 
 #. module: report_qweb_signer
-#: view:website:report_qweb_signer.report_partner_demo_document
-msgid "This is a sample report for testing PDF certificates"
+#: model:ir.model,name:report_qweb_signer.model_report_certificate
+msgid "report.certificate"
 msgstr ""

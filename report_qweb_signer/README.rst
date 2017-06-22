@@ -50,17 +50,15 @@ but signed PDF is automatically downloaded if this document model is configured
 as indicated above.
 
 If 'Save as attachment' is configured, signed PDF is saved as attachment and
-next time saved one is downloaded without signing again. This is appropiate when
-signing date is important, for example, when signing customer invoices.
+next time saved one is downloaded without signing again. This is appropiate
+when signing date is important, for example, when signing customer invoices.
+
+You can try the signing with the demo report that is included for customers
+called "Test PDF certificate".
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/8.0
-
-For further information, please visit:
-
-* https://www.odoo.com/forum/help-1
-
+   :target: https://runbot.odoo-community.org/runbot/143/10.0
 
 Known issues / Roadmap
 ======================
@@ -69,6 +67,7 @@ Known issues / Roadmap
   then 'Save as attachment' is not applied and signed result is not
   saved as attachment.
 * To have a visible signature through an image embedded in the resulting PDF.
+* Add tests.
 
 
 Bug Tracker
@@ -76,8 +75,8 @@ Bug Tracker
 
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
-If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
-`here <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+If you spotted it first, help us smashing it by providing a detailed and
+welcomed feedback `here <https://github.com/OCA/reporting-engine/issues/new>`_.
 
 
 Credits
@@ -98,8 +97,9 @@ Icon
 Contributors
 ------------
 
-* Rafael Blasco <rafabn@antiun.com>
-* Antonio Espinosa <antonioea@antiun.com>
+* Rafael Blasco <rafael.blasco@tecnativa.com>
+* Antonio Espinosa <antonio.espinosa@tecnativa.com>
+* Pedro M. Baeza <pedro.baeza@tecnativa.com>
 
 Maintainer
 ----------
@@ -114,4 +114,4 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-To contribute to this module, please visit http://odoo-community.org.
+To contribute to this module, please visit https://odoo-community.org.
