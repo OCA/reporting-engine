@@ -1,8 +1,9 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.http import route
-from openerp.addons.report.controllers import main as report
+from odoo.addons.report.controllers import main as report
+from odoo.http import route
 
 
 class ReportController(report.ReportController):

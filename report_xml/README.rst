@@ -1,8 +1,10 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
+.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg 
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-
-Qweb XML Reports
-================
+	
+===========
+XML Reports
+===========
 
 This module was written to extend the functionality of the reporting engine to
 support XML reports and allow modules to generate them by code or by QWeb
@@ -18,11 +20,6 @@ To install this module, you need to:
 
 But this module does nothing for the end user by itself, so if you have it
 installed it's probably because there is another module that depends on it.
-
-Configuration
-=============
-
-No manual configuration is needed.
 
 Usage
 =====
@@ -63,11 +60,6 @@ For further information, please visit:
 * https://www.odoo.com/forum/help-1
 * https://github.com/OCA/reporting-engine
 
-Known issues / Roadmap
-======================
-
-None
-
 Credits
 =======
 
@@ -77,6 +69,7 @@ Contributors
 ------------
 
 * Jairo Llopis <j.llopis@grupoesoc.es>
+* Enric Tobella <etobella@creublanca.es>
 
 Maintainer
 ----------
