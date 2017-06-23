@@ -29,6 +29,7 @@ virtualenv:
 install:
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
+  - export WKHTMLTOPDF_VERSION=0.12.4
   - travis_install_nightly
 
 script:
