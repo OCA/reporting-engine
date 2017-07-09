@@ -27,7 +27,7 @@ from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import inspect
 from types import CodeType
 from openerp.report.report_sxw import report_sxw
-from openerp import pooler
+from openerp.modules.registry import RegistryManager
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -98,7 +98,7 @@ class report_xls(report_sxw):
     # TO DO: move parameters supra to configurable data
 
     def create(self, cr, uid, ids, data, context=None):
-        self.pool = pooler.get_pool(cr.dbname)
+        self.pool = RegistryManager.get(cr.dbname)
         self.cr = cr
         self.uid = uid
         report_obj = self.pool.get('ir.actions.report.xml')
