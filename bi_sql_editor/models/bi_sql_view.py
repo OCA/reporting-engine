@@ -89,6 +89,9 @@ class BiSQLView(models.Model):
     graph_view_id = fields.Many2one(
         string='Odoo Graph View', comodel_name='ir.ui.view', readonly=True)
 
+    pivot_view_id = fields.Many2one(
+        string='Odoo Pivot View', comodel_name='ir.ui.view', readonly=True)
+
     search_view_id = fields.Many2one(
         string='Odoo Search View', comodel_name='ir.ui.view', readonly=True)
 
@@ -184,6 +187,7 @@ class BiSQLView(models.Model):
                 sql_view._drop_model_and_fields()
 
             sql_view.graph_view_id.unlink()
+            sql_view.pivot_view_id.unlink()
             sql_view.action_id.unlink()
             sql_view.menu_id.unlink()
             sql_view.rule_id.unlink()
@@ -195,6 +199,8 @@ class BiSQLView(models.Model):
     def button_create_ui(self):
         self.graph_view_id = self.env['ir.ui.view'].create(
             self._prepare_graph_view()).id
+        self.pivot_view_id = self.env['ir.ui.view'].create(
+            self._prepare_pivot_view()).id
         self.search_view_id = self.env['ir.ui.view'].create(
             self._prepare_search_view()).id
         self.action_id = self.env['ir.actions.act_window'].create(
@@ -218,10 +224,9 @@ class BiSQLView(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'res_model': self.model_id.model,
-            'view_id': self.graph_view_id.id,
             'search_view_id': self.search_view_id.id,
-            'view_type': 'graph',
-            'view_mode': 'graph',
+            'view_type': 'form',
+            'view_mode': 'graph,pivot',
         }
 
     # Prepare Function
@@ -293,6 +298,21 @@ class BiSQLView(models.Model):
         }
 
     @api.multi
+    def _prepare_pivot_view(self):
+        self.ensure_one()
+        return {
+            'name': self.name,
+            'type': 'pivot',
+            'model': self.model_id.model,
+            'arch':
+                """<?xml version="1.0"?>"""
+                """<pivot string="Analysis" stacked="True">{}"""
+                """</pivot>""".format("".join(
+                    [x._prepare_pivot_field()
+                        for x in self.bi_sql_view_field_ids]))
+        }
+
+    @api.multi
     def _prepare_search_view(self):
         self.ensure_one()
         return {
@@ -320,8 +340,7 @@ class BiSQLView(models.Model):
             'res_model': self.model_id.model,
             'type': 'ir.actions.act_window',
             'view_type': 'form',
-            'view_mode': 'graph',
-            'view_id': self.graph_view_id.id,
+            'view_mode': 'graph,pivot',
             'search_view_id': self.search_view_id.id,
         }
 
