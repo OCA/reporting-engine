@@ -176,6 +176,15 @@ class BiSQLViewField(models.Model):
         return res
 
     @api.multi
+    def _prepare_pivot_field(self):
+        self.ensure_one()
+        res = ''
+        if self.graph_type and self.field_description:
+            res = """<field name="{}" type="{}" />""".format(
+                self.name, self.graph_type)
+        return res
+
+    @api.multi
     def _prepare_search_field(self):
         self.ensure_one()
         res = ''
