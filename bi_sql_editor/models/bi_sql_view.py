@@ -86,6 +86,9 @@ class BiSQLView(models.Model):
     model_id = fields.Many2one(
         string='Odoo Model', comodel_name='ir.model', readonly=True)
 
+    tree_view_id = fields.Many2one(
+        string='Odoo Tree View', comodel_name='ir.ui.view', readonly=True)
+
     graph_view_id = fields.Many2one(
         string='Odoo Graph View', comodel_name='ir.ui.view', readonly=True)
 
@@ -183,7 +186,9 @@ class BiSQLView(models.Model):
                 # Drop ORM
                 sql_view._drop_model_and_fields()
 
+            sql_view.tree_view_id.unlink()
             sql_view.graph_view_id.unlink()
+            sql_view.search_view_id.unlink()
             sql_view.action_id.unlink()
             sql_view.menu_id.unlink()
             sql_view.rule_id.unlink()
@@ -193,6 +198,8 @@ class BiSQLView(models.Model):
 
     @api.multi
     def button_create_ui(self):
+        self.tree_view_id = self.env['ir.ui.view'].create(
+            self._prepare_tree_view()).id
         self.graph_view_id = self.env['ir.ui.view'].create(
             self._prepare_graph_view()).id
         self.search_view_id = self.env['ir.ui.view'].create(
@@ -278,6 +285,20 @@ class BiSQLView(models.Model):
         }
 
     @api.multi
+    def _prepare_tree_view(self):
+        self.ensure_one()
+        return {
+            'name': self.name,
+            'type': 'tree',
+            'model': self.model_id.model,
+            'arch':
+                """<?xml version="1.0"?>"""
+                """<tree string="Analysis">{}"""
+                """</tree>""".format("".join(
+                    [x._prepare_tree_field()
+                        for x in self.bi_sql_view_field_ids]))
+
+    @api.multi
     def _prepare_graph_view(self):
         self.ensure_one()
         return {
@@ -320,7 +341,7 @@ class BiSQLView(models.Model):
             'res_model': self.model_id.model,
             'type': 'ir.actions.act_window',
             'view_type': 'form',
-            'view_mode': 'graph',
+            'view_mode': 'graph,tree',
             'view_id': self.graph_view_id.id,
             'search_view_id': self.search_view_id.id,
         }
