@@ -297,6 +297,7 @@ class BiSQLView(models.Model):
                 """</tree>""".format("".join(
                     [x._prepare_tree_field()
                         for x in self.bi_sql_view_field_ids]))
+        }
 
     @api.multi
     def _prepare_graph_view(self):
