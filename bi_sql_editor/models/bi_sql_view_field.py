@@ -167,6 +167,14 @@ class BiSQLViewField(models.Model):
         }
 
     @api.multi
+    def _prepare_tree_field(self):
+        self.ensure_one()
+        res = ''
+        if self.field_description:
+            res = """<field name="{}"/>""".format(self.name)
+        return res
+
+    @api.multi
     def _prepare_graph_field(self):
         self.ensure_one()
         res = ''
