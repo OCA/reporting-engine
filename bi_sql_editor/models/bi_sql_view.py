@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
+from datetime import datetime
 from psycopg2 import ProgrammingError
 
 from openerp import _, api, fields, models, SUPERUSER_ID
@@ -225,10 +226,9 @@ class BiSQLView(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'res_model': self.model_id.model,
-            'view_id': self.graph_view_id.id,
             'search_view_id': self.search_view_id.id,
-            'view_type': 'graph',
-            'view_mode': 'graph',
+            'view_type': 'form',
+            'view_mode': 'graph,tree',
         }
 
     # Prepare Function
@@ -507,6 +507,12 @@ class BiSQLView(models.Model):
                 sql_view.materialized_text, sql_view.view_name)
             self._log_execute(req)
             sql_view._refresh_size()
+            if sql_view.action_id:
+                # Alter name of the action, to display last refresh datetime
+                # of the materialized view
+                sql_view.action_id.name = "%s (%s)" % (
+                    self.name,
+                    datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S GMT")))
 
     @api.multi
     def _refresh_size(self):
