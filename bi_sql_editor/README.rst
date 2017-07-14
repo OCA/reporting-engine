@@ -114,17 +114,17 @@ Known issues / Roadmap
 
 * Add 'interval', after type (row/col/measure) field for date(time) fields.
 
-* Dynamically change displayed action name to mention the last refresh of the
-  materialized view.
-
-* Create ir.rule to limit access. (for company_id for exemple)
-
 Note
 ====
 
-The syntax of the sql request has the following constrains:
+* If the view is materialized, the name of the action will contain the date
+  and the time of it last refresh:
 
-* the name of the selectable columns should be prefixed by `x_`
+  .. figure:: /bi_sql_editor/static/description/06_action_datetime_name.png
+     :width: 800 px
+
+* The syntax of the sql request has the following constrains: the name of the
+  selectable columns should be prefixed by `x_`
 
 Sample:
 
