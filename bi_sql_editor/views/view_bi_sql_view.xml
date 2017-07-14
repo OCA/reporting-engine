@@ -10,7 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_bi_sql_view_tree" model="ir.ui.view">
         <field name="model">bi.sql.view</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree colors="blue:state=='draft'; brown:state in ('sql_valid', 'model_valid')">
                 <field name="name"/>
                 <field name="technical_name"/>
                 <field name="size"/>
@@ -28,8 +28,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             string="Validate SQL Expression" class="oe_highlight"/>
                     <button name="button_set_draft" type="object" states="sql_valid,model_valid,ui_valid"
                             string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"
-                            confirm="Are you sure you want to set to draft this SQL View. It will delete
-                                the materialized view, and all the previous mapping realized with the columns"/>
+                            confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"/>
                     <button name="button_create_sql_view_and_model" type="object" states="sql_valid"
                         string="Create SQL View, Indexes and Models" class="oe_highlight"
                         help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"/>
@@ -89,6 +88,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="is_index" attrs="{'invisible': [('field_description', '=', False)]}"/>
                                     <field name="is_group_by" attrs="{'invisible': [('field_description', '=', False)]}"/>
                                     <field name="graph_type" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                    <field name="tree_visibility" attrs="{'invisible': [('field_description', '=', False)]}"/>
                                 </tree>
                             </field>
                         </page>
@@ -110,6 +110,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="model_id" attrs="{'invisible': [('state', '=', 'draft')]}"/>
                                 </group>
                                 <group string="User Interface">
+                                    <field name="tree_view_id"/>
                                     <field name="graph_view_id"/>
                                     <field name="search_view_id"/>
                                     <field name="action_id"/>
