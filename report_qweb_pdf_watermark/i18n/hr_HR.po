@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-31 03:52+0000\n"
-"PO-Revision-Date: 2017-05-31 03:52+0000\n"
+"POT-Creation-Date: 2017-07-13 02:42+0000\n"
+"PO-Revision-Date: 2017-07-13 02:42+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,26 +24,28 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
+"Izraz koji polučuje base46 kodirane podatke koji se koriste kao vodeni žig.\n"
+"Imate pristup varijablama 'env' i 'docs'"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
-msgstr ""
+msgstr "Demo izvještaj"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_report
 msgid "Report"
-msgstr ""
+msgstr "Izvještaj"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark
 msgid "Watermark"
-msgstr ""
+msgstr "Vodeni žig"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark_expression
 msgid "Watermark expression"
-msgstr ""
+msgstr "Izraz vodenog žiga"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
