@@ -148,7 +148,7 @@ class BiSQLView(models.Model):
             ('state', 'not in', ('draft', 'sql_valid'))])
         if non_draft_views:
             raise UserError(_("You can only unlink draft views"))
-        return self.unlink()
+        return super(BiSQLView, self).unlink()
 
     @api.multi
     def copy(self, default=None):
