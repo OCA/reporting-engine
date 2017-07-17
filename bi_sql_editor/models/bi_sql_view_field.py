@@ -84,7 +84,7 @@ class BiSQLViewField(models.Model):
 
     ttype = fields.Selection(
         string='Field Type', selection=_TTYPE_SELECTION, help="Type of the"
-        " Odoo field that will be created. Let empty if you don't want to"
+        " Odoo field that will be created. Keep empty if you don't want to"
         " create a new field. If empty, this field will not be displayed"
         " neither available for search or group by function")
 
@@ -98,7 +98,7 @@ class BiSQLViewField(models.Model):
     many2one_model_id = fields.Many2one(
         comodel_name='ir.model', string='Model',
         help="For 'Many2one' Odoo field.\n"
-        " Co Model of the field.")
+        " Comodel of the field.")
 
     # Compute Section
     @api.multi
@@ -174,8 +174,6 @@ class BiSQLViewField(models.Model):
             'selection': self.ttype == 'selection' and self.selection or False,
             'relation': self.ttype == 'many2one' and
             self.many2one_model_id.model or False,
-            'tree_visibility': self.field_description and
-            'available' or 'unavailable',
         }
 
     @api.multi
