@@ -5,7 +5,7 @@ Copyright (C) 2014 - Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 
-<openerp><data>
+<openerp><data noupdate="1">
 
     <record id="incorrect_sql_view" model="bi.sql.view">
         <field name="name">Draft Incorrect SQL View</field>
@@ -31,8 +31,6 @@ ORDER BY name
 ]]>
         </field>
     </record>
-
-    <function model="bi.sql.view" name="button_validate_sql_expression" eval="([ref('partner_sql_view')])"/>
 
     <record id="module_sql_view" model="bi.sql.view">
         <field name="name">Modules by Authors</field>
