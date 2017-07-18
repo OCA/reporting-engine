@@ -36,7 +36,6 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
-[report_xls](report_xls/) | 8.0.0.6.1 (unported) | Excel report engine
 
 [//]: # (end addons)
 
