@@ -59,6 +59,14 @@ class BiSQLView(models.Model):
 
     state = fields.Selection(selection_add=_STATE_SQL_EDITOR)
 
+    view_order = fields.Char(string='View Order',
+                             required=True,
+                             readonly=False,
+                             states={'ui_valid': [('readonly', True)]},
+                             default="pivot,graph,tree",
+                             help='Comma-separated text. Possible values:'
+                                  ' "graph", "pivot" or "tree"')
+
     query = fields.Text(
         help="SQL Request that will be inserted as the view. Take care to :\n"
         " * set a name for all your selected fields, specially if you use"
@@ -112,6 +120,16 @@ class BiSQLView(models.Model):
 
     rule_id = fields.Many2one(
         string='Odoo Rule', comodel_name='ir.rule', readonly=True)
+
+    @api.constrains('view_order')
+    @api.multi
+    def _check_view_order(self):
+        for rec in self:
+            if rec.view_order:
+                for vtype in rec.view_order.split(','):
+                    if vtype not in ('graph', 'pivot', 'tree'):
+                        raise UserError(_(
+                            'Only graph, pivot or tree views are supported'))
 
     # Compute Section
     @api.depends('is_materialized')
@@ -233,7 +251,7 @@ class BiSQLView(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': self.model_id.model,
             'search_view_id': self.search_view_id.id,
-            'view_mode': 'graph,pivot,tree',
+            'view_mode': self.action_id.view_mode,
         }
 
     # Prepare Function
@@ -357,12 +375,20 @@ class BiSQLView(models.Model):
     @api.multi
     def _prepare_action(self):
         self.ensure_one()
+        view_mode = self.view_order
+        first_view = view_mode.split(',')[0]
+        if first_view == 'tree':
+            view_id = self.tree_view_id.id
+        elif first_view == 'pivot':
+            view_id = self.pivot_view_id.id
+        else:
+            view_id = self.graph_view_id.id
         return {
             'name': self.name,
             'res_model': self.model_id.model,
             'type': 'ir.actions.act_window',
-            'view_mode': 'graph,pivot,tree',
-            'view_id': self.graph_view_id.id,
+            'view_mode': view_mode,
+            'view_id': view_id,
             'search_view_id': self.search_view_id.id,
         }
 
