@@ -77,7 +77,8 @@ To configure this module, you need to:
 * Click on the button 'Create SQL View, Indexes and Models'. (this step could
   take a while, if view is materialized)
 
-* If it's a MATERIALIZED view: 
+* If it's a MATERIALIZED view:
+
     * a cron task is created to refresh
       the view. You can so define the frequency of the refresh.
     * the size of view (and the indexes is displayed)
@@ -93,9 +94,9 @@ Usage
 
 To use this module, you need to:
 
-* Go to 'Reporting' / 'Custom Reports' 
+#. Go to 'Reporting' / 'Custom Reports'
 
-* select the desired report
+#. Select the desired report
 
   .. figure:: /bi_sql_editor/static/description/05_reporting_pivot.png
      :width: 800 px

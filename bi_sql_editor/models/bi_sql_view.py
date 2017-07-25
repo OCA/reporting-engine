@@ -27,14 +27,14 @@ class BiSQLView(models.Model):
 
     _STATE_SQL_EDITOR = [
         ('model_valid', 'SQL View and Model Created'),
-        ('ui_valid', 'Graph, action and Menu Created'),
+        ('ui_valid', 'Views, Action and Menu Created'),
     ]
 
     technical_name = fields.Char(
         string='Technical Name', required=True,
-        help="Suffix of the SQL view. (SQL full name will be computed and"
-        " prefixed by 'x_bi_sql_view_'. Should have correct"
-        "syntax. For more information, see https://www.postgresql.org/"
+        help="Suffix of the SQL view. SQL full name will be computed and"
+        " prefixed by 'x_bi_sql_view_'. Syntax should follow: "
+        "https://www.postgresql.org/"
         "docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS")
 
     view_name = fields.Char(
