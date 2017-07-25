@@ -21,8 +21,8 @@
         'views/menu.xml',
     ],
     'demo': [
-        'demo/res_groups.xml',
-        'demo/bi_sql_view.xml',
+        'demo/res_groups_demo.xml',
+        'demo/bi_sql_view_demo.xml',
     ],
     'installable': True,
 }
