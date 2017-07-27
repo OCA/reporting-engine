@@ -25,4 +25,5 @@
         'demo/bi_sql_view_demo.xml',
     ],
     'installable': True,
+    'uninstall_hook': 'uninstall_hook'
 }
