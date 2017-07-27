@@ -208,13 +208,20 @@ class BiSQLView(models.Model):
                 # Drop ORM
                 sql_view._drop_model_and_fields()
 
-            sql_view.tree_view_id.unlink()
-            sql_view.graph_view_id.unlink()
-            sql_view.pivot_view_id.unlink()
-            sql_view.search_view_id.unlink()
-            sql_view.action_id.unlink()
-            sql_view.menu_id.unlink()
-            sql_view.rule_id.unlink()
+            if sql_view.tree_view_id:
+                sql_view.tree_view_id.unlink()
+            if sql_view.graph_view_id:
+                sql_view.graph_view_id.unlink()
+            if sql_view.pivot_view_id:
+                sql_view.pivot_view_id.unlink()
+            if sql_view.search_view_id:
+                sql_view.search_view_id.unlink()
+            if sql_view.action_id:
+                sql_view.action_id.unlink()
+            if sql_view.menu_id:
+                sql_view.menu_id.unlink()
+            if sql_view.rule_id:
+                sql_view.rule_id.unlink()
             if sql_view.cron_id:
                 sql_view.cron_id.unlink()
             sql_view.write({'state': 'draft', 'has_group_changed': False})
@@ -409,9 +416,14 @@ class BiSQLView(models.Model):
     @api.multi
     def _drop_view(self):
         for sql_view in self:
-            self._log_execute(
-                "DROP %s VIEW IF EXISTS %s" % (
-                    sql_view.materialized_text, sql_view.view_name))
+            try:
+                self._log_execute(
+                    "DROP %s VIEW IF EXISTS %s" % (
+                        sql_view.materialized_text, sql_view.view_name))
+            except ProgrammingError as e:
+                # If it is not a materialized view will raise an error,
+                # and we pass.
+                continue
             sql_view.size = False
 
     @api.multi
@@ -464,7 +476,8 @@ class BiSQLView(models.Model):
     @api.multi
     def _drop_model_and_fields(self):
         for sql_view in self:
-            sql_view.model_id.unlink()
+            if sql_view.model_id:
+                sql_view.model_id.unlink()
 
     @api.multi
     def _hook_executed_request(self):
@@ -547,7 +560,7 @@ class BiSQLView(models.Model):
 
     @api.multi
     def _refresh_materialized_view(self):
-        for sql_view in self:
+        for sql_view in self.filtered(lambda v: v.is_materialized == True):
             req = "REFRESH %s VIEW %s" % (
                 sql_view.materialized_text, sql_view.view_name)
             self._log_execute(req)
