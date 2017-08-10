@@ -449,7 +449,6 @@ class BiSQLView(models.Model):
             # Drop table, created by the ORM
             req = "DROP TABLE %s" % (sql_view.view_name)
             self.env.cr.execute(req)
-            self.env.cr.commit()  # pylint: disable=invalid-commit
 
     @api.multi
     def _create_model_access(self):
@@ -482,7 +481,6 @@ class BiSQLView(models.Model):
             AND     attnum > 0
             ORDER   BY attnum;""" % (self.view_name)
         self.env.cr.execute(req)
-        self.env.cr.commit()  # pylint: disable=invalid-commit
         return self.env.cr.fetchall()
 
     @api.multi
@@ -571,4 +569,4 @@ class BiSQLView(models.Model):
                 sql_view.view_name)
             self.env.cr.execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
-            self.env.cr.commit()  # pylint: disable=invalid-commit
+
