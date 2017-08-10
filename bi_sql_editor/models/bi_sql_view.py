@@ -569,4 +569,3 @@ class BiSQLView(models.Model):
                 sql_view.view_name)
             self.env.cr.execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
-

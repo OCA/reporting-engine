@@ -55,7 +55,8 @@ class TestBiSqlViewEditor(TransactionCase):
 
     def test_copy(self):
         copy_view = self.view.copy()
-        self.assertEqual(copy_view.name, 'Partners View 2 (Copy)', 'Wrong name')
+        self.assertEqual(
+            copy_view.name, 'Partners View 2 (Copy)', 'Wrong name')
 
     def test_security(self):
         with self.assertRaises(AccessError):
