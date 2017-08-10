@@ -174,8 +174,6 @@ class BiSQLViewField(models.Model):
             'selection': self.ttype == 'selection' and self.selection or False,
             'relation': self.ttype == 'many2one' and
             self.many2one_model_id.model or False,
-            'tree_visibility': self.field_description and
-            'available' or 'unavailable',
         }
 
     @api.multi
