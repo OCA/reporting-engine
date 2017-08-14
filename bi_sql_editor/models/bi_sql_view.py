@@ -215,7 +215,6 @@ class BiSQLView(models.Model):
             sql_view.search_view_id.unlink()
             sql_view.action_id.unlink()
             sql_view.menu_id.unlink()
-            sql_view.rule_id.unlink()
             if sql_view.cron_id:
                 sql_view.cron_id.unlink()
             sql_view.write({'state': 'draft', 'has_group_changed': False})
@@ -465,6 +464,8 @@ class BiSQLView(models.Model):
     @api.multi
     def _drop_model_and_fields(self):
         for sql_view in self:
+            if sql_view.rule_id:
+                sql_view.rule_id.unlink()
             if sql_view.model_id:
                 sql_view.model_id.unlink()
 
