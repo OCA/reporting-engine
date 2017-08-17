@@ -26,6 +26,7 @@ addon | version | summary
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 10.0.1.0.1 | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.0 | Add watermarks to your QWEB PDF reports
+[report_qweb_signer](report_qweb_signer/) | 10.0.1.0.0 | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 10.0.1.0.1 | Base module to create xlsx report
 [report_xml](report_xml/) | 10.0.1.0.0 | Allow to generate XML reports
