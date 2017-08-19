@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-24 04:38+0000\n"
-"PO-Revision-Date: 2016-12-27 08:24+0000\n"
+"POT-Creation-Date: 2017-07-09 15:55+0000\n"
+"PO-Revision-Date: 2017-08-11 11:56+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: field:report.certificate,name:0
 msgid "Name"
-msgstr ""
+msgstr "Tên"
 
 #. module: report_qweb_signer
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate

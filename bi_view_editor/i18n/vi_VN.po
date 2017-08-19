@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-24 04:38+0000\n"
+"POT-Creation-Date: 2017-07-09 15:55+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/vi_VN/)\n"
@@ -143,7 +143,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr ""
+msgstr "Tên"
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
