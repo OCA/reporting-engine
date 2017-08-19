@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-31 03:52+0000\n"
-"PO-Revision-Date: 2017-05-31 03:52+0000\n"
+"POT-Creation-Date: 2017-08-17 02:52+0000\n"
+"PO-Revision-Date: 2017-08-17 02:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Portuguese (Portugal) (https://www.transifex.com/oca/teams/23907/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -42,21 +42,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Criado por"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Criado em"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome a Apresentar"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -95,7 +95,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -130,21 +130,21 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server___last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificação Em"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Atualizado pela última vez por"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Atualizado pela última vez em"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
@@ -175,7 +175,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_is_local_fusion
