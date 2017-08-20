@@ -3,11 +3,20 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from base64 import b64decode
 from logging import getLogger
-from pyPdf import PdfFileWriter, PdfFileReader
+from pyPdf.pdf import PdfFileWriter, PdfFileReader
 from pyPdf.utils import PdfReadError
 from PIL import Image
-from StringIO import StringIO
-from openerp import api, models, tools
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+from openerp import api, models
+from openerp.tools.safe_eval import safe_eval
+from PIL import PdfImagePlugin # flake8: noqa
+# PdfImagePlugin must be loaded in order to work PNG to PDF transformation
+# This issue is related to Pillow creation, as can be seen in its source code:
+# https://github.com/python-pillow/Pillow/blob/master/PIL/PdfImagePlugin.py
+
 logger = getLogger(__name__)
 
 
@@ -30,7 +39,7 @@ class Report(models.Model):
             watermark = b64decode(report.pdf_watermark)
         else:
             env = api.Environment(cr, uid, context)
-            watermark = tools.safe_eval(
+            watermark = safe_eval(
                 report.pdf_watermark_expression or 'None',
                 dict(env=env, docs=env[report.model].browse(ids)),
             )
@@ -47,6 +56,7 @@ class Report(models.Model):
         except PdfReadError:
             # let's see if we can convert this with pillow
             try:
+                Image.init()
                 image = Image.open(StringIO(watermark))
                 pdf_buffer = StringIO()
                 if image.mode != 'RGB':
