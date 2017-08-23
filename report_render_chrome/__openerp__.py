@@ -9,6 +9,7 @@
     "category": "",
     "summary": "",
     "depends": [
+        "report"
     ],
     "data": [
     ],
