@@ -17,6 +17,7 @@ from openerp import SUPERUSER_ID
 from openerp.exceptions import AccessError
 from openerp.osv import osv
 from openerp.sql_db import TestCursor
+from openerp.tools import config
 from openerp.tools.misc import find_in_path
 
 
@@ -62,12 +63,15 @@ class Report(osv.Model):
         use_wkhtmltopdf = False
 
         if use_wkhtmltopdf:
-            return super(Report, self)._get_pdf(
+            return super(Report, self).get_pdf(
                 cr, uid, ids, report_name, html=html,
                 data=data, context=context)
 
         if context is None:
             context = {}
+
+        if not config['test_enable']:
+            context['commit_assetsbundle'] = True
 
         if html is None:
             html = self.get_html(cr, uid, ids, report_name,
@@ -103,7 +107,6 @@ class Report(osv.Model):
             for node in root.xpath(
     "//div[contains(concat(' ', normalize-space(@class), ' '), ' page ')]"
                     ):
-                # https://github.com/OCA/OCB/blob/9.0/addons/report/models/report.py#L235
                 if ids and len(ids) == 1:
                     reportid = ids[0]
                 else:
@@ -152,8 +155,6 @@ class Report(osv.Model):
         :returns: Content of the pdf as a string
         """
 
-# TODO check report type
-
         if not save_in_attachment:
             save_in_attachment = {}
 
@@ -189,7 +190,6 @@ class Report(osv.Model):
                 body_files.append(('file://' + content_file_path, pdfreport_path))
                 with closing(os.fdopen(content_file_fd, 'w')) as content_file:
                     content_file.write(reporthtml[1])
-                    print reporthtml[1]
 
             # Execute Chrome
             cmd = [_get_chrome_bin()] + CHROME_FLAGS + [h for h,p in body_files]

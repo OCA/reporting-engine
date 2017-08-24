@@ -9,7 +9,9 @@
     "category": "",
     "summary": "",
     "depends": [
-        "report"
+        "report",
+        "base",
+        "web"
     ],
     "data": [
     ],
