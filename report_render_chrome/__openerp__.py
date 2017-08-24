@@ -14,6 +14,7 @@
         "web"
     ],
     "data": [
+        "views/layouts.xml"
     ],
     "qweb": [
     ],

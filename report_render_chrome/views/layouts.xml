@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="chrome_minimal_layout">
+    <t t-raw="'&lt;base href=%s&gt;' % base_url"/>
+    &lt;!DOCTYPE html&gt;
+    <html style="height: 0;">
+        <head>
+            <!-- There is no way (that I know of) to easily pass cookies to a
+                 headless Chrome instance. Bundled assets are only accessible
+                 to the logged in user, which needs a session ID. So we have
+                 to resort to using t-call rather than t-call-assets, which is
+                 significantly slower in the end, but does work. -->
+            <t t-call="report.assets_pdf"/>
+            <t t-call="report.assets_common"/>
+            <meta charset="utf-8"/>
+            <t t-if="subst is True">
+                <script>
+                    function subst() {
+                        var vars = {};
+                        var x = document.location.search.substring(1).split('&amp;');
+                        for (var i in x) {
+                            var z = x[i].split('=', 2);
+                            vars[z[0]] = unescape(z[1]);
+                        }
+                        var x=['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
+                        for (var i in x) {
+                            var y = document.getElementsByClassName(x[i]);
+                            for (var j=0; j&lt;y.length; ++j)
+                                y[j].textContent = vars[x[i]];
+                        }
+                    }
+                </script>
+            </t>
+        </head>
+        <body class="container" onload="subst()">
+            <t t-raw="body"/>
+        </body>
+    </html>
+</template>
+
+</data>
+</openerp>

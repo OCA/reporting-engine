@@ -14,6 +14,7 @@ from contextlib import closing
 
 from openerp import api
 from openerp import SUPERUSER_ID
+from openerp.addons.web.http import request
 from openerp.exceptions import AccessError
 from openerp.osv import osv
 from openerp.sql_db import TestCursor
@@ -100,7 +101,7 @@ class Report(osv.Model):
 
         view_obj = self.pool['ir.ui.view']
         render_minimal = partial(view_obj.render, cr, uid,
-                                 'report.minimal_layout', context=context)
+                                 'report_render_chrome.chrome_minimal_layout', context=context)
 
         try:
             root = lxml.html.fromstring(html)
