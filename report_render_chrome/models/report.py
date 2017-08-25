@@ -60,10 +60,9 @@ class Report(osv.Model):
     def get_pdf(self, cr, uid, ids, report_name,
                  html=None, data=None, context=None):
 
-        # TODO check report type
-        use_wkhtmltopdf = False
+        report = self._get_report_from_name(cr, uid, report_name)
 
-        if use_wkhtmltopdf:
+        if not report.is_chrome_pdf:
             return super(Report, self).get_pdf(
                 cr, uid, ids, report_name, html=html,
                 data=data, context=context)
@@ -82,8 +81,6 @@ class Report(osv.Model):
             return html
 
         html = html.decode('utf-8')
-
-        report = self._get_report_from_name(cr, uid, report_name)
 
         save_in_attachment = self._check_attachment_use(cr, uid, ids, report,
                                                         context=context)

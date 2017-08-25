@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="act_report_xml_view_chrome">
+            <field name="name">ir.actions.report.xml</field>
+            <field name="model">ir.actions.report.xml</field>
+            <field name="inherit_id" ref="base.act_report_xml_view" />
+            <field name="arch" type="xml">
+                <field name="report_type" position="after">
+                    <field name="is_chrome_pdf" attrs="{'invisible': [('report_type', '!=', 'qweb-pdf')]}" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
