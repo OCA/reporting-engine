@@ -105,9 +105,23 @@ class Report(osv.Model):
 
         try:
             root = lxml.html.fromstring(html)
-            for node in root.xpath(
-    "//div[contains(concat(' ', normalize-space(@class), ' '), ' page ')]"
-                    ):
+
+            match_klass = "//div[contains(concat(' ', normalize-space(@class), ' '), ' {} ')]"
+
+
+            # Since Chrome's printToPdf doesn't allow custom headers and
+            # footers, we have to insert them manually at this stage. That
+            # does bring some other problems, but we'll have to live with that.
+
+            header = ''
+            for node in root.xpath(match_klass.format('header')):
+                header = lxml.html.tostring(node)
+
+            footer = ''
+            for node in root.xpath(match_klass.format('footer')):
+                footer = lxml.html.tostring(node)
+
+            for node in root.xpath(match_klass.format('page')):
                 if ids and len(ids) == 1:
                     reportid = ids[0]
                 else:
@@ -123,6 +137,8 @@ class Report(osv.Model):
                 body = lxml.html.tostring(node)
                 reportcontent = render_minimal({
                     'subst': False,
+                    'header': header,
+                    'footer': footer,
                     'body': body,
                     'base_url': base_url
                 })
