@@ -2,43 +2,41 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
-====================
-report_render_chrome
-====================
+==============
+Chrome reports
+==============
 
-This module was written to extend the functionality of ... to support ...
-and allow you to ...
+This module was written to make it possible to use `Chrome <https://www.google.com/chrome/browser/desktop/index.html>`_ or `Chromium <https://www.chromium.org/getting-involved/download-chromium>`_ in `headless mode <https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md>`_ to render PDF reports. This allows you to use way more modern CSS for rendering the PDF, in the future hopefully enabling some things `CSS3 adds <https://drafts.csswg.org/css-page-3/>`_.
 
 Installation
 ============
 
 To install this module, you need to:
 
-#. do this ...
-
-Configuration
-=============
-
-To configure this module, you need to:
-
-#. go to ...
+#. install the `websocket` module: ``pip install websocket-client``
+#. install the version of Chrome you want to use
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. go to ...
+#. create a report as usual, but set the flag `is_chrome_pdf` on the ir.actions.report.xml record
+
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
     :alt: Try me on Runbot
-    :target: https://runbot.odoo-community.org/runbot/{repo_id}/9.0
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
+    :target: https://runbot.odoo-community.org/runbot/143/9.0
 
 Known issues / Roadmap
 ======================
 
-* ...
+* it should be possible to emulate wkhtmltopdf's behavior and use Chrome exclusively
+* provide a layout that includes some optional divs for headers, footers, page counter etc
+* provide some nice internal and external layouts
+* support all report features
+* support paper formats
+* use --remote-debugging-fd instead of port
+* see if it's feasible to keep the browser running
 
 Bug Tracker
 ===========
@@ -59,7 +57,8 @@ Images
 Contributors
 ------------
 
-* Ruud Verbeek <rverbeek@therp.nl>  
+* Holger Brunn <hbrunn@therp.nl>
+* Ruud Verbeek <rverbeek@therp.nl>
 
 Do not contact contributors directly about help with questions or problems concerning this addon, but use the `community mailing list <mailto:community@mail.odoo.com>`_ or the `appropriate specialized mailinglist <https://odoo-community.org/groups>`_ for help, and the bug tracker linked in `Bug Tracker`_ above for technical issues.
 

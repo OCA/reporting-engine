@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="demo_report">
+        <t t-call="report_render_chrome.minimal_layout">
+            <div class="page">
+                <section t-foreach="docs" t-as="doc">
+                    <h1 t-esc="doc.name" />
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="report_demo"
+        string="Demo report"
+        model="res.users"
+        name="report_render_chrome.demo_report"
+        report_type="qweb-pdf"
+    />
+    <record id="report_demo" model="ir.actions.report.xml">
+        <field name="is_chrome_pdf" eval="True" />
+    </record>
+</odoo>
