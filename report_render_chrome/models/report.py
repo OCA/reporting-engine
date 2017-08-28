@@ -14,7 +14,7 @@ except ImportError:
 
 
 from openerp import api, models
-from openerp.addons.web.http import request
+from openerp.http import root, request
 from openerp.exceptions import UserError
 from openerp.sql_db import TestCursor
 from openerp.tools import config
@@ -111,6 +111,13 @@ class Report(models.Model):
             context.get('set_viewport_size'), context=context
         )
 
+    @api.v8
+    def get_pdf(self, records, report_name, html=None, data=None):
+        return self._model.get_pdf(
+            self.env.cr, self.env.uid, records.ids, report_name,
+            html=html, data=data,
+        )
+
     @api.model
     def _run_chrome(self, html, landscape, paperformat,
                     spec_paperformat_args=None, save_in_attachment=None,
@@ -175,7 +182,10 @@ class Report(models.Model):
                 )
                 send_message('Network.setCookie', {
                     'name': 'session_id',
-                    'value': request.session.sid,
+                    # in a test scenario, there's no request, so we pass some
+                    # session_id, as we only need a valid user anyways
+                    'value': request and request.session.sid or
+                    root.session_store.list()[0],
                     'url': base_url,
                 })
                 frames = send_message(
