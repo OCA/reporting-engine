@@ -7,6 +7,7 @@ addons:
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml # because pip installation is slow
+      - chromium-browser # report_render_chrome
 
 language: python
 
@@ -26,6 +27,7 @@ env:
   - TESTS="1" ODOO_REPO="OCA/OCB"
 
 install:
+  - pip install websocket-client
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
