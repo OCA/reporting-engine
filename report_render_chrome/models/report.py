@@ -2,22 +2,19 @@
 # © 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import base64
-import json
+import collections
 import logging
-import requests
+import psutil
 import subprocess
 import time
 try:
-    import websocket
+    from cproto import CProto
 except ImportError:
-    logging.info('Could not load websocket')
+    logging.info('Could not load cproto')
 
 
 from openerp import api, models
 from openerp.http import root, request
-from openerp.exceptions import UserError
-from openerp.sql_db import TestCursor
-from openerp.tools import config
 from openerp.tools.misc import find_in_path
 
 
@@ -33,7 +30,8 @@ def _get_chrome_bin():
     return result
 
 
-CHROME_PORT = 9222  # TODO: probably should pick one that's available for sure
+CHROME_PORT = 9222
+LOCALHOST = '127.0.0.1'
 
 
 CHROME_FLAGS = [
@@ -78,21 +76,6 @@ class Report(models.Model):
                 cr, uid, ids, report_name, html=html,
                 data=data, context=context)
 
-        if context is None:
-            context = {}
-
-        if not config['test_enable']:
-            context['commit_assetsbundle'] = True
-
-        if html is None:
-            html = self.get_html(cr, uid, ids, report_name,
-                                 data=data, context=context)
-
-        if isinstance(cr, TestCursor):
-            return html
-
-        html = html.decode('utf-8')
-
         save_in_attachment = self._check_attachment_use(cr, uid, ids, report,
                                                         context=context)
 
@@ -105,7 +88,7 @@ class Report(models.Model):
         specific_paperformat_args = {}
 
         return self._run_chrome(
-            cr, uid, html, context.get('landscape'),
+            cr, uid, ids, report_name, context.get('landscape'),
             paperformat, specific_paperformat_args,
             save_in_attachment,
             context.get('set_viewport_size'), context=context
@@ -119,103 +102,86 @@ class Report(models.Model):
         )
 
     @api.model
-    def _run_chrome(self, html, landscape, paperformat,
-                    spec_paperformat_args=None, save_in_attachment=None,
-                    set_viewport_size=False):
+    def _run_chrome(
+        self, ids, report_name, landscape, paperformat,
+        spec_paperformat_args=None, save_in_attachment=None,
+        set_viewport_size=False
+    ):
         if not save_in_attachment:
             save_in_attachment = {}
+
+        chrome_port = int(self.env['ir.config_parameter'].get_param(
+            'report_render_chrome.chrome_port', CHROME_PORT
+        ))
 
         # TODO viewport size
         # TODO use fd instead of port
 
-        chrome = None
-        content = False
+        chrome_socket = None
+        content = 'demo'
 
         try:
-            # Execute Chrome
-            cmd = [_get_chrome_bin()] + CHROME_FLAGS
-            chrome = subprocess.Popen(cmd)
+            if not [
+                    c for c in psutil.net_connections()
+                    if c.status == 'LISTEN' and
+                    c.laddr == (LOCALHOST, chrome_port)
+            ]:
+                # Execute Chrome
+                cmd = [_get_chrome_bin()] + CHROME_FLAGS
+                subprocess.Popen(cmd)
 
-            # Find the websocket URL
-            pages = False
-            while not pages:
-                try:
-                    pages = requests.get(
-                        'http://127.0.0.1:{}/json'.format(CHROME_PORT)
-                    ).json()
-                except requests.exceptions.ConnectionError:
-                    # The process might not have fully started yet. Try again
-                    # TODO: limit the number of attempts
-                    time.sleep(1)
+                while not [
+                        c for c in psutil.net_connections()
+                        if c.status == 'LISTEN' and
+                        c.laddr == (LOCALHOST, chrome_port)
+                ]:
+                    time.sleep(.1)
 
-            for page in pages:
-                ws_url = page['webSocketDebuggerUrl']
-                socket = websocket.create_connection(ws_url)
-                message_id = 1
-
-                def send_message(
-                        method, params=None, message_id=message_id,
-                        result_key=None
-                ):
-                    message = {
-                        'id': message_id,
-                        'method': method,
-                        'params': params or {},
-                    }
-                    socket.send(json.dumps(message))
-                    response = json.loads(socket.recv())
-                    message_id += 1
-
-                    if 'result' not in response:
-                        message = response.get('error', {}).get(
-                            'message', str(response)
-                        )
-                        logging.error(message)
-                        raise UserError(message)
-                    # TODO: check for errors
-                    return response['result'].get(result_key or 'data')
-
-                base_url = self.env['ir.config_parameter'].get_param(
-                    'report.url', self.env['ir.config_parameter'].get_param(
-                        'web.base.url',
-                    )
+            chrome_socket = CProto(LOCALHOST, chrome_port)
+            chrome_socket.Page.enable()
+            base_url = self.env['ir.config_parameter'].get_param(
+                'report.url', self.env['ir.config_parameter'].get_param(
+                    'web.base.url',
                 )
-                send_message('Network.setCookie', {
-                    'name': 'session_id',
-                    # in a test scenario, there's no request, so we pass some
-                    # session_id, as we only need a valid user anyways
-                    'value': request and request.session.sid or
-                    root.session_store.list()[0],
-                    'url': base_url,
-                })
-                frames = send_message(
-                    'Page.getResourceTree', result_key='frameTree'
-                )
-                send_message('Page.setDocumentContent', {
-                    'frameId': frames['frame']['id'],
-                    'html': html
-                })
-                # TODO: here we can get timing issues. Check out what the
-                # smartest way is to wait for DocumentReady via DevTools
-                content = send_message(
-                    'Page.printToPDF', {
-                        'landscape': bool(landscape),
-                        'displayHeaderFooter': False,
-                        'printBackground': True,
-                        'scale': 1.0,
-                        'paperWidth': paperformat.page_width or 8.5,
-                        'paperHeight': paperformat.page_height or 11,
-                        'marginTop': '%smm' % (paperformat.margin_top or 0),
-                        'marginBottom':
-                        '%smm' % (paperformat.margin_bottom or 0),
-                        'marginLeft': '%smm' % (paperformat.margin_left or 0),
-                        'marginRight':
-                        '%smm' % (paperformat.margin_right or 0),
-                    }
-                )
-                content = base64.b64decode(content)
+            )
+            chrome_socket.Network.setCookie(
+                name='session_id',
+                # in a test scenario, there's no request, so we pass some
+                # session_id, as we only need a valid user anyways
+                value=request and request.session.sid or
+                root.session_store.list()[0],
+                url=base_url,
+            )
+
+            q = collections.deque()
+
+            def on_load(dummy, queue=q):
+                queue.append(chrome_socket.Page.printToPDF(
+                    landscape=bool(landscape),
+                    displayHeaderFooter=False,
+                    printBackground=True,
+                    scale=1.0,
+                    paperWidth=paperformat.page_width or 8.5,
+                    paperHeight=paperformat.page_height or 11,
+                    marginTop='%smm' % (paperformat.margin_top or 0),
+                    marginBottom='%smm' % (paperformat.margin_bottom or 0),
+                    marginLeft='%smm' % (paperformat.margin_left or 0),
+                    marginRight='%smm' % (paperformat.margin_right or 0),
+                )['result']['data'])
+                chrome_socket.close()
+
+            chrome_socket.Page.loadEventFired = on_load
+
+            chrome_socket.Page.navigate(url='%s/report/html/%s/%s' % (
+                base_url, report_name, ','.join(map(str, ids)),
+            ))
+
+            while chrome_socket.ws.connected:
+                time.sleep(.1)
+            content = base64.b64decode(''.join(q))
+
         finally:
-            if chrome is not None:
-                chrome.terminate()
+            if chrome_socket and chrome_socket.ws.connected:
+                chrome_socket.close()
 
         return content

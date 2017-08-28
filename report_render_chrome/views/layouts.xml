@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="minimal_layout">
-        <t t-raw="'&lt;base href=%s&gt;' % base_url"/>
         &lt;!DOCTYPE html&gt;
         <html>
             <head>
-                <t t-call-asset="report.assets_pdf"/>
-                <t t-call-asset="report.assets_common"/>
+                <t t-call-assets="report.assets_pdf"/>
+                <t t-call-assets="report.assets_common"/>
                 <meta charset="utf-8"/>
             </head>
             <body class="container">

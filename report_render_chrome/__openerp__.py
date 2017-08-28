@@ -20,6 +20,6 @@
         "views/ir_actions.xml",
     ],
     "external_dependencies": {
-        'python': ['websocket'],
+        'python': ['cproto'],
     },
 }

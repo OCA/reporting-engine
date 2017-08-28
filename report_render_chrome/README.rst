@@ -13,8 +13,8 @@ Installation
 
 To install this module, you need to:
 
-#. install the `websocket` module: ``pip install websocket-client``
-#. install the version of Chrome you want to use
+#. install the `cproto` module: ``pip install cproto``
+#. install the version of Chrom{e,ium} you want to use
 
 Usage
 =====
@@ -22,6 +22,7 @@ Usage
 To use this module, you need to:
 
 #. create a report as usual, but set the flag `is_chrome_pdf` on the ir.actions.report.xml record
+#. note that this module avoids all the hacks for wkhtmltopdf, so your report will be passed to the browser exactly as it's rendered from qweb
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
     :alt: Try me on Runbot
@@ -36,7 +37,6 @@ Known issues / Roadmap
 * support all report features
 * support paper formats
 * use --remote-debugging-fd instead of port
-* see if it's feasible to keep the browser running
 
 Bug Tracker
 ===========
