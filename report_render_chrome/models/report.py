@@ -162,7 +162,10 @@ class Report(models.Model):
         )
         if custom:
             return custom
-        for binary in ['chrome', 'chromium', 'google-chrome-stable']:
+        for binary in [
+                'chromium', 'chromium-browser', 'chrome',
+                'google-chrome-stable',
+        ]:
             try:
                 result = find_in_path(binary)
             except IOError:
