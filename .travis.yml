@@ -7,7 +7,7 @@ addons:
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml # because pip installation is slow
-      - chromium-browser # report_render_chrome
+      - google-chrome-stable # report_render_chrome
 
 language: python
 
