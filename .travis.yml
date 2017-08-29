@@ -28,7 +28,6 @@ env:
 
 install:
   - pip install git+https://github.com/hbrunn/cproto@master-concurrency
-  - dpkg -L chromium-browser
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
