@@ -31,6 +31,8 @@ class Report(models.Model):
         context=None,
     ):
         # pylint: disable=old-api7-method-defined
+        if context is None:
+            context = {}
 
         report = self._get_report_from_name(cr, uid, report_name)
 
