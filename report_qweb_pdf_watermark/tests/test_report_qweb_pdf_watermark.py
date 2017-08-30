@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 # © 2016 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp.tests.common import TransactionCase
+from PIL import Image
+from openerp.tests.common import HttpCase
 
 
-class TestReportQwebPdfWatermark(TransactionCase):
+class TestReportQwebPdfWatermark(HttpCase):
     def test_report_qweb_pdf_watermark(self):
+        Image.init()
         # with our image, we have three
         self._test_report_images(3)
 
