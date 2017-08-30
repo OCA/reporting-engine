@@ -19,11 +19,11 @@ To install this module, you need to:
 Configuration
 =============
 
-The addon wil search for a chrome binary in the ``PATH`` and Odoo's ``bin_path`` configuration setting. If your chrome binary is located somewhere else, set the config parameter ``report_render_chrome.chrome_bin``.
+The addon wil search for a chrome binary in the ``PATH`` and Odoo's ``bin_path`` configuration setting. If your chrome binary is located somewhere else, set the config parameter ``report_qweb_chrome_renderer.chrome_bin``.
 
-By default, Odoo communicates with Chrome via localhost:9222, if you need to set a different port, set config parameter ``report_render_chrome.chrome_port``.
+By default, Odoo communicates with Chrome via localhost:9222, if you need to set a different port, set config parameter ``report_qweb_chrome_renderer.chrome_port``.
 
-This module already passes a bunch of parameter to Chrome to make it work in the first place, if you need to add more parameters, set ``report_render_chrome.chrome_extra_parameters``.
+This module already passes a bunch of parameter to Chrome to make it work in the first place, if you need to add more parameters, set ``report_qweb_chrome_renderer.chrome_extra_parameters``.
 
 Usage
 =====

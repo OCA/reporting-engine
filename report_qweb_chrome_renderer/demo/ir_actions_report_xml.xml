@@ -4,7 +4,7 @@
         id="report_demo"
         string="Demo report"
         model="res.users"
-        name="report_render_chrome.demo_report"
+        name="report_qweb_chrome_renderer.demo_report"
         report_type="qweb-pdf"
     />
     <record id="report_demo" model="ir.actions.report.xml">

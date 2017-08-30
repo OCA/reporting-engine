@@ -19,7 +19,7 @@ from openerp.tools.misc import find_in_path
 
 
 LOCALHOST = '127.0.0.1'
-_logger = logging.getLogger('report_render_chrome')
+_logger = logging.getLogger('report_qweb_chrome_renderer')
 
 
 class Report(models.Model):
@@ -89,7 +89,7 @@ class Report(models.Model):
                     self._get_chrome_bin()
                 ] + self._get_chrome_flags() + filter(
                     None, self.env['ir.config_parameter'].get_param(
-                        'report_render_chrome.chrome_extra_parameters',
+                        'report_qweb_chrome_renderer.chrome_extra_parameters',
                         ''
                     ).split(' ')
                 )
@@ -158,7 +158,7 @@ class Report(models.Model):
         """Try to find some chrom{e,ium} binary"""
         result = False
         custom = self.env['ir.config_parameter'].get_param(
-            'report_render_chrome.chrome_bin'
+            'report_qweb_chrome_renderer.chrome_bin'
         )
         if custom:
             return custom
@@ -204,7 +204,7 @@ class Report(models.Model):
     def _get_chrome_port(self):
         """Port for chrome to listen on"""
         return int(self.env['ir.config_parameter'].get_param(
-            'report_render_chrome.chrome_port', 9222
+            'report_qweb_chrome_renderer.chrome_port', 9222
         ))
 
     @api.model
