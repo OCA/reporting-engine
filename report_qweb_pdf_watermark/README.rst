@@ -10,6 +10,11 @@ This module was written to add watermarks (backgrounds) to PDF reports.
 
 This is necessary because of the way wkhtmltopdf handles headers and footers, in the current versions if quite impossible to have a background for the complete page.
 
+Installation
+============
+
+This module works out of the box, but is faster if you install the python library PyPDF2.
+
 Usage
 =====
 
