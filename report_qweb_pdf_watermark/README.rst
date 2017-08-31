@@ -13,7 +13,7 @@ This is necessary because of the way wkhtmltopdf handles headers and footers, in
 Installation
 ============
 
-This module works out of the box, but is faster if you install the python library PyPDF2.
+This module works out of the box, but is faster if you install the python library pdfrw.
 
 Usage
 =====

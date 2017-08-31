@@ -13,6 +13,12 @@ try:
 except ImportError:
     pass
 try:
+    # pylint: disable=W0404
+    from pdfrw import PdfFileReader, PdfFileWriter, PageMerge
+    from pdfrw import PdfParseError as PdfReadError  # pylint: disable=W0404
+except ImportError:
+    pass
+try:
     # we need this to be sure PIL has loaded PDF support
     from PIL import PdfImagePlugin  # noqa: F401
 except ImportError:
@@ -50,7 +56,6 @@ class Report(models.Model):
         if not watermark:
             return result
 
-        pdf = PdfFileWriter()
         pdf_watermark = None
         try:
             pdf_watermark = PdfFileReader(StringIO(watermark))
@@ -67,6 +72,7 @@ class Report(models.Model):
                 if isinstance(resolution, tuple):
                     resolution = resolution[0]
                 image.save(pdf_buffer, 'pdf', resolution=resolution)
+                pdf_buffer.seek(0)
                 pdf_watermark = PdfFileReader(pdf_buffer)
             except:
                 logger.exception('Failed to load watermark')
@@ -84,14 +90,37 @@ class Report(models.Model):
             logger.debug('Your watermark pdf contains more than one page, '
                          'all but the first one will be ignored')
 
-        for page in PdfFileReader(StringIO(result)).pages:
+        return self._merge_pdfs(
+            PdfFileReader(StringIO(result)), pdf_watermark,
+        ).getvalue()
+
+    def _merge_pdfs(self, front, back):
+        """check which is the correct function to call"""
+        func_name = '_merge_pdfs_pypdf'
+
+        if hasattr(PdfFileWriter, 'trailer'):
+            func_name = '_merge_pdfs_pdfrw'
+
+        return getattr(self, func_name)(front, back)
+
+    def _merge_pdfs_pypdf(self, front, back):
+        pdf = PdfFileWriter()
+        watermark = back.getPage(0)
+        for page in front.pages:
             watermark_page = pdf.addBlankPage(
                 page.mediaBox.getWidth(), page.mediaBox.getHeight()
             )
-            watermark_page.mergePage(pdf_watermark.getPage(0))
+            watermark_page.mergePage(watermark)
             watermark_page.mergePage(page)
 
         pdf_content = StringIO()
         pdf.write(pdf_content)
+        return pdf_content
 
-        return pdf_content.getvalue()
+    def _merge_pdfs_pdfrw(self, front, back):
+        watermark = back.pages[0]
+        for page in front.pages:
+            PageMerge(page).add(watermark, prepend=True).render()
+        pdf_content = StringIO()
+        PdfFileWriter(trailer=front).write(fname=pdf_content)
+        return pdf_content
