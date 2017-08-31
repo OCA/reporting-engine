@@ -61,7 +61,7 @@ Credits
 Images
 ------
 
-* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+* Wikimedia Commons: `Icon <https://commons.wikimedia.org/wiki/File:Chromium_11_Logo.svg>`_
 
 Contributors
 ------------

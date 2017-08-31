@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="demo_report">
-        <t t-call="report_qweb_chrome_renderer.minimal_layout">
+        <t t-set="header" t-value="True" />
+        <t t-set="footer" t-value="True" />
+        <t t-call="report_qweb_chrome_renderer.standard_layout">
             <div class="page">
                 <section t-foreach="docs" t-as="doc">
                     <h1 t-esc="doc.name" />

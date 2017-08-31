@@ -133,12 +133,13 @@ class Report(models.Model):
                 displayHeaderFooter=False,
                 printBackground=True,
                 scale=1.0,
-                paperWidth=paperformat.page_width or 8.5,
-                paperHeight=paperformat.page_height or 11,
-                marginTop='%smm' % (paperformat.margin_top or 0),
-                marginBottom='%smm' % (paperformat.margin_bottom or 0),
-                marginLeft='%smm' % (paperformat.margin_left or 0),
-                marginRight='%smm' % (paperformat.margin_right or 0),
+                # they seriously use imperial units internally...
+                paperWidth=paperformat.page_width / 25.4 or 8.5,
+                paperHeight=paperformat.page_height / 25.4 or 11,
+                marginTop=paperformat.margin_top / 25.4,
+                marginBottom=paperformat.margin_bottom / 25.4,
+                marginLeft=paperformat.margin_left / 25.4,
+                marginRight=paperformat.margin_right / 25.4,
             )['result']['data']
             chrome_socket.Page.disable()
 

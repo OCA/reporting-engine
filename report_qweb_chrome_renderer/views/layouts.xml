@@ -4,13 +4,41 @@
         &lt;!DOCTYPE html&gt;
         <html>
             <head>
-                <t t-call-assets="report.assets_pdf"/>
-                <t t-call-assets="report.assets_common"/>
                 <meta charset="utf-8"/>
             </head>
             <body class="container">
                 <t t-raw="0" />
             </body>
         </html>
+    </template>
+    <template id="standard_layout_header">
+        <header>
+            <t t-if="company or docs[:1].company_id">
+                <t t-esc="docs[:1].company_id.display_name" />
+            </t>
+        </header>
+    </template>
+    <template id="standard_layout_footer">
+        <footer></footer>
+    </template>
+    <template id="standard_layout_assets">
+        <!-- this is /web/static/lib/bootstrap/css/bootstrap.css with the printing
+             styles removed as they dumb down the document completely /-->
+        <link href="/report_qweb_chrome_renderer/static/src/css/report_qweb_chrome_renderer.css" rel="stylesheet" />
+        <link href="/website/static/src/css/website.css" rel="stylesheet"/>
+        <link href="/web/static/lib/fontawesome/css/font-awesome.css" rel="stylesheet"/>
+    </template>
+    <template id="standard_layout" inherit_id="minimal_layout" primary="True">
+        <head position="inside">
+            <t t-call-assets="report_qweb_chrome_renderer.standard_layout_assets" />
+        </head>
+        <body position="inside">
+            <t t-if="header">
+                <t t-call="report_qweb_chrome_renderer.standard_layout_header" />
+            </t>
+            <t t-if="footer">
+                <t t-call="report_qweb_chrome_renderer.standard_layout_footer" />
+            </t>
+        </body>
     </template>
 </odoo>
