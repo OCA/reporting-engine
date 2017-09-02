@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (7.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 04:26+0000\n"
+"POT-Creation-Date: 2017-05-01 22:03+0000\n"
 "PO-Revision-Date: 2016-03-28 12:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-7-0/language/sl/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: base_report_assembler
 #: field:assembled.report,report_id:0
 msgid "Report"
-msgstr ""
+msgstr "Poročilo"
 
 #. module: base_report_assembler
 #: model:ir.model,name:base_report_assembler.model_ir_actions_report_xml
