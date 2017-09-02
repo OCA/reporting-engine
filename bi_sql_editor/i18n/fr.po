@@ -4,14 +4,13 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
-# Quentin THEURET <odoo@kerpeo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2017-08-12 02:51+0000\n"
-"Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2017\n"
+"POT-Creation-Date: 2017-08-31 11:56+0000\n"
+"PO-Revision-Date: 2017-08-31 11:56+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:563
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:564
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr "%d/%m/%Y %H:%M:%S UTC"
@@ -32,13 +31,13 @@ msgid "%s (Copy)"
 msgstr "%s (Copie)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:279
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:278
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Accès %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:305
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:304
 #, python-format
 msgid "Access %s"
 msgstr "Accès %s"
@@ -288,7 +287,7 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:544
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:545
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -364,7 +363,7 @@ msgid "Refresh Materialized View"
 msgstr "Rafraichir la vue matérialisée"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:294
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:293
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Rafraichir la vue matérialisée %s"
@@ -380,7 +379,7 @@ msgid "Rule Definition"
 msgstr "Définition de règle"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:426
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:425
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
