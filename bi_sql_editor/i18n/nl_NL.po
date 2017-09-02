@@ -3,13 +3,14 @@
 # * bi_sql_editor
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Peter Hageman <hageman.p@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-10 08:45+0000\n"
-"PO-Revision-Date: 2017-06-10 08:45+0000\n"
+"POT-Creation-Date: 2017-08-19 07:59+0000\n"
+"PO-Revision-Date: 2017-08-19 07:59+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -86,12 +87,12 @@ msgstr ""
 #. module: bi_sql_editor
 #: field:bi.sql.view,create_uid:0 field:bi.sql.view.field,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,create_date:0 field:bi.sql.view.field,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,cron_id:0
@@ -213,12 +214,12 @@ msgstr "Laatst gewijzigd op"
 #. module: bi_sql_editor
 #: field:bi.sql.view,write_uid:0 field:bi.sql.view.field,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,write_date:0 field:bi.sql.view.field,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,materialized_text:0
