@@ -1,1 +1,1 @@
-server-tools
+server-tools https://github.com/darshan-serpent/server-tools 10.0-sql_request_abstract
