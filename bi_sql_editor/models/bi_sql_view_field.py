@@ -5,7 +5,7 @@
 
 import re
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class BiSQLViewField(models.Model):
