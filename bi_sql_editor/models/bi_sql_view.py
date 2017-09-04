@@ -7,8 +7,8 @@ import logging
 from datetime import datetime
 from psycopg2 import ProgrammingError
 
-from openerp import _, api, fields, models, SUPERUSER_ID
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models, SUPERUSER_ID
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 

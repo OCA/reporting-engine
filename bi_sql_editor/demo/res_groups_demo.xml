@@ -6,13 +6,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 
 <odoo>
-    <data>
-        <record id="base.group_no_one" model="res.groups">
-            <field name="users" eval="[(4, ref('base.user_root'))]" />
-        </record>
+    <record id="base.group_no_one" model="res.groups">
+        <field name="users" eval="[(4, ref('base.user_root'))]" />
+    </record>
 
-        <record id="sql_request_abstract.group_sql_request_user" model="res.groups">
-            <field name="users" eval="[(4, ref('base.user_demo'))]" />
-        </record>
-    </data>
+    <record id="sql_request_abstract.group_sql_request_user" model="res.groups">
+        <field name="users" eval="[(4, ref('base.user_demo'))]" />
+    </record>
 </odoo>

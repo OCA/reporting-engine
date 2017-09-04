@@ -5,8 +5,7 @@ Copyright (C) 2014 - Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="incorrect_sql_view" model="bi.sql.view">
             <field name="name">Draft Incorrect SQL View</field>
@@ -55,5 +54,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
     <function model="bi.sql.view" name="button_create_ui" eval="([ref('module_sql_view')])"/>
 
-    </data>
 </odoo>
