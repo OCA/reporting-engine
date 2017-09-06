@@ -13,6 +13,7 @@ class TestReportQWebParameter(common.TransactionCase):
         report_object = self.env['ir.actions.report.xml']
         report_name = 'report_qweb_parameter.test_report_length'
         docs = self.env['res.company'].search([], limit=1)
+        country_us = self.env.ref('base.us')
         vat = docs.vat
         website = docs.website
         fax = docs.fax
@@ -21,6 +22,7 @@ class TestReportQWebParameter(common.TransactionCase):
             'fax': '12345678901',
             'vat': '12345678901',
             'website': '1234567890',
+            'country_id': country_us.id,
             'company_registry': '1234567890'
         })
         rep = report_object.render_report(docs.ids, report_name, False)
