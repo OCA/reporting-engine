@@ -1,4 +1,5 @@
 sudo: false
+dist: trusty
 cache: pip
 
 addons:
@@ -16,20 +17,18 @@ env:
   global:
   - VERSION="10.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='transbot@odoo-community.org'
+  - WKHTMLTOPDF_VERSION=0.12.4
   - secure: NUsXwVrMntcqge1ozKW+DSkP7dq+Rla6JVvFF2c89/g+zJaIqQRi8EQBLoqNwCdMk+rjpQeZt/JPELjH+EzPcmGddhDxOgVB3nUT9LvFXGCHF+NjmHXqyba4tuc7BnpG1WDD+rSlxVCt1aIjNIhhaZ4ic0rCWpKNYu/yFTsmChc=
+
   matrix:
   - LINT_CHECK="1"
   - TRANSIFEX="1"
   - TESTS="1" ODOO_REPO="odoo/odoo"
   - TESTS="1" ODOO_REPO="OCA/OCB"
 
-virtualenv:
-  system_site_packages: true
-
 install:
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
-  - export WKHTMLTOPDF_VERSION=0.12.4
   - travis_install_nightly
 
 script:
