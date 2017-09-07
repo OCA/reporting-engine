@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    <report
-            id="test_report_length_report_id"
-            model="res.company"
-            string="Length Report"
-            report_type="qweb-pdf"
-            name="report_qweb_parameter.test_report_length"
-    />
-
     <template id="test_report_length">
         <t t-call="report.html_container">
             <li name="esc_length" t-minlength="10" t-length="10"
