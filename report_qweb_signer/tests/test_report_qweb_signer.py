@@ -2,20 +2,17 @@
 # Copyright 2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests import common
+from odoo.tests.common import HttpCase
 
 
-@common.at_install(False)
-@common.post_install(True)
-class TestReportQwebSigner(common.SavepointCase):
-    @classmethod
-    def setUpClass(cls):
-        super(TestReportQwebSigner, cls).setUpClass()
-        cls.partner = cls.env['res.partner'].create({
+class TestReportQwebSigner(HttpCase):
+    def setUp(self):
+        super(TestReportQwebSigner, self).setUp()
+        self.partner = self.env['res.partner'].create({
             'name': 'Test partner',
             'customer': True,
         })
-        cls.report = cls.env.ref('report_qweb_signer.partner_demo_report')
+        self.report = self.env.ref('report_qweb_signer.partner_demo_report')
 
     def test_report_qweb_signer(self):
         self.env['report'].get_pdf(
