@@ -69,7 +69,6 @@ class IrModel(models.Model):
 
         def _check_contains(model_model):
             if 'mail' in model_model or \
-                    '_' in model_model or \
                     'report' in model_model or \
                     'edi.' in model_model:
                 return 1
