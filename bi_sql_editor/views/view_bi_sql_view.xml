@@ -29,6 +29,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <button name="button_set_draft" type="object" states="sql_valid,model_valid,ui_valid"
                             string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"
                             confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"/>
+                    <button name="button_preview_sql_expression" type="object" states="draft" string="Preview SQL Expression" class="oe_highlight"/>
                     <button name="button_create_sql_view_and_model" type="object" states="sql_valid"
                         string="Create SQL View, Indexes and Models" class="oe_highlight"
                         help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"/>
