@@ -11,11 +11,12 @@
             </root>
         </t>
     </template>
-
     <report id="demo_xml_report"
             name="report_xml.demo_report_xml_view"
             string="Demo xml report"
             report_type="qweb-xml"
+            print_report_name="'Demo xml report'"
+            file="report_xml.xml"
             model="res.company"/>
 
 </odoo>
