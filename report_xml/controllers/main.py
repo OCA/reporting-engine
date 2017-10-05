@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
-from odoo.addons.report.controllers import main as report
+from odoo.addons.web.controllers import main as report
 from odoo.http import route
 
 
@@ -19,8 +19,9 @@ class ReportController(report.ReportController):
             # XML header must be before any spaces, and it is a common error,
             # so let's fix that here and make developers happier
             response.data = response.data.strip()
-
-            # XML files should be downloaded
             response.headers.set("Content-Type", "text/xml")
-
+            response.headers.set('Content-length', len(response.data))
+            response.headers.set(
+                'Content-Disposition',
+                'attachment; filename="'+reportname+".xml")
         return response
