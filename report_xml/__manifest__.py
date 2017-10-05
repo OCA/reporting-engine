@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 {
     "name": "XML Reports",
-    "version": "10.0.1.0.0",
+    "version": "11.0.1.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Grupo ESOC Ingeniería de Servicios, "
@@ -14,10 +14,11 @@
     "application": False,
     "summary": "Allow to generate XML reports",
     "depends": [
-        "report",
+        "web",
     ],
     "data": [
         "views/report_xml_templates.xml",
+        "views/webclient_templates.xml",
     ],
     "demo": [
         "demo/report.xml",
