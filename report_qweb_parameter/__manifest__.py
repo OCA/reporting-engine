@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 Creu Blanca
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-# noinspection PyStatementEffect
 {
     "name": "Report QWeb Parameter",
-    "version": "10.0.1.0.1",
+    "version": "11.0.1.0.0",
     "license": "AGPL-3",
     "summary": """
         Add new parameters for qweb templates in order to reduce field length
@@ -16,9 +15,7 @@
     "website": "https://github.com/oca/reporting-engine",
     "category": "Technical Settings",
     "depends": [
-        "report",
-    ],
-    "data": [
+        "web",
     ],
     "demo": [
         "demo/test_report_field_length.xml"
