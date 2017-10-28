@@ -3,20 +3,19 @@
 # * bi_sql_editor
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Peter Hageman <hageman.p@gmail.com>, 2017
+# Hans Henrik Gabelgaard <hhg@gabelgaard.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-02 12:12+0000\n"
 "PO-Revision-Date: 2017-09-02 12:12+0000\n"
-"Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
-"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
+"Last-Translator: Hans Henrik Gabelgaard <hhg@gabelgaard.org>, 2017\n"
+"Language-Team: Danish (Denmark) (https://www.transifex.com/oca/teams/23907/da_DK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nl_NL\n"
+"Language: da_DK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_sql_editor
@@ -103,13 +102,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_create_uid
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_create_uid
 msgid "Created by"
-msgstr "Aangemaakt door"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_create_date
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_create_date
 msgid "Created on"
-msgstr "Aangemaakt op"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_cron_id
@@ -133,7 +132,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_display_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_display_name
 msgid "Display Name"
-msgstr "Weergavenaam"
+msgstr ""
 
 #. module: bi_sql_editor
 #: selection:bi.sql.view,state:0
@@ -203,7 +202,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_id
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_index_name
@@ -229,19 +228,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view___last_update
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field___last_update
 msgid "Last Modified on"
-msgstr "Laatst gewijzigd op"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_write_uid
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_write_uid
 msgid "Last Updated by"
-msgstr "Laatst bijgewerkt door"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_write_date
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_write_date
 msgid "Last Updated on"
-msgstr "Laatst bijgewerkt op"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_materialized_text
@@ -257,7 +256,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_many2one_model_id
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_model_name
@@ -268,7 +267,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_name
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:545
@@ -447,7 +446,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_state
 msgid "State"
-msgstr "Provincie"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_state

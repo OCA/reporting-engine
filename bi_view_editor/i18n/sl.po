@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 03:52+0000\n"
-"PO-Revision-Date: 2017-03-14 03:52+0000\n"
+"POT-Creation-Date: 2017-09-02 12:12+0000\n"
+"PO-Revision-Date: 2017-09-02 12:12+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2017\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -257,7 +257,7 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/js/bve.js:32
 #, python-format
 msgid "model"
-msgstr ""
+msgstr "model"
 
 #. module: bi_view_editor
 #. openerp-web
