@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 04:34+0000\n"
+"POT-Creation-Date: 2017-09-02 12:14+0000\n"
 "PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Slovak (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sk/)\n"
@@ -174,7 +174,7 @@ msgstr "Bezpečnosť"
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 #. module: bi_view_editor
 #: help:bve.view,data:0

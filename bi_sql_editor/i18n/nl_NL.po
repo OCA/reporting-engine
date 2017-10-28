@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 07:59+0000\n"
-"PO-Revision-Date: 2017-08-19 07:59+0000\n"
+"POT-Creation-Date: 2017-09-02 12:14+0000\n"
+"PO-Revision-Date: 2017-09-02 12:14+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -245,7 +245,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: field:bi.sql.view,name:0 field:bi.sql.view.field,name:0
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:475
@@ -408,7 +408,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: field:bi.sql.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Provincie"
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,state:0
