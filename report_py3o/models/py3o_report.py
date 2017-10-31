@@ -27,6 +27,7 @@ try:
     from py3o.template.helpers import Py3oConvertor
     from py3o.template import Template
     from py3o import formats
+    from genshi.core import Markup
 except ImportError:
     logger.debug('Cannot import py3o.template')
 try:
@@ -64,12 +65,22 @@ def py3o_report_extender(report_xml_id=None):
     return fct1
 
 
+def format_multiline_value(value):
+    if value:
+        return Markup(value.replace('<', '&lt;').replace('>', '&gt;').
+                      replace('\n', '<text:line-break/>').
+                      replace('\t', '<text:s/><text:s/><text:s/><text:s/>'))
+    return ""
+
+
 @py3o_report_extender()
 def defautl_extend(report_xml, localcontext):
     # add the base64decode function to be able do decode binary fields into
     # the template
     localcontext['b64decode'] = b64decode
     localcontext['report_xml'] = report_xml
+    localcontext['format_multiline_value'] = format_multiline_value
+    localcontext['html_sanitize'] = tools.html2plaintext
 
 
 class Py3oReport(models.TransientModel):
