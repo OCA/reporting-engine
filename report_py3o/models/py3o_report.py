@@ -67,7 +67,7 @@ def py3o_report_extender(report_xml_id=None):
 
 def format_multiline_value(value):
     if value:
-        return Markup(unicode(value).replace('<', '&lt;').replace('>', '&gt;').
+        return Markup(value.replace('<', '&lt;').replace('>', '&gt;').
                       replace('\n', '<text:line-break/>').
                       replace('\t', '<text:s/><text:s/><text:s/><text:s/>'))
     return ""
