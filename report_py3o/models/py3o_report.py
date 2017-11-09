@@ -9,7 +9,6 @@ import json
 import logging
 import os
 from contextlib import closing
-from genshi.core import Markup
 
 import pkg_resources
 import requests
@@ -28,6 +27,7 @@ try:
     from py3o.template.helpers import Py3oConvertor
     from py3o.template import Template
     from py3o import formats
+    from genshi.core import Markup
 except ImportError:
     logger.debug('Cannot import py3o.template')
 try:
