@@ -240,6 +240,7 @@ Contributors
 * Laurent Mignon <laurent.mignon@acsone.eu>,
 * Alexis de Lattre <alexis.delattre@akretion.com>,
 * Guewen Baconnier <guewen.baconnier@camptocamp.com>
+* Omar Castiñeira <omar@comunitea.com>
 
 
 Maintainer
