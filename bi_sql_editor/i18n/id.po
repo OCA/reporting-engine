@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Wahyu Setiawan <wahyusetiaaa@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 01:19+0000\n"
-"PO-Revision-Date: 2017-06-03 01:19+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-10-28 09:08+0000\n"
+"PO-Revision-Date: 2017-10-28 09:08+0000\n"
+"Last-Translator: Wahyu Setiawan <wahyusetiaaa@gmail.com>, 2017\n"
 "Language-Team: Indonesian (https://www.transifex.com/oca/teams/23907/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,7 +120,7 @@ msgstr "Nama Tampilan"
 #. module: bi_sql_editor
 #: selection:bi.sql.view,state:0
 msgid "Draft"
-msgstr ""
+msgstr "Draf"
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,domain_force:0
@@ -407,7 +408,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: field:bi.sql.view,state:0
 msgid "State"
-msgstr ""
+msgstr "Bagian"
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,state:0
