@@ -108,7 +108,7 @@ class Report(models.Model):
 
     def _signer_bin(self, opts):
         me = os.path.dirname(__file__)
-        java_bin = 'java -jar -Xms4M -Xmx4M'
+        java_bin = 'java -jar'
         jar = '{}/../static/jar/jPdfSign.jar'.format(me)
         return '%s %s %s' % (java_bin, jar, opts)
 
