@@ -41,6 +41,16 @@ For example, if you want to sign only customer invoices in open or paid state:
 **Note**: Linux user that executes Odoo server process must have
 read access to certificate file and password file
 
+Java Memory Settings
+--------------------
+
+If you are signing large amounts of reports at the same time, or if you have a
+lower worker memory size than the JVM defaults, you may need to tune the JVM
+heap memory limits. Do so by adding a ``$JVM_ARGS`` environment variable that
+contains the required flags. Check out these links too:
+
+- `StackOverflow answer <https://stackoverflow.com/a/14763095/1468388>`_.
+- `Java docs <https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161>`_.
 
 Usage
 =====
@@ -100,6 +110,7 @@ Contributors
 * Rafael Blasco <rafael.blasco@tecnativa.com>
 * Antonio Espinosa <antonio.espinosa@tecnativa.com>
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Jairo Llopis <jairo.llopis@tecnativa.com>
 
 Maintainer
 ----------
