@@ -32,9 +32,13 @@ class Reports(main.Reports):
         context = dict(req.context)
         context.update(action["context"])
         report_xml = req.session.model('ir.actions.report.xml')
-        generated_filename = report_xml.generate_filename(
-            action['report_name'], context)
-        if generated_filename:
-            result.headers['Content-Disposition'] = main.content_disposition(
-                generated_filename, req)
+        try:
+            generated_filename = report_xml.generate_filename(
+                action['report_name'], context)
+            if generated_filename:
+                result.headers['Content-Disposition'] = main.content_disposition(
+                    generated_filename, req)
+        except Exception as e:
+            print e
+            pass
         return result
