@@ -3,13 +3,14 @@
 # * report_py3o
 # 
 # Translators:
+# Cezar José Sant Anna Junior <cezar.santanna@gmail.com>, 2017
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 02:52+0000\n"
-"PO-Revision-Date: 2017-08-17 02:52+0000\n"
+"POT-Creation-Date: 2017-11-22 01:45+0000\n"
+"PO-Revision-Date: 2017-11-22 01:45+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:54
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:55
 #, python-format
 msgid "(Native)"
 msgstr "(Nativo)"
@@ -30,7 +31,7 @@ msgid "Active"
 msgstr "Ativo"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:42
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:43
 #, python-format
 msgid ""
 "Can not use not native format in local fusion. Please specify a Fusion "
@@ -58,7 +59,7 @@ msgstr "Criado em"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_server_display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_display_name
 msgid "Display Name"
-msgstr "Nome de Exibição"
+msgstr "Nome para Mostrar"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_template_fallback
@@ -66,7 +67,7 @@ msgid "Fallback"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report_xml.py:30
+#: code:addons/report_py3o/models/ir_actions_report_xml.py:31
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
 msgstr ""
@@ -82,7 +83,7 @@ msgid "Fusion Server"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/py3o_report.py:278
+#: code:addons/report_py3o/models/py3o_report.py:289
 #, python-format
 msgid "Fusion server error %s"
 msgstr ""
@@ -187,7 +188,7 @@ msgid ""
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/py3o_report.py:182
+#: code:addons/report_py3o/models/py3o_report.py:193
 #, python-format
 msgid "No template found. Aborting."
 msgstr ""
