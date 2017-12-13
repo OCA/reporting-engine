@@ -92,10 +92,8 @@ class KPIThresholdRange(models.Model):
         'res.company', 'Company',
         default=lambda self: self.env.user.company_id.id)
 
-
     @api.multi
     def _compute_min_value(self):
-        result = {}
         for obj in self:
             value = None
             error = None
@@ -121,11 +119,9 @@ class KPIThresholdRange(models.Model):
                 error = str(e)
             obj.min_value = value
             obj.min_error = error
-        return result
 
     @api.multi
     def _compute_max_value(self):
-        result = {}
         for obj in self:
             value = None
             error = None
@@ -151,11 +147,9 @@ class KPIThresholdRange(models.Model):
                 error = str(e)
             obj.max_value = value
             obj.max_error = error
-        return result
 
     @api.multi
     def _compute_is_valid_range(self):
-        result = {}
         for obj in self:
             if obj.min_error or obj.max_error:
                 obj.valid = False
@@ -170,5 +164,3 @@ class KPIThresholdRange(models.Model):
             else:
                 obj.valid = True
                 obj.invalid_message = ""
-        return result
-
