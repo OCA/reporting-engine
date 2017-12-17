@@ -11,8 +11,6 @@
       <field name="report_name">py3o_user_info</field>
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">odt</field>
-      <field name="py3o_is_local_fusion" eval="1"/>
-      <field name="py3o_filetype">odt</field>
       <field name="module">report_py3o</field>
       <field name="py3o_template_fallback">demo/res_user.odt</field>
     </record>
