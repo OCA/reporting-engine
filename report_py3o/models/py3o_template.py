@@ -13,6 +13,10 @@ class Py3oTemplate(models.Model):
         selection=[
             ('odt', "ODF Text Document"),
             ('ods', "ODF Spreadsheet"),
+            ('odp', "ODF Presentation"),
+            ('fodt', "ODF Text Document (Flat)"),
+            ('fods', "ODF Spreadsheet (Flat)"),
+            ('fodp', "ODF Presentation (Flat)"),
         ],
         string="LibreOffice Template File Type",
         required=True,

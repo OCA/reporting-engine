@@ -24,7 +24,7 @@
                 <group name="main">
                     <field name="name" />
                     <field name="filetype" />
-                    <field name="py3o_template_data" />
+                    <field name="py3o_template_data" filename="name" />
                 </group>
             </form>
         </field>
