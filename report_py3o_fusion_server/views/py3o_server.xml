@@ -32,7 +32,7 @@
     </record>
 
     <menuitem id="py3o_server_configuration_menu"
-        parent="py3o_config_menu"
+        parent="report_py3o.py3o_config_menu"
         action="py3o_server_configuration_action" />
 
 </odoo>
