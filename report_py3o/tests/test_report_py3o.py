@@ -15,8 +15,16 @@ from odoo import tools
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 
-from ..models.py3o_report import TemplateNotFound
+from ..models.py3o_report import TemplateNotFound, format_multiline_value
 from base64 import b64encode
+import logging
+
+logger = logging.getLogger(__name__)
+
+try:
+    from genshi.core import Markup
+except ImportError:
+    logger.debug('Cannot import genshi.core')
 
 
 @contextmanager
@@ -188,3 +196,7 @@ class TestReportPy3o(TransactionCase):
         # non exising files are not valid template
         self.assertFalse(self.py3o_report._get_template_from_path(
             '/etc/test.odt'))
+
+    def test_escape_html_characters_format_multiline_value(self):
+        self.assertEqual(Markup('&lt;&gt;<text:line-break/>&amp;test;'),
+                         format_multiline_value('<>\n&test;'))
