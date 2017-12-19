@@ -9,6 +9,7 @@ from io import BytesIO
 
 import logging
 import os
+import cgi
 from contextlib import closing
 import subprocess
 import time
@@ -68,8 +69,7 @@ def py3o_report_extender(report_xml_id=None):
 
 def format_multiline_value(value):
     if value:
-        return Markup(value.replace('<', '&lt;').replace('>', '&gt;').
-                      replace('\n', '<text:line-break/>').
+        return Markup(cgi.escape(value).replace('\n', '<text:line-break/>').
                       replace('\t', '<text:s/><text:s/><text:s/><text:s/>'))
     return ""
 
