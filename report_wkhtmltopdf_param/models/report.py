@@ -1,23 +1,29 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Avoin.Systems
 # Copyright 2017 Eficent Business and IT Consulting Services, S.L.
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models
+from odoo import api, models
 
 
-class Report(models.Model):
-    _inherit = 'report'
+class IrActionsReport(models.Model):
+    _inherit = 'ir.actions.report'
 
-    def _build_wkhtmltopdf_args(self, paperformat,
-                                specific_paperformat_args=None):
+    @api.model
+    def _build_wkhtmltopdf_args(
+            self,
+            paperformat_id,
+            landscape,
+            specific_paperformat_args=None,
+            set_viewport_size=False):
         # noinspection PyUnresolvedReferences,PyProtectedMember
-        command_args = super(Report, self)._build_wkhtmltopdf_args(
-            paperformat,
-            specific_paperformat_args
+        command_args = super(IrActionsReport, self)._build_wkhtmltopdf_args(
+            paperformat_id,
+            landscape,
+            specific_paperformat_args,
+            set_viewport_size
         )
 
-        for param in paperformat.custom_params:
+        for param in paperformat_id.custom_params:
             command_args.extend([param.name])
             if param.value:
                 command_args.extend([param.value])
