@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Avoin.Systems
 # Copyright 2017 Eficent Business and IT Consulting Services, S.L.
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
@@ -34,9 +33,11 @@ class Paper(models.Model):
                     </body>
                 </html>
             """
-            contenthtml = [tuple([1, sample_html])]
-            content = self.env['report']._run_wkhtmltopdf(
-                [], [], contenthtml, False, paperformat, False, False, False)
+            contenthtml = [bytes(sample_html, 'utf-8')]
+            report = self.env['ir.actions.report'].new({
+                'paperformat_id': paperformat.id
+            })
+            content = report._run_wkhtmltopdf(contenthtml)
             if not content:
                 raise ValidationError(_(
                     "Failed to create a PDF using the provided parameters."))

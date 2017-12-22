@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Avoin.Systems
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 # noinspection PyStatementEffect
 {
     "name": "Report Wkhtmltopdf Param",
-    "version": "10.0.1.0.1",
+    "version": "11.0.1.0.1",
     "license": "AGPL-3",
     "summary": """
         Add new parameters for a paper format to be used by wkhtmltopdf
@@ -17,7 +16,7 @@
     "website": "https://avoin.systems",
     "category": "Technical Settings",
     "depends": [
-        "report",
+        "web",
     ],
     "data": [
         "security/ir.model.access.csv",
