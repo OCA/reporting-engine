@@ -1,5 +1,5 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
 ========================
@@ -23,12 +23,11 @@ Usage
 #. Go to *Settings* and press 'Activate the developer mode (with assets)'
 #. Go to *Settings - Technical - Reports - Paper Format*
 #. Add additional parameters indicating the command argument name (remember to
-  add prefix -- or -) and value.
-
+   add prefix -- or -) and value.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/10.0
+   :target: https://runbot.odoo-community.org/runbot/143/11.0
 
 
 Bug Tracker
@@ -52,7 +51,6 @@ Contributors
 
 * Miku Laitinen <miku@avoin.systems>
 * Jordi Ballester <jordi.ballester@eficent.com>
-
 
 Maintainer
 ----------

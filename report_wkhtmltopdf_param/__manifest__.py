@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Avoin.Systems
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 # noinspection PyStatementEffect
 {
@@ -17,7 +16,7 @@
     "website": "https://avoin.systems",
     "category": "Technical Settings",
     "depends": [
-        "report",
+        "web",
     ],
     "data": [
         "security/ir.model.access.csv",
