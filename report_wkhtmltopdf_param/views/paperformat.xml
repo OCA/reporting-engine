@@ -4,7 +4,7 @@
     <record id="paperformat_view_form_custom" model="ir.ui.view">
         <field name="name">paperformat with custom parameters</field>
         <field name="model">report.paperformat</field>
-        <field name="inherit_id" ref="report.paperformat_view_form"/>
+        <field name="inherit_id" ref="base.paperformat_view_form"/>
         <field name="arch" type="xml">
             <field name="report_ids" position="after">
                 <field name="custom_params">
