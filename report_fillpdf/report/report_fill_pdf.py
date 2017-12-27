@@ -15,8 +15,8 @@ try:
     from fdfgen import forge_fdf
     EXTERNAL_DEPENDENCY_BINARY_PDFTK = tools.find_in_path('pdftk')
 except (ImportError, IOError) as err:
-    _logger.debug(err)
-    raise err
+    _logger.debug('Error while importing: %s.' % err)
+    EXTERNAL_DEPENDENCY_BINARY_PDFTK = ""
 
 
 class ReportFillPDFAbstract(models.AbstractModel):
