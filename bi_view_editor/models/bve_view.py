@@ -4,9 +4,9 @@
 
 import json
 
-from openerp import api, fields, models, tools
-from openerp.exceptions import Warning as UserError
-from openerp.tools.translate import _
+from odoo import api, fields, models, tools
+from odoo.exceptions import Warning as UserError
+from odoo.tools.translate import _
 
 
 class BveView(models.Model):
@@ -26,7 +26,7 @@ class BveView(models.Model):
     name = fields.Char(required=True, copy=False)
     model_name = fields.Char()
 
-    note = fields.Text(string='Notes')
+    note = fields.Text(name='Notes')
 
     state = fields.Selection(
         [('draft', 'Draft'),
@@ -38,19 +38,19 @@ class BveView(models.Model):
              "to generate your report dataset. "
              "NOTE: To be edited, the query should be in 'Draft' status.")
 
-    action_id = fields.Many2one('ir.actions.act_window', string='Action')
-    view_id = fields.Many2one('ir.ui.view', string='View')
+    action_id = fields.Many2one('ir.actions.act_window', name='Action')
+    view_id = fields.Many2one('ir.ui.view', name='View')
 
     group_ids = fields.Many2many(
         'res.groups',
-        string='Groups',
+        name='Groups',
         help="User groups allowed to see the generated report; "
              "if NO groups are specified the report will be public "
              "for everyone.")
 
     user_ids = fields.Many2many(
         'res.users',
-        string='Users',
+        name='Users',
         compute=_compute_users,
         store=True)
 
@@ -175,7 +175,7 @@ class BveView(models.Model):
             'model': self.model_name,
             'priority': 16,
             'arch': """<?xml version="1.0"?>
-                            <pivot string="Pivot Analysis"> {} </pivot>
+                            <pivot name="Pivot Analysis"> {} </pivot>
                             """.format("".join(self._create_view_arch()))
         }, {
             'name': 'Graph Analysis',
@@ -183,7 +183,7 @@ class BveView(models.Model):
             'model': self.model_name,
             'priority': 16,
             'arch': """<?xml version="1.0"?>
-                            <graph string="Graph Analysis"
+                            <graph name="Graph Analysis"
                                type="bar"
                                stacked="True"> {} </graph>
                          """.format("".join(self._create_view_arch()))
@@ -199,7 +199,7 @@ class BveView(models.Model):
              'model': self.model_name,
              'priority': 16,
              'arch': """<?xml version="1.0"?>
-                        <tree string="List Analysis" create="false"> {} </tree>
+                        <tree name="List Analysis" create="false"> {} </tree>
                      """.format("".join(self._create_tree_view_arch()))
              })
 
@@ -303,7 +303,7 @@ class BveView(models.Model):
                     vals.update({'ttype': 'float'})
                 if field.ttype == 'selection' and not field.selection:
                     model_obj = self.env[field.model_id.model]
-                    selection = model_obj._columns[field.name].selection
+                    selection = model_obj._fields[field.name].selection
                     selection_domain = str(selection)
                     vals.update({'selection': selection_domain})
                 return vals

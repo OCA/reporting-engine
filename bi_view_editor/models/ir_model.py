@@ -2,8 +2,8 @@
 # Copyright 2015-2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
-from openerp.modules.registry import RegistryManager
+from odoo import api, models
+from odoo.modules.registry import RegistryManager
 
 NO_BI_MODELS = [
     'temp.range',
@@ -52,9 +52,9 @@ class IrModel(models.Model):
         model_name = model.model
         if model_name[0:6] != 'x_bve.':
             Model = self.env[model_name]
-            if name in Model._columns:
-                f = Model._columns[name]
-                return f._classic_write
+            if name in Model._fields:
+                f = Model._fields[name]
+                return f._description_sortable
         return False
 
     @api.model

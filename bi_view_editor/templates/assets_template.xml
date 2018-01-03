@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
+<odoo>
     <data>
 
         <template id="assets_backend" name="bi_view_editor assets" inherit_id="web.assets_backend">
@@ -10,4 +10,4 @@
         </template>
 
     </data>
-</openerp>
+</odoo>
