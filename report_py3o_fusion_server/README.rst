@@ -6,7 +6,7 @@
 Py3o Report Engine - Fusion server support
 ==========================================
 
-This addons was written to let a fusion server handle format conversion instead of local libreoffice.
+This module was written to let a py3o fusion server handle format conversion instead of local libreoffice.
 
 Installation
 ============
@@ -54,7 +54,7 @@ At the end, with the dependencies, you should have the following py3o python lib
 
   % pip freeze | grep py3o
   py3o.formats==0.3
-  py3o.fusion==0.8.6
+  py3o.fusion==0.8.7
   py3o.renderclient==0.2
   py3o.renderers.juno==0.8
   py3o.renderserver==0.5.1
