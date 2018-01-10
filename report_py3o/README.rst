@@ -19,7 +19,7 @@ The key advantages of a Libreoffice based reporting engine are:
 * If you want your users to be able to modify the document after its generation by Odoo, just configure the document with ODT output (or DOC or DOCX) and the user will be able to modify the document with Libreoffice (or Word) after its generation by Odoo.
 * Easy development of spreadsheet reports in ODS format (XLS output possible).
 
-This reporting engine is an alternative to `Aeroo <https://github.com/aeroo/aeroo_reports>`_: these two reporting engines have similar features but their implementation is entirely different. You cannot use aeroo templates as drop in replacement though, you'll have to change a few details.
+This reporting engine is an alternative to `Aeroo <https://github.com/aeroo-community/aeroo_reports>`_: these two reporting engines have similar features but their implementation is entirely different. You cannot use aeroo templates as drop in replacement though, you'll have to change a few details.
 
 Installation
 ============
@@ -75,7 +75,7 @@ the path to the template as *py3o_template_fallback*.
 
   </odoo>
 
-Moreover you must also modify the odoo server configuration file to declare
+Moreover, you must also modify the Odoo server configuration file to declare
 the allowed root directory for your py3o templates. Only templates located
 into this directory can be loaded by py3o report.
 
@@ -162,6 +162,11 @@ time
     Python's ``time`` module
 display_address(partner)
     Return a formatted string of the partner's address
+
+Sample report templates
+-----------------------
+
+Sample py3o report templates for the main Odoo native reports (invoice, sale order, purchase order, picking, ...) are available on the Github project `odoo-py3o-report-templates <https://github.com/akretion/odoo-py3o-report-templates>`_.
 
 Known issues / Roadmap
 ======================
