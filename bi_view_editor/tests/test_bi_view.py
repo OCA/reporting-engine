@@ -115,6 +115,8 @@ class TestBiViewEditor(TransactionCase):
         self.assertIsInstance(fields, list)
         self.assertGreater(len(fields), 0)
 
+    @at_install(False)
+    @post_install(True)
     def test_02_get_join_nodes(self):
         Fields = self.env['ir.model.fields']
         field_res_users = Fields.search([
@@ -148,6 +150,8 @@ class TestBiViewEditor(TransactionCase):
         self.assertIsInstance(nodes, list)
         self.assertEqual(len(nodes), 0)
 
+    @at_install(False)
+    @post_install(True)
     def test_04_get_related_models(self):
         Model = self.env['ir.model']
         related_models = Model.get_related_models({
@@ -207,19 +211,19 @@ class TestBiViewEditor(TransactionCase):
         vals = self.bi_view1_vals
         employees_group = self.env.ref('base.group_user')
         vals.update({
-            'name': 'Test View4',
+            'name': 'Test View3',
             'group_ids': [(6, 0, [employees_group.id])],
         })
         bi_view = self.env['bve.view'].create(vals)
-        self.assertEqual(len(bi_view), 1)
+        self.assertTrue(bi_view)
 
         # create bve object
         bi_view.action_create()
         model = self.env['ir.model'].search([
-            ('model', '=', 'x_bve.testview4'),
-            ('name', '=', 'Test View4')
+            ('model', '=', 'x_bve.testview3'),
+            ('name', '=', 'Test View3')
         ])
-        self.assertEqual(len(model), 1)
+        self.assertTrue(model)
 
         # open view
         open_action = bi_view.open_view()

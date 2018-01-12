@@ -76,6 +76,8 @@ Contributors
 * Andrea Stirpe <a.stirpe@onestein.nl>
 * Antonio Esposito <a.esposito@onestein.nl>
 * Jordi Ballester Alomar <jordi.ballester@eficent.com>
+* Héctor Villarreal <hector.villarreal@eficent.com>
+* Lois Rilo <lois.rilo@eficent.com>
 
 Maintainer
 ----------
