@@ -5,7 +5,7 @@
     'name': 'Py3o Report Engine',
     'summary': 'Reporting engine based on Libreoffice (ODT -> ODT, '
                'ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)',
-    'version': '10.0.1.2.0',
+    'version': '10.0.2.0.0',
     'category': 'Reporting',
     'license': 'AGPL-3',
     'author': 'XCG Consulting,'
@@ -21,7 +21,6 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/py3o_template.xml',
-        'views/py3o_server.xml',
         'views/ir_report.xml',
         'views/report_py3o.xml',
         'demo/report_py3o.xml',
