@@ -1,0 +1,280 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bi_view_editor
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Sébastien Alix <seb@usr-src.org>, 2017
+# Isabelle RICHARD <isabellerichard89@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-14 03:52+0000\n"
+"PO-Revision-Date: 2017-03-14 03:52+0000\n"
+"Last-Translator: Isabelle RICHARD <isabellerichard89@gmail.com>, 2017\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:388
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (copie)"
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "<b>Join</b> using the field"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_action_id
+msgid "Action"
+msgstr "Action"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:378
+#, python-format
+msgid "BI View"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_bve_view
+msgid "BI View Editor"
+msgstr "Éditeur de rapports BI"
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:43
+#, python-format
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:41
+#, python-format
+msgid "Choose join node"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
+msgid "Click to create a Custom Query Object."
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Create a Menu"
+msgstr ""
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Created"
+msgstr "Créé"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
+msgid "Created on"
+msgstr "Date"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
+msgid "Custom BI View"
+msgstr "Rapports BI"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:60 sql_constraint:bve.view:0
+#, python-format
+msgid "Custom BI View names must be unique!"
+msgstr "Les noms des rapports BI doivent être uniques."
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
+msgid "Custom BI Views"
+msgstr "Rapports BI"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Custom Object"
+msgstr "Rapport BI"
+
+#. module: bi_view_editor
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
+msgid "Custom Reports"
+msgstr "Rapports personnalisés"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_data
+msgid "Data"
+msgstr "Données"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_display_name
+msgid "Display Name"
+msgstr "Nom à afficher"
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Generate BI View"
+msgstr "Générer le rapport"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_group_ids
+msgid "Groups"
+msgstr "Groupes"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_id
+msgid "ID"
+msgstr "ID"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view___last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_model_name
+msgid "Model name"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_ir_model
+msgid "Models"
+msgstr "Modèles"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_name
+msgid "Name"
+msgstr "Nom"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:249
+#, python-format
+msgid "No data to process."
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_note
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Notes"
+msgstr "Commentaires"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Open BI View"
+msgstr "Consulter le rapport"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Query"
+msgstr "Requête"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Reset to Draft"
+msgstr "Remettre en Brouillon"
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Security"
+msgstr "Sécurité"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_state
+msgid "State"
+msgstr "État"
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:26
+#, python-format
+msgid "Use the field on model"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,help:bi_view_editor.field_bve_view_data
+msgid ""
+"Use the special query builder to define the query to generate your report "
+"dataset. NOTE: To be edited, the query should be in 'Draft' status."
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,help:bi_view_editor.field_bve_view_group_ids
+msgid ""
+"User groups allowed to see the generated report; if NO groups are specified "
+"the report will be public for everyone."
+msgstr ""
+"Groupes utilisateurs autorisés à consulter le rapport généré. Le rapport "
+"sera consultable par tous les utilisateurs si aucun groupe n'est configuré."
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_user_ids
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_view_id
+msgid "View"
+msgstr "Vue"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:68
+#, python-format
+msgid "You cannot delete a created view! Reset the view to draft first."
+msgstr ""
+"Vous ne pouvez pas supprimer un rapport à l'état 'Créé'. Veuillez le "
+"remettre à l'état 'Brouillon' afin de pouvoir le supprimer."
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "model"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:30
+#, python-format
+msgid "new"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "on "
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
+msgid "wizard.ir.model.menu.create"
+msgstr ""
