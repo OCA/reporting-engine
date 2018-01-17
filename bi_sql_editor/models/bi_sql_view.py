@@ -176,6 +176,8 @@ class BiSQLView(models.Model):
     @api.multi
     def button_set_draft(self):
         for sql_view in self:
+            sql_view.rule_id.unlink()
+
             if sql_view.state in ('model_valid', 'ui_valid'):
                 # Drop SQL View (and indexes by cascade)
                 sql_view._drop_view()
@@ -186,7 +188,6 @@ class BiSQLView(models.Model):
             sql_view.graph_view_id.unlink()
             sql_view.action_id.unlink()
             sql_view.menu_id.unlink()
-            sql_view.rule_id.unlink()
             if sql_view.cron_id:
                 sql_view.cron_id.unlink()
             sql_view.write({'state': 'draft', 'has_group_changed': False})
