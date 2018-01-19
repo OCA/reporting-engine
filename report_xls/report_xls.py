@@ -114,7 +114,7 @@ class report_xls(report_sxw):
             context = {}
         parser_instance = self.parser(cr, uid, self.name2, context)
         self.parser_instance = parser_instance
-        self.context = context
+        self.localcontext = context
         objs = self.getObjects(cr, uid, ids, context)
         parser_instance.set_context(objs, data, ids, 'xls')
         objs = parser_instance.localcontext['objects']
