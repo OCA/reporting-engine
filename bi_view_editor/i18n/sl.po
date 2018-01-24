@@ -1,0 +1,208 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bi_view_editor
+# 
+# Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: reporting-engine (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-04 02:44+0000\n"
+"PO-Revision-Date: 2016-05-03 15:03+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a Custom Query Object.\n"
+"              </p><p>\n"
+"\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n                Ustvari prilagojen objekt poizvedbe.\n              </p><p>\n\n              </p>\n            "
+
+#. module: bi_view_editor
+#: field:bve.view,action_id:0
+msgid "Action"
+msgstr "Ukrep"
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_bve_view
+msgid "BI View Editor"
+msgstr "BI urejevalnik prikazov"
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Created"
+msgstr "Nastanek"
+
+#. module: bi_view_editor
+#: field:bve.view,create_uid:0
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: bi_view_editor
+#: field:bve.view,create_date:0
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
+msgid "Custom BI View"
+msgstr "Prilagojen BI prikaz"
+
+#. module: bi_view_editor
+#: sql_constraint:bve.view:0
+msgid "Custom BI View names must be unique!"
+msgstr "Nazivi prilagojenih BI prikazov morajo biti unikatni!"
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
+msgid "Custom BI Views"
+msgstr "Prilagojeni BI prikazi"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Custom Object"
+msgstr "Prilagojen objekt"
+
+#. module: bi_view_editor
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
+msgid "Custom Reports"
+msgstr "Prilagojena poročila"
+
+#. module: bi_view_editor
+#: field:bve.view,data:0
+msgid "Data"
+msgstr "Podatki"
+
+#. module: bi_view_editor
+#: field:bve.view,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Draft"
+msgstr "Osnutek"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:72
+#, python-format
+msgid "Error"
+msgstr "Napaka"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Generate BI View"
+msgstr "Ustvari BI prikaz"
+
+#. module: bi_view_editor
+#: field:bve.view,group_ids:0
+msgid "Groups"
+msgstr "Skupine"
+
+#. module: bi_view_editor
+#: field:bve.view,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: bi_view_editor
+#: field:bve.view,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
+
+#. module: bi_view_editor
+#: field:bve.view,write_uid:0
+msgid "Last Updated by"
+msgstr "Zadnji posodobil"
+
+#. module: bi_view_editor
+#: field:bve.view,write_date:0
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: bi_view_editor
+#: field:bve.view,model_name:0
+msgid "Model Name"
+msgstr "Naziv modela"
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_ir_model
+msgid "Models"
+msgstr "Modeli"
+
+#. module: bi_view_editor
+#: field:bve.view,name:0
+msgid "Name"
+msgstr "Naziv"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: field:bve.view,note:0
+msgid "Notes"
+msgstr "Opombe"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Open BI View"
+msgstr "Odpri BI prikaz"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Query"
+msgstr "Poizvedba"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Reset to Draft"
+msgstr "Ponastavi v osnutek"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Security"
+msgstr "Varnost"
+
+#. module: bi_view_editor
+#: field:bve.view,state:0
+msgid "State"
+msgstr "Stanje"
+
+#. module: bi_view_editor
+#: help:bve.view,data:0
+msgid ""
+"Use the special query builder to define the query to generate your report "
+"dataset. NOTE: To be edited, the query should be in 'Draft' status."
+msgstr "Uporabite posebni gradnik poizvedb za določanje poizvedbe, ki bo ustvarila poročilo z vašim naborom podatkov. OPOMBA: Urejate lahko le poizvedbe s statusom 'Osnutek'."
+
+#. module: bi_view_editor
+#: help:bve.view,group_ids:0
+msgid ""
+"User groups allowed to see the generated report; if NO groups are specified "
+"the report will be public for everyone."
+msgstr "Uporabniške skupine, ki imajo vpogled v ustvarjeno poročilo; če ni določena nobena skupina, bo poročilo javno dostopno."
+
+#. module: bi_view_editor
+#: field:bve.view,user_ids:0
+msgid "Users"
+msgstr "Uporabniki"
+
+#. module: bi_view_editor
+#: field:bve.view,view_id:0
+msgid "View"
+msgstr "Prikaz"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:73
+#, python-format
+msgid "You cannot delete a created view! Reset the view to draft first."
+msgstr "Ustvarjenega prikaza ne morete brisati! Najprej morate prikaz ponastaviti v osnutek."
