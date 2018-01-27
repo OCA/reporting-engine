@@ -178,12 +178,13 @@ odoo.define('bi_view_editor', function (require) {
                 }
             }
             function renderFields(result) {
-                console.log(result);
-                var item = self.$el.find(".class-list #bve-class-" + result[0].model_id);
-                for (var o = 0; o < result.length; o++) {
-                    self._render_field(self, o, result, item, addField)
+                if (typeof(result[0]) !== 'undefined') {
+                    var item = self.$el.find(".class-list #bve-class-" + result[0].model_id);
+                    for (var o = 0; o < result.length; o++) {
+                        self._render_field(self, o, result, item, addField)
+                    }
+                    item.data('bve-processed', true);
                 }
-                item.data('bve-processed', true);
             }
             for (var i = 0; i < result.length; i++) {
                 var item = $("<div style=\"" + css + "\" class=\"class\" title=\"" + result[i].model  + "\" id=\"bve-class-" + result[i].id + "\">" + result[i].name + "</div>")
@@ -321,8 +322,13 @@ odoo.define('bi_view_editor', function (require) {
                 self.clean_join_nodes();
                 self.internal_set_value(JSON.stringify(self.get_fields()));
                 self.load_classes();
+                self.$el.find(".field-list .delete-button").hide();
+                self.$el.find(".field-list .delete-button:last").show();
                 return false;
             });
+
+            self.$el.find(".field-list .delete-button").hide();
+            self.$el.find(".field-list .delete-button:last").show();
         },
         clean_join_nodes: function () {
             var aliases = $.makeArray(this.$el.find(".field-list tbody tr").map(function (idx, el) {
@@ -381,17 +387,27 @@ odoo.define('bi_view_editor', function (require) {
             self.load_classes(field);
         },
         add_field: function(field) {
+            var self = this;
+
+            // Quick fix for double click
+            if(self._adding) {
+                return;
+            }
+            self._adding = true;
+            setTimeout(function() {
+                self._adding = false;
+            }, 1000);
+            // End quick fix
+
             var data = field.data('field-data');
             var model = new Model("ir.model");
             var model_ids = this.get_model_ids();
             var field_data = this.get_fields();
-            var self = this;
             model.call('get_join_nodes', [field_data, data], {context: new Data.CompoundContext()}).then(function(result) {
 
                 if (result.length === 1) {
                     self.add_field_and_join_node(data, result[0]);
                     self.internal_set_value(JSON.stringify(self.get_fields()));
-                    //self.load_classes(data);
                 } else if (result.length > 1) {
                     var pop = new JoinNodePopup(self);
                     pop.display_popup(result, self.get_model_data(), self.add_field_and_join_node.bind(self), data);
