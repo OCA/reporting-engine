@@ -3,15 +3,15 @@
 # * bi_view_editor
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: reporting-engine (8.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-04 02:44+0000\n"
-"PO-Revision-Date: 2016-05-03 15:03+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
+"POT-Creation-Date: 2018-02-16 01:44+0000\n"
+"PO-Revision-Date: 2018-02-16 01:44+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,20 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #. module: bi_view_editor
-#: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
-msgid ""
-"<p class=\"oe_view_nocontent_create\">\n"
-"                Click to create a Custom Query Object.\n"
-"              </p><p>\n"
-"\n"
-"              </p>\n"
-"            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n                Ustvari prilagojen objekt poizvedbe.\n              </p><p>\n\n              </p>\n            "
+#: code:addons/bi_view_editor/models/bve_view.py:384
+#, python-format
+msgid "%s (copy)"
+msgstr ""
 
 #. module: bi_view_editor
-#: field:bve.view,action_id:0
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "<b>Join</b> using the field"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_action_id
 msgid "Action"
 msgstr "Ukrep"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:378
+#, python-format
+msgid "BI View"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
@@ -40,27 +48,52 @@ msgid "BI View Editor"
 msgstr "BI urejevalnik prikazov"
 
 #. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:43
+#, python-format
+msgid "Cancel"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:41
+#, python-format
+msgid "Choose join node"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
+msgid "Click to create a Custom Query Object."
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
+msgid "Create a Menu"
+msgstr ""
+
+#. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Created"
 msgstr "Nastanek"
 
 #. module: bi_view_editor
-#: field:bve.view,create_uid:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_uid
 msgid "Created by"
 msgstr "Ustvaril"
 
 #. module: bi_view_editor
-#: field:bve.view,create_date:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
 msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
 msgid "Custom BI View"
 msgstr "Prilagojen BI prikaz"
 
 #. module: bi_view_editor
-#: sql_constraint:bve.view:0
+#: code:addons/bi_view_editor/models/bve_view.py:63 sql_constraint:bve.view:0
+#, python-format
 msgid "Custom BI View names must be unique!"
 msgstr "Nazivi prilagojenih BI prikazov morajo biti unikatni!"
 
@@ -71,7 +104,7 @@ msgid "Custom BI Views"
 msgstr "Prilagojeni BI prikazi"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Custom Object"
 msgstr "Prilagojen objekt"
 
@@ -81,12 +114,12 @@ msgid "Custom Reports"
 msgstr "Prilagojena poročila"
 
 #. module: bi_view_editor
-#: field:bve.view,data:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_data
 msgid "Data"
 msgstr "Podatki"
 
 #. module: bi_view_editor
-#: field:bve.view,display_name:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_display_name
 msgid "Display Name"
 msgstr "Prikazni naziv"
 
@@ -96,45 +129,39 @@ msgid "Draft"
 msgstr "Osnutek"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:72
-#, python-format
-msgid "Error"
-msgstr "Napaka"
-
-#. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Generate BI View"
 msgstr "Ustvari BI prikaz"
 
 #. module: bi_view_editor
-#: field:bve.view,group_ids:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_group_ids
 msgid "Groups"
 msgstr "Skupine"
 
 #. module: bi_view_editor
-#: field:bve.view,id:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_id
 msgid "ID"
 msgstr "ID"
 
 #. module: bi_view_editor
-#: field:bve.view,__last_update:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view___last_update
 msgid "Last Modified on"
 msgstr "Zadnjič spremenjeno"
 
 #. module: bi_view_editor
-#: field:bve.view,write_uid:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
 msgid "Last Updated by"
 msgstr "Zadnji posodobil"
 
 #. module: bi_view_editor
-#: field:bve.view,write_date:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
 msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: bi_view_editor
-#: field:bve.view,model_name:0
-msgid "Model Name"
-msgstr "Naziv modela"
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_model_name
+msgid "Model name"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
@@ -142,67 +169,124 @@ msgid "Models"
 msgstr "Modeli"
 
 #. module: bi_view_editor
-#: field:bve.view,name:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_name
 msgid "Name"
 msgstr "Naziv"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
-#: field:bve.view,note:0
+#: code:addons/bi_view_editor/models/models.py:42
+#, python-format
+msgid "No data to be displayed."
+msgstr ""
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:284
+#, python-format
+msgid "No data to process."
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_note
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Notes"
 msgstr "Opombe"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Open BI View"
 msgstr "Odpri BI prikaz"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query"
 msgstr "Poizvedba"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Reset to Draft"
 msgstr "Ponastavi v osnutek"
 
 #. module: bi_view_editor
-#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
 msgstr "Varnost"
 
 #. module: bi_view_editor
-#: field:bve.view,state:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_state
 msgid "State"
 msgstr "Stanje"
 
 #. module: bi_view_editor
-#: help:bve.view,data:0
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:26
+#, python-format
+msgid "Use the field on model"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,help:bi_view_editor.field_bve_view_data
 msgid ""
 "Use the special query builder to define the query to generate your report "
 "dataset. NOTE: To be edited, the query should be in 'Draft' status."
-msgstr "Uporabite posebni gradnik poizvedb za določanje poizvedbe, ki bo ustvarila poročilo z vašim naborom podatkov. OPOMBA: Urejate lahko le poizvedbe s statusom 'Osnutek'."
+msgstr ""
+"Uporabite posebni gradnik poizvedb za določanje poizvedbe, ki bo ustvarila "
+"poročilo z vašim naborom podatkov. OPOMBA: Urejate lahko le poizvedbe s "
+"statusom 'Osnutek'."
 
 #. module: bi_view_editor
-#: help:bve.view,group_ids:0
+#: model:ir.model.fields,help:bi_view_editor.field_bve_view_group_ids
 msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
-msgstr "Uporabniške skupine, ki imajo vpogled v ustvarjeno poročilo; če ni določena nobena skupina, bo poročilo javno dostopno."
+msgstr ""
+"Uporabniške skupine, ki imajo vpogled v ustvarjeno poročilo; če ni določena "
+"nobena skupina, bo poročilo javno dostopno."
 
 #. module: bi_view_editor
-#: field:bve.view,user_ids:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_user_ids
 msgid "Users"
 msgstr "Uporabniki"
 
 #. module: bi_view_editor
-#: field:bve.view,view_id:0
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_view_id
 msgid "View"
 msgstr "Prikaz"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:73
+#: code:addons/bi_view_editor/models/bve_view.py:424
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
-msgstr "Ustvarjenega prikaza ne morete brisati! Najprej morate prikaz ponastaviti v osnutek."
+msgstr ""
+"Ustvarjenega prikaza ne morete brisati! Najprej morate prikaz ponastaviti v "
+"osnutek."
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_base
+msgid "base"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "model"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:30
+#, python-format
+msgid "new"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/js/bve.js:32
+#, python-format
+msgid "on "
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
+msgid "wizard.ir.model.menu.create"
+msgstr ""
