@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    © 2017 Creu Blanca
+    License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+    -->
+    <report
+        id="partner_pdf_combination"
+        model="res.partner"
+        string="Make PDF Combination "
+        report_type="pdf-combination"
+        name="report_pdf_combination.partner_pdf_combination"
+        file="res_partner"
+        attachment_use="False"
+    />
+</odoo>
