@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_res_users_csv">name,login,last_login_date,lang
+<t t-foreach="docs" t-as="o"><t t-esc="o.name"/>,<t t-esc="o.login"/>,<t t-esc="o.login_date"/>,<t t-esc="o.lang"/>
+</t>
+</template>
+
+</odoo>

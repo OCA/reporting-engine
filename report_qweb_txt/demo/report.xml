@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+<report id="res_users_csv"
+    model="res.users"
+    name="report_qweb_txt.report_res_users_csv"
+    string="CSV List"
+    report_type="qweb-txt-csv"
+    file="report_qweb_txt.report_res_users_csv"
+    />
+
+</odoo>
