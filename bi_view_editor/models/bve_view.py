@@ -5,7 +5,7 @@
 import json
 
 from odoo import api, fields, models, tools
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tools.translate import _
 
 
@@ -63,8 +63,8 @@ class BveView(models.Model):
          _('Custom BI View names must be unique!')),
     ]
 
-    @api.model
-    def _get_format_data(self, data):
+    @classmethod
+    def _get_format_data(cls, data):
         data = data.replace('\'', '"')
         data = data.replace(': u"', ':"')
         return data
@@ -73,11 +73,11 @@ class BveView(models.Model):
     def _create_view_arch(self):
         self.ensure_one()
 
-        def _get_field_def(name, type=''):
-            if not type:
+        def _get_field_def(name, def_type=''):
+            if not def_type:
                 return ''
             return """<field name="x_{}" type="{}" />""".format(
-                name, type
+                name, def_type
             )
 
         def _get_field_type(field_info):
@@ -169,17 +169,17 @@ class BveView(models.Model):
             View.sudo().create(vals)
 
         # create Tree view
-        tree_view = View.sudo().create(
-            {'name': 'Tree Analysis',
-             'type': 'tree',
-             'model': self.model_name,
-             'priority': 16,
-             'arch': """<?xml version="1.0"?>
-                        <tree string="List Analysis" create="false">
-                        {}
-                        </tree>
-                     """.format("".join(self._create_tree_view_arch()))
-             })
+        tree_view = View.sudo().create({
+            'name': 'Tree Analysis',
+            'type': 'tree',
+            'model': self.model_name,
+            'priority': 16,
+            'arch': """<?xml version="1.0"?>
+                       <tree string="List Analysis" create="false">
+                       {}
+                       </tree>
+                    """.format("".join(self._create_tree_view_arch()))
+            })
 
         # set the Tree view as the default one
         action_vals = {
@@ -219,10 +219,10 @@ class BveView(models.Model):
             return [x[0] for x in self.env.cr.fetchall()]
 
         info = json.loads(self._get_format_data(self.data))
-        models = list(set([f['model'] for f in info]))
+        model_names = list(set([f['model'] for f in info]))
         read_groups = set.intersection(*[set(
             group_ids_with_access(model_name, 'read')
-        ) for model_name in models])
+        ) for model_name in model_names])
 
         # read access
         for group in read_groups:
@@ -275,10 +275,9 @@ class BveView(models.Model):
             return tables
 
         def get_fields(info):
-            fields = [("{}.{}".format(f['table_alias'],
-                                      f['select_field']),
-                       f['as_field']) for f in info if 'join_node' not in f]
-            return fields
+            return [("{}.{}".format(f['table_alias'],
+                                    f['select_field']),
+                     f['as_field']) for f in info if 'join_node' not in f]
 
         def check_empty_data(data):
             if not data or data == '[]':
@@ -288,7 +287,7 @@ class BveView(models.Model):
 
         formatted_data = json.loads(self._get_format_data(self.data))
         info = get_fields_info(formatted_data)
-        fields = get_fields(info)
+        select_fields = get_fields(info)
         tables = get_tables(info)
         join_nodes = get_join_nodes(info)
 
@@ -307,7 +306,7 @@ class BveView(models.Model):
             WHERE %s
             )""" % (table_name, ','.join(
             ["{} AS {}".format(f[0], f[1])
-             for f in basic_fields + fields]), ','.join(
+             for f in basic_fields + select_fields]), ','.join(
             ["{} AS {}".format(t[0], t[1])
              for t in list(tables)]), " AND ".join(
             ["{}.{} = {}.id".format(j[0], j[2], j[1])
@@ -339,8 +338,11 @@ class BveView(models.Model):
                 if field.ttype == 'selection' and not field.selection:
                     model_obj = self.env[field.model_id.model]
                     selection = model_obj._fields[field.name].selection
-                    selection_domain = str(selection)
-                    vals.update({'selection': selection_domain})
+                    if callable(selection):
+                        selection_domain = selection(model_obj)
+                    else:
+                        selection_domain = selection
+                    vals.update({'selection': str(selection_domain)})
                 return vals
 
         # clean dirty view (in case something went wrong)
@@ -399,9 +401,11 @@ class BveView(models.Model):
                 self.action_id.view_id.sudo().unlink()
             self.action_id.sudo().unlink()
 
-        models = self.env['ir.model'].sudo().search(
+        self.env['ir.ui.view'].sudo().search(
+            [('model', '=', self.model_name)]).unlink()
+        ir_models = self.env['ir.model'].sudo().search(
             [('model', '=', self.model_name)])
-        for model in models:
+        for model in ir_models:
             model.sudo().unlink()
 
         table_name = self.model_name.replace('.', '_')

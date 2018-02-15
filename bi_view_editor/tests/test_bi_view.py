@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.tests.common import TransactionCase, at_install, post_install
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 
 
 class TestBiViewEditor(TransactionCase):
