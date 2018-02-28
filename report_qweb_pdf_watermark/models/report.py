@@ -34,9 +34,9 @@ class Report(models.Model):
         watermark = None
         if report.pdf_watermark:
             watermark = b64decode(report.pdf_watermark)
-        else:
+        elif report.pdf_watermark_expression:
             watermark = tools.safe_eval(
-                report.pdf_watermark_expression or 'None',
+                report.pdf_watermark_expression,
                 dict(env=self.env, docs=self.env[report.model].browse(docids)),
             )
             if watermark:
