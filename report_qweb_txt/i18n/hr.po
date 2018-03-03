@@ -1,9 +1,9 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_xml
+# * report_qweb_txt
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
+# OCA Transbot <transbot@odoo-community.org>, 2018
 # Bole <bole@dajmi5.com>, 2018
 msgid ""
 msgstr ""
@@ -19,22 +19,22 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. module: report_xml
-#: model:ir.ui.view,arch_db:report_xml.utf8_header
-msgid "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;"
+#. module: report_qweb_txt
+#: model:ir.actions.report.xml,name:report_qweb_txt.res_users_csv
+msgid "CSV List"
 msgstr ""
 
-#. module: report_xml
-#: model:ir.actions.report.xml,name:report_xml.demo_xml_report
-msgid "Demo xml report"
-msgstr ""
-
-#. module: report_xml
-#: model:ir.model,name:report_xml.model_report
+#. module: report_qweb_txt
+#: model:ir.model,name:report_qweb_txt.model_report
 msgid "Report"
 msgstr "Izvještaj"
 
-#. module: report_xml
-#: model:ir.model,name:report_xml.model_ir_actions_report_xml
+#. module: report_qweb_txt
+#: model:ir.model,name:report_qweb_txt.model_ir_actions_report_xml
 msgid "ir.actions.report.xml"
 msgstr "ir.actions.report.xml"
+
+#. module: report_qweb_txt
+#: model:ir.ui.view,arch_db:report_qweb_txt.report_res_users_csv
+msgid "name,login,last_login_date,lang"
+msgstr ""

@@ -5,13 +5,14 @@
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2018
 # Fernando Lara <gennesis45@gmail.com>, 2018
+# enjolras <yo@miguelrevilla.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 03:45+0000\n"
-"PO-Revision-Date: 2018-01-25 03:45+0000\n"
-"Last-Translator: Fernando Lara <gennesis45@gmail.com>, 2018\n"
+"POT-Creation-Date: 2018-02-16 01:44+0000\n"
+"PO-Revision-Date: 2018-02-16 01:44+0000\n"
+"Last-Translator: enjolras <yo@miguelrevilla.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +21,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:382
+#: code:addons/bi_view_editor/models/bve_view.py:384
 #, python-format
 msgid "%s (copy)"
-msgstr ""
+msgstr "%s (copia)"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bve.js:32
 #, python-format
 msgid "<b>Join</b> using the field"
-msgstr ""
+msgstr "<b>Unirse</b> usando el campo"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_action_id
@@ -38,10 +39,10 @@ msgid "Action"
 msgstr "Acción"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:376
+#: code:addons/bi_view_editor/models/bve_view.py:378
 #, python-format
 msgid "BI View"
-msgstr ""
+msgstr "Vista BI"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
@@ -53,7 +54,7 @@ msgstr "Editor de vistas BI"
 #: code:addons/bi_view_editor/static/src/js/bve.js:43
 #, python-format
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -70,7 +71,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Create a Menu"
-msgstr ""
+msgstr "Crear un menú"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
@@ -85,7 +86,7 @@ msgstr "Creado por"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Creado el"
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
@@ -96,7 +97,7 @@ msgstr "Vista BI personalizada"
 #: code:addons/bi_view_editor/models/bve_view.py:63 sql_constraint:bve.view:0
 #, python-format
 msgid "Custom BI View names must be unique!"
-msgstr "¡El nombre de las vistas BI personalizadas debe ser único!"
+msgstr "El nombre de las vistas BI personalizadas debe ser único."
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
@@ -147,7 +148,7 @@ msgstr "ID"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view___last_update
 msgid "Last Modified on"
-msgstr "Última modificación en"
+msgstr "Última modificación el"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
@@ -157,12 +158,12 @@ msgstr "Última actualización por"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Última actualización el"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_model_name
 msgid "Model name"
-msgstr ""
+msgstr "Nombre del modelo"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
@@ -178,13 +179,13 @@ msgstr "Nombre"
 #: code:addons/bi_view_editor/models/models.py:42
 #, python-format
 msgid "No data to be displayed."
-msgstr ""
+msgstr "No se mostrará información"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:285
+#: code:addons/bi_view_editor/models/bve_view.py:284
 #, python-format
 msgid "No data to process."
-msgstr ""
+msgstr "No hay información que procesar."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_note
@@ -222,7 +223,7 @@ msgstr "Estado"
 #: code:addons/bi_view_editor/static/src/js/bve.js:26
 #, python-format
 msgid "Use the field on model"
-msgstr ""
+msgstr "Usar el campo en el modelo"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view_data
@@ -254,39 +255,40 @@ msgid "View"
 msgstr "Vista"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:420
+#: code:addons/bi_view_editor/models/bve_view.py:424
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
-"¡No puedes eliminar una vista creada! Devuélvela a estado borrador primero"
+"No se puede eliminar una vista creada. Debe ser devuelta primero a estado de"
+" borrador."
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bve.js:32
 #, python-format
 msgid "model"
-msgstr ""
+msgstr "modelo"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bve.js:30
 #, python-format
 msgid "new"
-msgstr ""
+msgstr "nuevo"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bve.js:32
 #, python-format
 msgid "on "
-msgstr ""
+msgstr "en"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
 msgid "wizard.ir.model.menu.create"
-msgstr ""
+msgstr "wizard.ir.model.menu.create"
