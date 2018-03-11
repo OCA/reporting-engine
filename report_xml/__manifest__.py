@@ -4,7 +4,7 @@
 
 {
     "name": "XML Reports",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.0.1",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Grupo ESOC Ingeniería de Servicios, "

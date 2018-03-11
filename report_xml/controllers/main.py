@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 from odoo.addons.web.controllers import main as report
-from odoo.http import route
+from odoo.http import content_disposition, route
 
 
 class ReportController(report.ReportController):
@@ -23,5 +23,5 @@ class ReportController(report.ReportController):
             response.headers.set('Content-length', len(response.data))
             response.headers.set(
                 'Content-Disposition',
-                'attachment; filename="'+reportname+".xml")
+                content_disposition(reportname + ".xml"))
         return response
