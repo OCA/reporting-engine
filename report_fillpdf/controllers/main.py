@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 from odoo.addons.web.controllers import main as report
-from odoo.http import route, request
+from odoo.http import content_disposition, route, request
 
 import json
 
@@ -34,7 +34,7 @@ class ReportController(report.ReportController):
                 ('Content-Length', len(pdf)),
                 (
                     'Content-Disposition',
-                    'attachment; filename=' + report.report_file + '.pdf'
+                    content_disposition(report.report_file + '.pdf')
                 )
             ]
             return request.make_response(pdf, headers=pdfhttpheaders)
