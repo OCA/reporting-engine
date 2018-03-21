@@ -253,6 +253,9 @@ class Py3oReport(models.TransientModel):
             out_stream.seek(0)
             tmpl_data = out_stream.read()
 
+        if self.env.context.get('report_py3o_skip_conversion'):
+            return result_path
+
         result_path = self._convert_single_report(
             result_path, model_instance, data
         )
