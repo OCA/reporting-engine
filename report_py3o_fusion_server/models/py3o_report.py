@@ -32,8 +32,16 @@ class Py3oReport(models.TransientModel):
         self.ensure_one()
         report_xml = self.ir_actions_report_xml_id
         filetype = report_xml.py3o_filetype
-        if report_xml.py3o_is_local_fusion:
-            result_path = super(Py3oReport, self)._create_single_report(
+        if not report_xml.py3o_server_id:
+            return super(Py3oReport, self)._create_single_report(
+                model_instance, data, save_in_attachment,
+            )
+        elif report_xml.py3o_is_local_fusion:
+            result_path = super(
+                Py3oReport, self.with_context(
+                    report_py3o_skip_conversion=True,
+                )
+            )._create_single_report(
                 model_instance, data, save_in_attachment,
             )
             with closing(open(result_path, 'r')) as out_stream:
