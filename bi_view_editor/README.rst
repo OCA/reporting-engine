@@ -1,5 +1,5 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+.. image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+   :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
 ==============
@@ -39,16 +39,20 @@ To graphically design your analysis data-set:
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/10.0
+   :target: https://runbot.odoo-community.org/runbot/143/11.0
 
 Known issues / Roadmap
 ======================
 
-* Non-stored fields are not supported
+* Non-stored fields and many2many fields are not supported
 * Provide graph view for table relations
 * Extend the capabilities of the tree views (e.g. add sums)
 * Provide a tutorial (eg. a working example of usage)
 * Implement a more advanced UI, with possibilities to use LEFT JOIN as default instead of INNER JOIN
+* Find better ways to extend the *_auto_init()* without override (possibly avoid the monkey patch)
+* Data the user has no access to (e.g. in a multi company situation) can be viewed by making a view
+* Store the JSON data structure in ORM
+* Would be nice if models available to select when creating a view are limited to the ones that have intersecting groups (for non technical users)
 
 Bug Tracker
 ===========
@@ -77,6 +81,15 @@ Contributors
 * Andrea Stirpe <a.stirpe@onestein.nl>
 * Antonio Esposito <a.esposito@onestein.nl>
 * Jordi Ballester Alomar <jordi.ballester@eficent.com>
+
+Do not contact contributors directly about support or help with technical issues.
+
+Funders
+-------
+
+The development of this module has been financially supported by:
+
+* IDEAL Connaissances SAS https://www.idealconnaissances.com
 
 Maintainer
 ----------
