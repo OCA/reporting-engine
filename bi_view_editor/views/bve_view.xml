@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <record id="action_bi_view_editor_translations" model="ir.actions.act_window">
+        <field name="name">Translations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.translation</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('res_id', '=', active_record.), ('name', '=', 'ir.model.fields,field_description')]</field>
+        <field name="view_id" ref="base.view_translation_dialog_tree"/>
+    </record>
 
     <record id="view_bi_view_editor_view_tree" model="ir.ui.view">
         <field name="model">bve.view</field>
@@ -22,6 +31,14 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,created" statusbar_colors='{"draft":"blue","created":"blue"}'/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_translations"
+                                type="object"
+                                states="created"
+                                icon="fa-globe"
+                                string="Translations"
+                        />
+                    </div>
                     <h1>
                         <field name="name" attrs="{'readonly': [('state','=','created')]}" colspan="4"/>
                     </h1>

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-# Copyright 2015-2017 Onestein (<http://www.onestein.eu>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import api, models, registry
 
 NO_BI_MODELS = [
     'temp.range',
@@ -112,7 +111,7 @@ class IrModel(models.Model):
 
         def get_model_list(model_ids):
             model_list = []
-            domain = [('model_id', 'in', model_ids.values()),
+            domain = [('model_id', 'in', list(model_ids.values())),
                       ('store', '=', True),
                       ('ttype', 'in', ['many2one'])]
             filtered_fields = self._search_fields(domain)
@@ -128,7 +127,7 @@ class IrModel(models.Model):
 
         def get_relation_list(model_ids, model_names):
             relation_list = []
-            domain = [('relation', 'in', model_names.values()),
+            domain = [('relation', 'in', list(model_names.values())),
                       ('store', '=', True),
                       ('ttype', 'in', ['many2one'])]
             filtered_fields = self._search_fields(domain)
@@ -166,7 +165,7 @@ class IrModel(models.Model):
             return field_list
 
         def _get_list_id(model_ids, fields):
-            list_model = model_ids.values()
+            list_model = list(model_ids.values())
             list_model += _get_field(fields, 'table_alias', 'model_id')
             return list_model
 
@@ -236,9 +235,9 @@ class IrModel(models.Model):
         join_nodes = _get_join_nodes_dict(model_ids, new_field)
         join_nodes = remove_duplicate_nodes(join_nodes)
 
-        return filter(
+        return list(filter(
             lambda x: 'id' not in x or
-                      (x['table_alias'], x['id']) not in keys, join_nodes)
+                      (x['table_alias'], x['id']) not in keys, join_nodes))
 
     @api.model
     def get_fields(self, model_id):
@@ -284,9 +283,9 @@ class IrModel(models.Model):
         # # update registry
         if self._context.get('bve'):
             # setup models; this reloads custom models in registry
-            self.pool.setup_models(self._cr, partial=(not self.pool.ready))
+            self.pool.setup_models(self._cr)
 
             # signal that registry has changed
-            self.pool.signal_registry_change()
+            registry(self.env.cr.dbname).signal_changes()
 
         return res
