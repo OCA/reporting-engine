@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 2015-2017 Onestein (<http://www.onestein.eu>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import json
 
@@ -130,7 +129,7 @@ class BveView(models.Model):
         # create views
         View = self.env['ir.ui.view']
         old_views = View.sudo().search([('model', '=', self.model_name)])
-        old_views.sudo().unlink()
+        old_views.unlink()
 
         view_vals = [{
             'name': 'Pivot Analysis',
@@ -205,24 +204,29 @@ class BveView(models.Model):
         self.ensure_one()
 
         def group_ids_with_access(model_name, access_mode):
+            # pylint: disable=sql-injection
             self.env.cr.execute('''SELECT
                   g.id
                 FROM
                   ir_model_access a
                   JOIN ir_model m ON (a.model_id=m.id)
                   JOIN res_groups g ON (a.group_id=g.id)
-                  LEFT JOIN ir_module_category c ON (c.id=g.category_id)
                 WHERE
                   m.model=%s AND
-                  a.active IS True AND
+                  a.active = true AND
                   a.perm_''' + access_mode, (model_name,))
-            return [x[0] for x in self.env.cr.fetchall()]
+            res = self.env.cr.fetchall()
+            return [x[0] for x in res]
 
         info = json.loads(self._get_format_data(self.data))
         model_names = list(set([f['model'] for f in info]))
         read_groups = set.intersection(*[set(
             group_ids_with_access(model_name, 'read')
         ) for model_name in model_names])
+
+        if not read_groups and not self.group_ids:
+            raise UserError(_('Please select at least one group'
+                              ' on the security tab.'))
 
         # read access
         for group in read_groups:
@@ -294,12 +298,13 @@ class BveView(models.Model):
         table_name = self.model_name.replace('.', '_')
 
         # robustness in case something went wrong
+        # pylint: disable=sql-injection
         self._cr.execute('DROP TABLE IF EXISTS "%s"' % table_name)
 
         basic_fields = [
             ("t0.id", "id")
         ]
-
+        # pylint: disable=sql-injection
         q = """CREATE or REPLACE VIEW %s as (
             SELECT %s
             FROM  %s
@@ -313,6 +318,35 @@ class BveView(models.Model):
              for j in join_nodes] + ["TRUE"]))
 
         self.env.cr.execute(q)
+
+    @api.multi
+    def action_translations(self):
+        self.ensure_one()
+        model = self.env['ir.model'].sudo().search([
+            ('model', '=', self.model_name)
+        ])
+        translation_obj = self.env['ir.translation'].sudo()
+        translation_obj.translate_fields('ir.model', model.id)
+        for field_id in model.field_id.ids:
+            translation_obj.translate_fields('ir.model.fields', field_id)
+        return {
+            'name': 'Translations',
+            'res_model': 'ir.translation',
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'view_id': self.env.ref('base.view_translation_dialog_tree').id,
+            'target': 'current',
+            'flags': {'search_view': True, 'action_buttons': True},
+            'domain': [
+                '|',
+                '&',
+                ('res_id', 'in', model.field_id.ids),
+                ('name', '=', 'ir.model.fields,field_description'),
+                '&',
+                ('res_id', '=', model.id),
+                ('name', '=', 'ir.model,name')
+            ],
+        }
 
     @api.multi
     def action_create(self):
@@ -331,7 +365,8 @@ class BveView(models.Model):
                     'ttype': field.ttype,
                     'selection': field.selection,
                     'size': field.size,
-                    'state': 'manual'
+                    'state': 'manual',
+                    'readonly': True
                 }
                 if vals['ttype'] == 'monetary':
                     vals.update({'ttype': 'float'})
@@ -391,11 +426,11 @@ class BveView(models.Model):
         has_menus = False
         if self.action_id:
             action = 'ir.actions.act_window,%d' % (self.action_id.id,)
-            menus = self.env['ir.ui.menu'].sudo().search(
-                [('action', '=', action)]
-            )
+            menus = self.env['ir.ui.menu'].sudo().search([
+                ('action', '=', action)
+            ])
             has_menus = True if menus else False
-            menus.sudo().unlink()
+            menus.unlink()
 
             if self.action_id.view_id:
                 self.action_id.view_id.sudo().unlink()
@@ -403,10 +438,11 @@ class BveView(models.Model):
 
         self.env['ir.ui.view'].sudo().search(
             [('model', '=', self.model_name)]).unlink()
-        ir_models = self.env['ir.model'].sudo().search(
-            [('model', '=', self.model_name)])
+        ir_models = self.env['ir.model'].sudo().search([
+            ('model', '=', self.model_name)
+        ])
         for model in ir_models:
-            model.sudo().unlink()
+            model.unlink()
 
         table_name = self.model_name.replace('.', '_')
         tools.drop_view_if_exists(self.env.cr, table_name)
