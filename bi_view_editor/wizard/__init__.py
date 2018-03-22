@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-# Copyright 2017 Onestein (<http://www.onestein.eu>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from . import wizard_ir_model_menu_create
