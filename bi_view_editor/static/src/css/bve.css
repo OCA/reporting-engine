@@ -83,6 +83,14 @@
     cursor: pointer;
 }
 
+.oe_form_field_bi_editor .body .left .class-list.readonly {
+    opacity: .35;
+}
+
+.oe_form_field_bi_editor .body .left .class-list .class.readonly {
+    cursor: default;
+}
+
 .oe_form_field_bi_editor .body .left  .class-list .class:hover {
     background-color: #7C7BAD;
     color: #FFF;
@@ -130,8 +138,13 @@
     background-color: #DDD;
 }
 
+.oe_form_field_bi_editor .body .right .field-list tbody tr.join-node {
+    background-color: #D2D2FF;
+    text-align: center;
+    border-top: 1px solid #DDDDDD;
+}
+
 .oe_form_field_bi_editor .context-menu, .oe_form_field_bi_editor .context-menu ul {
-    display: none;
     z-index: 1000;
     position: fixed;
     background-color: #fff;
@@ -140,13 +153,24 @@
     list-style-type: none;
     padding: 0;
     width: 175px;
-    
+}
+
+.oe_form_field_bi_editor .context-menu .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.oe_form_field_bi_editor .context-menu .checkbox label {
+    display: block;
 }
 
 .oe_form_field_bi_editor .context-menu li {
     padding: 5px;
-    height: 28px;
     cursor: pointer;
+}
+
+.oe_form_field_bi_editor .clear-btn {
+    display: inline-block;
 }
 
 .oe_form_field_bi_editor .context-menu li:hover {
@@ -166,11 +190,10 @@
     margin-top: -24px;
 }
 
-
 .clear {
     clear: both;
 }
 
-.displaynone {
-    display: none;
+.oe_bi_view_editor_join_node_dialog li {
+    cursor: pointer;
 }
