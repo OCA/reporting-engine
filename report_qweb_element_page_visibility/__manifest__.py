@@ -15,6 +15,6 @@
         'views/layouts.xml',
     ],
     'depends': [
-        'report',
+        'base',
     ],
 }

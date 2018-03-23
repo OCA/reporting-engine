@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <template id="minimal_layout" inherit_id="report.minimal_layout">
+    <template id="minimal_layout" inherit_id="web.minimal_layout">
         <xpath expr="//t[@t-if='subst is True']" position="replace">
             <t t-if="subst is True">
                 <script>
