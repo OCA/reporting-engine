@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_invoice_document" inherit_id="account.report_invoice_document" priority="99">
+    <xpath expr="//tbody[hasclass('invoice_tbody')]" position="before">
+        <t t-set="subtotal" t-value="0.0"/>
+        <t t-set="lines_grouped" t-value="o.lines_grouped_by_picking()"/>
+    </xpath>
+    <xpath expr="//tr[@t-foreach='o.invoice_line_ids']" position="attributes">
+        <attribute name="t-foreach">lines_grouped</attribute>
+        <attribute name="t-as">lines_group</attribute>
+    </xpath>
+    <xpath expr="//td/span[@t-field='l.name']/.." position="before">
+        <t t-set="l" t-value="lines_group['line']"/>
+        <t t-set="picking" t-value="lines_group['picking']"/>
+        <t t-set="next_picking"
+           t-value="[lines_grouped[i + 1]['picking'] for i, x in enumerate(lines_grouped) if x == lines_group and i &lt; len(lines_grouped) - 1] or [False]"/>
+        <!-- Appends before the line row-->
+        <t t-if="picking != last_picking">
+            <tr t-if="picking">
+                <td colspan="10">
+                    <strong t-esc="'Order: %s Picking: %s %s' % (picking.sale_id.name, picking.date_done[:10], picking.name)"/>
+                </td>
+            </tr>
+        </t>
+    </xpath>
+    <xpath expr="//td/span[@t-field='l.quantity']" position="before">
+        <t t-if="picking">
+            <!-- Compute product qty for that picking and invoice line -->
+            <t t-set="line_picking_qty"
+               t-value="sum(l.mapped('move_line_ids').filtered(lambda x: x.picking_id == picking).mapped('quantity_done'))"/>
+            <span t-esc="line_picking_qty"/>
+        </t>
+    </xpath>
+    <xpath expr="//td/span[@t-field='l.quantity']" position="attributes">
+        <attribute name="t-if">not picking</attribute>
+    </xpath>
+    <xpath expr="//td/span[@t-field='l.price_subtotal']" position="before">
+        <t t-if="picking">
+            <!-- Compute subtotal for that picking with discounts -->
+            <t t-set="line_picking_subtotal" t-value="line_picking_qty * (l.price_subtotal / l.quantity)"/>
+            <span t-esc="line_picking_subtotal"
+                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
+        </t>
+    </xpath>
+    <xpath expr="//td/span[@t-field='l.price_subtotal']" position="attributes">
+        <attribute name="t-if">not picking</attribute>
+    </xpath>
+    <!-- Appends row after invoice line row -->
+    <xpath expr="//td/span[@t-field='l.price_subtotal']" position="after">
+        <tr t-if="picking and picking != next_picking[0]">
+            <td colspan="10" class="text-right">
+                <strong>Subtotal: </strong>
+                <strong t-esc="subtotal"
+                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            </td>
+            <t t-set="subtotal" t-value="0.0"/>
+        </tr>
+        <t t-set="last_picking" t-value="picking"/>
+    </xpath>
+</template>
+
+</odoo>
