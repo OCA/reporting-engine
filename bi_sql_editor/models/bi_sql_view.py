@@ -13,6 +13,22 @@ from odoo.exceptions import UserError
 _logger = logging.getLogger(__name__)
 
 
+class BaseModel(models.AbstractModel):
+    _inherit = 'base'
+
+    @api.model_cr_context
+    def _auto_init(self):
+        if self._name.startswith(BiSQLView._model_prefix):
+            self._auto = False
+        return super(BaseModel, self)._auto_init()
+
+    @api.model_cr_context
+    def _auto_end(self):
+        if self._name.startswith(BiSQLView._model_prefix):
+            self._foreign_keys = set()
+        return super(BaseModel, self)._auto_end()
+
+
 class BiSQLView(models.Model):
     _name = 'bi.sql.view'
     _inherit = ['sql.request.mixin']
@@ -161,10 +177,7 @@ class BiSQLView(models.Model):
     # Overload Section
     @api.multi
     def unlink(self):
-        non_draft_views = self.search([
-            ('id', 'in', self.ids),
-            ('state', 'not in', ('draft', 'sql_valid'))])
-        if non_draft_views:
+        if any(view.state not in ('draft', 'sql_valid') for view in self):
             raise UserError(_("You can only unlink draft views"))
         return super(BiSQLView, self).unlink()
 
@@ -201,6 +214,15 @@ class BiSQLView(models.Model):
     @api.multi
     def button_set_draft(self):
         for sql_view in self:
+            sql_view.menu_id.unlink()
+            sql_view.action_id.unlink()
+            sql_view.tree_view_id.unlink()
+            sql_view.graph_view_id.unlink()
+            sql_view.pivot_view_id.unlink()
+            sql_view.search_view_id.unlink()
+            if sql_view.cron_id:
+                sql_view.cron_id.unlink()
+
             if sql_view.state in ('model_valid', 'ui_valid'):
                 # Drop SQL View (and indexes by cascade)
                 if sql_view.is_materialized:
@@ -209,14 +231,6 @@ class BiSQLView(models.Model):
                 # Drop ORM
                 sql_view._drop_model_and_fields()
 
-            sql_view.tree_view_id.unlink()
-            sql_view.graph_view_id.unlink()
-            sql_view.pivot_view_id.unlink()
-            sql_view.search_view_id.unlink()
-            sql_view.action_id.unlink()
-            sql_view.menu_id.unlink()
-            if sql_view.cron_id:
-                sql_view.cron_id.unlink()
             sql_view.write({'state': 'draft', 'has_group_changed': False})
 
     @api.multi
@@ -293,7 +307,8 @@ class BiSQLView(models.Model):
             'name': _('Refresh Materialized View %s') % (self.view_name),
             'user_id': SUPERUSER_ID,
             'model': 'bi.sql.view',
-            'function': 'button_refresh_materialized_view',
+            'function': '_refresh_materialized_view_cron',
+            'numbercall': -1,
             'args': repr(([self.id],))
         }
 
@@ -447,7 +462,7 @@ class BiSQLView(models.Model):
                 self._prepare_rule()).id
             # Drop table, created by the ORM
             req = "DROP TABLE %s" % (sql_view.view_name)
-            self.env.cr.execute(req)
+            self._log_execute(req)
 
     @api.multi
     def _create_model_access(self):
@@ -467,7 +482,7 @@ class BiSQLView(models.Model):
             if sql_view.rule_id:
                 sql_view.rule_id.unlink()
             if sql_view.model_id:
-                sql_view.model_id.unlink()
+                sql_view.model_id.with_context(_force_unlink=True).unlink()
 
     @api.multi
     def _hook_executed_request(self):
@@ -481,7 +496,7 @@ class BiSQLView(models.Model):
             AND     NOT attisdropped
             AND     attnum > 0
             ORDER   BY attnum;""" % (self.view_name)
-        self.env.cr.execute(req)
+        self._log_execute(req)
         return self.env.cr.fetchall()
 
     @api.multi
@@ -548,6 +563,11 @@ class BiSQLView(models.Model):
 
         return columns
 
+    @api.model
+    def _refresh_materialized_view_cron(self, view_ids):
+        sql_views = self.browse(view_ids)
+        return sql_views._refresh_materialized_view()
+
     @api.multi
     def _refresh_materialized_view(self):
         for sql_view in self:
@@ -568,7 +588,7 @@ class BiSQLView(models.Model):
         for sql_view in self:
             req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));" % (
                 sql_view.view_name)
-            self.env.cr.execute(req)
+            self._log_execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
 
     @api.multi
