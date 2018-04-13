@@ -10,7 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_bi_sql_view_tree" model="ir.ui.view">
         <field name="model">bi.sql.view</field>
         <field name="arch" type="xml">
-            <tree colors="blue:state=='draft'; brown:state in ('sql_valid', 'model_valid')">
+            <tree decoration-info="state=='draft'" decoration-warning="state in ('sql_valid', 'model_valid')">
                 <field name="name"/>
                 <field name="technical_name"/>
                 <field name="size"/>
@@ -29,7 +29,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <button name="button_set_draft" type="object" states="sql_valid,model_valid,ui_valid"
                             string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"
                             confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"/>
-                    <button name="button_preview_sql_expression" type="object" states="draft" string="Preview SQL Expression" class="oe_highlight"/>
+                    <button name="button_preview_sql_expression" type="object" states="draft" string="Preview SQL Expression" />
                     <button name="button_create_sql_view_and_model" type="object" states="sql_valid"
                         string="Create SQL View, Indexes and Models" class="oe_highlight"
                         help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"/>
@@ -70,7 +70,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </page>
                         <page string="SQL Fields" attrs="{'invisible': [('state', '=', 'draft')]}">
                             <field name="bi_sql_view_field_ids" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'sql_valid')]}">
-                                <tree editable="bottom" colors="blue:field_description==False">
+                                <tree editable="bottom" decoration-info="field_description==False">
                                     <field name="sequence"/>
                                     <field name="name"/>
                                     <field name="sql_type"/>
