@@ -175,7 +175,7 @@ class Py3oReport(models.TransientModel):
         """
         self.ensure_one()
         report_xml = self.ir_actions_report_xml_id
-        if report_xml.py3o_template_id and report_xml.py3o_template_id.id:
+        if report_xml.py3o_template_id.py3o_template_data:
             # if a user gave a report template
             tmpl_data = b64decode(
                 report_xml.py3o_template_id.py3o_template_data
