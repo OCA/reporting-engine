@@ -10,7 +10,7 @@
     'license': 'AGPL-3',
     'category': 'Reporting',
     'author': 'GRAP,Odoo Community Association (OCA)',
-    'website': 'https://www.odoo-community.org',
+    'website': 'https://github.com/OCA/reporting-engine',
     'depends': [
         'base',
         'sql_request_abstract',
