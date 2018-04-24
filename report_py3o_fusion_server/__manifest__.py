@@ -20,11 +20,13 @@
     },
     'demo': [
         "demo/report_py3o.xml",
+        "demo/py3o_pdf_options.xml",
     ],
     'data': [
         "views/ir_report.xml",
         'security/ir.model.access.csv',
         'views/py3o_server.xml',
+        'views/py3o_pdf_options.xml',
     ],
     'installable': True,
 }
