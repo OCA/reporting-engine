@@ -13,3 +13,7 @@ class Py3oServer(models.Model):
         help="If your Py3o Fusion server is on the same machine and runs "
         "on the default port, the URL is http://localhost:8765/form")
     is_active = fields.Boolean("Active", default=True)
+    pdf_options_id = fields.Many2one(
+        'py3o.pdf.options', string='PDF Options', ondelete='restrict',
+        help="PDF options can be set per Py3o Server but also per report. "
+        "If both are defined, the options on the report are used.")

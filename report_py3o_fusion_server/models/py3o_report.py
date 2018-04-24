@@ -75,6 +75,12 @@ class Py3oReport(models.TransientModel):
         }
         if report_xml.py3o_is_local_fusion:
             fields['skipfusion'] = '1'
+        if filetype == 'pdf':
+            options = report_xml.pdf_options_id or\
+                report_xml.py3o_server_id.pdf_options_id
+            if options:
+                pdf_options_dict = options.odoo2libreoffice_options()
+                fields['pdf_options'] = json.dumps(pdf_options_dict)
         r = requests.post(
             report_xml.py3o_server_id.url, data=fields, files=files)
         if r.status_code != 200:
