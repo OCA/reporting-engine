@@ -39,3 +39,7 @@ class IrActionsReportXml(models.Model):
     py3o_server_id = fields.Many2one(
         "py3o.server",
         "Fusion Server")
+    pdf_options_id = fields.Many2one(
+        'py3o.pdf.options', string='PDF Options', ondelete='restrict',
+        help="PDF options can be set per report, but also per Py3o Server. "
+        "If both are defined, the options on the report are used.")
