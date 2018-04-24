@@ -6,7 +6,14 @@
 Py3o Report Engine - Fusion server support
 ==========================================
 
-This module was written to let a py3o fusion server handle format conversion instead of local libreoffice.
+This module was written to let a py3o fusion server handle format conversion instead of local libreoffice. If you install this module above the *report_py3o* module, you will have to deploy additionnal software components and run 3 daemons (libreoffice, py3o.fusion and py3o.renderserver). This additionnal complexiy comes with several advantages:
+
+* much better performances (libreoffice runs permanently in the background, no need to spawn a new libreoffice instance upon every document conversion).
+* ability to configure PDF export options in Odoo. This will allow you to generate:
+  * PDF forms
+  * password-protected PDF documents
+  * PDF/A documents (required by some electronic invoicing standards such as Factur-X)
+  * watermarked PDF documents
 
 Installation
 ============
@@ -54,11 +61,11 @@ At the end, with the dependencies, you should have the following py3o python lib
 
   % pip freeze | grep py3o
   py3o.formats==0.3
-  py3o.fusion==0.8.7
+  py3o.fusion==0.8.8
   py3o.renderclient==0.2
   py3o.renderers.juno==0.8
   py3o.renderserver==0.5.1
-  py3o.template==0.9.11
+  py3o.template==0.9.12
   py3o.types==0.1.1
 
 Start the Py3o Fusion server:
