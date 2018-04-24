@@ -36,3 +36,8 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
     def test_reports_no_local_fusion(self):
         self.report.py3o_is_local_fusion = False
         self.test_reports()
+
+    def test_odoo2libreoffice_options(self):
+        for options in self.env['py3o.pdf.options'].search([]):
+            options_dict = options.odoo2libreoffice_options()
+            self.assertIsInstance(options_dict, dict)
