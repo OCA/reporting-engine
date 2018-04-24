@@ -8,6 +8,7 @@
             <form string="Py3o Server Configuration">
                 <group name="main">
                     <field name="url" widget="url"/>
+                    <field name="pdf_options_id"/>
                     <field name="is_active" />
                 </group>
             </form>
@@ -20,6 +21,7 @@
         <field name="arch" type="xml">
             <tree string="Py3o Servers Configuration">
                 <field name="url" />
+                <field name="pdf_options_id"/>
                 <field name="is_active" />
             </tree>
         </field>
