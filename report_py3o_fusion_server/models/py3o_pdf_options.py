@@ -71,7 +71,7 @@ class Py3oPdfOptions(models.Model):
     initial_view = fields.Selection([
         ('0', 'Page Only'),
         ('1', 'Bookmarks and Page'),
-        ('2', 'Thumnails and Page'),
+        ('2', 'Thumbnails and Page'),
         ], string='Panes', default='0')
     # InitialPage (int)
     initial_page = fields.Integer(string='Initial Page', default=1)
