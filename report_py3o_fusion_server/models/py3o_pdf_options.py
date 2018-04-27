@@ -139,7 +139,7 @@ class Py3oPdfOptions(models.Model):
         ('0', 'Default'),
         ('1', 'Open with PDF Reader Application'),
         ('2', 'Open with Internet Browser'),
-        ], string='Cross-document Links', default='default')
+        ], string='Cross-document Links', default='0')
     # SECURITY TAB
     # EncryptFile (bool)
     encrypt = fields.Boolean('Encrypt')
