@@ -3,14 +3,13 @@
 {
     'name': "Base report xlsx",
 
-    'summary': """
-        Base module to create xlsx report""",
+    'summary': "Base module to create xlsx report",
     'author': 'ACSONE SA/NV,'
               'Creu Blanca,'
               'Odoo Community Association (OCA)',
     'website': "http://github.com/oca/reporting-engine",
     'category': 'Reporting',
-    'version': '11.0.1.0.1',
+    'version': '11.0.1.0.2',
     'license': 'AGPL-3',
     'external_dependencies': {
         'python': [
