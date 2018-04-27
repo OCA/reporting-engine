@@ -1,6 +1,6 @@
 // © 2017 Creu Blanca
 // License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-odoo.define('report_xml.report', function(require){
+odoo.define('report_xlsx.report', function(require){
 'use strict';
 
 var ActionManager= require('web.ActionManager');
