@@ -27,12 +27,12 @@ var trigger_download = function(session, response, c, action, options) {
 ActionManager.include({
     ir_actions_report_xml: function(action, options) {
         var self = this;
-        framework.blockUI();
-        action = _.clone(action);
-        _t =  core._t;
 
         // Py3o reports
         if ('report_type' in action && action.report_type == 'py3o' ) {
+            framework.blockUI();
+            action = _.clone(action);
+            _t =  core._t;
             var report_url = '/report/py3o/' + action.report_name;;
             // generic report: no query string
             // particular: query string of action.data.form and context
