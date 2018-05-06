@@ -91,6 +91,13 @@ After **-Djava.class.path**, there is a list of Java libs with *.jar* extension 
 
 To check that the Py3o Fusion server is running fine, visit the URL http://<IP_address>:8765/form. On this web page, under the section *Target format*, make sure that you have a line *This server currently supports these formats: ods, odt, docx, doc, html, docbook, pdf, xls.*.
 
+If you want to produce valid PDF/A documents with this module, activating the corresponding option in the PDF Export Options may not be enough, you also have to make sure that all the fonts used in the document template are installed on the Odoo server, so that they can be embedded in the PDF/A document. For example, if your document template uses the Arial font, you should install that font on your Odoo server:
+
+.. code::
+
+  sudo apt-get install msttcorefonts
+
+
 Known issues / Roadmap
 ======================
 
