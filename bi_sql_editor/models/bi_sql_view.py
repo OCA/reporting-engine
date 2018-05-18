@@ -294,6 +294,7 @@ class BiSQLView(models.Model):
             'user_id': SUPERUSER_ID,
             'model': 'bi.sql.view',
             'function': 'button_refresh_materialized_view',
+            'numbercall': -1,
             'args': repr(([self.id],))
         }
 
