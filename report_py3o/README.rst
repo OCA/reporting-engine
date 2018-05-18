@@ -162,8 +162,6 @@ time
     Python's ``time`` module
 display_address(partner)
     Return a formatted string of the partner's address
-formatLang(value, digits=None, date=False, date_time=False, grouping=True, monetary=False, dp=False, currency_obj=False)
-    Return a formatted numeric, monetary, date or time value according to the context language and timezone
 
 Sample report templates
 -----------------------

@@ -25,7 +25,7 @@ var trigger_download = function(session, response, c, action, options) {
 };
 
 ActionManager.include({
-    ir_actions_report_xml: function(action, options) {
+    ir_actions_report: function(action, options) {
         var self = this;
 
         // Py3o reports
@@ -49,7 +49,7 @@ ActionManager.include({
             response[0] = report_url;
             response[1] = action.report_type;
             var c = crash_manager;
-            return trigger_download(self.session, response, c, action, options);
+            return trigger_download(self.getSession(), response, c, action, options);
         } else {
             return self._super(action, options);
         }
