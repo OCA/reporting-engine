@@ -37,10 +37,11 @@ class ReportController(main.ReportController):
             if data['context'].get('lang'):
                 del data['context']['lang']
             context.update(data['context'])
-
+            
         ir_action = request.env['ir.actions.report']
         action_py3o_report = ir_action._get_report_from_name(
             reportname).with_context(context)
+        
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description='Py3o action report not found for report_name '

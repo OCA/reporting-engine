@@ -93,12 +93,13 @@ class ReportAction(models.Model):
         """Override this function to change the name of the downloaded report
         """
         self.ensure_one()
+        object_name = self.env[self.model].search([('id', 'in', res_ids)]).name
         report = self._get_report_from_name(self.report_name)
         if report.print_report_name and not len(res_ids) > 1:
             obj = self.env[self.model].browse(res_ids)
             return safe_eval(report.print_report_name,
                              {'object': obj, 'time': time})
-        return "%s.%s" % (self.name, self.py3o_filetype)
+        return "%s.%s" % (object_name, self.py3o_filetype)
 
     @api.multi
     def unlink(self):

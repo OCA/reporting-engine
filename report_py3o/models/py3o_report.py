@@ -6,6 +6,7 @@
 import base64
 from base64 import b64decode
 from io import BytesIO
+
 import logging
 import os
 from contextlib import closing
@@ -222,8 +223,9 @@ class Py3oReport(models.TransientModel):
         if len(save_in_attachment) != 0:
             with open(report_path, 'rb') as report:
                 attachment = {
-                    'name': 'Py3o Report',
+                    'name': save_in_attachment.get(res_id),
                     'datas': base64.encodebytes(report.read()),
+                    'datas_fname': save_in_attachment.get(res_id),
                     'res_model': save_in_attachment.get('model'),
                     'res_id': res_id,
                 }

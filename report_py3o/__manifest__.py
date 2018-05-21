@@ -12,6 +12,7 @@
               'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
+    'depends': ['document'],
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats']
