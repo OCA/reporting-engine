@@ -1,4 +1,5 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
+# Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Py3o Report Engine',
@@ -11,7 +12,7 @@
               'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
-    'depends': ['report'],
+    'depends': ['document'],
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats']
@@ -22,7 +23,6 @@
         'views/py3o_template.xml',
         'views/ir_report.xml',
         'views/report_py3o.xml',
-        'demo/report_py3o.xml',
     ],
     'installable': True,
 }

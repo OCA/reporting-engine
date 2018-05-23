@@ -1,4 +1,5 @@
 # Copyright 2017 ACSONE SA/NV
+# Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import json
 import mimetypes
@@ -6,7 +7,7 @@ from werkzeug import exceptions, url_decode
 
 from odoo.http import route, request
 
-from odoo.addons.report.controllers import main
+from odoo.addons.web.controllers import main
 from odoo.addons.web.controllers.main import (
     _serialize_exception,
     content_disposition
@@ -36,19 +37,18 @@ class ReportController(main.ReportController):
             if data['context'].get('lang'):
                 del data['context']['lang']
             context.update(data['context'])
-
-        ir_action = request.env['ir.actions.report.xml']
-        action_py3o_report = ir_action.get_from_report_name(
-            reportname, "py3o").with_context(context)
+            
+        ir_action = request.env['ir.actions.report']
+        action_py3o_report = ir_action._get_report_from_name(
+            reportname).with_context(context)
+        
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description='Py3o action report not found for report_name '
                             '%s' % reportname)
         context['report_name'] = reportname
-        py3o_report = request.env['py3o.report'].create({
-            'ir_actions_report_xml_id': action_py3o_report.id
-        }).with_context(context)
-        res, filetype = py3o_report.create_report(docids, data)
+
+        res, filetype = action_py3o_report.render_py3o(docids, data)
         filename = action_py3o_report.gen_report_download_filename(
             docids, data)
         content_type = mimetypes.guess_type("x." + filetype)[0]
@@ -89,7 +89,7 @@ class ReportController(main.ReportController):
                     reportname, converter='py3o', **dict(data))
             response.set_cookie('fileToken', token)
             return response
-        except Exception, e:
+        except Exception as e:
             se = _serialize_exception(e)
             error = {
                 'code': 200,
