@@ -210,9 +210,9 @@ class Py3oReport(models.TransientModel):
     @api.multi
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
-        context_instance = report_sxw.rml_parse(self.env.cr, self.env.uid,
-                                     report_xml.name,
-                                     context=self.env.context)
+        context_instance = report_sxw.RMLParse(self.env.cr, self.env.uid,
+                                               report_xml.name,
+                                               context=self.env.context)
         context_instance.set_context(model_instance, data, model_instance.ids,
                                      report_xml.report_type)
         self._extend_parser_context(context_instance, report_xml)
@@ -250,7 +250,7 @@ class Py3oReport(models.TransientModel):
 
         in_stream = BytesIO(tmpl_data)
         with closing(os.fdopen(result_fd, 'wb+')) as out_stream:
-            template = Template(in_stream, out_stream, escape_false=True)
+            template = Template(in_stream, out_stream, escape_false=True, ignore_undefined_variables=True)
             localcontext = self._get_parser_context(model_instance, data)
             template.render(localcontext)
             out_stream.seek(0)
@@ -403,7 +403,8 @@ class Py3oReport(models.TransientModel):
             filenames = self._attachment_filename(records, report)
             attachments = None
             if report.attachment_use:
-                attachments = self._attachment_stored(records, report, filenames=filenames)
+                attachments = self._attachment_stored(
+                    records, report, filenames=filenames)
             for record_id in docids:
                 filename = filenames[record_id]
                 if attachments:
@@ -411,7 +412,8 @@ class Py3oReport(models.TransientModel):
                     if attachment:
                         file_attached = attachment.datas
                         file_attached = base64.decodebytes(file_attached)
-                        save_in_attachment['loaded_documents'][record_id] = file_attached
+                        save_in_attachment['loaded_documents'][record_id] =\
+                            file_attached
 
                         continue
 
@@ -424,7 +426,9 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _attachment_filename(self, records, report):
-        return dict((record.id, safe_eval(report.attachment, {'object': record, 'time': time})) for record in records)
+        return dict((record.id, safe_eval(
+            report.attachment,
+            {'object': record, 'time': time})) for record in records)
 
     @api.model
     def _attachment_stored(self, records, report, filenames=None):
