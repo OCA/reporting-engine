@@ -35,7 +35,7 @@ class TestReportPy3o(TransactionCase):
         super(TestReportPy3o, self).setUp()
         self.report = self.env.ref("report_py3o.res_users_report_py3o")
         self.py3o_report = self.env['py3o.report'].create({
-            'ir_actions_report_xml_id': self.report.id})
+            'ir_actions_report_id': self.report.id})
 
     def test_required_py3_filetype(self):
         self.assertEqual(self.report.report_type, "py3o")
@@ -58,9 +58,8 @@ class TestReportPy3o(TransactionCase):
                     result, record.id, save_attachments,
                 ) or result
             # test the call the the create method inside our custom parser
-            self.report.render_report(self.env.user.ids,
-                                      self.report.report_name,
-                                      {})
+            self.report.render_py3o(self.env.user.ids,
+                                    {})
             self.assertEqual(call_count, patched_pdf.call_count)
             # generated files no more exists
             self.assertFalse(os.path.exists(result))

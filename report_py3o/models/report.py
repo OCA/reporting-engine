@@ -43,14 +43,14 @@ class ReportAction(models.Model):
         string='Multiple Records in a Single Report',
         help="If you execute a report on several records, "
              "by default Odoo will generate a ZIP file that contains as many "
-             "files as selected records. If you enable this option, Odoo will "
+             "files as selected records. If you enable this option, Odoo will"
              "generate instead a single report for the selected records.")
 
     @api.model
     def render_py3o(self, docids, data):
         report = self._get_report_from_name(self.report_name)
-        return self.env['py3o.report'].create({'ir_actions_report_id': report.id
-                                               }).create_report(docids, data)
+        return self.env['py3o.report'].create(
+            {'ir_actions_report_id': report.id}).create_report(docids, data)
 
     @api.model
     def _get_report_from_name(self, report_name):

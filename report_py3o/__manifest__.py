@@ -18,6 +18,7 @@
                    'py3o.formats']
     },
     'data': [
+        'demo/report_py3o.xml',
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/py3o_template.xml',
