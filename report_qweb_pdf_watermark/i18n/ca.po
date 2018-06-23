@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_pdf_watermark
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2017-04-22 13:09+0000\n"
 "Last-Translator: Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_pdf_watermark
@@ -25,7 +25,8 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
-"Una expressió generant dades codificades en base64 per ser utilitzada com a marc d'aigua.\n"
+"Una expressió generant dades codificades en base64 per ser utilitzada com a "
+"marc d'aigua.\n"
 "Teniu accés a les variables 'env' i 'docs' "
 
 #. module: report_qweb_pdf_watermark
