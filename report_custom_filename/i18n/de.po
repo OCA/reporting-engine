@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_custom_filename
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 # Rudolf Schnapka <rs@techno-flex.de>, 2017
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2017-03-04 05:58+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_custom_filename
@@ -27,16 +27,27 @@ msgstr "Datei herunterladen"
 #. module: report_custom_filename
 #: model:ir.model.fields,help:report_custom_filename.field_ir_act_report_xml_download_filename
 msgid ""
-"Fill in this field to have a custom file name when downloading this report. This string is evaluated as a jinja2 expression.\n"
-"You can use python expressions, `objects` is a browse record list of the objects for which the report is being generated.\n"
-"Check for this list's length to determine if it is a report being printed for multiple records or not. You also have access to `o`, which is the first record in the list.\n"
-"For qweb reports, the variable `ext` gives you the requested format's extension"
+"Fill in this field to have a custom file name when downloading this report. "
+"This string is evaluated as a jinja2 expression.\n"
+"You can use python expressions, `objects` is a browse record list of the "
+"objects for which the report is being generated.\n"
+"Check for this list's length to determine if it is a report being printed "
+"for multiple records or not. You also have access to `o`, which is the first "
+"record in the list.\n"
+"For qweb reports, the variable `ext` gives you the requested format's "
+"extension"
 msgstr ""
-"Pflegen Sie dieses Feld, um einen individuellen Dateinamen beim Download dieses Berichts zu erhalten. Diese Zeichenkette wird als jinja2 -Ausdruck ausgewertet.\n"
-"Sie können Python-Ausdrücke verwenden, `objects` ist eine browse record Liste von Objekten, die in diesem Bericht ausgewertet werden.\n"
-"Prüfen Sie die Listenlänge, um zu erfahren, ob dieser Bericht mehrere Datensätze betrifft oder nicht.\n"
-"Sie haben ebenfalls Zugriff auf das Objekt 'o', welches der erste Datensatz der Liste ist.\n"
-"Bei QWeb-Berichen liefert die Variable 'ext' die vom Bericht geforderte Nmenserweiterung."
+"Pflegen Sie dieses Feld, um einen individuellen Dateinamen beim Download "
+"dieses Berichts zu erhalten. Diese Zeichenkette wird als jinja2 -Ausdruck "
+"ausgewertet.\n"
+"Sie können Python-Ausdrücke verwenden, `objects` ist eine browse record "
+"Liste von Objekten, die in diesem Bericht ausgewertet werden.\n"
+"Prüfen Sie die Listenlänge, um zu erfahren, ob dieser Bericht mehrere "
+"Datensätze betrifft oder nicht.\n"
+"Sie haben ebenfalls Zugriff auf das Objekt 'o', welches der erste Datensatz "
+"der Liste ist.\n"
+"Bei QWeb-Berichen liefert die Variable 'ext' die vom Bericht geforderte "
+"Nmenserweiterung."
 
 #. module: report_custom_filename
 #: model:ir.model,name:report_custom_filename.model_ir_actions_report_xml
