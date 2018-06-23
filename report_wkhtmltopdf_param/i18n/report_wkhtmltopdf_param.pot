@@ -1,24 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_wkhtmltopdf_param
+#	* report_wkhtmltopdf_param
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Carla Berjano <berjano.carla@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 02:40+0000\n"
-"PO-Revision-Date: 2017-05-03 02:40+0000\n"
-"Last-Translator: Carla Berjano <berjano.carla@gmail.com>, 2017\n"
-"Language-Team: Portuguese (Portugal) (https://www.transifex.com/oca/"
-"teams/23907/pt_PT/)\n"
-"Language: pt_PT\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
@@ -28,12 +21,12 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_create_uid
 msgid "Created by"
-msgstr "Criado por"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_create_date
 msgid "Created on"
-msgstr "Criado em"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_custom_params
@@ -48,7 +41,7 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_display_name
 msgid "Display Name"
-msgstr "Nome a Apresentar"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:37
@@ -59,27 +52,27 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter___last_update
 msgid "Last Modified on"
-msgstr "Última Modificação Em"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_write_uid
 msgid "Last Updated by"
-msgstr "Última Atualização Por"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_write_date
 msgid "Last Updated on"
-msgstr "Última Atualização Em"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_name
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_paperformat_id
@@ -89,7 +82,7 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report
 msgid "Report"
-msgstr "Relatório"
+msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter_name
@@ -105,3 +98,4 @@ msgstr ""
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
 msgid "wkhtmltopdf parameters"
 msgstr ""
+
