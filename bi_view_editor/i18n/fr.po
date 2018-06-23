@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_view_editor
-# 
+#
 # Translators:
 # Sébastien Alix <seb@usr-src.org>, 2017
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2017-03-04 05:55+0000\n"
 "PO-Revision-Date: 2017-03-10 13:16+0000\n"
 "Last-Translator: Sébastien Alix <seb@usr-src.org>\n"
-"Language-Team: French (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/oca/OCA-reporting-engine-8-0/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_view_editor
@@ -27,7 +28,12 @@ msgid ""
 "\n"
 "              </p>\n"
 "            "
-msgstr "<p class=\"oe_view_nocontent_create\">\nCliquez pour créer un nouveau rapport BI personnalisé.\n</p><p>\n\n</p>"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"Cliquez pour créer un nouveau rapport BI personnalisé.\n"
+"</p><p>\n"
+"\n"
+"</p>"
 
 #. module: bi_view_editor
 #: field:bve.view,action_id:0
@@ -182,14 +188,18 @@ msgstr "État"
 msgid ""
 "Use the special query builder to define the query to generate your report "
 "dataset. NOTE: Te be edited, the query should be in 'Draft' status."
-msgstr "Utilisez le constructeur de requête qui générera le jeu de données de votre rapport. Votre rapport doit être à l'état 'Brouillon' pour être édité."
+msgstr ""
+"Utilisez le constructeur de requête qui générera le jeu de données de votre "
+"rapport. Votre rapport doit être à l'état 'Brouillon' pour être édité."
 
 #. module: bi_view_editor
 #: help:bve.view,group_ids:0
 msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
-msgstr "Groupes utilisateurs autorisés à consulter le rapport généré. Le rapport sera consultable par tous les utilisateurs si aucun groupe n'est configuré."
+msgstr ""
+"Groupes utilisateurs autorisés à consulter le rapport généré. Le rapport "
+"sera consultable par tous les utilisateurs si aucun groupe n'est configuré."
 
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
@@ -205,4 +215,6 @@ msgstr "Vue"
 #: code:addons/bi_view_editor/models/bve_view.py:73
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
-msgstr "Vous ne pouvez pas supprimer un rapport à l'état 'Créé'. Veuillez le remettre à l'état 'Brouillon' afin de pouvoir le supprimer."
+msgstr ""
+"Vous ne pouvez pas supprimer un rapport à l'état 'Créé'. Veuillez le "
+"remettre à l'état 'Brouillon' afin de pouvoir le supprimer."

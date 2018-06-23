@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_view_editor
-# 
+#
 # Translators:
 # Eduardo Rodríguez Crespo <erocre@gmail.com>, 2016
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2016-05-08 09:43+0000\n"
 "PO-Revision-Date: 2016-06-13 21:28+0000\n"
 "Last-Translator: Eduardo Rodríguez Crespo <erocre@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-"
+"engine-8-0/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_view_editor
@@ -182,14 +183,19 @@ msgstr "Estado"
 msgid ""
 "Use the special query builder to define the query to generate your report "
 "dataset. NOTE: Te be edited, the query should be in 'Draft' status."
-msgstr "Usa el constructor especial de consultas para definir la consulta del informe de datos. NOTA: para ser editada, la consulta debe estar en estado 'Borrador'"
+msgstr ""
+"Usa el constructor especial de consultas para definir la consulta del "
+"informe de datos. NOTA: para ser editada, la consulta debe estar en estado "
+"'Borrador'"
 
 #. module: bi_view_editor
 #: help:bve.view,group_ids:0
 msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
-msgstr "Grupos de usuarios permitidos para ver el informe generado; si NO se especifican grupos, el informe será público para todos"
+msgstr ""
+"Grupos de usuarios permitidos para ver el informe generado; si NO se "
+"especifican grupos, el informe será público para todos"
 
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
@@ -205,4 +211,5 @@ msgstr "Vista"
 #: code:addons/bi_view_editor/models/bve_view.py:73
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
-msgstr "¡No puedes eliminar una vista creada! Devuélvela a estado borrador primero"
+msgstr ""
+"¡No puedes eliminar una vista creada! Devuélvela a estado borrador primero"

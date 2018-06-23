@@ -1,27 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * bi_view_editor
+#	* bi_view_editor
 #
-# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: reporting-engine (8.0)\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 07:59+0000\n"
-"PO-Revision-Date: 2016-03-21 15:33+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-"
-"reporting-engine-8-0/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: \n"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
-msgid ""
-"<p class=\"oe_view_nocontent_create\">\n"
+msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                Click to create a Custom Query Object.\n"
 "              </p><p>\n"
 "\n"
@@ -32,7 +26,7 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,action_id:0
 msgid "Action"
-msgstr "Ação"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
@@ -47,12 +41,12 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,create_uid:0
 msgid "Created by"
-msgstr "Criado por"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,create_date:0
 msgid "Created on"
-msgstr "Criado em"
+msgstr ""
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
@@ -88,12 +82,12 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,display_name:0
 msgid "Display Name"
-msgstr "Nome para Mostrar"
+msgstr ""
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
-msgstr "Rascunho"
+msgstr ""
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:72
@@ -114,22 +108,22 @@ msgstr ""
 #. module: bi_view_editor
 #: field:bve.view,id:0
 msgid "ID"
-msgstr "Identificação"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,__last_update:0
 msgid "Last Modified on"
-msgstr "Última atualização em"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0
 msgid "Last Updated by"
-msgstr "Última atualização por"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,write_date:0
 msgid "Last Updated on"
-msgstr "Última atualização em"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,model_name:0
@@ -139,18 +133,18 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr "Modelos"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,name:0
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 #: field:bve.view,note:0
 msgid "Notes"
-msgstr "Notas"
+msgstr ""
 
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
@@ -170,31 +164,27 @@ msgstr ""
 #. module: bi_view_editor
 #: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr "Segurança"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,state:0
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 #. module: bi_view_editor
 #: help:bve.view,data:0
-msgid ""
-"Use the special query builder to define the query to generate your report "
-"dataset. NOTE: Te be edited, the query should be in 'Draft' status."
+msgid "Use the special query builder to define the query to generate your report dataset. NOTE: Te be edited, the query should be in 'Draft' status."
 msgstr ""
 
 #. module: bi_view_editor
 #: help:bve.view,group_ids:0
-msgid ""
-"User groups allowed to see the generated report; if NO groups are specified "
-"the report will be public for everyone."
+msgid "User groups allowed to see the generated report; if NO groups are specified the report will be public for everyone."
 msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,user_ids:0
 msgid "Users"
-msgstr "Usuários"
+msgstr ""
 
 #. module: bi_view_editor
 #: field:bve.view,view_id:0
@@ -206,3 +196,4 @@ msgstr ""
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
+
