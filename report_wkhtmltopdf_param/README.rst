@@ -23,7 +23,7 @@ Usage
 #. Go to *Settings* and press 'Activate the developer mode (with assets)'
 #. Go to *Settings - Technical - Reports - Paper Format*
 #. Add additional parameters indicating the command argument name (remember to
-  add prefix -- or -) and value.
+   add prefix -- or -) and value.
 
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
