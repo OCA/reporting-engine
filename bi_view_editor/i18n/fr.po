@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_view_editor
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2018
 # Quentin THEURET <odoo@kerpeo.com>, 2018
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2018-02-16 01:44+0000\n"
 "Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_view_editor
@@ -231,8 +231,8 @@ msgid ""
 "dataset. NOTE: To be edited, the query should be in 'Draft' status."
 msgstr ""
 "Utiliser le constructeur de requête spéciale pour définir la requête pour "
-"générer votre rapport de jeu de données. NOTE : Pour être éditée, la requête"
-" doit être dans l'état 'Brouillon'."
+"générer votre rapport de jeu de données. NOTE : Pour être éditée, la requête "
+"doit être dans l'état 'Brouillon'."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view_group_ids

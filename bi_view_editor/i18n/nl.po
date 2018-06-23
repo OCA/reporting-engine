@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_view_editor
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2018
 msgid ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: 2018-02-16 01:44+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_view_editor
@@ -229,9 +229,8 @@ msgid ""
 "Use the special query builder to define the query to generate your report "
 "dataset. NOTE: To be edited, the query should be in 'Draft' status."
 msgstr ""
-"Gebruik de speciale query bouwer om queries te definiëren voor uw rapportage"
-" dataset. LET OP: Om te bewerken moet de query in de 'Concept\" status zijn."
-" "
+"Gebruik de speciale query bouwer om queries te definiëren voor uw rapportage "
+"dataset. LET OP: Om te bewerken moet de query in de 'Concept\" status zijn. "
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view_group_ids
