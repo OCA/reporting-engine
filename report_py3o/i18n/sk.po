@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_py3o
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: 2018-01-16 08:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Slovak (https://www.transifex.com/oca/teams/23907/sk/)\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: report_py3o
@@ -80,9 +80,8 @@ msgstr ""
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_multi_in_one
 msgid ""
 "If you execute a report on several records, by default Odoo will generate a "
-"ZIP file that contains as many files as selected records. If you enable this"
-" option, Odoo will generate instead a single report for the selected "
-"records."
+"ZIP file that contains as many files as selected records. If you enable this "
+"option, Odoo will generate instead a single report for the selected records."
 msgstr ""
 
 #. module: report_py3o
