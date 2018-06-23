@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_signer
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Fernando Lara <gennesis45@gmail.com>, 2017
@@ -14,10 +14,10 @@ msgstr ""
 "PO-Revision-Date: 2018-02-16 01:44+0000\n"
 "Last-Translator: enjolras <yo@miguelrevilla.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_signer
@@ -83,8 +83,8 @@ msgstr "Dominio para filrar si firmar o no el documento"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate_attachment
 msgid ""
-"Filename used to store signed document as attachment. Keep empty to not save"
-" signed document."
+"Filename used to store signed document as attachment. Keep empty to not save "
+"signed document."
 msgstr ""
 "Nombre de fichero usado para guardar el documento firmado como adjunto. "
 "Dejar en blanco para no guardar el documento firmado."
@@ -202,8 +202,8 @@ msgstr "Firmar informes (PDF): Certificado o archivo contraseña no encontrado"
 #: code:addons/report_qweb_signer/models/report.py:130
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
-" %s"
+"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
+"%s"
 msgstr ""
 "Firmar informes (PDF): jPdfSign falló (código de error: %s). Mensaje: %s. "
 "Salida: %s"
