@@ -1,22 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_qweb_signer
+#	* report_qweb_signer
 #
-# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: reporting-engine (8.0)\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2016-10-11 09:49+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/oca/OCA-"
-"reporting-engine-8-0/language/es_VE/)\n"
-"Language: es_VE\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: report_qweb_signer
 #: field:report.certificate,allow_only_one:0
@@ -46,17 +41,17 @@ msgstr ""
 #. module: report_qweb_signer
 #: field:report.certificate,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,display_name:0
 msgid "Display Name"
-msgstr "Mostrar nombre"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,domain:0
@@ -70,37 +65,33 @@ msgstr ""
 
 #. module: report_qweb_signer
 #: help:report.certificate,attachment:0
-msgid ""
-"Filename used to store signed document as attachment. Keep empty to not save "
-"signed document."
+msgid "Filename used to store signed document as attachment. Keep empty to not save signed document."
 msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: report_qweb_signer
 #: help:report.certificate,allow_only_one:0
-msgid ""
-"If True, this certificate can not be useb to sign a PDF from several "
-"documents."
+msgid "If True, this certificate can not be useb to sign a PDF from several documents."
 msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,__last_update:0
 msgid "Last Modified on"
-msgstr "Modificada por última vez"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización realizada por"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualizacion en"
+msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,model_id:0
@@ -115,7 +106,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: field:report.certificate,name:0
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: report_qweb_signer
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate
@@ -167,15 +158,13 @@ msgstr ""
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:119
 #, python-format
-msgid ""
-"Saving signed report (PDF): You do not have enought access rights to save "
-"attachments"
+msgid "Saving signed report (PDF): You do not have enought access rights to save attachments"
 msgstr ""
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:139
@@ -186,9 +175,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/report.py:148
 #, python-format
-msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
-"%s"
+msgid "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: %s"
 msgstr ""
 
 #. module: report_qweb_signer
@@ -200,3 +187,4 @@ msgstr ""
 #: view:website:report_qweb_signer.report_partner_demo_document
 msgid "This is a sample report for testing PDF certificates"
 msgstr ""
+

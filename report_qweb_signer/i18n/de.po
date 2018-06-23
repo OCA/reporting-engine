@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_signer
-# 
+#
 # Translators:
 # Rudolf Schnapka <rs@techno-flex.de>, 2017
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2017-03-04 05:55+0000\n"
 "PO-Revision-Date: 2017-03-10 13:16+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
-"Language-Team: German (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-reporting-engine-8-0/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_signer
@@ -71,9 +72,11 @@ msgstr "Domäne zur Auswahl, ob das Dokument abgezeichnet wird oder nicht."
 #. module: report_qweb_signer
 #: help:report.certificate,attachment:0
 msgid ""
-"Filename used to store signed document as attachment. Keep empty to not save"
-" signed document."
-msgstr "Dateiname für das gespeicherte, abgezeichnete Dokument. Leer lassen, um das gezeichnete Dokument nicht abzuspeichern."
+"Filename used to store signed document as attachment. Keep empty to not save "
+"signed document."
+msgstr ""
+"Dateiname für das gespeicherte, abgezeichnete Dokument. Leer lassen, um das "
+"gezeichnete Dokument nicht abzuspeichern."
 
 #. module: report_qweb_signer
 #: field:report.certificate,id:0
@@ -85,7 +88,9 @@ msgstr "ID"
 msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
-msgstr "Wenn gesetzt, kann dieses Zertikat nicht zum abzeichnen des PDFs mehrerer Dokumente verwendet werden."
+msgstr ""
+"Wenn gesetzt, kann dieses Zertikat nicht zum abzeichnen des PDFs mehrerer "
+"Dokumente verwendet werden."
 
 #. module: report_qweb_signer
 #: field:report.certificate,__last_update:0
@@ -170,7 +175,9 @@ msgstr "Speichere den Anhang"
 msgid ""
 "Saving signed report (PDF): You do not have enought access rights to save "
 "attachments"
-msgstr "Speichere abgezeichneten Bericht (PDF): Sie haben unzureichende Berechtigungen, um Anhänge zu speichern"
+msgstr ""
+"Speichere abgezeichneten Bericht (PDF): Sie haben unzureichende "
+"Berechtigungen, um Anhänge zu speichern"
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
@@ -187,9 +194,11 @@ msgstr "Bericht abzeichnen (PDF): Zertifikat oder Passwortdatei nicht gefunden"
 #: code:addons/report_qweb_signer/models/report.py:148
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
-" %s"
-msgstr "Bericht abzeichnen (PDF): jPdfSign scheiterte (Fehlerkennzeichen: %s). Meldung; %s. Ausgabe: %s"
+"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
+"%s"
+msgstr ""
+"Bericht abzeichnen (PDF): jPdfSign scheiterte (Fehlerkennzeichen: %s). "
+"Meldung; %s. Ausgabe: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo

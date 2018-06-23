@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_signer
-# 
+#
 # Translators:
 # Eduardo Rodríguez Crespo <erocre@gmail.com>, 2016
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2016-05-08 09:43+0000\n"
 "PO-Revision-Date: 2016-06-13 21:48+0000\n"
 "Last-Translator: Eduardo Rodríguez Crespo <erocre@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/oca/OCA-reporting-"
+"engine-8-0/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_signer
@@ -71,9 +72,11 @@ msgstr "Dominio para filrar si firmar o no el documento"
 #. module: report_qweb_signer
 #: help:report.certificate,attachment:0
 msgid ""
-"Filename used to store signed document as attachment. Keep empty to not save"
-" signed document."
-msgstr "Nombre de fichero usado para guardar el documento firmado como adjunto. Dejar en blanco para no guardar el documento firmado."
+"Filename used to store signed document as attachment. Keep empty to not save "
+"signed document."
+msgstr ""
+"Nombre de fichero usado para guardar el documento firmado como adjunto. "
+"Dejar en blanco para no guardar el documento firmado."
 
 #. module: report_qweb_signer
 #: field:report.certificate,id:0
@@ -85,7 +88,9 @@ msgstr "ID"
 msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
-msgstr "Si Verdadero, este certificado no puede ser usado para firmar un PDF desde varios documentos."
+msgstr ""
+"Si Verdadero, este certificado no puede ser usado para firmar un PDF desde "
+"varios documentos."
 
 #. module: report_qweb_signer
 #: field:report.certificate,__last_update:0
@@ -152,7 +157,9 @@ msgstr "Ruta al fichero de certificado PKCS#12"
 #. module: report_qweb_signer
 #: help:report.certificate,password_file:0
 msgid "Path to certificate password file"
-msgstr "Ruta al fichero que contiene la contraseña con la que se proteje el fichero de certificado"
+msgstr ""
+"Ruta al fichero que contiene la contraseña con la que se proteje el fichero "
+"de certificado"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report
@@ -170,7 +177,9 @@ msgstr "Salvar como adjunto"
 msgid ""
 "Saving signed report (PDF): You do not have enought access rights to save "
 "attachments"
-msgstr "Guardar informe firmado (PDF): no tienes suficientes permisos de acceso para guardar adjuntos"
+msgstr ""
+"Guardar informe firmado (PDF): no tienes suficientes permisos de acceso para "
+"guardar adjuntos"
 
 #. module: report_qweb_signer
 #: field:report.certificate,sequence:0
@@ -187,9 +196,11 @@ msgstr "Firmar informes (PDF): Certificado o archivo contraseña no encontrado"
 #: code:addons/report_qweb_signer/models/report.py:148
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
-" %s"
-msgstr "Firmar informes (PDF): jPdfSign falló (código de error: %s). Mensaje: %s. Salida: %s"
+"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
+"%s"
+msgstr ""
+"Firmar informes (PDF): jPdfSign falló (código de error: %s). Mensaje: %s. "
+"Salida: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report.xml,name:report_qweb_signer.partner_demo

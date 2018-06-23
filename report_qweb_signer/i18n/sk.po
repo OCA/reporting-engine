@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_signer
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -10,11 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2017-03-28 06:59+0000\n"
 "PO-Revision-Date: 2017-04-25 10:42+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Slovak (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sk/)\n"
+"Language-Team: Slovak (http://www.transifex.com/oca/OCA-reporting-engine-8-0/"
+"language/sk/)\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: report_qweb_signer
@@ -70,8 +71,8 @@ msgstr ""
 #. module: report_qweb_signer
 #: help:report.certificate,attachment:0
 msgid ""
-"Filename used to store signed document as attachment. Keep empty to not save"
-" signed document."
+"Filename used to store signed document as attachment. Keep empty to not save "
+"signed document."
 msgstr ""
 
 #. module: report_qweb_signer
@@ -186,8 +187,8 @@ msgstr ""
 #: code:addons/report_qweb_signer/models/report.py:148
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output:"
-" %s"
+"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
+"%s"
 msgstr ""
 
 #. module: report_qweb_signer
