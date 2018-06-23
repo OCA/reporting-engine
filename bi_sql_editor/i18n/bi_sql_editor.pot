@@ -1,23 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * bi_sql_editor
+#	* bi_sql_editor
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 01:19+0000\n"
-"PO-Revision-Date: 2017-06-03 01:19+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Mexico) (https://www.transifex.com/oca/teams/23907/"
-"es_MX/)\n"
-"Language: es_MX\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:151
@@ -50,23 +44,17 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
-msgid ""
-"Are you sure you want to set to draft this SQL View. It will "
-"delete                                 the materialized view, and all the "
-"previous mapping realized with the columns"
+msgid "Are you sure you want to set to draft this SQL View. It will delete                                 the materialized view, and all the previous mapping realized with the columns"
 msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,is_group_by:0
-msgid ""
-"Check this box if you want to create a 'group by' option in the search view"
+msgid "Check this box if you want to create a 'group by' option in the search view"
 msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,is_index:0
-msgid ""
-"Check this box if you want to create an index on that field. This is "
-"recommended for searchable and groupable fields, to reduce duration"
+msgid "Check this box if you want to create an index on that field. This is recommended for searchable and groupable fields, to reduce duration"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -85,14 +73,16 @@ msgid "Create UI"
 msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,create_uid:0 field:bi.sql.view.field,create_uid:0
+#: field:bi.sql.view,create_uid:0
+#: field:bi.sql.view.field,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,create_date:0 field:bi.sql.view.field,create_date:0
+#: field:bi.sql.view,create_date:0
+#: field:bi.sql.view.field,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,cron_id:0
@@ -106,23 +96,21 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,domain_force:0
-msgid ""
-"Define here access restriction to data.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
-"created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+msgid "Define here access restriction to data.\n"
+" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be created. A typical Multi Company rule is for exemple \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
 msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,display_name:0 field:bi.sql.view.field,display_name:0
+#: field:bi.sql.view,display_name:0
+#: field:bi.sql.view.field,display_name:0
 msgid "Display Name"
-msgstr "Nombre desplegado"
+msgstr ""
 
 #. module: bi_sql_editor
 #: selection:bi.sql.view,state:0
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,domain_force:0
@@ -146,17 +134,14 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,many2one_model_id:0
-msgid ""
-"For 'Many2one' Odoo field.\n"
+msgid "For 'Many2one' Odoo field.\n"
 " Co Model of the field."
 msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,selection:0
-msgid ""
-"For 'Selection' Odoo field.\n"
-" List of options, specified as a Python expression defining a list of (key, "
-"label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
+msgid "For 'Selection' Odoo field.\n"
+" List of options, specified as a Python expression defining a list of (key, label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -185,9 +170,10 @@ msgid "Has group changed"
 msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,id:0 field:bi.sql.view.field,id:0
+#: field:bi.sql.view,id:0
+#: field:bi.sql.view.field,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: bi_sql_editor
 #: field:bi.sql.view.field,index_name:0
@@ -210,19 +196,22 @@ msgid "Is Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,__last_update:0 field:bi.sql.view.field,__last_update:0
+#: field:bi.sql.view,__last_update:0
+#: field:bi.sql.view.field,__last_update:0
 msgid "Last Modified on"
-msgstr "Ultima modificacion realizada"
+msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,write_uid:0 field:bi.sql.view.field,write_uid:0
+#: field:bi.sql.view,write_uid:0
+#: field:bi.sql.view.field,write_uid:0
 msgid "Last Updated by"
-msgstr "Ultima actualizacion por"
+msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,write_date:0 field:bi.sql.view.field,write_date:0
+#: field:bi.sql.view,write_date:0
+#: field:bi.sql.view.field,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualización realizada"
+msgstr ""
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,materialized_text:0
@@ -238,7 +227,7 @@ msgstr ""
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 #: field:bi.sql.view.field,many2one_model_id:0
 msgid "Model"
-msgstr "Modelo"
+msgstr ""
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,model_name:0
@@ -246,15 +235,15 @@ msgid "Model Name"
 msgstr ""
 
 #. module: bi_sql_editor
-#: field:bi.sql.view,name:0 field:bi.sql.view.field,name:0
+#: field:bi.sql.view,name:0
+#: field:bi.sql.view.field,name:0
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:476
 #, python-format
-msgid ""
-"No Column was found.\n"
+msgid "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
 msgstr ""
 
@@ -327,8 +316,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:359
 #, python-format
-msgid ""
-"SQL Error while creating %s VIEW %s :\n"
+msgid "SQL Error while creating %s VIEW %s :\n"
 " %s"
 msgstr ""
 
@@ -350,10 +338,8 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,query:0
-msgid ""
-"SQL Request that will be inserted as the view. Take care to :\n"
-" * set a name for all your selected fields, specially if you use SQL "
-"function (like EXTRACT, ...);\n"
+msgid "SQL Request that will be inserted as the view. Take care to :\n"
+" * set a name for all your selected fields, specially if you use SQL function (like EXTRACT, ...);\n"
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
@@ -392,7 +378,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid "Security"
-msgstr "Seguridad"
+msgstr ""
 
 #. module: bi_sql_editor
 #: field:bi.sql.view.field,selection:0
@@ -402,7 +388,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid "Set to Draft"
-msgstr "Cambiar a borrador"
+msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,size:0
@@ -412,23 +398,18 @@ msgstr ""
 #. module: bi_sql_editor
 #: field:bi.sql.view,state:0
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,state:0
-msgid ""
-"State of the Request:\n"
+msgid "State of the Request:\n"
 " * 'Draft': Not tested\n"
 " * 'SQL Valid': SQL Request has been checked and is valid"
 msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,technical_name:0
-msgid ""
-"Suffix of the SQL view. (SQL full name will be computed and prefixed by "
-"'x_bi_sql_view_'. Should have correctsyntax. For more information, see "
-"https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-"
-"SYNTAX-IDENTIFIERS"
+msgid "Suffix of the SQL view. (SQL full name will be computed and prefixed by 'x_bi_sql_view_'. Should have correctsyntax. For more information, see https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -448,24 +429,17 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
-msgid ""
-"This will try to create an SQL View, based on the SQL request and the "
-"according Transient Model and fields, based on settings"
+msgid "This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"
 msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,ttype:0
-msgid ""
-"Type of the Odoo field that will be created. Let empty if you don't want to "
-"create a new field. If empty, this field will not be displayed neither "
-"available for search or group by function"
+msgid "Type of the Odoo field that will be created. Let empty if you don't want to create a new field. If empty, this field will not be displayed neither available for search or group by function"
 msgstr ""
 
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
-msgid ""
-"Update Model Access. Required if you changed groups list after having "
-"created the model"
+msgid "Update Model Access. Required if you changed groups list after having created the model"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -549,3 +523,4 @@ msgstr ""
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
 msgstr ""
+

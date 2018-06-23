@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_sql_editor
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Kostas Goutoudis <goutoudis@gmail.com>, 2017
@@ -12,11 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2017-06-03 01:19+0000\n"
 "PO-Revision-Date: 2017-06-03 01:19+0000\n"
 "Last-Translator: Kostas Goutoudis <goutoudis@gmail.com>, 2017\n"
-"Language-Team: Greek (Greece) (https://www.transifex.com/oca/teams/23907/el_GR/)\n"
+"Language-Team: Greek (Greece) (https://www.transifex.com/oca/teams/23907/"
+"el_GR/)\n"
+"Language: el_GR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_sql_editor
@@ -26,13 +27,13 @@ msgid "%s (Copy)"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:248
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:249
 #, python-format
 msgid "%s Access %s"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:274
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:275
 #, python-format
 msgid "Access %s"
 msgstr ""
@@ -51,9 +52,9 @@ msgstr ""
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid ""
-"Are you sure you want to set to draft this SQL View. It will delete"
-"                                 the materialized view, and all the previous"
-" mapping realized with the columns"
+"Are you sure you want to set to draft this SQL View. It will "
+"delete                                 the materialized view, and all the "
+"previous mapping realized with the columns"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -108,8 +109,10 @@ msgstr ""
 #: help:bi.sql.view,domain_force:0
 msgid ""
 "Define here access restriction to data.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
+" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
+"created. A typical Multi Company rule is for exemple \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -153,7 +156,8 @@ msgstr ""
 #: help:bi.sql.view.field,selection:0
 msgid ""
 "For 'Selection' Odoo field.\n"
-" List of options, specified as a Python expression defining a list of (key, label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
+" List of options, specified as a Python expression defining a list of (key, "
+"label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -248,7 +252,7 @@ msgid "Name"
 msgstr "Ονομασία"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:475
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:476
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -306,7 +310,7 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:263
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:264
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr ""
@@ -322,7 +326,7 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:358
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:359
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -349,7 +353,8 @@ msgstr ""
 #: help:bi.sql.view,query:0
 msgid ""
 "SQL Request that will be inserted as the view. Take care to :\n"
-" * set a name for all your selected fields, specially if you use SQL function (like EXTRACT, ...);\n"
+" * set a name for all your selected fields, specially if you use SQL "
+"function (like EXTRACT, ...);\n"
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""

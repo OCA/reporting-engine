@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_sql_editor
-# 
+#
 # Translators:
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2017
 # OCA Transbot <transbot@odoo-community.org>, 2017
@@ -13,11 +13,12 @@ msgstr ""
 "PO-Revision-Date: 2018-02-13 09:51+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:151
@@ -51,9 +52,9 @@ msgstr "Dovoljeni uporabniki"
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid ""
-"Are you sure you want to set to draft this SQL View. It will delete"
-"                                 the materialized view, and all the previous"
-" mapping realized with the columns"
+"Are you sure you want to set to draft this SQL View. It will "
+"delete                                 the materialized view, and all the "
+"previous mapping realized with the columns"
 msgstr ""
 "Ste prepričani, da želite ta SQL prikaz ponastaviti v osnutek? Izbrisan bo "
 "materializiran prikaz in vsa prejšnja mapiranja iz naslova stolpcev."
@@ -113,12 +114,17 @@ msgstr "Velikost podatkovne baze"
 #: help:bi.sql.view,domain_force:0
 msgid ""
 "Define here access restriction to data.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
+" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
+"created. A typical Multi Company rule is for exemple \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 msgstr ""
 "Tu določite omejitve dostopa do podatkov.\n"
-" Pazite, da uporabite predpono 'x_' v nazivu polja. Globalno 'ir.rule' pravilo bo ustvarjeno. Tipično pravilo za strukturirano podjetje je naprimer \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
+" Pazite, da uporabite predpono 'x_' v nazivu polja. Globalno 'ir.rule' "
+"pravilo bo ustvarjeno. Tipično pravilo za strukturirano podjetje je "
+"naprimer \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 
 #. module: bi_sql_editor
 #: field:bi.sql.view,display_name:0 field:bi.sql.view.field,display_name:0
@@ -163,10 +169,12 @@ msgstr ""
 #: help:bi.sql.view.field,selection:0
 msgid ""
 "For 'Selection' Odoo field.\n"
-" List of options, specified as a Python expression defining a list of (key, label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
+" List of options, specified as a Python expression defining a list of (key, "
+"label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 "Za polje 'Selection'.\n"
-" Seznam opcij določenih kot Python izrazi, ki definirajo seznam parov (key, label). Naprimer: [('blue','Blue'), ('yellow','Yellow')]"
+" Seznam opcij določenih kot Python izrazi, ki definirajo seznam parov (key, "
+"label). Naprimer: [('blue','Blue'), ('yellow','Yellow')]"
 
 #. module: bi_sql_editor
 #: help:bi.sql.view,model_name:0
@@ -365,12 +373,14 @@ msgstr "SQL poročila"
 #: help:bi.sql.view,query:0
 msgid ""
 "SQL Request that will be inserted as the view. Take care to :\n"
-" * set a name for all your selected fields, specially if you use SQL function (like EXTRACT, ...);\n"
+" * set a name for all your selected fields, specially if you use SQL "
+"function (like EXTRACT, ...);\n"
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
 "SQL zahtevek, ki bo vstavljen v prikaz. Poskrbite, da bo :\n"
-" * nastavljen naziv za vsa izbrana polja, še posebej če uporabljate SQL funkcijo (kot EXTRACT, ...);\n"
+" * nastavljen naziv za vsa izbrana polja, še posebej če uporabljate SQL "
+"funkcijo (kot EXTRACT, ...);\n"
 " * se ne uporablja 'SELECT *' ali 'SELECT table.*';\n"
 " * naziv izbirnih stolpcev vseboval predpono 'x_';"
 
@@ -450,8 +460,8 @@ msgid ""
 "SYNTAX-IDENTIFIERS"
 msgstr ""
 "Pripona SQL prikaza. (SQL polni naziv bo obdelan in pred naslovljen z "
-"'x_bi_sql_view_'. Vsebovati mora pravilno sintakso. Za več informacij poglej"
-" https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-"
+"'x_bi_sql_view_'. Vsebovati mora pravilno sintakso. Za več informacij poglej "
+"https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-"
 "SYNTAX-IDENTIFIERS"
 
 #. module: bi_sql_editor

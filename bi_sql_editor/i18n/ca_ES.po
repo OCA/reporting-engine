@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_sql_editor
-# 
+#
 # Translators:
 # Carlos Hormigo, 2018
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2018-02-13 09:51+0000\n"
 "PO-Revision-Date: 2018-02-13 09:51+0000\n"
 "Last-Translator: Carlos Hormigo, 2018\n"
-"Language-Team: Catalan (Spain) (https://www.transifex.com/oca/teams/23907/ca_ES/)\n"
+"Language-Team: Catalan (Spain) (https://www.transifex.com/oca/teams/23907/"
+"ca_ES/)\n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: ca_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_sql_editor
@@ -50,9 +51,9 @@ msgstr ""
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid ""
-"Are you sure you want to set to draft this SQL View. It will delete"
-"                                 the materialized view, and all the previous"
-" mapping realized with the columns"
+"Are you sure you want to set to draft this SQL View. It will "
+"delete                                 the materialized view, and all the "
+"previous mapping realized with the columns"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -107,8 +108,10 @@ msgstr ""
 #: help:bi.sql.view,domain_force:0
 msgid ""
 "Define here access restriction to data.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
+" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
+"created. A typical Multi Company rule is for exemple \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -152,7 +155,8 @@ msgstr ""
 #: help:bi.sql.view.field,selection:0
 msgid ""
 "For 'Selection' Odoo field.\n"
-" List of options, specified as a Python expression defining a list of (key, label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
+" List of options, specified as a Python expression defining a list of (key, "
+"label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -348,7 +352,8 @@ msgstr ""
 #: help:bi.sql.view,query:0
 msgid ""
 "SQL Request that will be inserted as the view. Take care to :\n"
-" * set a name for all your selected fields, specially if you use SQL function (like EXTRACT, ...);\n"
+" * set a name for all your selected fields, specially if you use SQL "
+"function (like EXTRACT, ...);\n"
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
