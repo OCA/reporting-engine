@@ -10,14 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-22 13:09+0000\n"
-"PO-Revision-Date: 2017-04-22 13:09+0000\n"
-"Last-Translator: Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017\n"
+"PO-Revision-Date: 2018-07-03 14:06+0000\n"
+"Last-Translator: mtbochaca <mtbochaca@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:388
@@ -60,12 +61,12 @@ msgstr "Cancel·la"
 #: code:addons/bi_view_editor/static/src/js/bve.js:41
 #, python-format
 msgid "Choose join node"
-msgstr "Elegiu el node d'entrada "
+msgstr "Elegiu el node d'entrada"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
 msgid "Click to create a Custom Query Object."
-msgstr "Clic per crear un Objecte de Consulta Personalitzat "
+msgstr "Clic per crear un Objecte de Consulta Personalitzat."
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -90,7 +91,7 @@ msgstr "Creat el"
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
 msgid "Custom BI View"
-msgstr "Vista BI personalitzada "
+msgstr "Vista BI personalitzada"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:60 sql_constraint:bve.view:0
@@ -112,7 +113,7 @@ msgstr "Objecte personalitzat"
 #. module: bi_view_editor
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
 msgid "Custom Reports"
-msgstr "Informes personalitzats "
+msgstr "Informes personalitzats"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_data
@@ -162,12 +163,12 @@ msgstr "Darrera Actualització el"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_model_name
 msgid "Model name"
-msgstr "Nom del model "
+msgstr "Nom del model"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr "Models "
+msgstr "Models"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_name
@@ -178,7 +179,7 @@ msgstr "Nom"
 #: code:addons/bi_view_editor/models/bve_view.py:249
 #, python-format
 msgid "No data to process."
-msgstr "No hi ha dades per processar "
+msgstr "No hi ha dades per processar."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_note
@@ -194,7 +195,7 @@ msgstr "Obrir vista BI"
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query"
-msgstr "Consulta "
+msgstr "Consulta"
 
 #. module: bi_view_editor
 #: model:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -216,7 +217,7 @@ msgstr "Estat"
 #: code:addons/bi_view_editor/static/src/js/bve.js:26
 #, python-format
 msgid "Use the field on model"
-msgstr "Utilitzar el camp al model "
+msgstr "Utilitzar el camp al model"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view_data
@@ -273,7 +274,7 @@ msgstr "nou"
 #: code:addons/bi_view_editor/static/src/js/bve.js:32
 #, python-format
 msgid "on "
-msgstr "a"
+msgstr "a "
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
