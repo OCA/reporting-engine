@@ -13,48 +13,48 @@ from odoo import fields
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 
 odt_namespace = {
-    "office":"{urn:oasis:names:tc:opendocument:xmlns:office:1.0}",
-    "style":"{urn:oasis:names:tc:opendocument:xmlns:style:1.0}",
-    "text":"{urn:oasis:names:tc:opendocument:xmlns:text:1.0}",
-    "table":"{urn:oasis:names:tc:opendocument:xmlns:table:1.0}",
-    "draw":"{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}",
-    "fo":"{urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0}",
-    "xlink":"{http://www.w3.org/1999/xlink}",
-    "dc":"{http://purl.org/dc/elements/1.1/}",
-    "meta":"{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}",
-    "number":"{urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0}",
-    "svg":"{urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0}",
-    "chart":"{urn:oasis:names:tc:opendocument:xmlns:chart:1.0}",
-    "dr3d":"{urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0}",
-    "math":"{http://www.w3.org/1998/Math/MathML}",
-    "form":"{urn:oasis:names:tc:opendocument:xmlns:form:1.0}",
-    "script":"{urn:oasis:names:tc:opendocument:xmlns:script:1.0}",
-    "ooo":"{http://openoffice.org/2004/office}",
-    "ooow":"{http://openoffice.org/2004/writer}",
-    "oooc":"{http://openoffice.org/2004/calc}",
-    "dom":"{http://www.w3.org/2001/xml-events}" }
+    "office": "{urn:oasis:names:tc:opendocument:xmlns:office:1.0}",
+    "style": "{urn:oasis:names:tc:opendocument:xmlns:style:1.0}",
+    "text": "{urn:oasis:names:tc:opendocument:xmlns:text:1.0}",
+    "table": "{urn:oasis:names:tc:opendocument:xmlns:table:1.0}",
+    "draw": "{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}",
+    "fo": "{urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0}",
+    "xlink": "{http://www.w3.org/1999/xlink}",
+    "dc": "{http://purl.org/dc/elements/1.1/}",
+    "meta": "{urn:oasis:names:tc:opendocument:xmlns:meta:1.0}",
+    "number": "{urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0}",
+    "svg": "{urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0}",
+    "chart": "{urn:oasis:names:tc:opendocument:xmlns:chart:1.0}",
+    "dr3d": "{urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0}",
+    "math": "{http://www.w3.org/1998/Math/MathML}",
+    "form": "{urn:oasis:names:tc:opendocument:xmlns:form:1.0}",
+    "script": "{urn:oasis:names:tc:opendocument:xmlns:script:1.0}",
+    "ooo": "{http://openoffice.org/2004/office}",
+    "ooow": "{http://openoffice.org/2004/writer}",
+    "oooc": "{http://openoffice.org/2004/calc}",
+    "dom": "{http://www.w3.org/2001/xml-events}"}
 
 sxw_namespace = {
-    "office":"{http://openoffice.org/2000/office}",
-    "style":"{http://openoffice.org/2000/style}",
-    "text":"{http://openoffice.org/2000/text}",
-    "table":"{http://openoffice.org/2000/table}",
-    "draw":"{http://openoffice.org/2000/drawing}",
-    "fo":"{http://www.w3.org/1999/XSL/Format}",
-    "xlink":"{http://www.w3.org/1999/xlink}",
-    "dc":"{http://purl.org/dc/elements/1.1/}",
-    "meta":"{http://openoffice.org/2000/meta}",
-    "number":"{http://openoffice.org/2000/datastyle}",
-    "svg":"{http://www.w3.org/2000/svg}",
-    "chart":"{http://openoffice.org/2000/chart}",
-    "dr3d":"{http://openoffice.org/2000/dr3d}",
-    "math":"{http://www.w3.org/1998/Math/MathML}",
-    "form":"{http://openoffice.org/2000/form}",
-    "script":"{http://openoffice.org/2000/script}",
-    "ooo":"{http://openoffice.org/2004/office}",
-    "ooow":"{http://openoffice.org/2004/writer}",
-    "oooc":"{http://openoffice.org/2004/calc}",
-    "dom":"{http://www.w3.org/2001/xml-events}"}
+    "office": "{http://openoffice.org/2000/office}",
+    "style": "{http://openoffice.org/2000/style}",
+    "text": "{http://openoffice.org/2000/text}",
+    "table": "{http://openoffice.org/2000/table}",
+    "draw": "{http://openoffice.org/2000/drawing}",
+    "fo": "{http://www.w3.org/1999/XSL/Format}",
+    "xlink": "{http://www.w3.org/1999/xlink}",
+    "dc": "{http://purl.org/dc/elements/1.1/}",
+    "meta": "{http://openoffice.org/2000/meta}",
+    "number": "{http://openoffice.org/2000/datastyle}",
+    "svg": "{http://www.w3.org/2000/svg}",
+    "chart": "{http://openoffice.org/2000/chart}",
+    "dr3d": "{http://openoffice.org/2000/dr3d}",
+    "math": "{http://www.w3.org/1998/Math/MathML}",
+    "form": "{http://openoffice.org/2000/form}",
+    "script": "{http://openoffice.org/2000/script}",
+    "ooo": "{http://openoffice.org/2004/office}",
+    "ooow": "{http://openoffice.org/2004/writer}",
+    "oooc": "{http://openoffice.org/2004/calc}",
+    "dom": "{http://www.w3.org/2001/xml-events}"}
 
 _logger = logging.getLogger(__name__)
 
@@ -78,7 +78,7 @@ html_parents = {
     'tr': 1,
     'body': 0,
     'div': 0
-    }
+}
 sxw_tag = "p"
 
 rml2sxw = {
@@ -91,7 +91,14 @@ def get_date_length(date_format=DEFAULT_SERVER_DATE_FORMAT):
 
 
 class rml_parse(object):
-    def __init__(self, cr, uid, name, parents=rml_parents, tag=rml_tag, context=None):
+    def __init__(
+            self,
+            cr,
+            uid,
+            name,
+            parents=rml_parents,
+            tag=rml_tag,
+            context=None):
         if not context:
             context = {}
         self.cr = cr
@@ -107,11 +114,11 @@ class rml_parse(object):
             'removeParentNode': self.removeParentNode,
             'format': self.format,
             'formatLang': self.formatLang,
-            'lang' : user.company_id.partner_id.lang,
-            'translate' : self._translate,
-            'setHtmlImage' : self.set_html_image,
-            'strip_name' : self._strip_name,
-            'time' : time,
+            'lang': user.company_id.partner_id.lang,
+            'translate': self._translate,
+            'setHtmlImage': self.set_html_image,
+            'strip_name': self._strip_name,
+            'time': time,
             'display_address': self.display_address,
             # more context members are setup in setCompany() below:
             #  - company_id
@@ -137,7 +144,7 @@ class rml_parse(object):
             return ''
         if len(char) <= size:
             return char
-        return char[:size-len(truncation_str)] + truncation_str
+        return char[:size - len(truncation_str)] + truncation_str
 
     def setCompany(self, company_id):
         if company_id:
@@ -165,7 +172,7 @@ class rml_parse(object):
             res = env[model].browse(int(id)).read()[0]
             if field:
                 return res[field]
-            elif model =='ir.attachment':
+            elif model == 'ir.attachment':
                 return res['datas']
             else:
                 return ''
@@ -184,10 +191,10 @@ class rml_parse(object):
         Lang = env['res.lang']
         lang = self.localcontext.get('lang', 'en_US') or 'en_US'
         lang_obj = Lang.search([('code', '=', lang)], limit=1) or \
-                   Lang.search([('code', '=', 'en_US')])
+            Lang.search([('code', '=', 'en_US')])
         self.lang_dict.update({'lang_obj': lang_obj,
                                'date_format': lang_obj.date_format,
-                               'time_format':lang_obj.time_format})
+                               'time_format': lang_obj.time_format})
         self.default_lang[lang] = self.lang_dict.copy()
         return True
 
@@ -201,20 +208,31 @@ class rml_parse(object):
             env = odoo.api.Environment(self.cr, self.uid, {})
             d = env['decimal.precision'].precision_get(dp)
         elif obj and f:
-            res_digits = getattr(obj._fields[f], 'digits', lambda x: ((16, DEFAULT_DIGITS)))
+            res_digits = getattr(
+                obj._fields[f], 'digits', lambda x: (
+                    (16, DEFAULT_DIGITS)))
             if isinstance(res_digits, tuple):
                 d = res_digits[1]
             else:
                 d = res_digits(self.cr)[1]
-        elif (hasattr(obj, '_field') and\
-                obj._field.type == 'float' and\
+        elif (hasattr(obj, '_field') and
+                obj._field.type == 'float' and
                 obj._field.digits):
-                d = obj._field.digits[1]
-                if not d and d is not 0:
-                    d = DEFAULT_DIGITS
+            d = obj._field.digits[1]
+            if not d and d is not 0:
+                d = DEFAULT_DIGITS
         return d
 
-    def formatLang(self, value, digits=None, date=False, date_time=False, grouping=True, monetary=False, dp=False, currency_obj=False):
+    def formatLang(
+            self,
+            value,
+            digits=None,
+            date=False,
+            date_time=False,
+            grouping=True,
+            monetary=False,
+            dp=False,
+            currency_obj=False):
         if digits is None:
             if dp:
                 digits = self.get_digits(dp=dp)
@@ -223,7 +241,7 @@ class rml_parse(object):
             else:
                 digits = self.get_digits(value)
 
-        if isinstance(value, (str, unicode)) and not value:
+        if isinstance(value, str) and not value:
             return ''
 
         if not self.lang_dict_called:
@@ -240,40 +258,43 @@ class rml_parse(object):
                 value = value.split('.')[0]
                 date_format = date_format + " " + self.lang_dict['time_format']
                 parse_format = DEFAULT_SERVER_DATETIME_FORMAT
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 # FIXME: the trimming is probably unreliable if format includes day/month names
                 #        and those would need to be translated anyway.
-                date = datetime.strptime(value[:get_date_length(parse_format)], parse_format)
+                date = datetime.strptime(
+                    value[:get_date_length(parse_format)], parse_format)
             elif isinstance(value, time.struct_time):
                 date = datetime(*value[:6])
             else:
                 date = datetime(*value.timetuple()[:6])
             if date_time:
-                # Convert datetime values to the expected client/context timezone
+                # Convert datetime values to the expected client/context
+                # timezone
                 env = odoo.api.Environment(self.cr, self.uid, {})
                 record = env['base'].with_context(self.localcontext)
                 date = fields.Datetime.context_timestamp(record, date)
             return date.strftime(date_format.encode('utf-8'))
 
-        res = self.lang_dict['lang_obj'].format('%.' + str(digits) + 'f', value, grouping=grouping, monetary=monetary)
+        res = self.lang_dict['lang_obj'].format(
+            '%.' + str(digits) + 'f', value, grouping=grouping, monetary=monetary)
         if currency_obj and currency_obj.symbol:
             if currency_obj.position == 'after':
-                res = u'%s\N{NO-BREAK SPACE}%s' % (res, currency_obj.symbol)
+                res = '%s\N{NO-BREAK SPACE}%s' % (res, currency_obj.symbol)
             elif currency_obj and currency_obj.position == 'before':
-                res = u'%s\N{NO-BREAK SPACE}%s' % (currency_obj.symbol, res)
+                res = '%s\N{NO-BREAK SPACE}%s' % (currency_obj.symbol, res)
         return res
 
     def display_address(self, address_record, without_company=False):
         # FIXME handle `without_company`
         return address_record.contact_address
 
-    def repeatIn(self, lst, name,nodes_parent=False):
+    def repeatIn(self, lst, name, nodes_parent=False):
         ret_lst = []
         for id in lst:
-            ret_lst.append({name:id})
+            ret_lst.append({name: id})
         return ret_lst
 
-    def _translate(self,text):
+    def _translate(self, text):
         lang = self.localcontext['lang']
         if lang and text and not text.isspace():
             env = odoo.api.Environment(self.cr, self.uid, {})
@@ -283,9 +304,11 @@ class rml_parse(object):
                 if not self._transl_regex.match(piece_list[pn]):
                     source_string = piece_list[pn].replace('\n', ' ').strip()
                     if len(source_string):
-                        translated_string = Translation._get_source(self.name, ('report', 'rml'), lang, source_string)
+                        translated_string = Translation._get_source(
+                            self.name, ('report', 'rml'), lang, source_string)
                         if translated_string:
-                            piece_list[pn] = piece_list[pn].replace(source_string, translated_string)
+                            piece_list[pn] = piece_list[pn].replace(
+                                source_string, translated_string)
             text = ''.join(piece_list)
         return text
 
@@ -298,17 +321,17 @@ class rml_parse(object):
         self.ids = ids
         self.objects = objects
         if report_type:
-            if report_type=='odt' :
+            if report_type == 'odt':
                 self.localcontext.update({'name_space': odt_namespace})
             else:
                 self.localcontext.update({'name_space': sxw_namespace})
 
         # WARNING: the object[0].exists() call below is slow but necessary because
-        # some broken reporting wizards pass incorrect IDs (e.g. ir.ui.menu ids)
-        if objects and len(objects) == 1 and \
-            objects[0].exists() and 'company_id' in objects[0] and objects[0].company_id:
+        # some broken reporting wizards pass incorrect IDs (e.g. ir.ui.menu
+        # ids)
+        if objects and len(objects) == 1 and objects[0].exists(
+        ) and 'company_id' in objects[0] and objects[0].company_id:
             # When we print only one record, we can auto-set the correct
             # company in the localcontext. For other cases the report
             # will have to call setCompany() inside the main repeatIn loop.
             self.setCompany(objects[0].company_id)
-
