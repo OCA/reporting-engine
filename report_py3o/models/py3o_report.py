@@ -190,7 +190,7 @@ class Py3oReport(models.TransientModel):
         if tmpl_data is None:
             # if for any reason the template is not found
             raise TemplateNotFound(
-                _(u'No template found. Aborting.'),
+                _('No template found. Aborting.'),
                 sys.exc_info(),
             )
 
@@ -211,8 +211,8 @@ class Py3oReport(models.TransientModel):
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
         context_instance = report_sxw.rml_parse(self.env.cr, self.env.uid,
-                                     report_xml.name,
-                                     context=self.env.context)
+                                                report_xml.name,
+                                                context=self.env.context)
         context_instance.set_context(model_instance, data, model_instance.ids,
                                      report_xml.report_type)
         self._extend_parser_context(context_instance, report_xml)
@@ -394,6 +394,9 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _check_attachment_use(self, docids, report):
+        """ Check attachment_use field. If set to true and an existing pdf is
+         already saved, load this one now. Else, mark save it.
+        """
         save_in_attachment = {}
         save_in_attachment['model'] = report.model
         save_in_attachment['loaded_documents'] = {}
@@ -403,7 +406,8 @@ class Py3oReport(models.TransientModel):
             filenames = self._attachment_filename(records, report)
             attachments = None
             if report.attachment_use:
-                attachments = self._attachment_stored(records, report, filenames=filenames)
+                attachments = self._attachment_stored(
+                    records, report, filenames=filenames)
             for record_id in docids:
                 filename = filenames[record_id]
                 if attachments:
@@ -424,7 +428,10 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _attachment_filename(self, records, report):
-        return dict((record.id, safe_eval(report.attachment, {'object': record, 'time': time})) for record in records)
+        return dict(
+            (record.id, safe_eval(
+                report.attachment, {
+                    'object': record, 'time': time})) for record in records)
 
     @api.model
     def _attachment_stored(self, records, report, filenames=None):

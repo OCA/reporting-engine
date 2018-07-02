@@ -20,16 +20,23 @@ class ReportAction(models.Model):
 
     _inherit = 'ir.actions.report'
 
-    report_type = fields.Selection(selection_add=[("py3o", "py3o")])
+    report_type = fields.Selection(
+        selection_add=[
+            ("py3o", "py3o")
+        ]
+    )
     py3o_filetype = fields.Selection(
         selection="_get_py3o_filetypes",
-        string="Output Format")
+        string="Output Format"
+    )
     py3o_template_id = fields.Many2one(
         'py3o.template',
-        "Template")
+        "Template"
+    )
     module = fields.Char(
         "Module",
-        help="The implementer module that provides this report")
+        help="The implementer module that provides this report"
+    )
     py3o_template_fallback = fields.Char(
         "Fallback",
         size=128,
@@ -37,20 +44,21 @@ class ReportAction(models.Model):
             "If the user does not provide a template this will be used "
             "it should be a relative path to root of YOUR module "
             "or an absolute path on your server."
-        ))
-
+        )
+    )
     py3o_multi_in_one = fields.Boolean(
         string='Multiple Records in a Single Report',
         help="If you execute a report on several records, "
              "by default Odoo will generate a ZIP file that contains as many "
              "files as selected records. If you enable this option, Odoo will "
-             "generate instead a single report for the selected records.")
+             "generate instead a single report for the selected records."
+    )
 
     @api.model
     def render_py3o(self, docids, data):
         report = self._get_report_from_name(self.report_name)
-        return self.env['py3o.report'].create({'ir_actions_report_id': report.id
-                                               }).create_report(docids, data)
+        return self.env['py3o.report'].create(
+            {'ir_actions_report_id': report.id}).create_report(docids, data)
 
     @api.model
     def _get_report_from_name(self, report_name):
@@ -104,6 +112,7 @@ class ReportAction(models.Model):
     @api.multi
     def unlink(self):
         for record in self:
-            self.env['py3o.report'].search([('ir_actions_report_id', '=', record.id)]).unlink()
+            self.env['py3o.report'].search(
+                [('ir_actions_report_id', '=', record.id)]).unlink()
 
         return super(ReportAction, self).unlink()
