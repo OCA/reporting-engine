@@ -222,6 +222,11 @@ class BiSQLView(models.Model):
     def button_refresh_materialized_view(self):
         self._refresh_materialized_view()
 
+    @api.model
+    def cron_refresh_materialized_view(self, ids):
+        items = self.browse(ids)
+        items._refresh_materialized_view()
+
     @api.multi
     def button_open_view(self):
         return {
@@ -271,7 +276,7 @@ class BiSQLView(models.Model):
             'name': _('Refresh Materialized View %s') % (self.view_name),
             'user_id': SUPERUSER_ID,
             'model': 'bi.sql.view',
-            'function': 'button_refresh_materialized_view',
+            'function': 'cron_refresh_materialized_view',
             'args': repr(([self.id],))
         }
 
