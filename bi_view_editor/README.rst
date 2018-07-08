@@ -44,7 +44,7 @@ To graphically design your analysis data-set:
 Known issues / Roadmap
 ======================
 
-* Non-stored fields are not supported
+* Non-stored fields and many2many fields are not supported
 * Provide graph view for table relations
 * Extend the capabilities of the tree views (e.g. add sums)
 * Provide a tutorial (eg. a working example of usage)
