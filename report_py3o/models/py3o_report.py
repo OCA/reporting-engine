@@ -220,7 +220,7 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _postprocess_report(self, report_path, res_id, save_in_attachment):
-        if len(save_in_attachment) != 0:
+        if save_in_attachment.get(res_id):
             with open(report_path, 'rb') as report:
                 attachment = {
                     'name': save_in_attachment.get(res_id),
