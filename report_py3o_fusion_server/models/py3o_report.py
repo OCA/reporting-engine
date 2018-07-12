@@ -8,6 +8,7 @@ import logging
 import os
 import requests
 import tempfile
+from datetime import datetime
 from contextlib import closing
 from openerp import _, api, models
 from openerp.exceptions import UserError
@@ -75,10 +76,22 @@ class Py3oReport(models.TransientModel):
         }
         if report_xml.py3o_is_local_fusion:
             fields['skipfusion'] = '1'
-        r = requests.post(
-            report_xml.py3o_server_id.url, data=fields, files=files)
+        url = report_xml.py3o_server_id.url
+        logger.info(
+            'Connecting to %s to convert report %s to %s',
+            url, report_xml.report_name, filetype)
+        if filetype == 'pdf':
+            options = report_xml.pdf_options_id or\
+                report_xml.py3o_server_id.pdf_options_id
+            if options:
+                pdf_options_dict = options.odoo2libreoffice_options()
+                fields['pdf_options'] = json.dumps(pdf_options_dict)
+                logger.debug('PDF Export options: %s', pdf_options_dict)
+        start_chrono = datetime.now()
+        r = requests.post(url, data=fields, files=files)
         if r.status_code != 200:
             # server says we have an issue... let's tell that to enduser
+            logger.error('Py3o fusion server error: %s', r.text)
             raise UserError(
                 _('Fusion server error %s') % r.text,
             )
@@ -87,6 +100,11 @@ class Py3oReport(models.TransientModel):
         with open(result_path, 'w+') as fd:
             for chunk in r.iter_content(chunk_size):
                 fd.write(chunk)
+        end_chrono = datetime.now()
+        convert_seconds = (end_chrono - start_chrono).total_seconds()
+        logger.info(
+            'Report %s converted to %s in %s seconds',
+            report_xml.report_name, filetype, convert_seconds)
         if len(model_instance) == 1:
             self._postprocess_report(
                 result_path, model_instance.id, save_in_attachment)
