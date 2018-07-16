@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 ABF OSIELL <http://osiell.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+
+<menuitem id="menu_mass_reporting"
+    parent="base.menu_reporting"
+    name="Mass reporting"/>
+
+</data>
+</openerp>

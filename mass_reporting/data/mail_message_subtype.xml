@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 ABF OSIELL <http://osiell.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+    <data>
+
+        <record id="mt_mass_report_done" model="mail.message.subtype">
+            <field name="name">Done</field>
+            <field name="res_model">mass.report</field>
+            <field name="default" eval="True"/>
+            <field name="description">Your report is ready for download.</field>
+        </record>
+
+    </data>
+</openerp>

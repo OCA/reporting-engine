@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mass_report,access_mass_report,model_mass_report,group_mass_reporting_user,1,1,1,0
+access_mass_report_line,access_mass_report_line,model_mass_report_line,group_mass_reporting_user,1,1,1,0
+access_mass_report_attachment,access_mass_report_attachment,model_mass_report_attachment,group_mass_reporting_user,1,1,1,0

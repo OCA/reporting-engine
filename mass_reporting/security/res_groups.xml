@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 ABF OSIELL <http://osiell.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+<record id="group_mass_reporting_user" model="res.groups">
+    <field name="name">Mass Reporting User</field>
+</record>
+
+</data>
+</openerp>

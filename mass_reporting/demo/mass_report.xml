@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+<record id="mass_report_demo_res_partner" model="mass.report">
+    <field name="name">Print Partner Labels</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="output_format"
+        model="ir.model"
+        search="[('model', '=', 'mass.report.output.concatenate')]"/>
+    <field name="line_ids"
+        eval="[(0, 0, {'report_id': ref('base.res_partner_address_report')})]"/>
+</record>
+
+</data>
+</openerp>

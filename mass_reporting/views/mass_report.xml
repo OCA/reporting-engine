@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 ABF OSIELL <http://osiell.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+
+<record id="view_mass_report_form" model="ir.ui.view">
+    <field name="name">mass.report.form</field>
+    <field name="model">mass.report</field>
+    <field name="arch" type="xml">
+        <form string="Mass Report">
+            <header>
+                <button name="action_run" type="object"
+                    string="Run" class="oe_highlight"
+                    states="draft"/>
+                <button name="action_build" type="object"
+                    string="Build" class="oe_highlight"
+                    states="ready"/>
+                <button name="action_draft" type="object"
+                    string="Set to draft"
+                    states="working,done,failed"/>
+                <field name="state"
+                    widget="statusbar"
+                    statusbar_visible="draft,working,done"/>
+            </header>
+            <sheet>
+                <group col="6">
+                    <group colspan="2" string="Mass Report">
+                        <field name="name"/>
+                        <field name="model_id"/>
+                        <field name="model" invisible="1"/>
+                        <field name="user_id"/>
+                        <field name="output_format" options="{'no_create': 1, 'no_create_edit': 1}"/>
+                        <field name="run_build_manually"/>
+                    </group>
+                    <group colspan="2" string="Group of reports">
+                        <field name="line_ids" nolabel="1">
+                            <tree string="Reports" editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="report_id" domain="[('model', '=', parent.model)]"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group colspan="2" string="Filters">
+                        <field name="filter_ids" nolabel="1">
+                            <tree string="Filters">
+                                <field name="name"/>
+                                <field name="domain" groups="base.group_erp_manager"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                <group string="Report generated">
+                    <field name="output_file"/>
+                </group>
+                <group string="Attachments">
+                    <button name="action_prepare" type="object"
+                        string="Prepare reports"
+                        states="draft"/>
+                    <newline/>
+                    <field name="report_attachment_ids" nolabel="1"/>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </form>
+    </field>
+</record>
+
+<record id="view_mass_report_tree" model="ir.ui.view">
+    <field name="name">mass.report.tree</field>
+    <field name="model">mass.report</field>
+    <field name="arch" type="xml">
+        <tree string="Mass Reports">
+            <field name="name"/>
+            <field name="model_id"/>
+            <field name="output_format"/>
+            <field name="output_file"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<record model="ir.actions.act_window" id="action_mass_report_tree">
+    <field name="name">Mass Reports</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">mass.report</field>
+    <field name="view_type">form</field>
+    <field name="view_id" ref="view_mass_report_tree"/>
+</record>
+
+<menuitem id="menu_action_mass_report_tree"
+    parent="menu_mass_reporting"
+    action="action_mass_report_tree"/>
+
+</data>
+</openerp>
