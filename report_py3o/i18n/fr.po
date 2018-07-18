@@ -10,20 +10,21 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-25 03:45+0000\n"
-"PO-Revision-Date: 2018-01-25 03:45+0000\n"
-"Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2018\n"
+"PO-Revision-Date: 2018-07-18 08:55+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:42
 #, python-format
 msgid "(Native)"
-msgstr ""
+msgstr "(Natif)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_create_uid
@@ -52,17 +53,17 @@ msgstr "Procédure de recours"
 #: code:addons/report_py3o/models/ir_actions_report_xml.py:31
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
-msgstr ""
+msgstr "Le champ 'Format de sortie' est requis dans le rapport Py3O"
 
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "File Type"
-msgstr ""
+msgstr "Type de fichier"
 
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "Group By"
-msgstr ""
+msgstr "Grouper par"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_id
@@ -76,6 +77,9 @@ msgid ""
 "If the user does not provide a template this will be used it should be a "
 "relative path to root of YOUR module or an absolute path on your server."
 msgstr ""
+"Si l'utilisateur ne fournit pas de modèle, celui-ci sera utilisé. Il doit "
+"s'agir d'un chemin relatif à la racine de VOTRE module ou d'un chemin absolu "
+"sur votre serveur."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_act_report_xml_py3o_multi_in_one
@@ -84,11 +88,15 @@ msgid ""
 "ZIP file that contains as many files as selected records. If you enable this "
 "option, Odoo will generate instead a single report for the selected records."
 msgstr ""
+"Si vous exécutez un rapport sur plusieurs enregistrements, Odoo générera par "
+"défaut un fichier ZIP contenant autant de fichiers que d'enregistrements "
+"sélectionnés. Si vous activez cette option, Odoo générera à la place un seul "
+"rapport pour les enregistrements sélectionnés."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report_ir_actions_report_xml_id
 msgid "Ir actions report xml id"
-msgstr ""
+msgstr "Ir actions report xml id"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report___last_update
@@ -112,12 +120,12 @@ msgstr "Dernière mise à jour le"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_py3o_template_data
 #: model:ir.ui.view,arch_db:report_py3o.py3o_report_view
 msgid "LibreOffice Template"
-msgstr ""
+msgstr "Modèle LibreOffice"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_filetype
 msgid "LibreOffice Template File Type"
-msgstr ""
+msgstr "Type de fichier modèle de LibreOffice"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_module
@@ -127,7 +135,7 @@ msgstr "Module"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_multi_in_one
 msgid "Multiple Records in a Single Report"
-msgstr ""
+msgstr "Enregistrements multiples dans un seul rapport"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template_name
@@ -138,37 +146,37 @@ msgstr "Nom"
 #: code:addons/report_py3o/models/py3o_report.py:190
 #, python-format
 msgid "No template found. Aborting."
-msgstr ""
+msgstr "Pas de modèle trouvé. Annulation."
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Presentation"
-msgstr ""
+msgstr "Présentation ODF"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Presentation (Flat)"
-msgstr ""
+msgstr "Présentation ODF (à plat)"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Spreadsheet"
-msgstr ""
+msgstr "Tableur ODF"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Spreadsheet (Flat)"
-msgstr ""
+msgstr "Tableur ODF (à plat)"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Text Document"
-msgstr ""
+msgstr "Document texte ODF"
 
 #. module: report_py3o
 #: selection:py3o.template,filetype:0
 msgid "ODF Text Document (Flat)"
-msgstr ""
+msgstr "Document Texte ODF (à plat)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_act_report_xml_py3o_filetype
@@ -183,12 +191,12 @@ msgstr "Py3o"
 #. module: report_py3o
 #: model:ir.actions.report.xml,name:report_py3o.res_users_report_py3o
 msgid "Py3o Demo Report"
-msgstr ""
+msgstr "Rapport de démo Py3o"
 
 #. module: report_py3o
 #: model:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
 msgid "Py3o Reports"
-msgstr ""
+msgstr "Rapports Py3o"
 
 #. module: report_py3o
 #: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
@@ -227,4 +235,4 @@ msgstr "ir.actions.report.xml"
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
 msgid "py3o.template"
-msgstr ""
+msgstr "py3o.template"
