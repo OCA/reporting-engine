@@ -85,3 +85,10 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
 To contribute to this module, please visit https://odoo-community.org.
+
+
+.. _custom report: https://www.odoo.com/documentation/8.0/reference/reports.html#custom-reports
+.. _instructions to create reports: https://www.odoo.com/documentation/8.0/reference/reports.html
+.. _reporting-engine: https://github.com/OCA/reporting-engine
+.. _sample module: https://github.com/OCA/reporting-engine/tree/8.0/report_xml_sample
+.. _lxml: http://lxml.de/
