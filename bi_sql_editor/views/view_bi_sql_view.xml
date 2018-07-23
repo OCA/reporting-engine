@@ -11,6 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">bi.sql.view</field>
         <field name="arch" type="xml">
             <tree decoration-info="state=='draft'" decoration-warning="state in ('sql_valid', 'model_valid')">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="technical_name"/>
                 <field name="size"/>
@@ -26,7 +27,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <header>
                     <button name="button_validate_sql_expression" type="object" states="draft"
                             string="Validate SQL Expression" class="oe_highlight"/>
-                    <button name="button_set_draft" type="object" states="sql_valid,model_valid,ui_valid"
+                    <button name="button_set_draft" type="object" states="sql_valid"
+                            string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"/>
+                    <button name="button_set_draft" type="object" states="model_valid,ui_valid"
                             string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"
                             confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"/>
                     <button name="button_preview_sql_expression" type="object" states="draft" string="Preview SQL Expression" />
@@ -98,11 +101,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <group string="Rule Definition">
                                 <field name="domain_force" nolabel="1" colspan="4"/>
                             </group>
-                            <group>
-                                <group string="Allowed Groups">
-                                    <field name="group_ids" nolabel="1"/>
-                                    <field name="has_group_changed" invisible="1"/>
-                                </group>
+                            <group string="Allowed Groups">
+                                <field name="group_ids" nolabel="1" colspan="4"/>
+                                <field name="has_group_changed" invisible="1"/>
                             </group>
                         </page>
                         <page string="Extras Information">
