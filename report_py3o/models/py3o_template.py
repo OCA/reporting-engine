@@ -1,6 +1,9 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import fields, models
+import os
+from base64 import b64encode
+
+from odoo import api, fields, models
 
 
 class Py3oTemplate(models.Model):
@@ -20,3 +23,17 @@ class Py3oTemplate(models.Model):
         string="LibreOffice Template File Type",
         required=True,
         default='odt')
+
+    # For filling the template data into the DB, it is no possible to
+    # add directly the template in the xml data
+
+    @api.model
+    def fill_model(self, vals):
+        report_path = os.path.dirname(os.path.relpath(__file__)) + vals['path']
+        vals.pop('path', None)
+        with open(report_path, 'rb') as f:
+            vals.update({'py3o_template_data': b64encode(f.read())})
+
+        rec = self.env.ref(vals['record'])
+        vals.pop('record', None)
+        rec.write(vals)

@@ -210,9 +210,9 @@ class Py3oReport(models.TransientModel):
     @api.multi
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
-        context_instance = report_sxw.rml_parse(self.env.cr, self.env.uid,
-                                     report_xml.name,
-                                     context=self.env.context)
+        context_instance = report_sxw.RMLParse(self.env.cr, self.env.uid,
+                                               report_xml.name,
+                                               context=self.env.context)
         context_instance.set_context(model_instance, data, model_instance.ids,
                                      report_xml.report_type)
         self._extend_parser_context(context_instance, report_xml)
@@ -222,10 +222,13 @@ class Py3oReport(models.TransientModel):
     def _postprocess_report(self, report_path, res_id, save_in_attachment):
         if len(save_in_attachment) != 0:
             with open(report_path, 'rb') as report:
+                name = save_in_attachment.get(res_id) \
+                    if save_in_attachment.get(res_id)\
+                    else self.ir_actions_report_id.name
                 attachment = {
-                    'name': save_in_attachment.get(res_id),
+                    'name': name,
                     'datas': base64.encodebytes(report.read()),
-                    'datas_fname': save_in_attachment.get(res_id),
+                    'datas_fname': name,
                     'res_model': save_in_attachment.get('model'),
                     'res_id': res_id,
                 }
@@ -250,7 +253,9 @@ class Py3oReport(models.TransientModel):
 
         in_stream = BytesIO(tmpl_data)
         with closing(os.fdopen(result_fd, 'wb+')) as out_stream:
-            template = Template(in_stream, out_stream, escape_false=True)
+            template = Template(
+                in_stream, out_stream,
+                escape_false=True, ignore_undefined_variables=True)
             localcontext = self._get_parser_context(model_instance, data)
             template.render(localcontext)
             out_stream.seek(0)
@@ -259,9 +264,7 @@ class Py3oReport(models.TransientModel):
         if self.env.context.get('report_py3o_skip_conversion'):
             return result_path
 
-        result_path = self._convert_single_report(
-            result_path, model_instance, data
-        )
+        result_path = self._convert_single_report(result_path)
 
         if len(model_instance) == 1:
             self._postprocess_report(
@@ -270,13 +273,11 @@ class Py3oReport(models.TransientModel):
         return result_path
 
     @api.multi
-    def _convert_single_report(self, result_path, model_instance, data):
+    def _convert_single_report(self, result_path):
         """Run a command to convert to our target format"""
         filetype = self.ir_actions_report_id.py3o_filetype
         if not Formats().get_format(filetype).native:
-            command = self._convert_single_report_cmd(
-                result_path, model_instance, data,
-            )
+            command = self._convert_single_report_cmd(result_path)
             logger.debug('Running command %s', command)
             output = subprocess.check_output(
                 command, cwd=os.path.dirname(result_path),
@@ -292,7 +293,7 @@ class Py3oReport(models.TransientModel):
         return result_path
 
     @api.multi
-    def _convert_single_report_cmd(self, result_path, model_instance, data):
+    def _convert_single_report_cmd(self, result_path):
         """Return a command list suitable for use in subprocess.call"""
         return [
             self.env['ir.config_parameter'].get_param(
@@ -394,7 +395,7 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _check_attachment_use(self, docids, report):
-        save_in_attachment = {}
+        save_in_attachment = dict()
         save_in_attachment['model'] = report.model
         save_in_attachment['loaded_documents'] = {}
 
@@ -403,7 +404,8 @@ class Py3oReport(models.TransientModel):
             filenames = self._attachment_filename(records, report)
             attachments = None
             if report.attachment_use:
-                attachments = self._attachment_stored(records, report, filenames=filenames)
+                attachments = self._attachment_stored(
+                    records, report, filenames=filenames)
             for record_id in docids:
                 filename = filenames[record_id]
                 if attachments:
@@ -411,7 +413,8 @@ class Py3oReport(models.TransientModel):
                     if attachment:
                         file_attached = attachment.datas
                         file_attached = base64.decodebytes(file_attached)
-                        save_in_attachment['loaded_documents'][record_id] = file_attached
+                        save_in_attachment['loaded_documents'][record_id] =\
+                            file_attached
 
                         continue
 
@@ -424,14 +427,15 @@ class Py3oReport(models.TransientModel):
 
     @api.model
     def _attachment_filename(self, records, report):
-        return dict((record.id, safe_eval(report.attachment, {'object': record, 'time': time})) for record in records)
+        return dict((record.id, safe_eval(
+            report.attachment,
+            {'object': record, 'time': time})) for record in records)
 
     @api.model
     def _attachment_stored(self, records, report, filenames=None):
-        if not filenames:
-            filenames = self._attachment_filename(records, report)
+        if filenames:
             return dict((record.id, self.env['ir.attachment'].search([
-                ('data_fname', '=', filenames[record.id]),
+                ('datas_fname', '=', filenames[record.id]),
                 ('res_model', '=', report.model),
                 ('res_id', '=', record.id)
             ], limit=1)) for record in records)

@@ -6,9 +6,6 @@ var ActionManager = require('web.ActionManager');
 var core = require('web.core');
 var crash_manager = require('web.crash_manager');
 var framework = require('web.framework');
-var session = require('web.session');
-
-var _t = core._t;
 
 var trigger_download = function(session, response, c, action, options) {
     session.get_file({
@@ -29,11 +26,11 @@ ActionManager.include({
         var self = this;
 
         // Py3o reports
-        if ('report_type' in action && action.report_type == 'py3o' ) {
+        if ('report_type' in action && action.report_type === 'py3o' ) {
             framework.blockUI();
             action = _.clone(action);
-            _t =  core._t;
-            var report_url = '/report/py3o/' + action.report_name;;
+            _t = core._t;
+            var report_url = '/report/py3o/' + action.report_name;
             // generic report: no query string
             // particular: query string of action.data.form and context
             if (!('data' in action) || !(action.data)) {
@@ -45,14 +42,14 @@ ActionManager.include({
                 report_url += "&context=" + encodeURIComponent(JSON.stringify(action.context));
             }
 
-            var response = new Array();
+            var response = [];
             response[0] = report_url;
             response[1] = action.report_type;
             var c = crash_manager;
             return trigger_download(self.getSession(), response, c, action, options);
-        } else {
-            return self._super(action, options);
         }
+
+        return self._super(action, options);
     }
 });
 
