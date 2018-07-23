@@ -48,9 +48,8 @@ class ReportAction(models.Model):
 
     @api.model
     def render_py3o(self, docids, data):
-        report = self._get_report_from_name(self.report_name)
         return self.env['py3o.report'].create(
-            {'ir_actions_report_id': report.id}).create_report(docids, data)
+            {'ir_actions_report_id': self.id}).create_report(docids, data)
 
     @api.model
     def _get_report_from_name(self, report_name):
