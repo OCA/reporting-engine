@@ -29,7 +29,7 @@ class Py3oTemplate(models.Model):
 
     @api.model
     def fill_model(self, vals):
-        actual_path = os.path.dirname(os.path.relpath(__file__))
+        actual_path = os.path.dirname(os.path.abspath(__file__))
         report_path = vals['path']
         report_path = "".join((actual_path, report_path))
         vals.pop('path', None)
