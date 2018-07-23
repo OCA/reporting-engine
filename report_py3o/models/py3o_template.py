@@ -29,7 +29,9 @@ class Py3oTemplate(models.Model):
 
     @api.model
     def fill_model(self, vals):
-        report_path = os.path.dirname(os.path.relpath(__file__)) + vals['path']
+        actual_path = os.path.dirname(os.path.relpath(__file__))
+        report_path = vals['path']
+        report_path = "".join((actual_path, report_path))
         vals.pop('path', None)
         with open(report_path, 'rb') as f:
             vals.update({'py3o_template_data': b64encode(f.read())})
