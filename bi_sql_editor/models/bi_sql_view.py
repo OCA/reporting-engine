@@ -31,6 +31,7 @@ class BaseModel(models.AbstractModel):
 
 class BiSQLView(models.Model):
     _name = 'bi.sql.view'
+    _order = 'sequence'
     _inherit = ['sql.request.mixin']
 
     _sql_prefix = 'x_bi_sql_view_'
@@ -64,7 +65,10 @@ class BiSQLView(models.Model):
 
     is_materialized = fields.Boolean(
         string='Is Materialized View', default=True, readonly=True,
-        states={'draft': [('readonly', False)]})
+        states={
+            'draft': [('readonly', False)],
+            'sql_valid': [('readonly', False)],
+        })
 
     materialized_text = fields.Char(
         compute='_compute_materialized_text', store=True)
@@ -94,13 +98,17 @@ class BiSQLView(models.Model):
         "FROM my_table")
 
     domain_force = fields.Text(
-        string='Extra Rule Definition', default="[]", help="Define here"
-        " access restriction to data.\n"
+        string='Extra Rule Definition', default="[]", readonly=True,
+        help="Define here access restriction to data.\n"
         " Take care to use field name prefixed by 'x_'."
         " A global 'ir.rule' will be created."
         " A typical Multi Company rule is for exemple \n"
         " ['|', ('x_company_id','child_of', [user.company_id.id]),"
-        "('x_company_id','=',False)].")
+        "('x_company_id','=',False)].",
+        states={
+            'draft': [('readonly', False)],
+            'sql_valid': [('readonly', False)],
+        })
 
     has_group_changed = fields.Boolean(copy=False)
 
@@ -136,6 +144,23 @@ class BiSQLView(models.Model):
 
     rule_id = fields.Many2one(
         string='Odoo Rule', comodel_name='ir.rule', readonly=True)
+
+    group_ids = fields.Many2many(
+        comodel_name='res.groups', readonly=True, states={
+            'draft': [('readonly', False)],
+            'sql_valid': [('readonly', False)],
+        })
+
+    sequence = fields.Integer(string='sequence')
+
+    # Constrains Section
+    @api.constrains('is_materialized')
+    @api.multi
+    def _check_index_materialized(self):
+        for rec in self.filtered(lambda x: not x.is_materialized):
+            if rec.bi_sql_view_field_ids.filtered(lambda x: x.is_index):
+                raise UserError(_(
+                    'You can not create indexes on non materialized views'))
 
     @api.constrains('view_order')
     @api.multi
@@ -175,6 +200,14 @@ class BiSQLView(models.Model):
             self.has_group_changed = True
 
     # Overload Section
+    @api.multi
+    def write(self, vals):
+        res = super(BiSQLView, self).write(vals)
+        if vals.get('sequence', False):
+            for rec in self.filtered(lambda x: x.menu_id):
+                rec.menu_id.sequence = rec.sequence
+        return res
+
     @api.multi
     def unlink(self):
         if any(view.state not in ('draft', 'sql_valid') for view in self):
@@ -399,7 +432,7 @@ class BiSQLView(models.Model):
         else:
             view_id = self.graph_view_id.id
         return {
-            'name': self.name,
+            'name': self._prepare_action_name(),
             'res_model': self.model_id.model,
             'type': 'ir.actions.act_window',
             'view_mode': view_mode,
@@ -408,12 +441,22 @@ class BiSQLView(models.Model):
         }
 
     @api.multi
+    def _prepare_action_name(self):
+        self.ensure_one()
+        if not self.is_materialized:
+            return self.name
+        return "%s (%s)" % (
+            self.name,
+            datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")))
+
+    @api.multi
     def _prepare_menu(self):
         self.ensure_one()
         return {
             'name': self.name,
             'parent_id': self.env.ref('bi_sql_editor.menu_bi_sql_editor').id,
             'action': 'ir.actions.act_window,%s' % (self.action_id.id),
+            'sequence': self.sequence,
         }
 
     # Custom Section
@@ -570,18 +613,15 @@ class BiSQLView(models.Model):
 
     @api.multi
     def _refresh_materialized_view(self):
-        for sql_view in self:
-            if sql_view.is_materialized:
-                req = "REFRESH %s VIEW %s" % (
-                    sql_view.materialized_text, sql_view.view_name)
-                self._log_execute(req)
-                sql_view._refresh_size()
-                if sql_view.action_id:
-                    # Alter name of the action, to display last refresh
-                    # datetime of the materialized view
-                    sql_view.action_id.name = "%s (%s)" % (
-                        self.name,
-                        datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")))
+        for sql_view in self.filtered(lambda x: x.is_materialized):
+            req = "REFRESH %s VIEW %s" % (
+                sql_view.materialized_text, sql_view.view_name)
+            self._log_execute(req)
+            sql_view._refresh_size()
+            if sql_view.action_id:
+                # Alter name of the action, to display last refresh
+                # datetime of the materialized view
+                sql_view.action_id.name = sql_view._prepare_action_name()
 
     @api.multi
     def _refresh_size(self):
