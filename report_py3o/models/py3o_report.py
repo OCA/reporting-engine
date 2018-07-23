@@ -148,7 +148,7 @@ class Py3oReport(models.TransientModel):
         elif self._is_valid_template_path(tmpl_name):
             flbk_filename = os.path.realpath(tmpl_name)
         if self._is_valid_template_filename(flbk_filename):
-            with open(flbk_filename, 'r') as tmpl:
+            with open(flbk_filename, 'rb') as tmpl:
                 return tmpl.read()
         return None
 
