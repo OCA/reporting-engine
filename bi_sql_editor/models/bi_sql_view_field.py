@@ -5,7 +5,8 @@
 
 import re
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class BiSQLViewField(models.Model):
@@ -99,6 +100,15 @@ class BiSQLViewField(models.Model):
         comodel_name='ir.model', string='Model',
         help="For 'Many2one' Odoo field.\n"
         " Comodel of the field.")
+
+    # Constrains Section
+    @api.constrains('is_index')
+    @api.multi
+    def _check_index_materialized(self):
+        for rec in self.filtered(lambda x: x.is_index):
+            if not rec.bi_sql_view_id.is_materialized:
+                raise UserError(_(
+                    'You can not create indexes on non materialized views'))
 
     # Compute Section
     @api.multi
