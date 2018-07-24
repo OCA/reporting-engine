@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * bi_sql_editor
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
@@ -12,32 +12,32 @@ msgstr ""
 "PO-Revision-Date: 2017-08-12 02:51+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Slovak (https://www.transifex.com/oca/teams/23907/sk/)\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:563
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:450
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:176
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:222
 #, python-format
 msgid "%s (Copy)"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:279
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:325
 #, python-format
 msgid "%s Access %s"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:305
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
 #, python-format
 msgid "Access %s"
 msgstr ""
@@ -46,11 +46,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_group_ids
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Allowed Groups"
-msgstr ""
-
-#. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_user_ids
-msgid "Allowed Users"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -124,8 +119,10 @@ msgstr ""
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_domain_force
 msgid ""
 "Define here access restriction to data.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',False)]."
+" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
+"created. A typical Multi Company rule is for exemple \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -170,7 +167,8 @@ msgstr ""
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field_selection
 msgid ""
 "For 'Selection' Odoo field.\n"
-" List of options, specified as a Python expression defining a list of (key, label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
+" List of options, specified as a Python expression defining a list of (key, "
+"label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -265,12 +263,11 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_name
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_name
 msgid "Name"
 msgstr "Meno"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:544
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:603
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -323,7 +320,7 @@ msgid "Odoo Tree View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:131
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
 msgstr ""
@@ -331,6 +328,11 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Open View"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Preview SQL Expression"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -344,7 +346,7 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:294
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:340
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr ""
@@ -360,7 +362,7 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:426
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:483
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -387,7 +389,8 @@ msgstr ""
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_query
 msgid ""
 "SQL Request that will be inserted as the view. Take care to :\n"
-" * set a name for all your selected fields, specially if you use SQL function (like EXTRACT, ...);\n"
+" * set a name for all your selected fields, specially if you use SQL "
+"function (like EXTRACT, ...);\n"
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
@@ -460,9 +463,8 @@ msgstr ""
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_technical_name
 msgid ""
 "Suffix of the SQL view. SQL full name will be computed and prefixed by "
-"'x_bi_sql_view_'. Syntax should follow: "
-"https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-"
-"SYNTAX-IDENTIFIERS"
+"'x_bi_sql_view_'. Syntax should follow: https://www.postgresql.org/docs/"
+"current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -495,8 +497,8 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field_ttype
 msgid ""
-"Type of the Odoo field that will be created. Keep empty if you don't want to"
-" create a new field. If empty, this field will not be displayed neither "
+"Type of the Odoo field that will be created. Keep empty if you don't want to "
+"create a new field. If empty, this field will not be displayed neither "
 "available for search or group by function"
 msgstr ""
 
@@ -543,15 +545,27 @@ msgid "Views, Action and Menu Created"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:186
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:162
+#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
+#, python-format
+msgid "You can not create indexes on non materialized views"
+msgstr ""
+
+#. module: bi_sql_editor
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:232
 #, python-format
 msgid "You can only process this action on SQL Valid items"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:168
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:214
 #, python-format
 msgid "You can only unlink draft views"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model,name:bi_sql_editor.model_base
+msgid "base"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -606,6 +620,7 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field_sequence
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_sequence
 msgid "sequence"
 msgstr ""
 
