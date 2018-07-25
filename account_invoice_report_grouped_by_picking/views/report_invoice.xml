@@ -27,8 +27,10 @@
     <xpath expr="//td/span[@t-field='l.quantity']" position="before">
         <t t-if="picking">
             <!-- Compute product qty for that picking and invoice line -->
+            <t t-set="line_chained_picking_qty"
+               t-value="l.mapped('move_line_ids').filtered(lambda x: x.picking_id == picking)._compute_chained_qty_done(line=l)"/>
             <t t-set="line_picking_qty"
-               t-value="sum(l.mapped('move_line_ids').filtered(lambda x: x.picking_id == picking).mapped('quantity_done'))"/>
+               t-value="-line_chained_picking_qty if o.type=='out_refund' else line_chained_picking_qty"/>
             <span t-esc="line_picking_qty"/>
         </t>
     </xpath>
