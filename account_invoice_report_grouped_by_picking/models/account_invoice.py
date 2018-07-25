@@ -20,6 +20,5 @@ class AccountInvoice(models.Model):
                       self.invoice_line_ids.filtered(
                           lambda x: not x.move_line_ids)]
         with_picking = [{'picking': x.picking_id, 'line': x.invoice_line_id}
-                        for x in self.mapped('picking_ids.move_lines') if
-                        x.invoice_line_id in self.invoice_line_ids]
+                        for x in self.invoice_line_ids.mapped('move_line_ids')]
         return no_picking + self._sort_grouped_lines(with_picking)
