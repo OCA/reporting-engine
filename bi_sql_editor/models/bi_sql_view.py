@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -339,7 +338,8 @@ class BiSQLView(models.Model):
         return {
             'name': _('Refresh Materialized View %s') % (self.view_name),
             'user_id': SUPERUSER_ID,
-            'model': 'bi.sql.view',
+            'model_id': self.env['ir.model'].search([
+                ('model', '=', self._name)], limit=1).id,
             'function': '_refresh_materialized_view_cron',
             'numbercall': -1,
             'args': repr(([self.id],))
@@ -379,7 +379,7 @@ class BiSQLView(models.Model):
             'model': self.model_id.model,
             'arch':
                 """<?xml version="1.0"?>"""
-                """<graph string="Analysis" type="pivot" stacked="True">{}"""
+                """<graph string="Analysis" type="bar" stacked="True">{}"""
                 """</graph>""".format("".join(
                     [x._prepare_graph_field()
                         for x in self.bi_sql_view_field_ids]))
