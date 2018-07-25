@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -40,11 +39,10 @@ class TestBiSqlViewEditor(SingleTransactionCase):
     def _create_user(cls, login, groups, company):
         """Create a user."""
         user = cls.res_users.create({
-            'name': 'Test BI User',
+            'name': login,
             'login': login,
             'password': 'demo',
             'email': 'example@yourcompany.com',
-            'notify_email': 'none',
             'company_id': company.id,
             'groups_id': [(6, 0, groups.ids)]
         })

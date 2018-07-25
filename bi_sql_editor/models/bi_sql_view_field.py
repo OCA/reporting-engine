@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -130,7 +129,7 @@ class BiSQLViewField(models.Model):
         # Don't execute as simple .get() in the dict to manage
         # correctly the type 'character varying(x)'
         ttype = False
-        for k, v in self._SQL_MAPPING.iteritems():
+        for k, v in self._SQL_MAPPING.items():
             if k in vals['sql_type']:
                 ttype = v
 
