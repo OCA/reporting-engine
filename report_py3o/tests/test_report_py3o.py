@@ -1,7 +1,7 @@
 # Copyright 2016 ACSONE SA/NV
+# Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
-import base64
 from base64 import b64decode
 import mock
 import os
