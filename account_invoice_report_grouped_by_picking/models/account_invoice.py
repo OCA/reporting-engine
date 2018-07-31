@@ -1,8 +1,11 @@
-# Copyright 2017 Carlos Dauden <carlos.dauden@tecnativa.com>
-# Copyright 2018 David Vidal <david.vidal@tecnativa.com>
+# Copyright 2017 Tecnativa - Carlos Dauden
+# Copyright 2018 Tecnativa - David Vidal
+# Copyright 2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
+from odoo.tools import float_is_zero
+from collections import OrderedDict
 
 
 class AccountInvoice(models.Model):
@@ -14,11 +17,34 @@ class AccountInvoice(models.Model):
             x['picking'].date, x['picking'].date_done))
 
     def lines_grouped_by_picking(self):
+        """This prepares a data structure for printing the invoice report
+        grouped by pickings."""
         self.ensure_one()
-        # Split lines with no pickings
-        no_picking = [{'picking': False, 'line': x} for x in
-                      self.invoice_line_ids.filtered(
-                          lambda x: not x.move_line_ids)]
-        with_picking = [{'picking': x.picking_id, 'line': x.invoice_line_id}
-                        for x in self.invoice_line_ids.mapped('move_line_ids')]
+        picking_dict = OrderedDict()
+        lines_dict = OrderedDict()
+        sign = -1.0 if self.type == 'out_refund' else 1.0
+        for line in self.invoice_line_ids:
+            remaining_qty = line.quantity
+            for move in line.move_line_ids:
+                key = (move.picking_id, line)
+                picking_dict.setdefault(key, 0)
+                qty = 0
+                if move.location_id.usage == 'customer':
+                    qty = -move.quantity_done * sign
+                elif move.location_dest_id.usage == 'customer':
+                    qty = move.quantity_done * sign
+                picking_dict[key] += qty
+                remaining_qty -= qty
+            if (not float_is_zero(
+                    remaining_qty,
+                    precision_rounding=line.product_id.uom_id.rounding)):
+                lines_dict[line] = remaining_qty
+        no_picking = [
+            {'picking': False, 'line': key, 'quantity': value}
+            for key, value in lines_dict.items()
+        ]
+        with_picking = [
+            {'picking': key[0], 'line': key[1], 'quantity': value}
+            for key, value in picking_dict.items()
+        ]
         return no_picking + self._sort_grouped_lines(with_picking)

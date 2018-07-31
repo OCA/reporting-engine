@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_report_grouped_by_picking
-#: model:ir.ui.view,arch_db:account_invoice_report_grouped_by_picking.report_invoice_document
+#: model:ir.ui.view,arch_db:account_invoice_report_grouped_by_picking.report_invoice_layouted
 msgid "<strong>Subtotal: </strong>"
 msgstr ""
 
