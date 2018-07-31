@@ -39,7 +39,7 @@ class BveView(models.Model):
          ('created', 'Created')],
         default='draft',
         copy=False)
-    data = fields.Text(
+    data = fields.Serialized(
         help="Use the special query builder to define the query "
              "to generate your report dataset. "
              "NOTE: To be edited, the query should be in 'Draft' status.")
@@ -62,12 +62,6 @@ class BveView(models.Model):
          'unique(name)',
          _('Custom BI View names must be unique!')),
     ]
-
-    @classmethod
-    def _get_format_data(cls, data):
-        data = data.replace('\'', '"')
-        data = data.replace(': u"', ':"')
-        return data
 
     @api.multi
     def _create_view_arch(self):
@@ -96,7 +90,7 @@ class BveView(models.Model):
                     view_fields.append(field_def)
             return view_fields
 
-        fields_info = json.loads(self._get_format_data(self.data))
+        fields_info = json.loads(self.data)
         view_fields = _get_field_list(fields_info)
         return view_fields
 
@@ -118,7 +112,7 @@ class BveView(models.Model):
                     view_fields.append(field_def)
             return view_fields
 
-        fields_info = json.loads(self._get_format_data(self.data))
+        fields_info = json.loads(self.data)
 
         view_fields = _get_field_list(fields_info)
         return view_fields
@@ -218,7 +212,7 @@ class BveView(models.Model):
                   a.perm_''' + access_mode, (model_name,))
             return [x[0] for x in self.env.cr.fetchall()]
 
-        info = json.loads(self._get_format_data(self.data))
+        info = json.loads(self.data)
         model_names = list(set([f['model'] for f in info]))
         read_groups = set.intersection(*[set(
             group_ids_with_access(model_name, 'read')
@@ -285,7 +279,7 @@ class BveView(models.Model):
 
         check_empty_data(self.data)
 
-        formatted_data = json.loads(self._get_format_data(self.data))
+        formatted_data = json.loads(self.data)
         info = get_fields_info(formatted_data)
         select_fields = get_fields(info)
         tables = get_tables(info)
@@ -352,7 +346,7 @@ class BveView(models.Model):
         self._create_sql_view()
 
         # create model and fields
-        data = json.loads(self._get_format_data(self.data))
+        data = json.loads(self.data)
         model_vals = {
             'name': self.name,
             'model': self.model_name,

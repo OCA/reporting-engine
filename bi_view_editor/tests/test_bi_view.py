@@ -2,6 +2,8 @@
 # Copyright 2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import json
+
 from odoo.tests.common import TransactionCase, at_install, post_install
 from odoo.exceptions import UserError
 
@@ -100,7 +102,7 @@ class TestBiViewEditor(TransactionCase):
              'measure': 0
              }
         ]
-        format_data = self.env['bve.view']._get_format_data(str(data))
+        format_data = json.dumps(data)
 
         self.bi_view1_vals = {
             'state': 'draft',
@@ -228,3 +230,24 @@ class TestBiViewEditor(TransactionCase):
         # try to remove view
         with self.assertRaises(UserError):
             bi_view.unlink()
+
+    @at_install(False)
+    @post_install(True)
+    def test_10_create_open_bve_object_apostrophe(self):
+        vals = self.bi_view1_vals
+        employees_group = self.env.ref('base.group_user')
+        vals.update({
+            'name': "Test View5",
+            'group_ids': [(6, 0, [employees_group.id])],
+        })
+        l = list()
+        for r in json.loads(vals['data']):
+            r['model_name'] = "model'name"
+            l.append(r)
+        new_format_data = json.dumps(l)
+        vals.update({'data': new_format_data})
+        bi_view = self.env['bve.view'].create(vals)
+        self.assertEqual(len(bi_view), 1)
+
+        # create bve object
+        bi_view.action_create()
