@@ -277,7 +277,8 @@ class BiSQLView(models.Model):
             'user_id': SUPERUSER_ID,
             'model': 'bi.sql.view',
             'function': 'cron_refresh_materialized_view',
-            'args': repr(([self.id],))
+            'numbercall': -1,
+            'args': repr(([self.id],)),
         }
 
     @api.multi
