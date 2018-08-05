@@ -42,7 +42,7 @@ facilitate the creation excel reports in Odoo.
 
 * Excel with multiple sheets
 
-  Download the ``account_journal_report_xlsx`` module
+  Download the ``account_asset_management_xls`` module
   from http://apps.odoo.com as example.
 
 Installation
