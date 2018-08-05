@@ -72,14 +72,10 @@ class AbstractReportXlsx(ReportXlsx):
         """
         return []
 
-    def _define_formats(self, workbook):
+    def _define_xls_headers(self, workbook):
         """
-        This section contains a number of pre-defined formats.
-        It is recommended to use these in order to have a
-        consistent look & feel between your XLSX reports.
+        Predefined worksheet headers/footers.
         """
-
-        # predefined worksheet headers/footers
         hf_params = {
             'font_size': 8,
             'font_style': 'I',  # B: Bold, I:  Italic, U: Underline
@@ -95,6 +91,14 @@ class AbstractReportXlsx(ReportXlsx):
                 '&R&%(font_size)s&%(font_style)s&P / &N'
                 ) % hf_params,
         }
+
+    def _define_formats(self, workbook):
+        """
+        This section contains a number of pre-defined formats.
+        It is recommended to use these in order to have a
+        consistent look & feel between your XLSX reports.
+        """
+        self._define_xls_headers(workbook)
 
         border_grey = '#D3D3D3'
         border = {'border': True, 'border_color': border_grey}
@@ -119,20 +123,48 @@ class AbstractReportXlsx(ReportXlsx):
         self.format_left = workbook.add_format({'align': 'left'})
         self.format_center = workbook.add_format({'align': 'center'})
         self.format_right = workbook.add_format({'align': 'right'})
-        self.format_amount = workbook.add_format(
+        self.format_amount_left = workbook.add_format(
+            {'align': 'left', 'num_format': num_format})
+        self.format_amount_center = workbook.add_format(
+            {'align': 'center', 'num_format': num_format})
+        self.format_amount_right = workbook.add_format(
             {'align': 'right', 'num_format': num_format})
-        self.format_amount_conditional = workbook.add_format(
+        self.format_amount_conditional_left = workbook.add_format(
+            {'align': 'left', 'num_format': num_format_conditional})
+        self.format_amount_conditional_center = workbook.add_format(
+            {'align': 'center', 'num_format': num_format_conditional})
+        self.format_amount_conditional_right = workbook.add_format(
             {'align': 'right', 'num_format': num_format_conditional})
-        self.format_percent = workbook.add_format(
+        self.format_percent_left = workbook.add_format(
+            {'align': 'left', 'num_format': pct_format})
+        self.format_percent_center = workbook.add_format(
+            {'align': 'center', 'num_format': pct_format})
+        self.format_percent_right = workbook.add_format(
             {'align': 'right', 'num_format': pct_format})
-        self.format_percent_conditional = workbook.add_format(
+        self.format_percent_conditional_left = workbook.add_format(
+            {'align': 'left', 'num_format': pct_format_conditional})
+        self.format_percent_conditional_center = workbook.add_format(
+            {'align': 'center', 'num_format': pct_format_conditional})
+        self.format_percent_conditional_right = workbook.add_format(
             {'align': 'right', 'num_format': pct_format_conditional})
-        self.format_integer = workbook.add_format(
+        self.format_integer_left = workbook.add_format(
+            {'align': 'left', 'num_format': int_format})
+        self.format_integer_center = workbook.add_format(
+            {'align': 'center', 'num_format': int_format})
+        self.format_integer_right = workbook.add_format(
             {'align': 'right', 'num_format': int_format})
-        self.format_integer_conditional = workbook.add_format(
+        self.format_integer_conditional_left = workbook.add_format(
             {'align': 'right', 'num_format': int_format_conditional})
-        self.format_date = workbook.add_format(
+        self.format_integer_conditional_center = workbook.add_format(
+            {'align': 'center', 'num_format': int_format_conditional})
+        self.format_integer_conditional_right = workbook.add_format(
+            {'align': 'right', 'num_format': int_format_conditional})
+        self.format_date_left = workbook.add_format(
             {'align': 'left', 'num_format': date_format})
+        self.format_date_center = workbook.add_format(
+            {'align': 'center', 'num_format': date_format})
+        self.format_date_right = workbook.add_format(
+            {'align': 'right', 'num_format': date_format})
 
         self.format_left_bold = workbook.add_format(
             {'align': 'left', 'bold': True})
@@ -140,103 +172,269 @@ class AbstractReportXlsx(ReportXlsx):
             {'align': 'center', 'bold': True})
         self.format_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True})
-        self.format_amount_bold = workbook.add_format(
+        self.format_amount_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True, 'num_format': num_format})
+        self.format_amount_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True, 'num_format': num_format})
+        self.format_amount_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True, 'num_format': num_format})
-        self.format_amount_bold_conditional = workbook.add_format(
+        self.format_amount_conditional_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True,
+             'num_format': num_format_conditional})
+        self.format_amount_conditional_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True,
+             'num_format': num_format_conditional})
+        self.format_amount_conditional_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True,
              'num_format': num_format_conditional})
-        self.format_percent_bold = workbook.add_format(
+        self.format_percent_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True, 'num_format': pct_format})
+        self.format_percent_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True, 'num_format': pct_format})
+        self.format_percent_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True, 'num_format': pct_format})
-        self.format_percent_bold_conditional = workbook.add_format(
+        self.format_percent_conditional_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True,
+             'num_format': pct_format_conditional})
+        self.format_percent_conditional_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True,
+             'num_format': pct_format_conditional})
+        self.format_percent_conditional_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True,
              'num_format': pct_format_conditional})
-        self.format_integer_bold = workbook.add_format(
+        self.format_integer_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True, 'num_format': int_format})
+        self.format_integer_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True, 'num_format': int_format})
+        self.format_integer_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True, 'num_format': int_format})
-        self.format_integer_bold_conditional = workbook.add_format(
+        self.format_integer_conditional_left_bold = workbook.add_format(
+            {'align': 'left', 'bold': True,
+             'num_format': int_format_conditional})
+        self.format_integer_conditional_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True,
+             'num_format': int_format_conditional})
+        self.format_integer_conditional_right_bold = workbook.add_format(
             {'align': 'right', 'bold': True,
              'num_format': int_format_conditional})
-        self.format_date_bold = workbook.add_format(
+        self.format_date_left_bold = workbook.add_format(
             {'align': 'left', 'bold': True, 'num_format': date_format})
+        self.format_date_center_bold = workbook.add_format(
+            {'align': 'center', 'bold': True, 'num_format': date_format})
+        self.format_date_right_bold = workbook.add_format(
+            {'align': 'right', 'bold': True, 'num_format': date_format})
 
         # formats for worksheet table column headers
-        self.format_theader_yellow = workbook.add_format(theader_yellow)
+        self.format_theader_yellow_left = workbook.add_format(theader_yellow)
         self.format_theader_yellow_center = workbook.add_format(
             dict(theader_yellow, align='center'))
         self.format_theader_yellow_right = workbook.add_format(
             dict(theader_yellow, align='right'))
-        self.format_theader_yellow_amount = workbook.add_format(
-            dict(theader_yellow, num_format=num_format))
-        self.format_theader_yellow_amount_conditional = workbook.add_format(
-            dict(theader_yellow, num_format=num_format_conditional))
-        self.format_theader_yellow_percent = workbook.add_format(
-            dict(theader_yellow, num_format=pct_format))
-        self.format_theader_yellow_percent_conditional = workbook.add_format(
-            dict(theader_yellow, num_format=pct_format_conditional))
-        self.format_theader_yellow_integer = workbook.add_format(
-            dict(theader_yellow, num_format=int_format))
-        self.format_theader_yellow_integer_conditional = workbook.add_format(
-            dict(theader_yellow, num_format=int_format_conditional))
+        self.format_theader_yellow_amount_left = workbook.add_format(
+            dict(theader_yellow, num_format=num_format, align='left'))
+        self.format_theader_yellow_amount_center = workbook.add_format(
+            dict(theader_yellow, num_format=num_format, align='center'))
+        self.format_theader_yellow_amount_right = workbook.add_format(
+            dict(theader_yellow, num_format=num_format, align='right'))
 
-        self.format_theader_blue = workbook.add_format(theader_blue)
+        self.format_theader_yellow_amount_conditional_left = workbook.\
+            add_format(dict(theader_yellow, num_format=num_format_conditional,
+                       align='left'))
+        self.format_theader_yellow_amount_conditional_center = workbook.\
+            add_format(dict(theader_yellow, num_format=num_format_conditional,
+                            align='center'))
+        self.format_theader_yellow_amount_conditional_right = workbook.\
+            add_format(dict(theader_yellow, num_format=num_format_conditional,
+                            align='right'))
+        self.format_theader_yellow_percent_left = workbook.add_format(
+            dict(theader_yellow, num_format=pct_format, align='left'))
+        self.format_theader_yellow_percent_center = workbook.add_format(
+            dict(theader_yellow, num_format=pct_format, align='center'))
+        self.format_theader_yellow_percent_right = workbook.add_format(
+            dict(theader_yellow, num_format=pct_format, align='right'))
+        self.format_theader_yellow_percent_conditional_left = workbook.\
+            add_format(dict(theader_yellow, num_format=pct_format_conditional,
+                            align='left'))
+        self.format_theader_yellow_percent_conditional_center = workbook.\
+            add_format(dict(theader_yellow, num_format=pct_format_conditional,
+                            align='center'))
+        self.format_theader_yellow_percent_conditional_right = workbook.\
+            add_format(dict(theader_yellow, num_format=pct_format_conditional,
+                            align='right'))
+        self.format_theader_yellow_integer_left = workbook.add_format(
+            dict(theader_yellow, num_format=int_format, align='left'))
+        self.format_theader_yellow_integer_center = workbook.add_format(
+            dict(theader_yellow, num_format=int_format, align='center'))
+        self.format_theader_yellow_integer_right = workbook.add_format(
+            dict(theader_yellow, num_format=int_format, align='right'))
+        self.format_theader_yellow_integer_conditional_left = workbook.\
+            add_format(dict(theader_yellow, num_format=int_format_conditional,
+                            align='left'))
+        self.format_theader_yellow_integer_conditional_center = workbook.\
+            add_format(dict(theader_yellow, num_format=int_format_conditional,
+                            align='center'))
+        self.format_theader_yellow_integer_conditional_right = workbook.\
+            add_format(dict(theader_yellow, num_format=int_format_conditional,
+                            align='right'))
+
+        self.format_theader_blue_left = workbook.add_format(theader_blue)
         self.format_theader_blue_center = workbook.add_format(
             dict(theader_blue, align='center'))
         self.format_theader_blue_right = workbook.add_format(
             dict(theader_blue, align='right'))
-        self.format_theader_blue_amount = workbook.add_format(
-            dict(theader_blue, num_format=num_format))
-        self.format_theader_blue_amount_conditional = workbook.add_format(
-            dict(theader_blue, num_format=num_format_conditional))
-        self.format_theader_blue_percent = workbook.add_format(
-            dict(theader_blue, num_format=pct_format))
-        self.format_theader_blue_percent_conditional = workbook.add_format(
-            dict(theader_blue, num_format=pct_format_conditional))
-        self.format_theader_blue_integer = workbook.add_format(
-            dict(theader_blue, num_format=int_format))
-        self.format_theader_blue_integer_conditional = workbook.add_format(
-            dict(theader_blue, num_format=int_format_conditional))
+        self.format_theader_blue_amount_left = workbook.add_format(
+            dict(theader_blue, num_format=num_format, align='left'))
+        self.format_theader_blue_amount_center = workbook.add_format(
+            dict(theader_blue, num_format=num_format, align='center'))
+        self.format_theader_blue_amount_right = workbook.add_format(
+            dict(theader_blue, num_format=num_format, align='right'))
+        self.format_theader_blue_amount_conditional_left = workbook.\
+            add_format(dict(theader_blue, num_format=num_format_conditional,
+                            align='left'))
+        self.format_theader_blue_amount_conditional_center = workbook.\
+            add_format(dict(theader_blue, num_format=num_format_conditional,
+                            align='center'))
+        self.format_theader_blue_amount_conditional_right = workbook.\
+            add_format(dict(theader_blue, num_format=num_format_conditional,
+                            align='right'))
+        self.format_theader_blue_percent_left = workbook.add_format(
+            dict(theader_blue, num_format=pct_format, align='left'))
+        self.format_theader_blue_percent_center = workbook.add_format(
+            dict(theader_blue, num_format=pct_format, align='center'))
+        self.format_theader_blue_percent_right = workbook.add_format(
+            dict(theader_blue, num_format=pct_format, align='right'))
+        self.format_theader_blue_percent_conditional_left = workbook.\
+            add_format(dict(theader_blue, num_format=pct_format_conditional,
+                            align='left'))
+        self.format_theader_blue_percent_conditional_center = workbook.\
+            add_format(dict(theader_blue, num_format=pct_format_conditional,
+                            align='center'))
+        self.format_theader_blue_percent_conditional_right = workbook.\
+            add_format(dict(theader_blue, num_format=pct_format_conditional,
+                            align='right'))
+        self.format_theader_blue_integer_left = workbook.add_format(
+            dict(theader_blue, num_format=int_format, align='left'))
+        self.format_theader_blue_integer_center = workbook.add_format(
+            dict(theader_blue, num_format=int_format, align='center'))
+        self.format_theader_blue_integer_right = workbook.add_format(
+            dict(theader_blue, num_format=int_format, align='right'))
+        self.format_theader_blue_integer_conditional_left = workbook.\
+            add_format(dict(theader_blue, num_format=int_format_conditional,
+                            align='left'))
+        self.format_theader_blue_integer_conditional_center = workbook.\
+            add_format(dict(theader_blue, num_format=int_format_conditional,
+                            align='center'))
+        self.format_theader_blue_integer_conditional_right = workbook.\
+            add_format(dict(theader_blue, num_format=int_format_conditional,
+                            align='right'))
 
         # formats for worksheet table cells
-        self.format_tleft = workbook.add_format(
+        self.format_tcell_left = workbook.add_format(
             dict(border, align='left'))
-        self.format_tcenter = workbook.add_format(
+        self.format_tcell_center = workbook.add_format(
             dict(border, align='center'))
-        self.format_tright = workbook.add_format(
+        self.format_tcell_right = workbook.add_format(
             dict(border, align='right'))
-        self.format_tamount = workbook.add_format(
-            dict(border, num_format=num_format))
-        self.format_tamount_conditional = workbook.add_format(
-            dict(border, num_format=num_format_conditional))
-        self.format_tpercent = workbook.add_format(
-            dict(border, num_format=pct_format))
-        self.format_tpercent_conditional = workbook.add_format(
-            dict(border, num_format=pct_format_conditional))
-        self.format_tinteger = workbook.add_format(
-            dict(border, num_format=int_format))
-        self.format_tinteger_conditional = workbook.add_format(
-            dict(border, num_format=int_format_conditional))
-        self.format_tdate = workbook.add_format(
-            dict(border, align='left', num_format=date_format))
+        self.format_tcell_amount_left = workbook.add_format(
+            dict(border, num_format=num_format, align='left'))
+        self.format_tcell_amount_center = workbook.add_format(
+            dict(border, num_format=num_format, align='center'))
+        self.format_tcell_amount_right = workbook.add_format(
+            dict(border, num_format=num_format, align='right'))
+        self.format_tcell_amount_conditional_left = workbook.add_format(
+            dict(border, num_format=num_format_conditional, align='left'))
+        self.format_tcell_amount_conditional_center = workbook.add_format(
+            dict(border, num_format=num_format_conditional, align='center'))
+        self.format_tcell_amount_conditional_right = workbook.add_format(
+            dict(border, num_format=num_format_conditional, align='right'))
+        self.format_tcell_percent_left = workbook.add_format(
+            dict(border, num_format=pct_format, align='left'))
+        self.format_tcell_percent_center = workbook.add_format(
+            dict(border, num_format=pct_format, align='center'))
+        self.format_tcell_percent_right = workbook.add_format(
+            dict(border, num_format=pct_format, align='right'))
+        self.format_tcell_percent_conditional_left = workbook.add_format(
+            dict(border, num_format=pct_format_conditional, align='left'))
+        self.format_tcell_percent_conditional_center = workbook.add_format(
+            dict(border, num_format=pct_format_conditional, align='center'))
+        self.format_tcell_percent_conditional_right = workbook.add_format(
+            dict(border, num_format=pct_format_conditional, align='right'))
+        self.format_tcell_integer_left = workbook.add_format(
+            dict(border, num_format=int_format, align='left'))
+        self.format_tcell_integer_center = workbook.add_format(
+            dict(border, num_format=int_format, align='center'))
+        self.format_tcell_integer_right = workbook.add_format(
+            dict(border, num_format=int_format, align='right'))
+        self.format_tcell_integer_conditional_left = workbook.add_format(
+            dict(border, num_format=int_format_conditional, align='left'))
+        self.format_tcell_integer_conditional_center = workbook.add_format(
+            dict(border, num_format=int_format_conditional, align='center'))
+        self.format_tcell_integer_conditional_right = workbook.add_format(
+            dict(border, num_format=int_format_conditional, align='right'))
+        self.format_tcell_date_left = workbook.add_format(
+            dict(border, num_format=date_format, align='left'))
+        self.format_tcell_date_center = workbook.add_format(
+            dict(border, num_format=date_format, align='center'))
+        self.format_tcell_date_right = workbook.add_format(
+            dict(border, num_format=date_format, align='right'))
 
-        self.format_tleft_bold = workbook.add_format(
+        self.format_tcell_left_bold = workbook.add_format(
             dict(border, align='left', bold=True))
-        self.format_tcenter_bold = workbook.add_format(
+        self.format_tcell_center_bold = workbook.add_format(
             dict(border, align='center', bold=True))
-        self.format_tright_bold = workbook.add_format(
+        self.format_tcell_right_bold = workbook.add_format(
             dict(border, align='right', bold=True))
-        self.format_tamount_bold = workbook.add_format(
-            dict(border, bold=True, num_format=num_format))
-        self.format_tamount_bold_conditional = workbook.add_format(
-            dict(border, bold=True, num_format=num_format_conditional))
-        self.format_tpercent_bold = workbook.add_format(
-            dict(border, bold=True, num_format=pct_format))
-        self.format_tpercent_bold_conditional = workbook.add_format(
-            dict(border, bold=True, num_format=pct_format_conditional))
-        self.format_tinteger_bold = workbook.add_format(
-            dict(border, bold=True, num_format=int_format))
-        self.format_tinteger_bold_conditional = workbook.add_format(
-            dict(border, bold=True, num_format=int_format_conditional))
-        self.format_tdate_bold = workbook.add_format(
-            dict(border, align='left', bold=True, num_format=date_format))
+        self.format_tcell_amount_left_bold = workbook.add_format(
+            dict(border, num_format=num_format, align='left', bold=True))
+        self.format_tcell_amount_center_bold = workbook.add_format(
+            dict(border, num_format=num_format, align='center', bold=True))
+        self.format_tcell_amount_right_bold = workbook.add_format(
+            dict(border, num_format=num_format, align='right', bold=True))
+        self.format_tcell_amount_conditional_left_bold = workbook.\
+            add_format(dict(border, num_format=num_format_conditional,
+                            align='left', bold=True))
+        self.format_tcell_amount_conditional_center_bold = workbook.\
+            add_format(dict(border, num_format=num_format_conditional,
+                            align='center', bold=True))
+        self.format_tcell_amount_conditional_right_bold = workbook.\
+            add_format(dict(border, num_format=num_format_conditional,
+                            align='right', bold=True))
+        self.format_tcell_percent_left_bold = workbook.add_format(
+            dict(border, num_format=pct_format, align='left', bold=True))
+        self.format_tcell_percent_center_bold = workbook.add_format(
+            dict(border, num_format=pct_format, align='center', bold=True))
+        self.format_tcell_percent_right_bold = workbook.add_format(
+            dict(border, num_format=pct_format, align='right', bold=True))
+        self.format_tcell_percent_conditional_left_bold = workbook.\
+            add_format(dict(border, num_format=pct_format_conditional,
+                            align='left', bold=True))
+        self.format_tcell_percent_conditional_center_bold = workbook.\
+            add_format(dict(border, num_format=pct_format_conditional,
+                            align='center', bold=True))
+        self.format_tcell_percent_conditional_right_bold = workbook.\
+            add_format(dict(border, num_format=pct_format_conditional,
+                            align='right', bold=True))
+        self.format_tcell_integer_left_bold = workbook.add_format(
+            dict(border, num_format=int_format, align='left', bold=True))
+        self.format_tcell_integer_center_bold = workbook.add_format(
+            dict(border, num_format=int_format, align='center', bold=True))
+        self.format_tcell_integer_right_bold = workbook.add_format(
+            dict(border, num_format=int_format, align='right', bold=True))
+        self.format_tcell_integer_conditional_left_bold = workbook.\
+            add_format(dict(border, num_format=int_format_conditional,
+                            align='left', bold=True))
+        self.format_tcell_integer_conditional_center_bold = workbook.\
+            add_format(dict(border, num_format=int_format_conditional,
+                            align='center', bold=True))
+        self.format_tcell_integer_conditional_right_bold = workbook.\
+            add_format(dict(border, num_format=int_format_conditional,
+                            align='right', bold=True))
+        self.format_tcell_date_left_bold = workbook.add_format(
+            dict(border, num_format=date_format, align='left', bold=True))
+        self.format_tcell_date_center_bold = workbook.add_format(
+            dict(border, num_format=date_format, align='center', bold=True))
+        self.format_tcell_date_right_bold = workbook.add_format(
+            dict(border, num_format=date_format, align='right', bold=True))
 
     def _set_column_width(self, ws, ws_params):
         """
