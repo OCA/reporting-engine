@@ -43,14 +43,14 @@ class AbstractReportXlsx(ReportXlsx):
         else:
             if len(name) > max_chars:
                 raise UserError(_(
-                    "Programming Error."
-                    "\nExcel Sheet name '%s' should not exceed %s characters."
+                    "Programming Error:\n\n"
+                    "Excel Sheet name '%s' should not exceed %s characters."
                 ) % (name, max_chars))
             special_chars = pattern.findall(name)
             if special_chars:
                 raise UserError(_(
-                    "Programming Error."
-                    "\nExcel Sheet name '%s' contains unsupported special "
+                    "Programming Error:\n\n"
+                    "Excel Sheet name '%s' contains unsupported special "
                     "characters: '%s'."
                 ) % (name, special_chars))
         return name
@@ -445,10 +445,9 @@ class AbstractReportXlsx(ReportXlsx):
         for pos, col in enumerate(wl):
             if col not in col_specs:
                 raise UserError(_(
-                    "%s - Programming Error: "
-                    "the '%' column is not defined the worksheet "
-                    "column specifications.")
-                    % (__name__, col))
+                    "Programming Error:\n\n"
+                    "The '%s' column is not defined in the worksheet "
+                    "column specifications.") % col)
             ws.set_column(pos, pos, col_specs[col]['width'])
 
     def _write_ws_title(self, ws, row_pos, ws_params, merge_range=False):
@@ -460,10 +459,9 @@ class AbstractReportXlsx(ReportXlsx):
         title = ws_params.get('title')
         if not title:
             raise UserError(_(
-                "%s - Programming Error: "
-                "the 'title' parameter is mandatory "
-                "when calling the '_write_ws_title' method.")
-                % __name__)
+                "Programming Error:\n\n"
+                "The 'title' parameter is mandatory "
+                "when calling the '_write_ws_title' method."))
         if merge_range:
             wl = ws_params.get('wanted_list')
             if wl and len(wl) > 1:
@@ -488,10 +486,9 @@ class AbstractReportXlsx(ReportXlsx):
         for col in wl:
             if col not in col_specs:
                 raise UserError(_(
-                    "%s - Programming Error: "
-                    "the '%' column is not defined the worksheet "
-                    "column specifications.")
-                    % (__name__, col))
+                    "Programming Error:\n\n"
+                    "The '%s' column is not defined the worksheet "
+                    "column specifications.") % col)
             colspan = col_specs[col].get('colspan') or 1
             cell_spec = col_specs[col].get(col_specs_section) or {}
             if not cell_spec:
