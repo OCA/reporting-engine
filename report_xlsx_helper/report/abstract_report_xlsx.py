@@ -18,7 +18,6 @@ class AbstractReportXlsx(ReportXlsx):
     def create(self, cr, uid, ids, data, context=None):
         if context.get('xlsx_export'):
             self.env = api.Environment(cr, uid, context)
-            # pylint: disable=old-api7-method-defined
             return self.create_xlsx_report(ids, data, None)
         else:
             return super(AbstractReportXlsx, self).create(
@@ -555,7 +554,7 @@ class AbstractReportXlsx(ReportXlsx):
             render_space['datetime'] = datetime
         # the use of eval is not a security thread as long as the
         # col_specs template is defined in a python module
-        return eval(val, render_space)  # pylint: disable=W0123
+        return eval(val, render_space)  # pylint: disable=W8112
 
     @staticmethod
     def _rowcol_to_cell(row, col, row_abs=False, col_abs=False):
