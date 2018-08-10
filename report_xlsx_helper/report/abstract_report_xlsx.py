@@ -502,12 +502,14 @@ class AbstractReportXlsx(ReportXlsx):
                 cell_type = cell_spec.get('type')
                 cell_format = cell_spec.get('format') or default_format
                 if not cell_type:
-                    if isinstance(cell_value, basestring):
-                        cell_type = 'string'
-                    elif isinstance(cell_value, (int, float)):
-                        cell_type = 'number'
-                    elif isinstance(cell_value, bool):
+                    # test bool first since isinstance(val, int) returns
+                    # True when type(val) is bool
+                    if isinstance(cell_value, bool):
                         cell_type = 'boolean'
+                    elif isinstance(cell_value, basestring):
+                        cell_type = 'string'
+                    elif isinstance(cell_value, (int, long, float)):
+                        cell_type = 'number'
                     elif isinstance(cell_value, datetime):
                         cell_type = 'datetime'
                     else:
