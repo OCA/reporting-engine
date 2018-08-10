@@ -295,12 +295,13 @@ class BveView(models.Model):
         table_name = self.model_name.replace('.', '_')
 
         # robustness in case something went wrong
+        # pylint: disable=sql-injection
         self._cr.execute('DROP TABLE IF EXISTS "%s"' % table_name)
 
         basic_fields = [
             ("t0.id", "id")
         ]
-
+        # pylint: disable=sql-injection
         q = """CREATE or REPLACE VIEW %s as (
             SELECT %s
             FROM  %s
