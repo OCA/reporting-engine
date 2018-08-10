@@ -205,6 +205,7 @@ class BveView(models.Model):
         self.ensure_one()
 
         def group_ids_with_access(model_name, access_mode):
+            # pylint: disable=sql-injection
             self.env.cr.execute('''SELECT
                   g.id
                 FROM
