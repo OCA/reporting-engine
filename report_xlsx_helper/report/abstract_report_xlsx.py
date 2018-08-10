@@ -14,6 +14,7 @@ from odoo.exceptions import UserError
 
 class AbstractReportXlsx(ReportXlsx):
 
+    # pylint: disable=old-api7-method-defined
     def create(self, cr, uid, ids, data, context=None):
         if context.get('xlsx_export'):
             self.env = api.Environment(cr, uid, context)
