@@ -205,6 +205,7 @@ class BveView(models.Model):
         self.ensure_one()
 
         def group_ids_with_access(model_name, access_mode):
+            # pylint: disable=sql-injection
             self.env.cr.execute('''SELECT
                   g.id
                 FROM
@@ -294,12 +295,13 @@ class BveView(models.Model):
         table_name = self.model_name.replace('.', '_')
 
         # robustness in case something went wrong
+        # pylint: disable=sql-injection
         self._cr.execute('DROP TABLE IF EXISTS "%s"' % table_name)
 
         basic_fields = [
             ("t0.id", "id")
         ]
-
+        # pylint: disable=sql-injection
         q = """CREATE or REPLACE VIEW %s as (
             SELECT %s
             FROM  %s
