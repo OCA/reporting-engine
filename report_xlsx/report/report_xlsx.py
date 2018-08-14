@@ -5,7 +5,7 @@
 from cStringIO import StringIO
 
 from odoo.report.report_sxw import report_sxw
-from odoo.api import Environment
+from odoo import api
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -18,8 +18,9 @@ except ImportError:
 
 class ReportXlsx(report_sxw):
 
+    @api.cr_uid_ids_context
     def create(self, cr, uid, ids, data, context=None):
-        self.env = Environment(cr, uid, context)
+        self.env = api.Environment(cr, uid, context)
         report_obj = self.env['ir.actions.report.xml']
         report = report_obj.search([('report_name', '=', self.name[7:])])
         if report.ids:
