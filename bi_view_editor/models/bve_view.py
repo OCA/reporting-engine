@@ -257,6 +257,7 @@ class BveView(models.Model):
         _build_query()
         obj = _build_object()
         _build_access_rules(obj)
+        # pylint: disable=invalid-commit
         self.env.cr.commit()
 
         from openerp.modules.registry import RegistryManager

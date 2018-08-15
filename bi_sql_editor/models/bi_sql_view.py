@@ -409,7 +409,7 @@ class BiSQLView(models.Model):
                 self._prepare_rule()).id
             # Drop table, created by the ORM
             req = "DROP TABLE %s" % (sql_view.view_name)\
-                # pylint: disable=sql-injection
+            # pylint: disable=sql-injection
             self.env.cr.execute(req)
 
     @api.multi
@@ -432,6 +432,7 @@ class BiSQLView(models.Model):
     @api.multi
     def _hook_executed_request(self):
         self.ensure_one()
+        # pylint: disable=sql-injection
         req = """
             SELECT  attnum,
                     attname AS column,
@@ -527,6 +528,7 @@ class BiSQLView(models.Model):
     def _refresh_size(self):
         for sql_view in self:
             req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));" % (
-                sql_view.view_name)  # pylint: disable=sql-injection
+                sql_view.view_name)
+            # pylint: disable=sql-injection
             self.env.cr.execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
