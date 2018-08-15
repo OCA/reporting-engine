@@ -157,6 +157,7 @@ class BveView(models.Model):
                 ("t0.create_date", "create_date")
             ]
 
+            # pylint: disable=sql-injection
             q = """CREATE or REPLACE VIEW %s as (
                 SELECT %s
                 FROM  %s
@@ -209,6 +210,7 @@ class BveView(models.Model):
 
         # read access
         def group_ids_with_access(model_name, access_mode):
+            # pylint: disable=sql-injection
             self.env.cr.execute('''SELECT
                   g.id
                 FROM
