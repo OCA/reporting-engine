@@ -442,7 +442,7 @@ class BiSQLView(models.Model):
             AND     NOT attisdropped
             AND     attnum > 0
             ORDER   BY attnum;""" % (
-                self.view_name)  # pylint: disable=sql-injection
+            self.view_name)  # pylint: disable=sql-injection
         self.env.cr.execute(req)
         return self.env.cr.fetchall()
 
