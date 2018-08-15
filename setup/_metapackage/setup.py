@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo10-addon-report_qweb_txt',
         'odoo10-addon-report_wkhtmltopdf_param',
         'odoo10-addon-report_xlsx',
+        'odoo10-addon-report_xlsx_helper',
         'odoo10-addon-report_xml',
     ],
     classifiers=[
