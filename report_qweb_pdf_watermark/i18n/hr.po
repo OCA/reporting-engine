@@ -3,15 +3,14 @@
 # * report_qweb_pdf_watermark
 #
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Bole <bole@dajmi5.com>, 2018
+# Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-16 01:44+0000\n"
-"PO-Revision-Date: 2018-02-16 01:44+0000\n"
-"Last-Translator: Bole <bole@dajmi5.com>, 2018\n"
+"POT-Creation-Date: 2017-01-10 03:40+0000\n"
+"PO-Revision-Date: 2017-01-10 03:40+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -26,30 +25,23 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
-"Izraz koji polučuje base46 kodirane podatke koji se koriste kao vodeni žig.\n"
-"Imate pristup varijablama 'env' i 'docs'"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
-msgstr "Demo izvještaj"
-
-#. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_report
-msgid "Report"
-msgstr "Izvještaj"
+msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark
 msgid "Watermark"
-msgstr "Vodeni žig"
+msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark_expression
 msgid "Watermark expression"
-msgstr "Izraz vodenog žiga"
+msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
-msgstr "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
+msgid "ir.actions.report"
+msgstr "ir.actions.report"
