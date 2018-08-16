@@ -11,7 +11,9 @@ This module was written to add watermarks (backgrounds) to PDF reports. Because 
 Installation
 ============
 
-This module works out of the box, but is faster if you install the python library PyPDF2.
+As PyPDF is not supported in python3, you need to install PyPDF2::
+
+$ pip install pypdf2
 
 Usage
 =====
@@ -51,6 +53,7 @@ Contributors
 
 * Holger Brunn <hbrunn@therp.nl>
 * Stefan Rijnhart <stefan@opener.am>
+* Rod Schouteden <rod.schouteden@dynapps.be>
 
 Do not contact contributors directly about help with questions or problems concerning this addon, but use the `community mailing list <mailto:community@mail.odoo.com>`_ or the `appropriate specialized mailinglist <https://odoo-community.org/groups>`_ for help, and the bug tracker linked in `Bug Tracker`_ above for technical issues.
 
