@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_pdf_watermark
-#
+# 
 # Translators:
 # Pedro M. Baeza <pedro.baeza@gmail.com>, 2017
 # OCA Transbot <transbot@odoo-community.org>, 2017
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2017-01-10 03:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_pdf_watermark
@@ -25,12 +25,11 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
-"Una expresión que obtenga los datos codificados en base64 a ser usada como "
-"marca de agua.\n"
+"Una expresión que obtenga los datos codificados en base64 a ser usada como marca de agua.\n"
 "Tiene acceso a las variables `env` y `docs`."
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
 msgstr "Informe demo"
 
@@ -50,6 +49,6 @@ msgid "Watermark expression"
 msgstr "Expresión para la marca de agua"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
-msgstr "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir.actions.report
+msgid "ir.actions.report"
+msgstr "ir.actions.report"
