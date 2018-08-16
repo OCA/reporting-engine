@@ -29,7 +29,7 @@ msgstr ""
 "Tiene acceso a las variables `env` y `docs`."
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
 msgstr "Informe demo"
 
@@ -49,6 +49,6 @@ msgid "Watermark expression"
 msgstr "Expresión para la marca de agua"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
-msgstr "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir.actions.report
+msgid "ir.actions.report"
+msgstr "ir.actions.report"
