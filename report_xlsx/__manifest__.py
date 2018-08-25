@@ -7,9 +7,9 @@
     'author': 'ACSONE SA/NV,'
               'Creu Blanca,'
               'Odoo Community Association (OCA)',
-    'website': "http://github.com/oca/reporting-engine",
+    'website': "https://github.com/oca/reporting-engine",
     'category': 'Reporting',
-    'version': '11.0.1.0.2',
+    'version': '11.0.1.0.3',
     'license': 'AGPL-3',
     'external_dependencies': {
         'python': [
