@@ -14,9 +14,14 @@ ActionManager.include({
         if (cloned_action.report_type === 'xlsx') {
             framework.blockUI();
             var report_xlsx_url = 'report/xlsx/' + cloned_action.report_name;
-            if(cloned_action.context.active_ids){
-                report_xlsx_url += '/' + cloned_action.context.active_ids.join(',');
-            }else{
+            if (_.isUndefined(cloned_action.data) ||
+                _.isNull(cloned_action.data) ||
+                (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data)))
+            {
+                if(cloned_action.context.active_ids) {
+                    report_xlsx_url += '/' + cloned_action.context.active_ids.join(',');
+                }
+            } else {
                 report_xlsx_url += '?options=' + encodeURIComponent(JSON.stringify(cloned_action.data));
                 report_xlsx_url += '&context=' + encodeURIComponent(JSON.stringify(cloned_action.context));
             }
