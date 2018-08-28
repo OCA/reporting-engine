@@ -18,6 +18,8 @@ class BaseModel(models.AbstractModel):
     @api.model_cr_context
     def _auto_init(self):
         if self._name.startswith(BiSQLView._model_prefix):
+            if 'update_custom_fields' not in self._context:
+                return True
             self._auto = False
         return super(BaseModel, self)._auto_init()
 
