@@ -3,8 +3,11 @@
 
 import logging
 
-from odoo import _, api, models, tools
+from odoo import SUPERUSER_ID
+from odoo import _, api, models, modules, tools
 from odoo.exceptions import UserError
+
+from odoo.tools import (existing_tables, topological_sort)
 
 _logger = logging.getLogger(__name__)
 
@@ -12,6 +15,42 @@ _logger = logging.getLogger(__name__)
 @api.model
 def _bi_view(_name):
     return _name[0:6] == 'x_bve.'
+
+
+def check_tables_exist(self, cr):
+    """
+    Verify that all tables are present and try to initialize
+    those that are missing.
+    """
+    # This monkey patch is meant to avoid that the _logger writes
+    # warning and error messages, while running an update all,
+    # in case the model is a bi-view-generated model.
+
+    env = api.Environment(cr, SUPERUSER_ID, {})
+    table2model = {
+        model._table: name for name, model in env.items()
+        if not model._abstract and not _bi_view(name)  # here is the patch
+    }
+    missing_tables = set(table2model).difference(
+        existing_tables(cr, table2model))
+
+    if missing_tables:
+        missing = {table2model[table] for table in missing_tables}
+        _logger.warning("Models have no table: %s.", ", ".join(missing))
+        # recreate missing tables following model dependencies
+        deps = {name: model._depends for name, model in env.items()}
+        for name in topological_sort(deps):
+            if name in missing:
+                _logger.info("Recreate table of model %s.", name)
+                env[name].init()
+        # check again, and log errors if tables are still missing
+        missing_tables = set(table2model).difference(
+            existing_tables(cr, table2model))
+        for table in missing_tables:
+            _logger.error("Model %s has no table.", table2model[table])
+
+
+modules.registry.Registry.check_tables_exist = check_tables_exist
 
 
 @api.model_cr_context
@@ -38,7 +77,6 @@ def _auto_init(self):
     # an update all is the one of BaseModel, and not the one of Base.
 
     # START OF patch
-    # TODO: find better ways to do this patch
     if _bi_view(self._name):
         return
     # END of patch
