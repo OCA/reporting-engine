@@ -283,7 +283,7 @@ class RMLParse(object):
             ret_lst.append({name: id})
         return ret_lst
 
-    def _translate(self,text):
+    def _translate(self, text):
         lang = self.localcontext['lang']
         if lang and text and not text.isspace():
             env = odoo.api.Environment(self.cr, self.uid, {})
@@ -310,7 +310,7 @@ class RMLParse(object):
         self.ids = ids
         self.objects = objects
         if report_type:
-            if report_type=='odt' :
+            if report_type == 'odt':
                 self.localcontext.update({'name_space': odt_namespace})
             else:
                 self.localcontext.update({'name_space': sxw_namespace})

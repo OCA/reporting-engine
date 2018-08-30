@@ -126,12 +126,14 @@ class TestReportPy3o(TransactionCase):
 
         # the template can also be provided as an abspath if it's root path
         # is trusted
-        self.report.py3o_template_fallback = self.env.ref("report_py3o.res_user_report")
+        self.report.py3o_template_fallback = \
+            self.env.ref("report_py3o.res_user_report")
         with self.assertRaises(TemplateNotFound):
             self.report.render_py3o(
                 self.env.user.ids, {})
 
-        self.report.py3o_template_id = self.env.ref("report_py3o.res_user_report")
+        self.report.py3o_template_id = \
+            self.env.ref("report_py3o.res_user_report")
         with temporary_copy(flbk_filename) as tmp_filename:
             self.report.py3o_template_fallback = tmp_filename
             tools.config.misc['report_py3o'] = {
