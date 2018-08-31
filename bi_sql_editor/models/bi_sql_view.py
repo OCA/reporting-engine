@@ -232,7 +232,7 @@ class BiSQLView(models.Model):
             if sql_view.state != 'sql_valid':
                 raise UserError(_(
                     "You can only process this action on SQL Valid items"))
-            # Create ORM and acess
+            # Create ORM and access
             sql_view._create_model_and_fields()
             sql_view._create_model_access()
 
@@ -342,9 +342,9 @@ class BiSQLView(models.Model):
             'user_id': SUPERUSER_ID,
             'model_id': self.env['ir.model'].search([
                 ('model', '=', self._name)], limit=1).id,
-            'function': '_refresh_materialized_view_cron',
+            'state': 'code',
+            'code': 'model._refresh_materialized_view_cron(%s)' % self.ids,
             'numbercall': -1,
-            'args': repr(([self.id],))
         }
 
     @api.multi
@@ -610,7 +610,11 @@ class BiSQLView(models.Model):
 
     @api.model
     def _refresh_materialized_view_cron(self, view_ids):
-        sql_views = self.browse(view_ids)
+        sql_views = self.search([
+            ('is_materialized', '=', True),
+            ('state', 'in', ['model_valid', 'ui_valid']),
+            ('id', 'in', view_ids),
+        ])
         return sql_views._refresh_materialized_view()
 
     @api.multi
