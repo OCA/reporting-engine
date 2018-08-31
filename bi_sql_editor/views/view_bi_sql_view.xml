@@ -38,7 +38,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"/>
                     <button name="button_update_model_access" type="object"
                         attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('has_group_changed', '=', False)]}"
-                        string="Update Model Acess" class="oe_highlight"
+                        string="Update Model Access" class="oe_highlight"
                         help="Update Model Access. Required if you changed groups list after having created the model"/>
                     <button name="button_create_ui" type="object" states="model_valid" string="Create UI"
                         class="oe_highlight" help="This will create Odoo View, Action and Menu"/>
