@@ -220,8 +220,8 @@ class BiSQLView(models.Model):
         self.ensure_one()
         default = dict(default or {})
         default.update({
-            'name': _('%s (Copy)') % (self.name),
-            'technical_name': '%s_copy' % (self.technical_name),
+            'name': _('%s (Copy)') % self.name,
+            'technical_name': '%s_copy' % self.technical_name,
         })
         return super(BiSQLView, self).copy(default=default)
 
@@ -338,7 +338,7 @@ class BiSQLView(models.Model):
     def _prepare_cron(self):
         self.ensure_one()
         return {
-            'name': _('Refresh Materialized View %s') % (self.view_name),
+            'name': _('Refresh Materialized View %s') % self.view_name,
             'user_id': SUPERUSER_ID,
             'model_id': self.env['ir.model'].search([
                 ('model', '=', self._name)], limit=1).id,
@@ -351,7 +351,7 @@ class BiSQLView(models.Model):
     def _prepare_rule(self):
         self.ensure_one()
         return {
-            'name': _('Access %s') % (self.name),
+            'name': _('Access %s') % self.name,
             'model_id': self.model_id.id,
             'domain_force': self.domain_force,
             'global': True,
@@ -457,13 +457,13 @@ class BiSQLView(models.Model):
         return {
             'name': self.name,
             'parent_id': self.env.ref('bi_sql_editor.menu_bi_sql_editor').id,
-            'action': 'ir.actions.act_window,%s' % (self.action_id.id),
+            'action': 'ir.actions.act_window,%s' % self.action_id.id,
             'sequence': self.sequence,
         }
 
     # Custom Section
     def _log_execute(self, req):
-        _logger.info("Executing SQL Request %s ..." % (req))
+        _logger.info("Executing SQL Request %s ..." % req)
         self.env.cr.execute(req)
 
     @api.multi
@@ -506,7 +506,7 @@ class BiSQLView(models.Model):
             sql_view.rule_id = self.env['ir.rule'].create(
                 self._prepare_rule()).id
             # Drop table, created by the ORM
-            req = "DROP TABLE %s" % (sql_view.view_name)
+            req = "DROP TABLE %s" % sql_view.view_name
             self._log_execute(req)
 
     @api.multi
@@ -540,7 +540,7 @@ class BiSQLView(models.Model):
             WHERE   attrelid = '%s'::regclass
             AND     NOT attisdropped
             AND     attnum > 0
-            ORDER   BY attnum;""" % (self.view_name)
+            ORDER   BY attnum;""" % self.view_name
         self._log_execute(req)
         return self.env.cr.fetchall()
 
@@ -562,7 +562,7 @@ class BiSQLView(models.Model):
                 my_query.*
             FROM
                 (%s) as my_query
-        """ % (self.query)
+        """ % self.query
         return "CREATE %s VIEW %s AS (%s);" % (
             self.materialized_text, self.view_name, query)
 
