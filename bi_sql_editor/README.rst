@@ -114,6 +114,7 @@ Known issues / Roadmap
 ======================
 
 * Add 'interval', after type (row/col/measure) field for date(time) fields.
+* Possibly avoid the monkey patches
 
 Note
 ====
