@@ -54,15 +54,16 @@ odoo.define('bi_view_editor', function (require) {
             if (this.mode !== 'readonly') {
                 this.field_list.set([]);
                 this.loadAndPopulateModelList();
-                this._setValue(JSON.stringify(this.field_list.get()));
+                this._setValue(this.field_list.get());
             }
         },
         fieldListChanged: function() {
-            this._setValue(JSON.stringify(this.field_list.get()));
+            this._setValue(this.field_list.get());
         },
         fieldListRemoved: function() {
+            console.log(this.field_list.get());
             this.loadAndPopulateModelList();
-            this._setValue(JSON.stringify(this.field_list.get()));
+            this._setValue(this.field_list.get());
         },
         renderValue: function() {
             this.field_list.set(JSON.parse(this.value));
@@ -113,7 +114,7 @@ odoo.define('bi_view_editor', function (require) {
 
             this.field_list.add(field);
             this.loadAndPopulateModelList();
-            this._setValue(JSON.stringify(this.field_list.get()));
+            this._setValue(this.field_list.get());
         },
         addField: function(field) {
             var data = _.extend({}, field);
@@ -132,9 +133,12 @@ odoo.define('bi_view_editor', function (require) {
                     data.table_alias = table_alias;
                     this.field_list.add(data);
                     this.loadAndPopulateModelList();
-                    this._setValue(JSON.stringify(this.field_list.get()));
+                    this._setValue(this.field_list.get());
                 }
             }.bind(this));
+        },
+        _parseValue: function(value) {
+            return JSON.stringify(value);
         }
     });
 
