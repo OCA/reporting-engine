@@ -8,26 +8,35 @@ from psycopg2 import ProgrammingError
 
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError
+from odoo.tools import pycompat, sql
+from odoo.addons.base.ir.ir_model import IrModel
 
 _logger = logging.getLogger(__name__)
 
 
-class BaseModel(models.AbstractModel):
-    _inherit = 'base'
+@api.model
+def _instanciate(self, model_data):
+    """ Return a class for the custom model given by
+    parameters ``model_data``. """
+    # This monkey patch is meant to avoid create/search tables for those
+    # materialized views. Doing "super" doesn't work.
+    class CustomModel(models.Model):
+        _name = pycompat.to_native(model_data['model'])
+        _description = model_data['name']
+        _module = False
+        _custom = True
+        _transient = bool(model_data['transient'])
+        __doc__ = model_data['info']
 
-    @api.model_cr_context
-    def _auto_init(self):
-        if self._name.startswith(BiSQLView._model_prefix):
-            if 'update_custom_fields' not in self._context:
-                return True
-            self._auto = False
-        return super(BaseModel, self)._auto_init()
+    # START OF patch
+    if model_data['model'].startswith(BiSQLView._model_prefix):
+        CustomModel._auto = False
+        CustomModel._abstract = True
+    # END of patch
+    return CustomModel
 
-    @api.model_cr_context
-    def _auto_end(self):
-        if self._name.startswith(BiSQLView._model_prefix):
-            self._foreign_keys = set()
-        return super(BaseModel, self)._auto_end()
+
+IrModel._instanciate = _instanciate
 
 
 class BiSQLView(models.Model):
@@ -212,7 +221,9 @@ class BiSQLView(models.Model):
     @api.multi
     def unlink(self):
         if any(view.state not in ('draft', 'sql_valid') for view in self):
-            raise UserError(_("You can only unlink draft views"))
+            raise UserError(
+                _("You can only unlink draft views."
+                  "If you want to delete them, first set them to draft."))
         return super(BiSQLView, self).unlink()
 
     @api.multi
@@ -506,8 +517,9 @@ class BiSQLView(models.Model):
             sql_view.rule_id = self.env['ir.rule'].create(
                 self._prepare_rule()).id
             # Drop table, created by the ORM
-            req = "DROP TABLE %s" % sql_view.view_name
-            self._log_execute(req)
+            if sql.table_exists(self._cr, sql_view.view_name):
+                req = "DROP TABLE %s" % sql_view.view_name
+                self._log_execute(req)
 
     @api.multi
     def _create_model_access(self):
