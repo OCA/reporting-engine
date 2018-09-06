@@ -56,7 +56,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <group>
                         <group>
                             <group>
-                                <field name="technical_name"/>
+                                <field name="technical_name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="view_name"/>
                                 <field name="view_order"/>
                                 <field name="is_materialized"/>
@@ -69,7 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </group>
                     <notebook>
                         <page string="SQL Query">
-                            <field name="query" nolabel="1" colspan="4"/>
+                            <field name="query" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                         </page>
                         <page string="SQL Fields" attrs="{'invisible': [('state', '=', 'draft')]}">
                             <field name="bi_sql_view_field_ids" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'sql_valid')]}">
