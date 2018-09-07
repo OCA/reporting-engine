@@ -24,6 +24,7 @@
     'qweb': [
         'static/src/xml/bi_view_editor.xml'
     ],
+    'post_load': 'post_load',
+    'uninstall_hook': 'uninstall_hook',
     'installable': True,
-    'uninstall_hook': 'uninstall_hook'
 }
