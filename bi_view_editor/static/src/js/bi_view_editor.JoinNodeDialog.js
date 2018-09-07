@@ -14,9 +14,9 @@ odoo.define('bi_view_editor.JoinNodeDialog', function (require) {
             '/bi_view_editor/static/src/xml/bi_view_editor.xml'
         ]),
         events: {
-            "click li": "choiceClicked",
+            "click li": "choiceClicked"
         },
-        init: function(parent, options, choices, model_data) {
+        init: function (parent, options, choices, model_data) {
             this.choices = choices;
             // Prepare data for view
             for (var i = 0; i < choices.length; i++) {
@@ -36,11 +36,11 @@ odoo.define('bi_view_editor.JoinNodeDialog', function (require) {
                     text: _t("Cancel"),
                     classes: "btn-default o_form_button_cancel",
                     close: true
-                }],
+                }]
             });
             this._super(parent, defaults);
         },
-        choiceClicked: function(e) {
+        choiceClicked: function (e) {
             this.trigger('chosen', {
                 choice: this.choices[$(e.currentTarget).attr('data-index')]
             });

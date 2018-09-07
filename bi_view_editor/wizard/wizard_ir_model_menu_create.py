@@ -9,9 +9,9 @@ class WizardModelMenuCreate(models.TransientModel):
 
     @api.multi
     def menu_create(self):
-        if self._context.get('active_model') == 'bve.view':
+        if self.env.context.get('active_model') == 'bve.view':
             self.ensure_one()
-            active_id = self._context.get('active_id')
+            active_id = self.env.context.get('active_id')
             bve_view = self.env['bve.view'].browse(active_id)
             menu = self.env['ir.ui.menu'].create({
                 'name': self.name,
@@ -31,8 +31,8 @@ class WizardModelMenuCreate(models.TransientModel):
     @api.model
     def default_get(self, fields_list):
         defaults = super(WizardModelMenuCreate, self).default_get(fields_list)
-        if self._context.get('active_model') == 'bve.view':
-            active_id = self._context.get('active_id')
+        if self.env.context.get('active_model') == 'bve.view':
+            active_id = self.env.context.get('active_id')
             bve_view = self.env['bve.view'].browse(active_id)
             defaults.setdefault('name', bve_view.name)
         return defaults
