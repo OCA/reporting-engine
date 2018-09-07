@@ -17,14 +17,14 @@ odoo.define('bi_view_editor', function (require) {
         events: {
             "click .clear-btn": "clear"
         },
-        start: function() {
+        start: function () {
             var self = this;
             var res = this._super.apply(this, arguments);
 
             // Init ModelList
             this.model_list = new ModelList(this);
             this.model_list.appendTo(this.$(".body > .left"));
-            this.model_list.on('field_clicked', this, function(field) {
+            this.model_list.on('field_clicked', this, function (field) {
                 self.addField(_.extend({}, field));
             });
 
@@ -42,7 +42,7 @@ odoo.define('bi_view_editor', function (require) {
                 }
             });
 
-            this.on("change:effective_readonly", this, function() {
+            this.on("change:effective_readonly", this, function () {
                 this.updateMode();
             });
             this.renderValue();
@@ -50,22 +50,22 @@ odoo.define('bi_view_editor', function (require) {
             this.updateMode();
             return res;
         },
-        clear: function() {
+        clear: function () {
             if (this.mode !== 'readonly') {
                 this.field_list.set([]);
                 this.loadAndPopulateModelList();
                 this._setValue(this.field_list.get());
             }
         },
-        fieldListChanged: function() {
+        fieldListChanged: function () {
             this._setValue(this.field_list.get());
         },
-        fieldListRemoved: function() {
+        fieldListRemoved: function () {
             console.log(this.field_list.get());
             this.loadAndPopulateModelList();
             this._setValue(this.field_list.get());
         },
-        renderValue: function() {
+        renderValue: function () {
             this.field_list.set(JSON.parse(this.value));
         },
         updateMode: function () {
@@ -79,16 +79,16 @@ odoo.define('bi_view_editor', function (require) {
             this.field_list.setMode(this.mode);
             this.model_list.setMode(this.mode);
         },
-        loadAndPopulateModelList: function() {
+        loadAndPopulateModelList: function () {
             var model_ids = null;
             if (this.field_list.get().length > 0) {
                 model_ids = this.field_list.getModelIds();
             }
-            this.model_list.loadModels(model_ids).done(function(models) {
+            this.model_list.loadModels(model_ids).done(function (models) {
                 this.model_list.populateModels(models);
             }.bind(this));
         },
-        getTableAlias: function(field) {
+        getTableAlias: function (field) {
             if (typeof field.table_alias === 'undefined') {
                 var model_ids = this.field_list.getModelIds();
                 var n = 0;
@@ -99,7 +99,7 @@ odoo.define('bi_view_editor', function (require) {
             }
             return field.table_alias;
         },
-        addFieldAndJoinNode: function(field, join_node) {
+        addFieldAndJoinNode: function (field, join_node) {
             if (join_node.join_node === -1 || join_node.table_alias === -1) {
                 field.table_alias = this.getTableAlias(field);
                 if (join_node.join_node === -1) {
@@ -116,16 +116,16 @@ odoo.define('bi_view_editor', function (require) {
             this.loadAndPopulateModelList();
             this._setValue(this.field_list.get());
         },
-        addField: function(field) {
+        addField: function (field) {
             var data = _.extend({}, field);
             var model = new Data.DataSet(this, "ir.model");
             var field_data = this.field_list.get();
-            model.call('get_join_nodes', [field_data, data]).then(function(result) {
+            model.call('get_join_nodes', [field_data, data]).then(function (result) {
                 if (result.length === 1) {
                     this.addFieldAndJoinNode(data, result[0]);
                 } else if (result.length > 1) {
                     var dialog = new JoinNodeDialog(this, {}, result, this.field_list.getModelData());
-                    dialog.open().on('chosen', this, function(e) {
+                    dialog.open().on('chosen', this, function (e) {
                         this.addFieldAndJoinNode(data, e.choice);
                     });
                 } else {
@@ -137,7 +137,7 @@ odoo.define('bi_view_editor', function (require) {
                 }
             }.bind(this));
         },
-        _parseValue: function(value) {
+        _parseValue: function (value) {
             return JSON.stringify(value);
         }
     });

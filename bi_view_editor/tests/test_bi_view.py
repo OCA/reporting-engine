@@ -239,11 +239,11 @@ class TestBiViewEditor(TransactionCase):
             'name': "Test View5",
             'group_ids': [(6, 0, [employees_group.id])],
         })
-        l = list()
+        data_list = list()
         for r in json.loads(vals['data']):
             r['model_name'] = "model'name"
-            l.append(r)
-        new_format_data = json.dumps(l)
+            data_list.append(r)
+        new_format_data = json.dumps(data_list)
         vals.update({'data': new_format_data})
         bi_view = self.env['bve.view'].create(vals)
         self.assertEqual(len(bi_view), 1)
