@@ -270,7 +270,7 @@ class IrModel(models.Model):
 
     @api.model
     def create(self, vals):
-        if self._context and self._context.get('bve'):
+        if self.env.context and self.env.context.get('bve'):
             vals['state'] = 'base'
         res = super(IrModel, self).create(vals)
 
@@ -281,7 +281,7 @@ class IrModel(models.Model):
         self.env.cr.execute(q, (res.id, ))
 
         # # update registry
-        if self._context.get('bve'):
+        if self.env.context.get('bve'):
             # setup models; this reloads custom models in registry
             self.pool.setup_models(self._cr)
 
