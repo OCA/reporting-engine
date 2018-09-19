@@ -1,1 +1,1 @@
-server-tools https://github.com/Eficent/server-tools.git 11.0-mig-sql_request_abstract
+server-tools
