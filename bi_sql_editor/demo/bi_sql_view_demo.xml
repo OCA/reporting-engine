@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2014 - Today GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+
+<odoo noupdate="1">
+
+        <record id="incorrect_sql_view" model="bi.sql.view">
+            <field name="name">Draft Incorrect SQL View</field>
+            <field name="technical_name">incorrect_view</field>
+            <field name="query"><![CDATA[
+                    SELECT *
+                    FROM unexisting_table
+                    ORDER BY unexisting_field
+                    ]]>
+            </field>
+        </record>
+
+        <record id="partner_sql_view" model="bi.sql.view">
+            <field name="name">Partners View</field>
+            <field name="technical_name">partners_view</field>
+            <field name="query"><![CDATA[
+                                    SELECT
+                                        name as x_name,
+                                        street as x_street,
+                                        company_id as x_company_id
+                                    FROM res_partner
+                                    ORDER BY name
+                                    ]]>
+            </field>
+        </record>
+
+        <record id="module_sql_view" model="bi.sql.view">
+            <field name="name">Modules by Authors</field>
+            <field name="technical_name">modules_view</field>
+            <field name="is_materialized" eval="0" />
+            <field name="query"><![CDATA[
+                                SELECT
+                                    name as x_name,
+                                    case
+                                        when author ilike '%OpenERP SA%' THEN 'Odoo SA'
+                                        when author ilike '%Odoo Community Association (OCA)%' THEN 'OCA'
+                                       else 'Undefined Author' END as x_author_type
+                                FROM ir_module_module
+                                ]]>
+            </field>
+        </record>
+
+    <function model="bi.sql.view" name="button_validate_sql_expression" eval="([ref('module_sql_view')])"/>
+
+    <function model="bi.sql.view" name="button_create_sql_view_and_model" eval="([ref('module_sql_view')])"/>
+
+    <function model="bi.sql.view" name="button_create_ui" eval="([ref('module_sql_view')])"/>
+
+</odoo>
