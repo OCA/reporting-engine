@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-reporting-engine Odoo addons",
     version=version,
     install_requires=[
+        'odoo11-addon-bi_sql_editor',
         'odoo11-addon-report_fillpdf',
         'odoo11-addon-report_qweb_parameter',
         'odoo11-addon-report_wkhtmltopdf_param',
