@@ -7,15 +7,14 @@ Excel report engine helpers
 ===========================
 
 This module provides a set of tools to facilitate the creation of excel reports with format xlsx.
-This module offers a similar functional coverage as the 8.0 version of the ``report_xls`` module.
 
 Usage
 =====
 
-In order to create an Excel report you can:
+In order to create an Excel report you can define a report of type 'xlsx' in a static or dynamic way:
 
-- define a report of type 'xlsx'
-- pass ``{'xlsx_export': 1}`` via the context to the report create method
+* Static syntax: cf. ``account_move_line_report_xls`` for an example.
+* Dynamic syntax: cf. ``report_xlsx_helper_demo`` for an example
 
 The ``AbstractReportXlsx`` class contains a number of attributes and methods to
 facilitate the creation excel reports in Odoo.
@@ -48,14 +47,14 @@ facilitate the creation excel reports in Odoo.
 Installation
 ============
 
-There is no specific installation procedure for this module.
+This module requires report_xlsx version 11.0.1.0.3 or higher.
 
 Configuration and Usage
 =======================
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/10.0
+   :target: https://runbot.odoo-community.org/runbot/143/11.0
 
 Bug Tracker
 ===========
