@@ -1,2 +1,2 @@
-# -*- coding: utf-8 -*-
-from . import abstract_report_xlsx
+from . import report_xlsx_abstract
+from . import test_partner_report_xlsx
