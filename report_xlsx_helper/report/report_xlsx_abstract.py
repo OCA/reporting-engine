@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2009-2018 Noviat.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -7,21 +6,12 @@ import re
 from types import CodeType
 from xlsxwriter.utility import xl_rowcol_to_cell
 
-from odoo import api, fields, _
-from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
+from odoo import fields, models, _
 from odoo.exceptions import UserError
 
 
-class AbstractReportXlsx(ReportXlsx):
-
-    # pylint: disable=old-api7-method-defined
-    def create(self, cr, uid, ids, data, context=None):
-        if context.get('xlsx_export'):
-            self.env = api.Environment(cr, uid, context)
-            return self.create_xlsx_report(ids, data, None)
-        else:
-            return super(AbstractReportXlsx, self).create(
-                cr, uid, ids, data, context=context)
+class ReportXlsxAbstract(models.AbstractModel):
+    _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, objects):
         self._define_formats(workbook)
@@ -507,9 +497,9 @@ class AbstractReportXlsx(ReportXlsx):
                     # True when type(val) is bool
                     if isinstance(cell_value, bool):
                         cell_type = 'boolean'
-                    elif isinstance(cell_value, basestring):
+                    elif isinstance(cell_value, str):
                         cell_type = 'string'
-                    elif isinstance(cell_value, (int, long, float)):
+                    elif isinstance(cell_value, (int, float)):
                         cell_type = 'number'
                     elif isinstance(cell_value, datetime):
                         cell_type = 'datetime'
