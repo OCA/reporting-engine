@@ -2,12 +2,12 @@
 # Copyright 2009-2018 Noviat.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.addons.report_xlsx_helper.report.abstract_report_xlsx \
-    import AbstractReportXlsx
-from odoo.report import report_sxw
+from odoo import models
 
 
-class TestPartnerReportXlsx(AbstractReportXlsx):
+class PartnerExportXlsx(models.AbstractModel):
+    _name = 'report.report_xlsx_helper_demo.partner_export_xlsx'
+    _inherit = 'report.report_xlsx.abstract'
 
     def _get_ws_params(self, wb, data, partners):
 
@@ -47,15 +47,18 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
                     'type': 'formula',
                     'value': self._render("customer_formula"),
                 },
-                'width': 10,
+                'width': 14,
             },
         }
 
+        wanted_list = [
+            'name', 'number_of_contacts', 'is_customer',
+            'is_customer_formula']
         ws_params = {
             'ws_name': 'Partners',
             'generate_ws_method': '_partner_report',
             'title': 'Partners',
-            'wanted_list': [k for k in partner_template],
+            'wanted_list': wanted_list,
             'col_specs': partner_template,
         }
 
@@ -71,6 +74,8 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
         self._set_column_width(ws, ws_params)
 
         row_pos = 0
+        if len(partners) == 1:
+            ws_params['title'] = partners.name
         row_pos = self._write_ws_title(ws, row_pos, ws_params)
         row_pos = self._write_line(
             ws, row_pos, ws_params, col_specs_section='header',
@@ -84,7 +89,7 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
                 wl.index('is_customer')
             is_customer_cell = self._rowcol_to_cell(
                 row_pos, is_customer_pos)
-            customer_formula = 'IF(%s=TRUE;"Y"; "N")' % is_customer_cell
+            customer_formula = 'IF({},"Y", "N")'.format(is_customer_cell)
             row_pos = self._write_line(
                 ws, row_pos, ws_params, col_specs_section='data',
                 render_space={
@@ -92,9 +97,3 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
                     'customer_formula': customer_formula,
                 },
                 default_format=self.format_tcell_left)
-
-
-TestPartnerReportXlsx(
-    'report.test.partner.xlsx',
-    'res.partner',
-    parser=report_sxw.rml_parse)
