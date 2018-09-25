@@ -47,7 +47,7 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
                     'type': 'formula',
                     'value': self._render("customer_formula"),
                 },
-                'width': 10,
+                'width': 14,
             },
         }
 
@@ -84,7 +84,7 @@ class TestPartnerReportXlsx(AbstractReportXlsx):
                 wl.index('is_customer')
             is_customer_cell = self._rowcol_to_cell(
                 row_pos, is_customer_pos)
-            customer_formula = 'IF(%s=TRUE;"Y"; "N")' % is_customer_cell
+            customer_formula = 'IF({},"Y", "N")'.format(is_customer_cell)
             row_pos = self._write_line(
                 ws, row_pos, ws_params, col_specs_section='data',
                 render_space={
