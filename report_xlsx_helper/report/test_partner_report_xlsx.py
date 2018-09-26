@@ -5,6 +5,10 @@
 from odoo import models
 
 
+# TODO:
+# make PR to move this class as well as the report_xlsx test class
+# to the tests folder (requires dynamic update Odoo registry when
+# running unit tests.
 class TestPartnerXlsx(models.AbstractModel):
     _name = 'report.report_xlsx_helper.test_partner_xlsx'
     _inherit = 'report.report_xlsx.abstract'
