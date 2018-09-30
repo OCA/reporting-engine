@@ -13,7 +13,7 @@
                             subst();
                         }
                         var vars = {};
-                        var x = document.location.search.substring(1).split('&amp;amp;');
+                        var x = document.location.search.substring(1).split('&amp;');
                         for (var i in x) {
                             var z = x[i].split('=', 2);
                             vars[z[0]] = unescape(z[1]);
@@ -38,8 +38,9 @@
                         };
                         for (var _class in operations) {
                             var y = document.getElementsByClassName(_class);
-                            for (var j=0; j&lt;y.length; ++j)
-                            operations[_class](y[j]);
+                            for (var j=0; j&lt;y.length; ++j) {
+                                operations[_class](y[j]);
+                            }
                         }
                     }
                 </script>
