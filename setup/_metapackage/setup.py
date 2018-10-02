@@ -13,6 +13,8 @@ setuptools.setup(
         'odoo11-addon-report_qweb_parameter',
         'odoo11-addon-report_wkhtmltopdf_param',
         'odoo11-addon-report_xlsx',
+        'odoo11-addon-report_xlsx_helper',
+        'odoo11-addon-report_xlsx_helper_demo',
         'odoo11-addon-report_xml',
     ],
     classifiers=[
