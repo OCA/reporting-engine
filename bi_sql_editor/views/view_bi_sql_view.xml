@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="view_bi_sql_view_tree" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='draft'" decoration-warning="state in ('sql_valid', 'model_valid')">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="technical_name"/>
+                <field name="size"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_bi_sql_view_form" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_validate_sql_expression" type="object" states="draft"
+                            string="Validate SQL Expression" class="oe_highlight"/>
+                    <button name="button_set_draft" type="object" states="sql_valid"
+                            string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"/>
+                    <button name="button_set_draft" type="object" states="model_valid,ui_valid"
+                            string="Set to Draft" groups="sql_request_abstract.group_sql_request_manager"
+                            confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"/>
+                    <button name="button_preview_sql_expression" type="object" states="draft" string="Preview SQL Expression" />
+                    <button name="button_create_sql_view_and_model" type="object" states="sql_valid"
+                        string="Create SQL View, Indexes and Models" class="oe_highlight"
+                        help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"/>
+                    <button name="button_update_model_access" type="object"
+                        attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('has_group_changed', '=', False)]}"
+                        string="Update Model Access" class="oe_highlight"
+                        help="Update Model Access. Required if you changed groups list after having created the model"/>
+                    <button name="button_create_ui" type="object" states="model_valid" string="Create UI"
+                        class="oe_highlight" help="This will create Odoo View, Action and Menu"/>
+                    <button name="button_refresh_materialized_view" type="object" string="Refresh Materialized View"
+                        attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                        help="this will refresh the materialized view"/>
+                    <button name="button_open_view" type="object" string="Open View" states="ui_valid" class="oe_highlight" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name" attrs="{'readonly': [('state','!=','draft')]}" colspan="4"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="technical_name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="view_name"/>
+                                <field name="view_order"/>
+                                <field name="is_materialized"/>
+                                <field name="size"
+                                    attrs="{'invisible': ['|', ('state', '=', 'draft'), ('is_materialized', '=', False)]}"/>
+                                    <field name="cron_id"
+                                        attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"/>
+                            </group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="SQL Query">
+                            <field name="query" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </page>
+                        <page string="SQL Fields" attrs="{'invisible': [('state', '=', 'draft')]}">
+                            <field name="bi_sql_view_field_ids" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'sql_valid')]}">
+                                <tree editable="bottom" decoration-info="field_description==False">
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="sql_type"/>
+                                    <field name="field_description"/>
+                                    <field name="ttype" attrs="{
+                                        'required': [('field_description', '!=', False)]}"/>
+                                    <field name="many2one_model_id" attrs="{
+                                        'invisible': [('ttype', '!=', 'many2one')],
+                                        'required': [
+                                            ('field_description', '!=', False),
+                                            ('ttype', '=', 'many2one')]}"/>
+                                    <field name="selection" attrs="{
+                                        'invisible': [('ttype', '!=', 'selection')],
+                                        'required': [
+                                            ('field_description', '!=', False),
+                                            ('ttype', '=', 'selection')]}"/>
+                                    <field name="is_index" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                    <field name="is_group_by" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                    <field name="graph_type" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                    <field name="tree_visibility" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Security">
+                            <group string="Rule Definition">
+                                <field name="domain_force" nolabel="1" colspan="4"/>
+                            </group>
+                            <group string="Allowed Groups">
+                                <field name="group_ids" nolabel="1" colspan="4"/>
+                                <field name="has_group_changed" invisible="1"/>
+                            </group>
+                        </page>
+                        <page string="Extras Information">
+                            <group>
+                                <group string="Model">
+                                    <field name="model_name" />
+                                    <field name="model_id" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                                </group>
+                                <group string="User Interface">
+                                    <field name="tree_view_id"/>
+                                    <field name="graph_view_id"/>
+                                    <field name="pivot_view_id"/>
+                                    <field name="search_view_id"/>
+                                    <field name="action_id"/>
+                                    <field name="menu_id"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
