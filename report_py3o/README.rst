@@ -47,7 +47,7 @@ For example, to replace the native invoice report by a custom py3o report, add t
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report.xml">
+  <record id="account.account_invoices" model="ir.actions.report">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">odt</field>
       <field name="module">my_custom_module_base</field>
@@ -67,7 +67,7 @@ the path to the template as *py3o_template_fallback*.
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report.xml">
+  <record id="account.account_invoices" model="ir.actions.report">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">odt</field>
       <field name="py3o_template_fallback">/odoo/templates/py3o/report/account_invoice.odt</field>
@@ -94,7 +94,7 @@ If you want an invoice in PDF format instead of ODT format, the XML file should 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report.xml">
+  <record id="account.account_invoices" model="ir.actions.report">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">pdf</field>
       <field name="module">my_custom_module_base</field>
@@ -110,7 +110,7 @@ If you want to add a new py3o PDF report (and not replace a native report), the 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="partner_summary_report" model="ir.actions.report.xml">
+  <record id="partner_summary_report" model="ir.actions.report">
       <field name="name">Partner Summary</field>
       <field name="model">res.partner</field>
       <field name="report_name">res.partner.summary</field>
@@ -118,14 +118,9 @@ If you want to add a new py3o PDF report (and not replace a native report), the 
       <field name="py3o_filetype">pdf</field>
       <field name="module">my_custom_module_base</field>
       <field name="py3o_template_fallback">report/partner_summary.odt</field>
-  </record>
-
-  <!-- Add entry in "Print" drop-down list -->
-  <record id="button_partner_summary_report" model="ir.values">
-      <field name="key2">client_print_multi</field>
-      <field name="model">res.partner</field>
-      <field name="name">Partner Summary</field>
-      <field name="value" eval="'ir.actions.report.xml,%d'%partner_summary_report" />
+      <!-- Add entry in "Print" drop-down list -->
+      <field name="binding_model_id" ref="model_res_partner_summary" />
+      <field name="binding_type">report</field>
   </record>
 
   </odoo>
