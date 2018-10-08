@@ -31,7 +31,7 @@ A python class ::
     class PartnerXlsx(models.AbstractModel):
         _name = 'report.module_name.report_name'
         _inherit = 'report.report_xlsx.abstract'
-    
+
         def generate_xlsx_report(self, workbook, data, partners):
             for obj in partners:
                 report_name = obj.name
@@ -45,7 +45,7 @@ To manipulate the ``workbook`` and ``sheet`` objects, refer to the
 
 A report XML record ::
 
-    <report 
+    <report
         id="partner_xlsx"
         model="res.partner"
         string="Print to XLSX"
@@ -57,7 +57,7 @@ A report XML record ::
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/11.0
+   :target: https://runbot.odoo-community.org/runbot/143/12.0
 
 Bug Tracker
 ===========
@@ -75,6 +75,7 @@ Contributors
 
 * Adrien Peiffer <adrien.peiffer@acsone.eu>
 * Enric Tobella <etobella@creublanca.es>
+* Cristian Salamea <cs@prisehub.com>
 
 Maintainer
 ----------
