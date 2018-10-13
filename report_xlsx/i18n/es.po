@@ -49,7 +49,6 @@ msgstr "Imprimir a XLSX"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
-#, fuzzy
 msgid "ir.actions.report"
 msgstr "ir.actions.report.xml"
 
