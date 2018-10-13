@@ -41,8 +41,8 @@ ActionManager.include({
             framework.unblockUI();
             var closeAction = { type: 'ir.actions.act_window_close' };
             return self.doAction(closeAction, _.pick(options, 'on_close'));
-        }
+            }
         return self._super(action, options);
-    }
-});
+        }
+    });
 });

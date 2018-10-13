@@ -1,4 +1,4 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
+.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
@@ -40,8 +40,8 @@ A python class ::
                 bold = workbook.add_format({'bold': True})
                 sheet.write(0, 0, obj.name, bold)
 
-To manipulate the ``workbook`` and ``sheet`` objects, refer to the
-`documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
+To manipulate the ''workbook'' and ''sheet'' objects, refer to the
+`xlsxwriter documentation <http://xlsxwriter.readthedocs.org/>``.
 
 A report XML record ::
 
@@ -57,7 +57,7 @@ A report XML record ::
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/143/11.0
+   :target: https://runbot.odoo-community.org/runbot/143/12.0
 
 Bug Tracker
 ===========

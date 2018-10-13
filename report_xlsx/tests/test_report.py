@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 try:
     from xlrd import open_workbook
 except ImportError:
-    _logger.debug('Can not import xlsxwriter`.')
+    _logger.debug('Can not import xlrd.')
 
 
 class TestReport(common.TransactionCase):

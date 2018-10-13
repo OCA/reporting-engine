@@ -20,7 +20,7 @@ class ReportXlsxAbstract(models.AbstractModel):
 
     def _get_objs_for_report(self, docids, data):
         """
-        Returns objects for xlx report.  From WebUI these
+        Returns objects for xlxs report.  From WebUI these
         are either as docids taken from context.active_ids or
         in the case of wizard are in data.  Manual calls may rely
         on regular context, setting docids, or setting data.
