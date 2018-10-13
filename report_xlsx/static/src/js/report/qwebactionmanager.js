@@ -8,7 +8,7 @@ var crash_manager = require('web.crash_manager');
 var framework = require('web.framework');
 
 ActionManager.include({
-    ir_actions_report: function (action, options){
+    _executeReportAction: function (action, options) {
         var self = this;
         var cloned_action = _.clone(action);
         if (cloned_action.report_type === 'xlsx') {
@@ -39,7 +39,8 @@ ActionManager.include({
                 }
             });
             framework.unblockUI();
-            return;
+            var closeAction = { type: 'ir.actions.act_window_close' };
+            return self.doAction(closeAction, _.pick(options, 'on_close'));
         }
         return self._super(action, options);
     }

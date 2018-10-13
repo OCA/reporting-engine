@@ -22,30 +22,30 @@ msgstr ""
 #: code:addons/report_xlsx/models/ir_report.py:18
 #, python-format
 msgid "%s model was not found"
-msgstr ""
+msgstr "%s modelo no existe"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract_display_name
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre a mostrar"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract_id
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract___last_update
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación el"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
 msgid "Print to XLSX"
-msgstr ""
+msgstr "Imprimir a XLSX"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
@@ -56,9 +56,9 @@ msgstr "ir.actions.report.xml"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "report.report_xlsx.abstract"
-msgstr ""
+msgstr "report.report_xlsx.abstract"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "report.report_xlsx.partner_xlsx"
-msgstr ""
+msgstr "report.report_xlsx.partner_xlsx"

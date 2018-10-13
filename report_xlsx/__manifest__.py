@@ -6,10 +6,11 @@
     'summary': "Base module to create xlsx report",
     'author': 'ACSONE SA/NV,'
               'Creu Blanca,'
+              'Rick Hunter,'
               'Odoo Community Association (OCA)',
     'website': "https://github.com/oca/reporting-engine",
     'category': 'Reporting',
-    'version': '11.0.1.0.3',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'external_dependencies': {
         'python': [

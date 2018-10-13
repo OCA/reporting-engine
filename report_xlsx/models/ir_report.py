@@ -12,6 +12,8 @@ class ReportAction(models.Model):
 
     @api.model
     def render_xlsx(self, docids, data):
+        if not data:
+            data = {}
         report_model_name = 'report.%s' % self.report_name
         report_model = self.env.get(report_model_name)
         if report_model is None:

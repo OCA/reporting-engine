@@ -16,6 +16,7 @@ except ImportError:
 
 class ReportXlsxAbstract(models.AbstractModel):
     _name = 'report.report_xlsx.abstract'
+    _description = 'Generate XLSX Reports'
 
     def _get_objs_for_report(self, docids, data):
         """
