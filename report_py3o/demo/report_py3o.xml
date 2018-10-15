@@ -20,7 +20,7 @@
         <field name="py3o_filetype">odt</field>
         <field name="py3o_template_id" ref="report_py3o.res_user_report"/>
         <field name="py3o_template_fallback" ref="report_py3o.res_user_report"/>
-        <field name="attachment">object.name + ('.pdf')</field>
+        <field name="attachment">object.name + ('.odt')</field>
         <field name="module">report_py3o</field>
     </record>
 
