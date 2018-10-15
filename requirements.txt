@@ -1,3 +1,6 @@
 xlsxwriter
 xlrd
 fdfgen
+-e git+https://github.com/edgewall/genshi@stable/0.7.x#egg=genshi
+py3o.template
+py3o.formats
