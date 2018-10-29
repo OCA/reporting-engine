@@ -3,7 +3,6 @@
 odoo.define('report_py3o.report', function (require) {
     'use strict';
     var ActionManager = require('web.ActionManager');
-    var core = require('web.core');
     var crash_manager = require('web.crash_manager');
     var framework = require('web.framework');
 
@@ -29,7 +28,6 @@ odoo.define('report_py3o.report', function (require) {
             if ('report_type' in action && action.report_type === 'py3o' ) {
                 framework.blockUI();
                 action = _.clone(action);
-                _t = core._t;
                 var report_url = '/report/py3o/' + action.report_name;
                 // generic report: no query string
                 // particular: query string of action.data.form and context
