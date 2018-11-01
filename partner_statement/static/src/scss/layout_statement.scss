@@ -1,0 +1,22 @@
+.table-statement {
+    .amount {
+        text-align: right !important;
+        width: 14%  //spread 7 columns evenly
+    }
+    thead {
+        border-bottom: solid; // required for clean layout
+        tr th:first-child {
+            width: auto !important; // required for clean layout
+            }
+        tr th:last-child {
+            width: 16% !important; // required for boxed layout
+            }
+    }
+}
+
+.statement-blocked {
+    background-color: $gray-500 !important;
+    td:last-child {
+        background-color: $gray-500 !important;
+    }
+}

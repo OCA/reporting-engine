@@ -1,0 +1,262 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * customer_activity_statement
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+# Quentin THEURET <odoo@kerpeo.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-28 10:11+0000\n"
+"PO-Revision-Date: 2018-09-01 08:20+0000\n"
+"Last-Translator: Valaeys Stéphane <svalaeys@fiefmanage.ch>\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.1.1\n"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "+120 Days Due"
+msgstr "+120 jours d'arriérés"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "1-30 Days Due"
+msgstr "1-30 jours d'arriérés"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "30-60 Days Due"
+msgstr "30-60 jours d'arriérés"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "60-90 Days Due"
+msgstr "60-90 jours d'arriérés"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "90-120 Days Due"
+msgstr "90-120 jours d'arriérés"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "<strong>The partner doesn't have due entries.</strong>"
+msgstr ""
+"<strong>Le partenaire n'a pas d'écriture en attente de paiement.</strong>"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Activity Statement"
+msgstr "Relevé de compte"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Activity Statement between"
+msgstr "Relevé de compte entre"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Aging Report at"
+msgstr "Balance âgée au"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+msgid ""
+"Aging details can be shown in the report, expressed in aging         buckets "
+"(30 days due, ...), so the customer can review how much is open, due or "
+"overdue."
+msgstr ""
+"Le détail des arriérés peut être affiché dans le rapport, exprimé par "
+"tranche (30 jours d'arriérés, ...), de telle sorte que le destinataire "
+"puisse voir combien est ouvert, dû ou échu."
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Amount"
+msgstr "Montant"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Balance"
+msgstr "Solde"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Balance Due"
+msgstr "Solde dû"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Balance Forward"
+msgstr "Solde reporté"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Current Due"
+msgstr "Dû en ce moment"
+
+#. module: customer_activity_statement
+#: model:ir.actions.act_window,name:customer_activity_statement.customer_activity_statement_wizard_action
+msgid "Customer Activity Statement"
+msgstr "Relevé de compte des partenaires"
+
+#. module: customer_activity_statement
+#: model:ir.model,name:customer_activity_statement.model_customer_activity_statement_wizard
+msgid "Customer Activity Statement Wizard"
+msgstr "Assistant d'édition de relevé de compte des partenaires"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Date"
+msgstr "Date"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_date_end
+msgid "Date End"
+msgstr "Jusqu'au"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_date_start
+msgid "Date Start"
+msgstr "À partir du"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Date:"
+msgstr "Date :"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Description"
+msgstr "Description"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_display_name
+#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement_display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_filter_partners_non_due
+msgid "Don't show partners with no due entries"
+msgstr "Masquer les partenaires sans soldes ouverts"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Ending Balance"
+msgstr "Solde final"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+msgid "Export PDF"
+msgstr "Exporter en PDF"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_id
+#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement_id
+msgid "ID"
+msgstr "ID"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_show_aging_buckets
+msgid "Include Aging Buckets"
+msgstr "Afficher les arriérés par tranche"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard___last_update
+#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement___last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: customer_activity_statement
+#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_number_partner_ids
+msgid "Number Partner"
+msgstr "Numéro du partenaire"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Partner ref:"
+msgstr "Réf. partenaire :"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "Reference number"
+msgstr "Numéro de référence"
+
+#. module: customer_activity_statement
+#: model:ir.actions.report,name:customer_activity_statement.action_print_customer_activity_statement
+msgid "Statement Action to PDF"
+msgstr "Export du relevé de compte en PDF"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+msgid ""
+"The activity statement provides details of all activity on         the "
+"customer receivables between two selected dates. This includes all "
+"invoices,         refunds and payments. Any outstanding balance dated prior "
+"to the chosen statement         period will appear as a forward balance at "
+"the top of the statement. The list is         displayed in chronological "
+"order and is split by currencies."
+msgstr ""
+"Le relevé de compte présente le détail des activités des débiteurs ou "
+"créanciers entre deux dates choisies. Ceci inclus toute facture, note de "
+"crédit ou paiement. Si un solde ouvert est préalable à la date de début du "
+"relevé, il sera affiché comme un solde reporté en haut du relevé. Les "
+"transactions sont présentées par ordre chronologique et ventilées par devise."
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "and"
+msgstr "et"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+msgid "in"
+msgstr "en"
+
+#. module: customer_activity_statement
+#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+msgid "or"
+msgstr "ou"
+
+#. module: customer_activity_statement
+#: model:ir.model,name:customer_activity_statement.model_report_customer_activity_statement_statement
+msgid "report.customer_activity_statement.statement"
+msgstr "report.customer_activity_statement.statement"

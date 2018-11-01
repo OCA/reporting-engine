@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Eficent Business and IT Consulting Services S.L.
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <template id="aging_buckets">
+        <p>
+            Aging Report at <span t-esc="d['end']" /> in <span t-esc="display_currency.name"/>:
+        </p>
+        <table class="table table-sm table-statement">
+            <thead>
+                <tr>
+                    <t t-foreach="bucket_labels" t-as="bl">
+                        <th class="amount">
+                            <span t-esc="bl" />
+                        </th>
+                    </t>
+                </tr>
+            </thead>
+            <t t-set="buckets" t-value="currency['buckets']" />
+            <tbody>
+                <tr>
+                    <td class="amount">
+                        <span t-esc="buckets.get('current', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('b_1_30', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('b_30_60', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('b_60_90', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('b_90_120', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('b_over_120', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                    <td class="amount">
+                        <span t-esc="buckets.get('balance', 0.0)" t-options="{'widget': 'monetary', 'display_currency': display_currency}"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+</odoo>

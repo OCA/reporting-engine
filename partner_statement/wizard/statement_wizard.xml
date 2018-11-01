@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Eficent Business and IT Consulting Services S.L.
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- wizard action on res.partner -->
+    <act_window id="activity_statement_wizard_action"
+        name="Partner Activity Statement"
+        src_model="res.partner"
+        res_model="activity.statement.wizard"
+        view_type="form" view_mode="form"
+        key2="client_action_multi" target="new"
+        groups="partner_statement.group_activity_statement"/>
+
+    <act_window id="outstanding_statement_wizard_action"
+        name="Partner Outstanding Statement"
+        src_model="res.partner"
+        res_model="outstanding.statement.wizard"
+        view_type="form" view_mode="form"
+        key2="client_action_multi" target="new"
+        groups="partner_statement.group_outstanding_statement"/>
+
+    <!-- wizard view -->
+    <record id="statement_common_view" model="ir.ui.view">
+        <field name="name">Statement Common Wizard View</field>
+        <field name="model">statement.common.wizard</field>
+        <field name="arch" type="xml">
+            <form name="Report Options">
+                <div style="text-align:justify" name="info">
+                <label string="Aging details can be shown in the report, expressed in aging
+        buckets, so the partner can review how much is open, due or overdue." for=""/>
+                </div><hr/>
+                <group>
+                    <group name="main_info">
+                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        <label for="account_type"/>
+                        <field name="account_type" nolabel="1" widget="radio"/>
+                    </group>
+                    <group name="aging_report">
+                        <field name="show_aging_buckets"/>
+                        <field name="aging_type" />
+                    </group>
+                </group>
+
+                <group>
+                    <group name="dates">
+                        <field name="date_end"/>
+                    </group>
+                    <group name="multiple_partners">
+                        <field name="number_partner_ids" readonly="1" invisible="1"/>
+                        <field name="filter_partners_non_due" attrs="{'invisible': [('number_partner_ids', '=', 1)]}" />
+                        <field name="filter_negative_balances" attrs="{'invisible': [('number_partner_ids', '=', 1)]}" />
+                    </group>
+                </group>
+                <footer>
+                    <button name="button_export_pdf" string="Export PDF" type="object" default_focus="1" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="outstanding_statement_wizard_view" model="ir.ui.view">
+        <field name="name">Outstanding Statement Wizard</field>
+        <field name="model">outstanding.statement.wizard</field>
+        <field name="inherit_id" ref="partner_statement.statement_common_view" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='info']/label" position="before" >
+
+                <label string="The outstanding statement provides details of all partner's outstanding
+        receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed
+        refunds and outstanding payments. The list is displayed in chronological order and is
+        split by currencies." for=""/>
+        <br/><br/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="activity_statement_wizard_view" model="ir.ui.view">
+        <field name="name">Activity Statement Wizard</field>
+        <field name="model">activity.statement.wizard</field>
+        <field name="inherit_id" ref="partner_statement.statement_common_view" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='info']/label" position="before" >
+                <label string="The activity statement provides details of all activity on
+                    a partner's receivables and payables between two selected dates. This includes all invoices,
+                    refunds and payments. Any outstanding balance dated prior to the chosen statement
+                    period will appear as a forward balance at the top of the statement. The list is
+                    displayed in chronological order and is split by currencies." for=""/>
+                    <br/><br/>
+            </xpath>
+            <xpath expr="//field[@name='date_end']" position="before">
+                <field name="date_start"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
