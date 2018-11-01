@@ -9,7 +9,7 @@ from pyPdf import PdfFileReader, PdfFileWriter
 try:
     from pdfrw import PdfReader, PdfWriter
 except ImportError:
-    PdfReader = None
+    PdfReader = PdfFileReader
 from PIL import Image
 from openerp.tests.common import HttpCase
 from ..models import report
