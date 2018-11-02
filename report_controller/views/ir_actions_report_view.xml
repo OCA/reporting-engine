@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="ir_actions_report_form" model="ir.ui.view">
+        <field name="name">ir.actions.report.form</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='report_name']" position="after">
+                <field name="controller_url"
+                    attrs="{'invisible': [('report_type', '!=', 'controller')],
+                            'required': [('report_type', '=', 'controller')]}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
