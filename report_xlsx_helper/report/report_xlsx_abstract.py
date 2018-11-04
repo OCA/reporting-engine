@@ -519,6 +519,8 @@ class ReportXlsxAbstract(models.AbstractModel):
             args_pos = [row_pos, pos]
             args_data = [cell_value]
             if cell_format:
+                if isinstance(cell_format, CodeType):
+                    cell_format = self._eval(cell_format, render_space)
                 args_data.append(cell_format)
             if colspan > 1:
                 args_pos += [row_pos, pos + colspan - 1]
