@@ -9,10 +9,14 @@ CONTROLLER_KEYS = [x[0] for x in CONTROLLER_TYPES]
 
 PDF_MAGIC = b"%PDF"
 
+
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
     _sql_constraints = [
-        ("check_controller_url", "CHECK(report_type NOT ILIKE 'controller%' OR controller_url IS NOT NULL)", _("A controller report must have a URL"))
+        ("check_controller_url",
+         "CHECK(report_type NOT ILIKE 'controller%' OR "\
+             "controller_url IS NOT NULL)",
+         _("A controller report must have a URL"))
     ]
 
     report_type = fields.Selection(selection_add=CONTROLLER_TYPES)
@@ -37,5 +41,6 @@ class IrActionsReport(models.Model):
             url += docids
         response = requests.get(url)
         if response.content[:4] != PDF_MAGIC:
-            raise exceptions.ValidationError(_("Controller result isn't a PDF"))
+            error_msg = _("Controller result isn't a PDF")
+            raise exceptions.ValidationError(error_msg)
         return response.content, "pdf"

@@ -1,8 +1,10 @@
 # Copyright 2018 Hugo Rodrigues
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import time
 import json
 
+import werkzeug
 from werkzeug.urls import url_decode
 
 
@@ -12,8 +14,8 @@ from odoo.http import request, route, serialize_exception, content_disposition
 from odoo.addons.web.controllers.main import ReportController
 from ..models.ir_actions_report import CONTROLLER_KEYS
 
-class Report(ReportController):
 
+class Report(ReportController):
 
     @route()
     def report_routes(self, reportname, docids=None, converter=None, **data):
@@ -24,7 +26,8 @@ class Report(ReportController):
             return super(Report, self).report_routes(reportname, docids=docids,
                                                      converter=converter,
                                                      **data)
-        report = request.env['ir.actions.report']._get_report_from_name(reportname)
+        report_obj = request.env['ir.actions.report']
+        report = report_obj._get_report_from_name(reportname)
         context = dict(request.env.context)
 
         if docids:
@@ -32,8 +35,10 @@ class Report(ReportController):
         if data.get('options'):
             data.update(json.loads(data.pop('options')))
         if data.get('context'):
-            # Ignore 'lang' here, because the context in data is the one from the webclient *but* if
-            # the user explicitely wants to change the lang, this mechanism overwrites it.
+            # Ignore 'lang' here, because the context in data is the
+            # one from the webclient *but* if
+            # the user explicitely wants to change the lang,
+            # this mechanism overwrites it.
             data['context'] = json.loads(data['context'])
             if data['context'].get('lang'):
                 del data['context']['lang']
@@ -42,20 +47,23 @@ class Report(ReportController):
         if converter == 'controller':
             pdf = report.with_context(context).render_controller(docids,
                                                                  data=data)[0]
-            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
+            pdfhttpheaders = [('Content-Type', 'application/pdf'),
+                              ('Content-Length', len(pdf))]
             return request.make_response(pdf, headers=pdfhttpheaders)
         else:
-            raise werkzeug.exceptions.HTTPException(description='Converter %s not implemented.' % converter)
+            error_desc = 'Converter %s not implemented.' % converter
+            raise werkzeug.exceptions.HTTPException(description=error_desc)
 
     @route()
     def report_download(self, data, token):
         """
         Extends de base controller to download controller reports
-        
+
         :param data: a javascript array JSON.stringified containg
                      report internal url ([0]) and type [1]
         :returns: Response with a filetoken cookie and an attachment heade
         """
+        report_obj = request.env["ir.actions.report"]
         rcontent = json.loads(data)
         url, rtype = rcontent[0], rcontent[1]
         # Return error as upstream
@@ -75,10 +83,10 @@ class Report(ReportController):
                                                   converter="controller")
                 else:
                     data = url_decode(url.split("?")[1]).items()
-                    reponse = self.report_routes(reportname,
-                                                 converter=converter,
+                    response = self.report_routes(reportname,
+                                                  converter="controller",
                                                  **dict(data))
-                report = request.env["ir.actions.report"]._get_report_from_name(reportname)
+                report = report_obj._get_report_from_name(reportname)
                 filename = "%s.pdf" % (report.name)
 
                 if docids:
@@ -87,7 +95,7 @@ class Report(ReportController):
                     if report.print_report_name and not len(obj) > 1:
                         report_name = safe_eval(report.print_report_name,
                                                 {"object": obj, "time": time})
-                        filename = "%s.%s" % (report_name, extension)
+                        filename = "%s.%s" % (report_name, "pdf")
                 response.headers.add("Content-Disposition",
                                      content_disposition(filename))
                 response.set_cookie("fileToken", token)
