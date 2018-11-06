@@ -93,8 +93,8 @@ odoo.define("report_controller.report", function (require) {
             // Reimplement upstream url generation
             // check web/static/src/js/chrome/action_manager_report.js:180
             if (_.isUndefined(action.data) || _.isNull(action.data) ||
-                (_.isObject(action.data) && _.isEmpty(action.data))) {
-                if action.context.active_ids {
+                _.isObject(action.data) && _.isEmpty(action.data)) {
+                if (action.context.active_ids) {
                     var activeids = action.context.active_ids.join(',');
                     var activeIDsPath = "/" + activeids;
                     _.mapObject(reportUrls, function (value, type) {

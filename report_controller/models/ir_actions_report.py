@@ -14,8 +14,8 @@ class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
     _sql_constraints = [
         ("check_controller_url",
-         "CHECK(report_type NOT ILIKE 'controller%' OR "\
-             "controller_url IS NOT NULL)",
+         "CHECK(report_type NOT ILIKE 'controller%' OR "
+         "controller_url IS NOT NULL)",
          _("A controller report must have a URL"))
     ]
 

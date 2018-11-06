@@ -85,7 +85,7 @@ class Report(ReportController):
                     data = url_decode(url.split("?")[1]).items()
                     response = self.report_routes(reportname,
                                                   converter="controller",
-                                                 **dict(data))
+                                                  **dict(data))
                 report = report_obj._get_report_from_name(reportname)
                 filename = "%s.pdf" % (report.name)
 
