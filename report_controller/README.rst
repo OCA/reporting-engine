@@ -7,14 +7,15 @@ Report Controller
 =====================
 
 This modules brings back the controller type for reports missing since Odoo 11.0
+The goal of this module is to print data from 3rd party services. For example,
+in Portugal only a certified software can print customer invoices, and since
+only Odoo SA is the only one that can certify Odoo, the certification happens
+outside Odoo. Using a controller report, the user can print the certified PDF
+using the print menu.
 
 
 Usage
 =====
-
-#. Add a t-length attribute on report templates fields that will truncate the field
-#. Add a t-minlength attribute on report template fields that will check the min length
-#. Add a t-maxlength attribute on report template fields that will check the max length
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
