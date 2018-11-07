@@ -1,5 +1,8 @@
 // 2018 Hugo Rodrigues
 // License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+var core = require('web.core');
+var _t = core._t;
+
 odoo.define("report_controller.report", function (require) {
     "use strict";
 
@@ -15,7 +18,8 @@ odoo.define("report_controller.report", function (require) {
          * Triggers the download of the report
          * @param {Object} action - the description of the action to execute
          * @param {Object} options - @see doAction for details
-         * @param {Deferred} resolved when the action has been executed
+         * @param {string} type -  Type of report
+         * @returns {Deferred} resolved when the action has been executed
          */
         _triggerDownload: function (action, options, type) {
             // Since _downloadReport doesn't have the report type, we must
@@ -36,6 +40,9 @@ odoo.define("report_controller.report", function (require) {
                     data: JSON.stringify([reportUrls[type], type]),
                 },
                 success: def.resolve.bind(def),
+                /**
+                 * Shows error raised by controller
+                 */
                 error: function () {
                     crash_manager.rpc_error.apply(crash_manager, arguments);
                     def.reject();
@@ -44,9 +51,9 @@ odoo.define("report_controller.report", function (require) {
             });
             if (blocked) {
                 var message = _t('A popup window with your report was ' +
-                                 'blocked. You may need to change your ' +
-                                 'browser settings to allow popup windows ' +
-                                 'for this page.');
+                        'blocked. You may need to change your ' +
+                        'browser settings to allow popup windows ' +
+                        'for this page.');
                 this.do_warn(_t('Warning'), message, true);
             }
             return def.then(function () {
@@ -91,7 +98,7 @@ odoo.define("report_controller.report", function (require) {
             });
 
             // Reimplement upstream url generation
-            // check web/static/src/js/chrome/action_manager_report.js:180
+            // Check web/static/src/js/chrome/action_manager_report.js:180
             if (_.isUndefined(action.data) || _.isNull(action.data) ||
                 _.isObject(action.data) && _.isEmpty(action.data)) {
                 if (action.context.active_ids) {
@@ -102,11 +109,11 @@ odoo.define("report_controller.report", function (require) {
                     });
                 }
             } else {
-                // encoded data and context
+                // Encoded data and context
                 var edata = encodeURIComponent(JSON.stringify(action.data));
                 var ecxt = encodeURIComponent(JSON.stringify(action.context));
-                var serializedOptionsPath = '?options=' + edata
-                serializedOptionsPath += '&context=' + ecxt
+                var serializedOptionsPath = '?options=' + edata;
+                serializedOptionsPath += '&context=' + ecxt;
                 _.mapObject(reportUrls, function (value, type) {
                     res[type] = value + serializedOptionsPath;
                 });
