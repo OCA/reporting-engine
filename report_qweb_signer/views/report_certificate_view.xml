@@ -59,7 +59,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 <menuitem id="menu_report_certificate"
           name="PDF certificates"
-          parent="report.reporting_menuitem"
+          parent="base.reporting_menuitem"
           action="action_report_certificate"/>
 
 </odoo>

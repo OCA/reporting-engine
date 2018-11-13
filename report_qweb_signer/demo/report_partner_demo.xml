@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <template id="report_partner_demo_document">
-        <t t-call="report.external_layout">
+        <t t-call="web.external_layout">
             <div class="page">
                 <div class="row">
                     <div class="col-md-12">
@@ -24,7 +24,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </template>
 
     <template id="report_partner_demo">
-        <t t-call="report.html_container">
+        <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="report_qweb_signer.report_partner_demo_document" t-lang="o.lang"/>
             </t>
