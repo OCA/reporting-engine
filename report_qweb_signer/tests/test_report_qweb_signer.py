@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -15,10 +14,6 @@ class TestReportQwebSigner(HttpCase):
         self.report = self.env.ref('report_qweb_signer.partner_demo_report')
 
     def test_report_qweb_signer(self):
-        self.env['report'].get_pdf(
-            self.partner.ids, self.report.report_name, data={},
-        )
+        self.report.render_qweb_pdf(self.partner.ids)
         # Reprint again for taking the PDF from attachment
-        self.env['report'].get_pdf(
-            self.partner.ids, self.report.report_name, data={},
-        )
+        self.report.render_qweb_pdf(self.partner.ids)
