@@ -4,5 +4,6 @@ py3o.formats
 py3o.template
 pydot
 PyPDF2
+weasyprint
 xlrd
 xlsxwriter

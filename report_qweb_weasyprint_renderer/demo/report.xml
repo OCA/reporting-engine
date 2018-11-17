@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="view_demo_report_qweb">
+        <html>
+            <head>
+                <style type="text/css">
+                    @page {
+                        size: A4;
+                        padding: 20px;
+                        @top-center {
+                            content: '<t t-esc="env.user.name" /> - ' string(title);
+                        }
+                        @bottom-center {
+                            content: counter(page) ' of ' counter(pages);
+                        }
+                    }
+                    h1 {
+                        string-set: title content();
+                        page-break-before: always;
+                    }
+                    h1:first-of-type {
+                        page-break-before: avoid;
+                    }
+                    .desc {
+                        white-space: pre-line;
+                        font-family: monospace;
+                    }
+                    .index {
+                        list-style: none;
+                        padding-left: 0em;
+                    }
+                    .index li a {
+                        text-decoration: none;
+                        color: inherit;
+                    }
+                    .index li a::after {
+                        content: target-counter(attr(href), page);
+                        float: right;
+                    }
+                    .img {
+                        margin: .1em;
+                        float: right;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Index</h1>
+                <ul class="index">
+                    <li t-foreach="docs" t-as="this">
+                        <a t-attf-href="#chapter{{this.id}}" t-esc="this.shortdesc" />
+                    </li>
+                </ul>
+                <t t-foreach="docs" t-as="this">
+                    <h1 t-attf-id="chapter{{this.id}}" t-esc="this.shortdesc" />
+                    <img class="img" t-attf-src="data:img/*;base64,{{this.icon_image}}" />
+                    <div class="desc" t-esc="this.description" />
+                </t>
+            </body>
+        </html>
+    </template>
+    <report id="demo_report"
+        string="WeasyPrint demo report"
+        model="ir.module.module"
+        name="report_qweb_weasyprint_renderer.view_demo_report_qweb"
+        report_type="qweb-pdf"
+    />
+    <record id="demo_report" model="ir.actions.report">
+        <field name="qweb_pdf_engine">weasyprint</field>
+    </record>
+</odoo>
