@@ -26,6 +26,7 @@ env:
 
 install:
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - pip install https://github.com/hbrunn/WeasyPrint/archive/master-running.zip
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
 
