@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="weasyprint_wkhtmltopf" inherit_id="web.report_layout" active="True">
+        <xpath expr="html/head" position="inside">
+            <!-- this doesn't work yet /-->
+            <link t-if="user.env.context.get('qweb_pdf_engine') == 'weasyprint'" rel="stylesheet" href="/report_qweb_weasyprint_renderer/static/src/css/report_qweb_weasyprint_renderer_wkhtmltopdf_compat.css"/>
+        </xpath>
+    </template>
+</odoo>
