@@ -58,8 +58,8 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         tbody = [html.tostring(line, encoding='utf-8').strip()
                  for line in tbody][0].decode()
         # information about sales is printed
-        self.assertTrue('Order: %s' % self.sale.name in tbody)
-        self.assertTrue('Order: %s' % self.sale2.name in tbody)
+        self.assertEqual(tbody.count(self.sale.name), 2)
+        self.assertEqual(tbody.count(self.sale2.name), 2)
         # information about pickings is printed
         self.assertTrue(self.sale.invoice_ids.picking_ids[:1].name in tbody)
         self.assertTrue(self.sale2.invoice_ids.picking_ids[:1].name in tbody)

@@ -19,7 +19,16 @@
         <t t-if="picking != last_picking">
             <tr t-if="picking">
                 <td colspan="10">
-                    <strong t-esc="'Order: %s Picking: %s %s' % (picking.sale_id.name, picking.date_done[:10], picking.name)"/>
+                    <strong>
+                        <span>Order:</span>
+                        <span t-field="picking.sale_id.name"/>
+                        <t t-if="picking.sale_id.client_order_ref">
+                            <span t-translation="off"> (</span><span t-field="picking.sale_id.client_order_ref"/><span t-translation="off">)</span>
+                        </t>
+                        <span>Picking:</span>
+                        <span t-field="picking.date_done" t-options="{'widget': 'date'}"/>
+                        <span t-field="picking.name"/>
+                    </strong>
                 </td>
             </tr>
         </t>
