@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
@@ -14,6 +13,7 @@ from contextlib import contextmanager
 from odoo import tools
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
+from odoo.addons.base.tests.test_mimetypes import PNG
 
 from ..models.py3o_report import TemplateNotFound, format_multiline_value
 from base64 import b64encode
@@ -42,9 +42,10 @@ class TestReportPy3o(TransactionCase):
 
     def setUp(self):
         super(TestReportPy3o, self).setUp()
+        self.env.user.image = PNG
         self.report = self.env.ref("report_py3o.res_users_report_py3o")
         self.py3o_report = self.env['py3o.report'].create({
-            'ir_actions_report_xml_id': self.report.id})
+            'ir_actions_report_id': self.report.id})
 
     def test_required_py3_filetype(self):
         self.assertEqual(self.report.report_type, "py3o")
@@ -56,15 +57,17 @@ class TestReportPy3o(TransactionCase):
 
     def _render_patched(self, result_text='test result', call_count=1):
         py3o_report = self.env['py3o.report']
+        py3o_report_obj = py3o_report.create({
+            "ir_actions_report_id": self.report.id
+        })
         with mock.patch.object(
                 py3o_report.__class__, '_create_single_report') as patched_pdf:
             result = tempfile.mktemp('.txt')
             with open(result, 'w') as fp:
                 fp.write(result_text)
-            patched_pdf.return_value = result
-            patched_pdf.side_effect = lambda record, data, save_attachments:\
-                py3o_report._postprocess_report(
-                    result, record.id, save_attachments,
+            patched_pdf.side_effect = lambda record, data:\
+                py3o_report_obj._postprocess_report(
+                    record, result
                 ) or result
             # test the call the the create method inside our custom parser
             self.report.render_report(self.env.user.ids,
@@ -92,14 +95,14 @@ class TestReportPy3o(TransactionCase):
         created_attachement = new_attachments - attachments
         self.assertEqual(1, len(created_attachement))
         content = b64decode(created_attachement.datas)
-        self.assertEqual("test result", content)
+        self.assertEqual(b"test result", content)
         # put a new content into tha attachement and check that the next
         # time we ask the report we received the saved attachment not a newly
         # generated document
-        created_attachement.datas = base64.encodestring("new content")
+        created_attachement.datas = base64.encodestring(b"new content")
         res = self.report.render_report(
             self.env.user.ids, self.report.report_name, {})
-        self.assertEqual(('new content', self.report.py3o_filetype), res)
+        self.assertEqual((b'new content', self.report.py3o_filetype), res)
 
     def test_report_post_process(self):
         """
@@ -115,7 +118,7 @@ class TestReportPy3o(TransactionCase):
         self.assertEqual(self.env.user.name + '.txt', attachements.name)
         self.assertEqual(self.env.user._name, attachements.res_model)
         self.assertEqual(self.env.user.id, attachements.res_id)
-        self.assertEqual('test result', b64decode(attachements.datas))
+        self.assertEqual(b'test result', b64decode(attachements.datas))
 
     @tools.misc.mute_logger('odoo.addons.report_py3o.models.py3o_report')
     def test_report_template_configs(self):
@@ -152,7 +155,7 @@ class TestReportPy3o(TransactionCase):
         # the tempalte can also be provided as a binary field
         self.report.py3o_template_fallback = False
 
-        with open(flbk_filename) as tmpl_file:
+        with open(flbk_filename, 'rb') as tmpl_file:
             tmpl_data = b64encode(tmpl_file.read())
         py3o_template = self.env['py3o.template'].create({
             'name': 'test_template',
