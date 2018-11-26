@@ -89,7 +89,7 @@ msgid ""
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_ir_actions_report_xml_id
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report_ir_actions_report_id
 msgid "Ir actions report xml id"
 msgstr "Ir a los informes de acciones xml id"
 
