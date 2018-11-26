@@ -3,6 +3,6 @@
 
     <menuitem id="py3o_config_menu"
         name="Py3o"
-        parent="report.reporting_menuitem" />
+        parent="base.reporting_menuitem" />
 
 </odoo>
