@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # © 2013 XCG Consulting <http://odoo.consulting>
 # © 2016 ACSONE SA/NV
 # © 2017 Therp BV <http://therp.nl>
@@ -12,7 +11,7 @@ from datetime import datetime
 from contextlib import closing
 from openerp import _, api, models
 from openerp.exceptions import UserError
-from StringIO import StringIO
+from io import BytesIO
 
 logger = logging.getLogger(__name__)
 
@@ -27,15 +26,15 @@ class Py3oReport(models.TransientModel):
     _inherit = 'py3o.report'
 
     @api.multi
-    def _create_single_report(self, model_instance, data, save_in_attachment):
+    def _create_single_report(self, model_instance, data):
         """ This function to generate our py3o report
         """
         self.ensure_one()
-        report_xml = self.ir_actions_report_xml_id
+        report_xml = self.ir_actions_report_id
         filetype = report_xml.py3o_filetype
         if not report_xml.py3o_server_id:
             return super(Py3oReport, self)._create_single_report(
-                model_instance, data, save_in_attachment,
+                model_instance, data,
             )
         elif report_xml.py3o_is_local_fusion:
             result_path = super(
@@ -43,9 +42,9 @@ class Py3oReport(models.TransientModel):
                     report_py3o_skip_conversion=True,
                 )
             )._create_single_report(
-                model_instance, data, save_in_attachment,
+                model_instance, data
             )
-            with closing(open(result_path, 'r')) as out_stream:
+            with closing(open(result_path, 'rb')) as out_stream:
                 tmpl_data = out_stream.read()
             datadict = {}
         else:
@@ -53,8 +52,8 @@ class Py3oReport(models.TransientModel):
                 suffix='.' + filetype, prefix='p3o.report.tmp.')
             tmpl_data = self.get_template(model_instance)
 
-            in_stream = StringIO(tmpl_data)
-            with closing(os.fdopen(result_fd, 'w+')) as out_stream:
+            in_stream = BytesIO(tmpl_data)
+            with closing(os.fdopen(result_fd, 'wb+')) as out_stream:
                 template = Template(in_stream, out_stream, escape_false=True)
                 localcontext = self._get_parser_context(model_instance, data)
                 expressions = template.get_all_user_python_expression()
@@ -107,5 +106,5 @@ class Py3oReport(models.TransientModel):
             report_xml.report_name, filetype, convert_seconds)
         if len(model_instance) == 1:
             self._postprocess_report(
-                result_path, model_instance.id, save_in_attachment)
+                result_path, model_instance.id)
         return result_path
