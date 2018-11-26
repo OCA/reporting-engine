@@ -5,7 +5,7 @@
 
     <record id="py3o_report_view" model="ir.ui.view">
         <field name="name">py3o_report_view</field>
-        <field name="model">ir.actions.report.xml</field>
+        <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
 
@@ -29,7 +29,7 @@
 
     <record id="act_report_xml_search_view" model="ir.ui.view">
         <field name="name">py3o_report_search_view</field>
-        <field name="model">ir.actions.report.xml</field>
+        <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_search_view"/>
         <field name="arch" type="xml">
             <field name="model" position="after">
