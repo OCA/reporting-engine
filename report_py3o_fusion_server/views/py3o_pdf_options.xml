@@ -27,7 +27,6 @@
                                 <label for="image_jpeg_quality" attrs="{'invisible': [('image_compression', '!=', 'jpeg')]}"/>
                                 <div name="image_jpeg_quality" attrs="{'invisible': [('image_compression', '!=', 'jpeg')]}">
                                     <field name="image_jpeg_quality" class="oe_inline"/>
-                                    <label string=" %"/>
                                 </div>
                                 <field name="image_reduce_resolution"/>
                             </group>
