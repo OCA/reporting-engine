@@ -25,34 +25,33 @@ var trigger_download = function(session, response, c, action, options) {
 };
 
 ActionManager.include({
-    ir_actions_report_xml: function(action, options) {
-        var self = this;
-
+    _executeReportAction: function (action, options) {
         // Py3o reports
-        if ('report_type' in action && action.report_type == 'py3o' ) {
-            framework.blockUI();
-            action = _.clone(action);
-            _t =  core._t;
-            var report_url = '/report/py3o/' + action.report_name;;
-            // generic report: no query string
-            // particular: query string of action.data.form and context
-            if (!('data' in action) || !(action.data)) {
-                if ('active_ids' in action.context) {
-                    report_url += "/" + action.context.active_ids.join(',');
-                }
-            } else {
-                report_url += "&options=" + encodeURIComponent(JSON.stringify(action.data));
-                report_url += "&context=" + encodeURIComponent(JSON.stringify(action.context));
-            }
-
-            var response = new Array();
-            response[0] = report_url;
-            response[1] = action.report_type;
-            var c = crash_manager;
-            return trigger_download(self.session, response, c, action, options);
+        if ('report_type' in action && action.report_type === 'py3o' ) {
+            return this._triggerDownload(action, options, 'py3o');
         } else {
-            return self._super(action, options);
+            return this._super.apply(this, arguments);
         }
+    },
+
+    _makeReportUrls: function(action) {
+        var reportUrls = this._super.apply(this, arguments);
+        reportUrls.py3o = '/report/py3o/' + action.report_name;
+        // We may have to build a query string with `action.data`. It's the place
+        // were report's using a wizard to customize the output traditionally put
+        // their options.
+        if (_.isUndefined(action.data) || _.isNull(action.data) ||
+            (_.isObject(action.data) && _.isEmpty(action.data))) {
+            if (action.context.active_ids) {
+                var activeIDsPath = '/' + action.context.active_ids.join(',');
+                reportUrls.py3o += activeIDsPath;;
+            }
+        } else {
+            var serializedOptionsPath = '?options=' + encodeURIComponent(JSON.stringify(action.data));
+            serializedOptionsPath += '&context=' + encodeURIComponent(JSON.stringify(action.context));
+            reportUrls.py3o += serializedOptionsPath;
+        }
+        return reportUrls;
     }
 });
 

@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import base64
 from base64 import b64decode
-from cStringIO import StringIO
+from io import BytesIO
 import logging
 import os
 import cgi
@@ -16,8 +15,6 @@ import sys
 import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 
-from odoo.exceptions import AccessError
-from odoo.report.report_sxw import rml_parse
 from odoo import api, fields, models, tools, _
 
 logger = logging.getLogger(__name__)
@@ -71,7 +68,7 @@ def format_multiline_value(value):
 
 
 @py3o_report_extender()
-def defautl_extend(report_xml, localcontext):
+def default_extend(report_xml, localcontext):
     # add the base64decode function to be able do decode binary fields into
     # the template
     localcontext['b64decode'] = b64decode
@@ -82,11 +79,10 @@ def defautl_extend(report_xml, localcontext):
 
 class Py3oReport(models.TransientModel):
     _name = "py3o.report"
-    _inherit = 'report'
     _description = "Report Py30"
 
-    ir_actions_report_xml_id = fields.Many2one(
-        comodel_name="ir.actions.report.xml",
+    ir_actions_report_id = fields.Many2one(
+        comodel_name="ir.actions.report",
         required=True
     )
 
@@ -134,7 +130,7 @@ class Py3oReport(models.TransientModel):
         """
         if not tmpl_name:
             return None
-        report_xml = self.ir_actions_report_xml_id
+        report_xml = self.ir_actions_report_id
         flbk_filename = None
         if report_xml.module:
             # if the default is defined
@@ -145,7 +141,7 @@ class Py3oReport(models.TransientModel):
         elif self._is_valid_template_path(tmpl_name):
             flbk_filename = os.path.realpath(tmpl_name)
         if self._is_valid_template_filename(flbk_filename):
-            with open(flbk_filename, 'r') as tmpl:
+            with open(flbk_filename, 'rb') as tmpl:
                 return tmpl.read()
         return None
 
@@ -156,7 +152,7 @@ class Py3oReport(models.TransientModel):
         :return:
         """
         self.ensure_one()
-        report_xml = self.ir_actions_report_xml_id
+        report_xml = self.ir_actions_report_id
         return self._get_template_from_path(report_xml.py3o_template_fallback)
 
     @api.multi
@@ -174,7 +170,7 @@ class Py3oReport(models.TransientModel):
         odoo.exceptions.DeferredException
         """
         self.ensure_one()
-        report_xml = self.ir_actions_report_xml_id
+        report_xml = self.ir_actions_report_id
         if report_xml.py3o_template_id.py3o_template_data:
             # if a user gave a report template
             tmpl_data = b64decode(
@@ -187,7 +183,7 @@ class Py3oReport(models.TransientModel):
         if tmpl_data is None:
             # if for any reason the template is not found
             raise TemplateNotFound(
-                _(u'No template found. Aborting.'),
+                _('No template found. Aborting.'),
                 sys.exc_info(),
             )
 
@@ -197,47 +193,35 @@ class Py3oReport(models.TransientModel):
     def _extend_parser_context(self, context_instance, report_xml):
         # add default extenders
         for fct in _extender_functions.get(None, []):
-            fct(report_xml, context_instance.localcontext)
+            fct(report_xml, context_instance)
         # add extenders for registered on the template
         xml_id = report_xml.get_external_id().get(report_xml.id)
         if xml_id in _extender_functions:
             for fct in _extender_functions[xml_id]:
-                fct(report_xml, context_instance.localcontext)
+                fct(report_xml, context_instance)
 
     @api.multi
     def _get_parser_context(self, model_instance, data):
-        report_xml = self.ir_actions_report_xml_id
-        context_instance = rml_parse(self.env.cr, self.env.uid,
-                                     report_xml.name,
-                                     context=self.env.context)
-        context_instance.set_context(model_instance, data, model_instance.ids,
-                                     report_xml.report_type)
-        self._extend_parser_context(context_instance, report_xml)
-        return context_instance.localcontext
-
-    @api.model
-    def _postprocess_report(self, report_path, res_id, save_in_attachment):
-        if save_in_attachment.get(res_id):
-            with open(report_path, 'rb') as pdfreport:
-                attachment = {
-                    'name': save_in_attachment.get(res_id),
-                    'datas': base64.encodestring(pdfreport.read()),
-                    'datas_fname': save_in_attachment.get(res_id),
-                    'res_model': save_in_attachment.get('model'),
-                    'res_id': res_id,
-                }
-                try:
-                    self.env['ir.attachment'].create(attachment)
-                except AccessError:
-                    logger.info("Cannot save PDF report %r as attachment",
-                                attachment['name'])
-                else:
-                    logger.info(
-                        'The PDF document %s is now saved in the database',
-                        attachment['name'])
+        report_xml = self.ir_actions_report_id
+        context = report_xml._get_rendering_context(model_instance.ids, data)
+        context['objects'] = model_instance
+        self._extend_parser_context(context, report_xml)
+        return context
 
     @api.multi
-    def _create_single_report(self, model_instance, data, save_in_attachment):
+    def _postprocess_report(self, model_instance, result_path):
+        if len(model_instance) == 1 and self.ir_actions_report_id.attachment:
+            with open(result_path, 'rb') as f:
+                # we do all the generation process using files to avoid memory
+                # consumption...
+                # ... but odoo wants the whole data in memory anyways :)
+                buffer = BytesIO(f.read())
+                self.ir_actions_report_id.postprocess_pdf_report(
+                    model_instance, buffer)
+        return result_path
+
+    @api.multi
+    def _create_single_report(self, model_instance, data):
         """ This function to generate our py3o report
         """
         self.ensure_one()
@@ -245,8 +229,8 @@ class Py3oReport(models.TransientModel):
             suffix='.ods', prefix='p3o.report.tmp.')
         tmpl_data = self.get_template(model_instance)
 
-        in_stream = StringIO(tmpl_data)
-        with closing(os.fdopen(result_fd, 'w+')) as out_stream:
+        in_stream = BytesIO(tmpl_data)
+        with closing(os.fdopen(result_fd, 'wb+')) as out_stream:
             template = Template(in_stream, out_stream, escape_false=True)
             localcontext = self._get_parser_context(model_instance, data)
             template.render(localcontext)
@@ -260,16 +244,12 @@ class Py3oReport(models.TransientModel):
             result_path, model_instance, data
         )
 
-        if len(model_instance) == 1:
-            self._postprocess_report(
-                result_path, model_instance.id, save_in_attachment)
-
-        return result_path
+        return self._postprocess_report(model_instance, result_path)
 
     @api.multi
     def _convert_single_report(self, result_path, model_instance, data):
         """Run a command to convert to our target format"""
-        filetype = self.ir_actions_report_xml_id.py3o_filetype
+        filetype = self.ir_actions_report_id.py3o_filetype
         if not Formats().get_format(filetype).native:
             command = self._convert_single_report_cmd(
                 result_path, model_instance, data,
@@ -297,30 +277,30 @@ class Py3oReport(models.TransientModel):
             ),
             '--headless',
             '--convert-to',
-            self.ir_actions_report_xml_id.py3o_filetype,
+            self.ir_actions_report_id.py3o_filetype,
             result_path,
         ]
 
     @api.multi
     def _get_or_create_single_report(self, model_instance, data,
-                                     save_in_attachment):
+                                     existing_reports_attachment):
         self.ensure_one()
-        if save_in_attachment and save_in_attachment[
-                'loaded_documents'].get(model_instance.id):
-            d = save_in_attachment[
-                'loaded_documents'].get(model_instance.id)
+        attachment = existing_reports_attachment.get(
+            model_instance.id)
+        if attachment and self.ir_actions_report_id.attachment_use:
+            content = base64.decodestring(attachment.datas)
             report_file = tempfile.mktemp(
-                "." + self.ir_actions_report_xml_id.py3o_filetype)
+                "." + self.ir_actions_report_id.py3o_filetype)
             with open(report_file, "wb") as f:
-                f.write(d)
+                f.write(content)
             return report_file
         return self._create_single_report(
-            model_instance, data, save_in_attachment)
+            model_instance, data)
 
     @api.multi
     def _zip_results(self, reports_path):
         self.ensure_one()
-        zfname_prefix = self.ir_actions_report_xml_id.name
+        zfname_prefix = self.ir_actions_report_id.name
         result_path = tempfile.mktemp(suffix="zip", prefix='py3o-zip-result')
         with ZipFile(result_path, 'w', ZIP_DEFLATED) as zf:
             cpt = 0
@@ -335,7 +315,7 @@ class Py3oReport(models.TransientModel):
     @api.multi
     def _merge_results(self, reports_path):
         self.ensure_one()
-        filetype = self.ir_actions_report_xml_id.py3o_filetype
+        filetype = self.ir_actions_report_id.py3o_filetype
         if not reports_path:
             return False, False
         if len(reports_path) == 1:
@@ -359,22 +339,22 @@ class Py3oReport(models.TransientModel):
     def create_report(self, res_ids, data):
         """ Override this function to handle our py3o report
         """
-        model_instances = self.env[self.ir_actions_report_xml_id.model].browse(
+        model_instances = self.env[self.ir_actions_report_id.model].browse(
             res_ids)
-        save_in_attachment = self._check_attachment_use(
-            res_ids, self.ir_actions_report_xml_id) or {}
         reports_path = []
         if (
                 len(res_ids) > 1 and
-                self.ir_actions_report_xml_id.py3o_multi_in_one):
+                self.ir_actions_report_id.py3o_multi_in_one):
             reports_path.append(
                 self._create_single_report(
-                    model_instances, data, save_in_attachment))
+                    model_instances, data))
         else:
+            existing_reports_attachment = \
+                self.ir_actions_report_id._get_attachments(res_ids)
             for model_instance in model_instances:
                 reports_path.append(
                     self._get_or_create_single_report(
-                        model_instance, data, save_in_attachment))
+                        model_instance, data, existing_reports_attachment))
 
         result_path, filetype = self._merge_results(reports_path)
         reports_path.append(result_path)
