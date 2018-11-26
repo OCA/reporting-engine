@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # © 2013 XCG Consulting <http://odoo.consulting>
 # © 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -14,8 +13,8 @@ except ImportError:
     logger.debug('Cannot import py3o.formats')
 
 
-class IrActionsReportXml(models.Model):
-    _inherit = 'ir.actions.report.xml'
+class IrActionsReport(models.Model):
+    _inherit = 'ir.actions.report'
 
     @api.multi
     @api.constrains("py3o_is_local_fusion", "py3o_server_id", "py3o_filetype")
