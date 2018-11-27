@@ -1,28 +1,8 @@
-/* Copyright 2017 ACSONE SA/NV
+/* Copyright 2017-2018 ACSONE SA/NV
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
 odoo.define('report_py3o.report', function (require) {
 
 var ActionManager = require('web.ActionManager');
-var core = require('web.core');
-var crash_manager = require('web.crash_manager');
-var framework = require('web.framework');
-var session = require('web.session');
-
-var _t = core._t;
-
-var trigger_download = function(session, response, c, action, options) {
-    session.get_file({
-        url: '/report/download',
-        data: {data: JSON.stringify(response)},
-        complete: framework.unblockUI,
-        error: c.rpc_error.bind(c),
-        success: function(){
-            if (action && options && !action.dialog) {
-                options.on_close();
-            }
-        },
-    });
-};
 
 ActionManager.include({
     _executeReportAction: function (action, options) {
