@@ -1,0 +1,207 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bi_view_editor
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: reporting-engine (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-24 04:38+0000\n"
+"PO-Revision-Date: 2016-03-21 15:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Spanish (Dominican Republic) (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/es_DO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_DO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a Custom Query Object.\n"
+"              </p><p>\n"
+"\n"
+"              </p>\n"
+"            "
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,action_id:0
+msgid "Action"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_bve_view
+msgid "BI View Editor"
+msgstr ""
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Created"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: bi_view_editor
+#: field:bve.view,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_tree
+msgid "Custom BI View"
+msgstr ""
+
+#. module: bi_view_editor
+#: sql_constraint:bve.view:0
+msgid "Custom BI View names must be unique!"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
+msgid "Custom BI Views"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Custom Object"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
+msgid "Custom Reports"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,data:0
+msgid "Data"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: bi_view_editor
+#: selection:bve.view,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:72
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Generate BI View"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,group_ids:0
+msgid "Groups"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: bi_view_editor
+#: field:bve.view,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: bi_view_editor
+#: field:bve.view,write_uid:0
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: bi_view_editor
+#: field:bve.view,write_date:0
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: bi_view_editor
+#: field:bve.view,model_name:0
+msgid "Model Name"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model,name:bi_view_editor.model_ir_model
+msgid "Models"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+#: field:bve.view,note:0
+msgid "Notes"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Open BI View"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Query"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: bi_view_editor
+#: view:bve.view:bi_view_editor.view_bi_view_editor_view_form
+msgid "Security"
+msgstr "Seguridad"
+
+#. module: bi_view_editor
+#: field:bve.view,state:0
+msgid "State"
+msgstr ""
+
+#. module: bi_view_editor
+#: help:bve.view,data:0
+msgid ""
+"Use the special query builder to define the query to generate your report "
+"dataset. NOTE: To be edited, the query should be in 'Draft' status."
+msgstr ""
+
+#. module: bi_view_editor
+#: help:bve.view,group_ids:0
+msgid ""
+"User groups allowed to see the generated report; if NO groups are specified "
+"the report will be public for everyone."
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,user_ids:0
+msgid "Users"
+msgstr ""
+
+#. module: bi_view_editor
+#: field:bve.view,view_id:0
+msgid "View"
+msgstr ""
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:73
+#, python-format
+msgid "You cannot delete a created view! Reset the view to draft first."
+msgstr ""
