@@ -9,7 +9,7 @@ from odoo.addons.report_py3o.tests import test_report_py3o
     'requests.post', mock.Mock(
         return_value=mock.Mock(
             status_code=200,
-            iter_content=mock.Mock(return_value=['test_result']),
+            iter_content=mock.Mock(return_value=[b'test_result']),
         )
     )
 )
