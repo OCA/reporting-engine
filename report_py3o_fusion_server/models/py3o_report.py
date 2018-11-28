@@ -96,7 +96,7 @@ class Py3oReport(models.TransientModel):
             )
 
         chunk_size = 1024
-        with open(result_path, 'w+') as fd:
+        with open(result_path, 'w+b') as fd:
             for chunk in r.iter_content(chunk_size):
                 fd.write(chunk)
         end_chrono = datetime.now()
