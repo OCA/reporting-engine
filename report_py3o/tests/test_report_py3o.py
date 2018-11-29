@@ -15,7 +15,8 @@ from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 from odoo.addons.base.tests.test_mimetypes import PNG
 
-from ..models.py3o_report import TemplateNotFound, format_multiline_value
+from ..models.py3o_report import TemplateNotFound
+from ..models._py3o_parser_context import format_multiline_value
 from base64 import b64encode
 import logging
 
