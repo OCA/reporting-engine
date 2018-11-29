@@ -6,7 +6,6 @@ from base64 import b64decode
 from io import BytesIO
 import logging
 import os
-import cgi
 from contextlib import closing
 import subprocess
 
@@ -16,13 +15,13 @@ import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from odoo import api, fields, models, tools, _
+from ._py3o_parser_context import Py3oParserContext
 
 logger = logging.getLogger(__name__)
 
 try:
     from py3o.template import Template
     from py3o import formats
-    from genshi.core import Markup
 except ImportError:
     logger.debug('Cannot import py3o.template')
 try:
@@ -60,21 +59,9 @@ def py3o_report_extender(report_xml_id=None):
     return fct1
 
 
-def format_multiline_value(value):
-    if value:
-        return Markup(cgi.escape(value).replace('\n', '<text:line-break/>').
-                      replace('\t', '<text:s/><text:s/><text:s/><text:s/>'))
-    return ""
-
-
 @py3o_report_extender()
-def default_extend(report_xml, localcontext):
-    # add the base64decode function to be able do decode binary fields into
-    # the template
-    localcontext['b64decode'] = b64decode
-    localcontext['report_xml'] = report_xml
-    localcontext['format_multiline_value'] = format_multiline_value
-    localcontext['html_sanitize'] = tools.html2plaintext
+def default_extend(report_xml, context):
+    context['report_xml'] = report_xml
 
 
 class Py3oReport(models.TransientModel):
@@ -190,20 +177,23 @@ class Py3oReport(models.TransientModel):
         return tmpl_data
 
     @api.multi
-    def _extend_parser_context(self, context_instance, report_xml):
+    def _extend_parser_context(self, context, report_xml):
         # add default extenders
         for fct in _extender_functions.get(None, []):
-            fct(report_xml, context_instance)
+            fct(report_xml, context)
         # add extenders for registered on the template
         xml_id = report_xml.get_external_id().get(report_xml.id)
         if xml_id in _extender_functions:
             for fct in _extender_functions[xml_id]:
-                fct(report_xml, context_instance)
+                fct(report_xml, context)
 
     @api.multi
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
-        context = report_xml._get_rendering_context(model_instance.ids, data)
+        context = Py3oParserContext(self.env).localcontext
+        context.update(
+            report_xml._get_rendering_context(model_instance.ids, data)
+        )
         context['objects'] = model_instance
         self._extend_parser_context(context, report_xml)
         return context
