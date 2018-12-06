@@ -1,10 +1,10 @@
-// 2018 Hugo Rodrigues
+// 2018 Hugo Rodrigues, André Liu
 // License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-var core = require('web.core');
-var _t = core._t;
 
 odoo.define("report_controller.report", function (require) {
     "use strict";
+    var core = require('web.core');
+    var _t = core._t;
 
     var ActionManager = require("web.ActionManager");
     var crash_manager = require("web.crash_manager");
