@@ -1,3 +1,1 @@
-from . import py3o_template
-from . import report
-from . import py3o_report
+from . import ir_actions_report, py3o_report, py3o_template  # noqa: F401

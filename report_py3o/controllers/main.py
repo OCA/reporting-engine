@@ -3,16 +3,15 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import json
 import mimetypes
+
 from werkzeug import exceptions, url_decode
 
-from odoo.http import route, request
+from odoo.http import request, route
+from odoo.tools import html_escape
 
 from odoo.addons.web.controllers import main
-from odoo.addons.web.controllers.main import (
-    _serialize_exception,
-    content_disposition
-)
-from odoo.tools import html_escape
+from odoo.addons.web.controllers.main import (_serialize_exception,
+                                              content_disposition)
 
 
 class ReportController(main.ReportController):
@@ -37,20 +36,19 @@ class ReportController(main.ReportController):
             if data['context'].get('lang'):
                 del data['context']['lang']
             context.update(data['context'])
-            
+
         ir_action = request.env['ir.actions.report']
-        action_py3o_report = ir_action._get_report_from_name(
-            reportname).with_context(context)
-        
+        action_py3o_report = ir_action.get_from_report_name(
+            reportname, "py3o").with_context(context)
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description='Py3o action report not found for report_name '
                             '%s' % reportname)
-        context['report_name'] = reportname
-
-        res, filetype = action_py3o_report.render_py3o(docids, data)
+        res, filetype = action_py3o_report._render_py3o(docids, data)
         filename = action_py3o_report.gen_report_download_filename(
             docids, data)
+        if not filename.endswith(filetype):
+            filename = "{}.{}".format(filename, filetype)
         content_type = mimetypes.guess_type("x." + filetype)[0]
         http_headers = [('Content-Type', content_type),
                         ('Content-Length', len(res)),
@@ -68,8 +66,8 @@ class ReportController(main.ReportController):
         :returns: Response with a filetoken cookie and an attachment header
         """
         requestcontent = json.loads(data)
-        url, type = requestcontent[0], requestcontent[1]
-        if type != 'py3o':
+        url, report_type = requestcontent[0], requestcontent[1]
+        if 'py3o' not in report_type:
             return super(ReportController, self).report_download(data, token)
         try:
             reportname = url.split('/report/py3o/')[1].split('?')[0]
@@ -84,7 +82,7 @@ class ReportController(main.ReportController):
             else:
                 # Particular report:
                 # decoding the args represented in JSON
-                data = url_decode(url.split('?')[1]).items()
+                data = list(url_decode(url.split('?')[1]).items())
                 response = self.report_routes(
                     reportname, converter='py3o', **dict(data))
             response.set_cookie('fileToken', token)

@@ -19,6 +19,8 @@ The key advantages of a Libreoffice based reporting engine are:
 * If you want your users to be able to modify the document after its generation by Odoo, just configure the document with ODT output (or DOC or DOCX) and the user will be able to modify the document with Libreoffice (or Word) after its generation by Odoo.
 * Easy development of spreadsheet reports in ODS format (XLS output possible).
 
+This module *report_py3o* is the base module for the Py3o reporting engine. If used alone, it will spawn a libreoffice process for each ODT to PDF (or ODT to DOCX, ..) document conversion. This is slow and can become a problem if you have a lot of reports to convert from ODT to another format. In this case, you should consider the additionnal module *report_py3o_fusion_server* which is designed to work with a libreoffice daemon. With *report_py3o_fusion_server*, the technical environnement is more complex to setup because you have to install additionnal software components and run 2 daemons, but you have much better performances and you can configure the libreoffice PDF export options in Odoo (allows to generate PDF forms, PDF/A documents, password-protected PDFs, watermarked PDFs, etc.).
+
 This reporting engine is an alternative to `Aeroo <https://github.com/aeroo-community/aeroo_reports>`_: these two reporting engines have similar features but their implementation is entirely different. You cannot use aeroo templates as drop in replacement though, you'll have to change a few details.
 
 Installation
@@ -47,7 +49,7 @@ For example, to replace the native invoice report by a custom py3o report, add t
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report">
+  <record id="account.account_invoices" model="ir.actions.report.xml">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">odt</field>
       <field name="module">my_custom_module_base</field>
@@ -67,7 +69,7 @@ the path to the template as *py3o_template_fallback*.
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report">
+  <record id="account.account_invoices" model="ir.actions.report.xml">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">odt</field>
       <field name="py3o_template_fallback">/odoo/templates/py3o/report/account_invoice.odt</field>
@@ -94,7 +96,7 @@ If you want an invoice in PDF format instead of ODT format, the XML file should 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="account.account_invoices" model="ir.actions.report">
+  <record id="account.account_invoices" model="ir.actions.report.xml">
       <field name="report_type">py3o</field>
       <field name="py3o_filetype">pdf</field>
       <field name="module">my_custom_module_base</field>
@@ -110,7 +112,7 @@ If you want to add a new py3o PDF report (and not replace a native report), the 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
 
-  <record id="partner_summary_report" model="ir.actions.report">
+  <record id="partner_summary_report" model="ir.actions.report.xml">
       <field name="name">Partner Summary</field>
       <field name="model">res.partner</field>
       <field name="report_name">res.partner.summary</field>
@@ -118,9 +120,14 @@ If you want to add a new py3o PDF report (and not replace a native report), the 
       <field name="py3o_filetype">pdf</field>
       <field name="module">my_custom_module_base</field>
       <field name="py3o_template_fallback">report/partner_summary.odt</field>
-      <!-- Add entry in "Print" drop-down list -->
-      <field name="binding_model_id" ref="model_res_partner_summary" />
-      <field name="binding_type">report</field>
+  </record>
+
+  <!-- Add entry in "Print" drop-down list -->
+  <record id="button_partner_summary_report" model="ir.values">
+      <field name="key2">client_print_multi</field>
+      <field name="model">res.partner</field>
+      <field name="name">Partner Summary</field>
+      <field name="value" eval="'ir.actions.report.xml,%d'%partner_summary_report" />
   </record>
 
   </odoo>
@@ -157,6 +164,8 @@ time
     Python's ``time`` module
 display_address(partner)
     Return a formatted string of the partner's address
+formatLang(value, digits=None, date=False, date_time=False, grouping=True, monetary=False, dp=False, currency_obj=False)
+    Return a formatted numeric, monetary, date or time value according to the context language and timezone
 
 Sample report templates
 -----------------------

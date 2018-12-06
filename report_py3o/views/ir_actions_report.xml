@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Inherit from base.act_report_view to add py3o-related settings. -->
+    <!-- Inherit from base.act_report_xml_view to add py3o-related settings. -->
 
     <record id="py3o_report_view" model="ir.ui.view">
         <field name="name">py3o_report_view</field>

@@ -12,7 +12,7 @@
               'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
     'website': 'http://odoo.consulting/',
-    'depends': ['document'],
+    'depends': ['document', 'web'],
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats']
@@ -21,8 +21,11 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/py3o_template.xml',
-        'views/ir_report.xml',
+        'views/ir_actions_report.xml',
         'views/report_py3o.xml',
+    ],
+    'demo': [
+        'demo/report_py3o.xml',
     ],
     'installable': True,
 }
