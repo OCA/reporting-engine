@@ -21,19 +21,25 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:151
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:524
+#, python-format
+msgid "%m/%d/%Y %H:%M:%S UTC"
+msgstr ""
+
+#. module: bi_sql_editor
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:155
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (kopija)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:249
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:261
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Dostop %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:275
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:288
 #, python-format
 msgid "Access %s"
 msgstr "Dostop %s"
@@ -51,13 +57,18 @@ msgstr "Dovoljeni uporabniki"
 
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
+#, fuzzy
 msgid ""
-"Are you sure you want to set to draft this SQL View. It will "
-"delete                                 the materialized view, and all the "
-"previous mapping realized with the columns"
+"Are you sure you want to set to draft this SQL View. It will delete the "
+"materialized view, and all the previous mapping realized with the columns"
 msgstr ""
 "Ste prepričani, da želite ta SQL prikaz ponastaviti v osnutek? Izbrisan bo "
 "materializiran prikaz in vsa prejšnja mapiranja iz naslova stolpcev."
+
+#. module: bi_sql_editor
+#: selection:bi.sql.view.field,tree_visibility:0
+msgid "Available"
+msgstr ""
 
 #. module: bi_sql_editor
 #: help:bi.sql.view.field,is_group_by:0
@@ -202,6 +213,11 @@ msgid "Has group changed"
 msgstr "Se je skupina spremenila"
 
 #. module: bi_sql_editor
+#: selection:bi.sql.view.field,tree_visibility:0
+msgid "Hidden"
+msgstr ""
+
+#. module: bi_sql_editor
 #: field:bi.sql.view,id:0 field:bi.sql.view.field,id:0
 msgid "ID"
 msgstr "ID"
@@ -268,7 +284,7 @@ msgid "Name"
 msgstr "Naziv"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:476
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:506
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -313,6 +329,12 @@ msgid "Odoo Search View"
 msgstr "Odoo iskalni prikaz"
 
 #. module: bi_sql_editor
+#: field:bi.sql.view,tree_view_id:0
+#, fuzzy
+msgid "Odoo Tree View"
+msgstr "Odoo grafični prikaz"
+
+#. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
 msgid "Open View"
 msgstr "Odoo prikaz"
@@ -328,7 +350,7 @@ msgid "Refresh Materialized View"
 msgstr "Osveži materializirani prikaz"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:264
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:276
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Osveži materializirani prikaz %s"
@@ -344,7 +366,7 @@ msgid "Rule Definition"
 msgstr "Definicija pravila"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:359
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:387
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -489,6 +511,11 @@ msgstr ""
 "tranzicijski model in polja na osnovi nastavitev"
 
 #. module: bi_sql_editor
+#: field:bi.sql.view.field,tree_visibility:0
+msgid "Tree Visibility"
+msgstr ""
+
+#. module: bi_sql_editor
 #: help:bi.sql.view.field,ttype:0
 msgid ""
 "Type of the Odoo field that will be created. Let empty if you don't want to "
@@ -498,6 +525,11 @@ msgstr ""
 "Tip Odoo polja, ki bo ustvarjeno. Pustite prazno, če ne želite ustvariti "
 "novega polja. Če prazno, se to polje ne prikazuje in ni na voljo za iskalne "
 "ali združitvene funkcije"
+
+#. module: bi_sql_editor
+#: selection:bi.sql.view.field,tree_visibility:0
+msgid "Unavailable"
+msgstr ""
 
 #. module: bi_sql_editor
 #: view:bi.sql.view:bi_sql_editor.view_bi_sql_view_form
@@ -529,13 +561,13 @@ msgid "View Name"
 msgstr "Naziv prikaza"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:161
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:165
 #, python-format
 msgid "You can only process this action on SQL Valid items"
 msgstr "To dejanje lahko obdelate le na SQL veljavnih postavkah"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:143
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:147
 #, python-format
 msgid "You can only unlink draft views"
 msgstr "Razvezujete lahko le osnutke prikazov"
