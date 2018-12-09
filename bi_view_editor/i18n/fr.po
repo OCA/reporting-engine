@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:384
+#: code:addons/bi_view_editor/models/bve_view.py:380
 #, python-format
 msgid "%s (copy)"
 msgstr "%s (copie)"
@@ -38,7 +38,7 @@ msgid "Action"
 msgstr "Action"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:378
+#: code:addons/bi_view_editor/models/bve_view.py:374
 #, python-format
 msgid "BI View"
 msgstr "Vue BI"
@@ -181,7 +181,7 @@ msgid "No data to be displayed."
 msgstr "Aucune donnée à afficher."
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:284
+#: code:addons/bi_view_editor/models/bve_view.py:279
 #, python-format
 msgid "No data to process."
 msgstr "Aucune donnée à traiter."
@@ -254,7 +254,7 @@ msgid "View"
 msgstr "Vue"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:424
+#: code:addons/bi_view_editor/models/bve_view.py:420
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
