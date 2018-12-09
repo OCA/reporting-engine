@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:450
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:463
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr "%d/%m/%Y %H:%M:%S UTC"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:222
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (Copie)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:325
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:337
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Accès %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:365
 #, python-format
 msgid "Access %s"
 msgstr "Accès %s"
@@ -209,7 +209,8 @@ msgstr "Type de Graphe"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_has_group_changed
-msgid "Has group changed"
+#, fuzzy
+msgid "Has Group Changed"
 msgstr "A un changement de groupe"
 
 #. module: bi_sql_editor
@@ -263,7 +264,8 @@ msgstr "Dernière mise à jour le"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_materialized_text
-msgid "Materialized text"
+#, fuzzy
+msgid "Materialized Text"
 msgstr "Materialized text"
 
 #. module: bi_sql_editor
@@ -288,7 +290,7 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:603
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:617
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -343,7 +345,7 @@ msgid "Odoo Tree View"
 msgstr "Vue Liste Odoo"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:182
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
 msgstr "Seules les vues graphique, pivot et arbre sont supportées"
@@ -370,7 +372,7 @@ msgid "Refresh Materialized View"
 msgstr "Rafraichir la vue matérialisée"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:340
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Rafraichir la vue matérialisée %s"
@@ -386,7 +388,7 @@ msgid "Rule Definition"
 msgstr "Définition de règle"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:483
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:496
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -553,17 +555,18 @@ msgstr "Indisponible"
 
 #. module: bi_sql_editor
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+#, fuzzy
+msgid "Update Model Access"
+msgstr "Mettre à jour les accès au modèle"
+
+#. module: bi_sql_editor
+#: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
 msgstr ""
 "Mettre à jour l'accès au modèle. Requis si vous changez la liste de groupes, "
 "après avoir créer le modèle"
-
-#. module: bi_sql_editor
-#: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid "Update Model Acess"
-msgstr "Mettre à jour les accès au modèle"
 
 #. module: bi_sql_editor
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -591,27 +594,24 @@ msgid "Views, Action and Menu Created"
 msgstr "Vues, Actions et menus créés"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:162
-#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
+#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:109
 #, fuzzy, python-format
 msgid "You can not create indexes on non materialized views"
 msgstr "Tâche CRON qui va rafraichir la vue matérialisée"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:232
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:244
 #, python-format
 msgid "You can only process this action on SQL Valid items"
 msgstr "Vous pouvez seulement réaliser cette action sur des items SQL valides"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:214
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:225
 #, python-format
-msgid "You can only unlink draft views"
-msgstr "Vous pouvez seulement supprimer des vues en brouillon"
-
-#. module: bi_sql_editor
-#: model:ir.model,name:bi_sql_editor.model_base
-msgid "base"
+msgid ""
+"You can only unlink draft views.If you want to delete them, first set them "
+"to draft."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -674,6 +674,9 @@ msgstr "sequence"
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
 msgstr "Cela va rafraichir la vue matérialisée"
+
+#~ msgid "You can only unlink draft views"
+#~ msgstr "Vous pouvez seulement supprimer des vues en brouillon"
 
 #~ msgid "Allowed Users"
 #~ msgstr "Utilisateurs Autorisés"
