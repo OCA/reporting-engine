@@ -10,6 +10,7 @@ from odoo.exceptions import UserError
 
 class BiSQLViewField(models.Model):
     _name = 'bi.sql.view.field'
+    _description = 'Bi SQL View Field'
     _order = 'sequence'
 
     _TTYPE_SELECTION = [
