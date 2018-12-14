@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 <odoo>
     <record id="base.group_no_one" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="sql_request_abstract.group_sql_request_user" model="res.groups">
