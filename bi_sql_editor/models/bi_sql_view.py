@@ -9,7 +9,7 @@ from psycopg2 import ProgrammingError
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError
 from odoo.tools import pycompat, sql
-from odoo.addons.base.ir.ir_model import IrModel
+from odoo.addons.base.models.ir_model import IrModel
 
 _logger = logging.getLogger(__name__)
 
