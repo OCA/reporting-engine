@@ -27,17 +27,12 @@ msgid ""
 msgstr ""
 "Ein Ausdruck der base64-geschlüsselte Daten, zur Verwendung als "
 "Wasserzeichen, liefert.\n"
-"Sie haben die Variablen 'env' und 'docs' zur Verfügung"
+"Sie haben die Variablen `env` und `docs` zur Verfügung"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
 msgstr "Beispielbericht"
-
-#. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_report
-msgid "Report"
-msgstr "Bericht"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark
@@ -50,6 +45,6 @@ msgid "Watermark expression"
 msgstr "Wasserzeichnen-Ausdruck"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
-msgstr "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir.actions.report
+msgid "ir.actions.report"
+msgstr "ir.actions.report"

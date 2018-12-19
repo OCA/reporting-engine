@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 # © 2016 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from PIL import Image
 from odoo.tests.common import HttpCase
-
 
 class TestReportQwebPdfWatermark(HttpCase):
     def test_report_qweb_pdf_watermark(self):
@@ -24,8 +22,10 @@ class TestReportQwebPdfWatermark(HttpCase):
         self._test_report_images(3)
 
     def _test_report_images(self, number):
-        pdf = self.env['report'].get_pdf(
+        r_name = 'report_qweb_pdf_watermark.demo_report_view'
+        report = self.env['ir.actions.report']._get_report_from_name(r_name)
+        pdf, format = report.render_qweb_pdf(
             self.env['res.users'].search([]).ids,
-            'report_qweb_pdf_watermark.demo_report_view',
+            r_name,
         )
-        self.assertEqual(pdf.count('/Subtype /Image'), number)
+        self.assertEqual(pdf.count(b'/Subtype /Image'), number)
