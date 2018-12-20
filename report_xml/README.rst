@@ -24,11 +24,7 @@ installed it's probably because there is another module that depends on it.
 Usage
 =====
 
-If you are a user
------------------
-
-You will be able to download XML reports from the *Print* menu found on form
-and list views.
+This module is intended as a base engine for other modules to use it, so no direct result if you are a user.
 
 If you are a developer
 ----------------------
