@@ -9,14 +9,24 @@ class BaseCommentTemplate(models.Model):
     _name = "base.comment.template"
     _description = "Base comment template"
 
-    name = fields.Char('Comment summary', required=True)
-    position = fields.Selection([('before_lines', 'Before lines'),
-                                 ('after_lines', 'After lines')],
-                                'Position',
-                                required=True,
-                                default='before_lines',
-                                help="Position on document")
-    text = fields.Html('Comment', translate=True, required=True)
+    name = fields.Char(
+        string='Comment summary',
+        required=True
+    )
+    position = fields.Selection(
+        selection=[
+            ('before_lines', 'Before lines'),
+            ('after_lines', 'After lines')
+        ],
+        required=True,
+        default='before_lines',
+        help="Position on document"
+    )
+    text = fields.Html(
+        string='Comment',
+        translate=True,
+        required=True
+    )
 
     @api.multi
     def get_value(self, partner_id=False):
