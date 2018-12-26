@@ -3,5 +3,7 @@
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
 * Guewen Baconnier <guewen.baconnier@camptocamp.com>
 * Simone Rubino <simone.rubino@agilebg.com>
+* Simone Rubino <simone.rubino@agilebg.com>
+* `DynApps <https://www.dynapps.be>`_:
 
-Do not contact contributors directly about support or help with technical issues.
+  * Raf Ven <raf.ven@dynapps.be>
