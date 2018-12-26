@@ -36,64 +36,63 @@ msgid "Before lines"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_text
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
 msgid "Comment"
 msgstr ""
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
-#: model:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
-#: model:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
-#: model:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_tree
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
 msgid "Comment Templates"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_name
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
 msgid "Comment summary"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_create_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
 msgid "Created by"
 msgstr "Kreirao"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_create_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_date
 msgid "Created on"
 msgstr "Kreirano"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
 msgid "Display Name"
 msgstr "Naziv"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_id
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 msgid "ID"
 msgstr "ID"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template___last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
 msgid "Last Modified on"
 msgstr "Zadnje modificirano"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_write_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
 msgid "Last Updated by"
 msgstr "Zadnji ažurirao"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_write_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_date
 msgid "Last Updated on"
 msgstr "Zadnje ažurirano"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_position
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
 msgid "Position"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields,help:base_comment_template.field_base_comment_template_position
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
 msgid "Position on document"
 msgstr ""
