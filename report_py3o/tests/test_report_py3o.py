@@ -71,21 +71,15 @@ class TestReportPy3o(TransactionCase):
                     record, result
                 ) or result
             # test the call the the create method inside our custom parser
-            self.report.render_report(self.env.user.ids,
-                                      self.report.report_name,
-                                      {})
+            self.report.render(self.env.user.ids)
             self.assertEqual(call_count, patched_pdf.call_count)
             # generated files no more exists
             self.assertFalse(os.path.exists(result))
 
     def test_reports(self):
-        res = self.report.render_report(
-            self.env.user.ids, self.report.report_name, {})
+        res = self.report.render(self.env.user.ids)
         self.assertTrue(res)
         self.report.py3o_filetype = 'pdf'
-        res = self.report.render_report(
-            self.env.user.ids, self.report.report_name, {})
-        self.assertTrue(res)
 
     def test_report_load_from_attachment(self):
         self.report.write({"attachment_use": True,
@@ -101,8 +95,7 @@ class TestReportPy3o(TransactionCase):
         # time we ask the report we received the saved attachment not a newly
         # generated document
         created_attachement.datas = base64.encodestring(b"new content")
-        res = self.report.render_report(
-            self.env.user.ids, self.report.report_name, {})
+        res = self.report.render(self.env.user.ids)
         self.assertEqual((b'new content', self.report.py3o_filetype), res)
 
     def test_report_post_process(self):
@@ -130,27 +123,23 @@ class TestReportPy3o(TransactionCase):
             "odoo.addons.%s" % self.report.module,
             tmpl_name)
         self.assertTrue(os.path.exists(flbk_filename))
-        res = self.report.render_report(
-            self.env.user.ids, self.report.report_name, {})
+        res = self.report.render(self.env.user.ids)
         self.assertTrue(res)
         # The generation fails if the template is not found
         self.report.module = False
         with self.assertRaises(TemplateNotFound), self.env.cr.savepoint():
-            self.report.render_report(
-                self.env.user.ids, self.report.report_name, {})
+            self.report.render(self.env.user.ids)
 
         # the template can also be provided as an abspath if it's root path
         # is trusted
         self.report.py3o_template_fallback = flbk_filename
         with self.assertRaises(TemplateNotFound):
-            self.report.render_report(
-                self.env.user.ids, self.report.report_name, {})
+            self.report.render(self.env.user.ids)
         with temporary_copy(flbk_filename) as tmp_filename:
             self.report.py3o_template_fallback = tmp_filename
             tools.config.misc['report_py3o'] = {
                 'root_tmpl_path': os.path.dirname(tmp_filename)}
-            res = self.report.render_report(
-                self.env.user.ids, self.report.report_name, {})
+            res = self.report.render(self.env.user.ids)
             self.assertTrue(res)
 
         # the tempalte can also be provided as a binary field
@@ -164,8 +153,7 @@ class TestReportPy3o(TransactionCase):
             'filetype': 'odt'})
         self.report.py3o_template_id = py3o_template
         self.report.py3o_template_fallback = flbk_filename
-        res = self.report.render_report(
-            self.env.user.ids, self.report.report_name, {})
+        res = self.report.render(self.env.user.ids)
         self.assertTrue(res)
 
     @tools.misc.mute_logger('odoo.addons.report_py3o.models.py3o_report')
