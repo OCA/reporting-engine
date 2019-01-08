@@ -81,12 +81,12 @@ class IrActionsReport(models.Model):
     def render_report(self, res_ids, name, data):
         action_py3o_report = self.get_from_report_name(name, "py3o")
         if action_py3o_report:
-            return action_py3o_report._render_py3o(res_ids, data)
+            return action_py3o_report.render_py3o(res_ids, data)
         return super(IrActionsReport, self).render_report(
             res_ids, name, data)
 
     @api.multi
-    def _render_py3o(self, res_ids, data):
+    def render_py3o(self, res_ids, data):
         self.ensure_one()
         if self.report_type != "py3o":
             raise RuntimeError(
