@@ -77,14 +77,6 @@ class IrActionsReport(models.Model):
             [("report_name", "=", report_name),
              ("report_type", "=", report_type)])
 
-    @api.model
-    def render_report(self, res_ids, name, data):
-        action_py3o_report = self.get_from_report_name(name, "py3o")
-        if action_py3o_report:
-            return action_py3o_report.render_py3o(res_ids, data)
-        return super(IrActionsReport, self).render_report(
-            res_ids, name, data)
-
     @api.multi
     def render_py3o(self, res_ids, data):
         self.ensure_one()
@@ -107,20 +99,6 @@ class IrActionsReport(models.Model):
             return safe_eval(report.print_report_name,
                              {'object': obj, 'time': time})
         return "%s.%s" % (self.name, self.py3o_filetype)
-
-    @api.model
-    def _get_report_from_name(self, report_name):
-        """Get the first record of ir.actions.report having the
-        ``report_name`` as value for the field report_name.
-        """
-        res = super(IrActionsReport, self)._get_report_from_name(report_name)
-        if res:
-            return res
-        # maybe a py3o report
-        context = self.env['res.users'].context_get()
-        return self.with_context(context).search(
-            [('report_type', '=', 'py3o'),
-             ('report_name', '=', report_name)], limit=1)
 
     @api.multi
     def _get_attachments(self, res_ids):
