@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:463
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:454
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
@@ -251,7 +251,7 @@ msgid "Name"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:617
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:608
 #, python-format
 msgid "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
@@ -345,7 +345,7 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:496
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:487
 #, python-format
 msgid "SQL Error while creating %s VIEW %s :\n"
 " %s"
