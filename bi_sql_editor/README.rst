@@ -66,10 +66,11 @@ this module is interesting for the following use cases
 * You have a lot of data, and classical SQL Views have very bad performance.
   In that case, MATERIALIZED VIEW will be a good solution to reduce display duration
 
-**Table of contents**
+Installation
+============
 
-.. contents::
-   :local:
+* You must put this module as `server_wide_modules` in your odoo configuration file
+  or add '--load=bi_sql_editor' if you start odoo in command line.
 
 Configuration
 =============
