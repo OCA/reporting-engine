@@ -66,11 +66,17 @@ this module is interesting for the following use cases
 * You have a lot of data, and classical SQL Views have very bad performance.
   In that case, MATERIALIZED VIEW will be a good solution to reduce display duration
 
+**Table of contents**
+
+.. contents::
+   :local:
+
 Installation
 ============
 
 * You must put this module as `server_wide_modules` in your odoo configuration file
   or add '--load=bi_sql_editor' if you start odoo in command line.
+  
 
 Configuration
 =============
@@ -141,25 +147,6 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 
 Do not contact contributors directly about support or help with technical issues.
 
-Note
-====
-
-* If the view is materialized, the name of the action will contain the date
-  and the time of it last refresh:
-
-  .. figure:: /bi_sql_editor/static/description/06_action_datetime_name.png
-     :width: 800 px
-
-* The syntax of the sql request has the following constrains: the name of the
-  selectable columns should be prefixed by `x_`
-
-Sample:
-
-.. code-block:: sql
-
-    SELECT name as x_name
-    FROM res_partner
-
 Credits
 =======
 
@@ -183,13 +170,6 @@ Contributors
     * GRAP, Groupement Régional Alimentaire de Proximité: (http://www.grap.coop/)
       Module: grap/odoo-addons-misc/pos_sale_reporting
       link: https://github.com/grap/odoo-addons-misc/tree/7.0/pos_sale_reporting
-
-Funders
-~~~~~~~
-
-The development of this module has been financially supported by:
-
-* GRAP, Groupement Régional Alimentaire de Proximité (http://www.grap.coop)
 
 Maintainers
 ~~~~~~~~~~~
