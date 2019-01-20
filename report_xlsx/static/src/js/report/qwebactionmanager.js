@@ -13,7 +13,7 @@ ActionManager.include({
         var cloned_action = _.clone(action);
         if (cloned_action.report_type === 'xlsx') {
             framework.blockUI();
-            var report_xlsx_url = 'report/xlsx/' + cloned_action.report_name;
+            var report_xlsx_url = '/report/xlsx/' + cloned_action.report_name;
             if (_.isUndefined(cloned_action.data) ||
                 _.isNull(cloned_action.data) ||
                 (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data)))
