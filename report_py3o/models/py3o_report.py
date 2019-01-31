@@ -30,7 +30,10 @@ try:
     from py3o.formats import Formats, UnkownFormatException
 except ImportError:
     logger.debug('Cannot import py3o.formats')
-
+try:
+    from PyPDF2 import PdfFileWriter, PdfFileReader
+except ImportError:
+    logger.debug('Cannot import PyPDF2')
 
 _extender_functions = {}
 
@@ -304,6 +307,23 @@ class Py3oReport(models.TransientModel):
 
                 cpt += 1
         return result_path
+
+    @api.model
+    def _merge_pdf(self, reports_path):
+        """ Merge PDF files into one.
+
+        :param reports_path: list of path of pdf files
+        :returns: path of the merged pdf
+        """
+        writer = PdfFileWriter()
+        for path in reports_path:
+            reader = PdfFileReader(path)
+            writer.appendPagesFromReader(reader)
+        merged_file_fd, merged_file_path = tempfile.mkstemp(
+            suffix='.pdf', prefix='report.merged.tmp.')
+        with closing(os.fdopen(merged_file_fd, 'wb')) as merged_file:
+            writer.write(merged_file)
+        return merged_file_path
 
     @api.multi
     def _merge_results(self, reports_path):

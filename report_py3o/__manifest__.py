@@ -15,7 +15,8 @@
     'depends': ['document', 'web'],
     'external_dependencies': {
         'python': ['py3o.template',
-                   'py3o.formats']
+                   'py3o.formats',
+                   'PyPDF2']
     },
     'data': [
         'security/ir.model.access.csv',
