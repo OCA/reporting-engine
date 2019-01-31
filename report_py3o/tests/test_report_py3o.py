@@ -18,6 +18,8 @@ from odoo.addons.base.tests.test_mimetypes import PNG
 from ..models.py3o_report import TemplateNotFound
 from ..models._py3o_parser_context import format_multiline_value
 from base64 import b64encode
+from PyPDF2 import PdfFileWriter
+from PyPDF2.pdf import PageObject
 import logging
 
 logger = logging.getLogger(__name__)
@@ -79,7 +81,30 @@ class TestReportPy3o(TransactionCase):
     def test_reports(self):
         res = self.report.render(self.env.user.ids)
         self.assertTrue(res)
-        self.report.py3o_filetype = 'pdf'
+
+    def test_reports_merge_zip(self):
+        users = self.env['res.users'].search([])
+        self.assertTrue(len(users) > 0)
+        py3o_report = self.env['py3o.report']
+        _zip_results = self.py3o_report._zip_results
+        with mock.patch.object(
+                py3o_report.__class__, '_zip_results') as patched_zip_results:
+            patched_zip_results.side_effect = _zip_results
+            content, filetype = self.report.render(users.ids)
+            self.assertEqual(1, patched_zip_results.call_count)
+            self.assertEqual(filetype, 'zip')
+
+    def test_reports_merge_pdf(self):
+        reports_path = []
+        for i in range(0, 3):
+            result = tempfile.mktemp('.txt')
+            writer = PdfFileWriter()
+            writer.addPage(PageObject.createBlankPage(width=100, height=100))
+            with open(result, 'wb') as fp:
+                writer.write(fp)
+            reports_path.append(result)
+        res = self.py3o_report._merge_pdf(reports_path)
+        self.assertTrue(res)
 
     def test_report_load_from_attachment(self):
         self.report.write({"attachment_use": True,
