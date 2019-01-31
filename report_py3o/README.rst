@@ -166,6 +166,12 @@ display_address(partner)
     Return a formatted string of the partner's address
 formatLang(value, digits=None, date=False, date_time=False, grouping=True, monetary=False, dp=False, currency_obj=False)
     Return a formatted numeric, monetary, date or time value according to the context language and timezone
+    (old implementation kept for compatibility and ease migration)
+o_format_lang(value, digits=None, grouping=True, monetary=False, dp=False, currency_obj=False, no_break_space=True)
+    Return a formatted numeric or monetary value according to the context language and timezone
+o_format_date(value, lang_code=False, date_format=False)
+    Return a formatted date or time value according to the context language and timezone
+
 
 Sample report templates
 -----------------------
