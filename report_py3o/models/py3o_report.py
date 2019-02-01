@@ -245,8 +245,7 @@ class Py3oReport(models.TransientModel):
     @api.multi
     def _convert_single_report(self, result_path, model_instance, data):
         """Run a command to convert to our target format"""
-        filetype = self.ir_actions_report_id.py3o_filetype
-        if not Formats().get_format(filetype).native:
+        if not self.ir_actions_report_id.is_py3o_native_format:
             command = self._convert_single_report_cmd(
                 result_path, model_instance, data,
             )
@@ -259,7 +258,8 @@ class Py3oReport(models.TransientModel):
             result_path, result_filename = os.path.split(result_path)
             result_path = os.path.join(
                 result_path, '%s.%s' % (
-                    os.path.splitext(result_filename)[0], filetype
+                    os.path.splitext(result_filename)[0],
+                    self.ir_actions_report_id.py3o_filetype
                 )
             )
         return result_path
@@ -267,10 +267,14 @@ class Py3oReport(models.TransientModel):
     @api.multi
     def _convert_single_report_cmd(self, result_path, model_instance, data):
         """Return a command list suitable for use in subprocess.call"""
+        lo_bin = self.ir_actions_report_id.lo_bin_path
+        if not lo_bin:
+            raise RuntimeError(
+                _("Libreoffice runtime not available. "
+                  "Please contact your administrator.")
+            )
         return [
-            self.env['ir.config_parameter'].get_param(
-                'py3o.conversion_command', 'libreoffice',
-            ),
+            lo_bin,
             '--headless',
             '--convert-to',
             self.ir_actions_report_id.py3o_filetype,

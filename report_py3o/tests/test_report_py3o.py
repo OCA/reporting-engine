@@ -18,8 +18,9 @@ from odoo.tests.common import TransactionCase
 
 from odoo.addons.base.tests.test_mimetypes import PNG
 
-from ..models._py3o_parser_context import format_multiline_value
+from ..models.ir_actions_report import PY3O_CONVERSION_COMMAND_PARAMETER
 from ..models.py3o_report import TemplateNotFound
+from ..models._py3o_parser_context import format_multiline_value
 from base64 import b64encode
 from PyPDF2 import PdfFileWriter
 from PyPDF2.pdf import PageObject
@@ -86,6 +87,7 @@ class TestReportPy3o(TransactionCase):
         self.assertTrue(res)
 
     def test_reports_merge_zip(self):
+        self.report.py3o_filetype = "odt"
         users = self.env['res.users'].search([])
         self.assertTrue(len(users) > 0)
         py3o_report = self.env['py3o.report']
@@ -220,3 +222,42 @@ class TestReportPy3o(TransactionCase):
     def test_escape_html_characters_format_multiline_value(self):
         self.assertEqual(Markup('&lt;&gt;<text:line-break/>&amp;test;'),
                          format_multiline_value('<>\n&test;'))
+
+    def test_py3o_report_availability(self):
+        # This test could fails if libreoffice is not available on the server
+        self.report.py3o_filetype = "odt"
+        self.assertTrue(self.report.lo_bin_path)
+        self.assertTrue(self.report.is_py3o_native_format)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)
+
+        # specify a wrong lo bin path
+        self.env['ir.config_parameter'].set_param(
+            PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path")
+        self.report.refresh()
+        # no bin path available but the report is still available since
+        # the output is into native format
+        self.assertFalse(self.report.lo_bin_path)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)
+        res = self.report.render(self.env.user.ids)
+        self.assertTrue(res)
+
+        # The report should become unavailable for an non native output format
+        self.report.py3o_filetype = "pdf"
+        self.assertFalse(self.report.is_py3o_native_format)
+        self.assertTrue(self.report.is_py3o_report_not_available)
+        self.assertTrue(self.report.msg_py3o_report_not_available)
+        with self.assertRaises(RuntimeError):
+            self.report.render(self.env.user.ids)
+
+        # if we reset the wrong path, everything should work
+        self.env['ir.config_parameter'].set_param(
+            PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice")
+        self.report.refresh()
+        self.assertTrue(self.report.lo_bin_path)
+        self.assertFalse(self.report.is_py3o_native_format)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)
+        res = self.report.render(self.env.user.ids)
+        self.assertTrue(res)
