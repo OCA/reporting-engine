@@ -49,11 +49,15 @@ class Py3oParserContext(object):
             'b64decode': b64decode,
         }
 
-    def _format_lang(self, value, digits=None, grouping=True,
+    def _format_lang(self, value, lang_code=False, digits=None, grouping=True,
                      monetary=False, dp=False, currency_obj=False,
                      no_break_space=True):
+        env = self._env
+        if lang_code:
+            context = dict(env.context, lang=lang_code)
+            env = env(context=context)
         formatted_value = misc.formatLang(
-            self._env, value, digits=digits, grouping=grouping,
+            env, value, digits=digits, grouping=grouping,
             monetary=monetary, dp=dp, currency_obj=currency_obj)
         if currency_obj and currency_obj.symbol and no_break_space:
             parts = []
