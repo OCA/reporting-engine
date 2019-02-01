@@ -5,7 +5,9 @@ import logging
 import time
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from odoo.tools.misc import find_in_path
 from odoo.tools.safe_eval import safe_eval
+
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +15,8 @@ try:
     from py3o.formats import Formats
 except ImportError:
     logger.debug('Cannot import py3o.formats')
+
+PY3O_CONVERSION_COMMAND_PARAMETER = "py3o.conversion_command"
 
 
 class IrActionsReport(models.Model):
@@ -49,6 +53,9 @@ class IrActionsReport(models.Model):
     py3o_filetype = fields.Selection(
         selection="_get_py3o_filetypes",
         string="Output Format")
+    is_py3o_native_format = fields.Boolean(
+        compute='_compute_is_py3o_native_format'
+    )
     py3o_template_id = fields.Many2one(
         'py3o.template',
         "Template")
@@ -70,6 +77,77 @@ class IrActionsReport(models.Model):
         "by default Odoo will generate a ZIP file that contains as many "
         "files as selected records. If you enable this option, Odoo will "
         "generate instead a single report for the selected records.")
+    lo_bin_path = fields.Char(
+        string="Path to the libreoffice runtime",
+        compute="_compute_lo_bin_path"
+        )
+    is_py3o_report_not_available = fields.Boolean(
+        compute='_compute_py3o_report_not_available'
+        )
+    msg_py3o_report_not_available = fields.Char(
+        compute='_compute_py3o_report_not_available'
+        )
+
+    @api.model
+    def _register_hook(self):
+        self._validate_reports()
+
+    @api.model
+    def _validate_reports(self):
+        """Check if the existing py3o reports should work with the current
+        installation.
+
+        This method log a warning message into the logs for each report
+        that should not work.
+        """
+        for report in self.search([("report_type", "=", "py3o")]):
+            if report.is_py3o_report_not_available:
+                logger.warning(report.msg_py3o_report_not_available)
+
+    @api.model
+    def _get_lo_bin(self):
+        lo_bin = self.env['ir.config_parameter'].get_param(
+            PY3O_CONVERSION_COMMAND_PARAMETER, 'libreoffice',
+        )
+        try:
+            lo_bin = find_in_path(lo_bin)
+        except IOError:
+            lo_bin = None
+        return lo_bin
+
+    @api.depends("report_type", "py3o_filetype")
+    @api.multi
+    def _compute_is_py3o_native_format(self):
+        format = Formats()
+        for rec in self:
+            if not rec.report_type == "py3o":
+                continue
+            filetype = rec.py3o_filetype
+            rec.is_py3o_native_format = format.get_format(filetype).native
+
+    @api.multi
+    def _compute_lo_bin_path(self):
+        lo_bin = self._get_lo_bin()
+        for rec in self:
+            rec.lo_bin_path = lo_bin
+
+    @api.depends("lo_bin_path", "is_py3o_native_format", "report_type")
+    @api.multi
+    def _compute_py3o_report_not_available(self):
+        for rec in self:
+            if not rec.report_type == "py3o":
+                continue
+            if not rec.is_py3o_native_format and not rec.lo_bin_path:
+                rec.is_py3o_report_not_available = True
+                rec.msg_py3o_report_not_available = _(
+                    "The libreoffice runtime is required to genereate the "
+                    "py3o report '%s' but is not found into the bin path. You "
+                    "must install the libreoffice runtime on the server. If "
+                    "the runtime is already installed and is not found by "
+                    "Odoo, you can provide the full path to the runtime by "
+                    "setting the key 'py3o.conversion_command' into the "
+                    "configuration parameters."
+                ) % rec.name
 
     @api.model
     def get_from_report_name(self, report_name, report_type):
