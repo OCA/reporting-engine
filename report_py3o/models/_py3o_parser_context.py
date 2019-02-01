@@ -32,6 +32,8 @@ class Py3oParserContext(object):
         self._env = env
 
         self.localcontext = {
+            'user': self._env.user,
+            'lang': self._env.lang,
             # Odoo default format methods
             'o_format_lang': self._format_lang,
             # prefixes with o_ to avoid nameclash with default method provided
@@ -47,11 +49,11 @@ class Py3oParserContext(object):
             'b64decode': b64decode,
         }
 
-    def _format_lang(self, _env, value, digits=None, grouping=True,
+    def _format_lang(self, value, digits=None, grouping=True,
                      monetary=False, dp=False, currency_obj=False,
                      no_break_space=True):
         formatted_value = misc.formatLang(
-            _env, value, digits=digits, grouping=grouping,
+            self._env, value, digits=digits, grouping=grouping,
             monetary=monetary, dp=dp, currency_obj=currency_obj)
         if currency_obj and currency_obj.symbol and no_break_space:
             parts = []
@@ -89,7 +91,7 @@ class Py3oParserContext(object):
         """
         if not date and not date_time:
             return self._format_lang(
-                self._env, value, digits=digits, grouping=grouping,
+                value, digits=digits, grouping=grouping,
                 monetary=monetary, dp=dp, currency_obj=currency_obj,
                 no_break_space=True)
 
