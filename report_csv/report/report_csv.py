@@ -48,6 +48,12 @@ class ReportCSVAbstract(models.AbstractModel):
         return file_data.read(), 'csv'
 
     def csv_report_options(self):
+        """
+        :return: dictionary of parameters. At least return 'fieldnames', but
+        you can optionally return parameters that define the export format.
+        Valid parameters include 'delimiter', 'quotechar', 'escapechar',
+        'doublequote', 'skipinitialspace', 'lineterminator', 'quoting'.
+        """
         return {'fieldnames': []}
 
     def generate_csv_report(self, file, data, objs):
