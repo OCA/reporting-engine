@@ -106,7 +106,7 @@ class IrActionsReport(models.Model):
 
     @api.model
     def _get_lo_bin(self):
-        lo_bin = self.env['ir.config_parameter'].get_param(
+        lo_bin = self.env['ir.config_parameter'].sudo().get_param(
             PY3O_CONVERSION_COMMAND_PARAMETER, 'libreoffice',
         )
         try:
