@@ -27,7 +27,8 @@ class TestReport(common.TransactionCase):
         self.assertEqual(report.report_type, 'csv')
         rep = report.render(self.docs.ids, {})
         str_io = StringIO(rep[0])
-        dict_report = list(csv.DictReader(str_io))
+        dict_report = list(csv.DictReader(str_io, delimiter=';',
+                                          quoting=csv.QUOTE_ALL))
         self.assertEqual(self.docs.name, dict(dict_report[0])['name'])
 
     def test_id_retrieval(self):
