@@ -3,8 +3,10 @@
 
 from odoo.addons.web.controllers import main as report
 from odoo.http import content_disposition, route, request
+from odoo.tools.safe_eval import safe_eval
 
 import json
+import time
 
 
 class ReportController(report.ReportController):
@@ -29,12 +31,25 @@ class ReportController(report.ReportController):
             csv = report.with_context(context).render_csv(
                 docids, data=data
             )[0]
+            filename = "%s.%s" % (report.name, "csv")
+            if docids:
+                obj = request.env[report.model].browse(docids)
+                if report.print_report_name and not len(obj) > 1:
+                    report_name = safe_eval(report.print_report_name,
+                                            {'object': obj, 'time': time})
+                    filename = "%s.%s" % (report_name, "csv")
+                # When we print multiple records we still allow a custom
+                # filename.
+                elif report.print_report_name and len(obj) > 1:
+                    report_name = safe_eval(report.print_report_name,
+                                            {'objects': obj, 'time': time})
+                    filename = "%s.%s" % (report_name, "csv")
             csvhttpheaders = [
                 ('Content-Type', 'text/csv'),
                 ('Content-Length', len(csv)),
                 (
                     'Content-Disposition',
-                    content_disposition(report.report_file + '.csv')
+                    content_disposition(filename)
                 )
             ]
             return request.make_response(csv, headers=csvhttpheaders)
