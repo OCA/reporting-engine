@@ -35,14 +35,16 @@ class ReportController(report.ReportController):
             if docids:
                 obj = request.env[report.model].browse(docids)
                 if report.print_report_name and not len(obj) > 1:
-                    report_name = safe_eval(report.print_report_name,
-                                            {'object': obj, 'time': time})
+                    report_name = safe_eval(
+                        report.print_report_name,
+                        {'object': obj, 'time': time, 'multi': False})
                     filename = "%s.%s" % (report_name, "csv")
                 # When we print multiple records we still allow a custom
                 # filename.
                 elif report.print_report_name and len(obj) > 1:
-                    report_name = safe_eval(report.print_report_name,
-                                            {'objects': obj, 'time': time})
+                    report_name = safe_eval(
+                        report.print_report_name,
+                        {'objects': obj, 'time': time, 'multi': True})
                     filename = "%s.%s" % (report_name, "csv")
             csvhttpheaders = [
                 ('Content-Type', 'text/csv'),
