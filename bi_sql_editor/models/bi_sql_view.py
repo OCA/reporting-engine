@@ -6,6 +6,7 @@
 import logging
 from datetime import datetime
 from psycopg2 import ProgrammingError
+from psycopg2.extensions import AsIs
 
 from openerp import _, api, fields, models, SUPERUSER_ID
 from openerp.exceptions import Warning as UserError
@@ -408,9 +409,7 @@ class BiSQLView(models.Model):
             sql_view.rule_id = self.env['ir.rule'].create(
                 self._prepare_rule()).id
             # Drop table, created by the ORM
-            req = "DROP TABLE %s" % (sql_view.view_name)\
-                # pylint: disable=sql-injection
-            self.env.cr.execute(req)
+            self.env.cr.execute('DROP TABLE %s', (AsIs(sql_view.view_name), ))
 
     @api.multi
     def _create_model_access(self):
@@ -427,6 +426,7 @@ class BiSQLView(models.Model):
     @api.multi
     def _drop_model_and_fields(self):
         for sql_view in self:
+            sql_view.rule_id.unlink()
             sql_view.model_id.unlink()
 
     @api.multi
@@ -440,9 +440,8 @@ class BiSQLView(models.Model):
             WHERE   attrelid = '%s'::regclass
             AND     NOT attisdropped
             AND     attnum > 0
-            ORDER   BY attnum;""" % (
-                self.view_name)  # pylint: disable=sql-injection
-        self.env.cr.execute(req)
+            ORDER   BY attnum;"""
+        self.env.cr.execute(req, (AsIs(self.view_name), ))
         return self.env.cr.fetchall()
 
     @api.multi
@@ -526,7 +525,6 @@ class BiSQLView(models.Model):
     @api.multi
     def _refresh_size(self):
         for sql_view in self:
-            req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));" % (
-                sql_view.view_name)  # pylint: disable=sql-injection
-            self.env.cr.execute(req)
+            req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));"
+            self.env.cr.execute(req, (AsIs(sql_view.view_name), ))
             sql_view.size = self.env.cr.fetchone()[0]
