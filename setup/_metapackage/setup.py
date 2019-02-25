@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo11-addon-bi_sql_editor',
         'odoo11-addon-bi_view_editor',
+        'odoo11-addon-report_context',
         'odoo11-addon-report_csv',
         'odoo11-addon-report_fillpdf',
         'odoo11-addon-report_qweb_parameter',
