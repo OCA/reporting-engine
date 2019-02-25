@@ -48,6 +48,13 @@ To configure this module, you need to:
   dictionary variable where you can add a context that will be common for
   all reports.
 
+It can also be added on the developer side using::
+
+    <record id="model_name.report_id" model="ir.actions.report">
+        <field name="context">YOUR CONTEXT HERE</field>
+    </record>
+
+
 Bug Tracker
 ===========
 
