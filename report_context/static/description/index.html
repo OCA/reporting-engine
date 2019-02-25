@@ -397,6 +397,12 @@ parameters list, look for report.default.context, which is a Python
 dictionary variable where you can add a context that will be common for
 all reports.</li>
 </ul>
+<p>It can also be added on the developer side using:</p>
+<pre class="literal-block">
+&lt;record id=&quot;model_name.report_id&quot; model=&quot;ir.actions.report&quot;&gt;
+    &lt;field name=&quot;context&quot;&gt;YOUR CONTEXT HERE&lt;/field&gt;
+&lt;/record&gt;
+</pre>
 </div>
 <div class="section" id="bug-tracker">
 <h1><a class="toc-backref" href="#id2">Bug Tracker</a></h1>
