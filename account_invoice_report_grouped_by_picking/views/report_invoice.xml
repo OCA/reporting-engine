@@ -36,6 +36,7 @@
     <xpath expr="//td/span[@t-field='l.quantity']" position="attributes">
         <attribute name="t-esc">lines_group['quantity']</attribute>
         <attribute name="t-field"/>
+        <attribute name="t-options">{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}</attribute>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_subtotal']" position="before">
         <t t-if="picking" id="picking_subtotal" groups="!sale.group_show_price_total">
