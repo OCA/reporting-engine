@@ -41,7 +41,7 @@
     <xpath expr="//td/span[@t-field='l.price_subtotal']" position="before">
         <t t-if="picking" id="picking_subtotal" groups="!sale.group_show_price_total">
             <!-- Compute subtotal for that picking with discounts -->
-            <t t-set="line_picking_subtotal" t-value="lines_group['quantity'] * (l.price_subtotal / l.quantity)"/>
+            <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_subtotal / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
             <span t-esc="line_picking_subtotal"
                   t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
@@ -73,7 +73,7 @@
     <xpath expr="//td/span[@t-field='l.price_total']" position="before">
         <t t-if="picking" groups="sale.group_show_price_total">
             <!-- Compute subtotal for that picking with discounts -->
-            <t t-set="line_picking_subtotal" t-value="lines_group['quantity'] * (l.price_total / l.quantity)"/>
+            <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_total / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
             <span t-esc="line_picking_subtotal"
                   t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
