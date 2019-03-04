@@ -39,19 +39,22 @@
         <attribute name="t-options">{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}</attribute>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_subtotal']" position="before">
-        <t t-if="picking" id="picking_subtotal" groups="!sale.group_show_price_total">
+        <t t-if="lines_group['quantity'] != l.quantity" id="picking_subtotal" groups="!sale.group_show_price_total">
             <!-- Compute subtotal for that picking with discounts -->
             <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_subtotal / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
             <span t-esc="line_picking_subtotal"
                   t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
         </t>
+        <t t-else="">
+            <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_subtotal"/>
+        </t>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_subtotal']" position="attributes">
-        <attribute name="t-if">not picking</attribute>
+        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_total']" position="attributes">
-        <attribute name="t-if">not picking</attribute>
+        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
     </xpath>
 </template>
 
@@ -71,16 +74,19 @@
     </xpath>
     <!-- Replicate logic if B2C prices-->
     <xpath expr="//td/span[@t-field='l.price_total']" position="before">
-        <t t-if="picking" groups="sale.group_show_price_total">
+        <t t-if="lines_group['quantity'] != l.quantity" groups="sale.group_show_price_total">
             <!-- Compute subtotal for that picking with discounts -->
             <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_total / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
             <span t-esc="line_picking_subtotal"
                   t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
         </t>
+        <t t-else="">
+            <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_subtotal"/>
+        </t>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_total']" position="attributes">
-        <attribute name="t-if">not picking</attribute>
+        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
     </xpath>
 </template>
 
