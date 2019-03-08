@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.15.1: http://docutils.sourceforge.net/" />
 <title>BI SQL Editor</title>
 <style type="text/css">
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
@@ -36,6 +36,14 @@ table.borderless td, table.borderless th {
 
 .hidden {
   display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
 
 a.toc-backref {
   text-decoration: none ;
@@ -161,18 +169,23 @@ h2.subtitle {
 hr.docutils {
   width: 75% }
 
-img.align-left, .figure.align-left, object.align-left {
+img.align-left, .figure.align-left, object.align-left, table.align-left {
   clear: left ;
   float: left ;
   margin-right: 1em }
 
-img.align-right, .figure.align-right, object.align-right {
+img.align-right, .figure.align-right, object.align-right, table.align-right {
   clear: right ;
   float: right ;
   margin-left: 1em }
 
 img.align-center, .figure.align-center, object.align-center {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
   margin-left: auto;
   margin-right: auto;
 }
@@ -193,6 +206,15 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
 
 ol.simple, ul.simple {
   margin-bottom: 1em }
@@ -408,12 +430,12 @@ or add ‘–load=bi_sql_editor’ if you start odoo in command line.</li>
 </li>
 <li><p class="first">tip your SQL request</p>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/01_sql_request.png" src="/bi_sql_editor/static/description/01_sql_request.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/01_sql_request.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/01_sql_request.png" style="width: 800px;" />
 </div>
 </li>
 <li><p class="first">Select the group(s) that could have access to the view</p>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/02_security_access.png" src="/bi_sql_editor/static/description/02_security_access.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/02_security_access.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/02_security_access.png" style="width: 800px;" />
 </div>
 </li>
 <li><p class="first">Click on the button ‘Clean and Check Request’</p>
@@ -423,7 +445,7 @@ and propose field mapping. For each field, you can decide to create an index
 and set if it will be displayed on the pivot graph as a column, a row or a
 measure.</p>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/03_field_mapping.png" src="/bi_sql_editor/static/description/03_field_mapping.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/03_field_mapping.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/03_field_mapping.png" style="width: 800px;" />
 </div>
 </li>
 <li><p class="first">Click on the button ‘Create SQL View, Indexes and Models’. (this step could
@@ -438,7 +460,7 @@ the view. You can so define the frequency of the refresh.</li>
 </ul>
 </blockquote>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/04_materialized_view_setting.png" src="/bi_sql_editor/static/description/04_materialized_view_setting.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/04_materialized_view_setting.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/04_materialized_view_setting.png" style="width: 800px;" />
 </div>
 </li>
 <li><p class="first">Finally, click on ‘Create UI’, to create new menu, action, graph view and
@@ -455,13 +477,13 @@ search view.</p>
 </ol>
 <blockquote>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/05_reporting_pivot.png" src="/bi_sql_editor/static/description/05_reporting_pivot.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/05_reporting_pivot.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/05_reporting_pivot.png" style="width: 800px;" />
 </div>
 </blockquote>
 <ul>
 <li><p class="first">You can switch to ‘Pie’ chart or ‘Line Chart’ as any report,</p>
 <div class="figure">
-<img alt="/bi_sql_editor/static/description/05_reporting_pie.png" src="/bi_sql_editor/static/description/05_reporting_pie.png" style="width: 800px;" />
+<img alt="https://raw.githubusercontent.com/bi_sql_editor/static/description/05_reporting_pie.png" src="https://raw.githubusercontent.com/bi_sql_editor/static/description/05_reporting_pie.png" style="width: 800px;" />
 </div>
 </li>
 </ul>
@@ -484,12 +506,11 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 </div>
 <div class="section" id="contributors">
 <h3><a class="toc-backref" href="#id7">Contributors</a></h3>
-<ul>
-<li><p class="first">Sylvain LE GAL (<a class="reference external" href="https://twitter.com/legalsylvain">https://twitter.com/legalsylvain</a>)</p>
-</li>
+<ul class="simple">
+<li>Sylvain LE GAL (<a class="reference external" href="https://twitter.com/legalsylvain">https://twitter.com/legalsylvain</a>)</li>
 <li><dl class="first docutils">
 <dt>This module is highly inspired by the work of</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Onestein: (<a class="reference external" href="http://www.onestein.nl/">http://www.onestein.nl/</a>)
 Module: OCA/server-tools/bi_view_editor.
 Link: <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor">https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor</a></li>
