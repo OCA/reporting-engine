@@ -1,3 +1,1 @@
 server-tools
-# Until merged
-server-tools-eficent https://github.com/Eficent/server-tools 12.0-mig-sql_request_abstract
