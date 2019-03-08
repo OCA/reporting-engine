@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-reporting-engine Odoo addons",
     version=version,
     install_requires=[
+        'odoo12-addon-bi_sql_editor',
         'odoo12-addon-report_xlsx',
     ],
     classifiers=[
