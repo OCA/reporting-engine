@@ -106,5 +106,5 @@ class Py3oReport(models.TransientModel):
             report_xml.report_name, filetype, convert_seconds)
         if len(model_instance) == 1:
             self._postprocess_report(
-                result_path, model_instance.id)
+                model_instance, result_path)
         return result_path
