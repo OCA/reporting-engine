@@ -1,0 +1,133 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_py3o_fusion_server
+#
+# Translators:
+# Peter Hageman <hageman.p@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-16 08:52+0000\n"
+"PO-Revision-Date: 2018-01-16 08:52+0000\n"
+"Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2018\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/"
+"teams/23907/nl_NL/)\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_is_active
+msgid "Active"
+msgstr "Actief"
+
+#. module: report_py3o_fusion_server
+#: code:addons/report_py3o_fusion_server/models/ir_actions_report_xml.py:29
+#, python-format
+msgid ""
+"Can not use not native format in local fusion. Please specify a Fusion Server"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_act_report_xml_py3o_server_id
+msgid "Fusion Server"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: code:addons/report_py3o_fusion_server/models/py3o_report.py:83
+#, python-format
+msgid "Fusion server error %s"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_py3o_server_url
+msgid ""
+"If your Py3o Fusion server is on the same machine and runs on the default "
+"port, the URL is http://localhost:8765/form"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_act_report_xml_py3o_is_local_fusion
+msgid "Local Fusion"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_act_report_xml_py3o_is_local_fusion
+msgid ""
+"Native formats will be processed without a server. You must use this mode if "
+"you call methods on your model into the template."
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server_url
+msgid "Py3o Fusion Server URL"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_form_view
+msgid "Py3o Server Configuration"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_server_configuration_action
+#: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_server_configuration_menu
+msgid "Py3o Servers"
+msgstr "Py3o Servers"
+
+#. module: report_py3o_fusion_server
+#: model:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_tree_view
+msgid "Py3o Servers Configuration"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model,name:report_py3o_fusion_server.model_py3o_report
+msgid "Report Py30"
+msgstr ""
+
+#. module: report_py3o_fusion_server
+#: model:ir.model,name:report_py3o_fusion_server.model_ir_actions_report_xml
+msgid "ir.actions.report.xml"
+msgstr "ir.actions.report.xml"
+
+#. module: report_py3o_fusion_server
+#: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
+msgid "py3o.server"
+msgstr "py3o.server"
