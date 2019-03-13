@@ -12,10 +12,16 @@
             </t>
             <div class="page">
                 <h2 >Statement of Account</h2>
-                    <p>
-                        Date: <span t-esc="d['today']" /><br/>
-                        <t t-if="o.ref">Partner ref: <span t-field="o.ref"/></t>
-                    </p>
+                <div id="informations" class="row mt32 mb32">
+                    <div class="col-3 bm-2">
+                        <strong>Date:</strong>
+                        <p t-esc="d['today']" class="m-0"/>
+                    </div>
+                    <div t-if="o.ref" class="col-3 bm-2">
+                        <strong>Partner Code:</strong>
+                        <p t-field="o.ref" class="m-0" />
+                    </div>
+                </div>
 
                     <t t-if="d['currencies']">
                         <br/>
