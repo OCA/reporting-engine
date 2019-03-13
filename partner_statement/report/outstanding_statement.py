@@ -94,11 +94,12 @@ class OutstandingStatement(models.AbstractModel):
     def _display_lines_sql_q2(self):
         return str(
             self._cr.mogrify("""
-                SELECT partner_id, currency_id, move_id, date, date_maturity,
-                                debit, credit, name, ref, blocked, company_id,
-                CASE WHEN currency_id is not null
-                        THEN open_amount_currency
-                        ELSE open_amount
+                SELECT Q1.partner_id, Q1.currency_id, Q1.move_id,
+                    Q1.date, Q1.date_maturity, Q1.debit, Q1.credit,
+                    Q1.name, Q1.ref, Q1.blocked, Q1.company_id,
+                CASE WHEN Q1.currency_id is not null
+                    THEN open_amount_currency
+                    ELSE open_amount
                 END as open_amount
                 FROM Q1
                 """, locals()
@@ -108,9 +109,11 @@ class OutstandingStatement(models.AbstractModel):
 
     def _display_lines_sql_q3(self, company_id):
         return str(self._cr.mogrify("""
-            SELECT Q2.partner_id, move_id, date, date_maturity, Q2.name, ref,
-                            debit, credit, debit-credit AS amount, blocked,
-            COALESCE(Q2.currency_id, c.currency_id) AS currency_id, open_amount
+            SELECT Q2.partner_id, Q2.move_id, Q2.date, Q2.date_maturity,
+              Q2.name, Q2.ref, Q2.debit, Q2.credit,
+              Q2.debit-Q2.credit AS amount, blocked,
+              COALESCE(Q2.currency_id, c.currency_id) AS currency_id,
+              Q2.open_amount
             FROM Q2
             JOIN res_company c ON (c.id = Q2.company_id)
             WHERE c.id = %(company_id)s

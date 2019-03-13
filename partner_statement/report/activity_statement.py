@@ -86,9 +86,10 @@ class ActivityStatement(models.AbstractModel):
 
     def _display_lines_sql_q2(self, company_id):
         return str(self._cr.mogrify("""
-            SELECT Q1.partner_id, move_id, date, date_maturity, Q1.name, ref,
-                            debit, credit, debit-credit as amount, blocked,
-            COALESCE(Q1.currency_id, c.currency_id) AS currency_id
+            SELECT Q1.partner_id, Q1.move_id, Q1.date, Q1.date_maturity,
+                Q1.name, Q1.ref, Q1.debit, Q1.credit,
+                Q1.debit-Q1.credit as amount, Q1.blocked,
+                COALESCE(Q1.currency_id, c.currency_id) AS currency_id
             FROM Q1
             JOIN res_company c ON (c.id = Q1.company_id)
             WHERE c.id = %(company_id)s
