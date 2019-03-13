@@ -14,7 +14,8 @@ class StatementCommon(models.AbstractModel):
     company_id = fields.Many2one(
         comodel_name='res.company',
         default=lambda self: self.env.user.company_id,
-        string='Company'
+        string='Company',
+        required=True,
     )
     date_end = fields.Date(required=True, default=fields.Date.context_today)
     show_aging_buckets = fields.Boolean(default=True)
@@ -22,7 +23,7 @@ class StatementCommon(models.AbstractModel):
         default=lambda self: len(self._context['active_ids'])
     )
     filter_partners_non_due = fields.Boolean(
-        string='Don\'t show partners with no due entries', default=True)
+        string="Don't show partners with no due entries", default=True)
     filter_negative_balances = fields.Boolean(
         "Exclude Negative Balances", default=True
     )
