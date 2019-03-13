@@ -13,6 +13,10 @@ class ReportStatementCommon(models.AbstractModel):
     _name = 'statement.common'
     _description = 'Statement Reports Common'
 
+    def _get_invoice_address(self, part):
+        inv_addr_id = part.address_get(['invoice']).get('invoice', part.id)
+        return self.env["res.partner"].browse(inv_addr_id)
+
     def _format_date_to_partner_lang(
         self,
         date,
@@ -335,13 +339,15 @@ class ReportStatementCommon(models.AbstractModel):
         amount_field = data.get('amount_field', 'amount')
 
         # There should be relatively few of these, so to speed performance
-        # we cache them
+        # we cache them - default needed if partner lang not set
         self._cr.execute("""
             SELECT p.id, l.date_format
             FROM res_partner p LEFT JOIN res_lang l ON p.lang=l.code
             WHERE p.id IN %(partner_ids)s
             """, {"partner_ids": tuple(partner_ids)})
         date_formats = {r[0]: r[1] for r in self._cr.fetchall()}
+        default_fmt = self.env["res.lang"]._lang_get(
+            self.env.user.lang).date_format
         currencies = {x.id: x for x in self.env['res.currency'].search([])}
 
         res = {}
@@ -363,9 +369,12 @@ class ReportStatementCommon(models.AbstractModel):
         partners_to_remove = set()
         for partner_id in partner_ids:
             res[partner_id] = {
-                'today': format_date(today, date_formats[partner_id]),
-                'start': format_date(date_start, date_formats[partner_id]),
-                'end': format_date(date_end, date_formats[partner_id]),
+                'today': format_date(today,
+                                     date_formats.get(partner_id, default_fmt)),
+                'start': format_date(date_start,
+                                     date_formats.get(partner_id, default_fmt)),
+                'end': format_date(date_end,
+                                   date_formats.get(partner_id, default_fmt)),
                 'currencies': {},
             }
             currency_dict = res[partner_id]['currencies']
@@ -387,10 +396,11 @@ class ReportStatementCommon(models.AbstractModel):
                     line_currency['amount_due'] += line[amount_field]
                 line['balance'] = line_currency['amount_due']
                 line['date'] = format_date(
-                    line['date'], date_formats[partner_id]
+                    line['date'], date_formats.get(partner_id, default_fmt)
                 )
                 line['date_maturity'] = format_date(
-                    line['date_maturity'], date_formats[partner_id]
+                    line['date_maturity'],
+                    date_formats.get(partner_id, default_fmt)
                 )
                 line_currency['lines'].append(line)
 
@@ -431,4 +441,5 @@ class ReportStatementCommon(models.AbstractModel):
             'Currencies': currencies,
             'account_type': account_type,
             'bucket_labels': bucket_labels,
+            'get_inv_addr': self._get_invoice_address,
         }
