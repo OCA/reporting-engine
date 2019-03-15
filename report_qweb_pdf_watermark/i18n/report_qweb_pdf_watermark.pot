@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -20,13 +20,8 @@ msgid "An expression yielding the base64 encoded data to be used as watermark. \
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report.xml,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
-msgstr ""
-
-#. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_report
-msgid "Report"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
@@ -40,7 +35,7 @@ msgid "Watermark expression"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
+msgid "ir.actions.report"
 msgstr ""
 
