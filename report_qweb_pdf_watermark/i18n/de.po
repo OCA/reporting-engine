@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * report_qweb_pdf_watermark
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Rudolf Schnapka <rs@techno-flex.de>, 2017
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2017-03-04 05:58+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_pdf_watermark
@@ -25,18 +25,14 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
-"Ein Ausdruck der base64-geschlüsselte Daten, zur Verwendung als Wasserzeichen, liefert.\n"
+"Ein Ausdruck der base64-geschlüsselte Daten, zur Verwendung als "
+"Wasserzeichen, liefert.\n"
 "Sie haben die Variablen 'env' und 'docs' zur Verfügung"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Demo report"
 msgstr "Beispielbericht"
-
-#. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_report
-msgid "Report"
-msgstr "Bericht"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark
@@ -49,6 +45,9 @@ msgid "Watermark expression"
 msgstr "Wasserzeichnen-Ausdruck"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir.actions.report
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
 msgid "ir.actions.report"
 msgstr "ir.actions.report"
+
+#~ msgid "Report"
+#~ msgstr "Bericht"
