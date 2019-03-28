@@ -20,32 +20,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
-msgid "Allows customization of a report."
-msgstr ""
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_create_uid
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_create_date
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_date
 msgid "Created on"
 msgstr "Creado en"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_custom_params
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_custom_params
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_display_name
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
 
@@ -56,48 +51,53 @@ msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_id
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__id
 msgid "ID"
 msgstr "ID"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter___last_update
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_write_uid
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_write_date
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_date
 msgid "Last Updated on"
 msgstr "Ultima actualizacion en"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_name
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
 msgid "Name"
 msgstr "Nombre"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_paperformat_id
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__paperformat_id
 msgid "Paper Format"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter_name
-msgid "The command argument name. Remember to add prefix -- or -"
-msgstr ""
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter_value
-msgid "Value"
+#: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
+msgid "Paper Format Config"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
-msgid "ir.actions.report"
+msgid "Report Action"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
+msgid "The command argument name. Remember to add prefix -- or -"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__value
+msgid "Value"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
