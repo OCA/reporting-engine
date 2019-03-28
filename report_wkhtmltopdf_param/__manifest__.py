@@ -4,7 +4,7 @@
 # noinspection PyStatementEffect
 {
     "name": "Report Wkhtmltopdf Param",
-    "version": "11.0.1.0.1",
+    "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "summary": """
         Add new parameters for a paper format to be used by wkhtmltopdf
