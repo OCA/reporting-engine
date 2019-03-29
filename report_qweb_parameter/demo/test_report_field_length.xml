@@ -5,14 +5,24 @@
             id="test_report_length_report_id"
             model="res.company"
             string="Length Report"
+<<<<<<< HEAD
             report_type="qweb-html"
+=======
+            report_type="qweb-pdf"
+>>>>>>> [ADD] report_field_length
             name="report_qweb_parameter.test_report_length"
     />
 
     <template id="test_report_length">
+<<<<<<< HEAD
         <data>
             <li name="esc_length" t-minlength="10" t-length="10"
                 t-esc="docs[0].street" t-if="docs[0].street"/>
+=======
+        <t t-call="report.html_container">
+            <li name="esc_length" t-minlength="10" t-length="10"
+                t-esc="docs[0].fax" t-if="docs[0].fax"/>
+>>>>>>> [ADD] report_field_length
             <li name="esc_maxlength" t-maxlength="10"
                 t-esc="docs[0].website" t-if="docs[0].website"/>
             <li name="raw_length" t-minlength="10" t-length="10"
@@ -20,6 +30,10 @@
             <li name="raw_maxlength" t-maxlength="10"
                 t-raw="docs[0].company_registry"
                 t-if="docs[0].company_registry"/>
+<<<<<<< HEAD
         </data>
+=======
+        </t>
+>>>>>>> [ADD] report_field_length
     </template>
 </odoo>
