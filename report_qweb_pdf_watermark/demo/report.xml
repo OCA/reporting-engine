@@ -14,17 +14,13 @@
             <field name="pdf_watermark_expression">docs[:1].company_id.logo</field>
         </record>
         <template id="demo_report_view">
-            <t t-call="report.html_container">
-                <t t-call="report.external_layout">
-                    <div class="page">
-                        <ul>
-                            <li t-foreach="docs" t-as="doc">
-                                <t t-esc="doc.name" />
-                            </li>
-                        </ul>
-                    </div>
-                </t>
-            </t>
+            <div class="page">
+                <ul>
+                    <li t-foreach="docs" t-as="doc">
+                        <t t-esc="doc.name" />
+                    </li>
+                </ul>
+            </div>
         </template>
     </data>
 </openerp>

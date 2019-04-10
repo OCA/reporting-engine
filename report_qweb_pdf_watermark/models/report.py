@@ -17,6 +17,10 @@ try:
     from PIL import PdfImagePlugin  # noqa: F401
 except ImportError:
     pass
+try:
+    from papersize import parse_couple, SIZES
+except ImportError:
+    raise
 from openerp import api, models, tools
 logger = getLogger(__name__)
 
@@ -24,66 +28,67 @@ logger = getLogger(__name__)
 class Report(models.Model):
     _inherit = 'report'
 
-    @api.v7
-    def get_pdf(
-        self, cr, uid, ids, report_name, html=None, data=None, context=None
-    ):
-        # pylint: disable=R8110
-        # this override cannot be done in v8 api
-        result = super(Report, self).get_pdf(
-            cr, uid, ids, report_name, html=html, data=data,
-            context=context
-        )
-        report = self._get_report_from_name(cr, uid, report_name)
-        watermark = None
+    @api.multi
+    def _scale_watermark(self, report, image):
+        _format = report.paperformat_id.format.lower()
+        if _format == 'custom':
+            size = \
+                int(report.paperformat_id.page_height), \
+                int(report.paperformat_id.page_width)
+        else:
+            try:
+                size = parse_couple(SIZES[_format])
+                size = int(size[0]), int(size[1])
+            except KeyError:
+                logger.warning(
+                    'Scaling the watermark failed.'
+                    'Could not extract paper dimensions for %s' % (_format))
+        return image.resize(size, resample=Image.LANCZOS)
+
+    @api.multi
+    def _read_watermark(self, report, ids=None):
         if report.pdf_watermark:
             watermark = b64decode(report.pdf_watermark)
         else:
-            env = api.Environment(cr, uid, context)
             watermark = tools.safe_eval(
                 report.pdf_watermark_expression or 'None',
-                dict(env=env, docs=env[report.model].browse(ids)),
+                dict(
+                    env=self.env,
+                    docs=self.env[report.model].browse(ids),
+                )
             )
             if watermark:
                 watermark = b64decode(watermark)
-
         if not watermark:
-            return result
-
-        pdf = PdfFileWriter()
-        pdf_watermark = None
+            return
         try:
             pdf_watermark = PdfFileReader(StringIO(watermark))
         except PdfReadError:
-            # let's see if we can convert this with pillow
-            try:
-                image = Image.open(StringIO(watermark))
-                pdf_buffer = StringIO()
-                if image.mode != 'RGB':
-                    image = image.convert('RGB')
-                resolution = image.info.get(
-                    'dpi', report.paperformat_id.dpi or 90
-                )
-                if isinstance(resolution, tuple):
-                    resolution = resolution[0]
-                image.save(pdf_buffer, 'pdf', resolution=resolution)
-                pdf_watermark = PdfFileReader(pdf_buffer)
-            except:
-                logger.exception('Failed to load watermark')
+            image = Image.open(StringIO(watermark))
+            pdf_buffer = StringIO()
+            if image.mode != 'RGB':
+                image = image.convert('RGB')
+            if report.paperformat_id.format and \
+                    report.paperformat_id.format.lower() in SIZES and \
+                    report.pdf_watermark_scale:
+                image = self._scale_watermark(report, image)
+            image.save(pdf_buffer, 'pdf', quality=100)
+            pdf_watermark = PdfFileReader(pdf_buffer)
+        return pdf_watermark
 
+    @api.model
+    def get_pdf(self, ids, report_name, html=None, data=None):
+        report = self._get_report_from_name(report_name)
+        result = super(Report, self).get_pdf(
+            self.env[report.model].browse(ids),
+            report_name,
+            html=html,
+            data=data,
+        )
+        pdf_watermark = self._read_watermark(report, ids)
         if not pdf_watermark:
-            logger.error(
-                'No usable watermark found, got %s...', watermark[:100]
-            )
             return result
-
-        if pdf_watermark.numPages < 1:
-            logger.error('Your watermark pdf does not contain any pages')
-            return result
-        if pdf_watermark.numPages > 1:
-            logger.debug('Your watermark pdf contains more than one page, '
-                         'all but the first one will be ignored')
-
+        pdf = PdfFileWriter()
         for page in PdfFileReader(StringIO(result)).pages:
             watermark_page = pdf.addBlankPage(
                 page.mediaBox.getWidth(), page.mediaBox.getHeight()
@@ -93,5 +98,4 @@ class Report(models.Model):
 
         pdf_content = StringIO()
         pdf.write(pdf_content)
-
         return pdf_content.getvalue()

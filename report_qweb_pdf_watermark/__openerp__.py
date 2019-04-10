@@ -15,4 +15,7 @@
         "demo/report.xml",
         "views/ir_actions_report_xml.xml",
     ],
+    "external_dependencies": {
+        'python': ['papersize'],
+    },
 }
