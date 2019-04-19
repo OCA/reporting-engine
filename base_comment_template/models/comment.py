@@ -9,23 +9,35 @@ class BaseCommentTemplate(models.Model):
     _name = "base.comment.template"
     _description = "Base comment template"
 
+    active = fields.Boolean(default=True)
+
     name = fields.Char(
         string='Comment summary',
-        required=True
+        required=True,
     )
+
     position = fields.Selection(
         selection=[
             ('before_lines', 'Before lines'),
-            ('after_lines', 'After lines')
+            ('after_lines', 'After lines'),
         ],
         required=True,
         default='before_lines',
-        help="Position on document"
+        help="Position on document",
     )
+
     text = fields.Html(
         string='Comment',
         translate=True,
-        required=True
+        required=True,
+    )
+
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        help="If set, it'll only be available for this company",
+        ondelete='cascade',
+        index=True,
     )
 
     @api.multi
