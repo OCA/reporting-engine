@@ -5,6 +5,7 @@ from odoo.tests.common import TransactionCase
 class TestResPartner(TransactionCase):
 
     def setUp(self):
+        super(TestResPartner, self).setUp()
         self.template_id = self.env['base.comment.template'].create({
             'name': 'Comment before lines',
             'position': 'before_lines',
@@ -18,4 +19,4 @@ class TestResPartner(TransactionCase):
         # Test childs propagation of commercial partner field
         for child_id in partner_id.child_ids:
             self.assertEqual(
-                child_id.property_comment_template_id == self.template_id)
+                child_id.property_comment_template_id, self.template_id)
