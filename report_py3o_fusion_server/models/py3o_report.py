@@ -2,7 +2,6 @@
 # © 2016 ACSONE SA/NV
 # © 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-import json
 import logging
 import os
 import requests
@@ -15,6 +14,10 @@ from io import BytesIO
 
 logger = logging.getLogger(__name__)
 
+try:
+    import simplejson as json
+except ImportError:
+    import json
 try:
     from py3o.template import Template
     from py3o.template.helpers import Py3oConvertor
@@ -59,6 +62,7 @@ class Py3oReport(models.TransientModel):
                 expressions = template.get_all_user_python_expression()
                 py_expression = template.convert_py3o_to_python_ast(
                     expressions)
+                print(py_expression)
                 convertor = Py3oConvertor()
                 data_struct = convertor(py_expression)
                 datadict = data_struct.render(localcontext)
@@ -106,5 +110,5 @@ class Py3oReport(models.TransientModel):
             report_xml.report_name, filetype, convert_seconds)
         if len(model_instance) == 1:
             self._postprocess_report(
-                model_instance, result_path)
+                result_path, model_instance.id)
         return result_path

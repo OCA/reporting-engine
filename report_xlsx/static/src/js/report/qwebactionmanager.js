@@ -3,7 +3,7 @@
 odoo.define('report_xlsx.report', function(require){
 'use strict';
 
-var ActionManager= require('web.ActionManager');
+var ActionManager = require('web.ActionManager');
 var crash_manager = require('web.crash_manager');
 var framework = require('web.framework');
 

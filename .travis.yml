@@ -9,7 +9,9 @@ addons:
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml # because pip installation is slow
+      - python-simplejson
       - pdftk
+      - libreoffice
       - wkhtmltopdf  # only add if needed and check the before_install section below
   postgresql: "9.3"
 

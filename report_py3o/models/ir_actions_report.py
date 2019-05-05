@@ -194,3 +194,28 @@ class IrActionsReport(models.Model):
                     if attachment_id:
                         save_in_attachment[record_id.id] = attachment_id
         return save_in_attachment
+
+    @api.model
+    def _get_rendering_context_model(self):
+        report_model_name = 'report.%s' % self.report_name
+        return self.env.get(report_model_name)
+
+    @api.model
+    def _get_rendering_context(self, docids, data):
+        # If the report is using a custom model to render its html,
+        # we must use it.
+        # Otherwise, fallback on the generic html rendering.
+        report_model = self._get_rendering_context_model()
+
+        data = data and dict(data) or {}
+
+        if report_model is not None:
+            data.update(report_model._get_report_values(docids, data=data))
+        else:
+            docs = self.env[self.model].browse(docids)
+            data.update({
+                'doc_ids': docids,
+                'doc_model': self.model,
+                'docs': docs,
+            })
+        return data

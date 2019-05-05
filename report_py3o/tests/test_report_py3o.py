@@ -121,7 +121,7 @@ class TestReportPy3o(TransactionCase):
         # put a new content into tha attachement and check that the next
         # time we ask the report we received the saved attachment not a newly
         # generated document
-        created_attachement.datas = base64.encodestring(b"new content")
+        created_attachement.datas = base64.encodebytes(b"new content")
         res = self.report.render(self.env.user.ids)
         self.assertEqual((b'new content', self.report.py3o_filetype), res)
 
