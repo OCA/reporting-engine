@@ -11,7 +11,7 @@ addons:
       - python-lxml # because pip installation is slow
       - pdftk
       - wkhtmltopdf  # only add if needed and check the before_install section below
-  postgresql: "9.3"
+  postgresql: "9.6"
 
 # set up an X server to run wkhtmltopdf.
 before_install:
