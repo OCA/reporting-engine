@@ -29,7 +29,7 @@
                             <t t-set="display_currency" t-value="Currencies[currency[0]]" />
                             <t t-set="currency" t-value="currency[1]" />
                             <p>
-                                <span t-esc="'' if  account_type == 'receivable' else 'Supplier '"/>Statement between <span t-esc="d['start']" /> and <span t-esc="d['end']" /> in <span t-esc="display_currency.name"/>
+                                <span t-if="account_type == 'payable'">Supplier </span>Statement between <span t-esc="d['start']" /> and <span t-esc="d['end']" /> in <span t-esc="display_currency.name"/>
                             </p>
                             <table class="table table-condensed table-statement">
                                 <thead>
@@ -79,7 +79,8 @@
                                                 </t>
                                             </t>
                                             <t t-if="line['name'] == '/'">
-                                                <span t-esc="line['ref']"/>
+                                                <span t-if="line['ref'] == 'Payment'">Payment</span>
+                                                <span t-else="" t-esc="line['ref']"/>
                                             </t>
                                         </td>
                                         <td class="amount">
