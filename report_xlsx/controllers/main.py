@@ -38,7 +38,14 @@ class ReportController(report.ReportController):
                     content_disposition(report.report_file + '.xlsx')
                 )
             ]
-            return request.make_response(xlsx, headers=xlsxhttpheaders)
+            token = data.get('token')
+            cookies = None
+            if token:
+                cookies = {
+                    'fileToken': token,
+                }
+            return request.make_response(xlsx, headers=xlsxhttpheaders,
+                                         cookies=cookies)
         return super(ReportController, self).report_routes(
             reportname, docids, converter, **data
         )

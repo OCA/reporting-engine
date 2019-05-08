@@ -36,9 +36,9 @@ ActionManager.include({
                     if(cloned_action && options && !cloned_action.dialog){
                         options.on_close();
                     }
-                }
+                },
+                complete: framework.unblockUI,
             });
-            framework.unblockUI();
             return;
         }
         return self._super(action, options);
