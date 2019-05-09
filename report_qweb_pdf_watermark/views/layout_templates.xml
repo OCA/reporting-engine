@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Include fix for https://github.com/odoo/odoo/issues/16610 -->
+    <template id="assets_pdf" inherit_id="web.report_assets_pdf">
+        <link position="after">
+            <link href="/report_qweb_pdf_watermark/static/src/css/report_qweb_pdf_watermark.css"
+                  rel="stylesheet"/>
+        </link>
+    </template>
+</odoo>
