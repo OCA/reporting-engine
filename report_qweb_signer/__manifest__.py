@@ -14,7 +14,7 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": [
-        "web",
+        "web_editor",
     ],
     "external_dependencies": {
         "bin": ['/usr/bin/java'],
