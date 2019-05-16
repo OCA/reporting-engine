@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015 Tecnativa - Antonio Espinosa
+Copyright 2017 Tecnativa - Pedro M. Baeza
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo noupdate="1">
+
+    <record id="demo_certificate_test" model="report.certificate">
+        <field name="company_id" ref="base.main_company"/>
+        <field name="name">Test OCA certificate</field>
+        <field name="path">test.p12</field>
+        <field name="password_file">test.passwd</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain">[('customer', '=', True)]</field>
+        <field name="allow_only_one" eval="True"/>
+        <field name="attachment">'test_' + (object.name or '').replace(' ', '_').lower() + '.signed.pdf'</field>
+    </record>
+
+</odoo>
