@@ -34,31 +34,6 @@ class ReportStatementCommon(models.AbstractModel):
                                      date_start, account_type):
         return {}
 
-    def _show_buckets_sql_q0(self, date_end):
-        return str(self._cr.mogrify("""
-            SELECT l1.id,
-            CASE WHEN l1.reconciled = TRUE and l1.balance > 0.0
-                                THEN max(pd.max_date)
-                WHEN l1.reconciled = TRUE and l1.balance < 0.0
-                                THEN max(pc.max_date)
-                ELSE null
-            END as reconciled_date
-            FROM account_move_line l1
-            LEFT JOIN (SELECT pr.*
-                FROM account_partial_reconcile pr
-                INNER JOIN account_move_line l2
-                ON pr.credit_move_id = l2.id
-                WHERE l2.date <= %(date_end)s
-            ) as pd ON pd.debit_move_id = l1.id
-            LEFT JOIN (SELECT pr.*
-                FROM account_partial_reconcile pr
-                INNER JOIN account_move_line l2
-                ON pr.debit_move_id = l2.id
-                WHERE l2.date <= %(date_end)s
-            ) as pc ON pc.credit_move_id = l1.id
-            GROUP BY l1.id
-        """, locals()), "utf-8")
-
     def _show_buckets_sql_q1(self, partners, date_end, account_type):
         return str(self._cr.mogrify("""
             SELECT l.partner_id, l.currency_id, l.company_id, l.move_id,
@@ -77,7 +52,6 @@ class ReportStatementCommon(models.AbstractModel):
             FROM account_move_line l
             JOIN account_account_type at ON (at.id = l.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
-            LEFT JOIN Q0 ON Q0.id = l.id
             LEFT JOIN (SELECT pr.*
                 FROM account_partial_reconcile pr
                 INNER JOIN account_move_line l2
@@ -91,9 +65,13 @@ class ReportStatementCommon(models.AbstractModel):
                 WHERE l2.date <= %(date_end)s
             ) as pc ON pc.credit_move_id = l.id
             WHERE l.partner_id IN %(partners)s AND at.type = %(account_type)s
-                                AND (Q0.reconciled_date is null or
-                                    Q0.reconciled_date > %(date_end)s)
-                                AND l.date <= %(date_end)s AND not l.blocked
+                                AND (
+                                  (pd.id IS NOT NULL AND
+                                      pd.max_date <= %(date_end)s) OR
+                                  (pc.id IS NOT NULL AND
+                                      pc.max_date <= %(date_end)s) OR
+                                  (pd.id IS NULL AND pc.id IS NULL)
+                                ) AND l.date <= %(date_end)s AND not l.blocked
             GROUP BY l.partner_id, l.currency_id, l.date, l.date_maturity,
                                 l.amount_currency, l.balance, l.move_id,
                                 l.company_id
@@ -228,8 +206,7 @@ class ReportStatementCommon(models.AbstractModel):
         # pylint: disable=E8103
         # All input queries are properly escaped - false positive
         self.env.cr.execute("""
-            WITH Q0 AS (%s),
-                Q1 AS (%s),
+            WITH Q1 AS (%s),
                 Q2 AS (%s),
                 Q3 AS (%s),
                 Q4 AS (%s)
@@ -240,7 +217,6 @@ class ReportStatementCommon(models.AbstractModel):
             FROM Q4
             GROUP BY partner_id, currency_id, current, b_1_30, b_30_60,
                 b_60_90, b_90_120, b_over_120""" % (
-            self._show_buckets_sql_q0(date_end),
             self._show_buckets_sql_q1(partners, date_end, account_type),
             self._show_buckets_sql_q2(
                 full_dates['date_end'],
