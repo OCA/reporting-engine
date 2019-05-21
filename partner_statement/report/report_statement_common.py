@@ -345,12 +345,18 @@ class ReportStatementCommon(models.AbstractModel):
         partners_to_remove = set()
         for partner_id in partner_ids:
             res[partner_id] = {
-                'today': format_date(today,
-                                     date_formats.get(partner_id, default_fmt)),
-                'start': format_date(date_start,
-                                     date_formats.get(partner_id, default_fmt)),
-                'end': format_date(date_end,
-                                   date_formats.get(partner_id, default_fmt)),
+                'today': format_date(
+                    today,
+                    date_formats.get(partner_id, default_fmt)
+                ),
+                'start': format_date(
+                    date_start,
+                    date_formats.get(partner_id, default_fmt)
+                ),
+                'end': format_date(
+                    date_end,
+                    date_formats.get(partner_id, default_fmt)
+                ),
                 'currencies': {},
             }
             currency_dict = res[partner_id]['currencies']
