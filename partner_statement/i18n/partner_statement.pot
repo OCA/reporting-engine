@@ -1,10 +1,10 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* customer_activity_statement
+#	* partner_statement
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -13,237 +13,473 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "+120 Days Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:242
+#, python-format
+msgid "1 - 30 Days"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "1-30 Days Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:253
+#, python-format
+msgid "1 Month"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "30-60 Days Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:246
+#, python-format
+msgid "121 Days +"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "60-90 Days Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:254
+#, python-format
+msgid "2 Months"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "90-120 Days Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:255
+#, python-format
+msgid "3 Months"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:243
+#, python-format
+msgid "31 - 60 Days"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:256
+#, python-format
+msgid "4 Months"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:244
+#, python-format
+msgid "61 - 90 Days"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:245
+#, python-format
+msgid "91 - 120 Days"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "<strong>Date:</strong>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "<strong>Partner Code:</strong>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "<strong>The partner doesn't have due entries.</strong>"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_account_type
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__account_type
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__account_type
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__account_type
 msgid "Account type"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.actions.report,name:customer_activity_statement.action_print_customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model:ir.actions.report,name:partner_statement.action_print_activity_statement
 msgid "Activity Statement"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "Activity Statement between"
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_activity_statement_wizard
+msgid "Activity Statement Wizard"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
+msgid "Activity Statements show all transactions between two dates."
+msgstr ""
+
+#. module: partner_statement
+#: selection:activity.statement.wizard,aging_type:0
+#: selection:outstanding.statement.wizard,aging_type:0
+#: selection:res.config.settings,default_aging_type:0
+#: selection:statement.common.wizard,aging_type:0
+msgid "Age by Days"
+msgstr ""
+
+#. module: partner_statement
+#: selection:activity.statement.wizard,aging_type:0
+#: selection:outstanding.statement.wizard,aging_type:0
+#: selection:res.config.settings,default_aging_type:0
+#: selection:statement.common.wizard,aging_type:0
+msgid "Age by Months"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__aging_type
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__aging_type
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_aging_type
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__aging_type
+msgid "Aging Method"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.aging_buckets
 msgid "Aging Report at"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
-msgid "Aging details can be shown in the report, expressed in aging         buckets (30 days due, ...), so the customer or vendor can review how much is open, due or overdue."
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
+msgid "Aging details can be shown in the report, expressed in aging         buckets, so the partner can review how much is open, due or overdue."
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "Amount"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Balance"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "Balance Due"
-msgstr ""
-
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "Balance Forward"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "Cancel"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_company_id
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__company_id
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__company_id
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__company_id
 msgid "Company"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_create_uid
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__create_uid
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__create_uid
 msgid "Created by"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_create_date
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__create_date
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__create_date
 msgid "Created on"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "Current Due"
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:241
+#: code:addons/partner_statement/report/report_statement_common.py:252
+#, python-format
+msgid "Current"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model,name:customer_activity_statement.model_customer_activity_statement_wizard
-msgid "Customer Activity Statement Wizard"
-msgstr ""
-
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Date"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_date_end
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__date_end
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__date_end
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__date_end
 msgid "Date End"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_date_start
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__date_start
 msgid "Date Start"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "Date:"
-msgstr ""
-
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Description"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_display_name
-#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement_display_name
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__display_name
 msgid "Display Name"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_filter_partners_non_due
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__filter_partners_non_due
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__filter_partners_non_due
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__filter_partners_non_due
 msgid "Don't show partners with no due entries"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "Due Date"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_activity_statement
+msgid "Enable OCA Activity Statements"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_outstanding_statement
+msgid "Enable OCA Outstanding Statements"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Ending Balance"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__filter_negative_balances
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__filter_negative_balances
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_filter_negative_balances
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__filter_negative_balances
+msgid "Exclude Negative Balances"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_filter_partners_non_due
+msgid "Exclude partners with no due entries"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "Export PDF"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_id
-#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement_id
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__id
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__id
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__id
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__id
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common__id
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__id
 msgid "ID"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_show_aging_buckets
-msgid "Include Aging Buckets"
-msgstr ""
-
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard___last_update
-#: model:ir.model.fields,field_description:customer_activity_statement.field_report_customer_activity_statement_statement___last_update
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard____last_update
 msgid "Last Modified on"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_write_uid
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__write_uid
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__write_uid
 msgid "Last Updated by"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_write_date
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__write_date
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__write_date
 msgid "Last Updated on"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model.fields,field_description:customer_activity_statement.field_customer_activity_statement_wizard_number_partner_ids
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__name
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__name
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__name
+msgid "Name"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__number_partner_ids
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__number_partner_ids
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__number_partner_ids
 msgid "Number Partner"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.actions.act_window,name:customer_activity_statement.customer_activity_statement_wizard_action
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:257
+#, python-format
+msgid "Older"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "Open Amount"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "Original"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement
+msgid "Outstanding Statement"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_outstanding_statement_wizard
+msgid "Outstanding Statement Wizard"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
+msgid "Outstanding Statements show all transactions up to a date."
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
 msgid "Partner Activity Statement"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
-msgid "Partner ref:"
+#. module: partner_statement
+#: model:ir.actions.act_window,name:partner_statement.outstanding_statement_wizard_action
+msgid "Partner Outstanding Statement"
 msgstr ""
 
-#. module: customer_activity_statement
-#: selection:customer.activity.statement.wizard,account_type:0
+#. module: partner_statement
+#: selection:activity.statement.wizard,account_type:0
+#: selection:outstanding.statement.wizard,account_type:0
+#: selection:statement.common.wizard,account_type:0
 msgid "Payable"
 msgstr ""
 
-#. module: customer_activity_statement
-#: selection:customer.activity.statement.wizard,account_type:0
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+msgid "Payment"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
+msgid "Please set defaults under Activity Statements."
+msgstr ""
+
+#. module: partner_statement
+#: selection:activity.statement.wizard,account_type:0
+#: selection:outstanding.statement.wizard,account_type:0
+#: selection:statement.common.wizard,account_type:0
 msgid "Receivable"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Reference number"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
-msgid "The activity statement provides details of all activity on         a partner's receivables and payables between two selected dates. This includes all invoices,         refunds and payments. Any outstanding balance dated prior to the chosen statement         period will appear as a forward balance at the top of the statement. The list is         displayed in chronological order and is split by currencies."
+#. module: partner_statement
+#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__show_aging_buckets
+#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__show_aging_buckets
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_show_aging_buckets
+#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__show_aging_buckets
+msgid "Show Aging Buckets"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_statement_common
+msgid "Statement Reports Common"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_statement_common_wizard
+msgid "Statement Reports Common Wizard"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+msgid "Statement between"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "Statement of Account"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "Statement up to"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+msgid "Supplier"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
+msgid "The activity statement provides details of all activity on                     a partner's receivables and payables between two selected dates. This includes all invoices,                     refunds and payments. Any outstanding balance dated prior to the chosen statement                     period will appear as a forward balance at the top of the statement. The list is                     displayed in chronological order and is split by currencies."
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
+msgid "The outstanding statement provides details of all partner's outstanding         receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed         refunds and outstanding payments. The list is displayed in chronological order and is         split by currencies."
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/report_statement_common.py:247
+#: code:addons/partner_statement/report/report_statement_common.py:258
+#, python-format
+msgid "Total"
+msgstr ""
+
+#. module: partner_statement
+#: model:res.groups,name:partner_statement.group_activity_statement
+msgid "Use activity statements"
+msgstr ""
+
+#. module: partner_statement
+#: model:res.groups,name:partner_statement.group_outstanding_statement
+msgid "Use outstanding statements"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "and"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.statement_document
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.aging_buckets
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "in"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.ui.view,arch_db:customer_activity_statement.customer_activity_statement_wizard_view
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "or"
 msgstr ""
 
-#. module: customer_activity_statement
-#: model:ir.model,name:customer_activity_statement.model_report_customer_activity_statement_statement
-msgid "report.customer_activity_statement.statement"
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
+msgid "report.partner_statement.activity_statement"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
+msgid "report.partner_statement.outstanding_statement"
 msgstr ""
 

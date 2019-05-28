@@ -138,9 +138,11 @@ class ActivityStatement(models.AbstractModel):
     @api.multi
     def _get_report_values(self, docids, data):
         if not data:
+            data = {}
+        if 'company_id' not in data:
             wiz = self.env["activity.statement.wizard"].with_context(
                 active_ids=docids, model="res.partner"
             )
-            data = wiz.create({})._prepare_statement()
+            data.update(wiz.create({})._prepare_statement())
         data['amount_field'] = 'amount'
         return super()._get_report_values(docids, data)
