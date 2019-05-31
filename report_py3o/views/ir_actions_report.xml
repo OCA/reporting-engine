@@ -32,6 +32,23 @@
 
                 </page>
             </xpath>
+<!-- 
+            <xpath expr="//page[@name='security']" position="before">
+                <page string="LibreOffice Template" name="py3o_tab"
+                    >
+
+                    <group name="py3o_params">
+                        <field name="lo_bin_path"/>
+                        <field name="py3o_filetype" />
+                        <field name="py3o_multi_in_one"/>
+                        <field name="py3o_template_id" />
+                        <field name="module" />
+                        <field name="py3o_template_fallback" />
+                    </group>
+
+                </page>
+            </xpath>
+ -->
 
         </field>
     </record>
