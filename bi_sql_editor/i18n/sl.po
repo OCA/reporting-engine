@@ -20,25 +20,25 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:450
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:454
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:222
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (kopija)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:325
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:337
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Dostop %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:365
 #, python-format
 msgid "Access %s"
 msgstr "Dostop %s"
@@ -201,7 +201,8 @@ msgstr "Tip grafa"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_has_group_changed
-msgid "Has group changed"
+#, fuzzy
+msgid "Has Group Changed"
 msgstr "Se je skupina spremenila"
 
 #. module: bi_sql_editor
@@ -255,7 +256,8 @@ msgstr "Zadnjič posodobljeno"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_materialized_text
-msgid "Materialized text"
+#, fuzzy
+msgid "Materialized Text"
 msgstr "Materializirano besedilo"
 
 #. module: bi_sql_editor
@@ -280,7 +282,7 @@ msgid "Name"
 msgstr "Naziv"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:603
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:608
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -335,7 +337,7 @@ msgid "Odoo Tree View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:182
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
 msgstr ""
@@ -362,7 +364,7 @@ msgid "Refresh Materialized View"
 msgstr "Osveži materializirani prikaz"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:340
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Osveži materializirani prikaz %s"
@@ -378,7 +380,7 @@ msgid "Rule Definition"
 msgstr "Definicija pravila"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:483
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:487
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -537,17 +539,18 @@ msgstr "Ni na voljo"
 
 #. module: bi_sql_editor
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+#, fuzzy
+msgid "Update Model Access"
+msgstr "Posodobi dostope modela"
+
+#. module: bi_sql_editor
+#: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
 msgstr ""
 "Posodobi dostope modela. Potrebno, če ste spremenili seznam skupin po "
 "nastanku modela"
-
-#. module: bi_sql_editor
-#: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid "Update Model Acess"
-msgstr "Posodobi dostope modela"
 
 #. module: bi_sql_editor
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -575,27 +578,24 @@ msgid "Views, Action and Menu Created"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:162
-#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
+#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:109
 #, fuzzy, python-format
 msgid "You can not create indexes on non materialized views"
 msgstr "Cron opravilo, ki bo osvežilo materializirani prikaz"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:232
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:244
 #, python-format
 msgid "You can only process this action on SQL Valid items"
 msgstr "To dejanje lahko obdelate le na SQL veljavnih postavkah"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:214
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:225
 #, python-format
-msgid "You can only unlink draft views"
-msgstr "Razvezujete lahko le osnutke prikazov"
-
-#. module: bi_sql_editor
-#: model:ir.model,name:bi_sql_editor.model_base
-msgid "base"
+msgid ""
+"You can only unlink draft views.If you want to delete them, first set them "
+"to draft."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -658,6 +658,9 @@ msgstr "sequence"
 #: model:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
 msgstr "osvežitev materializiranega prikaza"
+
+#~ msgid "You can only unlink draft views"
+#~ msgstr "Razvezujete lahko le osnutke prikazov"
 
 #~ msgid "Allowed Users"
 #~ msgstr "Dovoljeni uporabniki"

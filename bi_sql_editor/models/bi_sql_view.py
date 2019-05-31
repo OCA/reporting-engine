@@ -437,20 +437,11 @@ class BiSQLView(models.Model):
     def _prepare_action(self):
         self.ensure_one()
         view_mode = self.view_order
-        first_view = view_mode.split(',')[0]
-        if first_view == 'tree':
-            view_id = self.tree_view_id.id
-        elif first_view == 'pivot':
-            view_id = self.pivot_view_id.id
-        else:
-            view_id = self.graph_view_id.id
         return {
             'name': self._prepare_action_name(),
             'res_model': self.model_id.model,
             'type': 'ir.actions.act_window',
             'view_mode': view_mode,
-            'view_id': view_id,
-            'search_view_id': self.search_view_id.id,
         }
 
     @api.multi

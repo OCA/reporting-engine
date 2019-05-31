@@ -3,11 +3,20 @@ cache: pip
 
 addons:
   apt:
+  # only add the two lines below if you need wkhtmltopdf for your tests
+    sources:
+      - pov-wkhtmltopdf
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml # because pip installation is slow
       - pdftk
-  postgresql: "9.3"
+      - wkhtmltopdf  # only add if needed and check the before_install section below
+  postgresql: "9.6"
+
+# set up an X server to run wkhtmltopdf.
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 language: python
 
@@ -22,8 +31,8 @@ env:
   matrix:
   - LINT_CHECK="1"
   - TRANSIFEX="1"
-  - TESTS="1" ODOO_REPO="OCA/OCB"
-  - TESTS="1" ODOO_REPO="odoo/odoo"
+  - TESTS="1" ODOO_REPO="OCA/OCB" OPTIONS="--test-report-directory=/tmp"
+  - TESTS="1" ODOO_REPO="odoo/odoo" OPTIONS="--test-report-directory=/tmp"
 
 
 install:
@@ -31,6 +40,7 @@ install:
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - export WKHTMLTOPDF_VERSION=0.12.4
   - travis_install_nightly
+  - pip install PyPDF2  # needed for report_qweb_pdf_watermark 
 
 script:
   - travis_run_tests
