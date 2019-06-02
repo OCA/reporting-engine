@@ -74,7 +74,7 @@ class ReportStatementCommon(models.AbstractModel):
                                 ) AND l.date <= %(date_end)s AND not l.blocked
             GROUP BY l.partner_id, l.currency_id, l.date, l.date_maturity,
                                 l.amount_currency, l.balance, l.move_id,
-                                l.company_id
+                                l.company_id, l.id
         """, locals()), "utf-8")
 
     def _show_buckets_sql_q2(self, date_end, minus_30, minus_60, minus_90,
