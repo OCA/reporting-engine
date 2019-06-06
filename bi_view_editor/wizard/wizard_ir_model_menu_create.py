@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2017-2019 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
@@ -26,11 +26,11 @@ class WizardModelMenuCreate(models.TransientModel):
                 'res_id': menu.id,
             })
             return {'type': 'ir.actions.client', 'tag': 'reload'}
-        return super(WizardModelMenuCreate, self).menu_create()
+        return super().menu_create()
 
     @api.model
     def default_get(self, fields_list):
-        defaults = super(WizardModelMenuCreate, self).default_get(fields_list)
+        defaults = super().default_get(fields_list)
         if self.env.context.get('active_model') == 'bve.view':
             active_id = self.env.context.get('active_id')
             bve_view = self.env['bve.view'].browse(active_id)
