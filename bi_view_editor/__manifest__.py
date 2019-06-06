@@ -1,4 +1,4 @@
-# Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
@@ -9,11 +9,10 @@
     'license': 'AGPL-3',
     'website': 'https://github.com/OCA/reporting-engine',
     'category': 'Reporting',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
+    'development_status': 'Beta',
     'depends': [
-        'base',
         'web',
-        'base_sparse_field'
     ],
     'data': [
         'security/ir.model.access.csv',
