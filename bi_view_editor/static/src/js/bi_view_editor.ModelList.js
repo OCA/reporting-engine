@@ -1,4 +1,4 @@
-/* Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+/* Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
 odoo.define('bi_view_editor.ModelList', function (require) {
@@ -6,13 +6,12 @@ odoo.define('bi_view_editor.ModelList', function (require) {
 
     var Widget = require('web.Widget');
     var core = require('web.core');
-    var session = require('web.session');
     var qweb = core.qweb;
 
     var ModelList = Widget.extend({
         template: 'bi_view_editor.ModelList',
         events: {
-            'keyup .search-bar > input': 'filterChanged'
+            'keyup .search-bar > input': 'filterChanged',
         },
         init: function (parent) {
             var res = this._super(parent);
@@ -43,22 +42,10 @@ odoo.define('bi_view_editor.ModelList', function (require) {
             this.active_models.push(id);
         },
         loadModels: function (model_ids) {
-            if (model_ids) {
-                return this._rpc({
-                    model: 'ir.model',
-                    method: 'get_related_models',
-                    args: [model_ids],
-                    context: {
-                        lang: session.user_context.lang
-                    }
-                });
-            }
             return this._rpc({
                 model: 'ir.model',
                 method: 'get_models',
-                context: {
-                    lang: session.user_context.lang
-                }
+                args: model_ids ? [model_ids] : [],
             });
         },
         loadFields: function (model_id) {
@@ -67,9 +54,6 @@ odoo.define('bi_view_editor.ModelList', function (require) {
                     model: 'ir.model',
                     method: 'get_fields',
                     args: [model_id],
-                    context: {
-                        lang: session.user_context.lang
-                    }
                 });
                 this.cache_fields[model_id] = deferred;
             }
@@ -83,7 +67,7 @@ odoo.define('bi_view_editor.ModelList', function (require) {
                 var $html = $(qweb.render('bi_view_editor.ModelListItem', {
                     'id': model.id,
                     'model': model.model,
-                    'name': model.name
+                    'name': model.name,
                 }));
                 $html.find('.class').data('model', model).click(function () {
                     self.modelClicked($(this));
@@ -110,7 +94,7 @@ odoo.define('bi_view_editor.ModelList', function (require) {
             _.each(fields, function (field) {
                 var $field = $(qweb.render('bi_view_editor.ModelListFieldItem', {
                     name: field.name,
-                    description: field.description
+                    description: field.description,
                 })).data('field', field).click(function () {
                     self.fieldClicked($(this));
                 }).draggable({
@@ -118,7 +102,7 @@ odoo.define('bi_view_editor.ModelList', function (require) {
                     'scroll': false,
                     'helper': 'clone',
                     'appendTo': 'body',
-                    'containment': 'window'
+                    'containment': 'window',
                 });
                 $model_item.after($field);
 
@@ -157,13 +141,13 @@ odoo.define('bi_view_editor.ModelList', function (require) {
                 var data = $(this).data('model');
                 if (data.name.toLowerCase().indexOf(val) === -1 &&
                     data.model.toLowerCase().indexOf(val) === -1) {
-                    $(this).addClass('hidden');
+                    $(this).addClass('d-none');
                 } else {
-                    $(this).removeClass('hidden');
+                    $(this).removeClass('d-none');
                 }
             });
             this.current_filter = val;
-        }
+        },
     });
 
     return ModelList;

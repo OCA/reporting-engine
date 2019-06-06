@@ -1,4 +1,4 @@
-# Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import logging
@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 
 def _bi_view(_name):
-    return _name[0:6] == 'x_bve.'
+    return _name.startswith('x_bve.')
 
 
 def post_load():

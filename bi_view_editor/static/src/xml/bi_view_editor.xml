@@ -15,7 +15,7 @@
             </div>
             <div class="footer">
                 <div class="left"></div>
-                <div class="right"><button class="clear-btn hidden"><span class="fa fa-eraser"></span> Clear</button></div>
+                <div class="right"><button class="clear-btn d-none"><span class="fa fa-eraser"></span> Clear</button></div>
             </div>
         </div>
     </t>
@@ -96,7 +96,7 @@
 
     <!-- FieldContextMenu -->
     <t t-name="bi_view_editor.FieldList.FieldContextMenu">
-        <ul class="context-menu hidden">
+        <ul class="context-menu d-none">
             <li>
                 <div class="checkbox">
                 <label>
@@ -130,7 +130,7 @@
 
     <!-- JoinContextMenu -->
     <t t-name="bi_view_editor.FieldList.JoinContextMenu">
-        <ul class="context-menu hidden">
+        <ul class="context-menu d-none">
             <li>
                 <div class="checkbox">
                     <label>
@@ -151,10 +151,10 @@
                 <t t-esc="field.model_name" />
             </td>
             <td>
-                <span data-for="column" t-attf-class="#{field.column and 'fa fa-columns' or 'fa fa-columns hidden'}" title='Column'></span>
-                <span data-for="row" t-attf-class="#{field.row and 'fa fa-bars' or 'fa fa-bars hidden'}" title='Row'></span>
-                <span data-for="measure" t-attf-class="#{field.measure and 'fa fa-bar-chart-o' or 'fa fa-bar-chart-o hidden'}" title='Measure'></span>
-                <span data-for="list" t-attf-class="#{field.list and 'fa fa-list' or 'fa fa-list hidden'}" title='List'></span>
+                <span data-for="column" t-attf-class="#{field.column and 'fa fa-columns' or 'fa fa-columns d-none'}" title='Column'></span>
+                <span data-for="row" t-attf-class="#{field.row and 'fa fa-bars' or 'fa fa-bars d-none'}" title='Row'></span>
+                <span data-for="measure" t-attf-class="#{field.measure and 'fa fa-bar-chart-o' or 'fa fa-bar-chart-o d-none'}" title='Measure'></span>
+                <span data-for="list" t-attf-class="#{field.list and 'fa fa-list' or 'fa fa-list d-none'}" title='List'></span>
             </td>
             <td>
                 <span t-attf-data-id="#{field._id}" class="delete-button fa fa-trash-o"/>
@@ -165,7 +165,7 @@
     <t t-name="bi_view_editor.JoinListItem">
         <tr t-attf-data-id="#{field._id}" class="join-node">
             <td colspan="4">
-                <input class="hidden" type="text" name="description" t-attf-value="#{field.description}"/>
+                <input class="d-none" type="text" name="description" t-attf-value="#{field.description}"/>
                 <t t-if="field.join_node > field.table_alias">
                     <b><t t-esc="field.model_name" /></b>
                     <i class="fa fa-caret-right"/>
@@ -176,7 +176,7 @@
                     <i class="fa fa-caret-left"/>
                     <b><t t-esc="field.model_name" /></b>
                 </t>
-                <span t-attf-class="#{!field.join_left and 'hidden' or ''}" data-for="join_left"><i>(join left)</i></span>
+                <span t-attf-class="#{!field.join_left and 'd-none' or ''}" data-for="join_left"><i>(join left)</i></span>
             </td>
         </tr>
     </t>

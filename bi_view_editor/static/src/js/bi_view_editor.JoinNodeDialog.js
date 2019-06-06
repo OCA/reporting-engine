@@ -1,4 +1,4 @@
-/* Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+/* Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
 odoo.define('bi_view_editor.JoinNodeDialog', function (require) {
@@ -11,10 +11,10 @@ odoo.define('bi_view_editor.JoinNodeDialog', function (require) {
 
     var JoinNodeDialog = Dialog.extend({
         xmlDependencies: Dialog.prototype.xmlDependencies.concat([
-            '/bi_view_editor/static/src/xml/bi_view_editor.xml'
+            '/bi_view_editor/static/src/xml/bi_view_editor.xml',
         ]),
         events: {
-            "click li": "choiceClicked"
+            "click li": "choiceClicked",
         },
         init: function (parent, options, choices, model_data) {
             this.choices = choices;
@@ -30,22 +30,22 @@ odoo.define('bi_view_editor.JoinNodeDialog', function (require) {
                 title: _t("Join..."),
                 dialogClass: 'oe_act_window',
                 $content: qweb.render('bi_view_editor.JoinNodeDialog', {
-                    'choices': choices
+                    'choices': choices,
                 }),
                 buttons: [{
                     text: _t("Cancel"),
                     classes: "btn-default o_form_button_cancel",
-                    close: true
-                }]
+                    close: true,
+                }],
             });
             this._super(parent, defaults);
         },
         choiceClicked: function (e) {
             this.trigger('chosen', {
-                choice: this.choices[$(e.currentTarget).attr('data-index')]
+                choice: this.choices[$(e.currentTarget).attr('data-index')],
             });
             this.close();
-        }
+        },
     });
 
     return JoinNodeDialog;
