@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2017-2019 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import logging
@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _bi_view(_name):
-    return _name[0:6] == 'x_bve.'
+    return _name.startswith('x_bve.')
 
 
 _auto_init_orig = models.BaseModel._auto_init
@@ -41,23 +41,23 @@ class Base(models.AbstractModel):
     @api.model
     def _setup_complete(self):
         if not _bi_view(self._name):
-            super(Base, self)._setup_complete()
+            super()._setup_complete()
         else:
             self.pool.models[self._name]._log_access = False
 
     @api.model
     def _read_group_process_groupby(self, gb, query):
         if not _bi_view(self._name):
-            return super(Base, self)._read_group_process_groupby(gb, query)
+            return super()._read_group_process_groupby(gb, query)
 
         split = gb.split(':')
         if split[0] not in self._fields:
             raise UserError(
                 _('No data to be displayed.'))
-        return super(Base, self)._read_group_process_groupby(gb, query)
+        return super()._read_group_process_groupby(gb, query)
 
     @api.model
     def _add_magic_fields(self):
         if _bi_view(self._name):
             self._log_access = False
-        return super(Base, self)._add_magic_fields()
+        return super()._add_magic_fields()

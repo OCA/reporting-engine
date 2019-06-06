@@ -48,6 +48,30 @@
                                 <field name="data" widget="BVEEditor" nolabel="1" attrs="{'readonly': [('state','=','created')]}"/>
                             </group>
                         </page>
+                        <page string="Lines" groups="base.group_no_one">
+                            <group>
+                                <field name="line_ids" nolabel="1" attrs="{'readonly': [('state','=','created')]}">
+                                    <tree decoration-info="join_model_id" editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="description" string="Field"/>
+                                        <field name="model_id"/>
+                                        <field name="table_alias"/>
+                                        <field name="join_model_id"/>
+                                        <field name="join_node"/>
+                                        <field name="ttype" invisible="1"/>
+                                        <field name="row" widget="toggle_button" attrs="{'invisible': ['|', ('join_model_id','!=',False), ('ttype','in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="column" widget="toggle_button" attrs="{'invisible': ['|', ('join_model_id','!=',False), ('ttype','in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="measure" widget="toggle_button" attrs="{'invisible': ['|', ('join_model_id','!=',False), ('ttype','not in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="in_list" widget="boolean_toggle" attrs="{'invisible': [('join_model_id','!=',False)]}"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="SQL" groups="base.group_no_one" attrs="{'invisible': [('state','!=','created')]}">
+                            <group>
+                                <field name="query" nolabel="1" readonly="1"/>
+                            </group>
+                        </page>
                         <page string="Security">
                             <field nolabel="1" name="group_ids" />
                         </page>

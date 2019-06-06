@@ -6,5 +6,4 @@
 * Find better ways to extend the *_auto_init()* without override
 * Possibly avoid the monkey patches
 * Data the user has no access to (e.g. in a multi company situation) can be viewed by making a view
-* Store the JSON data structure in ORM
 * Would be nice if models available to select when creating a view are limited to the ones that have intersecting groups (for non technical users)

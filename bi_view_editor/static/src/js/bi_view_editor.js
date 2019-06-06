@@ -1,4 +1,4 @@
-/* Copyright 2015-2018 Onestein (<http://www.onestein.eu>)
+/* Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
 odoo.define('bi_view_editor', function (require) {
@@ -15,7 +15,7 @@ odoo.define('bi_view_editor', function (require) {
     var BiViewEditor = AbstractField.extend({
         template: "bi_view_editor.Frame",
         events: {
-            "click .clear-btn": "clear"
+            "click .clear-btn": "clear",
         },
         start: function () {
             var self = this;
@@ -39,7 +39,7 @@ odoo.define('bi_view_editor', function (require) {
                 drop: function (event, ui) {
                     self.addField(_.extend({}, ui.draggable.data('field')));
                     ui.draggable.draggable('option', 'revert', false);
-                }
+                },
             });
 
             this.on("change:effective_readonly", this, function () {
@@ -62,18 +62,23 @@ odoo.define('bi_view_editor', function (require) {
         },
         fieldListRemoved: function () {
             console.log(this.field_list.get());
-            this.loadAndPopulateModelList();
             this._setValue(this.field_list.get());
+            var model = new Data.DataSet(this, "bve.view");
+            model.call('get_clean_list', [this.value]).then(function (result) {
+                this.field_list.set(JSON.parse(result));
+                this._setValue(this.field_list.get());
+            }.bind(this));
+            this.loadAndPopulateModelList();
         },
         renderValue: function () {
             this.field_list.set(JSON.parse(this.value));
         },
         updateMode: function () {
             if (this.mode === 'readonly') {
-                this.$el.find('.clear-btn').addClass('hidden');
+                this.$el.find('.clear-btn').addClass('d-none');
                 this.$el.find(".body .right").droppable("option", "disabled", true);
             } else {
-                this.$el.find('.clear-btn').removeClass('hidden');
+                this.$el.find('.clear-btn').removeClass('d-none');
                 this.$el.find('.body .right').droppable('option', 'disabled', false);
             }
             this.field_list.setMode(this.mode);
@@ -129,8 +134,7 @@ odoo.define('bi_view_editor', function (require) {
                         this.addFieldAndJoinNode(data, e.choice);
                     });
                 } else {
-                    var table_alias = this.getTableAlias(data);
-                    data.table_alias = table_alias;
+                    data.table_alias = this.getTableAlias(data);
                     this.field_list.add(data);
                     this.loadAndPopulateModelList();
                     this._setValue(this.field_list.get());
@@ -139,7 +143,7 @@ odoo.define('bi_view_editor', function (require) {
         },
         _parseValue: function (value) {
             return JSON.stringify(value);
-        }
+        },
     });
 
     field_registry.add('BVEEditor', BiViewEditor);
