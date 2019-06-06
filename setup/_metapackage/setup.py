@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo12-addon-report_py3o',
         'odoo12-addon-report_py3o_fusion_server',
         'odoo12-addon-report_qweb_signer',
+        'odoo12-addon-report_wkhtmltopdf_param',
         'odoo12-addon-report_xlsx',
         'odoo12-addon-report_xlsx_helper',
         'odoo12-addon-report_xlsx_helper_demo',
