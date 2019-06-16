@@ -307,6 +307,11 @@ msgstr ""
 msgid "XLSX"
 msgstr ""
 
+#. module: report_py3o
+#: selection:ir.actions.report,report_type:0
+msgid "XML"
+msgstr ""
+
 #~ msgid "ir.actions.report.xml"
 #~ msgstr "ir.actions.report.xml"
 
