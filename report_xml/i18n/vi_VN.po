@@ -19,18 +19,57 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: report_xml
-#: model:ir.ui.view,arch_db:report_xml.utf8_header
-msgid "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;"
-msgstr ""
-
-#. module: report_xml
 #: model:ir.actions.report,name:report_xml.demo_xml_report
 msgid "Demo xml report"
 msgstr ""
 
 #. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "HTML"
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "PDF"
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "Py3o"
+msgstr ""
+
+#. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
-msgid "ir.actions.report"
+msgid "Report Action"
+msgstr ""
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "Text"
+msgstr ""
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "XLSX"
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "XML"
 msgstr ""
 
 #~ msgid "ID"
