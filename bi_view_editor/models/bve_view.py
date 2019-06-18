@@ -1,7 +1,9 @@
 # Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import base64
 import json
+import pydot
 from psycopg2.extensions import AsIs
 
 from odoo import _, api, fields, models, tools
@@ -31,7 +33,7 @@ class BveView(models.Model):
         for bve_view in self:
             serialized_data = []
             for line in bve_view.line_ids.sorted(key=lambda r: r.sequence):
-                serialized_data_dict = {
+                serialized_data.append({
                     'sequence': line.sequence,
                     'model_id': line.model_id.id,
                     'id': line.field_id.id,
@@ -45,13 +47,9 @@ class BveView(models.Model):
                     'column': line.column,
                     'measure': line.measure,
                     'list': line.in_list,
-                }
-                if line.join_node:
-                    serialized_data_dict.update({
-                        'join_node': line.join_node,
-                        'relation': line.relation,
-                    })
-                serialized_data += [serialized_data_dict]
+                    'join_node': line.join_node,
+                    'relation': line.relation,
+                })
             bve_view.data = json.dumps(serialized_data)
 
     def _inverse_serialized_data(self):
@@ -76,6 +74,16 @@ class BveView(models.Model):
         'bve.view.line',
         'bve_view_id',
         string='Lines')
+    field_ids = fields.One2many(
+        'bve.view.line',
+        'bve_view_id',
+        domain=['|', ('join_node', '=', -1), ('join_node', '=', False)],
+        string='Fields')
+    relation_ids = fields.One2many(
+        'bve.view.line',
+        'bve_view_id',
+        domain=[('join_node', '!=', -1), ('join_node', '!=', False)],
+        string='Relations')
     action_id = fields.Many2one('ir.actions.act_window', string='Action')
     view_id = fields.Many2one('ir.ui.view', string='View')
     group_ids = fields.Many2many(
@@ -89,7 +97,8 @@ class BveView(models.Model):
         string='Users',
         compute='_compute_users',
         store=True)
-    query = fields.Text()
+    query = fields.Text(compute='_compute_sql_query')
+    er_diagram_image = fields.Binary(compute='_compute_er_diagram_image')
 
     _sql_constraints = [
         ('name_uniq',
@@ -97,49 +106,91 @@ class BveView(models.Model):
          _('Custom BI View names must be unique!')),
     ]
 
-    @api.multi
+    @api.depends('line_ids')
+    def _compute_er_diagram_image(self):
+        for bve_view in self:
+            graph = pydot.Dot(graph_type='graph')
+            table_model_map = {}
+            for line in bve_view.field_ids:
+                if line.table_alias not in table_model_map:
+                    table_alias_node = pydot.Node(
+                        line.model_id.name + ' ' + line.table_alias,
+                        style="filled",
+                        shape='box',
+                        fillcolor="#DDDDDD"
+                    )
+                    table_model_map[line.table_alias] = table_alias_node
+                    graph.add_node(table_model_map[line.table_alias])
+                field_node = pydot.Node(
+                    line.table_alias + '.' + line.field_id.field_description,
+                    label=line.description,
+                    style="filled",
+                    fillcolor="green"
+                )
+                graph.add_node(field_node)
+                graph.add_edge(pydot.Edge(
+                    table_model_map[line.table_alias],
+                    field_node
+                ))
+            for line in bve_view.relation_ids:
+                field_description = line.field_id.field_description
+                table_alias = line.table_alias
+                diamond_node = pydot.Node(
+                    line.ttype + ' ' + table_alias + '.' + field_description,
+                    label=table_alias + '.' + field_description,
+                    style="filled",
+                    shape='diamond',
+                    fillcolor="#D2D2FF"
+                )
+                graph.add_node(diamond_node)
+                graph.add_edge(pydot.Edge(
+                    table_model_map[table_alias],
+                    diamond_node,
+                    labelfontcolor="#D2D2FF",
+                    color="blue"
+                ))
+                graph.add_edge(pydot.Edge(
+                    diamond_node,
+                    table_model_map[line.join_node],
+                    labelfontcolor="black",
+                    color="blue"
+                ))
+            try:
+                png_base64_image = base64.b64encode(graph.create_png())
+                bve_view.er_diagram_image = png_base64_image
+            except:
+                bve_view.er_diagram_image = False
+
     def _create_view_arch(self):
         self.ensure_one()
 
-        def _get_field_def(name, def_type):
-            return """<field name="{}" type="{}" />""".format(name, def_type)
+        def _get_field_def(line):
+            field_type = line.view_field_type
+            return '<field name="%s" type="%s" />' % (line.name, field_type)
 
-        def _get_field_type(line):
-            row = line.row and 'row'
-            column = line.column and 'col'
-            measure = line.measure and 'measure'
-            return row or column or measure
+        bve_field_lines = self.field_ids.filtered('view_field_type')
+        return list(map(_get_field_def, bve_field_lines))
 
-        view_fields = []
-        for line in self.line_ids:
-            def_type = _get_field_type(line)
-            if def_type:
-                view_fields.append(_get_field_def(line.name, def_type))
-        return view_fields
-
-    @api.multi
     def _create_tree_view_arch(self):
         self.ensure_one()
 
-        def _get_field_def(name):
-            return """<field name="{}" />""".format(name)
+        def _get_field_attrs(line):
+            attr = line.list_attr
+            res = attr and '%s="%s"' % (attr, line.description) or ''
+            return '<field name="%s" %s />' % (line.name, res)
 
-        view_fields = []
-        for line in self.line_ids:
-            if line.in_list and not line.join_node:
-                view_fields.append(_get_field_def(line.name))
-        return view_fields
+        bve_field_lines = self.field_ids.filtered(lambda l: l.in_list)
+        return list(map(_get_field_attrs, bve_field_lines))
 
-    @api.multi
     def _create_bve_view(self):
         self.ensure_one()
+        View = self.env['ir.ui.view'].sudo()
+
+        # delete old views
+        View.search([('model', '=', self.model_name)]).unlink()
 
         # create views
-        View = self.env['ir.ui.view']
-        old_views = View.sudo().search([('model', '=', self.model_name)])
-        old_views.unlink()
-
-        view_vals = [{
+        View.create([{
             'name': 'Pivot Analysis',
             'type': 'pivot',
             'model': self.model_name,
@@ -170,12 +221,10 @@ class BveView(models.Model):
                        {}
                        </search>
                     """.format("".join(self._create_view_arch()))
-        }]
-
-        View.sudo().create(view_vals)
+        }])
 
         # create Tree view
-        tree_view = View.sudo().create({
+        tree_view = View.create({
             'name': 'Tree Analysis',
             'type': 'tree',
             'model': self.model_name,
@@ -188,7 +237,7 @@ class BveView(models.Model):
             })
 
         # set the Tree view as the default one
-        action_vals = {
+        action = self.env['ir.actions.act_window'].sudo().create({
             'name': self.name,
             'res_model': self.model_name,
             'type': 'ir.actions.act_window',
@@ -196,17 +245,14 @@ class BveView(models.Model):
             'view_mode': 'tree,graph,pivot',
             'view_id': tree_view.id,
             'context': "{'service_name': '%s'}" % self.name,
-        }
+        })
 
-        ActWindow = self.env['ir.actions.act_window']
-        action_id = ActWindow.sudo().create(action_vals)
         self.write({
-            'action_id': action_id.id,
+            'action_id': action.id,
             'view_id': tree_view.id,
             'state': 'created'
         })
 
-    @api.multi
     def _build_access_rules(self, model):
         self.ensure_one()
 
@@ -218,97 +264,82 @@ class BveView(models.Model):
             })
         else:
             # read access only to model
-            access_vals = []
-            for group in self.group_ids:
-                access_vals += [{
-                    'name': 'read access to ' + self.model_name,
-                    'model_id': model.id,
-                    'group_id': group.id,
-                    'perm_read': True
-                }]
+            access_vals = [{
+                'name': 'read access to ' + self.model_name,
+                'model_id': model.id,
+                'group_id': group.id,
+                'perm_read': True
+            } for group in self.group_ids]
             self.env['ir.model.access'].sudo().create(access_vals)
 
-    @api.multi
     def _create_sql_view(self):
         self.ensure_one()
 
-        def get_fields_info(lines):
-            fields_info = []
-            for line in lines:
-                vals = {
-                    'table': self.env[line.field_id.model_id.model]._table,
-                    'table_alias': line.table_alias,
-                    'select_field': line.field_id.name,
-                    'as_field': line.name,
-                    'join': line.join_node,
-                }
-                fields_info.append(vals)
-            return fields_info
-
-        def get_join_nodes(info):
-            return [(
-                f['table_alias'],
-                f['join'],
-                f['select_field']
-            ) for f in info if f['join']]
-
-        def get_tables(info):
-            return set([(f['table'], f['table_alias']) for f in info])
-
-        def get_select_fields(info):
-            first_field = [(info[0]['table_alias'] + ".id", "id")]
-            next_fields = [
-                ("{}.{}".format(f['table_alias'], f['select_field']),
-                 f['as_field']) for f in info if 'join_node' not in f
-            ]
-            return first_field + next_fields
-
-        if not self.line_ids:
-            raise UserError(_('No data to process.'))
-
-        info = get_fields_info(self.line_ids)
-        select_fields = get_select_fields(info)
-        tables = get_tables(info)
-        join_nodes = get_join_nodes(info)
-
         view_name = self.model_name.replace('.', '_')
-        select_str = ', '.join(["{} AS {}".format(f[0], f[1])
-                                for f in select_fields])
-        from_str = ', '.join(["{} AS {}".format(t[0], t[1])
-                              for t in list(tables)])
-        where_str = " AND ".join(["{}.{} = {}.id".format(j[0], j[2], j[1])
-                                  for j in join_nodes])
+        query = self.query and self.query.replace('\n', ' ')
 
         # robustness in case something went wrong
         self._cr.execute('DROP TABLE IF EXISTS %s', (AsIs(view_name), ))
 
-        self.query = """
-            SELECT %s
+        # create postgres view
+        self.env.cr.execute('CREATE or REPLACE VIEW %s as (%s)', (
+            AsIs(view_name), AsIs(query), ))
 
-            FROM  %s
-            """ % (AsIs(select_str), AsIs(from_str), )
-        if where_str:
-            self.query += """
-            WHERE %s
-            """ % (AsIs(where_str), )
+    @api.depends('line_ids', 'state')
+    def _compute_sql_query(self):
+        for bve_view in self:
+            tables_map = {}
+            select_str = '\n CAST(row_number() OVER () as integer) AS id'
+            for line in bve_view.field_ids:
+                table = line.table_alias
+                select = line.field_id.name
+                as_name = line.name
+                select_str += ',\n {}.{} AS {}'.format(table, select, as_name)
 
-        self.env.cr.execute(
-            """CREATE or REPLACE VIEW %s as (
-            %s
-            )""", (AsIs(view_name), AsIs(self.query), ))
+                if line.table_alias not in tables_map:
+                    table = self.env[line.field_id.model_id.model]._table
+                    tables_map[line.table_alias] = table
+            seen = set()
+            from_str = ""
+            if not bve_view.relation_ids and bve_view.field_ids:
+                first_line = bve_view.field_ids[0]
+                table = tables_map[first_line.table_alias]
+                from_str = "{} AS {}".format(table, first_line.table_alias)
+            for line in bve_view.relation_ids:
+                table = tables_map[line.table_alias]
+                table_format = "{} AS {}".format(table, line.table_alias)
+                if not from_str:
+                    from_str += table_format
+                    seen.add(line.table_alias)
+                if line.table_alias not in seen:
+                    seen.add(line.table_alias)
+                    from_str += "\n"
+                    from_str += " LEFT" if line.left_join else ""
+                    from_str += " JOIN {} ON {}.id = {}.{}".format(
+                        table_format,
+                        line.join_node, line.table_alias, line.field_id.name
+                    )
+                if line.join_node not in seen:
+                    from_str += "\n"
+                    seen.add(line.join_node)
+                    from_str += " LEFT" if line.left_join else ""
+                    from_str += " JOIN {} AS {} ON {}.{} = {}.id".format(
+                        tables_map[line.join_node], line.join_node,
+                        line.table_alias, line.field_id.name, line.join_node
+                    )
+            bve_view.query = """SELECT %s\n\nFROM %s
+                """ % (AsIs(select_str), AsIs(from_str),)
 
-    @api.multi
     def action_translations(self):
         self.ensure_one()
         if self.state != 'created':
             return
-        model = self.env['ir.model'].sudo().search([
-            ('model', '=', self.model_name)
-        ])
-        IrTranslation = self.env['ir.translation'].sudo()
+        self = self.sudo()
+        model = self.env['ir.model'].search([('model', '=', self.model_name)])
+        IrTranslation = self.env['ir.translation']
         IrTranslation.translate_fields('ir.model', model.id)
-        for field_id in model.field_id.ids:
-            IrTranslation.translate_fields('ir.model.fields', field_id)
+        for field in model.field_id:
+            IrTranslation.translate_fields('ir.model.fields', field.id)
         return {
             'name': 'Translations',
             'res_model': 'ir.translation',
@@ -328,37 +359,10 @@ class BveView(models.Model):
             ],
         }
 
-    @api.multi
     def action_create(self):
         self.ensure_one()
 
-        def _prepare_field(line):
-            field = line.field_id
-            vals = {
-                'name': line.name,
-                'complete_name': field.complete_name,
-                'model': self.model_name,
-                'relation': field.relation,
-                'field_description': line.description,
-                'ttype': field.ttype,
-                'selection': field.selection,
-                'size': field.size,
-                'state': 'manual',
-                'readonly': True,
-                'groups': [(6, 0, field.groups.ids)],
-            }
-            if vals['ttype'] == 'monetary':
-                vals.update({'ttype': 'float'})
-            if field.ttype == 'selection' and not field.selection:
-                model_obj = self.env[field.model_id.model]
-                selection = model_obj._fields[field.name].selection
-                if callable(selection):
-                    selection_domain = selection(model_obj)
-                else:
-                    selection_domain = selection
-                vals.update({'selection': str(selection_domain)})
-            return vals
-
+        # consistency checks
         self._check_invalid_lines()
         self._check_groups_consistency()
 
@@ -369,13 +373,12 @@ class BveView(models.Model):
         self._create_sql_view()
 
         # create model and fields
-        fields_data = self.line_ids.filtered(lambda l: not l.join_node)
-        field_ids = [(0, 0, _prepare_field(f)) for f in fields_data]
+        bve_fields = self.line_ids.filtered(lambda l: not l.join_node)
         model = self.env['ir.model'].sudo().with_context(bve=True).create({
             'name': self.name,
             'model': self.model_name,
             'state': 'manual',
-            'field_id': field_ids,
+            'field_id': [(0, 0, f) for f in bve_fields._prepare_field_vals()],
         })
 
         # give access rights
@@ -417,11 +420,14 @@ class BveView(models.Model):
 
     def _check_invalid_lines(self):
         self.ensure_one()
+        if not self.line_ids:
+            raise ValidationError(_('No data to process.'))
+
         if any(not line.model_id for line in self.line_ids):
             invalid_lines = self.line_ids.filtered(lambda l: not l.model_id)
             missing_models = set(invalid_lines.mapped('model_name'))
             missing_models = ', '.join(missing_models)
-            raise UserError(_(
+            raise ValidationError(_(
                 'Following models are missing: %s.\n'
                 'Probably some modules were uninstalled.' % (missing_models,)
             ))
@@ -429,11 +435,10 @@ class BveView(models.Model):
             invalid_lines = self.line_ids.filtered(lambda l: not l.field_id)
             missing_fields = set(invalid_lines.mapped('field_name'))
             missing_fields = ', '.join(missing_fields)
-            raise UserError(_(
+            raise ValidationError(_(
                 'Following fields are missing: %s.' % (missing_fields,)
             ))
 
-    @api.multi
     def open_view(self):
         self.ensure_one()
         self._check_invalid_lines()
@@ -447,7 +452,6 @@ class BveView(models.Model):
         default = dict(default or {}, name=_("%s (copy)") % self.name)
         return super().copy(default=default)
 
-    @api.multi
     def action_reset(self):
         self.ensure_one()
 
@@ -479,7 +483,6 @@ class BveView(models.Model):
         if has_menus:
             return {'type': 'ir.actions.client', 'tag': 'reload'}
 
-    @api.multi
     def unlink(self):
         if self.filtered(lambda v: v.state == 'created'):
             raise UserError(
@@ -490,7 +493,7 @@ class BveView(models.Model):
     @api.model
     def _sync_lines_and_data(self, data):
         line_ids = [(5, 0, 0)]
-        fields_info = {}
+        fields_info = []
         if data:
             fields_info = json.loads(data)
 
@@ -524,6 +527,7 @@ class BveView(models.Model):
 
     @api.constrains('line_ids')
     def _constraint_line_ids(self):
+        models_with_tables = self.env.registry.models.keys()
         for view in self:
             nodes = view.line_ids.filtered(lambda n: n.join_node)
             nodes_models = nodes.mapped('table_alias')
@@ -535,17 +539,20 @@ class BveView(models.Model):
                 raise ValidationError(err_msg)
             if len(set(not_nodes_models) - set(nodes_models)) > 1:
                 raise ValidationError(err_msg)
+            models = view.line_ids.mapped('model_id')
+            if models.filtered(lambda m: m.model not in models_with_tables):
+                raise ValidationError(_('Abstract models not supported.'))
 
     @api.model
     def get_clean_list(self, data_dict):
         serialized_data = json.loads(data_dict)
         table_alias_list = set()
         for item in serialized_data:
-            if item.get('join_node', -1) == -1:
+            if item.get('join_node', -1) in [-1, False]:
                 table_alias_list.add(item['table_alias'])
 
         for item in serialized_data:
-            if item.get('join_node', -1) != -1:
+            if item.get('join_node', -1) not in [-1, False]:
                 if item['table_alias'] not in table_alias_list:
                     serialized_data.remove(item)
                 elif item['join_node'] not in table_alias_list:

@@ -5,7 +5,7 @@ import json
 
 import odoo
 from odoo.tests.common import TransactionCase
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from ..hooks import post_load, uninstall_hook
 
 
@@ -179,9 +179,10 @@ class TestBiViewEditor(TransactionCase):
         }
         bi_view4 = self.env['bve.view'].create(vals)
         self.assertEqual(len(bi_view4), 1)
+        self.assertTrue(bi_view4.er_diagram_image)
 
         # create sql view
-        with self.assertRaises(UserError):
+        with self.assertRaises(ValidationError):
             bi_view4.action_create()
 
     def test_08_get_models(self):
@@ -200,6 +201,7 @@ class TestBiViewEditor(TransactionCase):
         bi_view = self.env['bve.view'].create(vals)
         self.assertEqual(len(bi_view), 1)
         self.assertEqual(len(bi_view.line_ids), 3)
+        self.assertTrue(bi_view.er_diagram_image)
 
         # check lines
         line1 = bi_view.line_ids[0]
@@ -328,7 +330,7 @@ class TestBiViewEditor(TransactionCase):
         for line in bi_view1.line_ids:
             self.assertFalse(line.model_id)
             self.assertTrue(line.model_name)
-        with self.assertRaises(UserError):
+        with self.assertRaises(ValidationError):
             bi_view1.action_create()
 
     def test_14_check_lines_missing_fieldl(self):
@@ -347,7 +349,7 @@ class TestBiViewEditor(TransactionCase):
         for line in bi_view1.line_ids:
             self.assertFalse(line.field_id)
             self.assertTrue(line.field_name)
-        with self.assertRaises(UserError):
+        with self.assertRaises(ValidationError):
             bi_view1.action_create()
 
     def test_15_create_lines(self):
