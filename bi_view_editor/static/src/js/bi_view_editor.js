@@ -96,7 +96,7 @@ odoo.define('bi_view_editor', function (require) {
         getTableAlias: function (field) {
             if (typeof field.table_alias === 'undefined') {
                 var model_ids = this.field_list.getModelIds();
-                var n = 0;
+                var n = 1;
                 while (typeof model_ids["t" + n] !== 'undefined') {
                     n++;
                 }
