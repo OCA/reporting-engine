@@ -7,7 +7,6 @@ from odoo import api, models
 class WizardModelMenuCreate(models.TransientModel):
     _inherit = 'wizard.ir.model.menu.create'
 
-    @api.multi
     def menu_create(self):
         if self.env.context.get('active_model') == 'bve.view':
             self.ensure_one()
