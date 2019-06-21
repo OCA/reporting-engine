@@ -4,7 +4,7 @@
 
 import xml.etree.ElementTree as ET
 
-from odoo.addons.base.ir.ir_qweb import QWebException
+from odoo.addons.base.models.qweb import QWebException
 from odoo.tests import common
 
 
