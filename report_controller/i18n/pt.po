@@ -1,0 +1,125 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_controller
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-24 15:23+0000\n"
+"PO-Revision-Date: 2019-06-24 15:23+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_controller
+#: code:addons/report_controller/models/ir_actions_report.py:0
+#: sql_constraint:ir.actions.report:0
+#, python-format
+msgid "A controller report must have a URL"
+msgstr "Um relatório tipo controller tem de ter URL"
+
+#. module: report_controller
+#. openerp-web
+#: code:addons/report_controller/static/src/js/qwebactionmanager.js:53
+#, python-format
+msgid "A popup window with your report was blocked. You may need to change your browser settings to allow popup windows for this page."
+msgstr "Uma janela popup com o seu relatório foi bloqueado. Poderás ter que mudar as configurações do teu browser para permitir janelas popup para esta página."
+
+#. module: report_controller
+#: model:ir.model.fields,field_description:report_controller.field_ir_actions_report__controller_content_type
+msgid "Content Type"
+msgstr "Tipo Conteudo"
+
+#. module: report_controller
+#: selection:ir.actions.report,report_type:0
+msgid "Controller"
+msgstr "Controlador"
+
+#. module: report_controller
+#: model:ir.model.fields,field_description:report_controller.field_ir_actions_report__controller_url
+msgid "Controller URL"
+msgstr "URL Controlador"
+
+#. module: report_controller
+#: model:ir.model.fields,help:report_controller.field_ir_actions_report__controller_url
+msgid "Controller from url to fetch. You can use a python expression with the 'object' and 'time' variables."
+msgstr "URL para buscar o controlador. Tu podes usar expressão python com variáveis 'object' e 'time'"
+
+#. module: report_controller
+#: code:addons/report_controller/models/ir_actions_report.py:0
+#, python-format
+msgid "Controller has no document type!"
+msgstr "Controlador não tem tipo de documento!"
+
+#. module: report_controller
+#: model:ir.model.fields,help:report_controller.field_ir_actions_report__controller_content_type
+msgid "Controller request content type."
+msgstr "Tipo de conteudo de pedido de controlador."
+
+#. module: report_controller
+#: code:addons/report_controller/models/ir_actions_report.py:0
+#, python-format
+msgid "Controller result isn't a PDF"
+msgstr "Resultado de controlador não é PDF"
+
+#. module: report_controller
+#: model:ir.model.fields,field_description:report_controller.field_ir_actions_report__controller_document_type
+msgid "Document Type"
+msgstr "Tipo de Documento"
+
+#. module: report_controller
+#: model_terms:ir.ui.view,arch_db:report_controller.ir_actions_report_form
+msgid "Example: '/res.partner/%s' % object.ids"
+msgstr "Exemplo: '/res.partner/%s' % object.ids"
+
+#. module: report_controller
+#: selection:ir.actions.report,controller_content_type:0
+msgid "Form"
+msgstr ""
+
+#. module: report_controller
+#: selection:ir.actions.report,report_type:0
+msgid "HTML"
+msgstr ""
+
+#. module: report_controller
+#: selection:ir.actions.report,controller_content_type:0
+msgid "JSON"
+msgstr ""
+
+#. module: report_controller
+#: selection:ir.actions.report,report_type:0
+msgid "PDF"
+msgstr ""
+
+#. module: report_controller
+#: model:ir.model.fields,field_description:report_controller.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr "Tipo de Relatório"
+
+#. module: report_controller
+#: selection:ir.actions.report,report_type:0
+msgid "Text"
+msgstr "Texto"
+
+#. module: report_controller
+#: model:ir.model.fields,help:report_controller.field_ir_actions_report__report_type
+msgid "The type of the report that will be rendered, each one having its own rendering method. HTML means the report will be opened directly in your browser PDF means the report will be rendered using Wkhtmltopdf and downloaded by the user Controller means the it will be use a controller or url and download the report from another origin."
+msgstr "O tipo de o relatório que será desenhado, cada um com o seu método de desenho. HTML siginifica que o relatório será aberto directamente no teu browser PDF significa que o relatório será desenhado usando Wkhtmltopdf e baixado pelo utilizador Controlador significa que será um controller ou url a buscar o relatório de outra origem."
+
+#. module: report_controller
+#. openerp-web
+#: code:addons/report_controller/static/src/js/qwebactionmanager.js:57
+#, python-format
+msgid "Warning"
+msgstr "Aviso"
+
+#. module: report_controller
+#: model_terms:ir.ui.view,arch_db:report_controller.ir_actions_report_form
+msgid "pdf"
+msgstr "pdf"
+

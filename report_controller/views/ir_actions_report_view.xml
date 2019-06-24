@@ -5,10 +5,24 @@
         <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='report_name']" position="after">
-                <field name="controller_url"
+            <xpath expr="//field[@name='report_type']" position="after">
+<!--                 <field name="controller_document_type" -->
+<!--                 	placeholder="pdf" -->
+<!--                     attrs="{'invisible': [('report_type', '!=', 'controller')], -->
+<!--                             'required': [('report_type', '=', 'controller')]}" /> -->
+                <field name="controller_content_type"
                     attrs="{'invisible': [('report_type', '!=', 'controller')],
                             'required': [('report_type', '=', 'controller')]}" />
+            </xpath>
+            <xpath expr="//field[@name='report_name']" position="after">
+                <label for="controller_url"
+                    attrs="{'invisible': [('report_type', '!=', 'controller')],
+                            'required': [('report_type', '=', 'controller')]}" />
+                <div name="controller_url"
+                    attrs="{'invisible': [('report_type', '!=', 'controller')]}" >
+	                <field name="controller_url" attrs="{'required': [('report_type', '=', 'controller')]}" />
+	                <p class="text-muted">Example: '/res.partner/%s' % object.ids</p>
+                </div>
             </xpath>
         </field>
     </record>
