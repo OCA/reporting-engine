@@ -37,5 +37,8 @@ msgstr "La longueur du rapport ne peut pas être supérieure à %s"
 
 #. module: report_qweb_parameter
 #: model:ir.model,name:report_qweb_parameter.model_ir_qweb
-msgid "ir.qweb"
-msgstr "ir.qweb"
+msgid "Qweb"
+msgstr ""
+
+#~ msgid "ir.qweb"
+#~ msgstr "ir.qweb"
