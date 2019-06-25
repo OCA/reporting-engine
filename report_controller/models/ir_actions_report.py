@@ -10,6 +10,7 @@ import dateutil.relativedelta as relativedelta
 import copy
 import time
 from odoo.tools.safe_eval import safe_eval
+from requests.utils import requote_uri
 
 CONTROLLER_TYPES = [("controller", "Controller")]
 CONTROLLER_KEYS = [x[0] for x in CONTROLLER_TYPES]
@@ -18,6 +19,14 @@ PDF_MAGIC = b"%PDF"
 
 CONTENT_TYPES = [('multipart/form-data', 'Form'),
                  ('application/json', 'JSON')]
+
+def to_header_param(hparams):
+    if not hparams:
+        return ''
+    res = []
+    for k in hparams:
+        res.append('%s=%s' % (k, hparams[k]))
+    return ';'.join(res)
 
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
@@ -69,7 +78,6 @@ class IrActionsReport(models.Model):
             
         #Rendering controller URL
         url = safe_eval(url, localdict)
-        
         #Append host if controller does not start with any of the following strings
         add_host = True
         for h in ['http://', 'https://', 'ftp://']:
@@ -88,14 +96,15 @@ class IrActionsReport(models.Model):
                 while url.startswith('/'):
                     url = url[1:]
                 url = host_url + url
+        url = requote_uri(url)
                 
         #Set Header and content type
         headers = {
-            'Content-Type': self.controller_content_type,
+            'Content-Type': self.controller_content_type + ';',
+
         }
         try:
-            #Salvage session id cookie, allows for request to be recognized as the same session request
-            headers['cookie'] = 'session_id=%s;frontend_lang=%s' % (http.request.httprequest.cookies['session_id'], http.request.httprequest.cookies['frontend_lang'])
+            headers['Cookie'] = to_header_param(http.request.httprequest.cookies)
         except:
             pass
         try:
@@ -109,6 +118,12 @@ class IrActionsReport(models.Model):
         
         #Return error if not PDF
         #Perhaps later we may wish to have other document types.
+        if response.status_code == 404:
+            raise exceptions.ValidationError(_('404 Page not Found'))
+        if response.status_code == 400:
+            raise exceptions.ValidationError(_('400 Bad Request:\n%s') % response.content)
+        if response.status_code == 500:
+            raise exceptions.ValidationError(_('500 Internal Server Error:\n%s') % response.content)
         if response.content[:4] != PDF_MAGIC:
             error_msg = _("Controller result isn't a PDF")
             raise exceptions.ValidationError(error_msg)
