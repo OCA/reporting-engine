@@ -47,11 +47,24 @@ class IrActionsReport(models.Model):
             selections.append((name, description))
         return selections
 
+    @api.model
+    def _default_py3o_filetypes(self):
+        formats = Formats()
+        names = formats.get_known_format_names()
+        selections = []
+        for name in names:
+            description = name
+            if formats.get_format(name).native:
+                description = description + " " + _("(Native)")
+            selections.append((name, description))
+        return selections[0][0]
+
     report_type = fields.Selection(
         selection_add=[("py3o", "py3o")]
-        )
+    )
     py3o_filetype = fields.Selection(
         selection="_get_py3o_filetypes",
+        default=_default_py3o_filetypes,
         string="Output Format")
     is_py3o_native_format = fields.Boolean(
         compute='_compute_is_py3o_native_format'
@@ -80,13 +93,13 @@ class IrActionsReport(models.Model):
     lo_bin_path = fields.Char(
         string="Path to the libreoffice runtime",
         compute="_compute_lo_bin_path"
-        )
+    )
     is_py3o_report_not_available = fields.Boolean(
         compute='_compute_py3o_report_not_available'
-        )
+    )
     msg_py3o_report_not_available = fields.Char(
         compute='_compute_py3o_report_not_available'
-        )
+    )
 
     @api.model
     def _register_hook(self):
