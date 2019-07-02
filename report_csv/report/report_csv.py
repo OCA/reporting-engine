@@ -16,6 +16,7 @@ except ImportError:
 
 class ReportCSVAbstract(models.AbstractModel):
     _name = 'report.report_csv.abstract'
+    _description = 'Abstract Model for CSV reports'
 
     def _get_objs_for_report(self, docids, data):
         """
