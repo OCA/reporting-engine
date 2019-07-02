@@ -5,7 +5,7 @@
     'name': 'Report Context',
     'summary': """
         Adding context to reports""",
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Creu Blanca,Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/reporting-engine',
@@ -15,7 +15,5 @@
     'data': [
         'views/ir_actions_report.xml',
         'data/config_parameter.xml',
-    ],
-    'demo': [
     ],
 }
