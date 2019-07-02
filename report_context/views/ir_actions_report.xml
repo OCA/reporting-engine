@@ -4,7 +4,7 @@
 
 <odoo>
 
-    <record model="ir.ui.view" id="ir_actions_report_form_view">
+    <record model="ir.ui.view" id="act_report_xml_view">
         <field name="name">ir.actions.report.context.form</field>
         <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_view"/>
