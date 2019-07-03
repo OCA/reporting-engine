@@ -5,7 +5,7 @@
 {
     "name": "Account Invoice Grouped by Picking",
     "summary": "Print invoice lines grouped by picking",
-    "version": "11.0.1.3.0",
+    "version": "11.0.1.4.0",
     "category": "Accounting & Finance",
     "website": "https://github.com/OCA/account-invoice-reporting",
     "author": "Tecnativa, "

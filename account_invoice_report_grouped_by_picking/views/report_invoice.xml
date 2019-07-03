@@ -82,7 +82,7 @@
                   t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
         </t>
         <t t-else="">
-            <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_subtotal"/>
+            <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_total"/>
         </t>
     </xpath>
     <xpath expr="//td/span[@t-field='l.price_total']" position="attributes">
