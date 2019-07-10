@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Part of hunghn. See LICENSE file for full copyright and licensing details.
+
 {
     "name": "Architecture & Construction",
     "version": "1.0",
@@ -18,7 +20,7 @@
         # =============== SECURITY ===============
 
         # =============== VIEWS ==================
-        'views/sale_order_view.xml',
+        'views/sale/sale_order_view.xml',
         # =============== WIZARDS ================
 
         # =============== MENU ===================
