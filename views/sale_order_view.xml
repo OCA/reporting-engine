@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="length"/>
+                <field name='width'/>
+                <field name='hight'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
