@@ -7,9 +7,9 @@
         <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
-                <field name="length"/>
-                <field name='width'/>
-                <field name='hight'/>
+                <field name="d_length" force_save = "1"/>
+                <field name='d_width'/>
+                <field name='d_hight'/>
             </xpath>
         </field>
     </record>

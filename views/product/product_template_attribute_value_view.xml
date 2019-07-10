@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_attribute_value_form_inherit_arc_view" model="ir.ui.view">
+        <field name="name">product.template.attribute.value.form.inherit.arc.view</field>
+        <field name="model">product.template.attribute.value</field>
+        <field name="inherit_id" ref="product.product_template_attribute_value_view_form"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <field name="price_extra" position="before">
+                <field name="factor"/>
+                <field name="avg_price" widget="monetary"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_template_attribute_value_tree_inherit_arc_view" model="ir.ui.view">
+        <field name="name">product.template.attribute.value.tree.inherit.arc.view</field>
+        <field name="model">product.template.attribute.value</field>
+        <field name="inherit_id" ref="product.product_template_attribute_value_view_tree"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <field name="price_extra" position="before">
+                <field name="factor"/>
+                <field name="avg_price" widget="monetary"/>
+            </field>
+        </field>
+    </record>
+</odoo>

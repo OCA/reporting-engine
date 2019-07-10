@@ -18,9 +18,11 @@
         # =============== DATA ===================
 
         # =============== SECURITY ===============
-
+        'security/ir.model.access.csv',
         # =============== VIEWS ==================
         'views/sale/sale_order_view.xml',
+        'views/product/product_template_view.xml',
+        'views/product/product_template_attribute_value_view.xml',
         # =============== WIZARDS ================
 
         # =============== MENU ===================

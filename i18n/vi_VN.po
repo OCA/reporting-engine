@@ -20,12 +20,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__hight
+#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_hight
 msgid "Hight (mm)"
 msgstr "Cao (mm)"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__length
+#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_length
 msgid "Length (mm)"
 msgstr "Dài (mm)"
 
@@ -35,7 +35,7 @@ msgid "Sales Order Line"
 msgstr "Chi tiết Đơn Bán"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__width
+#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_width
 msgid "Width (mm)"
 msgstr "Rộng (mm)"
 

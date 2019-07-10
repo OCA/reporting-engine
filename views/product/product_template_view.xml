@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_inherit_arch_construction_view" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.arch.construction.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="product_group_id"/>
+            </field>
+            <xpath expr="//page[@name='sales']" position="before">
+                <page string="Computations" name="computations">
+                    <group col="6" name="dimension" string="Dimension">
+                        <field name="standard_length"/>
+                        <field name="standard_width"/>
+                        <field name="standard_hight"/>
+                    </group>
+                    <group string="Formula">
+                        <field name="formula"/>
+                    </group>
+                    <group string="Secondary Unit of Measure">
+                        <group>
+                            <field name="second_uom_id"/>
+                        </group>
+                        <group>
+                            <field name="condition_code" attrs="{'invisible':[('second_uom_id', '=', False)],'required':[('second_uom_id', '!=', False)]}"/>
+                        </group>
+                    </group>
+                    <group string="Formula for Sale Price" col="4">
+                        <field name="consum_factor"/>
+                        <field name="price_factor" widget="monetary"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
