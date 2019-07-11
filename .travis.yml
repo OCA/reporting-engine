@@ -9,6 +9,7 @@ addons:
       - python-lxml # because pip installation is slow
       - pdftk
       - libreoffice
+      - graphviz
 
 language: python
 
