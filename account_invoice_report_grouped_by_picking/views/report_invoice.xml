@@ -6,16 +6,18 @@
         <t t-set="subtotal" t-value="0.0"/>
         <t t-set="lines_grouped" t-value="o.lines_grouped_by_picking()"/>
     </xpath>
-    <xpath expr="//tr[@t-foreach='o.invoice_line_ids']" position="attributes">
+
+    <xpath expr="//t[@t-foreach='o.invoice_line_ids']" position="attributes">
         <attribute name="t-foreach">lines_grouped</attribute>
         <attribute name="t-as">lines_group</attribute>
     </xpath>
-    <!-- Appends before the line row - This mangles a bit the HTML DOM, but there's no other way -->
-    <xpath expr="//tr[@t-foreach='lines_grouped']//span[@t-field='l.name']/.." position="before">
+
+    <!-- Appends before 'current_subtotal' compute -->
+    <xpath expr="//t[@t-foreach='lines_grouped']/t" position="before">
         <t t-set="l" t-value="lines_group['line']"/>
+        <t t-set="line" t-value="lines_group['line']"/>
         <t t-set="picking" t-value="lines_group['picking']"/>
-        <t t-set="next_picking"
-           t-value="[lines_grouped[i + 1]['picking'] for i, x in enumerate(lines_grouped) if x == lines_group and i &lt; len(lines_grouped) - 1] or [False]"/>
+        <t t-set="next_picking" t-value="[lines_grouped[i + 1]['picking'] for i, x in enumerate(lines_grouped) if x == lines_group and i &lt; len(lines_grouped) - 1] or [False]"/>
         <t t-if="picking != last_picking">
             <tr t-if="picking">
                 <td colspan="10">
@@ -33,13 +35,15 @@
             </tr>
         </t>
     </xpath>
-    <xpath expr="//td/span[@t-field='l.quantity']" position="attributes">
+
+    <xpath expr="//td/span[@t-field='line.quantity']" position="attributes">
         <attribute name="t-esc">lines_group['quantity']</attribute>
         <attribute name="t-field"/>
         <attribute name="t-options">{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}</attribute>
     </xpath>
-    <xpath expr="//td/span[@t-field='l.price_subtotal']" position="before">
-        <t t-if="lines_group['quantity'] != l.quantity" id="picking_subtotal" groups="!sale.group_show_price_total">
+
+    <xpath expr="//td/span[@t-field='line.price_subtotal']" position="before">
+        <t t-if="lines_group['quantity'] != l.quantity" id="picking_subtotal" groups="!account.group_show_line_subtotals_tax_included">
             <!-- Compute subtotal for that picking with discounts -->
             <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_subtotal / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
@@ -50,18 +54,17 @@
             <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_subtotal"/>
         </t>
     </xpath>
-    <xpath expr="//td/span[@t-field='l.price_subtotal']" position="attributes">
-        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
-    </xpath>
-    <xpath expr="//td/span[@t-field='l.price_total']" position="attributes">
-        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
-    </xpath>
-</template>
 
-<!-- We need this second view for avoiding errors when performing replaces with the primary inheritance -->
-<template id="report_invoice_layouted" inherit_id="sale.report_invoice_layouted" priority="99">
+    <xpath expr="//td/span[@t-field='line.price_subtotal']" position="attributes">
+        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
+    </xpath>
+
+    <xpath expr="//td/span[@t-field='line.price_total']" position="attributes">
+        <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
+    </xpath>
+
     <!-- Append subtotal row after invoice line row-->
-    <xpath expr="//tr[@t-foreach='o.invoice_line_ids']/td[last()]" position="after">
+    <xpath expr="//t[@t-foreach='lines_grouped']//td[hasclass('o_price_total')]" position="after">
         <tr t-if="picking and picking != next_picking[0]">
             <td colspan="10" class="text-right">
                 <strong>Subtotal: </strong>
@@ -72,22 +75,22 @@
         </tr>
         <t t-set="last_picking" t-value="picking"/>
     </xpath>
+
     <!-- Replicate logic if B2C prices-->
-    <xpath expr="//td/span[@t-field='l.price_total']" position="before">
-        <t t-if="lines_group['quantity'] != l.quantity" groups="sale.group_show_price_total">
+    <xpath expr="//td/span[@t-field='line.price_total']" position="before">
+        <t t-if="lines_group['quantity'] != l.quantity" groups="account.group_show_line_subtotals_tax_included">
             <!-- Compute subtotal for that picking with discounts -->
             <t t-set="line_picking_subtotal" t-value="l.quantity and lines_group['quantity'] * (l.price_total / l.quantity) or 0.0"/>
             <t t-set="subtotal" t-value="(subtotal or 0.0) + line_picking_subtotal"/>
-            <span t-esc="line_picking_subtotal"
-                  t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            <span t-esc="line_picking_subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
         </t>
         <t t-else="">
             <t t-set="subtotal" t-value="(subtotal or 0.0) + l.price_total"/>
         </t>
     </xpath>
-    <xpath expr="//td/span[@t-field='l.price_total']" position="attributes">
+
+    <xpath expr="//td/span[@t-field='line.price_total']" position="attributes">
         <attribute name="t-if">lines_group['quantity'] == l.quantity</attribute>
     </xpath>
 </template>
-
 </odoo>

@@ -35,7 +35,7 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         # confirm quotation
         self.sale.action_confirm()
         # deliver lines2
-        self.sale.picking_ids[:1].force_assign()
+        self.sale.picking_ids[:1].action_confirm()
         self.sale.picking_ids[:1].move_line_ids.write({'qty_done': 1})
         self.sale.picking_ids[:1].action_done()
         # create another sale
@@ -44,7 +44,7 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         self.sale2.order_line[:1].price_unit = 50.0
         # confirm new quotation
         self.sale2.action_confirm()
-        self.sale2.picking_ids[:1].force_assign()
+        self.sale2.picking_ids[:1].action_confirm()
         self.sale2.picking_ids[:1].move_line_ids.write({'qty_done': 1})
         self.sale2.picking_ids[:1].action_done()
         sales = self.sale | self.sale2
