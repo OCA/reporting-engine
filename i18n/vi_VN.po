@@ -20,11 +20,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__standard_hight
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__standard_hight
 #: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_hight
 msgid "Hight (mm)"
 msgstr "Cao (mm)"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__standard_length
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__standard_length
 #: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_length
 msgid "Length (mm)"
 msgstr "Dài (mm)"
@@ -35,6 +39,8 @@ msgid "Sales Order Line"
 msgstr "Chi tiết Đơn Bán"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__standard_width
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__standard_width
 #: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_width
 msgid "Width (mm)"
 msgstr "Rộng (mm)"
@@ -57,3 +63,149 @@ msgid ""
 "Configuration menu)"
 msgstr "Điều khoản và điều kiện... (Lưu ý: bạn có thể thiết lập mặc định "
 "giá trị này ở trong menu Cấu hình)"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_template_attribute_value__avg_price
+msgid "Average Price"
+msgstr "Giá trung bình"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__code
+msgid "Code"
+msgstr "Mã"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Computations"
+msgstr "Tính toán báo giá"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__condition_code
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__condition_code
+msgid "Conditions"
+msgstr "Điều kiện"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__consum_factor
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__consum_factor
+msgid "Consume Factor"
+msgstr "Hệ số"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__create_date
+msgid "Created on"
+msgstr "Thời điểm tạo"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Dimension"
+msgstr "Kích thước"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: arch_construction
+#: model:ir.model.fields,help:arch_construction.field_product_template_attribute_value__avg_price
+msgid "Extra Price = Average price * Ratio for the variant with this attribute value on sale price. eg. 200 price average, ratio = 1.5, 1.5*200 = 300."
+msgstr "Giá cộng thêm = Giá trung bình * Hệ số, Giá bán của mỗi biến thể sẽ dựa trên giá cộng thêm. Ví dụ: Giá trung bình 20,000, hệ số 1.5 thì giá cộng thêm = 1.5 * 20,000 = 300,000"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Formula"
+msgstr "Công thức"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Formula for Sale Price"
+msgstr "Công thức tính báo giá"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__formula
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__formula
+msgid "Formula for Sale Quantity"
+msgstr "Công thức cho SL"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__id
+msgid "ID"
+msgstr "STT"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group____last_update
+msgid "Last Modified on"
+msgstr "Sửa lần cuối vào"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_group__note
+msgid "Note"
+msgstr "Ghi chú"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__price_factor
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__price_factor
+msgid "Price Factor"
+msgstr "Giá trung bình"
+
+#. module: arch_construction
+#: model:ir.model,name:arch_construction.model_product_template_attribute_value
+msgid "Product Attribute Value"
+msgstr "Giá trị thuộc tính"
+
+#. module: arch_construction
+#: model:ir.model,name:arch_construction.model_product_group
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__product_group_id
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__product_group_id
+msgid "Product Group"
+msgstr "Hạng Mục"
+
+#. module: arch_construction
+#: model:ir.model,name:arch_construction.model_product_template
+msgid "Product Template"
+msgstr "Sản phẩm"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_template_attribute_value__factor
+msgid "Ratio"
+msgstr "Hệ số"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__second_uom_id
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__second_uom_id
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Secondary Unit of Measure"
+msgstr "ĐVT thứ 2"
+
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/product/product_template.py:84
+#, python-format
+msgid "Wrong python code defined for formula %s (%s)."
+msgstr "Công thức tính SL không hợp lệ, vui lòng xem lại %s (%s)."
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/product/product_template.py:63
+#, python-format
+msgid "Wrong python condition defined for condition %s (%s)."
+msgstr "Điều kiện tính đơn vị không hợp lệ, vui lòng xem lại %s (%s)."

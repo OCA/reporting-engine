@@ -31,15 +31,19 @@ class SaleOrderLine(models.Model):
                 product.standard_width):
             return
         baselocaldict = {'length': self.d_length, 'hight': self.d_hight,
-                         'width': self.d_width}
+                         'width': self.d_width, 'dai': self.d_length,
+                         'rong': self.d_width, 'cao': self.d_hight}
         localdict = dict(baselocaldict, product=product)
-        result = product.product_tmpl_id.satisfy_condition(localdict)
-        vals = {}
-        if result:
-            vals.update({'product_uom': product.second_uom_id.id,
-                         'product_uom_qty': 1})
-        else:
+        if product.condition_code:
+            result = product.product_tmpl_id.satisfy_condition(localdict)
+            vals = {}
+            if result:
+                vals.update({'product_uom': product.second_uom_id.id,
+                             'product_uom_qty': 1})
+            else:
+                vals.update({'product_uom': product.uom_id.id})
+        if product.formula:
             qty = product.product_tmpl_id._compute_by_dimension(localdict)
-            vals.update({'product_uom': product.uom_id.id,
-                         'product_uom_qty': qty})
+            if qty:
+                vals.update({'product_uom_qty': qty})
         self.update(vals)
