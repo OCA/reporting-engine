@@ -13,6 +13,7 @@
     "depends": [
         "base",
         'sale',
+        'report_xlsx_helper'
     ],
     "data": [
         # =============== DATA ===================
