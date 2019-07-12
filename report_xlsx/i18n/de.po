@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-23 03:49+0000\n"
-"PO-Revision-Date: 2019-04-24 20:16+0000\n"
-"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
+"PO-Revision-Date: 2019-07-12 12:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: report_xlsx
 #: code:addons/report_xlsx/models/ir_report.py:18
@@ -76,7 +76,6 @@ msgstr "Drucke nach XLSX"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
-#, fuzzy
 msgid "Py3o"
 msgstr "Py3o"
 
@@ -117,14 +116,13 @@ msgstr "Hinweis"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
-#, fuzzy
 msgid "XLSX"
 msgstr "XLSX"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
