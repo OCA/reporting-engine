@@ -18,8 +18,8 @@ class ProductTemplate(models.Model):
         string='Length (mm)',
         digits=dp.get_precision('Product Unit of Measure'))
     standard_width = fields.Float(string='Width (mm)')
-    standard_hight = fields.Float(
-        string='Hight (mm)',
+    standard_height = fields.Float(
+        string='Height (mm)',
         digits=dp.get_precision('Product Unit of Measure'))
     consum_factor = fields.Float(
         string='Consume Factor', default=1.00,
@@ -28,14 +28,12 @@ class ProductTemplate(models.Model):
     price_factor = fields.Float(string='Price Factor', default=1.00)
 
     # Secondary Unit
-    second_uom_id = fields.Many2one(
+    secondary_uom_ids = fields.One2many(
+        comodel_name='product.secondary.unit',
+        inverse_name='product_tmpl_id',
         string='Secondary Unit of Measure',
-        comodel_name='uom.uom')
-    condition_code = fields.Text(
-        string='Conditions')
-
-    # Formula
-    formula = fields.Text(string='Formula for Sale Quantity')
+        help='Default Secondary Unit of Measure.',
+    )
 
     @api.onchange('consum_factor', 'price_factor')
     def onchange_price_factor(self):
@@ -43,43 +41,14 @@ class ProductTemplate(models.Model):
             self.list_price = self.consum_factor * self.price_factor
 
     @api.multi
-    def satisfy_condition(self, localdict):
-        """
-        @param contract_id: id of hr.contract to be tested
-        @return: returns True if the given rule match the condition for
-        the given contract. Return False otherwise.
-        """
+    def _compute_qty_unit_price(self, localdict):
         self.ensure_one()
-
-        if not self.condition_code:
-            return True
-        else:
-            try:
-                safe_eval(self.condition_code, localdict, mode='exec',
-                          nocopy=True)
-                return 'result' in localdict and localdict['result'] or False
-            except Exception as e:
-                raise UserError(
-                    _('Wrong python condition defined for condition %s (%s).')
-                    % (self.condition_code, e))
-
-    @api.multi
-    def _compute_by_dimension(self, localdict):
-        """
-        :param localdict: dictionary containing the environement in which to
-        compute the rule
-        :return: returns a tuple build as the base/amount computed,
-        the quantity and the rate
-        :rtype: float
-        """
-        self.ensure_one()
-        if not self.formula:
-            return False
-        else:
-            try:
-                safe_eval(self.formula, localdict, mode='exec', nocopy=True)
-                return float(localdict['result'])
-            except Exception as e:
-                raise UserError(
-                    _('Wrong python code defined for formula %s (%s).') %
-                    (self.formula, e))
+        result = None
+        for uom in self.secondary_uom_ids.sorted(key=lambda r: r.sequence):
+            if not uom.satisfy_condition(localdict):
+                continue
+            qty = uom._compute_by_dimension(localdict)
+            unit_price = uom._compute_price_unit_by_dimension(localdict)
+            result = (uom, qty, unit_price)
+            break
+        return result

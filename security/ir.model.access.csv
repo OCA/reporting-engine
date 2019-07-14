@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_product_group_user,product.group.user,model_product_group,base.group_user,1,0,0,0
 access_product_group_manager,product.group.manager,model_product_group,base.group_system,1,1,1,1
+access_product_secondary_unit_user,product.group.secondary.user,model_product_group,base.group_user,1,0,0,0
+access_product_secondary_unit_manager,access_product_second_unit_manager,model_product_secondary_unit,base.group_system,1,1,1,1

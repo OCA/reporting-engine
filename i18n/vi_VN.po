@@ -20,9 +20,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_product_product__standard_hight
-#: model:ir.model.fields,field_description:arch_construction.field_product_template__standard_hight
-#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_hight
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__standard_height
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__standard_height
+#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__d_height
 msgid "Hight (mm)"
 msgstr "Cao (mm)"
 
@@ -80,12 +80,6 @@ msgid "Computations"
 msgstr "Tính toán báo giá"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_product_product__condition_code
-#: model:ir.model.fields,field_description:arch_construction.field_product_template__condition_code
-msgid "Conditions"
-msgstr "Điều kiện"
-
-#. module: arch_construction
 #: model:ir.model.fields,field_description:arch_construction.field_product_product__consum_factor
 #: model:ir.model.fields,field_description:arch_construction.field_product_template__consum_factor
 msgid "Consume Factor"
@@ -104,7 +98,7 @@ msgstr "Thời điểm tạo"
 #. module: arch_construction
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Dimension"
-msgstr "Kích thước"
+msgstr "Kích thước tiêu chuẩn"
 
 #. module: arch_construction
 #: model:ir.model.fields,field_description:arch_construction.field_product_group__display_name
@@ -118,19 +112,8 @@ msgstr "Giá cộng thêm = Giá trung bình * Hệ số, Giá bán của mỗi 
 
 #. module: arch_construction
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
-msgid "Formula"
-msgstr "Công thức"
-
-#. module: arch_construction
-#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Formula for Sale Price"
-msgstr "Công thức tính báo giá"
-
-#. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_product_product__formula
-#: model:ir.model.fields,field_description:arch_construction.field_product_template__formula
-msgid "Formula for Sale Quantity"
-msgstr "Công thức cho SL"
+msgstr "Giá bán"
 
 #. module: arch_construction
 #: model:ir.model.fields,field_description:arch_construction.field_product_group__id
@@ -191,11 +174,9 @@ msgid "Ratio"
 msgstr "Hệ số"
 
 #. module: arch_construction
-#: model:ir.model.fields,field_description:arch_construction.field_product_product__second_uom_id
-#: model:ir.model.fields,field_description:arch_construction.field_product_template__second_uom_id
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Secondary Unit of Measure"
-msgstr "ĐVT thứ 2"
+msgstr "Đơn vị tính thứ 2"
 
 
 #. module: arch_construction

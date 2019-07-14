@@ -85,7 +85,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
                 'description': line.name,
                 'length': line.d_length,
                 'width': line.d_width,
-                'hight': line.d_hight,
+                'hight': line.d_height,
                 'quantity': line.product_uom_qty,
                 'uom': line.product_uom.name,
                 'price_unit': line.price_unit,

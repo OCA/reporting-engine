@@ -12,7 +12,11 @@
             <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
                 <field name="d_length" force_save = "1"/>
                 <field name='d_width'/>
-                <field name='d_hight'/>
+                <field name='d_height'/>
+                <field name="origin_price_unit" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//field[@name='tax_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>

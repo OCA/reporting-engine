@@ -11,21 +11,22 @@
             </field>
             <xpath expr="//page[@name='sales']" position="before">
                 <page string="Computations" name="computations">
-                    <group col="6" name="dimension" string="Dimension">
+                    <group col="6" name="dimension" string="Standard Dimension">
                         <field name="standard_length"/>
                         <field name="standard_width"/>
-                        <field name="standard_hight"/>
-                    </group>
-                    <group string="Formula">
-                        <field name="formula"/>
+                        <field name="standard_height"/>
                     </group>
                     <group string="Secondary Unit of Measure">
-                        <group>
-                            <field name="second_uom_id"/>
-                        </group>
-                        <group>
-                            <field name="condition_code" attrs="{'invisible':[('second_uom_id', '=', False)],'required':[('second_uom_id', '!=', False)]}"/>
-                        </group>
+                        <field name="secondary_uom_ids" nolabel="1">
+                            <tree string="Secondary Unit" editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="uom_id"/>
+                                <field name="condition_code"/>
+                                <field name="formula"/>
+                                <field name="formula_qty"/>
+                                <field name="factor" invisible="1"/>
+                            </tree>
+                        </field>
                     </group>
                     <group string="Formula for Sale Price" col="4">
                         <field name="consum_factor"/>
