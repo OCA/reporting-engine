@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of hunghn. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
 
 
@@ -27,3 +27,26 @@ class ProductTemplateAttributeValue(models.Model):
             self.avg_price = self.price_extra / self.factor
         elif self.price_extra and self.avg_price and not self.factor:
             self.factor = self.price_extra / self.avg_price
+
+    @api.multi
+    def btn_update_avg_price(self):
+        self.ensure_one()
+
+        view_id = self.env.ref(
+            'arch_construction.view_attr_value_modify_wizard_form').id
+        ctx = {
+            'default_attribute_id': self.attribute_id.id,
+            'default_product_tmpl_id': self.product_tmpl_id.id,
+            'default_avg_price': self.avg_price
+        }
+        return {
+            'name': _("Update Price"),
+            'view_mode': 'form',
+            'view_id': view_id,
+            'view_type': 'form',
+            'res_model': 'attr.value.modify.wizard',
+            'type': 'ir.actions.act_window',
+            'context': ctx,
+            'views': [(False, 'form')],
+            'target': 'new',
+        }

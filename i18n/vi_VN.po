@@ -65,6 +65,7 @@ msgstr "Điều khoản và điều kiện... (Lưu ý: bạn có thể thiết 
 "giá trị này ở trong menu Cấu hình)"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_attr_value_modify_wizard__avg_price
 #: model:ir.model.fields,field_description:arch_construction.field_product_template_attribute_value__avg_price
 msgid "Average Price"
 msgstr "Giá trung bình"
@@ -86,14 +87,32 @@ msgid "Consume Factor"
 msgstr "Hệ số"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_attr_value_modify_wizard__create_uid
 #: model:ir.model.fields,field_description:arch_construction.field_product_group__create_uid
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__create_uid
 msgid "Created by"
 msgstr "Được tạo bởi"
 
+
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_attr_value_modify_wizard__create_date
 #: model:ir.model.fields,field_description:arch_construction.field_product_group__create_date
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__create_date
 msgid "Created on"
 msgstr "Thời điểm tạo"
+
+#. module: arch_construction
+#: model:ir.model.fields,help:arch_construction.field_product_product__secondary_uom_ids
+#: model:ir.model.fields,help:arch_construction.field_product_secondary_unit__uom_id
+#: model:ir.model.fields,help:arch_construction.field_product_template__secondary_uom_ids
+msgid "Default Secondary Unit of Measure."
+msgstr "ĐVT thứ 2"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:34
+#, python-format
+msgid "Description"
+msgstr "Mô tả"
 
 #. module: arch_construction
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
@@ -106,6 +125,7 @@ msgid "Display Name"
 msgstr "Tên hiển thị"
 
 #. module: arch_construction
+#: model:ir.model.fields,help:arch_construction.field_attr_value_modify_wizard__avg_price
 #: model:ir.model.fields,help:arch_construction.field_product_template_attribute_value__avg_price
 msgid "Extra Price = Average price * Ratio for the variant with this attribute value on sale price. eg. 200 price average, ratio = 1.5, 1.5*200 = 300."
 msgstr "Giá cộng thêm = Giá trung bình * Hệ số, Giá bán của mỗi biến thể sẽ dựa trên giá cộng thêm. Ví dụ: Giá trung bình 20,000, hệ số 1.5 thì giá cộng thêm = 1.5 * 20,000 = 300,000"
@@ -190,3 +210,169 @@ msgstr "Công thức tính SL không hợp lệ, vui lòng xem lại %s (%s)."
 #, python-format
 msgid "Wrong python condition defined for condition %s (%s)."
 msgstr "Điều kiện tính đơn vị không hợp lệ, vui lòng xem lại %s (%s)."
+
+#. module: product
+#: model_terms:ir.ui.view,arch_db:product.product_template_form_view
+msgid "Configure Variants"
+msgstr "Cấu hình biến thể"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_attr_value_modify_wizard__attr_value_ids
+msgid "Attribute Value"
+msgstr "Giá trị thuộc tính"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__formula
+msgid "Formula for Price Unit"
+msgstr "CT tính đơn giá"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:37
+#, python-format
+msgid "Length"
+msgstr "Dài (mm)"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.view_attr_value_modify_wizard_form
+msgid "Modify"
+msgstr "Chỉnh sửa"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:30
+#, python-format
+msgid "No."
+msgstr "STT"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.view_attr_value_modify_wizard_form
+msgid "OR"
+msgstr "Hoặc"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_sale_order_line__origin_price_unit
+msgid "Original Price Unit"
+msgstr "Đơn giá gốc"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.view_order_form_inherit
+msgid "Print Excel"
+msgstr "Xuất Excel"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_product__secondary_uom_ids
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__uom_id
+#: model:ir.model.fields,field_description:arch_construction.field_product_template__secondary_uom_ids
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Secondary Unit of Measure"
+msgstr "ĐVT thứ 2"
+
+#. module: arch_construction
+#: model:ir.model,name:arch_construction.model_attr_value_modify_wizard
+msgid "Product Template Attribute Value Modify"
+msgstr "Chỉnh sửa thuộc tính sản phẩm"
+
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:42
+#, python-format
+msgid "Quantity"
+msgstr "SL"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:106
+#, python-format
+msgid "Quotation"
+msgstr "Báo Giá"
+
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Secondary Unit"
+msgstr "Đơn vị tính thứ 2"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__factor
+msgid "Secondary Unit Factor"
+msgstr "Hệ số"
+
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
+msgid "Standard Dimension"
+msgstr "Kích thước tiêu chuẩn"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:54
+#, python-format
+msgid "Subtotal"
+msgstr "Tổng cộng"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:49
+#, python-format
+msgid "Unit Price"
+msgstr "Đơn giá"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:45
+#, python-format
+msgid "UoM"
+msgstr "Đơn vị"
+
+
+#. module: arch_construction
+#: model:ir.actions.act_window,name:arch_construction.action_attr_value_modify_wizard
+msgid "Update Attribue Value"
+msgstr "Cập nhật thuộc tính"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.product_template_attribute_value_form_inherit_arc_view
+msgid "Update Average Price"
+msgstr "Cập nhật giá trung bình"
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/product/product_template_attribute_value.py:43
+#, python-format
+msgid "Update Price"
+msgstr "Cập nhật Giá"
+
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:39
+#, python-format
+msgid "Width"
+msgstr "Rộng (mm)"
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/product/product_second_unit.py:80
+#: code:addons/arch_construction/models/product/product_second_unit.py:101
+#, python-format
+msgid "Wrong python code defined for formula %s (%s)."
+msgstr "Công thức bị sai %s (%s)."
+
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/product/product_second_unit.py:59
+#, python-format
+msgid "Wrong python condition defined for condition %s (%s)."
+msgstr "Công thức bị sai %s (%s)"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__condition_code
+msgid "Condition"
+msgstr "Điều kiện"
+
+#. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_secondary_unit__formula_qty
+msgid "Formula for Sale Quantity"
+msgstr "Công thức tính SL"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.view_attr_value_modify_wizard_form
+msgid "Values"
+msgstr "Giá trị"
+
+#. module: arch_construction
+#: model_terms:ir.ui.view,arch_db:arch_construction.view_attr_value_modify_wizard_form
+msgid "Update"
+msgstr "Cập nhật"

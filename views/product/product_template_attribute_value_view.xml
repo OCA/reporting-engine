@@ -6,6 +6,11 @@
         <field name="inherit_id" ref="product.product_template_attribute_value_view_form"/>
         <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
         <field name="arch" type="xml">
+            <xpath expr="//form//group[1]" position="before">
+                <header>
+                    <button string="Update Average Price" type="object" name="btn_update_avg_price"/>
+                </header>
+            </xpath>
             <field name="price_extra" position="before">
                 <field name="factor"/>
                 <field name="avg_price" widget="monetary"/>

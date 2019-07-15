@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <data>
+        <record id="view_attr_value_modify_wizard_form" model="ir.ui.view">
+            <field name="name">view.attr.value.modify.wizard</field>
+            <field name="model">attr.value.modify.wizard</field>
+            <field name="arch" type="xml">
+               <form string="Modify">
+                    <field name="product_tmpl_id" invisible="1"/>
+                    <group>
+                        <field name="attribute_id" readonly="1"/>
+                        <field name="avg_price" required="1"/>
+                    </group>
+                    <group string="Values">
+                        <field name="attr_value_ids" nolabel="1">
+                            <tree create="false" delete="false" editable="bottom">
+                                <field name="name" readonly="1"/>
+                                <field name="factor"/>
+                                <field name="price_extra"/>
+                                <field name="avg_price" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="btn_update_avg_price" string="Update" type="object" class="oe_highlight"/>
+                        OR
+                        <button string="Cancel" class="oe_link" special="cancel" type="object" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_attr_value_modify_wizard" model="ir.actions.act_window">
+            <field name="name">Update Attribue Value</field>
+            <field name="res_model">attr.value.modify.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+        </record>
+
+    </data>
+</odoo>
