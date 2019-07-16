@@ -33,8 +33,8 @@ class SaleOrderLine(models.Model):
     @api.onchange('d_length', 'd_height', 'd_width')
     def onchange_dimension(self):
         product = self.product_id
-        if not (product.standard_width or product.standar_height or
-                product.length):
+        if not (product.standard_width or product.standard_height or
+                product.standard_length):
             return
         baselocaldict = {'length': self.d_length, 'height': self.d_height,
                          'width': self.d_width, 'dai': self.d_length,

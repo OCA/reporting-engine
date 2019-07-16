@@ -13,6 +13,7 @@
     "depends": [
         "base",
         'sale',
+        'sale_management',
         'report_xlsx_helper'
     ],
     "data": [
