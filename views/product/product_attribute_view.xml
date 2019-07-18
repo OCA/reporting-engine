@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_attribute_form_inherit_arc_view" model="ir.ui.view">
+        <field name="name">product.attribute.form.inherit.arc.view</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//group[1]" position="before">
+                <header>
+                    <button string="Update Average Price" type="object" name="btn_update_avg_price"
+                        confirm="Do you really want to update the average price? The sale price will affect when you complete this action."/>
+                </header>
+            </xpath>
+            <field name="create_variant" position="after">
+                <field name="avg_price"/>
+            </field>
+            <xpath expr="//field[@name='value_ids']/tree/field[@name='name']" position="after">
+                <field name="factor"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

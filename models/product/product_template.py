@@ -22,10 +22,10 @@ class ProductTemplate(models.Model):
         string='Height (mm)',
         digits=dp.get_precision('Product Unit of Measure'))
     consum_factor = fields.Float(
-        string='Consume Factor', default=1.00,
+        string='Consume Factor',
         digits=dp.get_precision('Product Unit of Measure'))
 
-    price_factor = fields.Float(string='Price Factor', default=1.00)
+    price_factor = fields.Float(string='Price Factor')
 
     # Secondary Unit
     secondary_uom_ids = fields.One2many(
@@ -34,6 +34,8 @@ class ProductTemplate(models.Model):
         string='Secondary Unit of Measure',
         help='Default Secondary Unit of Measure.',
     )
+    system_name = fields.Boolean(
+        string='Use System Name')
 
     @api.onchange('consum_factor', 'price_factor')
     def onchange_price_factor(self):

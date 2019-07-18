@@ -25,6 +25,7 @@
         'views/sale/sale_order_view.xml',
         'views/product/product_template_view.xml',
         'views/product/product_template_attribute_value_view.xml',
+        'views/product/product_attribute_view.xml',
         # =============== WIZARDS ================
         'wizards/product/attr_value_modify_wizard.xml',
         # =============== MENU ===================

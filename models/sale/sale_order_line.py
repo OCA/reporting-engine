@@ -52,3 +52,46 @@ class SaleOrderLine(models.Model):
                          'product_uom_qty': 1,
                          'price_unit': self.origin_price_unit})
         self.update(vals)
+
+    def get_sale_order_line_multiline_description_sale(self, product):
+        """Overide native Odoo"""
+        if product.system_name:
+            return super(SaleOrderLine, self).\
+                get_sale_order_line_multiline_description_sale(product)
+        pacv = self.product_custom_attribute_value_ids
+        lst_name = []
+        for value in product.attribute_value_ids:
+            custom_pacv = pacv.filtered(
+                lambda cl: cl.attribute_value_id.attribute_id ==
+                value.attribute_id and value.name ==
+                cl.attribute_value_id.name and cl.custom_value)
+            line_name = value.attribute_id.name + ': ' + value.name
+            if custom_pacv:
+                lst_name.append(
+                    line_name + ' (' +
+                    (custom_pacv[0].custom_value or '').strip() + ')')
+            else:
+                lst_name.append(line_name)
+        if self.product_no_variant_attribute_value_ids:
+
+            # display the no_variant attributes, except those that are also
+            # displayed by a custom (avoid duplicate)
+            for no_variant_attribute_value in\
+                    self.product_no_variant_attribute_value_ids:
+                line_name = no_variant_attribute_value.attribute_id.name +\
+                    ': ' + no_variant_attribute_value.name
+                custom_pacv = pacv.filtered(
+                    lambda cl: cl.attribute_value_id.attribute_id ==
+                    no_variant_attribute_value.attribute_id and
+                    no_variant_attribute_value.name ==
+                    cl.attribute_value_id.name and cl.custom_value)
+                if custom_pacv:
+                    lst_name.append(
+                        line_name + ' (' +
+                        (custom_pacv[0].custom_value or '').strip() + ')')
+                else:
+                    lst_name.append(line_name)
+        if product.description_sale:
+            lst_name.append(product.description_sale)
+        name = "\n".join(map(str, lst_name))
+        return name or product.display_name

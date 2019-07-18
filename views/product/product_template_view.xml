@@ -34,6 +34,9 @@
                     </group>
                 </page>
             </xpath>
+            <field name="optional_product_ids" position="after">
+                <field name="system_name"/>
+            </field>
         </field>
     </record>
 </odoo>
