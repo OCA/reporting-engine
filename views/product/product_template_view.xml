@@ -32,6 +32,47 @@
                         <field name="consum_factor"/>
                         <field name="price_factor" widget="monetary"/>
                     </group>
+                    <group col="3" string="The parameter available for formula" class="oe_grey">
+                        <group>
+                            <span colspan="2">
+                                length or dai: Field Length (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                width or rong: Field Width (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                height or cao: Field Height (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                price_unit: Field Unit Price in sale order line
+                            </span>
+                        </group>
+                        <group>
+                            <span colspan="2">
+                                result: Return value
+                            </span>
+                            <span colspan="2">
+                                product.standard_length: Field Length (mm) in Product
+                            </span>
+                            <span colspan="2">
+                                product.standard_width: Field Width (mm) in Product
+                            </span>
+                            <span colspan="2">
+                                product.standard_height: Field Height (mm) in Product
+                            </span>
+                        </group>
+                        <group>
+                            <span colspan="2">
+                                and: The conjunction and
+                            </span>
+                            <span colspan="2">
+                                or: The conjunction or
+                            </span>
+                            <span colspan="2">
+                                And the operator (&lt;,&gt;,&lt;=,&gt;=,=)
+                            </span>
+                        </group>
+                    </group>
                 </page>
             </xpath>
             <field name="optional_product_ids" position="after">
