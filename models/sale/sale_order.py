@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of hunghn. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class SaleOrder(models.Model):
@@ -16,7 +16,8 @@ class SaleOrder(models.Model):
             'report_type': 'xlsx',
             'report_name': report_name,
             # model name will be used if no report_file passed via context
-            'context': dict(self.env.context, report_file='sale_order'),
+            'context': dict(self.env.context,
+                            report_file=_('Quotation Order')),
             # report_xlsx doesn't pass the context if the data dict is empty
             # cf. report_xlsx\static\src\js\report\qwebactionmanager.js
             # TODO: create PR on report_xlsx to fix this

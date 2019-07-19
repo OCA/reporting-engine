@@ -13,21 +13,21 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
     def set_cells_size(self, sheet):
         sheet.set_row(0, 30)
-        # set default format
-        sheet.set_column(0, 20, None, self.normal_font)
+        # sheet.set_column(0, 0, 10, self.normal_font)
         sheet.set_column(0, 0, 5)
-        sheet.set_column(1, 2, 15)
-        sheet.set_column(3, 3, 35)
-        sheet.set_column(4, 4, 15)
-        sheet.set_column(5, 6, 20)
-        sheet.set_column(7, 7, 25)
-        sheet.set_column(8, 9, 15)
+        sheet.set_column(1, 1, 20)
+        sheet.set_column(2, 2, 35)
+        # sheet.set_column(4, 4, 15)
+        # sheet.set_column(5, 6, 20)
+        sheet.set_column(8, 8, 15)
+        sheet.set_column(9, 9, 15)
         sheet.set_column(10, 10, 20)
-        sheet.set_zoom(100)
+        # sheet.set_zoom(100)
 
     def generate_main_content(self):
         columns = [
-            {'key': 'sequence', 'label': _('No.'), 'merge_same_do': True},
+            {'key': 'sequence', 'label': _('No.'), 'merge_same_do': True,
+             'cell_format': self.normal_font_border_center},
             {'key': 'product_name', 'label': _('Product'),
              'merge_same_do': True
              },
@@ -35,24 +35,31 @@ class ReportSaleOrderXlsx(models.AbstractModel):
              'merge_same_so': True
              },
             {'key': 'length', 'label': _('Length'),
-             'cell_format': self.table_cell_number},
+             'cell_format': self.normal_font_border_center},
             {'key': 'width', 'label': _('Width'),
+             'merge_same_so': True,
+             'cell_format': self.normal_font_border_center,
+             },
+            {'key': 'height', 'label': _('Height'),
+             'cell_format': self.normal_font_border_center,
              'merge_same_so': True
              },
             {'key': 'quantity', 'label': _('Quantity'),
-             'merge_same_so': True
+             'merge_same_so': True,
+             'cell_format': self.normal_font_border_center,
              },
             {'key': 'uom', 'label': _('UoM'),
-             'merge_same_so': True
+             'merge_same_so': True,
+             'cell_format': self.normal_font_border_center,
              },
             {'key': 'price_unit',
              'label': _('Unit Price'),
-             'cell_format': self.table_cell_number_bold,
+             'cell_format': self.normal_number_border_all,
              'merge_same_so': True
              },
             {'key': 'price_subtotal',
              'label': _('Subtotal'),
-             'cell_format': self.table_cell_number_bold,
+             'cell_format': self.normal_number_border_all,
              'merge_same_do': True
              },
             {'key': 'note', 'label': 'Note (Ghi chú)', 'merge_same_do': True},
@@ -65,7 +72,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
             header_data = report_data.get('header', {})
             lines_data = report_data.get('lines', [])
-            self.generate_header(sheet, header_data)
+            self.generate_header(sheet, header_data, columns)
 
             self.generate_table(sheet, lines_data, columns)
 
@@ -85,7 +92,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
                 'description': line.name,
                 'length': line.d_length,
                 'width': line.d_width,
-                'hight': line.d_height,
+                'height': line.d_height,
                 'quantity': line.product_uom_qty,
                 'uom': line.product_uom.name,
                 'price_unit': line.price_unit,
@@ -99,7 +106,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
     def get_report_header_data(self, obj):
         company_info = self.get_company_info()
         user_name = False
-        customer_name = False
+        customer_name = obj.partner_id.name
         customer_address = False
         customer_phone = False
         customer_email = False
@@ -116,88 +123,132 @@ class ReportSaleOrderXlsx(models.AbstractModel):
             order_date=order_date
         )
 
-    def generate_header(self, sheet, data):
+    def generate_header(self, sheet, data, columns):
         # LOGO
         row_pos = self.row_pos
         col_pos = 0
+        cell_format = self.normal_bold_font
+        header_font = self.header_font
+        header_center_font = self.header_center_font
         company_logo = data.get('company_logo', False)
-
         if company_logo:
+            sheet.merge_range(
+                row_pos, col_pos,
+                row_pos + 2, col_pos + 1,
+                '', cell_format
+            )
             sheet.insert_image(
                 row_pos,
                 col_pos,
                 'logo.png',
                 {
                     'image_data': company_logo,
-                    # 'x_scale': 0.4,
-                    # 'y_scale': 0.3,
-                    'x_offset': 5,
-                    'y_offset': 0
+                    'x_scale': 0.83,
+                    'y_scale': 1,
+                    # 'x_offset': 5,
+                    'y_offset': 10
                 }
             )
-            row_pos += 2
-
+            col_pos += 2
         # Company name
-        cell_format = self.normal_bold_font
         company_name = data.get('company_name', '')
+        len_columns = len(columns) - 1
         sheet.merge_range(
             row_pos, col_pos,
-            row_pos, col_pos + 5,
-            company_name, cell_format
+            row_pos, len_columns,
+            company_name.upper(), header_font
         )
         row_pos += 1
 
         # Company address
         cell_format = self.normal_font
-        company_address = data.get('company_address', '')
+        company_address = data.get('company_address', {})
         sheet.merge_range(
             row_pos, col_pos,
-            row_pos, col_pos + 5,
-            company_address, cell_format
+            row_pos, len_columns,
+            company_address.get('name_address', '') + ': ' +
+            company_address.get('company_address', ''), cell_format
         )
         row_pos += 1
 
         # Company phone
-        company_phone = data.get('company_phone', '')
+        company_phone = data.get('company_phone', {})
         sheet.merge_range(
             row_pos, col_pos,
-            row_pos, col_pos + 5,
-            company_phone
+            row_pos, col_pos + 2,
+            company_phone.get('name_phone', '') + ': ' +
+            company_phone.get('company_phone', ''),
+            cell_format
+        )
+        # Company email
+        company_email = data.get('company_email', {})
+        sheet.merge_range(
+            row_pos, col_pos + 3,
+            row_pos, len_columns,
+            company_email.get('name_email', '') + ': ' +
+            company_email.get('company_email', ''),
+            cell_format
+        )
+        row_pos += 1
+
+        # Company phone
+        company_tax = data.get('company_tax', {})
+        sheet.merge_range(
+            row_pos, col_pos,
+            row_pos, col_pos + 2,
+            company_tax.get('name_tax', '') + ': ' +
+            company_tax.get('company_tax', ''),
+            cell_format
+        )
+        # Company website
+        company_website = data.get('company_website', {})
+        sheet.merge_range(
+            row_pos, col_pos + 3,
+            row_pos, len_columns,
+            company_website.get('name_website', '') + ': ' +
+            company_website.get('company_website', ''),
+            cell_format
         )
         row_pos += 1
 
         # Report title
         row_pos += 1
-        cell_format = self.format_report_title
         report_title = data.get('report_title', '')
         num_of_cols_to_merge = 12
         from_col_pos = col_pos
         to_col_pos = from_col_pos + num_of_cols_to_merge - 1
         sheet.set_row(row_pos, 30)
         sheet.merge_range(
-            row_pos, from_col_pos, row_pos, to_col_pos,
-            report_title,
-            cell_format
+            row_pos, 0, row_pos, len_columns,
+            report_title.upper(),
+            header_center_font
         )
         row_pos += 1
 
         # Customer
+        customer_col_pos = 0
+        customer_name = data.get('customer_name', '')
+        sheet.write(
+            row_pos, customer_col_pos + 1,
+            _('Dear:'),
+            self.normal_bold_font
+        )
         customer_name = data.get('customer_name', '')
         sheet.merge_range(
-            row_pos, from_col_pos, row_pos, to_col_pos,
+            row_pos, customer_col_pos + 2, row_pos, len_columns,
             customer_name,
-            self.normal_center
+            cell_format
         )
         row_pos += 1
 
         # Date range
-        order_date = data.get('order_date', '')
-        order_date = '{}'.format(order_date)
+        preface = (u'Dựa vào nhu cầu của quý khách %s xin trân trọng '
+                   u'báo giá các sản phẩm như sau:' % company_name)
 
         sheet.merge_range(
-            row_pos, from_col_pos, row_pos, to_col_pos,
-            order_date,
-            self.normal_center
+            row_pos, customer_col_pos, row_pos, len_columns,
+            preface,
+            cell_format
         )
         row_pos += 1
 
@@ -234,6 +285,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
                 )
                 key = column['key']
                 value = line_data.get(key)
+                sheet.set_row(row_pos, 60)
                 sheet.write(row_pos, col_pos, value, cell_format)
 
                 merge_same_do = column.get('merge_same_do', False)
@@ -305,12 +357,12 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
         self.row_pos = row_pos
 
-    def _define_formats(self, default_font_size=11):
+    def _define_formats(self, default_font_size=12):
         super(ReportSaleOrderXlsx, self)._define_formats(
             default_font_size=default_font_size
         )
         normal_font = {
-            'font_name': 'Arial',
+            'font_name': 'Times New Roman',
             'font_size': default_font_size,
             'text_wrap': True,
             'align': 'vcenter'
