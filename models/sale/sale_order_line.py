@@ -61,6 +61,9 @@ class SaleOrderLine(models.Model):
         pacv = self.product_custom_attribute_value_ids
         lst_name = []
         for value in product.attribute_value_ids:
+            if value.name.upper() == 'KHÔNG CHỌN' or\
+                    value.name.upper() == 'NO':
+                continue
             custom_pacv = pacv.filtered(
                 lambda cl: cl.attribute_value_id.attribute_id ==
                 value.attribute_id and value.name ==
@@ -78,6 +81,9 @@ class SaleOrderLine(models.Model):
             # displayed by a custom (avoid duplicate)
             for no_variant_attribute_value in\
                     self.product_no_variant_attribute_value_ids:
+                if value.name.upper() == 'KHÔNG CHỌN' or\
+                        value.name.upper() == 'NO':
+                    continue
                 line_name = no_variant_attribute_value.attribute_id.name +\
                     ': ' + no_variant_attribute_value.name
                 custom_pacv = pacv.filtered(
