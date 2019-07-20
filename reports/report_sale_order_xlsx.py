@@ -284,27 +284,28 @@ class ReportSaleOrderXlsx(models.AbstractModel):
         merge_cell_values = []
         stop_row_pos = row_pos
         for line_data in lines_data:
-            for col_pos, column in enumerate(columns):
-                cell_format = column.get(
-                    'cell_format', self.table_cell_border_all
+            display_type = line_data.get('display_type', False)
+            if display_type:
+                sheet.set_row(row_pos, 20)
+                merge_format = self.normal_bold_font_border_all
+                if display_type == 'line_note':
+                    merge_format = self.normal_italic_font_border_all
+                sheet.merge_range(
+                    row_pos, 0,
+                    row_pos, len(line_data) - 1,
+                    line_data.get('description',
+                                  _('Category')),
+                    merge_format
                 )
-                merge_section = column.get('merge_section', False)
-                display_type = line_data.get('display_type', False)
-
-                # Tracking cell to merge when having display_type
-                if display_type:
-                    sheet.set_row(row_pos, 20)
-                    merge_format = self.normal_bold_font_border_all
-                    if display_type == 'line_note':
-                        merge_format = self.normal_italic_font_border_all
-                    sheet.merge_range(
-                        row_pos, 0,
-                        row_pos, len(line_data) - 1,
-                        line_data.get('description',
-                                      _('Category')),
-                        merge_format
+            else:
+                for col_pos, column in enumerate(columns):
+                    cell_format = column.get(
+                        'cell_format', self.table_cell_border_all
                     )
-                else:
+                    merge_section = column.get('merge_section', False)
+
+                    # Tracking cell to merge when having display_type
+
                     key = column['key']
                     value = line_data.get(key)
                     sheet.set_row(row_pos, 60)
