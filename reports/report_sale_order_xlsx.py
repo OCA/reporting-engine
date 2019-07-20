@@ -17,8 +17,8 @@ class ReportSaleOrderXlsx(models.AbstractModel):
         sheet.set_column(0, 0, 5)
         sheet.set_column(1, 1, 20)
         sheet.set_column(2, 2, 35)
-        # sheet.set_column(4, 4, 15)
-        # sheet.set_column(5, 6, 20)
+        sheet.set_column(3, 5, 10)
+        # sheet.set_column(4, 4, 20)
         sheet.set_column(8, 8, 15)
         sheet.set_column(9, 9, 15)
         sheet.set_column(10, 10, 20)
@@ -26,43 +26,44 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
     def generate_main_content(self):
         columns = [
-            {'key': 'sequence', 'label': _('No.'), 'merge_same_do': True,
+            {'key': 'sequence', 'label': _('No.'), 'merge_section': True,
              'cell_format': self.normal_font_border_center},
             {'key': 'product_name', 'label': _('Product'),
-             'merge_same_do': True
+             'merge_section': True
              },
             {'key': 'description', 'label': _('Description'),
-             'merge_same_so': True
+             'merge_section': True
              },
             {'key': 'length', 'label': _('Length'),
+             'merge_section': True,
              'cell_format': self.normal_font_border_center},
             {'key': 'width', 'label': _('Width'),
-             'merge_same_so': True,
+             'merge_section': True,
              'cell_format': self.normal_font_border_center,
              },
             {'key': 'height', 'label': _('Height'),
              'cell_format': self.normal_font_border_center,
-             'merge_same_so': True
+             'merge_section': True
              },
             {'key': 'quantity', 'label': _('Quantity'),
-             'merge_same_so': True,
+             'merge_section': True,
              'cell_format': self.normal_font_border_center,
              },
             {'key': 'uom', 'label': _('UoM'),
-             'merge_same_so': True,
+             'merge_section': True,
              'cell_format': self.normal_font_border_center,
              },
             {'key': 'price_unit',
              'label': _('Unit Price'),
              'cell_format': self.normal_number_border_all,
-             'merge_same_so': True
+             'merge_section': True
              },
             {'key': 'price_subtotal',
              'label': _('Subtotal'),
              'cell_format': self.normal_number_border_all,
-             'merge_same_do': True
+             'merge_section': True
              },
-            {'key': 'note', 'label': 'Note (Ghi chú)', 'merge_same_do': True},
+            {'key': 'note', 'label': _('Note'), 'merge_section': True},
         ]
 
         for index, obj in enumerate(self.objects):
@@ -74,7 +75,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
             lines_data = report_data.get('lines', [])
             self.generate_header(sheet, header_data, columns)
 
-            self.generate_table(sheet, lines_data, columns)
+            self.generate_table(sheet, lines_data, columns, obj)
 
     def get_report_data(self, sheet, obj):
         result = dict()
@@ -84,8 +85,10 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
     def get_report_lines(self, obj):
         lines = []
-        sequence = 1
+        sequence = 0
         for line in obj.order_line:
+            if not line.display_type:
+                sequence += 1
             line_values = {
                 'sequence': sequence,
                 'product_name': line.product_id.name,
@@ -96,10 +99,10 @@ class ReportSaleOrderXlsx(models.AbstractModel):
                 'quantity': line.product_uom_qty,
                 'uom': line.product_uom.name,
                 'price_unit': line.price_unit,
-                'price_subtotal': line.price_subtotal
+                'price_subtotal': line.price_subtotal,
+                'display_type': line.display_type,
             }
             lines.append(line_values)
-            sequence += 1
 
         return lines
 
@@ -256,9 +259,11 @@ class ReportSaleOrderXlsx(models.AbstractModel):
 
         return True
 
-    def generate_table(self, sheet, lines_data, columns):
+    def generate_table(self, sheet, lines_data, columns, obj):
         self.generate_table_header(sheet, columns)
         self.generate_table_lines(sheet, lines_data, columns)
+        self.generate_summary(sheet, columns)
+        self.generate_note(sheet, len(columns), obj)
 
     def generate_table_header(self, sheet, columns):
         row_pos = self.row_pos
@@ -275,7 +280,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
     def generate_table_lines(self, sheet, lines_data, columns):
         row_pos = self.row_pos
         row_pos += 1
-
+        self.start_line = row_pos
         merge_cell_values = []
         stop_row_pos = row_pos
         for line_data in lines_data:
@@ -283,79 +288,62 @@ class ReportSaleOrderXlsx(models.AbstractModel):
                 cell_format = column.get(
                     'cell_format', self.table_cell_border_all
                 )
-                key = column['key']
-                value = line_data.get(key)
-                sheet.set_row(row_pos, 60)
-                sheet.write(row_pos, col_pos, value, cell_format)
+                merge_section = column.get('merge_section', False)
+                display_type = line_data.get('display_type', False)
 
-                merge_same_do = column.get('merge_same_do', False)
-                first_do = line_data.get('first_do', False)
-
-                # Tracking cell to merge when having same DO first
-                if merge_same_do and first_do:
-                    merge_cell_values.append(
-                        {
-                            'key': key,
-                            'cell_row_pos': row_pos,
-                            'cell_col_pos': col_pos,
-                            'value': value,
-                            'cell_format': cell_format,
-                        }
+                # Tracking cell to merge when having display_type
+                if display_type:
+                    sheet.set_row(row_pos, 20)
+                    merge_format = self.normal_bold_font_border_all
+                    if display_type == 'line_note':
+                        merge_format = self.normal_italic_font_border_all
+                    sheet.merge_range(
+                        row_pos, 0,
+                        row_pos, len(line_data) - 1,
+                        line_data.get('description',
+                                      _('Category')),
+                        merge_format
                     )
+                else:
+                    key = column['key']
+                    value = line_data.get(key)
+                    sheet.set_row(row_pos, 60)
+                    sheet.write(row_pos, col_pos, value, cell_format)
 
-                merge_same_so = column.get('merge_same_so', False)
-                first_so = line_data.get('first_so', False)
-
-                # Tracking cell to merge when having same SO
-                if merge_same_so and first_so:
-                    merge_cell_values.append(
-                        {
-                            'key': key,
-                            'cell_row_pos': row_pos,
-                            'cell_col_pos': col_pos,
-                            'value': value,
-                            'cell_format': cell_format,
-                        }
-                    )
             stop_row_pos = row_pos
             row_pos += 1
 
-        # Group merge cells by column key
-        grouped_merge_cells = reduce(
-            lambda prev, cell_values: {
-                **prev,
-                cell_values['key']: prev.get(
-                    cell_values['key'], []) + [cell_values]
-            }, merge_cell_values, {}
-        )
-
-        # Merge cells column by column
-        for to_merge_cell_values in grouped_merge_cells.values():
-            to_merge_cells = len(to_merge_cell_values)
-            for index in range(0, to_merge_cells):
-                merge_cell = to_merge_cell_values[index]
-                cell_row_pos = merge_cell['cell_row_pos']
-                cell_col_pos = merge_cell['cell_col_pos']
-                cell_value = merge_cell['value']
-                cell_format = merge_cell['cell_format']
-
-                # Get stop_cell_row pos = next cell_row_pos
-                if index < to_merge_cells - 1:
-                    stop_cell_row_pos = \
-                        to_merge_cell_values[index + 1]['cell_row_pos'] - 1
-
-                # stop_cell_row = stop_row_pos if this is the last item
-                else:
-                    stop_cell_row_pos = stop_row_pos
-
-                if stop_cell_row_pos > cell_row_pos:
-                    sheet.merge_range(
-                        cell_row_pos, cell_col_pos,
-                        stop_cell_row_pos, cell_col_pos,
-                        cell_value, cell_format
-                    )
-
         self.row_pos = row_pos
+
+    def generate_summary(self, sheet, columns):
+        from xlsxwriter.utility import xl_rowcol_to_cell
+        len_columns = len(columns)
+        sheet.set_row(self.row_pos, 20)
+        sheet.merge_range(
+            self.row_pos, 0,
+            self.row_pos, len_columns - 3,
+            _('TOTAL'),
+            self.table_cell_header_align_right
+        )
+        start_row_col = xl_rowcol_to_cell(
+            self.start_line, len_columns - 2, row_abs=True, col_abs=True)
+        end_row_col = xl_rowcol_to_cell(
+            self.row_pos - 1, len_columns - 2, row_abs=True, col_abs=True)
+        sheet.write(self.row_pos, len_columns - 2,
+                    '=SUM(%s:%s)' % (start_row_col, end_row_col),
+                    self.bold_number_border_all)
+        sheet.write(self.row_pos, len_columns - 1,
+                    '', self.normal_number_border_all)
+        self.row_pos += 2
+
+    def generate_note(self, sheet, len_columns, obj):
+        sheet.merge_range(
+            self.row_pos, 1,
+            self.row_pos + 4, len_columns - 1,
+            obj.note,
+            self.normal_font
+        )
+        self.row_pos += 4
 
     def _define_formats(self, default_font_size=12):
         super(ReportSaleOrderXlsx, self)._define_formats(

@@ -281,13 +281,6 @@ msgid "Quantity"
 msgstr "SL"
 
 #. module: arch_construction
-#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:106
-#, python-format
-msgid "Quotation"
-msgstr "Báo Giá"
-
-
-#. module: arch_construction
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Secondary Unit"
 msgstr "Đơn vị tính thứ 2"
@@ -302,12 +295,6 @@ msgstr "Hệ số"
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Standard Dimension"
 msgstr "Kích thước tiêu chuẩn"
-
-#. module: arch_construction
-#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:54
-#, python-format
-msgid "Subtotal"
-msgstr "Tổng cộng"
 
 #. module: arch_construction
 #: code:addons/arch_construction/reports/report_sale_order_xlsx.py:49
@@ -338,13 +325,6 @@ msgstr "Cập nhật giá trung bình"
 #, python-format
 msgid "Update Price"
 msgstr "Cập nhật Giá"
-
-
-#. module: arch_construction
-#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:39
-#, python-format
-msgid "Width"
-msgstr "Rộng (mm)"
 
 #. module: arch_construction
 #: code:addons/arch_construction/models/product/product_second_unit.py:80
@@ -422,13 +402,13 @@ msgid "<span colspan=\"2\">\n"
 "                                price_unit: Field Unit Price in sale order line\n"
 "                            </span>"
 msgstr "<span colspan=\"2\">\n"
-"                                length or dai: Độ dài nhập trên báo giá\n"
+"                                length, dai: Độ dài nhập trên báo giá\n"
 "                            </span>\n"
 "                            <span colspan=\"2\">\n"
-"                                width or rong: Chiều rộng/ sâu nhập trên báo giá\n"
+"                                width, rong: Chiều rộng/ sâu nhập trên báo giá\n"
 "                            </span>\n"
 "                            <span colspan=\"2\">\n"
-"                                height or cao: Chiều cao nhập trên báo giá\n"
+"                                height, cao: Chiều cao nhập trên báo giá\n"
 "                            </span>\n"
 "                            <span colspan=\"2\">\n"
 "                                price_unit: đơn giá của sản phẩm\n"
@@ -465,3 +445,87 @@ msgstr "<span colspan=\"2\">\n"
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "The parameter available for formula"
 msgstr "Các tham số có thể sử dụng cho các công thức"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/base_xlsx_report.py:177
+#, python-format
+msgid "Address"
+msgstr "Địa chỉ"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:304
+#, python-format
+msgid "Category"
+msgstr "Hạng Mục"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:236
+#, python-format
+msgid "Dear:"
+msgstr "Kính gửi:"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:34
+#, python-format
+msgid "Description"
+msgstr "Mô tả"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/base_xlsx_report.py:180
+#, python-format
+msgid "Phone"
+msgstr "Điện thoại"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:116
+#, python-format
+msgid "Quotation"
+msgstr "BẢNG BÁO GIÁ"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:62
+#, python-format
+msgid "Subtotal"
+msgstr "Thành tiền"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/base_xlsx_report.py:183
+#, python-format
+msgid "TAX ID"
+msgstr "MST"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:325
+#, python-format
+msgid "TOTAL"
+msgstr "TỔNG CỘNG"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:40
+#, python-format
+msgid "Width"
+msgstr "Rộng (mm)"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:44
+#, python-format
+msgid "Height"
+msgstr "Cao (mm)"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:31
+#, python-format
+msgid "Product"
+msgstr "Tên sản phẩm"
+
+#. module: arch_construction
+#: code:addons/arch_construction/reports/report_sale_order_xlsx.py:67
+#, python-format
+msgid "Note"
+msgstr "Ghi chú"
+
+#. module: arch_construction
+#: code:addons/arch_construction/models/sale/sale_order.py:20
+#, python-format
+msgid "Quotation Order"
+msgstr "BẢNG BÁO GIÁ"

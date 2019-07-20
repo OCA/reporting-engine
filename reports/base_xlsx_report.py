@@ -76,18 +76,36 @@ class BaseXlsxReport(models.AbstractModel):
         })
         self.normal_right = self.wb.add_format(normal_right)
 
+        # Bold
         normal_bold_font = normal_font.copy()
         normal_bold_font.update({
             'bold': True
         })
         self.normal_bold_font = self.wb.add_format(normal_bold_font)
 
+        # Italic
+        normal_italic_font = normal_font.copy()
+        normal_italic_font.update({
+            'italic': True
+        })
+        self.normal_italic_font = self.wb.add_format(normal_italic_font)
+
+        # Bold border All
         normal_bold_font_border_all = normal_bold_font.copy()
         normal_bold_font_border_all.update({
             'border': 1
         })
         self.normal_bold_font_border_all = self.wb.add_format(
             normal_bold_font_border_all
+        )
+
+        # Italic border All
+        normal_italic_font_border_all = normal_italic_font.copy()
+        normal_italic_font_border_all.update({
+            'border': 1
+        })
+        self.normal_italic_font_border_all = self.wb.add_format(
+            normal_italic_font_border_all
         )
 
         normal_bold_font_center = normal_bold_font.copy()
@@ -111,6 +129,13 @@ class BaseXlsxReport(models.AbstractModel):
         })
         self.normal_number_border_all = self.wb.add_format(
             normal_number_border_all)
+
+        bold_number_border_all = normal_number_border_all.copy()
+        bold_number_border_all.update({
+            'bold': 1,
+        })
+        self.bold_number_border_all = self.wb.add_format(
+            bold_number_border_all)
 
         header_font = normal_bold_font.copy()
         header_font.update({
