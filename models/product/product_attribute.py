@@ -8,6 +8,7 @@ from odoo.addons import decimal_precision as dp
 class ProductAttribute(models.Model):
     _inherit = "product.attribute"
 
+    name = fields.Char(translate=False)
     avg_price = fields.Float(
         string='Average Price',
         digits=dp.get_precision('Product Price'))

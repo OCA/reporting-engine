@@ -8,6 +8,7 @@ from odoo.addons import decimal_precision as dp
 class ProductAttributeValue(models.Model):
     _inherit = "product.attribute.value"
 
+    name = fields.Char(translate=False)
     factor = fields.Float(
         string='Ratio',
         default=1.0)

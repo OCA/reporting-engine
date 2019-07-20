@@ -10,6 +10,7 @@ from odoo.exceptions import UserError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
+    name = fields.Char(translate=False)
     product_group_id = fields.Many2one(
         string='Product Group',
         comodel_name='product.group')
