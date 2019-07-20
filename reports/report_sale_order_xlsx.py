@@ -113,7 +113,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
         customer_address = False
         customer_phone = False
         customer_email = False
-        report_title = _('Quotation')
+        report_title = _('Quotation Order')
         order_date = False
         return dict(
             **company_info,

@@ -479,7 +479,7 @@ msgstr "Điện thoại"
 #. module: arch_construction
 #: code:addons/arch_construction/reports/report_sale_order_xlsx.py:116
 #, python-format
-msgid "Quotation"
+msgid "Quotation Order"
 msgstr "BẢNG BÁO GIÁ"
 
 #. module: arch_construction
