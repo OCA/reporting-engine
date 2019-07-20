@@ -81,8 +81,8 @@ class SaleOrderLine(models.Model):
             # displayed by a custom (avoid duplicate)
             for no_variant_attribute_value in\
                     self.product_no_variant_attribute_value_ids:
-                if value.name.upper() == 'KHÔNG CHỌN' or\
-                        value.name.upper() == 'NO':
+                if no_variant_attribute_value.name.upper() == 'KHÔNG CHỌN' or\
+                        no_variant_attribute_value.name.upper() == 'NO':
                     continue
                 line_name = no_variant_attribute_value.attribute_id.name +\
                     ': ' + no_variant_attribute_value.name
