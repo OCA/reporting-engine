@@ -17,7 +17,7 @@ class ReportSaleOrderXlsx(models.AbstractModel):
         sheet.set_column(0, 0, 5)
         sheet.set_column(1, 1, 20)
         sheet.set_column(2, 2, 35)
-        sheet.set_column(3, 5, 10)
+        sheet.set_column(3, 5, 12)
         # sheet.set_column(4, 4, 20)
         sheet.set_column(8, 8, 15)
         sheet.set_column(9, 9, 15)
