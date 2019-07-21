@@ -33,24 +33,23 @@ class SaleOrderLine(models.Model):
     @api.onchange('d_length', 'd_height', 'd_width')
     def onchange_dimension(self):
         product = self.product_id
-        if not (product.standard_width or product.standard_height or
-                product.standard_length):
-            return
-        baselocaldict = {'length': self.d_length, 'height': self.d_height,
-                         'width': self.d_width, 'dai': self.d_length,
-                         'rong': self.d_width, 'cao': self.d_height,
-                         'price_unit': self.origin_price_unit}
-        localdict = dict(baselocaldict, product=product)
-        result = product.product_tmpl_id._compute_qty_unit_price(localdict)
         vals = {}
-        if result and isinstance(result, tuple):
-            vals.update({'product_uom': result[0].uom_id.id,
-                         'product_uom_qty': result[1],
-                         'price_unit': result[2]})
-        else:
-            vals.update({'product_uom': product.uom_id.id,
-                         'product_uom_qty': 1,
-                         'price_unit': self.origin_price_unit})
+        if product.standard_width and product.standard_height and\
+                product.standard_length and product.secondary_uom_ids:
+            baselocaldict = {'length': self.d_length, 'height': self.d_height,
+                             'width': self.d_width, 'dai': self.d_length,
+                             'rong': self.d_width, 'cao': self.d_height,
+                             'price_unit': self.origin_price_unit}
+            localdict = dict(baselocaldict, product=product)
+            result = product.product_tmpl_id._compute_qty_unit_price(localdict)
+            if result and isinstance(result, tuple):
+                vals.update({'product_uom': result[0].uom_id.id,
+                             'product_uom_qty': result[1],
+                             'price_unit': result[2]})
+            else:
+                vals.update({'product_uom': product.uom_id.id,
+                             'product_uom_qty': 1,
+                             'price_unit': self.origin_price_unit})
         self.update(vals)
 
     def get_sale_order_line_multiline_description_sale(self, product):
