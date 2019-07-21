@@ -43,7 +43,8 @@ class ProductTemplateAttributeValue(models.Model):
         ctx = {
             'default_attribute_id': self.attribute_id.id,
             'default_product_tmpl_id': self.product_tmpl_id.id,
-            'default_avg_price': self.avg_price
+            'default_avg_price': self.avg_price,
+            'default_unit_factor': self.unit_factor
         }
         return {
             'name': _("Update Price"),

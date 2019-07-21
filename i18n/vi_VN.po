@@ -196,6 +196,7 @@ msgid "Ratio"
 msgstr "Hệ số"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_attr_value_modify_wizard__unit_factor
 #: model:ir.model.fields,field_description:arch_construction.field_product_template_attribute_value__unit_factor
 msgid "Unit Factor"
 msgstr "Hệ số tiêu hao"
@@ -323,7 +324,7 @@ msgstr "Cập nhật thuộc tính"
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_attribute_form_inherit_arc_view
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_attribute_value_form_inherit_arc_view
 msgid "Update Average Price"
-msgstr "Cập nhật giá trung bình"
+msgstr "Cập nhật"
 
 #. module: arch_construction
 #: code:addons/arch_construction/models/product/product_template_attribute_value.py:43

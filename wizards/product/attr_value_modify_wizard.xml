@@ -9,12 +9,14 @@
                     <field name="product_tmpl_id" invisible="1"/>
                     <group>
                         <field name="attribute_id" readonly="1"/>
+                        <field name="unit_factor" required="1"/>
                         <field name="avg_price" required="1"/>
                     </group>
                     <group string="Values">
                         <field name="attr_value_ids" nolabel="1">
                             <tree create="false" delete="false" editable="bottom">
                                 <field name="name" readonly="1"/>
+                                <field name="unit_factor" required="1"/>
                                 <field name="factor"/>
                                 <field name="price_extra"/>
                                 <field name="avg_price" invisible="1"/>
