@@ -13,7 +13,7 @@
                 </header>
             </xpath>
             <field name="create_variant" position="after">
-                <field name="avg_price"/>
+                <field name="avg_price" widget="monetary"/>
             </field>
             <xpath expr="//field[@name='value_ids']/tree/field[@name='name']" position="after">
                 <field name="factor"/>

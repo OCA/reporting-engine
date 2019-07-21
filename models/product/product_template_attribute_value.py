@@ -50,3 +50,14 @@ class ProductTemplateAttributeValue(models.Model):
             'views': [(False, 'form')],
             'target': 'new',
         }
+
+    @api.model
+    def create(self, vals):
+        if vals.get('product_attribute_value_id'):
+            attr_value = self.env['product.attribute.value'].browse(
+                vals['product_attribute_value_id'])
+            avg_price = attr_value.attribute_id.avg_price
+            vals.update({'factor': attr_value.factor,
+                         'avg_price': avg_price,
+                         'price_extra': attr_value.factor * avg_price})
+        return super(ProductTemplateAttributeValue, self).create(vals)
