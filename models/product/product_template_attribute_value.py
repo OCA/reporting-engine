@@ -15,18 +15,24 @@ class ProductTemplateAttributeValue(models.Model):
         help="Extra Price = Average price * Ratio for the variant with "
              "this attribute value on sale price. eg. 200 price average, "
              "ratio = 1.5, 1.5*200 = 300.""")
+    unit_factor = fields.Float(
+        string='Unit Factor', default=1)
 
-    @api.onchange('factor', 'avg_price', 'price_extra')
+    @api.onchange('factor', 'avg_price', 'unit_factor')
     def onchange_avg_price(self):
+        if not self.unit_factor:
+            self.unit_factor = 1
         if self.factor and self.avg_price:
-            self.price_extra = self.factor * self.avg_price
+            self.price_extra = self.factor * self.avg_price * self.unit_factor
         elif self.price_extra and not self.factor and not self.avg_price:
             self.update({'factor': 1,
-                         'avg_price': self.price_extra})
+                         'avg_price': self.price_extra / self.unit_factor})
         elif self.price_extra and self.factor and not self.avg_price:
-            self.avg_price = self.price_extra / self.factor
+            self.avg_price =\
+                self.price_extra / (self.factor * self.unit_factor)
         elif self.price_extra and self.avg_price and not self.factor:
-            self.factor = self.price_extra / self.avg_price
+            self.factor =\
+                self.price_extra / (self.avg_price * self.unit_factor)
 
     @api.multi
     def btn_update_avg_price(self):

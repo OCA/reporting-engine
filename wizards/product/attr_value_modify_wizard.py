@@ -50,7 +50,8 @@ class AttrValueModifyWizard(models.TransientModel):
     def onchange_avg_price(self):
         for value in self.attr_value_ids:
             value.update({'avg_price': self.avg_price,
-                          'price_extra': self.avg_price * value.factor})
+                          'price_extra': self.avg_price * value.factor *
+                          value.unit_factor})
 
     @api.multi
     def btn_update_avg_price(self):

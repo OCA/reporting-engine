@@ -26,5 +26,6 @@ class ProductAttribute(models.Model):
             for tmpl_value in tmpl_attr_values:
                 tmpl_value.write({'factor': value.factor,
                                   'avg_price': avg_price,
-                                  'price_extra': value.factor * avg_price})
+                                  'price_extra': value.factor * avg_price *
+                                  tmpl_value.unit_factor})
         return True

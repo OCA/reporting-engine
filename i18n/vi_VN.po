@@ -196,6 +196,11 @@ msgid "Ratio"
 msgstr "Hệ số"
 
 #. module: arch_construction
+#: model:ir.model.fields,field_description:arch_construction.field_product_template_attribute_value__unit_factor
+msgid "Unit Factor"
+msgstr "Hệ số tiêu hao"
+
+#. module: arch_construction
 #: model_terms:ir.ui.view,arch_db:arch_construction.product_template_form_inherit_arch_construction_view
 msgid "Secondary Unit of Measure"
 msgstr "Đơn vị tính thứ 2"
