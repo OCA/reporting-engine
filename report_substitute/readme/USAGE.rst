@@ -2,7 +2,7 @@ To use this module, you need to:
 
 #. Go to 'Actions' / 'Reports'
 
-#. Select the desired report you want to substitute
+#. Select the desired report you want to 'Substitution Rules'
 
 #. In the substitutions page add a new line
 
