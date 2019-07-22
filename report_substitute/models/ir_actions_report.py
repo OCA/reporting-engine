@@ -1,7 +1,7 @@
 # Copyright 2019 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, _
+from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -9,10 +9,10 @@ class IrActionReport(models.Model):
 
     _inherit = 'ir.actions.report'
 
-    action_report_substitution_criteria_ids = fields.One2many(
-        comodel_name="ir.actions.report.substitution.criteria",
+    action_report_substitution_rule_ids = fields.One2many(
+        comodel_name="ir.actions.report.substitution.rule",
         inverse_name="action_report_id",
-        string="Substitution Criteria",
+        string="Substitution Rules",
     )
 
     @api.multi
@@ -20,13 +20,13 @@ class IrActionReport(models.Model):
         self.ensure_one()
         model = self.env[model]
         for (
-            substitution_report_criteria
-        ) in self.action_report_substitution_criteria_ids:
-            domain = safe_eval(substitution_report_criteria.domain)
+            substitution_report_rule
+        ) in self.action_report_substitution_rule_ids:
+            domain = safe_eval(substitution_report_rule.domain)
             domain.append(('id', 'in', active_ids))
             if set(model.search(domain).ids) == set(active_ids):
                 return (
-                    substitution_report_criteria.substitution_action_report_id
+                    substitution_report_rule.substitution_action_report_id
                 )
         return False
 
