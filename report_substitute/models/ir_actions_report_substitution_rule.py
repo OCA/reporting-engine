@@ -4,10 +4,10 @@
 from odoo import fields, models
 
 
-class ActionsReportSubstitutionCriteria(models.Model):
+class ActionsReportSubstitutionRule(models.Model):
 
-    _name = 'ir.actions.report.substitution.criteria'
-    _description = 'Action Report Substitution Criteria'
+    _name = 'ir.actions.report.substitution.rule'
+    _description = 'Action Report Substitution Rule'
     _order = 'sequence ASC'
 
     sequence = fields.Integer(default=10)
