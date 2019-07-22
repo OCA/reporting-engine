@@ -11,7 +11,7 @@
         <field name="inherit_id" ref="base.act_report_xml_view"/>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='advanced']" position="after">
-                <page name="report_substitution_criteria" string="Substitution Criteria">
+                <page name="report_substitution_criteria" string="Substitutions">
                     <field name="action_report_substitution_criteria_ids">
                         <tree>
                             <field name="sequence" widget="handle"/>
