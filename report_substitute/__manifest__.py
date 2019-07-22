@@ -13,7 +13,8 @@
     'website': 'https://github.com/acsone/reporting-engine',
     'depends': ['base'],
     'data': [
-        'security/ir_actions_report_substitution_criteria.xml',
+        'security/ir_actions_report_substitution_rule.xml',
         'views/ir_actions_report.xml',
     ],
+    'demo': ['demo/action_report.xml'],
 }
