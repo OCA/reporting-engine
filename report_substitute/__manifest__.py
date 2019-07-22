@@ -4,8 +4,7 @@
 {
     'name': 'Report Substitute',
     'summary': """
-        This addon give the possibility to substitute a report action by 
-        another based on some criteria.
+        This module allows to create substitution rules for report actions.
         """,
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
