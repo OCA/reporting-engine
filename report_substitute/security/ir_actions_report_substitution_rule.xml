@@ -4,18 +4,18 @@
 
 <odoo>
 
-    <record model="ir.model.access" id="action_report_substitution_criteria_user_access">
-        <field name="name">action.report.substitution.criteria user access</field>
-        <field name="model_id" ref="model_ir_actions_report_substitution_criteria"/>
+    <record model="ir.model.access" id="action_report_substitution_rule_user_access">
+        <field name="name">action.report.substitution.rule user access</field>
+        <field name="model_id" ref="model_ir_actions_report_substitution_rule"/>
         <field name="perm_read" eval="1"/>
         <field name="perm_create" eval="0"/>
         <field name="perm_write" eval="0"/>
         <field name="perm_unlink" eval="0"/>
     </record>
 
-    <record model="ir.model.access" id="action_report_substitution_criteria_manager_access">
-        <field name="name">action.report.substitution.criteria manager access</field>
-        <field name="model_id" ref="model_ir_actions_report_substitution_criteria"/>
+    <record model="ir.model.access" id="action_report_substitution_rule_manager_access">
+        <field name="name">action.report.substitution.rule manager access</field>
+        <field name="model_id" ref="model_ir_actions_report_substitution_rule"/>
         <field name="group_id" ref="base.group_system"/>
         <field name="perm_read" eval="1"/>
         <field name="perm_create" eval="1"/>
