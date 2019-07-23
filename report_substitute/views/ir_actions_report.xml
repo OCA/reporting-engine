@@ -16,7 +16,8 @@
                         <tree>
                             <field name="sequence" widget="handle"/>
                             <field name="substitution_action_report_id"/>
-                            <field name="domain"/>
+                            <field name="domain"
+                                   domain="[('id', '!=', parent.id)]"/>/>
                         </tree>
                         <form>
                             <sheet>
