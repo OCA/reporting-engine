@@ -36,5 +36,5 @@ class IrActionReport(models.Model):
             self.model, res_ids
         )
         if substitution_report:
-            return substitution_report.render(res_ids)
+            return substitution_report.render(res_ids, data)
         return super().render(res_ids, data)
