@@ -25,10 +25,21 @@ class IrActionReport(models.Model):
             domain = safe_eval(substitution_report_rule.domain)
             domain.append(('id', 'in', active_ids))
             if set(model.search(domain).ids) == set(active_ids):
-                return (
-                    substitution_report_rule.substitution_action_report_id
-                )
+                return substitution_report_rule.substitution_action_report_id
         return False
+
+    @api.model
+    def get_substitution_report_dict(self, action_report_dict, active_ids):
+        if action_report_dict.get('id'):
+            action_report = self.browse(action_report_dict['id'])
+            substitution_report = action_report
+            while substitution_report:
+                action_report = substitution_report
+                substitution_report = action_report._get_substitution_report(
+                    action_report.model, active_ids
+                )
+            action_report_dict.update(action_report.read()[0])
+        return action_report_dict
 
     @api.multi
     def render(self, res_ids, data=None):
