@@ -28,6 +28,18 @@ class IrActionReport(models.Model):
                 return substitution_report_rule.substitution_action_report_id
         return False
 
+    @api.multi
+    def get_substitution_report(self, active_ids):
+        self.ensure_one()
+        action_report = self
+        substitution_report = action_report
+        while substitution_report:
+            action_report = substitution_report
+            substitution_report = action_report._get_substitution_report(
+                action_report.model, active_ids
+            )
+        return action_report
+
     @api.model
     def get_substitution_report_dict(self, action_report_dict, active_ids):
         if action_report_dict.get('id'):
@@ -43,9 +55,20 @@ class IrActionReport(models.Model):
 
     @api.multi
     def render(self, res_ids, data=None):
-        substitution_report = self._get_substitution_report(
-            self.model, res_ids
-        )
-        if substitution_report:
-            return substitution_report.render(res_ids, data)
-        return super().render(res_ids, data)
+        substitution_report = self.get_substitution_report(res_ids)
+        return super(IrActionReport, substitution_report).render(res_ids, data)
+
+    @api.noguess
+    def report_action(self, docids, data=None, config=True):
+        if docids:
+            if isinstance(docids, models.Model):
+                active_ids = docids.ids
+            elif isinstance(docids, int):
+                active_ids = [docids]
+            elif isinstance(docids, list):
+                active_ids = docids
+            substitution_report = self.get_substitution_report(active_ids)
+            return super(IrActionReport, substitution_report).report_action(
+                docids, data, config
+            )
+        return super().report_action(docids, data, config)

@@ -11,7 +11,7 @@
     'author': 'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
     'website': 'https://github.com/acsone/reporting-engine',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'data': [
         'security/ir_actions_report_substitution_rule.xml',
         'views/assets_backend.xml',
