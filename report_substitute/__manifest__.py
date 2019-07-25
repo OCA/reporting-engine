@@ -14,6 +14,7 @@
     'depends': ['base'],
     'data': [
         'security/ir_actions_report_substitution_rule.xml',
+        'views/assets_backend.xml',
         'views/ir_actions_report.xml',
     ],
     'demo': ['demo/action_report.xml'],
