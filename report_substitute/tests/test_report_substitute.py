@@ -46,3 +46,21 @@ class TestReportSubstitute(TransactionCase):
         self.substitution_rule.write({'domain': "[('name', '!=', 'base')]"})
         res = str(self.action_report.render(res_ids=self.res_ids)[0])
         self.assertNotIn('<div class="page">Substitution Report</div>', res)
+
+    def test_substitution_with_action_dict(self):
+        substitution_report_action = self.env[
+            'ir.actions.report'
+        ].get_substitution_report_action(
+            self.action_report.read()[0], self.res_ids
+        )
+        self.assertEqual(
+            substitution_report_action['id'],
+            self.substitution_rule.substitution_action_report_id.id,
+        )
+
+    def test_substitution_with_report_action(self):
+        res = self.action_report.report_action(self.res_ids)
+        self.assertEqual(
+            res['report_name'],
+            self.substitution_rule.substitution_action_report_id.report_name,
+        )
