@@ -41,17 +41,17 @@ class IrActionReport(models.Model):
         return action_report
 
     @api.model
-    def get_substitution_report_dict(self, action_report_dict, active_ids):
-        if action_report_dict.get('id'):
-            action_report = self.browse(action_report_dict['id'])
+    def get_substitution_report_action(self, action, active_ids):
+        if action.get('id'):
+            action_report = self.browse(action['id'])
             substitution_report = action_report
             while substitution_report:
                 action_report = substitution_report
                 substitution_report = action_report._get_substitution_report(
                     action_report.model, active_ids
                 )
-            action_report_dict.update(action_report.read()[0])
-        return action_report_dict
+            action.update(action_report.read()[0])
+        return action
 
     @api.multi
     def render(self, res_ids, data=None):

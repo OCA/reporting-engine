@@ -11,18 +11,21 @@ class MailComposeMessage(models.TransientModel):
     @api.multi
     @api.onchange('template_id')
     def onchange_template_id_wrapper(self):
-        old_report_template = False
-        if (
-            self.template_id
-            and self.template_id.report_template
-            and self.env.context.get('active_ids')
-        ):
-            active_ids = self.env.context.get('active_ids')
-            old_report_template = self.template_id.report_template
-            self.template_id.report_template = (
-                old_report_template.get_substitution_report(active_ids)
-            )
-        res = super().onchange_template_id_wrapper()
-        if old_report_template:
-            self.template_id.report_template = old_report_template
-        return res
+        if self.template_id:
+            report_template = self.template_id.report_template
+            if (
+                report_template
+                and report_template.action_report_substitution_rule_ids
+                and self.env.context.get('active_ids')
+            ):
+                active_ids = self.env.context.get('active_ids')
+                old_report_template = report_template
+                self.template_id.report_template = (
+                    old_report_template.get_substitution_report(active_ids)
+                )
+                onchange_result_with_substituted_report = (
+                    super().onchange_template_id_wrapper()
+                )
+                self.template_id.report_template = old_report_template
+                return onchange_result_with_substituted_report
+        return super().onchange_template_id_wrapper()
