@@ -4,7 +4,7 @@
 
 {
     'name': 'Partner Statement',
-    'version': '12.0.1.0.3',
+    'version': '12.0.1.0.5',
     'category': 'Accounting & Finance',
     'summary': 'OCA Financial Reports',
     'author': "Eficent, Odoo Community Association (OCA)",

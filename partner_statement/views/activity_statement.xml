@@ -76,6 +76,9 @@
                                                     <t t-if="line['ref'] not in line['name']">
                                                         <span t-esc="line['ref']"/>
                                                     </t>
+                                                    <t t-if="line['name'] == line['ref']">
+                                                        <span t-esc="line['name']"/>
+                                                    </t>
                                                 </t>
                                             </t>
                                             <t t-if="line['name'] == '/'">
