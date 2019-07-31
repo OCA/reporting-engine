@@ -10,47 +10,45 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-28 10:11+0000\n"
-"PO-Revision-Date: 2019-07-25 19:43+0000\n"
-"Last-Translator: jcleonard2018 <jcl@solutionsmakers.fr>\n"
+"PO-Revision-Date: 2019-10-11 16:37+0000\n"
+"Last-Translator: Khalid Hazam <k.hazam@badep.ma>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:242
-#, fuzzy, python-format
-#| msgid "1-30 Days Due"
+#, python-format
 msgid "1 - 30 Days"
-msgstr "1-30 jours d'arriérés"
+msgstr "1-30 jours"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:253
 #, python-format
 msgid "1 Month"
-msgstr ""
+msgstr "1 mois"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:246
-#, fuzzy, python-format
-#| msgid "+120 Days Due"
+#, python-format
 msgid "121 Days +"
-msgstr "+120 jours d'arriérés"
+msgstr "+120 jours"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:254
 #, python-format
 msgid "2 Months"
-msgstr ""
+msgstr "2 mois"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:255
 #, python-format
 msgid "3 Months"
-msgstr ""
+msgstr "3 mois"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:243
@@ -123,7 +121,7 @@ msgstr "afficher toutes les transactions entre deux dates."
 #: selection:res.config.settings,default_aging_type:0
 #: selection:statement.common.wizard,aging_type:0
 msgid "Age by Days"
-msgstr ""
+msgstr "Age par jours"
 
 #. module: partner_statement
 #: selection:activity.statement.wizard,aging_type:0
@@ -131,7 +129,7 @@ msgstr ""
 #: selection:res.config.settings,default_aging_type:0
 #: selection:statement.common.wizard,aging_type:0
 msgid "Age by Months"
-msgstr ""
+msgstr "Age par mois"
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__aging_type
@@ -139,27 +137,22 @@ msgstr ""
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_aging_type
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__aging_type
 msgid "Aging Method"
-msgstr ""
+msgstr "Méthode"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.aging_buckets
 msgid "Aging Report at"
-msgstr "Balance âgée au"
+msgstr "Relevé des arriérés au"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
-#, fuzzy
-#| msgid ""
-#| "Aging details can be shown in the report, expressed in aging         "
-#| "buckets (30 days due, ...), so the customer can review how much is open, "
-#| "due or overdue."
 msgid ""
 "Aging details can be shown in the report, expressed in aging         "
 "buckets, so the partner can review how much is open, due or overdue."
 msgstr ""
 "Le détail des arriérés peut être affiché dans le rapport, exprimé par "
-"tranche (30 jours d'arriérés, ...), de telle sorte que le destinataire "
-"puisse voir combien est ouvert, dû ou échu."
+"tranche, de telle sorte que le destinataire puisse voir combien est ouvert, "
+"dû ou échu."
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -267,7 +260,7 @@ msgstr "Activer le relevé de compte OCA"
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_outstanding_statement
 msgid "Enable OCA Outstanding Statements"
-msgstr ""
+msgstr "Activer le relevé des arriérés OCA"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -347,10 +340,8 @@ msgstr "Antérieur"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
-#, fuzzy
-#| msgid "Amount"
 msgid "Open Amount"
-msgstr "Montant"
+msgstr "Montant ouvert"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
@@ -359,34 +350,29 @@ msgstr "Original"
 
 #. module: partner_statement
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement
-#, fuzzy
-#| msgid "Activity Statement"
 msgid "Outstanding Statement"
-msgstr "Relevé de compte"
+msgstr "Relevé des arriérés"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_outstanding_statement_wizard
-#, fuzzy
-#| msgid "Customer Activity Statement Wizard"
 msgid "Outstanding Statement Wizard"
-msgstr "Assistant d'édition de relevé de compte des partenaires"
+msgstr "Assistant d'édition de relevé des arriérés"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 msgid "Outstanding Statements show all transactions up to a date."
 msgstr ""
+"Le relevé des arriérés affiche toutes les transactions jusqu'à une date."
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
-#, fuzzy
-#| msgid "Customer Activity Statement"
 msgid "Partner Activity Statement"
 msgstr "Relevé de compte des partenaires"
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.outstanding_statement_wizard_action
 msgid "Partner Outstanding Statement"
-msgstr ""
+msgstr "Relevé des arriérés du partenaire"
 
 #. module: partner_statement
 #: selection:activity.statement.wizard,account_type:0
@@ -398,14 +384,12 @@ msgstr "A payer"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "Payment"
-msgstr ""
+msgstr "Paiement"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
-#, fuzzy
-#| msgid "Customer Activity Statement"
 msgid "Please set defaults under Activity Statements."
-msgstr "Relevé de compte des partenaires"
+msgstr "Merci d'indiquer les valeurs par défaut dans le relevé de compte"
 
 #. module: partner_statement
 #: selection:activity.statement.wizard,account_type:0
@@ -425,25 +409,21 @@ msgstr "Numéro de référence"
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__show_aging_buckets
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_show_aging_buckets
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__show_aging_buckets
-#, fuzzy
-#| msgid "Include Aging Buckets"
 msgid "Show Aging Buckets"
 msgstr "Afficher les arriérés par tranche"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_statement_common
 msgid "Statement Reports Common"
-msgstr ""
+msgstr "Rapport commun des relevés"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_statement_common_wizard
 msgid "Statement Reports Common Wizard"
-msgstr ""
+msgstr "Assistant rapport commun des relevés"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
-#, fuzzy
-#| msgid "Activity Statement between"
 msgid "Statement between"
 msgstr "Relevé de compte entre"
 
@@ -465,14 +445,6 @@ msgstr "Fournisseur"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
-#, fuzzy
-#| msgid ""
-#| "The activity statement provides details of all activity on         the "
-#| "customer receivables between two selected dates. This includes all "
-#| "invoices,         refunds and payments. Any outstanding balance dated "
-#| "prior to the chosen statement         period will appear as a forward "
-#| "balance at the top of the statement. The list is         displayed in "
-#| "chronological order and is split by currencies."
 msgid ""
 "The activity statement provides details of all activity "
 "on                     a partner's receivables and payables between two "
@@ -490,14 +462,6 @@ msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
-#, fuzzy
-#| msgid ""
-#| "The activity statement provides details of all activity on         the "
-#| "customer receivables between two selected dates. This includes all "
-#| "invoices,         refunds and payments. Any outstanding balance dated "
-#| "prior to the chosen statement         period will appear as a forward "
-#| "balance at the top of the statement. The list is         displayed in "
-#| "chronological order and is split by currencies."
 msgid ""
 "The outstanding statement provides details of all partner's "
 "outstanding         receivables and payables up to a particular date. This "
@@ -505,11 +469,10 @@ msgid ""
 "payments. The list is displayed in chronological order and is         split "
 "by currencies."
 msgstr ""
-"Le relevé de compte présente le détail des activités des débiteurs ou "
-"créanciers entre deux dates choisies. Ceci inclus toute facture, note de "
-"crédit ou paiement. Si un solde ouvert est préalable à la date de début du "
-"relevé, il sera affiché comme un solde reporté en haut du relevé. Les "
-"transactions sont présentées par ordre chronologique et ventilées par devise."
+"Le relevé de compte des arriérés présente le détail des arriérés des "
+"débiteurs ou créanciers jusqu'à une date choisie. Ceci inclus toute facture, "
+"note de crédit ou paiement échues. La liste est affichée par ordre "
+"chronologique et divisée par devise."
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:247
@@ -520,15 +483,13 @@ msgstr "Total"
 
 #. module: partner_statement
 #: model:res.groups,name:partner_statement.group_activity_statement
-#, fuzzy
-#| msgid "Activity Statement"
 msgid "Use activity statements"
-msgstr "Relevé de compte"
+msgstr "Utiliser le relevé de compte"
 
 #. module: partner_statement
 #: model:res.groups,name:partner_statement.group_outstanding_statement
 msgid "Use outstanding statements"
-msgstr ""
+msgstr "Utiliser le relevé des arriérés"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -549,15 +510,11 @@ msgstr "ou"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
-#, fuzzy
-#| msgid "report.customer_activity_statement.statement"
 msgid "report.partner_statement.activity_statement"
 msgstr "report.customer_activity_statement.statement"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
-#, fuzzy
-#| msgid "report.customer_activity_statement.statement"
 msgid "report.partner_statement.outstanding_statement"
 msgstr "report.customer_activity_statement.statement"
 

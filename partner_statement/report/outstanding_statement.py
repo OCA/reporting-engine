@@ -72,8 +72,8 @@ class OutstandingStatement(models.AbstractModel):
                     Q1.date, Q1.date_maturity, Q1.debit, Q1.credit,
                     Q1.name, Q1.ref, Q1.blocked, Q1.company_id,
                 CASE WHEN Q1.currency_id is not null
-                    THEN open_amount_currency
-                    ELSE open_amount
+                    THEN Q1.open_amount_currency
+                    ELSE Q1.open_amount
                 END as open_amount
                 FROM Q1
                 """, locals()
@@ -90,7 +90,7 @@ class OutstandingStatement(models.AbstractModel):
               Q2.open_amount
             FROM Q2
             JOIN res_company c ON (c.id = Q2.company_id)
-            WHERE c.id = %(company_id)s
+            WHERE c.id = %(company_id)s AND Q2.open_amount != 0.0
             """, locals()), "utf-8"
         )
 
