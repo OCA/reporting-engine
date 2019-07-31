@@ -84,7 +84,7 @@ If you want to add a new py3o PDF report (and not replace a native report), the 
   </odoo>
 
 Configuration parameters
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 py3o.conversion_command
     The command to be used to run the conversion, ``libreoffice`` by default. If you change this, whatever you set here must accept the parameters ``--headless --convert-to $ext $file`` and put the resulting file into ``$file``'s directory with extension ``$ext``. The command will be started in ``$file``'s directory.
