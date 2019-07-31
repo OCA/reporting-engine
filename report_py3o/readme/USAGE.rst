@@ -1,7 +1,7 @@
 The templating language is `extensively documented <http://py3otemplate.readthedocs.io/en/latest/templating.html>`_, the records are exposed in libreoffice as ``objects``, on which you can also call functions.
 
 Available functions and objects
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 user
     Browse record of current user
@@ -24,6 +24,6 @@ o_format_date(value, lang_code=False, date_format=False)
 
 
 Sample report templates
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Sample py3o report templates for the main Odoo native reports (invoice, sale order, purchase order, picking, etc.) are available on the Github project `odoo-py3o-report-templates <https://github.com/akretion/odoo-py3o-report-templates>`_.
