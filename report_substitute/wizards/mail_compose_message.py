@@ -13,12 +13,16 @@ class MailComposeMessage(models.TransientModel):
     def onchange_template_id_wrapper(self):
         if self.template_id:
             report_template = self.template_id.report_template
+            active_ids = []
+            if self.env.context.get('active_ids'):
+                active_ids = self.env.context.get('active_ids')
+            elif self.env.context.get('default_res_id'):
+                active_ids = [self.env.context.get('default_res_id')]
             if (
                 report_template
                 and report_template.action_report_substitution_rule_ids
-                and self.env.context.get('active_ids')
+                and active_ids
             ):
-                active_ids = self.env.context.get('active_ids')
                 old_report_template = report_template
                 self.template_id.report_template = (
                     old_report_template.get_substitution_report(active_ids)
