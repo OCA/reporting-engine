@@ -45,7 +45,7 @@ class IrActionsReport(models.Model):
     controller_content_type = fields.Selection(CONTENT_TYPES, "Content Type", help="Controller request content type.", default='multipart/form-data')
 
     controller_url = fields.Char("Controller URL", help="Controller from url to fetch. You can use a python expression with the 'object' and 'time' variables.")
-
+    
     #André Liu - Improvements To Do
     #Controller Data
     #Additional Controller header information
@@ -120,6 +120,8 @@ class IrActionsReport(models.Model):
         #Perhaps later we may wish to have other document types.
         if response.status_code == 404:
             raise exceptions.ValidationError(_('404 Page not Found'))
+        if response.status_code == 403:
+            raise exceptions.ValidationError(_('403 Forbidden:\n%s') % response.content)
         if response.status_code == 400:
             raise exceptions.ValidationError(_('400 Bad Request:\n%s') % response.content)
         if response.status_code == 500:
