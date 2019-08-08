@@ -505,7 +505,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                         cell_type = 'datetime'
                     elif isinstance(cell_value, date):
                         cell_value = datetime.combine(
-                            cell_value, datetime.min.time()) 
+                            cell_value, datetime.min.time())
                         cell_type = 'datetime'
                     else:
                         if not cell_value:
