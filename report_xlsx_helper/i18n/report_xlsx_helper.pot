@@ -20,13 +20,13 @@ msgid "%s model was not found"
 msgstr ""
 
 #. module: report_xlsx_helper
-#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:510
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:514
 #, python-format
 msgid "%s, _write_line : programming error detected while processing col_specs_section %s, column %s"
 msgstr ""
 
 #. module: report_xlsx_helper
-#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:516
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:520
 #, python-format
 msgid ", cellvalue %s"
 msgstr ""
