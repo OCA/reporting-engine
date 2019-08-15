@@ -24,7 +24,7 @@ class Reports(main.Reports):
             ('report_name', '=', action['report_name']),
             ('download_filename', '!=', False)])
         for report in reports:
-            objects = http.request.session.model(context['active_model'])\
+            objects = http.request.session.model(report.model)\
                 .browse(context['active_ids'])
             generated_filename = mail_template.mako_template_env\
                 .from_string(report.download_filename)\
