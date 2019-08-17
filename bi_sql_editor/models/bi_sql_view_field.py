@@ -108,7 +108,8 @@ class BiSQLViewField(models.Model):
                 sql_field.bi_sql_view_id.view_name, sql_field.name)
 
     # Overload Section
-    @api.multi
+    @api.model
+    @api.returns('self', lambda value:value.id)
     def create(self, vals):
         field_without_prefix = vals['name'][2:]
         # guess field description
