@@ -9,3 +9,9 @@ class IrActionsReportXml(models.Model):
     _inherit = 'ir.actions.report.xml'
 
     report_type = fields.Selection(selection_add=[("xlsx", "xlsx")])
+    header_id = fields.Many2one('report.xlsx.hf',
+                                string="Header",
+                                domain=[('hf_type', '=', 'header')])
+    footer_id = fields.Many2one('report.xlsx.hf',
+                                string="Footer",
+                                domain=[('hf_type', '=', 'footer')])

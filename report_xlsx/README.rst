@@ -53,6 +53,15 @@ A report XML record ::
         attachment_use="False"
     />
 
+**XLSX Header & Footer**
+
+You can configure them on the menu *Settings > Technical > Reports > XLSX Header/Footer* following the syntax from 
+`xlsxwriter documentation <https://xlsxwriter.readthedocs.io/page_setup.html#set_header>`_.
+
+Example of Header / Footer syntax : ``&LPage &P of &N &CFilename: &F &RSheetname: &A``
+
+On a report XML with ``report_type == 'xlsx'`` you can specified the Header and Footer you configured.
+
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/143/10.0
@@ -72,6 +81,7 @@ Contributors
 ------------
 
 * Adrien Peiffer <adrien.peiffer@acsone.eu>
+* Arnaud Pineux <arnaud.pineux@acsone.eu>
 
 Maintainer
 ----------
