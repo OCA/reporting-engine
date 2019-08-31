@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_project_view_form_simplified_arcons" model="ir.ui.view">
+        <field name="name">project.project.view.form.simplified.arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="sale_id"/>
+                <field name="project_group_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_edit_form_arcons" model="ir.ui.view">
+        <field name="name">project.edit.form_arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//header//button[last()]" position="after">
+                 <field name="stage_id" widget="statusbar"/>
+             </xpath>
+            <page name="settings" position="before">
+                <page name="sale" string="Sale Order">
+                    <group>
+                        <field name="sale_id"/>
+                    </group>
+                </page>
+            </page>
+            <group name="misc" position="before">
+                <group name="arcons">
+                    <field name="project_group_id"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="view_project_kanban_arcons" model="ir.ui.view">
+        <field name="name">view.project.kanban.arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="stage_id"/>
+            </xpath>
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="class">oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors o_kanban_small_column</attribute>
+                 <attribute name="default_group_by">stage_id</attribute>
+             </xpath>
+        </field>
+    </record>
+
+</odoo>
