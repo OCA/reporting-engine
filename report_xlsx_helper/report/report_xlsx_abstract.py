@@ -517,7 +517,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                                 "col_specs_section %s, column %s"
                             ) % (__name__, col_specs_section, col)
                             if cell_value:
-                                msg += _(", cellvalue %s")
+                                msg += _(", cellvalue %s") % cell_value
                             raise UserError(msg)
             colspan = cell_spec.get('colspan') or colspan
             args_pos = [row_pos, pos]
