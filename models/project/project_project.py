@@ -23,7 +23,6 @@ class ProjectProject(models.Model):
              ('id', 'in', stages.ids)]
         stage_ids = stages._search(search_domain, order=order,
                                    access_rights_uid=SUPERUSER_ID)
-        print ("========== stage_ids: ", stage_ids)
         return stages.browse(stage_ids)
 
     @api.model
@@ -56,7 +55,7 @@ class ProjectProject(models.Model):
     @api.model
     def create(self, vals):
         if not vals.get('stage_id'):
-            vals['stage_id'] = self.stage_find(vals['project_group_id'])
+            vals['stage_id'] = self.stage_find(vals['project_group_id']).id
         if vals.get('sale_id') and not vals.get('partner_id'):
             vals['partner_id'] =\
                 self.env['sale.order'].browse(vals['sale_id']).partner_id.id
@@ -83,6 +82,7 @@ class ProjectProject(models.Model):
     def open_tasks(self):
         for project in self:
             task_types = self.env['project.task.type'].search(
-                [('project_group_id', '=', project.project_group_id.id)])
+                [('project_group_id', '=', project.project_group_id.id),
+                 ('project_ids', '!=', project.id)])
             task_types.write({'project_ids': [(4, project.id)]})
         return super(ProjectProject, self).open_tasks()

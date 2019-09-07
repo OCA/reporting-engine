@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
+     Copyright 2017 Tecnativa - Carlos Dauden
+     Copyright 2017 Doscaal - Alexandre Moreau
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<odoo>
+
+    <record id="project_task_timeline" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline date_start="date_start"
+                      date_stop="date_end"
+                      default_group_by="project_id"
+                      event_open_popup="true"
+                      colors="#ec7063: user_id == false; #2ecb71: kanban_state == 'done';">
+                <field name="user_id"/>
+                <field name="planned_hours"/>
+                <templates>
+                    <t t-name="timeline-item">
+                        <div class="o_project_timeline_item">
+                            <img t-if="record.user_id"
+                                 t-attf-src="/web/image/res.users/#{record.user_id[0]}/image/24x24"
+                                 t-att-title="record.user_id[1]" width="24" height="24" class="mr8"/>
+                            <span name="display_name">
+                                <t t-esc="record.display_name"/>
+                            </span>
+                            <small name="planned_hours" class="text-muted ml4">
+                                <t t-esc="field_utils.format.float_time(record.planned_hours)"/>
+                            </small>
+                        </div>
+                    </t>
+                </templates>
+            </timeline>
+        </field>
+    </record>
+
+    <record id="project.action_view_task" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+
+    <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+
+    <record id="project.project_task_action_sub_task" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_assign']" position="before">
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

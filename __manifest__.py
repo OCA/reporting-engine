@@ -27,6 +27,7 @@
         'views/project/project_project_view.xml',
         'views/project/project_task_type_view.xml',
         'views/project/project_stage_view.xml',
+        'views/project/project_task_view.xml',
         # =============== WIZARDS ================
 
         # =============== MENU ===================
