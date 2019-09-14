@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of hunghn. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields, api
-from datetime import date
-from odoo.exceptions import ValidationError
+from odoo import models, api
 
 
 class ProjectGroup(models.Model):

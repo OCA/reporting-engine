@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of hunghn. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields, api, SUPERUSER_ID, _
-from datetime import date
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api, SUPERUSER_ID
+# from datetime import date
+# from odoo.exceptions import ValidationError
 
 
 class ProjectProject(models.Model):
@@ -64,6 +64,11 @@ class ProjectProject(models.Model):
     sale_amount_total = fields.Float(
         string="Amount Total",
         compute='_compute_sale_amount_total')
+
+    # Team
+    member_ids = fields.Many2many(
+        string='Member',
+        comodel_name='res.users')
 
     @api.model
     def create(self, vals):
