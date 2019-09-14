@@ -155,10 +155,10 @@ class BaseXlsxReport(models.AbstractModel):
         user = self.env.user
         company = user.company_id
 
-        company_name = company.name
-        company_tax = company.vat
-        company_email = company.email
-        company_website = company.website
+        company_name = company.name or ''
+        company_tax = company.vat or ''
+        company_email = company.email or ''
+        company_website = company.website or ''
         import base64
         import io
         company_logo = io.BytesIO(base64.b64decode(company.logo))
