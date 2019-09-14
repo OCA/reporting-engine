@@ -11,9 +11,15 @@
     "website": "https://vifuna.vn",
     'category': "Custom",
     "depends": [
+
+        # Native Odoo
         "base",
         'project',
-        'project_timesheet_holidays'
+        'project_timesheet_holidays',
+
+        # Customize Module
+        'arch_construction'
+
     ],
     "data": [
         # Security
@@ -28,6 +34,7 @@
         'views/project/project_task_type_view.xml',
         'views/project/project_stage_view.xml',
         'views/project/project_task_view.xml',
+        'views/sale/sale_order_view.xml',
         # =============== WIZARDS ================
 
         # =============== MENU ===================

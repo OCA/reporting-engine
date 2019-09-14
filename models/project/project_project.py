@@ -37,6 +37,12 @@ class ProjectProject(models.Model):
                 raise_if_not_found=False)
         return group_id
 
+    @api.depends('sale_ids', 'sale_ids.amount_total')
+    def _compute_sale_amount_total(self):
+        for project in self:
+            project.sale_amount_total = sum(
+                project.sale_ids.mapped('amount_total'))
+
     stage_id = fields.Many2one(
         string='Stage',
         comodel_name='project.stage',
@@ -51,6 +57,13 @@ class ProjectProject(models.Model):
     sale_id = fields.Many2one(
         string="Sale Order",
         comodel_name='sale.order')
+    sale_ids = fields.One2many(
+        string="Sale Orders",
+        comodel_name='sale.order',
+        inverse_name='project_id')
+    sale_amount_total = fields.Float(
+        string="Amount Total",
+        compute='_compute_sale_amount_total')
 
     @api.model
     def create(self, vals):

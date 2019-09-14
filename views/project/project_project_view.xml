@@ -22,9 +22,24 @@
                  <field name="stage_id" widget="statusbar"/>
              </xpath>
             <page name="settings" position="before">
-                <page name="sale" string="Sale Order">
+                <page name="sale" string="Sale Orders">
                     <group>
                         <field name="sale_id"/>
+                    </group>
+                    <field name="sale_ids" nolabel="1" readonly="1">
+                        <tree >
+                            <field name="name" string="Quotation Number" />
+                            <field name="date_order" string="Quotation Date" />
+                            <field name="user_id"/>
+                            <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                            <field name="state" string="Status"/>
+                        </tree>
+                    </field>
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_amount_total">
+                        <div class="oe_inline o_td_label">
+                            <label for="sale_amount_total"/>
+                        </div>
+                        <field name="sale_amount_total" nolabel="1" widget="monetary" readonly="1"/>
                     </group>
                 </page>
             </page>
