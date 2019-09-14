@@ -15,9 +15,6 @@
                 <field name='d_height'/>
                 <field name="origin_price_unit" invisible="1"/>
             </xpath>
-            <xpath expr="//field[@name='order_line']//tree//field[@name='tax_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
             <xpath expr="//field[@name='order_line']//form//field[@name='price_subtotal']" position="after">
                 <field name="d_length"/>
                 <field name='d_width'/>
