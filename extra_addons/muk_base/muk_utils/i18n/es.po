@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_utils
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-13 09:39+0000\n"
+"PO-Revision-Date: 2019-07-13 09:39+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.res_config_settings_view_form
+msgid "<strong>Save</strong> this page before triggering the migration."
+msgstr "<strong>Save</strong> esta página antes de iniciar la migración."
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_search
+msgid "All Data"
+msgstr "Todos los datos"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_search
+msgid "Attached Document Field"
+msgstr "Campo de documento adjunto"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_search
+msgid "Attached Document Model"
+msgstr "Modelo de documento adjunto"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_ir_attachment
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.res_config_settings_view_form
+msgid "Attachment storage location"
+msgstr "Almacén de anexos"
+
+#. module: muk_utils
+#: model:ir.model.fields,help:muk_utils.field_res_config_settings__attachment_location
+msgid "Attachment storage location."
+msgstr "Almacén de archivos adjuntos."
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_search
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_base
+msgid "Base"
+msgstr ""
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__child_groups
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_form
+msgid "Child Groups"
+msgstr "Grupos de niños"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__display_name
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy__display_name
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_scss_editor__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__explicit_users
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_form
+msgid "Explicit Users"
+msgstr "Usuarios Explícitos"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_search
+msgid "Field Data"
+msgstr "Datos de campo"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.res_config_settings_view_form
+msgid "Force Storage Migration"
+msgstr "Migración de almacenamiento forzado"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_form
+msgid "Group"
+msgstr "Grupo"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_muk_utils_mixins_groups
+msgid "Group Mixin"
+msgstr "Mezcla de Grupo"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__name
+msgid "Group Name"
+msgstr "Nombre del grupo"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__users
+msgid "Group Users"
+msgstr "Usuarios del grupo"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__groups
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_form
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_tree
+msgid "Groups"
+msgstr "Grupos"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_muk_utils_mixins_hierarchy
+msgid "Hierarchy Mixin"
+msgstr "Mezcla de jerarquías"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__id
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy__id
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_scss_editor__id
+msgid "ID"
+msgstr ""
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups____last_update
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy____last_update
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_scss_editor____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: muk_utils
+#: model:ir.actions.server,name:muk_utils.action_attachment_migrate
+msgid "Migrate"
+msgstr "Migrar"
+
+#. module: muk_utils
+#: code:addons/muk_utils/models/ir_attachment.py:87
+#, python-format
+msgid "Only administrators can execute this action."
+msgstr ""
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__parent_group
+msgid "Parent Group"
+msgstr "Grupo de padres"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__parent_path
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy__parent_path
+msgid "Parent Path"
+msgstr "Trayectoria de los padres"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy__parent_path_json
+msgid "Path Json"
+msgstr "Camino Json"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_hierarchy__parent_path_names
+msgid "Path Names"
+msgstr "Nombres de senderos"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_muk_utils_scss_editor
+msgid "Scss Editor"
+msgstr "Editor de Scss"
+
+#. module: muk_utils
+#: model_terms:ir.ui.view,arch_db:muk_utils.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_attachment_form
+msgid "Storage"
+msgstr "Almacenamiento"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_res_config_settings__attachment_location
+msgid "Storage Location"
+msgstr "Almacén"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_res_config_settings__attachment_location_changed
+msgid "Storage Location Changed"
+msgstr "Almacén modificado"
+
+#. module: muk_utils
+#: model:ir.model,name:muk_utils.model_ir_config_parameter
+msgid "System Parameter"
+msgstr "Parámetros del sistema"
+
+#. module: muk_utils
+#: sql_constraint:muk_utils.mixins.groups:0
+msgid "The name of the group must be unique!"
+msgstr "El nombre del grupo debe ser único!"
+
+#. module: muk_utils
+#: model:ir.model.fields,field_description:muk_utils.field_muk_utils_mixins_groups__count_users
+#: model_terms:ir.ui.view,arch_db:muk_utils.view_mixins_groups_form
+msgid "Users"
+msgstr "Usuarios"
+

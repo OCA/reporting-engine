@@ -1,0 +1,18 @@
+.o_project_timeline_hr_timesheet_progress {
+    height: 7px;
+    background-color: #FFF;
+    margin-left: -5px;
+    margin-bottom: -5px;
+    margin-right: -5px;
+    margin-top: 5px;
+
+    > div {
+        height: 100%;
+        max-width: 100%;
+        background: theme-color('success');
+
+        &.danger {
+            background: theme-color('danger');
+        }
+    }
+}

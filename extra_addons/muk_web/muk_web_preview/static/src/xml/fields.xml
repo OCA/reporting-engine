@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Preview 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<templates>
+
+<t t-name="muk_preview.FieldBinaryPreview">
+    <div class="mk_field_preview" aria-atomic="true">
+        <div t-if="widget.mode !== 'readonly'" class="mk_field_preview_controls mb8" role="toolbar" aria-label="Controls">
+            <span class="o_form_binary_progress">Uploading...</span>
+            <button type="button" class="btn btn-primary o_select_file_button" title="Select">Upload your file</button>
+            <button class="btn btn-secondary fa fa-pencil o_select_file_button" title="Select" aria-label="Select" type="button"></button>
+            <button class="btn btn-secondary fa fa-trash-o o_clear_file_button" title="Clear" aria-label="Clear" type="button"></button>
+        </div>
+        <div class="mk_field_preview_container"/>
+        <t t-call="HiddenInputPDFFile">
+            <t t-set="fileupload_id" t-value="widget.fileupload_id"/>
+            <t t-set="fileupload_style" t-translation="off">overflow-x: hidden</t>
+        </t>
+    </div>
+</t>
+	
+</templates>

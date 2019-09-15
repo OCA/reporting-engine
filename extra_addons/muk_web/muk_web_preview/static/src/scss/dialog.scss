@@ -1,0 +1,94 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Preview 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_preview_dialog {
+	display: flex;
+	height: calc(100% - #{$modal-dialog-margin * 2});
+	.modal-content {
+		height: calc(100vh - #{$modal-dialog-margin * 2});
+		overflow: hidden;
+	}
+	.modal-header {
+		padding: 0.5rem 1rem;
+		.modal-title {
+			margin-top: 0.5rem;
+		}
+		.mk_preview_buttons {
+			float: right;    
+			padding-top: 0.5rem;
+			button, a {
+				@extend .close;
+				margin-left: 0;
+				font-size: $mk-preview-actions-font;
+				&:focus {
+					outline: none;
+				}
+			}
+			.mk_preview_actions {
+				display: inline-block;
+			}
+			.mk_preview_minimize_btn i {
+				line-height: 0.5;
+			    vertical-align: text-top;
+			}
+		}
+	}
+	&.mk_preview_maximize {
+		min-width: 100%;
+    	margin: 0;
+		.modal-content {
+			height: 100vh;
+		}
+		.mk_preview_maximize_btn {
+			display: none;
+		}
+	}
+	&:not(.mk_preview_maximize) {
+		.mk_preview_minimize_btn {
+			display: none;
+		}
+	}
+	.modal-header,
+	.modal-footer {
+		flex-shrink: 0;
+	}
+	.modal-body {
+		padding: 5px;
+		overflow-y: auto;
+	}
+	.modal-footer {
+		padding: 0.5rem 1rem;
+	    justify-content: center;
+		.pagination {
+			margin: 0;
+		}
+	}
+}
+
+@include media-breakpoint-up(sm) {
+	.mk_preview_dialog {
+		height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
+		.modal-content {
+			height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
+		}
+	}
+}

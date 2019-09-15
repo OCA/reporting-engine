@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Branding 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+    	<field name="name">res.config.settings.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+	    <field name="arch" type="xml">
+	        <xpath expr="//div[hasclass('settings')]" position="inside">
+	    		<div class="app_settings_block" data-string="Branding" data-key="muk_branding" groups="base.group_system">
+	    			<h2>Extensions</h2>
+		            <div class="row mt16 o_settings_container" name="branding_extensions">
+						<div class="col-12 col-lg-6 o_setting_box">
+			                <div class="o_setting_left_pane">
+			                    <field name="module_muk_web_branding"/>
+			                </div>
+			                <div class="o_setting_right_pane">
+			                    <label for="module_muk_web_branding"/>
+			                    <div class="text-muted">
+			                        Customize the Backend according to your needs
+			                    </div>
+			                </div>
+			            </div>
+						<div class="col-12 col-lg-6 o_setting_box">
+			                <div class="o_setting_left_pane">
+			                    <field name="module_muk_mail_branding"/>
+			                </div>
+			                <div class="o_setting_right_pane">
+			                    <label for="module_muk_mail_branding"/>
+			                    <div class="text-muted">
+			                        Brand your outgoing mails with your own style
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="col-12 col-lg-6 o_setting_box">
+			                <div class="o_setting_left_pane">
+			                    <field name="module_muk_website_branding"/>
+			                </div>
+			                <div class="o_setting_right_pane">
+			                    <label for="module_muk_website_branding"/>
+			                    <div class="text-muted">
+			                        Brand the website according to your needs
+			                    </div>
+			                </div>
+			            </div>
+						<div class="col-12 col-lg-6 o_setting_box">
+			                <div class="o_setting_left_pane">
+			                    <field name="module_muk_pos_branding"/>
+			                </div>
+			                <div class="o_setting_right_pane">
+			                    <label for="module_muk_pos_branding"/>
+			                    <div class="text-muted">
+			                        Brand the PoS panel according to your needs
+			                    </div>
+			                </div>
+			            </div>
+					</div>
+	    			<h2>System Parameters</h2>
+		            <div class="row mt16 o_settings_container" name="branding_parameters">
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">System Names</span>
+								<div class="text-muted">
+									Set the system names
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<label for="branding_system_name" string="System" class="col-lg-3 o_light_label" />
+										<field name="branding_system_name" class="oe_inline" />
+	                                	<div class="w-100"></div>
+										<label for="branding_publisher" string="Publisher" class="col-lg-3 o_light_label" />
+										<field name="branding_publisher" class="oe_inline" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">System Website</span>
+								<div class="text-muted">
+									Set the system website
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<label for="branding_website" string="Website" class="col-lg-3 o_light_label" />
+										<field name="branding_website" widget="url" class="oe_inline" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2>System Links</h2>
+		            <div class="row mt16 o_settings_container" name="branding_links">
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">Documentation and Support</span>
+								<div class="text-muted">
+									Set the links to the system documentation
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<label for="branding_documentation" string="Documentation" class="col-lg-3 o_light_label" />
+										<field name="branding_documentation" widget="url" class="oe_inline" />
+	                                	<div class="w-100"></div>
+										<label for="branding_support" string="Support" class="col-lg-3 o_light_label" />
+										<field name="branding_support" widget="url" class="oe_inline" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">Apps and Promotion</span>
+								<div class="text-muted">
+									Set the system media links
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<label for="branding_store" string="Store" class="col-lg-3 o_light_label" />
+										<field name="branding_store" widget="url" class="oe_inline" />
+	                                	<div class="w-100"></div>
+										<label for="branding_share" string="Share" class="col-lg-3 o_light_label" />
+										<field name="branding_share" widget="url" class="oe_inline" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h2>Company Data</h2>
+		            <div class="row mt16 o_settings_container" name="branding_company">
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">Company</span>
+								<div class="text-muted">
+									Specify the name and favicon of the company
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<label for="branding_company_name" string="Name" class="col-lg-3 o_light_label" />
+										<field name="branding_company_name" class="oe_inline" />
+	                                	<div class="w-100"></div>
+										<label for="branding_company_favicon" string="Favicon" class="col-lg-3 o_light_label" />
+										<field name="branding_company_favicon" widget="image" class="oe_inline oe_avatar" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6 o_setting_box">
+							<div class="o_setting_left_pane">
+							</div>
+							<div class="o_setting_right_pane">
+								<span class="o_form_label">Logo</span>
+								<div class="text-muted">
+									Set the company logo
+								</div>
+								<div class="content-group">
+									<div class="mt16 row">
+										<field name="branding_company_logo" widget="image" class="ml-4 oe_inline oe_avatar" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	    		</div>
+	    	</xpath>
+	    </field>
+	</record>
+	
+</odoo>

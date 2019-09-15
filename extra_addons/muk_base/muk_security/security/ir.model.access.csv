@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_security_access_groups_user,access_security_access_groups_user,model_muk_security_access_groups,base.group_user,1,1,1,1

@@ -1,0 +1,74 @@
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <!-- List View -->
+    <record model="ir.ui.view" id="view_task_enhancement_milestone_tree" >
+        <field name="name">project.task.enhancement.milestone.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+            <field name="milestone_id"
+                   invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="view_task_enhancement_milestone_form" >
+      <field name="name">project.task.enhancement.milestone.form</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field eval="2" name="priority"/>
+      <field name="arch" type="xml">
+          <xpath expr="//field[@name='user_id']" position="after">
+            <field name="use_milestones"
+                   invisible="1"/>
+            <field name="milestone_id"
+                   domain="[('project_id', '=', project_id)]"
+                   option="{'no_create_edit': True}"
+                   attrs="{'invisible':[('use_milestones','=', False)]}"/>
+          </xpath>
+      </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record model="ir.ui.view" id="view_task_enhancement_milestone_kanban">
+        <field name="name">project.task.enhancement.milestone.kanban</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]" position="after">
+               <span class="o_value"><field name="milestone_id"/></span>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Gantt View -->
+    <record model="ir.ui.view" id="view_task_enhancement_gantt">
+        <field name="name">project.task.enhancement.milestone.gantt</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <gantt date_start="date_start" date_stop="date_end" progress="progress">
+            </gantt>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record model="ir.ui.view" id="view_task_enhancement_search_milestone_form">
+        <field name="name">project.task.enhancement.milestone.search.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <filter name="company" position="after">
+            <separator/>
+            <filter string="Milestones"
+                    name="milestone_ids"
+                    context="{'group_by':'milestone_id',
+                              'default_order':'sequence'}"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

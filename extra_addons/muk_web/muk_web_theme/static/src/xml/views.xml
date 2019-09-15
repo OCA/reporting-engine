@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Backend Theme 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<templates id="template" xml:space="preserve">
+
+	<t t-name="muk_web_theme.MenuStatusbarButtons">
+        <div class="dropdown">
+            <button class="o_statusbar_buttons_dropdown btn btn-secondary dropdown-toggle" type="button"
+            		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Actions
+            </button>
+        </div>
+    </t>
+    
+    <t t-name="muk_web_theme.IconButton">
+        <i t-attf-class="d-inline d-sm-none fa fa-#{icon}" t-att-title="label"/>
+        <span class="d-none d-sm-inline" t-esc="label"/>
+    </t>
+    
+    <t t-extend="FormView.buttons">
+    	<t t-jquery=".o_form_button_edit" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'pencil'"/>
+                <t t-set="label">Edit</t>
+            </t>
+        </t>
+    	<t t-jquery=".o_form_button_create" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'plus'"/>
+                <t t-set="label">Create</t>
+            </t>
+        </t>
+        <t t-jquery=".o_form_button_save" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'floppy-o'"/>
+                <t t-set="label">Save</t>
+            </t>
+        </t>
+        <t t-jquery=".o_form_button_cancel" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'times'"/>
+                <t t-set="label">Discard</t>
+            </t>
+        </t>
+    </t>
+    
+    <t t-extend="ListView.buttons">
+        <t t-jquery=".o_list_button_add" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'plus'"/>
+                <t t-set="label">Create</t>
+            </t>
+        </t>
+
+        <t t-jquery=".o_list_button_save" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'floppy-o'"/>
+                <t t-set="label">Save</t>
+            </t>
+        </t>
+
+        <t t-jquery=".o_list_button_discard" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'times'"/>
+                <t t-set="label">Discard</t>
+            </t>
+        </t>
+    </t>
+    
+    <t t-extend="KanbanView.buttons">
+        <t t-jquery="button" t-operation="inner">
+            <t t-call="muk_web_theme.IconButton">
+                <t t-set="icon" t-value="'plus'"/>
+                <t t-set="label" t-value="create_text || _t('Create')"/>
+            </t>
+        </t>
+    </t>
+
+</templates>

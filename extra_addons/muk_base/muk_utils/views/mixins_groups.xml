@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Utils 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+<record id="view_mixins_groups_tree" model="ir.ui.view">
+	<field name="name">muk_utils_mixins_groups.tree</field>
+	<field name="model">muk_utils.mixins.groups</field>
+	<field name="arch" type="xml">
+		<tree string="Groups">
+			<field name="name" />
+			<field name="count_users" />
+		</tree>
+	</field>
+</record>
+
+<record id="view_mixins_groups_form" model="ir.ui.view">
+	<field name="name">muk_utils_mixins_groups.form</field>
+	<field name="model">muk_utils.mixins.groups</field>
+	<field name="arch" type="xml">
+		<form string="Group">
+			<sheet>
+				<div class="oe_title">
+					<label for="name" class="oe_edit_only" />
+					<h1>
+						<field name="name" />
+					</h1>
+				</div>
+				<group name="group" string="Group">
+					<group>
+						<field name="parent_group" />
+					</group>
+					<group>
+						<field name="count_users" />
+					</group>
+				</group>
+				<notebook>
+					<page name="users" string="Users">
+						<field name="users">
+							<tree string="Users">
+								<field name="name" />
+								<field name="login" />
+								<field name="lang" />
+								<field name="login_date" />
+							</tree>
+						</field>
+					</page>
+					<page name="groups" string="Groups">
+						<field name="groups">
+							<tree string="Groups">
+								<field name="name" />
+								<field name="comment" />
+							</tree>
+						</field>
+					</page>
+					<page name="extra_users" string="Explicit Users">
+						<field name="explicit_users">
+							<tree string="Explicit Users">
+								<field name="name" />
+								<field name="login" />
+								<field name="lang" />
+								<field name="login_date" />
+							</tree>
+						</field>
+					</page>
+					<page name="childs" string="Child Groups">
+						<field name="child_groups">
+							<tree string="Groups"> 
+								<field name="name" />
+								<field name="count_users" />
+							</tree>
+						</field>
+					</page>
+				</notebook>
+			</sheet>
+		</form>
+	</field>
+</record>
+		
+</odoo>

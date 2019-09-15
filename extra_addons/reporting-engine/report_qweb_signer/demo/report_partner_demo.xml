@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2015 Tecnativa - Antonio Espinosa
+Copyright 2017 Tecnativa - Pedro M. Baeza
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="report_partner_demo_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>This is a sample report for testing PDF certificates.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>Partner:</strong> <span t-field="o.name"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_partner_demo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report_qweb_signer.report_partner_demo_document" t-lang="o.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <report
+            id="partner_demo_report"
+            model="res.partner"
+            string="Test PDF certificate"
+            report_type="qweb-pdf"
+            name="report_qweb_signer.report_partner_demo"
+            file="report_qweb_signer.report_partner_demo"
+            attachment_use="True"
+            attachment="'test_' + (object.name or '').replace(' ', '_').lower() + '.pdf'"
+    />
+
+</odoo>

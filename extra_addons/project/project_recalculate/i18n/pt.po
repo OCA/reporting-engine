@@ -1,0 +1,225 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_recalculate
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-22 01:55+0000\n"
+"PO-Revision-Date: 2017-12-22 01:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
+msgid "Anticipation days from date begin or date end"
+msgstr "Dias de antecedência da data início ou fim"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Are you sure?"
+msgstr "Tem a certeza?"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project__calculation_type
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__calculation_type
+msgid "Calculation type"
+msgstr "Tipo de cálculo"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_project.py:51
+#, python-format
+msgid ""
+"Cannot recalculate project because your project doesn't have calculation "
+"type."
+msgstr ""
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_project.py:59
+#, python-format
+msgid "Cannot recalculate project because your project doesn't have date end."
+msgstr ""
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_project.py:55
+#, python-format
+msgid ""
+"Cannot recalculate project because your project doesn't have date start."
+msgstr ""
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Continue"
+msgstr "Continuar"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: project_recalculate
+#: selection:project.project,calculation_type:0
+msgid "Date begin"
+msgstr "Data início"
+
+#. module: project_recalculate
+#: selection:project.project,calculation_type:0
+msgid "Date end"
+msgstr "Data fim"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Date reference"
+msgstr "Data referência"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__display_name
+msgid "Display Name"
+msgstr "Nome"
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:184
+#, python-format
+msgid "End Date field must be defined."
+msgstr "Data Fim é obrigatória."
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__estimated_days
+msgid "Estimated days"
+msgstr "Dias estimados"
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:32
+#, python-format
+msgid "Estimated days must be greater than 0."
+msgstr "Dias estimados têm que ser maiores que 0."
+
+#. module: project_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task__estimated_days
+msgid "Estimated days to end"
+msgstr "Dias estimados para fim"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__from_days
+msgid "From days"
+msgstr "Desde dias"
+
+#. module: project_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_project__calculation_type
+#: model:ir.model.fields,help:project_recalculate.field_project_recalculate_wizard__calculation_type
+msgid ""
+"How to calculate tasks, with date start or date end references. If not set, "
+"\"Recalculate project\" button is disabled."
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task__include_in_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task_type__include_in_recalculate
+msgid ""
+"If you mark this check, tasks that are in this stage will be selectable for "
+"recalculating their dates when user click on 'Recalculate project' button."
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__include_in_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type__include_in_recalculate
+msgid "Include in project recalculate"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard____last_update
+msgid "Last Modified on"
+msgstr "Modificado a última vez por"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última alteração por"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
+msgid "Project"
+msgstr "Projeto"
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_date
+#, fuzzy
+#| msgid "Project"
+msgid "Project Date"
+msgstr "Projeto"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Project name"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.actions.act_window,name:project_recalculate.wizard_project_recalculate
+msgid "Project recalculate"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
+msgid "Project recalculate wizard"
+msgstr ""
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "Recalculate project"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_resource_calendar
+msgid "Resource Working Time"
+msgstr ""
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:177
+#, python-format
+msgid "Start Date field must be defined."
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_task
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_task_type
+msgid "Task Stage"
+msgstr "Etapa Tarefa"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "This Project task will be recalculated according reference date:"
+msgstr ""

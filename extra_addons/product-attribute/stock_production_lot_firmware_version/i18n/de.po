@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * stock_production_lot_firmware_version
+#
+# Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-27 03:40+0000\n"
+"PO-Revision-Date: 2018-02-27 03:40+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2018\n"
+"Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: stock_production_lot_firmware_version
+#: model:ir.model.fields,field_description:stock_production_lot_firmware_version.field_stock_production_lot__firmware_version
+msgid "Firmware Version"
+msgstr "Firmwareversion"
+
+#. module: stock_production_lot_firmware_version
+#: model:ir.model,name:stock_production_lot_firmware_version.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Charge/Seriennr."

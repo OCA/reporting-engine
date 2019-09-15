@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_stage_state
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Spanish (Costa Rica) (http://www.transifex.com/oca/OCA-"
+"project-8-0/language/es_CR/)\n"
+"Language: es_CR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Done"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "In Progress"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "New"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Pending"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task__state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__state
+msgid "State"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model,name:project_stage_state.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_stage_state
+#: model:ir.model,name:project_stage_state.model_project_task_type
+msgid "Task Stage"
+msgstr ""

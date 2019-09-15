@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="project_project_timeline" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline date_start="date_start"
+                      date_stop="date"
+                      default_group_by="partner_id"
+                      event_open_popup="true"
+            />
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">kanban,timeline,form</field>
+    </record>
+
+    <record id="project_project_form" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                <field name="date_start"/>
+                <field name="date"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="group_product_variant_extended_description" model="res.groups">
+            <field name="name">Use extended description when having product attributes</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+</odoo>

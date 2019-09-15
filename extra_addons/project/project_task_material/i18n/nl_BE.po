@@ -1,0 +1,94 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_material
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2016
+# Sarah Druyts <sarah.druyts@gmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-23 03:43+0000\n"
+"PO-Revision-Date: 2016-12-23 03:43+0000\n"
+"Last-Translator: Sarah Druyts <sarah.druyts@gmail.com>, 2016\n"
+"Language-Team: Dutch (Belgium) (https://www.transifex.com/oca/teams/23907/"
+"nl_BE/)\n"
+"Language: nl_BE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_uid
+msgid "Created by"
+msgstr "Gemaakt door"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_date
+msgid "Created on"
+msgstr "Gemaakt op"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
+msgid "Display Name"
+msgstr "Schermnaam"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
+msgid "Last Modified on"
+msgstr "Laatst Aangepast op"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: project_task_material
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+msgid "Material"
+msgstr ""
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+msgid "Material Used"
+msgstr ""
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__product_id
+msgid "Product"
+msgstr ""
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__quantity
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#. module: project_task_material
+#: code:addons/project_task_material/models/project.py:40
+#, python-format
+msgid "Quantity of material consumed must be greater than 0."
+msgstr ""
+
+#. module: project_task_material
+#: model:ir.model,name:project_task_material.model_project_task
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__task_id
+msgid "Task"
+msgstr ""
+
+#. module: project_task_material
+#: model:ir.model,name:project_task_material.model_project_task_material
+msgid "Task Material Used"
+msgstr ""

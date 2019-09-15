@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_task_form" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="type_id" context="{'default_task_ok': True}" />
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_search" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="type_id" string="Type"/>
+            </field>
+            <group expand="0">
+                <filter string="Type" name="type_id" help="Type" context="{'group_by':'type_id'}"/>
+            </group>
+        </field>
+    </record>
+</odoo>

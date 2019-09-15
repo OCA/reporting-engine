@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_qweb_signer
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Fernando Lara <gennesis45@gmail.com>, 2017
+# enjolras <yo@miguelrevilla.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-16 01:44+0000\n"
+"PO-Revision-Date: 2018-02-16 01:44+0000\n"
+"Last-Translator: enjolras <yo@miguelrevilla.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<span>This is a sample report for testing PDF certificates.</span>"
+msgstr "<span>Informe de ejemplo para probar certificados PDF.</span>"
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<strong>Partner:</strong>"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__allow_only_one
+msgid "Allow only one document"
+msgstr "Sólo un documento"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
+msgid "Certificate file path"
+msgstr "Ruta al certificado"
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_company_form
+msgid "Certificates (PDF signing)"
+msgstr "Certificados (firma PDF)"
+
+#. module: report_qweb_signer
+#: model:ir.model,name:report_qweb_signer.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__domain
+msgid "Domain"
+msgstr "Dominio"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__domain
+msgid "Domain for filtering if sign or not the document"
+msgstr "Dominio para filrar si firmar o no el documento"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__attachment
+msgid ""
+"Filename used to store signed document as attachment. Keep empty to not save "
+"signed document."
+msgstr ""
+"Nombre de fichero usado para guardar el documento firmado como adjunto. "
+"Dejar en blanco para no guardar el documento firmado."
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__allow_only_one
+msgid ""
+"If True, this certificate can not be useb to sign a PDF from several "
+"documents."
+msgstr ""
+"Si Verdadero, este certificado no puede ser usado para firmar un PDF desde "
+"varios documentos."
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
+msgid "Model"
+msgstr "Modelo"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__model_id
+msgid "Model where apply this certificate"
+msgstr "Modelo en el que usar este certificado para firmar"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: report_qweb_signer
+#: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate
+#: model:ir.ui.menu,name:report_qweb_signer.menu_report_certificate
+msgid "PDF certificates"
+msgstr "Certificados PDF"
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_form
+msgid "PDF report certificate"
+msgstr "Certificado de informe PDF"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__report_certificate_ids
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_tree
+msgid "PDF report certificates"
+msgstr "Certificados de informes PDF"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__password_file
+msgid "Password file path"
+msgstr "Ruta al fichero de contraseña"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__path
+msgid "Path to PKCS#12 certificate file"
+msgstr "Ruta al fichero de certificado PKCS#12"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__password_file
+msgid "Path to certificate password file"
+msgstr ""
+"Ruta al fichero que contiene la contraseña con la que se proteje el fichero "
+"de certificado"
+
+#. module: report_qweb_signer
+#: model:ir.model,name:report_qweb_signer.model_ir_actions_report
+#, fuzzy
+#| msgid "Report"
+msgid "Report Action"
+msgstr "Informe"
+
+#. module: report_qweb_signer
+#: model:ir.model,name:report_qweb_signer.model_report_certificate
+#, fuzzy
+#| msgid "report.certificate"
+msgid "Report Certificate"
+msgstr "report.certificate"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__attachment
+msgid "Save as attachment"
+msgstr "Guardar como adjunto"
+
+#. module: report_qweb_signer
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:104
+#, python-format
+msgid ""
+"Saving signed report (PDF): You do not have enough access rights to save "
+"attachments"
+msgstr ""
+"Guardar informe firmado (PDF): no tiene suficientes permisos de acceso para "
+"guardar adjuntos"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: report_qweb_signer
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:122
+#, python-format
+msgid "Signing report (PDF): Certificate or password file not found"
+msgstr "Firmar informes (PDF): Certificado o archivo contraseña no encontrado"
+
+#. module: report_qweb_signer
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:131
+#, python-format
+msgid ""
+"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
+"%s"
+msgstr ""
+"Firmar informes (PDF): jPdfSign falló (código de error: %s). Mensaje: %s. "
+"Salida: %s"
+
+#. module: report_qweb_signer
+#: model:ir.actions.report,name:report_qweb_signer.partner_demo_report
+msgid "Test PDF certificate"
+msgstr "Probar certificado PDF"

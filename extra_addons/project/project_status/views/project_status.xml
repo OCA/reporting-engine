@@ -1,0 +1,40 @@
+<odoo>
+    <!-- Sequences-->
+    <record id="project_status_seq" model="ir.sequence">
+      <field name="name">Project Status Sequence</field>
+      <field name="code">project.status</field>
+      <field name="prefix">0</field>
+      <field name="padding">1</field>
+    </record>
+
+    <!-- List View-->
+    <record id="project_status_view_list" model="ir.ui.view">
+      <field name="name">Project Status List</field>
+      <field name="model">project.status</field>
+      <field name="arch" type="xml">
+        <tree editable="top">
+          <field name="status_sequence"
+                 widget="handle"/>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="fold"/>
+          <field name="is_closed"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Actions opening views on models -->
+    <record id="project_status_action" model="ir.actions.act_window">
+      <field name="name">Project Statuses</field>
+      <field name="res_model">project.status</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem
+      name="Project Statuses"
+      id="project_status_menu"
+      parent="project.menu_project_config"
+      sequence="15"
+      action="project_status_action"/>
+</odoo>

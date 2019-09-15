@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="supplierinfo_duplicate_wizard_view" model="ir.ui.view">
+        <field name="name">Supplierinfo Duplicate</field>
+        <field name="model">product.supplierinfo.duplicate.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div>
+                    Set new start date and variation percent to duplicate.
+                    This process set start date previous day as end date of
+                    origin record.
+                    <br/>
+                    <br/>
+                </div>
+                <group>
+                    <group>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="variation_percent"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Apply" name="action_apply"
+                            type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="supplierinfo_duplicate_wizard_action"
+        name="Duplicate Supplier Info"
+        src_model="product.supplierinfo"
+        res_model="product.supplierinfo.duplicate.wizard"
+        view_type="form" view_mode="form"
+        key2="client_action_multi" target="new"
+    />
+
+</odoo>

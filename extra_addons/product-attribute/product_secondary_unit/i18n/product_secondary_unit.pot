@@ -1,0 +1,100 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_secondary_unit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__code
+msgid "Code"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,help:product_secondary_unit.field_product_product__secondary_uom_ids
+#: model:ir.model.fields,help:product_secondary_unit.field_product_secondary_unit__uom_id
+#: model:ir.model.fields,help:product_secondary_unit.field_product_template__secondary_uom_ids
+msgid "Default Secondary Unit of Measure."
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__id
+msgid "ID"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__name
+msgid "Name"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model,name:product_secondary_unit.model_product_secondary_unit
+msgid "Product Secondary Unit"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model,name:product_secondary_unit.model_product_template
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__product_tmpl_id
+msgid "Product Template"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__factor
+msgid "Secondary Unit Factor"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_product__secondary_uom_ids
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_secondary_unit__uom_id
+#: model:ir.model.fields,field_description:product_secondary_unit.field_product_template__secondary_uom_ids
+msgid "Secondary Unit of Measure"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model_terms:ir.ui.view,arch_db:product_secondary_unit.product_template_form_view
+msgid "secondary Unit"
+msgstr ""
+
+#. module: product_secondary_unit
+#: model_terms:ir.ui.view,arch_db:product_secondary_unit.product_template_form_view
+msgid "secondary unit of measure"
+msgstr ""
+

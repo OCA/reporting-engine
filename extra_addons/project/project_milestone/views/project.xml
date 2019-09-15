@@ -1,0 +1,81 @@
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <!-- List View-->
+    <record id="project_milestone_view_inherit_list" model="ir.ui.view">
+        <field name="name">project.milestone.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="type">tree</field>
+        <field name="field_parent">child_ids</field>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="milestone_ids"/>
+            </field>
+        </field>
+   </record>
+
+    <!-- Form View -->
+    <record id="project_enhancement_milestone_view_inherit_form" model="ir.ui.view">
+        <field name="name">project.milestone.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options_active']" position="inside">
+                <div>
+                    <field name="use_milestones" class="oe_inline"/>
+                    <label for="use_milestones"/>
+                </div>
+            </xpath>
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="milestone_ids" string="Milestones"
+                      attrs="{'invisible':[('use_milestones','=', False)]}">
+                    <group>
+                        <field name="milestone_ids"
+                               context="{'default_project_id': active_id}"
+                               nolabel="1"
+                               domain="[('project_id', '=', active_id)]">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="target_date"/>
+                                <field name="project_task_ids"/>
+                                <field name="progress" widget="progressbar"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Simplified Form View -->
+    <record id="project_enhancement_milestone_view_inherit_simple" model="ir.ui.view">
+        <field name="name">project.milestone.simpleform</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="use_milestones"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="project_enhancements_milestone_inherit_search_view" model="ir.ui.view">
+        <field name="name">project.milestone.filter</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <filter name="inactive" position="before">
+                <filter string="Milestone Projects"
+                        name="milestone_projects"
+                        domain="[('use_milestones', '=', True)]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+</odoo>

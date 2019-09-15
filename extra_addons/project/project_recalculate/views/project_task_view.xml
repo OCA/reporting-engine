@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_task_form2_inherited" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <field name="planned_hours" position="after">
+                <field name="from_days"/>
+                <field name="estimated_days"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

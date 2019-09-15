@@ -1,0 +1,343 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_preview
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190128\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-04 13:26+0000\n"
+"PO-Revision-Date: 2019-03-04 13:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/fields.xml:28
+#, python-format
+msgid "Clear"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/dialog.xml:30
+#, python-format
+msgid "Close"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model,name:muk_web_preview.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:180
+#: code:addons/muk_web_preview/static/src/xml/content.xml:53
+#, python-format
+msgid "Download"
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support RTF files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_rtf
+msgid "Extendes the Preview Dialog to support RTF files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support audio"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_audio
+msgid "Extendes the Preview Dialog to support audio."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support csv files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_csv
+msgid "Extendes the Preview Dialog to support csv files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support image files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_image
+msgid "Extendes the Preview Dialog to support image files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support mails"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_mail
+msgid "Extendes the Preview Dialog to support mails."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support markdown files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_markdown
+msgid "Extendes the Preview Dialog to support markdown files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support office files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_msoffice
+msgid "Extendes the Preview Dialog to support office files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support open document files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_opendocument
+msgid "Extendes the Preview Dialog to support open document files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support reStructuredText"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_rst
+msgid "Extendes the Preview Dialog to support reStructuredText."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support text files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_text
+msgid "Extendes the Preview Dialog to support text files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support vector files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_vector
+msgid "Extendes the Preview Dialog to support vector files."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Extendes the Preview Dialog to support video files"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,help:muk_web_preview.field_res_config_settings__module_muk_web_preview_video
+msgid "Extendes the Preview Dialog to support video files."
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/content.xml:43
+#, python-format
+msgid "Filename:"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:82
+#, python-format
+msgid "Loading"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:83
+#, python-format
+msgid "Loading ."
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:84
+#, python-format
+msgid "Loading .."
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:81
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:85
+#, python-format
+msgid "Loading ..."
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/dialog.xml:33
+#, python-format
+msgid "Maximize"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/content.xml:47
+#, python-format
+msgid "Mimetype:"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/dialog.xml:36
+#, python-format
+msgid "Minimize"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:127
+#, python-format
+msgid "Next"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/dialog.xml:27
+#, python-format
+msgid "Preview"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_audio
+msgid "Preview Audio"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_csv
+msgid "Preview CSV"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_image
+msgid "Preview Image"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_msoffice
+msgid "Preview MS Office"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_mail
+msgid "Preview Mail"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_markdown
+msgid "Preview Markdown"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_opendocument
+msgid "Preview Open Document"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_rtf
+msgid "Preview RTF"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_rst
+msgid "Preview ReStructuredText"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_text
+msgid "Preview Text"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_vector
+msgid "Preview Vector"
+msgstr ""
+
+#. module: muk_web_preview
+#: model:ir.model.fields,field_description:muk_web_preview.field_res_config_settings__module_muk_web_preview_video
+msgid "Preview Video"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:119
+#, python-format
+msgid "Previous"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/js/widgets/manager.js:188
+#, python-format
+msgid "Print"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/fields.xml:26
+#: code:addons/muk_web_preview/static/src/xml/fields.xml:27
+#, python-format
+msgid "Select"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/content.xml:39
+#, python-format
+msgid "Unsupported File"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/fields.xml:26
+#, python-format
+msgid "Upload your file"
+msgstr ""
+
+#. module: muk_web_preview
+#. openerp-web
+#: code:addons/muk_web_preview/static/src/xml/fields.xml:25
+#, python-format
+msgid "Uploading..."
+msgstr ""
+
+#. module: muk_web_preview
+#: model_terms:ir.ui.view,arch_db:muk_web_preview.res_config_settings_view_form
+msgid "Web Previews"
+msgstr ""
+

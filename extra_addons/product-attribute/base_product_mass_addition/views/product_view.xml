@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_product_tree_view" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field eval="20" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Products" create="0" editable="top">
+                <field name="lst_price" readonly="1"/>
+                <field name="categ_id" readonly="1"/>
+                <field name="display_name" readonly="1"/>
+                <field name="qty_to_process"/>
+                <field name="incoming_qty"/>
+                <field name="qty_available"/>
+                <button name="button_quick_open_product" string="Open" type="object"/>
+            </tree>
+        </field>
+    </record>
+    <record id="product_search_form_view" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_search_form_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[last()]" position="after">
+                <separator/>
+                <filter name="filter_in_current_parent_object"
+                    string="In current parent" domain="[]"
+                    context="{'in_current_parent': True}"
+                    help="Filter products in current parent"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

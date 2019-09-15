@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Utils 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+<record id="view_attachment_search" model="ir.ui.view">
+	<field name="name">ir_attachment.search</field>
+	<field name="model">ir.attachment</field>
+	<field name="inherit_id" ref="base.view_attachment_search"/>
+    <field name="arch" type="xml">
+        <xpath expr="//filter[@name='url_filter']" position="before">
+        	 <separator/>
+        	 <filter name="all" string="All Data" domain="['|',('res_field', '=', False),('res_field', '!=', False)]"/>
+        	 <filter name="set_res_field" string="Field Data" domain="[('res_field', '!=', False)]"/>
+        	 <filter name="no_res_field" string="Attachments" domain="[('res_field', '=', False)]"/>
+        	 <separator/>
+        </xpath>
+         <xpath expr="//group//filter[last()]" position="before">
+        	 <separator/>
+        	 <filter name="group_res_model" string="Attached Document Model"  context="{'group_by': 'res_model'}" />
+        	 <filter name="group_res_field" string="Attached Document Field" context="{'group_by': 'res_field'}" />
+        </xpath>
+	</field>
+</record>
+
+<record id="view_attachment_tree" model="ir.ui.view">
+	<field name="name">ir_attachment.tree</field>
+    <field name="model">ir.attachment</field>
+    <field name="inherit_id" ref="base.view_attachment_tree"/>
+    <field name="arch" type="xml">
+    	<xpath expr="//field[@name='datas_fname']" position="after">
+        	 <field name="mimetype" />
+        </xpath>
+    </field>
+</record>
+
+<record id="view_attachment_form" model="ir.ui.view">
+	<field name="name">ir_attachment.form</field>
+    <field name="model">ir.attachment</field>
+    <field name="inherit_id" ref="base.view_attachment_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='description_group']" position="before">
+        	 <group string="Storage" name="storage" groups="base.group_no_one">
+                  <field name="db_datas" readonly="1" attrs="{'invisible':[('db_datas','=',False)]}"/>
+                  <field name="store_fname" readonly="1" attrs="{'invisible':[('store_fname','=',False)]}"/>
+              </group>
+        </xpath>
+    </field>
+</record>
+
+</odoo>

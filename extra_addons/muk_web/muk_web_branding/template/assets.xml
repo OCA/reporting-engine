@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Web Branding 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+	<template id="_assets_primary_variables" name="Colors" inherit_id="web._assets_primary_variables" priority="15">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_branding/static/src/scss/primary_colors.scss"/>
+        </xpath>
+    </template>
+    
+    <template id="_assets_secondary_variables" name="Colors" inherit_id="web._assets_secondary_variables" priority="15">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_branding/static/src/scss/secondary_colors.scss"/>
+        </xpath>
+    </template>
+    
+    <template id="_assets_backend_helpers" name="Colors" inherit_id="web._assets_backend_helpers" priority="10">
+        <xpath expr="//link[@href='/web/static/src/scss/bootstrap_overridden.scss']" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_branding/static/src/scss/bootstrap_colors.scss"/>
+        </xpath>
+    </template>
+
+	<template id="assets_backend" name="Backend Assets" inherit_id="web.assets_backend">
+		<xpath expr="//script[last()]" position="after">
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/core/client.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/core/dialog.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/chrome/bus.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/chrome/menu.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/fields/upgrade.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/views/dashboard.js"/>
+	        <script type="text/javascript" src="/muk_web_branding/static/src/js/views/res_config_settings.js"/>
+	    </xpath>
+	</template>
+</odoo>

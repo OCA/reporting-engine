@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_role
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-07-12 15:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:55
+#, python-format
+msgid "%s as %s on %s"
+msgstr "%s als %s für %s"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Project Roles</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Projektrollen</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Die hier gesetzten Werte sind firmenspezifisch.\" role=\"img\" aria-label="
+"\"Die hier gesetzten Werte sind firmenspezifisch.\" groups=\"base."
+"group_multi_company\"/>"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
+msgid "Action Needed"
+msgstr "Aktion benötigt"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_ids
+msgid "Activities"
+msgstr "Aktivitäten"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_state
+msgid "Activity State"
+msgstr "Aktivitätsstatus"
+
+#. module: project_role
+#: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
+#: model:ir.ui.menu,name:project_role.menu_project_assignments
+#: model_terms:ir.ui.view,arch_db:project_role.edit_project
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Assignments"
+msgstr "Rollenzuweisungen"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_attachment_count
+msgid "Attachment Count"
+msgstr "Anhangsanzahl"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
+#: model:ir.model.fields,field_description:project_role.field_project_role__company_id
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Configure set of roles, available on projects."
+msgstr "Bitte Projektrollen für Projekte konfigurieren."
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__create_uid
+#: model:ir.model.fields,field_description:project_role.field_project_role__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__create_date
+#: model:ir.model.fields,field_description:project_role.field_project_role__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_role__description
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__display_name
+#: model:ir.model.fields,field_description:project_role.field_project_role__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_follower_ids
+msgid "Followers"
+msgstr "Abonnenten"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Abonnenten (Kanäle)"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnenten (Partner)"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Group By"
+msgstr "Gruppieren nach"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__id
+#: model:ir.model.fields,field_description:project_role.field_project_role__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Wenn es gesetzt ist, erfordern neue Nachrichten Ihre Aufmerksamkeit."
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Wenn es gesetzt ist, erfordern neue Nachrichten Ihre Aufmerksamkeit."
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+"Wenn es gesetzt ist, gibt es einige Nachrichten mit einem Übertragungsfehler."
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
+msgid "Is Follower"
+msgstr "Ist Abonnent"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
+#: model:ir.model.fields,field_description:project_role.field_project_role____last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__write_uid
+#: model:ir.model.fields,field_description:project_role.field_project_role__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__write_date
+#: model:ir.model.fields,field_description:project_role.field_project_role__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Haupt-Anhang"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error
+msgid "Message Delivery error"
+msgstr "Nachrichten-Übertragungsfehler"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_ids
+msgid "Messages"
+msgstr "Nachrichten"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "My Assignments"
+msgstr "Meine Rollenzuweisungen"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__name
+#: model:ir.model.fields,field_description:project_role.field_project_role__name
+msgid "Name"
+msgstr "Bezeichnung"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Frist für die nächste Aktivität"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_summary
+msgid "Next Activity Summary"
+msgstr "Zusammenfassung der nächsten Aktivität"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_type_id
+msgid "Next Activity Type"
+msgstr "Typ der nächsten Aktivität"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Anzahl der Aktionen"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error_counter
+msgid "Number of error"
+msgstr "Anzahl der Fehler"
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Dies ist die Anzahl von Nachrichten, die eine Aktion benötigen."
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Dies ist die Anzahl von Nachrichten mit einem Übertragungsfehler."
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Dies ist die Anzahl von ungelesenen Nachrichten."
+
+#. module: project_role
+#: selection:project.assignment,activity_state:0
+msgid "Overdue"
+msgstr "Überfällig"
+
+#. module: project_role
+#: selection:project.assignment,activity_state:0
+msgid "Planned"
+msgstr "Geplant"
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_project_assignment
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_pivot
+msgid "Project Assignment"
+msgstr "Projekt-Rollenzuweisung"
+
+#. module: project_role
+#: model:ir.actions.act_window,name:project_role.project_assignment_view_all_action
+#: model:ir.model.fields,field_description:project_role.field_project_project__assignment_ids
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_tree
+msgid "Project Assignments"
+msgstr "Projekt-Rollenzuweisungen"
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
+msgid "Project Role"
+msgstr "Projektrolle"
+
+#. module: project_role
+#: model:ir.actions.act_window,name:project_role.company_project_roles_action
+#: model:ir.ui.menu,name:project_role.project_menu_config_roles
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_tree
+msgid "Project Roles"
+msgstr "Projektrollen"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_user_id
+msgid "Responsible User"
+msgstr "Verantwortlicher Benutzer"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Role"
+msgstr "Rolle"
+
+#. module: project_role
+#: code:addons/project_role/models/project_role.py:52
+#, python-format
+msgid "Role \"%s\" conflicts with another role due to same name."
+msgstr ""
+"Die Rolle \"%s\" steht im Konflikt mit einer anderen Rolle, die denselben "
+"Namen hat."
+
+#. module: project_role
+#: sql_constraint:project.role:0
+msgid "Role with such name already exists in the company!"
+msgstr "Eine Rolle mit demselben Namen existiert in dem Unternehmen bereits!"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Roles &amp; Assignments"
+msgstr "Rollen und Zuweisungen"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Setup project roles"
+msgstr "Projektrollen anlegen"
+
+#. module: project_role
+#: sql_constraint:project.role:0
+msgid "Shared role with such name already exists!"
+msgstr "Eine geteilte Rolle mit diesem Namen existiert bereits!"
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__activity_state
+msgid "Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Der Status hängt von den Aktivitäten ab.\n"
+"Überfällig: Das Fälligkeitsdatum der Aktivität ist überschritten.\n"
+"Heute: Die Aktivität findet heute statt.\n"
+"Geplant: Die Aktivitäten findet in der Zukunft statt."
+
+#. module: project_role
+#: selection:project.assignment,activity_state:0
+msgid "Today"
+msgstr "Heute"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread
+msgid "Unread Messages"
+msgstr "Ungelesene Nachrichten"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Zähler für ungelesene Nachrichten"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__user_id
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "User"
+msgstr "Benutzer"
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:66
+#, python-format
+msgid "User %s can not be assigned to role %s."
+msgstr "Der Benutzer %s kann der Rolle %s nicht zugewiesen werden."
+
+#. module: project_role
+#: sql_constraint:project.assignment:0
+msgid "User may be assigned per role only once within a project!"
+msgstr ""
+"Der Benutzer sollte einer Rolle innerhalb eines Projekts nur einmal "
+"zugewiesen sein!"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
+msgid "Website Messages"
+msgstr "Website-Nachrichten"
+
+#. module: project_role
+#: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
+msgid "Website communication history"
+msgstr "Website-Kommunikationshistorie"

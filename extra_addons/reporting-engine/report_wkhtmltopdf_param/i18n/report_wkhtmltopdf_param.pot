@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_wkhtmltopdf_param
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__custom_params
+msgid "Custom Parameters"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__custom_params
+msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:42
+#, python-format
+msgid "Failed to create a PDF using the provided parameters."
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__id
+msgid "ID"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
+msgid "Name"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__paperformat_id
+msgid "Paper Format"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
+msgid "Paper Format Config"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
+msgid "The command argument name. Remember to add prefix -- or -"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__value
+msgid "Value"
+msgstr ""
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
+msgid "wkhtmltopdf parameters"
+msgstr ""
+

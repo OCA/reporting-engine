@@ -1,0 +1,130 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Backend Theme 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_apps_sidebar_panel {
+    height: calc(100% - #{$o-navbar-height}); 
+	position: fixed; 
+    overflow-y: auto;	
+    top: $o-navbar-height;
+    background-color: $mk-appbar-background;
+    .mk_apps_sidebar {
+	    padding: 0;
+	    white-space: nowrap;
+	    .mk_apps_sidebar_menu {
+		    list-style: none;
+		    margin: 0;
+		    padding: 0;
+		    > li {
+		        margin: 0;
+		        padding: 0;
+		        border: 0px;
+		        display: block;
+		        > a {
+		            margin: 0;
+		            border: 0px;
+		            display: block;
+		            cursor: pointer;
+		            font-size: 13px;
+		            font-weight: 300;
+		            overflow: hidden;
+		            padding: 8px 11px;
+		            position: relative;
+		            text-decoration: none;
+		            color: $mk-appbar-color;
+		            text-overflow: ellipsis;
+		            .mk_apps_sidebar_icon {
+					    width: 22px;
+					    height: 22px;
+					    margin-right: 5px;
+					}
+		        }
+		    }
+	        > li:hover > a {
+			    background: $o-brand-primary;
+	        }
+	    }
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.mk_sidebar_type_large {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-large-width;
+		}
+		.o_main {
+			padding-left: $mk-sidebar-large-width;
+		}
+	}
+	.mk_sidebar_type_small {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-small-width;
+			.mk_apps_sidebar_name {
+				display: none;
+			}
+		}
+		.o_main {
+			padding-left: $mk-sidebar-small-width;
+		}
+	}
+	.mk_sidebar_type_invisible {
+		.mk_apps_sidebar_panel {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-only(md) {
+	.mk_sidebar_type_large, .mk_sidebar_type_small {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-small-width;
+			.mk_apps_sidebar_name {
+				display: none;
+			}
+		}
+		.o_main {
+			padding-left: $mk-sidebar-small-width;
+		}
+	}
+	.mk_sidebar_type_invisible {
+		.mk_apps_sidebar_panel {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.mk_apps_sidebar_panel {
+		display: none;
+	}
+	.o_main {
+		padding-left: 0;
+	}
+}
+
+.o_fullscreen {
+	.mk_apps_sidebar_panel {
+		display: none;
+	}
+	.o_main {
+		padding-left: 0;
+	}
+}

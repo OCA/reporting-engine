@@ -1,0 +1,66 @@
+<odoo>
+  <!-- Form View -->
+  <record id="project_template_view_inherit_form" model="ir.ui.view">
+    <field name="name">project.template.form</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+          <button string="Create Project From Template"
+                  type="object"
+                  name="create_project_from_template"
+                  class="oe_highlight"
+                  attrs="{'invisible': [('is_template', '=', False)]}"/>
+        </xpath>
+        <xpath expr="//div[@name='options_active']" position="inside">
+          <div>
+            <field name="is_template" class="oe_inline" string="Is Template?"/>
+            <label for="is_template"/>
+          </div>
+        </xpath>
+    </field>
+  </record>
+
+  <!-- Kanban View -->
+  <record id="project_template_view_inherit_kanban" model="ir.ui.view">
+    <field name="name">project.template.kanban</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_kanban"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('o_kanban_card_manage_section')]" position="inside">
+          <field name="is_template" invisible="1"/>
+          <div t-if="record.is_template.raw_value" role="menuitem">
+              <a name="create_project_from_template" type="object">Create Project from Template</a>
+          </div>
+        </xpath>
+    </field>
+  </record>
+
+  <!-- Search View -->
+  <record id="project_template_view_inherit_search" model="ir.ui.view">
+    <field name="name">project.template.filter</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_project_filter"/>
+    <field name="arch" type="xml">
+      <filter name="inactive" position="before">
+        <filter string="Templates"
+                name="templates"
+                domain="[('is_template', '=', True)]"/>
+        <filter string="Non-Templates"
+                name="projects"
+                domain="[('is_template', '=', False)]"/>
+        <separator/>
+      </filter>
+
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="project.open_view_project_all">
+    <field name="name">Projects</field>
+    <field name="res_model">project.project</field>
+    <field name="view_id" ref="project.view_project_kanban"/>
+    <field name="view_mode">kanban,form,tree</field>
+    <field name="context">{"search_default_projects":1, "search_default_not_closed":1}</field>
+  </record>
+</odoo>

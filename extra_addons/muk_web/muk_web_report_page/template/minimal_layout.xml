@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Report Page 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+<template id="minimal_layout" name="Report Layout" inherit_id="web.minimal_layout">
+	<xpath expr="//body/t[@t-raw='body']" position="after">
+		<script>
+			function checkPagenumbers() {
+				var topages = document.getElementsByClassName("topage");
+			  	Array.prototype.forEach.call(topages, function(topage) {
+					if(topage.innerHTML == 1) {
+						topage.parentElement.style.display = "none"; 
+					}
+				});
+			}
+			var prev_handler = window.onload;
+			window.onload = function() {
+				if (typeof prev_handler === 'function') { 
+					prev_handler();
+				}
+				checkPagenumbers();
+			};
+		</script>
+	</xpath>
+</template>
+
+</odoo>

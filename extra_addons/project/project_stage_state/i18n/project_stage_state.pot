@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_stage_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Done"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "In Progress"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "New"
+msgstr ""
+
+#. module: project_stage_state
+#: selection:project.task.type,state:0
+msgid "Pending"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task__state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__state
+msgid "State"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model,name:project_stage_state.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model,name:project_stage_state.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+

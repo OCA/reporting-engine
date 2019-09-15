@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Specialty Medical Drugstore
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form.pr</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="before">
+                <field name="pr_required_states" attrs="{'invisible':True}"/>
+                <field name="pr_uri"
+                       widget="url"
+                       attrs="{'invisible':[('pr_required_states', '=', [])]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='misc']" position="inside">
+                <group string="Pull Request URIs">
+                    <field name="pr_required_states" widget="many2many_checkboxes" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

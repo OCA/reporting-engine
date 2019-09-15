@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="edit_project_extend_with_key" model="ir.ui.view">
+        <field name="name">project.edit.project.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="key" required="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_extend_with_key" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="key" required="0" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter_extend_with_key" model="ir.ui.view">
+        <field name="name">project.project.select</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|',('name','ilike',self),('key','ilike',self)]</attribute>
+             </field>
+        </field>
+    </record>
+
+    <record id="view_task_form2_extend_with_key" model="ir.ui.view">
+        <field name="name">project.task.form.key</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="key" readonly="1" nolabel="1" class="oe_read_only"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_tree2_extend_with_key" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="key"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_search_key" model="ir.ui.view">
+        <field name="name">project.task.search.key</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|',('name','ilike',self),('key','ilike',self)]</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_task_kanban_key">
+        <field name="name">project.task.kanban.key</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field name="url"/>
+                <field name="key"/>
+            </field>
+
+            <xpath expr="//t[@t-name='kanban-box']//field[@name='name']/parent::strong" position="before">
+                <a t-att-href="record.url.raw_value"><field name="key"/></a>
+            </xpath>
+
+        </field>
+     </record>
+
+    <record id="project_project_view_form_simplified" model="ir.ui.view">
+        <field name="name">project.project.view.form.simplified</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+        <field name="arch" type="xml">
+            <div name="alias_def" position="after">
+                <field name="key"/>
+            </div>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_project_kanban_details">
+        <field name="name">project.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="key"/>
+            </field>
+
+            <xpath expr="//t[@t-esc='record.name.value']" position="before">
+                <t t-esc="record.key.value"/>  -
+            </xpath>
+        </field>
+    </record>
+</odoo>

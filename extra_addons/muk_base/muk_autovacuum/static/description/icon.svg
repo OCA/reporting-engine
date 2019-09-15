@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Gravit.io -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 250 250" width="250" height="250">
+   <defs>
+      <filter id="6h5zhs6EsmCdYqoDWpQdye92PuVIAFlM" x="-200%" y="-200%" width="400%" height="400%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+         <feOffset in="SourceGraphic" dx="0" dy="3" />
+         <feGaussianBlur stdDeviation="2.146804531419514" result="pf_100_offsetBlur" />
+         <feComposite in="SourceGraphic" in2="pf_100_offsetBlur" result="pf_100_inverse" operator="out" />
+         <feFlood flood-color="#FFFFFF" flood-opacity="0.5" result="pf_100_color" />
+         <feComposite in="pf_100_color" in2="pf_100_inverse" operator="in" result="pf_100_shadow" />
+         <feComposite in="pf_100_shadow" in2="SourceGraphic" operator="over" result="_out_uR74cLfpCM9hl8SPG68bUNeAvlHMO7D6" />
+         <feOffset in="_out_uR74cLfpCM9hl8SPG68bUNeAvlHMO7D6" dx="0" dy="-3" />
+         <feGaussianBlur stdDeviation="2.146804531419514" result="pf_101_offsetBlur" />
+         <feComposite in="_out_uR74cLfpCM9hl8SPG68bUNeAvlHMO7D6" in2="pf_101_offsetBlur" result="pf_101_inverse" operator="out" />
+         <feFlood flood-color="#000000" flood-opacity="0.5" result="pf_101_color" />
+         <feComposite in="pf_101_color" in2="pf_101_inverse" operator="in" result="pf_101_shadow" />
+         <feComposite in="pf_101_shadow" in2="_out_uR74cLfpCM9hl8SPG68bUNeAvlHMO7D6" operator="over" result="_out_Oq5ydn0Hq6rxbDiq5dZm4MzQyVH9DQcs" />
+         <feMerge>
+            <feMergeNode in="_out_Oq5ydn0Hq6rxbDiq5dZm4MzQyVH9DQcs" />
+         </feMerge>
+      </filter>
+   </defs>
+   <g filter="url(#6h5zhs6EsmCdYqoDWpQdye92PuVIAFlM)">
+      <path d="M 15 0 L 235 0 C 243.279 0 250 6.721 250 15 L 250 235 C 250 243.279 243.279 250 235 250 L 15 250 C 6.721 250 0 243.279 0 235 L 0 15 C 0 6.721 6.721 0 15 0 Z" style="stroke:none;fill:#243742;stroke-miterlimit:10;" />
+   </g>
+   <defs>
+      <filter id="3ix5SvWnYst0fHrBWMeRNC0a7ShQ7jfe" x="-200%" y="-200%" width="400%" height="400%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+         <feGaussianBlur in="SourceGraphic" stdDeviation="2.146804531419514" />
+         <feOffset dx="-5" dy="5" result="pf_100_offsetBlur" />
+         <feFlood flood-color="#000000" flood-opacity="0.5" />
+         <feComposite in2="pf_100_offsetBlur" operator="in" result="pf_100_dropShadow" />
+         <feBlend in="SourceGraphic" in2="pf_100_dropShadow" mode="normal" />
+      </filter>
+   </defs>
+   <g filter="url(#3ix5SvWnYst0fHrBWMeRNC0a7ShQ7jfe)">
+      <path d=" M 114.779 103.281 L 114.779 172.271 C 114.779 174.388 113.063 176.104 110.946 176.104 L 103.281 176.104 C 101.164 176.104 99.448 174.388 99.448 172.271 L 99.448 103.281 C 99.448 101.164 101.164 99.448 103.281 99.448 L 110.946 99.448 C 113.063 99.448 114.779 101.164 114.779 103.281 Z  M 146.719 99.448 L 139.054 99.448 C 136.937 99.448 135.221 101.164 135.221 103.281 L 135.221 172.271 C 135.221 174.388 136.937 176.104 139.054 176.104 L 146.719 176.104 C 148.836 176.104 150.552 174.388 150.552 172.271 L 150.552 103.281 C 150.552 101.164 148.836 99.448 146.719 99.448 Z  M 188.88 68.786 C 193.113 68.786 196.545 72.218 196.545 76.452 L 196.545 80.284 C 196.545 82.401 194.829 84.117 192.712 84.117 L 186.324 84.117 L 186.324 191.435 C 186.324 199.902 179.461 206.766 170.993 206.766 L 79.007 206.766 C 70.539 206.766 63.676 199.902 63.676 191.435 L 63.676 84.117 L 57.288 84.117 C 55.171 84.117 53.455 82.401 53.455 80.284 L 53.455 76.452 C 53.455 72.218 56.887 68.786 61.12 68.786 L 84.887 68.786 L 95.752 50.677 C 98.523 46.06 103.514 43.234 108.899 43.234 L 141.101 43.234 C 146.487 43.234 151.477 46.06 154.248 50.677 L 165.113 68.786 L 188.88 68.786 Z  M 102.766 68.786 L 147.234 68.786 L 141.66 59.496 C 141.313 58.918 140.69 58.565 140.016 58.565 L 109.984 58.565 C 109.311 58.565 108.687 58.918 108.341 59.496 L 102.766 68.786 Z  M 170.993 84.117 L 79.007 84.117 L 79.007 189.518 C 79.007 190.577 79.865 191.435 80.923 191.435 L 169.077 191.435 C 170.135 191.435 170.993 190.577 170.993 189.518 L 170.993 84.117 Z " id="trash-alt-regular" fill="rgb(255,255,255)" />
+   </g>
+</svg>

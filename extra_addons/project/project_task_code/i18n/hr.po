@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_code
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Bole <bole@dajmi5.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-28 08:33+0000\n"
+"PO-Revision-Date: 2017-04-28 08:33+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
+"Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. module: project_task_code
+#: model:ir.model,name:project_task_code.model_project_task
+msgid "Task"
+msgstr "Zadatak"
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__code
+msgid "Task Number"
+msgstr "Broj zadatka"
+
+#. module: project_task_code
+#: code:addons/project_task_code/models/project_task.py:21
+#: sql_constraint:project.task:0
+#, python-format
+msgid "The code must be unique!"
+msgstr "Šifra mora biti jedinstvena!"

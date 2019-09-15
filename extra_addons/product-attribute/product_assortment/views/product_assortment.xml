@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="product_assortment_view_search" model="ir.ui.view">
+        <field name="name">product.assortment.search</field>
+        <field name="model">ir.filters</field>
+            <field name="arch" type="xml">
+                <search string="Assortments">
+                    <field name="name" string="Assortment Name"/>
+                    <field name="model_id"/>
+                </search>
+            </field>
+    </record>
+
+    <record id="product_assortment_view_tree" model="ir.ui.view">
+        <field name="model">ir.filters</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_assortment_view_form" model="ir.ui.view">
+        <field name="model">ir.filters</field>
+        <field name="arch" type="xml">
+            <form string="Filters">
+                <sheet>
+                    <div class="oe_button_box" name="buttons">
+                        <button class="oe_stat_button"
+                                name="show_products" type="object">
+                            <div class="o_stat_info">
+                                <field name="record_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Products</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group col="4">
+                        <field name="name" string="Assortment Name"/>
+                        <field name="model_id" invisible="1"/>
+                        <field name="active"/>
+                        <field name="is_assortment" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="domain" widget="char_domain" options="{'model_field': 'model_id'}"/>
+                    </group>
+                    <group name="filters">
+                        <div name="to_include">
+                            <separator string="Products to include"/>
+                            <field name="whitelist_product_ids" context="{'default_type': 'whitelist'}" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="display_name" string="Product"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <div name="to_exclude">
+                            <separator string="Products to exclude"/>
+                            <field name="blacklist_product_ids" context="{'default_type': 'blacklist'}" nolabel="1">
+                                <tree>
+                                    <field name="display_name" string="Product"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="actions_product_assortment_view" model="ir.actions.act_window">
+        <field name="name">Product assortment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.filters</field>
+        <field name="domain">[('is_assortment', '=', True)]</field>
+        <field name="context">{'product_assortment': True,
+                               'default_is_assortment': 1}</field>
+        <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('product_assortment_view_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('product_assortment_view_form')})]"/>
+    </record>
+
+    <menuitem name="Product Assortment"
+        id="menu_product_assortments" action="actions_product_assortment_view"
+              sequence="5"/>
+</odoo>

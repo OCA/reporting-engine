@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_code
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-14 05:34+0000\n"
+"PO-Revision-Date: 2017-01-14 05:34+0000\n"
+"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_code
+#: model:ir.model,name:project_task_code.model_project_task
+msgid "Task"
+msgstr "Taak"
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__code
+msgid "Task Number"
+msgstr "Taaknummer"
+
+#. module: project_task_code
+#: code:addons/project_task_code/models/project_task.py:21
+#: sql_constraint:project.task:0
+#, python-format
+msgid "The code must be unique!"
+msgstr "De taaknummer moet uniek zijn!"

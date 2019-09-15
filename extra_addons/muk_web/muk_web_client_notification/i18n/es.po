@@ -1,0 +1,147 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_client_notification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-25 13:43+0000\n"
+"PO-Revision-Date: 2019-06-25 13:43+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_web_client_notification
+#: code:addons/muk_web_client_notification/wizards/send_notifications.py:80
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__action_id
+#, python-format
+msgid "Action"
+msgstr "Acción"
+
+#. module: muk_web_client_notification
+#: model_terms:ir.ui.view,arch_db:muk_web_client_notification.send_notifications_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: muk_web_client_notification
+#: code:addons/muk_web_client_notification/wizards/send_notifications.py:86
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__close
+#, python-format
+msgid "Close"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model,name:muk_web_client_notification.model_bus_bus
+msgid "Communication Bus"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__id
+msgid "ID"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,help:muk_web_client_notification.field_muk_web_client_notification_send_notifications__action_id
+msgid "If an action is set a button to call it is added to the notification."
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,help:muk_web_client_notification.field_muk_web_client_notification_send_notifications__user_ids
+msgid "If no user is selected, the message is sent globally to all users."
+msgstr ""
+
+#. module: muk_web_client_notification
+#: code:addons/muk_web_client_notification/models/res_users.py:57
+#: selection:muk_web_client_notification.send_notifications,type:0
+#, python-format
+msgid "Information"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__message
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: muk_web_client_notification
+#: model_terms:ir.ui.view,arch_db:muk_web_client_notification.res_config_settings_view_form
+msgid "Notify Users"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model_terms:ir.ui.view,arch_db:muk_web_client_notification.send_notifications_view_form
+msgid "Send"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.actions.act_window,name:muk_web_client_notification.act_send_notifications
+#: model_terms:ir.ui.view,arch_db:muk_web_client_notification.send_notifications_view_form
+msgid "Send Notifications"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__sticky
+msgid "Sticky"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__title
+msgid "Title"
+msgstr "Título"
+
+#. module: muk_web_client_notification
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: muk_web_client_notification
+#: model:ir.model,name:muk_web_client_notification.model_res_users
+#: model:ir.model.fields,field_description:muk_web_client_notification.field_muk_web_client_notification_send_notifications__user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: muk_web_client_notification
+#: code:addons/muk_web_client_notification/models/res_users.py:61
+#: selection:muk_web_client_notification.send_notifications,type:0
+#, python-format
+msgid "Warning"
+msgstr ""
+
+#. module: muk_web_client_notification
+#: model:ir.model,name:muk_web_client_notification.model_muk_web_client_notification_send_notifications
+msgid "muk_web_client_notification.send_notifications"
+msgstr ""
+

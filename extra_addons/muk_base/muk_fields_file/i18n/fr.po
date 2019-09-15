@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_fields_file
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-12 23:49+0000\n"
+"PO-Revision-Date: 2019-07-12 23:49+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_autovacuum
+msgid "Automatic Vacuum"
+msgstr ""
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_base
+msgid "Base"
+msgstr ""
+
+#. module: muk_fields_file
+#: model:ir.model.fields,field_description:muk_fields_file.field_ir_model_fields__ttype
+msgid "Field Type"
+msgstr "Type de Champ"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_model_fields
+msgid "Fields"
+msgstr "Champs"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_http
+msgid "HTTP Routing"
+msgstr "Routage HTTP"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "binary"
+msgstr "binaire"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "boolean"
+msgstr "booléen"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "char"
+msgstr "caractère"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "date"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "datetime"
+msgstr "date/heure"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "file"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "float"
+msgstr "flottant"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "html"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "integer"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "many2many"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "many2one"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "monetary"
+msgstr "monétaire"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "one2many"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "reference"
+msgstr "référence"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "selection"
+msgstr "sélection"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "text"
+msgstr "texte"
+

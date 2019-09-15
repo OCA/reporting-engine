@@ -1,0 +1,161 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_milestone
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-07-09 13:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
+
+#. module: project_milestone
+#: model:ir.ui.menu,name:project_milestone.milestone_configuration_menu
+msgid "All Milestones"
+msgstr "Alle Meilensteine"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_project__use_milestones
+#: model:ir.model.fields,help:project_milestone.field_project_task__use_milestones
+msgid "Does this project use milestones?"
+msgstr ""
+"Wenn der Haken gesetzt ist, werden Meilensteine für dieses Projekt verwendet."
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+msgid "Group By"
+msgstr "Gruppieren nach"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__fold
+msgid "Kanban Folded?"
+msgstr "in Kanban eingeklappt?"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
+msgid "Milestone"
+msgstr "Meilenstein"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+msgid "Milestone Form"
+msgstr "Meilenstein-Formular"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
+msgid "Milestone Projects"
+msgstr "Meilenstein-Projekte"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestone_id
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
+msgid "Milestones"
+msgstr "Meilensteine"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+msgid "Name"
+msgstr "Bezeichnung"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__progress
+msgid "Percentage of Completed Tasks vs Incomplete Tasks."
+msgstr ""
+"Die ist der prozentuale Anteil erledigter vs. nicht-erledigter Aufgaben."
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__progress
+msgid "Progress"
+msgstr "Fortschritt"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_project
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_milestone
+msgid "Project Milestone"
+msgstr "Projekt-Meilenstein"
+
+#. module: project_milestone
+#: model:ir.actions.act_window,name:project_milestone.project_milestone_action
+msgid "Project Milestones"
+msgstr "Projekt-Meilensteine"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_task_ids
+msgid "Project Tasks"
+msgstr "Projektaufgaben"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__sequence
+msgid "Sequence"
+msgstr "Sequenz"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__target_date
+msgid "Target Date"
+msgstr "Fälligkeitsdatum"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_task
+msgid "Task"
+msgstr "Aufgabe"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__target_date
+msgid "The date when the Milestone should be complete."
+msgstr "Das ist das Datum, an dem der Meilenstein erledigt sein sollte."
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
+msgid "Use Milestones"
+msgstr "Meilensteine verwenden"

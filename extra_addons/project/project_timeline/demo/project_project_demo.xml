@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record id="project.project_project_1" model="project.project">
+        <field name="date_start" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+        <field name="date" eval="(DateTime.today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
+    </record>
+
+    <record id="project.project_project_2" model="project.project">
+        <field name="date_start" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+        <field name="date" eval="(DateTime.today() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
+    </record>
+
+</odoo>

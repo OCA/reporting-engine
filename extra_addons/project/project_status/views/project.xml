@@ -1,0 +1,93 @@
+<odoo>
+  <!-- List View-->
+  <record id="view_project" model="ir.ui.view">
+    <field name="name">project.status.tree</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project"/>
+    <field name="type">tree</field>
+    <field name="field_parent">child_ids</field>
+    <field name="arch" type="xml">
+      <field name="user_id" position="after">
+        <field name="project_status"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="edit_project" model="ir.ui.view">
+    <field name="name">project.status.form</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//header" position="inside">
+          <field name="project_status"
+                 widget="statusbar"
+                 options="{'clickable': '1', 'fold_field': 'fold'}"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Simplified Form View -->
+  <record id="project_project_view_form_simplified" model="ir.ui.view">
+    <field name="name">project.status.simpleform</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <field name="name" position="after">
+          <field name="project_status"
+                 widget="selection"
+                 required="1"/>
+        </field>
+      </data>
+    </field>
+  </record>
+
+  <!-- Kanban View -->
+  <record id="project_view_kanban" model="ir.ui.view">
+    <field name="name">project.status.kanban</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_kanban"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//div[hasclass('o_primary')]" position="after">
+          <div>
+            <t t-if="record.project_status.raw_value">
+              <span class="o_label"> (</span>
+              <span class="o_value"><field name="project_status"/></span>
+              <span class="o_label">)</span>
+            </t>
+          </div>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Search View -->
+  <record id="view_project_project_filter" model="ir.ui.view">
+    <field name="name">project.status.filter</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_project_filter"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <separator/>
+        <filter string="Not Closed"
+                name="not_closed"
+                domain="['|',('project_status.is_closed', '=', False),('project_status', '=', False)]"/>
+        <filter string="Closed"
+                name="is_closed"
+                domain="[('project_status.is_closed', '=', True)]"/>
+      </xpath>
+      <filter name="Partner" position="after">
+        <filter string="Status"
+                name="project_status"
+                context="{'group_by': 'project_status'}"/>
+      </filter>
+    </field>
+  </record>
+
+</odoo>

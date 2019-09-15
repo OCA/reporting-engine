@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <!--
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+    -->
+
+    <record id="sequence_task" model="ir.sequence">
+        <field name="name">Task code</field>
+        <field name="code">project.task</field>
+        <field eval="4" name="padding" />
+        <field name="prefix">T</field>
+    </record>
+
+</odoo>

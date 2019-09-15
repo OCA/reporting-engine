@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Web Refresh 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+	<record id="view_client_refresh_automation_form" model="ir.ui.view">
+        <field name="name">base.automation.form</field>
+        <field name="model">base.automation</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="base_automation.view_base_automation_form"/>
+        <field name="arch" type="xml">
+	    	<xpath expr="//field[@name='name']" position="attributes">
+	        	<attribute name="placeholder">e.g. Refresh Users on Create</attribute>
+	        </xpath>
+	        <xpath expr="//field[@name='state']" position="attributes">
+	        	<attribute name="invisible">1</attribute>
+	        </xpath>
+        </field>
+    </record>
+    
+    <record id="action_client_refresh_automation" model="ir.actions.act_window">
+		<field name="name">Automated Refresh</field>
+        <field name="res_model">base.automation</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[['state', '=', 'refresh']]</field>
+		<field name="context">{'default_state': 'refresh'}</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('base_automation.view_base_automation_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_client_refresh_automation_form')})]"/>
+		<field name="help" type="html">
+		    <p class="o_view_nocontent_smiling_face">
+                Create a new Automated Refresh
+            </p>
+            <p>
+            	Automatically updates the views belonging to the model.
+            </p>
+	    </field>
+	</record>
+        
+	<menuitem id="menu_client_refresh_automation" name="Automated Refresh" 
+		parent="base.menu_automation" action="action_client_refresh_automation"/>
+
+</odoo>

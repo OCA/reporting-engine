@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+        <record model="ir.ui.view" id="product_category_no_variant_form_view">
+            <field name="name">product.category.no.variant.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="no_create_variants" />
+                </field>
+            </field>
+        </record>
+
+</odoo>

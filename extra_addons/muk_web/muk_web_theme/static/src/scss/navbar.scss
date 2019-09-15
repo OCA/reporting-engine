@@ -1,0 +1,126 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Backend Theme 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+@include media-breakpoint-down(sm) {
+    .o_main_navbar {
+		display: flex;
+		> .dropdown {
+		    display: flex;
+		    .navbar-toggler {
+		        color: white;
+		    }
+		    .o_menu_sections, .o_menu_systray {
+		        padding: 0;
+		    }
+		}
+		.o_menu_systray {
+		    margin-left: auto;
+		}
+		.o_debug_manager {
+			.dropdown-menu.show {
+				@include mk-full-screen-sections();
+			}
+		}
+		.o_user_menu, .o_switch_company_menu {
+			> .dropdown-toggle {
+				padding: 0 10px;
+				white-space: nowrap;
+				&::before, &::after {
+		            content: normal;
+		        }
+			}
+			.dropdown-menu.show {
+				@include mk-full-screen-sections();
+			}
+		}
+		.o_user_menu img {
+			margin-bottom: 3px;
+		}
+		.o_menu_brand, .o_menu_sections, .oe_topbar_name {
+		    display: none;
+		}
+		.o-menu-toggle {
+		    cursor: pointer;
+		    padding: 0 $o-horizontal-padding;
+		}
+		.o_mail_systray_dropdown.show {
+		    @include mk-full-screen-sections();
+		    .o_mail_preview_image {
+		        align-items: center;
+		        display: flex;
+		        flex-direction: row;
+		        img {
+		            display: block;
+		            height: auto;
+		        }
+		    }
+		}
+		.dropdown-menu .dropdown-item {
+		    padding: {
+		        bottom: 0.5rem;
+		        top: 0.5rem;
+		    }
+		}
+		.o_menu_sections.show {
+		    @include mk-full-screen-sections();
+		    background: $mk-brand-gradient;
+            .dropdown-toggle, .dropdown-item {
+			    padding: 0;
+		    	color: white;
+		    	height: 46px;
+			    line-height: 46px;
+				background: none;
+				span {
+            		padding-left: 15px;
+					font-size: initial;
+				}	
+			} 
+            .mk_menu_mobile_section {
+            	.fa {
+            		padding-top: 14px;
+            		padding-right: 15px;
+	            }
+			    .dropdown-menu {
+				    padding: 0;
+				    width: 100%;
+				    border: none;
+		            min-width: auto;
+				    box-shadow: none;
+				    background: none;
+				    position: static;
+				    overflow: visible;
+		        }
+			    @for $index from 1 through 5 {
+	                .o_menu_entry_lvl_#{$index} {
+	                    margin-left: ($index - 1) * 1.5rem;
+	                }
+	            }
+	           	@for $index from 2 through 5 {
+	                .o_menu_header_lvl_#{$index} {
+	                    margin-left: ($index - 1) * 1.5rem;
+	                }
+	            }
+		   	}
+		    
+		}
+    }
+}

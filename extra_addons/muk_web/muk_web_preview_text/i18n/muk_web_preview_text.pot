@@ -1,0 +1,1053 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_preview_text
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190128\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-05 21:46+0000\n"
+"PO-Revision-Date: 2019-03-05 21:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:28
+#, python-format
+msgid "1C"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:29
+#, python-format
+msgid "ABNF"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:32
+#, python-format
+msgid "ARM assembler"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:33
+#, python-format
+msgid "AVR assembler"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:30
+#, python-format
+msgid "Access logs"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:34
+#, python-format
+msgid "ActionScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:31
+#, python-format
+msgid "Ada"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:35
+#, python-format
+msgid "Apache"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:36
+#, python-format
+msgid "AppleScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:37
+#, python-format
+msgid "AsciiDoc"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:38
+#, python-format
+msgid "AspectJ"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:39
+#, python-format
+msgid "AutoHotkey"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:40
+#, python-format
+msgid "AutoIt"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:41
+#, python-format
+msgid "Awk"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:42
+#, python-format
+msgid "Axapta"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:45
+#, python-format
+msgid "BNF"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:43
+#, python-format
+msgid "Bash"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:44
+#, python-format
+msgid "Basic"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:46
+#, python-format
+msgid "Brainfuck"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:49
+#, python-format
+msgid "C/AL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:51
+#, python-format
+msgid "CMake"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:53
+#, python-format
+msgid "CSP"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:54
+#, python-format
+msgid "CSS"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:50
+#, python-format
+msgid "Cache Object Script"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:55
+#, python-format
+msgid "Cap’n Proto"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:56
+#, python-format
+msgid "Clojure"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:57
+#, python-format
+msgid "CoffeeScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:52
+#, python-format
+msgid "Coq"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:58
+#, python-format
+msgid "Crmsh"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:59
+#, python-format
+msgid "Crystal"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:61
+#, python-format
+msgid "DNS Zone file"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:62
+#, python-format
+msgid "DOS"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:69
+#, python-format
+msgid "DTS (Device Tree)"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:63
+#, python-format
+msgid "Dart"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:27
+#, python-format
+msgid "Default"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:64
+#, python-format
+msgid "Delphi"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:65
+#, python-format
+msgid "Diff"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:66
+#, python-format
+msgid "Django"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:67
+#, python-format
+msgid "Dockerfile"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:70
+#, python-format
+msgid "Dust"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:71
+#, python-format
+msgid "EBNF"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:72
+#, python-format
+msgid "Elixir"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:73
+#, python-format
+msgid "Elm"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:74
+#, python-format
+msgid "Erlang"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:75
+#, python-format
+msgid "Excel"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:77
+#, python-format
+msgid "FIX"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:78
+#, python-format
+msgid "Fortran"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:79
+#, python-format
+msgid "G-Code"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:81
+#, python-format
+msgid "GAUSS"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:80
+#, python-format
+msgid "Gams"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:82
+#, python-format
+msgid "Gherkin"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:83
+#, python-format
+msgid "Go"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:84
+#, python-format
+msgid "Golo"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:85
+#, python-format
+msgid "Gradle"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:86
+#, python-format
+msgid "Groovy"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:87
+#, python-format
+msgid "HTML, XML"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:88
+#, python-format
+msgid "HTTP"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:89
+#, python-format
+msgid "Haml"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:90
+#, python-format
+msgid "Handlebars"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:91
+#, python-format
+msgid "Haskell"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:92
+#, python-format
+msgid "Haxe"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:93
+#, python-format
+msgid "Hy"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:96
+#, python-format
+msgid "IRPF90"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:95
+#, python-format
+msgid "Inform7"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:94
+#, python-format
+msgid "Ini"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:97
+#, python-format
+msgid "JSON"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:98
+#, python-format
+msgid "Java"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:99
+#, python-format
+msgid "JavaScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:103
+#, python-format
+msgid "LDIF"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:101
+#, python-format
+msgid "Lasso"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:100
+#, python-format
+msgid "Leaf"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:102
+#, python-format
+msgid "Less"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:104
+#, python-format
+msgid "Lisp"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:105
+#, python-format
+msgid "LiveCode Server"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:106
+#, python-format
+msgid "LiveScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:107
+#, python-format
+msgid "Lua"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:108
+#, python-format
+msgid "Makefile"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:109
+#, python-format
+msgid "Markdown"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:110
+#, python-format
+msgid "Mathematica"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:111
+#, python-format
+msgid "Matlab"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:112
+#, python-format
+msgid "Maxima"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:113
+#, python-format
+msgid "Maya Embedded Language"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:114
+#, python-format
+msgid "Mercury"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:115
+#, python-format
+msgid "Mizar"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:116
+#, python-format
+msgid "Mojolicious"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:117
+#, python-format
+msgid "Monkey"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:118
+#, python-format
+msgid "Moonscript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:119
+#, python-format
+msgid "N1QL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:120
+#, python-format
+msgid "NSIS"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:121
+#, python-format
+msgid "Nginx"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:122
+#, python-format
+msgid "Nimrod"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:123
+#, python-format
+msgid "Nix"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:124
+#, python-format
+msgid "OCaml"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:125
+#, python-format
+msgid "Objective C"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:126
+#, python-format
+msgid "OpenGL Shading Language"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:127
+#, python-format
+msgid "OpenSCAD"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:128
+#, python-format
+msgid "Oracle Rules Language"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:129
+#, python-format
+msgid "Oxygene"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:130
+#, python-format
+msgid "PF"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:131
+#, python-format
+msgid "PHP"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:132
+#, python-format
+msgid "Parser3"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:133
+#, python-format
+msgid "Perl"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:134
+#, python-format
+msgid "Pony"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:135
+#, python-format
+msgid "PowerShell"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:136
+#, python-format
+msgid "Processing"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:137
+#, python-format
+msgid "Prolog"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:138
+#, python-format
+msgid "Protocol Buffers"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:139
+#, python-format
+msgid "Puppet"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:140
+#, python-format
+msgid "Python"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:141
+#, python-format
+msgid "Python profiler results"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:143
+#, python-format
+msgid "QML"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:145
+#, python-format
+msgid "RenderMan RIB"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:146
+#, python-format
+msgid "RenderMan RSL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:147
+#, python-format
+msgid "Roboconf"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:148
+#, python-format
+msgid "Ruby"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:149
+#, python-format
+msgid "Rust"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:150
+#, python-format
+msgid "SCSS"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:151
+#, python-format
+msgid "SQL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:152
+#, python-format
+msgid "STEP Part 21"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:153
+#, python-format
+msgid "Scala"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:154
+#, python-format
+msgid "Scheme"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:155
+#, python-format
+msgid "Scilab"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:156
+#, python-format
+msgid "Shell"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:157
+#, python-format
+msgid "Smali"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:158
+#, python-format
+msgid "Smalltalk"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:159
+#, python-format
+msgid "Stan"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:160
+#, python-format
+msgid "Stata"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:161
+#, python-format
+msgid "Stylus"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:162
+#, python-format
+msgid "SubUnit"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:163
+#, python-format
+msgid "Swift"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:168
+#, python-format
+msgid "TP"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:165
+#, python-format
+msgid "Tcl"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:166
+#, python-format
+msgid "TeX"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:164
+#, python-format
+msgid "Test Anything Protocol"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:167
+#, python-format
+msgid "Thrift"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:169
+#, python-format
+msgid "Twig"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:170
+#, python-format
+msgid "TypeScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:171
+#, python-format
+msgid "VB.Net"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:172
+#, python-format
+msgid "VBScript"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:173
+#, python-format
+msgid "VHDL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:174
+#, python-format
+msgid "Vala"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:175
+#, python-format
+msgid "Verilog"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:176
+#, python-format
+msgid "Vim Script"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:178
+#, python-format
+msgid "XL"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:179
+#, python-format
+msgid "XQuery"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:180
+#, python-format
+msgid "Zephir"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:68
+#, python-format
+msgid "dsconfig"
+msgstr ""
+
+#. module: muk_web_preview_text
+#. openerp-web
+#: code:addons/muk_web_preview_text/static/src/xml/text.xml:177
+#, python-format
+msgid "x86 Assembly"
+msgstr ""
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Carlos Dauden <carlos.dauden@tecnativa.com>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+<record id="view_product_pricelist_print" model="ir.ui.view">
+      <field name="name">Product pricelist print</field>
+      <field name="model">product.pricelist.print</field>
+      <field name="arch" type="xml">
+        <form>
+            <group>
+            <group string="Pricelist"
+                   invisible="context.get('active_model') == 'product.pricelist'"
+                   attrs="{'invisible':[('partner_count', '!=', 0)]}">
+                <field name="pricelist_id" options="{'no_create': True, 'no_create_edit': True}"/>
+            </group>
+            <group string="Filter Options">
+                <field name="show_sale_price"/>
+                <field name="show_standard_price"/>
+                <field name="order_field"/>
+                <field name="date"/>
+                <field name="show_variants" groups="product.group_product_variant" attrs="{'invisible':[('last_ordered_products', '!=', 0)]}"/>
+                <field name="last_ordered_products" attrs="{'invisible':[('partner_count','=',0)]}"/>
+            </group>
+            <group attrs="{'invisible':['|', '|',('product_tmpl_ids','!=',[]), ('product_ids','!=',[]), ('last_ordered_products', '!=', 0)]}">
+                <field name="categ_ids" widget="many2many_tags" attrs=""/>
+            </group>
+            </group>
+            <notebook>
+                <page string="Products"
+                      invisible="context.get('active_model') in ['product.template','product.product']"
+                      attrs="{'invisible':['|', ('categ_ids','!=',[]), ('last_ordered_products', '!=', 0)]}">
+                    <field name="product_tmpl_ids" nolabel="1"
+                           attrs="{'invisible':[('show_variants','=',True)]}">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <field name="product_ids"
+                           attrs="{'invisible':[('show_variants','=',False)]}">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Customers"
+                      invisible="context.get('active_model') == 'res.partner'"
+                      attrs="{'invisible':[('pricelist_id', '!=', False)]}">
+                    <field name="partner_ids"/>
+                    <field name="partner_count" invisible="1"/>
+                </page>
+            </notebook>
+            <footer>
+                <button name="print_report" string="Print" type="object"
+                        class="btn-primary" attrs="{'invisible':[('partner_count', '>', 1)]}"/>
+                <button name="action_pricelist_send" string="Send by email"
+                        type="object" class="btn-primary" attrs="{'invisible':[('pricelist_id','=',False), ('partner_count','=',0)]}"/>
+                <button string="Cancel" class="btn-default" special="cancel" />
+            </footer>
+        </form>
+      </field>
+</record>
+
+<act_window id="action_product_template_pricelist_print"
+    key2="client_print_multi"
+    name="Price List"
+    res_model="product.pricelist.print"
+    src_model="product.template"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<act_window id="action_product_product_pricelist_print"
+    key2="client_print_multi"
+    name="Price List"
+    res_model="product.pricelist.print"
+    src_model="product.product"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<act_window id="action_product_pricelist_print"
+    key2="client_print_multi"
+    name="Price List"
+    res_model="product.pricelist.print"
+    src_model="product.pricelist"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<act_window id="action_partner_pricelist_print"
+    key2="client_action_multi"
+    name="Send customer pricelist by EMail"
+    res_model="product.pricelist.print"
+    src_model="res.partner"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<act_window id="action_pricelist_print"
+    name="Print Price List"
+    res_model="product.pricelist.print"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<act_window id="action_item_pricelist_print"
+    key2="client_print_multi"
+    name="Price List"
+    res_model="product.pricelist.print"
+    src_model="product.pricelist.item"
+    groups="product.group_sale_pricelist"
+    view_mode="form" target="new" view_type="form"/>
+
+<menuitem action="action_pricelist_print" id="menu_product_pricelist_print"
+    parent="sale.product_menu_catalog" sequence="200" groups="product.group_sale_pricelist"/>
+
+</odoo>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Web Utils 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<templates id="template" xml:space="preserve">
+
+<t t-name="muk_web_utils.Share">
+	<div t-attf-class="btn-group mk_share_dropdown #{share_class}">
+		<button class="btn btn-sm btn-primary dropdown-toggle mk_share_button" type="button" data-toggle="dropdown">
+		    <span class="fa fa-share-alt"></span>
+		    <span>Share</span>
+		</button>
+		<t t-call="muk_web_utils.ShareDropdown" />
+	</div>
+</t>
+
+<t t-name="muk_web_utils.ShareDropdown">
+	<div class="dropdown-menu">
+		<h6 class="dropdown-header">Internal</h6>
+		<a t-if="chatter" class="dropdown-item mk_share_dropdown_message" href="#">
+			<span class="fa fa-comments"></span>
+	    	<span>Message</span>
+		</a>
+		<a t-if="chatter" class="dropdown-item mk_share_dropdown_note" href="#">
+			<span class="fa fa-sticky-note-o"></span>
+	    	<span>Note</span>
+		</a>
+		<div class="dropdown-divider"></div>
+		<h6 class="dropdown-header">External</h6>
+		<a class="dropdown-item mk_share_dropdown_mail" href="#">
+			<span class="fa fa-envelope"></span>
+	    	<span>Mail</span>
+		</a>
+		<a t-if="navigator" class="dropdown-item mk_share_dropdown_send" href="#">
+			<span class="fa fa-paper-plane"></span>
+	    	<span>Send</span>
+		</a>
+	</div>
+</t>
+
+<t t-name="muk_web_utils.CharShare">
+    <t t-call="muk_web_utils.Share">
+     	<t t-set="share_class" t-value="'mk_share_char'"/>
+     </t>
+</t>
+
+<t t-name="muk_web_utils.TextShare">
+    <t t-call="muk_web_utils.Share">
+     	<t t-set="share_class" t-value="'mk_share_text'"/>
+	</t>
+</t>
+
+<t t-name="muk_web_utils.BinaryShare">
+    <div t-if="share" t-attf-class="btn-group mk_share_dropdown">
+		<button class="btn btn-sm btn-outline-primary dropdown-toggle mk_share_button" type="button" data-toggle="dropdown">
+		    <span class="fa fa-share-alt"></span>
+		</button>
+		<t t-call="muk_web_utils.ShareDropdown" />
+	</div>
+</t>
+
+<t t-name="muk_web_utils.ShareMessage">
+	<div>
+	    <t t-if="url">
+	    	<p><span t-esc="name"/> shared a link with you!</p>
+	    	<a t-attf-href="#{url}" target="_blank" style="background-color: #875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 12px;">
+	    		<strong>Open</strong>
+	    	</a>
+	    </t>
+	    <t t-else="">
+	    	<p><span t-esc="name"/> shared a message with you!</p>
+	    	<p t-esc="value" />
+	    </t>
+	</div>
+</t>
+
+<t t-name="muk_web_utils.ShareBinaryMessage">
+	<div>
+	    <p><span t-esc="name"/> shared a file with you!</p>
+    	<a t-attf-href="#{url}" target="_blank" style="background-color: #875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 12px;">
+    		<strong>Download</strong>
+    	</a>
+	</div>
+</t>
+
+</templates>

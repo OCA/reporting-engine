@@ -1,0 +1,179 @@
+<section class="oe_container">
+	<div class="oe_row oe_spaced">
+		<h2 class="oe_slogan">MuK PGSQL Large Objects Fields</h2>
+		<h3 class="oe_slogan">PGSQL Large Objects Support for Fields</h3>
+		<h4 class="oe_slogan" style="font-size: 23px;">MuK IT GmbH -
+			www.mukit.at</h4>
+	</div>
+</section>
+
+<section class="oe_container">
+	<div class="oe_row oe_spaced">
+		<div class="text-justify" style="max-width: 84%; margin: 16px 8%;">
+			<h3 class="oe_slogan">Overview</h3>
+			<div class="oe_mt32"
+				style="padding-bottom: 10px; text-align: justify;">
+				<p>Provides a field to store bytes as PostgreSQL large objects.
+					PostgreSQL offers support for large objects, which provide
+					stream-style access to user data that is stored in a special
+					large-object structure. They are useful with data values too large
+					to be manipulated conveniently as a whole.</p>
+				<h5 style="padding-top: 10px;">Psycopg2 for Python</h5>
+				<p>
+					Psycopg allows access to the large object using the
+					<code>lobject</code>
+					class. Objects are generated using the
+					<code>connection.lobject()</code>
+					factory method. Data can be retrieved either as bytes or as Unicode
+					strings.
+				</p>
+				<p>
+					Psycopg large object support efficient import/export with file
+					system files using the
+					<code>lo_import()</code>
+					and
+					<code>lo_export()</code>
+					libpq functions.
+				</p>
+				<p>Changed in version 2.6: added support for large objects
+					greated than 2GB. Note that the support is enabled only if all the
+					following conditions are verified:</p>
+				<ul>
+					<li>the Python build is 64 bits;</li>
+					<li>the extension was built against at least libpq 9.3;</li>
+					<li>the server version is at least PostgreSQL 9.3
+						(server_version must be >= 90300).</li>
+				</ul>
+				<p>
+					If Psycopg was built with 64 bits large objects support (i.e. the
+					first two contidions above are verified), the
+					<code>psycopg2.__version__</code>
+					constant will contain the lo64 flag. If any of the contition is not
+					met several lobject methods will fail if the arguments exceed 2GB.
+				</p>
+			</div>
+
+			<pre>
+		    	<code>
+from odoo.addons.muk_fields_lobject.fields.lobject import LargeObject
+
+class LargeObjectModel(models.Model):
+
+    data_content = LargeObject(string="Data")
+
+    @api.multi
+    def data(self):
+        for record in self:
+            bytes = record.data_content
+            oid = record.with_context({'oid': True}).data_content
+            size = record.with_context({'bin_size': True}).data_content
+            stream = record.with_context({'stream': True}).data_content
+		    	</code>
+			</pre>
+		</div>
+	</div>
+</section>
+
+<section class="oe_container oe_dark">
+	<div class="oe_row oe_spaced">
+		<h3 class="oe_slogan">Our Services</h3>
+		<div
+			style="display: flex; padding-top: 20px; justify-content: space-between;">
+			<div style="flex-basis: 18%;">
+				<a href="https://mukit.at/r/MQ5" target="_blank">
+					<div
+						style="width: 75px; height: 75px; border-radius: 100%; margin: auto;">
+						<img src="service_implementation.png"
+							style="width: 100%; border-radius: 100%;">
+					</div>
+					<h3 class="oe_slogan"
+						style="text-align: center; font-size: 14px; width: 100%; margin: 0; margin-top: 14px; color: #000 !important; margin-top: 5px; opacity: 1 !important; line-height: 17px;">
+						Odoo <br>Implementation
+					</h3>
+				</a>
+			</div>
+			<div style="flex-basis: 18%;">
+				<a href="https://mukit.at/r/u7c" target="_blank">
+					<div
+						style="width: 75px; height: 75px; border-radius: 100%; margin: auto;">
+						<img src="service_integration.png"
+							style="width: 100%; border-radius: 100%;">
+					</div>
+					<h3 class="oe_slogan"
+						style="text-align: center; font-size: 14px; width: 100%; margin: 0; margin-top: 14px; color: #000 !important; margin-top: 5px; opacity: 1 !important; line-height: 17px;">
+						Odoo <br>Integration
+					</h3>
+				</a>
+			</div>
+			<div style="flex-basis: 18%;">
+				<a href="https://mukit.at/r/xDJ" target="_blank">
+					<div
+						style="width: 75px; height: 75px; border-radius: 100%; margin: auto;">
+						<img src="service_customization.png"
+							style="width: 100%; border-radius: 100%;">
+					</div>
+					<h3 class="oe_slogan"
+						style="text-align: center; font-size: 14px; width: 100%; margin: 0; margin-top: 14px; color: #000 !important; margin-top: 5px; opacity: 1 !important; line-height: 17px;">
+						Odoo <br>Customization
+					</h3>
+				</a>
+			</div>
+			<div style="flex-basis: 18%;">
+				<a href="	https://mukit.at/r/J3A" target="_blank">
+					<div
+						style="width: 75px; height: 75px; border-radius: 100%; margin: auto;">
+						<img src="service_development.png"
+							style="width: 100%; border-radius: 100%;">
+					</div>
+					<h3 class="oe_slogan"
+						style="text-align: center; font-size: 14px; width: 100%; margin: 0; margin-top: 14px; color: #000 !important; margin-top: 5px; opacity: 1 !important; line-height: 17px;">
+						Odoo <br>Development
+					</h3>
+				</a>
+			</div>
+			<div style="flex-basis: 18%;">
+				<a href="	https://mukit.at/r/R1v" target="_blank">
+					<div
+						style="width: 75px; height: 75px; border-radius: 100%; margin: auto;">
+						<img src="service_support.png"
+							style="width: 100%; border-radius: 100%;">
+					</div>
+					<h3 class="oe_slogan"
+						style="text-align: center; font-size: 14px; width: 100%; margin: 0; margin-top: 14px; color: #000 !important; margin-top: 5px; opacity: 1 !important; line-height: 17px;">
+						Odoo <br>Support
+					</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="oe_container" style="padding: 32px 0;">
+	<div class="oe_row oe_spaced" style="margin: auto;">
+		<div class="oe_demo oe_picture oe_screenshot">
+			<a href="https://mukit.at/r/SgN" target="_blank"> <img src="preview.png">
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="oe_container oe_dark">
+	<h3 class="oe_slogan">Help and Support</h3>
+	<h5 class="oe_slogan" style="font-size: 20px;">Feel free to
+		contact us, if you need any help with your Odoo integration or
+		addiontal features.</h5>
+	<div class="oe_slogan">
+		<a class="btn btn-primary btn-lg mt8" href="https://mukit.at" target="_blank"> 
+			<i class="fa fa-globe"></i> Website
+		</a> 
+		<a class="btn btn-primary btn-lg mt8" href="mailto:sale@mukit.at">
+			<i class="fa fa-envelope"></i> Contact Us
+		</a>
+		<a class="btn btn-primary btn-lg mt8" href="https://github.com/muk-it" target="_blank">
+			<i class="fa fa-github"></i> Issues
+		</a>
+	</div>
+	<img src="logo.png"
+		style="width: 200px; margin-bottom: 20px; display: block;"
+		class="mx-auto center-block">
+</section>

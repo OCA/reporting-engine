@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Copyright 2014 Daniel Reis
+        License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+    -->
+    <record id="task_type_edit_state" model="ir.ui.view">
+        <field name="name">task_type_edit_state</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="state"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Project Task form -->
+    <record id="project_task_form_stage" model="ir.ui.view">
+        <field name="name">project_task_form_stage</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="state"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

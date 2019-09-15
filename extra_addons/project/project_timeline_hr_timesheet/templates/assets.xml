@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="//link[last()]">
+            <link href="/project_timeline_hr_timesheet/static/src/scss/project_timeline_hr_timesheet.scss"
+                  rel="stylesheet"
+                  type="text/scss"/>
+        </xpath>
+    </template>
+</odoo>

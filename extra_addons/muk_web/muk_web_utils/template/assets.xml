@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Web Utils 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+	<template id="assets_backend" name="Backend Assets" inherit_id="web.assets_backend">
+		<xpath expr="//link[last()]" position="after">
+			<link rel="stylesheet" type="text/css" href="/muk_web_utils/static/libs/simplebar/simplebar.css" />
+		</xpath>
+		<xpath expr="//script[last()]" position="after">
+			<script type="text/javascript" src="/muk_web_utils/static/libs/simplebar/simplebar.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/libs/jquery.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/libs/scrollbar.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/libs/underscore.js" />
+		</xpath>
+		<xpath expr="//link[last()]" position="after">
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/variables.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/mixins.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/switch.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/dropzone.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/module.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/color.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/binary.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/image.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/copy.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/share.scss" />
+			<link rel="stylesheet" type="text/scss" href="/muk_web_utils/static/src/scss/notification.scss" />
+		</xpath>
+		<xpath expr="//script[last()]" position="after">
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/utils.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/async.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/files.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/dropzone.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/mimetype.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/core/dialog.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/services/notification_service.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/widgets/notification.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/abstract.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/utils.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/color.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/image.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/copy.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/share.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/path.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/binary.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/module.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/fields/domain.js" />
+			<script type="text/javascript" src="/muk_web_utils/static/src/js/views/form/renderer.js" />
+		</xpath>
+	</template>
+	
+	<template id="qunit_suite" name="QUnit Assets" inherit_id="web.qunit_suite">
+		<xpath expr="//script[last()]" position="after">
+			<script type="text/javascript" src="/muk_web_utils/static/tests/fields.js" />
+		</xpath>
+	</template>
+	
+</odoo>

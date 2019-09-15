@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2015 Antiun Ingeniería S.L. - Jairo Llopis
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<odoo>
+
+    <record id="project_form" model="ir.ui.view">
+        <field name="name">Project description</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='settings']" position="before">
+                <page name="description_page" string="Description">
+                    <field name="description"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_search" model="ir.ui.view">
+        <field name="name">Project description</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="description"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

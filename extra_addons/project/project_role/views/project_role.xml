@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2018-2019 Brainbean Apps (https://brainbeanapps.com)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="project_role_view_tree" model="ir.ui.view">
+        <field name="name">project.role.view.tree</field>
+        <field name="model">project.role</field>
+        <field name="arch" type="xml">
+            <tree string="Project Roles">
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="name"/>
+                <field name="description" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_role_view_form" model="ir.ui.view">
+        <field name="name">project.role.view.tree</field>
+        <field name="model">project.role</field>
+        <field name="arch" type="xml">
+            <form string="Project Role">
+                <group>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_project_roles_action" model="ir.actions.act_window">
+        <field name="name">Project Roles</field>
+        <field name="res_model">project.role</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <menuitem
+        id="project_menu_config_roles"
+        action="company_project_roles_action"
+        parent="project.menu_project_config"
+    />
+
+</odoo>

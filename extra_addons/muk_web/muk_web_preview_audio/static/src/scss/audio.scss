@@ -1,0 +1,50 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Preview Audio 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_preview_audio {
+	width: 100%;
+	height: 100%;
+	.visualizer-wrapper {
+		background: -webkit-gradient(radial, center center, 0, center center, 460, from(#333333), to(#000000));
+		background: -webkit-radial-gradient(circle, #333333, #000000);
+		background: -moz-radial-gradient(circle, #333333, #000000);
+		background: -ms-radial-gradient(circle, #333333, #000000);
+		height: 100%;
+		width: 100%;
+		.visualizer {
+			top: 50%;
+			left: 50%;
+			width: 75%;
+			height: 80%;
+			position: absolute;
+			transform: translate(-50%, -50%);
+			background: transparent;
+			box-shadow: none;
+		}
+		audio {
+			bottom: 0;
+			width: 100%;
+			position: absolute;
+		}
+	}
+}
+

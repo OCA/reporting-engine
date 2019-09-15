@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Backend Theme 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+	
+	<template id="_assets_utils" name="Mixins" inherit_id="web._assets_utils" priority="15">
+		<xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/mixins.scss"/>
+		</xpath>
+    </template>
+
+	<template id="_assets_primary_variables" name="Colors" inherit_id="web._assets_primary_variables" priority="15">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/colors.scss"/>
+        </xpath>
+    </template>
+    
+	<template id="_assets_backend_helpers" name="Variables" inherit_id="web._assets_backend_helpers" priority="15">
+        <xpath expr="//link[@href='/web/static/src/scss/bootstrap_overridden.scss']" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/variables.scss"/>
+        </xpath>
+    </template>
+    
+	<template id="assets_common" name="Common Assets" inherit_id="web_editor.assets_common">
+		<xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/fonts.scss"/>
+		</xpath>
+		<xpath expr="//script[last()]" position="after">
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/core/search.js" />
+		</xpath>
+	</template>
+
+	<template id="assets_backend" name="Backend Assets" inherit_id="web.assets_backend">
+		<xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/layout.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/navbar.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/apps.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/appsbar.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/control_panel.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/search_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/list_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/kanban_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/form_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/fields.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/notification.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/muk_web_theme/static/src/scss/settings.scss"/>
+		</xpath>
+		<xpath expr="//script[last()]" position="after">
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/actions.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/menu.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/apps.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/appsbar.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/sidebar.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/chrome/pager.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/fields/relational.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/views/search_view.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/views/form_view.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/views/form_renderer.js" />
+			<script type="text/javascript" src="/muk_web_theme/static/src/js/views/list_renderer.js" />
+		</xpath>
+	</template>
+	
+</odoo>

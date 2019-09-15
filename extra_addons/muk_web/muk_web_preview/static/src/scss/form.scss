@@ -1,0 +1,59 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Preview 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.o_form_view.mk_preview_sidebar_active {
+    @include media-breakpoint-down(xl, $o-extra-grid-breakpoints) {
+        .mk_preview_sidebar {
+            display: none;
+        }
+    } 
+	@include media-breakpoint-up(xxl, $o-extra-grid-breakpoints) {
+        display: flex;
+	    height: 100%;
+	    flex-flow: row nowrap;
+		.mk_preview_sidebar {
+            left: auto ! important;
+            border-left: 1px solid gray('400');
+		    min-width: $mk-preview-sidebar-min-width;
+		    max-width: $mk-preview-sidebar-max-width;
+            overflow: hidden;
+            flex: 1 1 auto;
+            height: 100%;
+        }
+        .o_form_sheet_bg {
+		    min-width: $mk-preview-form-min-width;
+            flex: 1 1 auto;
+            overflow: auto;
+	        > .oe_chatter {
+	            width: map-get($container-max-widths, xl);
+	        	max-width: calc(100% - #{$o-horizontal-padding*2});
+	         	background-color: $o-view-background-color;
+	            border: 1px solid gray('400');
+	            box-shadow: 0 5px 20px -15px black;
+	        } 
+        }
+        .ui-resizable-w {
+            cursor: ew-resize;
+            width: 8px;
+        }
+    }   
+}

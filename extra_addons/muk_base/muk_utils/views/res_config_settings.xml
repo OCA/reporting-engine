@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Utils 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+	    <field name="name">res.config.settings.view.form</field>
+	    <field name="model">res.config.settings</field>
+	    <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+	    <field name="arch" type="xml">
+	        <div name="integration" position="after">
+	            <h2>Storage</h2>
+	            <div class="row mt16 o_settings_container" name="storage">
+	                <div class="col-12 col-lg-6 o_setting_box">
+	                    <div class="o_setting_left_pane"></div>
+	                    <div class="o_setting_right_pane">
+				            <label for="attachment_location"/>
+				            <div class="text-muted">
+				                Attachment storage location
+				            </div>
+				            <div class="mt8">
+				                <field name="attachment_location" class="o_light_label"/>
+				            </div>
+				            <div class="mt8 text-warning" attrs="{'invisible': [('attachment_location_changed','=',False)]}">
+				            	<field name="attachment_location_changed" invisible="1"/>
+					            <strong>Save</strong> this page before triggering the migration.
+					        </div>
+				            <div class="mt8">
+				               <button name="attachment_force_storage"
+					           		string="Force Storage Migration" 
+					            	type="object" icon="fa-refresh"/>
+				            </div>
+				        </div>
+	                </div>
+	            </div>
+	        </div>
+	    </field>
+	</record>
+	
+</odoo>

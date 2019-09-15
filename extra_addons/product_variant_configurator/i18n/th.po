@@ -1,0 +1,287 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * product_variant_configurator
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-30 03:46+0000\n"
+"PO-Revision-Date: 2017-11-30 03:46+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Thai (https://www.transifex.com/oca/teams/23907/th/)\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_attribute_price_attribute_id
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_attribute_id
+msgid "Attribute"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_can_create_product
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_product_can_create_product
+msgid "Can Create Product"
+msgstr ""
+
+#. module: product_variant_configurator
+#: code:addons/product_variant_configurator/models/product_category.py:22
+#: code:addons/product_variant_configurator/models/product_template.py:31
+#, python-format
+msgid "Change warning!"
+msgstr ""
+
+#. module: product_variant_configurator
+#: code:addons/product_variant_configurator/models/product_category.py:23
+#: code:addons/product_variant_configurator/models/product_template.py:32
+#, python-format
+msgid "Changing this parameter may cause automatic variants creation"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_create_product_variant
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_product_create_product_variant
+msgid "Create product now!"
+msgstr ""
+
+#. module: product_variant_configurator
+#: selection:product.template,no_create_variants:0
+msgid "Create them automatically"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_display_name
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_display_name
+msgid "Display Name"
+msgstr "ชื่อที่ใช้แสดง"
+
+#. module: product_variant_configurator
+#: selection:product.template,no_create_variants:0
+msgid "Don't create them automatically"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_category_no_create_variants
+msgid "Don't create variants automatically"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_id
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_id
+msgid "ID"
+msgstr "รหัส"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator___last_update
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute___last_update
+msgid "Last Modified on"
+msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_write_uid
+msgid "Last Updated by"
+msgstr "อัพเดทครั้งสุดท้ายโดย"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_write_date
+msgid "Last Updated on"
+msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_name
+msgid "Name"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_owner_id
+msgid "Owner"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_owner_model
+msgid "Owner Model"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_possible_value_ids
+msgid "Possible Value"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_price_extra
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_price_extra
+msgid "Price Extra"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,help:product_variant_configurator.field_product_configurator_price_extra
+msgid ""
+"Price Extra: Extra price for the variant with the currently selected "
+"attributes values on sale price. eg. 200 price extra, 1000 + 200 = 1200."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,help:product_variant_configurator.field_product_configurator_attribute_price_extra
+msgid ""
+"Price Extra: Extra price for the variant with this attribute value on sale "
+"price. eg. 200 price extra, 1000 + 200 = 1200."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_pricelist
+msgid "Pricelist"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_product
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_product_id
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_product_product_id
+msgid "Product"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_category
+msgid "Product Category"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_template
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_product_tmpl_id
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_product_tmpl_id
+#: model:ir.ui.view,arch_db:product_variant_configurator.product_variants_view
+msgid "Product Template"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_product_attribute_ids
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_product_product_attribute_ids
+msgid "Product attributes"
+msgstr ""
+
+#. module: product_variant_configurator
+#: code:addons/product_variant_configurator/models/product_configurator.py:185
+#, python-format
+msgid "Product not created!"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_attribute_line_required
+msgid "Required"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.ui.view,arch_db:product_variant_configurator.product_variants_view
+msgid "Select a template for a variant. Keep empty for a new full product."
+msgstr ""
+
+#. module: product_variant_configurator
+#: sql_constraint:product.attribute.line:0
+msgid "The attribute already exists for this product"
+msgstr ""
+
+#. module: product_variant_configurator
+#: code:addons/product_variant_configurator/models/product_product.py:82
+#, python-format
+msgid "There's another product with the same attributes."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,help:product_variant_configurator.field_product_category_no_create_variants
+msgid ""
+"This check disables the automatic creation of product variants for all the "
+"products of this category."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.ui.view,arch_db:product_variant_configurator.product_variants_view
+msgid "This product already exists."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,help:product_variant_configurator.field_product_product_no_create_variants
+#: model:ir.model.fields,help:product_variant_configurator.field_product_template_no_create_variants
+msgid ""
+"This selection defines if variants for all attribute combinations are going "
+"to be created automatically at saving time."
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:res.groups,name:product_variant_configurator.group_product_variant_extended_description
+msgid "Use extended description when having product attributes"
+msgstr ""
+
+#. module: product_variant_configurator
+#: selection:product.template,no_create_variants:0
+msgid "Use the category value"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_configurator_attribute_value_id
+msgid "Value"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.ui.view,arch_db:product_variant_configurator.product_template_no_variant_form_view
+msgid "Variant Sale Prices"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.actions.act_window,name:product_variant_configurator.attribute_price_action
+#: model:ir.ui.view,arch_db:product_variant_configurator.attribute_price_tree_view
+msgid "Variant Values"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_product_no_create_variants
+#: model:ir.model.fields,field_description:product_variant_configurator.field_product_template_no_create_variants
+msgid "Variant creation"
+msgstr ""
+
+#. module: product_variant_configurator
+#: code:addons/product_variant_configurator/models/product_product.py:108
+#, python-format
+msgid ""
+"You have to fill the following attributes:\n"
+"%s"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_attribute_line
+msgid "product.attribute.line"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_attribute_price
+msgid "product.attribute.price"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_attribute_value
+msgid "product.attribute.value"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_configurator
+msgid "product.configurator"
+msgstr ""
+
+#. module: product_variant_configurator
+#: model:ir.model,name:product_variant_configurator.model_product_configurator_attribute
+msgid "product.configurator.attribute"
+msgstr ""

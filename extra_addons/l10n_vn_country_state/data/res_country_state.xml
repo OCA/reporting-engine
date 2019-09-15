@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="res_country_state_30" model="res.country.state">
+        <field name="code">30</field>
+        <field name="name">Hải Dương</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_37" model="res.country.state">
+        <field name="code">37</field>
+        <field name="name">Ninh Bình</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_22" model="res.country.state">
+        <field name="code">22</field>
+        <field name="name">Quảng Ninh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_58" model="res.country.state">
+        <field name="code">58</field>
+        <field name="name">Ninh Thuận</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_60" model="res.country.state">
+        <field name="code">60</field>
+        <field name="name">Bình Thuận</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_82" model="res.country.state">
+        <field name="code">82</field>
+        <field name="name">Tiền Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_62" model="res.country.state">
+        <field name="code">62</field>
+        <field name="name">Kon Tum</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_89" model="res.country.state">
+        <field name="code">89</field>
+        <field name="name">An Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_64" model="res.country.state">
+        <field name="code">64</field>
+        <field name="name">Gia Lai</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_66" model="res.country.state">
+        <field name="code">66</field>
+        <field name="name">Đắk Lắk</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_67" model="res.country.state">
+        <field name="code">67</field>
+        <field name="name">Đắk Nông</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_68" model="res.country.state">
+        <field name="code">68</field>
+        <field name="name">Lâm Đồng</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_83" model="res.country.state">
+        <field name="code">83</field>
+        <field name="name">Bến Tre</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_80" model="res.country.state">
+        <field name="code">80</field>
+        <field name="name">Long An</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_34" model="res.country.state">
+        <field name="code">34</field>
+        <field name="name">Thái Bình</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_86" model="res.country.state">
+        <field name="code">86</field>
+        <field name="name">Vĩnh Long</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_87" model="res.country.state">
+        <field name="code">87</field>
+        <field name="name">Đồng Tháp</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_84" model="res.country.state">
+        <field name="code">84</field>
+        <field name="name">Trà Vinh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_04" model="res.country.state">
+        <field name="code">04</field>
+        <field name="name">Cao Bằng</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_02" model="res.country.state">
+        <field name="code">02</field>
+        <field name="name">Hà Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_25" model="res.country.state">
+        <field name="code">25</field>
+        <field name="name">Phú Thọ</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_26" model="res.country.state">
+        <field name="code">26</field>
+        <field name="name">Vĩnh Phúc</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_01" model="res.country.state">
+        <field name="code">01</field>
+        <field name="name">Hà Nội</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="res_country_state_20" model="res.country.state">
+        <field name="code">20</field>
+        <field name="name">Lạng Sơn</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_48" model="res.country.state">
+        <field name="code">48</field>
+        <field name="name">Đà Nẵng</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_49" model="res.country.state">
+        <field name="code">49</field>
+        <field name="name">Quảng Nam</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_46" model="res.country.state">
+        <field name="code">46</field>
+        <field name="name">Thừa Thiên Huế</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_08" model="res.country.state">
+        <field name="code">08</field>
+        <field name="name">Tuyên Quang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_45" model="res.country.state">
+        <field name="code">45</field>
+        <field name="name">Quảng Trị</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_42" model="res.country.state">
+        <field name="code">42</field>
+        <field name="name">Hà Tĩnh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_40" model="res.country.state">
+        <field name="code">40</field>
+        <field name="name">Nghệ An</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_27" model="res.country.state">
+        <field name="code">27</field>
+        <field name="name">Bắc Ninh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_24" model="res.country.state">
+        <field name="code">24</field>
+        <field name="name">Bắc Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_77" model="res.country.state">
+        <field name="code">77</field>
+        <field name="name">Bà Rịa - Vũng Tàu</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_75" model="res.country.state">
+        <field name="code">75</field>
+        <field name="name">Đồng Nai</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_12" model="res.country.state">
+        <field name="code">12</field>
+        <field name="name">Lai Châu</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_72" model="res.country.state">
+        <field name="code">72</field>
+        <field name="name">Tây Ninh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_70" model="res.country.state">
+        <field name="code">70</field>
+        <field name="name">Bình Phước</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_91" model="res.country.state">
+        <field name="code">91</field>
+        <field name="name">Kiên Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_06" model="res.country.state">
+        <field name="code">06</field>
+        <field name="name">Bắc Kạn</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_93" model="res.country.state">
+        <field name="code">93</field>
+        <field name="name">Hậu Giang</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_92" model="res.country.state">
+        <field name="code">92</field>
+        <field name="name">Cần Thơ</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_95" model="res.country.state">
+        <field name="code">95</field>
+        <field name="name">Bạc Liêu</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_94" model="res.country.state">
+        <field name="code">94</field>
+        <field name="name">Sóc Trăng</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_79" model="res.country.state">
+        <field name="code">79</field>
+        <field name="name">Hồ Chí Minh</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">1</field>
+    </record>
+    <record id="res_country_state_96" model="res.country.state">
+        <field name="code">96</field>
+        <field name="name">Cà Mau</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_11" model="res.country.state">
+        <field name="code">11</field>
+        <field name="name">Điện Biên</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_10" model="res.country.state">
+        <field name="code">10</field>
+        <field name="name">Lào Cai</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_38" model="res.country.state">
+        <field name="code">38</field>
+        <field name="name">Thanh Hóa</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_15" model="res.country.state">
+        <field name="code">15</field>
+        <field name="name">Yên Bái</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_14" model="res.country.state">
+        <field name="code">14</field>
+        <field name="name">Sơn La</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_17" model="res.country.state">
+        <field name="code">17</field>
+        <field name="name">Hoà Bình</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_33" model="res.country.state">
+        <field name="code">33</field>
+        <field name="name">Hưng Yên</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_54" model="res.country.state">
+        <field name="code">54</field>
+        <field name="name">Phú Yên</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_31" model="res.country.state">
+        <field name="code">31</field>
+        <field name="name">Hải Phòng</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_56" model="res.country.state">
+        <field name="code">56</field>
+        <field name="name">Khánh Hòa</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_51" model="res.country.state">
+        <field name="code">51</field>
+        <field name="name">Quảng Ngãi</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_36" model="res.country.state">
+        <field name="code">36</field>
+        <field name="name">Nam Định</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_35" model="res.country.state">
+        <field name="code">35</field>
+        <field name="name">Hà Nam</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_52" model="res.country.state">
+        <field name="code">52</field>
+        <field name="name">Bình Định</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_19" model="res.country.state">
+        <field name="code">19</field>
+        <field name="name">Thái Nguyên</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_74" model="res.country.state">
+        <field name="code">74</field>
+        <field name="name">Bình Dương</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="res_country_state_44" model="res.country.state">
+        <field name="code">44</field>
+        <field name="name">Quảng Bình</field>
+        <field name="country_id" ref="base.vn"/>
+        <field name="sequence">10</field>
+    </record>
+</odoo>
+

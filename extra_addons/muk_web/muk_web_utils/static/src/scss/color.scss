@@ -1,0 +1,66 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Web Utils 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_field_color_picker {
+	.o_opacity_slider {
+		display: none ! important;
+	}
+	input#opacity {
+		display: none ! important;
+	}
+	label[for="opacity"] {
+		display: none ! important;
+	}
+}
+
+.o_field_widget.mk_field_color {
+	.mk_field_color_input {
+	    width: auto;
+		display: inline-block;
+    }
+    .mk_field_color_button {
+		display: inline-block;
+		margin-bottom: 0.25rem;
+    	line-height: 1.42rem;
+    }
+}
+
+span.mk_field_color_index {
+	@for $size from 1 through length($o-colors) {
+        &.mk_color_index_#{$size - 1} {
+            color: nth($o-colors, $size);
+        }
+    }
+}
+
+select.mk_field_color_index {
+	&.mk_color_index_0, .mk_color_index_0 {
+		background-color: $white ! important;
+    	color: nth($o-colors, 1) ! important;
+	}
+	@for $size from 2 through length($o-colors) {
+        &.mk_color_index_#{$size - 1}, .mk_color_index_#{$size - 1} {
+            background-color: nth($o-colors, $size) ! important;
+			color: $white ! important;
+        }
+    }
+}

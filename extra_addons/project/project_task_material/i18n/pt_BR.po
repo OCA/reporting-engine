@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_material
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Mateus Lopes <mateus1@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 09:43+0000\n"
+"PO-Revision-Date: 2017-05-30 09:43+0000\n"
+"Last-Translator: Mateus Lopes <mateus1@gmail.com>, 2017\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
+msgid "Display Name"
+msgstr "Nome para Mostrar"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
+msgid "Last Modified on"
+msgstr "Última atualização em"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_uid
+msgid "Last Updated by"
+msgstr "Última atualização feita por"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_date
+msgid "Last Updated on"
+msgstr "Última atualização feita em"
+
+#. module: project_task_material
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+msgid "Material"
+msgstr "Material"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+#, fuzzy
+msgid "Material Used"
+msgstr "Materiais usados"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__product_id
+msgid "Product"
+msgstr "Produto"
+
+#. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__quantity
+msgid "Quantity"
+msgstr "Quantidade"
+
+#. module: project_task_material
+#: code:addons/project_task_material/models/project.py:40
+#, python-format
+msgid "Quantity of material consumed must be greater than 0."
+msgstr "A quantidade de material consumido deve ser maior que 0."
+
+#. module: project_task_material
+#: model:ir.model,name:project_task_material.model_project_task
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__task_id
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_task_material
+#: model:ir.model,name:project_task_material.model_project_task_material
+msgid "Task Material Used"
+msgstr "Materiais usados na Tarefa"

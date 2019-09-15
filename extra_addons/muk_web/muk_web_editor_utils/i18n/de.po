@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_editor_utils
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-24 22:04+0000\n"
+"PO-Revision-Date: 2019-06-29 11:48+0000\n"
+"Last-Translator: Mathias Markl <mathias.markl@mukit.at>\n"
+"Language-Team: German <http://weblate.mukit.at/projects/web-12/"
+"muk_web_editor_utils/de/>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7\n"
+
+#. module: muk_web_editor_utils
+#: model_terms:ir.ui.view,arch_db:muk_web_editor_utils.colorpicker
+msgid "<i class=\"fa fa-plus\"/> \n"
+"	                Add Custom Color"
+msgstr ""
+"<i class=\"fa fa-plus\"/> \n"
+"\t                Benutzerdefinierte Farbe hinzufügen"

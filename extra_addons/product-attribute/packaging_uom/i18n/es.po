@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * packaging_uom
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# enjolras <yo@miguelrevilla.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-27 11:37+0000\n"
+"PO-Revision-Date: 2018-02-27 11:37+0000\n"
+"Last-Translator: enjolras <yo@miguelrevilla.com>, 2018\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__qty
+msgid "Contained Quantity"
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,help:packaging_uom.field_product_packaging__uom_id
+msgid "It must be in the same category than the default unit of measure."
+msgstr ""
+"Debe estar en la misma categoría que la unidad de medida predeterminada."
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__uom_id
+#, fuzzy
+#| msgid "Unit of Measure"
+msgid "Packaging Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: packaging_uom
+#: model:ir.model,name:packaging_uom.model_product_packaging
+#, fuzzy
+#| msgid "Packaging"
+msgid "Product Packaging"
+msgstr "Empaquetado"
+
+#. module: packaging_uom
+#: code:addons/packaging_uom/models/product_packaging.py:94
+#, python-format
+msgid "The field Unit of Measure is required"
+msgstr "El campo Unidad de medida es obligatorio"
+
+#. module: packaging_uom
+#: model:ir.model.fields,help:packaging_uom.field_product_packaging__qty
+msgid "The total number of products you can have per pallet or box."
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__uom_categ_domain_id
+msgid "Uom Categ Domain"
+msgstr ""
+
+#~ msgid "Configurations"
+#~ msgstr "Configuraciones"

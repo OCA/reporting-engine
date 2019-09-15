@@ -1,0 +1,326 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_utils
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190128\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-27 09:28+0000\n"
+"PO-Revision-Date: 2019-02-27 09:28+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/color.js:113
+#, python-format
+msgid "'%s' is not a correct color index (0-12)"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/color.js:68
+#, python-format
+msgid "'%s' is not a correct color value"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:175
+#, python-format
+msgid "<%= name %> shared a file!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:115
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:144
+#, python-format
+msgid "<%= name %> shared a message!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:116
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:145
+#: code:addons/muk_web_utils/static/src/js/fields/share.js:176
+#, python-format
+msgid "<%= value %>"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/core/dialog.js:51
+#: code:addons/muk_web_utils/static/src/js/fields/module.js:50
+#, python-format
+msgid "Cancel"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/module.xml:30
+#, python-format
+msgid "Click on the download button to be redirected to the store and download the corresponding module."
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:46
+#, python-format
+msgid "Color 0"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:47
+#, python-format
+msgid "Color 1"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:56
+#, python-format
+msgid "Color 10"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:57
+#, python-format
+msgid "Color 11"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:48
+#, python-format
+msgid "Color 2"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:49
+#, python-format
+msgid "Color 3"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:50
+#, python-format
+msgid "Color 4"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:51
+#, python-format
+msgid "Color 5"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:52
+#, python-format
+msgid "Color 6"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:53
+#, python-format
+msgid "Color 7"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:54
+#, python-format
+msgid "Color 8"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/color.xml:55
+#, python-format
+msgid "Color 9"
+msgstr ""
+
+#. module: muk_web_utils
+#: model:ir.model,name:muk_web_utils.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de Configuración"
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/module.js:45
+#: code:addons/muk_web_utils/static/src/xml/share.xml:97
+#, python-format
+msgid "Download"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/core/dropzone.js:108
+#, python-format
+msgid "Drop files here to upload!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:45
+#, python-format
+msgid "External"
+msgstr ""
+
+#. module: muk_web_utils
+#: model:ir.model.fields,field_description:muk_web_utils.field_res_config_settings__binary_max_size
+msgid "File Size Limit"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:35
+#, python-format
+msgid "Internal"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/copy.js:107
+#, python-format
+msgid "Link Copied!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:48
+#, python-format
+msgid "Mail"
+msgstr ""
+
+#. module: muk_web_utils
+#: model_terms:ir.ui.view,arch_db:muk_web_utils.res_config_settings_view_form
+msgid "Maximum allowed file size in MB"
+msgstr ""
+
+#. module: muk_web_utils
+#: model:ir.model.fields,help:muk_web_utils.field_res_config_settings__binary_max_size
+msgid "Maximum allowed file size in megabytes. Note that this setting only adjusts\n"
+"            the binary widgets accordingly. The maximum file size on your server can probably\n"
+"            be restricted in several places. Note that a large file size limit and therefore\n"
+"            large files in your system can significantly limit performance."
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:38
+#, python-format
+msgid "Message"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/module.js:59
+#: code:addons/muk_web_utils/static/src/xml/module.xml:26
+#, python-format
+msgid "Missing Module"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:42
+#, python-format
+msgid "Note"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:83
+#, python-format
+msgid "Open"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/core/dialog.js:45
+#, python-format
+msgid "Save"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:52
+#, python-format
+msgid "Send"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:27
+#, python-format
+msgid "Share"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/module.js:74
+#, python-format
+msgid "Store"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/fields/copy.js:35
+#, python-format
+msgid "The field '%s' must be a binary field with an set attachment flag for the share widget to work."
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/module.xml:29
+#, python-format
+msgid "The module could not be found on the server."
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/core/async.js:46
+#, python-format
+msgid "Upload"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/js/core/async.js:47
+#, python-format
+msgid "Uploading..."
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:95
+#, python-format
+msgid "shared a file with you!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:81
+#, python-format
+msgid "shared a link with you!"
+msgstr ""
+
+#. module: muk_web_utils
+#. openerp-web
+#: code:addons/muk_web_utils/static/src/xml/share.xml:87
+#, python-format
+msgid "shared a message with you!"
+msgstr ""
+

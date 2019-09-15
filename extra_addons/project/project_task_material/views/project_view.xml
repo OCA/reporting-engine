@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Copyright 2012 - 2013 Daniel Reis
+        Copyright 2015 - Antiun Ingeniería S.L. - Sergio Teruel
+        Copyright 2016 - Tecnativa - Vicent Cubells
+        Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
+    -->
+    <record id="view_project_task_form_material" model="ir.ui.view">
+        <field name="name">project.task.form.material</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="material_used" string="Material" groups="project.group_project_user">
+                    <field name="material_ids">
+                        <tree string="Material Used" editable="top">
+                            <field name="product_id"/>
+                            <field name="quantity"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

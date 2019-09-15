@@ -1,0 +1,130 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_default_stage
+#
+# Translators:
+# Ivan BARAYEV <ivanbarayev@hotmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-13 03:39+0000\n"
+"PO-Revision-Date: 2017-01-13 03:39+0000\n"
+"Last-Translator: Ivan BARAYEV <ivanbarayev@hotmail.com>, 2017\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_analysis
+msgid "Analysis"
+msgstr "Analiz"
+
+#. module: project_task_default_stage
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
+msgid "Blocked"
+msgstr "Engellendi"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_cancel
+msgid "Cancelled"
+msgstr "İptal edildi"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__case_default
+msgid "Default for New Projects"
+msgstr "Yeni Projeler için Varsayılan"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_design
+msgid "Design"
+msgstr "Tasarım"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_development
+msgid "Development"
+msgstr "Geliştirme"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_deployment
+msgid "Done"
+msgstr "Bitti"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
+msgid ""
+"If you check this field, this stage will be proposed by default on each new "
+"project. It will not assign this stage to existing projects."
+msgstr ""
+"Bu alanı işaretlerseniz, bu aşama her yeni projede varsayılan olarak "
+"önerilecek. Bu aşamayı mevcut projelere atamayacaktır."
+
+#. module: project_task_default_stage
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
+msgid "In Progress"
+msgstr "Devam etmekte"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_merge
+msgid "Merge"
+msgstr "Birleştirme"
+
+#. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "Project"
+msgstr "Proje"
+
+#. module: project_task_default_stage
+#: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
+msgid "Project Stages"
+msgstr "Proje Aşamaları"
+
+#. module: project_task_default_stage
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
+msgid "Ready for Next Stage"
+msgstr "Sonraki Aşamaya Hazır"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_specification
+msgid "Specification"
+msgstr "Özellik"
+
+#. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_task_type
+msgid "Task Stage"
+msgstr "Görev Aşamaları"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
+#, fuzzy
+msgid "Tasks Stages"
+msgstr "Görev Aşamaları"
+
+#. module: project_task_default_stage
+#: model:project.task.type,name:project_task_default_stage.project_tt_testing
+msgid "Testing"
+msgstr "Test yapmak"

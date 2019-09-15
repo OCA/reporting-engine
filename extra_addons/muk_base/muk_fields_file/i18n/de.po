@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_fields_file
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-12 23:49+0000\n"
+"PO-Revision-Date: 2019-07-12 23:49+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_autovacuum
+msgid "Automatic Vacuum"
+msgstr "Automatisch aufräumen"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_base
+msgid "Base"
+msgstr "Basis"
+
+#. module: muk_fields_file
+#: model:ir.model.fields,field_description:muk_fields_file.field_ir_model_fields__ttype
+msgid "Field Type"
+msgstr "Typfeld-Text"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_model_fields
+msgid "Fields"
+msgstr "Felder"
+
+#. module: muk_fields_file
+#: model:ir.model,name:muk_fields_file.model_ir_http
+msgid "HTTP Routing"
+msgstr ""
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "binary"
+msgstr "Binär"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "boolean"
+msgstr "Boolean"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "char"
+msgstr "Zeichen"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "date"
+msgstr "Datum"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "datetime"
+msgstr "Datum/Zeit"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "file"
+msgstr "Datei"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "float"
+msgstr "Gleitkommazahl"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "html"
+msgstr "HTML"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "integer"
+msgstr "Ganzzahl"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "many2many"
+msgstr "Many2many"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "many2one"
+msgstr "Many2One"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "monetary"
+msgstr "monetär"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "one2many"
+msgstr "One2many"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "reference"
+msgstr "Referenz"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "selection"
+msgstr "Auswahl"
+
+#. module: muk_fields_file
+#: selection:ir.model.fields,ttype:0
+msgid "text"
+msgstr "Text"
+

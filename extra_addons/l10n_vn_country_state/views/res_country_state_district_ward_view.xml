@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Commune/Ward-->
+    <record id="view_res_country_state_district_ward_form" model="ir.ui.view">
+        <field name="name">res.country.state.district.ward.form</field>
+        <field name="model">res.country.state.district.ward</field>
+        <field name="arch" type="xml">
+            <form string="Commune/Ward">
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="district_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_res_country_state_district_ward_list" model="ir.ui.view">
+        <field name="name">res.country.state.district.ward.list</field>
+        <field name="model">res.country.state.district.ward</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Commune/Ward" editable="top">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="district_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_view_res_country_state_district_ward_form"
+            model="ir.actions.act_window">
+        <field name="name">Commune/Ward</field>
+        <field name="res_model">res.country.state.district.ward</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_view_res_country_state_district_ward_form"
+            action="open_view_res_country_state_district_ward_form"
+            parent="contacts.menu_localisation"
+            sequence="20"/>
+</odoo>

@@ -1,0 +1,113 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Preview 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_preview_loader {
+	margin: auto;
+	height: 20px;
+	width: 250px;
+	@include o-position-absolute(
+		$top: 0,
+		$left: 0,
+		$bottom: 0, 
+		$right: 0
+	);
+	.mk_preview_loader_dot {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		border-radius: 100%;
+		background-color: black;
+		border: 2px solid white;
+		animation-duration: 3s;
+		animation-name: mk_preview_loader_animation;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+	}
+	.mk_preview_loader_dot:first-child {
+		background-color: nth($o-colors, 1);
+		animation-delay: 0.5s;
+	}
+	.mk_preview_loader_dot:nth-child(2) {
+		background-color:nth($o-colors, 2);
+		animation-delay: 0.4s;
+	}
+	.mk_preview_loader_dot:nth-child(3) {
+		background-color: nth($o-colors, 3);
+		animation-delay: 0.3s;
+	}
+	.mk_preview_loader_dot:nth-child(4) {
+		background-color: nth($o-colors, 4);
+		animation-delay: 0.2s;
+	}
+	.mk_preview_loader_dot:nth-child(5) {
+		background-color: nth($o-colors, 5);
+		animation-delay: 0.1s;
+	}
+	.mk_preview_loader_dot:nth-child(6) {
+		background-color: nth($o-colors, 6);
+		animation-delay: 0s;
+	}
+	.mk_preview_loader_text {
+		@include o-position-absolute(
+			$top: 200%,
+			$left: 0,
+			$right: 0
+		);
+		width: 8rem;
+		margin: auto;
+	}
+	.mk_preview_loader_text:after {
+		font-weight: bold;
+		animation-duration: 3s;
+		content: attr(data-loading-text);
+		animation-name: mk_preview_loader_text;
+		animation-iteration-count: infinite;
+	}
+	@keyframes mk_preview_loader_animation {
+		15% {
+			transform: translateX(0);
+		}
+		45% {
+			transform: translateX(230px);
+		}
+		65% {
+			transform: translateX(230px);
+		}
+		95% {
+			transform: translateX(0);
+		}
+	}
+	@keyframes mk_preview_loader_text {
+		0% {
+			content: attr(data-loading-text-00);
+		}
+		25% {
+			content: attr(data-loading-text-25);
+		}
+		50% {
+			content: attr(data-loading-text-50);
+		}
+		75% {
+			content: attr(data-loading-text-75);
+		}
+	}
+}

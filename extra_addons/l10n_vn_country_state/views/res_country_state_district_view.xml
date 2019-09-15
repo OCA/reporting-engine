@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- District-->
+    <record id="view_res_country_state_district_form" model="ir.ui.view">
+        <field name="name">res.country.state.district.form</field>
+        <field name="model">res.country.state.district</field>
+        <field name="arch" type="xml">
+            <form string="District">
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_res_country_state_district_list" model="ir.ui.view">
+        <field name="name">res.country.state.district.list</field>
+        <field name="model">res.country.state.district</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="District" editable="top">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="state_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_view_res_country_state_district_form"
+            model="ir.actions.act_window">
+        <field name="name">District</field>
+        <field name="res_model">res.country.state.district</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_view_res_country_state_district_form"
+            action="open_view_res_country_state_district_form"
+            parent="contacts.menu_localisation"
+            sequence="10"/>
+</odoo>

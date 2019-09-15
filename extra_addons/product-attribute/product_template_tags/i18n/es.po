@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * product_template_tags
+#
+# Translators:
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-03 02:14+0000\n"
+"PO-Revision-Date: 2018-01-03 02:14+0000\n"
+"Last-Translator: Pedro M. Baeza <pedro.baeza@gmail.com>, 2018\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__products_count
+msgid "# of Products"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__color
+msgid "Color Index"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__company_id
+#: model_terms:ir.ui.view,arch_db:product_template_tags.product_template_tag_search_view
+msgid "Company"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__id
+msgid "ID"
+msgstr "ID"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__write_date
+msgid "Last Updated on"
+msgstr "Última modificación el"
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__name
+msgid "Name"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model,name:product_template_tags.model_product_template_tag
+msgid "Product Tag"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_product__tag_ids
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template__tag_ids
+#: model:ir.ui.menu,name:product_template_tags.product_template_tag_config_menu
+msgid "Product Tags"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model,name:product_template_tags.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: product_template_tags
+#: model:ir.actions.act_window,name:product_template_tags.product_template_tag_act_window
+msgid "Product Template Tag"
+msgstr ""
+
+#. module: product_template_tags
+#: model:ir.model.fields,field_description:product_template_tags.field_product_template_tag__product_tmpl_ids
+msgid "Products"
+msgstr "Productos"

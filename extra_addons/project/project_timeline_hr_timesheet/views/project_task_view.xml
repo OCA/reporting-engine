@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="project_task_timeline" model="ir.ui.view">
+        <field name="name">project_task_timeline</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_timeline.project_task_timeline"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="progress"/>
+            </field>
+            <xpath expr="//div[hasclass('o_project_timeline_item')]" position="after">
+                <div class="o_project_timeline_hr_timesheet_progress">
+                    <div t-att-class="record.progress > 100 and 'danger'"
+                         t-attf-style="width: #{record.progress}%" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

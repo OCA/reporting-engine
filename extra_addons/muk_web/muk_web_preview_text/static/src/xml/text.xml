@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Preview Text 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<templates>
+
+	<t t-name="muk_preview.PreviewContentText">
+		<t t-call="muk_preview.PreviewContent">
+			<div class="mk_preview_text">
+				<div class="code-controls">
+					<select class="code-lang">
+						<option value="default">Default</option>
+						<option value="1c">1C</option>
+						<option value="abnf">ABNF</option>
+						<option value="accesslog">Access logs</option>
+						<option value="ada">Ada</option>
+						<option value="armasm, arm">ARM assembler</option>
+						<option value="avrasm">AVR assembler</option>
+						<option value="actionscript, as">ActionScript</option>
+						<option value="apache, apacheconf">Apache</option>
+						<option value="applescript, osascript">AppleScript</option>
+						<option value="asciidoc, adoc">AsciiDoc</option>
+						<option value="aspectj">AspectJ</option>
+						<option value="autohotkey">AutoHotkey</option>
+						<option value="autoit">AutoIt</option>
+						<option value="awk, mawk, nawk, gawk">Awk</option>
+						<option value="axapta">Axapta</option>
+						<option value="bash, sh, zsh">Bash</option>
+						<option value="basic">Basic</option>
+						<option value="bnf">BNF</option>
+						<option value="brainfuck, bf">Brainfuck</option>
+						<option value="cs, csharp">C#</option>
+						<option value="cpp, c, cc, h, c++, h++, hpp">C++</option>
+						<option value="cal">C/AL</option>
+						<option value="cos, cls">Cache Object Script</option>
+						<option value="cmake, cmake.in">CMake</option>
+						<option value="coq">Coq</option>
+						<option value="csp">CSP</option>
+						<option value="css">CSS</option>
+						<option value="capnproto, capnp">Cap’n Proto</option>
+						<option value="clojure, clj">Clojure</option>
+						<option value="coffeescript, coffee, cson, iced">CoffeeScript</option>
+						<option value="crmsh, crm, pcmk">Crmsh</option>
+						<option value="crystal, cr">Crystal</option>
+						<option value="d">D</option>
+						<option value="dns, zone, bind">DNS Zone file</option>
+						<option value="dos, bat, cmd">DOS</option>
+						<option value="dart">Dart</option>
+						<option value="delphi, dpr, dfm, pas, pascal, freepascal, lazarus, lpr, lfm">Delphi</option>
+						<option value="diff, patch">Diff</option>
+						<option value="django, jinja">Django</option>
+						<option value="dockerfile, docker">Dockerfile</option>
+						<option value="dsconfig">dsconfig</option>
+						<option value="dts">DTS (Device Tree)</option>
+						<option value="dust, dst">Dust</option>
+						<option value="ebnf">EBNF</option>
+						<option value="elixir">Elixir</option>
+						<option value="elm">Elm</option>
+						<option value="erlang, erl">Erlang</option>
+						<option value="excel, xls, xlsx">Excel</option>
+						<option value="fsharp, fs">F#</option>
+						<option value="fix">FIX</option>
+						<option value="fortran, f90, f95">Fortran</option>
+						<option value="gcode, nc">G-Code</option>
+						<option value="gams, gms">Gams</option>
+						<option value="gauss, gss">GAUSS</option>
+						<option value="gherkin">Gherkin</option>
+						<option value="go, golang">Go</option>
+						<option value="golo, gololang">Golo</option>
+						<option value="gradle">Gradle</option>
+						<option value="groovy">Groovy</option>
+						<option value="xml, html, xhtml, rss, atom, xjb, xsd, xsl, plist">HTML, XML</option>
+						<option value="http, https">HTTP</option>
+						<option value="haml">Haml</option>
+						<option value="handlebars, hbs, html.hbs, html.handlebars">Handlebars</option>
+						<option value="haskell, hs">Haskell</option>
+						<option value="haxe, hx">Haxe</option>
+						<option value="hy, hylang">Hy</option>
+						<option value="ini">Ini</option>
+						<option value="inform7, i7">Inform7</option>
+						<option value="irpf90">IRPF90</option>
+						<option value="json">JSON</option>
+						<option value="java, jsp">Java</option>
+						<option value="javascript, js, jsx">JavaScript</option>
+						<option value="leaf">Leaf</option>
+						<option value="lasso, ls, lassoscript">Lasso</option>
+						<option value="less">Less</option>
+						<option value="ldif">LDIF</option>
+						<option value="lisp">Lisp</option>
+						<option value="livecodeserver">LiveCode Server</option>
+						<option value="livescript, ls">LiveScript</option>
+						<option value="lua">Lua</option>
+						<option value="makefile, mk, mak">Makefile</option>
+						<option value="markdown, md, mkdown, mkd">Markdown</option>
+						<option value="mathematica, mma">Mathematica</option>
+						<option value="matlab">Matlab</option>
+						<option value="maxima">Maxima</option>
+						<option value="mel">Maya Embedded Language</option>
+						<option value="mercury">Mercury</option>
+						<option value="mizar">Mizar</option>
+						<option value="mojolicious">Mojolicious</option>
+						<option value="monkey">Monkey</option>
+						<option value="moonscript, moon">Moonscript</option>
+						<option value="n1ql">N1QL</option>
+						<option value="nsis">NSIS</option>
+						<option value="nginx, nginxconf">Nginx</option>
+						<option value="nimrod, nim">Nimrod</option>
+						<option value="nix">Nix</option>
+						<option value="ocaml, ml">OCaml</option>
+						<option value="objectivec, mm, objc, obj-c">Objective C</option>
+						<option value="glsl">OpenGL Shading Language</option>
+						<option value="openscad, scad">OpenSCAD</option>
+						<option value="ruleslanguage">Oracle Rules Language</option>
+						<option value="oxygene">Oxygene</option>
+						<option value="pf, pf.conf">PF</option>
+						<option value="php, php3, php4, php5, php6">PHP</option>
+						<option value="parser3">Parser3</option>
+						<option value="perl, pl, pm">Perl</option>
+						<option value="pony">Pony</option>
+						<option value="powershell, ps">PowerShell</option>
+						<option value="processing">Processing</option>
+						<option value="prolog">Prolog</option>
+						<option value="protobuf">Protocol Buffers</option>
+						<option value="puppet, pp">Puppet</option>
+						<option value="python, py, gyp">Python</option>
+						<option value="profile">Python profiler results</option>
+						<option value="k, kdb">Q</option>
+						<option value="qml">QML</option>
+						<option value="r">R</option>
+						<option value="rib">RenderMan RIB</option>
+						<option value="rsl">RenderMan RSL</option>
+						<option value="graph, instances">Roboconf</option>
+						<option value="ruby, rb, gemspec, podspec, thor, irb">Ruby</option>
+						<option value="rust, rs">Rust</option>
+						<option value="scss">SCSS</option>
+						<option value="sql">SQL</option>
+						<option value="p21, step, stp">STEP Part 21</option>
+						<option value="scala">Scala</option>
+						<option value="scheme">Scheme</option>
+						<option value="scilab, sci">Scilab</option>
+						<option value="shell, console">Shell</option>
+						<option value="smali">Smali</option>
+						<option value="smalltalk, st">Smalltalk</option>
+						<option value="stan">Stan</option>
+						<option value="stata">Stata</option>
+						<option value="stylus, styl">Stylus</option>
+						<option value="subunit">SubUnit</option>
+						<option value="swift">Swift</option>
+						<option value="tap">Test Anything Protocol</option>
+						<option value="tcl, tk">Tcl</option>
+						<option value="tex">TeX</option>
+						<option value="thrift">Thrift</option>
+						<option value="tp">TP</option>
+						<option value="twig, craftcms">Twig</option>
+						<option value="typescript, ts">TypeScript</option>
+						<option value="vbnet, vb">VB.Net</option>
+						<option value="vbscript, vbs">VBScript</option>
+						<option value="vhdl">VHDL</option>
+						<option value="vala">Vala</option>
+						<option value="verilog, v">Verilog</option>
+						<option value="vim">Vim Script</option>
+						<option value="x86asm">x86 Assembly</option>
+						<option value="xl, tao">XL</option>
+						<option value="xpath, xq">XQuery</option>
+						<option value="zephir, zep">Zephir</option>
+					</select>
+				</div>
+				<pre>
+					<code class="code-view" />
+				</pre>
+			</div>
+		</t>
+	</t>
+	
+</templates>

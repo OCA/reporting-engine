@@ -1,0 +1,6 @@
+- Daniel Reis <dgreis@sapo.pt>
+- Sergio Teruel <sergio.teruel@tecnativa.com>
+- Vicent Cubells <vicent.cubells@tecnativa.com>
+- David Vidal <david.vidal@tecnativa.com>
+- Carlos Jesus Cebrian <carlos.cebrian-sanchez@braintec-group.org>
+- Anand Kansagra <kansagraanand@hotmail.com>

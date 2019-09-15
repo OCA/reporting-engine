@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_code
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-08-06 21:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Romanian (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/ro/)\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+#. module: project_task_code
+#: model:ir.model,name:project_task_code.model_project_task
+msgid "Task"
+msgstr "Sarcina"
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__code
+msgid "Task Number"
+msgstr ""
+
+#. module: project_task_code
+#: code:addons/project_task_code/models/project_task.py:21
+#: sql_constraint:project.task:0
+#, python-format
+msgid "The code must be unique!"
+msgstr ""

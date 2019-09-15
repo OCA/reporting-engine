@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_qweb_parameter
+#
+# Translators:
+# Nicolas JEUDY <njeudy@panda-chi.io>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-05 17:53+0000\n"
+"PO-Revision-Date: 2018-01-05 17:53+0000\n"
+"Last-Translator: Nicolas JEUDY <njeudy@panda-chi.io>, 2018\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: report_qweb_parameter
+#: model:ir.actions.report,name:report_qweb_parameter.test_report_length_report_id
+msgid "Length Report"
+msgstr "Longueur du rapport  "
+
+#. module: report_qweb_parameter
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:16
+#, python-format
+msgid "Length cannot be less than %s"
+msgstr "La longueur du rapport ne peut pas être inférieure à %s"
+
+#. module: report_qweb_parameter
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:19
+#, python-format
+msgid "Length cannot be more than %s"
+msgstr "La longueur du rapport ne peut pas être supérieure à %s"
+
+#. module: report_qweb_parameter
+#: model:ir.model,name:report_qweb_parameter.model_ir_qweb
+msgid "Qweb"
+msgstr ""
+
+#~ msgid "ir.qweb"
+#~ msgstr "ir.qweb"

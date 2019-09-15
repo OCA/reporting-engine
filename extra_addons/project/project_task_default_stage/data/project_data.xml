@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Task Stages -->
+
+    <record id="project_tt_analysis" model="project.task.type">
+        <field name="sequence">10</field>
+        <field name="name">Analysis</field>
+        <field name="case_default" eval="True"/>
+    </record>
+    <record id="project_tt_specification" model="project.task.type">
+        <field name="sequence">20</field>
+        <field name="name">Specification</field>
+        <field name="case_default" eval="True"/>
+    </record>
+    <record id="project_tt_design" model="project.task.type">
+        <field name="sequence">30</field>
+        <field name="name">Design</field>
+        <field name="case_default" eval="True"/>
+    </record>
+    <record id="project_tt_development" model="project.task.type">
+        <field name="sequence">40</field>
+        <field name="name">Development</field>
+        <field name="case_default" eval="True"/>
+    </record>
+    <record id="project_tt_testing" model="project.task.type">
+        <field name="sequence">50</field>
+        <field name="name">Testing</field>
+        <field name="case_default" eval="True"/>
+    </record>
+    <record id="project_tt_merge" model="project.task.type">
+        <field name="sequence">60</field>
+        <field name="name">Merge</field>
+        <field name="case_default" eval="False"/>
+        <field name="fold" eval="True"/>
+    </record>
+    <record id="project_tt_deployment" model="project.task.type">
+        <field name="sequence">70</field>
+        <field name="name">Done</field>
+        <field name="case_default" eval="True"/>
+        <field name="fold" eval="True"/>
+    </record>
+    <record id="project_tt_cancel" model="project.task.type">
+        <field name="sequence">80</field>
+        <field name="name">Cancelled</field>
+        <field name="case_default" eval="True"/>
+        <field name="fold" eval="True"/>
+    </record>
+
+</odoo>

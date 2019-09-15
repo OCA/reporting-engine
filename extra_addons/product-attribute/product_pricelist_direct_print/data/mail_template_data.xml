@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+-->
+<odoo noupdate="1">
+    <!--Email template -->
+    <record id="email_template_edi_pricelist" model="mail.template">
+        <field name="name">Pricelist - Send by Email</field>
+        <field name="email_from">${(object.write_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.write_uid.name, object.write_uid.email) or '')|safe}</field>
+        <field name="subject">${object.pricelist_id.company_id.name or object.write_uid.company_id.name} Pricelist (Ref ${object.pricelist_id.name or 'n/a' })</field>
+        <field name="partner_to">${object.partner_id and object.partner_id.id or ''}</field>
+        <field name="model_id" ref="product_pricelist_direct_print.model_product_pricelist_print"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="report_template" ref="action_report_product_pricelist"/>
+        <field name="report_name">${object.pricelist_id.name}</field>
+        <field name="lang">${object.partner_id and object.partner_id.lang or object.write_uid.partner_id.lang}</field>
+        <field name="body_html"><![CDATA[
+<p>Dear ${object.partner_id and object.partner_id.name or 'customer'},</p>
+<p>
+The attached file is a PDF document containg the
+<strong>${object.pricelist_id.name}</strong> pricelist.
+</p>
+<p>You can reply to this email if you have any questions.</p>
+<p>Thank you,</p>
+
+<p style="color:#888888;">
+% if object.write_uid and object.write_uid.signature:
+    ${object.write_uid.signature | safe}
+% endif
+</p>
+]]></field>
+    </record>
+
+</odoo>

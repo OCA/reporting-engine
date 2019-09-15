@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+    Copyright (c) 2017-2019 MuK IT GmbH.
+
+    This file is part of MuK Web Notification 
+    (see https://mukit.at).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+  -->
+
+<odoo>
+
+	<record id="send_notifications_view_form" model="ir.ui.view">
+		<field name="name">Send Notifications</field>
+		<field name="model">muk_web_client_notification.send_notifications</field>
+		<field name="arch" type="xml">
+			<form string="Send Notifications">
+				<div class="oe_title">
+                    <label for="title" class="oe_edit_only"/>
+                    <h1>
+                    	<field name="title" />
+                    </h1>
+                </div>
+				<group>
+					<field name="user_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
+				</group>
+				<group>
+					<group>
+						<field name="type" />
+						<field name="action_id" />
+					</group>
+					<group>
+						<field name="sticky" attrs="{'readonly': [('action_id', '!=', False)]}" />
+						<field name="close" attrs="{'invisible': [('action_id', '=', False)]}" />
+					</group>
+				</group>
+				<label for="message" class="oe_edit_only"/>
+				<field name="message" />
+				<footer>
+					<button string="Send" name="send_notifications" type="object"
+						class="btn-primary" />
+					<button string="Cancel" class="btn-default" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<act_window
+        id="act_send_notifications"
+        name="Send Notifications"
+        src_model="res.users"
+        res_model="muk_web_client_notification.send_notifications"
+        view_type="form" 
+        view_mode="form"
+        target="new"
+        key2="client_action_multi"
+        groups="base.group_erp_manager"/>
+
+</odoo>

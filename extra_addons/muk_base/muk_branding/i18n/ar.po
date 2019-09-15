@@ -1,0 +1,304 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_branding
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-13 00:07+0000\n"
+"PO-Revision-Date: 2019-07-13 00:07+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Apps and Promotion</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Company</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Documentation and Support</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Logo</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">System Names</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">System Website</span>"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_ir_actions_act_window
+msgid "Action Window"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Brand the PoS panel according to your needs"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,help:muk_branding.field_res_config_settings__module_muk_pos_branding
+msgid "Brand the PoS panel according to your needs."
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Brand the website according to your needs"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,help:muk_branding.field_res_config_settings__module_muk_website_branding
+msgid "Brand the website according to your needs."
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Brand your outgoing mails with your own style"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,help:muk_branding.field_res_config_settings__module_muk_mail_branding
+msgid "Brand your outgoing mails with your own style."
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_res_company
+msgid "Companies"
+msgstr "المؤسسات"
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Company Data"
+msgstr "بيانات الشركة"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_company_favicon
+msgid "Company Favicon"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_company_logo
+msgid "Company Logo"
+msgstr "شعار الشركة"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_company_name
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الإعدادات"
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Customize the Backend according to your needs"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,help:muk_branding.field_res_config_settings__module_muk_web_branding
+msgid "Customize the backend according to your needs."
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_muk_branding_debranding
+msgid "Debranding"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_muk_branding_debranding__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Documentation"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_documentation
+msgid "Documentation URL"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Extensions"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_company__favicon
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Favicon"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_muk_branding_debranding__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_muk_branding_debranding____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__module_muk_mail_branding
+msgid "Mail Branding"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Name"
+msgstr "الاسم"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__module_muk_pos_branding
+msgid "PoS Branding"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_publisher
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Publisher"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Set the company logo"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Set the links to the system documentation"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Set the system media links"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Set the system names"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Set the system website"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Share"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_share
+msgid "Share URL"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Specify the name and favicon of the company"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Store"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_store
+msgid "Store URL"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Support"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_support
+msgid "Support URL"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "System"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "System Links"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_system_name
+msgid "System Name"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_ir_config_parameter
+msgid "System Parameter"
+msgstr "باراميتر النظام"
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "System Parameters"
+msgstr "معلمات النظام"
+
+#. module: muk_branding
+#: model:ir.model.fields,help:muk_branding.field_res_config_settings__branding_company_logo
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_ir_translation
+msgid "Translation"
+msgstr "الترجمة"
+
+#. module: muk_branding
+#: model:ir.model,name:muk_branding.model_ir_ui_view
+msgid "View"
+msgstr "عرض"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__module_muk_web_branding
+msgid "Web Branding"
+msgstr ""
+
+#. module: muk_branding
+#: model_terms:ir.ui.view,arch_db:muk_branding.res_config_settings_view_form
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__module_muk_website_branding
+msgid "Website Branding"
+msgstr ""
+
+#. module: muk_branding
+#: model:ir.model.fields,field_description:muk_branding.field_res_config_settings__branding_website
+msgid "Website URL"
+msgstr ""
+

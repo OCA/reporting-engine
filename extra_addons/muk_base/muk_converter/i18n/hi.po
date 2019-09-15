@@ -1,0 +1,227 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_converter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20190522\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-13 00:14+0000\n"
+"PO-Revision-Date: 2019-07-13 00:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "Cancel"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__checksum
+msgid "Checksum"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "Close"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model,name:muk_converter.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "Conversion Complete"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "Convert"
+msgstr ""
+
+#. module: muk_converter
+#: code:addons/muk_converter/wizards/convert.py:100
+#: model:ir.actions.act_window,name:muk_converter.action_converter_convert
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+#, python-format
+msgid "Convert File"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model,name:muk_converter.model_muk_converter_converter
+#: model:ir.model.fields,field_description:muk_converter.field_res_config_settings__converter_service
+msgid "Converter"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model,name:muk_converter.model_muk_converter_store
+msgid "Converter Store"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.res_config_settings_view_form
+msgid "Converter engine, which is used for the conversion"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,help:muk_converter.field_res_config_settings__converter_service
+msgid "Converter engine, which is used for the conversion:\n"
+"- Local: Use a locally installed unoconv installation\n"
+"- Service: Use a service to do the conversion\n"
+""
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_res_config_settings__converter_credit
+msgid "Converter insufficient credit"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__create_uid
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__create_date
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__content
+msgid "Data"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__display_name
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_converter__display_name
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: muk_converter
+#: selection:muk_converter.convert,state:0
+msgid "Download"
+msgstr ""
+
+#. module: muk_converter
+#: selection:muk_converter.convert,state:0
+msgid "Export"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__input_binary
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__output_binary
+msgid "File"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.res_config_settings_view_form
+msgid "File Converter"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__input_name
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__output_name
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__content_fname
+msgid "Filename"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__format
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__format
+msgid "Format"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "Here is the converted file:"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__id
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_converter__id
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__id
+msgid "ID"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert____last_update
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_converter____last_update
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__write_uid
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__write_date
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: muk_converter
+#: selection:res.config.settings,converter_service:0
+msgid "Local"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.res_config_settings_view_form
+msgid "Maximum storage size of the converter store"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__name
+msgid "Name"
+msgstr ""
+
+#. module: muk_converter
+#: selection:res.config.settings,converter_service:0
+msgid "Service"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_convert__state
+msgid "State"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_res_config_settings__converter_max_store
+msgid "Storage Size"
+msgstr ""
+
+#. module: muk_converter
+#: model_terms:ir.ui.view,arch_db:muk_converter.view_converter_convert_form
+msgid "The file has been successfully converted and can now be used.\n"
+"						You can download the file by clicking on the link below."
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,help:muk_converter.field_res_config_settings__converter_max_store
+msgid "To certify the conversion, converted files can be saved\n"
+"and loaded from memory if necessary. You can set a maximum\n"
+"size of the storage to prevent massive memory requirements.\n"
+""
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model.fields,field_description:muk_converter.field_muk_converter_store__used_date
+msgid "Used on"
+msgstr ""
+
+#. module: muk_converter
+#: model:ir.model,name:muk_converter.model_muk_converter_convert
+msgid "muk_converter.convert"
+msgstr ""
+

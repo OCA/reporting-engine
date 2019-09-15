@@ -1,0 +1,75 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Backend Theme 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+//----------------------------------------------------------
+// Helper
+//----------------------------------------------------------
+
+$mk-brand-gradient: linear-gradient(to right bottom, $mk-brand-gradient-start, $mk-brand-gradient-end);
+
+//----------------------------------------------------------
+// Web Client
+//----------------------------------------------------------
+
+.o_web_client {
+	.o_main .o_main_content {
+	    @include media-breakpoint-down(sm) {
+	        overflow: auto;
+	        .o_content {
+	            overflow: initial;
+	        }
+	    }
+	}
+	.o_loading {
+	    position: fixed;
+	    right: 0;
+	    bottom: 0;
+	    color: white;
+	    padding: 5px;
+	    opacity: 0.8;
+	    z-index: 1052;
+	    border-radius: 0;
+	    background-color: $o-brand-odoo;
+	}
+}
+
+.oe_wait {
+ 	cursor: progress;
+}
+
+//----------------------------------------------------------
+// Views
+//----------------------------------------------------------
+
+.o_content, .modal-content {
+    max-width: 100%;
+}
+
+//----------------------------------------------------------
+// Tooltips
+//----------------------------------------------------------
+
+.o_tooltip {
+  &.o_animated {
+    display: none;
+  }
+}

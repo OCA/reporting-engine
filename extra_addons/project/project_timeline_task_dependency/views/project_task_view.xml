@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="project_task_timeline" model="ir.ui.view">
+        <field name="name">project_task_timeline</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_timeline.project_task_timeline"/>
+        <field name="arch" type="xml">
+            <xpath expr="//timeline" position="attributes">
+                <attribute name="dependency_arrow">dependency_task_ids</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

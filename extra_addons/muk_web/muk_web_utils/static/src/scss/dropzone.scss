@@ -1,0 +1,64 @@
+/**********************************************************************************
+*
+*    Copyright (c) 2017-2019 MuK IT GmbH.
+*
+*    This file is part of MuK Web Utils 
+*    (see https://mukit.at).
+*
+*    This program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU Lesser General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Lesser General Public License for more details.
+*
+*    You should have received a copy of the GNU Lesser General Public License
+*    along with this program. If not, see <http://www.gnu.org/licenses/>.
+*
+**********************************************************************************/
+
+.mk_dropzone {
+	position: relative;
+	&:before {
+		display:flex;
+		z-index: 1052;
+		color: gray('700');
+		flex-direction:row;
+		align-items: center;
+		justify-content: center;
+		width: #{"calc(100% - 20px)"};
+		height: #{"calc(100% - 20px)"};
+		border: 2px dashed gray('700');
+		@include gradient-y($white, gray('100'));
+		@include o-position-absolute(10px, 0, 0, 10px);
+	}
+	&:after {
+		display:flex;
+		z-index: 1052;
+		color: gray('700');
+		flex-direction:row;
+		align-items: center;
+		justify-content: center;
+		width: #{"calc(100% - 20px)"};
+		height: #{"calc(100% - 10px)"};
+		@include o-position-absolute(0, 0, 0, 0);
+	}
+	&.mk_dropzone_file {
+		&:before {
+			font-family: FontAwesome;
+		    text-decoration: inherit;
+		    font-style: normal;
+		    font-weight: normal;
+			font-size: 15rem;
+		    content: "\f0ee";
+		}
+		&:after {
+			padding-top: 18rem;
+			font-size: 3rem;
+		    content: attr(data-dropzone-text);
+		}
+	}
+}

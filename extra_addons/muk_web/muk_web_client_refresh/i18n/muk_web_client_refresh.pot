@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* muk_web_client_refresh
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-04 22:55+0000\n"
+"PO-Revision-Date: 2018-05-04 22:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: muk_web_client_refresh
+#: model:ir.actions.act_window,name:muk_web_client_refresh.action_client_refresh_actions
+#: model:ir.ui.menu,name:muk_web_client_refresh.menu_client_refresh_actions
+msgid "Automated Refresh"
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.ui.view,arch_db:muk_web_client_refresh.view_client_refresh_actions_tree
+msgid "Automation"
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.actions.act_window,help:muk_web_client_refresh.action_client_refresh_actions
+msgid "Click to setup a new automated refresh action."
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.ui.view,arch_db:muk_web_client_refresh.res_config_settings_view_form
+msgid "Configure Actions"
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.model.fields,field_description:muk_web_client_refresh.field_res_config_settings_refresh_delay
+#: model:ir.ui.view,arch_db:muk_web_client_refresh.res_config_settings_view_form
+msgid "Delay"
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.model.fields,help:muk_web_client_refresh.field_res_config_settings_refresh_delay
+msgid "Delays the execution of refresh and thus prevents the view from being reloaded too often.\n"
+"            For example, a delay of 1000 (ms) would mean that the view cannot be reloaded more than once a second. "
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.ui.view,arch_db:muk_web_client_refresh.view_client_refresh_actions_form
+msgid "e.g. Refresh Users on Create"
+msgstr ""
+
+#. module: muk_web_client_refresh
+#: model:ir.model,name:muk_web_client_refresh.model_res_config_settings
+msgid "res.config.settings"
+msgstr ""
+

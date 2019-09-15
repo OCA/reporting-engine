@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * packaging_uom
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-30 03:52+0000\n"
+"PO-Revision-Date: 2017-11-30 03:52+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__qty
+msgid "Contained Quantity"
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,help:packaging_uom.field_product_packaging__uom_id
+msgid "It must be in the same category than the default unit of measure."
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__uom_id
+#, fuzzy
+#| msgid "Unit of Measure"
+msgid "Packaging Unit of Measure"
+msgstr "Unidade de Medida"
+
+#. module: packaging_uom
+#: model:ir.model,name:packaging_uom.model_product_packaging
+msgid "Product Packaging"
+msgstr ""
+
+#. module: packaging_uom
+#: code:addons/packaging_uom/models/product_packaging.py:94
+#, python-format
+msgid "The field Unit of Measure is required"
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,help:packaging_uom.field_product_packaging__qty
+msgid "The total number of products you can have per pallet or box."
+msgstr ""
+
+#. module: packaging_uom
+#: model:ir.model.fields,field_description:packaging_uom.field_product_packaging__uom_categ_domain_id
+msgid "Uom Categ Domain"
+msgstr ""
