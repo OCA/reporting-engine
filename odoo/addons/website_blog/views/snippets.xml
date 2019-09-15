@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="website_blog" inherit_id="website.snippets" name="Snippet Blog">
+    <xpath expr="//div[@id='snippet_feature']/div[hasclass('o_panel_body')]/t" position="before">
+        <t t-snippet="website_blog.s_latest_posts" t-thumbnail="/website_blog/static/src/img/s_latest_posts.jpg"/>
+        <t t-snippet="website_blog.s_latest_posts_big_picture" t-thumbnail="/website_blog/static/src/img/s_latest_posts_big_picture.jpg"/>
+    </xpath>
+
+    <xpath expr="//div[@id='snippet_options']" position="inside">
+        <div data-js="blog_cover" data-selector=".website_blog .o_blog_cover_container" data-no-check="true">
+            <we-button data-change="true" data-no-preview="true">Change Cover</we-button>
+            <we-button data-clear="true" data-no-preview="true">Remove Cover</we-button>
+            <we-collapse-area>
+                <we-toggler>Size</we-toggler>
+                <we-collapse>
+                    <we-button data-cover-opt="size" data-select-class="o_wblog_has_cover cover_full">
+                        <span class="o_js_hide_regular">Full Screen</span>
+                        <span class="o_js_show_regular">Large</span>
+                    </we-button>
+                    <we-button data-cover-opt="size" class="o_wblog_cover_opt_size_default" data-select-class="o_wblog_has_cover cover_mid">
+                        <span class="o_js_hide_regular">Half Screen</span>
+                        <span class="o_js_show_regular">Medium</span>
+                    </we-button>
+                    <we-button data-cover-opt="size" data-select-class="o_wblog_has_cover cover_auto">
+                        <span class="o_js_hide_regular">Fit text</span>
+                        <span class="o_js_show_regular">Tiny</span>
+                    </we-button>
+                </we-collapse>
+            </we-collapse-area>
+            <we-collapse-area>
+                <we-toggler>Filter Intensity</we-toggler>
+                <we-collapse>
+                    <we-button data-cover-opt="filters" data-filter-value="0.0">None</we-button>
+                    <we-button data-cover-opt="filters" data-filter-value="0.2">Low</we-button>
+                    <we-button data-cover-opt="filters" data-filter-value="0.4">Medium</we-button>
+                    <we-button data-cover-opt="filters" data-filter-value="0.6">High</we-button>
+                </we-collapse>
+            </we-collapse-area>
+            <we-collapse-area>
+                <we-toggler>Filter Color</we-toggler>
+                <we-collapse>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_black">Black</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="bg-primary">Primary</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_none">White</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_blue">Blue</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_yellow">Yellow</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_red">Red</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_purple">Purple</we-button>
+                    <we-button data-cover-opt="filters" data-filter-color="oe_green">Green</we-button>
+                </we-collapse>
+            </we-collapse-area>
+            <we-collapse-area>
+                <we-toggler>Text Size</we-toggler>
+                <we-collapse>
+                    <we-button data-cover-opt="text_size" data-select-class="o_wblog_cover_font_hero">Hero</we-button>
+                    <we-button data-cover-opt="text_size" data-select-class="o_wblog_cover_font_huge">Huge</we-button>
+                    <we-button data-cover-opt="text_size" data-select-class="o_wblog_cover_font_big">Big</we-button>
+                    <we-button data-cover-opt="text_size" data-select-class="">Regular</we-button>
+                    <we-button data-cover-opt="text_size" data-select-class="o_wblog_cover_font_small">Small</we-button>
+                    <we-button data-cover-opt="text_size" data-select-class="o_wblog_cover_font_tiny">Tiny</we-button>
+                </we-collapse>
+            </we-collapse-area>
+            <we-collapse-area>
+                <we-toggler>Text Alignment</we-toggler>
+                <we-collapse>
+                    <we-button data-cover-opt="text_align" data-select-class="">Left</we-button>
+                    <we-button data-cover-opt="text_align" data-select-class="text-center">Centered</we-button>
+                    <we-button data-cover-opt="text_align" data-select-class="text-right">Right</we-button>
+                </we-collapse>
+            </we-collapse-area>
+        </div>
+    </xpath>
+</template>
+
+<!-- Snippets' Options -->
+<template id="s_latest_posts_options" inherit_id="website.snippet_options">
+    <xpath expr="//div[@data-js='background']" position="before">
+        <div data-js="js_get_posts_selectBlog" data-selector=".s_latest_posts, .s_latest_posts_big_picture" data-target=".js_get_posts" data-no-check="true">
+            <we-collapse-area>
+                <we-toggler><i class="fa fa-folder-open"/> Choose a blog</we-toggler>
+                <we-collapse data-no-preview="true">
+                    <we-button data-filter-by-blog-id="0">All blogs</we-button>
+                    <!-- the blog list will be generated in js -->
+                </we-collapse>
+            </we-collapse-area>
+        </div>
+
+        <div data-js="js_get_posts_limit" data-selector=".s_latest_posts, .s_latest_posts_big_picture" data-target=".js_get_posts" data-no-check="true">
+            <we-collapse-area>
+                <we-toggler><i class="fa fa-sort-numeric-asc"/> Posts limit</we-toggler>
+                <we-collapse data-no-preview="true">
+                    <we-button data-posts-limit="1">1 post max</we-button>
+                    <we-button data-posts-limit="2">2 posts max</we-button>
+                    <we-button data-posts-limit="3">3 posts max</we-button>
+                    <we-button data-posts-limit="4">4 posts max</we-button>
+                    <we-button data-posts-limit="5">5 posts max</we-button>
+                    <we-button data-posts-limit="6">6 posts max</we-button>
+                    <we-button data-posts-limit="7">7 posts max</we-button>
+                    <we-button data-posts-limit="8">8 posts max</we-button>
+                    <we-button data-posts-limit="9">9 posts max</we-button>
+                    <we-button data-posts-limit="10">10 posts max</we-button>
+                </we-collapse>
+            </we-collapse-area>
+        </div>
+    </xpath>
+    <xpath expr="//div[@data-js='layout_column']" position="attributes">
+        <attribute name="data-exclude" add=".s_latest_posts, .s_latest_posts_big_picture" separator=","/>
+    </xpath>
+</template>
+</odoo>
