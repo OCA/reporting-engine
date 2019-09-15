@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_inherit_arch_construction_view" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.arch.construction.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="product_group_id"/>
+            </field>
+            <xpath expr="//page[@name='sales']" position="before">
+                <page string="Computations" name="computations">
+                    <group col="6" name="dimension" string="Standard Dimension">
+                        <field name="standard_length"/>
+                        <field name="standard_width"/>
+                        <field name="standard_height"/>
+                    </group>
+                    <group string="Secondary Unit of Measure">
+                        <field name="secondary_uom_ids" nolabel="1">
+                            <tree string="Secondary Unit" editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="uom_id"/>
+                                <field name="condition_code"/>
+                                <field name="formula"/>
+                                <field name="formula_qty"/>
+                                <field name="factor" invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Formula for Sale Price" col="4">
+                        <field name="consum_factor"/>
+                        <field name="price_factor" widget="monetary"/>
+                    </group>
+                    <group col="3" string="The parameter available for formula" class="oe_grey">
+                        <group>
+                            <span colspan="2">
+                                length or dai: Field Length (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                width or rong: Field Width (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                height or cao: Field Height (mm) in sale order line
+                            </span>
+                            <span colspan="2">
+                                price_unit: Field Unit Price in sale order line
+                            </span>
+                        </group>
+                        <group>
+                            <span colspan="2">
+                                result: Return value
+                            </span>
+                            <span colspan="2">
+                                product.standard_length: Field Length (mm) in Product
+                            </span>
+                            <span colspan="2">
+                                product.standard_width: Field Width (mm) in Product
+                            </span>
+                            <span colspan="2">
+                                product.standard_height: Field Height (mm) in Product
+                            </span>
+                        </group>
+                        <group>
+                            <span colspan="2">
+                                and: The conjunction and
+                            </span>
+                            <span colspan="2">
+                                or: The conjunction or
+                            </span>
+                            <span colspan="2">
+                                And the operator (&lt;,&gt;,&lt;=,&gt;=,=)
+                            </span>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <field name="optional_product_ids" position="after">
+                <field name="system_name"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
+        <field name="arch" type="xml">
+            <button name="print_quotation" class="o_sale_print" position="after">
+                <button name="export_quotation_xls" string="Print Excel" type="object" class="o_sale_print"/>
+            </button>
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="d_length" force_save = "1"/>
+                <field name='d_width'/>
+                <field name='d_height'/>
+                <field name="origin_price_unit" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//form//field[@name='price_subtotal']" position="after">
+                <field name="d_length"/>
+                <field name='d_width'/>
+                <field name='d_height'/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//kanban//field[@name='product_id']" position="after">
+                <field name="d_length"/>
+                <field name='d_width'/>
+                <field name='d_height'/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//kanban//templates//div[hasclass('row')][1]" position="after">
+                <t t-if="record.d_length.value != 0 or record.d_width.value != 0 or record.d_height.value != 0">
+                    <div class="row">
+                        <div class="col-12 text-muted">
+                            <span>
+                                Dimensions (mm):
+                                <t t-esc="record.d_length.value"/> -
+                                <t t-esc="record.d_width.value"/> -
+                                <t t-esc="record.d_height.value"/>
+                            </span>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </field>
+    </record>
+</odoo>
