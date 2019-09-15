@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Configuration > Project Stages -->
+    <menuitem id="menu_project_stage" name="Project Stages"
+         groups="base.group_no_one"
+         parent="project.menu_project_config" sequence="50"
+         action="project_stage_action"/>
+
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_project_view_form_simplified_arcons" model="ir.ui.view">
+        <field name="name">project.project.view.form.simplified.arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="sale_id"/>
+                <field name="project_group_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_edit_form_arcons" model="ir.ui.view">
+        <field name="name">project.edit.form_arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//header//button[last()]" position="after">
+                 <field name="stage_id" widget="statusbar"/>
+             </xpath>
+            <page name="settings" position="before">
+                <page name="sale" string="Sale Orders">
+                    <group class="oe_edit_only">
+                        <field name="sale_id"/>
+                    </group>
+                    <field name="sale_ids" nolabel="1" readonly="1">
+                        <tree >
+                            <field name="name" string="Quotation Number" />
+                            <field name="date_order" string="Quotation Date" />
+                            <field name="user_id"/>
+                            <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                            <field name="state" string="Status"/>
+                        </tree>
+                    </field>
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_amount_total">
+                        <div class="oe_inline o_td_label">
+                            <label for="sale_amount_total"/>
+                        </div>
+                        <field name="sale_amount_total" nolabel="1" widget="monetary" readonly="1"/>
+                    </group>
+                </page>
+                <page name="team" string="Team">
+                    <field name="member_ids"/>
+                </page>
+            </page>
+            <group name="misc" position="before">
+                <group name="arcons">
+                    <field name="project_group_id"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="view_project_kanban_arcons" model="ir.ui.view">
+        <field name="name">view.project.kanban.arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="stage_id"/>
+            </xpath>
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="class">oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors o_kanban_small_column</attribute>
+                 <attribute name="default_group_by">stage_id</attribute>
+             </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_timeline" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline date_start="date_start"
+                      date_stop="date"
+                      default_group_by="partner_id"
+                      event_open_popup="true"
+            />
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">kanban,timeline,tree,form</field>
+    </record>
+
+    <record id="project_project_form" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                <field name="date_start"/>
+                <field name="date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_project_tree_arcons" model="ir.ui.view">
+        <field name="name">view.project.project.form.arcons</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="stage_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
