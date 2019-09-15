@@ -34,7 +34,6 @@ class ProductTemplateAttributeValue(models.Model):
             self.factor =\
                 self.price_extra / (self.avg_price * self.unit_factor)
 
-    @api.multi
     def btn_update_avg_price(self):
         self.ensure_one()
 

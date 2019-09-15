@@ -43,7 +43,6 @@ class ProductTemplate(models.Model):
         if self.consum_factor and self.price_factor:
             self.list_price = self.consum_factor * self.price_factor
 
-    @api.multi
     def _compute_qty_unit_price(self, localdict):
         self.ensure_one()
         result = None

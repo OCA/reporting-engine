@@ -38,7 +38,6 @@ class ProductSecondaryUnit(models.Model):
         required=True,
     )
 
-    @api.multi
     def satisfy_condition(self, localdict):
         """
         @param contract_id: id of hr.contract to be tested
@@ -59,7 +58,6 @@ class ProductSecondaryUnit(models.Model):
                     _('Wrong python condition defined for condition %s (%s).')
                     % (self.condition_code, e))
 
-    @api.multi
     def _compute_price_unit_by_dimension(self, localdict):
         """
         :param localdict: dictionary containing the environement in which to

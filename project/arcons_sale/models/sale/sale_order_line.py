@@ -16,7 +16,6 @@ class SaleOrderLine(models.Model):
         string='Original Price Unit',
         digits=dp.get_precision('Product Price'))
 
-    @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
         domain = super(SaleOrderLine, self).product_id_change()

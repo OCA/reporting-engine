@@ -59,7 +59,6 @@ class AttrValueModifyWizard(models.TransientModel):
                           'price_extra': self.avg_price * value.factor *
                           self.unit_factor})
 
-    @api.multi
     def btn_update_avg_price(self):
         # TODO: something
         return True

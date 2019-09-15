@@ -13,7 +13,6 @@ class ProductAttribute(models.Model):
         string='Average Price',
         digits=dp.get_precision('Product Price'))
 
-    @api.multi
     def btn_update_avg_price(self):
         AttrValue = self.env['product.template.attribute.value']
         for value in self.filtered(

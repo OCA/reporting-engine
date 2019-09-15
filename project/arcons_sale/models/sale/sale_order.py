@@ -7,9 +7,8 @@ from odoo import models, fields, api, _
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.multi
     def export_quotation_xls(self):
-        module= __name__.split('addons.')[1].split('.')[0]
+        module = __name__.split('addons.')[1].split('.')[0]
         report_name = '{}.report_sale_order_xlsx'.format(module)
         report = {
             'type': 'ir.actions.report',
