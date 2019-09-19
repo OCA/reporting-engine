@@ -18,4 +18,4 @@ class TestReportQr(HttpCase):
         for i in range(0, 1500):
             new_data += 'TEST'
         with self.assertRaises(Exception):
-            self.env['ir.actions.report'].qr_generate(new_data)
+            self.env['report'].qr_generate(new_data)

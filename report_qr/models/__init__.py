@@ -1,1 +1,2 @@
-from . import ir_actions_report
+# -*- coding: utf-8 -*-
+from . import report
