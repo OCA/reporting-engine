@@ -5,6 +5,7 @@ import base64
 import datetime
 import dateutil
 import email
+import email.policy
 import hashlib
 import hmac
 import lxml
@@ -20,8 +21,7 @@ except ImportError:
     import xmlrpclib
 
 from collections import namedtuple
-from email.message import Message
-from email.utils import formataddr
+from email.message import EmailMessage
 from lxml import etree
 from werkzeug import url_encode
 from werkzeug import urls
@@ -876,8 +876,8 @@ class MailThread(models.AbstractModel):
 
         :raises: ValueError, TypeError
         """
-        if not isinstance(message, Message):
-            raise TypeError('message must be an email.message.Message at this point')
+        if not isinstance(message, EmailMessage):
+            raise TypeError('message must be an email.message.EmailMessage at this point')
         catchall_alias = self.env['ir.config_parameter'].sudo().get_param("mail.catchall.alias")
         bounce_alias = self.env['ir.config_parameter'].sudo().get_param("mail.bounce.alias")
         fallback_model = model
@@ -1093,7 +1093,7 @@ class MailThread(models.AbstractModel):
             message = bytes(message.data)
         if isinstance(message, str):
             message = message.encode('utf-8')
-        message = email.message_from_bytes(message)
+        message = email.message_from_bytes(message, policy=email.policy.SMTP)
 
         # parse the message, verify we are not in a loop by checking message_id is not duplicated
         msg_dict = self.message_parse(message, save_original=save_original)
@@ -1231,7 +1231,7 @@ class MailThread(models.AbstractModel):
         #   type="text/html"
         if message.get_content_maintype() == 'text':
             encoding = message.get_content_charset()
-            body = message.get_payload(decode=True)
+            body = message.get_content()
             body = tools.ustr(body, encoding, errors='replace')
             if message.get_content_type() == 'text/plain':
                 # text/plain -> <pre/>
@@ -1247,40 +1247,29 @@ class MailThread(models.AbstractModel):
                     mixed = True
                 if part.get_content_maintype() == 'multipart':
                     continue  # skip container
-                # part.get_filename returns decoded value if able to decode, coded otherwise.
-                # original get_filename is not able to decode iso-8859-1 (for instance).
-                # therefore, iso encoded attachements are not able to be decoded properly with get_filename
-                # code here partially copy the original get_filename method, but handle more encoding
-                filename = part.get_param('filename', None, 'content-disposition')
-                if not filename:
-                    filename = part.get_param('name', None)
-                if filename:
-                    if isinstance(filename, tuple):
-                        # RFC2231
-                        filename = email.utils.collapse_rfc2231_value(filename).strip()
-                    else:
-                        filename = tools.decode_smtp_header(filename)
+
+                filename = part.get_filename()  # I may not properly handle all charsets
                 encoding = part.get_content_charset()  # None if attachment
 
                 # 0) Inline Attachments -> attachments, with a third part in the tuple to match cid / attachment
                 if filename and part.get('content-id'):
                     inner_cid = part.get('content-id').strip('><')
-                    attachments.append(self._Attachment(filename, part.get_payload(decode=True), {'cid': inner_cid}))
+                    attachments.append(self._Attachment(filename, part.get_content(), {'cid': inner_cid}))
                     continue
                 # 1) Explicit Attachments -> attachments
                 if filename or part.get('content-disposition', '').strip().startswith('attachment'):
-                    attachments.append(self._Attachment(filename or 'attachment', part.get_payload(decode=True), {}))
+                    attachments.append(self._Attachment(filename or 'attachment', part.get_content(), {}))
                     continue
                 # 2) text/plain -> <pre/>
                 if part.get_content_type() == 'text/plain' and (not alternative or not body):
-                    body = tools.append_content_to_html(body, tools.ustr(part.get_payload(decode=True),
+                    body = tools.append_content_to_html(body, tools.ustr(part.get_content(),
                                                                          encoding, errors='replace'), preserve=True)
                 # 3) text/html -> raw
                 elif part.get_content_type() == 'text/html':
                     # mutlipart/alternative have one text and a html part, keep only the second
                     # mixed allows several html parts, append html content
                     append_content = not alternative or (html and mixed)
-                    html = tools.ustr(part.get_payload(decode=True), encoding, errors='replace')
+                    html = tools.ustr(part.get_content(), encoding, errors='replace')
                     if not append_content:
                         body = html
                     else:
@@ -1289,7 +1278,7 @@ class MailThread(models.AbstractModel):
                     body = tools.html_sanitize(body, sanitize_tags=False, strip_classes=True)
                 # 4) Anything else -> attachment
                 else:
-                    attachments.append(self._Attachment(filename or 'attachment', part.get_payload(decode=True), {}))
+                    attachments.append(self._Attachment(filename or 'attachment', part.get_content(), {}))
 
         return self._message_parse_extract_payload_postprocess(message, {'body': body, 'attachments': attachments})
 
@@ -1301,8 +1290,8 @@ class MailThread(models.AbstractModel):
         :param message_dict: dictionary holding already-parsed values and in
             which bounce-related values will be added;
         """
-        if not isinstance(email_message, Message):
-            raise TypeError('message must be an email.message.Message at this point')
+        if not isinstance(email_message, EmailMessage):
+            raise TypeError('message must be an email.message.EmailMessage at this point')
 
         email_part = next((part for part in email_message.walk() if part.get_content_type() == 'message/rfc822'), None)
         dsn_part = next((part for part in email_message.walk() if part.get_content_type() == 'message/delivery-status'), None)
@@ -1361,8 +1350,8 @@ class MailThread(models.AbstractModel):
                               ('file2', 'bytes')}
             }
         """
-        if not isinstance(message, Message):
-            raise ValueError(_('Message should be a valid Message instance'))
+        if not isinstance(message, EmailMessage):
+            raise ValueError(_('Message should be a valid EmailMessage instance'))
         msg_dict = {'message_type': 'email'}
 
         message_id = message.get('Message-Id')
@@ -2632,7 +2621,7 @@ class MailThread(models.AbstractModel):
             company_name = company.name if company else self.env.company.name
             for res_id in result_email.keys():
                 name = '%s%s%s' % (company_name, ' ' if doc_names.get(res_id) else '', doc_names.get(res_id, ''))
-                result[res_id] = formataddr((name, result_email[res_id]))
+                result[res_id] = tools.formataddr((name, result_email[res_id]))
 
         left_ids = set(_res_ids) - set(result_email)
         if left_ids:

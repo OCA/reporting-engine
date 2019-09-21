@@ -7,7 +7,7 @@ from odoo import SUPERUSER_ID
 from odoo.exceptions import UserError, ValidationError
 from odoo.tests.common import TransactionCase, BaseCase
 from odoo.tools import mute_logger
-from odoo.tools.safe_eval import safe_eval, const_eval
+from odoo.tools.safe_eval import safe_eval, const_eval, expr_eval
 
 
 class TestSafeEval(BaseCase):
@@ -15,6 +15,12 @@ class TestSafeEval(BaseCase):
         # NB: True and False are names in Python 2 not consts
         expected = (1, {"a": {2.5}}, [None, u"foo"])
         actual = const_eval('(1, {"a": {2.5}}, [None, u"foo"])')
+        self.assertEqual(actual, expected)
+
+    def test_expr(self):
+        # NB: True and False are names in Python 2 not consts
+        expected = 3 * 4
+        actual = expr_eval('3 * 4')
         self.assertEqual(actual, expected)
 
     def test_01_safe_eval(self):
@@ -41,9 +47,18 @@ class TestSafeEval(BaseCase):
 
     @mute_logger('odoo.tools.safe_eval')
     def test_05_safe_eval_forbiddon(self):
-        """ Try forbidden expressions in safe_eval to verify they are not allowed (open) """
+        """ Try forbidden expressions in safe_eval to verify they are not allowed"""
+        # no forbidden builtin expression
         with self.assertRaises(ValueError):
             safe_eval('open("/etc/passwd","r")')
+
+        # no forbidden opcodes
+        with self.assertRaises(ValueError):
+            safe_eval("import odoo", mode="exec")
+
+        # no dunder
+        with self.assertRaises(NameError):
+            safe_eval("self.__name__", {'self': self}, mode="exec")
 
 
 # samples use effective TLDs from the Mozilla public suffix
@@ -165,7 +180,7 @@ class TestBase(TransactionCase):
             'street': 'Strongarm Avenue, 12',
             'parent_id': ironshield.id,
         })
-        self.assertEquals(p1.type, 'contact', 'Default type must be "contact", not the copied parent type')
+        self.assertEqual(p1.type, 'contact', 'Default type must be "contact", not the copied parent type')
         self.assertEqual(ironshield.street, p1.street, 'Address fields should be copied to company')
 
     def test_40_res_partner_address_get(self):
@@ -318,30 +333,30 @@ class TestBase(TransactionCase):
         p3 = res_partner.search([('email', '=', 'ugr@sunhelm.com')], limit=1)
 
         for p in (p0, p1, p11, p2, p3):
-            self.assertEquals(p.commercial_partner_id, sunhelm, 'Incorrect commercial entity resolution')
-            self.assertEquals(p.vat, sunhelm.vat, 'Commercial fields must be automatically synced')
+            self.assertEqual(p.commercial_partner_id, sunhelm, 'Incorrect commercial entity resolution')
+            self.assertEqual(p.vat, sunhelm.vat, 'Commercial fields must be automatically synced')
         sunhelmvat = 'BE0123456789'
         sunhelm.write({'vat': sunhelmvat})
         for p in (p0, p1, p11, p2, p3):
-            self.assertEquals(p.vat, sunhelmvat, 'Commercial fields must be automatically and recursively synced')
+            self.assertEqual(p.vat, sunhelmvat, 'Commercial fields must be automatically and recursively synced')
 
         p1vat = 'BE0987654321'
         p1.write({'vat': p1vat})
         for p in (sunhelm, p0, p11, p2, p3):
-            self.assertEquals(p.vat, sunhelmvat, 'Sync to children should only work downstream and on commercial entities')
+            self.assertEqual(p.vat, sunhelmvat, 'Sync to children should only work downstream and on commercial entities')
 
         # promote p1 to commercial entity
         p1.write({'parent_id': sunhelm.id,
                   'is_company': True,
                   'name': 'Sunhelm Subsidiary'})
-        self.assertEquals(p1.vat, p1vat, 'Setting is_company should stop auto-sync of commercial fields')
-        self.assertEquals(p1.commercial_partner_id, p1, 'Incorrect commercial entity resolution after setting is_company')
+        self.assertEqual(p1.vat, p1vat, 'Setting is_company should stop auto-sync of commercial fields')
+        self.assertEqual(p1.commercial_partner_id, p1, 'Incorrect commercial entity resolution after setting is_company')
 
         # writing on parent should not touch child commercial entities
         sunhelmvat2 = 'BE0112233445'
         sunhelm.write({'vat': sunhelmvat2})
-        self.assertEquals(p1.vat, p1vat, 'Setting is_company should stop auto-sync of commercial fields')
-        self.assertEquals(p0.vat, sunhelmvat2, 'Commercial fields must be automatically synced')
+        self.assertEqual(p1.vat, p1vat, 'Setting is_company should stop auto-sync of commercial fields')
+        self.assertEqual(p0.vat, sunhelmvat2, 'Commercial fields must be automatically synced')
 
     def test_60_read_group(self):
         title_sir = self.env['res.partner.title'].create({'name': 'Sir...'})

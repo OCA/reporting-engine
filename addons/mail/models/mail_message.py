@@ -8,7 +8,7 @@ from binascii import Error as binascii_error
 from collections import defaultdict
 from operator import itemgetter
 from email.utils import formataddr
-from openerp.http import request
+from odoo.http import request
 
 from odoo import _, api, fields, models, modules, tools
 from odoo.exceptions import UserError, AccessError
@@ -32,7 +32,7 @@ class Message(models.Model):
     @api.model
     def _get_default_from(self):
         if self.env.user.email:
-            return formataddr((self.env.user.name, self.env.user.email))
+            return tools.formataddr((self.env.user.name, self.env.user.email))
         raise UserError(_("Unable to post message, please configure the sender's email address."))
 
     @api.model
@@ -79,7 +79,7 @@ class Message(models.Model):
         'res.partner', 'Author', index=True,
         ondelete='set null', default=_get_default_author,
         help="Author of the message. If not set, email_from may hold an email address that did not match any partner.")
-    author_avatar = fields.Binary("Author's avatar", related='author_id.image_64', readonly=False)
+    author_avatar = fields.Binary("Author's avatar", related='author_id.image_128', readonly=False)
     # recipients: include inactive partners (they may have been archived after
     # the message was sent, but they should remain visible in the relation)
     partner_ids = fields.Many2many('res.partner', string='Recipients', context={'active_test': False})
@@ -1179,7 +1179,7 @@ class Message(models.Model):
             if not msg.email_from:
                 continue
             if self.env.user.partner_id.email:
-                email_from = formataddr((self.env.user.partner_id.name, self.env.user.partner_id.email))
+                email_from = tools.formataddr((self.env.user.partner_id.name, self.env.user.partner_id.email))
             else:
                 email_from = self.env.company.catchall
 

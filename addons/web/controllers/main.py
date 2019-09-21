@@ -567,7 +567,7 @@ class HomeStaticTemplateHelpers(object):
         :returns: (concatenation_result, checksum)
         :rtype: (bytes, str)
         """
-        checksum = hashlib.new('sha1')
+        checksum = hashlib.new('sha512')  # sha512/256
         if not file_dict:
             return b'', checksum.hexdigest()
 
@@ -586,7 +586,7 @@ class HomeStaticTemplateHelpers(object):
             for template in addon.values():
                 root.append(template)
 
-        return etree.tostring(root, encoding='utf-8') if root is not None else b'', checksum.hexdigest()
+        return etree.tostring(root, encoding='utf-8') if root is not None else b'', checksum.hexdigest()[:64]
 
     def _get_qweb_templates(self):
         """One and only entry point that gets and evaluates static qweb templates
@@ -1155,7 +1155,8 @@ class View(http.Controller):
 class Binary(http.Controller):
 
     def placeholder(self, image='placeholder.png'):
-        return tools.file_open(get_resource_path('web', 'static/src/img', image), 'rb').read()
+        with tools.file_open(get_resource_path('web', 'static/src/img', image), 'rb') as fd:
+            return fd.read()
 
     @http.route(['/web/content',
         '/web/content/<string:xmlid>',
@@ -1189,7 +1190,7 @@ class Binary(http.Controller):
         '/web/partner_image/<int:rec_id>',
         '/web/partner_image/<int:rec_id>/<string:field>',
         '/web/partner_image/<int:rec_id>/<string:field>/<string:model>/'], type='http', auth="public")
-    def content_image_partner(self, rec_id, field='image_64', model='res.partner', **kwargs):
+    def content_image_partner(self, rec_id, field='image_128', model='res.partner', **kwargs):
         # other kwargs are ignored on purpose
         return self._content_image(id=rec_id, model='res.partner', field=field,
             placeholder='user_placeholder.jpg')
@@ -1292,7 +1293,7 @@ class Binary(http.Controller):
             try:
                 attachment = Model.create({
                     'name': filename,
-                    'datas': base64.encodestring(ufile.read()),
+                    'datas': base64.encodebytes(ufile.read()),
                     'res_model': model,
                     'res_id': int(id)
                 })
@@ -1832,8 +1833,11 @@ class ReportController(http.Controller):
                     response = self.report_routes(reportname, docids=docids, converter=converter, context=context)
                 else:
                     # Particular report:
-                    data = url_decode(url.split('?')[1]).items()  # decoding the args represented in JSON
-                    response = self.report_routes(reportname, converter=converter, context=context, **dict(data))
+                    data = dict(url_decode(url.split('?')[1]).items())  # decoding the args represented in JSON
+                    if 'context' in data:
+                        context, data_context = json.loads(context or '{}'), json.loads(data.pop('context'))
+                        context = json.dumps({**context, **data_context})
+                    response = self.report_routes(reportname, converter=converter, context=context, **data)
 
                 report = request.env['ir.actions.report']._get_report_from_name(reportname)
                 filename = "%s.%s" % (report.name, extension)

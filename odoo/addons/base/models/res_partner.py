@@ -9,8 +9,6 @@ import pytz
 import threading
 import re
 
-from email.utils import formataddr
-
 import requests
 from lxml import etree
 from werkzeug import urls
@@ -116,7 +114,7 @@ class PartnerCategory(models.Model):
             name = name.split(' / ')[-1]
             args = [('name', operator, name)] + args
         partner_category_ids = self._search(args, limit=limit, access_rights_uid=name_get_uid)
-        return self.browse(partner_category_ids).name_get()
+        return models.lazy_name_get(self.browse(partner_category_ids).with_user(name_get_uid))
 
 
 class PartnerTitle(models.Model):
@@ -355,7 +353,7 @@ class Partner(models.Model):
     def _compute_email_formatted(self):
         for partner in self:
             if partner.email:
-                partner.email_formatted = formataddr((partner.name or u"False", partner.email or u"False"))
+                partner.email_formatted = tools.formataddr((partner.name or u"False", partner.email or u"False"))
             else:
                 partner.email_formatted = ''
 
