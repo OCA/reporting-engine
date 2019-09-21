@@ -136,7 +136,7 @@ class ViewCustom(models.Model):
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         if name:
             view_ids = self._search([('user_id', operator, name)] + (args or []), limit=limit, access_rights_uid=name_get_uid)
-            return self.browse(view_ids).name_get()
+            return models.lazy_name_get(self.browse(view_ids).with_user(name_get_uid))
         return super(ViewCustom, self)._name_search(name, args=args, operator=operator, limit=limit, name_get_uid=name_get_uid)
 
     def _auto_init(self):
@@ -351,7 +351,7 @@ actual arch.
                     message = "View inheritance may not use attribute %r as a selector." % match.group(1)
                     self.raise_view_error(message, self.id)
                 if WRONGCLASS.search(node.get('expr', '')):
-                    _logger.warn(
+                    _logger.warning(
                         "Error-prone use of @class in view %s (%s): use the "
                         "hasclass(*classes) function to filter elements by "
                         "their classes", self.name, self.xml_id

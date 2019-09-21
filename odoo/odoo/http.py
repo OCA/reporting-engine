@@ -331,14 +331,18 @@ class WebRequest(object):
         if self.endpoint.first_arg_is_req:
             args = (request,) + args
 
+        first_time = True
+
         # Correct exception handling and concurency retry
         @service_model.check
         def checked_call(___dbname, *a, **kw):
+            nonlocal first_time
             # The decorator can call us more than once if there is an database error. In this
             # case, the request cursor is unusable. Rollback transaction to create a new one.
-            if self._cr:
+            if self._cr and not first_time:
                 self._cr.rollback()
                 self.env.clear()
+            first_time = False
             result = self.endpoint(*a, **kw)
             if isinstance(result, Response) and result.is_qweb:
                 # Early rendering of lazy responses to benefit from @service_model.check protection
@@ -505,9 +509,14 @@ def route(route=None, **kw):
         @functools.wraps(f)
         def response_wrap(*args, **kw):
             # if controller cannot be called with extra args (utm, debug, ...), call endpoint ignoring them
-            spec = inspect.getargspec(f)
-            if not spec.keywords:
-                ignored = ['<%s=%s>' % (k, kw.pop(k)) for k in list(kw) if k not in spec.args]
+            params = inspect.signature(f).parameters.values()
+            is_kwargs = lambda p: p.kind == inspect.Parameter.VAR_KEYWORD
+            if not any(is_kwargs(p) for p in params):  # missing **kw
+                is_keyword_compatible = lambda p: p.kind in (
+                    inspect.Parameter.POSITIONAL_OR_KEYWORD,
+                    inspect.Parameter.KEYWORD_ONLY)
+                fargs = {p.name for p in params if is_keyword_compatible(p)}
+                ignored = ['<%s=%s>' % (k, kw.pop(k)) for k in list(kw) if k not in fargs]
                 if ignored:
                     _logger.info("<function %s.%s> called ignoring args %s" % (f.__module__, f.__name__, ', '.join(ignored)))
 
@@ -525,7 +534,7 @@ def route(route=None, **kw):
                 response.set_default()
                 return response
 
-            _logger.warn("<function %s.%s> returns an invalid response type for an http request" % (f.__module__, f.__name__))
+            _logger.warning("<function %s.%s> returns an invalid response type for an http request" % (f.__module__, f.__name__))
             return response
         response_wrap.routing = routing
         response_wrap.original_func = f
@@ -775,10 +784,10 @@ class HttpRequest(WebRequest):
             token = self.params.pop('csrf_token', None)
             if not self.validate_csrf(token):
                 if token is not None:
-                    _logger.warn("CSRF validation failed on path '%s'",
+                    _logger.warning("CSRF validation failed on path '%s'",
                                  request.httprequest.path)
                 else:
-                    _logger.warn("""No CSRF validation token provided for path '%s'
+                    _logger.warning("""No CSRF validation token provided for path '%s'
 
 Odoo URLs are CSRF-protected by default (when accessed with unsafe
 HTTP methods). See
@@ -873,12 +882,12 @@ class ControllerType(type):
                 parent_routing_type = getattr(parent[0], k).original_func.routing_type if parent else routing_type or 'http'
                 if routing_type is not None and routing_type is not parent_routing_type:
                     routing_type = parent_routing_type
-                    _logger.warn("Subclass re-defines <function %s.%s.%s> with different type than original."
+                    _logger.warning("Subclass re-defines <function %s.%s.%s> with different type than original."
                                     " Will use original type: %r" % (cls.__module__, cls.__name__, k, parent_routing_type))
                 v.original_func.routing_type = routing_type or parent_routing_type
 
-                spec = inspect.getargspec(v.original_func)
-                first_arg = spec.args[1] if len(spec.args) >= 2 else None
+                sign = inspect.signature(v.original_func)
+                first_arg = list(sign.parameters)[1] if len(sign.parameters) >= 2 else None
                 if first_arg in ["req", "request"]:
                     v._first_arg_is_req = True
 
@@ -1295,14 +1304,15 @@ class Root(object):
         controllers and configure them.  """
         # TODO should we move this to ir.http so that only configured modules are served ?
         statics = {}
-        for addons_path in odoo.modules.module.ad_paths:
+        for addons_path in odoo.addons.__path__:
             for module in sorted(os.listdir(str(addons_path))):
                 if module not in addons_manifest:
                     mod_path = opj(addons_path, module)
                     manifest_path = module_manifest(mod_path)
                     path_static = opj(addons_path, module, 'static')
                     if manifest_path and os.path.isdir(path_static):
-                        manifest_data = open(manifest_path, 'rb').read()
+                        with open(manifest_path, 'rb') as fd:
+                            manifest_data = fd.read()
                         manifest = ast.literal_eval(pycompat.to_text(manifest_data))
                         if not manifest.get('installable', True):
                             continue
@@ -1338,7 +1348,7 @@ class Root(object):
         # Check if session.db is legit
         if db:
             if db not in db_filter([db], httprequest=httprequest):
-                _logger.warn("Logged into database '%s', but dbfilter "
+                _logger.warning("Logged into database '%s', but dbfilter "
                              "rejects it; logging session out.", db)
                 httprequest.session.logout()
                 db = None
