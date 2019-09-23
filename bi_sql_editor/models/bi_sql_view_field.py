@@ -45,7 +45,7 @@ class BiSQLViewField(models.Model):
         'numeric': 'float',
         'text': 'char',
         'character varying': 'char',
-        'date': 'datetime',
+        'date': 'date',
         'timestamp without time zone': 'datetime',
     }
 
