@@ -3,8 +3,10 @@
 
 from odoo.addons.web.controllers import main as report
 from odoo.http import content_disposition, route, request
+from odoo.tools.safe_eval import safe_eval
 
 import json
+import time
 
 
 class ReportController(report.ReportController):
@@ -29,13 +31,19 @@ class ReportController(report.ReportController):
             xlsx = report.with_context(context).render_xlsx(
                 docids, data=data
             )[0]
+            # set filename
+            filename = report.name
+            if report.print_report_name and docids and not len(docids) > 1:
+                record = request.env[report.model].browse(docids)
+                filename = safe_eval(report.print_report_name,
+                                     {'object': record, 'time': time})
             xlsxhttpheaders = [
                 ('Content-Type', 'application/vnd.openxmlformats-'
                                  'officedocument.spreadsheetml.sheet'),
                 ('Content-Length', len(xlsx)),
                 (
                     'Content-Disposition',
-                    content_disposition(report.report_file + '.xlsx')
+                    content_disposition(filename + '.xlsx')
                 )
             ]
             return request.make_response(xlsx, headers=xlsxhttpheaders)
