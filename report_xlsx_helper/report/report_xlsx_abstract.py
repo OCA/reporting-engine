@@ -1,7 +1,7 @@
 # Copyright 2009-2018 Noviat.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
+from datetime import datetime, date
 import re
 from types import CodeType
 from xlsxwriter.utility import xl_rowcol_to_cell
@@ -502,6 +502,10 @@ class ReportXlsxAbstract(models.AbstractModel):
                     elif isinstance(cell_value, (int, float)):
                         cell_type = 'number'
                     elif isinstance(cell_value, datetime):
+                        cell_type = 'datetime'
+                    elif isinstance(cell_value, date):
+                        cell_value = datetime.combine(
+                            cell_value, datetime.min.time())
                         cell_type = 'datetime'
                     else:
                         if not cell_value:
