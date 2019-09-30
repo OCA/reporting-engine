@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo10-addon-bi_view_editor',
         'odoo10-addon-report_py3o',
         'odoo10-addon-report_py3o_fusion_server',
+        'odoo10-addon-report_qr',
         'odoo10-addon-report_qweb_element_page_visibility',
         'odoo10-addon-report_qweb_parameter',
         'odoo10-addon-report_qweb_pdf_watermark',
