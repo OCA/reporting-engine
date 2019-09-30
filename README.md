@@ -26,6 +26,7 @@ addon | version | summary
 [bi_view_editor](bi_view_editor/) | 10.0.1.0.2 | Graphical BI views builder for Odoo
 [report_py3o](report_py3o/) | 10.0.2.0.2 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 10.0.1.0.0 | Let the fusion server handle format conversion.
+[report_qr](report_qr/) | 10.0.1.0.0 | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 10.0.1.0.1 | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.2 | Add watermarks to your QWEB PDF reports
