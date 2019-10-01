@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests.common import TransactionCase
+from odoo.exceptions import ValidationError
 
 
 class TestReportSubstitute(TransactionCase):
@@ -64,3 +65,16 @@ class TestReportSubstitute(TransactionCase):
             res['report_name'],
             self.substitution_rule.substitution_action_report_id.report_name,
         )
+
+    def test_substitution_infinite_loop(self):
+        with self.assertRaises(ValidationError):
+            self.env['ir.actions.report.substitution.rule'].create(
+                {
+                    'action_report_id': self.env.ref(
+                        'report_substitute.substitution_report_print'
+                    ).id,
+                    'substitution_action_report_id': self.env.ref(
+                        'base.ir_module_reference_print'
+                    ).id,
+                }
+            )
