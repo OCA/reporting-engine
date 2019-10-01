@@ -9,7 +9,7 @@
               'Odoo Community Association (OCA)',
     'website': "https://github.com/oca/reporting-engine",
     'category': 'Reporting',
-    'version': '12.0.1.0.1',
+    'version': '13.0.1.0.0',
     'license': 'AGPL-3',
     'external_dependencies': {
         'python': [
