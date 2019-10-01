@@ -10,7 +10,7 @@
     'license': 'AGPL-3',
     'author': 'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
-    'website': 'https://github.com/acsone/reporting-engine',
+    'website': 'https://github.com/OCA/reporting-engine',
     'depends': ['base', 'mail'],
     'data': [
         'security/ir_actions_report_substitution_rule.xml',
