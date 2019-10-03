@@ -22,7 +22,7 @@ _logger = logging.getLogger(__name__)
 
 # Used to agglomerate the attendances in order to find the hour_from and hour_to
 # See _onchange_request_parameters
-DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, day_period')
+DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, day_period, week_type')
 
 class HolidaysRequest(models.Model):
     """ Leave Requests Access specifications
@@ -284,29 +284,29 @@ class HolidaysRequest(models.Model):
 
         resource_calendar_id = self.employee_id.resource_calendar_id or self.env.company.resource_calendar_id
         domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
-        attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'dayofweek', 'day_period'], ['dayofweek', 'day_period'], lazy=False)
+        attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
 
         # Must be sorted by dayofweek ASC and day_period DESC
-        attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
+        attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
 
-        default_value = DummyAttendance(0, 0, 0, 'morning')
+        default_value = DummyAttendance(0, 0, 0, 'morning', False)
 
         if resource_calendar_id.two_weeks_calendar:
             # find week type of start_date
             start_week_type = int(math.floor((self.request_date_from.toordinal() - 1) / 7) % 2)
-            attendance_actual_week = attendances.filtered(lambda att: att.week_type is False or int(att.week_type) == start_week_type)
-            attendance_actual_next_week = attendances.filtered(lambda att: att.week_type is False or int(att.week_type) != start_week_type)
+            attendance_actual_week = [att for att in attendances if att.week_type is False or int(att.week_type) == start_week_type]
+            attendance_actual_next_week = [att for att in attendances if att.week_type is False or int(att.week_type) != start_week_type]
             # First, add days of actual week coming after date_from
-            attendance_filtred = list(attendance_actual_week.filtered(lambda att: int(att.dayofweek) >= self.request_date_from.weekday()))
+            attendance_filtred = [att for att in attendance_actual_week if int(att.dayofweek) >= self.request_date_from.weekday()]
             # Second, add days of the other type of week
             attendance_filtred += list(attendance_actual_next_week)
             # Third, add days of actual week (to consider days that we have remove first because they coming before date_from)
             attendance_filtred += list(attendance_actual_week)
 
             end_week_type = int(math.floor((self.request_date_to.toordinal() - 1) / 7) % 2)
-            attendance_actual_week = attendances.filtered(lambda att: att.week_type is False or int(att.week_type) == end_week_type)
-            attendance_actual_next_week = attendances.filtered(lambda att: att.week_type is False or int(att.week_type) != end_week_type)
-            attendance_filtred_reversed = list(reversed(attendance_actual_week.filtered(lambda att: int(att.dayofweek) <= self.request_date_to.weekday())))
+            attendance_actual_week = [att for att in attendances if att.week_type is False or int(att.week_type) == end_week_type]
+            attendance_actual_next_week = [att for att in attendances if att.week_type is False or int(att.week_type) != end_week_type]
+            attendance_filtred_reversed = list(reversed([att for att in attendance_actual_week if int(att.dayofweek) <= self.request_date_to.weekday()]))
             attendance_filtred_reversed += list(reversed(attendance_actual_next_week))
             attendance_filtred_reversed += list(reversed(attendance_actual_week))
 
@@ -395,7 +395,7 @@ class HolidaysRequest(models.Model):
     @api.onchange('employee_id')
     def _onchange_employee_id(self):
         self._sync_employee_details()
-        if self.employee_id.user_id != self.env.user:
+        if self.employee_id.user_id != self.env.user and self._origin.employee_id != self.employee_id:
             self.holiday_status_id = False
 
     @api.onchange('date_from', 'date_to', 'employee_id')
@@ -558,14 +558,15 @@ class HolidaysRequest(models.Model):
                         _('%s are only valid until %s') % (
                             leave.holiday_status_id.display_name, leave.holiday_status_id.validity_stop))
 
-    def _check_double_validation_rules(self, employee, state):
+    def _check_double_validation_rules(self, employees, state):
         if self.user_has_groups('hr_holidays.group_hr_holidays_manager'):
             return
 
         is_leave_user = self.user_has_groups('hr_holidays.group_hr_holidays_user')
         if state == 'validate1':
-            if employee.leave_manager_id != self.env.user and not is_leave_user:
-                raise AccessError(_('You cannot first approve a leave for %s, because you are not his leave manager' % (employee.name,)))
+            employees = employees.filtered(lambda employee: employee.leave_manager_id != self.env.user)
+            if employees and not is_leave_user:
+                raise AccessError(_('You cannot first approve a leave for %s, because you are not his leave manager' % (employees[0].name,)))
         elif state == 'validate' and not is_leave_user:
             # Is probably handled via ir.rule
             raise AccessError(_('You don\'t have the rights to apply second approval on a leave request'))
@@ -646,7 +647,11 @@ class HolidaysRequest(models.Model):
             if values.get('state'):
                 self._check_approval_update(values['state'])
                 if any(holiday.validation_type == 'both' for holiday in self):
-                    self._check_double_validation_rules(self.env['hr.employee'].browse(values.get('employee_id', self.employee_id.id)), values['state'])
+                    if values.get('employee_id'):
+                        employees = self.env['hr.employee'].browse(values.get('employee_id'))
+                    else:
+                        employees = self.mapped('employee_id')
+                    self._check_double_validation_rules(employees, values['state'])
             if 'date_from' in values:
                 values['request_date_from'] = values['date_from']
             if 'date_to' in values:

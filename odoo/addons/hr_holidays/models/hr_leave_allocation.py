@@ -158,7 +158,7 @@ class HolidaysAllocation(models.Model):
         """
         today = fields.Date.from_string(fields.Date.today())
 
-        holidays = self.search([('allocation_type', '=', 'accrual'), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
+        holidays = self.search([('allocation_type', '=', 'accrual'), ('employee_id.active', '=', True), ('state', '=', 'validate'), ('holiday_type', '=', 'employee'),
                                 '|', ('date_to', '=', False), ('date_to', '>', fields.Datetime.now()),
                                 '|', ('nextcall', '=', False), ('nextcall', '<=', today)])
 
@@ -296,7 +296,7 @@ class HolidaysAllocation(models.Model):
     @api.onchange('employee_id')
     def _onchange_employee(self):
         self.manager_id = self.employee_id and self.employee_id.parent_id
-        if self.employee_id.user_id != self.env.user:
+        if self.employee_id.user_id != self.env.user and self._origin.employee_id != self.employee_id:
             self.holiday_status_id = False
         if self.holiday_type == 'employee':
             self.department_id = self.employee_id.department_id

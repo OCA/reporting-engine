@@ -72,9 +72,6 @@ class Website(models.Model):
     def _default_social_youtube(self):
         return self.env.ref('base.main_company').social_youtube
 
-    def _default_social_googleplus(self):
-        return self.env.ref('base.main_company').social_googleplus
-
     def _default_social_instagram(self):
         return self.env.ref('base.main_company').social_instagram
 
@@ -92,7 +89,6 @@ class Website(models.Model):
     social_github = fields.Char('GitHub Account', default=_default_social_github)
     social_linkedin = fields.Char('LinkedIn Account', default=_default_social_linkedin)
     social_youtube = fields.Char('Youtube Account', default=_default_social_youtube)
-    social_googleplus = fields.Char('Google+ Account', default=_default_social_googleplus)
     social_instagram = fields.Char('Instagram Account', default=_default_social_instagram)
     social_default_image = fields.Binary(string="Default Social Share Image", help="If set, replaces the company logo as the default social share image.")
 
@@ -667,15 +663,14 @@ class Website(models.Model):
                 return False
 
         # dont't list routes without argument having no default value or converter
-        sign = inspect.signature(endpoint.method.original_func)
-        params = list(sign.parameters.values())[1:]  # skip self
-        supported_kinds = (inspect.Parameter.POSITIONAL_ONLY,
-                           inspect.Parameter.POSITIONAL_OR_KEYWORD)
-        has_no_default = lambda p: p.default is inspect.Parameter.empty
+        spec = inspect.getargspec(endpoint.method.original_func)
+
+        # remove self and arguments having a default value
+        defaults_count = len(spec.defaults or [])
+        args = spec.args[1:(-defaults_count or None)]
 
         # check that all args have a converter
-        return all(p.name in rule._converters for p in params
-                   if p.kind in supported_kinds and has_no_default(p))
+        return all((arg in rule._converters) for arg in args)
 
     def enumerate_pages(self, query_string=None, force=False):
         """ Available pages in the website/CMS. This is mostly used for links
@@ -715,6 +710,7 @@ class Website(models.Model):
             converters = rule._converters or {}
             if query_string and not converters and (query_string not in rule.build([{}], append_unknown=False)[1]):
                 continue
+
             values = [{}]
             # converters with a domain are processed after the other ones
             convitems = sorted(
@@ -787,7 +783,7 @@ class Website(models.Model):
     def image_url(self, record, field, size=None):
         """ Returns a local url that points to the image field of a given browse record. """
         sudo_record = record.sudo()
-        sha = hashlib.sha512(str(getattr(sudo_record, '__last_update')).encode('utf-8')).hexdigest()[:7]
+        sha = hashlib.sha1(str(getattr(sudo_record, '__last_update')).encode('utf-8')).hexdigest()[0:7]
         size = '' if size is None else '/%s' % size
         return '/web/image/%s/%s/%s%s?unique=%s' % (record._name, record.id, field, size, sha)
 

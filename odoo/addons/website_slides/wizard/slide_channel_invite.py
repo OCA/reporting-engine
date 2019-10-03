@@ -4,9 +4,10 @@
 import logging
 import re
 
+from email.utils import formataddr
+
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-from odoo.tools import formataddr
 
 _logger = logging.getLogger(__name__)
 

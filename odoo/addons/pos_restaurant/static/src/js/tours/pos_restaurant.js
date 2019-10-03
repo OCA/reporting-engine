@@ -180,7 +180,7 @@ odoo.define('pos_reataurant.tour.synchronized_table_management', function (requi
     }];
     steps = steps.concat(open_table('T5', 1));
     steps = steps.concat(verify_order_total('4.40'));
-
+    
     // Test transfering an order
     steps = steps.concat(transfer_order_to_table('T4', '002-0001'));
 

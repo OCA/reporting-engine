@@ -275,10 +275,38 @@
                 Create
             </button>
         </t>
-        <t t-if="widget.is_action_enabled('download')">
-            <button type="button" class="btn btn-secondary fa fa-download o_list_download" title="Download xls" aria-label="Download xls"/>
+        <t t-if="widget.is_action_enabled('export_xlsx')">
+            <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All"/>
         </t>
     </div>
+</t>
+
+<t t-name="ListView.confirmModal">
+    <main role="alert">
+        <p>
+            <t t-if="changes.nbRecords != changes.nbValidRecords">
+                Among the <t t-raw="changes.nbRecords"/> selected records,
+                <t t-raw="changes.nbValidRecords"/> are valid for this update.<br/>
+            </t>
+            Are you sure you want to perform the following update on those <t t-raw="changes.nbValidRecords"/> records ?
+        </p>
+        <div class="table-responsive">
+            <table class="o_modal_changes">
+                <tbody>
+                    <tr>
+                        <td>Field:</td>
+                        <td><t t-raw="changes.fieldLabel"/></td>
+                    </tr>
+                    <tr>
+                        <td>Update to:</td>
+                        <td>
+                            <div class="o_changes_widget"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </t>
 
 <t t-name="FormView.buttons">
@@ -1540,7 +1568,7 @@
 
 <t t-name="FieldColor">
     <div>
-        <button class="o_field_color"></button>
+        <button class="o_field_color" t-attf-tabindex="#{widget.mode === 'edit' ? 0 : -1}"></button>
     </div>
 </t>
 

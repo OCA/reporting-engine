@@ -527,3 +527,4 @@ class InventoryLine(models.Model):
         lines = self.search([('inventory_id', '=', self.env.context.get('default_inventory_id'))])
         line_ids = lines.filtered(lambda line: line.outdated == value).ids
         return [('id', 'in', line_ids)]
+

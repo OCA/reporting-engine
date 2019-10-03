@@ -404,10 +404,13 @@ var BasicController = AbstractController.extend(FieldManagerMixin, {
         options = options || {};
         return this.canBeDiscarded(recordID)
             .then(function (needDiscard) {
-                if (options.noAbandon || (options.readonlyIfRealDiscard && !needDiscard)) {
+                if (options.readonlyIfRealDiscard && !needDiscard) {
                     return;
                 }
                 self.model.discardChanges(recordID);
+                if (options.noAbandon) {
+                    return;
+                }
                 if (self.model.canBeAbandoned(recordID)) {
                     self._abandonRecord(recordID);
                     return;
@@ -833,7 +836,8 @@ var BasicController = AbstractController.extend(FieldManagerMixin, {
             userLanguageValue: ev.target.value || '',
             dataPointID: record.id,
             isComingFromTranslationAlert: ev.data.isComingFromTranslationAlert,
-            isText: record.fields[ev.data.fieldName].type === 'text',
+            isText: result.context.translation_type === 'text',
+            showSrc: result.context.translation_show_src,
         });
         return this.translationDialog.open();
     },

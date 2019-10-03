@@ -36,3 +36,4 @@ class Company(models.Model):
     def _create_per_company_sequences(self):
         super(Company, self)._create_per_company_sequences()
         self._create_unbuild_sequence()
+

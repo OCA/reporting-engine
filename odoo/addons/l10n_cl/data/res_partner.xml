@@ -7,7 +7,7 @@
             <field name='l10n_cl_sii_taxpayer_type'>3</field>
             <field name='l10n_latam_identification_type_id' ref='l10n_cl.it_RUT'/>
             <field name='vat'>66666666-6</field>
-        </record>
+        </record> 
 
         <record model='res.partner' id='par_tgr'>
             <field name='name'>Tesorería General de la República</field>
@@ -29,3 +29,4 @@
 
     </data>
 </odoo>
+ 

@@ -196,7 +196,6 @@ class TestSaleOrder(TestCommonSaleNoChart):
         so._create_analytic_account()
 
         inv = self.env['account.move'].with_context(default_type='in_invoice').create({
-            'type': 'in_invoice',
             'partner_id': self.partner_customer_usd.id,
             'invoice_line_ids': [
                 (0, 0, {
@@ -212,7 +211,7 @@ class TestSaleOrder(TestCommonSaleNoChart):
         inv.post()
         sol = so.order_line.filtered(lambda l: l.product_id == serv_cost)
         self.assertTrue(sol, 'Sale: cost invoicing does not add lines when confirming vendor invoice')
-        self.assertEqual((sol.price_unit, sol.qty_delivered, sol.product_uom_qty, sol.qty_invoiced), (160, 2, 0, 0), 'Sale: line is wrong after confirming vendor invoice')
+        self.assertEquals((sol.price_unit, sol.qty_delivered, sol.product_uom_qty, sol.qty_invoiced), (160, 2, 0, 0), 'Sale: line is wrong after confirming vendor invoice')
 
     def test_sale_with_taxes(self):
         """ Test SO with taxes applied on its lines and check subtotal applied on its lines and total applied on the SO """
@@ -245,9 +244,9 @@ class TestSaleOrder(TestCommonSaleNoChart):
             else:
                 price = line.price_unit * line.product_uom_qty
 
-            self.assertEqual(float_compare(line.price_subtotal, price, precision_digits=2), 0)
+            self.assertEquals(float_compare(line.price_subtotal, price, precision_digits=2), 0)
 
-        self.assertEqual(self.sale_order.amount_total,
+        self.assertEquals(self.sale_order.amount_total,
                           self.sale_order.amount_untaxed + self.sale_order.amount_tax,
                           'Taxes should be applied')
 
@@ -353,8 +352,8 @@ class TestSaleOrder(TestCommonSaleNoChart):
         # Call again for st_line_2, it should find sale_order
         res = self.env['account.reconciliation.widget'].get_bank_statement_line_data([st_line2.id])
         line = res.get('lines', [{}])[0]
-        self.assertEqual(line.get('sale_order_ids', []), [so.id])
+        self.assertEquals(line.get('sale_order_ids', []), [so.id])
         # Call again for st_line_3, it should find sale_order based on reference
         res = self.env['account.reconciliation.widget'].get_bank_statement_line_data([st_line3.id])
         line = res.get('lines', [{}])[0]
-        self.assertEqual(line.get('sale_order_ids', []), [so.id])
+        self.assertEquals(line.get('sale_order_ids', []), [so.id])

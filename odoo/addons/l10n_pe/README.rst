@@ -54,13 +54,13 @@ https://docs.google.com/spreadsheets/d/1f1fxV8uGhA-Qz9-R1L1-dJirZ8xi3Wfg/edit#gi
 
 **RELACIÓN ENTRE EL PCGE Y LA LEGISLACIÓN TRIBUTARIA:**
 
-Este PCGE ha sido preparado como una herramienta de carácter contable, para acumular información que
-requiere ser expuesta en el cuerpo de los estados financieros o en las notas a dichos estados. Esa acumulación se
-efectúa en los libros o registros contables, cuya denominación y naturaleza depende de las actividades que se
+Este PCGE ha sido preparado como una herramienta de carácter contable, para acumular información que 
+requiere ser expuesta en el cuerpo de los estados financieros o en las notas a dichos estados. Esa acumulación se 
+efectúa en los libros o registros contables, cuya denominación y naturaleza depende de las actividades que se 
 efectúen, y que permiten acciones de verificación, control y seguimiento. Las NIIF completas y la NIIF PYMES no
-contienen prescripciones sobre teneduría de libros, y consecuentemente, sobre los libros y otros registros
-de naturaleza contable. Por otro lado, si bien es cierto la contabilidad es también un insumo, dentro de otros, para
-labores de cumplimiento tributario, este PCGE no ha sido elaborado para satisfacer prescripciones tributarias ni su
+contienen prescripciones sobre teneduría de libros, y consecuentemente, sobre los libros y otros registros 
+de naturaleza contable. Por otro lado, si bien es cierto la contabilidad es también un insumo, dentro de otros, para 
+labores de cumplimiento tributario, este PCGE no ha sido elaborado para satisfacer prescripciones tributarias ni su 
 verificación. No obstante ello, donde no hubo oposición entre la contabilidad financiera prescrita por las NIIF y
 la legislación tributaria, este PCGE ha incluido subcuentas, divisionarias y sub divisionarias, para
 distinguir componentes con validez tributaria, dentro del conjunto de componentes que corresponden a una

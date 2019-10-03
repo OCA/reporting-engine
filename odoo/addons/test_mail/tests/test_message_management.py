@@ -55,12 +55,12 @@ class TestMailResend(common.BaseFunctionalTest, common.MockEmails):
             ('res_partner_id', '=', partner.id),
             ('mail_message_id', '=', message.id)]
         )
-        self.assertEqual(notif.notification_status, state)
+        self.assertEquals(notif.notification_status, state)
         return notif
 
     def assertBusMessage(self, partners):
         partner_ids = [elem[0][2] for elem in self.bus_update_failure]
-        self.assertEqual(partner_ids, [partner.id for partner in partners])
+        self.assertEquals(partner_ids, [partner.id for partner in partners])
         self.bus_update_failure.clear()
 
     @classmethod
