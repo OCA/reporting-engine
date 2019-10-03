@@ -53,3 +53,4 @@ class MrpProductProduce(models.TransientModel):
                     ml.product_uom_qty = ml.qty_done
                 self.subcontract_move_id._recompute_state()
         return res
+

@@ -86,7 +86,7 @@ class MrpRoutingWorkcenter(models.Model):
                 limit=operation.time_mode_batch)
             count_data = dict((item['operation_id'][0], (item['duration'], item['qty_produced'])) for item in data)
             if count_data.get(operation.id) and count_data[operation.id][1]:
-                operation.time_cycle = count_data[operation.id][0] / count_data[operation.id][1]
+                operation.time_cycle = (count_data[operation.id][0] / count_data[operation.id][1]) * (operation.workcenter_id.capacity or 1.0)
             else:
                 operation.time_cycle = operation.time_cycle_manual
 
@@ -97,3 +97,4 @@ class MrpRoutingWorkcenter(models.Model):
         count_data = dict((item['operation_id'][0], item['operation_id_count']) for item in data)
         for operation in self:
             operation.workorder_count = count_data.get(operation.id, 0)
+

@@ -378,6 +378,8 @@ class IrModelFields(models.Model):
         for rec in self:
             if rec.state == 'manual' and rec.relation_field:
                 rec.relation_field_id = self._get(rec.relation, rec.relation_field)
+            else:
+                rec.relation_field_id = False
 
     @api.depends('related')
     def _compute_related_field_id(self):
@@ -385,6 +387,8 @@ class IrModelFields(models.Model):
             if rec.state == 'manual' and rec.related:
                 field = rec._related_field()
                 rec.related_field_id = self._get(field.model_name, field.name)
+            else:
+                rec.related_field_id = False
 
     @api.depends('selection_ids')
     def _compute_selection(self):
@@ -648,7 +652,7 @@ class IrModelFields(models.Model):
                 ]))
             else:
                 # uninstall mode
-                _logger.warning("The following fields were force-deleted to prevent a registry crash "
+                _logger.warn("The following fields were force-deleted to prevent a registry crash "
                         + ", ".join(str(f) for f in fields)
                         + " the following view might be broken %s" % view.name)
         finally:
@@ -910,7 +914,7 @@ class IrModelFields(models.Model):
             attrs['translate'] = bool(field_data['translate'])
             attrs['size'] = field_data['size'] or None
         elif field_data['ttype'] in ('selection', 'reference'):
-            attrs['selection'] = self.env['ir.model.fields.selection']._get_selection(field_data['id'])
+            attrs['selection'] = self.env['ir.model.fields.selection']._get_selection_data(field_data['id'])
         elif field_data['ttype'] == 'many2one':
             if not self.pool.loaded and field_data['relation'] not in self.env:
                 return
@@ -979,6 +983,9 @@ class IrModelSelection(models.Model):
     def _get_selection(self, field_id):
         """ Return the given field's selection as a list of pairs (value, string). """
         self.flush(['value', 'name', 'field_id', 'sequence'])
+        return self._get_selection_data(field_id)
+
+    def _get_selection_data(self, field_id):
         self._cr.execute("""
             SELECT value, name
             FROM ir_model_fields_selection
@@ -1119,6 +1126,7 @@ class IrModelSelection(models.Model):
         result = super().write(vals)
 
         # setup models; this re-initializes model in registry
+        self.flush()
         self.pool.setup_models(self._cr)
 
         return result

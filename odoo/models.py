@@ -56,7 +56,7 @@ from .tools import frozendict, lazy_classproperty, lazy_property, ormcache, \
                    groupby
 from .tools.config import config
 from .tools.func import frame_codeinfo
-from .tools.misc import CountingStream, clean_context, DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT
+from .tools.misc import CountingStream, clean_context, DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT, get_lang
 from .tools.safe_eval import safe_eval
 from .tools.translate import _
 from .tools import date_utils
@@ -560,7 +560,8 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
         for base in reversed(cls.__bases__):
             if not getattr(base, 'pool', None):
                 # the following attributes are not taken from model classes
-                if not base._inherit and not base._description:
+                parents = [base._inherit] if base._inherit and isinstance(base._inherit, str) else (base._inherit or [])
+                if cls._name not in parents and not base._description:
                     _logger.warning("The model %s has no _description", cls._name)
                 cls._description = base._description or cls._description
                 cls._table = base._table or cls._table
@@ -1891,7 +1892,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                 orderby_terms.append(' '.join(order_split))
             else:
                 # Cannot order by a field that will not appear in the results (needs to be grouped or aggregated)
-                _logger.warning('%s: read_group order by `%s` ignored, cannot sort on empty columns (not grouped/aggregated)',
+                _logger.warn('%s: read_group order by `%s` ignored, cannot sort on empty columns (not grouped/aggregated)',
                              self._name, order_part)
 
         return groupby_terms, orderby_terms
@@ -1990,7 +1991,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                 if ftype == 'many2one':
                     value = value[0]
                 elif ftype in ('date', 'datetime'):
-                    locale = self._context.get('lang') or 'en_US'
+                    locale = get_lang(self.env).code
                     fmt = DEFAULT_SERVER_DATETIME_FORMAT if ftype == 'datetime' else DEFAULT_SERVER_DATE_FORMAT
                     tzinfo = None
                     range_start = value
@@ -3075,7 +3076,12 @@ Fields:
             # The first part of the check verifies that all records linked via relation fields are compatible
             # with the company of the origin document, i.e. `self.account_id.company_id == self.company_id`
             for name in regular_fields:
-                if not (record[name].company_id <= company):
+                # Special case with `res.users` since an user can belong to multiple companies.
+                if record[name]._name == 'res.users' and record[name].company_ids:
+                    if not (company <= record[name].company_ids):
+                        inconsistent_fields.add(name)
+                        inconsistent_recs |= record
+                elif not (record[name].company_id <= company):
                     inconsistent_fields.add(name)
                     inconsistent_recs |= record
             # The second part of the check (for property / company-dependent fields) verifies that the records
@@ -3087,7 +3093,12 @@ Fields:
             else:
                 company = self.env.company
             for name in property_fields:
-                if not (record[name].company_id <= company):
+                # Special case with `res.users` since an user can belong to multiple companies.
+                if record[name]._name == 'res.users' and record[name].company_ids:
+                    if not (company <= record[name].company_ids):
+                        inconsistent_fields.add(name)
+                        inconsistent_recs |= record
+                elif not (record[name].company_id <= company):
                     inconsistent_fields.add(name)
                     inconsistent_recs |= record
 
@@ -3726,6 +3737,8 @@ Record ids: %(records)s
             for field in self._fields.values():
                 if field.type in ('one2many', 'many2many'):
                     self.env.cache.set(record, field, ())
+                elif field.related and not field.column_type:
+                    self.env.cache.set(record, field, field.convert_to_cache(None, record))
                 # DLE P123: `test_adv_activity`, `test_message_assignation_inbox`, `test_message_log`, `test_create_mail_simple`, ...
                 # Set `mail.message.parent_id` to False in cache so it doesn't do the useless SELECT when computing the modified of `child_ids`
                 # in other words, if `parent_id` is not set, no other message `child_ids` are impacted.
@@ -3853,7 +3866,7 @@ Record ids: %(records)s
         if prefix:
             parent_ids = {int(label) for label in prefix.split('/')[:-1]}
             if not parent_ids.isdisjoint(self._ids):
-                raise UserError(_("Recursivity Detected."))
+                raise UserError(_("Recursion Detected."))
 
         # update parent_path of all records and their descendants
         query = """
@@ -4434,7 +4447,7 @@ Record ids: %(records)s
 
         """
         self.ensure_one()
-        vals = self.copy_data(default)[0]
+        vals = self.with_context(active_test=False).copy_data(default)[0]
         # To avoid to create a translation in the lang of the user, copy_translation will do it
         new = self.with_context(lang=None).create(vals)
         self.with_context(from_copy_translation=True).copy_translations(new, excluded=default or ())
@@ -5536,7 +5549,7 @@ Record ids: %(records)s
                 continue
             else:
                 # val is another tree of dependencies
-                model = self.env[key.model_name]
+                model = self.env[key.model_name].with_context(active_test=False)
                 for invf in model._field_inverses[key]:
                     # use an inverse of field without domain
                     if not (invf.type in ('one2many', 'many2many') and invf.domain):

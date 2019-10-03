@@ -507,6 +507,8 @@ class ThreadedServer(CommonServer):
                         # We wait there is no processing requests
                         # other than the ones exceeding the limits, up to 1 min,
                         # before asking for a reload.
+                        _logger.info('Dumping stacktrace of limit exceeding threads before reloading')
+                        dumpstacks(thread_idents=[thread.ident for thread in self.limits_reached_threads])
                         self.reload()
                         # `reload` increments `self.quit_signals_received`
                         # and the loop will end after this iteration,
@@ -657,7 +659,7 @@ class PreforkServer(CommonServer):
             self.queue.append(sig)
             self.pipe_ping(self.pipe)
         else:
-            _logger.warning("Dropping signal: %s", sig)
+            _logger.warn("Dropping signal: %s", sig)
 
     def worker_spawn(self, klass, workers_registry):
         self.generation += 1
@@ -709,7 +711,7 @@ class PreforkServer(CommonServer):
                 raise KeyboardInterrupt
             elif sig == signal.SIGQUIT:
                 # dump stacks on kill -3
-                self.dumpstacks()
+                dumpstacks()
             elif sig == signal.SIGUSR1:
                 # log ormcache stats on kill -SIGUSR1
                 log_ormcache_stats()

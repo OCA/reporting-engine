@@ -855,7 +855,7 @@ class Users(models.Model):
         source = request.httprequest.remote_addr
         (failures, previous) = failures_map[source]
         if self._on_login_cooldown(failures, previous):
-            _logger.warning(
+            _logger.warn(
                 "Login attempt ignored for %s on %s: "
                 "%d failures since last success, last failure at %s. "
                 "You can configure the number of login failures before a "
@@ -864,7 +864,7 @@ class Users(models.Model):
                 "\"base.login_cooldown_after\" to 0.",
                 source, self.env.cr.dbname, failures, previous)
             if ipaddress.ip_address(source).is_private:
-                _logger.warning(
+                _logger.warn(
                     "The rate-limited IP address %s is classified as private "
                     "and *might* be a proxy. If your Odoo is behind a proxy, "
                     "it may be mis-configured. Check that you are running "
@@ -911,7 +911,7 @@ class Users(models.Model):
 
     def _register_hook(self):
         if hasattr(self, 'check_credentials'):
-            _logger.warning("The check_credentials method of res.users has been renamed _check_credentials. One of your installed modules defines one, but it will not be called anymore.")
+            _logger.warn("The check_credentials method of res.users has been renamed _check_credentials. One of your installed modules defines one, but it will not be called anymore.")
 #
 # Implied groups
 #
@@ -984,22 +984,19 @@ class UsersImplied(models.Model):
                 # complete 'groups_id' with implied groups
                 user = self.new(values)
                 gs = user.groups_id._origin
-                group_public = self.env.ref('base.group_public', raise_if_not_found=False)
-                group_portal = self.env.ref('base.group_portal', raise_if_not_found=False)
-                if group_public and group_public in gs:
-                    gs = group_public
-                elif group_portal and group_portal in gs:
-                    gs = group_portal
                 gs = gs | gs.trans_implied_ids
                 values['groups_id'] = type(self).groups_id.convert_to_write(gs, user)
         return super(UsersImplied, self).create(vals_list)
 
     def write(self, values):
+        users_before = self.filtered(lambda u: u.has_group('base.group_user'))
         res = super(UsersImplied, self).write(values)
         if values.get('groups_id'):
             # add implied groups for all users
             for user in self:
-                if not user.has_group('base.group_user'):
+                if not user.has_group('base.group_user') and user in users_before:
+                    # if we demoted a user, we strip him of all its previous privileges
+                    # (but we should not do it if we are simply adding a technical group to a portal user)
                     vals = {'groups_id': [(5, 0, 0)] + values['groups_id']}
                     super(UsersImplied, user).write(vals)
                 gs = set(concat(g.trans_implied_ids for g in user.groups_id))

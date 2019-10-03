@@ -36,7 +36,7 @@ class BaseLanguageExport(models.TransientModel):
 
         with contextlib.closing(io.BytesIO()) as buf:
             tools.trans_export(lang, mods, buf, this.format, self._cr)
-            out = base64.encodebytes(buf.getvalue())
+            out = base64.encodestring(buf.getvalue())
 
         filename = 'new'
         if lang:

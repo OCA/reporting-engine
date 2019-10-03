@@ -300,7 +300,7 @@ class AccountBankStatement(models.Model):
                 self.env['ir.attachment'].create({
                     'name': statement.name and _("Bank Statement %s.pdf") % statement.name or _("Bank Statement.pdf"),
                     'type': 'binary',
-                    'datas': base64.encodebytes(content),
+                    'datas': base64.encodestring(content),
                     'res_model': statement._name,
                     'res_id': statement.id
                 })
@@ -331,6 +331,9 @@ class AccountBankStatement(models.Model):
                     st_number = SequenceObj.with_context(**context).next_by_code('account.bank.statement')
                 statement.name = st_number
             statement.state = 'open'
+
+    def button_reopen(self):
+        self.state = 'open'
 
     def action_bank_reconcile_bank_statements(self):
         self.ensure_one()
@@ -445,9 +448,9 @@ class AccountBankStatementLine(models.Model):
         if aml_to_cancel:
             aml_to_cancel.remove_move_reconcile()
             moves_to_cancel = aml_to_cancel.mapped('move_id')
-            moves_to_cancel.button_cancel()
             moves_to_cancel.button_draft()
-            moves_to_cancel.unlink()
+            moves_to_cancel.button_cancel()
+            moves_to_cancel.with_context(force_delete=True).unlink()
         if payment_to_cancel:
             payment_to_cancel.unlink()
 

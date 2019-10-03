@@ -2,10 +2,10 @@
 <odoo>
     <!-- SMS Marketing -->
     <menuitem id="mass_mailing_sms_menu_root"
-        name="SMS Marketing"
-        sequence="60"
-        web_icon="mass_mailing_sms,static/description/icon.png"
-        groups="mass_mailing.group_mass_mailing_user"/>
+    	name="SMS Marketing"
+    	sequence="60"
+    	web_icon="mass_mailing_sms,static/description/icon.png"
+    	groups="mass_mailing.group_mass_mailing_user"/>
 
     <!-- SMS Marketing / SMS Marketing -->
     <menuitem id="mass_mailing_sms_menu_mass_sms"
@@ -48,9 +48,9 @@
         groups="mass_mailing.group_mass_mailing_user"/>
     <!-- SMS Marketing / Configuration / Blacklist -->
     <menuitem id="phone_blacklist_menu"
-        name="Phone Blacklist"
-        parent="mass_mailing_sms_menu_configuration"
-        sequence="1"
+    	name="Phone Blacklist"
+    	parent="mass_mailing_sms_menu_configuration"
+    	sequence="1"
         action="phone_validation.phone_blacklist_action"
         groups="mass_mailing.group_mass_mailing_user"/>
     <!-- SMS Marketing / Configuration / Link Tracker -->

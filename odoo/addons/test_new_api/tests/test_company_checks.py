@@ -71,3 +71,4 @@ class TestCompanyCheck(common.TransactionCase):
             'parent_id': self.parent_company_b_id.id,
             'company_id': self.company_b.id,
         })
+

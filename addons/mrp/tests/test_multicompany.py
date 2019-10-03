@@ -113,7 +113,7 @@ class TestMrpMulticompany(common.TransactionCase):
     def test_product_produce_1(self):
         """Check that using a finished lot of company b in the produce wizard of a production
         of company a is not allowed """
-
+        
         product = self.env['product.product'].create({
             'name': 'p1',
             'tracking': 'lot',

@@ -114,6 +114,7 @@ var dom = {
             borderTopWidth: 0,
             borderBottomWidth: 0,
             padding: 0,
+            overflow: 'hidden',
         });
         $fixedTextarea.data("auto_resize", true);
 
@@ -537,7 +538,7 @@ var dom = {
             menuItemsWidth += computeFloatOuterWidthWithMargins($extraItemsToggle[0]);
             do {
                 menuItemsWidth -= computeFloatOuterWidthWithMargins($items.eq(--nbItems)[0]);
-            } while (!(maxWidth - menuItemsWidth >= -0.001));
+            } while (!(maxWidth - menuItemsWidth >= -0.001) && (nbItems > 0));
 
             var $extraItems = $items.slice(nbItems).detach();
             $extraItems.removeClass('nav-item');

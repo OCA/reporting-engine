@@ -10,7 +10,7 @@
                         <field name="sidebar_action_id" invisible="1"/>
                         <button name="action_create_sidebar_action" type="object"
                                 groups="base.group_system"
-                                class="oe_stat_button"
+                                class="oe_stat_button"  
                                 attrs="{'invisible':[('sidebar_action_id','!=',False)]}" icon="fa-plus"
                                 help="Add a contextual action on the related model to open a sms composer with this template">
                             <div class="o_field_widget o_stat_info">

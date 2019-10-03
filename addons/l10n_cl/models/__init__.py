@@ -12,3 +12,6 @@ from . import res_currency
 from . import res_partner
 from . import res_partner_bank
 from . import uom_uom
+
+
+

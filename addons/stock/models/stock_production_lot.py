@@ -94,3 +94,4 @@ class ProductionLot(models.Model):
         if self.user_has_groups('stock.group_stock_manager'):
             self = self.with_context(inventory_mode=True)
         return self.env['stock.quant']._get_quants_action()
+

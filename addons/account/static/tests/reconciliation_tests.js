@@ -1366,6 +1366,7 @@ QUnit.module('account', {
 
         await testUtils.dom.click(clientAction.$('.o_reconciliation_line:eq(1) .accounting_view'))
         await testUtils.dom.click(clientAction.$('.accounting_view:eq(1) thead td:first'));
+        // debugger
         await testUtils.dom.click(clientAction.$('.o_reconciliation_line:eq(1) [data-line-id="21"] .cell_label'));
         await testUtils.dom.click(clientAction.$('.o_reconciliation_line:eq(1) [data-line-id="22"] .cell_label'));
 
