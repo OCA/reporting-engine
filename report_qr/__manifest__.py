@@ -3,7 +3,7 @@
 
 {
     'name': 'Web QR Manager',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'author': 'Creu Blanca, '
               'Odoo Community Association (OCA)',
     'category': 'Sales',
