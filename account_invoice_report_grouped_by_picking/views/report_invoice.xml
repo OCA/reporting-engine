@@ -2,21 +2,25 @@
 <odoo>
 
 <template id="report_invoice_document" inherit_id="account.report_invoice_document" priority="99">
-    <xpath expr="//tbody[hasclass('invoice_tbody')]" position="before">
+    <xpath expr="//t[contains(@t-foreach, 'o.invoice_line_ids')]/t[3]" position="replace">
+
+    </xpath>
+    <xpath expr="//tbody[hasclass('invoice_tbody')]" position="inside">
         <t t-set="subtotal" t-value="0.0"/>
         <t t-set="lines_grouped" t-value="o.lines_grouped_by_picking()"/>
     </xpath>
 
-    <xpath expr="//t[@t-foreach='o.invoice_line_ids']" position="attributes">
-        <attribute name="t-foreach">lines_grouped</attribute>
+    <xpath expr="//t[contains(@t-foreach, 'o.invoice_line_ids')]" position="attributes">
+        <attribute name="t-foreach">o.lines_grouped_by_picking()</attribute>
         <attribute name="t-as">lines_group</attribute>
     </xpath>
 
     <!-- Appends before 'current_subtotal' compute -->
-    <xpath expr="//t[@t-foreach='lines_grouped']/t" position="before">
+    <xpath expr="//t[@groups='account.group_show_line_subtotals_tax_excluded']" position="before">
         <t t-set="l" t-value="lines_group['line']"/>
         <t t-set="line" t-value="lines_group['line']"/>
         <t t-set="picking" t-value="lines_group['picking']"/>
+        <t t-set="lines_grouped" t-value="o.lines_grouped_by_picking()"/>
         <t t-set="next_picking" t-value="[lines_grouped[i + 1]['picking'] for i, x in enumerate(lines_grouped) if x == lines_group and i &lt; len(lines_grouped) - 1] or [False]"/>
         <t t-if="picking != last_picking">
             <tr t-if="picking">
@@ -64,7 +68,7 @@
     </xpath>
 
     <!-- Append subtotal row after invoice line row-->
-    <xpath expr="//t[@t-foreach='lines_grouped']//td[hasclass('o_price_total')]" position="after">
+    <xpath expr="//t[@t-foreach='o.lines_grouped_by_picking()']//td[hasclass('o_price_total')]" position="after">
         <tr t-if="picking and picking != next_picking[0]">
             <td colspan="10" class="text-right">
                 <strong>Subtotal: </strong>
