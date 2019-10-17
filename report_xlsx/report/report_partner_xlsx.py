@@ -9,7 +9,7 @@ class PartnerXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, partners):
-        for obj in partners:
-            sheet = workbook.add_worksheet('Report')
+        sheet = workbook.add_worksheet('Report')
+        for i, obj in enumerate(partners):
             bold = workbook.add_format({'bold': True})
-            sheet.write(0, 0, obj.name, bold)
+            sheet.write(i, 0, obj.name, bold)
