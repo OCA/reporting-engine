@@ -37,7 +37,9 @@ class ReportXlsxAbstract(models.AbstractModel):
             ids = data["context"].get('active_ids', [])
         else:
             ids = self.env.context.get('active_ids', [])
-        return self.env[self.env.context.get('active_model')].browse(ids)
+        # propagate context anyway
+        # let it fail explicitely if `active_model` is not there
+        return self.env[self.env.context['active_model']].browse(ids)
 
     def create_xlsx_report(self, docids, data):
         objs = self._get_objs_for_report(docids, data)
