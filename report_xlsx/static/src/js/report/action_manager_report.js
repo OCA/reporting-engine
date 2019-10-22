@@ -17,23 +17,25 @@ odoo.define("report_xlsx.report", function (require) {
             var def = $.Deferred();
             var type = "xlsx";
             var cloned_action = _.clone(actions);
+            var new_url = url;
 
             if (_.isUndefined(cloned_action.data) ||
                 _.isNull(cloned_action.data) ||
-                (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data)))
-            {
+                (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data))) {
                 if (cloned_action.context.active_ids) {
-                    url += "/" + cloned_action.context.active_ids.join(',');
+                    new_url += "/" + cloned_action.context.active_ids.join(',');
                 }
             } else {
-                url += "?options=" + encodeURIComponent(JSON.stringify(cloned_action.data));
-                url += "&context=" + encodeURIComponent(JSON.stringify(cloned_action.context));
+                new_url += "?options=" + encodeURIComponent(
+                    JSON.stringify(cloned_action.data));
+                new_url += "&context=" + encodeURIComponent(
+                    JSON.stringify(cloned_action.context));
             }
 
             var blocked = !session.get_file({
-                url: url,
+                url: new_url,
                 data: {
-                    data: JSON.stringify([url, type]),
+                    data: JSON.stringify([new_url, type]),
                 },
                 success: def.resolve.bind(def),
                 error: function () {
@@ -58,14 +60,15 @@ odoo.define("report_xlsx.report", function (require) {
             var self = this;
             var reportUrls = this._makeReportUrls(action);
             if (type === "xlsx") {
-                return this._downloadReportXLSX(reportUrls[type], action).then(function () {
-                    if (action.close_on_report_download) {
-                        var closeAction = {type: 'ir.actions.act_window_close'};
-                        return self.doAction(closeAction, _.pick(options, 'on_close'));
-                    } else {
+                return this._downloadReportXLSX(reportUrls[type], action).then(
+                    function () {
+                        if (action.close_on_report_download) {
+                            var closeAction = {type: 'ir.actions.act_window_close'};
+                            return self.doAction(closeAction, _.pick(
+                                options, 'on_close'));
+                        }
                         return options.on_close();
-                    }
-                });
+                    });
             }
             return this._super.apply(this, arguments);
         },
@@ -82,7 +85,7 @@ odoo.define("report_xlsx.report", function (require) {
                 return self._triggerDownload(action, options, 'xlsx');
             }
             return this._super.apply(this, arguments);
-        }
+        },
     });
 
 });
