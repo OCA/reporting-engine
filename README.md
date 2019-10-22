@@ -33,7 +33,7 @@ addon | version | summary
 [report_qweb_signer](report_qweb_signer/) | 10.0.1.0.1 | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_qweb_txt](report_qweb_txt/) | 10.0.1.0.0 | Use Qweb to generate text and CSV reports
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 10.0.1.0.1 | Base module to create xlsx report
+[report_xlsx](report_xlsx/) | 10.0.1.1.0 | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 10.0.1.0.0 | Report xlsx helpers
 [report_xml](report_xml/) | 10.0.1.0.0 | Allow to generate XML reports
 
