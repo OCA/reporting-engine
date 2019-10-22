@@ -41,11 +41,22 @@ class ReportXlsxAbstract(models.AbstractModel):
         # let it fail explicitely if `active_model` is not there
         return self.env[self.env.context['active_model']].browse(ids)
 
-    def create_xlsx_report(self, docids, data):
-        objs = self._get_objs_for_report(docids, data)
-        file_data = BytesIO()
+    def create_workbook(self, file_data, data, objs, report):
         workbook = xlsxwriter.Workbook(file_data, self.get_workbook_options())
         self.generate_xlsx_report(workbook, data, objs)
+        for sheet in workbook.worksheets():
+            if report and report.header_id and report.header_id.value:
+                sheet.set_header(report.header_id.value,
+                                 report.header_id.get_options())
+            if report and report.footer_id and report.footer_id.value:
+                sheet.set_footer(report.footer_id.value,
+                                 report.footer_id.get_options())
+        return workbook
+
+    def create_xlsx_report(self, docids, data, report):
+        objs = self._get_objs_for_report(docids, data)
+        file_data = BytesIO()
+        workbook = self.create_workbook(file_data, data, objs, report)
         workbook.close()
         file_data.seek(0)
         return file_data.read(), 'xlsx'
@@ -59,3 +70,4 @@ class ReportXlsxAbstract(models.AbstractModel):
 
     def generate_xlsx_report(self, workbook, data, objs):
         raise NotImplementedError()
+

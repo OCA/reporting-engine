@@ -9,6 +9,12 @@ class ReportAction(models.Model):
     _inherit = 'ir.actions.report'
 
     report_type = fields.Selection(selection_add=[("xlsx", "xlsx")])
+    header_id = fields.Many2one('report.xlsx.hf',
+                                string="Header",
+                                domain=[('hf_type', '=', 'header')])
+    footer_id = fields.Many2one('report.xlsx.hf',
+                                string="Footer",
+                                domain=[('hf_type', '=', 'footer')])
 
     @api.model
     def render_xlsx(self, docids, data):
@@ -18,7 +24,7 @@ class ReportAction(models.Model):
             raise UserError(_('%s model was not found' % report_model_name))
         return report_model.with_context(
             active_model=self.model,
-        ).create_xlsx_report(docids, data)
+        ).create_xlsx_report(docids, data, self)
 
     @api.model
     def _get_report_from_name(self, report_name):

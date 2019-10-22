@@ -26,5 +26,11 @@
     'demo': [
         'demo/report.xml',
     ],
+    'data': [
+        'security/ir.model.access.csv',
+
+        'views/header_footer.xml',
+        'views/ir_report.xml',
+    ],
     'installable': True,
 }
