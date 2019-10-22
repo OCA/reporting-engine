@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_xlsx_hf_tree" model="ir.ui.view">
+        <field name="name">report_xlsx_hf Tree</field>
+        <field name="model">report.xlsx.hf</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="hf_type"/>
+                <field name="value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="report_xlsx_hf_form" model="ir.ui.view">
+        <field name="name">report_xlsx_hf Form</field>
+        <field name="model">report.xlsx.hf</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="hf_type"/>
+                    </group>
+                    <div colspan="2"><i class="fa fa-info-circle" aria-hidden="true"/> Search in the <a href="https://xlsxwriter.readthedocs.io/page_setup.html#set_header">documentation</a> for set_header and set_footer to find the proper syntax to fill "Value" and "Options".</div>
+                    <group>
+                        <field name="value" placeholder="&amp;LHello &amp;CWorld &amp;R!!!"/>
+                        <field name="manual_options" placeholder="{'margin': 0.3}"/>
+                    </group>
+                    <separator string="Images"/>
+                    <div><i class="fa fa-info-circle" aria-hidden="true"/>
+                    If you select an image, you don't have to specify any image options (image_left, image_data_left, ...) but you need to add the control character <span style="background-color: #ebecec;">&amp;G</span> in the value.</div>
+                    <div>
+                    If you add the three images, the value must contain <span style="background-color: #ebecec;">&amp;L&amp;G &amp;C&amp;G &amp;R&amp;G</span> or <span style="background-color: #ebecec;">&amp;L&amp;[Picture] &amp;C&amp;[Picture] &amp;R&amp;[Picture]</span>.</div>
+                    <group>
+                        <field name="image_left_name" invisible="1"/>
+                        <field name="image_left" filename="image_left_name"/>
+                        <field name="image_center_name" invisible="1"/>
+                        <field name="image_center" filename="image_center_name"/>
+                        <field name="image_right_name" invisible="1"/>
+                        <field name="image_right" filename="image_right_name"/>
+                    </group>
+                    <separator string="Associated report(s)"/>
+                    <field name="header_report_ids" attrs="{'invisible': [('hf_type', '!=', 'header')]}" nolabel="1" colspan="2"/>
+                    <field name="footer_report_ids" attrs="{'invisible': [('hf_type', '!=', 'footer')]}" nolabel="1" colspan="2"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="report_xlsx_hf_action" model="ir.actions.act_window">
+        <field name="name">XLSX Header/Footer</field>
+        <field name="res_model">report.xlsx.hf</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="report_xlsx_hf_menu" parent="report.reporting_menuitem"
+              name="XLSX Header/Footer" action="report_xlsx_hf_action" sequence="100"/>
+
+</odoo>

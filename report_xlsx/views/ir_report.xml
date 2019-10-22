@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="act_report_xml_view_inherit" model="ir.ui.view">
+        <field name="name">ir.actions.report.xml (xlsx header footer)</field>
+        <field name="model">ir.actions.report.xml</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Header/Footer" attrs="{'invisible': [('report_type', '!=', 'xlsx')]}">
+                    <group>
+                        <field name="header_id" context="{'default_hf_type': 'header'}"/>
+                        <field name="footer_id" context="{'default_hf_type': 'footer'}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
