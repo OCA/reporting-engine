@@ -20,17 +20,14 @@
     'depends': [
         'base', 'web',
     ],
-    'data': [
-        'views/webclient_templates.xml',
-    ],
     'demo': [
         'demo/report.xml',
     ],
     'data': [
         'security/ir.model.access.csv',
-
         'views/header_footer.xml',
         'views/ir_report.xml',
+        'views/webclient_templates.xml',
     ],
     'installable': True,
 }
