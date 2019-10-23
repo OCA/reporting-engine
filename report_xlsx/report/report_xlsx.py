@@ -53,7 +53,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                                  report.footer_id.get_options())
         return workbook
 
-    def create_xlsx_report(self, docids, data, report):
+    def create_xlsx_report(self, docids, data, report=False):
         objs = self._get_objs_for_report(docids, data)
         file_data = BytesIO()
         workbook = self.create_workbook(file_data, data, objs, report)
@@ -69,5 +69,4 @@ class ReportXlsxAbstract(models.AbstractModel):
         return {}
 
     def generate_xlsx_report(self, workbook, data, objs):
-        raise NotImplementedError()
-
+        return

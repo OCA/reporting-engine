@@ -4,27 +4,14 @@
 
 import odoo.tests.common as common
 from odoo.exceptions import ValidationError
-from cStringIO import StringIO
-from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
-
-
-class PartnerXlsx(ReportXlsx):
-
-    def generate_xlsx_report(self, workbook, data, partners):
-        sheet = workbook.add_worksheet('sheet')
-        sheet.write(0, 0, 'test')
+from io import BytesIO
 
 
 class TestHeaderFooter(common.TransactionCase):
 
-    @classmethod
-    def setUpClass(cls):
-        super(TestHeaderFooter, cls).setUpClass()
-        cls.report = PartnerXlsx('report.res.partner.xlsx',
-                                 'res.partner')
-
     def setUp(self):
         super(TestHeaderFooter, self).setUp()
+        self.report = self.env['report.report_xlsx.abstract']
 
         # Create Header
         self.header_001 = self.env['report.xlsx.hf'].create({
@@ -39,7 +26,7 @@ class TestHeaderFooter(common.TransactionCase):
             'value': '&LCurrent date: &D &RCurrent time: &T',
         })
         # Create Report
-        self.report_xlsx = self.env['ir.actions.report.xml'].create({
+        self.report_xlsx = self.env['ir.actions.report'].create({
             'report_name': 'res.partner.xlsx',
             'name': 'XLSX report',
             'report_type': 'xlsx',
@@ -52,7 +39,7 @@ class TestHeaderFooter(common.TransactionCase):
         """
         Check that the header and footer have been added to the worksheets
         """
-        file_data = StringIO()
+        file_data = BytesIO()
         partner = self.env['res.partner'].browse([1])
         workbook = self.report.create_workbook(
             file_data, {}, partner, self.report_xlsx)

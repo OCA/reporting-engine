@@ -4,6 +4,7 @@
 
 import io
 import ast
+import base64
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
@@ -73,13 +74,13 @@ class ReportHeaderFooter(models.Model):
         if self.image_left:
             options['image_left'] = self.image_left_name
             options['image_data_left'] = io.BytesIO(
-                self.image_left.decode('base64'))
+                base64.decodebytes(self.image_left))
         if self.image_center:
             options['image_center'] = self.image_center_name
             options['image_data_center'] = io.BytesIO(
-                self.image_center.decode('base64'))
+                base64.decodebytes(self.image_center))
         if self.image_right:
             options['image_right'] = self.image_right_name
             options['image_data_right'] = io.BytesIO(
-                self.image_right.decode('base64'))
+                base64.decodebytes(self.image_right))
         return options
