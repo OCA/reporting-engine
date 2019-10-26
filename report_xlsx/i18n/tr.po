@@ -19,6 +19,201 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "&LHello &CWorld &R!!!"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid ""
+"<i class=\"fa fa-info-circle\" aria-hidden=\"true\"/>\n"
+"                    If you select an image, you don't have to specify any "
+"image options (image_left, image_data_left, ...) but you need to add the "
+"control character <span style=\"background-color: #ebecec;\">&amp;G</span> "
+"in the value."
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "<i class=\"fa fa-info-circle\" aria-hidden=\"true\"/> Search in the"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_footer_report_ids
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_header_report_ids
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "Associated report(s)"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_center_name
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_left_name
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_right_name
+msgid "File Name"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_ir_act_report_xml_footer_id
+#: selection:report.xlsx.hf,hf_type:0
+msgid "Footer"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_ir_act_report_xml_header_id
+#: selection:report.xlsx.hf,hf_type:0
+msgid "Header"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.act_report_xml_view_inherit
+msgid "Header/Footer"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_id
+msgid "ID"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid ""
+"If you add the three images, the value must contain <span style=\"background-"
+"color: #ebecec;\">&amp;L&amp;G &amp;C&amp;G &amp;R&amp;G</span> or <span "
+"style=\"background-color: #ebecec;\">&amp;L&amp;[Picture] &amp;C&amp;"
+"[Picture] &amp;R&amp;[Picture]</span>."
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_center
+msgid "Image center"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_left
+msgid "Image left"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_image_right
+msgid "Image right"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "Images"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_name
+msgid "Name"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_manual_options
+msgid "Options"
+msgstr ""
+
+#. module: report_xlsx
+#: code:addons/report_xlsx/models/header_footer.py:44
+#, python-format
+msgid ""
+"The Header/Footer is not configured "
+"properly.                                     Options must be a dictionary."
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_hf_type
+msgid "Type"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.model.fields,field_description:report_xlsx.field_report_xlsx_hf_value
+msgid "Value"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.actions.act_window,name:report_xlsx.report_xlsx_hf_action
+#: model:ir.ui.menu,name:report_xlsx.report_xlsx_hf_menu
+msgid "XLSX Header/Footer"
+msgstr ""
+
+#. module: report_xlsx
+#: code:addons/report_xlsx/models/header_footer.py:58
+#, python-format
+msgid ""
+"You must specify the control character &C&G or                 &C&[Picture] "
+"in the \"Value\" when you add an \"Image center\".\n"
+msgstr ""
+
+#. module: report_xlsx
+#: code:addons/report_xlsx/models/header_footer.py:54
+#, python-format
+msgid ""
+"You must specify the control character &L&G or                 &L&[Picture] "
+"in the \"Value\" when you add an \"Image left\".\n"
+msgstr ""
+
+#. module: report_xlsx
+#: code:addons/report_xlsx/models/header_footer.py:62
+#, python-format
+msgid ""
+"You must specify the control character &R&G or                 &R&[Picture] "
+"in the \"Value\" when you add an \"Image right\".\n"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "documentation"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid ""
+"for set_header and set_footer to find the proper syntax to fill \"Value\" "
+"and \"Options\"."
+msgstr ""
+
+#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report_xml
 msgid "ir.actions.report.xml"
 msgstr "ir.actions.report.xml"
+
+#. module: report_xlsx
+#: model:ir.model,name:report_xlsx.model_report_xlsx_hf
+msgid "report.xlsx.hf"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.ui.view,arch_db:report_xlsx.report_xlsx_hf_form
+msgid "{'margin': 0.3}"
+msgstr ""
