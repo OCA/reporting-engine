@@ -15,6 +15,7 @@
     'external_dependencies': {'python': ['xlsxwriter']},
     'depends': [
         'base',
+        'report',
     ],
     'data': [
         'security/ir.model.access.csv',
