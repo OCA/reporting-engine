@@ -2,6 +2,7 @@ odoo.define('web.action_manager_tests', function (require) {
 "use strict";
 
 var ReportClientAction = require('report.client_action');
+var Notification = require('web.Notification');
 var NotificationService = require('web.NotificationService');
 var AbstractAction = require('web.AbstractAction');
 var AbstractStorageService = require('web.AbstractStorageService');
@@ -1275,30 +1276,6 @@ QUnit.module('ActionManager', {
         actionManager.destroy();
     });
 
-    QUnit.test('state.sa should load action from session', async function (assert) {
-        assert.expect(1);
-
-        var actionManager = await createActionManager({
-            actions: this.actions,
-            archs: this.archs,
-            data: this.data,
-            mockRPC: function (route, args) {
-                if (route === '/web/session/get_session_action') {
-                    return Promise.resolve(1);
-                }
-                return this._super.apply(this, arguments);
-            },
-        });
-        await actionManager.loadState({
-            sa: 1,
-        });
-
-        assert.strictEqual(actionManager.$('.o_kanban_view').length, 1,
-            "should have rendered a kanban view");
-
-        actionManager.destroy();
-    });
-
     QUnit.module('Concurrency management');
 
     QUnit.test('drop previous actions if possible', async function (assert) {
@@ -1922,6 +1899,64 @@ QUnit.module('ActionManager', {
         delete core.action_registry.map.HelloWorldTest;
     });
 
+    QUnit.test('test display_notification client action', async function (assert) {
+        assert.expect(6);
+
+        testUtils.mock.patch(Notification, {
+            _animation: false,
+        });
+
+        const actionManager = await createActionManager({
+            actions: this.actions,
+            archs: this.archs,
+            data: this.data,
+            services: {
+                notification: NotificationService,
+            },
+        });
+
+        await actionManager.doAction(1);
+        assert.containsOnce(actionManager, '.o_kanban_view');
+
+        await actionManager.doAction({
+            type: 'ir.actions.client',
+            tag: 'display_notification',
+            params: {
+                title: 'title',
+                message: 'message',
+                sticky: true,
+            }
+        });
+        const notificationSelector = '.o_notification_manager .o_notification';
+
+        assert.containsOnce(document.body, notificationSelector,
+            'a notification should be present');
+
+        const notificationElement = document.body.querySelector(notificationSelector);
+        assert.strictEqual(
+            notificationElement.querySelector('.o_notification_title').textContent,
+            'title',
+            "the notification should have the correct title"
+        );
+        assert.strictEqual(
+            notificationElement.querySelector('.o_notification_content').textContent,
+            'message',
+            "the notification should have the correct message"
+        );
+
+        assert.containsOnce(actionManager, '.o_kanban_view');
+
+        await testUtils.dom.click(
+            notificationElement.querySelector('.o_notification_close')
+        );
+
+        assert.containsNone(document.body, notificationSelector,
+            "the notification should be destroy ");
+
+        actionManager.destroy();
+        testUtils.mock.unpatch(Notification);
+    });
+
     QUnit.module('Server actions');
 
     QUnit.test('can execute server actions from db ID', async function (assert) {
@@ -2155,7 +2190,8 @@ QUnit.module('ActionManager', {
             start: function () {
                 var self = this;
                 return this._super.apply(this, arguments).then(function () {
-                    self.iframe.src = 'test ' + self.iframe.getAttribute('src');
+                    self._rpc({route: self.iframe.getAttribute('src')});
+                    self.iframe.setAttribute('src', 'about:blank');
                 });
             }
         });
@@ -2177,7 +2213,7 @@ QUnit.module('ActionManager', {
                 if (route === '/report/check_wkhtmltopdf') {
                     return Promise.resolve('broken');
                 }
-                if (route === 'test /report/html/some_report') {
+                if (route === '/report/html/some_report') {
                     return Promise.resolve();
                 }
                 return this._super.apply(this, arguments);
@@ -2198,7 +2234,7 @@ QUnit.module('ActionManager', {
             '/web/action/load',
             '/report/check_wkhtmltopdf',
             'warning',
-            'test /report/html/some_report', // report client action's iframe
+            '/report/html/some_report', // report client action's iframe
         ]);
 
         actionManager.destroy();

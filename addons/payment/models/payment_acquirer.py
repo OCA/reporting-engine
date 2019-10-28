@@ -341,7 +341,7 @@ class PaymentAcquirer(models.Model):
             company = self.env.company
         if not partner:
             partner = self.env.user.partner_id
-        active_acquirers = self.sudo().search([('state', 'in', ['enabled', 'test']), ('company_id', '=', company.id)])
+        active_acquirers = self.search([('state', 'in', ['enabled', 'test']), ('company_id', '=', company.id)])
         acquirers = active_acquirers.filtered(lambda acq: (acq.payment_flow == 'form' and acq.view_template_id) or
                                                                (acq.payment_flow == 's2s' and acq.registration_view_template_id))
         return {
@@ -867,7 +867,11 @@ class PaymentTransaction(models.Model):
             invoice = invoice_ids[0]
             action['res_id'] = invoice
             action['view_mode'] = 'form'
-            action['views'] = [(self.env.ref('account.view_move_form').id, 'form')]
+            form_view = [(self.env.ref('account.view_move_form').id, 'form')]
+            if 'views' in action:
+                action['views'] = form_view + [(state,view) for state,view in action['views'] if view != 'form']
+            else:
+                action['views'] = form_view
         else:
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', invoice_ids)]

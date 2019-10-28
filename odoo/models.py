@@ -1890,6 +1890,8 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             elif order_field in aggregated_fields:
                 order_split[0] = '"%s"' % order_field
                 orderby_terms.append(' '.join(order_split))
+            elif order_field not in self._fields:
+                raise ValueError("Invalid field %r on model %r" % (order_field, self._name))
             else:
                 # Cannot order by a field that will not appear in the results (needs to be grouped or aggregated)
                 _logger.warn('%s: read_group order by `%s` ignored, cannot sort on empty columns (not grouped/aggregated)',
@@ -1904,7 +1906,10 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             field name, type, time information, qualified name, ...
         """
         split = gb.split(':')
-        field_type = self._fields[split[0]].type
+        field = self._fields.get(split[0])
+        if not field:
+            raise ValueError("Invalid field %r on model %r" % (split[0], self._name))
+        field_type = field.type
         gb_function = split[1] if len(split) == 2 else None
         temporal = field_type in ('date', 'datetime')
         tz_convert = field_type == 'datetime' and self._context.get('tz') in pytz.all_timezones
@@ -2117,6 +2122,9 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
         for fspec in fields:
             if fspec == 'sequence':
                 continue
+            if fspec == '__count':
+                # the web client sometimes adds this pseudo-field in the list
+                continue
 
             match = regex_field_agg.match(fspec)
             if not match:
@@ -2126,7 +2134,9 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             if func:
                 # we have either 'name:func' or 'name:func(fname)'
                 fname = fname or name
-                field = self._fields[fname]
+                field = self._fields.get(fname)
+                if not field:
+                    raise ValueError("Invalid field %r on model %r" % (fname, self._name))
                 if not (field.base_field.store and field.base_field.column_type):
                     raise UserError(_("Cannot aggregate field %r.") % fname)
                 if func not in VALID_AGGREGATE_FUNCTIONS:
@@ -2134,7 +2144,9 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
             else:
                 # we have 'name', retrieve the aggregator on the field
                 field = self._fields.get(name)
-                if not (field and field.base_field.store and
+                if not field:
+                    raise ValueError("Invalid field %r on model %r" % (name, self._name))
+                if not (field.base_field.store and
                         field.base_field.column_type and field.group_operator):
                     continue
                 func, fname = field.group_operator, name
@@ -2408,7 +2420,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                     continue            # don't update custom fields
                 new = field.update_db(self, columns)
                 if new and field.compute:
-                    fields_to_compute.append(field)
+                    fields_to_compute.append(field.name)
 
             if fields_to_compute:
                 @self.pool.post_init
@@ -2416,7 +2428,7 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
                     recs = self.with_context(active_test=False).search([])
                     for field in fields_to_compute:
                         _logger.info("Storing computed values of %s", field)
-                        self.env.add_to_compute(field, recs)
+                        self.env.add_to_compute(recs._fields[field], recs)
 
         if self._auto:
             self._add_sql_constraints()
@@ -2817,7 +2829,9 @@ Fields:
         # fetch stored fields from the database to the cache
         stored_fields = set()
         for name in fields:
-            field = self._fields[name]
+            field = self._fields.get(name)
+            if not field:
+                raise ValueError("Invalid field %r on model %r" % (name, self._name))
             if field.store:
                 stored_fields.add(name)
             elif field.compute:
@@ -3204,7 +3218,7 @@ Record ids: %(records)s
 
     def _filter_access_rules_python(self, operation):
         dom = self.env['ir.rule']._compute_domain(self._name, operation)
-        return self.filtered_domain(dom or [])
+        return self.sudo().filtered_domain(dom or [])
 
     def unlink(self):
         """ unlink()
@@ -3355,16 +3369,13 @@ Record ids: %(records)s
               (from the database). Can not be used in :meth:`~.create`.
           ``(3, id, _)``
               removes the record of id ``id`` from the set, but does not
-              delete it. Can not be used on
-              :class:`~odoo.fields.One2many`. Can not be used in
+              delete it. Can not be used in
               :meth:`~.create`.
           ``(4, id, _)``
-              adds an existing record of id ``id`` to the set. Can not be
-              used on :class:`~odoo.fields.One2many`.
+              adds an existing record of id ``id`` to the set.
           ``(5, _, _)``
               removes all records from the set, equivalent to using the
-              command ``3`` on every record explicitly. Can not be used on
-              :class:`~odoo.fields.One2many`. Can not be used in
+              command ``3`` on every record explicitly. Can not be used in
               :meth:`~.create`.
           ``(6, _, ids)``
               replaces all existing records in the set by the ``ids`` list,
@@ -3394,16 +3405,36 @@ Record ids: %(records)s
         protected = set()
         check_company = False
         for fname in vals:
-            field = self._fields[fname]
+            field = self._fields.get(fname)
+            if not field:
+                raise ValueError("Invalid field %r on model %r" % (fname, self._name))
             if field.inverse:
+                if field.type in ('one2many', 'many2many'):
+                    # The written value is a list of commands that must applied
+                    # on the field's current value. Because the field is
+                    # protected while being written, the field's current value
+                    # will not be computed and default to an empty recordset. So
+                    # make sure the field's value is in cache before writing, in
+                    # order to avoid an inconsistent update.
+                    self[fname]
                 determine_inverses[field.inverse].append(field)
                 # DLE P150: `test_cancel_propagation`, `test_manufacturing_3_steps`, `test_manufacturing_flow`
                 # TODO: check whether still necessary
                 records_to_inverse[field] = self.filtered('id')
             if field.relational or self._field_inverses[field]:
                 relational_names.append(fname)
-            if field.compute and not field.readonly:
-                protected.update(self._field_computed.get(field, [field]))
+            if field.inverse or (field.compute and not field.readonly):
+                if field.store or field.type not in ('one2many', 'many2many'):
+                    # Protect the field from being recomputed while being
+                    # inversed. In the case of non-stored x2many fields, the
+                    # field's value may contain unexpeced new records (created
+                    # by command 0). Those new records are necessary for
+                    # inversing the field, but should no longer appear if the
+                    # field is recomputed afterwards. Not protecting the field
+                    # will automatically invalidate the field from the cache,
+                    # forcing its value to be recomputed once dependencies are
+                    # up-to-date.
+                    protected.update(self._field_computed.get(field, [field]))
             if fname == 'company_id' or (field.relational and field.check_company):
                 check_company = True
 
@@ -3590,8 +3621,7 @@ Record ids: %(records)s
                     continue
                 field = self._fields.get(key)
                 if not field:
-                    _logger.warning("%s.create() with unknown fields: %s", self._name, key)
-                    continue
+                    raise ValueError("Invalid field %r on model %r" % (key, self._name))
                 if field.company_dependent:
                     irprop_def = self.env['ir.property'].get(key, self._name)
                     cached_def = field.convert_to_cache(irprop_def, self)
@@ -4146,7 +4176,7 @@ Record ids: %(records)s
 
             field = self._fields.get(order_field)
             if not field:
-                raise ValueError(_("Sorting field %s not found on model %s") % (order_field, self._name))
+                raise ValueError("Invalid field %r on model %r" % (order_field, self._name))
 
             if order_field == 'id':
                 order_by_elements.append('"%s"."%s" %s' % (alias, order_field, order_direction))
@@ -4234,7 +4264,8 @@ Record ids: %(records)s
         order_spec = order or self._order
         for order_part in order_spec.split(','):
             order_field = order_part.split()[0]
-            to_flush[self._name].add(order_field)
+            if order_field in self._fields:
+                to_flush[self._name].add(order_field)
 
         if 'active' in self:
             to_flush[self._name].add('active')
@@ -4978,7 +5009,10 @@ Record ids: %(records)s
         self.ensure_one()
         cache = self.env.cache
         fields = self._fields
-        field_values = [(fields[name], value) for name, value in values.items()]
+        try:
+            field_values = [(fields[name], value) for name, value in values.items()]
+        except KeyError as e:
+            raise ValueError("Invalid field %r on model %r" % (e.args[0], self._name))
 
         # convert monetary fields last in order to ensure proper rounding
         for field, value in sorted(field_values, key=is_monetary):
@@ -5100,7 +5134,15 @@ Record ids: %(records)s
                 (key, comparator, value) = d
                 if key.endswith('.id'):
                     key = key[:-3]
-                if key == 'id': key=''
+                if key == 'id':
+                    key = ''
+                # determine the field with the final type for values
+                field = None
+                if key:
+                    model = self.browse()
+                    for fname in key.split('.'):
+                        field = model._fields[fname]
+                        model = model[fname]
                 if comparator in ('like', 'ilike', '=like', '=ilike', 'not ilike', 'not like'):
                     value_esc = value.replace('_', '?').replace('%', '*').replace('[', '?')
                 records = self.browse()
@@ -5117,10 +5159,14 @@ Record ids: %(records)s
                             data = data.mapped('display_name')
                         else:
                             data = data and data.ids or [False]
-                    else:
-                        data = [
-                            (isinstance(x, datetime.date) and x.strftime('%Y-%m-%d %H:%M:%S')) or
-                            x for x in data]
+                    elif field and field.type in ('date', 'datetime'):
+                        # convert all date and datetime values to datetime
+                        normalize = Datetime.to_datetime
+                        if isinstance(value, (list, tuple)):
+                            value = [normalize(v) for v in value]
+                        else:
+                            value = normalize(value)
+                        data = [normalize(d) for d in data]
                     if comparator in ('in', 'not in'):
                         if not (isinstance(value, list) or isinstance(value, tuple)):
                             value = [value]
@@ -5130,13 +5176,13 @@ Record ids: %(records)s
                     elif comparator == 'in':
                         ok = any(map(lambda x: x in data, value))
                     elif comparator == '<':
-                        ok = any(map(lambda x: x < value, data))
+                        ok = any(map(lambda x: x is not None and x < value, data))
                     elif comparator == '>':
-                        ok = any(map(lambda x: x > value, data))
+                        ok = any(map(lambda x: x is not None and x > value, data))
                     elif comparator == '<=':
-                        ok = any(map(lambda x: x <= value, data))
+                        ok = any(map(lambda x: x is not None and x <= value, data))
                     elif comparator == '>=':
-                        ok = any(map(lambda x: x >= value, data))
+                        ok = any(map(lambda x: x is not None and x >= value, data))
                     elif comparator in ('!=', '<>'):
                         ok = value not in data
                     elif comparator == 'not in':
@@ -5556,8 +5602,11 @@ Record ids: %(records)s
                         if invf.type == 'many2one_reference':
                             rec_ids = set()
                             for rec in self:
-                                if rec[invf.model_field] == key.model_name:
-                                    rec_ids.add(rec[invf.name])
+                                try:
+                                    if rec[invf.model_field] == key.model_name:
+                                        rec_ids.add(rec[invf.name])
+                                except MissingError:
+                                    continue
                             records = model.browse(rec_ids)
                         else:
                             try:
@@ -6082,4 +6131,4 @@ def lazy_name_get(self):
 
 # keep those imports here to avoid dependency cycle errors
 from .osv import expression
-from .fields import Field
+from .fields import Field, Datetime

@@ -115,10 +115,13 @@ class IrModel(models.Model):
 
     @api.depends()
     def _inherited_models(self):
+        self.inherited_model_ids = False
         for model in self:
             parent_names = list(self.env[model.model]._inherits)
             if parent_names:
                 model.inherited_model_ids = self.search([('model', 'in', parent_names)])
+            else:
+                model.inherited_model_ids = False
 
     @api.depends()
     def _in_modules(self):
@@ -137,6 +140,7 @@ class IrModel(models.Model):
     @api.depends()
     def _compute_count(self):
         cr = self.env.cr
+        self.count = 0
         for model in self:
             records = self.env[model.model]
             if not records._abstract:
@@ -1117,7 +1121,7 @@ class IrModelSelection(models.Model):
                     continue
                 if selection.field_id.store:
                     # replace the value by the new one in the field's corresponding column
-                    query = "UPDATE {table} SET {field}=%s WHERE {field}=%s".format(
+                    query = 'UPDATE "{table}" SET "{field}"=%s WHERE "{field}"=%s'.format(
                         table=self.env[selection.field_id.model]._table,
                         field=selection.field_id.name,
                     )
@@ -1144,7 +1148,7 @@ class IrModelSelection(models.Model):
         for selection in self:
             if selection.field_id.store:
                 # replace the value by NULL in the field's corresponding column
-                query = "UPDATE {table} SET {field}=NULL WHERE {field}=%s".format(
+                query = 'UPDATE "{table}" SET "{field}"=NULL WHERE "{field}"=%s'.format(
                     table=self.env[selection.field_id.model]._table,
                     field=selection.field_id.name,
                 )

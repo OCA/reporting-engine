@@ -4,7 +4,7 @@
 from collections import defaultdict
 from datetime import timedelta
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_is_zero
 
@@ -51,7 +51,7 @@ class PosSession(models.Model):
     sequence_number = fields.Integer(string='Order Sequence Number', help='A sequence number that is incremented with each order', default=1)
     login_number = fields.Integer(string='Login Sequence Number', help='A sequence number that is incremented each time a user resumes the pos session', default=0)
 
-    cash_control = fields.Boolean(compute='_compute_cash_all', string='Has Cash Control')
+    cash_control = fields.Boolean(compute='_compute_cash_all', string='Has Cash Control', compute_sudo=True)
     cash_journal_id = fields.Many2one('account.journal', compute='_compute_cash_all', string='Cash Journal', store=True)
     cash_register_id = fields.Many2one('account.bank.statement', compute='_compute_cash_all', string='Cash Register', store=True)
 
@@ -186,10 +186,10 @@ class PosSession(models.Model):
         if values.get('name'):
             pos_name += ' ' + values['name']
 
-        uid = SUPERUSER_ID if self.env.user.has_group('point_of_sale.group_pos_user') else self.env.user.id
-
         cash_payment_methods = pos_config.payment_method_ids.filtered(lambda pm: pm.is_cash_count)
         statement_ids = self.env['account.bank.statement']
+        if self.user_has_groups('point_of_sale.group_pos_user'):
+            statement_ids = statement_ids.sudo()
         for cash_journal in cash_payment_methods.mapped('cash_journal_id'):
             ctx['journal_id'] = cash_journal.id if pos_config.cash_control and cash_journal.type == 'cash' else False
             st_values = {
@@ -198,7 +198,7 @@ class PosSession(models.Model):
                 'name': pos_name,
                 'balance_start': self.env["account.bank.statement"]._get_opening_balance(cash_journal.id) if cash_journal.type == 'cash' else 0
             }
-            statement_ids |= statement_ids.with_context(ctx).with_user(uid).create(st_values)
+            statement_ids |= statement_ids.with_context(ctx).create(st_values)
 
         values.update({
             'name': pos_name,
@@ -206,7 +206,10 @@ class PosSession(models.Model):
             'config_id': config_id,
         })
 
-        res = super(PosSession, self.with_context(ctx).with_user(uid)).create(values)
+        if self.user_has_groups('point_of_sale.group_pos_user'):
+            res = super(PosSession, self.with_context(ctx).sudo()).create(values)
+        else:
+            res = super(PosSession, self.with_context(ctx)).create(values)
         if not pos_config.cash_control:
             res.action_pos_session_open()
 

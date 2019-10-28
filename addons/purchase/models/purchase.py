@@ -156,7 +156,10 @@ class PurchaseOrder(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('purchase.order') or '/'
+            seq_date = None
+            if 'date_order' in vals:
+                seq_date = fields.Datetime.context_timestamp(self, fields.Datetime.to_datetime(vals['date_order']))
+            vals['name'] = self.env['ir.sequence'].next_by_code('purchase.order', sequence_date=seq_date) or '/'
         return super(PurchaseOrder, self).create(vals)
 
     def write(self, vals):
@@ -176,7 +179,7 @@ class PurchaseOrder(models.Model):
         for line in new_po.order_line:
             if new_po.date_planned:
                 line.date_planned = new_po.date_planned
-            else:
+            elif line.product_id:
                 seller = line.product_id._select_seller(
                     partner_id=line.partner_id, quantity=line.product_qty,
                     date=line.order_id.date_order and line.order_id.date_order.date(), uom_id=line.product_uom)
@@ -195,12 +198,16 @@ class PurchaseOrder(models.Model):
 
     @api.onchange('partner_id', 'company_id')
     def onchange_partner_id(self):
+        # Ensures all properties and fiscal positions
+        # are taken with the company of the order
+        # if not defined, force_company doesn't change anything.
+        self = self.with_context(force_company=self.company_id.id)
         if not self.partner_id:
             self.fiscal_position_id = False
             self.payment_term_id = False
             self.currency_id = self.env.company.currency_id.id
         else:
-            self.fiscal_position_id = self.env['account.fiscal.position'].with_context(company_id=self.company_id.id).get_fiscal_position(self.partner_id.id)
+            self.fiscal_position_id = self.env['account.fiscal.position'].get_fiscal_position(self.partner_id.id)
             self.payment_term_id = self.partner_id.property_supplier_payment_term_id.id
             self.currency_id = self.partner_id.property_purchase_currency_id.id or self.env.company.currency_id.id
         return {}
@@ -356,13 +363,19 @@ class PurchaseOrder(models.Model):
             # Do not add a contact as a supplier
             partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
             if line.product_id and partner not in line.product_id.seller_ids.mapped('name') and len(line.product_id.seller_ids) <= 10:
+                # Convert the price in the right currency.
                 currency = partner.property_purchase_currency_id or self.env.company.currency_id
+                price = self.currency_id._convert(line.price_unit, currency, line.company_id, line.date_order or fields.Date.today(), round=False)
+                # Compute the price for the template's UoM, because the supplier's UoM is related to that UoM.
+                if line.product_id.product_tmpl_id.uom_po_id != line.product_uom:
+                    default_uom = line.product_id.product_tmpl_id.uom_po_id
+                    price = line.product_uom._compute_price(price, default_uom)
+
                 supplierinfo = {
                     'name': partner.id,
                     'sequence': max(line.product_id.seller_ids.mapped('sequence')) + 1 if line.product_id.seller_ids else 1,
-                    'product_uom': line.product_uom.id,
                     'min_qty': 0.0,
-                    'price': self.currency_id._convert(line.price_unit, currency, line.company_id, line.date_order or fields.Date.today(), round=False),
+                    'price': price,
                     'currency_id': currency.id,
                     'delay': 0,
                 }
@@ -403,7 +416,11 @@ class PurchaseOrder(models.Model):
             result['domain'] = "[('id', 'in', " + str(self.invoice_ids.ids) + ")]"
         else:
             res = self.env.ref('account.view_move_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
+            form_view = [(res and res.id or False, 'form')]
+            if 'views' in result:
+                result['views'] = form_view + [(state,view) for state,view in action['views'] if view != 'form']
+            else:
+                result['views'] = form_view
             # Do not set an invoice_id if we want to create a new bill.
             if not create_bill:
                 result['res_id'] = self.invoice_ids.id or False
@@ -501,7 +518,7 @@ class PurchaseOrderLine(models.Model):
 
     def _compute_tax_id(self):
         for line in self:
-            fpos = line.order_id.fiscal_position_id or line.order_id.partner_id.property_account_position_id
+            fpos = line.order_id.fiscal_position_id or line.order_id.partner_id.with_context(force_company=line.company_id.id).property_account_position_id
             # If company_id is set, always filter taxes by the company
             taxes = line.product_id.supplier_taxes_id.filtered(lambda r: not line.company_id or r.company_id == line.company_id)
             line.taxes_id = fpos.map_tax(taxes, line.product_id, line.order_id.partner_id) if fpos else taxes

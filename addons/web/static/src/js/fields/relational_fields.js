@@ -901,7 +901,12 @@ var ListFieldMany2One = FieldMany2One.extend({
         this.m2oDialogFocused = false;
     },
     /**
-     * In list views, we don't want to try to trigger a fieldChange when the field
+     * In case the focus is lost from a mousedown, we want to prevent the click occuring on the
+     * following mouseup since it might trigger some unwanted list functions.
+     * If it's not the case, we want to remove the added handler on the next mousedown.
+     * @see list_editable_renderer._onWindowClicked()
+     *
+     * Also, in list views, we don't want to try to trigger a fieldChange when the field
      * is being emptied. Instead, it will be triggered as the user leaves the field
      * while it is empty.
      *
@@ -909,6 +914,19 @@ var ListFieldMany2One = FieldMany2One.extend({
      * @private
      */
     _onInputFocusout: function () {
+        if (this.can_create && this.floating) {
+            // In case the focus out is due to a mousedown, we want to prevent the next click
+            var attachedEvents = ['click', 'mousedown'];
+            var stopNextClick = (function (ev) {
+                ev.stopPropagation();
+                attachedEvents.forEach(function (eventName) {
+                    window.removeEventListener(eventName, stopNextClick, true);
+                });
+            }).bind(this);
+            attachedEvents.forEach(function (eventName) {
+                window.addEventListener(eventName, stopNextClick, true);
+            });
+        }
         this._super.apply(this, arguments);
         if (!this.m2oDialogFocused && this.$input.val() === "" && this.mustSetValue) {
             this.reinitialize(false);
@@ -2422,6 +2440,10 @@ var FormFieldMany2ManyTags = FieldMany2ManyTags.extend({
      */
     _onOpenColorPicker: function (ev) {
         ev.preventDefault();
+        if (this.nodeOptions.no_edit_color) {
+            ev.stopPropagation();
+            return;
+        }
         var tagID = $(ev.currentTarget).parent().data('id');
         var tagColor = $(ev.currentTarget).parent().data('color');
         var tag = _.findWhere(this.value.data, { res_id: tagID });
@@ -2698,7 +2720,7 @@ var FieldSelection = AbstractField.extend({
      * @returns {jQuery}
      */
     getFocusableElement: function () {
-        return this.$el.is('select') ? this.$el : $();
+        return this.$el && this.$el.is('select') ? this.$el : $();
     },
     /**
      * @override
