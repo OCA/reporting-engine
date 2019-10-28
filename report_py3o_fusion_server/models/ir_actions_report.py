@@ -41,6 +41,8 @@ class IrActionsReport(models.Model):
     @api.multi
     def _compute_py3o_report_not_available(self):
         for rec in self:
+            rec.is_py3o_report_not_available = False
+            rec.msg_py3o_report_not_available = ""
             if not rec.report_type == "py3o":
                 continue
             if (not rec.is_py3o_native_format and
