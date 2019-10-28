@@ -50,7 +50,8 @@ class IrActionsReport(models.Model):
         )
     py3o_filetype = fields.Selection(
         selection="_get_py3o_filetypes",
-        string="Output Format")
+        string="Output Format",
+        default="odt")
     is_py3o_native_format = fields.Boolean(
         compute='_compute_is_py3o_native_format'
     )
