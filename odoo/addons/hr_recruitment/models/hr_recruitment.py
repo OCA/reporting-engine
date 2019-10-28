@@ -146,11 +146,11 @@ class Applicant(models.Model):
     partner_mobile = fields.Char("Mobile", size=32)
     type_id = fields.Many2one('hr.recruitment.degree', "Degree")
     department_id = fields.Many2one('hr.department', "Department", domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]")
-    day_open = fields.Float(compute='_compute_day', string="Days to Open")
-    day_close = fields.Float(compute='_compute_day', string="Days to Close")
+    day_open = fields.Float(compute='_compute_day', string="Days to Open", compute_sudo=True)
+    day_close = fields.Float(compute='_compute_day', string="Days to Close", compute_sudo=True)
     delay_close = fields.Float(compute="_compute_day", string='Delay to Close', readonly=True, group_operator="avg", help="Number of days to close", store=True)
     color = fields.Integer("Color Index", default=0)
-    emp_id = fields.Many2one('hr.employee', string="Employee", help="Employee linked to the applicant.")
+    emp_id = fields.Many2one('hr.employee', string="Employee", help="Employee linked to the applicant.", copy=False)
     user_email = fields.Char(related='user_id.email', type="char", string="User Email", readonly=True)
     attachment_number = fields.Integer(compute='_get_attachment_number', string="Number of Attachments")
     employee_name = fields.Char(related='emp_id.name', string="Employee Name", readonly=False, tracking=False)
@@ -229,6 +229,7 @@ class Applicant(models.Model):
     def _onchange_job_id_internal(self, job_id):
         department_id = False
         user_id = False
+        company_id = False
         stage_id = self.stage_id.id or self._context.get('default_stage_id')
         if job_id:
             job = self.env['hr.job'].browse(job_id)

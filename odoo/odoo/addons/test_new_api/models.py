@@ -297,6 +297,7 @@ class MixedModel(models.Model):
     number = fields.Float(digits=(10, 2), default=3.14)
     number2 = fields.Float(digits='New API Precision')
     date = fields.Date()
+    moment = fields.Datetime()
     now = fields.Datetime(compute='_compute_now')
     lang = fields.Selection(string='Language', selection='_get_lang')
     reference = fields.Reference(string='Related Document',
@@ -517,6 +518,22 @@ class ComputeOnchange(models.Model):
                 record.baz = record.foo
 
 
+class ModelBinary(models.Model):
+    _name = 'test_new_api.model_binary'
+    _description = 'Test Image field'
+
+    binary = fields.Binary()
+    binary_related_store = fields.Binary("Binary Related Store", related='binary', store=True, readonly=False)
+    binary_related_no_store = fields.Binary("Binary Related No Store", related='binary', store=False, readonly=False)
+    binary_computed = fields.Binary(compute='_compute_binary')
+
+    @api.depends('binary')
+    def _compute_binary(self):
+        # arbitrary value: 'bin_size' must have no effect
+        for record in self:
+            record.binary_computed = [(record.id, bool(record.binary))]
+
+
 class ModelImage(models.Model):
     _name = 'test_new_api.model_image'
     _description = 'Test Image field'
@@ -726,3 +743,24 @@ class ModelActiveField(models.Model):
     parent_id = fields.Many2one('test_new_api.model_active_field')
     children_ids = fields.One2many('test_new_api.model_active_field', 'parent_id')
     parent_active = fields.Boolean(string='Active Parent', related='parent_id.active', store=True)
+
+
+class ModelMany2oneReference(models.Model):
+    _name = 'test_new_api.model_many2one_reference'
+    _description = 'dummy m2oref model'
+
+    res_model = fields.Char('Resource Model')
+    res_id = fields.Many2oneReference('Resource ID', model_field='res_model')
+
+
+class InverseM2oRef(models.Model):
+    _name = 'test_new_api.inverse_m2o_ref'
+    _description = 'dummy m2oref inverse model'
+
+    model_ids = fields.One2many('test_new_api.model_many2one_reference', 'res_id', string="Models")
+    model_ids_count = fields.Integer("Count", compute='_compute_model_ids_count')
+
+    @api.depends('model_ids')
+    def _compute_model_ids_count(self):
+        for rec in self:
+            rec.model_ids_count = len(rec.model_ids)

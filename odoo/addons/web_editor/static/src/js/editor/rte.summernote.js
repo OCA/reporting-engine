@@ -14,7 +14,7 @@ var weWidgets = require('wysiwyg.widgets');
 var QWeb = core.qweb;
 var _t = core._t;
 
-ajax.jsonRpc('/web/dataset/call', 'call', {
+ajax.jsonRpc('/web/dataset/call_kw', 'call', {
     'model': 'ir.ui.view',
     'method': 'read_template',
     'args': ['web_editor.colorpicker'],
@@ -452,8 +452,11 @@ eventHandler.modules.linkDialog.showLinkDialog = function ($editable, $dialog, l
     $editable.data('range').select();
     $editable.data('NoteHistory').recordUndo();
 
-    var link = linkInfo.range.commonAncestor().closest('a');
-    linkInfo.className = link && link.className;
+    var commonAncestor = linkInfo.range.commonAncestor();
+    if (commonAncestor && commonAncestor.closest) {
+        var link = commonAncestor.closest('a');
+        linkInfo.className = link && link.className;
+    }
 
     var def = new $.Deferred();
     core.bus.trigger('link_dialog_demand', {

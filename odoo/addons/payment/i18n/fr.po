@@ -5,11 +5,9 @@
 # Translators:
 # Moka Tourisme <hello@mokatourisme.fr>, 2019
 # Antoine Lorence <antoine.lorence@gmail.com>, 2019
-# Aline Preillon <apr@odoo.com>, 2019
 # Fred Gilson <fgi@odoo.com>, 2019
 # Laura Piraux <lap@odoo.com>, 2019
 # Nathan Noël <nathan070@me.com>, 2019
-# Martin Trigaux, 2019
 # Xavier Symons <xsy@openerp.com>, 2019
 # Lucas Deliege <lud@odoo.com>, 2019
 # Jérôme Tanché <jerome.tanche@ouest-dsi.fr>, 2019
@@ -23,14 +21,16 @@
 # thomas quertinmont <tqu@odoo.com>, 2019
 # Cécile Collart <cco@odoo.com>, 2019
 # gdp Odoo <gdp@odoo.com>, 2019
+# Martin Trigaux, 2019
+# Vincent Luba <vincent@biz-4-africa.com>, 2019
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 12:10+0000\n"
+"POT-Creation-Date: 2019-10-18 09:47+0000\n"
 "PO-Revision-Date: 2019-08-26 09:12+0000\n"
-"Last-Translator: gdp Odoo <gdp@odoo.com>, 2019\n"
+"Last-Translator: Vincent Luba <vincent@biz-4-africa.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -461,14 +461,14 @@ msgstr "Annulé"
 #: code:addons/payment/static/src/xml/payment_processing.xml:0
 #, python-format
 msgid "Cancelled payments"
-msgstr "Payements annulés"
+msgstr "Paiements annulés"
 
 #. module: payment
 #. openerp-web
 #: code:addons/payment/static/src/js/payment_form.js:0
 #, python-format
-msgid "Cannot set-up the payment"
-msgstr "Impossible de configurer le paiement"
+msgid "Cannot setup the payment"
+msgstr ""
 
 #. module: payment
 #: code:addons/payment/controllers/portal.py:0
@@ -716,7 +716,7 @@ msgstr "Détermine l'ordre d'affichage"
 #. module: payment
 #: model:ir.model.fields.selection,name:payment.selection__payment_acquirer__state__disabled
 msgid "Disabled"
-msgstr "Handicapé"
+msgstr "Désactivé"
 
 #. module: payment
 #: model_terms:ir.ui.view,arch_db:payment.payment_confirmation_status
@@ -922,8 +922,8 @@ msgstr "S'il n'est pas défini, le nom de l'acquéreur sera utilisé."
 #. openerp-web
 #: code:addons/payment/static/src/xml/payment_processing.xml:0
 #, python-format
-msgid "If, the payment hasn't been confirmed you can contact us."
-msgstr "Si le paiement n'a pas été confirmé, vous pouvez nous contacter."
+msgid "If the payment hasn't been confirmed you can contact us."
+msgstr "Contactez-nous, si le paiement n'a pas été confirmé."
 
 #. module: payment
 #: model:ir.model.fields,field_description:payment.field_payment_acquirer__image_128
@@ -2030,15 +2030,9 @@ msgstr ""
 #. module: payment
 #. openerp-web
 #: code:addons/payment/static/src/js/payment_form.js:0
-#, python-format
-msgid "We are not able to redirect you to the payment form."
-msgstr "Nous ne pouvons pas vous rediriger vers le formulaire de paiement."
-
-#. module: payment
-#. openerp-web
 #: code:addons/payment/static/src/js/payment_form.js:0
 #, python-format
-msgid "We are not able to redirect you to the payment form. "
+msgid "We are not able to redirect you to the payment form."
 msgstr "Nous ne pouvons pas vous rediriger vers le formulaire de paiement."
 
 #. module: payment

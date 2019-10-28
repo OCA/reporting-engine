@@ -1545,6 +1545,28 @@ QUnit.module('relational_fields', {
         form.destroy();
     });
 
+    QUnit.test('fieldmany2many tags with no_edit_color option', async function (assert) {
+        assert.expect(1);
+
+        this.data.partner.records[0].timmy = [12];
+
+        var form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch:'<form string="Partners">' +
+                    '<field name="timmy" widget="many2many_tags" options="{\'color_field\': \'color\', \'no_edit_color\': 1}"/>' +
+                '</form>',
+            res_id: 1,
+        });
+
+        // Click to try to open colorpicker
+        await testUtils.dom.click(form.$('.badge:first() .dropdown-toggle'));
+        assert.containsNone(document.body, '.o_colorpicker');
+
+        form.destroy();
+    });
+
     QUnit.test('fieldmany2many tags in editable list', async function (assert) {
         assert.expect(7);
 
@@ -2596,6 +2618,49 @@ QUnit.module('relational_fields', {
         await testUtils.form.clickSave(form);
         assert.strictEqual(form.$('a.o_form_uri:contains(gold)').length, 1,
                         "should contain a link with the new value");
+
+        form.destroy();
+    });
+
+    QUnit.test('interact with reference field changed by onchange', async function (assert) {
+        assert.expect(2);
+
+        this.data.partner.onchanges = {
+            bar: function (obj) {
+                if (!obj.bar) {
+                    obj.reference = 'partner,1';
+                }
+            },
+        };
+        const form = await createView({
+            View: FormView,
+            model: 'partner',
+            data: this.data,
+            arch: `<form>
+                    <field name="bar"/>
+                    <field name="reference"/>
+                </form>`,
+            mockRPC: function (route, args) {
+                if (args.method === 'create') {
+                    assert.deepEqual(args.args[0], {
+                        bar: false,
+                        reference: 'partner,4',
+                    });
+                }
+                return this._super.apply(this, arguments);
+            },
+        });
+
+        // trigger the onchange to set a value for the reference field
+        await testUtils.dom.click(form.$('.o_field_boolean input'));
+
+        assert.strictEqual(form.$('.o_field_widget[name=reference] select').val(), 'partner');
+
+        // manually update reference field
+        await testUtils.fields.many2one.searchAndClickItem('reference', {search: 'aaa'});
+
+        // save
+        await testUtils.form.clickSave(form);
 
         form.destroy();
     });

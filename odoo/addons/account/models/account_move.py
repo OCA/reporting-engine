@@ -47,7 +47,7 @@ class AccountMove(models.Model):
             journal = self.env['account.journal'].browse(self._context['default_journal_id'])
 
             if move_type != 'entry' and journal.type != journal_type:
-                raise UserError(_("Cannot create an invoice of type %s with a journal having %s as type.") % (move_type, journal_type))
+                raise UserError(_("Cannot create an invoice of type %s with a journal having %s as type.") % (move_type, journal.type))
         else:
             company_id = self._context.get('default_company_id', self.env.company.id)
             domain = [('company_id', '=', company_id), ('type', '=', journal_type)]
@@ -106,7 +106,7 @@ class AccountMove(models.Model):
             ('out_receipt', 'Sales Receipt'),
             ('in_receipt', 'Purchase Receipt'),
         ], string='Type', required=True, store=True, index=True, readonly=True, tracking=True,
-        default="entry")
+        default="entry", change_default=True)
     to_check = fields.Boolean(string='To Check', default=False,
         help='If this checkbox is ticked, it means that the user was not sure of all the related informations at the time of the creation of the move and that the move needs to be checked again.')
     journal_id = fields.Many2one('account.journal', string='Journal', required=True, readonly=True,
@@ -115,7 +115,7 @@ class AccountMove(models.Model):
         default=_get_default_journal)
     user_id = fields.Many2one(related='invoice_user_id', string='User')
     company_id = fields.Many2one(string='Company', store=True, readonly=True,
-        related='journal_id.company_id')
+        related='journal_id.company_id', change_default=True)
     company_currency_id = fields.Many2one(string='Company Currency', readonly=True,
         related='journal_id.company_id.currency_id')
     currency_id = fields.Many2one('res.currency', store=True, readonly=True, tracking=True, required=True,
@@ -127,7 +127,7 @@ class AccountMove(models.Model):
     partner_id = fields.Many2one('res.partner', readonly=True, tracking=True,
         states={'draft': [('readonly', False)]},
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-        string='Partner')
+        string='Partner', change_default=True)
     commercial_partner_id = fields.Many2one('res.partner', string='Commercial Entity', store=True, readonly=True,
         compute='_compute_commercial_partner_id')
 
@@ -164,7 +164,7 @@ class AccountMove(models.Model):
         help='If this checkbox is ticked, this entry will be automatically posted at its date.')
 
     # ==== Reverse feature fields ====
-    reversed_entry_id = fields.Many2one('account.move', string="Reverse entry", readonly=True, copy=False)
+    reversed_entry_id = fields.Many2one('account.move', string="Reversal of", readonly=True, copy=False)
 
     # =========================================================
     # Invoice related fields
@@ -228,7 +228,7 @@ class AccountMove(models.Model):
         help="Auto-complete from a past bill.")
     invoice_source_email = fields.Char(string='Source Email', tracking=True)
     invoice_partner_display_name = fields.Char(compute='_compute_invoice_partner_display_info', store=True)
-    invoice_partner_icon = fields.Char(compute='_compute_invoice_partner_display_info', store=False)
+    invoice_partner_icon = fields.Char(compute='_compute_invoice_partner_display_info', store=False, compute_sudo=True)
 
     # ==== Cash rounding fields ====
     invoice_cash_rounding_id = fields.Many2one('account.cash.rounding', string='Cash Rounding Method',
@@ -316,7 +316,7 @@ class AccountMove(models.Model):
 
         # Find the new fiscal position.
         delivery_partner_id = self._get_invoice_delivery_partner_id()
-        new_fiscal_position_id = self.env['account.fiscal.position'].get_fiscal_position(
+        new_fiscal_position_id = self.env['account.fiscal.position'].with_context(force_company=self.company_id.id).get_fiscal_position(
             self.partner_id.id, delivery_id=delivery_partner_id)
         self.fiscal_position_id = self.env['account.fiscal.position'].browse(new_fiscal_position_id)
         self._recompute_dynamic_lines()
@@ -411,8 +411,8 @@ class AccountMove(models.Model):
             'tax_repartition_line_id': tax_vals['tax_repartition_line_id'],
             'account_id': account.id,
             'currency_id': base_line.currency_id.id,
-            'analytic_tag_ids': [(6, 0, base_line.analytic_tag_ids.ids)],
-            'analytic_account_id': base_line.analytic_account_id.id,
+            'analytic_tag_ids': [(6, 0, tax_vals['analytic'] and base_line.analytic_tag_ids.ids or [])],
+            'analytic_account_id': tax_vals['analytic'] and base_line.analytic_account_id.id,
             'tax_ids': [(6, 0, tax_vals['tax_ids'])],
             'tag_ids': [(6, 0, tax_vals['tag_ids'])],
         }
@@ -1071,6 +1071,8 @@ class AccountMove(models.Model):
         # Check user group.
         system_user = self.env.is_system()
         if not system_user:
+            self.invoice_sequence_number_next_prefix = False
+            self.invoice_sequence_number_next = False
             return
 
         # Check moves being candidates to set a custom number next.
@@ -1924,10 +1926,11 @@ class AccountMove(models.Model):
         reverse_type_map = {
             'entry': 'entry',
             'out_invoice': 'out_refund',
+            'out_refund': 'entry',
             'in_invoice': 'in_refund',
-            'in_refund': 'in_invoice',
-            'out_receipt': 'in_receipt',
-            'in_receipt': 'out_receipt',
+            'in_refund': 'entry',
+            'out_receipt': 'entry',
+            'in_receipt': 'entry',
         }
 
         move_vals_list = []
@@ -2376,7 +2379,7 @@ class AccountMoveLine(models.Model):
     name = fields.Char(string='Label')
     quantity = fields.Float(string='Quantity',
         default=1.0, digits='Product Unit of Measure',
-        help="The optional quantity expressed by this line, eg: number of product sold."
+        help="The optional quantity expressed by this line, eg: number of product sold. "
              "The quantity is not a legal requirement but is very useful for some reports.")
     price_unit = fields.Float(string='Unit Price', digits='Product Price')
     discount = fields.Float(string='Discount (%)', digits='Discount', default=0.0)
@@ -3049,6 +3052,7 @@ class AccountMoveLine(models.Model):
 
         for vals in vals_list:
             move = self.env['account.move'].browse(vals['move_id'])
+            vals.setdefault('company_currency_id', move.company_id.currency_id.id) # important to bypass the ORM limitation where monetary fields are not rounded; more info in the commit message
 
             if move.is_invoice(include_receipts=True):
                 currency = self.env['res.currency'].browse(vals.get('currency_id'))

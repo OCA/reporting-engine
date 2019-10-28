@@ -77,7 +77,7 @@ class Website(Home):
         else:
             top_menu = request.website.menu_id
             first_menu = top_menu and top_menu.child_id and top_menu.child_id.filtered(lambda menu: menu.is_visible)
-            if first_menu and first_menu[0].url not in ('/', '') and (not (first_menu[0].url.startswith(('/?', '/#', ' ')))):
+            if first_menu and first_menu[0].url not in ('/', '', '#') and (not (first_menu[0].url.startswith(('/?', '/#', ' ')))):
                 return request.redirect(first_menu[0].url)
 
         raise request.not_found()
@@ -92,7 +92,7 @@ class Website(Home):
     # while portal users are redirected to the frontend by default
     # ------------------------------------------------------
 
-    @http.route(website=True, auth="public")
+    @http.route(website=True, auth="public", sitemap=False)
     def web_login(self, redirect=None, *args, **kw):
         response = super(Website, self).web_login(redirect=redirect, *args, **kw)
         if not redirect and request.params['login_success']:
@@ -129,7 +129,7 @@ class Website(Home):
     def robots(self, **kwargs):
         return request.render('website.robots', {'url_root': request.httprequest.url_root}, mimetype='text/plain')
 
-    @http.route('/sitemap.xml', type='http', auth="public", website=True, multilang=False)
+    @http.route('/sitemap.xml', type='http', auth="public", website=True, multilang=False, sitemap=False)
     def sitemap_xml_index(self, **kwargs):
         current_website = request.website
         Attachment = request.env['ir.attachment'].sudo()
@@ -205,10 +205,10 @@ class Website(Home):
             return request.env['ir.http']._handle_exception(e, 404)
         Module = request.env['ir.module.module'].sudo()
         apps = Module.search([('state', '=', 'installed'), ('application', '=', True)])
-        modules = Module.search([('state', '=', 'installed'), ('application', '=', False)])
+        l10n = Module.search([('state', '=', 'installed'), ('name', '=like', 'l10n_%')])
         values = {
             'apps': apps,
-            'modules': modules,
+            'l10n': l10n,
             'version': odoo.service.common.exp_version()
         }
         return request.render('website.website_info', values)
@@ -468,7 +468,7 @@ class WebsiteBinary(http.Controller):
                 kw['unique'] = unique
         return Binary().content_image(**kw)
 
-    @http.route(['/favicon.ico'], type='http', auth='public', website=True)
+    @http.route(['/favicon.ico'], type='http', auth='public', website=True, sitemap=False)
     def favicon(self, **kw):
         # when opening a pdf in chrome, chrome tries to open the default favicon url
         return self.content_image(model='website', id=str(request.website.id), field='favicon', **kw)

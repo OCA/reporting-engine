@@ -259,6 +259,7 @@ actual arch.
          """)
 
     @api.depends('arch_db', 'arch_fs', 'arch_updated')
+    @api.depends_context('read_arch_from_file')
     def _compute_arch(self):
         def resolve_external_ids(arch_fs, view_xml_id):
             def replacer(m):
@@ -298,6 +299,7 @@ actual arch.
             view.write(data)
 
     @api.depends('arch')
+    @api.depends_context('read_arch_from_file')
     def _compute_arch_base(self):
         # 'arch_base' is the same as 'arch' without translation
         for view, view_wo_lang in zip(self, self.with_context(lang=None)):
@@ -727,11 +729,16 @@ actual arch.
         """
         Model = self.env[model]
 
-        if node.tag == 'field' and node.get('name') in Model._fields:
-            field = Model._fields[node.get('name')]
+        field_name = None
+        if node.tag == "field":
+            field_name = node.get("name")
+        elif node.tag == "label":
+            field_name = node.get("for")
+        if field_name and field_name in Model._fields:
+            field = Model._fields[field_name]
             if field.groups and not self.user_has_groups(groups=field.groups):
                 node.getparent().remove(node)
-                fields.pop(node.get('name'), None)
+                fields.pop(field_name, None)
                 # no point processing view-level ``groups`` anymore, return
                 return False
         if node.get('groups'):

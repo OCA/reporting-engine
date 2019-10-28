@@ -182,7 +182,8 @@ def url_for(url_from, lang_code=None, no_rewrite=False):
     new_url = False
 
     # don't try to match route if we know that no rewrite has been loaded.
-    if not request.env['ir.http']._rewrite_len.get(request.website_routing):
+    routing = getattr(request, 'website_routing', None)  # not modular, but not overridable
+    if not request.env['ir.http']._rewrite_len.get(routing):
         no_rewrite = True
 
     # avoid useless check for 1 char URL '/', '#', ... and absolute URL
@@ -302,7 +303,7 @@ class IrHttp(models.AbstractModel):
         }
 
         session_info.update({
-            'translationURL': '/website/translations/',
+            'translationURL': '/website/translations',
             'cache_hashes': {
                 'translations': hashlib.sha1(json.dumps(translation_cache, sort_keys=True).encode()).hexdigest(),
             },
@@ -426,8 +427,12 @@ class IrHttp(models.AbstractModel):
             request.is_frontend = func.routing.get('website', False)
         except werkzeug.exceptions.NotFound as e:
             # either we have a language prefixed route, either a real 404
-            # in all cases, website processes them
-            request.is_frontend = True
+            # in all cases, website processes them exept if second element is static
+            # Checking static will avoid to generate an expensive 404 web page since
+            # most of the time the browser is loading and inexisting assets or image. A standard 404 is enough.
+            # Earlier check would be difficult since we don't want to break data modules
+            path_components = request.httprequest.path.split('/')
+            request.is_frontend = len(path_components) < 3 or path_components[2] != 'static' or not '.' in path_components[-1]
             routing_error = e
 
         request.is_frontend_multilang = not func or (func and request.is_frontend and func.routing.get('multilang', func.routing['type'] == 'http'))

@@ -855,7 +855,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
     def test_in_invoice_create_refund(self):
         self.invoice.post()
 
-        move_reversal = self.env['account.move.reversal'].with_context(active_ids=self.invoice.ids).create({
+        move_reversal = self.env['account.move.reversal'].with_context(active_model="account.move", active_ids=self.invoice.ids).create({
             'date': fields.Date.from_string('2019-02-01'),
             'reason': 'no reason',
             'refund_method': 'refund',
@@ -893,13 +893,14 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
             },
         ], {
             **self.move_vals,
+            'invoice_payment_term_id': None,
             'date': move_reversal.date,
             'state': 'draft',
             'ref': 'Reversal of: %s, %s' % (self.invoice.name, move_reversal.reason),
             'invoice_payment_state': 'not_paid',
         })
 
-        move_reversal = self.env['account.move.reversal'].with_context(active_ids=self.invoice.ids).create({
+        move_reversal = self.env['account.move.reversal'].with_context(active_model="account.move", active_ids=self.invoice.ids).create({
             'date': fields.Date.from_string('2019-02-01'),
             'reason': 'no reason again',
             'refund_method': 'cancel',
@@ -937,6 +938,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
             },
         ], {
             **self.move_vals,
+            'invoice_payment_term_id': None,
             'date': move_reversal.date,
             'state': 'posted',
             'ref': 'Reversal of: %s, %s' % (self.invoice.name, move_reversal.reason),
@@ -955,7 +957,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
         self.invoice.post()
 
         # The currency rate changed from 1/3 to 1/2.
-        move_reversal = self.env['account.move.reversal'].with_context(active_ids=self.invoice.ids).create({
+        move_reversal = self.env['account.move.reversal'].with_context(active_model="account.move", active_ids=self.invoice.ids).create({
             'date': fields.Date.from_string('2017-01-01'),
             'reason': 'no reason',
             'refund_method': 'refund',
@@ -1003,6 +1005,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
             },
         ], {
             **self.move_vals,
+            'invoice_payment_term_id': None,
             'currency_id': self.currency_data['currency'].id,
             'date': move_reversal.date,
             'state': 'draft',
@@ -1010,7 +1013,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
             'invoice_payment_state': 'not_paid',
         })
 
-        move_reversal = self.env['account.move.reversal'].with_context(active_ids=self.invoice.ids).create({
+        move_reversal = self.env['account.move.reversal'].with_context(active_model="account.move", active_ids=self.invoice.ids).create({
             'date': fields.Date.from_string('2017-01-01'),
             'reason': 'no reason again',
             'refund_method': 'cancel',
@@ -1058,6 +1061,7 @@ class TestAccountMoveInInvoiceOnchanges(InvoiceTestCommon):
             },
         ], {
             **self.move_vals,
+            'invoice_payment_term_id': None,
             'currency_id': self.currency_data['currency'].id,
             'date': move_reversal.date,
             'state': 'posted',
