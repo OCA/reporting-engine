@@ -2,7 +2,7 @@
 # Part of hunghn. See LICENSE file for full copyright and licensing details.
 
 {
-    "name": "Architecture & Construction Project",
+    "name": "Architecture & Construction for Project",
     "version": "1.0",
     "description": """
         Application for Architecture & Construction
