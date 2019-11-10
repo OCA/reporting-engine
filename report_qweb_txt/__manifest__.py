@@ -3,7 +3,7 @@
 
 {
     'name': 'Qweb Text Reports',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'category': 'Reporting',
     'license': 'AGPL-3',
     'summary': 'Use Qweb to generate text and CSV reports',
