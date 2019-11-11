@@ -42,7 +42,7 @@ class IrActionsReport(models.Model):
         return """\n
         \t<t t-call="%s"/>""" % report_name
 
-    def generate_batch_qweb_report(self, update_batch_qweb=False):
+    def _generate_batch_qweb_report(self, update_batch_qweb=False):
         report_name = self.report_name
         if '.' in report_name:
             module = self.report_name.split('.')[0]
@@ -65,8 +65,7 @@ class IrActionsReport(models.Model):
             template_footer = self.generate_bottom_part()
             template_content = ''
 
-            for subreport in sorted(self.subreport_ids,
-                                    key=lambda sub: sub.sequence):
+            for subreport in self.subreport_ids:
                 template_content += self.generate_custom_content(
                     subreport.subreport_id.report_name
                 )
@@ -92,7 +91,7 @@ class IrActionsReport(models.Model):
     def create(self, vals):
         res = super(IrActionsReport, self).create(vals)
         for report in res:
-            report.generate_batch_qweb_report()
+            report._generate_batch_qweb_report()
         return res
 
     @api.multi
@@ -100,5 +99,5 @@ class IrActionsReport(models.Model):
         res = super(IrActionsReport, self).write(vals)
         if 'subreport_ids' in vals or 'model' in vals:
             for report in self:
-                report.generate_batch_qweb_report(update_batch_qweb=True)
+                report._generate_batch_qweb_report(update_batch_qweb=True)
         return res
