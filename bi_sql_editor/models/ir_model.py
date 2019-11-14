@@ -11,6 +11,5 @@ class IrModelFields(models.Model):
         super(IrModelFields, self)._add_manual_fields(model)
         if 'bi.sql.view' in self.env:
             Sql = self.env['bi.sql.view']
-            if 'model_name' in Sql._fields:
-                Sql.search([('model_name', '=', model._name)]
-                           ).bi_sql_view_field_ids.adjust_manual_fields(model)
+            if hasattr(Sql, 'check_manual_fields'):
+                Sql.check_manual_fields(model)
