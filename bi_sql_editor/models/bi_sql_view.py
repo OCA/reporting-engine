@@ -658,4 +658,4 @@ class BiSQLView(models.Model):
     def check_manual_fields(self, model):
         if 'model_name' in self._fields and model._name.startswith(self._model_prefix):
             self.search([('model_name', '=', model._name)]
-                       ).bi_sql_view_field_ids.adjust_manual_fields(model)
+                        ).bi_sql_view_field_ids.adjust_manual_fields(model)
