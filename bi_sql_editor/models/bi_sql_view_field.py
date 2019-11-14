@@ -23,6 +23,13 @@ class BiSQLViewField(models.Model):
         ('selection', 'selection'),
     ]
 
+    _GROUP_OPERATOR_SELECTION = [
+        ('sum', 'Sum'),
+        ('avg', 'Average'),
+        ('min', 'Minimum'),
+        ('max', 'Maximum'),
+    ]
+
     _GRAPH_TYPE_SELECTION = [
         ('col', 'Column'),
         ('row', 'Row'),
@@ -87,6 +94,11 @@ class BiSQLViewField(models.Model):
         " Odoo field that will be created. Keep empty if you don't want to"
         " create a new field. If empty, this field will not be displayed"
         " neither available for search or group by function")
+
+    group_operator = fields.Selection(
+        string='Group Operator', selection=_GROUP_OPERATOR_SELECTION,
+        help="By default, Odoo will sum the values when grouping. If you wish"
+        " to alter the behaviour, choose an alternate Group Operator")
 
     selection = fields.Text(
         string='Selection Options', default='[]',
@@ -230,3 +242,11 @@ class BiSQLViewField(models.Model):
                 """<filter string="%s" context="{'group_by':'%s'}"/>""" % (
                     self.field_description, self.name)
         return res
+
+    def adjust_manual_fields(self, model):
+        for sql_field in self:
+            if sql_field.ttype in ('integer', 'float') and\
+                    sql_field.group_operator and\
+                    sql_field.name in model._fields:
+                model._fields[sql_field.name].group_operator =\
+                    sql_field.group_operator
