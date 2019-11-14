@@ -80,6 +80,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="field_description"/>
                                     <field name="ttype" attrs="{
                                         'required': [('field_description', '!=', False)]}"/>
+                                    <field name='group_operator' attrs="{
+￼                                        'invisible': ['!', ('ttype', 'in', ('float', 'integer'))]}"/>
                                     <field name="many2one_model_id" attrs="{
                                         'invisible': [('ttype', '!=', 'many2one')],
                                         'required': [
