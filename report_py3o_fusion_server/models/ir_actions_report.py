@@ -3,8 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import logging
 
-from openerp import _, api, fields, models
-
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
@@ -13,7 +12,6 @@ logger = logging.getLogger(__name__)
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
-    @api.multi
     @api.constrains("py3o_is_local_fusion", "py3o_server_id")
     def _check_py3o_server_id(self):
         for report in self:
@@ -46,7 +44,6 @@ class IrActionsReport(models.Model):
     @api.depends(
         "lo_bin_path", "is_py3o_native_format", "report_type", "py3o_server_id"
     )
-    @api.multi
     def _compute_py3o_report_not_available(self):
         for rec in self:
             if not rec.report_type == "py3o":
