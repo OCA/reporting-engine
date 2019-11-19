@@ -3,7 +3,7 @@
 {
     "name": "Py3o Report Engine - Fusion server support",
     "summary": "Let the fusion server handle format conversion.",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Reporting",
     "license": "AGPL-3",
     "author": "XCG Consulting," "ACSONE SA/NV," "Odoo Community Association (OCA)",

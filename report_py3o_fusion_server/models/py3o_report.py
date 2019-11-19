@@ -11,8 +11,9 @@ from datetime import datetime
 from io import BytesIO
 
 import requests
-from openerp import _, api, models
-from openerp.exceptions import UserError
+
+from odoo import _, models
+from odoo.exceptions import UserError
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,6 @@ except ImportError:
 class Py3oReport(models.TransientModel):
     _inherit = "py3o.report"
 
-    @api.multi
     def _create_single_report(self, model_instance, data):
         """ This function to generate our py3o report
         """
