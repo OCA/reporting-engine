@@ -2,6 +2,7 @@
 # Copyright 2019 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import mock
 import odoo.tests.common as common
 from odoo.exceptions import ValidationError
 from io import BytesIO
@@ -41,14 +42,17 @@ class TestHeaderFooter(common.TransactionCase):
         """
         file_data = BytesIO()
         partner = self.env['res.partner'].browse([1])
-        workbook = self.report.create_workbook(
-            file_data, {}, partner, self.report_xlsx)
-        header = u'&LPage &P of &N &CFilename: &F &RSheetname: &A'
-        footer = u'&LCurrent date: &D &RCurrent time: &T'
+        with mock.patch.object(self.report.__class__, "generate_xlsx_report")\
+                as mocked_method:
+            workbook = self.report.create_workbook(
+                file_data, {}, partner, self.report_xlsx)
+            header = u'&LPage &P of &N &CFilename: &F &RSheetname: &A'
+            footer = u'&LCurrent date: &D &RCurrent time: &T'
 
-        for sheet in workbook.worksheets():
-            self.assertEqual(header, sheet.header)
-            self.assertEqual(footer, sheet.footer)
+            for sheet in workbook.worksheets():
+                self.assertEqual(header, sheet.header)
+                self.assertEqual(footer, sheet.footer)
+            self.assertEqual(mocked_method.call_count, 1)
 
     def test_wrong_options(self):
         """

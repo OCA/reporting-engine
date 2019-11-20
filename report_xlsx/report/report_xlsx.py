@@ -69,4 +69,4 @@ class ReportXlsxAbstract(models.AbstractModel):
         return {}
 
     def generate_xlsx_report(self, workbook, data, objs):
-        return
+        raise NotImplementedError()
