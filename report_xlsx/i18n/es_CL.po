@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_xlsx
+# 	* report_xlsx
 #
 msgid ""
 msgstr ""
@@ -26,7 +26,9 @@ msgstr "%s modelo no fue encontrado"
 #. openerp-web
 #: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:49
 #, python-format
-msgid "A popup window with your report was blocked. You may need to change your browser settings to allow popup windows for this page."
+msgid ""
+"A popup window with your report was blocked. You may need to change your "
+"browser settings to allow popup windows for this page."
 msgstr ""
 "Se bloqueó una ventana emergente con su informe. Es posible que deba cambiar "
 "la configuración de su navegador para permitir ventanas emergentes para esta "
@@ -92,7 +94,11 @@ msgstr "Texto"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
-msgid "The type of the report that will be rendered, each one having its own rendering method. HTML means the report will be opened directly in your browser PDF means the report will be rendered using Wkhtmltopdf and downloaded by the user."
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
 msgstr ""
 "El tipo de informe que se representará, cada uno con su propio método de "
 "representación. HTML significa que el informe se abrirá directamente en el "
@@ -114,6 +120,11 @@ msgstr ""
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "XML"
+msgstr ""
+
+#. module: report_xlsx
+#: selection:ir.actions.report,report_type:0
+msgid "csv"
 msgstr ""
 
 #. module: report_xlsx
