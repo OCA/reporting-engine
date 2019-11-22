@@ -107,6 +107,11 @@ msgid "XML"
 msgstr ""
 
 #. module: report_xlsx
+#: selection:ir.actions.report,report_type:0
+msgid "csv"
+msgstr ""
+
+#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "report.report_xlsx.partner_xlsx"
 msgstr ""
