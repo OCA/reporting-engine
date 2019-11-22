@@ -309,5 +309,10 @@ msgstr ""
 msgid "XML"
 msgstr ""
 
+#. module: report_py3o
+#: selection:ir.actions.report,report_type:0
+msgid "csv"
+msgstr ""
+
 #~ msgid "py3o.template"
 #~ msgstr "py3o.template"
