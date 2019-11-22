@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo12-addon-bi_sql_editor',
         'odoo12-addon-kpi',
         'odoo12-addon-report_context',
+        'odoo12-addon-report_csv',
         'odoo12-addon-report_py3o',
         'odoo12-addon-report_py3o_fusion_server',
         'odoo12-addon-report_qr',
