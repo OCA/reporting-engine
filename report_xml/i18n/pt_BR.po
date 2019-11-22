@@ -76,3 +76,8 @@ msgstr ""
 #: selection:ir.actions.report,report_type:0
 msgid "XML"
 msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "csv"
+msgstr ""

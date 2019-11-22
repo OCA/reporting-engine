@@ -78,6 +78,11 @@ msgstr ""
 msgid "XML"
 msgstr ""
 
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "csv"
+msgstr ""
+
 #, fuzzy
 #~ msgid "ir.actions.report"
 #~ msgstr "ir.actions.report.xml"
