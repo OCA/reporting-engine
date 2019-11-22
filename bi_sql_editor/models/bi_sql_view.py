@@ -8,7 +8,7 @@ from psycopg2 import ProgrammingError
 
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError
-from odoo.tools import pycompat, sql
+from odoo.tools import pycompat, sql, table_columns
 from odoo.addons.base.ir.ir_model import IrModel
 
 _logger = logging.getLogger(__name__)
@@ -647,6 +647,11 @@ class BiSQLView(models.Model):
         raise UserError('\n'.join(map(lambda x: str(x), res[:100])))
 
     def check_manual_fields(self, model):
-        if 'model_name' in self._fields and model._name.startswith(self._model_prefix):
+        # check the fields we need are defined on self, to stop it going
+        # early on install / startup - particularly problematic during upgrade
+        if 'group_operator' in table_columns(self.env.cr, 'bi_sql_view_field') and\
+                'model_name' in self._fields and\
+                'bi_sql_view_field_ids' in self._fields and\
+                model._name.startswith(self._model_prefix):
             self.search([('model_name', '=', model._name)]
                         ).bi_sql_view_field_ids.adjust_manual_fields(model)
