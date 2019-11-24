@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2019-09-17 17:24+0000\n"
+"PO-Revision-Date: 2019-11-24 19:57+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
-"teams/23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #. module: base_comment_template
 #: selection:base.comment.template,position:0
@@ -61,20 +61,18 @@ msgstr "Índice de comentários"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_res_partner__property_comment_template_id
 #: model:ir.model.fields,field_description:base_comment_template.field_res_users__property_comment_template_id
-#, fuzzy
-#| msgid "Comment Templates"
 msgid "Conditions template"
-msgstr "Modelos de comentários"
+msgstr "Modelos de condições"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
@@ -99,7 +97,7 @@ msgstr "ID"
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
 msgid "If set, it'll only be available for this company"
-msgstr ""
+msgstr "Se definido, ele estará disponível apenas para esta empresa"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
@@ -119,7 +117,7 @@ msgstr "Última atualização em"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
