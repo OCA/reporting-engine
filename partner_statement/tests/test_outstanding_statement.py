@@ -32,7 +32,6 @@ class TestOutstandingStatement(TransactionCase):
         user = self.res_users_model.create({
             'name': login,
             'login': login,
-            'password': 'demo',
             'email': 'example@yourcompany.com',
             'company_id': company.id,
             'company_ids': [(4, company.id)],
