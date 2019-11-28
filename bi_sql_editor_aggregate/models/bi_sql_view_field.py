@@ -13,12 +13,6 @@ class BiSQLViewField(models.Model):
         ('max', 'Maximum'),
     ]
 
-    _GRAPH_TYPE_SELECTION = [
-        ('col', 'Column'),
-        ('row', 'Row'),
-        ('measure', 'Measure'),
-    ]
-
     group_operator = fields.Selection(
         string='Group Operator', selection=_GROUP_OPERATOR_SELECTION,
         help="By default, Odoo will sum the values when grouping. If you wish"
