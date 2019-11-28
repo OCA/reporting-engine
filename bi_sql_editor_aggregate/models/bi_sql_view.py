@@ -10,7 +10,7 @@ class BiSQLView(models.Model):
         # check the fields we need are defined on self, to stop it going
         # early on install / startup - particularly problematic during upgrade
         if 'group_operator' in tools.table_columns(
-                    self.env.cr, 'bi_sql_view_field') and\
+                self.env.cr, 'bi_sql_view_field') and\
                 model._name.startswith(self._model_prefix):
             # Use SQL instead of ORM, as ORM might not be fully initialised -
             # we have no control over the order that fields are defined!
