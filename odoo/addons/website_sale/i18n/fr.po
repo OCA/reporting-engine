@@ -15,7 +15,6 @@
 # Alain van de Werve <avw@openerp.com>, 2019
 # Saad Thaifa <saad.thaifa@gmail.com>, 2019
 # bb76cd9ac0cb7e20167a14728edb858b, 2019
-# Moka Tourisme <hello@mokatourisme.fr>, 2019
 # Maxime Chambreuil <mchambreuil@ursainfosystems.com>, 2019
 # Fabien Pinckaers <fp@openerp.com>, 2019
 # Frédéric LIETART <stuff@tifred.fr>, 2019
@@ -41,14 +40,15 @@
 # Richard Mathot <rim@odoo.com>, 2019
 # Eloïse Stilmant <est@odoo.com>, 2019
 # Oriane Malburny <oma@odoo.com>, 2019
+# Moka Tourisme <hello@mokatourisme.fr>, 2019
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-18 09:46+0000\n"
+"POT-Creation-Date: 2019-11-18 15:26+0000\n"
 "PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Oriane Malburny <oma@odoo.com>, 2019\n"
+"Last-Translator: Moka Tourisme <hello@mokatourisme.fr>, 2019\n"
 "Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -868,7 +868,7 @@ msgstr ""
 #. module: website_sale
 #: model:product.public.category,name:website_sale.public_category_chairs
 msgid "Chairs"
-msgstr ""
+msgstr "Sièges"
 
 #. module: website_sale
 #: model:ir.model.fields,field_description:website_sale.field_product_public_category__child_id
@@ -3006,6 +3006,13 @@ msgid ""
 msgstr ""
 "Garantie délivrée à l'acheteur d'un article par le fabricant: promettant la "
 "réparation ou le remplacement, si nécessaire dans un délai imparti."
+
+#. module: website_sale
+#. openerp-web
+#: code:addons/website_sale/static/src/js/website_sale_validate.js:49
+#, python-format
+msgid "We are waiting the confirmation of the bank or payment provider"
+msgstr ""
 
 #. module: website_sale
 #: model_terms:ir.ui.view,arch_db:website_sale.s_products_searchbar

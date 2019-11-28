@@ -168,7 +168,7 @@ var SnippetEditor = Widget.extend({
      * Makes the editor overlay cover the associated snippet.
      */
     cover: function () {
-        if (!this.isShown() || !this.$target.length) {
+        if (!this.isShown() || !this.$target.length || !this.$target.is(':visible')) {
             return;
         }
         var offset = this.$target.offset();
@@ -1083,6 +1083,7 @@ var SnippetsMenu = Widget.extend({
         _.each(this.snippetEditors, function (snippetEditor) {
             snippetEditor.destroy();
         });
+        this.snippetEditors.splice(0);
     },
     /**
      * Calls a given callback 'on' the given snippet and all its child ones if

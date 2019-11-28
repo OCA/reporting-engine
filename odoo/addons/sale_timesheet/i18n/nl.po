@@ -1253,7 +1253,7 @@ msgstr "Urenstaat ingave eenheid"
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_sale_order__timesheet_total_duration
 msgid "Timesheet Total Duration"
-msgstr ""
+msgstr "Totale duur urenstaat"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__timesheet_unit_amount
@@ -1332,7 +1332,7 @@ msgid ""
 "storables, expenses, ...)"
 msgstr ""
 "Totaal te factureren bedrag op de verkooporder, inclusief alle items "
-"(diensten, stockables, declaraties, ...)"
+"(diensten, voorraadproducten, declaraties, ...)"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_sale_order__timesheet_total_duration
@@ -1441,28 +1441,3 @@ msgid ""
 msgstr ""
 "U dient de verkooporderregel te verwijderen als u deze taak wilt "
 "verwijderen."
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid "billable_fixed"
-msgstr "billable_fixed"
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid "billable_time"
-msgstr "billable_time"
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid "canceled"
-msgstr "geannuleerd"
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid "non_billable"
-msgstr "non_billable"
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid "non_billable_project"
-msgstr "non_billable_project"

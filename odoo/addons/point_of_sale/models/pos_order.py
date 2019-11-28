@@ -112,7 +112,6 @@ class PosOrder(models.Model):
         :type existing_order: pos.order.
         :returns number pos_order id
         """
-        to_invoice = order['to_invoice'] if not draft else False
         order = order['data']
         pos_session = self.env['pos.session'].browse(order['pos_session_id'])
         if pos_session.state == 'closing_control' or pos_session.state == 'closed':
@@ -138,7 +137,7 @@ class PosOrder(models.Model):
             except Exception as e:
                 _logger.error('Could not fully process the POS Order: %s', tools.ustr(e))
 
-        if to_invoice:
+        if pos_order.to_invoice and pos_order.state == 'paid':
             pos_order.action_pos_order_invoice()
             pos_order.account_move.sudo().with_context(force_company=self.env.user.company_id.id).post()
 
@@ -423,8 +422,9 @@ class PosOrder(models.Model):
         for order in orders:
             existing_order = False
             if 'server_id' in order['data']:
-                existing_order = self.env['pos.order'].search([('id', '=', order['data']['server_id'])], limit=1)
-            order_ids.append(self._process_order(order, draft, existing_order))
+                existing_order = self.env['pos.order'].search(['|', ('id', '=', order['data']['server_id']), ('pos_reference', '=', order['data']['name'])], limit=1)
+            if (existing_order and existing_order.state == 'draft') or not existing_order:
+                order_ids.append(self._process_order(order, draft, existing_order))
 
         return self.env['pos.order'].search_read(domain = [('id', 'in', order_ids)], fields = ['id', 'pos_reference'])
 
@@ -650,7 +650,6 @@ class PosOrder(models.Model):
                 'name': filename,
                 'type': 'binary',
                 'datas': base64.b64encode(report[0]),
-                'datas_fname': filename,
                 'store_fname': filename,
                 'res_model': 'account.move',
                 'res_id': order_ids[0],
