@@ -1619,7 +1619,7 @@ msgstr "Standaard omschrijving"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__default_next_type_id
 msgid "Default Next Activity"
-msgstr "Standaard volgende activitiet"
+msgstr "Standaard volgende activiteit"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__summary
@@ -4379,7 +4379,7 @@ msgstr "Uitgaande mailserver"
 #: model:ir.model.fields.selection,name:mail.selection__res_partner__activity_state__overdue
 #, python-format
 msgid "Overdue"
-msgstr "Vervallen"
+msgstr "Te laat"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.email_template_form
