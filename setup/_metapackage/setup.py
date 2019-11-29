@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo12-addon-bi_sql_editor',
+        'odoo12-addon-bi_view_editor',
         'odoo12-addon-kpi',
         'odoo12-addon-report_context',
         'odoo12-addon-report_csv',
