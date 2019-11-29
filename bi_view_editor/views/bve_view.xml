@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_bi_view_editor_translations" model="ir.actions.act_window">
+        <field name="name">Translations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.translation</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('res_id', '=', active_record.), ('name', '=', 'ir.model.fields,field_description')]</field>
+        <field name="view_id" ref="base.view_translation_dialog_tree"/>
+    </record>
+
+    <record id="view_bi_view_editor_view_tree" model="ir.ui.view">
+        <field name="model">bve.view</field>
+        <field name="arch" type="xml">
+            <tree string="Custom BI View">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_bi_view_editor_view_form" model="ir.ui.view">
+        <field name="model">bve.view</field>
+        <field name="arch" type="xml">
+            <form string="Custom Object">
+                <header>
+                    <button name="action_reset" type="object" states="created" string="Reset to Draft"/>
+                    <button name="action_create" type="object" states="draft" string="Generate BI View" class="oe_highlight"/>
+                    <button name="open_view" type="object" states="created" string="Open BI View" class="oe_highlight"/>
+                    <button name="%(base.act_menu_create)d" type="action" states="created" groups="base.group_no_one" icon="fa-align-justify" string="Create a Menu" target="new"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,created" statusbar_colors='{"draft":"blue","created":"blue"}'/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_translations"
+                                type="object"
+                                states="created"
+                                icon="fa-globe"
+                                string="Translations"
+                        />
+                    </div>
+                    <h1>
+                        <field name="name" attrs="{'readonly': [('state','=','created')]}" colspan="4"/>
+                    </h1>
+                    <notebook>
+                        <page string="Query Builder">
+                            <group>
+                                <field name="data" widget="BVEEditor" nolabel="1" attrs="{'readonly': [('state','=','created')]}"/>
+                            </group>
+                        </page>
+                        <page string="ER Diagram" attrs="{'invisible': [('er_diagram_image','=',False)]}">
+                            <group>
+                                <field nolabel="1" name="er_diagram_image" widget="image"/>
+                            </group>
+                        </page>
+                        <page string="Details">
+                            <group>
+                                <field name="field_ids" attrs="{'readonly': [('state','=','created')]}">
+                                    <tree editable="bottom" decoration-muted="in_list == False">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="description" string="Field"/>
+                                        <field name="model_id" readonly="1"/>
+                                        <field name="table_alias"/>
+                                        <field name="ttype" invisible="1"/>
+                                        <field name="row" widget="toggle_button" attrs="{'invisible': [('ttype','in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="column" widget="toggle_button" attrs="{'invisible': [('ttype','in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="measure" widget="toggle_button" attrs="{'invisible': [('ttype','not in',('float', 'integer', 'monetary'))]}"/>
+                                        <field name="in_list" widget="boolean_toggle"/>
+                                        <field name="list_attr" attrs="{'invisible': ['|',('in_list','=',False),('ttype','not in',('float', 'integer'))]}"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="relation_ids" attrs="{'readonly': [('state','=','created')]}">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="description" string="Field"/>
+                                        <field name="model_id" readonly="1"/>
+                                        <field name="table_alias"/>
+                                        <field name="join_model_id" readonly="1"/>
+                                        <field name="join_node"/>
+                                        <field name="left_join" widget="toggle_button"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="SQL" groups="base.group_no_one">
+                            <group>
+                                <field name="query" nolabel="1" />
+                            </group>
+                        </page>
+                        <page string="Security">
+                            <field nolabel="1" name="group_ids" />
+                        </page>
+                        <page string="Notes">
+                            <field name="note" nolabel="1" colspan="4"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bi_view_editor_view_form" model="ir.actions.act_window">
+        <field name="name">Custom BI Views</field>
+        <field name="res_model">bve.view</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a Custom Query Object.
+            </p>
+            <p>
+
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_bi_view_editor_custom_reports"
+              name="Custom Reports"
+              parent="base.menu_board_root"
+              sequence="0"/>
+    <menuitem id="menu_bi_view_editor_view"
+              parent="menu_bi_view_editor_custom_reports"
+              action="action_bi_view_editor_view_form"/>
+
+</odoo>
