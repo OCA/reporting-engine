@@ -9,6 +9,19 @@ __pycache__/
 # C extensions
 *.so
 
+# file compile
+*.log
+
+*.pot
+
+*.pyc
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
+
 # Distribution / packaging
 .Python
 build/
