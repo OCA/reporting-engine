@@ -10,7 +10,7 @@
                 <field name="product_group_id"/>
             </field>
             <xpath expr="//page[@name='sales']" position="before">
-                <page string="Computations" name="computations">
+                <page string="Architecture &amp; Construction" name="arcons">
                     <group col="6" name="dimension" string="Standard Dimension">
                         <field name="standard_length"/>
                         <field name="standard_width"/>
@@ -31,6 +31,9 @@
                     <group string="Formula for Sale Price" col="4">
                         <field name="consum_factor"/>
                         <field name="price_factor" widget="monetary"/>
+                    </group>
+                    <group string="Optional" name="optional">
+                        <field name="system_name"/>
                     </group>
                     <group col="3" string="The parameter available for formula" class="oe_grey">
                         <group>
@@ -75,9 +78,6 @@
                     </group>
                 </page>
             </xpath>
-            <field name="optional_product_ids" position="after">
-                <field name="system_name"/>
-            </field>
         </field>
     </record>
 </odoo>

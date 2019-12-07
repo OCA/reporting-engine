@@ -37,7 +37,7 @@
             <field name="res_model">attr.value.modify.wizard</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="view_type">form</field>
+            <!-- <field name="view_type">form</field> -->
         </record>
 
     </data>

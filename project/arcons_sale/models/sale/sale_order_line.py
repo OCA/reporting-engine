@@ -58,7 +58,8 @@ class SaleOrderLine(models.Model):
                 get_sale_order_line_multiline_description_sale(product)
         pacv = self.product_custom_attribute_value_ids
         lst_name = []
-        for value in product.attribute_value_ids:
+        for value in product.mapped('product_template_attribute_value_ids').\
+                product_attribute_value_id:
             if value.name.upper() == 'KHÔNG CHỌN' or\
                     value.name.upper() == 'NO':
                 continue

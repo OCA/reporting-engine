@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <!-- <field name="groups_id" eval="[(4, ref('product.group_stock_packaging'))]"/> -->
         <field name="arch" type="xml">
-            <button name="print_quotation" class="o_sale_print" position="after">
+            <button name="action_draft" position="after">
                 <button name="export_quotation_xls" string="Print Excel" type="object" class="o_sale_print"/>
             </button>
             <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
