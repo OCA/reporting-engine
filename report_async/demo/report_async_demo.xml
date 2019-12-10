@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="report_async_print_document" model="report.async">
+        <field name="action_id" eval="ref('report_async.action_print_report_wizard')"/>
+        <field name="allow_async" eval="0"/>
+    </record>
+
+</odoo>
