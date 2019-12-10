@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rule_report_async_access_by_group" model="ir.rule">
+        <field name="name">Report Async by Groups</field>
+        <field name="model_id" ref="model_report_async"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">['|', ('group_ids', '=', False), ('group_ids', 'in', [g.id for g in user.groups_id])]</field>
+    </record>
+    <record id="rule_report_async_access_all" model="ir.rule">
+        <field name="name">Report Async by Groups</field>
+        <field name="model_id" ref="model_report_async"/>
+        <field name="groups" eval="[(4, ref('base.group_no_one'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">[(1,'=', 1)]</field>
+    </record>
+</odoo>
