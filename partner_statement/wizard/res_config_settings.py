@@ -14,6 +14,7 @@ class ResConfigSettings(models.TransientModel):
         [("days", "Age by Days"), ("months", "Age by Months")],
         string="Aging Method",
         required=True,
+        default="days",
         default_model="statement.common.wizard",
     )
 
