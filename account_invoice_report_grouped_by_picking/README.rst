@@ -29,6 +29,10 @@ This module allows print invoices with picking info. This module groups
 invoice lines and shows information related to sales and pickings on every
 group.
 
+It also groups under the same block those service lines that are not in the
+picking, but belongs to the same sales order as the rest of the lines of the
+picking.
+
 **Table of contents**
 
 .. contents::
@@ -66,8 +70,12 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* Carlos Dauden <carlos.dauden@tecnativa.com>
-* David Vidal <david.vidal@tecnativa.com>
+* `Tecnativa <https://www.tecnativa.com>`__:
+
+  * Carlos Dauden
+  * David Vidal
+  * Pedro M. Baeza
+
 * Ioan Galan <ioan@studio73.es>
 
 Maintainers

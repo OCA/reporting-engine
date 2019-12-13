@@ -1,6 +1,6 @@
 # Copyright 2017 Tecnativa - Carlos Dauden
 # Copyright 2018 Tecnativa - David Vidal
-# Copyright 2018 Tecnativa - Pedro M. Baeza
+# Copyright 2018-2019 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
@@ -23,6 +23,10 @@ class AccountInvoice(models.Model):
         picking_dict = OrderedDict()
         lines_dict = OrderedDict()
         sign = -1.0 if self.type == 'out_refund' else 1.0
+        # Let's get first a correspondance between pickings and sales order
+        pickings = self.mapped('invoice_line_ids.move_line_ids.picking_id')
+        so_dict = {x.sale_id: x for x in pickings if x.sale_id}
+        # Now group by picking by direct link or via same SO as picking's one
         for line in self.invoice_line_ids:
             remaining_qty = line.quantity
             for move in line.move_line_ids:
@@ -35,6 +39,14 @@ class AccountInvoice(models.Model):
                     qty = move.quantity_done * sign
                 picking_dict[key] += qty
                 remaining_qty -= qty
+            if not line.move_line_ids and line.sale_line_ids:
+                for so_line in line.sale_line_ids:
+                    if so_dict.get(so_line.order_id):
+                        key = (so_dict[so_line.order_id], line)
+                        picking_dict.setdefault(key, 0)
+                        qty = so_line.product_uom_qty
+                        picking_dict[key] += qty
+                        remaining_qty -= qty
             if (not float_is_zero(
                     remaining_qty,
                     precision_rounding=line.product_id.uom_id.rounding)):
