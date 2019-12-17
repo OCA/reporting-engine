@@ -5,7 +5,7 @@ from odoo import models, modules, _
 
 
 class BaseXlsxReport(models.AbstractModel):
-    _name = 'report.arch_construction.base_xlsx_report'
+    _name = 'report.arcons_sale.base_xlsx_report'
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, objects):

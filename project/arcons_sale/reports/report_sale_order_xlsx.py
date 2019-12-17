@@ -8,8 +8,8 @@ from odoo import api, fields, models, _
 
 
 class ReportSaleOrderXlsx(models.AbstractModel):
-    _name = 'report.arch_construction.report_sale_order_xlsx'
-    _inherit = 'report.arch_construction.base_xlsx_report'
+    _name = 'report.arcons_sale.report_sale_order_xlsx'
+    _inherit = 'report.arcons_sale.base_xlsx_report'
 
     def set_cells_size(self, sheet):
         sheet.set_row(0, 30)
