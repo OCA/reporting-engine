@@ -18,7 +18,8 @@ try:
     from PIL import PdfImagePlugin  # noqa: F401
 except ImportError:
     pass
-from odoo import api, models, tools
+from odoo import api, models
+from odoo.tools.safe_eval import safe_eval
 
 logger = getLogger(__name__)
 
@@ -35,7 +36,7 @@ class Report(models.Model):
         if report.pdf_watermark:
             watermark = b64decode(report.pdf_watermark)
         elif report.pdf_watermark_expression:
-            watermark = tools.safe_eval(
+            watermark = safe_eval(
                 report.pdf_watermark_expression,
                 dict(env=self.env, docs=self.env[report.model].browse(docids)),
             )
