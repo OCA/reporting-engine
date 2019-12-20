@@ -5,20 +5,12 @@
     "version": "12.0.1.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
-    "author": "Tecnativa, "
-              "Odoo Community Association (OCA)",
+    "author": "Tecnativa, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
     "application": False,
     "summary": "Allow to generate XML reports",
-    "depends": [
-        "web",
-    ],
-    "data": [
-        "views/webclient_templates.xml",
-        "views/ir_actions_views.xml",
-    ],
-    "demo": [
-        "demo/report.xml",
-    ]
+    "depends": ["web"],
+    "data": ["views/webclient_templates.xml", "views/ir_actions_views.xml"],
+    "demo": ["demo/report.xml"],
 }
