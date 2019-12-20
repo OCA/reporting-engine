@@ -1,8 +1,9 @@
 # Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
-from odoo import api, fields, models
 from lxml import etree
+
+from odoo import api, fields, models
 
 
 class ReportAction(models.Model):
@@ -14,14 +15,17 @@ class ReportAction(models.Model):
     def render_qweb_xml(self, docids, data=None):
         if not data:
             data = {}
-        data.setdefault('report_type', 'text')
+        data.setdefault("report_type", "text")
         data = self._get_rendering_context(docids, data)
         result = self.render_template(self.report_name, data)
-        return etree.tostring(
-            etree.fromstring(
-                str(result, 'UTF-8').lstrip('\n').lstrip().encode('UTF-8')
+        return (
+            etree.tostring(
+                etree.fromstring(
+                    str(result, "UTF-8").lstrip("\n").lstrip().encode("UTF-8")
+                ),
+                encoding="UTF-8",
+                xml_declaration=True,
+                pretty_print=True,
             ),
-            encoding='UTF-8',
-            xml_declaration=True,
-            pretty_print=True
-        ), "xml"
+            "xml",
+        )
