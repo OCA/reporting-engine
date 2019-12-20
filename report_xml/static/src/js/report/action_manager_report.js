@@ -1,7 +1,7 @@
-odoo.define('report_xml.ReportActionManager', function(require){
+odoo.define('report_xml.ReportActionManager', function (require) {
     'use strict';
 
-var ActionManager = require('web.ActionManager');
+    var ActionManager = require('web.ActionManager');
 
     ActionManager.include({
         _executeReportAction: function (action, options) {
