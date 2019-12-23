@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="demo_report_xml_view">
-        <root>
-            <user t-foreach="docs" t-as="doc">
-                <name t-esc="doc.name"/>
-                <vat t-esc="doc.vat"/>
-            </user>
-        </root>
-    </template>
-
-    <report id="demo_xml_report"
-            name="report_xml.demo_report_xml_view"
-            string="Demo xml report"
-            report_type="qweb-xml"
-            print_report_name="'Demo xml report'"
-            file="report_xml.xml"
-            model="res.company"/>
+    <report
+        id="demo_xml_report"
+        name="report_xml.demo_report_xml_view"
+        string="Demo xml report"
+        report_type="qweb-xml"
+        print_report_name="'Demo xml report'"
+        model="res.company"
+    />
+    <!--
+        In case of demo data next definition will not work. So it just example
+        how it should look. If report is a part of demo data you will need
+        add file to report instance via `post_install_hook`
+    -->
+    <record id="demo_xml_report" model="ir.actions.report">
+        <field name="xsd_schema" type="base64" file="report_xml/demo/demo_report.xsd" />
+    </record>
 </odoo>
