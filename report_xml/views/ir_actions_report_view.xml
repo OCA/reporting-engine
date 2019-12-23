@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="ir_actions_report_view_form_report_xml" model="ir.ui.view">
+        <field name="name">ir.actions.report.view.form.report.xml</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <button name="associated_view" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [
+                        ('report_type', 'not in', ('qweb-pdf', 'qweb-html', 'qweb-text', 'qweb-xml')),
+                    ],
+                }</attribute>
+            </button>
+            <xpath expr="//page[@name='advanced']/group" position="after">
+                <group
+                    name="xml_reports"
+                    string="XML Rreport Settings"
+                    attrs="{
+                        'invisible': [
+                            ('report_type', '!=', 'qweb-xml')
+                        ],
+                    }"
+                >
+                    <field name="xsd_schema" />
+                    <field name="xml_encoding" />
+                    <field name="xml_declaration" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

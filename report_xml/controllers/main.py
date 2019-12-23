@@ -39,9 +39,7 @@ class ReportController(report.ReportController):
             ]
             return request.make_response(xml, headers=xmlhttpheaders)
         else:
-            return super(ReportController, self).report_routes(
-                reportname, docids, converter, **data
-            )
+            return super().report_routes(reportname, docids, converter, **data)
 
     @route()
     def report_download(self, data, token):
@@ -73,13 +71,13 @@ class ReportController(report.ReportController):
                 filename = "%s.xml" % (report.name)
 
                 if docids:
-                    ids = [int(x) for x in docids.split(",")]
+                    ids = [int(doc_id) for doc_id in docids.split(",")]
                     records = request.env[report.model].browse(ids)
                     if report.print_report_name and not len(records) > 1:
                         report_name = safe_eval(
                             report.print_report_name, {"object": records, "time": time}
                         )
-                        filename = "%s.xml" % (report_name)
+                        filename = "{}.xml".format(report_name)
                 response.headers.add(
                     "Content-Disposition", content_disposition(filename)
                 )
@@ -90,4 +88,4 @@ class ReportController(report.ReportController):
                 error = {"code": 200, "message": "Odoo Server Error", "data": se}
                 return request.make_response(html_escape(json.dumps(error)))
         else:
-            return super(ReportController, self).report_download(data, token)
+            return super().report_download(data, token)
