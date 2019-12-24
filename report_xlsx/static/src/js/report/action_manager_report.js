@@ -5,7 +5,6 @@ odoo.define("report_xlsx.report", function (require) {
 
     var core = require("web.core");
     var ActionManager = require("web.ActionManager");
-    var crash_manager = require("web.crash_manager");
     var framework = require("web.framework");
     var session = require("web.session");
     var _t = core._t;
@@ -13,8 +12,8 @@ odoo.define("report_xlsx.report", function (require) {
     ActionManager.include({
 
         _downloadReportXLSX: function (url, actions) {
+            var self = this;
             framework.blockUI();
-            var def = $.Deferred();
             var type = "xlsx";
             var cloned_action = _.clone(actions);
             var new_url = url;
@@ -32,28 +31,29 @@ odoo.define("report_xlsx.report", function (require) {
                     JSON.stringify(cloned_action.context));
             }
 
-            var blocked = !session.get_file({
-                url: new_url,
-                data: {
-                    data: JSON.stringify([new_url, type]),
-                },
-                success: def.resolve.bind(def),
-                error: function () {
-                    crash_manager.rpc_error.apply(crash_manager, arguments);
-                    def.reject();
-                },
-                complete: framework.unblockUI,
+            return new Promise(function (resolve, reject) {
+                var blocked = !session.get_file({
+                    url: new_url,
+                    data: {
+                        data: JSON.stringify([new_url, type]),
+                    },
+                    success: resolve,
+                    error: (error) => {
+                        self.call('crash_manager', 'rpc_error', error);
+                        reject();
+                    },
+                    complete: framework.unblockUI,
+                });
+                if (blocked) {
+                    // AAB: this check should be done in get_file service directly,
+                    // should not be the concern of the caller (and that way, get_file
+                    // could return a deferred)
+                    var message = _t('A popup window with your report was blocked. You ' +
+                                     'may need to change your browser settings to allow ' +
+                                     'popup windows for this page.');
+                    this.do_warn(_t('Warning'), message, true);
+                }
             });
-            if (blocked) {
-                // AAB: this check should be done in get_file service directly,
-                // should not be the concern of the caller (and that way, get_file
-                // could return a deferred)
-                var message = _t('A popup window with your report was blocked. You ' +
-                                 'may need to change your browser settings to allow ' +
-                                 'popup windows for this page.');
-                this.do_warn(_t('Warning'), message, true);
-            }
-            return def;
         },
 
         _triggerDownload: function (action, options, type) {
