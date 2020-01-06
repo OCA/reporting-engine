@@ -27,7 +27,6 @@ class IrActionsReport(models.Model):
 
     _inherit = "ir.actions.report"
 
-    @api.multi
     @api.constrains("py3o_filetype", "report_type")
     def _check_py3o_filetype(self):
         for report in self:
@@ -117,7 +116,6 @@ class IrActionsReport(models.Model):
         return lo_bin
 
     @api.depends("report_type", "py3o_filetype")
-    @api.multi
     def _compute_is_py3o_native_format(self):
         format = Formats()
         for rec in self:
@@ -126,16 +124,16 @@ class IrActionsReport(models.Model):
             filetype = rec.py3o_filetype
             rec.is_py3o_native_format = format.get_format(filetype).native
 
-    @api.multi
     def _compute_lo_bin_path(self):
         lo_bin = self._get_lo_bin()
         for rec in self:
             rec.lo_bin_path = lo_bin
 
     @api.depends("lo_bin_path", "is_py3o_native_format", "report_type")
-    @api.multi
     def _compute_py3o_report_not_available(self):
         for rec in self:
+            rec.is_py3o_report_not_available = False
+            rec.msg_py3o_report_not_available = ""
             if not rec.report_type == "py3o":
                 continue
             if not rec.is_py3o_native_format and not rec.lo_bin_path:
@@ -162,7 +160,6 @@ class IrActionsReport(models.Model):
             ]
         )
 
-    @api.multi
     def render_py3o(self, res_ids, data):
         self.ensure_one()
         if self.report_type != "py3o":
@@ -176,7 +173,6 @@ class IrActionsReport(models.Model):
             .create_report(res_ids, data)
         )
 
-    @api.multi
     def gen_report_download_filename(self, res_ids, data):
         """Override this function to change the name of the downloaded report
         """
@@ -189,7 +185,6 @@ class IrActionsReport(models.Model):
             )
         return "%s.%s" % (self.name, self.py3o_filetype)
 
-    @api.multi
     def _get_attachments(self, res_ids):
         """ Return the report already generated for the given res_ids
         """

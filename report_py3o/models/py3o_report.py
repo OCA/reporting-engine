@@ -76,7 +76,6 @@ class Py3oReport(models.TransientModel):
         comodel_name="ir.actions.report", required=True
     )
 
-    @api.multi
     def _is_valid_template_path(self, path):
         """ Check if the path is a trusted path for py3o templates.
         """
@@ -100,7 +99,6 @@ class Py3oReport(models.TransientModel):
             )
         return is_valid
 
-    @api.multi
     def _is_valid_template_filename(self, filename):
         """ Check if the filename can be used as py3o template
         """
@@ -118,7 +116,6 @@ class Py3oReport(models.TransientModel):
         logger.warning("%s is not a valid Py3o template filename", filename)
         return False
 
-    @api.multi
     def _get_template_from_path(self, tmpl_name):
         """ Return the template from the path to root of the module if specied
         or an absolute path on your server
@@ -139,7 +136,6 @@ class Py3oReport(models.TransientModel):
                 return tmpl.read()
         return None
 
-    @api.multi
     def _get_template_fallback(self, model_instance):
         """
         Return the template referenced in the report definition
@@ -149,7 +145,6 @@ class Py3oReport(models.TransientModel):
         report_xml = self.ir_actions_report_id
         return self._get_template_from_path(report_xml.py3o_template_fallback)
 
-    @api.multi
     def get_template(self, model_instance):
         """private helper to fetch the template data either from the database
         or from the default template file provided by the implementer.
@@ -182,7 +177,6 @@ class Py3oReport(models.TransientModel):
 
         return tmpl_data
 
-    @api.multi
     def _extend_parser_context(self, context, report_xml):
         # add default extenders
         for fct in _extender_functions.get(None, []):
@@ -193,7 +187,6 @@ class Py3oReport(models.TransientModel):
             for fct in _extender_functions[xml_id]:
                 fct(report_xml, context)
 
-    @api.multi
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
         context = Py3oParserContext(self.env).localcontext
@@ -204,7 +197,6 @@ class Py3oReport(models.TransientModel):
         self._extend_parser_context(context, report_xml)
         return context
 
-    @api.multi
     def _postprocess_report(self, model_instance, result_path):
         if len(model_instance) == 1 and self.ir_actions_report_id.attachment:
             with open(result_path, "rb") as f:
@@ -217,7 +209,6 @@ class Py3oReport(models.TransientModel):
                 )
         return result_path
 
-    @api.multi
     def _create_single_report(self, model_instance, data):
         """ This function to generate our py3o report
         """
@@ -244,7 +235,6 @@ class Py3oReport(models.TransientModel):
 
         return self._postprocess_report(model_instance, result_path)
 
-    @api.multi
     def _convert_single_report(self, result_path, model_instance, data):
         """Run a command to convert to our target format"""
         if not self.ir_actions_report_id.is_py3o_native_format:
@@ -268,7 +258,6 @@ class Py3oReport(models.TransientModel):
             )
         return result_path
 
-    @api.multi
     def _convert_single_report_cmd(self, result_path, model_instance, data):
         """Return a command list suitable for use in subprocess.call"""
         lo_bin = self.ir_actions_report_id.lo_bin_path
@@ -287,7 +276,6 @@ class Py3oReport(models.TransientModel):
             result_path,
         ]
 
-    @api.multi
     def _get_or_create_single_report(
         self, model_instance, data, existing_reports_attachment
     ):
@@ -303,7 +291,6 @@ class Py3oReport(models.TransientModel):
             return report_file
         return self._create_single_report(model_instance, data)
 
-    @api.multi
     def _zip_results(self, reports_path):
         self.ensure_one()
         zfname_prefix = self.ir_actions_report_id.name
@@ -339,7 +326,6 @@ class Py3oReport(models.TransientModel):
             writer.write(merged_file)
         return merged_file_path
 
-    @api.multi
     def _merge_results(self, reports_path):
         self.ensure_one()
         filetype = self.ir_actions_report_id.py3o_filetype
@@ -363,7 +349,6 @@ class Py3oReport(models.TransientModel):
                     "Error when trying to remove file %s" % temporary_file
                 )
 
-    @api.multi
     def create_report(self, res_ids, data):
         """ Override this function to handle our py3o report
         """
