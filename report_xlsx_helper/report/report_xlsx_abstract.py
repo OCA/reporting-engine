@@ -464,15 +464,16 @@ class ReportXlsxAbstract(models.AbstractModel):
         return row_pos + 2
 
     def _write_line(self, ws, row_pos, ws_params, col_specs_section=None,
-                    render_space=None, default_format=None):
+                    render_space=None, default_format=None,
+                    col_specs='col_specs', wanted_list='wanted_list'):
         """
         Write a line with all columns included in the 'wanted_list'.
         Use the entry defined by the col_specs_section.
         An empty cell will be written if no col_specs_section entry
         for a column.
         """
-        col_specs = ws_params.get('col_specs')
-        wl = ws_params.get('wanted_list') or []
+        col_specs = ws_params.get(col_specs)
+        wl = ws_params.get(wanted_list) or []
         pos = 0
         for col in wl:
             if col not in col_specs:
