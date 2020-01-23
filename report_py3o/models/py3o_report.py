@@ -243,26 +243,32 @@ class Py3oReport(models.TransientModel):
     def _convert_single_report(self, result_path, model_instance, data):
         """Run a command to convert to our target format"""
         if not self.ir_actions_report_id.is_py3o_native_format:
-            command = self._convert_single_report_cmd(
-                result_path, model_instance, data,
-            )
-            logger.debug('Running command %s', command)
-            output = subprocess.check_output(
-                command, cwd=os.path.dirname(result_path),
-            )
-            logger.debug('Output was %s', output)
-            self._cleanup_tempfiles([result_path])
-            result_path, result_filename = os.path.split(result_path)
-            result_path = os.path.join(
-                result_path, '%s.%s' % (
-                    os.path.splitext(result_filename)[0],
-                    self.ir_actions_report_id.py3o_filetype
+            with tempfile.TemporaryDirectory() as tmp_user_installation:
+                command = self._convert_single_report_cmd(
+                    result_path,
+                    model_instance,
+                    data,
+                    user_installation=tmp_user_installation,
                 )
-            )
+                logger.debug('Running command %s', command)
+                output = subprocess.check_output(
+                    command, cwd=os.path.dirname(result_path),
+                )
+                logger.debug('Output was %s', output)
+                self._cleanup_tempfiles([result_path])
+                result_path, result_filename = os.path.split(result_path)
+                result_path = os.path.join(
+                    result_path, '%s.%s' % (
+                        os.path.splitext(result_filename)[0],
+                        self.ir_actions_report_id.py3o_filetype
+                    )
+                )
         return result_path
 
     @api.multi
-    def _convert_single_report_cmd(self, result_path, model_instance, data):
+    def _convert_single_report_cmd(
+        self, result_path, model_instance, data, user_installation=None
+    ):
         """Return a command list suitable for use in subprocess.call"""
         lo_bin = self.ir_actions_report_id.lo_bin_path
         if not lo_bin:
@@ -270,13 +276,16 @@ class Py3oReport(models.TransientModel):
                 _("Libreoffice runtime not available. "
                   "Please contact your administrator.")
             )
-        return [
+        cmd = [
             lo_bin,
             '--headless',
             '--convert-to',
             self.ir_actions_report_id.py3o_filetype,
             result_path,
         ]
+        if user_installation:
+            cmd.append('-env:UserInstallation=file:%s' % user_installation)
+        return cmd
 
     @api.multi
     def _get_or_create_single_report(self, model_instance, data,
