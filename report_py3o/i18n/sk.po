@@ -134,7 +134,7 @@ msgid "LibreOffice Template File Type"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/py3o_report.py:271
+#: code:addons/report_py3o/models/py3o_report.py:277
 #, python-format
 msgid "Libreoffice runtime not available. Please contact your administrator."
 msgstr ""
