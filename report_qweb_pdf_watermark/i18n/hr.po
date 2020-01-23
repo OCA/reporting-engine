@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark_expression
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
 msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
@@ -32,16 +32,19 @@ msgid "Demo report"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
 msgid "Watermark"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_act_report_xml_pdf_watermark_expression
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
 msgid "Watermark expression"
 msgstr ""
 
-#. module: report_qweb_pdf_watermark
-#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
-msgid "ir.actions.report"
-msgstr "ir.actions.report"
+#~ msgid "ir.actions.report"
+#~ msgstr "ir.actions.report"
