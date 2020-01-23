@@ -73,7 +73,8 @@ class Py3oReport(models.TransientModel):
 
     ir_actions_report_id = fields.Many2one(
         comodel_name="ir.actions.report",
-        required=True
+        required=True,
+        ondelete="cascade"
     )
 
     @api.multi
