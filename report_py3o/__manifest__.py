@@ -4,7 +4,7 @@
     'name': 'Py3o Report Engine',
     'summary': 'Reporting engine based on Libreoffice (ODT -> ODT, '
                'ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)',
-    'version': '12.0.2.0.3',
+    'version': '12.0.2.0.4',
     'category': 'Reporting',
     'license': 'AGPL-3',
     'author': 'XCG Consulting,'
