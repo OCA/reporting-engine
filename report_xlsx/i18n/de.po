@@ -20,14 +20,14 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: report_xlsx
-#: code:addons/report_xlsx/models/ir_report.py:18
+#: code:addons/report_xlsx/models/ir_report.py:0
 #, python-format
 msgid "%s model was not found"
 msgstr "%s Modell wurde nicht gefunden"
 
 #. module: report_xlsx
 #. openerp-web
-#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:49
+#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:0
 #, python-format
 msgid ""
 "A popup window with your report was blocked. You may need to change your "
@@ -48,11 +48,6 @@ msgid "Display Name"
 msgstr "Name anzeigen"
 
 #. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "HTML"
-msgstr "HTML"
-
-#. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__id
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__id
 msgid "ID"
@@ -65,19 +60,16 @@ msgid "Last Modified on"
 msgstr "Zuletzt geändert am"
 
 #. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "PDF"
-msgstr "PDF"
+#: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
+#, fuzzy
+#| msgid "Abstract XLSX Report"
+msgid "Partner XLSX Report"
+msgstr "Abstrakter XLSX-Bericht"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
 msgid "Print to XLSX"
 msgstr "Drucke nach XLSX"
-
-#. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "Py3o"
-msgstr "Py3o"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
@@ -88,11 +80,6 @@ msgstr "Berichtsaktion"
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
 msgid "Report Type"
 msgstr "Berichtsart"
-
-#. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "Text"
-msgstr "Text"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
@@ -109,22 +96,30 @@ msgstr ""
 
 #. module: report_xlsx
 #. openerp-web
-#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:52
+#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:0
 #, python-format
 msgid "Warning"
 msgstr "Hinweis"
 
 #. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
+#: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
 msgid "XLSX"
 msgstr "XLSX"
 
-#. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "XML"
-msgstr "XML"
+#~ msgid "HTML"
+#~ msgstr "HTML"
 
-#. module: report_xlsx
-#: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
-msgid "report.report_xlsx.partner_xlsx"
-msgstr "report.report_xlsx.partner_xlsx"
+#~ msgid "PDF"
+#~ msgstr "PDF"
+
+#~ msgid "Py3o"
+#~ msgstr "Py3o"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "XML"
+#~ msgstr "XML"
+
+#~ msgid "report.report_xlsx.partner_xlsx"
+#~ msgstr "report.report_xlsx.partner_xlsx"
