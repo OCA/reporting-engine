@@ -6,7 +6,10 @@
         <field name="priority" eval="40" />
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='account_followup']" position="after">
+            <xpath
+                expr="//field[@name='module_account_payment']/../.."
+                position="after"
+            >
                 <div class="col-12 col-lg-6 o_setting_box">
                     <div class="o_setting_left_pane">
                         <field name="group_activity_statement" />

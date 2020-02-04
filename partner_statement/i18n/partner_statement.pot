@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* partner_statement
+# 	* partner_statement
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,55 +14,55 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:243
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "1 - 30 Days"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:254
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "1 Month"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:247
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "121 Days +"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:255
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "2 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:256
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "3 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:244
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "31 - 60 Days"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:257
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "4 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:245
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "61 - 90 Days"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:246
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "91 - 120 Days"
 msgstr ""
@@ -108,18 +108,18 @@ msgid "Activity Statements show all transactions between two dates."
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,aging_type:0
-#: selection:outstanding.statement.wizard,aging_type:0
-#: selection:res.config.settings,default_aging_type:0
-#: selection:statement.common.wizard,aging_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__res_config_settings__default_aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__aging_type__days
 msgid "Age by Days"
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,aging_type:0
-#: selection:outstanding.statement.wizard,aging_type:0
-#: selection:res.config.settings,default_aging_type:0
-#: selection:statement.common.wizard,aging_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__res_config_settings__default_aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__aging_type__months
 msgid "Age by Months"
 msgstr ""
 
@@ -138,7 +138,9 @@ msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
-msgid "Aging details can be shown in the report, expressed in aging         buckets, so the partner can review how much is open, due or overdue."
+msgid ""
+"Aging details can be shown in the report, expressed in aging         "
+"buckets, so the partner can review how much is open, due or overdue."
 msgstr ""
 
 #. module: partner_statement
@@ -187,8 +189,8 @@ msgid "Created on"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:242
-#: code:addons/partner_statement/report/report_statement_common.py:253
+#: code:addons/partner_statement/report/report_statement_common.py:0
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Current"
 msgstr ""
@@ -320,7 +322,7 @@ msgid "Number Partner"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:258
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Older"
 msgstr ""
@@ -352,18 +354,20 @@ msgstr ""
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
+#: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
 msgid "Partner Activity Statement"
 msgstr ""
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.outstanding_statement_wizard_action
+#: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
 msgid "Partner Outstanding Statement"
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,account_type:0
-#: selection:outstanding.statement.wizard,account_type:0
-#: selection:statement.common.wizard,account_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__account_type__payable
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__account_type__payable
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__account_type__payable
 msgid "Payable"
 msgstr ""
 
@@ -378,9 +382,9 @@ msgid "Please set defaults under Activity Statements."
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,account_type:0
-#: selection:outstanding.statement.wizard,account_type:0
-#: selection:statement.common.wizard,account_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__account_type__receivable
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__account_type__receivable
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__account_type__receivable
 msgid "Receivable"
 msgstr ""
 
@@ -431,17 +435,28 @@ msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
-msgid "The activity statement provides details of all activity on                     a partner's receivables and payables between two selected dates. This includes all invoices,                     refunds and payments. Any outstanding balance dated prior to the chosen statement                     period will appear as a forward balance at the top of the statement. The list is                     displayed in chronological order and is split by currencies."
+msgid ""
+"The activity statement provides details of all activity on"
+"                     a partner's receivables and payables between two "
+"selected dates. This includes all invoices,                     refunds and "
+"payments. Any outstanding balance dated prior to the chosen statement"
+"                     period will appear as a forward balance at the top of "
+"the statement. The list is                     displayed in chronological "
+"order and is split by currencies."
 msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
-msgid "The outstanding statement provides details of all partner's outstanding         receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed         refunds and outstanding payments. The list is displayed in chronological order and is         split by currencies."
+msgid ""
+"The outstanding statement provides details of all partner's outstanding"
+"         receivables and payables up to a particular date. This includes all"
+" unpaid invoices, unclaimed         refunds and outstanding payments. The "
+"list is displayed in chronological order and is         split by currencies."
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:248
-#: code:addons/partner_statement/report/report_statement_common.py:259
+#: code:addons/partner_statement/report/report_statement_common.py:0
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Total"
 msgstr ""
@@ -472,14 +487,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "or"
 msgstr ""
-
-#. module: partner_statement
-#: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
-msgid "report.partner_statement.activity_statement"
-msgstr ""
-
-#. module: partner_statement
-#: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
-msgid "report.partner_statement.outstanding_statement"
-msgstr ""
-

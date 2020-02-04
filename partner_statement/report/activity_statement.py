@@ -1,5 +1,4 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from collections import defaultdict
@@ -12,6 +11,7 @@ class ActivityStatement(models.AbstractModel):
 
     _inherit = "statement.common"
     _name = "report.partner_statement.activity_statement"
+    _description = "Partner Activity Statement"
 
     def _initial_balance_sql_q1(self, partners, date_start, account_type):
         return str(
@@ -27,9 +27,9 @@ class ActivityStatement(models.AbstractModel):
                 ELSE sum(l.credit)
             END as credit
             FROM account_move_line l
-            JOIN account_account_type at ON (at.id = l.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
-            WHERE l.partner_id IN %(partners)s AND at.type = %(account_type)s
+            WHERE l.partner_id IN %(partners)s
+                                AND l.account_internal_type = %(account_type)s
                                 AND l.date < %(date_start)s AND not l.blocked
                                 AND m.state IN ('posted')
             GROUP BY l.partner_id, l.currency_id, l.amount_currency,
@@ -103,11 +103,10 @@ class ActivityStatement(models.AbstractModel):
                 ELSE l.date_maturity
             END as date_maturity
             FROM account_move_line l
-            JOIN account_account_type at ON (at.id = l.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
             JOIN account_journal aj ON (l.journal_id = aj.id)
             WHERE l.partner_id IN %(partners)s
-                AND at.type = %(account_type)s
+                AND l.account_internal_type = %(account_type)s
                 AND %(date_start)s <= l.date
                 AND l.date <= %(date_end)s
                 AND m.state IN ('posted')
@@ -172,8 +171,8 @@ class ActivityStatement(models.AbstractModel):
             res[row.pop("partner_id")].append(row)
         return res
 
-    @api.multi
-    def _get_report_values(self, docids, data):
+    @api.model
+    def _get_report_values(self, docids, data=None):
         if not data:
             data = {}
         if "company_id" not in data:

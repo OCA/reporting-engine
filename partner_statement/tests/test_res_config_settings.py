@@ -14,7 +14,7 @@ class TestResConfigSettings(TransactionCase):
             "ORDER BY uid DESC LIMIT 1"
         )
         self.account_user = self.cr.fetchone()[0]
-        self.user_obj = self.env["res.users"].sudo(self.account_user)
+        self.user_obj = self.env["res.users"].with_user(self.account_user)
 
     def test_groups(self):
         conf = self.config.create(

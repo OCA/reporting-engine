@@ -1,20 +1,20 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo.tests.common import TransactionCase
 
 
 class TestOutstandingStatement(TransactionCase):
-    """
-        Tests for Outstanding Statement.
-    """
+    """ Tests for Outstanding Statement."""
 
     def setUp(self):
         super().setUp()
 
         self.res_users_model = self.env["res.users"]
         self.company = self.env.ref("base.main_company")
+        self.company.external_report_layout_id = self.env.ref(
+            "web.external_layout_standard"
+        )
         self.partner1 = self.env.ref("base.res_partner_2")
         self.partner2 = self.env.ref("base.res_partner_3")
         self.g_account_user = self.env.ref("account.group_account_user")

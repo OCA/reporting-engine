@@ -1,5 +1,4 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models
@@ -10,6 +9,7 @@ class OutstandingStatement(models.AbstractModel):
 
     _inherit = "statement.common"
     _name = "report.partner_statement.outstanding_statement"
+    _description = "Partner Outstanding Statement"
 
     def _display_lines_sql_q1(self, partners, date_end, account_type):
         partners = tuple(partners)
@@ -39,7 +39,6 @@ class OutstandingStatement(models.AbstractModel):
                 ELSE l.date_maturity
             END as date_maturity
             FROM account_move_line l
-            JOIN account_account_type at ON (at.id = l.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
             LEFT JOIN (SELECT pr.*
                 FROM account_partial_reconcile pr
@@ -53,7 +52,8 @@ class OutstandingStatement(models.AbstractModel):
                 ON pr.debit_move_id = l2.id
                 WHERE l2.date <= %(date_end)s
             ) as pc ON pc.credit_move_id = l.id
-            WHERE l.partner_id IN %(partners)s AND at.type = %(account_type)s
+            WHERE l.partner_id IN %(partners)s
+                                AND l.account_internal_type = %(account_type)s
                                 AND (
                                   (pd.id IS NOT NULL AND
                                       pd.max_date <= %(date_end)s) OR
@@ -131,8 +131,8 @@ class OutstandingStatement(models.AbstractModel):
             res[row.pop("partner_id")].append(row)
         return res
 
-    @api.multi
-    def _get_report_values(self, docids, data):
+    @api.model
+    def _get_report_values(self, docids, data=None):
         if not data:
             data = {}
         if "company_id" not in data:

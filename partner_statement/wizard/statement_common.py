@@ -56,7 +56,6 @@ class StatementCommon(models.AbstractModel):
         else:
             self.date_end = fields.Date.context_today(self)
 
-    @api.multi
     def button_export_pdf(self):
         self.ensure_one()
         return self._export()

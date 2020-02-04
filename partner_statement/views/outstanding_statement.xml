@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2018 Eficent Business and IT Consulting Services S.L.
+<!-- Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <template id="partner_statement.outstanding_statement_document">

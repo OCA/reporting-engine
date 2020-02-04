@@ -1,5 +1,4 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from datetime import date
@@ -9,15 +8,16 @@ from odoo.tests.common import TransactionCase
 
 
 class TestActivityStatement(TransactionCase):
-    """
-        Tests for Activity Statement.
-    """
+    """ Tests for Activity Statement."""
 
     def setUp(self):
         super().setUp()
 
         self.res_users_model = self.env["res.users"]
         self.company = self.env.ref("base.main_company")
+        self.company.external_report_layout_id = self.env.ref(
+            "web.external_layout_standard"
+        )
         self.partner1 = self.env.ref("base.res_partner_1")
         self.partner2 = self.env.ref("base.res_partner_2")
         self.g_account_user = self.env.ref("account.group_account_user")
@@ -98,7 +98,7 @@ class TestActivityStatement(TransactionCase):
         self.assertEqual(res, "30/09/2018")
 
     def test_onchange_aging_type(self):
-        """Test that partner data is filled accodingly"""
+        """Test that partner data is filled accordingly"""
         wiz_id = self.wiz.with_context(
             active_ids=[self.partner1.id, self.partner2.id]
         ).new()

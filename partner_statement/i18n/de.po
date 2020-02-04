@@ -21,59 +21,59 @@ msgstr ""
 "X-Generator: Weblate 3.1.1\n"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:243
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "1-30 Days Due"
 msgid "1 - 30 Days"
 msgstr "1-30 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:254
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "1 Month"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:247
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "+120 Days Due"
 msgid "121 Days +"
 msgstr "+120 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:255
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "2 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:256
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "3 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:244
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "30-60 Days Due"
 msgid "31 - 60 Days"
 msgstr "30-60 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:257
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "4 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:245
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "60-90 Days Due"
 msgid "61 - 90 Days"
 msgstr "60-90 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:246
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "90-120 Days Due"
 msgid "91 - 120 Days"
@@ -126,18 +126,18 @@ msgid "Activity Statements show all transactions between two dates."
 msgstr "Aktivitätenbericht zwischen"
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,aging_type:0
-#: selection:outstanding.statement.wizard,aging_type:0
-#: selection:res.config.settings,default_aging_type:0
-#: selection:statement.common.wizard,aging_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__res_config_settings__default_aging_type__days
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__aging_type__days
 msgid "Age by Days"
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,aging_type:0
-#: selection:outstanding.statement.wizard,aging_type:0
-#: selection:res.config.settings,default_aging_type:0
-#: selection:statement.common.wizard,aging_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__res_config_settings__default_aging_type__months
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__aging_type__months
 msgid "Age by Months"
 msgstr ""
 
@@ -215,8 +215,7 @@ msgid "Created on"
 msgstr "Angelegt am"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:242
-#: code:addons/partner_statement/report/report_statement_common.py:253
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
 #| msgid "Current Due"
 msgid "Current"
@@ -355,7 +354,7 @@ msgid "Number Partner"
 msgstr "Nummeriere Partner"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:258
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Older"
 msgstr ""
@@ -393,6 +392,7 @@ msgstr ""
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
+#: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
 #, fuzzy
 #| msgid "Customer Activity Statement"
 msgid "Partner Activity Statement"
@@ -400,13 +400,14 @@ msgstr "Kundenaktivitätsnachweis"
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.outstanding_statement_wizard_action
+#: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
 msgid "Partner Outstanding Statement"
 msgstr ""
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,account_type:0
-#: selection:outstanding.statement.wizard,account_type:0
-#: selection:statement.common.wizard,account_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__account_type__payable
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__account_type__payable
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__account_type__payable
 msgid "Payable"
 msgstr ""
 
@@ -423,9 +424,9 @@ msgid "Please set defaults under Activity Statements."
 msgstr "Kundenaktivitätsnachweis"
 
 #. module: partner_statement
-#: selection:activity.statement.wizard,account_type:0
-#: selection:outstanding.statement.wizard,account_type:0
-#: selection:statement.common.wizard,account_type:0
+#: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__account_type__receivable
+#: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__account_type__receivable
+#: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__account_type__receivable
 msgid "Receivable"
 msgstr ""
 
@@ -533,8 +534,7 @@ msgstr ""
 "angezeigt und ist nach Währungen gegliedert."
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:248
-#: code:addons/partner_statement/report/report_statement_common.py:259
+#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Total"
 msgstr ""
@@ -568,19 +568,15 @@ msgstr "in"
 msgid "or"
 msgstr "oder"
 
-#. module: partner_statement
-#: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
 #, fuzzy
-#| msgid "report.customer_activity_statement.statement"
-msgid "report.partner_statement.activity_statement"
-msgstr "report.customer_activity_statement.statement"
+#~| msgid "report.customer_activity_statement.statement"
+#~ msgid "report.partner_statement.activity_statement"
+#~ msgstr "report.customer_activity_statement.statement"
 
-#. module: partner_statement
-#: model:ir.model,name:partner_statement.model_report_partner_statement_outstanding_statement
 #, fuzzy
-#| msgid "report.customer_activity_statement.statement"
-msgid "report.partner_statement.outstanding_statement"
-msgstr "report.customer_activity_statement.statement"
+#~| msgid "report.customer_activity_statement.statement"
+#~ msgid "report.partner_statement.outstanding_statement"
+#~ msgstr "report.customer_activity_statement.statement"
 
 #~ msgid "Balance Due"
 #~ msgstr "Fälliger Saldo"

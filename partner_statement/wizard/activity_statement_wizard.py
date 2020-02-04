@@ -1,5 +1,4 @@
-# Copyright 2018 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2018 ForgeFlow, S.L. (http://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from dateutil.relativedelta import relativedelta
@@ -34,8 +33,8 @@ class ActivityStatementWizard(models.TransientModel):
         """Export to PDF."""
         data = self._prepare_statement()
         return self.env.ref(
-            "partner_statement" ".action_print_activity_statement"
-        ).report_action(self, data=data)
+            "partner_statement.action_print_activity_statement"
+        ).report_action(self.ids, data=data)
 
     def _prepare_statement(self):
         res = super()._prepare_statement()
