@@ -8,12 +8,14 @@ from odoo import api, models
 class OutstandingStatement(models.AbstractModel):
     """Model of Outstanding Statement"""
 
-    _inherit = 'statement.common'
-    _name = 'report.partner_statement.outstanding_statement'
+    _inherit = "statement.common"
+    _name = "report.partner_statement.outstanding_statement"
 
     def _display_lines_sql_q1(self, partners, date_end, account_type):
         partners = tuple(partners)
-        return str(self._cr.mogrify("""
+        return str(
+            self._cr.mogrify(
+                """
             SELECT m.name AS move_id, l.partner_id, l.date, l.name,
                             l.ref, l.blocked, l.currency_id, l.company_id,
             CASE WHEN (l.currency_id is not null AND l.amount_currency > 0.0)
@@ -62,12 +64,16 @@ class OutstandingStatement(models.AbstractModel):
             GROUP BY l.partner_id, m.name, l.date, l.date_maturity, l.name,
                                 l.ref, l.blocked, l.currency_id,
                                 l.balance, l.amount_currency, l.company_id
-            """, locals()), "utf-8"
+            """,
+                locals(),
+            ),
+            "utf-8",
         )
 
     def _display_lines_sql_q2(self):
         return str(
-            self._cr.mogrify("""
+            self._cr.mogrify(
+                """
                 SELECT Q1.partner_id, Q1.currency_id, Q1.move_id,
                     Q1.date, Q1.date_maturity, Q1.debit, Q1.credit,
                     Q1.name, Q1.ref, Q1.blocked, Q1.company_id,
@@ -76,13 +82,16 @@ class OutstandingStatement(models.AbstractModel):
                     ELSE Q1.open_amount
                 END as open_amount
                 FROM Q1
-                """, locals()
+                """,
+                locals(),
             ),
-            "utf-8"
+            "utf-8",
         )
 
     def _display_lines_sql_q3(self, company_id):
-        return str(self._cr.mogrify("""
+        return str(
+            self._cr.mogrify(
+                """
             SELECT Q2.partner_id, Q2.move_id, Q2.date, Q2.date_maturity,
               Q2.name, Q2.ref, Q2.debit, Q2.credit,
               Q2.debit-Q2.credit AS amount, blocked,
@@ -91,37 +100,45 @@ class OutstandingStatement(models.AbstractModel):
             FROM Q2
             JOIN res_company c ON (c.id = Q2.company_id)
             WHERE c.id = %(company_id)s AND Q2.open_amount != 0.0
-            """, locals()), "utf-8"
+            """,
+                locals(),
+            ),
+            "utf-8",
         )
 
-    def _get_account_display_lines(self, company_id, partner_ids, date_start,
-                                   date_end, account_type):
+    def _get_account_display_lines(
+        self, company_id, partner_ids, date_start, date_end, account_type
+    ):
         res = dict(map(lambda x: (x, []), partner_ids))
         partners = tuple(partner_ids)
         # pylint: disable=E8103
-        self.env.cr.execute("""
+        self.env.cr.execute(
+            """
         WITH Q1 as (%s),
              Q2 AS (%s),
              Q3 AS (%s)
         SELECT partner_id, currency_id, move_id, date, date_maturity, debit,
                             credit, amount, open_amount, name, ref, blocked
         FROM Q3
-        ORDER BY date, date_maturity, move_id""" % (
-            self._display_lines_sql_q1(partners, date_end, account_type),
-            self._display_lines_sql_q2(),
-            self._display_lines_sql_q3(company_id)))
+        ORDER BY date, date_maturity, move_id"""
+            % (
+                self._display_lines_sql_q1(partners, date_end, account_type),
+                self._display_lines_sql_q2(),
+                self._display_lines_sql_q3(company_id),
+            )
+        )
         for row in self.env.cr.dictfetchall():
-            res[row.pop('partner_id')].append(row)
+            res[row.pop("partner_id")].append(row)
         return res
 
     @api.multi
     def _get_report_values(self, docids, data):
         if not data:
             data = {}
-        if 'company_id' not in data:
+        if "company_id" not in data:
             wiz = self.env["outstanding.statement.wizard"].with_context(
                 active_ids=docids, model="res.partner"
             )
             data.update(wiz.create({})._prepare_statement())
-        data['amount_field'] = 'open_amount'
+        data["amount_field"] = "open_amount"
         return super()._get_report_values(docids, data)

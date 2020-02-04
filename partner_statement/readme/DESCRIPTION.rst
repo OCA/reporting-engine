@@ -1,4 +1,4 @@
-This module extends the functionality of Invoicing to support the printing of customer and vendor statements. 
+This module extends the functionality of Invoicing to support the printing of customer and vendor statements.
 There are two types of statements, Activity and Outstanding.  Aging details can be shown in the reports, expressed in aging buckets,
 so the customer or vendor can review how much is open, due or overdue.
 
