@@ -58,7 +58,7 @@ class OutstandingStatement(models.AbstractModel):
                                   (pc.id IS NOT NULL AND
                                       pc.max_date <= %(date_end)s) OR
                                   (pd.id IS NULL AND pc.id IS NULL)
-                                ) AND l.date <= %(date_end)s
+                                ) AND l.date <= %(date_end)s AND m.state IN ('posted')
             GROUP BY l.partner_id, m.name, l.date, l.date_maturity, l.name,
                                 l.ref, l.blocked, l.currency_id,
                                 l.balance, l.amount_currency, l.company_id

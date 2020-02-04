@@ -72,6 +72,7 @@ class ReportStatementCommon(models.AbstractModel):
                                       pc.max_date <= %(date_end)s) OR
                                   (pd.id IS NULL AND pc.id IS NULL)
                                 ) AND l.date <= %(date_end)s AND not l.blocked
+                                  AND m.state IN ('posted')
             GROUP BY l.partner_id, l.currency_id, l.date, l.date_maturity,
                                 l.amount_currency, l.balance, l.move_id,
                                 l.company_id, l.id

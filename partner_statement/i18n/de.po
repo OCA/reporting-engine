@@ -21,59 +21,59 @@ msgstr ""
 "X-Generator: Weblate 3.1.1\n"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:242
+#: code:addons/partner_statement/report/report_statement_common.py:243
 #, fuzzy, python-format
 #| msgid "1-30 Days Due"
 msgid "1 - 30 Days"
 msgstr "1-30 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:253
+#: code:addons/partner_statement/report/report_statement_common.py:254
 #, python-format
 msgid "1 Month"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:246
+#: code:addons/partner_statement/report/report_statement_common.py:247
 #, fuzzy, python-format
 #| msgid "+120 Days Due"
 msgid "121 Days +"
 msgstr "+120 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:254
+#: code:addons/partner_statement/report/report_statement_common.py:255
 #, python-format
 msgid "2 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:255
+#: code:addons/partner_statement/report/report_statement_common.py:256
 #, python-format
 msgid "3 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:243
+#: code:addons/partner_statement/report/report_statement_common.py:244
 #, fuzzy, python-format
 #| msgid "30-60 Days Due"
 msgid "31 - 60 Days"
 msgstr "30-60 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:256
+#: code:addons/partner_statement/report/report_statement_common.py:257
 #, python-format
 msgid "4 Months"
 msgstr ""
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:244
+#: code:addons/partner_statement/report/report_statement_common.py:245
 #, fuzzy, python-format
 #| msgid "60-90 Days Due"
 msgid "61 - 90 Days"
 msgstr "60-90 Tage fällig"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:245
+#: code:addons/partner_statement/report/report_statement_common.py:246
 #, fuzzy, python-format
 #| msgid "90-120 Days Due"
 msgid "91 - 120 Days"
@@ -215,8 +215,8 @@ msgid "Created on"
 msgstr "Angelegt am"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:241
-#: code:addons/partner_statement/report/report_statement_common.py:252
+#: code:addons/partner_statement/report/report_statement_common.py:242
+#: code:addons/partner_statement/report/report_statement_common.py:253
 #, fuzzy, python-format
 #| msgid "Current Due"
 msgid "Current"
@@ -355,7 +355,7 @@ msgid "Number Partner"
 msgstr "Nummeriere Partner"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:257
+#: code:addons/partner_statement/report/report_statement_common.py:258
 #, python-format
 msgid "Older"
 msgstr ""
@@ -533,8 +533,8 @@ msgstr ""
 "angezeigt und ist nach Währungen gegliedert."
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:247
-#: code:addons/partner_statement/report/report_statement_common.py:258
+#: code:addons/partner_statement/report/report_statement_common.py:248
+#: code:addons/partner_statement/report/report_statement_common.py:259
 #, python-format
 msgid "Total"
 msgstr ""

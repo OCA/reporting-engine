@@ -21,55 +21,55 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:242
+#: code:addons/partner_statement/report/report_statement_common.py:243
 #, python-format
 msgid "1 - 30 Days"
 msgstr "1-30 jours"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:253
+#: code:addons/partner_statement/report/report_statement_common.py:254
 #, python-format
 msgid "1 Month"
 msgstr "1 mois"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:246
+#: code:addons/partner_statement/report/report_statement_common.py:247
 #, python-format
 msgid "121 Days +"
 msgstr "+120 jours"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:254
+#: code:addons/partner_statement/report/report_statement_common.py:255
 #, python-format
 msgid "2 Months"
 msgstr "2 mois"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:255
+#: code:addons/partner_statement/report/report_statement_common.py:256
 #, python-format
 msgid "3 Months"
 msgstr "3 mois"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:243
+#: code:addons/partner_statement/report/report_statement_common.py:244
 #, python-format
 msgid "31 - 60 Days"
 msgstr "31-60 jours"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:256
+#: code:addons/partner_statement/report/report_statement_common.py:257
 #, python-format
 msgid "4 Months"
 msgstr "4 Mois"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:244
+#: code:addons/partner_statement/report/report_statement_common.py:245
 #, python-format
 msgid "61 - 90 Days"
 msgstr "61-90 Jours"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:245
+#: code:addons/partner_statement/report/report_statement_common.py:246
 #, python-format
 msgid "91 - 120 Days"
 msgstr "91-120 Jours"
@@ -200,8 +200,8 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:241
-#: code:addons/partner_statement/report/report_statement_common.py:252
+#: code:addons/partner_statement/report/report_statement_common.py:242
+#: code:addons/partner_statement/report/report_statement_common.py:253
 #, python-format
 msgid "Current"
 msgstr "Actuel"
@@ -333,7 +333,7 @@ msgid "Number Partner"
 msgstr "Numéro du partenaire"
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:257
+#: code:addons/partner_statement/report/report_statement_common.py:258
 #, python-format
 msgid "Older"
 msgstr "Antérieur"
@@ -475,8 +475,8 @@ msgstr ""
 "chronologique et divisée par devise."
 
 #. module: partner_statement
-#: code:addons/partner_statement/report/report_statement_common.py:247
-#: code:addons/partner_statement/report/report_statement_common.py:258
+#: code:addons/partner_statement/report/report_statement_common.py:248
+#: code:addons/partner_statement/report/report_statement_common.py:259
 #, python-format
 msgid "Total"
 msgstr "Total"
