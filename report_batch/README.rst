@@ -14,16 +14,16 @@ Batch Report Printing
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/11.0/report_batch
+    :target: https://github.com/OCA/reporting-engine/tree/13.0/report_batch
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-11-0/reporting-engine-11-0-report_batch
+    :target: https://translation.odoo-community.org/projects/reporting-engine-13-0/reporting-engine-13-0-report_batch
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/143/11.0
+    :target: https://runbot.odoo-community.org/runbot/143/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module will allow to to print multiple QWeb reports in a single batch.
 For example, picking, packing, reports needs to be printed together
@@ -98,6 +98,7 @@ Contributors
 * Bhavesh Odedra <bodedra@opensourceintegrators.com>
 * Balaji Kannan <bkannan@opensourceintegrators.com>
 * Daniel Reis <dreis@opensourceintegrators.com>
+* Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
 
 Other credits
 ~~~~~~~~~~~~~
@@ -125,8 +126,8 @@ promote its widespread use.
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-bodedra| 
+|maintainer-bodedra|
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/11.0/report_batch>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/13.0/report_batch>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

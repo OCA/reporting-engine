@@ -38,7 +38,6 @@
         <field name="name">Batch Reports</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ir.actions.report.subreport</field>
-        <field name="view_type">form</field>
         <field name="help">Allows to add multi QWeb reports in a single batch</field>
     </record>
 
