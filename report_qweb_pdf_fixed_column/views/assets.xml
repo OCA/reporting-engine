@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Tecnativa - Alexandre Díaz
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <template id="report_assets_pdf" name="Report Assets" inherit_id="web.report_assets_pdf">
+        <xpath expr=".">
+            <link rel="stylesheet"
+                  href="/report_qweb_pdf_fixed_column/static/src/css/report_qweb_pdf_fixed_column.scss"
+                  />
+        </xpath>
+    </template>
+
+</odoo>
