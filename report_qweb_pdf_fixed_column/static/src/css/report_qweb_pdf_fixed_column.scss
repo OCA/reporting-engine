@@ -1,0 +1,7 @@
+/* Original fix by 'agr-odoo': https://github.com/odoo/odoo/pull/35795 */
+.col-auto {
+    // This is only used in QtWebKit
+    -webkit-box-flex: 1 !important;
+    box-flex: 1 !important;
+    width: 100% !important;
+}
