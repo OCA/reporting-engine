@@ -569,8 +569,8 @@ class ReportXlsxAbstract(models.AbstractModel):
         col_specs_section=None,
         render_space=None,
         default_format=None,
-        col_specs='col_specs',
-        wanted_list='wanted_list',
+        col_specs="col_specs",
+        wanted_list="wanted_list",
     ):
         """
         Write a line with all columns included in the 'wanted_list'.
