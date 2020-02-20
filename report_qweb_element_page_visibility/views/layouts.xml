@@ -1,0 +1,59 @@
+<odoo>
+
+    <template id="minimal_layout" inherit_id="web.minimal_layout">
+        <xpath expr="//t[@t-if='subst_needed']" position="replace">
+            <t t-if="subst is True">
+                <script>
+                    function subst() {
+                        var vars = {};
+                        var x = document.location.search.substring(1).split('&amp;');
+                        for (var i in x) {
+                            var z = x[i].split('=', 2);
+                            vars[z[0]] = unescape(z[1]);
+                        }
+                        var fromPage = document.getElementsByClassName('page');
+                        for(var j = 0; j&lt;fromPage.length; j++)
+                            fromPage[j].textContent = vars['sitepage'];
+                        var toPage = document.getElementsByClassName('topage');
+                        for(var j = 0; j&lt;toPage.length; j++)
+                            toPage[j].textContent = vars['sitepages'];
+
+                        var index = vars['webpage'].split('.', 4)[3]
+                        var header = document.getElementById('minimal_layout_report_headers');
+                        if(header !== null){
+                            var companyHeader = header.children[index];
+                            header.textContent = '';
+                            header.appendChild(companyHeader);
+                        }
+                        var footer = document.getElementById('minimal_layout_report_footers');
+                        if(footer !== null){
+                            var companyFooter = footer.children[index];
+                            footer.textContent = '';
+                            footer.appendChild(companyFooter);
+                        }
+                        var operations = {
+                            'not-first-page': function (elt) {
+                                elt.style.visibility = (vars.sitepage === vars.frompage) ? "hidden" : "visible";
+                            },
+                            'not-last-page': function (elt) {
+                                elt.style.visibility = (vars.sitepage === vars.sitepages) ? "hidden" : "visible";
+                            },
+                            'first-page': function (elt) {
+                                elt.style.visibility = (vars.sitepage === vars.frompage) ? "visible" : "hidden";
+                            },
+                            'last-page': function (elt) {
+                                elt.style.visibility = (vars.sitepage === vars.sitepages) ? "visible" : "hidden";
+                            },
+                        };
+                        for (var klass in operations) {
+                            var y = document.getElementsByClassName(klass);
+                            for (var j=0; j&lt;y.length; ++j)
+                                operations[klass](y[j]);
+                        }
+                    }
+                </script>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
