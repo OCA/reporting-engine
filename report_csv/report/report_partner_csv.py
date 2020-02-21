@@ -8,6 +8,7 @@ from odoo import models
 class PartnerCSV(models.AbstractModel):
     _name = "report.report_csv.partner_csv"
     _inherit = "report.report_csv.abstract"
+    _description = "Report Partner to CSV"
 
     def generate_csv_report(self, writer, data, partners):
         writer.writeheader()
