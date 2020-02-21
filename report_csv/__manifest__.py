@@ -3,10 +3,10 @@
 {
     "name": "Base report csv",
     "summary": "Base module to create csv report",
-    "author": "Creu Blanca," "Odoo Community Association (OCA)",
+    "author": "Creu Blanca, Odoo Community Association (OCA)",
     "website": "https://github.com/oca/reporting-engine",
     "category": "Reporting",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "external_dependencies": {"python": ["csv"]},
     "depends": ["base", "web"],
