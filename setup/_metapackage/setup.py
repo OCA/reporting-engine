@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo12-addon-report_py3o',
         'odoo12-addon-report_py3o_fusion_server',
         'odoo12-addon-report_qr',
+        'odoo12-addon-report_qweb_element_page_visibility',
         'odoo12-addon-report_qweb_parameter',
         'odoo12-addon-report_qweb_pdf_watermark',
         'odoo12-addon-report_qweb_signer',
