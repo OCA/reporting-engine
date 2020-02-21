@@ -24,6 +24,8 @@ class TestReport(common.TransactionCase):
         self.docs = self.env["res.company"].search([], limit=1).partner_id
 
     def test_report(self):
+        # Test if not res:
+        self.env["ir.actions.report"]._get_report_from_name("TEST")
         report = self.report
         self.assertEqual(report.report_type, "csv")
         rep = report.render(self.docs.ids, {})
