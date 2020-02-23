@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_task_type_empl,project.task.type.employees,project.model_project_task_type,base.group_user,1,1,0,0
-access_project_task_type_empl_manager,project.task.type.employees.manager,project.model_project_task_type,project.group_project_manager,1,1,1,1

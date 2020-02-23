@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<templates id="template" xml:space="preserve">
-
-<button t-name="InventoryReport.Buttons" class="btn btn-primary" type="button">
-    Inventory at Date
-</button>
-
-</templates>

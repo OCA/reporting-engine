@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_country_state_district_user,res.country.state.district user,model_res_country_state_district,base.group_partner_manager,1,1,1,1
-access_res_country_state_district_employee,res.country.state.district.employee,model_res_country_state_district,base.group_user,1,0,0,0
-access_res_country_state_district_ward_user,res.country.state.district.ward user,model_res_country_state_district_ward,base.group_partner_manager,1,1,1,1
-access_res_country_state_district_ward_employee,res.country.state.district.ward.employee,model_res_country_state_district_ward,base.group_user,1,0,0,0

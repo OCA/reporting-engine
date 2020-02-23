@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<odoo noupdate="0">
-    <data>
-        <record id="default_project_group_normal" model="project.group">
-            <field name="code">NORMAL</field>
-            <field name="name">Normal</field>
-        </record>
-    </data>
-</odoo>

@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_role_assignee,project.role,model_project_role,base.group_user,1,0,0,0
-access_project_role_user,project.role,model_project_role,project.group_project_user,1,0,0,0
-access_project_role_manager,project.role,model_project_role,base.group_system,1,1,1,1
-access_project_assignment_assignee,project.assignment,model_project_assignment,base.group_user,1,0,0,0
-access_project_assignment_user,project.assignment,model_project_assignment,project.group_project_user,1,0,0,0
-access_project_assignment_manager,project.assignment,model_project_assignment,project.group_project_manager,1,1,1,1

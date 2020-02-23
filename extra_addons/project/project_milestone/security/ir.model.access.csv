@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-project_milestone_user,Project Milestone User,model_project_milestone,project.group_project_user,1,0,0,0
-project_milestone_manager,Project Milestone Manager,model_project_milestone,project.group_project_manager,1,1,1,1
