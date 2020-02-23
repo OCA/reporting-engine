@@ -218,7 +218,8 @@ class MailActivity(models.Model):
                 base = fields.Date.from_string(self.env.context.get('activity_previous_deadline'))
             self.date_deadline = base + relativedelta(**{self.activity_type_id.delay_unit: self.activity_type_id.delay_count})
             self.user_id = self.activity_type_id.default_user_id or self.env.user
-            self.note = self.activity_type_id.default_description
+            if self.activity_type_id.default_description:
+                self.note = self.activity_type_id.default_description
 
     @api.onchange('recommended_activity_type_id')
     def _onchange_recommended_activity_type_id(self):
@@ -414,6 +415,7 @@ class MailActivity(models.Model):
         return messages.ids and messages.ids[0] or False
 
     def action_feedback(self, feedback=False, attachment_ids=None):
+        self = self.with_context(clean_context(self.env.context))
         messages, next_activities = self._action_done(feedback=feedback, attachment_ids=attachment_ids)
         return messages.ids and messages.ids[0] or False
 
@@ -524,7 +526,7 @@ class MailActivity(models.Model):
         activity_data = defaultdict(dict)
         for group in grouped_activities:
             res_id = group['res_id']
-            activity_type_id = group['activity_type_id'][0]
+            activity_type_id = (group.get('activity_type_id') or (False, False))[0]
             res_id_to_deadline[res_id] = group['date_deadline'] if (res_id not in res_id_to_deadline or group['date_deadline'] < res_id_to_deadline[res_id]) else res_id_to_deadline[res_id]
             state = self._compute_state_from_date(group['date_deadline'], self.user_id.sudo().tz)
             activity_data[res_id][activity_type_id] = {

@@ -438,14 +438,21 @@ class IrTranslation(models.Model):
                     discarded += translation
                 else:
                     vals = {'src': src, 'state': translation.state}
-                    if translation.lang == 'en_US':
+                    if translation.lang == records.env.lang:
                         vals['value'] = src
                     translation.write(vals)
                     done.add((src, translation.lang))
 
         # process outdated and discarded translations
         outdated.write({'state': 'to_translate'})
-        discarded.unlink()
+
+        if discarded:
+            # delete in SQL to avoid invalidating the whole cache
+            discarded._modified()
+            discarded.modified(self._fields)
+            self.flush(self._fields, discarded)
+            self.invalidate_cache(ids=discarded._ids)
+            self.env.cr.execute("DELETE FROM ir_translation WHERE id IN %s", [discarded._ids])
 
     @api.model
     @tools.ormcache_context('model_name', keys=('lang',))

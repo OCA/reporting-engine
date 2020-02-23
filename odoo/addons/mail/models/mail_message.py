@@ -219,7 +219,7 @@ class Message(models.Model):
 
         ids = [n['mail_message_id'] for n in notifications.read(['mail_message_id'])]
 
-        notification = {'type': 'mark_as_read', 'message_ids': notifications}
+        notification = {'type': 'mark_as_read', 'message_ids': [id[0] for id in ids]}
         self.env['bus.bus'].sendone((self._cr.dbname, 'res.partner', partner_id), notification)
 
         return ids
@@ -367,6 +367,7 @@ class Message(models.Model):
             attachment_ids = []
             if message.attachment_ids:
                 has_access_to_model = message.model and self.env[message.model].check_access_rights('read', raise_exception=False)
+                main_attachment = None
                 if message.res_id and issubclass(self.pool[message.model], self.pool['mail.thread']) and has_access_to_model:
                     main_attachment = self.env[message.model].browse(message.res_id).message_main_attachment_id
                 for attachment in message.attachment_ids:
