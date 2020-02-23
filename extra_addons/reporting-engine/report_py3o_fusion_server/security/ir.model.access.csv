@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_py3o_server_admin,access_py3o_server_admin,model_py3o_server,base.group_system,1,1,1,1
-access_py3o_server_user,access_py3o_server_user,model_py3o_server,base.group_user,1,0,0,0
-access_py3o_pdf_options_admin,Full access to PDF options to Settings grp,model_py3o_pdf_options,base.group_system,1,1,1,1
-access_py3o_pdf_options_user,Read-only access to PDF options to employees,model_py3o_pdf_options,base.group_user,1,0,0,0
