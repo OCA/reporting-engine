@@ -78,6 +78,7 @@ class account_journal(models.Model):
     # Below method is used to get data of bank and cash statemens
     def get_line_graph_datas(self):
         """Computes the data used to display the graph for bank and cash journals in the accounting dashboard"""
+        currency = self.currency_id or self.company_id.currency_id
 
         def build_graph_data(date, amount):
             #display date in locale format
@@ -117,7 +118,7 @@ class account_journal(models.Model):
             date = val['date']
             if date != today.strftime(DF):  # make sure the last point in the graph is today
                 data[:0] = [build_graph_data(date, amount)]
-            amount -= val['amount']
+            amount = currency.round(amount - val['amount'])
 
         # make sure the graph starts 1 month ago
         if date.strftime(DF) != last_month.strftime(DF):
@@ -567,7 +568,7 @@ class account_journal(models.Model):
     #####################
     def mark_bank_setup_as_done_action(self):
         """ Marks the 'bank setup' step as done in the setup bar and in the company."""
-        self.company_id.set_onboarding_step_done('account_setup_bank_data_state')
+        self.company_id.sudo().set_onboarding_step_done('account_setup_bank_data_state')
 
     def unmark_bank_setup_as_done_action(self):
         """ Marks the 'bank setup' step as not done in the setup bar and in the company."""

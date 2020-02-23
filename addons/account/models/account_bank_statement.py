@@ -89,10 +89,10 @@ class AccountBankStmtCashWizard(models.Model):
 
     def _validate_cashbox(self):
         for cashbox in self:
-            if self.start_bank_stmt_ids:
-                self.start_bank_stmt_ids.write({'balance_start': self.total})
-            if self.end_bank_stmt_ids:
-                self.end_bank_stmt_ids.write({'balance_end_real': self.total})
+            if cashbox.start_bank_stmt_ids:
+                cashbox.start_bank_stmt_ids.write({'balance_start': cashbox.total})
+            if cashbox.end_bank_stmt_ids:
+                cashbox.end_bank_stmt_ids.write({'balance_end_real': cashbox.total})
 
 
 class AccountBankStmtCloseCheck(models.TransientModel):
@@ -776,7 +776,7 @@ class AccountBankStatementLine(models.Model):
 
             # Create counterpart move lines and reconcile them
             for aml_dict in counterpart_aml_dicts:
-                if aml_dict['move_line'].payment_id:
+                if aml_dict['move_line'].payment_id and not aml_dict['move_line'].statement_line_id:
                     aml_dict['move_line'].write({'statement_line_id': self.id})
                 if aml_dict['move_line'].partner_id.id:
                     aml_dict['partner_id'] = aml_dict['move_line'].partner_id.id

@@ -52,7 +52,10 @@ class AccountMove(models.Model):
         super(AccountMove, self).post()
 
         # Retrieve invoices to generate the xml.
-        invoices_to_export = self.filtered(lambda move: move.company_id.country_id == self.env.ref('base.it') and move.is_sale_document())
+        invoices_to_export = self.filtered(lambda move:
+                move.company_id.country_id == self.env.ref('base.it') and
+                move.is_sale_document() and
+                move.l10n_it_send_state not in ['sent', 'delivered', 'delivered_accepted'])
 
         invoices_to_export.write({'l10n_it_send_state': 'other'})
         invoices_to_send = self.env['account.move']
@@ -255,7 +258,11 @@ class AccountMove(models.Model):
         self.ensure_one()
         allowed_state = ['to_send', 'invalid']
 
-        if not self.company_id.l10n_it_mail_pec_server_id or not self.company_id.l10n_it_address_send_fatturapa:
+        if (
+            not self.company_id.l10n_it_mail_pec_server_id
+            or not self.company_id.l10n_it_mail_pec_server_id.active
+            or not self.company_id.l10n_it_address_send_fatturapa
+        ):
             self.message_post(
                 body=(_("Error when sending mail with E-Invoice: Your company must have a mail PEC server and must indicate the mail PEC that will send electronic invoice."))
                 )
@@ -275,7 +282,7 @@ class AccountMove(models.Model):
             'attachment_ids': [(6, 0, self.l10n_it_einvoice_id.ids)],
         })
 
-        mail_fattura = self.env['mail.mail'].with_context(wo_return_path=True).create({
+        mail_fattura = self.env['mail.mail'].with_context(wo_bounce_return_path=True).create({
             'mail_message_id': message.id,
             'email_to': self.env.company.l10n_it_address_recipient_fatturapa,
         })
