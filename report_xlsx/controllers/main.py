@@ -28,7 +28,7 @@ class ReportController(report.ReportController):
                 if data['context'].get('lang'):
                     del data['context']['lang']
                 context.update(data['context'])
-            xlsx = report.with_context(context).render_xlsx(
+            xlsx = report.with_context(context).render(
                 docids, data=data
             )[0]
             report_name = report.report_file
