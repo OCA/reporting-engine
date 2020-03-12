@@ -9,7 +9,7 @@ class ResPartner(models.Model):
     property_comment_template_id = fields.Many2one(
         comodel_name='base.comment.template',
         string='Conditions template',
-        company_dependant=True,
+        company_dependent=True,
     )
 
     @api.model
