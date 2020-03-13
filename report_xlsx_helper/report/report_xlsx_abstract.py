@@ -489,6 +489,15 @@ class ReportXlsxAbstract(models.AbstractModel):
                 cell_format = default_format
             else:
                 cell_value = cell_spec.get('value')
+                cell_column = cell_spec.get('col') or False
+                if cell_column and isinstance(cell_column, str):
+                    # Convert base26 column string to number.
+                    expn = 0
+                    col_num = 0
+                    for char in reversed(cell_column.upper()):
+                        col_num += (ord(char) - ord('A') + 1) * (26 ** expn)
+                        expn += 1
+                    pos = col_num - 1
                 if isinstance(cell_value, CodeType):
                     cell_value = self._eval(cell_value, render_space)
                 cell_type = cell_spec.get('type')
