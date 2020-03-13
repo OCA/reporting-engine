@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_invoice_report_grouped_by_picking
+# 	* account_invoice_report_grouped_by_picking
 #
 msgid ""
 msgstr ""
@@ -28,10 +28,21 @@ msgstr "<span>Entrega:</span>"
 
 #. module: account_invoice_report_grouped_by_picking
 #: model_terms:ir.ui.view,arch_db:account_invoice_report_grouped_by_picking.report_invoice_document
+msgid ""
+"<strong>\n"
+"                            <span>Without reference</span>\n"
+"                        </strong>"
+msgstr ""
+
+#. module: account_invoice_report_grouped_by_picking
+#: model_terms:ir.ui.view,arch_db:account_invoice_report_grouped_by_picking.report_invoice_document
 msgid "<strong>Subtotal: </strong>"
 msgstr ""
 
 #. module: account_invoice_report_grouped_by_picking
-#: model:ir.model,name:account_invoice_report_grouped_by_picking.model_account_invoice
-msgid "Invoice"
-msgstr "Fatura"
+#: model:ir.model,name:account_invoice_report_grouped_by_picking.model_account_move
+msgid "Journal Entries"
+msgstr ""
+
+#~ msgid "Invoice"
+#~ msgstr "Fatura"

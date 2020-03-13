@@ -9,8 +9,8 @@ from odoo import api, models
 from odoo.tools import float_is_zero
 
 
-class AccountInvoice(models.Model):
-    _inherit = "account.invoice"
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
     @api.model
     def _sort_grouped_lines(self, lines_dic):
@@ -26,8 +26,7 @@ class AccountInvoice(models.Model):
         lines_dict = OrderedDict()
         sign = -1.0 if self.type == "out_refund" else 1.0
         # Let's get first a correspondance between pickings and sales order
-        pickings = self.mapped("invoice_line_ids.move_line_ids.picking_id")
-        so_dict = {x.sale_id: x for x in pickings if x.sale_id}
+        so_dict = {x.sale_id: x for x in self.picking_ids if x.sale_id}
         # Now group by picking by direct link or via same SO as picking's one
         for line in self.invoice_line_ids:
             remaining_qty = line.quantity

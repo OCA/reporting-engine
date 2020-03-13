@@ -3,5 +3,8 @@
   * Carlos Dauden
   * David Vidal
   * Pedro M. Baeza
+  * Sergio Teruel
 
-* Ioan Galan <ioan@studio73.es>
+* `Studio73 <https://www.studio73.es>`__:
+
+  * Ioan Galan <ioan@studio73.es>

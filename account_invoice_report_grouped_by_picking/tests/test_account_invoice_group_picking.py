@@ -75,24 +75,49 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         self.sale2.picking_ids[:1].action_done()
         sales = self.sale | self.sale2
         # invoice sales
-        inv_id = sales.action_invoice_create()
+        invoice = sales._create_invoices()
         # Test directly grouping method
-        invoice = self.env["account.invoice"].browse(inv_id)
+        # invoice = self.env["account.move"].browse(inv_id)
         groups = invoice.lines_grouped_by_picking()
         self.assertEqual(len(groups), 4)
         self.assertEqual(groups[0]["picking"], groups[1]["picking"])
         self.assertEqual(groups[2]["picking"], groups[3]["picking"])
         # Test report
         content = html.document_fromstring(
-            self.env.ref("account.account_invoices").render_qweb_html(inv_id)[0]
+            self.env.ref("account.account_invoices").render_qweb_html(invoice.id)[0]
         )
         tbody = content.xpath("//tbody[@class='invoice_tbody']")
         tbody = [html.tostring(line, encoding="utf-8").strip() for line in tbody][
             0
         ].decode()
         # information about sales is printed
-        self.assertEqual(tbody.count(self.sale.name), 3)
-        self.assertEqual(tbody.count(self.sale2.name), 3)
+        self.assertEqual(tbody.count(self.sale.name), 1)
+        self.assertEqual(tbody.count(self.sale2.name), 1)
         # information about pickings is printed
         self.assertTrue(self.sale.invoice_ids.picking_ids[:1].name in tbody)
         self.assertTrue(self.sale2.invoice_ids.picking_ids[:1].name in tbody)
+
+    def test_account_invoice_group_picking_return(self):
+        self.sale.action_confirm()
+        # deliver lines2
+        picking = self.sale.picking_ids[:1]
+        picking.action_confirm()
+        picking.move_line_ids.write({"qty_done": 1})
+        picking.action_done()
+        self.sale._create_invoices()
+        # Return one picking from sale1
+        wiz_return = (
+            self.env["stock.return.picking"]
+            .with_context(active_model="stock.picking", active_id=picking.id,)
+            .create({})
+        )
+        wiz_return._onchange_picking_id()
+        res = wiz_return.create_returns()
+        picking_return = self.env["stock.picking"].browse(res["res_id"])
+        picking_return.move_line_ids.write({"qty_done": 1})
+        picking_return.action_done()
+        # Test directly grouping method
+        invoice = self.sale._create_invoices(final=True)
+        groups = invoice.lines_grouped_by_picking()
+        self.assertEqual(len(groups), 1)
+        self.assertEqual(groups[0]["picking"], picking_return)
