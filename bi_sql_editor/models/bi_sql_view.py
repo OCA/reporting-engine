@@ -120,6 +120,15 @@ class BiSQLView(models.Model):
             'sql_valid': [('readonly', False)],
         })
 
+    action_context = fields.Text(
+        string="Action Context", default="{}", readonly=True,
+        help="Define here a context that will be used"
+        " by default, when creating the action.",
+        states={
+            'draft': [('readonly', False)],
+            'sql_valid': [('readonly', False)],
+        })
+
     has_group_changed = fields.Boolean(copy=False)
 
     bi_sql_view_field_ids = fields.One2many(
@@ -451,6 +460,7 @@ class BiSQLView(models.Model):
             'view_mode': view_mode,
             'view_id': view_id,
             'search_view_id': self.search_view_id.id,
+            'context': self.action_context,
         }
 
     @api.multi
