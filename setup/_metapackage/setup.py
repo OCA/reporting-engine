@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo13-addon-report_csv',
         'odoo13-addon-report_qr',
+        'odoo13-addon-report_qweb_pdf_fixed_column',
         'odoo13-addon-report_xlsx',
         'odoo13-addon-report_xlsx_helper',
     ],
