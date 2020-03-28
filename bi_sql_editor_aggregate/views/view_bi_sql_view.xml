@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="view_bi_sql_view_form" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field name='inherit_id' ref='bi_sql_editor.view_bi_sql_view_form'/>
+        <field name="arch" type="xml">
+            <field name="ttype" position='before'>
+                <field name='group_operator' attrs="{
+                    'invisible': ['!', ('ttype', 'in', ('float', 'integer'))]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
