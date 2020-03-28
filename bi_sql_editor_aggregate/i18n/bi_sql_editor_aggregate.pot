@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* bi_sql_editor_aggregate
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_sql_editor_aggregate
+#: selection:bi.sql.view.field,group_operator:0
+msgid "Average"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: model:ir.model,name:bi_sql_editor_aggregate.model_bi_sql_view_field
+msgid "Bi SQL View Field"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: model:ir.model.fields,help:bi_sql_editor_aggregate.field_bi_sql_view_field__group_operator
+msgid "By default, Odoo will sum the values when grouping. If you wish to alter the behaviour, choose an alternate Group Operator"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: model:ir.model,name:bi_sql_editor_aggregate.model_ir_model_fields
+msgid "Fields"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: model:ir.model.fields,field_description:bi_sql_editor_aggregate.field_bi_sql_view_field__group_operator
+msgid "Group Operator"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: selection:bi.sql.view.field,group_operator:0
+msgid "Maximum"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: selection:bi.sql.view.field,group_operator:0
+msgid "Minimum"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: selection:bi.sql.view.field,group_operator:0
+msgid "Sum"
+msgstr ""
+
+#. module: bi_sql_editor_aggregate
+#: model:ir.model,name:bi_sql_editor_aggregate.model_bi_sql_view
+msgid "bi.sql.view"
+msgstr ""
+
