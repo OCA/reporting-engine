@@ -19,27 +19,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:463
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:473
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:234
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:243
 #, python-format
 msgid "%s (Copy)"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:337
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:346
 #, python-format
 msgid "%s Access %s"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:365
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:374
 #, python-format
 msgid "Access %s"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
+msgid "Action Context"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Action Settings"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -95,6 +105,11 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Context"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create SQL View, Indexes and Models"
 msgstr ""
 
@@ -123,6 +138,12 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__size
 msgid "Database Size"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__action_context
+msgid ""
+"Define here a context that will be used by default, when creating the action."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -278,7 +299,7 @@ msgid "Name"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:617
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:627
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -331,7 +352,7 @@ msgid "Odoo Tree View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:182
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:191
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
 msgstr ""
@@ -357,7 +378,7 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:352
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:361
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr ""
@@ -373,7 +394,7 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:496
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:506
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
@@ -556,20 +577,20 @@ msgid "Views, Action and Menu Created"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:172
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:181
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
 #, python-format
 msgid "You can not create indexes on non materialized views"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:244
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:253
 #, python-format
 msgid "You can only process this action on SQL Valid items"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:225
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #, python-format
 msgid ""
 "You can only unlink draft views.If you want to delete them, first set them "
