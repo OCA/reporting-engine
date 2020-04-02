@@ -29,7 +29,7 @@ addon | version | summary
 [report_qr](report_qr/) | 10.0.1.0.0 | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 10.0.1.0.1 | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.2 | Add watermarks to your QWEB PDF reports
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.3 | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 10.0.1.0.1 | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_qweb_txt](report_qweb_txt/) | 10.0.1.0.0 | Use Qweb to generate text and CSV reports
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
