@@ -24,12 +24,6 @@ class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
     subreport_ids = fields.One2many("ir.actions.report.subreport", "parent_report_id")
-    model_id = fields.Many2one("ir.model", string="Model")
-
-    @api.onchange("model_id")
-    def onchange_model_id(self):
-        if self.model_id:
-            self.model = self.model_id.model
 
     def generate_top_part(self):
         return (

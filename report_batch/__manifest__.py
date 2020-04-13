@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Reporting",
-    "website": "http://www.opensourceintegrators.com",
+    "website": "https://github.com/OCA/reporting-engine",
     "depends": ["stock"],
     "data": ["security/ir.model.access.csv", "views/ir_action_report_view.xml"],
     "installable": True,
