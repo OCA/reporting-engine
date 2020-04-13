@@ -106,7 +106,6 @@ class IrActionsReport(models.Model):
             report._generate_batch_qweb_report()
         return res
 
-    @api.multi
     def write(self, vals):
         res = super(IrActionsReport, self).write(vals)
         if "subreport_ids" in vals or "model" in vals:
