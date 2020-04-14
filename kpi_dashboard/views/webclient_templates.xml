@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_backend"
+              name="Backend Assets (used in backend interface)"
+              inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget_registry.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/abstract_widget.js"/>
+
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_renderer.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_model.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_controller.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_view.js"/>
+
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/number_widget.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/meter_widget.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/graph_widget.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/text_widget.js"/>
+
+            <link rel="stylesheet" type="text/scss" href="/kpi_dashboard/static/src/scss/kpi_dashboard.scss"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="kpi_dashboard_form_view">
+        <field name="name">kpi.dashboard.form (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="%(kpi_dashboard.kpi_dashboard_menu_act_window)d"
+                                type="action"
+                                string="Generate menu"
+                                icon="fa-folder-open-o"
+                                context="{'default_dashboard_id': active_id}"
+                                attrs="{'invisible': [('menu_id', '!=', False)]}"
+                                />
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="menu_id" attrs="{'invisible': [('menu_id', '=', False)]}"/>
+                    </group>
+                    <notebook>
+                        <page name="item" string="KPIs">
+                            <field name="item_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="kpi_id"/>
+                                    <field name="column"/>
+                                    <field name="row"/>
+                                    <field name="size_x"/>
+                                    <field name="size_y"/>
+                                    <field name="color" widget="color"/>
+                                    <field name="font_color" widget="color"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="widget" string="Widget configuration">
+                            <group>
+                                <group name="margin">
+                                    <field name="margin_x"/>
+                                    <field name="margin_y"/>
+                                </group>
+                                <group name="dimension">
+                                    <field name="widget_dimension_x"/>
+                                    <field name="widget_dimension_y"/>
+                                    <field name="number_of_columns"/>
+                                    <field name="width"/>
+                                </group>
+                                <group name="color">
+                                    <field name="background_color" widget="color"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="group" string="Groups">
+                            <field name="group_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_dashboard_search_view">
+        <field name="name">kpi.dashboard.search (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_dashboard_tree_view">
+        <field name="name">kpi.dashboard.tree (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_dashboard_dashboard_view">
+        <field name="name">kpi.dashboard.dashboard (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard</field>
+        <field name="arch" type="xml">
+            <dashboard/>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="kpi_dashboard_act_window">
+        <field name="name">Kpi Dashboard</field> <!-- TODO -->
+        <field name="res_model">kpi.dashboard</field>
+        <field name="view_mode">tree,form,dashboard</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="kpi_dashboard_menu">
+        <field name="name">Configure Dashboard</field>
+        <field name="parent_id" ref="menu_configuration_kpi_dashboards"/> <!-- TODO -->
+        <field name="action" ref="kpi_dashboard_act_window"/>
+        <field name="sequence" eval="16"/> <!-- TODO -->
+    </record>
+
+</odoo>

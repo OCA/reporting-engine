@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kpi_dashboard,access_kpi_dashboard,model_kpi_dashboard,base.group_user,1,0,0,0
+access_kpi_dashboard_kpi,access_kpi_dashboard_kpi,model_kpi_dashboard_item,base.group_user,1,0,0,0
+access_kpi_kpi,access_kpi_kpi,model_kpi_kpi,base.group_user,1,0,0,0
+access_kpi_kpi_action,access_kpi_kpi_action,model_kpi_kpi_action,base.group_user,1,0,0,0
+manage_kpi_dashboard,manage_kpi_dashboard,model_kpi_dashboard,group_kpi_dashboard_manager,1,1,1,1
+manage_kpi_dashboard_kpi,manage_kpi_dashboard_kpi,model_kpi_dashboard_item,group_kpi_dashboard_manager,1,1,1,1
+manage_kpi_kpi,manage_kpi_kpi,model_kpi_kpi,group_kpi_dashboard_manager,1,1,1,1
+manage_kpi_kpi_action,manage_kpi_kpi_action,model_kpi_kpi_action,group_kpi_dashboard_manager,1,1,1,1

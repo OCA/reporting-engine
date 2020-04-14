@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <!-- CONFIGURATION -->
+    <menuitem id="menu_configuration_kpi_dashboards"
+              name="KPI Dashboards"
+              parent="base.menu_reporting_config"
+              groups="kpi_dashboard.group_kpi_dashboard_manager"
+              sequence="10"/>
+</odoo>
