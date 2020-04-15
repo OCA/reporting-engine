@@ -69,10 +69,10 @@ class TestBiSqlViewEditor(SingleTransactionCase):
 
     def test_security(self):
         with self.assertRaises(AccessError):
-            self.bi_sql_view.sudo(self.no_bi_user.id).search(
+            self.bi_sql_view.with_user(self.no_bi_user.id).search(
                 [("name", "=", "Partners View 2")]
             )
-        bi = self.bi_sql_view.sudo(self.bi_user.id).search(
+        bi = self.bi_sql_view.with_user(self.bi_user.id).search(
             [("name", "=", "Partners View 2")]
         )
         self.assertEqual(
