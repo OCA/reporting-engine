@@ -23,7 +23,7 @@ def _instanciate(self, model_data):
     # This monkey patch is meant to avoid create/search tables for those
     # materialized views. Doing "super" doesn't work.
     class CustomModel(models.Model):
-        _name = pycompat.to_native(model_data["model"])
+        _name = pycompat.to_text(model_data["model"])
         _description = model_data["name"]
         _module = False
         _custom = True
@@ -43,6 +43,7 @@ IrModel._instanciate = _instanciate
 
 class BiSQLView(models.Model):
     _name = "bi.sql.view"
+    _description = "BI SQL View"
     _order = "sequence"
     _inherit = ["sql.request.mixin"]
 
@@ -196,7 +197,6 @@ class BiSQLView(models.Model):
 
     # Constrains Section
     @api.constrains("is_materialized")
-    @api.multi
     def _check_index_materialized(self):
         for rec in self.filtered(lambda x: not x.is_materialized):
             if rec.bi_sql_view_field_ids.filtered(lambda x: x.is_index):
@@ -205,7 +205,6 @@ class BiSQLView(models.Model):
                 )
 
     @api.constrains("view_order")
-    @api.multi
     def _check_view_order(self):
         for rec in self:
             if rec.view_order:
@@ -217,7 +216,6 @@ class BiSQLView(models.Model):
 
     # Compute Section
     @api.depends("is_materialized")
-    @api.multi
     def _compute_materialized_text(self):
         for sql_view in self:
             sql_view.materialized_text = (
@@ -225,7 +223,6 @@ class BiSQLView(models.Model):
             )
 
     @api.depends("technical_name")
-    @api.multi
     def _compute_view_name(self):
         for sql_view in self:
             sql_view.view_name = "{}{}".format(
@@ -233,7 +230,6 @@ class BiSQLView(models.Model):
             )
 
     @api.depends("technical_name")
-    @api.multi
     def _compute_model_name(self):
         for sql_view in self:
             sql_view.model_name = "{}{}".format(
@@ -246,7 +242,6 @@ class BiSQLView(models.Model):
             self.has_group_changed = True
 
     # Overload Section
-    @api.multi
     def write(self, vals):
         res = super(BiSQLView, self).write(vals)
         if vals.get("sequence", False):
@@ -254,7 +249,6 @@ class BiSQLView(models.Model):
                 rec.menu_id.sequence = rec.sequence
         return res
 
-    @api.multi
     def unlink(self):
         if any(view.state not in ("draft", "sql_valid") for view in self):
             raise UserError(
@@ -265,7 +259,6 @@ class BiSQLView(models.Model):
             )
         return super(BiSQLView, self).unlink()
 
-    @api.multi
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or {})
@@ -278,7 +271,6 @@ class BiSQLView(models.Model):
         return super(BiSQLView, self).copy(default=default)
 
     # Action Section
-    @api.multi
     def button_create_sql_view_and_model(self):
         for sql_view in self:
             if sql_view.state != "sql_valid":
@@ -299,7 +291,6 @@ class BiSQLView(models.Model):
                 )
             sql_view.state = "model_valid"
 
-    @api.multi
     def button_set_draft(self):
         for sql_view in self:
             sql_view.menu_id.unlink()
@@ -321,7 +312,6 @@ class BiSQLView(models.Model):
 
             sql_view.write({"state": "draft", "has_group_changed": False})
 
-    @api.multi
     def button_create_ui(self):
         self.tree_view_id = self.env["ir.ui.view"].create(self._prepare_tree_view()).id
         self.graph_view_id = (
@@ -339,17 +329,14 @@ class BiSQLView(models.Model):
         self.menu_id = self.env["ir.ui.menu"].create(self._prepare_menu()).id
         self.write({"state": "ui_valid"})
 
-    @api.multi
     def button_update_model_access(self):
         self._drop_model_access()
         self._create_model_access()
         self.write({"has_group_changed": False})
 
-    @api.multi
     def button_refresh_materialized_view(self):
         self._refresh_materialized_view()
 
-    @api.multi
     def button_open_view(self):
         return {
             "type": "ir.actions.act_window",
@@ -359,7 +346,6 @@ class BiSQLView(models.Model):
         }
 
     # Prepare Function
-    @api.multi
     def _prepare_model(self):
         self.ensure_one()
         field_id = []
@@ -374,7 +360,6 @@ class BiSQLView(models.Model):
             "field_id": field_id,
         }
 
-    @api.multi
     def _prepare_model_access(self):
         self.ensure_one()
         res = []
@@ -392,7 +377,6 @@ class BiSQLView(models.Model):
             )
         return res
 
-    @api.multi
     def _prepare_cron(self):
         self.ensure_one()
         return {
@@ -406,7 +390,6 @@ class BiSQLView(models.Model):
             "numbercall": -1,
         }
 
-    @api.multi
     def _prepare_rule(self):
         self.ensure_one()
         return {
@@ -416,7 +399,6 @@ class BiSQLView(models.Model):
             "global": True,
         }
 
-    @api.multi
     def _prepare_tree_view(self):
         self.ensure_one()
         return {
@@ -430,7 +412,6 @@ class BiSQLView(models.Model):
             ),
         }
 
-    @api.multi
     def _prepare_graph_view(self):
         self.ensure_one()
         return {
@@ -444,7 +425,6 @@ class BiSQLView(models.Model):
             ),
         }
 
-    @api.multi
     def _prepare_pivot_view(self):
         self.ensure_one()
         return {
@@ -458,7 +438,6 @@ class BiSQLView(models.Model):
             ),
         }
 
-    @api.multi
     def _prepare_search_view(self):
         self.ensure_one()
         return {
@@ -481,7 +460,6 @@ class BiSQLView(models.Model):
             ),
         }
 
-    @api.multi
     def _prepare_action(self):
         self.ensure_one()
         view_mode = self.view_order
@@ -502,7 +480,6 @@ class BiSQLView(models.Model):
             "context": self.action_context,
         }
 
-    @api.multi
     def _prepare_action_name(self):
         self.ensure_one()
         if not self.is_materialized:
@@ -511,7 +488,6 @@ class BiSQLView(models.Model):
             self.name, datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")),
         )
 
-    @api.multi
     def _prepare_menu(self):
         self.ensure_one()
         return {
@@ -526,7 +502,6 @@ class BiSQLView(models.Model):
         _logger.info("Executing SQL Request %s ..." % req)
         self.env.cr.execute(req)
 
-    @api.multi
     def _drop_view(self):
         for sql_view in self:
             self._log_execute(
@@ -535,7 +510,6 @@ class BiSQLView(models.Model):
             )
             sql_view.size = False
 
-    @api.multi
     def _create_view(self):
         for sql_view in self:
             sql_view._drop_view()
@@ -548,7 +522,6 @@ class BiSQLView(models.Model):
                     % (sql_view.materialized_text, sql_view.view_name, str(e))
                 )
 
-    @api.multi
     def _create_index(self):
         for sql_view in self:
             for sql_field in sql_view.bi_sql_view_field_ids.filtered(
@@ -559,7 +532,6 @@ class BiSQLView(models.Model):
                     % (sql_field.index_name, sql_view.view_name, sql_field.name)
                 )
 
-    @api.multi
     def _create_model_and_fields(self):
         for sql_view in self:
             # Create model
@@ -570,20 +542,17 @@ class BiSQLView(models.Model):
                 req = "DROP TABLE %s" % sql_view.view_name
                 self._log_execute(req)
 
-    @api.multi
     def _create_model_access(self):
         for sql_view in self:
             for item in sql_view._prepare_model_access():
                 self.env["ir.model.access"].create(item)
 
-    @api.multi
     def _drop_model_access(self):
         for sql_view in self:
             self.env["ir.model.access"].search(
                 [("model_id", "=", sql_view.model_name)]
             ).unlink()
 
-    @api.multi
     def _drop_model_and_fields(self):
         for sql_view in self:
             if sql_view.rule_id:
@@ -591,7 +560,6 @@ class BiSQLView(models.Model):
             if sql_view.model_id:
                 sql_view.model_id.with_context(_force_unlink=True).unlink()
 
-    @api.multi
     def _hook_executed_request(self):
         self.ensure_one()
         req = (
@@ -609,12 +577,10 @@ class BiSQLView(models.Model):
         self._log_execute(req)
         return self.env.cr.fetchall()
 
-    @api.multi
     def _prepare_request_check_execution(self):
         self.ensure_one()
         return "CREATE VIEW {} AS ({});".format(self.view_name, self.query)
 
-    @api.multi
     def _prepare_request_for_execution(self):
         self.ensure_one()
         query = (
@@ -635,7 +601,6 @@ class BiSQLView(models.Model):
             self.materialized_text, self.view_name, query,
         )
 
-    @api.multi
     def _check_execution(self):
         """Ensure that the query is valid, trying to execute it.
         a non materialized view is created for this check.
@@ -689,7 +654,6 @@ class BiSQLView(models.Model):
         )
         return sql_views._refresh_materialized_view()
 
-    @api.multi
     def _refresh_materialized_view(self):
         for sql_view in self.filtered(lambda x: x.is_materialized):
             req = "REFRESH {} VIEW {}".format(
@@ -702,7 +666,6 @@ class BiSQLView(models.Model):
                 # datetime of the materialized view
                 sql_view.action_id.name = sql_view._prepare_action_name()
 
-    @api.multi
     def _refresh_size(self):
         for sql_view in self:
             req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));" % (
@@ -711,7 +674,6 @@ class BiSQLView(models.Model):
             self._log_execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
 
-    @api.multi
     def button_preview_sql_expression(self):
         self.button_validate_sql_expression()
         res = self._execute_sql_request()

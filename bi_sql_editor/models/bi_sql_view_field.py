@@ -116,7 +116,6 @@ class BiSQLViewField(models.Model):
 
     # Constrains Section
     @api.constrains("is_index")
-    @api.multi
     def _check_index_materialized(self):
         for rec in self.filtered(lambda x: x.is_index):
             if not rec.bi_sql_view_id.is_materialized:
@@ -125,7 +124,6 @@ class BiSQLViewField(models.Model):
                 )
 
     # Compute Section
-    @api.multi
     def _compute_index_name(self):
         for sql_field in self:
             sql_field.index_name = "{}_{}".format(
@@ -133,7 +131,6 @@ class BiSQLViewField(models.Model):
             )
 
     # Overload Section
-    @api.multi
     def create(self, vals):
         field_without_prefix = vals["name"][2:]
         # guess field description
@@ -193,7 +190,6 @@ class BiSQLViewField(models.Model):
 
         return res
 
-    @api.multi
     def _prepare_model_field(self):
         self.ensure_one()
         return {
@@ -207,7 +203,6 @@ class BiSQLViewField(models.Model):
             or False,
         }
 
-    @api.multi
     def _prepare_tree_field(self):
         self.ensure_one()
         res = ""
@@ -217,7 +212,6 @@ class BiSQLViewField(models.Model):
             )
         return res
 
-    @api.multi
     def _prepare_graph_field(self):
         self.ensure_one()
         res = ""
@@ -225,7 +219,6 @@ class BiSQLViewField(models.Model):
             res = """<field name="{}" type="{}" />""".format(self.name, self.graph_type)
         return res
 
-    @api.multi
     def _prepare_pivot_field(self):
         self.ensure_one()
         res = ""
@@ -233,7 +226,6 @@ class BiSQLViewField(models.Model):
             res = """<field name="{}" type="{}" />""".format(self.name, self.graph_type)
         return res
 
-    @api.multi
     def _prepare_search_field(self):
         self.ensure_one()
         res = ""
@@ -241,7 +233,6 @@ class BiSQLViewField(models.Model):
             res = """<field name="{}"/>""".format(self.name)
         return res
 
-    @api.multi
     def _prepare_search_filter_field(self):
         self.ensure_one()
         res = ""
