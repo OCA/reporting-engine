@@ -5,7 +5,7 @@
 {
     "name": "Batch Report Printing",
     "summary": "Ability to print multiple QWeb reports in a single batch.",
-    "version": "13.0.1.0.0",
+    "version": "13.0.1.0.1",
     "license": "AGPL-3",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Reporting",
