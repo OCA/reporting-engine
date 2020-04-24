@@ -23,7 +23,7 @@ XML Reports
     :target: https://runbot.odoo-community.org/runbot/143/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module was written to extend the functionality of the reporting engine to
 support XML reports and allow modules to generate them by code or by QWeb
