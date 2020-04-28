@@ -3,6 +3,7 @@
 
 from odoo import api, fields, models
 import ast
+from odoo.tools.safe_eval import safe_eval
 
 
 class KpiKpi(models.Model):
@@ -13,7 +14,7 @@ class KpiKpi(models.Model):
     active = fields.Boolean(default=True)
     cron_id = fields.Many2one("ir.cron", readonly=True, copy=False)
     computation_method = fields.Selection(
-        [("function", "Function")], required=True
+        [("function", "Function"), ("code", "Code")], required=True
     )
     value = fields.Serialized()
     dashboard_item_ids = fields.One2many("kpi.dashboard.item", inverse_name="kpi_id")
@@ -34,6 +35,7 @@ class KpiKpi(models.Model):
         inverse_name='kpi_id',
         help="Actions that can be opened from the KPI"
     )
+    code = fields.Text("Code")
 
     def _cron_vals(self):
         return {
@@ -83,6 +85,17 @@ class KpiKpi(models.Model):
         if "value" in vals:
             vals["value_last_update"] = fields.Datetime.now()
         return super().write(vals)
+
+    def _get_code_input_dict(self):
+        return {
+            "self": self,
+            "model": self,
+        }
+
+    def _compute_value_code(self):
+        results = self._get_code_input_dict()
+        safe_eval(self.code or "", results, mode="exec", nocopy=True)
+        return results.get("result", {})
 
 
 class KpiKpiAction(models.Model):
