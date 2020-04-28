@@ -8,6 +8,9 @@ Configure KPIs
    #. Meter: result must contain `value`, `min` and `max`
    #. Graph: result must contain a list on `graphs` containing `values`, `title` and `key`
 
+#. In order to compute the KPI you can use a predefined function from a model or
+   use the code to directly compute it.
+
 
 Configure dashboards
 ~~~~~~~~~~~~~~~~~~~~
