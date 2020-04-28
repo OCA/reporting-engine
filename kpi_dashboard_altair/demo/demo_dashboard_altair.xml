@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="widget_altair" model="kpi.kpi">
+        <field name="name">Altair 01</field>
+        <field name="computation_method">code</field>
+        <field name="widget">altair</field>
+        <field name="code">
+source = pandas.DataFrame(
+{
+"a": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+"b": [28, 55, 43, 91, 81, 53, 19, 87, 52],
+}
+)
+chart = altair.Chart(source, background="transparent").mark_bar().encode(x="a", y="b")
+result = {"altair": json.loads(chart.to_json())}
+        </field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('widget_altair')]]"/>
+
+    <record id="dashboard_widget_altair" model="kpi.dashboard.item">
+        <field name="name">Altair</field>
+        <field name="kpi_id" ref="widget_altair"/>
+        <field name="column">1</field>
+        <field name="row">10</field>
+        <field name="size_y">4</field>
+        <field name="color">#47bbb3</field>
+        <field name="dashboard_id" ref="kpi_dashboard.demo_dashboard"/>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+</odoo>
