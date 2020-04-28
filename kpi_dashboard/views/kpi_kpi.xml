@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="kpi_kpi_form_view">
+        <field name="name">kpi.kpi.form (in kpi_dashboard)</field>
+        <field name="model">kpi.kpi</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="generate_cron" string="Generate cron" type="object"
+                            attrs="{'invisible': [('cron_id', '!=',False)]}"/>
+                    <button name="compute" string="Compute now" type="object"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="computation_method"/>
+                            <field name="widget"/>
+                            <field name="model_id" attrs="{'invisible': [('computation_method', '!=', 'function')]}"/>
+                            <field name="function" attrs="{'required': [('computation_method', '=', 'function')], 'invisible': [('computation_method', '!=', 'function')]}"/>
+                            <field name="args" attrs="{'invisible': [('computation_method', '!=', 'function')]}"/>
+                            <field name="kwargs" attrs="{'invisible': [('computation_method', '!=', 'function')]}"/>
+                        </group>
+                        <group>
+                            <field name="cron_id" attrs="{'invisible': [('cron_id', '=',False)]}" readonly="True"/>
+                        </group>
+                        <group>
+                            <field name="suffix"/>
+                            <field name="prefix"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="action" string="Actions">
+                            <field name="action_ids">
+                                <tree editable="bottom">
+                                    <field name="action"/>
+                                </tree>
+                            </field>
+                      </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_kpi_search_view">
+        <field name="name">kpi.kpi.search (in kpi_dashboard)</field>
+        <field name="model">kpi.kpi</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_kpi_tree_view">
+        <field name="name">kpi.kpi.tree (in kpi_dashboard)</field>
+        <field name="model">kpi.kpi</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="kpi_kpi_act_window">
+        <field name="name">Kpi</field>
+        <field name="res_model">kpi.kpi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="kpi_kpi_menu">
+        <field name="name">Configure Kpi</field>
+        <field name="parent_id" ref="menu_configuration_kpi_dashboards"/>
+        <field name="action" ref="kpi_kpi_act_window"/>
+        <field name="sequence" eval="20"/>
+    </record>
+
+</odoo>

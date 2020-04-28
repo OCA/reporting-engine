@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="demo_dashboard" model="kpi.dashboard">
+        <field name="name">Dashboard</field>
+        <field name="number_of_columns">4</field>
+        <field name="widget_dimension_y">50</field>
+        <field name="widget_dimension_x">250</field>
+        <field name="background_color">#020202</field>
+    </record>
+
+    <record id="widget_number_01" model="kpi.kpi">
+        <field name="name">Number 01</field>
+        <field name="prefix">$</field>
+        <field name="computation_method">function</field>
+        <field name="widget">number</field>
+        <field name="function">test_demo_number</field>
+    </record>
+
+    <record id="widget_number_02" model="kpi.kpi">
+        <field name="name">Number 02</field>
+        <field name="suffix">€</field>
+        <field name="computation_method">function</field>
+        <field name="widget">number</field>
+        <field name="function">test_demo_number</field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('widget_number_01'), ref('widget_number_02')]]"/>
+
+    <record id="widget_meter_01" model="kpi.kpi">
+        <field name="name">Meter 01</field>
+        <field name="suffix">€</field>
+        <field name="computation_method">function</field>
+        <field name="widget">meter</field>
+        <field name="function">test_demo_meter</field>
+    </record>
+
+    <record id="widget_meter_02" model="kpi.kpi">
+        <field name="name">Meter 02</field>
+        <field name="prefix">$</field>
+        <field name="computation_method">function</field>
+        <field name="widget">meter</field>
+        <field name="function">test_demo_meter</field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('widget_meter_01'), ref('widget_meter_02')]]"/>
+
+    <record id="widget_graph" model="kpi.kpi">
+        <field name="name">Graph</field>
+        <field name="computation_method">function</field>
+        <field name="widget">graph</field>
+        <field name="function">test_demo_graph</field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('widget_graph')]]"/>
+
+
+    <record id="dashboard_widget_text" model="kpi.dashboard.item">
+        <field name="name">Dashboard title</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="column">1</field>
+        <field name="row">1</field>
+        <field name="size_x">4</field>
+        <field name="color">#707070</field>
+        <field name="font_color">#000000</field>
+    </record>
+
+    <record id="dashboard_widget_number_01" model="kpi.dashboard.item">
+        <field name="name">Number 01</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="kpi_id" ref="widget_number_01"/>
+        <field name="column">1</field>
+        <field name="row">2</field>
+        <field name="size_y">4</field>
+        <field name="color">#47bbb3</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+    <record id="dashboard_widget_number_02" model="kpi.dashboard.item">
+        <field name="name">Number 02</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="kpi_id" ref="widget_number_02"/>
+        <field name="column">1</field>
+        <field name="row">6</field>
+        <field name="size_y">4</field>
+        <field name="color">#ec663c</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+    <record id="dashboard_widget_meter_01" model="kpi.dashboard.item">
+        <field name="name">Meter 01</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="kpi_id" ref="widget_meter_01"/>
+        <field name="column">2</field>
+        <field name="row">2</field>
+        <field name="size_y">4</field>
+        <field name="color">#9c4274</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+    <record id="dashboard_widget_meter_02" model="kpi.dashboard.item">
+        <field name="name">Meter 02</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="kpi_id" ref="widget_meter_02"/>
+        <field name="column">2</field>
+        <field name="row">6</field>
+        <field name="size_y">4</field>
+        <field name="color">#12b0c5</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+    <record id="dashboard_widget_graph" model="kpi.dashboard.item">
+        <field name="name">Graph</field>
+        <field name="dashboard_id" ref="demo_dashboard"/>
+        <field name="kpi_id" ref="widget_graph"/>
+        <field name="column">3</field>
+        <field name="row">2</field>
+        <field name="size_x">2</field>
+        <field name="size_y">8</field>
+        <field name="color">#ff9618</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+</odoo>
