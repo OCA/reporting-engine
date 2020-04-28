@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="widget_bokeh" model="kpi.kpi">
+        <field name="name">Bokeh</field>
+        <field name="prefix">$</field>
+        <field name="computation_method">code</field>
+        <field name="widget">bokeh</field>
+        <field name="code">
+p = figure(width=1000, height=1000, sizing_mode="scale_both", toolbar_location=None)
+p.line([0, 1, 2], [1, 10, 5], line_width=5)
+script, div = simple_components(p)
+result = {"bokeh": "%s%s" % (div, script)}
+        </field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('widget_bokeh')]]"/>
+
+    <record id="dashboard_widget_bokeh" model="kpi.dashboard.item">
+        <field name="name">Bokeh</field>
+        <field name="dashboard_id" ref="kpi_dashboard.demo_dashboard"/>
+        <field name="kpi_id" ref="widget_bokeh"/>
+        <field name="column">2</field>
+        <field name="row">10</field>
+        <field name="size_y">4</field>
+        <field name="color">#47bbb3</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+</odoo>
