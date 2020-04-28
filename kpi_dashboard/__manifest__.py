@@ -5,7 +5,7 @@
     "name": "Kpi Dashboard",
     "summary": """
         Create Dashboards using kpis""",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "https://github.com/reporting-engine",
@@ -21,4 +21,5 @@
         "views/kpi_dashboard.xml",
     ],
     "demo": ["demo/demo_dashboard.xml"],
+    "maintainers": ["etobella"],
 }
