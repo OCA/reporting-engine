@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.15.1: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
 <title>Kpi Dashboard</title>
 <style type="text/css">
 
@@ -374,14 +374,15 @@ ul.auto-toc {
 <ul class="simple">
 <li><a class="reference internal" href="#configuration" id="id1">Configuration</a><ul>
 <li><a class="reference internal" href="#configure-kpis" id="id2">Configure KPIs</a></li>
-<li><a class="reference internal" href="#configure-dashboards" id="id3">Configure dashboards</a></li>
+<li><a class="reference internal" href="#using-kpi-with-code" id="id3">Using KPI with code</a></li>
+<li><a class="reference internal" href="#configure-dashboards" id="id4">Configure dashboards</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bug-tracker" id="id4">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="id5">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="id6">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="id7">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="id8">Maintainers</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="id5">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="id6">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="id7">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="id8">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="id9">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -398,10 +399,21 @@ ul.auto-toc {
 <li>Graph: result must contain a list on <cite>graphs</cite> containing <cite>values</cite>, <cite>title</cite> and <cite>key</cite></li>
 </ol>
 </li>
+<li>In order to compute the KPI you can use a predefined function from a model or
+use the code to directly compute it.</li>
 </ol>
 </div>
+<div class="section" id="using-kpi-with-code">
+<h2><a class="toc-backref" href="#id3">Using KPI with code</a></h2>
+<p>Define the code directly on the code field. You can use:</p>
+<ul class="simple">
+<li><cite>self</cite> and <cite>model</cite> as the kpi element</li>
+<li>The script should create a variable called <cite>result</cite> as a dictionary that
+will be stored as the value</li>
+</ul>
+</div>
 <div class="section" id="configure-dashboards">
-<h2><a class="toc-backref" href="#id3">Configure dashboards</a></h2>
+<h2><a class="toc-backref" href="#id4">Configure dashboards</a></h2>
 <ol class="arabic simple">
 <li>Access <cite>Dashboards &gt; Configuration &gt; KPI Dashboards &gt; Configure Dashboards</cite></li>
 <li>Create a new dashboard and specify all the standard parameters on <cite>Widget configuration</cite></li>
@@ -412,7 +424,7 @@ ul.auto-toc {
 </div>
 </div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id4">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#id5">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -420,21 +432,21 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id5">Credits</a></h1>
+<h1><a class="toc-backref" href="#id6">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id6">Authors</a></h2>
+<h2><a class="toc-backref" href="#id7">Authors</a></h2>
 <ul class="simple">
 <li>Creu Blanca</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h2><a class="toc-backref" href="#id7">Contributors</a></h2>
+<h2><a class="toc-backref" href="#id8">Contributors</a></h2>
 <ul class="simple">
 <li>Enric Tobella &lt;<a class="reference external" href="mailto:etobella&#64;creublanca.es">etobella&#64;creublanca.es</a>&gt;</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id8">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#id9">Maintainers</a></h2>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
