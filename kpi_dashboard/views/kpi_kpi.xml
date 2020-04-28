@@ -44,7 +44,12 @@
                                     <field name="action"/>
                                 </tree>
                             </field>
-                      </page>
+                        </page>
+                        <page name="code" string="Code" attrs="{'invisible': [('computation_method', '!=', 'code')]}">
+                            <field name="code" widget="ace"
+                                   options="{'mode': 'python'}"
+                                   placeholder="Enter Python code here."/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
