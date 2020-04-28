@@ -87,7 +87,6 @@ result = {"graphs": [
     <function model="kpi.kpi" name="compute"
               eval="[[ref('widget_graph')]]"/>
 
-
     <record id="dashboard_widget_text" model="kpi.dashboard.item">
         <field name="name">Dashboard title</field>
         <field name="dashboard_id" ref="demo_dashboard"/>
