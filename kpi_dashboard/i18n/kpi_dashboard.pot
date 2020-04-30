@@ -14,6 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: kpi_dashboard
+#: code:addons/kpi_dashboard/models/kpi_kpi.py:106
+#, python-format
+msgid " or "
+msgstr ""
+
+#. module: kpi_dashboard
 #. openerp-web
 #: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:46
 #, python-format
@@ -79,6 +85,13 @@ msgstr ""
 #. module: kpi_dashboard
 #: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_dashboard_menu_form_view
 msgid "Cancel"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__code
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_form_view
+#: selection:kpi.kpi,computation_method:0
+msgid "Code"
 msgstr ""
 
 #. module: kpi_dashboard
@@ -190,6 +203,11 @@ msgstr ""
 #. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__end_row
 msgid "End Row"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_form_view
+msgid "Enter Python code here."
 msgstr ""
 
 #. module: kpi_dashboard
@@ -469,6 +487,12 @@ msgstr ""
 #. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__suffix
 msgid "Suffix"
+msgstr ""
+
+#. module: kpi_dashboard
+#: code:addons/kpi_dashboard/models/kpi_kpi.py:108
+#, python-format
+msgid "The code cannot contain the following terms: %s."
 msgstr ""
 
 #. module: kpi_dashboard
