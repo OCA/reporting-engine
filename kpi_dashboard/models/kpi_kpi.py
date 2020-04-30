@@ -1,8 +1,11 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 import ast
+from odoo.tools.safe_eval import safe_eval
+import re
 
 
 class KpiKpi(models.Model):
@@ -13,7 +16,7 @@ class KpiKpi(models.Model):
     active = fields.Boolean(default=True)
     cron_id = fields.Many2one("ir.cron", readonly=True, copy=False)
     computation_method = fields.Selection(
-        [("function", "Function")], required=True
+        [("function", "Function"), ("code", "Code")], required=True
     )
     value = fields.Serialized()
     dashboard_item_ids = fields.One2many("kpi.dashboard.item", inverse_name="kpi_id")
@@ -34,6 +37,7 @@ class KpiKpi(models.Model):
         inverse_name='kpi_id',
         help="Actions that can be opened from the KPI"
     )
+    code = fields.Text("Code")
 
     def _cron_vals(self):
         return {
@@ -83,6 +87,33 @@ class KpiKpi(models.Model):
         if "value" in vals:
             vals["value_last_update"] = fields.Datetime.now()
         return super().write(vals)
+
+    def _get_code_input_dict(self):
+        return {
+            "self": self,
+            "model": self.browse(),
+        }
+
+    def _forbidden_code(self):
+        return ["commit", "rollback", "getattr", "execute"]
+
+    def _compute_value_code(self):
+        forbidden = self._forbidden_code()
+        search_terms = "(" + ("|".join(forbidden)) + ")"
+        if re.search(search_terms, (self.code or "").lower()):
+            message = ", ".join(forbidden[:-1]) or ""
+            if len(message) > 0:
+                message += _(" or ")
+            message += forbidden[-1]
+            raise ValidationError(_(
+                "The code cannot contain the following terms: %s."
+            ) % message)
+        results = self._get_code_input_dict()
+        savepoint = "kpi_formula_%s" % self.id
+        self.env.cr.execute("savepoint %s" % savepoint)
+        safe_eval(self.code or "", results, mode="exec", nocopy=True)
+        self.env.cr.execute("rollback to %s" % savepoint)
+        return results.get("result", {})
 
 
 class KpiKpiAction(models.Model):

@@ -20,4 +20,6 @@
         "views/kpi_kpi.xml",
         "views/kpi_dashboard.xml",
     ],
+    "demo": ["demo/demo_dashboard.xml"],
+    "maintainers": ["etobella"],
 }

@@ -4,6 +4,7 @@
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 from odoo.tests.common import Form
+from mock import patch
 
 
 class TestKpiDashboard(TransactionCase):
@@ -116,8 +117,45 @@ class TestKpiDashboard(TransactionCase):
                 actions += len(item['actions'])
         self.assertTrue(title_found)
         self.assertEqual(2, actions)
+        self.assertFalse(data.get("action_id", False))
+        wzd = self.env['kpi.dashboard.menu'].create({
+            'dashboard_id': self.dashboard.id,
+            'menu_id': self.env['ir.ui.menu'].search([], limit=1).id,
+        })
+        wzd.generate_menu()
+        data = self.dashboard.read_dashboard()
+        self.assertTrue(data.get("action_id", False))
 
     def test_compute(self):
         self.assertFalse(self.kpi_01.value_last_update)
-        self.kpi_01.compute()
+        with patch(
+            "odoo.addons.kpi_dashboard.models.kpi_kpi."
+            "KpiKpi.test_demo_number", create=True
+        ) as f:
+            f.return_value = {"value": 0}
+            self.kpi_01.compute()
+        self.assertTrue(self.kpi_01.value_last_update)
+
+    def test_compute_model(self):
+        self.assertFalse(self.kpi_01.value_last_update)
+        self.kpi_01.model_id = self.env.ref('base.model_res_partner')
+        with patch(
+            "odoo.addons.base.models.res_partner.Partner.test_demo_number",
+            create=True
+        ) as f:
+            f.return_value = {"value": 0}
+            self.kpi_01.compute()
+        self.assertTrue(self.kpi_01.value_last_update)
+
+    def test_generate_cron(self):
+        self.assertFalse(self.kpi_01.cron_id)
+        self.kpi_01.generate_cron()
+        self.assertTrue(self.kpi_01.cron_id)
+        self.assertFalse(self.kpi_01.value_last_update)
+        with patch(
+            "odoo.addons.kpi_dashboard.models.kpi_kpi."
+            "KpiKpi.test_demo_number", create=True
+        ) as f:
+            f.return_value = {"value": 0}
+            self.kpi_01.cron_id.method_direct_trigger()
         self.assertTrue(self.kpi_01.value_last_update)

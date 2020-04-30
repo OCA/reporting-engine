@@ -8,6 +8,20 @@ Configure KPIs
    #. Meter: result must contain `value`, `min` and `max`
    #. Graph: result must contain a list on `graphs` containing `values`, `title` and `key`
 
+#. In order to compute the KPI you can use a predefined function from a model or
+   use the code to directly compute it.
+
+Using KPI with code
+~~~~~~~~~~~~~~~~~~~
+
+Define the code directly on the code field. You can use `self` and `model` as the kpi element
+The script should create a variable called `result` as a dictionary that
+will be stored as the value.
+For example, we can use::
+
+    result = {}
+    result['value'] = len(model.search([('id', '=', %s)]))
+    result['previous'] = len(model.search([('id', '!=', %s)]))
 
 Configure dashboards
 ~~~~~~~~~~~~~~~~~~~~
