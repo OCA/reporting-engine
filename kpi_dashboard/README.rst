@@ -51,12 +51,14 @@ Configure KPIs
 Using KPI with code
 ~~~~~~~~~~~~~~~~~~~
 
-Define the code directly on the code field. You can use:
+Define the code directly on the code field. You can use `self` and `model` as the kpi element
+The script should create a variable called `result` as a dictionary that
+will be stored as the value.
+For example, we can use::
 
-* `self` and `model` as the kpi element
-* The script should create a variable called `result` as a dictionary that
-  will be stored as the value
-
+    result = {}
+    result['value'] = len(model.search([('id', '=', %s)]))
+    result['previous'] = len(model.search([('id', '!=', %s)]))
 
 Configure dashboards
 ~~~~~~~~~~~~~~~~~~~~
@@ -102,6 +104,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-etobella| image:: https://github.com/etobella.png?size=40px
+    :target: https://github.com/etobella
+    :alt: etobella
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-etobella| 
 
 This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/12.0/kpi_dashboard>`_ project on GitHub.
 
