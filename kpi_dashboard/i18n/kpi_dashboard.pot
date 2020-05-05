@@ -67,6 +67,11 @@ msgid "Add to Dashboard"
 msgstr ""
 
 #. module: kpi_dashboard
+#: selection:kpi.kpi,widget:0
+msgid "Altair"
+msgstr ""
+
+#. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__args
 msgid "Args"
 msgstr ""
