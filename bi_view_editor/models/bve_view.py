@@ -282,8 +282,15 @@ class BveView(models.Model):
         self._cr.execute('DROP TABLE IF EXISTS %s', (AsIs(view_name), ))
 
         # create postgres view
-        self.env.cr.execute('CREATE or REPLACE VIEW %s as (%s)', (
-            AsIs(view_name), AsIs(query), ))
+        try:
+            self.env.cr.execute('CREATE or REPLACE VIEW %s as (%s)', (
+                AsIs(view_name), AsIs(query), ))
+        except Exception as e:
+            raise UserError(
+                _("Error creating the view '{query}':\n{error}")
+                .format(
+                    query=query,
+                    error=e))
 
     @api.depends('line_ids', 'state')
     def _compute_sql_query(self):

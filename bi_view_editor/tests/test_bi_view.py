@@ -407,3 +407,18 @@ class TestBiViewEditor(TransactionCase):
         bi_view1 = self.env['bve.view'].create(vals)
         bi_view1.action_create()
         self.assertEqual(len(bi_view1.line_ids), 4)
+
+    def test_20_broken_view(self):
+        vals = self.bi_view1_vals
+        vals.update({
+            'name': 'Test View broken',
+            'over_condition': 'bad SQL code',
+        })
+        bi_view = self.env['bve.view'].create(vals)
+        with self.assertRaises(UserError) as ue:
+            bi_view.action_create()
+
+        self.assertEqual(bi_view.state, 'draft')
+        self.assertIn(bi_view.over_condition, str(ue.exception))
+        # remove view
+        bi_view.unlink()
