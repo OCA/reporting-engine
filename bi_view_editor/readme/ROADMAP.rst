@@ -5,4 +5,3 @@
 * Data the user has no access to (e.g. in a multi company situation) can be
   viewed by making a view. Would be nice if models available to select when
   creating a view are limited to the ones that have intersecting groups.
-* Raise a warning in case the SQL query is not correct.

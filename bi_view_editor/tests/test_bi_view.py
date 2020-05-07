@@ -5,6 +5,7 @@ import json
 
 import odoo
 from odoo.tests.common import TransactionCase
+from odoo.tools import mute_logger
 from odoo.exceptions import UserError, ValidationError
 from ..hooks import post_load, uninstall_hook
 
@@ -407,3 +408,24 @@ class TestBiViewEditor(TransactionCase):
         bi_view1 = self.env['bve.view'].create(vals)
         bi_view1.action_create()
         self.assertEqual(len(bi_view1.line_ids), 4)
+
+    @mute_logger('odoo.sql_db')
+    def test_20_broken_view(self):
+        """
+        Create a broken query, a nice UserError should be raised.
+        odoo.sql_db logger is muted to avoid the
+        ERROR: bad_query line in the logs.
+        """
+        vals = self.bi_view1_vals
+        vals.update({
+            'name': 'Test View broken',
+            'over_condition': 'bad SQL code',
+        })
+        bi_view = self.env['bve.view'].create(vals)
+        with self.assertRaises(UserError) as ue:
+            bi_view.action_create()
+
+        self.assertEqual(bi_view.state, 'draft')
+        self.assertIn(bi_view.over_condition, str(ue.exception))
+        # remove view
+        bi_view.unlink()
