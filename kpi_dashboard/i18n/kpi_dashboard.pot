@@ -484,7 +484,7 @@ msgid "Size Y"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:119
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:121
 #, python-format
 msgid "Size Y of the widget cannot be bigger than 10"
 msgstr ""
@@ -533,7 +533,7 @@ msgid "Widget"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:140
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:142
 #, python-format
 msgid "Widget %s is bigger than expected"
 msgstr ""
@@ -554,7 +554,7 @@ msgid "Widget configuration"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:136
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:138
 #, python-format
 msgid "Widgets cannot be crossed by other widgets"
 msgstr ""
