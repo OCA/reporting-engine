@@ -8,7 +8,7 @@ try:
     import pandas
     import altair
 except ImportError:
-    logger.debug('Cannot import genshi.core')
+    logger.debug('Cannot import altair or pandas')
 
 
 class KpiKpi(models.Model):
