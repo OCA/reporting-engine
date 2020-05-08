@@ -92,7 +92,9 @@ class KpiDashboardItem(models.Model):
 
     name = fields.Char(required=True)
     kpi_id = fields.Many2one("kpi.kpi")
-    dashboard_id = fields.Many2one("kpi.dashboard", required=True,)
+    dashboard_id = fields.Many2one(
+        "kpi.dashboard", required=True, ondelete="cascade"
+    )
     column = fields.Integer(required=True, default=1)
     row = fields.Integer(required=True, default=1)
     end_row = fields.Integer(store=True, compute='_compute_end_row')
