@@ -13,8 +13,9 @@
     "data": ["views/webclient_templates.xml"],
     "qweb": ["static/src/xml/dashboard.xml"],
     "external_dependencies": {
-        "python": ['altair'],
+        "python": ["altair"],
     },
     "demo": ["demo/demo_dashboard_altair.xml"],
+
     "maintainers": ["etobella"],
 }
