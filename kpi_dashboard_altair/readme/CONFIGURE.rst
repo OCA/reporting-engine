@@ -26,3 +26,7 @@ You need to define a function like::
 
 You can use `code` in a similar way, as `pandas` and `altair` are already defined
 when using `code` on an `altair` widget.
+
+
+.. image:: ../static/description/config.png
+
