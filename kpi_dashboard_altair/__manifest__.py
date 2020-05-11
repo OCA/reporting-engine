@@ -15,7 +15,7 @@
     "external_dependencies": {
         "python": ["altair"],
     },
-    "demo": ["demo/demo_dashboard_altair.xml"],
+    "demo": ["demo/demo_dashboard_altair.xml", "demo/demo_graphy.xml"],
 
     "maintainers": ["etobella"],
 }

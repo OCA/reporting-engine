@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="world_population" model="kpi.dashboard">
+        <field name="name">World Population</field>
+        <field name="number_of_columns">4</field>
+        <field name="widget_dimension_y">50</field>
+        <field name="widget_dimension_x">250</field>
+        <field name="background_color">#020202</field>
+    </record>
+
+    <record id="world_population_2020" model="kpi.kpi">
+        <field name="name">Population 2020</field>
+        <field name="computation_method">code</field>
+        <field name="widget">number</field>
+        <field name="code">
+result = {"value": 7794798729, "previous": 7713468205}
+        </field>
+    </record>
+
+    <function model="kpi.kpi" name="compute"
+              eval="[[ref('world_population_2020')]]"/>
+
+    <record id="dashboard_widget_text" model="kpi.dashboard.item">
+        <field name="name">World demography</field>
+        <field name="dashboard_id" ref="world_population"/>
+        <field name="column">1</field>
+        <field name="row">1</field>
+        <field name="size_x">4</field>
+        <field name="color">#707070</field>
+        <field name="font_color">#000000</field>
+    </record>
+
+     <record id="dashboard_world_population_2020" model="kpi.dashboard.item">
+        <field name="name">2020 population</field>
+        <field name="dashboard_id" ref="world_population"/>
+        <field name="kpi_id" ref="world_population_2020"/>
+        <field name="column">1</field>
+        <field name="row">2</field>
+        <field name="size_y">4</field>
+        <field name="color">#47bbb3</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+
+</odoo>
