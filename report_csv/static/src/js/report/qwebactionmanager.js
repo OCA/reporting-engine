@@ -1,6 +1,6 @@
 // © 2019 Creu Blanca
 // License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-odoo.define("report_csv.report", function(require) {
+odoo.define("report_csv.report", function (require) {
     "use strict";
 
     var core = require("web.core");
@@ -10,7 +10,7 @@ odoo.define("report_csv.report", function(require) {
     var _t = core._t;
 
     ActionManager.include({
-        _downloadReportCSV: function(url, actions) {
+        _downloadReportCSV: function (url, actions) {
             var self = this;
             framework.blockUI();
             var type = "csv";
@@ -19,7 +19,7 @@ odoo.define("report_csv.report", function(require) {
             if (
                 _.isUndefined(cloned_action.data) ||
                 _.isNull(cloned_action.data) ||
-                (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data))
+                _.isObject(cloned_action.data) && _.isEmpty(cloned_action.data)
             ) {
                 if (cloned_action.context.active_ids) {
                     url += "/" + cloned_action.context.active_ids.join(",");
@@ -33,14 +33,14 @@ odoo.define("report_csv.report", function(require) {
                     encodeURIComponent(JSON.stringify(cloned_action.context));
             }
 
-            return new Promise(function(resolve, reject) {
+            return new Promise(function (resolve, reject) {
                 var blocked = !session.get_file({
                     url: url,
                     data: {
                         data: JSON.stringify([url, type]),
                     },
                     success: resolve,
-                    error: error => {
+                    error: (error) => {
                         self.call("crash_manager", "rpc_error", error);
                         reject();
                     },
@@ -53,40 +53,40 @@ odoo.define("report_csv.report", function(require) {
                     var message = _t(
                         "A popup window with your report was blocked. You " +
                             "may need to change your browser settings to allow " +
-                            "popup windows for this page."
+                            "popup windows for this page.",
                     );
                     this.do_warn(_t("Warning"), message, true);
                 }
             });
         },
 
-        _triggerDownload: function(action, options, type) {
+        _triggerDownload: function (action, options, type) {
             var self = this;
             var reportUrls = this._makeReportUrls(action);
             if (type === "csv") {
                 return this._downloadReportCSV(reportUrls[type], action).then(
-                    function() {
+                    function () {
                         if (action.close_on_report_download) {
                             var closeAction = {type: "ir.actions.act_window_close"};
                             return self.doAction(
                                 closeAction,
-                                _.pick(options, "on_close")
+                                _.pick(options, "on_close"),
                             );
                         }
                         return options.on_close();
-                    }
+                    },
                 );
             }
             return this._super.apply(this, arguments);
         },
 
-        _makeReportUrls: function(action) {
+        _makeReportUrls: function (action) {
             var reportUrls = this._super.apply(this, arguments);
             reportUrls.csv = "/report/csv/" + action.report_name;
             return reportUrls;
         },
 
-        _executeReportAction: function(action, options) {
+        _executeReportAction: function (action, options) {
             var self = this;
             if (action.report_type === "csv") {
                 return self._triggerDownload(action, options, "csv");
