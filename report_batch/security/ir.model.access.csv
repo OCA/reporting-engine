@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_actions_subreport_all,ir_actions_report_subreport,model_ir_actions_report_subreport,,1,0,0,0
+access_ir_actions_subreport_group_system,ir_actions_report_subreport_group_system,model_ir_actions_report_subreport,base.group_system,1,1,1,1

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="act_batch_report_xml_view" model="ir.ui.view">
+        <field name="name">ir.actions.batch.report.form</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <field name="report_type" position="after">
+                <field name="model_id" />
+            </field>
+            <page name="advanced" position="after">
+                <page name="batch_report" string="Batch Report">
+                    <field name="subreport_ids">
+                        <tree string="Batch Reports" editable="bottom">
+                            <field name="sequence" widget="handle" />
+                            <field
+                                name="subreport_id"
+                                domain="[('model', '=', parent.model)]"
+                            />
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+    <record id="view_ir_actions_subreport_tree" model="ir.ui.view">
+        <field name="name">ir.actions.report.subreport.tree</field>
+        <field name="model">ir.actions.report.subreport</field>
+        <field name="arch" type="xml">
+            <tree string="Batch Reports" editable="bottom">
+                <field name="sequence" />
+                <field name="parent_report_id" />
+                <field name="model" invisible="1" />
+                <field name="subreport_id" domain="[('model', '=', model)]" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_ir_actions_subreport" model="ir.actions.act_window">
+        <field name="name">Batch Reports</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.actions.report.subreport</field>
+        <field name="help">Allows to add multi QWeb reports in a single batch</field>
+    </record>
+    <menuitem
+        action="action_ir_actions_subreport"
+        id="menu_action_ir_actions_subreport"
+        parent="base.menu_users"
+        sequence="10"
+    />
+</odoo>
