@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="py3o_template_configuration_search_view" model="ir.ui.view">
         <field name="name">py3o.template.configuration.search.view</field>
         <field name="model">py3o.template</field>
@@ -9,13 +8,15 @@
                 <field name="name" />
                 <field name="filetype" />
                 <group string="Group By" name="groupby">
-                    <filter name="filetype_groupby" string="File Type"
-                        context="{'group_by': 'filetype'}"/>
+                    <filter
+                        name="filetype_groupby"
+                        string="File Type"
+                        context="{'group_by': 'filetype'}"
+                    />
                 </group>
             </search>
         </field>
     </record>
-
     <record id="py3o_template_configuration_form_view" model="ir.ui.view">
         <field name="name">py3o.template.configuration.form.view</field>
         <field name="model">py3o.template</field>
@@ -29,7 +30,6 @@
             </form>
         </field>
     </record>
-
     <record id="py3o_template_configuration_tree_view" model="ir.ui.view">
         <field name="name">py3o.template.configuration.tree.view</field>
         <field name="model">py3o.template</field>
@@ -40,15 +40,14 @@
             </tree>
         </field>
     </record>
-
     <record id="py3o_template_configuration_action" model="ir.actions.act_window">
         <field name="name">Py3o Templates</field>
         <field name="res_model">py3o.template</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-    <menuitem id="py3o_template_configuration_menu"
+    <menuitem
+        id="py3o_template_configuration_menu"
         parent="py3o_config_menu"
-        action="py3o_template_configuration_action" />
-
+        action="py3o_template_configuration_action"
+    />
 </odoo>
