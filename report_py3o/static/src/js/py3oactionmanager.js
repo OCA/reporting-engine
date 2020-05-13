@@ -1,12 +1,12 @@
 /* Copyright 2017-2018 ACSONE SA/NV
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
-odoo.define("report_py3o.report", function (require) {
+odoo.define("report_py3o.report", function(require) {
     "use strict";
 
     var ActionManager = require("web.ActionManager");
 
     ActionManager.include({
-        _executeReportAction: function (action, options) {
+        _executeReportAction: function(action, options) {
             // Py3o reports
             if ("report_type" in action && action.report_type === "py3o") {
                 return this._triggerDownload(action, options, "py3o");
@@ -14,7 +14,7 @@ odoo.define("report_py3o.report", function (require) {
             return this._super.apply(this, arguments);
         },
 
-        _makeReportUrls: function (action) {
+        _makeReportUrls: function(action) {
             var reportUrls = this._super.apply(this, arguments);
             reportUrls.py3o = "/report/py3o/" + action.report_name;
             // We may have to build a query string with `action.data`. It's the place
@@ -23,7 +23,7 @@ odoo.define("report_py3o.report", function (require) {
             if (
                 _.isUndefined(action.data) ||
                 _.isNull(action.data) ||
-                _.isObject(action.data) && _.isEmpty(action.data)
+                (_.isObject(action.data) && _.isEmpty(action.data))
             ) {
                 if (action.context.active_ids) {
                     var activeIDsPath = "/" + action.context.active_ids.join(",");
