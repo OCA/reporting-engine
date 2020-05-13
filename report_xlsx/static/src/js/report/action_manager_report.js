@@ -1,6 +1,6 @@
 // © 2017 Creu Blanca
 // License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-odoo.define("report_xlsx.report", function (require) {
+odoo.define("report_xlsx.report", function(require) {
     "use strict";
 
     var core = require("web.core");
@@ -10,7 +10,7 @@ odoo.define("report_xlsx.report", function (require) {
     var _t = core._t;
 
     ActionManager.include({
-        _downloadReportXLSX: function (url, actions) {
+        _downloadReportXLSX: function(url, actions) {
             var self = this;
             framework.blockUI();
             var type = "xlsx";
@@ -20,7 +20,7 @@ odoo.define("report_xlsx.report", function (require) {
             if (
                 _.isUndefined(cloned_action.data) ||
                 _.isNull(cloned_action.data) ||
-                _.isObject(cloned_action.data) && _.isEmpty(cloned_action.data)
+                (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data))
             ) {
                 if (cloned_action.context.active_ids) {
                     new_url += "/" + cloned_action.context.active_ids.join(",");
@@ -34,14 +34,14 @@ odoo.define("report_xlsx.report", function (require) {
                     encodeURIComponent(JSON.stringify(cloned_action.context));
             }
 
-            return new Promise(function (resolve, reject) {
+            return new Promise(function(resolve, reject) {
                 var blocked = !session.get_file({
                     url: new_url,
                     data: {
                         data: JSON.stringify([new_url, type]),
                     },
                     success: resolve,
-                    error: (error) => {
+                    error: error => {
                         self.call("crash_manager", "rpc_error", error);
                         reject();
                     },
@@ -54,40 +54,40 @@ odoo.define("report_xlsx.report", function (require) {
                     var message = _t(
                         "A popup window with your report was blocked. You " +
                             "may need to change your browser settings to allow " +
-                            "popup windows for this page.",
+                            "popup windows for this page."
                     );
                     this.do_warn(_t("Warning"), message, true);
                 }
             });
         },
 
-        _triggerDownload: function (action, options, type) {
+        _triggerDownload: function(action, options, type) {
             var self = this;
             var reportUrls = this._makeReportUrls(action);
             if (type === "xlsx") {
                 return this._downloadReportXLSX(reportUrls[type], action).then(
-                    function () {
+                    function() {
                         if (action.close_on_report_download) {
                             var closeAction = {type: "ir.actions.act_window_close"};
                             return self.doAction(
                                 closeAction,
-                                _.pick(options, "on_close"),
+                                _.pick(options, "on_close")
                             );
                         }
                         return options.on_close();
-                    },
+                    }
                 );
             }
             return this._super.apply(this, arguments);
         },
 
-        _makeReportUrls: function (action) {
+        _makeReportUrls: function(action) {
             var reportUrls = this._super.apply(this, arguments);
             reportUrls.xlsx = "/report/xlsx/" + action.report_name;
             return reportUrls;
         },
 
-        _executeReportAction: function (action, options) {
+        _executeReportAction: function(action, options) {
             var self = this;
             if (action.report_type === "xlsx") {
                 return self._triggerDownload(action, options, "xlsx");
