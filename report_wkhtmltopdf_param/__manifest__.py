@@ -10,18 +10,11 @@
         Add new parameters for a paper format to be used by wkhtmltopdf
         command as arguments.
     """,
-    "author": "Avoin.Systems,"
-              "Eficent,"
-              "Odoo Community Association (OCA)",
+    "author": "Avoin.Systems," "Eficent," "Odoo Community Association (OCA)",
     "website": "https://avoin.systems",
     "category": "Technical Settings",
-    "depends": [
-        "web",
-    ],
-    "data": [
-        "security/ir.model.access.csv",
-        "views/paperformat.xml",
-    ],
+    "depends": ["web",],
+    "data": ["security/ir.model.access.csv", "views/paperformat.xml",],
     "installable": True,
     "auto_install": False,
     "application": False,
