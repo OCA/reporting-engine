@@ -6,21 +6,19 @@ from odoo import api, models
 
 
 class IrActionsReport(models.Model):
-    _inherit = 'ir.actions.report'
+    _inherit = "ir.actions.report"
 
     @api.model
     def _build_wkhtmltopdf_args(
-            self,
-            paperformat_id,
-            landscape,
-            specific_paperformat_args=None,
-            set_viewport_size=False):
+        self,
+        paperformat_id,
+        landscape,
+        specific_paperformat_args=None,
+        set_viewport_size=False,
+    ):
         # noinspection PyUnresolvedReferences,PyProtectedMember
         command_args = super(IrActionsReport, self)._build_wkhtmltopdf_args(
-            paperformat_id,
-            landscape,
-            specific_paperformat_args,
-            set_viewport_size
+            paperformat_id, landscape, specific_paperformat_args, set_viewport_size
         )
 
         for param in paperformat_id.custom_params:
