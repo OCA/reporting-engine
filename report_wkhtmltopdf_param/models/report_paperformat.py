@@ -17,7 +17,7 @@ class Paper(models.Model):
         "report.paperformat.parameter",
         "paperformat_id",
         "Custom Parameters",
-        help="Custom Parameters passed forward as wkhtmltopdf " "command arguments",
+        help="Custom Parameters passed forward as wkhtmltopdf command arguments",
     )
 
     @api.constrains("custom_params")
