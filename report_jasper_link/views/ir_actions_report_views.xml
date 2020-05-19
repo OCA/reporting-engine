@@ -1,0 +1,21 @@
+<odoo>
+    <record id="act_report_xml_view" model="ir.ui.view">
+        <field name="name">ir.actions.report</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="arch" type="xml">
+            <page name="security" position="before">
+                <page name="jasperserver" string="Jasper Server" attrs="{'invisible': [('report_type', '!=', 'jasperserver')]}">
+                    <group string="Parameters">
+                        <field name="jasper_url" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
+                        <field name="jasper_username" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
+                        <field name="jasper_password" password="True" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
+                        <field name="jasper_report_path" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
+                        <field name="parameter_name" string="Jasper Report Parameter IDS"/>
+                        <field name="criteria_field" string="SQL Primary Key"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>
