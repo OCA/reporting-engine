@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    Copyright 2019 Creu Blanca
+    License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+    -->
+    <report
+        id="partner_csv"
+        model="res.partner"
+        string="Print to CSV"
+        report_type="csv"
+        name="report_csv.partner_csv"
+        file="res_partner"
+        attachment_use="False"
+    />
+</odoo>
