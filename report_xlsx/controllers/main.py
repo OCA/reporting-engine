@@ -25,8 +25,8 @@ class ReportController(report.ReportController):
                 # from the webclient *but* if the user explicitely wants to
                 # change the lang, this mechanism overwrites it.
                 data["context"] = json.loads(data["context"])
-                if data["context"].get("lang"):
-                    del data["context"]["lang"]
+                # if data["context"].get("lang"):
+                #     del data["context"]["lang"]
                 context.update(data["context"])
             xlsx = report.with_context(context).render_xlsx(docids, data=data)[0]
             report_name = report.report_file
