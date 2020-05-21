@@ -12,8 +12,10 @@
     "depends": ["base", "web"],
     "external_dependencies": {"python": ["suds-py3"]},
     "data": [
+        "security/ir.model.access.csv",
         "views/webclient_templates.xml",
         "views/ir_actions_report_views.xml",
+        "views/jasper_server_config_views.xml",
     ],
     "installable": True,
     "maintainers": ["newtratip"],

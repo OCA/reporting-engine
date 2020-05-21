@@ -1,0 +1,45 @@
+<odoo>
+    <record id="jasper_server_config_view_tree" model="ir.ui.view">
+        <field name="name">Jasper Server Config Tree</field>
+        <field name="model">jasper.server.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="jasper_url"/>
+                <field name="jasper_username"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="jasper_server_config_view_form" model="ir.ui.view">
+        <field name="name">Jasper Server Config Form</field>
+        <field name="model">jasper.server.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="jasper_url"/>
+                    <field name="jasper_username"/>
+                    <field name="jasper_password" password="True"/>
+                    <field name="active"/>
+                    <div>
+                        <button name="test_connect_jasperserver" type="object" string="Test Connection" icon="fa-television"/>
+                    </div>                    
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="jasper_server_config_action" model="ir.actions.act_window">
+        <field name="name">Jasper Server Config</field>
+        <field name="res_model">jasper.server.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Jasper Server Config"
+        id="jasper_server_config_menu"
+        parent="base.reporting_menuitem"
+        action="jasper_server_config_action"
+        sequence="10"/>
+</odoo>

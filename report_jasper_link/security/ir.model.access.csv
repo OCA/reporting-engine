@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_jasper_server_config","jasper_server_config","model_jasper_server_config","",1,1,1,1
+"access_jasper_parameter","jasper_parameter","model_jasper_parameter","",1,1,1,1

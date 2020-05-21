@@ -6,13 +6,16 @@
         <field name="arch" type="xml">
             <page name="security" position="before">
                 <page name="jasperserver" string="Jasper Server" attrs="{'invisible': [('report_type', '!=', 'jasperserver')]}">
-                    <group string="Parameters">
-                        <field name="jasper_url" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
-                        <field name="jasper_username" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
-                        <field name="jasper_password" password="True" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
+                    <group>
+                        <field name="jasper_server_config_id" attrs="{'required': [('report_type', '=', 'jasperserver')]}" options="{'no_create': True}"/>
                         <field name="jasper_report_path" attrs="{'required': [('report_type', '=', 'jasperserver')]}"/>
-                        <field name="parameter_name" string="Jasper Report Parameter IDS"/>
-                        <field name="criteria_field" string="SQL Primary Key"/>
+                        <field name="jasper_parameter_name"/>
+                        <field name="jasper_parameter_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
                     </group>
                 </page>
             </page>
