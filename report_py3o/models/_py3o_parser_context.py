@@ -3,10 +3,13 @@
 
 import html
 import time
+import babel
+import pytz
 import logging
 
 from base64 import b64decode
 from odoo.tools import misc, mail
+from odoo import fields
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +30,46 @@ def display_address(address_record, without_company=False):
     return address_record.display_address(without_company=without_company)
 
 
+def format_datetime(env, value, tz=False, dt_format='medium', lang_code=False):
+    """ Formats the datetime in a given format.
+        :param {str, datetime} value: naive datetime to format
+        :param {str} tz: name of the timezone
+        :param {str} dt_format: one of “full”, “long”, “medium”, or “short”,
+        or a custom date/time pattern compatible with `babel` lib
+        :param {str} lang_code: ISO code of the language to use
+
+        This is a copy of the function introduced in tools/misc in odoo 13.0
+        reference commit: ef7871826edce400884fe032366781f59aafd8a6
+    """
+    if not value:
+        return ''
+    if isinstance(value, str):
+        timestamp = fields.Datetime.from_string(value)
+    else:
+        timestamp = value
+
+    tz_name = tz or env.user.tz or 'UTC'
+    utc_datetime = pytz.utc.localize(timestamp, is_dst=False)
+    try:
+        context_tz = pytz.timezone(tz_name)
+        localized_datetime = utc_datetime.astimezone(context_tz)
+    except Exception:
+        localized_datetime = utc_datetime
+
+    lang = env['res.lang']._lang_get(
+        lang_code or env.context.get('lang') or 'en_US')
+    locale = babel.Locale.parse(lang.code)
+
+    # Babel allows to format datetime in a specific language without changing
+    # locale, So month 1 = January in English, and janvier in French
+    #     short:   1/5/16, 10:20 PM         |   5/01/16 22:20
+    #     medium:  Jan 5, 2016, 10:20:31 PM |   5 janv. 2016 22:20:31
+    # Formatting available here :
+    # http://babel.pocoo.org/en/latest/dates.html#date-fields
+    return babel.dates.format_datetime(
+        localized_datetime, dt_format, locale=locale)
+
+
 class Py3oParserContext(object):
     def __init__(self, env):
         self._env = env
@@ -39,6 +82,7 @@ class Py3oParserContext(object):
             # prefixes with o_ to avoid nameclash with default method provided
             # by py3o.template
             'o_format_date': self._format_date,
+            'o_format_datetime': self._format_datetime,
             # give access to the time lib
             'time': time,
             # keeps methods from report_sxw to ease migration
@@ -72,6 +116,12 @@ class Py3oParserContext(object):
     def _format_date(self, value, lang_code=False, date_format=False):
         return misc.format_date(
             self._env, value, lang_code=lang_code, date_format=date_format)
+
+    def _format_datetime(
+            self, value, tz=False, dt_format='short', lang_code=False):
+        return format_datetime(
+            self._env, value, tz=tz,
+            dt_format=dt_format, lang_code=lang_code)
 
     def _old_format_lang(self, value, digits=None, date=False, date_time=False,
                          grouping=True, monetary=False, dp=False,
