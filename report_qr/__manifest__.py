@@ -4,7 +4,7 @@
 {
     'name': 'Web QR Manager',
     'version': '12.0.1.0.0',
-    'author': 'Creu Blanca,Maher Jaballi '
+    'author': 'Creu Blanca,Maher'
               'Odoo Community Association (OCA)',
     'category': 'Sales',
     'website': 'https://github.com/OCA/reporting-engine',
