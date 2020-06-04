@@ -3,12 +3,12 @@
 
 {
     "name": "Key Performance Indicator",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
     "website": "http://www.savoirfairelinux.com",
     "license": "AGPL-3",
     "category": "Report",
-    "depends": ["base_external_dbsource", "web_widget_color",],
+    "depends": ["base_external_dbsource"],
     "data": [
         "security/kpi_security.xml",
         "security/ir.model.access.csv",
