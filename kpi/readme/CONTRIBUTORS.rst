@@ -5,3 +5,6 @@
 * Gervais Naoussi <gervaisnaoussi@gmail.com>
 * Iván Todorovich <ivan.todorovich@gmail.com>
 * Adrià Gil <adria.gil@eficent.com>
+* `Guadaltech <https://www.guadaltech.es>`_:
+
+  * Fernando La Chica <fernando.lachica@guadaltech.es>
