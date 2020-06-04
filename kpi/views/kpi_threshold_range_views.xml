@@ -106,7 +106,6 @@
     <record model="ir.actions.act_window" id="open_threshold_range_list">
         <field name="name">Ranges</field>
         <field name="res_model">kpi.threshold.range</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_kpi_threshold_range_tree" />
     </record>

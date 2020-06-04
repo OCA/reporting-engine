@@ -10,7 +10,6 @@ class KPIThreshold(models.Model):
     _name = "kpi.threshold"
     _description = "KPI Threshold"
 
-    @api.multi
     def _compute_is_valid_threshold(self):
         for obj in self:
             # check if ranges overlap
@@ -54,7 +53,7 @@ class KPIThreshold(models.Model):
     )
     kpi_ids = fields.One2many("kpi", "threshold_id", "KPIs")
     company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.user.company_id.id
+        "res.company", "Company", default=lambda self: self.env.company
     )
 
     @api.model
@@ -82,7 +81,6 @@ class KPIThreshold(models.Model):
                 range_obj1 = self.env["kpi.threshold.range"]
         return super(KPIThreshold, self).create(data)
 
-    @api.multi
     def get_color(self, kpi_value):
         color = "#FFFFFF"
         for obj in self:

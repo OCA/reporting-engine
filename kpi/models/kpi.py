@@ -61,13 +61,13 @@ class KPI(models.Model):
     periodicity = fields.Integer("Periodicity", default=1)
 
     periodicity_uom = fields.Selection(
-        (
+        [
             ("minute", "Minute"),
             ("hour", "Hour"),
             ("day", "Day"),
             ("week", "Week"),
             ("month", "Month"),
-        ),
+        ],
         "Periodicity UoM",
         required=True,
         default="day",
@@ -80,11 +80,11 @@ class KPI(models.Model):
         "Last execution", compute="_compute_display_last_kpi_value",
     )
     kpi_type = fields.Selection(
-        (
+        [
             ("python", "Python"),
             ("local", "SQL - Local DB"),
             ("external", "SQL - External DB"),
-        ),
+        ],
         "KPI Computation Type",
     )
 
@@ -105,10 +105,9 @@ class KPI(models.Model):
         default=True,
     )
     company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.user.company_id.id
+        "res.company", "Company", default=lambda self: self.env.company
     )
 
-    @api.multi
     def _compute_display_last_kpi_value(self):
         history_obj = self.env["kpi.history"]
         for obj in self:
@@ -123,7 +122,6 @@ class KPI(models.Model):
                 obj.color = "#FFFFFF"
                 obj.last_execution = False
 
-    @api.multi
     def _get_kpi_value(self):
         self.ensure_one()
         kpi_value = 0
@@ -155,7 +153,6 @@ class KPI(models.Model):
         res.update({"kpi_id": self.id})
         return res
 
-    @api.multi
     def compute_kpi_value(self):
         for obj in self:
             history_vals = obj._get_kpi_value()
@@ -163,7 +160,6 @@ class KPI(models.Model):
             history_obj.sudo().create(history_vals)
         return True
 
-    @api.multi
     def update_next_execution_date(self):
         for obj in self:
             if obj.periodicity_uom == "hour":
