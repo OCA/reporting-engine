@@ -11,18 +11,16 @@ class KPIHistory(models.Model):
     _description = "History of the KPI"
     _order = "date desc"
 
-    name = fields.Char('Name', size=150, required=True,
-                       default=fields.Datetime.now(),)
-    kpi_id = fields.Many2one('kpi', 'KPI', required=True)
+    name = fields.Char("Name", size=150, required=True, default=fields.Datetime.now(),)
+    kpi_id = fields.Many2one("kpi", "KPI", required=True)
     date = fields.Datetime(
-        'Execution Date',
+        "Execution Date",
         required=True,
         readonly=True,
-        default=lambda r: fields.Datetime.now()
+        default=lambda r: fields.Datetime.now(),
     )
-    value = fields.Float('Value', required=True, readonly=True)
-    color = fields.Text('Color', required=True,
-                        readonly=True, default='#FFFFFF')
+    value = fields.Float("Value", required=True, readonly=True)
+    color = fields.Text("Color", required=True, readonly=True, default="#FFFFFF")
     company_id = fields.Many2one(
-        'res.company', 'Company',
-        default=lambda self: self.env.user.company_id.id)
+        "res.company", "Company", default=lambda self: self.env.user.company_id.id
+    )
