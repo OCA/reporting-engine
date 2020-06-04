@@ -49,6 +49,15 @@ class KPIThresholdRange(models.Model):
     _name = "kpi.threshold.range"
     _description = "KPI Threshold Range"
 
+    @api.model
+    def _selection_value_type(self):
+        return [
+            ("static", "Fixed value"),
+            ("python", "Python Code"),
+            ("local", "SQL - Local DB"),
+            ("external", "SQL - External DB"),
+        ]
+
     name = fields.Char("Name", size=50, required=True)
     valid = fields.Boolean(
         string="Valid", required=True, compute="_compute_is_valid_range", default=True
@@ -57,14 +66,7 @@ class KPIThresholdRange(models.Model):
         string="Message", size=100, compute="_compute_is_valid_range"
     )
     min_type = fields.Selection(
-        (
-            ("static", "Fixed value"),
-            ("python", "Python Code"),
-            ("local", "SQL - Local DB"),
-            ("external", "SQL - Externa DB"),
-        ),
-        "Min Type",
-        required=True,
+        selection="_selection_value_type", string="Min Type", required=True
     )
     min_value = fields.Float(string="Minimum Value", compute="_compute_min_value")
     min_fixed_value = fields.Float("Minimum Fixed Value")
@@ -74,14 +76,7 @@ class KPIThresholdRange(models.Model):
         "base.external.dbsource", "External DB Source Minimum",
     )
     max_type = fields.Selection(
-        (
-            ("static", "Fixed value"),
-            ("python", "Python Code"),
-            ("local", "SQL - Local DB"),
-            ("external", "SQL - External DB"),
-        ),
-        "Max Type",
-        required=True,
+        selection="_selection_value_type", string="Max Type", required=True
     )
     max_value = fields.Float(string="Maximum Value", compute="_compute_max_value")
     max_fixed_value = fields.Float("Maximum Fixed Value")
@@ -101,10 +96,9 @@ class KPIThresholdRange(models.Model):
         "Thresholds",
     )
     company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.user.company_id.id
+        "res.company", "Company", default=lambda self: self.env.company
     )
 
-    @api.multi
     def _compute_min_value(self):
         for obj in self:
             value = None
@@ -134,7 +128,6 @@ class KPIThresholdRange(models.Model):
             obj.min_value = value
             obj.min_error = error
 
-    @api.multi
     def _compute_max_value(self):
         for obj in self:
             value = None
@@ -164,7 +157,6 @@ class KPIThresholdRange(models.Model):
             obj.max_value = value
             obj.max_error = error
 
-    @api.multi
     def _compute_is_valid_range(self):
         for obj in self:
             if obj.min_error or obj.max_error:

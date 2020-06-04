@@ -56,7 +56,6 @@
     <record model="ir.actions.act_window" id="open_threshold_list">
         <field name="name">Thresholds</field>
         <field name="res_model">kpi.threshold</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_kpi_threshold_tree" />
     </record>

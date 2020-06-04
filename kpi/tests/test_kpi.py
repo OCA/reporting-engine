@@ -68,11 +68,11 @@ class TestKPI(TransactionCase):
         )
 
         threshold1 = self.env["kpi.threshold"].create(
-            {"name": "Threshold1", "range_ids": [(6, 0, [range1.id, range2.id])],}
+            {"name": "Threshold1", "range_ids": [(6, 0, [range1.id, range2.id])]}
         )
 
         threshold2 = self.env["kpi.threshold"].create(
-            {"name": "Threshold1", "range_ids": [(6, 0, [range3.id, range2.id])],}
+            {"name": "Threshold1", "range_ids": [(6, 0, [range3.id, range2.id])]}
         )
 
         threshold3 = self.env["kpi.threshold"].create(

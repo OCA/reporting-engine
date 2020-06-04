@@ -142,7 +142,6 @@
     <record model="ir.actions.act_window" id="open_kpi_dashboard">
         <field name="name">KPI Dashboard</field>
         <field name="res_model">kpi</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
@@ -155,7 +154,6 @@
     <record model="ir.actions.act_window" id="open_kpi_list">
         <field name="name">KPI Maintenance</field>
         <field name="res_model">kpi</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
