@@ -9,5 +9,5 @@ class KPICategory(models.Model):
 
     _name = "kpi.category"
     _description = "KPI Category"
-    name = fields.Char('Name', size=50, required=True)
-    description = fields.Text('Description')
+    name = fields.Char("Name", size=50, required=True)
+    description = fields.Text("Description")
