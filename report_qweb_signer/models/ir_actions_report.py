@@ -143,7 +143,7 @@ class IrActionsReport(models.Model):
                     "The signed PDF document '%s/%s' was loaded from the "
                     "database", self.report_name, res_ids,
                 )
-                return signed_content
+                return signed_content, 'pdf'
         content, ext = super(IrActionsReport, self).render_qweb_pdf(res_ids,
                                                                     data)
         if certificate:
