@@ -6,7 +6,7 @@
 {
     "name": "Qweb PDF reports signer",
     "summary": "Sign Qweb PDFs usign a PKCS#12 certificate",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "category": "Reporting",
     "website": "https://www.github.com/reporting-engine",
     "author": "Tecnativa, "
