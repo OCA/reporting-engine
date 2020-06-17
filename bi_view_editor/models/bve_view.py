@@ -98,6 +98,19 @@ class BveView(models.Model):
         compute='_compute_users',
         store=True)
     query = fields.Text(compute='_compute_sql_query')
+    over_condition = fields.Text(
+        states={
+            'draft': [
+                ('readonly', False),
+            ],
+        },
+        readonly=True,
+        help="Condition to be inserted in the OVER part "
+             "of the ID's row_number function.\n"
+             "For instance, 'ORDER BY t1.id' would create "
+             "IDs ordered in the same way as t1's IDs; otherwise "
+             "IDs are assigned with no specific order.",
+    )
     er_diagram_image = fields.Binary(compute='_compute_er_diagram_image')
 
     _sql_constraints = [
@@ -282,14 +295,23 @@ class BveView(models.Model):
         self._cr.execute('DROP TABLE IF EXISTS %s', (AsIs(view_name), ))
 
         # create postgres view
-        self.env.cr.execute('CREATE or REPLACE VIEW %s as (%s)', (
-            AsIs(view_name), AsIs(query), ))
+        try:
+            with self.env.cr.savepoint():
+                self.env.cr.execute('CREATE or REPLACE VIEW %s as (%s)', (
+                    AsIs(view_name), AsIs(query), ))
+        except Exception as e:
+            raise UserError(
+                _("Error creating the view '{query}':\n{error}")
+                .format(
+                    query=query,
+                    error=e))
 
-    @api.depends('line_ids', 'state')
+    @api.depends('line_ids', 'state', 'over_condition')
     def _compute_sql_query(self):
         for bve_view in self:
             tables_map = {}
-            select_str = '\n CAST(row_number() OVER () as integer) AS id'
+            select_str = '\n CAST(row_number() OVER ({}) as integer) AS id' \
+                .format(bve_view.over_condition or '')
             for line in bve_view.field_ids:
                 table = line.table_alias
                 select = line.field_id.name

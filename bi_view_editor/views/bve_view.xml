@@ -85,8 +85,9 @@
                             </group>
                         </page>
                         <page string="SQL" groups="base.group_no_one">
+                            <field name="query"/>
                             <group>
-                                <field name="query" nolabel="1" />
+                                <field name="over_condition"/>
                             </group>
                         </page>
                         <page string="Security">
