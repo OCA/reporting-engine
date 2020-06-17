@@ -15,6 +15,7 @@ odoo.define("report_csv.report", function(require) {
             framework.blockUI();
             var type = "csv";
             var cloned_action = _.clone(actions);
+            var report_url = url;
 
             if (
                 _.isUndefined(cloned_action.data) ||
@@ -22,22 +23,22 @@ odoo.define("report_csv.report", function(require) {
                 (_.isObject(cloned_action.data) && _.isEmpty(cloned_action.data))
             ) {
                 if (cloned_action.context.active_ids) {
-                    url += "/" + cloned_action.context.active_ids.join(",");
+                    report_url += "/" + cloned_action.context.active_ids.join(",");
                 }
             } else {
-                url +=
+                report_url +=
                     "?options=" +
                     encodeURIComponent(JSON.stringify(cloned_action.data));
-                url +=
+                report_url +=
                     "&context=" +
                     encodeURIComponent(JSON.stringify(cloned_action.context));
             }
 
             return new Promise(function(resolve, reject) {
                 var blocked = !session.get_file({
-                    url: url,
+                    url: report_url,
                     data: {
-                        data: JSON.stringify([url, type]),
+                        data: JSON.stringify([report_url, type]),
                     },
                     success: resolve,
                     error: error => {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="report_py3o.res_users_report_py3o" model="ir.actions.report">
+        <field name="py3o_is_local_fusion" eval="1" />
+    </record>
+</odoo>
