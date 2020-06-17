@@ -89,11 +89,13 @@ msgstr "Nastanek"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_uid
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_create_uid
 msgid "Created by"
 msgstr "Ustvaril"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_create_date
 msgid "Created on"
 msgstr "Ustvarjeno"
 
@@ -175,11 +177,13 @@ msgstr "Zadnjič spremenjeno"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_write_uid
 msgid "Last Updated by"
 msgstr "Zadnji posodobil"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_write_date
 msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 

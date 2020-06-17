@@ -87,11 +87,13 @@ msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_uid
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_create_uid
 msgid "Created by"
 msgstr "建立者"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_create_date
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_create_date
 msgid "Created on"
 msgstr "建立於"
 
@@ -173,11 +175,13 @@ msgstr "最後修改:"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_uid
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_write_uid
 msgid "Last Updated by"
 msgstr "最後更新："
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_write_date
+#: model:ir.model.fields,field_description:bi_view_editor.field_x_bi_sql_view_modules_view_write_date
 msgid "Last Updated on"
 msgstr "最後更新於"
 
