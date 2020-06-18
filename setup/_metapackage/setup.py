@@ -11,6 +11,8 @@ setuptools.setup(
         'odoo13-addon-bi_sql_editor',
         'odoo13-addon-report_batch',
         'odoo13-addon-report_csv',
+        'odoo13-addon-report_py3o',
+        'odoo13-addon-report_py3o_fusion_server',
         'odoo13-addon-report_qr',
         'odoo13-addon-report_qweb_pdf_fixed_column',
         'odoo13-addon-report_xlsx',
