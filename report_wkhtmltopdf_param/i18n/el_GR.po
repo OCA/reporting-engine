@@ -45,7 +45,7 @@ msgid "Display Name"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
-#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:42
+#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
 #, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
@@ -88,7 +88,6 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Αναφορά"
 
