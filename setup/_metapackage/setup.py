@@ -15,6 +15,7 @@ setuptools.setup(
         'odoo13-addon-report_py3o_fusion_server',
         'odoo13-addon-report_qr',
         'odoo13-addon-report_qweb_pdf_fixed_column',
+        'odoo13-addon-report_wkhtmltopdf_param',
         'odoo13-addon-report_xlsx',
         'odoo13-addon-report_xlsx_helper',
         'odoo13-addon-report_xml',
