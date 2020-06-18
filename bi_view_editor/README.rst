@@ -94,6 +94,9 @@ A more advanced UI is also available under the "Details" tab. It provides extra
 possibilities for more advanced users, like to use LEFT JOIN instead of the
 default INNER JOIN.
 
+It also possible to improve the IDs generation for new views by adding an `Over Condition` in the "SQL" tab, see https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS for further details.
+For instance, an ORDER BY clause helps preventing unreliable behavior when filtering the generated views.
+
 Known issues / Roadmap
 ======================
 
