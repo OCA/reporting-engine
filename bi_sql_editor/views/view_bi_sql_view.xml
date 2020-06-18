@@ -107,7 +107,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             </group>
                         </page>
                         <page string="Action Settings">
-                            <group string="Context">
+                            <group string="Computed Context">
+                                <field name="computed_action_context" nolabel="1" colspan="4"/>
+                            </group>
+                            <group string="Custom Context">
                                 <field name="action_context" nolabel="1" colspan="4"/>
                             </group>
                         </page>
