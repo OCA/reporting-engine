@@ -8,7 +8,7 @@ from psycopg2 import ProgrammingError
 
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError
-from odoo.tools import pycompat, sql
+from odoo.tools import pycompat, safe_eval, sql
 from odoo.addons.base.models.ir_model import IrModel
 
 _logger = logging.getLogger(__name__)
@@ -120,6 +120,10 @@ class BiSQLView(models.Model):
             'sql_valid': [('readonly', False)],
         })
 
+    computed_action_context = fields.Text(
+        compute="_compute_computed_action_context",
+        string="Computed Action Context")
+
     action_context = fields.Text(
         string="Action Context", default="{}", readonly=True,
         help="Define here a context that will be used"
@@ -127,6 +131,7 @@ class BiSQLView(models.Model):
         states={
             'draft': [('readonly', False)],
             'sql_valid': [('readonly', False)],
+            'model_valid': [('readonly', False)],
         })
 
     has_group_changed = fields.Boolean(copy=False)
@@ -192,6 +197,29 @@ class BiSQLView(models.Model):
                             'Only graph, pivot or tree views are supported'))
 
     # Compute Section
+    @api.depends("bi_sql_view_field_ids.graph_type")
+    @api.multi
+    def _compute_computed_action_context(self):
+        for rec in self:
+            action = {
+                "pivot_measures": [],
+                "pivot_row_groupby": [],
+                "pivot_column_groupby": [],
+            }
+            for field in rec.bi_sql_view_field_ids.filtered(
+                    lambda x: x.graph_type == "measure"):
+                action["pivot_measures"].append(field.name)
+
+            for field in rec.bi_sql_view_field_ids.filtered(
+                    lambda x: x.graph_type == "row"):
+                action["pivot_row_groupby"].append(field.name)
+
+            for field in rec.bi_sql_view_field_ids.filtered(
+                    lambda x: x.graph_type == "col"):
+                action["pivot_column_groupby"].append(field.name)
+
+            rec.computed_action_context = str(action)
+
     @api.depends('is_materialized')
     @api.multi
     def _compute_materialized_text(self):
@@ -453,6 +481,9 @@ class BiSQLView(models.Model):
             view_id = self.pivot_view_id.id
         else:
             view_id = self.graph_view_id.id
+        action = safe_eval(self.computed_action_context)
+        for k, v in safe_eval(self.action_context).items():
+            action[k] = v
         return {
             'name': self._prepare_action_name(),
             'res_model': self.model_id.model,
@@ -460,7 +491,7 @@ class BiSQLView(models.Model):
             'view_mode': view_mode,
             'view_id': view_id,
             'search_view_id': self.search_view_id.id,
-            'context': self.action_context,
+            'context': str(action),
         }
 
     @api.multi
