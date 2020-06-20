@@ -264,6 +264,7 @@ class BiSQLView(models.Model):
                 sql_view.cron_id = self.env['ir.cron'].create(
                     sql_view._prepare_cron()).id
             sql_view.state = 'model_valid'
+        return True
 
     @api.multi
     def button_set_draft(self):
@@ -302,6 +303,7 @@ class BiSQLView(models.Model):
         self.menu_id = self.env['ir.ui.menu'].create(
             self._prepare_menu()).id
         self.write({'state': 'ui_valid'})
+        return True
 
     @api.multi
     def button_update_model_access(self):
