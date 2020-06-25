@@ -31,6 +31,7 @@ ActionManager.include({
                     report_xlsx_url,
                     cloned_action.report_type
                 ])},
+                complete: framework.unblockUI,
                 error: crash_manager.rpc_error.bind(crash_manager),
                 success: function (){
                     if(cloned_action && options && !cloned_action.dialog){
@@ -38,7 +39,6 @@ ActionManager.include({
                     }
                 }
             });
-            framework.unblockUI();
             return;
         }
         return self._super(action, options);
