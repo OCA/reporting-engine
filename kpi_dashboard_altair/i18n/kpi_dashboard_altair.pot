@@ -20,6 +20,11 @@ msgstr ""
 
 #. module: kpi_dashboard_altair
 #: selection:kpi.kpi,widget:0
+msgid "Bokeh"
+msgstr ""
+
+#. module: kpi_dashboard_altair
+#: selection:kpi.kpi,widget:0
 msgid "Graph"
 msgstr ""
 
