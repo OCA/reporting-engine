@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo12-addon-kpi',
         'odoo12-addon-kpi_dashboard',
         'odoo12-addon-kpi_dashboard_altair',
+        'odoo12-addon-kpi_dashboard_bokeh',
         'odoo12-addon-report_async',
         'odoo12-addon-report_context',
         'odoo12-addon-report_csv',
