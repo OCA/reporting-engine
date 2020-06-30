@@ -82,6 +82,11 @@ msgid "Background Color"
 msgstr ""
 
 #. module: kpi_dashboard
+#: selection:kpi.kpi,widget:0
+msgid "Bokeh"
+msgstr ""
+
+#. module: kpi_dashboard
 #: selection:ir.actions.act_window.view,view_mode:0
 #: selection:ir.ui.view,type:0
 msgid "Calendar"
