@@ -167,6 +167,7 @@ class KpiDashboardItem(models.Model):
                     "kpi_id": self.kpi_id.id,
                     "suffix": self.kpi_id.suffix or "",
                     "prefix": self.kpi_id.prefix or "",
+                    "compute_on_fly": self.kpi_id.compute_on_fly or "",
                 }
             )
             if self.kpi_id.compute_on_fly:
