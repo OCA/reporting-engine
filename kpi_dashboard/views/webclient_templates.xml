@@ -18,6 +18,7 @@
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/meter_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/graph_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/text_widget.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/field_widget.js"/>
 
             <link rel="stylesheet" type="text/scss" href="/kpi_dashboard/static/src/scss/kpi_dashboard.scss"/>
         </xpath>
