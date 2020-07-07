@@ -57,3 +57,25 @@ result['previous'] = len(model.search([('id', '!=', %s)]))
         self.assertTrue(value.get("value"))
         self.assertEqual(value.get("value"), 1)
         self.assertEqual(value.get("previous"), self.kpi.search_count([]) - 1)
+        self.assertFalse(self.kpi.history_ids)
+
+    def test_computation_history(self):
+        self.assertFalse(self.kpi.value)
+        self.kpi.store_history = True
+        self.kpi.compute()
+        self.assertTrue(self.kpi.history_ids)
+        self.assertEqual(self.kpi.value, {})
+        self.kpi.code = """
+result = {}
+result['value'] = len(model.search([('id', '=', %s)]))
+result['previous'] = len(model.search([('id', '!=', %s)]))
+        """ % (
+            self.kpi.id,
+            self.kpi.id,
+        )
+        self.kpi.compute()
+        value = self.kpi.value
+        self.assertTrue(value.get("value"))
+        self.assertEqual(value.get("value"), 1)
+        self.assertEqual(value.get("previous"), self.kpi.search_count([]) - 1)
+        self.assertTrue(self.kpi.history_ids)

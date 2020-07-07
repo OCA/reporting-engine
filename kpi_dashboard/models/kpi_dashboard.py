@@ -167,10 +167,18 @@ class KpiDashboardItem(models.Model):
                     "kpi_id": self.kpi_id.id,
                     "suffix": self.kpi_id.suffix or "",
                     "prefix": self.kpi_id.prefix or "",
-                    "value": self.kpi_id.value,
-                    "value_last_update": self.kpi_id.value_last_update,
                 }
             )
+            if self.kpi_id.compute_on_fly:
+                vals.update({
+                    "value": self.kpi_id._compute_value(),
+                    "value_last_update": fields.Datetime.now(),
+                })
+            else:
+                vals.update({
+                    "value": self.kpi_id.value,
+                    "value_last_update": self.kpi_id.value_last_update,
+                })
             if self.kpi_id.action_ids:
                 vals["actions"] = self.kpi_id.action_ids.read_dashboard()
         else:
