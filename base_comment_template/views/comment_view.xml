@@ -1,18 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <record model="ir.ui.view" id="view_base_comment_template_search">
         <field name="name">base.comment.template.search</field>
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
             <search string="Comment Templates">
-                <field name="name"/>
-                <field name="position"/>
-                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="name" />
+                <field name="position" />
+                <field name="company_id" groups="base.group_multi_company" />
             </search>
         </field>
     </record>
-
     <record model="ir.ui.view" id="view_base_comment_template_form">
         <field name="name">base.comment.template.form</field>
         <field name="model">base.comment.template</field>
@@ -20,53 +18,66 @@
             <form string="Comment Templates">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        <button
+                            name="toggle_active"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-archive"
+                        >
+                            <field
+                                name="active"
+                                widget="boolean_button"
+                                options="{&quot;terminology&quot;: &quot;archive&quot;}"
+                            />
                         </button>
                     </div>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" placeholder="Name"/>
+                            <field name="name" placeholder="Name" />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="position" widget="radio" invisible="context.get('default_position')"/>
+                            <field
+                                name="position"
+                                widget="radio"
+                                invisible="context.get('default_position')"
+                            />
                         </group>
                         <group>
-                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
                         </group>
                     </group>
                     <notebook>
                         <page name="text" string="Comment">
-                            <field name="text"/>
+                            <field name="text" />
                         </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
-
     <record model="ir.ui.view" id="view_base_comment_template_tree">
         <field name="name">account.comment.template.list</field>
         <field name="model">base.comment.template</field>
-        <field name="priority" eval="6"/>
+        <field name="priority" eval="6" />
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="position"/>
-                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="name" />
+                <field name="position" />
+                <field name="company_id" groups="base.group_multi_company" />
             </tree>
         </field>
     </record>
-
     <record model="ir.actions.act_window" id="action_base_comment_template">
         <field name="name">Comment Templates</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">base.comment.template</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_base_comment_template_tree"/>
+        <field name="view_id" ref="view_base_comment_template_tree" />
     </record>
-
 </odoo>

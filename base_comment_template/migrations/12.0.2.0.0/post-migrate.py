@@ -1,14 +1,15 @@
+import logging
+
 from odoo import tools
 
-import logging
 _logger = logging.getLogger(__name__)
 
 
 def migrate(cr, version):
 
-    _logger.debug('Migrating res.partner comment_template_id')
+    _logger.debug("Migrating res.partner comment_template_id")
 
-    if not tools.column_exists(cr, 'res_partner', 'comment_template_id'):
+    if not tools.column_exists(cr, "res_partner", "comment_template_id"):
         return
 
     cr.execute("SELECT id FROM res_company")
@@ -16,11 +17,14 @@ def migrate(cr, version):
 
     cr.execute(
         "SELECT id FROM ir_model_fields WHERE model=%s AND name=%s",
-        ('res.partner', 'property_comment_template_id'))
+        ("res.partner", "property_comment_template_id"),
+    )
     [field_id] = cr.fetchone()
 
     for company_id in company_ids:
-        cr.execute("""
+        # pylint: disable=sql-injection
+        cr.execute(
+            """
             INSERT INTO ir_property(
                 name,
                 type,
@@ -47,11 +51,12 @@ def migrate(cr, version):
                 AND res_id=CONCAT('{model},',t.id)
             )
         """.format(
-            oldfield='comment_template_id',
-            field='property_comment_template_id',
-            field_id=field_id,
-            company_id=company_id,
-            model='res.partner',
-            target_model='base.comment.template',
-            table='res_partner',
-        ))
+                oldfield="comment_template_id",
+                field="property_comment_template_id",
+                field_id=field_id,
+                company_id=company_id,
+                model="res.partner",
+                target_model="base.comment.template",
+                table="res_partner",
+            )
+        )
