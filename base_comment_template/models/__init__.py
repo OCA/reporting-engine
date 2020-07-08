@@ -1,3 +1,3 @@
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from . import comment
+from . import base_comment_template
 from . import res_partner
+from . import ir_model
