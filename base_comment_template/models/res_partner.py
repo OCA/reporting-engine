@@ -1,19 +1,14 @@
+# Copyright 2020 NextERP Romania SRL
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    property_comment_template_id = fields.Many2one(
+    base_comment_template_ids = fields.Many2many(
         comodel_name="base.comment.template",
-        string="Conditions template",
-        company_dependent=True,
+        string="Comment Templates",
+        help="Specific partner comments that can be included in reports",
     )
-
-    @api.model
-    def _commercial_fields(self):
-        res = super(ResPartner, self)._commercial_fields()
-        res += ["property_comment_template_id"]
-        return res

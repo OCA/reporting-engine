@@ -13,24 +13,30 @@ Base Comments Templates
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting-engine-lightgray.png?logo=github
+    :target: https://github.com/OCA/reporting-engine/tree/13.0/base_comment_template
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-14-0/reporting-engine-14-0-base_comment_template
+    :target: https://translation.odoo-community.org/projects/reporting-engine-13-0/reporting-engine-13-0-base_comment_template
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/143/14.0
+    :target: https://runbot.odoo-community.org/runbot/143/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
-Add a new model to define templates of comments to print on
-documents.
+**Table of contents**
 
-Two positions are available for the comments:
-* above document lines
-* below document lines
+.. contents::
+   :local:
+
+Configuration
+=============
+
+Go to *Settings > Technical > Reporting > Comment Templates* and start designing you comment templates.
+
+The template are general, and can be attached to any Model and based on some domain defined in the template.
+You can define one default template per Model and domain, which can be overwritten for any partner.
 
 This module is the base module for following modules:
 
@@ -39,10 +45,40 @@ This module is the base module for following modules:
 * invoice_comment_template
 * stock_picking_comment_template
 
-**Table of contents**
+Usage
+=====
 
-.. contents::
-   :local:
+#. Go to *Settings > Technical > Reporting > Comment Templates*.
+#. Create a new record.
+#. Define the Company the template is linked or leave default for all companies.
+#. Define the Partner the template is linked or leave default for all partners.
+#. Define the Model, Domain the template is linked.
+#. Define the Position where the template will be printed:
+
+   * above document lines
+   * below document lines
+
+You should have at least one template with Default field set, if you choose a Partner the template is deselected as a Default one.
+If you create a new template with the same configuration (Model, Domain, Position) and set it as Default, the previous one will be deselected as a default one.
+
+The template is a html field which will be rendered just a mail template, so you can use variables like ${object}, ${user}, ${ctx} to add dynamic content.
+
+Change the report related to the model from configuration and add a statement like:
+
+<p t-if="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+
+    <span t-raw="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
+
+</p>
+
+<p t-if="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+
+    <span t-raw="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
+
+</p>
+
+You should always use t-if since the method returns False if no template is found.
+
 
 Bug Tracker
 ===========
@@ -50,7 +86,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20base_comment_template%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20base_comment_template%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -77,7 +113,11 @@ Contributors
 * `Druidoo <https://www.druidoo.io>`_:
 
   * Iván Todorovich <ivan.todorovich@druidoo.io>
-* Pierre Verkest <pierreverkest84@gmail.com>
+
+* `NextERP Romania <https://www.nexterp.ro>`_:
+
+  * Fekete Mihai <feketemihai@nexterp.ro>
+
 
 Maintainers
 ~~~~~~~~~~~
@@ -92,6 +132,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/13.0/base_comment_template>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
