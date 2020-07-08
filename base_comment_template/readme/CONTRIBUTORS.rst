@@ -11,3 +11,7 @@
 
   * Iván Todorovich <ivan.todorovich@druidoo.io>
 * Pierre Verkest <pierreverkest84@gmail.com>
+
+* `NextERP Romania <https://www.nexterp.ro>`_:
+
+  * Fekete Mihai <feketemihai@nexterp.ro>
