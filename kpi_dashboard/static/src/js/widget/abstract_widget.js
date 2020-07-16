@@ -82,7 +82,10 @@ odoo.define('kpi_dashboard.AbstractWidget', function (require) {
         _onClickDirectAction: function(event) {
             event.preventDefault();
             var $data = $(event.currentTarget).closest('a');
-            return this.do_action($($data).data('id'));
+            var action = this.actions[$($data).data('id')];
+            return this.do_action(action.id, {
+                additional_context: action.context
+            });
         }
     });
 
