@@ -14,14 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_kpi.py:106
+#: code:addons/kpi_dashboard/models/kpi_kpi.py:150
 #, python-format
 msgid " or "
 msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:46
+#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:68
 #, python-format
 msgid "'%s' added to dashboard"
 msgstr ""
@@ -61,7 +61,7 @@ msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:71
+#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:72
 #, python-format
 msgid "Add to Dashboard"
 msgstr ""
@@ -120,8 +120,28 @@ msgid "Computation Method"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__compute_on_fly
+msgid "Compute On Fly"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__compute_on_fly_refresh
+msgid "Compute On Fly Refresh"
+msgstr ""
+
+#. module: kpi_dashboard
 #: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_form_view
 msgid "Compute now"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__computed_date
+msgid "Computed Date"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__computed_value
+msgid "Computed Value"
 msgstr ""
 
 #. module: kpi_dashboard
@@ -135,8 +155,13 @@ msgid "Configure Kpi"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__context
+msgid "Context"
+msgstr ""
+
+#. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:50
+#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:72
 #, python-format
 msgid "Could not add KPI dashboard to dashboard"
 msgstr ""
@@ -152,6 +177,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__create_uid
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__create_uid
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__create_uid
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__create_uid
 msgid "Created by"
 msgstr ""
 
@@ -161,6 +187,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__create_date
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__create_date
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__create_date
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__create_date
 msgid "Created on"
 msgstr ""
 
@@ -202,6 +229,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__display_name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__display_name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__display_name
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -222,7 +250,7 @@ msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:31
+#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:53
 #, python-format
 msgid "First you must create the Menu"
 msgstr ""
@@ -272,7 +300,7 @@ msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:24
+#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:25
 #, python-format
 msgid "Go to"
 msgstr ""
@@ -295,11 +323,17 @@ msgid "Groups"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__history_ids
+msgid "History"
+msgstr ""
+
+#. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__id
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__id
 msgid "ID"
 msgstr ""
 
@@ -319,6 +353,11 @@ msgid "KPI action"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model,name:kpi_dashboard.model_kpi_kpi_history
+msgid "KPI history"
+msgstr ""
+
+#. module: kpi_dashboard
 #: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_dashboard_form_view
 msgid "KPIs"
 msgstr ""
@@ -333,6 +372,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:kpi_dashboard.kpi_kpi_act_window
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__kpi_id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__kpi_id
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__kpi_id
 msgid "Kpi"
 msgstr ""
 
@@ -344,6 +384,11 @@ msgstr ""
 #. module: kpi_dashboard
 #: model:ir.actions.act_window,name:kpi_dashboard.kpi_dashboard_menu_act_window
 msgid "Kpi Dashboard Menu"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.actions.act_window,name:kpi_dashboard.kpi_kpi_history_act_window
+msgid "Kpi History"
 msgstr ""
 
 #. module: kpi_dashboard
@@ -362,6 +407,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu____last_update
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi____last_update
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action____last_update
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -371,6 +417,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__write_uid
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__write_uid
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__write_uid
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__write_uid
 msgid "Last Updated by"
 msgstr ""
 
@@ -380,12 +427,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__write_date
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__write_date
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_action__write_date
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:69
+#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:70
 #, python-format
 msgid "Main actions"
 msgstr ""
@@ -425,6 +473,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__name
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__name
 msgid "Name"
 msgstr ""
 
@@ -446,7 +495,7 @@ msgstr ""
 
 #. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:47
+#: code:addons/kpi_dashboard/static/src/js/dashboard_controller.js:69
 #, python-format
 msgid "Please refresh your browser for the changes to take effect."
 msgstr ""
@@ -462,6 +511,16 @@ msgid "QWeb"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__raw_value
+msgid "Raw Value"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_history_tree_view
+msgid "Raw value"
+msgstr ""
+
+#. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__row
 msgid "Row"
 msgstr ""
@@ -472,10 +531,26 @@ msgid "Search"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,help:kpi_dashboard.field_kpi_dashboard__compute_on_fly_refresh
+msgid "Seconds to refresh on fly elements"
+msgstr ""
+
+#. module: kpi_dashboard
 #. openerp-web
-#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:33
+#: code:addons/kpi_dashboard/static/src/xml/dashboard.xml:34
 #, python-format
 msgid "Selection"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_form_view
+msgid "Show history"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_form_view
+#: model_terms:ir.ui.view,arch_db:kpi_dashboard.kpi_kpi_history_tree_view
+msgid "Show value"
 msgstr ""
 
 #. module: kpi_dashboard
@@ -489,9 +564,24 @@ msgid "Size Y"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:121
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:135
 #, python-format
 msgid "Size Y of the widget cannot be bigger than 10"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__store_history
+msgid "Store History"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__store_history_interval
+msgid "Store History Interval"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__store_history_interval_number
+msgid "Store History Interval Number"
 msgstr ""
 
 #. module: kpi_dashboard
@@ -500,7 +590,7 @@ msgid "Suffix"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_kpi.py:108
+#: code:addons/kpi_dashboard/models/kpi_kpi.py:152
 #, python-format
 msgid "The code cannot contain the following terms: %s."
 msgstr ""
@@ -513,6 +603,7 @@ msgstr ""
 
 #. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__value
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__value
 msgid "Value"
 msgstr ""
 
@@ -534,11 +625,12 @@ msgstr ""
 
 #. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__widget
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi_history__widget
 msgid "Widget"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:142
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:156
 #, python-format
 msgid "Widget %s is bigger than expected"
 msgstr ""
@@ -559,7 +651,7 @@ msgid "Widget configuration"
 msgstr ""
 
 #. module: kpi_dashboard
-#: code:addons/kpi_dashboard/models/kpi_dashboard.py:138
+#: code:addons/kpi_dashboard/models/kpi_dashboard.py:152
 #, python-format
 msgid "Widgets cannot be crossed by other widgets"
 msgstr ""
