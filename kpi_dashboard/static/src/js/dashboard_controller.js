@@ -10,7 +10,29 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
     var DashboardController = BasicController.extend({
         custom_events: _.extend({}, BasicController.prototype.custom_events, {
             addDashboard: '_addDashboard',
+            refresh_on_fly: '_refreshOnFly',
         }),
+        _refreshOnFly: function (event) {
+            var self = this;
+            this._rpc({
+                model: this.modelName,
+                method: 'read_dashboard_on_fly',
+                args: [[this.renderer.state.res_id]],
+                context: _.extend(
+                    {},
+                    this.model.get(this.handle, {raw: true}).getContext(),
+                    {bin_size: true}
+                ),
+            }).then(function (data) {
+                _.each(data, function (item) {
+                    // We will follow the same logic used on Bus Notifications
+                    self.renderer._onNotification([[
+                        "kpi_dashboard_" + self.renderer.state.res_id,
+                        item
+                    ]])
+                });
+            });
+        },
         renderPager: function ($node, options) {
             options = _.extend({}, options, {
                 validate: this.canBeDiscarded.bind(this),

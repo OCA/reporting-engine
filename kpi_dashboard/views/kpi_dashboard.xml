@@ -54,6 +54,9 @@
                                 <group name="color">
                                     <field name="background_color" widget="color"/>
                                 </group>
+                                <group name="config">
+                                    <field name="compute_on_fly_refresh"/>
+                                </group>
                             </group>
                         </page>
                         <page name="group" string="Groups">
