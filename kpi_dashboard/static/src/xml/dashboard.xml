@@ -19,9 +19,10 @@
     </t>
     <t t-name="kpi_dashboard.ManagePanel">
         <t t-if="widget.actions" >
-            <t t-foreach="widget.actions" t-as="action">
+            <t t-foreach="widget.actions" t-as="action_id">
+                <t t-set="action" t-value="widget.actions[action_id]"/>
                 <div role="menuitem" class="">
-                    <a role="menuitem" href="#" class="direct_action" t-att-data-id="action.id" t-att-data-type="action.type">Go to <t t-esc="action.name"/></a>
+                    <a role="menuitem" href="#" class="direct_action" t-att-data-id="action_id" t-att-data-type="action.type">Go to <t t-esc="action.name"/></a>
                 </div>
             </t>
         </t>

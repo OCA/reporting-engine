@@ -187,15 +187,17 @@ class KpiKpiAction(models.Model):
                    ('ir.actions.client', 'ir.actions.client')],
         required=True,
     )
+    context = fields.Char()
 
     def read_dashboard(self):
-        result = []
+        result = {}
         for r in self:
-            result.append({
+            result[r.id] = {
                 'id': r.action.id,
                 'type': r.action._name,
-                'name': r.action.name
-            })
+                'name': r.action.name,
+                'context': safe_eval(r.context or '{}')
+            }
         return result
 
 
