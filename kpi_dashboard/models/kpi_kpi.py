@@ -6,8 +6,10 @@ from odoo.exceptions import ValidationError
 import ast
 from odoo.tools.safe_eval import safe_eval
 from odoo.addons.base.models.ir_cron import _intervalTypes
+from odoo.tools.float_utils import float_compare
 import re
 import json
+import datetime
 
 
 class KpiKpi(models.Model):
@@ -132,6 +134,8 @@ class KpiKpi(models.Model):
         return {
             "self": self,
             "model": self.browse(),
+            "datetime": datetime,
+            "float_compare": float_compare,
         }
 
     def _forbidden_code(self):
