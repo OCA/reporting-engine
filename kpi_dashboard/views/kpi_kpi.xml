@@ -104,6 +104,7 @@
                             <field name="action_ids">
                                 <tree editable="bottom">
                                     <field name="action"/>
+                                    <field name="context"/>
                                 </tree>
                             </field>
                         </page>
