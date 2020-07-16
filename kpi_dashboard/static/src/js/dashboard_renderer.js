@@ -53,7 +53,20 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
                 'bus_service', 'onNotification',
                 this, this._onNotification
             );
+            if (this.state.specialData.compute_on_fly_refresh > 0) {
+                // Setting the refresh interval
+                this.on_fly_interval = setInterval(function () {
+                    self.trigger_up('refresh_on_fly');
+                }, this.state.specialData.compute_on_fly_refresh *1000);
+            };
             return $.when();
+        },
+        on_detach_callback: function () {
+            // We want to clear the refresh interval once we exit the view
+            if (this.on_fly_interval) {
+                clearInterval(this.on_fly_interval)
+            }
+            this._super.apply(this, arguments);
         },
         _onNotification: function (notifications) {
             var self = this;
