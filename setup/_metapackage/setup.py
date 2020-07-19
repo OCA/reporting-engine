@@ -17,6 +17,7 @@ setuptools.setup(
         'odoo11-addon-report_qr',
         'odoo11-addon-report_qweb_parameter',
         'odoo11-addon-report_qweb_pdf_watermark',
+        'odoo11-addon-report_qweb_txt',
         'odoo11-addon-report_wkhtmltopdf_param',
         'odoo11-addon-report_xlsx',
         'odoo11-addon-report_xlsx_helper',
