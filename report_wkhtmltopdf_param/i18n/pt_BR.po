@@ -12,8 +12,8 @@ msgstr ""
 "POT-Creation-Date: 2017-11-22 01:45+0000\n"
 "PO-Revision-Date: 2019-11-24 19:58+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgid "Display Name"
 msgstr "Nome para Mostrar"
 
 #. module: report_wkhtmltopdf_param
-#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:42
+#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
 #, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr "Falha ao criar um PDF usando os parâmetros fornecidos."
