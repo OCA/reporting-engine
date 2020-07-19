@@ -45,7 +45,7 @@ msgid "Display Name"
 msgstr "Prikaži naziv"
 
 #. module: report_wkhtmltopdf_param
-#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:42
+#: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
 #, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
