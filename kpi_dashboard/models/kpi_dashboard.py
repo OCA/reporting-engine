@@ -16,6 +16,10 @@ class KpiDashboard(models.Model):
         "kpi.dashboard.item", inverse_name="dashboard_id", copy=True,
     )
     number_of_columns = fields.Integer(default=5, required=True)
+    compute_on_fly_refresh = fields.Integer(
+        default=0,
+        help="Seconds to refresh on fly elements"
+    )
     width = fields.Integer(compute="_compute_width")
     margin_y = fields.Integer(default=10, required=True)
     margin_x = fields.Integer(default=10, required=True)
@@ -43,6 +47,15 @@ class KpiDashboard(models.Model):
                 + rec.widget_dimension_x * rec.number_of_columns
             )
 
+    def read_dashboard_on_fly(self):
+        self.ensure_one()
+        result = []
+        for item in self.item_ids:
+            if not item.kpi_id.compute_on_fly:
+                continue
+            result.append(item._read_dashboard())
+        return result
+
     def read_dashboard(self):
         self.ensure_one()
         result = {
@@ -52,6 +65,7 @@ class KpiDashboard(models.Model):
             "max_cols": self.number_of_columns,
             "margin_x": self.margin_x,
             "margin_y": self.margin_y,
+            "compute_on_fly_refresh": self.compute_on_fly_refresh,
             "widget_dimension_x": self.widget_dimension_x,
             "widget_dimension_y": self.widget_dimension_y,
             "background_color": self.background_color,
@@ -167,10 +181,19 @@ class KpiDashboardItem(models.Model):
                     "kpi_id": self.kpi_id.id,
                     "suffix": self.kpi_id.suffix or "",
                     "prefix": self.kpi_id.prefix or "",
-                    "value": self.kpi_id.value,
-                    "value_last_update": self.kpi_id.value_last_update,
+                    "compute_on_fly": self.kpi_id.compute_on_fly,
                 }
             )
+            if self.kpi_id.compute_on_fly:
+                vals.update({
+                    "value": self.kpi_id._compute_value(),
+                    "value_last_update": fields.Datetime.now(),
+                })
+            else:
+                vals.update({
+                    "value": self.kpi_id.value,
+                    "value_last_update": self.kpi_id.value_last_update,
+                })
             if self.kpi_id.action_ids:
                 vals["actions"] = self.kpi_id.action_ids.read_dashboard()
         else:

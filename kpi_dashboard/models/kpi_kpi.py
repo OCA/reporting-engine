@@ -5,7 +5,11 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 import ast
 from odoo.tools.safe_eval import safe_eval
+from odoo.addons.base.models.ir_cron import _intervalTypes
+from odoo.tools.float_utils import float_compare
 import re
+import json
+import datetime
 
 
 class KpiKpi(models.Model):
@@ -38,6 +42,26 @@ class KpiKpi(models.Model):
         help="Actions that can be opened from the KPI"
     )
     code = fields.Text("Code")
+    store_history = fields.Boolean()
+    store_history_interval = fields.Selection(
+        selection=lambda self:
+        self.env['ir.cron']._fields['interval_type'].selection,
+    )
+    store_history_interval_number = fields.Integer()
+    compute_on_fly = fields.Boolean()
+    history_ids = fields.One2many("kpi.kpi.history", inverse_name="kpi_id")
+    computed_value = fields.Serialized(compute='_compute_computed_value')
+    computed_date = fields.Datetime(compute='_compute_computed_value')
+
+    @api.depends('value', 'value_last_update', 'compute_on_fly')
+    def _compute_computed_value(self):
+        for record in self:
+            if record.compute_on_fly:
+                record.computed_value = record._compute_value()
+                record.computed_date = fields.Datetime.now()
+            else:
+                record.computed_value = record.value
+                record.computed_date = record.value_last_update
 
     def _cron_vals(self):
         return {
@@ -55,14 +79,32 @@ class KpiKpi(models.Model):
             record._compute()
         return True
 
+    def _generate_history_vals(self, value):
+        return {
+            "kpi_id": self.id,
+            "value": value,
+            "widget": self.widget,
+        }
+
+    def _compute_value(self):
+        return getattr(self, "_compute_value_%s" % self.computation_method)()
+
     def _compute(self):
-        self.write(
-            {
-                "value": getattr(
-                    self, "_compute_value_%s" % self.computation_method
-                )()
-            }
-        )
+        value = self._compute_value()
+        self.write({"value": value})
+        if self.store_history:
+            last = self.env['kpi.kpi.history'].search([
+                ('kpi_id', '=', self.id)
+            ], limit=1)
+            if (
+                not last or
+                not self.store_history_interval or
+                last.create_date + _intervalTypes[self.store_history_interval](
+                    self.store_history_interval_number) < fields.Datetime.now()
+            ):
+                self.env["kpi.kpi.history"].create(
+                    self._generate_history_vals(value)
+                )
         notifications = []
         for dashboard_item in self.dashboard_item_ids:
             channel = "kpi_dashboard_%s" % dashboard_item.dashboard_id.id
@@ -92,6 +134,8 @@ class KpiKpi(models.Model):
         return {
             "self": self,
             "model": self.browse(),
+            "datetime": datetime,
+            "float_compare": float_compare,
         }
 
     def _forbidden_code(self):
@@ -115,6 +159,20 @@ class KpiKpi(models.Model):
         self.env.cr.execute("rollback to %s" % savepoint)
         return results.get("result", {})
 
+    def show_value(self):
+        self.ensure_one()
+        action = self.env.ref('kpi_dashboard.kpi_kpi_act_window')
+        result = action.read()[0]
+        result.update({
+            'res_id': self.id,
+            'target': 'new',
+            'view_mode': 'form',
+            'views': [(self.env.ref(
+                'kpi_dashboard.kpi_kpi_widget_form_view'
+            ).id, 'form')],
+        })
+        return result
+
 
 class KpiKpiAction(models.Model):
     _name = 'kpi.kpi.action'
@@ -129,13 +187,49 @@ class KpiKpiAction(models.Model):
                    ('ir.actions.client', 'ir.actions.client')],
         required=True,
     )
+    context = fields.Char()
 
     def read_dashboard(self):
-        result = []
+        result = {}
         for r in self:
-            result.append({
+            result[r.id] = {
                 'id': r.action.id,
                 'type': r.action._name,
-                'name': r.action.name
-            })
+                'name': r.action.name,
+                'context': safe_eval(r.context or '{}')
+            }
+        return result
+
+
+class KpiKpiHistory(models.Model):
+    _name = 'kpi.kpi.history'
+    _description = 'KPI history'
+    _order = 'create_date DESC'
+
+    kpi_id = fields.Many2one(
+        'kpi.kpi', required=True, ondelete='cascade', readonly=True
+    )
+    value = fields.Serialized(readonly=True)
+    raw_value = fields.Char(compute='_compute_raw_value')
+    name = fields.Char(related='kpi_id.name')
+    widget = fields.Selection(
+        selection=lambda self:
+        self.env['kpi.kpi']._fields['widget'].selection,
+        required=True)
+
+    @api.depends('value')
+    def _compute_raw_value(self):
+        for record in self:
+            record.raw_value = json.dumps(record.value)
+
+    def show_form(self):
+        self.ensure_one()
+        action = self.env.ref('kpi_dashboard.kpi_kpi_history_act_window')
+        result = action.read()[0]
+        result.update({
+            'res_id': self.id,
+            'target': 'new',
+            'view_mode': 'form',
+            'views': [(self.env.context.get('form_id'), 'form')],
+        })
         return result

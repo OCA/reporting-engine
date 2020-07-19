@@ -54,7 +54,7 @@ odoo.define('kpi_dashboard.AbstractWidget', function (require) {
                 return;
             this.fillWidget(values);
             var item = this.$el.find('[data-bind="value_last_update_display"]');
-            if (item && values.value_last_update !== undefined) {
+            if (item && ! values.compute_on_fly && values.value_last_update !== undefined) {
                 var value = field_utils.parse.datetime(values.value_last_update);
                 item.text(value.clone().add(
                     this.getSession().getTZOffset(value), 'minutes').format(
@@ -82,7 +82,10 @@ odoo.define('kpi_dashboard.AbstractWidget', function (require) {
         _onClickDirectAction: function(event) {
             event.preventDefault();
             var $data = $(event.currentTarget).closest('a');
-            return this.do_action($($data).data('id'));
+            var action = this.actions[$($data).data('id')];
+            return this.do_action(action.id, {
+                additional_context: action.context
+            });
         }
     });
 
