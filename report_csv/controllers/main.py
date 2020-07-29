@@ -37,8 +37,8 @@ class ReportController(report.ReportController):
                     del data['context']['lang']
                 context.update(data['context'])
 
-            csv = report.with_context(context).render_csv(
-                docids, data=data
+            csv = request.env["report"].with_context(context).get_csv(
+                docids, reportname, data=data
             )[0]
             filename = "%s.%s" % (report.name, "csv")
             if docids:

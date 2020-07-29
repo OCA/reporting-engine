@@ -9,23 +9,42 @@ from odoo.tests import common
 class TestReport(common.TransactionCase):
     def setUp(self):
         super(TestReport, self,).setUp()
-        report_object = self.env['report']
+        self.Report = self.env['report']
+        self.IrAttachment = self.env["ir.attachment"]
         self.csv_report = (
             self.env['report.report_csv.abstract']
             .with_context(active_model='res.partner')
         )
         self.report_name = 'report_csv.partner_csv'
-        self.report = report_object._get_report_from_name(self.report_name)
+        self.report = self.Report._get_report_from_name(self.report_name)
         self.docs = self.env['res.company'].search([], limit=1).partner_id
+
+    def _get_doc_attachments(self, docs):
+        return self.IrAttachment.search(
+            [("res_id", "in", docs.ids),
+             ("res_model", "=", docs._name)]
+        )
 
     def test_report(self):
         report = self.report
         self.assertEqual(report.report_type, 'csv')
-        rep = report.render_csv(self.docs.ids, {})
+        rep = self.Report.get_csv(self.docs.ids, self.report_name, {})
         str_io = StringIO(rep[0])
         dict_report = list(csv.DictReader(str_io, delimiter=';',
                                           quoting=csv.QUOTE_ALL))
         self.assertEqual(self.docs.name, dict(dict_report[0])['name'])
+
+    def test_report_save_in_attachment(self):
+        attachment = self._get_doc_attachments(self.docs)
+        self.report.attachment = "'test.csv'"
+        self.report.attachment_use = True
+        rep = self.Report.get_csv(self.docs.ids, self.report_name, {})
+        attachment = self._get_doc_attachments(self.docs) - attachment
+        self.assertTrue(attachment)
+        self.assertEqual(attachment.datas.decode("base64"), rep[0])
+        attachment.datas = "test".encode("base64")
+        rep = self.Report.get_csv(self.docs.ids, self.report_name, {})
+        self.assertEqual(rep[0], "test")
 
     def test_id_retrieval(self):
 
