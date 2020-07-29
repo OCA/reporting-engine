@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 import csv
@@ -17,7 +18,7 @@ class PartnerCSV(models.AbstractModel):
             })
 
     def csv_report_options(self):
-        res = super().csv_report_options()
+        res = super(PartnerCSV, self).csv_report_options()
         res['fieldnames'].append('name')
         res['fieldnames'].append('email')
         res['delimiter'] = ';'

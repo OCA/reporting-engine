@@ -41,7 +41,7 @@ A python class ::
 
 A report XML record ::
 
-    <report 
+    <report
         id="partner_csv"
         model="res.partner"
         string="Print to CSV"
@@ -70,6 +70,7 @@ Contributors
 ------------
 
 * Enric Tobella <etobella@creublanca.es>
+* Laurent Mignon <laurent.mignon@acsone.eu>
 
 Maintainer
 ----------

@@ -1,19 +1,15 @@
+# -*- coding: utf-8 -*-
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from io import StringIO
+import csv
+from StringIO import StringIO
 from odoo.tests import common
-import logging
-_logger = logging.getLogger(__name__)
-try:
-    import csv
-except ImportError:
-    _logger.debug('Can not import csv.')
 
 
 class TestReport(common.TransactionCase):
     def setUp(self):
-        super().setUp()
-        report_object = self.env['ir.actions.report']
+        super(TestReport, self,).setUp()
+        report_object = self.env['report']
         self.csv_report = (
             self.env['report.report_csv.abstract']
             .with_context(active_model='res.partner')
@@ -25,7 +21,7 @@ class TestReport(common.TransactionCase):
     def test_report(self):
         report = self.report
         self.assertEqual(report.report_type, 'csv')
-        rep = report.render(self.docs.ids, {})
+        rep = report.render_csv(self.docs.ids, {})
         str_io = StringIO(rep[0])
         dict_report = list(csv.DictReader(str_io, delimiter=';',
                                           quoting=csv.QUOTE_ALL))

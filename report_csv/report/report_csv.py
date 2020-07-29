@@ -1,17 +1,18 @@
+# -*- coding: utf-8 -*-
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from io import StringIO
+import logging
+from StringIO import StringIO
 
 from odoo import models
 
-import logging
-_logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 try:
-    import csv
+    import unicodecsv as csv
 except ImportError:
-    _logger.debug('Can not import csvwriter`.')
+    logger.debug('Cannot import unicodecsv')
 
 
 class ReportCSVAbstract(models.AbstractModel):
