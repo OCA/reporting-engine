@@ -11,11 +11,14 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
         init: function () {
             this._super.apply(this, arguments);
             this.dashboard_context = {};
+            this.dashboard_color_data = []
         },
         custom_events: _.extend({}, BasicController.prototype.custom_events, {
             addDashboard: '_addDashboard',
             refresh_on_fly: '_refreshOnFly',
             modify_context: '_modifyContext',
+            add_modify_color: '_addModifyColor',
+            refresh_colors: '_refreshColors',
         }),
         _refreshOnFly: function (event) {
             var self = this;
@@ -112,7 +115,34 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
                 )}),
             );
             this._refreshOnFly(event);
-        }
+            this._refreshColors();
+        },
+        _addModifyColor: function (event) {
+            this.dashboard_color_data.push([
+                event.data.element_id,
+                event.data.expression,
+            ]);
+        },
+        _refreshColors: function () {
+            var self = this;
+            var ctx = this._getContext();
+            _.each(this.dashboard_color_data, function (data) {
+                var color = py.eval(data[1], {
+                    context: _.extend(ctx, {
+                        __getattr__: function() {return false},
+
+                    }),
+                    check_if: function(args) {
+                        if (args[0].toJSON()) {
+                            return args[1];
+                        }
+                        return args[2];
+                    }
+                });
+                var $element = self.renderer.$el.find('#' + data[0]);
+                $element.css('background-color', color);
+            });
+        },
     });
 
     return DashboardController;
