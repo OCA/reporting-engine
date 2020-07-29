@@ -29,7 +29,8 @@ class KpiKpi(models.Model):
     args = fields.Char()
     kwargs = fields.Char()
     widget = fields.Selection(
-        [("number", "Number"), ("meter", "Meter"), ("graph", "Graph")],
+        [('integer', 'Integer'), ("number", "Number"), ("meter", "Meter"),
+         ('counter', 'Counter'), ("graph", "Graph")],
         required=True,
         default="number",
     )

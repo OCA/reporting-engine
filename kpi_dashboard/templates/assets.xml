@@ -14,7 +14,9 @@
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_controller.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/dashboard_view.js"/>
 
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/integer_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/number_widget.js"/>
+            <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/counter_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/meter_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/graph_widget.js"/>
             <script type="text/javascript" src="/kpi_dashboard/static/src/js/widget/text_widget.js"/>
