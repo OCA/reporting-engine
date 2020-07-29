@@ -150,6 +150,10 @@
                         <field name="modify_context_expression"
                                attrs="{'invisible': [('modify_context', '=', False)]}"
                                widget="ace" options="{'mode': 'python'}"/>
+                        <field name="modify_color"/>
+                        <field name="modify_color_expression"
+                               attrs="{'invisible': [('modify_color', '=', False)]}"
+                               widget="ace" options="{'mode': 'python'}"/>
                     </group>
                 </sheet>
                 <footer>
