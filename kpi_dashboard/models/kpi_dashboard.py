@@ -119,6 +119,8 @@ class KpiDashboardItem(models.Model):
     font_color = fields.Char()
     modify_context = fields.Boolean()
     modify_context_expression = fields.Char()
+    modify_color = fields.Boolean()
+    modify_color_expression = fields.Char()
 
     @api.depends('row', 'size_y')
     def _compute_end_row(self):
@@ -176,9 +178,12 @@ class KpiDashboardItem(models.Model):
             "color": self.color,
             "font_color": self.font_color or "000000",
             "modify_context": self.modify_context,
+            "modify_color": self.modify_color,
         }
         if self.modify_context:
             vals['modify_context_expression'] = self.modify_context_expression
+        if self.modify_color:
+            vals['modify_color_expression'] = self.modify_color_expression
         if self.kpi_id:
             vals.update(
                 {
