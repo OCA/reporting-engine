@@ -8,9 +8,14 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
     var _t = core._t;
 
     var DashboardController = BasicController.extend({
+        init: function () {
+            this._super.apply(this, arguments);
+            this.dashboard_context = {};
+        },
         custom_events: _.extend({}, BasicController.prototype.custom_events, {
             addDashboard: '_addDashboard',
             refresh_on_fly: '_refreshOnFly',
+            modify_context: '_modifyContext',
         }),
         _refreshOnFly: function (event) {
             var self = this;
@@ -18,11 +23,7 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
                 model: this.modelName,
                 method: 'read_dashboard_on_fly',
                 args: [[this.renderer.state.res_id]],
-                context: _.extend(
-                    {},
-                    this.model.get(this.handle, {raw: true}).getContext(),
-                    {bin_size: true}
-                ),
+                context: this._getContext(),
             }).then(function (data) {
                 _.each(data, function (item) {
                     // We will follow the same logic used on Bus Notifications
@@ -91,6 +92,27 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
             this._updateButtons();
             this.$buttons.appendTo($node);
         },
+        _getContext: function () {
+            return _.extend(
+                {},
+                this.model.get(this.handle, {raw: true}).getContext(),
+                {bin_size: true},
+                this.dashboard_context,
+            )
+        },
+        _modifyContext: function (event) {
+            var ctx = this._getContext();
+            this.dashboard_context = _.extend(
+                this.dashboard_context,
+                py.eval(event.data.context, {context: _.extend(
+                    ctx,
+                    {__getattr__: function() {return false}}
+                    // We need to add this in order to allow to use undefined
+                    // context items
+                )}),
+            );
+            this._refreshOnFly(event);
+        }
     });
 
     return DashboardController;

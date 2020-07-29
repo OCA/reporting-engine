@@ -16,6 +16,12 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
             var widget = new Widget(this, kpi);
             return widget;
         },
+        _onClickModifyContext: function (modify_context_expression, event) {
+            this.trigger_up('modify_context', {
+                context: modify_context_expression,
+                event: event,
+            })
+        },
         _renderView: function () {
             this.$el.html($(qweb.render('dashboard_kpi.dashboard')));
             this.$el.css(
@@ -31,6 +37,12 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
                 element.css('background-color', kpi.color);
                 element.css('color', kpi.font_color);
                 self.$grid.append(element);
+                if (kpi.modify_context) {
+                    element.on("click", self._onClickModifyContext.bind(
+                        self, kpi.modify_context_expression));
+                    element.css('cursor', 'pointer');
+                    // We want to set it show as clickable
+                }
                 self.kpi_widget[kpi.id] = self._getDashboardWidget(kpi);
                 self.kpi_widget[kpi.id].appendTo(element);
             });

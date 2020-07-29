@@ -117,6 +117,8 @@ class KpiDashboardItem(models.Model):
     size_y = fields.Integer(required=True, default=1)
     color = fields.Char()
     font_color = fields.Char()
+    modify_context = fields.Boolean()
+    modify_context_expression = fields.Char()
 
     @api.depends('row', 'size_y')
     def _compute_end_row(self):
@@ -173,7 +175,10 @@ class KpiDashboardItem(models.Model):
             "sizey": self.size_y,
             "color": self.color,
             "font_color": self.font_color or "000000",
+            "modify_context": self.modify_context,
         }
+        if self.modify_context:
+            vals['modify_context_expression'] = self.modify_context_expression
         if self.kpi_id:
             vals.update(
                 {
@@ -205,3 +210,16 @@ class KpiDashboardItem(models.Model):
         for kpi in self:
             result.append(kpi._read_dashboard())
         return result
+
+    def technical_config(self):
+        self.ensure_one()
+        return {
+            'name': self.display_name,
+            'res_model': self._name,
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'target': 'new',
+            'view_id': self.env.ref(
+                'kpi_dashboard.kpi_dashboard_item_config_form_view').id,
+        }
