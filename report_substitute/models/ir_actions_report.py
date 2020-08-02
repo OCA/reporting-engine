@@ -7,7 +7,7 @@ from odoo.tools.safe_eval import safe_eval
 
 class IrActionReport(models.Model):
 
-    _inherit = 'ir.actions.report'
+    _inherit = "ir.actions.report"
 
     action_report_substitution_rule_ids = fields.One2many(
         comodel_name="ir.actions.report.substitution.rule",
@@ -19,11 +19,9 @@ class IrActionReport(models.Model):
     def _get_substitution_report(self, model, active_ids):
         self.ensure_one()
         model = self.env[model]
-        for (
-            substitution_report_rule
-        ) in self.action_report_substitution_rule_ids:
+        for substitution_report_rule in self.action_report_substitution_rule_ids:
             domain = safe_eval(substitution_report_rule.domain)
-            domain.append(('id', 'in', active_ids))
+            domain.append(("id", "in", active_ids))
             if set(model.search(domain).ids) == set(active_ids):
                 return substitution_report_rule.substitution_action_report_id
         return False
@@ -42,8 +40,8 @@ class IrActionReport(models.Model):
 
     @api.model
     def get_substitution_report_action(self, action, active_ids):
-        if action.get('id'):
-            action_report = self.browse(action['id'])
+        if action.get("id"):
+            action_report = self.browse(action["id"])
             substitution_report = action_report
             while substitution_report:
                 action_report = substitution_report
