@@ -15,7 +15,6 @@ class IrActionReport(models.Model):
         string="Substitution Rules",
     )
 
-    @api.multi
     def _get_substitution_report(self, model, active_ids):
         self.ensure_one()
         model = self.env[model]
@@ -26,7 +25,6 @@ class IrActionReport(models.Model):
                 return substitution_report_rule.substitution_action_report_id
         return False
 
-    @api.multi
     def get_substitution_report(self, active_ids):
         self.ensure_one()
         action_report = self
@@ -51,12 +49,10 @@ class IrActionReport(models.Model):
             action.update(action_report.read()[0])
         return action
 
-    @api.multi
     def render(self, res_ids, data=None):
         substitution_report = self.get_substitution_report(res_ids)
         return super(IrActionReport, substitution_report).render(res_ids, data)
 
-    @api.noguess
     def report_action(self, docids, data=None, config=True):
         if docids:
             if isinstance(docids, models.Model):

@@ -8,7 +8,6 @@ class MailComposeMessage(models.TransientModel):
 
     _inherit = "mail.compose.message"
 
-    @api.multi
     @api.onchange("template_id")
     def onchange_template_id_wrapper(self):
         if self.template_id:
@@ -23,13 +22,12 @@ class MailComposeMessage(models.TransientModel):
                 and report_template.action_report_substitution_rule_ids
                 and active_ids
             ):
-                old_report_template = report_template
-                self.template_id.report_template = old_report_template.get_substitution_report(
-                    active_ids
-                )
+                old_template = report_template
+                updated_template = old_template.get_substitution_report(active_ids)
+                self.template_id.report_template = updated_template
                 onchange_result_with_substituted_report = (
                     super().onchange_template_id_wrapper()
                 )
-                self.template_id.report_template = old_report_template
+                self.template_id.report_template = old_template
                 return onchange_result_with_substituted_report
         return super().onchange_template_id_wrapper()

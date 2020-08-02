@@ -11,7 +11,7 @@ odoo.define("report_substitute.action_report_substitute", function(require) {
          * @override
          */
 
-        _handleAction: function(action, options) {
+        _handleAction: function(action) {
             if (
                 action.type === "ir.actions.report" &&
                 action.context.active_ids &&

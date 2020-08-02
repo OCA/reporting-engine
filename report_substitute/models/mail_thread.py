@@ -1,14 +1,13 @@
 # Copyright 2019 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import models
 
 
 class MailThread(models.AbstractModel):
 
     _inherit = "mail.thread"
 
-    @api.multi
     def message_post_with_template(self, template_id, **kwargs):
         template = self.env["mail.template"].browse(template_id)
         old_report = False
