@@ -23,7 +23,6 @@ msgstr ""
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "1-30 Days Due"
 msgid "1 - 30 Days"
 msgstr "1-30 Tage fällig"
 
@@ -36,7 +35,6 @@ msgstr ""
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "+120 Days Due"
 msgid "121 Days +"
 msgstr "+120 Tage fällig"
 
@@ -55,7 +53,6 @@ msgstr ""
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "30-60 Days Due"
 msgid "31 - 60 Days"
 msgstr "30-60 Tage fällig"
 
@@ -68,14 +65,12 @@ msgstr ""
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "60-90 Days Due"
 msgid "61 - 90 Days"
 msgstr "60-90 Tage fällig"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "90-120 Days Due"
 msgid "91 - 120 Days"
 msgstr "90-120 Tage fällig"
 
@@ -89,7 +84,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 #, fuzzy
-#| msgid "<strong>The partner doesn't have due entries.</strong>"
 msgid "<strong>Partner Code:</strong>"
 msgstr "<strong>Der Partner hat keine offenen Posten.</strong>"
 
@@ -114,14 +108,12 @@ msgstr "Aktivitätenbericht"
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_activity_statement_wizard
 #, fuzzy
-#| msgid "Customer Activity Statement Wizard"
 msgid "Activity Statement Wizard"
 msgstr "Assistent zum Kundenaktivitätsnachweis"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 #, fuzzy
-#| msgid "Activity Statement between"
 msgid "Activity Statements show all transactions between two dates."
 msgstr "Aktivitätenbericht zwischen"
 
@@ -157,10 +149,6 @@ msgstr "Fälligkeiten Bericht zu"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 #, fuzzy
-#| msgid ""
-#| "Aging details can be shown in the report, expressed in aging         "
-#| "buckets (30 days due, ...), so the customer can review how much is open, "
-#| "due or overdue."
 msgid ""
 "Aging details can be shown in the report, expressed in aging         "
 "buckets, so the partner can review how much is open, due or overdue."
@@ -217,7 +205,6 @@ msgstr "Angelegt am"
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, fuzzy, python-format
-#| msgid "Current Due"
 msgid "Current"
 msgstr "Aktuell fällig"
 
@@ -265,14 +252,12 @@ msgstr "Unterdrücke Partner ohne fällige Posten"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 #, fuzzy
-#| msgid "Date"
 msgid "Due Date"
 msgstr "Datum"
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_activity_statement
 #, fuzzy
-#| msgid "Activity Statement"
 msgid "Enable OCA Activity Statements"
 msgstr "Aktivitätenbericht"
 
@@ -298,7 +283,6 @@ msgstr ""
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_filter_partners_non_due
 #, fuzzy
-#| msgid "Don't show partners with no due entries"
 msgid "Exclude partners with no due entries"
 msgstr "Unterdrücke Partner ohne fällige Posten"
 
@@ -362,7 +346,6 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 #, fuzzy
-#| msgid "Amount"
 msgid "Open Amount"
 msgstr "Betrag"
 
@@ -374,14 +357,12 @@ msgstr ""
 #. module: partner_statement
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement
 #, fuzzy
-#| msgid "Activity Statement"
 msgid "Outstanding Statement"
 msgstr "Aktivitätenbericht"
 
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_outstanding_statement_wizard
 #, fuzzy
-#| msgid "Customer Activity Statement Wizard"
 msgid "Outstanding Statement Wizard"
 msgstr "Assistent zum Kundenaktivitätsnachweis"
 
@@ -394,7 +375,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
 #: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
 #, fuzzy
-#| msgid "Customer Activity Statement"
 msgid "Partner Activity Statement"
 msgstr "Kundenaktivitätsnachweis"
 
@@ -419,7 +399,6 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 #, fuzzy
-#| msgid "Customer Activity Statement"
 msgid "Please set defaults under Activity Statements."
 msgstr "Kundenaktivitätsnachweis"
 
@@ -442,7 +421,6 @@ msgstr "Referenznummer"
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__default_show_aging_buckets
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__show_aging_buckets
 #, fuzzy
-#| msgid "Include Aging Buckets"
 msgid "Show Aging Buckets"
 msgstr "Schliesse Altersgruppen ein"
 
@@ -459,7 +437,6 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #, fuzzy
-#| msgid "Activity Statement between"
 msgid "Statement between"
 msgstr "Aktivitätenbericht zwischen"
 
@@ -467,14 +444,12 @@ msgstr "Aktivitätenbericht zwischen"
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 #, fuzzy
-#| msgid "Statement Action to PDF"
 msgid "Statement of Account"
 msgstr "Berichtsaktion zu PDF"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 #, fuzzy
-#| msgid "Statement Action to PDF"
 msgid "Statement up to"
 msgstr "Berichtsaktion zu PDF"
 
@@ -486,13 +461,6 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
 #, fuzzy
-#| msgid ""
-#| "The activity statement provides details of all activity on         the "
-#| "customer receivables between two selected dates. This includes all "
-#| "invoices,         refunds and payments. Any outstanding balance dated "
-#| "prior to the chosen statement         period will appear as a forward "
-#| "balance at the top of the statement. The list is         displayed in "
-#| "chronological order and is split by currencies."
 msgid ""
 "The activity statement provides details of all activity "
 "on                     a partner's receivables and payables between two "
@@ -512,13 +480,6 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
 #, fuzzy
-#| msgid ""
-#| "The activity statement provides details of all activity on         the "
-#| "customer receivables between two selected dates. This includes all "
-#| "invoices,         refunds and payments. Any outstanding balance dated "
-#| "prior to the chosen statement         period will appear as a forward "
-#| "balance at the top of the statement. The list is         displayed in "
-#| "chronological order and is split by currencies."
 msgid ""
 "The outstanding statement provides details of all partner's "
 "outstanding         receivables and payables up to a particular date. This "
@@ -542,7 +503,6 @@ msgstr ""
 #. module: partner_statement
 #: model:res.groups,name:partner_statement.group_activity_statement
 #, fuzzy
-#| msgid "Activity Statement"
 msgid "Use activity statements"
 msgstr "Aktivitätenbericht"
 
