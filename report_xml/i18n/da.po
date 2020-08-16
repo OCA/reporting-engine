@@ -41,14 +41,12 @@ msgstr ""
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Rapport"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
 #, fuzzy
-#| msgid "Report"
 msgid "Report Type"
 msgstr "Rapport"
 
