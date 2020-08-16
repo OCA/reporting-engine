@@ -66,7 +66,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:base_comment_template.field_res_partner__property_comment_template_id
 #: model:ir.model.fields,field_description:base_comment_template.field_res_users__property_comment_template_id
 #, fuzzy
-#| msgid "Comment Templates"
 msgid "Conditions template"
 msgstr "Modelos de comentarios"
 
