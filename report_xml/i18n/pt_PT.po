@@ -72,14 +72,12 @@ msgstr ""
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Relatório"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
 #, fuzzy
-#| msgid "Report"
 msgid "Report Type"
 msgstr "Relatório"
 
@@ -115,7 +113,6 @@ msgstr ""
 #. module: report_xml
 #: model_terms:ir.ui.view,arch_db:report_xml.ir_actions_report_view_form_report_xml
 #, fuzzy
-#| msgid "Report"
 msgid "XML Rreport Settings"
 msgstr "Relatório"
 
