@@ -83,7 +83,6 @@ msgstr "Verfügbar"
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
 #, fuzzy
-#| msgid "Bi SQL View Field"
 msgid "BI SQL View"
 msgstr "Bi SQL Ansichtsfeld"
 
