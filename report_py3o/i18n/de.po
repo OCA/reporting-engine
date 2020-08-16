@@ -88,7 +88,6 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
 #, fuzzy
-#| msgid "ir.actions.report.xml"
 msgid "Ir Actions Report"
 msgstr "ir.actions.report.xml"
 
@@ -236,7 +235,6 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Bericht"
 
@@ -248,7 +246,6 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
 #, fuzzy
-#| msgid "Report"
 msgid "Report Type"
 msgstr "Bericht"
 

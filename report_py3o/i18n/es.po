@@ -91,7 +91,6 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
 #, fuzzy
-#| msgid "Ir actions report xml id"
 msgid "Ir Actions Report"
 msgstr "Ir a los informes de acciones xml id"
 
@@ -234,14 +233,12 @@ msgstr "Modelos Py3o"
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
 #, fuzzy
-#| msgid "Py3o Templates"
 msgid "Py3o template"
 msgstr "Modelos Py3o"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Informe"
 
@@ -253,7 +250,6 @@ msgstr "Reporte de Py30"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
 #, fuzzy
-#| msgid "Report Py30"
 msgid "Report Type"
 msgstr "Reporte de Py30"
 
