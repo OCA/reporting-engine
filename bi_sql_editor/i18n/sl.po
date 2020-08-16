@@ -51,7 +51,6 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 #, fuzzy
-#| msgid "Selection Options"
 msgid "Action Settings"
 msgstr "Opcije izbire"
 
@@ -81,7 +80,6 @@ msgstr "Na voljo"
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
 #, fuzzy
-#| msgid "SQL Fields"
 msgid "Bi SQL View Field"
 msgstr "SQL polja"
 
