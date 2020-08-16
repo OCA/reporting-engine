@@ -88,7 +88,6 @@ msgstr ""
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Iforme"
 
