@@ -164,14 +164,12 @@ msgstr "Putanja do datoteke za zaporkom certifikata"
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Izvještaj"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report_certificate
 #, fuzzy
-#| msgid "report.certificate"
 msgid "Report Certificate"
 msgstr "report.certificate"
 
