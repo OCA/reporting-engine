@@ -127,7 +127,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
 #, fuzzy
-#| msgid "Created on"
 msgid "Create PDF Form"
 msgstr "Date"
 
@@ -526,7 +525,6 @@ msgstr "Configuration des serveurs Py3o"
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
 #, fuzzy
-#| msgid "Py3o Servers"
 msgid "Py3o server"
 msgstr "Serveurs Py3o"
 
@@ -660,9 +658,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:21
 #, fuzzy, python-format
-#| msgid ""
-#| "Can not use not native format in local fusion. Please specify a Fusion "
-#| "Server"
 msgid ""
 "You can not use remote fusion without Fusion server. Please specify a Fusion "
 "Server"

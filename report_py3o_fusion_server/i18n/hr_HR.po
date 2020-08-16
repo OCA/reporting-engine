@@ -129,7 +129,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
 #, fuzzy
-#| msgid "Created on"
 msgid "Create PDF Form"
 msgstr "Kreirano"
 
@@ -524,7 +523,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
 #, fuzzy
-#| msgid "py3o.server"
 msgid "Py3o server"
 msgstr "py3o.server"
 

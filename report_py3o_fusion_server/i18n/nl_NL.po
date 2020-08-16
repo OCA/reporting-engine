@@ -127,7 +127,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
 #, fuzzy
-#| msgid "Created on"
 msgid "Create PDF Form"
 msgstr "Aangemaakt op"
 
@@ -522,7 +521,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
 #, fuzzy
-#| msgid "Py3o Servers"
 msgid "Py3o server"
 msgstr "Py3o Servers"
 
