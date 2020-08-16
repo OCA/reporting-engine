@@ -33,7 +33,6 @@ msgstr ""
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
 #, fuzzy
-#| msgid "Report"
 msgid "Report Action"
 msgstr "Rapport"
 
