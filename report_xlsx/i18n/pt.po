@@ -59,7 +59,6 @@ msgstr "Última Modificação em"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 #, fuzzy
-#| msgid "Abstract XLSX Report"
 msgid "Partner XLSX Report"
 msgstr "Relatório XLSX Abstrato"
 
