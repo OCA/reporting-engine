@@ -131,14 +131,12 @@ msgstr "Vir zunanje podatkovne baze"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Maximum"
 msgstr "Vir zunanje podatkovne baze"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Minimum"
 msgstr "Vir zunanje podatkovne baze"
 
@@ -306,7 +304,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Maksimum"
 
@@ -318,7 +315,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Maksimum"
 
@@ -346,7 +342,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Minimum"
 
@@ -358,7 +353,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Minimum"
 

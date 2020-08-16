@@ -301,7 +301,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Massimo"
 
@@ -313,7 +312,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Massimo"
 
@@ -341,7 +339,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Minimo"
 
@@ -353,7 +350,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Minimo"
 

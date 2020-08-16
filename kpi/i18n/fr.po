@@ -130,14 +130,12 @@ msgstr "Source de données externe"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Maximum"
 msgstr "Source de données externe"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Minimum"
 msgstr "Source de données externe"
 
@@ -201,7 +199,6 @@ msgstr "Type de calcul de l'ICP"
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_dashboard
 #, fuzzy
-#| msgid "KPI Threshold"
 msgid "KPI Dashboard"
 msgstr "Seuil de l'ICP"
 
@@ -276,7 +273,6 @@ msgstr "Dernière mise à jour le"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__last_execution
 #, fuzzy
-#| msgid "Next execution date"
 msgid "Last execution"
 msgstr "Prochaine date d'exécution"
 
@@ -309,21 +305,18 @@ msgstr "Code de calcul du maximum"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Maximum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Maximum Fixed Value"
 msgstr "Valeur fixe"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Maximum"
 
@@ -351,21 +344,18 @@ msgstr "Code de calcul du minimum"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Minimum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Minimum Fixed Value"
 msgstr "Valeur fixe"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Minimum"
 

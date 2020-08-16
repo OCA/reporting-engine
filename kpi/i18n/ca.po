@@ -130,14 +130,12 @@ msgstr "Origen extern de la BD "
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Maximum"
 msgstr "Origen extern de la BD "
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Minimum"
 msgstr "Origen extern de la BD "
 

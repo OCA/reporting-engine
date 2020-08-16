@@ -306,7 +306,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Maximum Fixed Value"
 msgstr "Valor fixo"
 
@@ -344,7 +343,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Minimum Fixed Value"
 msgstr "Valor fixo"
 

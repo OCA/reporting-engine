@@ -130,14 +130,12 @@ msgstr "Fuente BD externa"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Maximum"
 msgstr "Fuente BD externa"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Minimum"
 msgstr "Fuente BD externa"
 
@@ -305,21 +303,18 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Máximo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Maximum Fixed Value"
 msgstr "Valor fijo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Máximo"
 
@@ -347,21 +342,18 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Mínimo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_fixed_value
 #, fuzzy
-#| msgid "Fixed value"
 msgid "Minimum Fixed Value"
 msgstr "Valor fijo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Mínimo"
 
