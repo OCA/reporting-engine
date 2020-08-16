@@ -127,7 +127,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
 #, fuzzy
-#| msgid "Created on"
 msgid "Create PDF Form"
 msgstr "创建时间"
 
