@@ -21,7 +21,6 @@ msgstr ""
 #. module: report_xml
 #: model:ir.actions.report,print_report_name:report_xml.demo_xml_report
 #, fuzzy
-#| msgid "Demo xml report"
 msgid "'Demo xml report'"
 msgstr "Rapport xml de démo"
 
