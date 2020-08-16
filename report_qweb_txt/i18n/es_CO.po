@@ -20,21 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_qweb_txt
-#: model:ir.actions.report.xml,name:report_qweb_txt.res_users_csv
+#: model:ir.actions.report,name:report_qweb_txt.res_users_csv
 msgid "CSV List"
 msgstr ""
 
 #. module: report_qweb_txt
-#: model:ir.model,name:report_qweb_txt.model_report
-msgid "Report"
-msgstr "Iforme"
-
-#. module: report_qweb_txt
-#: model:ir.model,name:report_qweb_txt.model_ir_actions_report_xml
-msgid "ir.actions.report.xml"
+#: model:ir.model,name:report_qweb_txt.model_ir_actions_report
+msgid "ir.actions.report"
 msgstr ""
 
 #. module: report_qweb_txt
 #: model:ir.ui.view,arch_db:report_qweb_txt.report_res_users_csv
 msgid "name,login,last_login_date,lang"
 msgstr ""
+
+#~ msgid "Report"
+#~ msgstr "Iforme"
