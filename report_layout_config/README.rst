@@ -25,8 +25,8 @@ Report layout configuration
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module provides new report template.
-With possibility to add image to replace header and footer.
+This module provides new report template
+with possibility to add image to replace header and footer.
 
 **Table of contents**
 
