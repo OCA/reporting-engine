@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="external_layout_images_template"
+        primary="True"
+        inherit_id="web.external_layout_standard"
+    >
+        <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
+            <div class="header">
+                <div class="row">
+                    <div class="col-3 mb4">
+                        <img
+                            t-if="company.full_header_img"
+                            t-att-src="image_data_uri(company.full_header_img)"
+                            style="max-height: 60px;"
+                            alt="Logo"
+                        />
+                    </div>
+                    <div
+                        class="col-9 text-right"
+                        style="margin-top:22px;"
+                        t-field="company.report_header"
+                        name="report_header"
+                    />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+            <div class="footer o_standard_footer">
+                <div class="text-center">
+                    <img
+                        t-if="company.full_footer_img"
+                        t-att-src="image_data_uri(company.full_footer_img)"
+                        style="max-width:500px;"
+                        alt="Footer logo"
+                    />
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+            Page: <span class="page" /> / <span class="topage" />
+          </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="styles_company_report" inherit_id="web.styles_company_report">
+        <xpath expr="//t[contains(@t-if, 'layout')]" position="after">
+            <t
+                t-elif="layout == 'report_layout_config.external_layout_images_template'"
+            >
+            &amp;.o_report_layout_standard {
+                h2 {
+                    color: <t t-esc='primary' />;
+                }
+                #informations strong {
+                    color: <t t-esc='secondary' />;
+                }
+                #total strong{
+                    color: <t t-esc='primary' />;
+                }
+                table {
+                    thead {
+                        color: <t t-esc='secondary' />;
+                    }
+                }
+            }
+        </t>
+        </xpath>
+    </template>
+    <template id="header_image">
+        <div>
+            <img
+                t-if="company and company.full_header_img"
+                t-att-src="image_data_uri(company.full_header_img)"
+                style="max-height: 60px;"
+                alt="Logo"
+            />
+        </div>
+    </template>
+    <template id="footer_image">
+        <div>
+            <img
+                t-if="company and company.full_footer_img"
+                t-att-src="image_data_uri(company.full_footer_img)"
+                style="max-width:420px;"
+                alt="Footer logo"
+            />
+        </div>
+    </template>
+    <!-- Same as odoo/src/odoo/addons/base/wizard/base_document_layout_views.xml -->
+    <!-- the footer and the t-if for other template color was removed -->
+    <!-- this template is used by the BaseDocumentLayout wizard to display a live preview of a dummy report -->
+    <template
+        id="layout_preview"
+        name="layout preview"
+        primary="True"
+        inherit_id="base.layout_preview"
+    >
+        <!-- compute some layout specific variables -->
+        <xpath expr="//div[hasclass('header')]" position="before">
+            <t t-if="company.full_header_img">
+                <t t-call="report_layout_config.header_image" />
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('text-center')]" position="replace">
+            <t t-if="company.full_footer_img">
+                <t t-call="report_layout_config.footer_image" />
+            </t>
+        </xpath>
+    </template>
+</odoo>
