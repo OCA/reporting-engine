@@ -34,11 +34,6 @@ msgid "PDF"
 msgstr ""
 
 #. module: report_xml
-#: selection:ir.actions.report,report_type:0
-msgid "Py3o"
-msgstr ""
-
-#. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
 msgid "Report Action"
 msgstr ""
@@ -75,6 +70,11 @@ msgstr ""
 #. module: report_xml
 #: selection:ir.actions.report,report_type:0
 msgid "csv"
+msgstr ""
+
+#. module: report_xml
+#: selection:ir.actions.report,report_type:0
+msgid "py3o"
 msgstr ""
 
 #~ msgid "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;"
