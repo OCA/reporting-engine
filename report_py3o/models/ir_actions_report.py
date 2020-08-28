@@ -70,7 +70,6 @@ class IrActionsReport(models.Model):
             "it should be a relative path to root of YOUR module "
             "or an absolute path on your server."
         ))
-    report_type = fields.Selection(selection_add=[('py3o', "Py3o")])
     py3o_multi_in_one = fields.Boolean(
         string='Multiple Records in a Single Report',
         help="If you execute a report on several records, "
