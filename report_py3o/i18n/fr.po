@@ -221,7 +221,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: selection:ir.actions.report,report_type:0
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr "Py3o"
@@ -284,7 +283,7 @@ msgid "The implementer module that provides this report"
 msgstr "The implementer module that provides this report"
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report.py:142
+#: code:addons/report_py3o/models/ir_actions_report.py:141
 #, python-format
 msgid ""
 "The libreoffice runtime is required to genereate the py3o report '%s' but is "
@@ -316,6 +315,11 @@ msgstr ""
 #. module: report_py3o
 #: selection:ir.actions.report,report_type:0
 msgid "csv"
+msgstr ""
+
+#. module: report_py3o
+#: selection:ir.actions.report,report_type:0
+msgid "py3o"
 msgstr ""
 
 #~ msgid "ir.actions.report.xml"
