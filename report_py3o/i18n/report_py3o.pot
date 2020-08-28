@@ -201,7 +201,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: selection:ir.actions.report,report_type:0
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr ""
@@ -261,7 +260,7 @@ msgid "The implementer module that provides this report"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report.py:142
+#: code:addons/report_py3o/models/ir_actions_report.py:141
 #, python-format
 msgid "The libreoffice runtime is required to genereate the py3o report '%s' but is not found into the bin path. You must install the libreoffice runtime on the server. If the runtime is already installed and is not found by Odoo, you can provide the full path to the runtime by setting the key 'py3o.conversion_command' into the configuration parameters."
 msgstr ""
@@ -284,5 +283,10 @@ msgstr ""
 #. module: report_py3o
 #: selection:ir.actions.report,report_type:0
 msgid "csv"
+msgstr ""
+
+#. module: report_py3o
+#: selection:ir.actions.report,report_type:0
+msgid "py3o"
 msgstr ""
 
