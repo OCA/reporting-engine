@@ -65,11 +65,6 @@ msgid "Print to XLSX"
 msgstr ""
 
 #. module: report_xlsx
-#: selection:ir.actions.report,report_type:0
-msgid "Py3o"
-msgstr ""
-
-#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
 msgstr ""
@@ -109,6 +104,11 @@ msgstr ""
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "csv"
+msgstr ""
+
+#. module: report_xlsx
+#: selection:ir.actions.report,report_type:0
+msgid "py3o"
 msgstr ""
 
 #. module: report_xlsx
