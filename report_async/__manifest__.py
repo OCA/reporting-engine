@@ -3,7 +3,7 @@
 {
     "name": "Report Async",
     "summary": "Central place to run reports live or async",
-    "version": "12.0.1.0.1",
+    "version": "13.0.1.0.0",
     "author": "Ecosoft, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/reporting-engine",

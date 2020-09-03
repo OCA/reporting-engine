@@ -67,7 +67,6 @@ class ReportAsync(models.Model):
         help="List all files created by this report background process",
     )
 
-    @api.multi
     def _compute_job(self):
         for rec in self:
             rec.job_ids = (
@@ -84,7 +83,6 @@ class ReportAsync(models.Model):
             rec.job_status = rec.job_ids[0].sudo().state if rec.job_ids else False
             rec.job_info = rec.job_ids[0].sudo().exc_info if rec.job_ids else False
 
-    @api.multi
     def _compute_file(self):
         files = self.env["ir.attachment"].search(
             [
@@ -106,7 +104,6 @@ class ReportAsync(models.Model):
         result["context"] = ctx
         return result
 
-    @api.multi
     def run_async(self):
         self.ensure_one()
         if not self.allow_async:
@@ -118,7 +115,6 @@ class ReportAsync(models.Model):
         result["context"] = ctx
         return result
 
-    @api.multi
     def view_files(self):
         self.ensure_one()
         action = self.env.ref("report_async.action_view_files")
@@ -126,7 +122,6 @@ class ReportAsync(models.Model):
         result["domain"] = [("id", "in", self.file_ids.ids)]
         return result
 
-    @api.multi
     def view_jobs(self):
         self.ensure_one()
         action = self.env.ref("queue_job.action_queue_job")
@@ -152,7 +147,6 @@ class ReportAsync(models.Model):
                 {
                     "name": out_name,
                     "datas": out_file,
-                    "datas_fname": out_name,
                     "type": "binary",
                     "res_model": "report.async",
                     "res_id": self.id,

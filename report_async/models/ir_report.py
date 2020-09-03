@@ -1,7 +1,7 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
-from odoo import api, models
+from odoo import models
 
 # Define all supported report_type
 REPORT_TYPES = ["qweb-pdf", "qweb-text", "qweb-xml", "csv", "excel", "xlsx"]
@@ -10,7 +10,6 @@ REPORT_TYPES = ["qweb-pdf", "qweb-text", "qweb-xml", "csv", "excel", "xlsx"]
 class Report(models.Model):
     _inherit = "ir.actions.report"
 
-    @api.noguess
     def report_action(self, docids, data=None, config=True):
         res = super(Report, self).report_action(docids, data=data, config=config)
         if res["context"].get("async_process", False):

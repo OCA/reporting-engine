@@ -31,7 +31,6 @@
     <record id="action_print_report_wizard" model="ir.actions.act_window">
         <field name="name">Print Document</field>
         <field name="res_model">print.report.wizard</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

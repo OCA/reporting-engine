@@ -36,7 +36,6 @@ class PrintReportWizard(models.TransientModel):
             domain = [("model", "=", self.reference._name)]
         return {"domain": {"action_report_id": domain}}
 
-    @api.multi
     def print_report(self):
         self.ensure_one()
         return self.action_report_id.report_action(self.reference, config=False)
