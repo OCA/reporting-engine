@@ -1,3 +1,4 @@
 py3o.template
 py3o.formats
 genshi>=0.7
+fdfgen
