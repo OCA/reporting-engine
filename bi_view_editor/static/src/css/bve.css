@@ -1,9 +1,10 @@
 .oe_form_field_bi_editor {
     /*box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);*/
-    border: 1px solid #DDDDDD;
+    border: 1px solid #dddddd;
 }
 
-.oe_form_field_bi_editor .header, .oe_form_field_bi_editor .footer {
+.oe_form_field_bi_editor .header,
+.oe_form_field_bi_editor .footer {
     width: 100%;
     height: 50px;
     background-color: #7c7bad;
@@ -11,11 +12,12 @@
 }
 
 .oe_form_field_bi_editor .footer {
-    background-color: #FFF;
-    border-top: 1px solid #DDDDDD;
+    background-color: #fff;
+    border-top: 1px solid #dddddd;
 }
 
-.oe_form_field_bi_editor .header .left, .oe_form_field_bi_editor .footer .left {
+.oe_form_field_bi_editor .header .left,
+.oe_form_field_bi_editor .footer .left {
     width: 75%;
     float: left;
     line-height: 50px;
@@ -23,7 +25,8 @@
     padding-top: 13px;
 }
 
-.oe_form_field_bi_editor .header .right, .oe_form_field_bi_editor .footer .right {
+.oe_form_field_bi_editor .header .right,
+.oe_form_field_bi_editor .footer .right {
     width: 25%;
     float: right;
     padding-top: 13px;
@@ -39,7 +42,7 @@
     float: left;
     width: 30%;
     box-sizing: border-box;
-    border-right: 1px solid #DDDDDD;
+    border-right: 1px solid #dddddd;
 }
 
 .oe_form_field_bi_editor .body .left .search-bar {
@@ -84,19 +87,19 @@
 }
 
 .oe_form_field_bi_editor .body .left .class-list.readonly {
-    opacity: .35;
+    opacity: 0.35;
 }
 
 .oe_form_field_bi_editor .body .left .class-list .class.readonly {
     cursor: default;
 }
 
-.oe_form_field_bi_editor .body .left  .class-list .class:hover {
-    background-color: #7C7BAD;
-    color: #FFF;
+.oe_form_field_bi_editor .body .left .class-list .class:hover {
+    background-color: #7c7bad;
+    color: #fff;
 }
 
-.oe_form_field_bi_editor .body .left  .class-list .field {
+.oe_form_field_bi_editor .body .left .class-list .field {
     font-weight: normal;
     padding-left: 20px;
     padding-top: 3px;
@@ -113,12 +116,12 @@
     overflow-x: hidden;
 }
 
-.oe_form_field_bi_editor .body .right .field-list { 
+.oe_form_field_bi_editor .body .right .field-list {
     width: 100%;
 }
 
-.oe_form_field_bi_editor .body .right .field-list th, 
-.oe_form_field_bi_editor .body .right .field-list td { 
+.oe_form_field_bi_editor .body .right .field-list th,
+.oe_form_field_bi_editor .body .right .field-list td {
     padding-left: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -130,26 +133,27 @@
     background-color: transparent;
     border: none;
     background-image: none;
-	padding: 0;
-	cursor: pointer;
+    padding: 0;
+    cursor: pointer;
 }
 
 .oe_form_field_bi_editor .body .right .field-list tbody tr:hover {
-    background-color: #DDD;
+    background-color: #ddd;
 }
 
 .oe_form_field_bi_editor .body .right .field-list tbody tr.join-node {
-    background-color: #D2D2FF;
+    background-color: #d2d2ff;
     text-align: center;
-    border-top: 1px solid #DDDDDD;
+    border-top: 1px solid #dddddd;
 }
 
-.oe_form_field_bi_editor .context-menu, .oe_form_field_bi_editor .context-menu ul {
+.oe_form_field_bi_editor .context-menu,
+.oe_form_field_bi_editor .context-menu ul {
     z-index: 1000;
     position: fixed;
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid #DDDDDD;
+    border: 1px solid #dddddd;
     list-style-type: none;
     padding: 0;
     width: 175px;
@@ -174,8 +178,8 @@
 }
 
 .oe_form_field_bi_editor .context-menu li:hover {
-    background-color: #7C7BAD;
-    color: #FFF;
+    background-color: #7c7bad;
+    color: #fff;
 }
 
 .oe_form_field_bi_editor .context-menu ul {
