@@ -9,9 +9,9 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "development_status": "Beta",
-    "depends": ["web",],
+    "depends": ["web"],
     "data": [
         "security/ir.model.access.csv",
         "security/rules.xml",
@@ -19,7 +19,6 @@
         "views/bve_view.xml",
     ],
     "qweb": ["static/src/xml/bi_view_editor.xml"],
-    "post_load": "post_load",
     "uninstall_hook": "uninstall_hook",
     "installable": True,
 }

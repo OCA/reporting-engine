@@ -30,24 +30,27 @@ odoo.define("bi_view_editor", function(require) {
 
             // Init FieldList
             this.field_list = new FieldList(this);
-            this.field_list.appendTo(this.$(".body > .right"));
-            this.field_list.on("removed", this, this.fieldListRemoved);
-            this.field_list.on("updated", this, this.fieldListChanged);
+            this.field_list.appendTo(this.$(".body > .right")).then(
+                function() {
+                    this.field_list.on("removed", this, this.fieldListRemoved);
+                    this.field_list.on("updated", this, this.fieldListChanged);
+                    this.$el.find(".body > .right").droppable({
+                        accept: "div.class-list div.field",
+                        drop: function(event, ui) {
+                            self.addField(_.extend({}, ui.draggable.data("field")));
+                            ui.draggable.draggable("option", "revert", false);
+                        },
+                    });
 
-            this.$el.find(".body > .right").droppable({
-                accept: "div.class-list div.field",
-                drop: function(event, ui) {
-                    self.addField(_.extend({}, ui.draggable.data("field")));
-                    ui.draggable.draggable("option", "revert", false);
-                },
-            });
+                    this.on("change:effective_readonly", this, function() {
+                        this.updateMode();
+                    });
+                    this.renderValue();
+                    this.loadAndPopulateModelList();
+                    this.updateMode();
+                }.bind(this)
+            );
 
-            this.on("change:effective_readonly", this, function() {
-                this.updateMode();
-            });
-            this.renderValue();
-            this.loadAndPopulateModelList();
-            this.updateMode();
             return res;
         },
         clear: function() {
@@ -61,10 +64,9 @@ odoo.define("bi_view_editor", function(require) {
             this._setValue(this.field_list.get());
         },
         fieldListRemoved: function() {
-            console.log(this.field_list.get());
             this._setValue(this.field_list.get());
             var model = new Data.DataSet(this, "bve.view");
-            model.call("get_clean_list", [this.value]).then(
+            model.call("get_clean_list", [this.lastSetValue]).then(
                 function(result) {
                     this.field_list.set(JSON.parse(result));
                     this._setValue(this.field_list.get());
@@ -91,7 +93,7 @@ odoo.define("bi_view_editor", function(require) {
             if (this.field_list.get().length > 0) {
                 model_ids = this.field_list.getModelIds();
             }
-            this.model_list.loadModels(model_ids).done(
+            this.model_list.loadModels(model_ids).then(
                 function(models) {
                     this.model_list.populateModels(models);
                 }.bind(this)

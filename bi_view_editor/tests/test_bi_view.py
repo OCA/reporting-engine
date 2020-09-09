@@ -8,7 +8,7 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
 
-from ..hooks import post_load, uninstall_hook
+from ..hooks import uninstall_hook
 
 
 class TestBiViewEditor(TransactionCase):
@@ -174,9 +174,7 @@ class TestBiViewEditor(TransactionCase):
     def test_06_create_group_bve_object(self):
         vals = self.bi_view1_vals
         employees_group = self.env.ref("base.group_user")
-        vals.update(
-            {"name": "Test View2", "group_ids": [(6, 0, [employees_group.id])],}
-        )
+        vals.update({"name": "Test View2", "group_ids": [(6, 0, [employees_group.id])]})
 
         bi_view2 = self.env["bve.view"].create(vals)
         self.assertEqual(len(bi_view2.user_ids), len(employees_group.users))
@@ -200,9 +198,7 @@ class TestBiViewEditor(TransactionCase):
     def test_09_create_open_bve_object(self):
         vals = self.bi_view1_vals
         employees_group = self.env.ref("base.group_user")
-        vals.update(
-            {"name": "Test View4", "group_ids": [(6, 0, [employees_group.id])],}
-        )
+        vals.update({"name": "Test View4", "group_ids": [(6, 0, [employees_group.id])]})
         bi_view = self.env["bve.view"].create(vals)
         self.assertEqual(len(bi_view), 1)
         self.assertEqual(len(bi_view.line_ids), 3)
@@ -251,9 +247,7 @@ class TestBiViewEditor(TransactionCase):
     @odoo.tests.tagged("post_install", "-at_install")
     def test_10_create_open_bve_object_apostrophe(self):
         vals = self.bi_view1_vals
-        vals.update(
-            {"name": "Test View5",}
-        )
+        vals.update({"name": "Test View5"})
         data_list = list()
         for r in json.loads(vals["data"]):
             r["model_name"] = "model'name"
@@ -310,9 +304,7 @@ class TestBiViewEditor(TransactionCase):
     def test_12_check_groups(self):
         vals = self.bi_view1_vals
         group_system = self.env.ref("base.group_system")
-        vals.update(
-            {"name": "Test View1", "group_ids": [(6, 0, [group_system.id])],}
-        )
+        vals.update({"name": "Test View1", "group_ids": [(6, 0, [group_system.id])]})
         bi_view1 = self.env["bve.view"].create(vals)
         with self.assertRaises(UserError):
             bi_view1.action_create()
@@ -320,9 +312,7 @@ class TestBiViewEditor(TransactionCase):
     def test_13_check_lines_missing_model(self):
         vals = self.bi_view1_vals
         group_user = self.env.ref("base.group_user")
-        vals.update(
-            {"name": "Test View1", "group_ids": [(6, 0, [group_user.id])],}
-        )
+        vals.update({"name": "Test View1", "group_ids": [(6, 0, [group_user.id])]})
         bi_view1 = self.env["bve.view"].create(vals)
         for line in bi_view1.line_ids:
             self.assertTrue(line.model_id)
@@ -338,9 +328,7 @@ class TestBiViewEditor(TransactionCase):
     def test_14_check_lines_missing_fieldl(self):
         vals = self.bi_view1_vals
         group_user = self.env.ref("base.group_user")
-        vals.update(
-            {"name": "Test View1", "group_ids": [(6, 0, [group_user.id])],}
-        )
+        vals.update({"name": "Test View1", "group_ids": [(6, 0, [group_user.id])]})
         bi_view1 = self.env["bve.view"].create(vals)
         for line in bi_view1.line_ids:
             self.assertTrue(line.field_id)
@@ -361,9 +349,6 @@ class TestBiViewEditor(TransactionCase):
         data = json.loads(bi_view1.data)
         self.assertTrue(data)
         self.assertTrue(isinstance(data, list))
-
-    def test_16_post_load(self):
-        post_load()
 
     def test_17_uninstall_hook(self):
         uninstall_hook(self.cr, self.env)
@@ -419,9 +404,7 @@ class TestBiViewEditor(TransactionCase):
         ERROR: bad_query line in the logs.
         """
         vals = self.bi_view1_vals
-        vals.update(
-            {"name": "Test View broken", "over_condition": "bad SQL code",}
-        )
+        vals.update({"name": "Test View broken", "over_condition": "bad SQL code"})
         bi_view = self.env["bve.view"].create(vals)
         with self.assertRaises(UserError) as ue:
             bi_view.action_create()

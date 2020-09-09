@@ -80,7 +80,7 @@ odoo.define("bi_view_editor.ModelList", function(require) {
                 self.$el.find(".class-list").append($html);
 
                 if (self.isActive(model.id)) {
-                    self.loadFields(model.id).done(function(fields) {
+                    self.loadFields(model.id).then(function(fields) {
                         self.populateFields(fields, model.id);
                     });
                 }
@@ -129,7 +129,7 @@ odoo.define("bi_view_editor.ModelList", function(require) {
                 this.removeAsActive(model.id);
             } else {
                 this.addAsActive(model.id);
-                this.loadFields(model.id).done(
+                this.loadFields(model.id).then(
                     function(fields) {
                         this.populateFields(fields, model.id);
                     }.bind(this)
