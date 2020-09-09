@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 
-from odoo import api, models, registry
+from odoo import api, models
 
 NO_BI_MODELS = ["fetchmail.server"]
 
@@ -212,25 +212,3 @@ class IrModel(models.Model):
         )
         fields_dict = list(map(dict_for_field, fields))
         return fields_dict
-
-    @api.model
-    def create(self, vals):
-        if self.env.context and self.env.context.get("bve"):
-            vals["state"] = "base"
-        res = super().create(vals)
-
-        # this sql update is necessary since a write method here would
-        # be not working (an orm constraint is restricting the modification
-        # of the state field while updating ir.model)
-        q = "UPDATE ir_model SET state = 'manual' WHERE id = %s"
-        self.env.cr.execute(q, (res.id,))
-
-        # # update registry
-        if self.env.context.get("bve"):
-            # setup models; this reloads custom models in registry
-            self.pool.setup_models(self._cr)
-
-            # signal that registry has changed
-            registry(self.env.cr.dbname).signal_changes()
-
-        return res
