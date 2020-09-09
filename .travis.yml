@@ -13,6 +13,7 @@ addons:
     packages:
       - expect-dev # provides unbuffer utility
       - libreoffice
+      - graphviz
 
 stages:
   - linting
