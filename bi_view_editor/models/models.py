@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _bi_view(_name):
-    return _name.startswith('x_bve.')
+    return _name.startswith("x_bve.")
 
 
 _auto_init_orig = models.BaseModel._auto_init
@@ -36,7 +36,7 @@ models.BaseModel._auto_init = _auto_init
 
 
 class Base(models.AbstractModel):
-    _inherit = 'base'
+    _inherit = "base"
 
     @api.model
     def _setup_complete(self):
@@ -50,10 +50,9 @@ class Base(models.AbstractModel):
         if not _bi_view(self._name):
             return super()._read_group_process_groupby(gb, query)
 
-        split = gb.split(':')
+        split = gb.split(":")
         if split[0] not in self._fields:
-            raise UserError(
-                _('No data to be displayed.'))
+            raise UserError(_("No data to be displayed."))
         return super()._read_group_process_groupby(gb, query)
 
     @api.model
