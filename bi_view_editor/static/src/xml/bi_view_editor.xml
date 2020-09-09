@@ -116,22 +116,20 @@
             <li>
                 <div class="checkbox">
                     <label>
-                    <input
+                        <input
                             type="checkbox"
                             data-for="column"
                             class="checkbox-column"
-                        /> Column
-                </label>
+                        />
+                        <span>Column</span>
+                    </label>
                 </div>
             </li>
             <li>
                 <div class="checkbox">
                     <label>
-                        <input
-                            type="checkbox"
-                            data-for="row"
-                            class="checkbox-row"
-                        /> Row
+                        <input type="checkbox" data-for="row" class="checkbox-row" />
+                        <span>Row</span>
                     </label>
                 </div>
             </li>
@@ -142,18 +140,16 @@
                             type="checkbox"
                             data-for="measure"
                             class="checkbox-measure"
-                        /> Measure
+                        />
+                        <span>Measure</span>
                     </label>
                 </div>
             </li>
             <li>
                 <div class="checkbox">
                     <label>
-                        <input
-                            type="checkbox"
-                            data-for="list"
-                            class="checkbox-list"
-                        /> List
+                        <input type="checkbox" data-for="list" class="checkbox-list" />
+                        <span>List</span>
                     </label>
                 </div>
             </li>
