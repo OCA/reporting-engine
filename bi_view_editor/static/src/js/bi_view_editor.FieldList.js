@@ -7,28 +7,32 @@ odoo.define("bi_view_editor.FieldList", function(require) {
     var core = require("web.core");
     var qweb = core.qweb;
     var Widget = require("web.Widget");
+    var mixins = require("web.mixins");
 
-    var FieldListContextMenu = Widget.extend({
-        start: function() {
-            var res = this._super.apply(this, arguments);
-            this.$el.mouseleave(function() {
-                $(this).addClass("d-none");
-            });
-            return res;
-        },
-        open: function(x, y) {
-            this.$el.css({
-                left: x + "px",
-                top: y + "px",
-            });
-            this.$el.removeClass("d-none");
-            return _.extend({}, window.Backbone.Events);
-        },
-    });
+    var FieldListContextMenu = Widget.extend(
+        _.extend({}, mixins.EventDispatcherMixin, {
+            start: function() {
+                var res = this._super.apply(this, arguments);
+                this.$el.mouseleave(function() {
+                    $(this).addClass("d-none");
+                });
+                return res;
+            },
+            open: function(x, y) {
+                this.$el.css({
+                    left: x + "px",
+                    top: y + "px",
+                });
+                this.$el.removeClass("d-none");
+                return this;
+            },
+        })
+    );
 
     var FieldListFieldContextMenu = FieldListContextMenu.extend({
         template: "bi_view_editor.FieldList.FieldContextMenu",
-        open: function(x, y, field) {
+        open: function(x, y, $item) {
+            var field = $item.data("field");
             this.$el.find(".checkbox-column").prop("checked", field.column);
             this.$el.find(".checkbox-row").prop("checked", field.row);
             this.$el.find(".checkbox-measure").prop("checked", field.measure);
@@ -49,7 +53,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
                 var $checkbox = $(this);
                 var property = $checkbox.attr("data-for");
                 field[property] = $checkbox.is(":checked");
-                events.trigger("change", field);
+                events.trigger("change", field, $item);
             });
 
             return events;
@@ -58,7 +62,8 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
     var FieldListJoinContextMenu = FieldListContextMenu.extend({
         template: "bi_view_editor.FieldList.JoinContextMenu",
-        open: function(x, y, node) {
+        open: function(x, y, $item) {
+            var node = $item.data("field");
             this.$el.find(".checkbox-join-left").prop("checked", node.join_left);
 
             var events = this._super(x, y, node);
@@ -83,8 +88,26 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             var res = this._super.apply(this, arguments);
             this.contextmenu = new FieldListFieldContextMenu(this);
             this.contextmenu.appendTo(this.$el);
+            this.contextmenu.on(
+                "change",
+                this,
+                function(f, $item) {
+                    $item.data("field", f);
+                    this.refreshItem($item);
+                    this.trigger("updated");
+                }.bind(this)
+            );
             this.contextmenu_join = new FieldListJoinContextMenu(this);
             this.contextmenu_join.appendTo(this.$el);
+            this.contextmenu_join.on(
+                "change",
+                this,
+                function(f, $item) {
+                    $item.data("field", f);
+                    this.refreshItem($item);
+                    this.trigger("updated");
+                }.bind(this)
+            );
             this.$table = this.$el.find("tbody");
             this.mode = null;
             return res;
@@ -201,14 +224,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             if (field.join_node) {
                 return;
             }
-            contextmenu.open(x - 20, y - 20, $item.data("field")).on(
-                "change",
-                function(f) {
-                    $item.data("field", f);
-                    this.refreshItem($item);
-                    this.trigger("updated");
-                }.bind(this)
-            );
+            contextmenu.open(x - 20, y - 20, $item);
         },
         refreshItem: function($item) {
             var data = $item.data("field");

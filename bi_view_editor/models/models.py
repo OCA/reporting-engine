@@ -17,7 +17,6 @@ def _bi_view(_name):
 _auto_init_orig = models.BaseModel._auto_init
 
 
-@api.model_cr_context
 def _auto_init(self):
 
     # This monkey patch is meant to fix an error (probably

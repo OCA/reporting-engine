@@ -159,11 +159,6 @@
     width: 175px;
 }
 
-.oe_form_field_bi_editor .context-menu .checkbox {
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
 .oe_form_field_bi_editor .context-menu .checkbox label {
     display: block;
 }

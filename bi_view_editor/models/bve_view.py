@@ -60,7 +60,7 @@ class BveView(models.Model):
             line_ids = self._sync_lines_and_data(bve_view.data)
             bve_view.write({"line_ids": line_ids})
 
-    name = fields.Char(required=True, copy=False)
+    name = fields.Char(required=True, copy=False, default="")
     model_name = fields.Char(compute="_compute_model_name", store=True)
     note = fields.Text(string="Notes")
     state = fields.Selection(
@@ -100,7 +100,7 @@ class BveView(models.Model):
     )
     query = fields.Text(compute="_compute_sql_query")
     over_condition = fields.Text(
-        states={"draft": [("readonly", False),],},
+        states={"draft": [("readonly", False)]},
         readonly=True,
         help="Condition to be inserted in the OVER part "
         "of the ID's row_number function.\n"
@@ -169,7 +169,7 @@ class BveView(models.Model):
             try:
                 png_base64_image = base64.b64encode(graph.create_png())
                 bve_view.er_diagram_image = png_base64_image
-            except:
+            except Exception:
                 bve_view.er_diagram_image = False
 
     def _create_view_arch(self):
@@ -191,7 +191,7 @@ class BveView(models.Model):
             return '<field name="{}" {} />'.format(line.name, res)
 
         bve_field_lines = self.field_ids.filtered(lambda l: l.in_list)
-        return list(map(_get_field_attrs, bve_field_lines))
+        return list(map(_get_field_attrs, bve_field_lines.sorted("sequence")))
 
     def _create_bve_view(self):
         self.ensure_one()
@@ -236,7 +236,7 @@ class BveView(models.Model):
                     "model": self.model_name,
                     "priority": 16,
                     "arch": """<?xml version="1.0"?>
-                       <search string="Search BI View">
+                       <search>
                        {}
                        </search>
                     """.format(
@@ -254,7 +254,7 @@ class BveView(models.Model):
                 "model": self.model_name,
                 "priority": 16,
                 "arch": """<?xml version="1.0"?>
-                       <tree string="List Analysis" create="false">
+                       <tree create="false">
                        {}
                        </tree>
                     """.format(
@@ -272,7 +272,6 @@ class BveView(models.Model):
                     "name": self.name,
                     "res_model": self.model_name,
                     "type": "ir.actions.act_window",
-                    "view_type": "form",
                     "view_mode": "tree,graph,pivot",
                     "view_id": tree_view.id,
                     "context": "{'service_name': '%s'}" % self.name,
@@ -475,7 +474,7 @@ class BveView(models.Model):
                     self.env["ir.model.access"]
                     .sudo()
                     .search(
-                        [("model_id", "=", line_model.id), ("perm_read", "=", True),]
+                        [("model_id", "=", line_model.id), ("perm_read", "=", True)]
                     )
                 )
                 group_list = ""
@@ -495,20 +494,18 @@ class BveView(models.Model):
         if not self.line_ids:
             raise ValidationError(_("No data to process."))
 
-        if any(not line.model_id for line in self.line_ids):
-            invalid_lines = self.line_ids.filtered(lambda l: not l.model_id)
-            missing_models = set(invalid_lines.mapped("model_name"))
-            missing_models = ", ".join(missing_models)
+        invalid_lines = self.line_ids.filtered(lambda l: not l.model_id)
+        if invalid_lines:
+            missing_models = ", ".join(set(invalid_lines.mapped("model_name")))
             raise ValidationError(
                 _(
                     "Following models are missing: %s.\n"
                     "Probably some modules were uninstalled." % (missing_models,)
                 )
             )
-        if any(not line.field_id for line in self.line_ids):
-            invalid_lines = self.line_ids.filtered(lambda l: not l.field_id)
-            missing_fields = set(invalid_lines.mapped("field_name"))
-            missing_fields = ", ".join(missing_fields)
+        invalid_lines = self.line_ids.filtered(lambda l: not l.field_id)
+        if invalid_lines:
+            missing_fields = ", ".join(set(invalid_lines.mapped("field_name")))
             raise ValidationError(
                 _("Following fields are missing: {}.".format(missing_fields))
             )
@@ -520,7 +517,6 @@ class BveView(models.Model):
         action["display_name"] = _("BI View")
         return action
 
-    @api.multi
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or {}, name=_("%s (copy)") % self.name)
@@ -623,7 +619,9 @@ class BveView(models.Model):
 
     @api.model
     def get_clean_list(self, data_dict):
-        serialized_data = json.loads(data_dict)
+        serialized_data = data_dict
+        if type(data_dict) == str:
+            serialized_data = json.loads(data_dict)
         table_alias_list = set()
         for item in serialized_data:
             if item.get("join_node", -1) in [-1, False]:

@@ -1,4 +1,4 @@
-# Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
+# Copyright 2015-2020 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
@@ -12,11 +12,11 @@ class BveViewLine(models.Model):
     name = fields.Char(compute="_compute_name")
     sequence = fields.Integer(default=1)
     bve_view_id = fields.Many2one("bve.view", ondelete="cascade")
-    model_id = fields.Many2one("ir.model", string="Model")
-    model_name = fields.Char(compute="_compute_model_name", store=True)
-    table_alias = fields.Char()
-    join_model_id = fields.Many2one("ir.model", string="Join Model")
-    field_id = fields.Many2one("ir.model.fields", string="Field")
+    model_id = fields.Many2one("ir.model")
+    model_name = fields.Char(related="model_id.model", store=True, string="Model Name")
+    table_alias = fields.Char(required=True)
+    join_model_id = fields.Many2one("ir.model")
+    field_id = fields.Many2one("ir.model.fields")
     field_name = fields.Char(compute="_compute_model_field_name", store=True)
     ttype = fields.Char(string="Type")
     description = fields.Char(translate=True)
@@ -29,7 +29,7 @@ class BveViewLine(models.Model):
     measure = fields.Boolean()
     in_list = fields.Boolean()
     list_attr = fields.Selection(
-        [("sum", "Sum"), ("avg", "Average"),], string="List Attribute", default="sum"
+        [("sum", "Sum"), ("avg", "Average")], string="List Attribute", default="sum"
     )
     view_field_type = fields.Char(compute="_compute_view_field_type")
 
@@ -67,21 +67,17 @@ class BveViewLine(models.Model):
 
     @api.depends("field_id", "sequence")
     def _compute_name(self):
-        for line in self.filtered(lambda l: l.field_id):
-            field_name = line.field_id.name
-            line.name = "x_bve_{}_{}".format(line.table_alias, field_name)
-
-    @api.depends("model_id")
-    def _compute_model_name(self):
-        for line in self.filtered(lambda l: l.model_id):
-            line.model_name = line.model_id.model
+        for line in self:
+            line.name = False
+            if line.field_id:
+                line.name = "x_bve_{}_{}".format(line.table_alias, line.field_id.name)
 
     @api.depends("field_id")
     def _compute_model_field_name(self):
-        for line in self.filtered(lambda l: l.field_id):
-            field_name = line.description
-            model_name = line.model_name
-            line.field_name = "{} ({})".format(field_name, model_name)
+        for line in self:
+            line.field_name = False
+            if line.field_id:
+                line.field_name = "{} ({})".format(line.description, line.model_name)
 
     def _prepare_field_vals(self):
         vals_list = []
