@@ -8,9 +8,17 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
     var _t = core._t;
 
     var DashboardController = BasicController.extend({
+        init: function () {
+            this._super.apply(this, arguments);
+            this.dashboard_context = {};
+            this.dashboard_color_data = []
+        },
         custom_events: _.extend({}, BasicController.prototype.custom_events, {
             addDashboard: '_addDashboard',
             refresh_on_fly: '_refreshOnFly',
+            modify_context: '_modifyContext',
+            add_modify_color: '_addModifyColor',
+            refresh_colors: '_refreshColors',
         }),
         _refreshOnFly: function (event) {
             var self = this;
@@ -18,11 +26,7 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
                 model: this.modelName,
                 method: 'read_dashboard_on_fly',
                 args: [[this.renderer.state.res_id]],
-                context: _.extend(
-                    {},
-                    this.model.get(this.handle, {raw: true}).getContext(),
-                    {bin_size: true}
-                ),
+                context: this._getContext(),
             }).then(function (data) {
                 _.each(data, function (item) {
                     // We will follow the same logic used on Bus Notifications
@@ -90,6 +94,54 @@ odoo.define('kpi_dashboard.DashboardController', function (require) {
 
             this._updateButtons();
             this.$buttons.appendTo($node);
+        },
+        _getContext: function () {
+            return _.extend(
+                {},
+                this.model.get(this.handle, {raw: true}).getContext(),
+                {bin_size: true},
+                this.dashboard_context,
+            )
+        },
+        _modifyContext: function (event) {
+            var ctx = this._getContext();
+            this.dashboard_context = _.extend(
+                this.dashboard_context,
+                py.eval(event.data.context, {context: _.extend(
+                    ctx,
+                    {__getattr__: function() {return false}}
+                    // We need to add this in order to allow to use undefined
+                    // context items
+                )}),
+            );
+            this._refreshOnFly(event);
+            this._refreshColors();
+        },
+        _addModifyColor: function (event) {
+            this.dashboard_color_data.push([
+                event.data.element_id,
+                event.data.expression,
+            ]);
+        },
+        _refreshColors: function () {
+            var self = this;
+            var ctx = this._getContext();
+            _.each(this.dashboard_color_data, function (data) {
+                var color = py.eval(data[1], {
+                    context: _.extend(ctx, {
+                        __getattr__: function() {return false},
+
+                    }),
+                    check_if: function(args) {
+                        if (args[0].toJSON()) {
+                            return args[1];
+                        }
+                        return args[2];
+                    }
+                });
+                var $element = self.renderer.$el.find('#' + data[0]);
+                $element.css('background-color', color);
+            });
         },
     });
 

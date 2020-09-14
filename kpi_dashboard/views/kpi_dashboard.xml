@@ -36,6 +36,9 @@
                                     <field name="size_y"/>
                                     <field name="color" widget="color"/>
                                     <field name="font_color" widget="color"/>
+                                    <button name="technical_config" string=""
+                                            type="object" icon="fa-edit"
+                                            groups="base.group_no_one"/>
                                 </tree>
                             </field>
                         </page>
@@ -109,6 +112,59 @@
         <field name="parent_id" ref="menu_configuration_kpi_dashboards"/> <!-- TODO -->
         <field name="action" ref="kpi_dashboard_act_window"/>
         <field name="sequence" eval="16"/> <!-- TODO -->
+    </record>
+
+    <record model="ir.ui.view" id="kpi_dashboard_item_form_view">
+        <field name="name">kpi.dashboard.item.form (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard.item</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <div name="button_box" class="oe_button_box"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="dashboard_id"/>
+                        <field name="kpi_id"/>
+                        <field name="column"/>
+                        <field name="row"/>
+                        <field name="size_x"/>
+                        <field name="size_y"/>
+                        <field name="color" widget="color"/>
+                        <field name="font_color" widget="color"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="kpi_dashboard_item_config_form_view">
+        <field name="name">kpi.dashboard.item.form (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard.item</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <group>
+                        <field name="modify_context"/>
+                        <field name="modify_context_expression"
+                               attrs="{'invisible': [('modify_context', '=', False)]}"
+                               widget="ace" options="{'mode': 'python'}"/>
+                        <field name="modify_color"/>
+                        <field name="modify_color_expression"
+                               attrs="{'invisible': [('modify_color', '=', False)]}"
+                               widget="ace" options="{'mode': 'python'}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="write"
+                            string="Save" type="object"
+                            class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"
+                            class="oe_link"/>
+                </footer>
+            </form>
+        </field>
     </record>
 
 </odoo>

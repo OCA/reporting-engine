@@ -16,6 +16,12 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
             var widget = new Widget(this, kpi);
             return widget;
         },
+        _onClickModifyContext: function (modify_context_expression, event) {
+            this.trigger_up('modify_context', {
+                context: modify_context_expression,
+                event: event,
+            })
+        },
         _renderView: function () {
             this.$el.html($(qweb.render('dashboard_kpi.dashboard')));
             this.$el.css(
@@ -30,7 +36,20 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
                     'kpi_dashboard.kpi', {widget: kpi}));
                 element.css('background-color', kpi.color);
                 element.css('color', kpi.font_color);
+                element.attr('id', _.uniqueId('kpi_'));
                 self.$grid.append(element);
+                if (kpi.modify_color) {
+                    self.trigger_up("add_modify_color", {
+                        element_id: element.attr("id"),
+                        expression: kpi.modify_color_expression,
+                    })
+                }
+                if (kpi.modify_context) {
+                    element.on("click", self._onClickModifyContext.bind(
+                        self, kpi.modify_context_expression));
+                    element.css('cursor', 'pointer');
+                    // We want to set it show as clickable
+                }
                 self.kpi_widget[kpi.id] = self._getDashboardWidget(kpi);
                 self.kpi_widget[kpi.id].appendTo(element);
             });
@@ -59,6 +78,10 @@ odoo.define('kpi_dashboard.DashboardRenderer', function (require) {
                     self.trigger_up('refresh_on_fly');
                 }, this.state.specialData.compute_on_fly_refresh *1000);
             };
+            this.trigger_up('refresh_colors');
+            this.trigger_up('refresh_on_fly');
+            // We need to refreshs data in order compute with the current
+            // context
             return $.when();
         },
         on_detach_callback: function () {

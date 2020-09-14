@@ -10,6 +10,7 @@ from odoo.tools.float_utils import float_compare
 import re
 import json
 import datetime
+from dateutil import relativedelta
 
 
 class KpiKpi(models.Model):
@@ -29,7 +30,8 @@ class KpiKpi(models.Model):
     args = fields.Char()
     kwargs = fields.Char()
     widget = fields.Selection(
-        [("number", "Number"), ("meter", "Meter"), ("graph", "Graph")],
+        [('integer', 'Integer'), ("number", "Number"), ("meter", "Meter"),
+         ('counter', 'Counter'), ("graph", "Graph")],
         required=True,
         default="number",
     )
@@ -136,6 +138,7 @@ class KpiKpi(models.Model):
             "model": self.browse(),
             "datetime": datetime,
             "float_compare": float_compare,
+            "relativedelta": relativedelta.relativedelta,
         }
 
     def _forbidden_code(self):
