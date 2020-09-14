@@ -5,7 +5,7 @@
     "name": "Kpi Dashboard",
     "summary": """
         Create Dashboards using kpis""",
-    "version": "12.0.1.2.1",
+    "version": "12.0.1.3.0",
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
