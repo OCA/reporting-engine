@@ -25,7 +25,17 @@ msgstr ""
 
 #. module: kpi_dashboard_bokeh
 #: selection:kpi.kpi,widget:0
+msgid "Counter"
+msgstr ""
+
+#. module: kpi_dashboard_bokeh
+#: selection:kpi.kpi,widget:0
 msgid "Graph"
+msgstr ""
+
+#. module: kpi_dashboard_bokeh
+#: selection:kpi.kpi,widget:0
+msgid "Integer"
 msgstr ""
 
 #. module: kpi_dashboard_bokeh
