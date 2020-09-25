@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="ir_actions_report_form_view">
+        <field name="name">ir.actions.report.form (in report_substitute)</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='advanced']" position="after">
+                <page name="report_substitution_rule" string="Substitution Rules">
+                    <field name="action_report_substitution_rule_ids">
+                        <tree>
+                            <field name="sequence" widget="handle"/>
+                            <field name="substitution_action_report_id"/>
+                            <field name="domain"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="action_report_id"
+                                           invisible="1" readonly="1"
+                                           required="0"/>
+                                    <field name="model" invisible="1"/>
+                                    <field name="substitution_action_report_id"
+                                           domain="[('model', '=', model), ('id', '!=', parent.id)]"/>
+                                </group>
+                                <group>
+                                    <field name="domain" widget="domain"
+                                           options="{'model': 'model'}"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
