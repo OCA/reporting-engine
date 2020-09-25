@@ -13,6 +13,7 @@ odoo.define("report_substitute.action_report_substitute", function (require) {
          */
 
         _handleAction: function (action, options) {
+        	console.log("Got action {} and options: {}", action, options);
             if (action.type === "ir.actions.report" &&
                 action.context.active_ids &&
                 action.action_report_substitution_rule_ids &&
