@@ -15,4 +15,3 @@ It can also be added on the developer side using::
     <record id="model_name.report_id" model="ir.actions.report">
         <field name="context">YOUR CONTEXT HERE</field>
     </record>
-
