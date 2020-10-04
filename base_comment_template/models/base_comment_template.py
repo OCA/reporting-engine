@@ -16,33 +16,33 @@ class CommentTemplate(models.AbstractModel):
         "in reports based on created comment templates"
     )
 
-    base_comment_template_ids = fields.Many2many(
-        comodel_name="base.comment.template",
-        string="Comment templates",
-        compute="_compute_base_comment_template_ids",
-        search="_search_follower_partners",
-        help="Templates that can be included in your reports",
-    )
-
-    def _compute_base_comment_template_ids(self):
-        company_id = self.env.company.id
-        present_model_id = self.env["ir.model"].search([("name", "=", self._name)])
-        templates = (
-            self.env["base.comment.template"]
-            .sudo()
-            .search(
-                [
-                    ("model_ids", "in", present_model_id.id),
-                    "|",
-                    ("company_id", "=", company_id),
-                    ("company_id", "=", False),
-                ]
-            )
-        )
-        # using read() below is much faster than followers.mapped('res_id')
-        model_mako_templates_ids = templates.mapped("id")
-        for record in self:
-            record.base_comment_template_ids = record.id in model_mako_templates_ids
+#     base_comment_template_ids = fields.Many2many(
+#         comodel_name="base.comment.template",
+#         string="Comment templates",
+#         compute="_compute_base_comment_template_ids",
+#         search="_search_follower_partners",
+#         help="Templates that can be included in your reports",
+#     )
+# 
+#     def _compute_base_comment_template_ids(self):
+#         company_id = self.env.company.id
+#         present_model_id = self.env["ir.model"].search([("name", "=", self._name)])
+#         templates = (
+#             self.env["base.comment.template"]
+#             .sudo()
+#             .search(
+#                 [
+#                     ("model_ids", "in", present_model_id.id),
+#                     "|",
+#                     ("company_id", "=", company_id),
+#                     ("company_id", "=", False),
+#                 ]
+#             )
+#         )
+#         # using read() below is much faster than followers.mapped('res_id')
+#         model_mako_templates_ids = templates.mapped("id")
+#         for record in self:
+#             record.base_comment_template_ids = record.id in model_mako_templates_ids
 
     def get_comment_template(
         self, position="before_lines", company_id=False, partner_id=False
