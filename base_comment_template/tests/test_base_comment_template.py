@@ -1,5 +1,7 @@
 # Copyright 2020 NextERP Romania SRL
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from lxml import etree
+
 from odoo.tests import common
 
 from .fake_models import ResUsers, setup_test_model, teardown_test_model
@@ -19,7 +21,7 @@ class TestCommentTemplate(common.SavepointCase):
         cls.user2 = cls.env.ref("base.demo_user0")
         cls.partner_id = cls.env.ref("base.res_partner_12")
         cls.partner2_id = cls.env.ref("base.res_partner_10")
-        cls.company = cls.env["res.company"].create({"name": "Test Company 1"})
+        cls.company = cls.env["res.company"].search([], limit=1)
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
                 "name": "before_lines",
@@ -126,3 +128,41 @@ class TestCommentTemplate(common.SavepointCase):
         )
 
         self.assertEqual(new_template.text, "Text before lines 1")
+
+    def test_check_partners_in_company_id(self):
+        """ should  rise any error because exist the same model,
+        domain, position and priority"""
+        with self.assertRaises(Exception) as context:
+            self.before_template_id_2 = self.env["base.comment.template"].create(
+                {
+                    "name": "before_lines",
+                    "text": "Text before lines",
+                    "model_ids": [(6, 0, self.user_obj.ids)],
+                    "priority": 5,
+                }
+            )
+        self.assertTrue(
+            "The are other records with same models, priority, domain and position."
+            == context.exception.args[0]
+        )
+
+        # should not rise any error
+        self.before_template_id_3 = self.env["base.comment.template"].create(
+            {
+                "name": "before_lines",
+                "text": "Text before lines",
+                "model_ids": [(6, 0, self.user_obj.ids)],
+                "priority": 55,
+            }
+        )
+
+    def test_fields_view_get(
+        self, view_id=None, view_type="form", toolbar=False, submenu=False
+    ):
+        bf_tmp_form_view = self.before_template_id.fields_view_get()
+        if view_type == "form":
+            doc = etree.XML(bf_tmp_form_view["arch"])
+            model_ids = doc.xpath("//field[@name='model_ids']")
+            domain = model_ids[0].attrib["domain"]
+            # if domain exist means that the filtering is done and the function is ok
+            self.assertTrue(domain != "")
