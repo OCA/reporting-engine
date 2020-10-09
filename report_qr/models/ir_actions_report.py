@@ -17,9 +17,8 @@ class IrActionsReport(models.Model):
             "svg-fragment": svg.SvgFragmentImage,
             "svg-path": svg.SvgPathImage,
         }
-        # Color parameters seem to be inverted in the library
-        back_color = kwargs.pop("back_color", "black")
-        fill_color = kwargs.pop("fill_color", "white")
+        back_color = kwargs.pop("back_color", "white")
+        fill_color = kwargs.pop("fill_color", "black")
         try:
             # Defaults to png if the argument is unknown
             image_factory = factories.get(factory, pil.PilImage)
