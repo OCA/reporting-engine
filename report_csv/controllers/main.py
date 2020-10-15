@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 import json
-import time
 
 from odoo.http import content_disposition, request, route
 from odoo.tools.safe_eval import safe_eval
@@ -28,14 +27,14 @@ class ReportController(report.ReportController):
                 if data["context"].get("lang"):
                     del data["context"]["lang"]
                 context.update(data["context"])
-            csv = report.with_context(context).render_csv(docids, data=data)[0]
+            csv = report.with_context(context)._render_csv(docids, data=data)[0]
             filename = "{}.{}".format(report.name, "csv")
             if docids:
                 obj = request.env[report.model].browse(docids)
                 if report.print_report_name and not len(obj) > 1:
                     report_name = safe_eval(
                         report.print_report_name,
-                        {"object": obj, "time": time, "multi": False},
+                        {"object": obj},
                     )
                     filename = "{}.{}".format(report_name, "csv")
                 # When we print multiple records we still allow a custom
@@ -43,7 +42,7 @@ class ReportController(report.ReportController):
                 elif report.print_report_name and len(obj) > 1:
                     report_name = safe_eval(
                         report.print_report_name,
-                        {"objects": obj, "time": time, "multi": True},
+                        {"object": obj},
                     )
                     filename = "{}.{}".format(report_name, "csv")
             csvhttpheaders = [
