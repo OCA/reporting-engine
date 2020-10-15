@@ -4,13 +4,11 @@
     Copyright 2019 Creu Blanca
     License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
     -->
-    <report
-        id="partner_csv"
-        model="res.partner"
-        string="Print to CSV"
-        report_type="csv"
-        name="report_csv.partner_csv"
-        file="res_partner"
-        attachment_use="False"
-    />
+    <record id="partner_csv" model="ir.actions.report">
+        <field name="name">Print to CSV</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">csv</field>
+        <field name="report_name">report_csv.partner_csv</field>
+        <field name="report_file">res_partner</field>
+    </record>
 </odoo>

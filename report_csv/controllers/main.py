@@ -28,7 +28,7 @@ class ReportController(report.ReportController):
                 if data["context"].get("lang"):
                     del data["context"]["lang"]
                 context.update(data["context"])
-            csv = report.with_context(context).render_csv(docids, data=data)[0]
+            csv = report.with_context(context)._render_csv(docids, data=data)[0]
             filename = "{}.{}".format(report.name, "csv")
             if docids:
                 obj = request.env[report.model].browse(docids)
