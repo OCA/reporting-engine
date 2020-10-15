@@ -8,10 +8,12 @@ from odoo.exceptions import UserError
 class ReportAction(models.Model):
     _inherit = "ir.actions.report"
 
-    report_type = fields.Selection(selection_add=[("csv", "csv")])
+    report_type = fields.Selection(
+        selection_add=[("csv", "csv")], ondelete={"csv": "set default"}
+    )
 
     @api.model
-    def render_csv(self, docids, data):
+    def _render_csv(self, docids, data):
         report_model_name = "report.%s" % self.report_name
         report_model = self.env.get(report_model_name)
         if report_model is None:
