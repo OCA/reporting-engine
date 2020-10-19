@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-31 11:56+0000\n"
-"PO-Revision-Date: 2017-08-31 11:56+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2020-10-20 01:08+0000\n"
+"Last-Translator: Sylvain LE GAL <sylvain.legal@grap.coop>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:475
@@ -45,13 +46,12 @@ msgstr "Accès %s"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
-msgstr ""
+msgstr "Contexte de l'action"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-#, fuzzy
 msgid "Action Settings"
-msgstr "Options de Sélection"
+msgstr "Paramétrages de l'action"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__group_ids
@@ -81,9 +81,8 @@ msgstr "Disponible"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
-#, fuzzy
 msgid "Bi SQL View Field"
-msgstr "Champs SQL"
+msgstr "Champ de la vue SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
@@ -100,7 +99,7 @@ msgid ""
 msgstr ""
 "Cochez cette case pour créer un index SQL sur ce champ. Cela est recommandé "
 "pour les champs de recherche et de regroupement pour réduire le temps "
-"d'affichage."
+"d'affichage"
 
 #. module: bi_sql_editor
 #: selection:bi.sql.view.field,graph_type:0
@@ -117,7 +116,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Context"
-msgstr ""
+msgstr "Contexte"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -156,6 +155,8 @@ msgstr "Taille de la base de données"
 msgid ""
 "Define here a context that will be used by default, when creating the action."
 msgstr ""
+"Définir le contexte qui sera utilisé par défaut, lors de la création de "
+"l'action."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
@@ -177,7 +178,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__display_name
 msgid "Display Name"
-msgstr "Nom à afficher"
+msgstr "Nom affiché"
 
 #. module: bi_sql_editor
 #: selection:bi.sql.view,state:0
@@ -211,7 +212,7 @@ msgid ""
 " Comodel of the field."
 msgstr ""
 "Pour les champs 'Many2one' de Odoo.\n"
-"Champ du modèle lié"
+"Champ du modèle lié."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -242,7 +243,6 @@ msgstr "Type de Graphe"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
-#, fuzzy
 msgid "Has Group Changed"
 msgstr "A un changement de groupe"
 
@@ -297,9 +297,8 @@ msgstr "Dernière mise à jour le"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
-#, fuzzy
 msgid "Materialized Text"
-msgstr "Materialized text"
+msgstr "Texte matérialisé"
 
 #. module: bi_sql_editor
 #: selection:bi.sql.view.field,graph_type:0
@@ -366,7 +365,7 @@ msgstr "Vue Pivot de Odoo"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__rule_id
 msgid "Odoo Rule"
-msgstr "Odoo Rule"
+msgstr "Règle Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__search_view_id
@@ -391,9 +390,8 @@ msgstr "Ouvrir la vue"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-#, fuzzy
 msgid "Preview SQL Expression"
-msgstr "Valider l'expression SQL"
+msgstr "Prévisualiser l'expression SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
@@ -445,7 +443,7 @@ msgstr "Requête SQL"
 #. module: bi_sql_editor
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_editor
 msgid "SQL Reports"
-msgstr "SQL Reports"
+msgstr "Rapport SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__query
@@ -516,7 +514,7 @@ msgstr "Taille de la vue matérialisée et de ses index"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__state
 msgid "State"
-msgstr "Statut"
+msgstr "Etat"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__state
@@ -589,7 +587,6 @@ msgstr "Indisponible"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-#, fuzzy
 msgid "Update Model Access"
 msgstr "Mettre à jour les accès au modèle"
 
@@ -630,9 +627,9 @@ msgstr "Vues, Actions et menus créés"
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:181
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
-#, fuzzy, python-format
+#, python-format
 msgid "You can not create indexes on non materialized views"
-msgstr "Tâche CRON qui va rafraichir la vue matérialisée"
+msgstr "Vous ne pouvez pas créer d'index sur des vues non matérialisées"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:253
@@ -647,6 +644,8 @@ msgid ""
 "You can only unlink draft views.If you want to delete them, first set them "
 "to draft."
 msgstr ""
+"Vous pouvez seulement supprimer des vues en brouillon. Si vous souhaitez "
+"supprimer, veuillez d'abord passer à l'état brouillon."
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
@@ -697,7 +696,7 @@ msgstr "selection"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__sequence
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
-msgstr "sequence"
+msgstr "séquence"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
