@@ -354,7 +354,7 @@ class TestBiViewEditor(TransactionCase):
         uninstall_hook(self.cr, self.env)
 
     def test_18_action_translations(self):
-        self.env["res.lang"].load_lang("it_IT")
+        self.env["res.lang"]._activate_lang("it_IT")
         vals = self.bi_view1_vals
         vals.update({"name": "Test View1"})
         bi_view1 = self.env["bve.view"].create(vals)

@@ -4,6 +4,7 @@
         <div class="oe_form_field_bi_editor">
             <div class="body">
                 <div class="left">
+
                 </div>
                 <div class="right">
 
@@ -13,9 +14,10 @@
             <div class="footer">
                 <div class="left" />
                 <div class="right">
-                    <button class="clear-btn d-none"><span
-                            class="fa fa-eraser"
-                        /> Clear</button>
+                    <button class="clear-btn d-none">
+                        <span class="fa fa-eraser" />
+                        Clear
+                    </button>
                 </div>
             </div>
         </div>
@@ -76,6 +78,7 @@
                 <input type="text" class="search-bar" />
             </div>
             <div class="class-list">
+
             </div>
         </div>
     </t>
@@ -106,6 +109,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                 </tbody>
             </table>
         </div>
@@ -165,7 +169,8 @@
                             type="checkbox"
                             data-for="join_left"
                             class="checkbox-join-left"
-                        /> Join Left
+                        />
+                        Join Left
                     </label>
                 </div>
             </li>

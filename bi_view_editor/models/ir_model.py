@@ -85,7 +85,11 @@ class IrModel(models.Model):
         for field in fields:
             for table_alias in model_table_map[field.model_id.id]:
                 model_list.append(
-                    dict(dict_for_field(field), table_alias=table_alias, join_node=-1,)
+                    dict(
+                        dict_for_field(field),
+                        table_alias=table_alias,
+                        join_node=-1,
+                    )
                 )
         return model_list
 
@@ -125,16 +129,15 @@ class IrModel(models.Model):
 
     @api.model
     def get_related_models(self, model_table_map):
-        """ Return list of model dicts for all models that can be
-            joined with the already selected models.
+        """Return list of model dicts for all models that can be
+        joined with the already selected models.
         """
         domain = self._get_related_models_domain(model_table_map)
         return self.sudo().search(domain, order="name asc")
 
     @api.model
     def get_models(self, table_model_map=None):
-        """ Return list of model dicts for all available models.
-        """
+        """Return list of model dicts for all available models."""
         self = self.with_context(lang=self.env.user.lang)
         model_table_map = defaultdict(list)
         for k, v in (table_model_map or {}).items():
@@ -150,10 +153,10 @@ class IrModel(models.Model):
 
     @api.model
     def get_join_nodes(self, field_data, new_field):
-        """ Return list of field dicts of join nodes
+        """Return list of field dicts of join nodes
 
-            Return all possible join nodes to add new_field to the query
-            containing model_ids.
+        Return all possible join nodes to add new_field to the query
+        containing model_ids.
         """
 
         def remove_duplicate_nodes(join_nodes):

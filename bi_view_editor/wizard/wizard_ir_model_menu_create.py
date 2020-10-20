@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Onestein (<https://www.onestein.eu>)
+# Copyright 2017-2020 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
@@ -21,7 +21,7 @@ class WizardModelMenuCreate(models.TransientModel):
             )
             self.env["ir.model.data"].create(
                 {
-                    "name": bve_view.name + ", id=" + str(menu.id),
+                    "name": bve_view.name + ",id=" + str(menu.id),
                     "noupdate": True,
                     "module": "bi_view_editor",
                     "model": "ir.ui.menu",

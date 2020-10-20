@@ -1,7 +1,7 @@
 /* Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
-odoo.define("bi_view_editor.JoinNodeDialog", function(require) {
+odoo.define("bi_view_editor.JoinNodeDialog", function (require) {
     "use strict";
 
     var Dialog = require("web.Dialog");
@@ -16,7 +16,7 @@ odoo.define("bi_view_editor.JoinNodeDialog", function(require) {
         events: {
             "click li": "choiceClicked",
         },
-        init: function(parent, options, choices, model_data) {
+        init: function (parent, options, choices, model_data) {
             this.choices = choices;
             // Prepare data for view
             for (var i = 0; i < choices.length; i++) {
@@ -43,7 +43,7 @@ odoo.define("bi_view_editor.JoinNodeDialog", function(require) {
             });
             this._super(parent, defaults);
         },
-        choiceClicked: function(e) {
+        choiceClicked: function (e) {
             this.trigger("chosen", {
                 choice: this.choices[$(e.currentTarget).attr("data-index")],
             });
