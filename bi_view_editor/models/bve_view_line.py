@@ -44,20 +44,29 @@ class BveViewLine(models.Model):
     @api.constrains("row", "column", "measure")
     def _constrains_options_check(self):
         measure_types = ["float", "integer", "monetary"]
-        lines = self.filtered(lambda l: l.join_model_id or l.ttype in measure_types)
-        if lines.filtered(lambda l: l.row or l.column):
-            err_msg = _("This field cannot be a row or a column.")
-            raise ValidationError(err_msg)
-        if lines.filtered(lambda l: l.measure):
-            err_msg = _("This field cannot be a measure.")
-            raise ValidationError(err_msg)
+        for line in self.filtered(lambda l: l.row or l.column):
+            if line.join_model_id or line.ttype in measure_types:
+                err_msg = _("This field cannot be a row or a column.")
+                raise ValidationError(err_msg)
+        for line in self.filtered(lambda l: l.measure):
+            if line.join_model_id or line.ttype not in measure_types:
+                err_msg = _("This field cannot be a measure.")
+                raise ValidationError(err_msg)
 
     @api.constrains("table_alias", "field_id")
     def _constrains_unique_fields_check(self):
         seen = set()
         for line in self.mapped("bve_view_id.field_ids"):
-            if (line.table_alias, line.field_id.id,) not in seen:
-                seen.add((line.table_alias, line.field_id.id,))
+            if (
+                line.table_alias,
+                line.field_id.id,
+            ) not in seen:
+                seen.add(
+                    (
+                        line.table_alias,
+                        line.field_id.id,
+                    )
+                )
             else:
                 raise ValidationError(
                     _("Field %s/%s is duplicated.\n" "Please remove the duplications.")
