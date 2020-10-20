@@ -1,4 +1,4 @@
-# Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
+# Copyright 2015-2020 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
@@ -541,7 +541,7 @@ class BveView(models.Model):
             self.env["ir.model"].sudo().search([("model", "=", self.model_name)])
         )
         if models_to_delete:
-            models_to_delete.unlink()
+            models_to_delete.with_context(_force_unlink=True).unlink()
 
         table_name = self.model_name.replace(".", "_")
         tools.drop_view_if_exists(self.env.cr, table_name)
