@@ -57,8 +57,16 @@ class BveViewLine(models.Model):
     def _constrains_unique_fields_check(self):
         seen = set()
         for line in self.mapped("bve_view_id.field_ids"):
-            if (line.table_alias, line.field_id.id,) not in seen:
-                seen.add((line.table_alias, line.field_id.id,))
+            if (
+                line.table_alias,
+                line.field_id.id,
+            ) not in seen:
+                seen.add(
+                    (
+                        line.table_alias,
+                        line.field_id.id,
+                    )
+                )
             else:
                 raise ValidationError(
                     _("Field %s/%s is duplicated.\n" "Please remove the duplications.")

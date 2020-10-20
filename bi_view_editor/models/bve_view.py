@@ -320,7 +320,11 @@ class BveView(models.Model):
         try:
             with self.env.cr.savepoint():
                 self.env.cr.execute(
-                    "CREATE or REPLACE VIEW %s as (%s)", (AsIs(view_name), AsIs(query),)
+                    "CREATE or REPLACE VIEW %s as (%s)",
+                    (
+                        AsIs(view_name),
+                        AsIs(query),
+                    ),
                 )
         except Exception as e:
             raise UserError(

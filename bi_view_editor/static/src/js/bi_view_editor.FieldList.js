@@ -1,7 +1,7 @@
 /* Copyright 2015-2019 Onestein (<https://www.onestein.eu>)
  * License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). */
 
-odoo.define("bi_view_editor.FieldList", function(require) {
+odoo.define("bi_view_editor.FieldList", function (require) {
     "use strict";
 
     var core = require("web.core");
@@ -11,14 +11,14 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
     var FieldListContextMenu = Widget.extend(
         _.extend({}, mixins.EventDispatcherMixin, {
-            start: function() {
+            start: function () {
                 var res = this._super.apply(this, arguments);
-                this.$el.mouseleave(function() {
+                this.$el.mouseleave(function () {
                     $(this).addClass("d-none");
                 });
                 return res;
             },
-            open: function(x, y) {
+            open: function (x, y) {
                 this.$el.css({
                     left: x + "px",
                     top: y + "px",
@@ -31,7 +31,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
     var FieldListFieldContextMenu = FieldListContextMenu.extend({
         template: "bi_view_editor.FieldList.FieldContextMenu",
-        open: function(x, y, $item) {
+        open: function (x, y, $item) {
             var field = $item.data("field");
             this.$el.find(".checkbox-column").prop("checked", field.column);
             this.$el.find(".checkbox-row").prop("checked", field.row);
@@ -49,7 +49,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
             var events = this._super(x, y, field);
             this.$el.find("input").unbind("change");
-            this.$el.find("input").change(function() {
+            this.$el.find("input").change(function () {
                 var $checkbox = $(this);
                 var property = $checkbox.attr("data-for");
                 field[property] = $checkbox.is(":checked");
@@ -62,13 +62,13 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
     var FieldListJoinContextMenu = FieldListContextMenu.extend({
         template: "bi_view_editor.FieldList.JoinContextMenu",
-        open: function(x, y, $item) {
+        open: function (x, y, $item) {
             var node = $item.data("field");
             this.$el.find(".checkbox-join-left").prop("checked", node.join_left);
 
             var events = this._super(x, y, node);
             this.$el.find("input").unbind("change");
-            this.$el.find("input").change(function() {
+            this.$el.find("input").change(function () {
                 var $checkbox = $(this);
                 var property = $checkbox.attr("data-for");
                 node[property] = $checkbox.is(":checked");
@@ -84,14 +84,14 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             "click .delete-button": "removeClicked",
             'keyup input[name="description"]': "keyupDescription",
         },
-        start: function() {
+        start: function () {
             var res = this._super.apply(this, arguments);
             this.contextmenu = new FieldListFieldContextMenu(this);
             this.contextmenu.appendTo(this.$el);
             this.contextmenu.on(
                 "change",
                 this,
-                function(f, $item) {
+                function (f, $item) {
                     $item.data("field", f);
                     this.refreshItem($item);
                     this.trigger("updated");
@@ -102,7 +102,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             this.contextmenu_join.on(
                 "change",
                 this,
-                function(f, $item) {
+                function (f, $item) {
                     $item.data("field", f);
                     this.refreshItem($item);
                     this.trigger("updated");
@@ -112,7 +112,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             this.mode = null;
             return res;
         },
-        setMode: function(mode) {
+        setMode: function (mode) {
             if (mode === "readonly") {
                 this.$el.find('input[type="text"]').attr("disabled", true);
                 this.$el.find(".delete-button").addClass("d-none");
@@ -122,28 +122,26 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             }
             this.mode = mode;
         },
-        get: function() {
+        get: function () {
             return $.makeArray(
-                this.$el.find("tbody tr").map(function() {
+                this.$el.find("tbody tr").map(function () {
                     var field = $(this).data("field");
-                    field.description = $(this)
-                        .find('input[name="description"]')
-                        .val();
+                    field.description = $(this).find('input[name="description"]').val();
                     return field;
                 })
             );
         },
-        getModelIds: function() {
+        getModelIds: function () {
             var model_ids = {};
-            this.$el.find("tbody tr").each(function() {
+            this.$el.find("tbody tr").each(function () {
                 var data = $(this).data("field");
                 model_ids[data.table_alias] = data.model_id;
             });
             return model_ids;
         },
-        getModelData: function() {
+        getModelData: function () {
             var model_data = {};
-            this.$el.find("tbody tr").each(function() {
+            this.$el.find("tbody tr").each(function () {
                 var data = $(this).data("field");
                 model_data[data.table_alias] = {
                     model_id: data.model_id,
@@ -152,7 +150,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             });
             return model_data;
         },
-        add: function(field) {
+        add: function (field) {
             var self = this;
             field.row = typeof field.row === "undefined" ? false : field.row;
             field.column = typeof field.column === "undefined" ? false : field.column;
@@ -169,7 +167,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             var i = 0;
             var name = field.name;
             while (
-                this.get().filter(function(item) {
+                this.get().filter(function (item) {
                     return item.name === field.name;
                 }).length > 0
             ) {
@@ -189,7 +187,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
                 )
             )
                 .data("field", field)
-                .contextmenu(function(e) {
+                .contextmenu(function (e) {
                     var $item = $(this);
                     if (self.mode === "readonly") {
                         return;
@@ -200,12 +198,12 @@ odoo.define("bi_view_editor.FieldList", function(require) {
 
             this.$el.find("tbody").append($html);
         },
-        remove: function(id) {
+        remove: function (id) {
             var $item = this.$el.find('tr[data-id="' + id + '"]');
             $item.remove();
             this.trigger("removed", id);
         },
-        set: function(fields) {
+        set: function (fields) {
             var set_fields = fields;
             if (!set_fields) {
                 set_fields = [];
@@ -215,7 +213,7 @@ odoo.define("bi_view_editor.FieldList", function(require) {
                 this.add(set_fields[i]);
             }
         },
-        openContextMenu: function($item, x, y) {
+        openContextMenu: function ($item, x, y) {
             var field = $item.data("field");
             var contextmenu = field.join_node
                 ? this.contextmenu_join
@@ -226,10 +224,10 @@ odoo.define("bi_view_editor.FieldList", function(require) {
             }
             contextmenu.open(x - 20, y - 20, $item);
         },
-        refreshItem: function($item) {
+        refreshItem: function ($item) {
             var data = $item.data("field");
             var $attributes = $item.find("span[data-for], img[data-for]");
-            $.each($attributes, function() {
+            $.each($attributes, function () {
                 var $attribute = $(this);
                 var value = data[$attribute.attr("data-for")];
                 if (value) {
@@ -239,12 +237,12 @@ odoo.define("bi_view_editor.FieldList", function(require) {
                 }
             });
         },
-        removeClicked: function(e) {
+        removeClicked: function (e) {
             var $button = $(e.currentTarget);
             var id = $button.attr("data-id");
             this.remove(id);
         },
-        keyupDescription: function() {
+        keyupDescription: function () {
             this.trigger("updated");
         },
     });
