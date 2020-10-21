@@ -43,7 +43,7 @@ class ReportController(main.ReportController):
                 description="Py3o action report not found for report_name "
                 "%s" % reportname
             )
-        res, filetype = action_py3o_report.render(docids, data)
+        res, filetype = action_py3o_report._render(docids, data)
         filename = action_py3o_report.gen_report_download_filename(docids, data)
         if not filename.endswith(filetype):
             filename = "{}.{}".format(filename, filetype)
