@@ -196,7 +196,7 @@ class Py3oReport(models.TransientModel):
                 # consumption...
                 # ... but odoo wants the whole data in memory anyways :)
                 buffer = BytesIO(f.read())
-                self.ir_actions_report_id.postprocess_pdf_report(model_instance, buffer)
+                self.ir_actions_report_id._postprocess_pdf_report(model_instance, buffer)
         return result_path
 
     def _create_single_report(self, model_instance, data):

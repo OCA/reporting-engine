@@ -9,7 +9,7 @@ import tempfile
 from base64 import b64decode, b64encode
 from contextlib import contextmanager
 
-import mock
+from unittest import mock
 import pkg_resources
 from PyPDF2 import PdfFileWriter
 from PyPDF2.pdf import PageObject
@@ -46,7 +46,7 @@ def temporary_copy(path):
 class TestReportPy3o(TransactionCase):
     def setUp(self):
         super(TestReportPy3o, self).setUp()
-        self.env.user.image = PNG
+        self.env.user.image_1920 = PNG
         self.report = self.env.ref("report_py3o.res_users_report_py3o")
         self.py3o_report = self.env["py3o.report"].create(
             {"ir_actions_report_id": self.report.id}
@@ -74,13 +74,13 @@ class TestReportPy3o(TransactionCase):
                 or result
             )
             # test the call the the create method inside our custom parser
-            self.report.render(self.env.user.ids)
+            self.report._render(self.env.user.ids)
             self.assertEqual(call_count, patched_pdf.call_count)
             # generated files no more exists
             self.assertFalse(os.path.exists(result))
 
     def test_reports(self):
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertTrue(res)
 
     def test_reports_merge_zip(self):
@@ -93,7 +93,7 @@ class TestReportPy3o(TransactionCase):
             py3o_report.__class__, "_zip_results"
         ) as patched_zip_results:
             patched_zip_results.side_effect = _zip_results
-            content, filetype = self.report.render(users.ids)
+            content, filetype = self.report._render(users.ids)
             self.assertEqual(1, patched_zip_results.call_count)
             self.assertEqual(filetype, "zip")
 
@@ -122,7 +122,7 @@ class TestReportPy3o(TransactionCase):
         # time we ask the report we received the saved attachment not a newly
         # generated document
         created_attachement.datas = base64.encodestring(b"new content")
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertEqual((b"new content", self.report.py3o_filetype), res)
 
     def test_report_post_process(self):
@@ -150,24 +150,24 @@ class TestReportPy3o(TransactionCase):
             "odoo.addons.%s" % self.report.module, tmpl_name
         )
         self.assertTrue(os.path.exists(flbk_filename))
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertTrue(res)
         # The generation fails if the template is not found
         self.report.module = False
         with self.assertRaises(TemplateNotFound), self.env.cr.savepoint():
-            self.report.render(self.env.user.ids)
+            self.report._render(self.env.user.ids)
 
         # the template can also be provided as an abspath if it's root path
         # is trusted
         self.report.py3o_template_fallback = flbk_filename
         with self.assertRaises(TemplateNotFound):
-            self.report.render(self.env.user.ids)
+            self.report._render(self.env.user.ids)
         with temporary_copy(flbk_filename) as tmp_filename:
             self.report.py3o_template_fallback = tmp_filename
             tools.config.misc["report_py3o"] = {
                 "root_tmpl_path": os.path.dirname(tmp_filename)
             }
-            res = self.report.render(self.env.user.ids)
+            res = self.report._render(self.env.user.ids)
             self.assertTrue(res)
 
         # the tempalte can also be provided as a binary field
@@ -184,7 +184,7 @@ class TestReportPy3o(TransactionCase):
         )
         self.report.py3o_template_id = py3o_template
         self.report.py3o_template_fallback = flbk_filename
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertTrue(res)
 
     @tools.misc.mute_logger("odoo.addons.report_py3o.models.py3o_report")
@@ -240,7 +240,7 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.lo_bin_path)
         self.assertFalse(self.report.is_py3o_report_not_available)
         self.assertFalse(self.report.msg_py3o_report_not_available)
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertTrue(res)
 
         # The report should become unavailable for an non native output format
@@ -249,7 +249,7 @@ class TestReportPy3o(TransactionCase):
         self.assertTrue(self.report.is_py3o_report_not_available)
         self.assertTrue(self.report.msg_py3o_report_not_available)
         with self.assertRaises(RuntimeError):
-            self.report.render(self.env.user.ids)
+            self.report._render(self.env.user.ids)
 
         # if we reset the wrong path, everything should work
         self.env["ir.config_parameter"].set_param(
@@ -260,5 +260,5 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.is_py3o_native_format)
         self.assertFalse(self.report.is_py3o_report_not_available)
         self.assertFalse(self.report.msg_py3o_report_not_available)
-        res = self.report.render(self.env.user.ids)
+        res = self.report._render(self.env.user.ids)
         self.assertTrue(res)
