@@ -9,7 +9,7 @@ class TestFormula(TransactionCase):
     def setUp(self):
         super().setUp()
         self.kpi = self.env["kpi.kpi"].create(
-            {"name": "DEMO KPI", "widget": "number", "computation_method": "code",}
+            {"name": "DEMO KPI", "widget": "number", "computation_method": "code"}
         )
 
     def test_forbidden_words_01(self):
@@ -45,8 +45,7 @@ result = {{}}
 result['value'] = len(model.search([('id', '=', {})]))
 result['previous'] = len(model.search([('id', '!=', {})]))
         """.format(
-            self.kpi.id,
-            self.kpi.id,
+            self.kpi.id, self.kpi.id,
         )
         self.kpi.compute()
         value = self.kpi.value
@@ -66,8 +65,7 @@ result = {{}}
 result['value'] = len(model.search([('id', '=', {})]))
 result['previous'] = len(model.search([('id', '!=', {})]))
         """.format(
-            self.kpi.id,
-            self.kpi.id,
+            self.kpi.id, self.kpi.id,
         )
         self.kpi.compute()
         value = self.kpi.value

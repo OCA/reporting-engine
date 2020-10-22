@@ -1,3 +1,6 @@
+/*
+    global py
+*/
 odoo.define("kpi_dashboard.DashboardController", function(require) {
     "use strict";
 
@@ -20,7 +23,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
             add_modify_color: "_addModifyColor",
             refresh_colors: "_refreshColors",
         }),
-        _refreshOnFly: function(event) {
+        _refreshOnFly: function() {
             var self = this;
             this._rpc({
                 model: this.modelName,
@@ -37,12 +40,14 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
             });
         },
         renderPager: function($node, options) {
+            // eslint-disable-next-line no-param-reassign
             options = _.extend({}, options, {
                 validate: this.canBeDiscarded.bind(this),
             });
             this._super($node, options);
         },
         _pushState: function(state) {
+            // eslint-disable-next-line no-param-reassign
             state = state || {};
             var env = this.model.get(this.handle, {env: true});
             state.id = env.currentId;

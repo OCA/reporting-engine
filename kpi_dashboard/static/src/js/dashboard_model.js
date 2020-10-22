@@ -4,7 +4,7 @@ odoo.define("kpi_dashboard.DashboardModel", function(require) {
     var BasicModel = require("web.BasicModel");
 
     var DashboardModel = BasicModel.extend({
-        _fetchRecord: function(record, options) {
+        _fetchRecord: function(record) {
             return this._rpc({
                 model: record.model,
                 method: "read_dashboard",
