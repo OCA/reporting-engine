@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.KpiFieldWidget", function(require) {
+odoo.define("kpi_dashboard.KpiFieldWidget", function (require) {
     "use strict";
 
     var basic_fields = require("web.basic_fields");
@@ -11,7 +11,7 @@ odoo.define("kpi_dashboard.KpiFieldWidget", function(require) {
         jsLibs: ["/kpi_dashboard/static/lib/gridster/jquery.dsmorse-gridster.min.js"],
         cssLibs: ["/kpi_dashboard/static/lib/gridster/jquery.dsmorse-gridster.min.css"],
         className: "o_dashboard_view",
-        _renderReadonly: function() {
+        _renderReadonly: function () {
             this.$el.html($(qweb.render("dashboard_kpi.dashboard")));
             var marginx = 0;
             var marginy = 0;

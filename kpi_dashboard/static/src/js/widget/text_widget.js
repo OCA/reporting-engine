@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.TextWidget", function(require) {
+odoo.define("kpi_dashboard.TextWidget", function (require) {
     "use strict";
 
     var AbstractWidget = require("kpi_dashboard.AbstractWidget");
@@ -6,7 +6,7 @@ odoo.define("kpi_dashboard.TextWidget", function(require) {
 
     var TextWidget = AbstractWidget.extend({
         template: "kpi_dashboard.base_text",
-        fillWidget: function() {
+        fillWidget: function () {
             return;
         },
     });

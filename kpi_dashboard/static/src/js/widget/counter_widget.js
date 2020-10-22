@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.CounterWidget", function(require) {
+odoo.define("kpi_dashboard.CounterWidget", function (require) {
     "use strict";
 
     var IntegerWidget = require("kpi_dashboard.IntegerWidget");

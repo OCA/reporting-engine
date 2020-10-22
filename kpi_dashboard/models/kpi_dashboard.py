@@ -11,9 +11,13 @@ class KpiDashboard(models.Model):
     _description = "Dashboard"
 
     name = fields.Char(required=True)
-    active = fields.Boolean(default=True,)
+    active = fields.Boolean(
+        default=True,
+    )
     item_ids = fields.One2many(
-        "kpi.dashboard.item", inverse_name="dashboard_id", copy=True,
+        "kpi.dashboard.item",
+        inverse_name="dashboard_id",
+        copy=True,
     )
     number_of_columns = fields.Integer(default=5, required=True)
     compute_on_fly_refresh = fields.Integer(
@@ -25,7 +29,9 @@ class KpiDashboard(models.Model):
     widget_dimension_x = fields.Integer(default=250, required=True)
     widget_dimension_y = fields.Integer(default=250, required=True)
     background_color = fields.Char(required=True, default="#f9f9f9")
-    group_ids = fields.Many2many("res.groups",)
+    group_ids = fields.Many2many(
+        "res.groups",
+    )
     menu_id = fields.Many2one("ir.ui.menu", copy=False)
 
     def write(self, vals):
@@ -227,3 +233,6 @@ class KpiDashboardItem(models.Model):
                 "kpi_dashboard.kpi_dashboard_item_config_form_view"
             ).id,
         }
+
+    def store_data(self):
+        return {"type": "ir.actions.act_window_close"}

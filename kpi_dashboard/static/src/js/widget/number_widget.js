@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.NumberWidget", function(require) {
+odoo.define("kpi_dashboard.NumberWidget", function (require) {
     "use strict";
 
     var IntegerWidget = require("kpi_dashboard.IntegerWidget");
@@ -7,7 +7,7 @@ odoo.define("kpi_dashboard.NumberWidget", function(require) {
 
     var NumberWidget = IntegerWidget.extend({
         digits: [3, 1],
-        shortNumber: function(num) {
+        shortNumber: function (num) {
             if (Math.abs(num) < 10) {
                 return field_utils.format.float(num, false, {
                     digits: [3, 2],

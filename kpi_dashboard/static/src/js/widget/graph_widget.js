@@ -1,7 +1,7 @@
 /*
 global nv, d3
 */
-odoo.define("kpi_dashboard.GraphWidget", function(require) {
+odoo.define("kpi_dashboard.GraphWidget", function (require) {
     "use strict";
 
     var AbstractWidget = require("kpi_dashboard.AbstractWidget");
@@ -17,12 +17,12 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
             "/kpi_dashboard/static/src/js/lib/nvd3.js",
         ],
         cssLibs: ["/kpi_dashboard/static/lib/nvd3/nv.d3.css"],
-        start: function() {
+        start: function () {
             this._onResize = this._onResize.bind(this);
             nv.utils.windowResize(this._onResize);
             return this._super.apply(this, arguments);
         },
-        destroy: function() {
+        destroy: function () {
             if ("nv" in window && nv.utils && nv.utils.offWindowResize) {
                 // If the widget is destroyed before the lazy loaded libs (nv) are
                 // actually loaded (i.e. after the widget has actually started),
@@ -31,9 +31,9 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
             }
             this._super.apply(this, arguments);
         },
-        _getChartOptions: function() {
+        _getChartOptions: function () {
             return {
-                x: function(d, u) {
+                x: function (d, u) {
                     return u;
                 },
                 margin: {left: 0, right: 0, top: 5, bottom: 0},
@@ -44,11 +44,11 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
                 width: this.widget_size_x - 20,
             };
         },
-        _chartConfiguration: function(values) {
+        _chartConfiguration: function (values) {
             this.chart.forceY([0]);
-            this.chart.xAxis.tickFormat(function(d) {
+            this.chart.xAxis.tickFormat(function (d) {
                 var label = "";
-                _.each(values.value.graphs, function(v) {
+                _.each(values.value.graphs, function (v) {
                     if (v.values[d] && v.values[d].x) {
                         label = v.values[d].x;
                     }
@@ -57,7 +57,7 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
             });
             this.chart.yAxis.tickFormat(d3.format(",.2f"));
 
-            this.chart.tooltip.contentGenerator(function(key) {
+            this.chart.tooltip.contentGenerator(function (key) {
                 return qweb.render("GraphCustomTooltip", {
                     color: key.point.color,
                     key: key.series[0].title,
@@ -65,7 +65,7 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
                 });
             });
         },
-        _addGraph: function(values) {
+        _addGraph: function (values) {
             var data = values.value.graphs;
             this.$svg.addClass("o_graph_linechart");
             this.chart = nv.models.lineChart();
@@ -79,23 +79,23 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
             this.$("svg").css("height", this.widget_size_y - 90);
             this._customizeChart();
         },
-        fillWidget: function(values) {
+        fillWidget: function (values) {
             var self = this;
             var element = this.$el.find('[data-bind="value"]');
             element.empty();
             element.css("padding-left", 10).css("padding-right", 10);
             this.chart = null;
-            nv.addGraph(function() {
+            nv.addGraph(function () {
                 self.$svg = self.$el
                     .find('[data-bind="value"]')
                     .append("<svg width=" + (self.widget_size_x - 20) + ">");
                 self._addGraph(values);
             });
         },
-        _customizeChart: function() {
+        _customizeChart: function () {
             // Hook function
         },
-        _onResize: function() {
+        _onResize: function () {
             if (this.chart) {
                 this.chart.update();
                 this._customizeChart();

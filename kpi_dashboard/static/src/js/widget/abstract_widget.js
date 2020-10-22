@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.AbstractWidget", function(require) {
+odoo.define("kpi_dashboard.AbstractWidget", function (require) {
     "use strict";
     var Widget = require("web.Widget");
     var field_utils = require("web.field_utils");
@@ -17,7 +17,7 @@ odoo.define("kpi_dashboard.AbstractWidget", function(require) {
             "click .o_kpi_dashboard_toggle_button": "_onClickToggleButton",
             "click .direct_action": "_onClickDirectAction",
         },
-        init: function(parent, kpi_values) {
+        init: function (parent, kpi_values) {
             this._super(parent);
             this.col = kpi_values.col;
             this.row = kpi_values.row;
@@ -37,21 +37,21 @@ odoo.define("kpi_dashboard.AbstractWidget", function(require) {
             this.widget_size_y =
                 this.widget_dimension_y * this.sizey + (this.sizey - 1) * this.margin_y;
         },
-        willStart: function() {
+        willStart: function () {
             // We need to load the libraries before the start
             return $.when(ajax.loadLibs(this), this._super.apply(this, arguments));
         },
-        start: function() {
+        start: function () {
             var self = this;
-            return this._super.apply(this, arguments).then(function() {
+            return this._super.apply(this, arguments).then(function () {
                 self._fillWidget(self.values);
             });
         },
-        _onClickToggleButton: function(event) {
+        _onClickToggleButton: function (event) {
             event.preventDefault();
             this.$el.toggleClass("o_dropdown_open");
         },
-        _fillWidget: function(values) {
+        _fillWidget: function (values) {
             // This function fills the widget values
             if (this.$el === undefined) return;
             this.fillWidget(values);
@@ -73,20 +73,20 @@ odoo.define("kpi_dashboard.AbstractWidget", function(require) {
             if ($manage && this.showManagePanel(values))
                 $manage.toggleClass("hidden", false);
         },
-        showManagePanel: function(values) {
+        showManagePanel: function (values) {
             // Hook for extensions
             return values.actions !== undefined;
         },
-        fillWidget: function(values) {
+        fillWidget: function (values) {
             // Specific function that will be changed by specific widget
             var value = values.value;
             var self = this;
-            _.each(value, function(val, key) {
+            _.each(value, function (val, key) {
                 var item = self.$el.find("[data-bind=" + key + "]");
                 if (item) item.text(val);
             });
         },
-        _onClickDirectAction: function(event) {
+        _onClickDirectAction: function (event) {
             event.preventDefault();
             var $data = $(event.currentTarget).closest("a");
             var action = this.actions[$($data).data("id")];

@@ -1,7 +1,7 @@
 /*
 global nv
 */
-odoo.define("web.nvd3.extensions", function() {
+odoo.define("web.nvd3.extensions", function () {
     "use strict";
 
     /**
@@ -16,7 +16,7 @@ odoo.define("web.nvd3.extensions", function() {
     // see https://github.com/novus/nvd3/pull/396 for more details
 
     // Adds a resize listener to the window.
-    nv.utils.onWindowResize = function(fun) {
+    nv.utils.onWindowResize = function (fun) {
         if (fun === null) return;
         window.addEventListener("resize", fun);
     };
@@ -25,7 +25,7 @@ odoo.define("web.nvd3.extensions", function() {
     nv.utils.windowResize = nv.utils.onWindowResize;
 
     // Removes a resize listener from the window.
-    nv.utils.offWindowResize = function(fun) {
+    nv.utils.offWindowResize = function (fun) {
         if (fun === null) return;
         window.removeEventListener("resize", fun);
     };
@@ -33,7 +33,7 @@ odoo.define("web.nvd3.extensions", function() {
     // Monkey patch nvd3 to prevent crashes when user changes view and nvd3
     // tries to remove tooltips after 500 ms...  seriously nvd3, what were you
     // thinking?
-    nv.tooltip.cleanup = function() {
+    nv.tooltip.cleanup = function () {
         $(".nvtooltip").remove();
     };
 
@@ -41,7 +41,7 @@ odoo.define("web.nvd3.extensions", function() {
     // with a negative `top`; with this patch the highest tooltip's position is
     // still in the graph
     var originalCalcTooltipPosition = nv.tooltip.calcTooltipPosition;
-    nv.tooltip.calcTooltipPosition = function() {
+    nv.tooltip.calcTooltipPosition = function () {
         var container = originalCalcTooltipPosition.apply(this, arguments);
         container.style.top =
             container.style.top.split("px")[0] < 0 ? 0 + "px" : container.style.top;

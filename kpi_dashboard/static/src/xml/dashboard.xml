@@ -29,7 +29,10 @@
                         class="direct_action"
                         t-att-data-id="action_id"
                         t-att-data-type="action.type"
-                    >Go to <t t-esc="action.name" /></a>
+                    >
+                        Go to
+                        <t t-esc="action.name" />
+                    </a>
                 </div>
             </t>
         </t>

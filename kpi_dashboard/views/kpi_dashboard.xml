@@ -166,7 +166,7 @@
                 </sheet>
                 <footer>
                     <button
-                        name="write"
+                        name="store_data"
                         string="Save"
                         type="object"
                         class="oe_highlight"

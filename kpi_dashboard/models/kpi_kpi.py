@@ -2,9 +2,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import ast
-import datetime
 import json
 import re
+from datetime import date, datetime, time
 
 from dateutil import relativedelta
 
@@ -24,11 +24,15 @@ class KpiKpi(models.Model):
     active = fields.Boolean(default=True)
     cron_id = fields.Many2one("ir.cron", readonly=True, copy=False)
     computation_method = fields.Selection(
-        [("function", "Function"), ("code", "Code")], required=True
+        [("function", "Function"), ("code", "Code")],
+        required=True,
+        default="code",
     )
     value = fields.Serialized()
     dashboard_item_ids = fields.One2many("kpi.dashboard.item", inverse_name="kpi_id")
-    model_id = fields.Many2one("ir.model",)
+    model_id = fields.Many2one(
+        "ir.model",
+    )
     function = fields.Char()
     args = fields.Char()
     kwargs = fields.Char()
@@ -144,6 +148,8 @@ class KpiKpi(models.Model):
             "self": self,
             "model": self.browse(),
             "datetime": datetime,
+            "date": date,
+            "time": time,
             "float_compare": float_compare,
             "relativedelta": relativedelta.relativedelta,
         }
@@ -231,6 +237,7 @@ class KpiKpiHistory(models.Model):
     widget = fields.Selection(
         selection=lambda self: self.env["kpi.kpi"]._fields["widget"].selection,
         required=True,
+        default="number",
     )
 
     @api.depends("value")

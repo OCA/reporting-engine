@@ -13,18 +13,14 @@
         <field name="prefix">$</field>
         <field name="computation_method">code</field>
         <field name="widget">number</field>
-        <field name="code">
-result = {"value": 10000,"previous": 12000}
-        </field>
+        <field name="code">result = {"value": 10000,"previous": 12000}</field>
     </record>
     <record id="widget_number_02" model="kpi.kpi">
         <field name="name">Number 02</field>
         <field name="suffix">€</field>
         <field name="computation_method">code</field>
         <field name="widget">number</field>
-        <field name="code">
-result = {"value": 12000,"previous": 10000}
-        </field>
+        <field name="code">result = {"value": 12000,"previous": 10000}</field>
     </record>
     <function
         model="kpi.kpi"
@@ -36,18 +32,14 @@ result = {"value": 12000,"previous": 10000}
         <field name="suffix">€</field>
         <field name="computation_method">code</field>
         <field name="widget">meter</field>
-        <field name="code">
-result = {"min": 0, "max": 100, "value": 90}
-        </field>
+        <field name="code">result = {"min": 0, "max": 100, "value": 90}</field>
     </record>
     <record id="widget_meter_02" model="kpi.kpi">
         <field name="name">Meter 02</field>
         <field name="prefix">$</field>
         <field name="computation_method">code</field>
         <field name="widget">meter</field>
-        <field name="code">
-result = {"min": 0, "max": 100, "value": 40}
-        </field>
+        <field name="code">result = {"min": 0, "max": 100, "value": 40}</field>
     </record>
     <function
         model="kpi.kpi"
@@ -58,7 +50,9 @@ result = {"min": 0, "max": 100, "value": 40}
         <field name="name">Graph</field>
         <field name="computation_method">code</field>
         <field name="widget">graph</field>
-        <field name="code">
+        <field
+            name="code"
+        ><![CDATA[
 result = {"graphs": [
     {
         "values": [
@@ -81,7 +75,7 @@ result = {"graphs": [
         "color": "000000",
     },
 ]}
-        </field>
+        ]]></field>
     </record>
     <function model="kpi.kpi" name="compute" eval="[[ref('widget_graph')]]" />
     <record id="widget_integer" model="kpi.kpi">
@@ -89,18 +83,22 @@ result = {"graphs": [
         <field name="computation_method">code</field>
         <field name="widget">integer</field>
         <field name="compute_on_fly" eval="True" />
-        <field name="code">
+        <field
+            name="code"
+        ><![CDATA[
 result = {"value": self.env.context.get('counter', 990)}
-        </field>
+        ]]></field>
     </record>
     <record id="widget_counter" model="kpi.kpi">
         <field name="name">Counter</field>
         <field name="computation_method">code</field>
         <field name="widget">counter</field>
         <field name="compute_on_fly" eval="True" />
-        <field name="code">
+        <field
+            name="code"
+        ><![CDATA[
 result = {"value": self.env.context.get('counter', 990)}
-        </field>
+        ]]></field>
     </record>
     <record id="dashboard_widget_text" model="kpi.dashboard.item">
         <field name="name">Dashboard title</field>
@@ -161,13 +159,13 @@ result = {"value": self.env.context.get('counter', 990)}
         <field name="color">#B41F1F</field>
         <field name="font_color">#EEBF77</field>
         <field name="modify_context" eval="True" />
-        <field
-            name="modify_context_expression"
-        >{'counter': (context.counter or 990) + 1}</field>
+        <field name="modify_context_expression">
+            {'counter': (context.counter or 990) + 1}
+        </field>
         <field name="modify_color" eval="True" />
-        <field
-            name="modify_color_expression"
-        >check_if(((context.counter or 990) + 1) % 2, '#ff0000', '#00ff00')</field>
+        <field name="modify_color_expression">
+            check_if(((context.counter or 990) + 1) % 2, '#ff0000', '#00ff00')
+        </field>
     </record>
     <record id="dashboard_widget_counter" model="kpi.dashboard.item">
         <field name="name">Counter</field>
