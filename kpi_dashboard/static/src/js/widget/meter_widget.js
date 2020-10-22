@@ -21,8 +21,8 @@ odoo.define("kpi_dashboard.MeterWidget", function(require) {
                 style: "Arch",
                 width: 10,
                 size: size,
-                prepend: values.prefix !== undefined ? values.prefix : "",
-                append: values.suffix !== undefined ? values.suffix : "",
+                prepend: values.prefix === undefined ? "" : values.prefix,
+                append: values.suffix === undefined ? "" : values.suffix,
                 color: values.font_color,
                 animate_text_colors: true,
             };

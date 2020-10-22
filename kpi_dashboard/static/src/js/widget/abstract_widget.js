@@ -7,9 +7,12 @@ odoo.define("kpi_dashboard.AbstractWidget", function(require) {
     var registry = require("kpi_dashboard.widget_registry");
 
     var AbstractWidget = Widget.extend({
-        template: "kpi_dashboard.base_widget", // Template used by the widget
-        cssLibs: [], // Specific css of the widget
-        jsLibs: [], // Specific Javascript libraries of the widget
+        // Template used by the widget
+        template: "kpi_dashboard.base_widget",
+        // Specific css of the widget
+        cssLibs: [],
+        // Specific Javascript libraries of the widget
+        jsLibs: [],
         events: {
             "click .o_kpi_dashboard_toggle_button": "_onClickToggleButton",
             "click .direct_action": "_onClickDirectAction",

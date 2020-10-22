@@ -4,7 +4,6 @@ odoo.define("kpi_dashboard.DashboardRenderer", function(require) {
     var BasicRenderer = require("web.BasicRenderer");
     var core = require("web.core");
     var registry = require("kpi_dashboard.widget_registry");
-    var BusService = require("bus.BusService");
     var qweb = core.qweb;
 
     var DashboardRenderer = BasicRenderer.extend({

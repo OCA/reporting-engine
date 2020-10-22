@@ -5,11 +5,11 @@
     "name": "Kpi Dashboard",
     "summary": """
         Create Dashboards using kpis""",
-    "version": "12.0.1.3.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
-    "depends": ["bus", "board", "base_sparse_field", "web_widget_color"],
+    "depends": ["bus", "board", "base_sparse_field"],
     "qweb": ["static/src/xml/dashboard.xml"],
     "data": [
         "wizards/kpi_dashboard_menu.xml",

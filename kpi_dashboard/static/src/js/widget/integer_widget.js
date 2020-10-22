@@ -18,16 +18,17 @@ odoo.define("kpi_dashboard.IntegerWidget", function(require) {
             var suffix = "";
             var shortened = false;
             var digits = this.digits;
+            var result = num;
             _.each(this.shortList, function(shortItem) {
                 if (!shortened && Math.abs(num) >= shortItem[0]) {
                     shortened = true;
                     suffix = shortItem[1];
-                    num /= shortItem[0];
+                    result /= shortItem[0];
                     digits = shortItem[2];
                 }
             });
             return (
-                field_utils.format.float(num, false, {
+                field_utils.format.float(result, false, {
                     digits: digits,
                 }) + suffix
             );

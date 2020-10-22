@@ -134,7 +134,6 @@ class KpiKpi(models.Model):
         self.ensure_one()
         self.cron_id = self.env["ir.cron"].create(self._cron_vals())
 
-    @api.multi
     def write(self, vals):
         if "value" in vals:
             vals["value_last_update"] = fields.Datetime.now()
@@ -165,8 +164,10 @@ class KpiKpi(models.Model):
             )
         results = self._get_code_input_dict()
         savepoint = "kpi_formula_%s" % self.id
+        # pylint: disable=E8103
         self.env.cr.execute("savepoint %s" % savepoint)
         safe_eval(self.code or "", results, mode="exec", nocopy=True)
+        # pylint: disable=E8103
         self.env.cr.execute("rollback to %s" % savepoint)
         return results.get("result", {})
 
