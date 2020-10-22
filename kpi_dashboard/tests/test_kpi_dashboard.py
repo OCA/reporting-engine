@@ -53,16 +53,18 @@ class TestKpiDashboard(TransactionCase):
             }
         )
         self.env["kpi.dashboard.item"].create(
-            {"dashboard_id": self.dashboard.id, "name": "TITLE", "row": 2, "column": 1,}
+            {"dashboard_id": self.dashboard.id, "name": "TITLE", "row": 2, "column": 1}
         )
 
     def test_constrains_01(self):
         with self.assertRaises(ValidationError):
             self.kpi_01.dashboard_item_ids.write({"size_x": 2})
+            self.kpi_01.flush()
 
     def test_constrains_02(self):
         with self.assertRaises(ValidationError):
             self.kpi_02.dashboard_item_ids.write({"size_x": 4})
+            self.kpi_01.flush()
 
     def test_constrains_03(self):
         with self.assertRaises(ValidationError):
