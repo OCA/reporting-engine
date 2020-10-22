@@ -1,3 +1,6 @@
+/*
+global nv, d3
+*/
 odoo.define("kpi_dashboard.GraphWidget", function(require) {
     "use strict";
 
@@ -9,11 +12,11 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
     var GraphWidget = AbstractWidget.extend({
         template: "kpi_dashboard.graph",
         jsLibs: [
-            "/web/static/lib/nvd3/d3.v3.js",
-            "/web/static/lib/nvd3/nv.d3.js",
-            "/web/static/src/js/libs/nvd3.js",
+            "/kpi_dashboard/static/lib/nvd3/d3.v3.js",
+            "/kpi_dashboard/static/lib/nvd3/nv.d3.js",
+            "/kpi_dashboard/static/src/js/lib/nvd3.js",
         ],
-        cssLibs: ["/web/static/lib/nvd3/nv.d3.css"],
+        cssLibs: ["/kpi_dashboard/static/lib/nvd3/nv.d3.css"],
         start: function() {
             this._onResize = this._onResize.bind(this);
             nv.utils.windowResize(this._onResize);
@@ -28,7 +31,7 @@ odoo.define("kpi_dashboard.GraphWidget", function(require) {
             }
             this._super.apply(this, arguments);
         },
-        _getChartOptions: function(values) {
+        _getChartOptions: function() {
             return {
                 x: function(d, u) {
                     return u;
