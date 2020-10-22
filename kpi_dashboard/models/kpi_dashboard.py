@@ -1,7 +1,7 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -17,8 +17,7 @@ class KpiDashboard(models.Model):
     )
     number_of_columns = fields.Integer(default=5, required=True)
     compute_on_fly_refresh = fields.Integer(
-        default=0,
-        help="Seconds to refresh on fly elements"
+        default=0, help="Seconds to refresh on fly elements"
     )
     width = fields.Integer(compute="_compute_width")
     margin_y = fields.Integer(default=10, required=True)
@@ -34,9 +33,7 @@ class KpiDashboard(models.Model):
         if "group_ids" in vals:
             for rec in self:
                 if rec.menu_id:
-                    rec.menu_id.write(
-                        {"groups_id": [(6, 0, rec.group_ids.ids)]}
-                    )
+                    rec.menu_id.write({"groups_id": [(6, 0, rec.group_ids.ids)]})
         return res
 
     @api.depends("widget_dimension_x", "margin_x", "number_of_columns")
@@ -78,7 +75,7 @@ class KpiDashboard(models.Model):
         return {
             "parent_id": menu.id or False,
             "name": self.name,
-            "action": "%s,%s" % (action._name, action.id),
+            "action": "{},{}".format(action._name, action.id),
             "groups_id": [(6, 0, self.group_ids.ids)],
         }
 
@@ -106,13 +103,11 @@ class KpiDashboardItem(models.Model):
 
     name = fields.Char(required=True)
     kpi_id = fields.Many2one("kpi.kpi")
-    dashboard_id = fields.Many2one(
-        "kpi.dashboard", required=True, ondelete="cascade"
-    )
+    dashboard_id = fields.Many2one("kpi.dashboard", required=True, ondelete="cascade")
     column = fields.Integer(required=True, default=1)
     row = fields.Integer(required=True, default=1)
-    end_row = fields.Integer(store=True, compute='_compute_end_row')
-    end_column = fields.Integer(store=True, compute='_compute_end_column')
+    end_row = fields.Integer(store=True, compute="_compute_end_row")
+    end_column = fields.Integer(store=True, compute="_compute_end_column")
     size_x = fields.Integer(required=True, default=1)
     size_y = fields.Integer(required=True, default=1)
     color = fields.Char()
@@ -122,44 +117,43 @@ class KpiDashboardItem(models.Model):
     modify_color = fields.Boolean()
     modify_color_expression = fields.Char()
 
-    @api.depends('row', 'size_y')
+    @api.depends("row", "size_y")
     def _compute_end_row(self):
         for r in self:
             r.end_row = r.row + r.size_y - 1
 
-    @api.depends('column', 'size_x')
+    @api.depends("column", "size_x")
     def _compute_end_column(self):
         for r in self:
             r.end_column = r.column + r.size_x - 1
 
-    @api.constrains('size_y')
+    @api.constrains("size_y")
     def _check_size_y(self):
         for rec in self:
             if rec.size_y > 10:
-                raise ValidationError(_(
-                    'Size Y of the widget cannot be bigger than 10'))
+                raise ValidationError(
+                    _("Size Y of the widget cannot be bigger than 10")
+                )
 
     def _check_size_domain(self):
         return [
-            ('dashboard_id', '=', self.dashboard_id.id),
-            ('id', '!=', self.id),
-            ('row', '<=', self.end_row),
-            ('end_row', '>=', self.row),
-            ('column', '<=', self.end_column),
-            ('end_column', '>=', self.column),
+            ("dashboard_id", "=", self.dashboard_id.id),
+            ("id", "!=", self.id),
+            ("row", "<=", self.end_row),
+            ("end_row", ">=", self.row),
+            ("column", "<=", self.end_column),
+            ("end_column", ">=", self.column),
         ]
 
-    @api.constrains('end_row', 'end_column', 'row', 'column')
+    @api.constrains("end_row", "end_column", "row", "column")
     def _check_size(self):
         for r in self:
             if self.search(r._check_size_domain(), limit=1):
-                raise ValidationError(_(
-                    'Widgets cannot be crossed by other widgets'
-                ))
+                raise ValidationError(_("Widgets cannot be crossed by other widgets"))
             if r.end_column > r.dashboard_id.number_of_columns:
-                raise ValidationError(_(
-                    'Widget %s is bigger than expected'
-                ) % r.display_name)
+                raise ValidationError(
+                    _("Widget %s is bigger than expected") % r.display_name
+                )
 
     @api.onchange("kpi_id")
     def _onchange_kpi(self):
@@ -181,9 +175,9 @@ class KpiDashboardItem(models.Model):
             "modify_color": self.modify_color,
         }
         if self.modify_context:
-            vals['modify_context_expression'] = self.modify_context_expression
+            vals["modify_context_expression"] = self.modify_context_expression
         if self.modify_color:
-            vals['modify_color_expression'] = self.modify_color_expression
+            vals["modify_color_expression"] = self.modify_color_expression
         if self.kpi_id:
             vals.update(
                 {
@@ -195,15 +189,19 @@ class KpiDashboardItem(models.Model):
                 }
             )
             if self.kpi_id.compute_on_fly:
-                vals.update({
-                    "value": self.kpi_id._compute_value(),
-                    "value_last_update": fields.Datetime.now(),
-                })
+                vals.update(
+                    {
+                        "value": self.kpi_id._compute_value(),
+                        "value_last_update": fields.Datetime.now(),
+                    }
+                )
             else:
-                vals.update({
-                    "value": self.kpi_id.value,
-                    "value_last_update": self.kpi_id.value_last_update,
-                })
+                vals.update(
+                    {
+                        "value": self.kpi_id.value,
+                        "value_last_update": self.kpi_id.value_last_update,
+                    }
+                )
             if self.kpi_id.action_ids:
                 vals["actions"] = self.kpi_id.action_ids.read_dashboard()
         else:
@@ -219,12 +217,13 @@ class KpiDashboardItem(models.Model):
     def technical_config(self):
         self.ensure_one()
         return {
-            'name': self.display_name,
-            'res_model': self._name,
-            'res_id': self.id,
-            'type': 'ir.actions.act_window',
-            'view_mode': 'form',
-            'target': 'new',
-            'view_id': self.env.ref(
-                'kpi_dashboard.kpi_dashboard_item_config_form_view').id,
+            "name": self.display_name,
+            "res_model": self._name,
+            "res_id": self.id,
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "target": "new",
+            "view_id": self.env.ref(
+                "kpi_dashboard.kpi_dashboard_item_config_form_view"
+            ).id,
         }
