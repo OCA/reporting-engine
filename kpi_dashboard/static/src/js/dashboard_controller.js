@@ -1,7 +1,7 @@
 /*
     global py
 */
-odoo.define("kpi_dashboard.DashboardController", function(require) {
+odoo.define("kpi_dashboard.DashboardController", function (require) {
     "use strict";
 
     var BasicController = require("web.BasicController");
@@ -11,7 +11,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
     var _t = core._t;
 
     var DashboardController = BasicController.extend({
-        init: function() {
+        init: function () {
             this._super.apply(this, arguments);
             this.dashboard_context = {};
             this.dashboard_color_data = [];
@@ -23,15 +23,15 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
             add_modify_color: "_addModifyColor",
             refresh_colors: "_refreshColors",
         }),
-        _refreshOnFly: function() {
+        _refreshOnFly: function () {
             var self = this;
             this._rpc({
                 model: this.modelName,
                 method: "read_dashboard_on_fly",
                 args: [[this.renderer.state.res_id]],
                 context: this._getContext(),
-            }).then(function(data) {
-                _.each(data, function(item) {
+            }).then(function (data) {
+                _.each(data, function (item) {
                     // We will follow the same logic used on Bus Notifications
                     self.renderer._onNotification([
                         ["kpi_dashboard_" + self.renderer.state.res_id, item],
@@ -39,21 +39,21 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                 });
             });
         },
-        renderPager: function($node, options) {
+        renderPager: function ($node, options) {
             // eslint-disable-next-line no-param-reassign
             options = _.extend({}, options, {
                 validate: this.canBeDiscarded.bind(this),
             });
             this._super($node, options);
         },
-        _pushState: function(state) {
+        _pushState: function (state) {
             // eslint-disable-next-line no-param-reassign
             state = state || {};
             var env = this.model.get(this.handle, {env: true});
             state.id = env.currentId;
             this._super(state);
         },
-        _addDashboard: function() {
+        _addDashboard: function () {
             var self = this;
             var action = self.initialState.specialData.action_id;
             var name = self.initialState.specialData.name;
@@ -71,7 +71,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                         name: name,
                     },
                 })
-                .then(function(r) {
+                .then(function (r) {
                     if (r) {
                         self.do_notify(
                             _.str.sprintf(_t("'%s' added to dashboard"), name),
@@ -84,7 +84,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                     }
                 });
         },
-        _updateButtons: function() {
+        _updateButtons: function () {
             // HOOK Function
             this.$buttons.on(
                 "click",
@@ -92,7 +92,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                 this._addDashboard.bind(this)
             );
         },
-        renderButtons: function($node) {
+        renderButtons: function ($node) {
             if (!$node) {
                 return;
             }
@@ -103,7 +103,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
             this._updateButtons();
             this.$buttons.appendTo($node);
         },
-        _getContext: function() {
+        _getContext: function () {
             return _.extend(
                 {},
                 this.model.get(this.handle, {raw: true}).getContext(),
@@ -111,7 +111,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                 this.dashboard_context
             );
         },
-        _modifyContext: function(event) {
+        _modifyContext: function (event) {
             var ctx = this._getContext();
             this.dashboard_context = _.extend(
                 this.dashboard_context,
@@ -119,7 +119,7 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
                     context: _.extend(
                         ctx,
                         {
-                            __getattr__: function() {
+                            __getattr__: function () {
                                 return false;
                             },
                         }
@@ -131,23 +131,23 @@ odoo.define("kpi_dashboard.DashboardController", function(require) {
             this._refreshOnFly(event);
             this._refreshColors();
         },
-        _addModifyColor: function(event) {
+        _addModifyColor: function (event) {
             this.dashboard_color_data.push([
                 event.data.element_id,
                 event.data.expression,
             ]);
         },
-        _refreshColors: function() {
+        _refreshColors: function () {
             var self = this;
             var ctx = this._getContext();
-            _.each(this.dashboard_color_data, function(data) {
+            _.each(this.dashboard_color_data, function (data) {
                 var color = py.eval(data[1], {
                     context: _.extend(ctx, {
-                        __getattr__: function() {
+                        __getattr__: function () {
                             return false;
                         },
                     }),
-                    check_if: function(args) {
+                    check_if: function (args) {
                         if (args[0].toJSON()) {
                             return args[1];
                         }

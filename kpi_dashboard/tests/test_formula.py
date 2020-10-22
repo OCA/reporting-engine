@@ -45,7 +45,8 @@ result = {{}}
 result['value'] = len(model.search([('id', '=', {})]))
 result['previous'] = len(model.search([('id', '!=', {})]))
         """.format(
-            self.kpi.id, self.kpi.id,
+            self.kpi.id,
+            self.kpi.id,
         )
         self.kpi.compute()
         value = self.kpi.value
@@ -65,7 +66,8 @@ result = {{}}
 result['value'] = len(model.search([('id', '=', {})]))
 result['previous'] = len(model.search([('id', '!=', {})]))
         """.format(
-            self.kpi.id, self.kpi.id,
+            self.kpi.id,
+            self.kpi.id,
         )
         self.kpi.compute()
         value = self.kpi.value

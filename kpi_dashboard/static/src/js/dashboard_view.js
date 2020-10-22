@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.DashboardView", function(require) {
+odoo.define("kpi_dashboard.DashboardView", function (require) {
     "use strict";
 
     var BasicView = require("web.BasicView");
@@ -24,7 +24,7 @@ odoo.define("kpi_dashboard.DashboardView", function(require) {
         }),
         multi_record: false,
         searchable: false,
-        init: function() {
+        init: function () {
             this._super.apply(this, arguments);
             this.controllerParams.mode = "readonly";
             this.loadParams.type = "record";
