@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.IntegerWidget", function(require) {
+odoo.define("kpi_dashboard.IntegerWidget", function (require) {
     "use strict";
 
     var AbstractWidget = require("kpi_dashboard.AbstractWidget");
@@ -14,12 +14,12 @@ odoo.define("kpi_dashboard.IntegerWidget", function(require) {
             [1000000, "M", [3, 1]],
             [1000, "K", [3, 1]],
         ],
-        shortNumber: function(num) {
+        shortNumber: function (num) {
             var suffix = "";
             var shortened = false;
             var digits = this.digits;
             var result = num;
-            _.each(this.shortList, function(shortItem) {
+            _.each(this.shortList, function (shortItem) {
                 if (!shortened && Math.abs(num) >= shortItem[0]) {
                     shortened = true;
                     suffix = shortItem[1];
@@ -33,7 +33,7 @@ odoo.define("kpi_dashboard.IntegerWidget", function(require) {
                 }) + suffix
             );
         },
-        fillWidget: function(values) {
+        fillWidget: function (values) {
             var widget = this.$el;
             var value = values.value.value;
             if (value === undefined) {

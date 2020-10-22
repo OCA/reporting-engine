@@ -1,4 +1,4 @@
-odoo.define("kpi_dashboard.DashboardRenderer", function(require) {
+odoo.define("kpi_dashboard.DashboardRenderer", function (require) {
     "use strict";
 
     var BasicRenderer = require("web.BasicRenderer");
@@ -8,25 +8,25 @@ odoo.define("kpi_dashboard.DashboardRenderer", function(require) {
 
     var DashboardRenderer = BasicRenderer.extend({
         className: "o_dashboard_view",
-        _getDashboardWidget: function(kpi) {
+        _getDashboardWidget: function (kpi) {
             var Widget = registry.getAny([kpi.widget, "abstract"]);
             var widget = new Widget(this, kpi);
             return widget;
         },
-        _onClickModifyContext: function(modify_context_expression, event) {
+        _onClickModifyContext: function (modify_context_expression, event) {
             this.trigger_up("modify_context", {
                 context: modify_context_expression,
                 event: event,
             });
         },
-        _renderView: function() {
+        _renderView: function () {
             this.$el.html($(qweb.render("dashboard_kpi.dashboard")));
             this.$el.css("background-color", this.state.specialData.background_color);
             this.$el.find(".gridster").css("width", this.state.specialData.width);
             this.$grid = this.$el.find(".gridster ul");
             var self = this;
             this.kpi_widget = {};
-            _.each(this.state.specialData.item_ids, function(kpi) {
+            _.each(this.state.specialData.item_ids, function (kpi) {
                 var element = $(qweb.render("kpi_dashboard.kpi", {widget: kpi}));
                 element.css("background-color", kpi.color);
                 element.css("color", kpi.font_color);
@@ -72,7 +72,7 @@ odoo.define("kpi_dashboard.DashboardRenderer", function(require) {
             this.call("bus_service", "onNotification", this, this._onNotification);
             if (this.state.specialData.compute_on_fly_refresh > 0) {
                 // Setting the refresh interval
-                this.on_fly_interval = setInterval(function() {
+                this.on_fly_interval = setInterval(function () {
                     self.trigger_up("refresh_on_fly");
                 }, this.state.specialData.compute_on_fly_refresh * 1000);
             }
@@ -82,16 +82,16 @@ odoo.define("kpi_dashboard.DashboardRenderer", function(require) {
             // context
             return $.when();
         },
-        on_detach_callback: function() {
+        on_detach_callback: function () {
             // We want to clear the refresh interval once we exit the view
             if (this.on_fly_interval) {
                 clearInterval(this.on_fly_interval);
             }
             this._super.apply(this, arguments);
         },
-        _onNotification: function(notifications) {
+        _onNotification: function (notifications) {
             var self = this;
-            _.each(notifications, function(notification) {
+            _.each(notifications, function (notification) {
                 var channel = notification[0];
                 var message = notification[1];
                 if (channel === self.channel && message) {
