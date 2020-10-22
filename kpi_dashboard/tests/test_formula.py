@@ -1,19 +1,15 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
+from odoo.tests.common import TransactionCase
 
 
 class TestFormula(TransactionCase):
     def setUp(self):
         super().setUp()
         self.kpi = self.env["kpi.kpi"].create(
-            {
-                "name": "DEMO KPI",
-                "widget": "number",
-                "computation_method": "code",
-            }
+            {"name": "DEMO KPI", "widget": "number", "computation_method": "code",}
         )
 
     def test_forbidden_words_01(self):
@@ -45,10 +41,10 @@ self.env.cr.execute("CoMMiT")
         self.kpi.compute()
         self.assertEqual(self.kpi.value, {})
         self.kpi.code = """
-result = {}
-result['value'] = len(model.search([('id', '=', %s)]))
-result['previous'] = len(model.search([('id', '!=', %s)]))
-        """ % (
+result = {{}}
+result['value'] = len(model.search([('id', '=', {})]))
+result['previous'] = len(model.search([('id', '!=', {})]))
+        """.format(
             self.kpi.id,
             self.kpi.id,
         )
@@ -66,10 +62,10 @@ result['previous'] = len(model.search([('id', '!=', %s)]))
         self.assertTrue(self.kpi.history_ids)
         self.assertEqual(self.kpi.value, {})
         self.kpi.code = """
-result = {}
-result['value'] = len(model.search([('id', '=', %s)]))
-result['previous'] = len(model.search([('id', '!=', %s)]))
-        """ % (
+result = {{}}
+result['value'] = len(model.search([('id', '=', {})]))
+result['previous'] = len(model.search([('id', '!=', {})]))
+        """.format(
             self.kpi.id,
             self.kpi.id,
         )
