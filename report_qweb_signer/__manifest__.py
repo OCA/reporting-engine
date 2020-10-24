@@ -8,7 +8,7 @@
     "summary": "Sign Qweb PDFs usign a PKCS#12 certificate",
     "version": "12.0.1.0.1",
     "category": "Reporting",
-    "website": "https://www.github.com/reporting-engine",
+    "website": "https://github.com/oca/reporting-engine",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
