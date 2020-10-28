@@ -30,9 +30,9 @@ class IrQWeb(models.AbstractModel):
                 + ")"
             )
         if "t-length" in el.attrib:
-            length = el.attrib.pop("t-length")
-            el.attrib["t-esc"] = "(" + el.attrib["t-esc"] + ")[:" + length + "]"
-        return super(IrQWeb, self)._compile_directive_esc(el, options)
+            tlength = el.attrib.pop("t-length")
+            el.attrib["t-esc"] = "(" + el.attrib["t-esc"] + ")[:" + tlength + "]"
+        return super()._compile_directive_esc(el, options)
 
     def _compile_directive_raw(self, el, options):
         min_value = el.attrib.pop("t-minlength", False)
@@ -48,6 +48,6 @@ class IrQWeb(models.AbstractModel):
                 + ")"
             )
         if "t-length" in el.attrib:
-            length = el.attrib.pop("t-length")
-            el.attrib["t-raw"] = el.attrib["t-raw"] + "[:" + length + "]"
-        return super(IrQWeb, self)._compile_directive_raw(el, options)
+            tlength = el.attrib.pop("t-length")
+            el.attrib["t-raw"] = el.attrib["t-raw"] + "[:" + tlength + "]"
+        return super()._compile_directive_raw(el, options)
