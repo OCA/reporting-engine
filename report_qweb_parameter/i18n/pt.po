@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_qweb_parameter
+# 	* report_qweb_parameter
 #
 msgid ""
 msgstr ""
@@ -22,13 +22,13 @@ msgid "Length Report"
 msgstr "Relatório de Comprimento"
 
 #. module: report_qweb_parameter
-#: code:addons/report_qweb_parameter/models/ir_qweb.py:16
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be less than %s"
 msgstr "Comprimento não pode ser superior a %s"
 
 #. module: report_qweb_parameter
-#: code:addons/report_qweb_parameter/models/ir_qweb.py:19
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be more than %s"
 msgstr "Comprimento não pode ser inferior a %s"

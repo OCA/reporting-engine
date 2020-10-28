@@ -24,13 +24,13 @@ msgid "Length Report"
 msgstr "Longueur du rapport  "
 
 #. module: report_qweb_parameter
-#: code:addons/report_qweb_parameter/models/ir_qweb.py:16
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be less than %s"
 msgstr "La longueur du rapport ne peut pas être inférieure à %s"
 
 #. module: report_qweb_parameter
-#: code:addons/report_qweb_parameter/models/ir_qweb.py:19
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be more than %s"
 msgstr "La longueur du rapport ne peut pas être supérieure à %s"
