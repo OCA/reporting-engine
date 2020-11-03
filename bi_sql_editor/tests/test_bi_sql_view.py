@@ -2,11 +2,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.exceptions import AccessError, UserError
-from odoo.tests.common import SingleTransactionCase, at_install, post_install
+from odoo.tests.common import SingleTransactionCase
+from odoo.tests import HttpCase, tagged
 
 
-@at_install(False)
-@post_install(True)
+@tagged('-at_install', 'post_install')
 class TestBiSqlViewEditor(SingleTransactionCase):
     @classmethod
     def setUpClass(cls):
