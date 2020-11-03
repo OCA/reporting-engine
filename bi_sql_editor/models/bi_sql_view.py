@@ -18,8 +18,8 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _instanciate(self, model_data):
-    """ Return a class for the custom model given by
-    parameters ``model_data``. """
+    """Return a class for the custom model given by
+    parameters ``model_data``."""
     # This monkey patch is meant to avoid create/search tables for those
     # materialized views. Doing "super" doesn't work.
     class CustomModel(models.Model):
@@ -226,14 +226,16 @@ class BiSQLView(models.Model):
     def _compute_view_name(self):
         for sql_view in self:
             sql_view.view_name = "{}{}".format(
-                sql_view._sql_prefix, sql_view.technical_name,
+                sql_view._sql_prefix,
+                sql_view.technical_name,
             )
 
     @api.depends("technical_name")
     def _compute_model_name(self):
         for sql_view in self:
             sql_view.model_name = "{}{}".format(
-                sql_view._model_prefix, sql_view.technical_name,
+                sql_view._model_prefix,
+                sql_view.technical_name,
             )
 
     @api.onchange("group_ids")
@@ -485,7 +487,8 @@ class BiSQLView(models.Model):
         if not self.is_materialized:
             return self.name
         return "{} ({})".format(
-            self.name, datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")),
+            self.name,
+            datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")),
         )
 
     def _prepare_menu(self):
@@ -598,7 +601,9 @@ class BiSQLView(models.Model):
             % self.query
         )
         return "CREATE {} VIEW {} AS ({});".format(
-            self.materialized_text, self.view_name, query,
+            self.materialized_text,
+            self.view_name,
+            query,
         )
 
     def _check_execution(self):
@@ -657,7 +662,8 @@ class BiSQLView(models.Model):
     def _refresh_materialized_view(self):
         for sql_view in self.filtered(lambda x: x.is_materialized):
             req = "REFRESH {} VIEW {}".format(
-                sql_view.materialized_text, sql_view.view_name,
+                sql_view.materialized_text,
+                sql_view.view_name,
             )
             self._log_execute(req)
             sql_view._refresh_size()
