@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-        <template id="assets_backend" name="report assets" inherit_id="web.assets_backend">
-            <xpath expr="." position="inside">
-                <script type="text/javascript" src="/report_substitute/static/src/js/action_manager.js"></script>
-            </xpath>
-        </template>
-</openerp>
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="assets_backend" name="report assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/report_substitute/static/src/js/action_manager.js"
+            />
+        </xpath>
+    </template>
+</odoo>
