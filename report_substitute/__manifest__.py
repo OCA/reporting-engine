@@ -17,4 +17,5 @@
         "views/ir_actions_report.xml",
     ],
     "demo": ["demo/action_report.xml"],
+    "maintainers": ["sbejaoui"],
 }
