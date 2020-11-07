@@ -180,7 +180,7 @@ class IrActionsReport(models.Model):
         report = self.get_from_report_name(self.report_name, self.report_type)
         if report.print_report_name and not len(res_ids) > 1:
             obj = self.env[self.model].browse(res_ids)
-            return safe_eval(report.print_report_name, {"object": obj, "time": time})
+            return safe_eval(report.print_report_name, {"object": obj,})
         return "{}.{}".format(self.name, self.py3o_filetype)
 
     def _get_attachments(self, res_ids):
