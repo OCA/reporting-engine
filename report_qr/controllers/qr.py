@@ -5,8 +5,11 @@ from odoo.http import request
 
 class Home(http.Controller):
 
-    @http.route('/report/qr', type='http', auth="public")
-    def report_qr(self, value, box_size=3, border=3, factory='png', **kwargs):
+    @http.route(['/report/qr',
+                 '/report/qr/<qr_image_name>',
+                 ], type='http', auth="public")
+    def report_qr(self, value, box_size=3, border=3, factory='png',
+                  qr_image_name='qr_image_name', **kwargs):
         try:
             barcode = request.env['ir.actions.report'].qr_generate(
                 value, box_size=box_size, border=border,
