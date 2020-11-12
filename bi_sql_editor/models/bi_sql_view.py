@@ -680,7 +680,9 @@ class BiSQLView(models.Model):
             if sql_view.action_id:
                 # Alter name of the action, to display last refresh
                 # datetime of the materialized view
-                sql_view.action_id.name = sql_view._prepare_action_name()
+                sql_view.action_id.with_context(
+                    lang=self.env.user.lang
+                ).name = sql_view._prepare_action_name()
 
     @api.multi
     def _refresh_size(self):
