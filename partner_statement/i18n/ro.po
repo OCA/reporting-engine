@@ -89,6 +89,12 @@ msgstr "<strong>Cod Partener:</strong>"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "<strong>Partner Name:</strong>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "<strong>The partner doesn't have due entries.</strong>"
 msgstr "<strong>Partenerul nu are înregistrări.</strong>"
 
@@ -381,11 +387,6 @@ msgid "Payable"
 msgstr "Plătibil"
 
 #. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
-msgid "Payment"
-msgstr "Plată"
-
-#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 msgid "Please set defaults under Activity Statements."
 msgstr "Vă rugăm să setați valorile implicite în Extrasul de cont."
@@ -506,6 +507,9 @@ msgstr "în"
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "or"
 msgstr "sau"
+
+#~ msgid "Payment"
+#~ msgstr "Plată"
 
 #~ msgid "Date:"
 #~ msgstr "Data:"

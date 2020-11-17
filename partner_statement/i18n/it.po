@@ -88,6 +88,12 @@ msgstr "<strong>Codice Partner:</strong>"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "<strong>Partner Name:</strong>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "<strong>The partner doesn't have due entries.</strong>"
 msgstr "<strong>Il Partner non ha partite aperte.</strong>"
 
@@ -380,11 +386,6 @@ msgid "Payable"
 msgstr "Pagamenti"
 
 #. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
-msgid "Payment"
-msgstr "Pagamento"
-
-#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 msgid "Please set defaults under Activity Statements."
 msgstr "Per favore imposta i default Estratto conto."
@@ -495,6 +496,9 @@ msgstr "in"
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "or"
 msgstr "o"
+
+#~ msgid "Payment"
+#~ msgstr "Pagamento"
 
 #~ msgid "report.partner_statement.activity_statement"
 #~ msgstr "report.partner_statement.activity_statement"

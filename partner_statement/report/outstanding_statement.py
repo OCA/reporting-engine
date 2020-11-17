@@ -17,7 +17,11 @@ class OutstandingStatement(models.AbstractModel):
             self._cr.mogrify(
                 """
             SELECT m.name AS move_id, l.partner_id, l.date, l.name,
-                            l.ref, l.blocked, l.currency_id, l.company_id,
+                            l.blocked, l.currency_id, l.company_id,
+            CASE WHEN l.ref IS NOT NULL
+                THEN l.ref
+                ELSE m.ref
+            END as ref,
             CASE WHEN (l.currency_id is not null AND l.amount_currency > 0.0)
                 THEN avg(l.amount_currency)
                 ELSE avg(l.debit)
@@ -62,8 +66,11 @@ class OutstandingStatement(models.AbstractModel):
                                   (pd.id IS NULL AND pc.id IS NULL)
                                 ) AND l.date <= %(date_end)s AND m.state IN ('posted')
             GROUP BY l.partner_id, m.name, l.date, l.date_maturity, l.name,
-                                l.ref, l.blocked, l.currency_id,
-                                l.balance, l.amount_currency, l.company_id
+                CASE WHEN l.ref IS NOT NULL
+                    THEN l.ref
+                    ELSE m.ref
+                END,
+                l.blocked, l.currency_id, l.balance, l.amount_currency, l.company_id
             """,
                 locals(),
             ),

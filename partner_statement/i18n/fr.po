@@ -89,6 +89,12 @@ msgstr "<strong>code du partenaire :</strong>"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+msgid "<strong>Partner Name:</strong>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "<strong>The partner doesn't have due entries.</strong>"
 msgstr ""
 "<strong>Le partenaire n'a pas d'écriture en attente de paiement.</strong>"
@@ -383,11 +389,6 @@ msgid "Payable"
 msgstr "A payer"
 
 #. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
-msgid "Payment"
-msgstr "Paiement"
-
-#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 msgid "Please set defaults under Activity Statements."
 msgstr "Merci d'indiquer les valeurs par défaut dans le relevé de compte"
@@ -507,6 +508,9 @@ msgstr "en"
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "or"
 msgstr "ou"
+
+#~ msgid "Payment"
+#~ msgstr "Paiement"
 
 #~ msgid "report.partner_statement.activity_statement"
 #~ msgstr "report.customer_activity_statement.statement"
