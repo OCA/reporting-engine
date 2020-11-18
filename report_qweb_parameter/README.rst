@@ -62,7 +62,6 @@ Authors
 ~~~~~~~
 
 * Creu Blanca
-* Tecnativa
 
 Contributors
 ~~~~~~~~~~~~
