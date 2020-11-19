@@ -10,6 +10,8 @@ from xlsxwriter.utility import xl_rowcol_to_cell
 from odoo import _, fields, models
 from odoo.exceptions import UserError
 
+_xxx = {}
+
 
 class ReportXlsxAbstract(models.AbstractModel):
     _inherit = "report.report_xlsx.abstract"
