@@ -3,6 +3,8 @@
 
 from odoo import models
 
+from .report_xlsx_format import FORMATS, XLS_HEADERS
+
 
 # TODO:
 # make PR to move this class as well as the report_xlsx test class
@@ -47,9 +49,8 @@ class TestPartnerXlsx(models.AbstractModel):
 
         ws.set_portrait()
         ws.fit_to_pages(1, 0)
-        ws.set_header(self.xls_headers["standard"])
-        ws.set_footer(self.xls_footers["standard"])
-
+        ws.set_header(XLS_HEADERS["xls_headers"]["standard"])
+        ws.set_footer(XLS_HEADERS["xls_footers"]["standard"])
         self._set_column_width(ws, ws_params)
 
         row_pos = 0
@@ -59,7 +60,7 @@ class TestPartnerXlsx(models.AbstractModel):
             row_pos,
             ws_params,
             col_specs_section="header",
-            default_format=self.format_theader_yellow_left,
+            default_format=FORMATS["format_theader_yellow_left"],
         )
         ws.freeze_panes(row_pos, 0)
 
@@ -70,5 +71,5 @@ class TestPartnerXlsx(models.AbstractModel):
                 ws_params,
                 col_specs_section="data",
                 render_space={"partner": partner},
-                default_format=self.format_tcell_left,
+                default_format=FORMATS["format_tcell_left"],
             )
