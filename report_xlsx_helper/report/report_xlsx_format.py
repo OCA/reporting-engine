@@ -162,3 +162,4 @@ FORMATS = {
     "format_tcell_date_center_bold": False,
     "format_tcell_date_right_bold": False,
 }
+

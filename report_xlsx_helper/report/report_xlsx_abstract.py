@@ -264,6 +264,7 @@ class ReportXlsxAbstract(models.AbstractModel):
         )
 
         # formats for worksheet table column headers
+<<<<<<< HEAD
         FORMATS["format_theader_grey_left"] = workbook.add_format(theader_grey)
         FORMATS["format_theader_grey_center"] = workbook.add_format(
             dict(theader_grey, align="center")
@@ -327,6 +328,8 @@ class ReportXlsxAbstract(models.AbstractModel):
             dict(theader_grey, num_format=int_format_conditional, align="right")
         )
 
+=======
+>>>>>>> [IMP] format xlsx to global files
         FORMATS["format_theader_yellow_left"] = workbook.add_format(theader_yellow)
         FORMATS["format_theader_yellow_center"] = workbook.add_format(
             dict(theader_yellow, align="center")
