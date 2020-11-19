@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_label_wizard_view_form" model="ir.ui.view">
+        <field name="model">report.label.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Print Labels">
+                <sheet>
+                    <group>
+                    </group>
+                        <field name="line_ids">
+                            <tree editable="bottom" create="false">
+                                <field name="sequence" widget="handle"/>
+                                <field name="res_id" invisible="1"/>
+                                <field name="res_name" string="Record"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    <group name="settings" string="Settings">
+                        <group>
+                            <field name="offset"/>
+                            <field name="model_id" invisible="1"/>
+                            <field name="label_paperformat_id"/>
+                            <field name="label_template" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="print_report" string="Print" type="object" icon="fa-print" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
