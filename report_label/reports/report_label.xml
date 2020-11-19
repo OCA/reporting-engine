@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_label_template">
+        <t t-call="web.basic_layout">
+            <t t-set="full_width" t-value="True"/>
+            <t t-set="label_style">
+                height:         <t t-esc="label_format['label_height']"/>mm;
+                width:          <t t-esc="label_format['label_width']"/>mm;
+                padding-top:    <t t-esc="label_format['label_padding_top']"/>mm;
+                padding-right:  <t t-esc="label_format['label_padding_right']"/>mm;
+                padding-bottom: <t t-esc="label_format['label_padding_bottom']"/>mm;
+                padding-left:   <t t-esc="label_format['label_padding_left']"/>mm;
+                margin-top:     <t t-esc="label_format['label_margin_top']"/>mm;
+                margin-right:   <t t-esc="label_format['label_margin_right']"/>mm;
+                margin-bottom:  <t t-esc="label_format['label_margin_bottom']"/>mm;
+                margin-left:    <t t-esc="label_format['label_margin_left']"/>mm;
+                display: inline-block;
+                overflow: hidden;
+                float: left;
+                position: relative;
+                page-break-inside: avoid;
+                box-sizing: border-box;
+            </t>
+            <!-- Offset: Skip the first [offset] labels -->
+            <t t-foreach="range(0, offset)" t-as="i">
+                <div t-att-style="label_style"></div>
+            </t> 
+            <t t-foreach="lines" t-as="line">
+                <t t-foreach="range(0, line['quantity'])" t-as="i">
+                    <div t-att-style="label_style">
+                        <t t-call="{{label_template}}">
+                            <t t-set="record" t-value="docs.env[res_model].browse(line['res_id'])"/>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_label" model="ir.actions.report">
+        <field name="name">Label Report</field>
+        <field name="model">report.label.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_label.report_label_template</field>
+        <field name="report_file">report_label.report_label_template</field>
+    </record>
+
+</odoo>
