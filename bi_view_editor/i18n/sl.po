@@ -79,7 +79,6 @@ msgstr "BI urejevalnik prikazov"
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view_line
 #, fuzzy
-#| msgid "BI View Editor"
 msgid "BI View Editor Lines"
 msgstr "BI urejevalnik prikazov"
 
@@ -247,7 +246,6 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
 #, fuzzy
-#| msgid "Model Name"
 msgid "Field Name"
 msgstr "Naziv modela"
 

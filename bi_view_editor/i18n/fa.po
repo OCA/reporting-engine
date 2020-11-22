@@ -242,7 +242,6 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
 #, fuzzy
-#| msgid "Display Name"
 msgid "Field Name"
 msgstr "نام نمایشی"
 
