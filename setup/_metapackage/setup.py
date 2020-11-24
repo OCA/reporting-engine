@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo12-addon-report_async',
         'odoo12-addon-report_context',
         'odoo12-addon-report_csv',
+        'odoo12-addon-report_label',
         'odoo12-addon-report_py3o',
         'odoo12-addon-report_py3o_fusion_server',
         'odoo12-addon-report_qr',
