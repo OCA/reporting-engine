@@ -31,11 +31,13 @@ msgstr "Opprettet den"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__custom_params
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_label__custom_params
 msgid "Custom Parameters"
 msgstr ""
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__custom_params
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_label__custom_params
 msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
 msgstr ""
 
