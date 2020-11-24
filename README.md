@@ -34,6 +34,7 @@ addon | version | summary
 [report_async](report_async/) | 12.0.1.0.1 | Central place to run reports live or async
 [report_context](report_context/) | 12.0.1.0.0 | Adding context to reports
 [report_csv](report_csv/) | 12.0.1.0.0 | Base module to create csv report
+[report_label](report_label/) | 12.0.1.0.0 | Print configurable self-adhesive labels reports
 [report_py3o](report_py3o/) | 12.0.2.0.5 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 12.0.1.0.0 | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 12.0.1.0.0 | Web QR Manager
