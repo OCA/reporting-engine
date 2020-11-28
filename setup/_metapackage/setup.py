@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo13-addon-bi_sql_editor',
+        'odoo13-addon-kpi_dashboard',
         'odoo13-addon-report_batch',
         'odoo13-addon-report_csv',
         'odoo13-addon-report_layout_config',
