@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 import json
-import time
 
 from odoo.http import content_disposition, request, route
 from odoo.tools.safe_eval import safe_eval
@@ -32,9 +31,7 @@ class ReportController(report.ReportController):
             report_name = report.report_file
             if report.print_report_name and not len(docids) > 1:
                 obj = request.env[report.model].browse(docids[0])
-                report_name = safe_eval(
-                    report.print_report_name, {"object": obj, "time": time}
-                )
+                report_name = safe_eval(report.print_report_name, {"object": obj})
             xlsxhttpheaders = [
                 (
                     "Content-Type",
