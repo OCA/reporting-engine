@@ -6,19 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-12-16 16:19+0000\n"
+"Last-Translator: Alessandro Fiorino <alessandro.fiorino@digitaldomus.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: report_csv
 #: code:addons/report_csv/models/ir_report.py:0
 #, python-format
 msgid "%s model was not found"
-msgstr ""
+msgstr "Il modello %s non è stato trovato"
 
 #. module: report_csv
 #. openerp-web
@@ -28,49 +30,52 @@ msgid ""
 "A popup window with your report was blocked. You may need to change your "
 "browser settings to allow popup windows for this page."
 msgstr ""
+"Una finestra popup con il tuo report è stata bloccata. Potresti dover "
+"cambiare le impostazioni del tuo browser per consentire finestre popup da "
+"questa pagina."
 
 #. module: report_csv
 #: model:ir.model,name:report_csv.model_report_report_csv_abstract
 msgid "Abstract Model for CSV reports"
-msgstr ""
+msgstr "Modello Astratto per report CSV"
 
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_abstract__display_name
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_partner_csv__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome Mostrato"
 
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_abstract__id
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_partner_csv__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_abstract____last_update
 #: model:ir.model.fields,field_description:report_csv.field_report_report_csv_partner_csv____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: report_csv
 #: model:ir.actions.report,name:report_csv.partner_csv
 msgid "Print to CSV"
-msgstr ""
+msgstr "Stampa su CSV"
 
 #. module: report_csv
 #: model:ir.model,name:report_csv.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Azione Report"
 
 #. module: report_csv
 #: model:ir.model,name:report_csv.model_report_report_csv_partner_csv
 msgid "Report Partner to CSV"
-msgstr ""
+msgstr "Report Partner in CSV"
 
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Tipo Report"
 
 #. module: report_csv
 #: model:ir.model.fields,help:report_csv.field_ir_actions_report__report_type
@@ -80,15 +85,19 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Il tipo di report che verrà generato, ognuno avente il suo metodo di "
+"generazione. HTML vuol dire che il report sarà aperto direttamente nel tuo "
+"browser mentre PDF vuol dire che il report sarà generato usando Wkhtmltopdf "
+"e scaricato dall'utente."
 
 #. module: report_csv
 #. openerp-web
 #: code:addons/report_csv/static/src/js/report/qwebactionmanager.js:0
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Avviso"
 
 #. module: report_csv
 #: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__report_type__csv
 msgid "csv"
-msgstr ""
+msgstr "csv"
