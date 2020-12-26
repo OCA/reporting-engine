@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2020 Creu Blanca
+     Copyright 2020 Ecosoft Co., LTd.
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <odoo>
@@ -10,11 +11,15 @@
         <field name="inherit_id" ref="base.act_report_xml_view"/>
         <field name="arch" type="xml">
             <field name="paperformat_id" position="after">
-                <field name="encrypt"/>
+                <label for="encrypt" attrs="{'invisible': [('report_type', 'not in', ('qweb-pdf', 'qweb-html'))]}"/>
+                <div name="encrypt" attrs="{'invisible': [('report_type', 'not in', ('qweb-pdf', 'qweb-html'))]}">
+                    <field name="encrypt"/>
+                    <field name="encrypt_password"
+                        attrs="{'invisible': [('encrypt', '!=', 'auto')]}"
+                        placeholder="python syntax, i.e., (object.default_code or 'secretcode')"/>
+                </div>
             </field>
         </field>
     </record>
-
-
 
 </odoo>
