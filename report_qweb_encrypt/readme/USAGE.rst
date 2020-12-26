@@ -1,1 +1,1 @@
-To make a report encryptable mark the field `Encryptable` in the report record.
+To make a report encryptable mark the field `Encryption` in the report record.
