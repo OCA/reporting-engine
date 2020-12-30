@@ -4,7 +4,7 @@
 import json
 
 from odoo.http import content_disposition, request, route
-from odoo.tools.safe_eval import safe_eval
+from odoo.tools.safe_eval import safe_eval, time
 
 from odoo.addons.web.controllers import main as report
 
