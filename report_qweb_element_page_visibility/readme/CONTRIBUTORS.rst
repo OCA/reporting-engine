@@ -3,3 +3,4 @@
 * Alessio Gerace <alessio.gerace@agilebg.com>
 * Alex Comba <alex.comba@agilebg.com>
 * Saran Limpajitkutaporn <saranl@ecosoft.co.th>
+* Pelayo García <pelayo.garcia@btp.es>
