@@ -44,6 +44,9 @@
                             'last-page': function (elt) {
                                 elt.style.visibility = (vars.sitepage === vars.sitepages) ? "visible" : "hidden";
                             },
+                            'only-inner': function (elt) {
+                                elt.style.visibility = (vars.sitepage === vars.sitepages) || (vars.sitepage === vars.frompage) ? "hidden" : "visible";
+                            },
                         };
                         for (var klass in operations) {
                             var y = document.getElementsByClassName(klass);
