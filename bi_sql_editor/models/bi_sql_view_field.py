@@ -8,6 +8,23 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
+class IrModelFields(models.Model):
+    _inherit = "ir.model.fields"
+
+    group_operator = fields.Char(help="")
+
+    def _instanciate_attrs(self, field_data):
+        """ Return the parameters for a field instance for ``field_data``. """
+        attrs = super()._instanciate_attrs(field_data)
+
+        if (
+            field_data["ttype"] in ("integer", "float", "date", "boolean")
+            and field_data["group_operator"]
+        ):
+            attrs["group_operator"] = field_data["group_operator"]
+        return attrs
+
+
 class BiSQLViewField(models.Model):
     _name = "bi.sql.view.field"
     _description = "Bi SQL View Field"
@@ -36,6 +53,13 @@ class BiSQLViewField(models.Model):
         ("available", "Available"),
     ]
 
+    _GROUP_OPERATOR_SELECTION = [
+        ("sum", "Sum"),
+        ("avg", "Avg"),
+        ("count", "Count"),
+        ("max", "Max"),
+        ("min", "Min"),
+    ]
     # Mapping to guess Odoo field type, from SQL column type
     _SQL_MAPPING = {
         "boolean": "boolean",
@@ -112,6 +136,11 @@ class BiSQLViewField(models.Model):
         comodel_name="ir.model",
         string="Model",
         help="For 'Many2one' Odoo field.\n" " Comodel of the field.",
+    )
+
+    group_operator = fields.Selection(
+        selection=_GROUP_OPERATOR_SELECTION,
+        help="Group operator to apply on field in grouped view by default sum",
     )
 
     # Constrains Section
@@ -202,14 +231,18 @@ class BiSQLViewField(models.Model):
             "relation": self.ttype == "many2one"
             and self.many2one_model_id.model
             or False,
+            "group_operator": self.group_operator,
         }
 
     def _prepare_tree_field(self):
         self.ensure_one()
         res = ""
         if self.field_description and self.tree_visibility != "unavailable":
-            res = """<field name="{}" {}/>""".format(
-                self.name, self.tree_visibility == "hidden" and 'invisible="1"' or ""
+            res = """<field name="{}" {}/>\n""".format(
+                self.name,
+                self.tree_visibility == "hidden"
+                and 'optional="hide"'
+                or 'optional="show"',
             )
         return res
 
@@ -217,21 +250,25 @@ class BiSQLViewField(models.Model):
         self.ensure_one()
         res = ""
         if self.graph_type and self.field_description:
-            res = """<field name="{}" type="{}" />""".format(self.name, self.graph_type)
+            res = """<field name="{}" type="{}" />\n""".format(
+                self.name, self.graph_type
+            )
         return res
 
     def _prepare_pivot_field(self):
         self.ensure_one()
         res = ""
         if self.graph_type and self.field_description:
-            res = """<field name="{}" type="{}" />""".format(self.name, self.graph_type)
+            res = """<field name="{}" type="{}" />\n""".format(
+                self.name, self.graph_type
+            )
         return res
 
     def _prepare_search_field(self):
         self.ensure_one()
         res = ""
         if self.field_description:
-            res = """<field name="{}"/>""".format(self.name)
+            res = """<field name="{}"/>\n""".format(self.name)
         return res
 
     def _prepare_search_filter_field(self):
@@ -239,7 +276,7 @@ class BiSQLViewField(models.Model):
         res = ""
         if self.field_description and self.is_group_by:
             res = """<filter name="%s" string="%s"
-                        context="{'group_by':'%s'}"/>""" % (
+                        context="{'group_by':'%s'}"/>\n""" % (
                 self.field_description.lower().replace(" ", "_"),
                 self.field_description,
                 self.name,

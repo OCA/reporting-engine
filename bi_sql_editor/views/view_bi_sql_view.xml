@@ -170,7 +170,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                             ('field_description', '!=', False),
                                             ('ttype', '=', 'selection')]}"
                                     />
-                                    <field
+                                     <field
+                                        name="group_operator"
+                                        attrs="{
+                                         'invisible': [
+                                         ('ttype', 'not in', ('float','integer'))
+                                         ]}
+                                         "
+                                    />
+                                     <field
                                         name="is_index"
                                         attrs="{'invisible': [('field_description', '=', False)]}"
                                     />
