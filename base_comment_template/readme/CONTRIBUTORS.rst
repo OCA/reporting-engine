@@ -11,4 +11,4 @@
 * `Druidoo <https://www.druidoo.io>`_:
 
   * Iván Todorovich <ivan.todorovich@druidoo.io>
-
+* Pierre Verkest <pierreverkest84@gmail.com>

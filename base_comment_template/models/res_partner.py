@@ -7,13 +7,13 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     property_comment_template_id = fields.Many2one(
-        comodel_name='base.comment.template',
-        string='Conditions template',
+        comodel_name="base.comment.template",
+        string="Conditions template",
         company_dependent=True,
     )
 
     @api.model
     def _commercial_fields(self):
         res = super(ResPartner, self)._commercial_fields()
-        res += ['property_comment_template_id']
+        res += ["property_comment_template_id"]
         return res
