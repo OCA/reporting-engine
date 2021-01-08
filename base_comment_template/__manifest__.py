@@ -6,7 +6,7 @@
     "summary": "Comments templates on documents",
     "version": "14.0.1.0.0",
     "category": "Sale",
-    "website": "https://github.com/OCA/account-invoice-reporting",
+    "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
