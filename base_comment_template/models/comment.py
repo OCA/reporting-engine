@@ -45,4 +45,4 @@ class BaseCommentTemplate(models.Model):
         lang = None
         if partner_id:
             lang = self.env["res.partner"].browse(partner_id).lang
-        return self.with_context({"lang": lang}).text
+        return self.with_context(lang=lang).text
