@@ -4,10 +4,10 @@
 
 import odoo.tests
 from odoo.exceptions import ValidationError
+from odoo.tests.common import tagged
 
 
-@odoo.tests.common.at_install(False)
-@odoo.tests.common.post_install(True)
+@tagged("post_install", "-at_install")
 class TestWkhtmltopdf(odoo.tests.TransactionCase):
     def test_wkhtmltopdf_incorrect_parameter(self):
         for report_paperformat in self.env["report.paperformat"].search([]):

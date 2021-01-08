@@ -9,7 +9,9 @@ class ReportPaperformatParameter(models.Model):
     _description = "wkhtmltopdf parameters"
 
     paperformat_id = fields.Many2one(
-        "report.paperformat", "Paper Format", required=True,
+        "report.paperformat",
+        "Paper Format",
+        required=True,
     )
 
     name = fields.Char(
@@ -18,4 +20,6 @@ class ReportPaperformatParameter(models.Model):
         help="The command argument name. Remember to add prefix -- or -",
     )
 
-    value = fields.Char("Value",)
+    value = fields.Char(
+        "Value",
+    )
