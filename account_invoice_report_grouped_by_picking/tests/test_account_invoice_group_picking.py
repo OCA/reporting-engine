@@ -108,7 +108,10 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         # Return one picking from sale1
         wiz_return = (
             self.env["stock.return.picking"]
-            .with_context(active_model="stock.picking", active_id=picking.id,)
+            .with_context(
+                active_model="stock.picking",
+                active_id=picking.id,
+            )
             .create({})
         )
         wiz_return._onchange_picking_id()
