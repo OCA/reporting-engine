@@ -2,6 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import json
 import re
 
 from odoo import _, api, fields, models
@@ -143,6 +144,16 @@ class BiSQLViewField(models.Model):
         help="Group operator to apply on field in grouped view by default sum",
     )
 
+    is_filter = fields.Boolean(
+        help="Check this box if you want to create"
+        " a 'Filter' option in the search view",
+    )
+
+    filter_doamin = fields.Char(
+        help="Domain is required if is_filter cheked unless for date field\n"
+        " Domain example:\n"
+        " {'Quotation':[['state','in',['draft', 'sent']]], 'Sale':[['state','in',['sale','done']]] }"
+    )
     # Constrains Section
     @api.constrains("is_index")
     def _check_index_materialized(self):
@@ -281,4 +292,32 @@ class BiSQLViewField(models.Model):
                 self.field_description,
                 self.name,
             )
+        if self.field_description and self.is_filter:
+            res = ""
+            if self.ttype in ("date", "datetime"):
+                res = """<filter name="%s" string="%s"
+                            date="%s"/>\n""" % (
+                    self.field_description.lower().replace(" ", "_"),
+                    self.field_description,
+                    self.name,
+                )
+            elif not self.filter_doamin:
+                raise UserError(
+                    _(
+                        "Domain filter is required to create a filter unless for date type "
+                    )
+                )
+            else:
+                # format text to be json compatible
+                filter_doamin = self.filter_doamin.replace("'", '"')
+                filter_doamin = self.filter_doamin.replace("(", "[")
+                filter_doamin = self.filter_doamin.replace(")", "]")
+                filter_doamin = json.loads(filter_doamin)
+                for filter_name, domain in filter_doamin.items():
+                    res += """<filter name="%s" string="%s"
+                                domain="%s"/>\n""" % (
+                        self.field_description.lower().replace(" ", "_") + filter_name,
+                        filter_name,
+                        domain or [],
+                    )
         return res

@@ -187,6 +187,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         attrs="{'invisible': [('field_description', '=', False)]}"
                                     />
                                     <field
+                                        name="is_filter"
+                                        attrs="{'invisible': [('field_description', '=', False)]}"
+                                    />
+                                     <field
+                                        name="filter_doamin"
+                                        attrs="{'invisible': ['|',
+                                         ('field_description', '=', False),
+                                         ('is_filter', '=', False),
+                                         ]}"
+                                        placeholder="{'Quotation':[['state','in',['draft', 'sent']]],
+                                         'Sale':[['state','in',['sale','done']]] }"
+                                    />
+                                     <field
                                         name="graph_type"
                                         attrs="{'invisible': [('field_description', '=', False)]}"
                                     />
