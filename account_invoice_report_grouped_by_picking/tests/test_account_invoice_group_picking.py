@@ -63,7 +63,7 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         # deliver lines2
         self.sale.picking_ids[:1].action_confirm()
         self.sale.picking_ids[:1].move_line_ids.write({"qty_done": 1})
-        self.sale.picking_ids[:1].action_done()
+        self.sale.picking_ids[:1]._action_done()
         # create another sale
         self.sale2 = self.sale.copy()
         self.sale2.order_line[:1].product_uom_qty = 4
@@ -72,19 +72,18 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         self.sale2.action_confirm()
         self.sale2.picking_ids[:1].action_confirm()
         self.sale2.picking_ids[:1].move_line_ids.write({"qty_done": 1})
-        self.sale2.picking_ids[:1].action_done()
+        self.sale2.picking_ids[:1]._action_done()
         sales = self.sale | self.sale2
         # invoice sales
         invoice = sales._create_invoices()
         # Test directly grouping method
-        # invoice = self.env["account.move"].browse(inv_id)
         groups = invoice.lines_grouped_by_picking()
         self.assertEqual(len(groups), 4)
         self.assertEqual(groups[0]["picking"], groups[1]["picking"])
         self.assertEqual(groups[2]["picking"], groups[3]["picking"])
         # Test report
         content = html.document_fromstring(
-            self.env.ref("account.account_invoices").render_qweb_html(invoice.id)[0]
+            self.env.ref("account.account_invoices")._render_qweb_html(invoice.id)[0]
         )
         tbody = content.xpath("//tbody[@class='invoice_tbody']")
         tbody = [html.tostring(line, encoding="utf-8").strip() for line in tbody][
@@ -103,7 +102,7 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         picking = self.sale.picking_ids[:1]
         picking.action_confirm()
         picking.move_line_ids.write({"qty_done": 1})
-        picking.action_done()
+        picking._action_done()
         self.sale._create_invoices()
         # Return one picking from sale1
         wiz_return = (
@@ -118,7 +117,7 @@ class TestAccountInvoiceGroupPicking(SavepointCase):
         res = wiz_return.create_returns()
         picking_return = self.env["stock.picking"].browse(res["res_id"])
         picking_return.move_line_ids.write({"qty_done": 1})
-        picking_return.action_done()
+        picking_return._action_done()
         # Test directly grouping method
         invoice = self.sale._create_invoices(final=True)
         groups = invoice.lines_grouped_by_picking()

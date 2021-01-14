@@ -4,6 +4,7 @@
   * David Vidal
   * Pedro M. Baeza
   * Sergio Teruel
+  * João Marques
 
 * `Studio73 <https://www.studio73.es>`__:
 

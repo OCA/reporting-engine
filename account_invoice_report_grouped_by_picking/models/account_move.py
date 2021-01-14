@@ -24,8 +24,8 @@ class AccountMove(models.Model):
         self.ensure_one()
         picking_dict = OrderedDict()
         lines_dict = OrderedDict()
-        sign = -1.0 if self.type == "out_refund" else 1.0
-        # Let's get first a correspondance between pickings and sales order
+        sign = -1.0 if self.move_type == "out_refund" else 1.0
+        # Let's get first a correspondence between pickings and sales order
         so_dict = {x.sale_id: x for x in self.picking_ids if x.sale_id}
         # Now group by picking by direct link or via same SO as picking's one
         for line in self.invoice_line_ids:
