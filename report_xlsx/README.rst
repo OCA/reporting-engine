@@ -43,7 +43,7 @@ A python class in ``your_module/report/report_xlsx.py``::
 To manipulate the ``workbook`` and ``sheet`` objects, refer to the
 `documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
 
-A report XML record in ``you_moduler/report/report.xml``::
+A report XML record in ``your_module/report/report.xml``::
 
     <report 
         id="partner_xlsx"
