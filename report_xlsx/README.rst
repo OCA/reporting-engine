@@ -20,9 +20,10 @@ Usage
 
 An example of XLSX report for partners:
 
-A python class ::
+A python class in ``your_module/report/report_xlsx.py``::
 
     from odoo.addons.report_xlsx.report.report_xlsx import ReportXlsx
+    from odoo.report import report_sxw
 
     class PartnerXlsx(ReportXlsx):
     
@@ -35,13 +36,14 @@ A python class ::
                 sheet.write(0, 0, obj.name, bold)
 
 
-    PartnerXlsx('report.res.partner.xlsx',
-                'res.partner')
+    PartnerXlsx('report.res.partner.xlsx',   # 'report.' + report name
+                'res.partner',               # model
+                parser=report_sxw.rml_parse)
 
 To manipulate the ``workbook`` and ``sheet`` objects, refer to the
 `documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
 
-A report XML record ::
+A report XML record in ``you_moduler/report/report.xml``::
 
     <report 
         id="partner_xlsx"
