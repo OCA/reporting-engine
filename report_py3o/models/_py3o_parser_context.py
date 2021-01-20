@@ -130,4 +130,4 @@ class Py3oParserContext(object):
                 no_break_space=True,
             )
 
-        return self._format_date(self._env, value)
+        return self._format_date(value)
