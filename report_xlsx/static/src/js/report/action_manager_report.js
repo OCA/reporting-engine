@@ -39,6 +39,7 @@ odoo.define("report_xlsx.report", function (require) {
                     url: new_url,
                     data: {
                         data: JSON.stringify([new_url, type]),
+                        context: JSON.stringify(cloned_action.context),
                     },
                     success: resolve,
                     error: (error) => {
