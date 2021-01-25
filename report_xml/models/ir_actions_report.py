@@ -7,7 +7,9 @@ from odoo import fields, models
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
-    report_type = fields.Selection(selection_add=[("qweb-xml", "XML")])
+    report_type = fields.Selection(
+        selection_add=[("qweb-xml", "XML")], ondelete={"qweb-xml": "set default"}
+    )
     xsd_schema = fields.Binary(
         string="XSD Validation Schema",
         attachment=True,
@@ -34,7 +36,7 @@ class IrActionsReport(models.Model):
         ),
     )
 
-    def render_qweb_xml(self, docids, data=None):
+    def _render_qweb_xml(self, docids, data=None):
         """
         Call `generate_report` method of report abstract class
         `report.<report technical name>` or of standard class for XML report
