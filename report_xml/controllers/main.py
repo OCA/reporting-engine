@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
 import json
-import time
 
 from werkzeug.urls import url_decode
 
@@ -32,7 +31,7 @@ class ReportController(report.ReportController):
                     del data["context"]["lang"]
                 context.update(data["context"])
 
-            xml = report.with_context(context).render_qweb_xml(docids, data=data)[0]
+            xml = report.with_context(context)._render_qweb_xml(docids, data=data)[0]
             xmlhttpheaders = [
                 ("Content-Type", "text/xml"),
                 ("Content-Length", len(xml)),
@@ -75,7 +74,7 @@ class ReportController(report.ReportController):
                     records = request.env[report.model].browse(ids)
                     if report.print_report_name and not len(records) > 1:
                         report_name = safe_eval(
-                            report.print_report_name, {"object": records, "time": time}
+                            report.print_report_name, {"object": records}
                         )
                         filename = "{}.xml".format(report_name)
                 response.headers.add(

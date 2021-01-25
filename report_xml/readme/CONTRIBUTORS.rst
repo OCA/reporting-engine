@@ -3,3 +3,4 @@
     * Jairo Llopis
 * `Avoin.Systems <https://avoin.systems/>`_:
     * Tatiana Deribina
+* Iván Antón <ozono@ozonomultimedia.com>
