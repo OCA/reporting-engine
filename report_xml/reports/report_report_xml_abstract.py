@@ -51,7 +51,7 @@ class ReportXmlAbstract(models.AbstractModel):
         data = ir_report._get_rendering_context(docids, data)
 
         # render template
-        result_bin = ir_report.render_template(ir_report.report_name, data)
+        result_bin = ir_report._render_template(ir_report.report_name, data)
 
         # prettify result content
         # normalize indents
