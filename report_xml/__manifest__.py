@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 {
     "name": "XML Reports",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Tecnativa, Odoo Community Association (OCA), Avoin.Systems",
