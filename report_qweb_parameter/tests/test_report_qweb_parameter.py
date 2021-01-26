@@ -22,19 +22,19 @@ class TestReportQWebParameter(common.TransactionCase):
             }
         )
         docs.website = "1234567890"  # for avoding that Odoo adds http://
-        rep = report_object.render(docs.ids, False)
+        rep = report_object._render(docs.ids, False)
         root = ET.fromstring(rep[0])
         self.assertEqual(root[0].text, "1234567890")
         self.assertEqual(root[2].text, "1234567890")
         docs.update({"street": "123456789"})
         with self.assertRaises(QWebException):
-            report_object.render(docs.ids, False)
+            report_object._render(docs.ids, False)
         docs.update({"street": "1234567890", "vat": "123456789"})
         with self.assertRaises(QWebException):
-            report_object.render(docs.ids, False)
+            report_object._render(docs.ids, False)
         docs.update({"vat": "1234567890", "website": "12345678901"})
         with self.assertRaises(QWebException):
-            report_object.render(docs.ids, False)
+            report_object._render(docs.ids, False)
         docs.update({"website": "1234567890", "company_registry": "12345678901"})
         with self.assertRaises(QWebException):
-            report_object.render(docs.ids, False)
+            report_object._render(docs.ids, False)
