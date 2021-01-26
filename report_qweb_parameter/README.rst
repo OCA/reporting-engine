@@ -72,6 +72,8 @@ Contributors
 
     * Carlos Roca
 
+* Iván Antón <ozono@ozonomultimedia.com>
+
 Maintainers
 ~~~~~~~~~~~
 
