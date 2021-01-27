@@ -6,7 +6,7 @@
     "version": "13.0.1.0.0",
     "author": "Agile Business Group, Odoo Community Association (OCA)",
     "category": "Tools",
-    "website": "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
