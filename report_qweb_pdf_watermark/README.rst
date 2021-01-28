@@ -62,6 +62,11 @@ Changelog
 
 * [MIG] Migration to V12.
 
+13.0.1.0.0 (2021-01-27)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [MIG] Migration to V13.
+
 Bug Tracker
 ===========
 
@@ -87,6 +92,7 @@ Contributors
 * Stefan Rijnhart <stefan@opener.am>
 * Rod Schouteden <rod.schouteden@dynapps.be>
 * Robin Goots <robin.goots@dynapps.be>
+* Foram Shah <foram.shah@initos.com>
 
 Maintainers
 ~~~~~~~~~~~
