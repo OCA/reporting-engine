@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <report
         id="demo_report"
@@ -8,7 +8,7 @@
         name="report_qweb_pdf_watermark.demo_report_view"
         file="report_qweb_pdf_watermark.demo_report_view"
         paperformat="base.paperformat_euro"
-        />
+    />
     <record id="demo_report" model="ir.actions.report">
         <field name="pdf_watermark_expression">docs[:1].company_id.logo</field>
     </record>
