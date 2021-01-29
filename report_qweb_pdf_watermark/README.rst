@@ -67,6 +67,11 @@ Changelog
 
 * [MIG] Migration to V13.
 
+14.0.1.0.0 (2021-01-29)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [MIG] Migration to V14.
+
 Bug Tracker
 ===========
 
