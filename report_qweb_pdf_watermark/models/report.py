@@ -17,7 +17,7 @@ except ImportError:
 logger = getLogger(__name__)
 
 try:
-    from PyPDF2 import PdfFileWriter, PdfFileReader  # pylint: disable=W0404
+    from PyPDF2 import PdfFileReader, PdfFileWriter  # pylint: disable=W0404
     from PyPDF2.utils import PdfReadError  # pylint: disable=W0404
 except ImportError:
     logger.debug("Can not import PyPDF2")
