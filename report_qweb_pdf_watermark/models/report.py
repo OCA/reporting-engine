@@ -6,7 +6,8 @@ from logging import getLogger
 
 from PIL import Image
 
-from odoo import api, fields, models, tools
+from odoo import api, fields, models
+from odoo.tools.safe_eval import safe_eval
 
 try:
     # we need this to be sure PIL has loaded PDF support
@@ -34,12 +35,12 @@ class Report(models.Model):
         "You have access to variables `env` and `docs`",
     )
 
-    def render_qweb_pdf(self, res_ids=None, data=None):
+    def _render_qweb_pdf(self, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
-            return super(Report, self.with_context(res_ids=res_ids)).render_qweb_pdf(
+            return super(Report, self.with_context(res_ids=res_ids))._render_qweb_pdf(
                 res_ids=res_ids, data=data
             )
-        return super(Report, self).render_qweb_pdf(res_ids=res_ids, data=data)
+        return super(Report, self)._render_qweb_pdf(res_ids=res_ids, data=data)
 
     @api.model
     def _run_wkhtmltopdf(
@@ -65,7 +66,7 @@ class Report(models.Model):
         if self.pdf_watermark:
             watermark = b64decode(self.pdf_watermark)
         elif docids:
-            watermark = tools.safe_eval(
+            watermark = safe_eval(
                 self.pdf_watermark_expression or "None",
                 dict(env=self.env, docs=self.env[self.model].browse(docids)),
             )
