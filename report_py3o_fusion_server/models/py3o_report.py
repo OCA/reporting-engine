@@ -28,13 +28,12 @@ class Py3oReport(models.TransientModel):
     _inherit = "py3o.report"
 
     def _create_single_report(self, model_instance, data):
-        """ This function to generate our py3o report
-        """
+        """This function to generate our py3o report"""
         self.ensure_one()
         report_xml = self.ir_actions_report_id
         filetype = report_xml.py3o_filetype
         if not report_xml.py3o_server_id:
-            return super(Py3oReport, self)._create_single_report(model_instance, data)
+            return super()._create_single_report(model_instance, data)
         elif report_xml.py3o_is_local_fusion:
             result_path = super(
                 Py3oReport, self.with_context(report_py3o_skip_conversion=True)
