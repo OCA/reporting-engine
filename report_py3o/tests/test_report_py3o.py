@@ -57,7 +57,7 @@ class TestReportPy3o(TransactionCase):
         with self.assertRaises(ValidationError) as e:
             self.report.py3o_filetype = False
         self.assertEqual(
-            e.exception.name, "Field 'Output Format' is required for Py3O report"
+            e.exception.args[0], "Field 'Output Format' is required for Py3O report"
         )
 
     def _render_patched(self, result_text="test result", call_count=1):
@@ -121,7 +121,7 @@ class TestReportPy3o(TransactionCase):
         # put a new content into tha attachement and check that the next
         # time we ask the report we received the saved attachment not a newly
         # generated document
-        created_attachement.datas = base64.encodestring(b"new content")
+        created_attachement.datas = base64.b64encode(b"new content")
         res = self.report._render(self.env.user.ids)
         self.assertEqual((b"new content", self.report.py3o_filetype), res)
 
