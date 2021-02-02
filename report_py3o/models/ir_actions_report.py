@@ -2,12 +2,11 @@
 # Copyright 2018 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
-import time
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import find_in_path
-from odoo.tools.safe_eval import safe_eval
+from odoo.tools.safe_eval import safe_eval, time
 
 logger = logging.getLogger(__name__)
 
@@ -180,7 +179,7 @@ class IrActionsReport(models.Model):
         report = self.get_from_report_name(self.report_name, self.report_type)
         if report.print_report_name and not len(res_ids) > 1:
             obj = self.env[self.model].browse(res_ids)
-            return safe_eval(report.print_report_name, {"object": obj,})
+            return safe_eval(report.print_report_name, {"object": obj, "time": time})
         return "{}.{}".format(self.name, self.py3o_filetype)
 
     def _get_attachments(self, res_ids):
