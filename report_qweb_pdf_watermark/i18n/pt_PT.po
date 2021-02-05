@@ -7,7 +7,7 @@
 # Carla Berjano <berjano.carla@gmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 8.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-14 06:07+0000\n"
 "PO-Revision-Date: 2017-01-14 06:07+0000\n"
