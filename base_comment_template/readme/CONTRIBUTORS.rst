@@ -14,3 +14,7 @@
 * `NextERP Romania <https://www.nexterp.ro>`_:
 
   * Fekete Mihai <feketemihai@nexterp.ro>
+
+* `Tecnativa <https://www.tecnativa.com>`_:
+
+  * Carlos Roca

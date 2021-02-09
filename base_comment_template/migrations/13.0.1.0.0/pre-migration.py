@@ -17,7 +17,9 @@ def migrate(env, version):
     )
     if properties:
         for template in properties.mapped("value_reference"):
-            template_id = template.value_reference.split(",")[-1]
+            if not template:
+                continue
+            template_id = template.split(",")[-1]
             if template_id:
                 template = env["base.comment.template"].browse(template_id)
                 part_prop = properties.filtered(lambda p: p.value_reference == template)
