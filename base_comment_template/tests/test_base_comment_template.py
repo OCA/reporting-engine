@@ -142,7 +142,7 @@ class TestCommentTemplate(common.SavepointCase):
                 }
             )
         self.assertTrue(
-            "The are other records with same models, priority, domain and position."
+            "There are other records with same models, priority, domain and position."
             == context.exception.args[0]
         )
 

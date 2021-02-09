@@ -10,7 +10,7 @@ class IrModel(models.Model):
     is_comment_template = fields.Boolean(
         string="Comment Template",
         default=False,
-        help="Whether this model supports in reports to add " "comment templates.",
+        help="Whether this model supports in reports to add comment templates.",
     )
 
     def _reflect_model_params(self, model):

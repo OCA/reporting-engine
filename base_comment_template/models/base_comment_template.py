@@ -72,38 +72,39 @@ class BaseCommentTemplate(models.Model):
 
     active = fields.Boolean(default=True)
     position = fields.Selection(
+        string="Position on document",
         selection=[("before_lines", "Before lines"), ("after_lines", "After lines")],
         required=True,
         default="before_lines",
-        help="Position on document",
+        help="This field allows to select the position of the comment on reports.",
     )
     name = fields.Char(
         string="Name",
         translate=True,
         required=True,
-        help="Name/description of this mako comment template",
+        help="Name/description of this comment template",
     )
     text = fields.Html(
         string="Template",
         translate=True,
         required=True,
         sanitize=False,
-        help="This is the mako template that will be inserted into reports.",
+        help="This is the text template that will be inserted into reports.",
     )
     company_id = fields.Many2one(
         "res.company",
         string="Company",
         ondelete="cascade",
         index=True,
-        help="If set, it'll only be available for this company"
-        "(if the model_id has company_id)",
+        help="If set, the comment template will be available only for the selected "
+        "company.",
     )
     partner_ids = fields.Many2many(
         comodel_name="res.partner",
         string="Partner",
         ondelete="cascade",
-        help="If set, the comment template will be available only for this "
-        "partner (if the model_id has a partner_id field).",
+        help="If set, the comment template will be available only for the selected "
+        "partner.",
     )
 
     model_ids = fields.Many2many(
@@ -111,9 +112,8 @@ class BaseCommentTemplate(models.Model):
         string="IR Model",
         ondelete="cascade",
         required=True,
-        help="This comment template will be available on this models."
-        "You can see here only models that have report on them "
-        "and have inherited comment.template",
+        help="This comment template will be available on this models. "
+        "You can see here only models allowed to set the coment template.",
     )
 
     domain = fields.Char(
@@ -142,7 +142,7 @@ class BaseCommentTemplate(models.Model):
             if other_template_same_models_and_priority:
                 raise ValidationError(
                     _(
-                        "The are other records with same models, priority, "
+                        "There are other records with same models, priority, "
                         "domain and position."
                     )
                 )
