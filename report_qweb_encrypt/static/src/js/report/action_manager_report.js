@@ -4,7 +4,6 @@ odoo.define("report_qweb_encrypt.Dialog", function (require) {
     "use strict";
 
     var ActionManager = require("web.ActionManager");
-    var framework = require("web.framework");
     var Dialog = require("web.Dialog");
     var core = require("web.core");
 
@@ -17,7 +16,7 @@ odoo.define("report_qweb_encrypt.Dialog", function (require) {
         _setValue: function () {
             this.value = this.$el.find(".o_password").val();
         },
-        _onChange: function (event) {
+        _onChange: function () {
             this._setValue();
         },
     });
@@ -27,7 +26,7 @@ odoo.define("report_qweb_encrypt.Dialog", function (require) {
                 text: _t("Ok"),
                 classes: "btn-primary",
                 close: true,
-                click: function (event) {
+                click: function () {
                     var password = this.value || false;
                     owner._executeReportAction(action, action_options, password);
                 },
@@ -86,7 +85,8 @@ odoo.define("report_qweb_encrypt.Dialog", function (require) {
                             })
                         );
                     reportUrls = _.mapObject(reportUrls, function (value) {
-                        return (value += serializedOptionsPath);
+                        value += serializedOptionsPath;
+                        return value;
                     });
                 }
             }

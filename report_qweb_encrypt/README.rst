@@ -25,10 +25,8 @@ Report Qweb Encrypt
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module allow you to encrypt PDF with a password seting option,
-
-* Manually keyin password (only applicable for record print action)
-* Auto generated password based on object data (python)
+This module allows you to encrypt pdf files with a password when
+downloading them.
 
 **Table of contents**
 
@@ -38,7 +36,7 @@ This module allow you to encrypt PDF with a password seting option,
 Usage
 =====
 
-To make a report encryptable mark the field `Encryption` in the report record.
+To make a report encryptable mark the field `Encryptable` in the report record.
 
 Bug Tracker
 ===========
@@ -57,14 +55,12 @@ Authors
 ~~~~~~~
 
 * Creu Blanca
-* Ecosoft
 
 Contributors
 ~~~~~~~~~~~~
 
 * Enric Tobella <etobella@creublanca.es>
 * Jaime Arroyo <jaime.arroyo@creublanca.es>
-* Kitti U. <kittiu@ecosoft.co.th>
 
 Maintainers
 ~~~~~~~~~~~
@@ -78,14 +74,6 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
-
-.. |maintainer-kittiu| image:: https://github.com/kittiu.png?size=40px
-    :target: https://github.com/kittiu
-    :alt: kittiu
-
-Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
-
-|maintainer-kittiu| 
 
 This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/12.0/report_qweb_encrypt>`_ project on GitHub.
 

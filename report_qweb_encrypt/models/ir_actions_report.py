@@ -2,7 +2,6 @@
 # Copyright 2020 Ecosoft Co., Ltd.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
-import time
 from io import BytesIO
 
 from odoo import _, fields, models
@@ -31,8 +30,8 @@ class IrActionsReport(models.Model):
         help="Python code syntax to gnerate password.",
     )
 
-    def render_qweb_pdf(self, res_ids=None, data=None):
-        document, ttype = super(IrActionsReport, self).render_qweb_pdf(
+    def _render_qweb_pdf(self, res_ids=None, data=None):
+        document, ttype = super(IrActionsReport, self)._render_qweb_pdf(
             res_ids=res_ids, data=data
         )
         password = self._get_pdf_password(res_ids[:1])
@@ -51,10 +50,8 @@ class IrActionsReport(models.Model):
         elif self.encrypt == "auto" and self.encrypt_password:
             obj = self.env[self.model].browse(res_id)
             try:
-                encrypt_password = safe_eval(
-                    self.encrypt_password, {"object": obj, "time": time}
-                )
-            except:
+                encrypt_password = safe_eval(self.encrypt_password, {"object": obj})
+            except Exception:
                 raise ValidationError(
                     _("Python code used for encryption password is invalid.\n%s")
                     % self.encrypt_password
@@ -72,3 +69,6 @@ class IrActionsReport(models.Model):
         buff = BytesIO()
         output_pdf.write(buff)
         return buff.getvalue()
+
+    def _get_readable_fields(self):
+        return super()._get_readable_fields() | {"encrypt"}
