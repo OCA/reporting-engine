@@ -723,6 +723,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                 if isinstance(cell_format, CodeType):
                     cell_format = self._eval(cell_format, render_space)
                 args_data.append(cell_format)
+            self._apply_formula_quirk(args_data, cell_type, cell_format)
             if colspan > 1:
                 args_pos += [row_pos, pos + colspan - 1]
                 args = args_pos + args_data
@@ -734,6 +735,15 @@ class ReportXlsxAbstract(models.AbstractModel):
             pos += colspan
 
         return row_pos + 1
+
+    @staticmethod
+    def _apply_formula_quirk(args_data, cell_type, cell_format):
+        """ Insert empty value to force LibreOffice to recompute the value """
+        if cell_type == "formula":
+            if not cell_format:
+                # Insert positional argument for missing format
+                args_data.append(None)
+            args_data.append("")
 
     @staticmethod
     def _render(code):
