@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo13-addon-bi_sql_editor',
         'odoo13-addon-kpi_dashboard',
         'odoo13-addon-report_batch',
+        'odoo13-addon-report_context',
         'odoo13-addon-report_csv',
         'odoo13-addon-report_layout_config',
         'odoo13-addon-report_py3o',
