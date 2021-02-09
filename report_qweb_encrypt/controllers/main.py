@@ -1,10 +1,13 @@
 # Copyright 2020 Creu Blanca
 # Copyright 2020 Ecosoft Co., Ltd.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo.addons.web.controllers import main as report
-from odoo.http import route, request
-from werkzeug.urls import url_decode
 import json
+
+from werkzeug.urls import url_decode
+
+from odoo.http import request, route
+
+from odoo.addons.web.controllers import main as report
 
 
 class ReportController(report.ReportController):
@@ -17,9 +20,9 @@ class ReportController(report.ReportController):
         requestcontent = json.loads(data)
         url, ttype = requestcontent[0], requestcontent[1]
         if (
-            ttype in ["qweb-pdf"] and
-            result.headers["Content-Type"] == "application/pdf" and
-            "?" in url
+            ttype in ["qweb-pdf"]
+            and result.headers["Content-Type"] == "application/pdf"
+            and "?" in url
         ):
             url_data = dict(url_decode(url.split("?")[1]).items())
             if "context" in url_data:
@@ -28,6 +31,7 @@ class ReportController(report.ReportController):
                     Report = request.env["ir.actions.report"]
                     data = result.get_data()
                     encrypted_data = Report._encrypt_pdf(
-                        data, context["encrypt_password"])
+                        data, context["encrypt_password"]
+                    )
                     result.set_data(encrypted_data)
         return result

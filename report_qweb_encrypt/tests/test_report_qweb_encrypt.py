@@ -5,7 +5,6 @@ from odoo.tests.common import HttpCase
 
 
 class TestReportQwebEncrypt(HttpCase):
-
     def test_report_qweb_no_encrypt(self):
         ctx = {"force_report_rendering": True}
         report = self.env.ref("web.action_report_internalpreview")

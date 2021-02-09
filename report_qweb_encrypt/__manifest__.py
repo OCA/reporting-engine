@@ -12,10 +12,7 @@
     "depends": [
         "web",
     ],
-    "data": [
-        "views/ir_actions_report.xml",
-        "templates/assets.xml"
-    ],
+    "data": ["views/ir_actions_report.xml", "templates/assets.xml"],
     "installable": True,
     "maintainers": ["kittiu"],
 }
