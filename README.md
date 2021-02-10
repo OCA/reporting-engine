@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | Allow to encrypt qweb pdfs
 [report_xlsx](report_xlsx/) | 14.0.1.0.1 | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.0 | Report xlsx helpers
 [report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 | Report xlsx helpers - demo
