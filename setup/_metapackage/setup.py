@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-reporting-engine Odoo addons",
     version=version,
     install_requires=[
+        'odoo14-addon-report_qweb_encrypt',
         'odoo14-addon-report_xlsx',
         'odoo14-addon-report_xlsx_helper',
         'odoo14-addon-report_xlsx_helper_demo',
