@@ -7,9 +7,7 @@
             model="res.users"
             report_type="qweb-pdf"
             name="report_qweb_pdf_watermark.demo_report_view"
-            file="report_qweb_pdf_watermark.demo_report_view"
-            paperformat="report.paperformat_euro"
-        />
+            file="report_qweb_pdf_watermark.demo_report_view"/>
         <record id="demo_report" model="ir.actions.report.xml">
             <field name="pdf_watermark_expression">docs[:1].company_id.logo</field>
         </record>
