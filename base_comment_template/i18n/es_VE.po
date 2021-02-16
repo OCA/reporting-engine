@@ -1,0 +1,129 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * base_comment_template
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-16 11:59+0000\n"
+"PO-Revision-Date: 2017-05-16 11:59+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Spanish (Venezuela) (https://www.transifex.com/oca/"
+"teams/23907/es_VE/)\n"
+"Language: es_VE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
+msgid "Active"
+msgstr ""
+
+#. module: base_comment_template
+#: selection:base.comment.template,position:0
+msgid "After lines"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_base_comment_template
+msgid "Base comment template"
+msgstr ""
+
+#. module: base_comment_template
+#: selection:base.comment.template,position:0
+msgid "Before lines"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Comment"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
+msgid "Comment Templates"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
+msgid "Comment summary"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
+msgid "Company"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__property_comment_template_id
+#: model:ir.model.fields,field_description:base_comment_template.field_res_users__property_comment_template_id
+msgid "Conditions template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
+msgid "If set, it'll only be available for this company"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualizacion en"
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Name"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
+msgid "Position"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
+msgid "Position on document"
+msgstr ""
