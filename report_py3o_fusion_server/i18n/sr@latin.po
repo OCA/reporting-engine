@@ -52,6 +52,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:49
+#: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:51
 #, python-format
 msgid ""
 "A fusion server or a libreoffice runtime are required to genereate the py3o "
