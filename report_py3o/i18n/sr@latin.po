@@ -272,7 +272,6 @@ msgid "The implementer module that provides this report"
 msgstr ""
 
 #. module: report_py3o
-#: code:addons/report_py3o/models/ir_actions_report.py:141
 #: code:addons/report_py3o/models/ir_actions_report.py:144
 #, python-format
 msgid ""
