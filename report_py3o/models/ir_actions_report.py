@@ -119,7 +119,8 @@ class IrActionsReport(models.Model):
     def _compute_is_py3o_native_format(self):
         format = Formats()
         for rec in self:
-            if not rec.report_type == "py3o":
+            rec.is_py3o_native_format = False
+            if not rec.report_type == "py3o" or not rec.py3o_filetype:
                 continue
             filetype = rec.py3o_filetype
             rec.is_py3o_native_format = format.get_format(filetype).native
@@ -134,6 +135,8 @@ class IrActionsReport(models.Model):
     @api.multi
     def _compute_py3o_report_not_available(self):
         for rec in self:
+            rec.is_py3o_report_not_available = False
+            rec.msg_py3o_report_not_available = ""
             if not rec.report_type == "py3o":
                 continue
             if not rec.is_py3o_native_format and not rec.lo_bin_path:
