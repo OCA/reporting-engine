@@ -276,6 +276,7 @@ msgstr ""
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report.py:141
+#: code:addons/report_py3o/models/ir_actions_report.py:144
 #, python-format
 msgid ""
 "The libreoffice runtime is required to genereate the py3o report '%s' but is "
