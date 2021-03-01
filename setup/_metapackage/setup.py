@@ -21,6 +21,7 @@ setuptools.setup(
         'odoo13-addon-report_qweb_element_page_visibility',
         'odoo13-addon-report_qweb_parameter',
         'odoo13-addon-report_qweb_pdf_fixed_column',
+        'odoo13-addon-report_qweb_pdf_watermark',
         'odoo13-addon-report_wkhtmltopdf_param',
         'odoo13-addon-report_xlsx',
         'odoo13-addon-report_xlsx_helper',
