@@ -42,7 +42,7 @@ class ReportController(report.ReportController):
             return super().report_routes(reportname, docids, converter, **data)
 
     @route()
-    def report_download(self, data, token):
+    def report_download(self, data, token, context=None):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         if report_type == "qweb-xml":
@@ -88,4 +88,4 @@ class ReportController(report.ReportController):
                 error = {"code": 200, "message": "Odoo Server Error", "data": se}
                 return request.make_response(html_escape(json.dumps(error)))
         else:
-            return super().report_download(data, token)
+            return super().report_download(data, token, context)
