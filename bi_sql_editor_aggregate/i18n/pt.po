@@ -6,53 +6,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-03-06 12:45+0000\n"
+"Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>\n"
 "Language-Team: none\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: bi_sql_editor_aggregate
 #: selection:bi.sql.view.field,group_operator:0
 msgid "Average"
-msgstr ""
+msgstr "Média"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model,name:bi_sql_editor_aggregate.model_bi_sql_view_field
 msgid "Bi SQL View Field"
-msgstr ""
+msgstr "Campo da Vista Bi SQL"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model.fields,help:bi_sql_editor_aggregate.field_bi_sql_view_field__group_operator
 msgid "By default, Odoo will sum the values when grouping. If you wish to alter the behaviour, choose an alternate Group Operator"
 msgstr ""
+"Por defeito, o Odoo irá somar os valores quando agrupa. Se deseja alterar "
+"este comportamento, escolha um Operador de Grupo alternativo"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model,name:bi_sql_editor_aggregate.model_ir_model_fields
 msgid "Fields"
-msgstr ""
+msgstr "Campos"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model.fields,field_description:bi_sql_editor_aggregate.field_bi_sql_view_field__group_operator
 msgid "Group Operator"
-msgstr ""
+msgstr "Operador de Grupo"
 
 #. module: bi_sql_editor_aggregate
 #: selection:bi.sql.view.field,group_operator:0
 msgid "Maximum"
-msgstr ""
+msgstr "Máximo"
 
 #. module: bi_sql_editor_aggregate
 #: selection:bi.sql.view.field,group_operator:0
 msgid "Minimum"
-msgstr ""
+msgstr "Mínimo"
 
 #. module: bi_sql_editor_aggregate
 #: selection:bi.sql.view.field,group_operator:0
 msgid "Sum"
-msgstr ""
+msgstr "Soma"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model,name:bi_sql_editor_aggregate.model_bi_sql_view
