@@ -205,6 +205,8 @@ class Py3oReport(models.TransientModel):
         self.ensure_one()
         action_report = self.ir_actions_report_id
         filetype = action_report.py3o_filetype
+        if filetype not in ("odt", "ods", "odp", "fodt", "fods", "fodp"):
+            filetype = "ods"
         result_fd, result_path = tempfile.mkstemp(
             suffix="." + filetype, prefix="p3o.report.tmp."
         )
