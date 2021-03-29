@@ -32,4 +32,4 @@ class TestResConfigSettings(TransactionCase):
             self.user_obj._has_group("partner_statement.group_activity_statement")
         )
         res = self.env["ir.default"].get("activity.statement.wizard", "aging_type")
-        self.assertEquals(res, "months")
+        self.assertEqual(res, "months")

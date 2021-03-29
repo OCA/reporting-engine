@@ -161,13 +161,11 @@
             </t>
         </t>
     </template>
-    <report
-        id="action_print_activity_statement"
-        model="res.partner"
-        report_type="qweb-pdf"
-        menu="False"
-        string="Activity Statement"
-        name="partner_statement.activity_statement"
-        file="partner_statement.activity_statement"
-    />
+    <record id="action_print_activity_statement" model="ir.actions.report">
+        <field name="name">Activity Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">partner_statement.activity_statement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">partner_statement.activity_statement</field>
+    </record>
 </odoo>

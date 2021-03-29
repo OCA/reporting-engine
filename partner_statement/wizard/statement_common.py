@@ -11,16 +11,10 @@ class StatementCommon(models.AbstractModel):
     _name = "statement.common.wizard"
     _description = "Statement Reports Common Wizard"
 
-    def _get_company(self):
-        return (
-            self.env["res.company"].browse(self.env.context.get("force_company"))
-            or self.env.company
-        )
-
     name = fields.Char()
     company_id = fields.Many2one(
         comodel_name="res.company",
-        default=_get_company,
+        default=lambda self: self.env.company,
         string="Company",
         required=True,
     )

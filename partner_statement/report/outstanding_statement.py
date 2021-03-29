@@ -16,76 +16,62 @@ class OutstandingStatement(models.AbstractModel):
         return str(
             self._cr.mogrify(
                 """
-        SELECT l.id, m.name AS move_id, l.partner_id, l.date, l.name,
-            l.blocked, l.currency_id, l.company_id,
-            CASE WHEN l.ref IS NOT NULL THEN l.ref ELSE m.ref END as ref,
+            SELECT l.id, m.name AS move_id, l.partner_id, l.date, l.name,
+                            l.blocked, l.currency_id, l.company_id,
+            CASE WHEN l.ref IS NOT NULL
+                THEN l.ref
+                ELSE m.ref
+            END as ref,
             CASE WHEN (l.currency_id is not null AND l.amount_currency > 0.0)
                 THEN avg(l.amount_currency)
                 ELSE avg(l.debit)
             END as debit,
             CASE WHEN (l.currency_id is not null AND l.amount_currency < 0.0)
-                THEN avg(-l.amount_currency)
+                THEN avg(l.amount_currency * (-1))
                 ELSE avg(l.credit)
             END as credit,
-            (abs(COALESCE(l.balance, 0.0)) + sum(
-                coalesce(pr.pr_sign, 0.0) * coalesce(pr.amount, 0.0))
-            ) * sign(COALESCE(l.balance, 0.0)) AS open_amount,
-            (abs(COALESCE(l.amount_currency, 0.0)) + sum(
-                coalesce(pr.pr_sign, 0.0) * CASE
-                    WHEN pr.currency_id IS NOT NULL AND pr.currency_id = l.currency_id
-                    THEN coalesce(pr.amount_currency, 0.0)
-                    WHEN cur.id IS NOT NULL AND ROUND(
-                        abs(COALESCE(l.balance, 0.0)), cur.decimal_places) > 0.0
-                    THEN ROUND(coalesce(pr.amount, 0.0) *
-                            COALESCE(l.amount_currency, 0.0) / NULLIF(l.balance, 0.0),
-                        cur.decimal_places)
-                    ELSE ROUND(coalesce(pr.amount, 0.0) *
-                        COALESCE((
-                            SELECT r.rate FROM res_currency_rate r
-                            JOIN account_move_line aml
-                                ON pr.credit_move_id = aml.id
-                            WHERE r.currency_id = l.currency_id
-                                AND r.name <= aml.date
-                                AND (r.company_id IS NULL
-                                    OR r.company_id = l.company_id)
-                            ORDER BY r.company_id, r.name DESC LIMIT 1), 1.0),
-                        cur.decimal_places)
-                    END)
-            ) * sign(COALESCE(l.amount_currency, 0.0)) AS open_amount_currency,
+            CASE WHEN l.balance > 0.0
+                THEN l.balance - sum(coalesce(pd.amount, 0.0))
+                ELSE l.balance + sum(coalesce(pc.amount, 0.0))
+            END AS open_amount,
+            CASE WHEN l.balance > 0.0
+                THEN l.amount_currency - sum(coalesce(pd.debit_amount_currency, 0.0))
+                ELSE l.amount_currency + sum(coalesce(pc.credit_amount_currency, 0.0))
+            END AS open_amount_currency,
             CASE WHEN l.date_maturity is null
                 THEN l.date
                 ELSE l.date_maturity
             END as date_maturity
-        FROM (
-            SELECT l.*, CASE
-                WHEN l.debit = 0.0 AND l.credit = 0.0 AND l.currency_id IS NOT NULL
-                    AND ROUND(COALESCE(l.amount_currency, 0.0),
-                        cur.decimal_places) > 0.0 THEN 1
-                WHEN l.debit = 0.0 AND l.credit = 0.0 AND l.currency_id IS NOT NULL
-                    AND ROUND(COALESCE(l.amount_currency, 0.0),
-                        cur.decimal_places) < 0.0 THEN -1
-                WHEN l.balance > 0.0 THEN 1 ELSE -1 END as sign
             FROM account_move_line l
-            LEFT JOIN res_currency cur ON cur.id = l.currency_id
-            ) l
-        JOIN account_move m ON l.move_id = m.id
-        LEFT JOIN res_currency cur ON cur.id = l.currency_id
-        LEFT JOIN LATERAL (SELECT pr.*,
-            CASE WHEN pr.credit_move_id = l.id THEN l.sign
-                ELSE -l.sign END AS pr_sign
-            FROM account_partial_reconcile pr
-            WHERE pr.max_date <= %(date_end)s AND (
-                (pr.debit_move_id = l.id) OR (pr.credit_move_id = l.id))
-        ) as pr ON TRUE
-        WHERE l.partner_id IN %(partners)s
-            AND l.account_internal_type = %(account_type)s
-            AND (
-              (pr.id IS NOT NULL AND pr.max_date <= %(date_end)s) OR
-              (pr.id IS NULL)
-            ) AND l.date <= %(date_end)s AND m.state IN ('posted')
-        GROUP BY l.id, l.partner_id, m.name, l.date, l.date_maturity, l.name,
-            CASE WHEN l.ref IS NOT NULL THEN l.ref ELSE m.ref END,
-            l.blocked, l.currency_id, l.balance, l.amount_currency, l.company_id
+            JOIN account_account aa ON (aa.id = l.account_id)
+            JOIN account_account_type at ON (at.id = aa.user_type_id)
+            JOIN account_move m ON (l.move_id = m.id)
+            LEFT JOIN (SELECT pr.*
+                FROM account_partial_reconcile pr
+                INNER JOIN account_move_line l2
+                ON pr.credit_move_id = l2.id
+                WHERE l2.date <= %(date_end)s
+            ) as pd ON pd.debit_move_id = l.id
+            LEFT JOIN (SELECT pr.*
+                FROM account_partial_reconcile pr
+                INNER JOIN account_move_line l2
+                ON pr.debit_move_id = l2.id
+                WHERE l2.date <= %(date_end)s
+            ) as pc ON pc.credit_move_id = l.id
+            WHERE l.partner_id IN %(partners)s AND at.type = %(account_type)s
+                                AND (
+                                  (pd.id IS NOT NULL AND
+                                      pd.max_date <= %(date_end)s) OR
+                                  (pc.id IS NOT NULL AND
+                                      pc.max_date <= %(date_end)s) OR
+                                  (pd.id IS NULL AND pc.id IS NULL)
+                                ) AND l.date <= %(date_end)s AND m.state IN ('posted')
+            GROUP BY l.id, l.partner_id, m.name, l.date, l.date_maturity, l.name,
+                CASE WHEN l.ref IS NOT NULL
+                    THEN l.ref
+                    ELSE m.ref
+                END,
+                l.blocked, l.currency_id, l.balance, l.amount_currency, l.company_id
             """,
                 locals(),
             ),
@@ -121,9 +107,7 @@ class OutstandingStatement(models.AbstractModel):
               Q2.open_amount
             FROM Q2
             JOIN res_company c ON (c.id = Q2.company_id)
-            JOIN res_currency cur ON cur.id = COALESCE(Q2.currency_id, c.currency_id)
-            WHERE c.id = %(company_id)s AND
-                round(Q2.open_amount, cur.decimal_places) != 0.0
+            WHERE c.id = %(company_id)s AND Q2.open_amount != 0.0
             """,
                 locals(),
             ),

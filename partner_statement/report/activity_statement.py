@@ -23,13 +23,15 @@ class ActivityStatement(models.AbstractModel):
                 ELSE sum(l.debit)
             END as debit,
             CASE WHEN l.currency_id is not null AND l.amount_currency < 0.0
-                THEN sum(-l.amount_currency)
+                THEN sum(l.amount_currency * (-1))
                 ELSE sum(l.credit)
             END as credit
             FROM account_move_line l
+            JOIN account_account aa ON (aa.id = l.account_id)
+            JOIN account_account_type at ON (at.id = aa.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
             WHERE l.partner_id IN %(partners)s
-                AND l.account_internal_type = %(account_type)s
+                AND at.type = %(account_type)s
                 AND l.date < %(date_start)s AND not l.blocked
                 AND m.state IN ('posted')
             GROUP BY l.partner_id, l.currency_id, l.amount_currency, l.company_id
@@ -105,10 +107,12 @@ class ActivityStatement(models.AbstractModel):
                     ELSE l.date_maturity
                 END as date_maturity
             FROM account_move_line l
+            JOIN account_account aa ON (aa.id = l.account_id)
+            JOIN account_account_type at ON (at.id = aa.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
             JOIN account_journal aj ON (l.journal_id = aj.id)
             WHERE l.partner_id IN %(partners)s
-                AND l.account_internal_type = %(account_type)s
+                AND at.type = %(account_type)s
                 AND %(date_start)s <= l.date
                 AND l.date <= %(date_end)s
                 AND m.state IN ('posted')

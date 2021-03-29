@@ -3,24 +3,28 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- wizard action on res.partner -->
-    <act_window
-        id="activity_statement_wizard_action"
-        name="Partner Activity Statement"
-        binding_model="res.partner"
-        res_model="activity.statement.wizard"
-        view_mode="form"
-        target="new"
-        groups="partner_statement.group_activity_statement"
-    />
-    <act_window
-        id="outstanding_statement_wizard_action"
-        name="Partner Outstanding Statement"
-        binding_model="res.partner"
-        res_model="outstanding.statement.wizard"
-        view_mode="form"
-        target="new"
-        groups="partner_statement.group_outstanding_statement"
-    />
+    <record id="activity_statement_wizard_action" model="ir.actions.act_window">
+        <field name="name">Partner Activity Statement</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="res_model">activity.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('partner_statement.group_activity_statement'))]"
+        />
+        <field name="target">new</field>
+    </record>
+    <record id="outstanding_statement_wizard_action" model="ir.actions.act_window">
+        <field name="name">Partner Outstanding Statement</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="res_model">outstanding.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('partner_statement.group_outstanding_statement'))]"
+        />
+        <field name="target">new</field>
+    </record>
     <!-- wizard view -->
     <record id="statement_common_view" model="ir.ui.view">
         <field name="name">Statement Common Wizard View</field>
@@ -28,11 +32,11 @@
         <field name="arch" type="xml">
             <form name="Report Options">
                 <div style="text-align:justify" name="info">
-                    <label
-                        string="Aging details can be shown in the report, expressed in aging
-        buckets, so the partner can review how much is open, due or overdue."
-                        for=""
-                    />
+                    <span
+                        class="o_form_label"
+                    >Aging details can be shown in the report, expressed in aging
+        buckets, so the partner can review how much is open, due or overdue.
+                    </span>
                 </div>
                 <hr />
                 <group>
@@ -86,14 +90,14 @@
         <field name="inherit_id" ref="partner_statement.statement_common_view" />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='info']/label" position="before">
-                <label
-                    string="The outstanding statement provides details of all partner's outstanding
+            <xpath expr="//div[@name='info']/span" position="before">
+                <span
+                    class="o_form_label"
+                >The outstanding statement provides details of all partner's outstanding
         receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed
         refunds and outstanding payments. The list is displayed in chronological order and is
-        split by currencies."
-                    for=""
-                />
+        split by currencies.
+                </span>
                 <br />
                 <br />
             </xpath>
@@ -105,15 +109,15 @@
         <field name="inherit_id" ref="partner_statement.statement_common_view" />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='info']/label" position="before">
-                <label
-                    string="The activity statement provides details of all activity on
+            <xpath expr="//div[@name='info']/span" position="before">
+                <span
+                    class="o_form_label"
+                >The activity statement provides details of all activity on
                     a partner's receivables and payables between two selected dates. This includes all invoices,
                     refunds and payments. Any outstanding balance dated prior to the chosen statement
                     period will appear as a forward balance at the top of the statement. The list is
-                    displayed in chronological order and is split by currencies."
-                    for=""
-                />
+                    displayed in chronological order and is split by currencies.
+                </span>
                 <br />
                 <br />
             </xpath>

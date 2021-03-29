@@ -157,13 +157,11 @@
             </t>
         </t>
     </template>
-    <report
-        id="action_print_outstanding_statement"
-        model="res.partner"
-        report_type="qweb-pdf"
-        menu="False"
-        string="Outstanding Statement"
-        name="partner_statement.outstanding_statement"
-        file="partner_statement.outstanding_statement"
-    />
+    <record id="action_print_outstanding_statement" model="ir.actions.report">
+        <field name="name">Outstanding Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">partner_statement.outstanding_statement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">partner_statement.outstanding_statement</field>
+    </record>
 </odoo>
