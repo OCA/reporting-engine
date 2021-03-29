@@ -40,7 +40,7 @@ addon | version | summary
 [report_qr](report_qr/) | 12.0.1.0.0 | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 12.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 12.0.1.0.0 | Allow to encrypt qweb pdfs
-[report_qweb_parameter](report_qweb_parameter/) | 12.0.1.0.0 | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_parameter](report_qweb_parameter/) | 12.0.1.0.1 | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 12.0.1.0.0 | Fix auto-col to not change report font size caused by a boundary overflow
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 12.0.1.0.1 | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 12.0.1.0.1 | Sign Qweb PDFs usign a PKCS#12 certificate
