@@ -16,7 +16,6 @@ class TestReportQWebParameter(common.TransactionCase):
         docs = self.env['res.company'].create({
             'name': 'Test company',
             'street': '12345678901',
-            'vat': '12345678901',
             'company_registry': '1234567890'
         })
         docs.website = '1234567890'  # for avoding that Odoo adds http://
@@ -27,10 +26,7 @@ class TestReportQWebParameter(common.TransactionCase):
         docs.update({'street': '123456789'})
         with self.assertRaises(QWebException):
             report_object.render(docs.ids, False)
-        docs.update({'street': '1234567890', 'vat': '123456789'})
-        with self.assertRaises(QWebException):
-            report_object.render(docs.ids, False)
-        docs.update({'vat': '1234567890', 'website': '12345678901'})
+        docs.update({'street': '1234567890', 'website': '12345678901'})
         with self.assertRaises(QWebException):
             report_object.render(docs.ids, False)
         docs.update(
