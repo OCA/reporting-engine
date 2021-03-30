@@ -35,3 +35,19 @@ class TestResPartner(TransactionCase):
             self.template_id.get_value(partner_id=partner.id),
             "<p>Testing translated fr_BE</p>",
         )
+
+    def test_get_value_with_partner_model_and_res_id(self):
+        self.env["res.lang"]._activate_lang("fr_BE")
+        partner = self.env.ref("base.res_partner_12")
+        partner.write({"lang": "fr_BE"})
+        self.template_id.with_context(lang="fr_BE").write(
+            {"text": "<p>Testing translated fr_BE `${object.name}`</p>"}
+        )
+        self.assertEqual(
+            self.template_id.get_value(
+                partner_id=partner.id,
+                model="base.comment.template",
+                res_id=self.template_id.id,
+            ),
+            "<p>Testing translated fr_BE `Comment before lines`</p>",
+        )

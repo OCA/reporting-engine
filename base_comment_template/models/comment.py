@@ -40,9 +40,37 @@ class BaseCommentTemplate(models.Model):
         index=True,
     )
 
-    def get_value(self, partner_id=False):
+    def get_value(
+        self,
+        partner_id=False,
+        model=None,
+        res_id=None,
+        engine="jinja",
+        add_context=None,
+        post_process=False,
+    ):
+        """Get comment template value.
+
+        Like in mail composer `text` template can use jinja or qweb syntax.
+
+        if `partner_id` is provide, it will retreive it's lang to use the
+        right translation.
+
+        Then template is populated with model/res_id attributes according
+        jinja/qweb instructions.
+        """
         self.ensure_one()
         lang = None
         if partner_id:
             lang = self.env["res.partner"].browse(partner_id).lang
-        return self.with_context(lang=lang).text
+        value = self.with_context(lang=lang).text
+        if model is not None and res_id is not None:
+            value = self.env["mail.render.mixin"]._render_template(
+                value,
+                model,
+                [res_id],
+                engine="jinja",
+                add_context=add_context,
+                post_process=post_process,
+            )[res_id]
+        return value
