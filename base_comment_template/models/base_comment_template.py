@@ -16,12 +16,9 @@ class CommentTemplate(models.AbstractModel):
         "in reports based on created comment templates"
     )
 
-    def get_comment_template(
+    def get_comment_template_records(
         self, position="before_lines", company_id=False, partner_id=False
     ):
-        """ Method that is called from report xml and is returning the
-            position template as a html if exists
-        """
         self.ensure_one()
         if not company_id:
             company_id = self.env.company.id
@@ -51,6 +48,18 @@ class CommentTemplate(models.AbstractModel):
         )
         if lang:
             templates = templates.with_context({"lang": lang})
+        return templates
+
+    def get_comment_template(
+        self, position="before_lines", company_id=False, partner_id=False
+    ):
+        """ Method that is called from report xml and is returning the
+            position template as a html if exists
+        """
+        self.ensure_one()
+        templates = self.get_comment_template_records(
+            position=position, company_id=company_id, partner_id=partner_id
+        )
         template = False
         if templates:
             for templ in templates:
