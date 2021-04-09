@@ -24,7 +24,10 @@ def format_multiline_value(value):
 
 
 def display_address(address_record, without_company=False):
-    return address_record.display_address(without_company=without_company)
+    res = address_record._display_address(without_company=without_company)
+    while "\n\n" in res:
+        res = res.replace('\n\n ', '\n').replace('\n\n', '\n')
+    return res
 
 
 class Py3oParserContext(object):
