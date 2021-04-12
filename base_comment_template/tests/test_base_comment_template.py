@@ -1,4 +1,5 @@
 # Copyright 2020 NextERP Romania SRL
+# Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from lxml import etree
 
@@ -15,19 +16,20 @@ class TestCommentTemplate(common.SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         setup_test_model(cls.env, ResUsers)
-        cls.user_obj = cls.env["ir.model"].search([("model", "=", "res.users")])
-
+        cls.user_obj = cls.env.ref("base.model_res_users")
         cls.user = cls.env.ref("base.user_demo")
         cls.user2 = cls.env.ref("base.demo_user0")
         cls.partner_id = cls.env.ref("base.res_partner_12")
         cls.partner2_id = cls.env.ref("base.res_partner_10")
-        cls.company = cls.env["res.company"].search([], limit=1)
+        cls.main_company = cls.env.ref("base.main_company")
+        cls.company = cls.env["res.company"].create({"name": "Test company"})
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
                 "name": "before_lines",
                 "text": "Text before lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
                 "priority": 5,
+                "company_id": cls.main_company.id,
             }
         )
         cls.after_template_id = cls.env["base.comment.template"].create(
@@ -37,6 +39,7 @@ class TestCommentTemplate(common.SavepointCase):
                 "text": "Text after lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
                 "priority": 6,
+                "company_id": cls.main_company.id,
             }
         )
 
