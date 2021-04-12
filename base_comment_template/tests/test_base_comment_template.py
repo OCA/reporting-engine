@@ -1,4 +1,5 @@
 # Copyright 2020 NextERP Romania SRL
+# Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from lxml import etree
 
@@ -15,19 +16,19 @@ class TestCommentTemplate(common.SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         setup_test_model(cls.env, ResUsers)
-        cls.user_obj = cls.env["ir.model"].search([("model", "=", "res.users")])
-
+        cls.user_obj = cls.env.ref("base.model_res_users")
         cls.user = cls.env.ref("base.user_demo")
         cls.user2 = cls.env.ref("base.demo_user0")
         cls.partner_id = cls.env.ref("base.res_partner_12")
         cls.partner2_id = cls.env.ref("base.res_partner_10")
-        cls.company = cls.env["res.company"].search([], limit=1)
+        cls.company = cls.env.ref("base.main_company")
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
                 "name": "before_lines",
                 "text": "Text before lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
                 "priority": 5,
+                "company_id": cls.company.id,
             }
         )
         cls.after_template_id = cls.env["base.comment.template"].create(
@@ -37,6 +38,7 @@ class TestCommentTemplate(common.SavepointCase):
                 "text": "Text after lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
                 "priority": 6,
+                "company_id": cls.company.id,
             }
         )
 
@@ -54,9 +56,6 @@ class TestCommentTemplate(common.SavepointCase):
 
     def test_company_general_template(self):
         # Check getting default comment template company
-        self.before_template_id.company_id = self.company
-        templ = self.user.get_comment_template("before_lines")
-        self.assertEqual(templ, "")
         templ = self.user.get_comment_template(
             "before_lines", company_id=self.company.id
         )
@@ -93,9 +92,6 @@ class TestCommentTemplate(common.SavepointCase):
 
     def test_company_partner_template_domain(self):
         # Check getting the comment template with company and if domain is set
-        self.before_template_id.company_id = self.company
-        templ = self.user.get_comment_template("before_lines")
-        self.assertEqual(templ, "")
         templ = self.user.get_comment_template(
             "before_lines", company_id=self.company.id
         )
@@ -105,16 +101,7 @@ class TestCommentTemplate(common.SavepointCase):
         templ = self.user.get_comment_template(
             "before_lines", partner_id=self.partner2_id.id
         )
-        self.assertEqual(templ, "")
-        self.before_template_id.company_id = self.env.user.company_id
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
         self.assertEqual(templ, "Text before lines")
-        templ = self.user2.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
-        self.assertEqual(templ, "")
 
     def test_priority(self):
         # Check setting default template will change previous record default
