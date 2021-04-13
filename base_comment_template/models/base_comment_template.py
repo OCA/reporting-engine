@@ -76,8 +76,7 @@ class BaseCommentTemplate(models.Model):
     )
 
     def name_get(self):
-        """Redefine the name_get method to show the template name with the position.
-        """
+        """Redefine the name_get method to show the template name with the position."""
         res = []
         for item in self:
             name = "{} ({})".format(
