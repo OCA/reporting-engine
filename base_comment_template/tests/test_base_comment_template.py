@@ -7,9 +7,6 @@ from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
 
 class TestCommentTemplate(common.SavepointCase):
-    at_install = False
-    post_install = True
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -50,10 +47,12 @@ class TestCommentTemplate(common.SavepointCase):
 
     def test_template_name_get(self):
         self.assertEqual(
-            self.before_template_id.display_name, "Top template (Top)",
+            self.before_template_id.display_name,
+            "Top template (Top)",
         )
         self.assertEqual(
-            self.after_template_id.display_name, "Bottom template (Bottom)",
+            self.after_template_id.display_name,
+            "Bottom template (Bottom)",
         )
 
     def test_general_template(self):
