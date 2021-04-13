@@ -4,10 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 09:55+0000\n"
-"PO-Revision-Date: 2021-02-09 09:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,18 +19,13 @@ msgid "Active"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
-msgid "After lines"
-msgstr ""
-
-#. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Archived"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
-msgid "Before lines"
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
+msgid "Bottom"
 msgstr ""
 
 #. module: base_comment_template
@@ -41,6 +34,7 @@ msgid "Comment"
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
 msgid "Comment Template"
 msgstr ""
@@ -85,6 +79,8 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -96,6 +92,8 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__id
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__id
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__id
 msgid "ID"
 msgstr ""
 
@@ -121,6 +119,8 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -142,6 +142,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Name"
 msgstr ""
 
@@ -161,8 +162,8 @@ msgid "Position on document"
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__priority
-msgid "Priority"
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
+msgid "Sequence"
 msgstr ""
 
 #. module: base_comment_template
@@ -177,10 +178,8 @@ msgid "Template"
 msgstr ""
 
 #. module: base_comment_template
-#: code:addons/base_comment_template/models/base_comment_template.py:0
-#, python-format
-msgid ""
-"There are other records with same models, priority, domain and position."
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
+msgid "The smaller number = The higher priority"
 msgstr ""
 
 #. module: base_comment_template
@@ -208,6 +207,11 @@ msgid "This is the text template that will be inserted into reports."
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
+msgid "Top"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
 msgid "Whether this model supports in reports to add comment templates."
 msgstr ""
@@ -217,9 +221,4 @@ msgstr ""
 msgid ""
 "base.comment.template to put header and footer in reports based on created "
 "comment templates"
-msgstr ""
-
-#. module: base_comment_template
-#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__priority
-msgid "the highest priority = the smallest number"
 msgstr ""
