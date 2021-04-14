@@ -21,6 +21,7 @@ addon | version | summary
 --- | --- | ---
 [base_comment_template](base_comment_template/) | 14.0.1.0.0 | Comments templates on documents
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | Allow to encrypt qweb pdfs
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 | Add watermarks to your QWEB PDF reports
 [report_xlsx](report_xlsx/) | 14.0.1.0.1 | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.0 | Report xlsx helpers
 [report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 | Report xlsx helpers - demo
