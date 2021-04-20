@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="demo_dashboard" model="kpi.dashboard">
+        <field name="name">Dashboard</field>
+        <field name="number_of_columns">4</field>
+        <field name="widget_dimension_y">50</field>
+        <field name="widget_dimension_x">250</field>
+        <field name="background_color">#020202</field>
+        <field name="compute_on_fly_refresh">30</field>
+    </record>
+    <record id="widget_number_01" model="kpi.kpi">
+        <field name="name">Number 01</field>
+        <field name="prefix">$</field>
+        <field name="computation_method">code</field>
+        <field name="widget">number</field>
+        <field name="code">result = {"value": 10000,"previous": 12000}</field>
+    </record>
+    <record id="widget_number_02" model="kpi.kpi">
+        <field name="name">Number 02</field>
+        <field name="suffix">€</field>
+        <field name="computation_method">code</field>
+        <field name="widget">number</field>
+        <field name="code">result = {"value": 12000,"previous": 10000}</field>
+    </record>
+    <function
+        model="kpi.kpi"
+        name="compute"
+        eval="[[ref('widget_number_01'), ref('widget_number_02')]]"
+    />
+    <record id="widget_meter_01" model="kpi.kpi">
+        <field name="name">Meter 01</field>
+        <field name="suffix">€</field>
+        <field name="computation_method">code</field>
+        <field name="widget">meter</field>
+        <field name="code">result = {"min": 0, "max": 100, "value": 90}</field>
+    </record>
+    <record id="widget_meter_02" model="kpi.kpi">
+        <field name="name">Meter 02</field>
+        <field name="prefix">$</field>
+        <field name="computation_method">code</field>
+        <field name="widget">meter</field>
+        <field name="code">result = {"min": 0, "max": 100, "value": 40}</field>
+    </record>
+    <function
+        model="kpi.kpi"
+        name="compute"
+        eval="[[ref('widget_meter_01'), ref('widget_meter_02')]]"
+    />
+    <record id="widget_graph" model="kpi.kpi">
+        <field name="name">Graph</field>
+        <field name="computation_method">code</field>
+        <field name="widget">graph</field>
+        <field
+            name="code"
+        ><![CDATA[
+result = {"graphs": [
+    {
+        "values": [
+            {"x": i, "y": i * 1000}
+            for i in range(1, 12)
+        ],
+        "title": "Current Year",
+        "key": "current",
+        "area": True,
+        "color": "ffffff",
+    },
+    {
+        "values": [
+            {"x": i, "y": 1000 * (12-i)}
+            for i in range(1, 12)
+        ],
+        "title": "Previous Year",
+        "key": "previous",
+        "area": True,
+        "color": "000000",
+    },
+]}
+        ]]></field>
+    </record>
+    <function model="kpi.kpi" name="compute" eval="[[ref('widget_graph')]]" />
+    <record id="widget_integer" model="kpi.kpi">
+        <field name="name">Integer counter</field>
+        <field name="computation_method">code</field>
+        <field name="widget">integer</field>
+        <field name="compute_on_fly" eval="True" />
+        <field
+            name="code"
+        ><![CDATA[
+result = {"value": self.env.context.get('counter', 990)}
+        ]]></field>
+    </record>
+    <record id="widget_counter" model="kpi.kpi">
+        <field name="name">Counter</field>
+        <field name="computation_method">code</field>
+        <field name="widget">counter</field>
+        <field name="compute_on_fly" eval="True" />
+        <field
+            name="code"
+        ><![CDATA[
+result = {"value": self.env.context.get('counter', 990)}
+        ]]></field>
+    </record>
+    <record id="dashboard_widget_text" model="kpi.dashboard.item">
+        <field name="name">Dashboard title</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="column">1</field>
+        <field name="row">1</field>
+        <field name="size_x">4</field>
+        <field name="color">#707070</field>
+        <field name="font_color">#000000</field>
+    </record>
+    <record id="dashboard_widget_number_01" model="kpi.dashboard.item">
+        <field name="name">Number 01</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_number_01" />
+        <field name="column">1</field>
+        <field name="row">2</field>
+        <field name="size_y">4</field>
+        <field name="color">#47bbb3</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+    <record id="dashboard_widget_number_02" model="kpi.dashboard.item">
+        <field name="name">Number 02</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_number_02" />
+        <field name="column">1</field>
+        <field name="row">6</field>
+        <field name="size_y">4</field>
+        <field name="color">#ec663c</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+    <record id="dashboard_widget_meter_01" model="kpi.dashboard.item">
+        <field name="name">Meter 01</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_meter_01" />
+        <field name="column">2</field>
+        <field name="row">2</field>
+        <field name="size_y">4</field>
+        <field name="color">#9c4274</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+    <record id="dashboard_widget_meter_02" model="kpi.dashboard.item">
+        <field name="name">Meter 02</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_meter_02" />
+        <field name="column">2</field>
+        <field name="row">6</field>
+        <field name="size_y">4</field>
+        <field name="color">#12b0c5</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+    <record id="dashboard_widget_add_counter" model="kpi.dashboard.item">
+        <field name="name">+1 to Counter</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="column">3</field>
+        <field name="row">10</field>
+        <field name="size_y">1</field>
+        <field name="size_x">2</field>
+        <field name="color">#B41F1F</field>
+        <field name="font_color">#EEBF77</field>
+        <field name="modify_context" eval="True" />
+        <field name="modify_context_expression">
+            {'counter': (context.counter or 990) + 1}
+        </field>
+        <field name="modify_color" eval="True" />
+        <field name="modify_color_expression">
+            check_if(((context.counter or 990) + 1) % 2, '#ff0000', '#00ff00')
+        </field>
+    </record>
+    <record id="dashboard_widget_counter" model="kpi.dashboard.item">
+        <field name="name">Counter</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_counter" />
+        <field name="column">3</field>
+        <field name="row">11</field>
+        <field name="size_y">3</field>
+        <field name="color">#4B0082</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+    <record id="dashboard_widget_integer" model="kpi.dashboard.item">
+        <field name="name">Integer</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_integer" />
+        <field name="column">4</field>
+        <field name="row">11</field>
+        <field name="size_y">3</field>
+        <field name="color">#ffffff</field>
+        <field name="font_color">#4B0082</field>
+    </record>
+    <record id="dashboard_widget_graph" model="kpi.dashboard.item">
+        <field name="name">Graph</field>
+        <field name="dashboard_id" ref="demo_dashboard" />
+        <field name="kpi_id" ref="widget_graph" />
+        <field name="column">3</field>
+        <field name="row">2</field>
+        <field name="size_x">2</field>
+        <field name="size_y">8</field>
+        <field name="color">#ff9618</field>
+        <field name="font_color">#ffffff</field>
+    </record>
+</odoo>

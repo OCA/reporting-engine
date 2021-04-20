@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+    <t t-name="dashboard_kpi.dashboard">
+        <div class="gridster kpi_dashboard">
+            <ul />
+        </div>
+    </t>
+    <t t-name="kpi_dashboard.kpi">
+        <li
+            t-att-data-row="widget.row"
+            t-att-data-col="widget.col"
+            t-att-data-sizex="widget.sizex"
+            t-att-data-sizey="widget.sizey"
+        />
+    </t>
+    <t t-name="kpi_dashboard.base_text">
+        <div class="kpi">
+            <h1 class="title" t-esc="widget.values.name" />
+        </div>
+    </t>
+    <t t-name="kpi_dashboard.ManagePanel">
+        <t t-if="widget.actions">
+            <t t-foreach="widget.actions" t-as="action_id">
+                <t t-set="action" t-value="widget.actions[action_id]" />
+                <div role="menuitem" class="">
+                    <a
+                        role="menuitem"
+                        href="#"
+                        class="direct_action"
+                        t-att-data-id="action_id"
+                        t-att-data-type="action.type"
+                    >
+                        Go to
+                        <t t-esc="action.name" />
+                    </a>
+                </div>
+            </t>
+        </t>
+    </t>
+    <t t-name="kpi_dashboard.base_widget">
+        <div class="kpi">
+            <div class="o_kpi_dashboard_manage hidden">
+                <a class="o_kpi_dashboard_toggle_button" href="#">
+                    <i
+                        class="fa fa-ellipsis-v"
+                        aria-label="Selection"
+                        role="img"
+                        title="Selection"
+                    />
+                </a>
+            </div>
+            <h1 class="title" t-esc="widget.values.name" />
+            <p class="updated_at" data-bind="value_last_update_display" />
+            <div class="container o_kpi_dashboard_manage_panel dropdown-menu">
+                <t t-call="kpi_dashboard.ManagePanel" />
+            </div>
+        </div>
+    </t>
+    <t t-name="kpi_dashboard.number" t-extend="kpi_dashboard.base_widget">
+        <t t-jquery="h1" t-operation="after">
+            <h2 class="numbervalue">
+                <span t-esc="widget.prefix" />
+                <span data-bind="value" />
+                <span t-esc="widget.suffix" />
+            </h2>
+            <p class="change-rate">
+                <i class="fa" data-bind="arrow" />
+                <span data-bind="difference" />
+            </p>
+        </t>
+    </t>
+    <t t-name="kpi_dashboard.meter" t-extend="kpi_dashboard.base_widget">
+        <t t-jquery="h1" t-operation="after">
+            <div class="centered">
+                <div class="GaugeMeter" data-bind="value" />
+            </div>
+        </t>
+    </t>
+    <t t-name="kpi_dashboard.graph" t-extend="kpi_dashboard.base_widget">
+        <t t-jquery="h1" t-operation="after">
+            <div class="centered">
+                <div data-bind="value" />
+            </div>
+        </t>
+    </t>
+    <t t-name="kpi_dashboard.buttons">
+        <div class="o_dashboard_buttons" role="toolbar" aria-label="Main actions">
+            <button
+                type="button"
+                class="btn btn-primary o_dashboard_button_add"
+                accesskey="d"
+            >
+                Add to Dashboard
+            </button>
+        </div>
+    </t>
+</template>
