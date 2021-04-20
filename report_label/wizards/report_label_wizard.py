@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import api, fields, models
 
 
 class ReportLabelWizard(models.TransientModel):
@@ -7,16 +7,20 @@ class ReportLabelWizard(models.TransientModel):
 
     @api.model
     def _default_line_ids(self):
-        """ Compute line_ids based on context """
+        """Compute line_ids based on context"""
         active_model = self.env.context.get("active_model")
         active_ids = self.env.context.get("active_ids", [])
         if not active_model or not active_ids:
             return False
         return [
-            (0, 0, {
-                "res_id": res_id,
-                "quantity": 1,
-            })
+            (
+                0,
+                0,
+                {
+                    "res_id": res_id,
+                    "quantity": 1,
+                },
+            )
             for res_id in active_ids
         ]
 

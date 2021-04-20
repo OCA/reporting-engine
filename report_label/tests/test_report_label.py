@@ -1,13 +1,14 @@
-from odoo.tests import common
 from ast import literal_eval
+
+from odoo.tests import common
 
 
 class TestReportLabel(common.TransactionCase):
-
     def setUp(self):
         super().setUp()
         self.partner_label = self.env.ref(
-            "report_label.actions_server_label_partner_address")
+            "report_label.actions_server_label_partner_address"
+        )
 
     def test_01_print_partner_label(self):
         self.partner_label.create_action()

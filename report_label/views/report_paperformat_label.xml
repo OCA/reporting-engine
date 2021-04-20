@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <record id="paperformat_label_view_form" model="ir.ui.view">
         <field name="model">report.paperformat.label</field>
-        <field name="inherit_id" ref="base.paperformat_view_form"/>
+        <field name="inherit_id" ref="base.paperformat_view_form" />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <!-- Hide irrelevant fields -->
@@ -20,20 +20,20 @@
             <form position="inside">
                 <group name="label">
                     <group name="label_size" string="Label Size" colspan="2">
-                        <field name="label_height"/>
-                        <field name="label_width"/>
+                        <field name="label_height" />
+                        <field name="label_width" />
                     </group>
                     <group name="label_padding" string="Label Padding">
-                        <field string="Top (mm)" name="label_padding_top"/>
-                        <field string="Right (mm)" name="label_padding_right"/>
-                        <field string="Bottom (mm)" name="label_padding_bottom"/>
-                        <field string="Left (mm)" name="label_padding_left"/>
+                        <field string="Top (mm)" name="label_padding_top" />
+                        <field string="Right (mm)" name="label_padding_right" />
+                        <field string="Bottom (mm)" name="label_padding_bottom" />
+                        <field string="Left (mm)" name="label_padding_left" />
                     </group>
                     <group name="label_margin" string="Label Margin">
-                        <field string="Top (mm)" name="label_margin_top"/>
-                        <field string="Right (mm)" name="label_margin_right"/>
-                        <field string="Bottom (mm)" name="label_margin_bottom"/>
-                        <field string="Left (mm)" name="label_margin_left"/>
+                        <field string="Top (mm)" name="label_margin_top" />
+                        <field string="Right (mm)" name="label_margin_right" />
+                        <field string="Bottom (mm)" name="label_margin_bottom" />
+                        <field string="Left (mm)" name="label_margin_left" />
                     </group>
                 </group>
             </form>
@@ -44,9 +44,9 @@
         <field name="model">report.paperformat.label</field>
         <field name="arch" type="xml">
             <tree string="Label paper format configuration">
-                <field name="name"/>
-                <field name="label_height"/>
-                <field name="label_width"/>
+                <field name="name" />
+                <field name="label_height" />
+                <field name="label_width" />
             </tree>
         </field>
     </record>
@@ -65,6 +65,7 @@
         name="Label Paper Formats"
         action="paperformat_label_action"
         parent="base.reporting_menuitem"
-        sequence="2"/>
+        sequence="2"
+    />
 
 </odoo>
