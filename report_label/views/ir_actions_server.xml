@@ -30,7 +30,6 @@
     <record id="report_label_action" model="ir.actions.act_window">
         <field name="name">Label Reports</field>
         <field name="res_model">ir.actions.server</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[("state", "=", "report_label")]</field>
         <field name="context">{"default_state": "report_label"}</field>
