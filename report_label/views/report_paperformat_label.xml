@@ -17,7 +17,7 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <!-- Add label paper format fields -->
-            <form position="inside">
+            <sheet position="inside">
                 <group name="label">
                     <group name="label_size" string="Label Size" colspan="2">
                         <field name="label_height" />
@@ -36,7 +36,7 @@
                         <field string="Left (mm)" name="label_margin_left" />
                     </group>
                 </group>
-            </form>
+            </sheet>
         </field>
     </record>
 
@@ -54,7 +54,6 @@
     <record id="paperformat_label_action" model="ir.actions.act_window">
         <field name="name">Label paper format configuration</field>
         <field name="res_model">report.paperformat.label</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
