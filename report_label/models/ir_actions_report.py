@@ -10,5 +10,6 @@ class IrActionsReport(models.Model):
         res = super().get_paperformat()
         if self.env.context.get("paperformat_id"):
             res = self.env["report.paperformat"].browse(
-                self.env.context.get("paperformat_id"))
+                self.env.context.get("paperformat_id")
+            )
         return res
