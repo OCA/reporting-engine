@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template>
+    <t t-name="bi_view_editor.Frame">
+        <div class="oe_form_field_bi_editor">
+            <div class="body">
+                <div class="left">
+
+                </div>
+                <div class="right">
+
+                </div>
+                <div class="clear" />
+            </div>
+            <div class="footer">
+                <div class="left" />
+                <div class="right">
+                    <button class="clear-btn d-none">
+                        <span class="fa fa-eraser" />
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+    <!-- Join Node Dialog -->
+    <t t-name="bi_view_editor.JoinNodeDialog">
+        <div class="oe_bi_view_editor_join_node_dialog">
+            <ul class="list-group">
+                <t t-foreach="choices" t-as="choice">
+                    <t t-if="choice.join_node !== -1 and choice.table_alias !== -1">
+                        <li
+                            class="list-group-item list-group-item-action text-primary"
+                            t-attf-data-index="#{choice.index}"
+                        >
+                            <b>Use the existing node</b>
+                        </li>
+                    </t>
+                    <t t-elif="choice.join_node !== -1">
+                        <li
+                            class="list-group-item list-group-item-action text-success"
+                            t-attf-data-index="#{choice.index}"
+                        >
+                            Use the field
+                            <b>
+                                <t t-esc="choice.model_name" />
+                            </b>
+                            <i class="fa fa-caret-right" />
+                            <b>
+                                <t t-esc="choice.description" />
+                            </b>
+                            <span class="badge">new</span>
+                        </li>
+                    </t>
+                    <t t-else="">
+                        <li
+                            class="list-group-item list-group-item-action"
+                            t-attf-data-index="#{choice.index}"
+                        >
+                            Use the field
+                            <b>
+                                <t t-esc="choice.model_name" />
+                            </b>
+                            <i class="fa fa-caret-right" />
+                            <b>
+                                <t t-esc="choice.description" />
+                            </b>
+                        </li>
+                    </t>
+                </t>
+            </ul>
+        </div>
+    </t>
+    <!-- ModelList -->
+    <t t-name="bi_view_editor.ModelList">
+        <div>
+            <div class="search-bar">
+                <span class="fa fa-search" />
+                <input type="text" class="search-bar" />
+            </div>
+            <div class="class-list">
+
+            </div>
+        </div>
+    </t>
+    <!-- ModelListItem -->
+    <t t-name="bi_view_editor.ModelListItem">
+        <div class="class-container">
+            <div class="class" t-attf-title="#{model}" t-attf-data-id="#{id}">
+                <t t-esc="name" />
+            </div>
+        </div>
+    </t>
+    <!-- ModelListFieldItem-->
+    <t t-name="bi_view_editor.ModelListFieldItem">
+        <div class="field" t-attf-title="#{name}" t-attf-data-id="#{name}">
+            <t t-esc="description" />
+        </div>
+    </t>
+    <!-- FieldList -->
+    <t t-name="bi_view_editor.FieldList">
+        <div>
+            <table class="field-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Options</th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </t>
+    <!-- FieldContextMenu -->
+    <t t-name="bi_view_editor.FieldList.FieldContextMenu">
+        <ul class="context-menu d-none">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-for="column"
+                            class="checkbox-column"
+                        />
+                        <span>Column</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-for="row" class="checkbox-row" />
+                        <span>Row</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-for="measure"
+                            class="checkbox-measure"
+                        />
+                        <span>Measure</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-for="list" class="checkbox-list" />
+                        <span>List</span>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+    <!-- JoinContextMenu -->
+    <t t-name="bi_view_editor.FieldList.JoinContextMenu">
+        <ul class="context-menu d-none">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-for="join_left"
+                            class="checkbox-join-left"
+                        />
+                        Join Left
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+    <!-- FieldListItem -->
+    <t t-name="bi_view_editor.FieldListItem">
+        <tr t-attf-data-id="#{field._id}" class="field-node">
+            <td>
+                <input
+                    t-attf-data-id="#{field._id}"
+                    t-attf-title="#{field.model_name} (#{field.model})"
+                    class="form-control input-sm"
+                    type="text"
+                    name="description"
+                    t-attf-value="#{field.description}"
+                />
+            </td>
+            <td>
+                <t t-esc="field.model_name" />
+            </td>
+            <td>
+                <span
+                    data-for="column"
+                    t-attf-class="#{field.column and 'fa fa-columns' or 'fa fa-columns d-none'}"
+                    title='Column'
+                />
+                <span
+                    data-for="row"
+                    t-attf-class="#{field.row and 'fa fa-bars' or 'fa fa-bars d-none'}"
+                    title='Row'
+                />
+                <span
+                    data-for="measure"
+                    t-attf-class="#{field.measure and 'fa fa-bar-chart-o' or 'fa fa-bar-chart-o d-none'}"
+                    title='Measure'
+                />
+                <span
+                    data-for="list"
+                    t-attf-class="#{field.list and 'fa fa-list' or 'fa fa-list d-none'}"
+                    title='List'
+                />
+            </td>
+            <td>
+                <span
+                    t-attf-data-id="#{field._id}"
+                    class="delete-button fa fa-trash-o"
+                />
+            </td>
+        </tr>
+    </t>
+    <t t-name="bi_view_editor.JoinListItem">
+        <tr t-attf-data-id="#{field._id}" class="join-node">
+            <td colspan="4">
+                <input
+                    class="d-none"
+                    type="text"
+                    name="description"
+                    t-attf-value="#{field.description}"
+                />
+                <t t-if="field.join_node > field.table_alias">
+                    <b>
+                        <t t-esc="field.model_name" />
+                    </b>
+                    <i class="fa fa-caret-right" />
+                    <small>
+                        <t t-esc="field.description" />
+                    </small>
+                </t>
+                <t t-else="">
+                    <small>
+                        <t t-esc="field.description" />
+                    </small>
+                    <i class="fa fa-caret-left" />
+                    <b>
+                        <t t-esc="field.model_name" />
+                    </b>
+                </t>
+                <span
+                    t-attf-class="#{!field.join_left and 'd-none' or ''}"
+                    data-for="join_left"
+                >
+                    <i>(join left)</i>
+                </span>
+            </td>
+        </tr>
+    </t>
+</template>
