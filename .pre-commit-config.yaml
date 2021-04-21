@@ -47,12 +47,13 @@ repos:
     rev: v2.1.2
     hooks:
       - id: prettier
-        name: prettier + plugin-xml
+        name: prettier (with plugin-xml)
         additional_dependencies:
           - "prettier@2.1.2"
           - "@prettier/plugin-xml@0.12.0"
         args:
           - --plugin=@prettier/plugin-xml
+        files: \.(css|htm|html|js|json|jsx|less|md|scss|toml|ts|xml|yaml|yml)$
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v7.8.1
     hooks:
@@ -87,6 +88,7 @@ repos:
     rev: v2.7.2
     hooks:
       - id: pyupgrade
+        args: ["--keep-percent-format"]
   - repo: https://github.com/PyCQA/isort
     rev: 5.5.1
     hooks:
