@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo14-addon-base_comment_template',
+        'odoo14-addon-bi_view_editor',
         'odoo14-addon-kpi_dashboard',
         'odoo14-addon-report_qweb_encrypt',
         'odoo14-addon-report_qweb_pdf_watermark',
