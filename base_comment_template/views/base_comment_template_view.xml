@@ -5,13 +5,13 @@
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
             <tree string="Comment Templates">
+                <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="position" />
                 <field name="company_id" groups="base.group_multi_company" />
                 <field name="partner_ids" />
                 <field name="model_ids" />
                 <field name="domain" />
-                <field name="priority" />
             </tree>
         </field>
     </record>
@@ -26,7 +26,7 @@
                 <field name="partner_ids" />
                 <field name="model_ids" />
                 <field name="domain" />
-                <field name="priority" />
+                <field name="sequence" />
             </search>
         </field>
     </record>
@@ -58,9 +58,9 @@
                                 name="company_id"
                                 groups="base.group_multi_company"
                             />
+                            <field name="domain" />
                             <field name="model_ids" widget="many2many_tags" />
                             <field name="partner_ids" widget="many2many_tags" />
-                            <field name="priority" />
                         </group>
                     </group>
                     <notebook>

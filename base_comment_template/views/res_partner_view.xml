@@ -6,14 +6,21 @@
             <page name='internal_notes' position="after">
                 <page name='base_comment_template_ids' string="Comment Templates">
                     <field
-                        colspan="4"
-                        mode="tree"
                         name="base_comment_template_ids"
                         nolabel="1"
-                        widget="one2many"
-                        height="300"
-                        context="{'default_partner_id': active_id}"
-                    />
+                        context="{'comment_template_model_display': True}"
+                    >
+                        <tree>
+                            <field name="display_name" string="Name" />
+                            <field name="position" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                            <field name="model_ids" />
+                            <field name="domain" />
+                        </tree>
+                    </field>
                 </page>
             </page>
         </field>
