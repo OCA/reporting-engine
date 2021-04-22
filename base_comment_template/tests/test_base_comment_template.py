@@ -1,8 +1,6 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from lxml import etree
-
 from odoo.tests import common
 
 from .fake_models import ResUsers, setup_test_model, teardown_test_model
@@ -25,147 +23,68 @@ class TestCommentTemplate(common.SavepointCase):
         cls.company = cls.env["res.company"].create({"name": "Test company"})
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
-                "name": "before_lines",
+                "name": "Top template",
                 "text": "Text before lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
-                "priority": 5,
-                "company_id": cls.main_company.id,
+                "company_id": cls.company.id,
             }
         )
         cls.after_template_id = cls.env["base.comment.template"].create(
             {
-                "name": "after_lines",
+                "name": "Bottom template",
                 "position": "after_lines",
                 "text": "Text after lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
-                "priority": 6,
-                "company_id": cls.main_company.id,
+                "company_id": cls.company.id,
             }
         )
+        cls.user.partner_id.base_comment_template_ids = [
+            (4, cls.before_template_id.id),
+            (4, cls.after_template_id.id),
+        ]
 
     @classmethod
     def tearDownClass(cls):
         teardown_test_model(cls.env, ResUsers)
         super(TestCommentTemplate, cls).tearDownClass()
 
-    def test_general_template(self):
-        # Check getting default comment template
-        templ = self.user.get_comment_template("before_lines")
-        self.assertEqual(templ, "Text before lines")
-        templ = self.user.get_comment_template("after_lines")
-        self.assertEqual(templ, "Text after lines")
-
-    def test_company_general_template(self):
-        # Check getting default comment template company
-        self.before_template_id.company_id = self.company
-        templ = self.user.get_comment_template("before_lines")
-        self.assertEqual(templ, "")
-        templ = self.user.get_comment_template(
-            "before_lines", company_id=self.company.id
+    def test_template_name_get(self):
+        self.assertEqual(
+            self.before_template_id.display_name, "Top template (Top)",
         )
-        self.assertEqual(templ, "Text before lines")
-        templ = self.user.get_comment_template("after_lines")
-        self.assertEqual(templ, "Text after lines")
+        self.assertEqual(
+            self.after_template_id.display_name, "Bottom template (Bottom)",
+        )
+
+    def test_general_template(self):
+        # Need to force _compute because only trigger when partner_id have changed
+        self.user._compute_comment_template_ids()
+        # Check getting default comment template
+        self.assertTrue(self.before_template_id in self.user.comment_template_ids)
+        self.assertTrue(self.after_template_id in self.user.comment_template_ids)
 
     def test_partner_template(self):
-        # Check getting the comment template if partner is set
-        self.before_template_id.partner_ids = self.partner2_id.ids
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
+        self.partner2_id.base_comment_template_ids = [
+            (4, self.before_template_id.id),
+            (4, self.after_template_id.id),
+        ]
+        self.assertTrue(
+            self.before_template_id in self.partner2_id.base_comment_template_ids
         )
-        self.assertEqual(templ, "Text before lines")
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner_id.id
+        self.assertTrue(
+            self.after_template_id in self.partner2_id.base_comment_template_ids
         )
-        self.assertEqual(templ, "")
-        templ = self.user.get_comment_template("after_lines")
-        self.assertEqual(templ, "Text after lines")
 
     def test_partner_template_domain(self):
         # Check getting the comment template if domain is set
-        self.before_template_id.partner_ids = self.partner2_id.ids
+        self.partner2_id.base_comment_template_ids = [
+            (4, self.before_template_id.id),
+            (4, self.after_template_id.id),
+        ]
         self.before_template_id.domain = "[('id', 'in', %s)]" % self.user.ids
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
-        self.assertEqual(templ, "Text before lines")
-        templ = self.user2.get_comment_template(
-            "before_lines", partner_id=self.partner_id.id
-        )
-        self.assertEqual(templ, "")
-
-    def test_company_partner_template_domain(self):
-        # Check getting the comment template with company and if domain is set
-        self.before_template_id.company_id = self.company
-        templ = self.user.get_comment_template("before_lines")
-        self.assertEqual(templ, "")
-        templ = self.user.get_comment_template(
-            "before_lines", company_id=self.company.id
-        )
-        self.assertEqual(templ, "Text before lines")
-        self.before_template_id.partner_ids = self.partner2_id.ids
-        self.before_template_id.domain = "[('id', 'in', %s)]" % self.user.ids
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
-        self.assertEqual(templ, "")
-        self.before_template_id.company_id = self.env.user.company_id
-        templ = self.user.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
-        self.assertEqual(templ, "Text before lines")
-        templ = self.user2.get_comment_template(
-            "before_lines", partner_id=self.partner2_id.id
-        )
-        self.assertEqual(templ, "")
-
-    def test_priority(self):
-        # Check setting default template will change previous record default
-        new_template = self.env["base.comment.template"].create(
-            {
-                "name": "before_lines",
-                "text": "Text before lines 1",
-                "model_ids": [(6, 0, self.user_obj.ids)],
-                "priority": 2,
-            }
-        )
-
-        self.assertEqual(new_template.text, "Text before lines 1")
-
-    def test_check_partners_in_company_id(self):
-        """ should  rise any error because exist the same model,
-        domain, position and priority"""
-        with self.assertRaises(Exception) as context:
-            self.before_template_id_2 = self.env["base.comment.template"].create(
-                {
-                    "name": "before_lines",
-                    "text": "Text before lines",
-                    "model_ids": [(6, 0, self.user_obj.ids)],
-                    "priority": 5,
-                }
-            )
         self.assertTrue(
-            "There are other records with same models, priority, domain and position."
-            == context.exception.args[0]
+            self.before_template_id in self.partner2_id.base_comment_template_ids
         )
-
-        # should not rise any error
-        self.before_template_id_3 = self.env["base.comment.template"].create(
-            {
-                "name": "before_lines",
-                "text": "Text before lines",
-                "model_ids": [(6, 0, self.user_obj.ids)],
-                "priority": 55,
-            }
+        self.assertTrue(
+            self.before_template_id not in self.partner_id.base_comment_template_ids
         )
-
-    def test_fields_view_get(
-        self, view_id=None, view_type="form", toolbar=False, submenu=False
-    ):
-        bf_tmp_form_view = self.before_template_id.fields_view_get()
-        if view_type == "form":
-            doc = etree.XML(bf_tmp_form_view["arch"])
-            model_ids = doc.xpath("//field[@name='model_ids']")
-            domain = model_ids[0].attrib["domain"]
-            # if domain exist means that the filtering is done and the function is ok
-            self.assertTrue(domain != "")
