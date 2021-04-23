@@ -2,3 +2,4 @@
 * Jordi Ballester <jordi.ballester@eficent.com>
 * Saran Lim. <saranl@ecosoft.co.th>
 * Foram Shah <foramshah@initos.com>
+* Hai Lang <hailn@trobz.com>
