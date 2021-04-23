@@ -22,6 +22,15 @@ class IrActionsReport(models.Model):
         )
 
         for param in paperformat_id.custom_params:
+            try:
+                value_index = command_args.index(param.name)
+                if param.value:
+                    command_args[value_index + 1] = param.value
+                else:
+                    pass  # param.name is already in command_args
+                continue
+            except ValueError:
+                pass  # param.name is not in command_args
             command_args.extend([param.name])
             if param.value:
                 command_args.extend([param.value])
