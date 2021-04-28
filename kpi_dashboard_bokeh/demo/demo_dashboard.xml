@@ -13,13 +13,12 @@ result = {"bokeh": "%s%s" % (div, script)}
         </field>
     </record>
 
-    <function model="kpi.kpi" name="compute"
-              eval="[[ref('widget_bokeh')]]"/>
+    <function model="kpi.kpi" name="compute" eval="[[ref('widget_bokeh')]]" />
 
     <record id="dashboard_widget_bokeh" model="kpi.dashboard.item">
         <field name="name">Bokeh</field>
-        <field name="dashboard_id" ref="kpi_dashboard.demo_dashboard"/>
-        <field name="kpi_id" ref="widget_bokeh"/>
+        <field name="dashboard_id" ref="kpi_dashboard.demo_dashboard" />
+        <field name="kpi_id" ref="widget_bokeh" />
         <field name="column">2</field>
         <field name="row">10</field>
         <field name="size_y">4</field>
