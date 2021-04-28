@@ -18,7 +18,9 @@ class KpiKpi(models.Model):
 
     _inherit = "kpi.kpi"
 
-    widget = fields.Selection(selection_add=[("bokeh", "Bokeh")])
+    widget = fields.Selection(
+        selection_add=[("bokeh", "Bokeh")], ondelete={"bokeh": "cascade"}
+    )
 
     def _get_bokeh_theme(self):
         return Theme(
