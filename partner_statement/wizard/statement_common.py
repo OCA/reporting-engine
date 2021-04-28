@@ -14,7 +14,7 @@ class StatementCommon(models.AbstractModel):
     def _get_company(self):
         return (
             self.env["res.company"].browse(self.env.context.get("force_company"))
-            or self.env.user.company_id
+            or self.env.company
         )
 
     name = fields.Char()
