@@ -24,6 +24,7 @@ addon | version | summary
 --- | --- | ---
 [bi_sql_editor](bi_sql_editor/) | 10.0.1.0.1 | BI Views builder, based on Materialized or Normal SQL Views
 [bi_view_editor](bi_view_editor/) | 10.0.1.0.2 | Graphical BI views builder for Odoo
+[report_csv](report_csv/) | 10.0.1.0.0 | Base module to create csv report
 [report_py3o](report_py3o/) | 10.0.2.0.2 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 10.0.1.0.0 | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 10.0.1.0.0 | Web QR Manager
