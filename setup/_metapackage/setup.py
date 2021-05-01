@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo10-addon-bi_sql_editor',
         'odoo10-addon-bi_view_editor',
+        'odoo10-addon-report_csv',
         'odoo10-addon-report_py3o',
         'odoo10-addon-report_py3o_fusion_server',
         'odoo10-addon-report_qr',
