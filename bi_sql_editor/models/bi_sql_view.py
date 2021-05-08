@@ -408,14 +408,14 @@ class BiSQLView(models.Model):
             'type': 'search',
             'model': self.model_id.model,
             'arch':
-                """<?xml version="1.0"?>"""
-                """<search string="Analysis">{}"""
-                """<group expand="1" string="Group By">{}</group>"""
-                """</search>""".format(
-                    "".join(
+                u"""<?xml version="1.0"?>"""
+                u"""<search string="Analysis">{}"""
+                u"""<group expand="1" string="Group By">{}</group>"""
+                u"""</search>""".format(
+                    u"".join(
                         [x._prepare_search_field()
                             for x in self.bi_sql_view_field_ids]),
-                    "".join(
+                    u"".join(
                         [x._prepare_search_filter_field()
                             for x in self.bi_sql_view_field_ids]))
         }
