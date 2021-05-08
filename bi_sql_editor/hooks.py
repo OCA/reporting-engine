@@ -6,6 +6,6 @@ from odoo.api import Environment
 
 def uninstall_hook(cr, registry):
     env = Environment(cr, SUPERUSER_ID, {})
-    recs = env['bi.sql.view'].search([])
+    recs = env['bi.sql.view'].search([], order="id desc")
     for rec in recs:
         rec.button_set_draft()
