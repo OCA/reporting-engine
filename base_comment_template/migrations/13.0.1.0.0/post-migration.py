@@ -16,6 +16,9 @@ def migrate(env, version):
         SPLIT_PART(ip.value_reference, ',', 2)::int AS base_comment_template_id
         FROM ir_property ip
         JOIN ir_model_fields imf ON ip.fields_id = imf.id
+        JOIN res_partner rp ON rp.id = SPLIT_PART(ip.res_id, ',', 2)::int
+        JOIN base_comment_template bct
+            ON bct.id = SPLIT_PART(ip.value_reference, ',', 2)::int
         WHERE imf.name = 'property_comment_template_id'
         AND imf.model = 'res.partner'
         AND ip.res_id IS NOT NULL
