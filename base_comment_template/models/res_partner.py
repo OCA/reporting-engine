@@ -11,8 +11,8 @@ class ResPartner(models.Model):
     base_comment_template_ids = fields.Many2many(
         comodel_name="base.comment.template",
         relation="base_comment_template_res_partner_rel",
-        column1="base_comment_template_id",
-        column2="res_partner_id",
+        column1="res_partner_id",
+        column2="base_comment_template_id",
         string="Comment Templates",
         help="Specific partner comments that can be included in reports",
     )
