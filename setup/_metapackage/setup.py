@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo13-addon-base_comment_template',
         'odoo13-addon-bi_sql_editor',
+        'odoo13-addon-kpi',
         'odoo13-addon-kpi_dashboard',
         'odoo13-addon-report_batch',
         'odoo13-addon-report_context',
