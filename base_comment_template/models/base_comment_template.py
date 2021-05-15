@@ -45,8 +45,8 @@ class BaseCommentTemplate(models.Model):
     partner_ids = fields.Many2many(
         comodel_name="res.partner",
         relation="base_comment_template_res_partner_rel",
-        column1="res_partner_id",
-        column2="base_comment_template_id",
+        column1="base_comment_template_id",
+        column2="res_partner_id",
         string="Partner",
         readonly=True,
         help="If set, the comment template will be available only for the selected "
