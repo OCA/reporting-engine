@@ -51,6 +51,10 @@ When creating new reports, you should use a path like the following::
 
     <img t-att-src="'/report/qr/?value=%s&amp;error_correction=%s' % ('HELLO WORLD!', 3)" style="width:100;height:100"/>
 
+OR::
+
+    <img t-att-src="'/report/qr/image_name.ext?value=%s&amp;error_correction=%s' % ('HELLO WORLD!', 3)" style="width:100;height:100"/>
+
 
 The **error_correction** parameter controls the error correction used for the QR Code. The following four constants are made available:
 
@@ -65,6 +69,8 @@ The **border** parameter controls how many boxes thick the border should be (the
 The **version** parameter is an integer from 1 to 40 that controls the size of the QR Code (the smallest, version 1, is a 21x21 matrix). Set to None and use the fit parameter when making the code to determine this automatically.
 
 **fill_color** and **back_color** can change the background and the painting color of the QR, when using the default image factory.
+
+Adding a trailing filename at the url will allow downloading the qr image with that name proposed.
 
 Bug Tracker
 ===========
