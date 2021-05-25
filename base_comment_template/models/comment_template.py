@@ -39,7 +39,6 @@ class CommentTemplate(models.AbstractModel):
                 ]
             )
             for template in templates:
-                if not template.domain or self in self.search(
-                    safe_eval(template.domain)
-                ):
+                domain = safe_eval(template.domain)
+                if not domain or record.filtered_domain(domain):
                     record.comment_template_ids = [(4, template.id)]
