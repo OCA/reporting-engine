@@ -19,7 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[base_comment_template](base_comment_template/) | 14.0.2.0.0 | Add conditional mako template to any reporton models that inherits comment.template.
+[base_comment_template](base_comment_template/) | 14.0.2.0.1 | Add conditional mako template to any reporton models that inherits comment.template.
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 | Graphical BI views builder for Odoo
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | Create Dashboards using kpis
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | Allow to encrypt qweb pdfs
