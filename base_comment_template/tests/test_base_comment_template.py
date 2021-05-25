@@ -1,37 +1,89 @@
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo.tests.common import TransactionCase
+# Copyright 2020 NextERP Romania SRL
+# Copyright 2021 Tecnativa - Víctor Martínez
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from odoo.tests import common
+
+from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
 
-class TestResPartner(TransactionCase):
-    def setUp(self):
-        super(TestResPartner, self).setUp()
-        self.template_id = self.env["base.comment.template"].create(
+class TestCommentTemplate(common.SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        setup_test_model(cls.env, ResUsers)
+        cls.user_obj = cls.env.ref("base.model_res_users")
+        cls.user = cls.env.ref("base.user_demo")
+        cls.user2 = cls.env.ref("base.demo_user0")
+        cls.partner_id = cls.env.ref("base.res_partner_12")
+        cls.partner2_id = cls.env.ref("base.res_partner_10")
+        cls.main_company = cls.env.ref("base.main_company")
+        cls.company = cls.env["res.company"].create({"name": "Test company"})
+        cls.before_template_id = cls.env["base.comment.template"].create(
             {
-                "name": "Comment before lines",
-                "position": "before_lines",
-                "text": "<p>Text before lines</p>",
+                "name": "Top template",
+                "text": "Text before lines",
+                "model_ids": [(6, 0, cls.user_obj.ids)],
+                "company_id": cls.company.id,
             }
         )
+        cls.after_template_id = cls.env["base.comment.template"].create(
+            {
+                "name": "Bottom template",
+                "position": "after_lines",
+                "text": "Text after lines",
+                "model_ids": [(6, 0, cls.user_obj.ids)],
+                "company_id": cls.company.id,
+            }
+        )
+        cls.user.partner_id.base_comment_template_ids = [
+            (4, cls.before_template_id.id),
+            (4, cls.after_template_id.id),
+        ]
 
-    def test_commercial_partner_fields(self):
-        # Azure Interior
-        partner_id = self.env.ref("base.res_partner_12")
-        partner_id.property_comment_template_id = self.template_id.id
-        # Test childs propagation of commercial partner field
-        for child_id in partner_id.child_ids:
-            self.assertEqual(child_id.property_comment_template_id, self.template_id)
+    @classmethod
+    def tearDownClass(cls):
+        teardown_test_model(cls.env, ResUsers)
+        super(TestCommentTemplate, cls).tearDownClass()
 
-    def test_get_value_without_partner(self):
-        self.assertEqual(self.template_id.get_value(), "<p>Text before lines</p>")
-
-    def test_get_value_with_partner(self):
-        self.env["res.lang"]._activate_lang("fr_BE")
-        partner = self.env.ref("base.res_partner_12")
-        partner.write({"lang": "fr_BE"})
-        self.template_id.with_context(lang="fr_BE").write(
-            {"text": "<p>Testing translated fr_BE</p>"}
+    def test_template_name_get(self):
+        self.assertEqual(
+            self.before_template_id.display_name,
+            "Top template (Top)",
         )
         self.assertEqual(
-            self.template_id.get_value(partner_id=partner.id),
-            "<p>Testing translated fr_BE</p>",
+            self.after_template_id.display_name,
+            "Bottom template (Bottom)",
+        )
+
+    def test_general_template(self):
+        # Need to force _compute because only trigger when partner_id have changed
+        self.user._compute_comment_template_ids()
+        # Check getting default comment template
+        self.assertTrue(self.before_template_id in self.user.comment_template_ids)
+        self.assertTrue(self.after_template_id in self.user.comment_template_ids)
+
+    def test_partner_template(self):
+        self.partner2_id.base_comment_template_ids = [
+            (4, self.before_template_id.id),
+            (4, self.after_template_id.id),
+        ]
+        self.assertTrue(
+            self.before_template_id in self.partner2_id.base_comment_template_ids
+        )
+        self.assertTrue(
+            self.after_template_id in self.partner2_id.base_comment_template_ids
+        )
+
+    def test_partner_template_domain(self):
+        # Check getting the comment template if domain is set
+        self.partner2_id.base_comment_template_ids = [
+            (4, self.before_template_id.id),
+            (4, self.after_template_id.id),
+        ]
+        self.before_template_id.domain = "[('id', 'in', %s)]" % self.user.ids
+        self.assertTrue(
+            self.before_template_id in self.partner2_id.base_comment_template_ids
+        )
+        self.assertTrue(
+            self.before_template_id not in self.partner_id.base_comment_template_ids
         )

@@ -25,12 +25,22 @@ Base Comments Templates
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-Add a new model to define templates of comments to print on
-documents.
+Add a new mixin class to define templates of comments to print on documents.
+The comment templates can be defined like make templates, so you can use variables from linked models.
 
 Two positions are available for the comments:
-* above document lines
-* below document lines
+
+* above document lines (before_lines)
+* below document lines (after_lines)
+
+The template are general, and can be attached to any Model and based on some domain defined in the template.
+You can define one default template per Model and domain, which can be overwritten for any company and partners.
+It has a priority field (smaller number = higher priority)
+
+In existing reports, if you add this line will get the comment template if you created one like
+
+* <span t-raw="o.get_comment_template('position',company_id=o.company_id, partner_id=o.parnter_id )"/> ( or without any parameter)
+
 
 This module is the base module for following modules:
 
@@ -43,6 +53,53 @@ This module is the base module for following modules:
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+Go to *Settings > Technical > Reporting > Comment Templates* and start designing you comment templates.
+
+This module is the base module for following modules:
+
+* sale_comment_template
+* purchase_comment_template
+* invoice_comment_template
+* stock_picking_comment_template
+
+Usage
+=====
+
+#. Go to *Settings* and activate the developer mode.
+#. Go to *Settings > Technical > Reporting > Comment Templates*.
+#. Create a new record.
+#. Define the Company the template is linked or leave default for all companies.
+#. Define the Partner the template is linked or leave default for all partners.
+#. Define the Model, Domain the template is linked.
+#. Define the Position where the template will be printed:
+
+   * above document lines
+   * below document lines
+
+You should have at least one template with Default field set, if you choose a Partner the template is deselected as a Default one.
+If you create a new template with the same configuration (Model, Domain, Position) and set it as Default, the previous one will be deselected as a default one.
+
+The template is a html field which will be rendered just like a mail template, so you can use variables like ${object}, ${user}, ${ctx} to add dynamic content.
+
+Change the report related to the model from configuration and add a statement like:
+
+<p t-if="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+
+    <span t-raw="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
+
+</p>
+
+<p t-if="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+
+    <span t-raw="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
+
+</p>
+
+You should always use t-if since the method returns False if no template is found.
 
 Bug Tracker
 ===========
@@ -78,6 +135,15 @@ Contributors
 
   * Iván Todorovich <ivan.todorovich@druidoo.io>
 * Pierre Verkest <pierreverkest84@gmail.com>
+
+* `NextERP Romania <https://www.nexterp.ro>`_:
+
+  * Fekete Mihai <feketemihai@nexterp.ro>
+
+* `Tecnativa <https://www.tecnativa.com>`_:
+
+  * Carlos Roca
+  * Víctor Martínez
 
 Maintainers
 ~~~~~~~~~~~

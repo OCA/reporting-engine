@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
+    <record model="ir.ui.view" id="view_base_comment_template_tree">
+        <field name="name">base.comment.template.search</field>
+        <field name="model">base.comment.template</field>
+        <field name="arch" type="xml">
+            <tree string="Comment Templates">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="position" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="partner_ids" />
+                <field name="model_ids" />
+                <field name="domain" />
+            </tree>
+        </field>
+    </record>
     <record model="ir.ui.view" id="view_base_comment_template_search">
         <field name="name">base.comment.template.search</field>
         <field name="model">base.comment.template</field>
@@ -9,6 +23,10 @@
                 <field name="name" />
                 <field name="position" />
                 <field name="company_id" groups="base.group_multi_company" />
+                <field name="partner_ids" />
+                <field name="model_ids" />
+                <field name="domain" />
+                <field name="sequence" />
             </search>
         </field>
     </record>
@@ -20,18 +38,12 @@
             <form string="Comment Templates">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button
-                            name="toggle_active"
-                            type="object"
-                            class="oe_stat_button"
-                            icon="fa-archive"
-                        >
-                            <field
-                                name="active"
-                                widget="boolean_button"
-                                options="{&quot;terminology&quot;: &quot;archive&quot;}"
-                            />
-                        </button>
+                        <widget
+                            name="web_ribbon"
+                            title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"
+                        />
                     </div>
                     <div class="oe_title">
                         <h1>
@@ -40,17 +52,15 @@
                     </div>
                     <group>
                         <group>
-                            <field
-                                name="position"
-                                widget="radio"
-                                invisible="context.get('default_position')"
-                            />
-                        </group>
-                        <group>
+                            <field name="active" invisible="1" />
+                            <field name="position" />
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"
                             />
+                            <field name="domain" />
+                            <field name="model_ids" widget="many2many_tags" />
+                            <field name="partner_ids" widget="many2many_tags" />
                         </group>
                     </group>
                     <notebook>
@@ -62,20 +72,6 @@
             </form>
         </field>
     </record>
-
-    <record model="ir.ui.view" id="view_base_comment_template_tree">
-        <field name="name">account.comment.template.list</field>
-        <field name="model">base.comment.template</field>
-        <field name="priority" eval="6" />
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name" />
-                <field name="position" />
-                <field name="company_id" groups="base.group_multi_company" />
-            </tree>
-        </field>
-    </record>
-
     <record model="ir.actions.act_window" id="action_base_comment_template">
         <field name="name">Comment Templates</field>
         <field name="type">ir.actions.act_window</field>
@@ -83,5 +79,13 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_base_comment_template_tree" />
     </record>
-
+    <!--  menu in settings/technical/reporting -->
+    <menuitem
+        id="reports_base_comment_template_menuitem"
+        name="Comment Templates"
+        parent="base.reporting_menuitem"
+        action="action_base_comment_template"
+        sequence="4"
+        groups="base.group_no_one"
+    />
 </odoo>

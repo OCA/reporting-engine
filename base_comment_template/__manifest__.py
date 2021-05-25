@@ -3,18 +3,19 @@
 
 {
     "name": "Base Comments Templates",
-    "summary": "Comments templates on documents",
-    "version": "14.0.1.0.0",
-    "category": "Sale",
+    "summary": "Add conditional mako template to any report"
+    "on models that inherits comment.template.",
+    "version": "14.0.2.0.0",
+    "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "data": [
         "security/ir.model.access.csv",
         "security/security.xml",
-        "views/comment_view.xml",
-        "views/res_partner.xml",
+        "views/base_comment_template_view.xml",
+        "views/res_partner_view.xml",
     ],
 }
