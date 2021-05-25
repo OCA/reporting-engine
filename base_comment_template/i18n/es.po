@@ -25,19 +25,14 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
-msgid "After lines"
-msgstr "Después de las líneas"
-
-#. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Archived"
 msgstr "Archivado"
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
-msgid "Before lines"
-msgstr "Antes de las líneas"
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
+msgid "Bottom"
+msgstr ""
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -45,6 +40,7 @@ msgid "Comment"
 msgstr "Comentario"
 
 #. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
 msgid "Comment Template"
 msgstr "Plantilla de comentario"
@@ -89,6 +85,8 @@ msgstr "Creado el"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -100,6 +98,8 @@ msgstr "Filtro de dominio"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__id
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__id
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__id
 msgid "ID"
 msgstr "ID"
 
@@ -127,6 +127,8 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -148,6 +150,7 @@ msgstr "Modelos"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Name"
 msgstr "Nombre"
 
@@ -167,9 +170,9 @@ msgid "Position on document"
 msgstr "Posición en el documento"
 
 #. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__priority
-msgid "Priority"
-msgstr "Prioridad"
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
+msgid "Sequence"
+msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
@@ -183,13 +186,9 @@ msgid "Template"
 msgstr "Plantilla de comentario"
 
 #. module: base_comment_template
-#: code:addons/base_comment_template/models/base_comment_template.py:0
-#, python-format
-msgid ""
-"There are other records with same models, priority, domain and position."
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
+msgid "The smaller number = The higher priority"
 msgstr ""
-"Hay otros registros con los mismos datos en modelo, prioridad, dominio y "
-"posición."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
@@ -221,6 +220,11 @@ msgid "This is the text template that will be inserted into reports."
 msgstr "Esta es la plantilla de texto que se insertará en los informes."
 
 #. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
+msgid "Top"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
 msgid "Whether this model supports in reports to add comment templates."
 msgstr ""
@@ -235,10 +239,23 @@ msgstr ""
 "base.comment.template para poner cabecera y pie de página en los informes "
 "basados en las plantillas de comentarios creadas"
 
-#. module: base_comment_template
-#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__priority
-msgid "the highest priority = the smallest number"
-msgstr "Mayor prioridad = número menor"
+#~ msgid "After lines"
+#~ msgstr "Después de las líneas"
+
+#~ msgid "Before lines"
+#~ msgstr "Antes de las líneas"
+
+#~ msgid "Priority"
+#~ msgstr "Prioridad"
+
+#~ msgid ""
+#~ "There are other records with same models, priority, domain and position."
+#~ msgstr ""
+#~ "Hay otros registros con los mismos datos en modelo, prioridad, dominio y "
+#~ "posición."
+
+#~ msgid "the highest priority = the smallest number"
+#~ msgstr "Mayor prioridad = número menor"
 
 #~ msgid "Comment summary"
 #~ msgstr "Índice de comentarios"
