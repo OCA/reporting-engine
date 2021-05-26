@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo14-addon-report_xlsx',
         'odoo14-addon-report_xlsx_helper',
         'odoo14-addon-report_xlsx_helper_demo',
+        'odoo14-addon-report_xml',
     ],
     classifiers=[
         'Programming Language :: Python',
