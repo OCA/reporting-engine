@@ -6,7 +6,8 @@ import json
 from werkzeug.urls import url_decode
 
 from odoo.http import content_disposition, request, route, serialize_exception
-from odoo.tools import html_escape, safe_eval
+from odoo.tools import html_escape
+from odoo.tools.safe_eval import safe_eval, time
 
 from odoo.addons.web.controllers import main as report
 
@@ -41,7 +42,7 @@ class ReportController(report.ReportController):
             return super().report_routes(reportname, docids, converter, **data)
 
     @route()
-    def report_download(self, data, token):
+    def report_download(self, data, token, context=None):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         if report_type == "qweb-xml":
@@ -55,14 +56,18 @@ class ReportController(report.ReportController):
                 if docids:
                     # Generic report:
                     response = self.report_routes(
-                        reportname, docids=docids, converter="xml"
+                        reportname, docids=docids, converter="xml", context=context
                     )
                 else:
                     # Particular report:
                     # decoding the args represented in JSON
-                    data = url_decode(url.split("?")[1]).items()
+                    data = dict(url_decode(url.split("?")[1]).items())
+                    if "context" in data:
+                        context = json.loads(context or "{}")
+                        data_context = json.loads(data.pop("context"))
+                        context = json.dumps({**context, **data_context})
                     response = self.report_routes(
-                        reportname, converter="xml", **dict(data)
+                        reportname, converter="xml", context=context, **data
                     )
 
                 report_obj = request.env["ir.actions.report"]
@@ -74,7 +79,7 @@ class ReportController(report.ReportController):
                     records = request.env[report.model].browse(ids)
                     if report.print_report_name and not len(records) > 1:
                         report_name = safe_eval(
-                            report.print_report_name, {"object": records}
+                            report.print_report_name, {"object": records, "time": time}
                         )
                         filename = "{}.xml".format(report_name)
                 response.headers.add(
@@ -87,4 +92,4 @@ class ReportController(report.ReportController):
                 error = {"code": 200, "message": "Odoo Server Error", "data": se}
                 return request.make_response(html_escape(json.dumps(error)))
         else:
-            return super().report_download(data, token)
+            return super().report_download(data, token, context)
