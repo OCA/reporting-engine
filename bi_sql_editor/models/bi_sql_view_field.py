@@ -49,6 +49,13 @@ class BiSQLViewField(models.Model):
         "timestamp without time zone": "datetime",
     }
 
+    _GROUP_OPERATOR_SELECTION = [
+        ("sum", "Sum"),
+        ("avg", "Average"),
+        ("min", "Minimum"),
+        ("max", "Maximum"),
+    ]
+
     name = fields.Char(string="Name", required=True, readonly=True)
 
     sql_type = fields.Char(
@@ -112,6 +119,13 @@ class BiSQLViewField(models.Model):
         comodel_name="ir.model",
         string="Model",
         help="For 'Many2one' Odoo field.\n" " Comodel of the field.",
+    )
+
+    group_operator = fields.Selection(
+        string="Group Operator",
+        selection=_GROUP_OPERATOR_SELECTION,
+        help="By default, Odoo will sum the values when grouping. If you wish "
+        "to alter the behaviour, choose an alternate Group Operator",
     )
 
     # Constrains Section
