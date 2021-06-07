@@ -18,8 +18,8 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _instanciate(self, model_data):
-    """ Return a class for the custom model given by
-    parameters ``model_data``. """
+    """Return a class for the custom model given by
+    parameters ``model_data``."""
     # This monkey patch is meant to avoid create/search tables for those
     # materialized views. Doing "super" doesn't work.
     class CustomModel(models.Model):
