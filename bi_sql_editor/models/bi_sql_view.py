@@ -261,6 +261,7 @@ class BiSQLView(models.Model):
             raise UserError(
                 _("You can only unlink draft views."
                   "If you want to delete them, first set them to draft."))
+        self.cron_id.unlink()
         return super(BiSQLView, self).unlink()
 
     @api.multi
@@ -276,10 +277,7 @@ class BiSQLView(models.Model):
     # Action Section
     @api.multi
     def button_create_sql_view_and_model(self):
-        for sql_view in self:
-            if sql_view.state != 'sql_valid':
-                raise UserError(_(
-                    "You can only process this action on SQL Valid items"))
+        for sql_view in self.filtered(lambda x: x.state == "sql_valid"):
             # Create ORM and access
             sql_view._create_model_and_fields()
             sql_view._create_model_access()
@@ -289,31 +287,37 @@ class BiSQLView(models.Model):
             sql_view._create_index()
 
             if sql_view.is_materialized:
-                sql_view.cron_id = self.env['ir.cron'].create(
-                    sql_view._prepare_cron()).id
+                if not sql_view.cron_id:
+                    sql_view.cron_id = self.env['ir.cron'].create(
+                        sql_view._prepare_cron()).id
+                else:
+                    sql_view.cron_id.active = True
             sql_view.state = 'model_valid'
 
     @api.multi
     def button_set_draft(self):
-        for sql_view in self:
+        for sql_view in self.filtered(lambda x: x.state != "draft"):
             sql_view.menu_id.unlink()
             sql_view.action_id.unlink()
             sql_view.tree_view_id.unlink()
             sql_view.graph_view_id.unlink()
             sql_view.pivot_view_id.unlink()
             sql_view.search_view_id.unlink()
-            if sql_view.cron_id:
-                sql_view.cron_id.unlink()
 
             if sql_view.state in ('model_valid', 'ui_valid'):
                 # Drop SQL View (and indexes by cascade)
                 if sql_view.is_materialized:
                     sql_view._drop_view()
 
+                if sql_view.cron_id:
+                    sql_view.cron_id.active = False
+
                 # Drop ORM
                 sql_view._drop_model_and_fields()
 
-            sql_view.write({'state': 'draft', 'has_group_changed': False})
+            sql_view.has_group_changed = False
+            super(BiSQLView, sql_view).button_set_draft()
+        return True
 
     @api.multi
     def button_create_ui(self):
@@ -384,7 +388,7 @@ class BiSQLView(models.Model):
 
     @api.multi
     def _prepare_cron(self):
-        self.ensure_one()
+        now = datetime.now()
         return {
             'name': _('Refresh Materialized View %s') % self.view_name,
             'user_id': SUPERUSER_ID,
@@ -393,6 +397,10 @@ class BiSQLView(models.Model):
             'state': 'code',
             'code': 'model._refresh_materialized_view_cron(%s)' % self.ids,
             'numbercall': -1,
+            'interval_number': 1,
+            'interval_type': 'days',
+            'nextcall': datetime(now.year, now.month, now.day+1),
+            'active': True,
         }
 
     @api.multi
