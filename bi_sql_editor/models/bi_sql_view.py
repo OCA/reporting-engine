@@ -9,7 +9,8 @@ from psycopg2 import ProgrammingError
 
 from odoo import SUPERUSER_ID, _, api, fields, models
 from odoo.exceptions import UserError
-from odoo.tools import pycompat, safe_eval, sql
+from odoo.tools import pycompat, sql
+from odoo.tools.safe_eval import safe_eval
 
 from odoo.addons.base.models.ir_model import IrModel
 
