@@ -23,17 +23,16 @@ class ActivityStatement(models.AbstractModel):
                 ELSE sum(l.debit)
             END as debit,
             CASE WHEN l.currency_id is not null AND l.amount_currency < 0.0
-                THEN sum(l.amount_currency * (-1))
+                THEN sum(-l.amount_currency)
                 ELSE sum(l.credit)
             END as credit
             FROM account_move_line l
             JOIN account_move m ON (l.move_id = m.id)
             WHERE l.partner_id IN %(partners)s
-                                AND l.account_internal_type = %(account_type)s
-                                AND l.date < %(date_start)s AND not l.blocked
-                                AND m.state IN ('posted')
-            GROUP BY l.partner_id, l.currency_id, l.amount_currency,
-                                l.company_id
+                AND l.account_internal_type = %(account_type)s
+                AND l.date < %(date_start)s AND not l.blocked
+                AND m.state IN ('posted')
+            GROUP BY l.partner_id, l.currency_id, l.amount_currency, l.company_id
         """,
                 locals(),
             ),

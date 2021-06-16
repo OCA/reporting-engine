@@ -38,46 +38,66 @@ class ReportStatementCommon(models.AbstractModel):
         return str(
             self._cr.mogrify(
                 """
-            SELECT l.partner_id, l.currency_id, l.company_id, l.move_id,
-            CASE WHEN l.balance > 0.0
-                THEN l.balance - sum(coalesce(pd.amount, 0.0))
-                ELSE l.balance + sum(coalesce(pc.amount, 0.0))
-            END AS open_due,
-            CASE WHEN l.balance > 0.0
-                THEN l.amount_currency - sum(coalesce(pd.amount_currency, 0.0))
-                ELSE l.amount_currency + sum(coalesce(pc.amount_currency, 0.0))
-            END AS open_due_currency,
+        SELECT l.partner_id, l.currency_id, l.company_id, l.move_id,
+            (abs(COALESCE(l.balance, 0.0)) + sum(
+                coalesce(pr.pr_sign, 0.0) * coalesce(pr.amount, 0.0))
+            ) * sign(COALESCE(l.balance, 0.0)) AS open_due,
+            (abs(COALESCE(l.amount_currency, 0.0)) + sum(
+                coalesce(pr.pr_sign, 0.0) * CASE
+                    WHEN pr.currency_id IS NOT NULL AND pr.currency_id = l.currency_id
+                    THEN coalesce(pr.amount_currency, 0.0)
+                    WHEN cur.id IS NOT NULL AND ROUND(
+                        abs(COALESCE(l.balance, 0.0)), cur.decimal_places) > 0.0
+                    THEN ROUND(coalesce(pr.amount, 0.0) *
+                            COALESCE(l.amount_currency, 0.0) / NULLIF(l.balance, 0.0),
+                        cur.decimal_places)
+                    ELSE ROUND(coalesce(pr.amount, 0.0) *
+                        COALESCE((
+                            SELECT r.rate FROM res_currency_rate r
+                            JOIN account_move_line aml
+                                ON pr.credit_move_id = aml.id
+                            WHERE r.currency_id = l.currency_id
+                                AND r.name <= aml.date
+                                AND (r.company_id IS NULL
+                                    OR r.company_id = l.company_id)
+                            ORDER BY r.company_id, r.name DESC LIMIT 1), 1.0),
+                        cur.decimal_places)
+                    END)
+            ) * sign(COALESCE(l.amount_currency, 0.0)) AS open_due_currency,
             CASE WHEN l.date_maturity is null
                 THEN l.date
                 ELSE l.date_maturity
-            END as date_maturity
+        END as date_maturity
+        FROM (
+            SELECT l.*, CASE
+                WHEN l.debit = 0.0 AND l.credit = 0.0 AND l.currency_id IS NOT NULL
+                    AND ROUND(COALESCE(l.amount_currency, 0.0),
+                        cur.decimal_places) > 0.0 THEN 1
+                WHEN l.debit = 0.0 AND l.credit = 0.0 AND l.currency_id IS NOT NULL
+                    AND ROUND(COALESCE(l.amount_currency, 0.0),
+                        cur.decimal_places) < 0.0 THEN -1
+                WHEN l.balance > 0.0 THEN 1 ELSE -1 END as sign
             FROM account_move_line l
-            JOIN account_move m ON (l.move_id = m.id)
-            LEFT JOIN (SELECT pr.*
-                FROM account_partial_reconcile pr
-                INNER JOIN account_move_line l2
-                ON pr.credit_move_id = l2.id
-                WHERE l2.date <= %(date_end)s
-            ) as pd ON pd.debit_move_id = l.id
-            LEFT JOIN (SELECT pr.*
-                FROM account_partial_reconcile pr
-                INNER JOIN account_move_line l2
-                ON pr.debit_move_id = l2.id
-                WHERE l2.date <= %(date_end)s
-            ) as pc ON pc.credit_move_id = l.id
-            WHERE l.partner_id IN %(partners)s
-                                AND l.account_internal_type = %(account_type)s
-                                AND (
-                                  (pd.id IS NOT NULL AND
-                                      pd.max_date <= %(date_end)s) OR
-                                  (pc.id IS NOT NULL AND
-                                      pc.max_date <= %(date_end)s) OR
-                                  (pd.id IS NULL AND pc.id IS NULL)
-                                ) AND l.date <= %(date_end)s AND not l.blocked
-                                  AND m.state IN ('posted')
-            GROUP BY l.partner_id, l.currency_id, l.date, l.date_maturity,
-                                l.amount_currency, l.balance, l.move_id,
-                                l.company_id, l.id
+            LEFT JOIN res_currency cur ON cur.id = l.currency_id
+            ) l
+        JOIN account_move m ON l.move_id = m.id
+        LEFT JOIN res_currency cur ON cur.id = l.currency_id
+        LEFT JOIN LATERAL (SELECT pr.*,
+            CASE WHEN pr.credit_move_id = l.id THEN l.sign
+                ELSE -l.sign END AS pr_sign
+            FROM account_partial_reconcile pr
+            WHERE pr.max_date <= %(date_end)s AND (
+                (pr.debit_move_id = l.id) OR (pr.credit_move_id = l.id))
+        ) as pr ON TRUE
+        WHERE l.partner_id IN %(partners)s
+            AND l.account_internal_type = %(account_type)s
+            AND (
+              (pr.id IS NOT NULL AND pr.max_date <= %(date_end)s) OR
+              (pr.id IS NULL)
+            ) AND l.date <= %(date_end)s AND not l.blocked
+              AND m.state IN ('posted')
+        GROUP BY l.partner_id, l.currency_id, l.date, l.date_maturity,
+            l.amount_currency, l.balance, l.move_id, l.company_id, l.id
         """,
                 locals(),
             ),
@@ -89,12 +109,12 @@ class ReportStatementCommon(models.AbstractModel):
             self._cr.mogrify(
                 """
             SELECT partner_id, currency_id, date_maturity, open_due,
-                            open_due_currency, move_id, company_id,
+                open_due_currency, move_id, company_id,
             CASE
                 WHEN %(date_end)s <= date_maturity AND currency_id is null
-                                THEN open_due
+                    THEN open_due
                 WHEN %(date_end)s <= date_maturity AND currency_id is not null
-                                THEN open_due_currency
+                    THEN open_due_currency
                 ELSE 0.0
             END as current,
             CASE
@@ -152,7 +172,7 @@ class ReportStatementCommon(models.AbstractModel):
             END as b_over_120
             FROM Q1
             GROUP BY partner_id, currency_id, date_maturity, open_due,
-                                open_due_currency, move_id, company_id
+                open_due_currency, move_id, company_id
         """,
                 locals(),
             ),
@@ -178,11 +198,9 @@ class ReportStatementCommon(models.AbstractModel):
     def _show_buckets_sql_q4(self):
         return """
             SELECT partner_id, currency_id, sum(current) as current,
-                                sum(b_1_30) as b_1_30,
-                                sum(b_30_60) as b_30_60,
-                                sum(b_60_90) as b_60_90,
-                                sum(b_90_120) as b_90_120,
-                                sum(b_over_120) as b_over_120
+                sum(b_1_30) as b_1_30, sum(b_30_60) as b_30_60,
+                sum(b_60_90) as b_60_90, sum(b_90_120) as b_90_120,
+                sum(b_over_120) as b_over_120
             FROM Q3
             GROUP BY partner_id, currency_id
         """
@@ -224,9 +242,9 @@ class ReportStatementCommon(models.AbstractModel):
                 Q3 AS (%s),
                 Q4 AS (%s)
             SELECT partner_id, currency_id, current, b_1_30, b_30_60, b_60_90,
-                            b_90_120, b_over_120,
-                            current+b_1_30+b_30_60+b_60_90+b_90_120+b_over_120
-                            AS balance
+                b_90_120, b_over_120,
+                current+b_1_30+b_30_60+b_60_90+b_90_120+b_over_120
+                AS balance
             FROM Q4
             GROUP BY partner_id, currency_id, current, b_1_30, b_30_60,
                 b_60_90, b_90_120, b_over_120"""
@@ -288,7 +306,8 @@ class ReportStatementCommon(models.AbstractModel):
             currencies,
         )
 
-    @api.model  # noqa: C901
+    @api.model
+    # flake8: noqa: C901
     def _get_report_values(self, docids, data=None):
         """
         @return: returns a dict of parameters to pass to qweb report.
