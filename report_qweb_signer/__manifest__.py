@@ -9,16 +9,11 @@
     "version": "12.0.1.0.1",
     "category": "Reporting",
     "website": "https://github.com/oca/reporting-engine",
-    "author": "Tecnativa, "
-              "Odoo Community Association (OCA)",
+    "author": "Tecnativa, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "web_editor",
-    ],
-    "external_dependencies": {
-        "bin": ['/usr/bin/java'],
-    },
+    "depends": ["web_editor"],
+    "external_dependencies": {"bin": ["/usr/bin/java"]},
     "data": [
         "data/defaults.xml",
         "security/ir.model.access.csv",
