@@ -33,8 +33,7 @@ class ReportCertificate(models.Model):
         help="Model where apply this certificate",
     )
     domain = fields.Char(
-        string="Domain",
-        help="Domain for filtering if sign or not the document",
+        string="Domain", help="Domain for filtering if sign or not the document",
     )
     allow_only_one = fields.Boolean(
         string="Allow only one document",
