@@ -10,7 +10,7 @@ import tempfile
 import time
 from contextlib import closing
 
-from odoo import _, api, models
+from odoo import _, models
 from odoo.exceptions import AccessError, UserError
 from odoo.tools.safe_eval import safe_eval
 
@@ -58,9 +58,7 @@ class IrActionsReport(models.Model):
                 domain = domain + safe_eval(cert.domain)
                 docs = self.env[cert.model_id.model].search(domain)
                 if not docs:
-                    _logger.debug(
-                        "Certificate '%s' domain not satisfied", cert.name
-                    )
+                    _logger.debug("Certificate '%s' domain not satisfied", cert.name)
                     continue
             # Certificate match!
             return cert
@@ -80,14 +78,14 @@ class IrActionsReport(models.Model):
             return False
         attachment = self.env["ir.attachment"].search(
             [
-                ("datas_fname", "=", filename),
+                ("name", "=", filename),
                 ("res_model", "=", certificate.model_id.model),
                 ("res_id", "=", res_ids[0]),
             ],
             limit=1,
         )
         if attachment:
-            return base64.decodestring(attachment.datas)
+            return base64.b64decode(attachment.datas)
         return False
 
     def _attach_signed_write(self, res_ids, certificate, signed):
@@ -100,8 +98,7 @@ class IrActionsReport(models.Model):
             attachment = self.env["ir.attachment"].create(
                 {
                     "name": filename,
-                    "datas": base64.encodestring(signed),
-                    "datas_fname": filename,
+                    "datas": base64.b64encode(signed),
                     "res_model": certificate.model_id.model,
                     "res_id": res_ids[0],
                 }
@@ -129,10 +126,7 @@ class IrActionsReport(models.Model):
         passwd = _normalize_filepath(certificate.password_file)
         if not (p12 and passwd):
             raise UserError(
-                _(
-                    "Signing report (PDF): "
-                    "Certificate or password file not found"
-                )
+                _("Signing report (PDF): " "Certificate or password file not found")
             )
         signer_opts = '"{}" "{}" "{}" "{}"'.format(p12, pdf, pdfsigned, passwd)
         signer = self._signer_bin(signer_opts)
@@ -150,22 +144,18 @@ class IrActionsReport(models.Model):
             )
         return pdfsigned
 
-    @api.multi
     def render_qweb_pdf(self, res_ids=None, data=None):
         certificate = self._certificate_get(res_ids)
         if certificate and certificate.attachment:
             signed_content = self._attach_signed_read(res_ids, certificate)
             if signed_content:
                 _logger.debug(
-                    "The signed PDF document '%s/%s' was loaded from the "
-                    "database",
+                    "The signed PDF document '%s/%s' was loaded from the " "database",
                     self.report_name,
                     res_ids,
                 )
                 return signed_content, "pdf"
-        content, ext = super(IrActionsReport, self).render_qweb_pdf(
-            res_ids, data
-        )
+        content, ext = super(IrActionsReport, self).render_qweb_pdf(res_ids, data)
         if certificate:
             # Creating temporary origin PDF
             pdf_fd, pdf = tempfile.mkstemp(suffix=".pdf", prefix="report.tmp.")
