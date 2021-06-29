@@ -237,8 +237,8 @@ class BiSQLViewField(models.Model):
         self.ensure_one()
         res = ""
         if self.field_description and self.is_group_by:
-            res = """<filter name="%s" string="%s"
-                        context="{'group_by':'%s'}"/>""" % (
+            res = """<filter name="{}" string="{}"
+                        context="{{'group_by':'{}'}}"/>""".format(
                 self.field_description.lower().replace(" ", "_"),
                 self.field_description,
                 self.name,
