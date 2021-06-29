@@ -55,7 +55,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_report_certificate" model="ir.actions.act_window">
         <field name="name">PDF certificates</field>
         <field name="res_model">report.certificate</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem

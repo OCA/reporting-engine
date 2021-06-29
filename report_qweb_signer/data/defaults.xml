@@ -2,6 +2,6 @@
 <odoo>
     <record model="ir.config_parameter" id="report_qweb_signer_java_param">
         <field name="key">report_qweb_signer.java_parameters</field>
-        <field name="value">-Xms4M -Xmx4M</field>
+        <field name="value">-Xms4M -Xmx4M -XX:CompressedClassSpaceSize=256m</field>
     </record>
 </odoo>
