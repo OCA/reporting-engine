@@ -10,6 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Test OCA certificate</field>
         <field name="path">test.p12</field>
         <field name="password_file">test.passwd</field>
+        <field name="signing_method">java</field>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="allow_only_one" eval="True" />
         <field
