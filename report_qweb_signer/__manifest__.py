@@ -13,7 +13,7 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["web_editor"],
-    "external_dependencies": {"bin": ["/usr/bin/java"]},
+    "external_dependencies": {"python": ["endesive", "cryptography"]},
     "data": [
         "data/defaults.xml",
         "security/ir.model.access.csv",
