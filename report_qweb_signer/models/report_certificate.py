@@ -52,3 +52,20 @@ class ReportCertificate(models.Model):
         required=True,
         default=_default_company,
     )
+    signing_method = fields.Selection(
+        selection=[("java", "Java"), ("endesive", "Endesive")],
+        default="java",
+        string="Signing Method",
+        required=True,
+    )
+    endesive_certificate_mail = fields.Char(
+        string="Signature e-mail",
+        help="E-mail address to include in PDF digital signature.",
+    )
+    endesive_certificate_location = fields.Char(
+        string="Signature location",
+        help="Location to include in digital signature (typically, a city name). ",
+    )
+    endesive_certificate_reason = fields.Char(
+        string="Signature reason", help="Reason text to include in digital signature.",
+    )
