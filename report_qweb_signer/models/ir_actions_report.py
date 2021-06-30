@@ -3,12 +3,17 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import base64
+import datetime
 import logging
 import os
 import subprocess
 import tempfile
 import time
 from contextlib import closing
+
+from cryptography.hazmat import backends
+from cryptography.hazmat.primitives.serialization import pkcs12
+from endesive import pdf
 
 from odoo import _, models
 from odoo.exceptions import AccessError, UserError
@@ -120,28 +125,67 @@ class IrActionsReport(models.Model):
         jar = "{}/../static/jar/jPdfSign.jar".format(me)
         return "{} {} {} {}".format(java_bin, java_param, jar, opts)
 
+    def _get_endesive_params(self, certificate):
+        date = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
+        date = date.strftime("D:%Y%m%d%H%M%S+00'00'")
+        return {
+            "sigflags": 3,
+            "sigpage": 0,
+            "sigbutton": False,
+            "contact": certificate.endesive_certificate_mail,
+            "location": certificate.endesive_certificate_location,
+            "signingdate": date.encode(),
+            "reason": certificate.endesive_certificate_reason,
+            "signature": "",
+            "signaturebox": (0, 0, 0, 0),
+            "text": {"fontsize": 0},
+        }
+
+    def _signer_endesive(self, params, p12filepath, pdfpath, pdfsigned, passwd):
+        stringpassword = ""
+        with open(passwd, "r") as pw:
+            for line in pw:
+                stringpassword += line.rstrip()
+        password = stringpassword.encode("utf-8")
+        with open(p12filepath, "rb") as fp:
+            p12 = pkcs12.load_key_and_certificates(
+                fp.read(), password, backends.default_backend()
+            )
+            with open(pdfpath, "rb") as fh:
+                datau = fh.read()
+            datas = pdf.cms.sign(datau, params, p12[0], p12[1], p12[2], "sha256")
+        with open(pdfsigned, "wb") as res:
+            res.write(datau)
+            res.write(datas)
+        return pdfsigned
+
     def pdf_sign(self, pdf, certificate):
         pdfsigned = pdf + ".signed.pdf"
         p12 = _normalize_filepath(certificate.path)
         passwd = _normalize_filepath(certificate.password_file)
-        if not (p12 and passwd):
+        method_used = certificate.signing_method
+        if not (p12 or passwd):
             raise UserError(
                 _("Signing report (PDF): " "Certificate or password file not found")
             )
-        signer_opts = '"{}" "{}" "{}" "{}"'.format(p12, pdf, pdfsigned, passwd)
-        signer = self._signer_bin(signer_opts)
-        process = subprocess.Popen(
-            signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
-        )
-        out, err = process.communicate()
-        if process.returncode:
-            raise UserError(
-                _(
-                    "Signing report (PDF): jPdfSign failed (error code: %s). "
-                    "Message: %s. Output: %s"
-                )
-                % (process.returncode, err, out)
+        if method_used == "java":
+            signer_opts = '"{}" "{}" "{}" "{}"'.format(p12, pdf, pdfsigned, passwd)
+            signer = self._signer_bin(signer_opts)
+            process = subprocess.Popen(
+                signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
             )
+            out, err = process.communicate()
+            if process.returncode:
+                raise UserError(
+                    _(
+                        "Signing report (PDF): jPdfSign failed (error code: %s). "
+                        "Message: %s. Output: %s"
+                    )
+                    % (process.returncode, err, out)
+                )
+        elif method_used == "endesive":
+            params = self._get_endesive_params(certificate)
+            self._signer_endesive(params, p12, pdf, pdfsigned, passwd)
         return pdfsigned
 
     def render_qweb_pdf(self, res_ids=None, data=None):
