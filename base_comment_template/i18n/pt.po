@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2020-02-29 20:13+0000\n"
+"PO-Revision-Date: 2021-07-01 15:48+0000\n"
 "Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>\n"
 "Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
@@ -27,12 +27,12 @@ msgstr "Ativo"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Archived"
-msgstr ""
+msgstr "Arquivado"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
-msgstr ""
+msgstr "Fundo"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -43,7 +43,7 @@ msgstr "Comentário"
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
 msgid "Comment Template"
-msgstr ""
+msgstr "Modelo de Comentário"
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
@@ -60,7 +60,7 @@ msgstr "Modelos de Comentários"
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template
 msgid "Comments Template"
-msgstr ""
+msgstr "Modelo de Comentários"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
@@ -93,7 +93,7 @@ msgstr "Nome"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
 msgid "Filter Domain"
-msgstr ""
+msgstr "Domínio Filtro"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
@@ -106,19 +106,23 @@ msgstr "ID"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
 msgid "IR Model"
-msgstr ""
+msgstr "Modelo IR"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
 msgid ""
 "If set, the comment template will be available only for the selected company."
 msgstr ""
+"Se definido, o modelo de comentário estará disponível apenas para a empresa "
+"selecionada."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__partner_ids
 msgid ""
 "If set, the comment template will be available only for the selected partner."
 msgstr ""
+"Se definido, o modelo de comentário estará disponível apenas para o parceiro "
+"selecionado."
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
@@ -141,7 +145,7 @@ msgstr "Atualizado pela última vez em"
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modelos"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
@@ -153,12 +157,12 @@ msgstr "Nome"
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__name
 msgid "Name/description of this comment template"
-msgstr ""
+msgstr "Nome/descrição deste modelo de comentário"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
 msgid "Partner"
-msgstr ""
+msgstr "Parceiro"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
@@ -168,23 +172,24 @@ msgstr "Posição no documento"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sequência"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
 #: model:ir.model.fields,help:base_comment_template.field_res_users__base_comment_template_ids
 msgid "Specific partner comments that can be included in reports"
 msgstr ""
+"Comentários específicos de parceiros que podem ser incluídos em relatórios"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
 msgid "Template"
-msgstr ""
+msgstr "Modelo"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
 msgid "The smaller number = The higher priority"
-msgstr ""
+msgstr "O número menor = A maior prioridade"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
@@ -192,6 +197,8 @@ msgid ""
 "This comment template will be available on this models. You can see here "
 "only models allowed to set the coment template."
 msgstr ""
+"Este modelo de comentário estará disponível neste modelo. Pode ver aqui "
+"apenas os modelos autorizados a definir o modelo de comentário."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__domain
@@ -199,26 +206,30 @@ msgid ""
 "This comment template will be available only for objects that satisfy the "
 "condition"
 msgstr ""
+"Este modelo de comentário estará disponível apenas para objetos que "
+"satisfaçam a condição"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
 msgid "This field allows to select the position of the comment on reports."
-msgstr ""
+msgstr "Este campo permite selecionar a posição do comentário nos relatórios."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__text
 msgid "This is the text template that will be inserted into reports."
-msgstr ""
+msgstr "Este é o modelo de texto que será inserido nos relatórios."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
 msgid "Top"
-msgstr ""
+msgstr "Topo"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
 msgid "Whether this model supports in reports to add comment templates."
 msgstr ""
+"Se este modelo é compatível em relatórios para adicionar modelos de "
+"comentários."
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_comment_template
@@ -226,6 +237,8 @@ msgid ""
 "base.comment.template to put header and footer in reports based on created "
 "comment templates"
 msgstr ""
+"base.comment.template para colocar cabeçalho e rodapé em relatórios baseados "
+"em modelos de comentários criados"
 
 #~ msgid "After lines"
 #~ msgstr "Após as linhas"
