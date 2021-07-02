@@ -17,16 +17,6 @@ from odoo.tools.safe_eval import safe_eval
 _logger = logging.getLogger(__name__)
 
 
-def _normalize_filepath(path):
-    path = path or ""
-    path = path.strip()
-    if not os.path.isabs(path):
-        me = os.path.dirname(__file__)
-        path = "{}/../static/certificate/".format(me) + path
-    path = os.path.normpath(path)
-    return path if os.path.exists(path) else False
-
-
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
@@ -122,8 +112,8 @@ class IrActionsReport(models.Model):
 
     def pdf_sign(self, pdf, certificate):
         pdfsigned = pdf + ".signed.pdf"
-        p12 = _normalize_filepath(certificate.path)
-        passwd = _normalize_filepath(certificate.password_file)
+        p12 = certificate.path
+        passwd = certificate.password_file
         if not (p12 and passwd):
             raise UserError(
                 _("Signing report (PDF): " "Certificate or password file not found")

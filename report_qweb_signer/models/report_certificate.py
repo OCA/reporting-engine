@@ -17,12 +17,12 @@ class ReportCertificate(models.Model):
     sequence = fields.Integer(default=10)
     name = fields.Char(required=True)
     path = fields.Char(
-        string="Certificate file path",
+        string="Certificate file absolute path",
         required=True,
         help="Path to PKCS#12 certificate file",
     )
     password_file = fields.Char(
-        string="Password file path",
+        string="Password file absolute  path",
         required=True,
         help="Path to certificate password file",
     )
