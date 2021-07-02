@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-08-14 13:44+0000\n"
+"PO-Revision-Date: 2021-07-02 23:48+0000\n"
 "Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>\n"
 "Language-Team: none\n"
 "Language: pt\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: report_xlsx
 #: code:addons/report_xlsx/models/ir_report.py:0
@@ -58,9 +58,8 @@ msgstr "Última Modificação em"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
-#, fuzzy
 msgid "Partner XLSX Report"
-msgstr "Relatório XLSX Abstrato"
+msgstr "Relatório de Parceiro XLSX"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
@@ -86,7 +85,7 @@ msgid ""
 "downloaded by the user."
 msgstr ""
 "O tipo de relatório que será produzido, tendo cada qual o seu método de "
-"produção. HTML significa que o relatório será aberto diretamente  no seu "
+"produção. HTML significa que o relatório será aberto diretamente no seu "
 "browser. PDF indica que o relatório será produzido com o Wkhtmltopdf e "
 "descarregado pelo utilizador."
 
