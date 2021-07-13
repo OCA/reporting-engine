@@ -6,19 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-07-13 12:18+0000\n"
+"Last-Translator: Hans Henrik Gabelgaard <hhg@gabelgaard.org>\n"
 "Language-Team: none\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: report_xlsx
 #: code:addons/report_xlsx/models/ir_report.py:18
 #, python-format
 msgid "%s model was not found"
-msgstr ""
+msgstr "%s model blev ikke fundet"
 
 #. module: report_xlsx
 #. openerp-web
@@ -26,91 +28,96 @@ msgstr ""
 #, python-format
 msgid "A popup window with your report was blocked. You may need to change your browser settings to allow popup windows for this page."
 msgstr ""
+"Et popup-vindue med din rapport blev blokeret. Du skal muligvis ændre dine "
+"browserindstillinger for at tillade popup-vinduer til denne side."
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr ""
+msgstr "Abstract XLSX Rapport"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__display_name
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Vist navn"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__id
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract____last_update
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senest ændret den"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
 msgid "Print to XLSX"
-msgstr ""
+msgstr "Udskriv til XLSX"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Rapport handling"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Rapport type"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
 msgid "The type of the report that will be rendered, each one having its own rendering method. HTML means the report will be opened directly in your browser PDF means the report will be rendered using Wkhtmltopdf and downloaded by the user."
 msgstr ""
+"Den type rapport, der skal gengives, hver med sin egen gengivelsesmetode. "
+"HTML betyder, at rapporten åbnes direkte i din browser PDF betyder, at "
+"rapporten gengives ved hjælp af Wkhtmltopdf og downloades af brugeren."
 
 #. module: report_xlsx
 #. openerp-web
 #: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:52
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Advarsel"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "XLSX"
-msgstr ""
+msgstr "XLSX"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "csv"
-msgstr ""
+msgstr "csv"
 
 #. module: report_xlsx
 #: selection:ir.actions.report,report_type:0
 msgid "py3o"
-msgstr ""
+msgstr "py3o"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
