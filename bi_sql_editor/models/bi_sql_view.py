@@ -19,13 +19,14 @@ class BaseModel(models.AbstractModel):
     @api.model_cr_context
     def _auto_init(self):
         if self._name.startswith(BiSQLView._model_prefix):
-            self._auto = False
+            self.__class__._auto = False
+            self.__class__._abstract = True
         return super(BaseModel, self)._auto_init()
 
     @api.model_cr_context
     def _auto_end(self):
         if self._name.startswith(BiSQLView._model_prefix):
-            self._foreign_keys = set()
+            self.__class__._foreign_keys = set()
         return super(BaseModel, self)._auto_end()
 
 
@@ -504,7 +505,7 @@ class BiSQLView(models.Model):
             sql_view.rule_id = self.env['ir.rule'].create(
                 self._prepare_rule()).id
             # Drop table, created by the ORM
-            req = "DROP TABLE %s" % (sql_view.view_name)
+            req = "DROP TABLE IF EXISTS %s" % (sql_view.view_name)
             self._log_execute(req)
 
     @api.multi
