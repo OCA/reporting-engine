@@ -4,7 +4,7 @@
     "name": "Base report xlsx",
     "summary": "Base module to create xlsx report",
     "author": "ACSONE SA/NV," "Creu Blanca," "Odoo Community Association (OCA)",
-    "website": "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
     "version": "13.0.1.0.3",
     "development_status": "Production/Stable",

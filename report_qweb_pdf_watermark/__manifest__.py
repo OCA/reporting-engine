@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     "category": "Technical Settings",
     "summary": "Add watermarks to your QWEB PDF reports",
-    "website": "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     "depends": ["web"],
     "data": [
         "demo/report.xml",
