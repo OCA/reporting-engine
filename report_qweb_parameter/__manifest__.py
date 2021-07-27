@@ -3,7 +3,7 @@
 
 {
     "name": "Report QWeb Parameter",
-    "version": "13.0.1.0.1",
+    "version": "13.0.1.0.2",
     "license": "AGPL-3",
     "summary": """
         Add new parameters for qweb templates in order to reduce field length
