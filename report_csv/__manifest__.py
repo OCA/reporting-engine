@@ -8,7 +8,6 @@
     "category": "Reporting",
     "version": "13.0.1.0.1",
     "license": "AGPL-3",
-    "external_dependencies": {"python": ["csv"]},
     "depends": ["base", "web"],
     "data": ["views/webclient_templates.xml"],
     "demo": ["demo/report.xml"],
