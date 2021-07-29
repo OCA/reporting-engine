@@ -23,6 +23,7 @@ addon | version | summary
 [bi_sql_editor](bi_sql_editor/) | 14.0.1.0.0 | BI Views builder, based on Materialized or Normal SQL Views
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 | Graphical BI views builder for Odoo
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | Create Dashboards using kpis
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 | Add watermarks to your QWEB PDF reports
