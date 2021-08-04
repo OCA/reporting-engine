@@ -81,6 +81,16 @@ msgid "Domain for filtering if sign or not the document"
 msgstr ""
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_mail
+msgid "E-mail address to include in PDF digital signature."
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__endesive
+msgid "Endesive"
+msgstr ""
+
+#. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__attachment
 msgid ""
 "Filename used to store signed document as attachment. Keep empty to not save "
@@ -100,6 +110,11 @@ msgid ""
 msgstr ""
 
 #. module: report_qweb_signer
+#: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__java
+msgid "Java"
+msgstr ""
+
+#. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -113,6 +128,11 @@ msgstr "Последний раз обновлено"
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__write_date
 msgid "Last Updated on"
 msgstr "Последний раз обновлено"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_location
+msgid "Location to include in digital signature (typically, a city name). "
+msgstr ""
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
@@ -162,6 +182,11 @@ msgid "Path to certificate password file"
 msgstr ""
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_reason
+msgid "Reason text to include in digital signature."
+msgstr ""
+
+#. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_ir_actions_report
 msgid "Report Action"
 msgstr ""
@@ -177,7 +202,7 @@ msgid "Save as attachment"
 msgstr ""
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/ir_actions_report.py:104
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
 "Saving signed report (PDF): You do not have enough access rights to save "
@@ -190,13 +215,33 @@ msgid "Sequence"
 msgstr "Последовательность"
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/ir_actions_report.py:122
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_mail
+msgid "Signature e-mail"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_location
+msgid "Signature location"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_reason
+msgid "Signature reason"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__signing_method
+msgid "Signing Method"
+msgstr ""
+
+#. module: report_qweb_signer
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
 msgstr ""
 
 #. module: report_qweb_signer
-#: code:addons/report_qweb_signer/models/ir_actions_report.py:131
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
 "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
