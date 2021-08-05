@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.1.5
+_commit: v1.2.0
 _src_path: git+https://github.com/OCA/oca-addons-repo-template
 dependency_installation_mode: PIP
 generate_requirements_txt: true
@@ -7,18 +7,19 @@ include_wkhtmltopdf: true
 odoo_version: 13.0
 rebel_module_groups: []
 repo_description: 'This repository hosts alternative reporting engines to the ones
-  included on Odoo core (RML, QWeb and Webkit).
+    included on Odoo core (RML, QWeb and Webkit).
 
 
-  The convention is to use a suffix to each module to indicate that it''s for using
-  with that report engine (for example, account_invoice_report_birt or sale_order_report_pentaho).
+    The convention is to use a suffix to each module to indicate that it''s for using
+    with that report engine (for example, account_invoice_report_birt or sale_order_report_pentaho).
 
 
-  It can contain also another utilities directly involved with reports (like merge/split
-  utils, checkers, signing tools and so on).'
+    It can contain also another utilities directly involved with reports (like merge/split
+    utils, checkers, signing tools and so on).'
 repo_name: OCA alternative reporting engines and reporting utilities for Odoo
 repo_slug: reporting-engine
 travis_apt_packages:
 - swig
 - libreoffice
 travis_apt_sources: []
+
