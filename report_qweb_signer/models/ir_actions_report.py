@@ -45,7 +45,13 @@ class IrActionsReport(models.Model):
             if "company_id" in obj:
                 company_id = obj.company_id.id or company_id
         certificates = self.env["report.certificate"].search(
-            [("company_id", "=", company_id), ("model_id", "=", self.model)]
+            [
+                ("company_id", "=", company_id),
+                ("model_id", "=", self.model),
+                "|",
+                ("action_report_ids", "=", False),
+                ("action_report_ids", "in", self.id),
+            ]
         )
         if not certificates:
             return False
