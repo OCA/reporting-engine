@@ -37,6 +37,16 @@ class ReportCertificate(models.Model):
         string="Domain",
         help="Domain for filtering if sign or not the document",
     )
+    action_report_ids = fields.Many2many(
+        string="Allowed reports",
+        help="Reports to sign for the selected model."
+        "No report selected means all reports are allowed.",
+        comodel_name="ir.actions.report",
+        relation="report_certificate_action_report",
+        column1="report_certificate_id",
+        column2="action_report_id",
+        domain="[('model_id', '=', model_id)]",
+    )
     allow_only_one = fields.Boolean(
         string="Allow only one document",
         default=True,

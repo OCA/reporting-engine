@@ -33,6 +33,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 widget="selection"
                                 groups="base.group_multi_company"
                             />
+                            <field name="action_report_ids" widget="many2many_tags" />
                         </group>
                         <group
                             attrs="{'invisible': [('signing_method', '!=', 'endesive')]}"
