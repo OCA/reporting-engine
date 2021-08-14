@@ -20,30 +20,30 @@ It can contain also another utilities directly involved with reports (like merge
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[bi_sql_editor](bi_sql_editor/) | 10.0.1.0.2 | BI Views builder, based on Materialized or Normal SQL Views
-[bi_view_editor](bi_view_editor/) | 10.0.1.0.2 | Graphical BI views builder for Odoo
-[report_csv](report_csv/) | 10.0.1.0.0 | Base module to create csv report
-[report_py3o](report_py3o/) | 10.0.2.0.2 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
-[report_py3o_fusion_server](report_py3o_fusion_server/) | 10.0.1.0.0 | Let the fusion server handle format conversion.
-[report_qr](report_qr/) | 10.0.1.0.0 | Web QR Manager
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 | Report Qweb Element Page Visibility
-[report_qweb_parameter](report_qweb_parameter/) | 10.0.1.0.1 | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.3 | Add watermarks to your QWEB PDF reports
-[report_qweb_signer](report_qweb_signer/) | 10.0.1.0.1 | Sign Qweb PDFs usign a PKCS#12 certificate
-[report_qweb_txt](report_qweb_txt/) | 10.0.1.0.0 | Use Qweb to generate text and CSV reports
-[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 10.0.1.1.1 | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 10.0.1.0.0 | Report xlsx helpers
-[report_xml](report_xml/) | 10.0.1.0.0 | Allow to generate XML reports
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[bi_sql_editor](bi_sql_editor/) | 10.0.1.0.2 |  | BI Views builder, based on Materialized or Normal SQL Views
+[bi_view_editor](bi_view_editor/) | 10.0.1.0.2 |  | Graphical BI views builder for Odoo
+[report_csv](report_csv/) | 10.0.1.0.0 |  | Base module to create csv report
+[report_py3o](report_py3o/) | 10.0.2.0.2 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
+[report_py3o_fusion_server](report_py3o_fusion_server/) | 10.0.1.0.0 |  | Let the fusion server handle format conversion.
+[report_qr](report_qr/) | 10.0.1.0.0 |  | Web QR Manager
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 10.0.1.0.0 |  | Report Qweb Element Page Visibility
+[report_qweb_parameter](report_qweb_parameter/) | 10.0.1.0.1 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 10.0.1.0.3 |  | Add watermarks to your QWEB PDF reports
+[report_qweb_signer](report_qweb_signer/) | 10.0.1.0.1 |  | Sign Qweb PDFs usign a PKCS#12 certificate
+[report_qweb_txt](report_qweb_txt/) | 10.0.1.0.0 |  | Use Qweb to generate text and CSV reports
+[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 10.0.1.0.1 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
+[report_xlsx](report_xlsx/) | 10.0.1.1.1 |  | Base module to create xlsx report
+[report_xlsx_helper](report_xlsx_helper/) | 10.0.1.0.0 |  | Report xlsx helpers
+[report_xml](report_xml/) | 10.0.1.0.0 |  | Allow to generate XML reports
 
 
 Unported addons
 ---------------
-addon | version | summary
---- | --- | ---
-[base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[base_report_assembler](base_report_assembler/) | 1.0 (unported) |  | Base Report Assembler
 
 [//]: # (end addons)
 
