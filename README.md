@@ -17,21 +17,21 @@ TODO: add repo description.
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[base_comment_template](base_comment_template/) | 14.0.2.0.1 | Add conditional mako template to any reporton models that inherits comment.template.
-[bi_sql_editor](bi_sql_editor/) | 14.0.1.0.0 | BI Views builder, based on Materialized or Normal SQL Views
-[bi_view_editor](bi_view_editor/) | 14.0.1.0.0 | Graphical BI views builder for Odoo
-[kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | Create Dashboards using kpis
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 | Report Qweb Element Page Visibility
-[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | Allow to encrypt qweb pdfs
-[report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 | Add watermarks to your QWEB PDF reports
-[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 14.0.1.0.0 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 14.0.1.0.2 | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.0 | Report xlsx helpers
-[report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 | Report xlsx helpers - demo
-[report_xml](report_xml/) | 14.0.1.0.1 | Allow to generate XML reports
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[base_comment_template](base_comment_template/) | 14.0.2.0.1 |  | Add conditional mako template to any reporton models that inherits comment.template.
+[bi_sql_editor](bi_sql_editor/) | 14.0.1.0.0 |  | BI Views builder, based on Materialized or Normal SQL Views
+[bi_view_editor](bi_view_editor/) | 14.0.1.0.0 |  | Graphical BI views builder for Odoo
+[kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 |  | Report Qweb Element Page Visibility
+[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
+[report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
+[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 14.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
+[report_xlsx](report_xlsx/) | 14.0.1.0.2 |  | Base module to create xlsx report
+[report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.0 |  | Report xlsx helpers
+[report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 |  | Report xlsx helpers - demo
+[report_xml](report_xml/) | 14.0.1.0.1 |  | Allow to generate XML reports
 
 [//]: # (end addons)
 
