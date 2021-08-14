@@ -21,28 +21,28 @@ It can contain also another utilities directly involved with reports (like merge
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[base_comment_template](base_comment_template/) | 13.0.3.0.1 | Add conditional mako template to any report on models that inherits comment.template.
-[bi_sql_editor](bi_sql_editor/) | 13.0.1.0.1 | BI Views builder, based on Materialized or Normal SQL Views
-[kpi](kpi/) | 13.0.1.0.1 | Key Performance Indicator
-[kpi_dashboard](kpi_dashboard/) | 13.0.1.0.0 | Create Dashboards using kpis
-[report_batch](report_batch/) | 13.0.1.0.1 | Ability to print multiple QWeb reports in a single batch.
-[report_context](report_context/) | 13.0.1.0.0 | Adding context to reports
-[report_csv](report_csv/) | 13.0.1.0.2 | Base module to create csv report
-[report_layout_config](report_layout_config/) | 13.0.1.0.1 | Add possibility to easily modify the global report layout
-[report_py3o](report_py3o/) | 13.0.1.0.3 | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
-[report_py3o_fusion_server](report_py3o_fusion_server/) | 13.0.1.0.0 | Let the fusion server handle format conversion.
-[report_qr](report_qr/) | 13.0.1.0.1 | Web QR Manager
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.0.1 | Report Qweb Element Page Visibility
-[report_qweb_parameter](report_qweb_parameter/) | 13.0.1.0.2 | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | Fix auto-col to not change report font size caused by a boundary overflow
-[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 13.0.1.0.2 | Add watermarks to your QWEB PDF reports
-[report_qweb_signer](report_qweb_signer/) | 13.0.2.0.0 | Sign Qweb PDFs usign a PKCS#12 certificate
-[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 13.0.1.0.4 | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.1 | Report xlsx helpers
-[report_xml](report_xml/) | 13.0.1.0.1 | Allow to generate XML reports
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[base_comment_template](base_comment_template/) | 13.0.3.0.1 |  | Add conditional mako template to any report on models that inherits comment.template.
+[bi_sql_editor](bi_sql_editor/) | 13.0.1.0.1 |  | BI Views builder, based on Materialized or Normal SQL Views
+[kpi](kpi/) | 13.0.1.0.1 |  | Key Performance Indicator
+[kpi_dashboard](kpi_dashboard/) | 13.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[report_batch](report_batch/) | 13.0.1.0.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Ability to print multiple QWeb reports in a single batch.
+[report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
+[report_csv](report_csv/) | 13.0.1.0.2 |  | Base module to create csv report
+[report_layout_config](report_layout_config/) | 13.0.1.0.1 |  | Add possibility to easily modify the global report layout
+[report_py3o](report_py3o/) | 13.0.1.0.3 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
+[report_py3o_fusion_server](report_py3o_fusion_server/) | 13.0.1.0.0 |  | Let the fusion server handle format conversion.
+[report_qr](report_qr/) | 13.0.1.0.1 |  | Web QR Manager
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.0.1 |  | Report Qweb Element Page Visibility
+[report_qweb_parameter](report_qweb_parameter/) | 13.0.1.0.2 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | [![Tardo](https://github.com/Tardo.png?size=30px)](https://github.com/Tardo) | Fix auto-col to not change report font size caused by a boundary overflow
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 13.0.1.0.2 |  | Add watermarks to your QWEB PDF reports
+[report_qweb_signer](report_qweb_signer/) | 13.0.2.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
+[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
+[report_xlsx](report_xlsx/) | 13.0.1.0.4 |  | Base module to create xlsx report
+[report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.1 |  | Report xlsx helpers
+[report_xml](report_xml/) | 13.0.1.0.1 |  | Allow to generate XML reports
 
 [//]: # (end addons)
 
