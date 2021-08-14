@@ -20,24 +20,24 @@ It can contain also another utilities directly involved with reports (like merge
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[bi_sql_editor](bi_sql_editor/) | 8.0.1.0.0 | BI Views builder, based on Materialized or Normal SQL Views
-[bi_view_editor](bi_view_editor/) | 8.0.1.0.0 | Graphical BI views builder for Odoo 8
-[report_custom_filename](report_custom_filename/) | 8.0.1.0.1 | Configure the filename to use when downloading a report
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 8.0.1.0.0 | Report Qweb Element Page Visibility
-[report_qweb_signer](report_qweb_signer/) | 8.0.1.0.0 | Sign Qweb PDFs usign a PKCS#12 certificate
-[report_xls](report_xls/) | 8.0.0.6.1 | Excel report engine
-[report_xlsx](report_xlsx/) | 8.0.1.0.0 | Base module to create xlsx report
-[report_xml](report_xml/) | 8.0.1.0.0 | Allow to generate XML reports
-[report_xml_sample](report_xml_sample/) | 8.0.1.0.0 | For developers who want an example
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[bi_sql_editor](bi_sql_editor/) | 8.0.1.0.0 |  | BI Views builder, based on Materialized or Normal SQL Views
+[bi_view_editor](bi_view_editor/) | 8.0.1.0.0 |  | Graphical BI views builder for Odoo 8
+[report_custom_filename](report_custom_filename/) | 8.0.1.0.1 |  | Configure the filename to use when downloading a report
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 8.0.1.0.0 |  | Report Qweb Element Page Visibility
+[report_qweb_signer](report_qweb_signer/) | 8.0.1.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
+[report_xls](report_xls/) | 8.0.0.6.1 |  | Excel report engine
+[report_xlsx](report_xlsx/) | 8.0.1.0.0 |  | Base module to create xlsx report
+[report_xml](report_xml/) | 8.0.1.0.0 |  | Allow to generate XML reports
+[report_xml_sample](report_xml_sample/) | 8.0.1.0.0 |  | For developers who want an example
 
 
 Unported addons
 ---------------
-addon | version | summary
---- | --- | ---
-[base_report_assembler](base_report_assembler/) | 1.0 (unported) | Base Report Assembler
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[base_report_assembler](base_report_assembler/) | 1.0 (unported) |  | Base Report Assembler
 
 [//]: # (end addons)
 
