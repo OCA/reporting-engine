@@ -8,7 +8,6 @@ import logging
 import os
 import subprocess
 import tempfile
-import time
 from contextlib import closing
 
 from cryptography.hazmat import backends
@@ -17,7 +16,7 @@ from endesive import pdf
 
 from odoo import _, models
 from odoo.exceptions import AccessError, UserError
-from odoo.tools.safe_eval import safe_eval
+from odoo.tools.safe_eval import safe_eval, time
 
 _logger = logging.getLogger(__name__)
 
@@ -122,8 +121,13 @@ class IrActionsReport(models.Model):
         irc_param = self.env["ir.config_parameter"].sudo()
         java_bin = "java -jar"
         java_param = irc_param.get_param("report_qweb_signer.java_parameters")
-        jar = "{}/../static/jar/jPdfSign.jar".format(me)
-        return "{} {} {} {}".format(java_bin, java_param, jar, opts)
+        java_position_param = irc_param.get_param(
+            "report_qweb_signer.java_position_parameters"
+        )
+        jar = "{}/../static/jar/JSignPdf.jar".format(me)
+        return "{} {} {} {} {}".format(
+            java_bin, java_param, jar, opts, java_position_param
+        )
 
     def _get_endesive_params(self, certificate):
         date = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
@@ -160,7 +164,7 @@ class IrActionsReport(models.Model):
         return pdfsigned
 
     def pdf_sign(self, pdf, certificate):
-        pdfsigned = pdf + ".signed.pdf"
+        pdfsigned = pdf[:-4] + "_signed.pdf"
         p12 = _normalize_filepath(certificate.path)
         passwd = _normalize_filepath(certificate.password_file)
         method_used = certificate.signing_method
@@ -169,7 +173,12 @@ class IrActionsReport(models.Model):
                 _("Signing report (PDF): " "Certificate or password file not found")
             )
         if method_used == "java":
-            signer_opts = '"{}" "{}" "{}" "{}"'.format(p12, pdf, pdfsigned, passwd)
+            passwd_f = open(passwd, "tr")
+            passwd = passwd_f.read().strip()
+            passwd_f.close()
+            signer_opts = ' "{}" -ksf "{}" -ksp "{}" -V -d "/tmp"'.format(
+                pdf, p12, passwd
+            )
             signer = self._signer_bin(signer_opts)
             process = subprocess.Popen(
                 signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
@@ -188,7 +197,7 @@ class IrActionsReport(models.Model):
             self._signer_endesive(params, p12, pdf, pdfsigned, passwd)
         return pdfsigned
 
-    def render_qweb_pdf(self, res_ids=None, data=None):
+    def _render_qweb_pdf(self, res_ids=None, data=None):
         certificate = self._certificate_get(res_ids)
         if certificate and certificate.attachment:
             signed_content = self._attach_signed_read(res_ids, certificate)
@@ -199,7 +208,7 @@ class IrActionsReport(models.Model):
                     res_ids,
                 )
                 return signed_content, "pdf"
-        content, ext = super(IrActionsReport, self).render_qweb_pdf(res_ids, data)
+        content, ext = super(IrActionsReport, self)._render_qweb_pdf(res_ids, data)
         if certificate:
             # Creating temporary origin PDF
             pdf_fd, pdf = tempfile.mkstemp(suffix=".pdf", prefix="report.tmp.")
@@ -220,7 +229,7 @@ class IrActionsReport(models.Model):
             for fname in (pdf, signed):
                 try:
                     os.unlink(fname)
-                except (OSError, IOError):
+                except OSError:
                     _logger.error("Error when trying to remove file %s", fname)
             if certificate.attachment:
                 self._attach_signed_write(res_ids, certificate, content)

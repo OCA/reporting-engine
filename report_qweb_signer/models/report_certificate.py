@@ -31,9 +31,11 @@ class ReportCertificate(models.Model):
         required=True,
         comodel_name="ir.model",
         help="Model where apply this certificate",
+        ondelete="cascade",
     )
     domain = fields.Char(
-        string="Domain", help="Domain for filtering if sign or not the document",
+        string="Domain",
+        help="Domain for filtering if sign or not the document",
     )
     allow_only_one = fields.Boolean(
         string="Allow only one document",
@@ -67,5 +69,6 @@ class ReportCertificate(models.Model):
         help="Location to include in digital signature (typically, a city name). ",
     )
     endesive_certificate_reason = fields.Char(
-        string="Signature reason", help="Reason text to include in digital signature.",
+        string="Signature reason",
+        help="Reason text to include in digital signature.",
     )
