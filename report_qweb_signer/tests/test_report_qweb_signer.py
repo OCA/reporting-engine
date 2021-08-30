@@ -13,7 +13,7 @@ class TestReportQwebSigner(HttpCase):
         ).with_context(force_report_rendering=True)
 
     def test_report_qweb_signer(self):
-        self.report.render_qweb_pdf(self.partner.ids)
+        self.report._render_qweb_pdf(self.partner.ids)
         # Reprint again for taking the PDF from attachment
         IrAttachment = self.env["ir.attachment"]
         domain = [
@@ -21,6 +21,6 @@ class TestReportQwebSigner(HttpCase):
             ("res_model", "=", self.partner._name),
         ]
         num_attachments = IrAttachment.search_count(domain)
-        self.report.render_qweb_pdf(self.partner.ids)
+        self.report._render_qweb_pdf(self.partner.ids)
         num_attachments_after = IrAttachment.search_count(domain)
         self.assertEqual(num_attachments, num_attachments_after)
