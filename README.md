@@ -46,7 +46,7 @@ addon | version | maintainers | summary
 [report_qweb_signer](report_qweb_signer/) | 12.0.1.0.1 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_substitute](report_substitute/) | 12.0.1.0.0 |  | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 12.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 12.0.1.0.3 |  | Base module to create xlsx report
+[report_xlsx](report_xlsx/) | 12.0.1.0.4 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 12.0.1.2.0 |  | Report xlsx helpers
 [report_xlsx_helper_demo](report_xlsx_helper_demo/) | 12.0.1.1.0 |  | Report xlsx helpers - demo
 [report_xml](report_xml/) | 12.0.1.0.0 |  | Allow to generate XML reports
