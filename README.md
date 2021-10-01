@@ -38,7 +38,7 @@ addon | version | maintainers | summary
 [report_qweb_parameter](report_qweb_parameter/) | 13.0.1.0.2 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | [![Tardo](https://github.com/Tardo.png?size=30px)](https://github.com/Tardo) | Fix auto-col to not change report font size caused by a boundary overflow
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 13.0.1.0.2 |  | Add watermarks to your QWEB PDF reports
-[report_qweb_signer](report_qweb_signer/) | 13.0.2.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
+[report_qweb_signer](report_qweb_signer/) | 13.0.2.1.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 13.0.1.0.5 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.1 |  | Report xlsx helpers
