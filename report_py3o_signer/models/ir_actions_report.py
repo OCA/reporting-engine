@@ -40,6 +40,9 @@ class IrActionReport(models.Model):
                 if os.path.exists(signed):
                     with open(signed, "rb") as pf:
                         content = pf.read()
+                if len(res_ids) == 1:
+                    model_instance = self.env[self.model].browse(res_ids)
+                    self.postprocess_pdf_report(model_instance, content)
             finally:
                 # Manual cleanup of the temporary files
                 for fname in (pdf, signed):
