@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit from base.act_report_xml_view to add py3o-related settings. -->
+
+    <record id="py3o_report_view" model="ir.ui.view">
+        <field name="name">py3o_report_view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/field[1]" position="before">
+                 <field name="is_py3o_report_not_available" invisible="1"/>
+                     <div class="alert alert-danger"
+                        role="alert"
+                        style="margin-bottom:0px;"
+                        attrs="{'invisible': [('is_py3o_report_not_available','=',False)]}">
+                        <field name="msg_py3o_report_not_available"/>
+                    </div>
+            </xpath>
+            <xpath expr="//page[@name='security']" position="before">
+                <page string="LibreOffice Template" name="py3o_tab"
+                    attrs="{'invisible': [('report_type', '!=', 'py3o')]}">
+
+                    <group name="py3o_params">
+                        <field name="lo_bin_path"/>
+                        <field name="py3o_filetype" />
+                        <field name="py3o_multi_in_one"/>
+                        <field name="py3o_template_id" />
+                        <field name="module" />
+                        <field name="py3o_template_fallback" />
+                    </group>
+
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="act_report_xml_search_view" model="ir.ui.view">
+        <field name="name">py3o_report_search_view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_search_view"/>
+        <field name="arch" type="xml">
+            <field name="model" position="after">
+                <filter name="py3o" string="Py3o Reports"
+                    domain="[('report_type', '=', 'py3o')]"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
