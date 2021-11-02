@@ -38,9 +38,14 @@ class IrActionsReport(models.Model):
         """Obtain the proper certificate for the report and the conditions."""
         if self.report_type != "qweb-pdf":
             return False
+        obj = self.env[self.model].browse(res_ids[0])
+        if "company_id" in obj:
+            company_id = obj.company_id.id
+        else:
+            company_id = self.env.user.company_id.id
         certificates = self.env["report.certificate"].search(
             [
-                ("company_id", "=", self.env.user.company_id.id),
+                ("company_id", "=", company_id),
                 ("model_id", "=", self.model),
             ]
         )
@@ -176,9 +181,7 @@ class IrActionsReport(models.Model):
             passwd_f = open(passwd, "tr")
             passwd = passwd_f.read().strip()
             passwd_f.close()
-            signer_opts = ' "{}" -ksf "{}" -ksp "{}" -V -d "/tmp"'.format(
-                pdf, p12, passwd
-            )
+            signer_opts = ' "{}" -ksf "{}" -ksp "{}" -d "/tmp"'.format(pdf, p12, passwd)
             signer = self._signer_bin(signer_opts)
             process = subprocess.Popen(
                 signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
