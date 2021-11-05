@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_parameter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2020-11-20 23:36+0000\n"
+"Last-Translator: Alessandro Fiorino <alessandro.fiorino@digitaldomus.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: report_qweb_parameter
+#: model:ir.actions.report,name:report_qweb_parameter.test_report_length_report_id
+msgid "Length Report"
+msgstr "Lunghezza Report"
+
+#. module: report_qweb_parameter
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
+#, python-format
+msgid "Length cannot be less than %s"
+msgstr "La lunghezza non può essere meno di %s"
+
+#. module: report_qweb_parameter
+#: code:addons/report_qweb_parameter/models/ir_qweb.py:0
+#, python-format
+msgid "Length cannot be more than %s"
+msgstr "La lunghezza non può essere più di %s"
+
+#. module: report_qweb_parameter
+#: model:ir.model,name:report_qweb_parameter.model_ir_qweb
+msgid "Qweb"
+msgstr "Qweb"

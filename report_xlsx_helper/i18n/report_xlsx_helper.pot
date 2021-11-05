@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_xlsx_helper
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
+#, python-format
+msgid "%s model was not found"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"%s, _write_line : programming error detected while processing "
+"col_specs_section %s, column %s"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ", cellvalue %s"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_abstract
+msgid "Abstract XLSX Report"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__display_name
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__display_name
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__id
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__id
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__id
+msgid "ID"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report____last_update
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract____last_update
+#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"Excel Sheet name '%s' contains unsupported special characters: '%s'."
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"Excel Sheet name '%s' should not exceed %s characters."
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The '%s' column is not defined in the worksheet column specifications."
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The '%s' column is not defined the worksheet column specifications."
+msgstr ""
+
+#. module: report_xlsx_helper
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The 'title' parameter is mandatory when calling the '_write_ws_title' method."
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_helper_test_partner_xlsx
+msgid "Test Partner XLSX Report"
+msgstr ""

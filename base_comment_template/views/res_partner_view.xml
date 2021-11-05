@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <page name='internal_notes' position="after">
+                <page name='base_comment_template_ids' string="Comment Templates">
+                    <field
+                        name="base_comment_template_ids"
+                        nolabel="1"
+                        context="{'comment_template_model_display': True}"
+                    >
+                        <tree>
+                            <field name="display_name" string="Name" />
+                            <field name="position" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                            <field name="model_ids" />
+                            <field name="domain" />
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

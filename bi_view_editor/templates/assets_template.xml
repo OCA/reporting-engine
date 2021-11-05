@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="assets_backend"
+        name="bi_view_editor assets"
+        inherit_id="web.assets_backend"
+    >
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/bi_view_editor/static/src/css/bve.css" />
+            <script
+                type="text/javascript"
+                src="/bi_view_editor/static/src/js/bi_view_editor.js"
+            />
+            <script
+                type="text/javascript"
+                src="/bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js"
+            />
+            <script
+                type="text/javascript"
+                src="/bi_view_editor/static/src/js/bi_view_editor.ModelList.js"
+            />
+            <script
+                type="text/javascript"
+                src="/bi_view_editor/static/src/js/bi_view_editor.FieldList.js"
+            />
+        </xpath>
+    </template>
+</odoo>
