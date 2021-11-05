@@ -42,6 +42,7 @@ class Py3oParserContext(object):
             # prefixes with o_ to avoid nameclash with default method provided
             # by py3o.template
             "o_format_date": self._format_date,
+            "o_format_datetime": self._format_datetime,
             # give access to the time lib
             "time": time,
             # keeps methods from report_sxw to ease migration
@@ -90,6 +91,12 @@ class Py3oParserContext(object):
         return misc.format_date(
             self._env, value, lang_code=lang_code, date_format=date_format
         )
+
+    def _format_datetime(self, value, tz=False, dt_format='medium', lang_code=False):
+        return misc.format_datetime(
+            self._env, value, tz=tz, dt_format=dt_format, lang_code=lang_code
+        )
+
 
     def _old_format_lang(
         self,
