@@ -21,7 +21,11 @@ from ._py3o_parser_context import Py3oParserContext
 logger = logging.getLogger(__name__)
 
 try:
-    from py3o.template import Template
+    # workaround for https://github.com/edgewall/genshi/issues/15
+    # that makes runbot build red because of the DeprecationWarning
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
+        from py3o.template import Template
     from py3o import formats
 except ImportError:
     logger.debug("Cannot import py3o.template")
