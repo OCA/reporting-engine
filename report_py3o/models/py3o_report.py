@@ -340,7 +340,7 @@ class Py3oReport(models.TransientModel):
         for temporary_file in temporary_files:
             try:
                 os.unlink(temporary_file)
-            except (OSError, IOError):
+            except OSError:
                 logger.error("Error when trying to remove file %s" % temporary_file)
 
     def create_report(self, res_ids, data):
