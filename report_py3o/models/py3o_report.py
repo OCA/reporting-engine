@@ -7,6 +7,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import warnings
 from base64 import b64decode
 from contextlib import closing
 from io import BytesIO
