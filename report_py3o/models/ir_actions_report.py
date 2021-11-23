@@ -19,7 +19,7 @@ PY3O_CONVERSION_COMMAND_PARAMETER = "py3o.conversion_command"
 
 
 class IrActionsReport(models.Model):
-    """ Inherit from ir.actions.report to allow customizing the template
+    """Inherit from ir.actions.report to allow customizing the template
     file. The user cam chose a template from a list.
     The list is configurable in the configuration tab, see py3o_template.py
     """
@@ -49,7 +49,7 @@ class IrActionsReport(models.Model):
     report_type = fields.Selection(
         selection_add=[("py3o", "py3o")],
         ondelete={
-            'py3o': 'cascade',
+            "py3o": "cascade",
         },
     )
 
@@ -173,8 +173,7 @@ class IrActionsReport(models.Model):
         )
 
     def gen_report_download_filename(self, res_ids, data):
-        """Override this function to change the name of the downloaded report
-        """
+        """Override this function to change the name of the downloaded report"""
         self.ensure_one()
         report = self.get_from_report_name(self.report_name, self.report_type)
         if report.print_report_name and not len(res_ids) > 1:
@@ -183,8 +182,7 @@ class IrActionsReport(models.Model):
         return "{}.{}".format(self.name, self.py3o_filetype)
 
     def _get_attachments(self, res_ids):
-        """ Return the report already generated for the given res_ids
-        """
+        """Return the report already generated for the given res_ids"""
         self.ensure_one()
         save_in_attachment = {}
         if res_ids:
