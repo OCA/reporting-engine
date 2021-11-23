@@ -92,11 +92,10 @@ class Py3oParserContext(object):
             self._env, value, lang_code=lang_code, date_format=date_format
         )
 
-    def _format_datetime(self, value, tz=False, dt_format='medium', lang_code=False):
+    def _format_datetime(self, value, tz=False, dt_format="medium", lang_code=False):
         return misc.format_datetime(
             self._env, value, tz=tz, dt_format=dt_format, lang_code=lang_code
         )
-
 
     def _old_format_lang(
         self,
