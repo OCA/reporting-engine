@@ -8,8 +8,8 @@ import shutil
 import tempfile
 from base64 import b64decode, b64encode
 from contextlib import contextmanager
-
 from unittest import mock
+
 import pkg_resources
 from PyPDF2 import PdfFileWriter
 from PyPDF2.pdf import PageObject
