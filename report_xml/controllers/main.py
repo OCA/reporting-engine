@@ -32,7 +32,7 @@ class ReportController(report.ReportController):
                     del data["context"]["lang"]
                 context.update(data["context"])
 
-            xml = report.with_context(context)._render_qweb_xml(docids, data=data)[0]
+            xml = report.with_context(**context)._render_qweb_xml(docids, data=data)[0]
             xmlhttpheaders = [
                 ("Content-Type", "text/xml"),
                 ("Content-Length", len(xml)),
@@ -56,7 +56,10 @@ class ReportController(report.ReportController):
                 if docids:
                     # Generic report:
                     response = self.report_routes(
-                        reportname, docids=docids, converter="xml", context=context
+                        reportname,
+                        docids=docids,
+                        converter="xml",
+                        context=context,
                     )
                 else:
                     # Particular report:
