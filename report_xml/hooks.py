@@ -22,26 +22,25 @@ def post_init_hook(cr, registry):
      * registry(odoo.modules.registry.RegistryManager) - a mapping between
      model names and model classes.
     """
-    with api.Environment.manage():
-        env = api.Environment(cr, SUPERUSER_ID, {})
-        report_domain = [
-            ("report_name", "=", "report_xml.demo_report_xml_view")  # report tech name
-        ]
-        demo_report = env["ir.actions.report"].search(report_domain, limit=1)
-        if demo_report:
-            dir_path = os.path.dirname(__file__)
-            xsd_file_relative_path = "demo/demo_report.xsd"
-            xsd_file_full_path = os.path.join(dir_path, xsd_file_relative_path)
+    env = api.Environment(cr, SUPERUSER_ID, {})
+    report_domain = [
+        ("report_name", "=", "report_xml.demo_report_xml_view")  # report tech name
+    ]
+    demo_report = env["ir.actions.report"].search(report_domain, limit=1)
+    if demo_report:
+        dir_path = os.path.dirname(__file__)
+        xsd_file_relative_path = "demo/demo_report.xsd"
+        xsd_file_full_path = os.path.join(dir_path, xsd_file_relative_path)
 
-            with open(xsd_file_full_path, "r") as xsd:
-                # `xsd_schema` is binary fields with an attribute
-                # `attachment=True` so XSD Schema will be added as attachment
-                attach_vals = {
-                    "name": "Demo Report.xsd",
-                    "datas": xsd.read(),
-                    "res_model": "ir.actions.report",
-                    "res_id": demo_report.id,
-                    "res_field": "xsd_schema",
-                    "type": "binary",
-                }
-                env["ir.attachment"].create(attach_vals)
+        with open(xsd_file_full_path, "r") as xsd:
+            # `xsd_schema` is binary fields with an attribute
+            # `attachment=True` so XSD Schema will be added as attachment
+            attach_vals = {
+                "name": "Demo Report.xsd",
+                "datas": xsd.read(),
+                "res_model": "ir.actions.report",
+                "res_id": demo_report.id,
+                "res_field": "xsd_schema",
+                "type": "binary",
+            }
+            env["ir.attachment"].create(attach_vals)
