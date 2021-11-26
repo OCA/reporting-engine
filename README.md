@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 [bi_sql_editor](bi_sql_editor/) | 14.0.1.0.0 |  | BI Views builder, based on Materialized or Normal SQL Views
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 |  | Graphical BI views builder for Odoo
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[report_qr](report_qr/) | 14.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
