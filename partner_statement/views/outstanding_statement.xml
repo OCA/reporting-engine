@@ -164,4 +164,19 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_file">partner_statement.outstanding_statement</field>
     </record>
+    <record id="action_print_outstanding_statement_html" model="ir.actions.report">
+        <field name="name">Outstanding Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">partner_statement.outstanding_statement</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_file">partner_statement.outstanding_statement</field>
+    </record>
+    <record id="action_print_outstanding_statement_xlsx" model="ir.actions.report">
+        <field name="name">Outstanding Statement XLSX</field>
+        <field name="model">res.partner</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">p_s.report_outstanding_statement_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_file">report_outstanding_statement</field>
+    </record>
 </odoo>

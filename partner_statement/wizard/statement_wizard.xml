@@ -72,11 +72,23 @@
                 </group>
                 <footer>
                     <button
-                        name="button_export_pdf"
-                        string="Export PDF"
+                        name="button_export_html"
+                        string="View"
                         type="object"
                         default_focus="1"
                         class="oe_highlight"
+                    />
+                    or
+                    <button
+                        name="button_export_pdf"
+                        string="Export PDF"
+                        type="object"
+                    />
+                    or
+                    <button
+                        name="button_export_xlsx"
+                        string="Export XLSX"
+                        type="object"
                     />
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />

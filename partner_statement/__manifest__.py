@@ -9,7 +9,7 @@
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-financial-reporting",
     "license": "AGPL-3",
-    "depends": ["account"],
+    "depends": ["account", "report_xlsx", "report_xlsx_helper"],
     "external_dependencies": {"python": ["dateutil"]},
     "data": [
         "security/ir.model.access.csv",

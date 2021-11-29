@@ -11,9 +11,22 @@ class OutstandingStatementWizard(models.TransientModel):
     _inherit = "statement.common.wizard"
     _description = "Outstanding Statement Wizard"
 
-    def _export(self):
-        """Export to PDF."""
+    def _print_report(self, report_type):
+        self.ensure_one()
         data = self._prepare_statement()
-        return self.env.ref(
-            "partner_statement.action_print_outstanding_statement"
-        ).report_action(self.ids, data=data)
+        if report_type == "xlsx":
+            report_name = "p_s.report_outstanding_statement_xlsx"
+        else:
+            report_name = "partner_statement.outstanding_statement"
+        return (
+            self.env["ir.actions.report"]
+            .search(
+                [("report_name", "=", report_name), ("report_type", "=", report_type)],
+                limit=1,
+            )
+            .report_action(self, data=data)
+        )
+
+    def _export(self, report_type):
+        """Default export is PDF."""
+        return self._print_report(report_type)
