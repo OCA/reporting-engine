@@ -51,7 +51,7 @@ class SQLRequestMixin(models.AbstractModel):
     def _default_group_ids(self):
         ir_model_obj = self.env["ir.model.data"]
         return [
-            ir_model_obj.xmlid_to_res_id("sql_request_abstract.group_sql_request_user")
+            ir_model_obj._xmlid_to_res_id("sql_request_abstract.group_sql_request_user")
         ]
 
     @api.model
@@ -59,17 +59,15 @@ class SQLRequestMixin(models.AbstractModel):
         return []
 
     # Columns Section
-    name = fields.Char("Name", required=True)
+    name = fields.Char(required=True)
 
     query = fields.Text(
-        string="Query",
         required=True,
         help="You can't use the following words"
         ": DELETE, DROP, CREATE, INSERT, ALTER, TRUNCATE, EXECUTE, UPDATE.",
     )
 
     state = fields.Selection(
-        string="State",
         selection=STATE_SELECTION,
         default="draft",
         help="State of the Request:\n"
@@ -180,7 +178,7 @@ class SQLRequestMixin(models.AbstractModel):
                 SQL(query), SQL(view_name)
             )
         else:
-            raise UserError(_("Unimplemented mode : '%s'" % mode))
+            raise UserError(_("Unimplemented mode : '%s'") % mode)
 
         if rollback:
             rollback_name = self._create_savepoint()
