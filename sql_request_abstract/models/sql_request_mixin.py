@@ -269,7 +269,7 @@ class SQLRequestMixin(models.AbstractModel):
             res = self._hook_executed_request()
         except ProgrammingError as e:
             logger.exception("Failed query: %s", query)
-            raise UserError(_("The SQL query is not valid:\n\n %s") % e)
+            raise UserError(_("The SQL query is not valid:\n\n %s") % e) from e
         finally:
             self._rollback_savepoint(rollback_name)
         return res
