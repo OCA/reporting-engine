@@ -31,7 +31,7 @@ addon | version | maintainers | summary
 [report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
 [report_csv](report_csv/) | 13.0.1.0.2 |  | Base module to create csv report
 [report_layout_config](report_layout_config/) | 13.0.1.0.1 |  | Add possibility to easily modify the global report layout
-[report_py3o](report_py3o/) | 13.0.1.0.4 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
+[report_py3o](report_py3o/) | 13.0.1.0.5 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 13.0.1.0.0 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 13.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.0.1 |  | Report Qweb Element Page Visibility
