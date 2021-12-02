@@ -22,6 +22,7 @@ msgstr ""
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report.py:46
+#: code:addons/report_py3o/models/ir_actions_report.py:58
 #, python-format
 msgid "(Native)"
 msgstr "(Originario)"
@@ -279,6 +280,7 @@ msgstr "El módulo implementador que proporciona este informe"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report.py:144
+#: code:addons/report_py3o/models/ir_actions_report.py:157
 #, python-format
 msgid ""
 "The libreoffice runtime is required to genereate the py3o report '%s' but is "
