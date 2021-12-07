@@ -47,7 +47,7 @@ try:
                 # Only up to 100 duplicates
                 deduplicated_secuence = "~{:02d}".format(duplicated_secuence + 1)
                 if duplicated_secuence > 99:
-                    raise xlsxwriter.exceptions.DuplicateWorksheetName
+                    raise xlsxwriter.exceptions.DuplicateWorksheetName  # noqa: B904
                 if duplicated_secuence:
                     sheetname = re.sub(pattern, deduplicated_secuence, sheetname)
                 elif len(sheetname) <= 28:
