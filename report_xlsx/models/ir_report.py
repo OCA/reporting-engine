@@ -36,4 +36,4 @@ class ReportAction(models.Model):
             ("report_name", "=", report_name),
         ]
         context = self.env["res.users"].context_get()
-        return report_obj.with_context(context).search(conditions, limit=1)
+        return report_obj.with_context(**context).search(conditions, limit=1)
