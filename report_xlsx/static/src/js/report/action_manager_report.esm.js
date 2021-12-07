@@ -1,16 +1,14 @@
-// © 2017 Creu Blanca
-// License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-odoo.define("report_xlsx.report", function (require) {
-    "use strict";
+/** @odoo-module **/
+import {download} from "@web/core/network/download";
+import {registry} from "@web/core/registry";
 
-    var core = require("web.core");
-    var ActionManager = require("web.ActionManager");
-    var framework = require("web.framework");
-    var session = require("web.session");
+    import core  from "web.core";
+    import framework  from "web.framework";
+    import session  from "web.session";
     var _t = core._t;
 
-    ActionManager.include({
-        _downloadReportXLSX: function (url, actions) {
+
+       async function _downloadReportXLSX(url, actions) {
             var self = this;
             framework.blockUI();
             var type = "xlsx";
@@ -59,9 +57,9 @@ odoo.define("report_xlsx.report", function (require) {
                     this.do_warn(_t("Warning"), message, true);
                 }
             });
-        },
+        }
 
-        _triggerDownload: function (action, options, type) {
+       async function _triggerDownload (action, options, type) {
             var self = this;
             var reportUrls = this._makeReportUrls(action);
             if (type === "xlsx") {
@@ -79,20 +77,19 @@ odoo.define("report_xlsx.report", function (require) {
                 );
             }
             return this._super.apply(this, arguments);
-        },
+        }
 
-        _makeReportUrls: function (action) {
+        async function _makeReportUrls (action) {
             var reportUrls = this._super.apply(this, arguments);
             reportUrls.xlsx = "/report/xlsx/" + action.report_name;
             return reportUrls;
-        },
+        }
 
-        _executeReportAction: function (action, options) {
+        async function _executeReportAction (action, options) {
             var self = this;
             if (action.report_type === "xlsx") {
                 return self._triggerDownload(action, options, "xlsx");
             }
             return this._super.apply(this, arguments);
-        },
-    });
-});
+        }
+
