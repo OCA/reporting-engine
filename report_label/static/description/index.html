@@ -405,10 +405,15 @@ QWeb template for you label.</p>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#id3">Known issues / Roadmap</a></h1>
+<p>Known issues:</p>
 <ul class="simple">
 <li><cite>wkhtmltopdf</cite> doesn’t always respect dpi, and mm measures don’t match. For
 this matter, it’s recommended to use this module along with
 <cite>report_wkhtmltopdf_param</cite> and enable <cite>–disable-smart-shrinking</cite>.</li>
+<li>This module depends on <cite>base_automation</cite> only because this module extends
+<cite>ir.actions.server</cite> with a new kind of action, and <cite>base.automation</cite> inherits
+from <cite>ir.actions.server</cite> by delegation in such a way that the modules cannot
+be loaded in another order.</li>
 </ul>
 </div>
 <div class="section" id="bug-tracker">
