@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,6 +32,7 @@ msgid "Created on"
 msgstr ""
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
 msgid "Display Name"
@@ -59,6 +60,7 @@ msgid "Group By"
 msgstr ""
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__id
 msgid "ID"
@@ -96,6 +98,7 @@ msgid "Is Py3O Report Not Available"
 msgstr ""
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template____last_update
 msgid "Last Modified on"
@@ -197,7 +200,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr ""
@@ -269,4 +271,9 @@ msgid ""
 "rendering method. HTML means the report will be opened directly in your "
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
 msgstr ""
