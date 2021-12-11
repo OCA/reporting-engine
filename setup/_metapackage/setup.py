@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-reporting-engine Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-report_xlsx>=15.0dev,<15.1dev',
         'odoo-addon-sql_request_abstract>=15.0dev,<15.1dev',
     ],
     classifiers=[
