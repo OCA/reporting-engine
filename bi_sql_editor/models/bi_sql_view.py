@@ -62,7 +62,6 @@ class BiSQLView(models.Model):
     ]
 
     technical_name = fields.Char(
-        string="Technical Name",
         required=True,
         help="Suffix of the SQL view. SQL full name will be computed and"
         " prefixed by 'x_bi_sql_view_'. Syntax should follow: "
@@ -71,7 +70,6 @@ class BiSQLView(models.Model):
     )
 
     view_name = fields.Char(
-        string="View Name",
         compute="_compute_view_name",
         readonly=True,
         store=True,
@@ -79,7 +77,6 @@ class BiSQLView(models.Model):
     )
 
     model_name = fields.Char(
-        string="Model Name",
         compute="_compute_model_name",
         readonly=True,
         store=True,
@@ -104,7 +101,6 @@ class BiSQLView(models.Model):
     state = fields.Selection(selection_add=_STATE_SQL_EDITOR)
 
     view_order = fields.Char(
-        string="View Order",
         required=True,
         readonly=False,
         states={"ui_valid": [("readonly", True)]},
@@ -134,12 +130,9 @@ class BiSQLView(models.Model):
         states={"draft": [("readonly", False)], "sql_valid": [("readonly", False)]},
     )
 
-    computed_action_context = fields.Text(
-        compute="_compute_computed_action_context", string="Computed Action Context"
-    )
+    computed_action_context = fields.Text(compute="_compute_computed_action_context")
 
     action_context = fields.Text(
-        string="Action Context",
         default="{}",
         readonly=True,
         help="Define here a context that will be used"
@@ -405,7 +398,8 @@ class BiSQLView(models.Model):
         for group in self.group_ids:
             res.append(
                 {
-                    "name": _("%s Access %s") % (self.model_name, group.full_name),
+                    "name": _("%(model_name)s Access %(full_name)s")
+                    % {"model_name": self.model_name, "full_name": group.full_name},
                     "model_id": self.model_id.id,
                     "group_id": group.id,
                     "perm_read": True,
@@ -565,9 +559,16 @@ class BiSQLView(models.Model):
                 sql_view._refresh_size()
             except ProgrammingError as e:
                 raise UserError(
-                    _("SQL Error while creating %s VIEW %s :\n %s")
-                    % (sql_view.materialized_text, sql_view.view_name, str(e))
-                )
+                    _(
+                        "SQL Error while creating %(materialized_text)s"
+                        " VIEW %(view_name)s :\n %(error)s"
+                    )
+                    % {
+                        "materialized_text": sql_view.materialized_text,
+                        "view_name": sql_view.view_name,
+                        "error": str(e),
+                    }
+                ) from e
 
     def _create_index(self):
         for sql_view in self:
@@ -575,8 +576,12 @@ class BiSQLView(models.Model):
                 lambda x: x.is_index is True
             ):
                 self._log_execute(
-                    "CREATE INDEX %s ON %s (%s);"
-                    % (sql_field.index_name, sql_view.view_name, sql_field.name)
+                    "CREATE INDEX %(index_name)s ON %(view_name)s (%(field_name)s);"
+                    % {
+                        "index_name": sql_field.index_name,
+                        "view_name": sql_view.view_name,
+                        "field_name": sql_field.name,
+                    }
                 )
 
     def _create_model_and_fields(self):
