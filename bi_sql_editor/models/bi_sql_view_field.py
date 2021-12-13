@@ -56,7 +56,7 @@ class BiSQLViewField(models.Model):
         ("max", "Maximum"),
     ]
 
-    name = fields.Char(string="Name", required=True, readonly=True)
+    name = fields.Char(required=True, readonly=True)
 
     sql_type = fields.Char(
         string="SQL Type", required=True, readonly=True, help="SQL Type in the database"
@@ -69,7 +69,6 @@ class BiSQLViewField(models.Model):
     )
 
     is_index = fields.Boolean(
-        string="Is Index",
         help="Check this box if you want to create"
         " an index on that field. This is recommended for searchable and"
         " groupable fields, to reduce duration",
@@ -81,19 +80,17 @@ class BiSQLViewField(models.Model):
         " a 'group by' option in the search view",
     )
 
-    index_name = fields.Char(string="Index Name", compute="_compute_index_name")
+    index_name = fields.Char(ompute="_compute_index_name")
 
-    graph_type = fields.Selection(string="Graph Type", selection=_GRAPH_TYPE_SELECTION)
+    graph_type = fields.Selection(selection=_GRAPH_TYPE_SELECTION)
 
     tree_visibility = fields.Selection(
-        string="Tree Visibility",
         selection=_TREE_VISIBILITY_SELECTION,
         default="available",
         required=True,
     )
 
     field_description = fields.Char(
-        string="Field Description",
         help="This will be used as the name" " of the Odoo field, displayed for users",
     )
 
@@ -122,7 +119,6 @@ class BiSQLViewField(models.Model):
     )
 
     group_operator = fields.Selection(
-        string="Group Operator",
         selection=_GROUP_OPERATOR_SELECTION,
         help="By default, Odoo will sum the values when grouping. If you wish "
         "to alter the behaviour, choose an alternate Group Operator",
