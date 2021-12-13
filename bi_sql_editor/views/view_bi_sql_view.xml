@@ -129,6 +129,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 nolabel="1"
                                 colspan="4"
                                 attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                widget="ace"
                             />
                         </page>
                         <page
