@@ -11,10 +11,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
         <field
             name="query"
         ><![CDATA[
-                    SELECT *
-                    FROM unexisting_table
-                    ORDER BY unexisting_field
-                    ]]>
+            SELECT *
+            FROM unexisting_table
+            ORDER BY unexisting_field
+            ]]>
             </field>
     </record>
     <record id="partner_sql_view" model="bi.sql.view">
@@ -23,13 +23,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
         <field
             name="query"
         ><![CDATA[
-                                    SELECT
-                                        name as x_name,
-                                        street as x_street,
-                                        company_id as x_company_id
-                                    FROM res_partner
-                                    ORDER BY name
-                                    ]]>
+            SELECT
+                name as x_name,
+                street as x_street,
+                company_id as x_company_id
+            FROM res_partner
+            ORDER BY name
+            ]]>
             </field>
     </record>
     <record id="module_sql_view" model="bi.sql.view">
@@ -39,14 +39,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
         <field
             name="query"
         ><![CDATA[
-                                SELECT
-                                    name as x_name,
-                                    case
-                                        when author ilike '%OpenERP SA%' THEN 'Odoo SA'
-                                        when author ilike '%Odoo Community Association (OCA)%' THEN 'OCA'
-                                       else 'Undefined Author' END as x_author_type
-                                FROM ir_module_module
-                                ]]>
+            SELECT
+                name as x_name,
+                case
+                    when author ilike '%OpenERP SA%' THEN 'Odoo SA'
+                    when author ilike '%Odoo Community Association (OCA)%' THEN 'OCA'
+                    else 'Undefined Author' END as x_author_type
+            FROM ir_module_module
+            ]]>
             </field>
     </record>
     <function

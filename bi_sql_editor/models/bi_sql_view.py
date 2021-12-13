@@ -526,7 +526,7 @@ class BiSQLView(models.Model):
             return self.name
         return "{} ({})".format(
             self.name,
-            datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")),
+            datetime.utcnow().strftime("%m/%d/%Y %H:%M:%S UTC"),
         )
 
     def _prepare_menu(self):
