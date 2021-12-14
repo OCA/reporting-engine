@@ -18,8 +18,8 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _instanciate(self, model_data):
-    """ Return a class for the custom model given by
-    parameters ``model_data``. """
+    """Return a class for the custom model given by
+    parameters ``model_data``."""
     # This monkey patch is meant to avoid create/search tables for those
     # materialized views. Doing "super" doesn't work.
     class CustomModel(models.Model):
@@ -243,7 +243,7 @@ class BiSQLView(models.Model):
 
     # Overload Section
     def write(self, vals):
-        res = super(BiSQLView, self).write(vals)
+        res = super().write(vals)
         if vals.get("sequence", False):
             for rec in self.filtered(lambda x: x.menu_id):
                 rec.menu_id.sequence = rec.sequence
@@ -257,7 +257,9 @@ class BiSQLView(models.Model):
                     "If you want to delete them, first set them to draft."
                 )
             )
-        return super(BiSQLView, self).unlink()
+        if self.mapped("cron_id"):
+            self.mapped("cron_id").unlink()
+        return super().unlink()
 
     def copy(self, default=None):
         self.ensure_one()
@@ -268,15 +270,11 @@ class BiSQLView(models.Model):
                 "technical_name": "%s_copy" % self.technical_name,
             }
         )
-        return super(BiSQLView, self).copy(default=default)
+        return super().copy(default=default)
 
     # Action Section
     def button_create_sql_view_and_model(self):
-        for sql_view in self:
-            if sql_view.state != "sql_valid":
-                raise UserError(
-                    _("You can only process this action on SQL Valid items")
-                )
+        for sql_view in self.filtered(lambda x: x.state == "sql_valid"):
             # Create ORM and access
             sql_view._create_model_and_fields()
             sql_view._create_model_access()
@@ -286,31 +284,36 @@ class BiSQLView(models.Model):
             sql_view._create_index()
 
             if sql_view.is_materialized:
-                sql_view.cron_id = (
-                    self.env["ir.cron"].create(sql_view._prepare_cron()).id
-                )
+                if not sql_view.cron_id:
+                    sql_view.cron_id = (
+                        self.env["ir.cron"].create(sql_view._prepare_cron()).id
+                    )
+                else:
+                    sql_view.cron_id.active = True
             sql_view.state = "model_valid"
 
     def button_set_draft(self):
-        for sql_view in self:
+        for sql_view in self.filtered(lambda x: x.state != "draft"):
             sql_view.menu_id.unlink()
             sql_view.action_id.unlink()
             sql_view.tree_view_id.unlink()
             sql_view.graph_view_id.unlink()
             sql_view.pivot_view_id.unlink()
             sql_view.search_view_id.unlink()
-            if sql_view.cron_id:
-                sql_view.cron_id.unlink()
 
             if sql_view.state in ("model_valid", "ui_valid"):
                 # Drop SQL View (and indexes by cascade)
                 if sql_view.is_materialized:
                     sql_view._drop_view()
 
+                if sql_view.cron_id:
+                    sql_view.cron_id.active = False
+
                 # Drop ORM
                 sql_view._drop_model_and_fields()
 
-            sql_view.write({"state": "draft", "has_group_changed": False})
+            sql_view.has_group_changed = False
+            super(BiSQLView, sql_view).button_set_draft()
 
     def button_create_ui(self):
         self.tree_view_id = self.env["ir.ui.view"].create(self._prepare_tree_view()).id
@@ -378,7 +381,7 @@ class BiSQLView(models.Model):
         return res
 
     def _prepare_cron(self):
-        self.ensure_one()
+        now = datetime.now()
         return {
             "name": _("Refresh Materialized View %s") % self.view_name,
             "user_id": SUPERUSER_ID,
@@ -388,6 +391,10 @@ class BiSQLView(models.Model):
             "state": "code",
             "code": "model._refresh_materialized_view_cron(%s)" % self.ids,
             "numbercall": -1,
+            "interval_number": 1,
+            "interval_type": "days",
+            "nextcall": datetime(now.year, now.month, now.day + 1),
+            "active": True,
         }
 
     def _prepare_rule(self):
@@ -609,7 +616,7 @@ class BiSQLView(models.Model):
         the database structure is done, to know fields type."""
         self.ensure_one()
         sql_view_field_obj = self.env["bi.sql.view.field"]
-        columns = super(BiSQLView, self)._check_execution()
+        columns = super()._check_execution()
         field_ids = []
         for column in columns:
             existing_field = self.bi_sql_view_field_ids.filtered(

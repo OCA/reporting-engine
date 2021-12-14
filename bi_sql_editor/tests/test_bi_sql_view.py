@@ -84,6 +84,13 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         with self.assertRaises(UserError):
             self.view.unlink()
         self.view.button_set_draft()
+
+        self.assertNotEqual(
+            self.view.cron_id,
+            False,
+            "Set to draft materialized view should" " not unlink cron",
+        )
+
         self.view.unlink()
         res = self.bi_sql_view.search([("name", "=", "Partners View 2")])
         self.assertEqual(len(res), 0, "View not deleted")
