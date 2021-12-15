@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<data>
     <!-- FORM: report.paperformat -->
     <record id="paperformat_view_form_custom" model="ir.ui.view">
         <field name="name">paperformat with custom parameters</field>
@@ -17,5 +18,5 @@
 
         </field>
     </record>
-
+</data>
 </odoo>
