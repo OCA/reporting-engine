@@ -32,7 +32,8 @@ class Paper(models.Model):
             """
             contenthtml = [tuple([1, sample_html])]
             content = self.env['report']._run_wkhtmltopdf(
-                [], [], contenthtml, False, paperformat, False, False, False)
+                [], [], contenthtml, False, paperformat, False, False)
+
             if not content:
                 raise ValidationError(_(
                     "Failed to create a PDF using the provided parameters."))
