@@ -31,3 +31,10 @@ Configure dashboards
 #. Append elements on KPIs
 #. You can preview the element using the dashboard view
 #. You can create the menu entry directly using the `Generate menu` button
+
+
+Precisions Regarding KPI
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Potential full replacement of the KPI module. See https://github.com/OCA/reporting-engine/issues/520
+
