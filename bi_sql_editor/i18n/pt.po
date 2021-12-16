@@ -21,24 +21,28 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:475
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:484
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:243
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:245
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (Cópia)"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:348
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:353
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Acesso %s"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:376
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:385
 #, python-format
 msgid "Access %s"
 msgstr "Acesso %s"
@@ -165,11 +169,11 @@ msgid ""
 "False)]."
 msgstr ""
 "Defina aqui a restrição de acesso aos dados.\n"
-" Certifique-se de usar o nome do campo prefixado com um 'x_'. Uma regra "
-"'ir.rule' global será criada. Uma regra típica de Multi Empresa é, por "
+" Certifique-se de usar o nome do campo prefixado com um 'x_'. Uma regra 'ir."
+"rule' global será criada. Uma regra típica de Multi Empresa é, por "
 "exemplo, \n"
-" ['|', ('x_company_id','child_of', [user.company_id."
-"id]),('x_company_id','=',False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -220,8 +224,8 @@ msgid ""
 msgstr ""
 "Para campo Odoo 'Seleção'.\n"
 " Lista de opções, especificada como uma expressão Python que define uma "
-"lista de pares (chave, etiqueta). Por exemplo: [('azul', 'Azul'), ("
-"'amarelo', 'Amarelo')]"
+"lista de pares (chave, etiqueta). Por exemplo: [('azul', 'Azul'), "
+"('amarelo', 'Amarelo')]"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__model_name
@@ -321,6 +325,7 @@ msgstr "Nome"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:629
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:638
 #, python-format
 msgid ""
 "No Column was found.\n"
@@ -402,6 +407,7 @@ msgstr "Refrescar Vista Materializada"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:363
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:368
 #, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Refrescar Vista Materializada %s"
@@ -418,6 +424,7 @@ msgstr "Definição de Regra"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:508
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:517
 #, python-format
 msgid ""
 "SQL Error while creating %s VIEW %s :\n"
