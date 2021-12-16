@@ -54,7 +54,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="name" attrs="{'readonly': [('state','!=','draft')]}" colspan="4"/>
                     </h1>
                     <group>
-                        <group>
+                        <group col="4">
                             <group>
                                 <field name="technical_name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="view_name"/>
@@ -64,6 +64,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     attrs="{'invisible': ['|', ('state', '=', 'draft'), ('is_materialized', '=', False)]}"/>
                                     <field name="cron_id"
                                         attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"/>
+                            </group>
+                            <group string="Options">
+                                <field name="option_context_field"/>
                             </group>
                         </group>
                     </group>
@@ -94,6 +97,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="is_group_by" attrs="{'invisible': [('field_description', '=', False)]}"/>
                                     <field name="graph_type" attrs="{'invisible': [('field_description', '=', False)]}"/>
                                     <field name="tree_visibility" attrs="{'invisible': [('field_description', '=', False)]}"/>
+                                    <field name="field_context"
+                                        attrs="{
+                                            'invisible': [('field_description', '=', False)],
+                                            'column_invisible': [('parent.option_context_field', '=', False)],
+                                    }"/>
                                 </tree>
                             </field>
                         </page>

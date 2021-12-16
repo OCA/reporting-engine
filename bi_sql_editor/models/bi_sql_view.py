@@ -177,6 +177,11 @@ class BiSQLView(models.Model):
 
     sequence = fields.Integer(string='sequence')
 
+    option_context_field = fields.Boolean(
+        string='Use Context Field',
+        default=False,
+    )
+
     # Constrains Section
     @api.constrains('is_materialized')
     @api.multi
