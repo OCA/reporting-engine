@@ -20,28 +20,24 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:475
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:484
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:243
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:245
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (kopija)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:348
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:353
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Dostop %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:376
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:385
 #, python-format
 msgid "Access %s"
@@ -320,7 +316,6 @@ msgid "Name"
 msgstr "Naziv"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:629
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:638
 #, python-format
 msgid ""
@@ -403,7 +398,6 @@ msgid "Refresh Materialized View"
 msgstr "Osveži materializirani prikaz"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:363
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:368
 #, python-format
 msgid "Refresh Materialized View %s"
@@ -420,7 +414,6 @@ msgid "Rule Definition"
 msgstr "Definicija pravila"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:508
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:517
 #, python-format
 msgid ""
@@ -626,12 +619,6 @@ msgid "You can not create indexes on non materialized views"
 msgstr "Cron opravilo, ki bo osvežilo materializirani prikaz"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:253
-#, python-format
-msgid "You can only process this action on SQL Valid items"
-msgstr "To dejanje lahko obdelate le na SQL veljavnih postavkah"
-
-#. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #, python-format
 msgid ""
@@ -694,6 +681,9 @@ msgstr "sequence"
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
 msgstr "osvežitev materializiranega prikaza"
+
+#~ msgid "You can only process this action on SQL Valid items"
+#~ msgstr "To dejanje lahko obdelate le na SQL veljavnih postavkah"
 
 #~ msgid "You can only unlink draft views"
 #~ msgstr "Razvezujete lahko le osnutke prikazov"

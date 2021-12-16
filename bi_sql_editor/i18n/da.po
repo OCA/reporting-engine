@@ -20,28 +20,24 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:475
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:484
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr "%m/%d/%Y %H:%M:%S UTC"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:243
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:245
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (Kopi)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:348
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:353
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Adgang %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:376
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:385
 #, python-format
 msgid "Access %s"
@@ -309,7 +305,6 @@ msgid "Name"
 msgstr "Navn"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:629
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:638
 #, python-format
 msgid ""
@@ -389,7 +384,6 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:363
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:368
 #, python-format
 msgid "Refresh Materialized View %s"
@@ -406,7 +400,6 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:508
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:517
 #, python-format
 msgid ""
@@ -597,12 +590,6 @@ msgstr "Visninger, handling og model oprettet"
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
 #, python-format
 msgid "You can not create indexes on non materialized views"
-msgstr ""
-
-#. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:253
-#, python-format
-msgid "You can only process this action on SQL Valid items"
 msgstr ""
 
 #. module: bi_sql_editor

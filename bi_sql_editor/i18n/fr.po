@@ -20,28 +20,24 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:475
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:484
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr "%d/%m/%Y %H:%M:%S UTC"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:243
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:245
 #, python-format
 msgid "%s (Copy)"
 msgstr "%s (Copie)"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:348
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:353
 #, python-format
 msgid "%s Access %s"
 msgstr "%s Accès %s"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:376
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:385
 #, python-format
 msgid "Access %s"
@@ -327,7 +323,6 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:629
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:638
 #, python-format
 msgid ""
@@ -409,7 +404,6 @@ msgid "Refresh Materialized View"
 msgstr "Rafraichir la vue matérialisée"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:363
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:368
 #, python-format
 msgid "Refresh Materialized View %s"
@@ -426,7 +420,6 @@ msgid "Rule Definition"
 msgstr "Définition de règle"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:508
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:517
 #, python-format
 msgid ""
@@ -639,12 +632,6 @@ msgid "You can not create indexes on non materialized views"
 msgstr "Vous ne pouvez pas créer d'index sur des vues non matérialisées"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:253
-#, python-format
-msgid "You can only process this action on SQL Valid items"
-msgstr "Vous pouvez seulement réaliser cette action sur des items SQL valides"
-
-#. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #, python-format
 msgid ""
@@ -709,6 +696,10 @@ msgstr "séquence"
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
 msgstr "Cela va rafraichir la vue matérialisée"
+
+#~ msgid "You can only process this action on SQL Valid items"
+#~ msgstr ""
+#~ "Vous pouvez seulement réaliser cette action sur des items SQL valides"
 
 #~ msgid "bi.sql.view.field"
 #~ msgstr "bi.sql.view.field"
