@@ -19,28 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:484
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:515
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:245
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:273
 #, python-format
 msgid "%s (Copy)"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:353
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:381
 #, python-format
 msgid "%s Access %s"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:385
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:413
 #, python-format
 msgid "Access %s"
@@ -313,7 +309,6 @@ msgid "Name"
 msgstr "Név"
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:638
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:669
 #, python-format
 msgid ""
@@ -367,7 +362,6 @@ msgid "Odoo Tree View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:191
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:196
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
@@ -394,7 +388,6 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:368
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:396
 #, python-format
 msgid "Refresh Materialized View %s"
@@ -411,7 +404,6 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:517
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:548
 #, python-format
 msgid ""
@@ -595,7 +587,6 @@ msgid "Views, Action and Menu Created"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:181
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:186
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:110
 #, python-format
@@ -603,7 +594,6 @@ msgid "You can not create indexes on non materialized views"
 msgstr ""
 
 #. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:234
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:262
 #, python-format
 msgid ""
