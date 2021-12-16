@@ -127,6 +127,12 @@ class BiSQLViewField(models.Model):
         "to alter the behaviour, choose an alternate Group Operator",
     )
 
+    field_context = fields.Char(
+        default="{}",
+        help="Context value that will be inserted for this field in all the views."
+        " Important note : please write a context with single quote.",
+    )
+
     # Constrains Section
     @api.constrains("is_index")
     def _check_index_materialized(self):
@@ -231,22 +237,34 @@ class BiSQLViewField(models.Model):
         elif self.tree_visibility == "optional_show":
             visibility_text = 'option="show"'
 
-        return f"""<field name="{self.name}" {visibility_text}/>\n"""
+        return (
+            f"""<field name="{self.name}" {visibility_text} """
+            f""" context="{self.field_context}"/>\n"""
+        )
 
     def _prepare_graph_field(self):
         self.ensure_one()
         if not self.graph_type:
             return ""
-        return f"""<field name="{self.name}" type="{self.graph_type}" />\n"""
+        return (
+            f"""<field name="{self.name}" type="{self.graph_type}" """
+            f""" context="{self.field_context}"/>\n"""
+        )
 
     def _prepare_pivot_field(self):
         self.ensure_one()
         graph_type_text = self.graph_type and f'type="{self.graph_type}"' or ""
-        return f"""<field name="{self.name}" {graph_type_text} />\n"""
+        return (
+            f"""<field name="{self.name}" {graph_type_text} """
+            f"""context="{self.field_context}"/>\n"""
+        )
 
     def _prepare_search_field(self):
         self.ensure_one()
-        return """<field name="{}"/>\n""".format(self.name)
+        return """<field name="{}" context="{}"/>\n""".format(
+            self.name,
+            self.field_context,
+        )
 
     def _prepare_search_filter_field(self):
         self.ensure_one()
