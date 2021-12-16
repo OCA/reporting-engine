@@ -11,11 +11,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="bi_sql_editor.view_bi_sql_view_form" />
         <field name="arch" type="xml">
             <notebook position="inside">
-                <page string="Server actions" attrs="{'invisible': [('state', 'in', ['draft', 'sql_valid'])]}">
-                    <field name="server_action_ids"
-                           nolabel="1"
-                           colspan="4"
-                           context="{'default_model_id': model_id}"/>
+                <page
+                    string="Server actions"
+                    attrs="{'invisible': [('state', 'in', ['draft', 'sql_valid'])]}"
+                >
+                    <field
+                        name="server_action_ids"
+                        nolabel="1"
+                        colspan="4"
+                        context="{'default_model_id': model_id}"
+                    />
                 </page>
             </notebook>
         </field>
