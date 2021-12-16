@@ -168,6 +168,12 @@ class BiSQLView(models.Model):
 
     sequence = fields.Integer(string="sequence")
 
+    option_context_field = fields.Boolean(
+        string="Use Context Field",
+        help="Check this box if you want to add a context column in the field list view."
+        " Custom Context will be inserted in the created views.",
+    )
+
     # Constrains Section
     @api.constrains("is_materialized")
     def _check_index_materialized(self):
