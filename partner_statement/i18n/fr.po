@@ -21,6 +21,18 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#, python-format
+msgid "%sStatement between %s and %s in %s"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "%sStatement up to %s in %s"
+msgstr ""
+
+#. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "1 - 30 Days"
@@ -75,6 +87,49 @@ msgid "91 - 120 Days"
 msgstr "91-120 Jours"
 
 #. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
+msgid ""
+"<span class=\"o_form_label\">Aging details can be shown in the report, "
+"expressed in aging\n"
+"        buckets, so the partner can review how much is open, due or "
+"overdue.\n"
+"                    </span>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
+msgid ""
+"<span class=\"o_form_label\">The activity statement provides details of all "
+"activity on\n"
+"                    a partner's receivables and payables between two "
+"selected dates. This includes all invoices,\n"
+"                    refunds and payments. Any outstanding balance dated "
+"prior to the chosen statement\n"
+"                    period will appear as a forward balance at the top of "
+"the statement. The list is\n"
+"                    displayed in chronological order and is split by "
+"currencies.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
+msgid ""
+"<span class=\"o_form_label\">The outstanding statement provides details of "
+"all partner's outstanding\n"
+"        receivables and payables up to a particular date. This includes all "
+"unpaid invoices, unclaimed\n"
+"        refunds and outstanding payments. The list is displayed in "
+"chronological order and is\n"
+"        split by currencies.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
+msgstr ""
+
+#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "<strong>Date:</strong>"
@@ -107,7 +162,10 @@ msgid "Account type"
 msgstr "Type de compte"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: model:ir.actions.report,name:partner_statement.action_print_activity_statement
+#: model:ir.actions.report,name:partner_statement.action_print_activity_statement_html
+#, python-format
 msgid "Activity Statement"
 msgstr "Relevé de compte"
 
@@ -115,6 +173,16 @@ msgstr "Relevé de compte"
 #: model:ir.model,name:partner_statement.model_activity_statement_wizard
 msgid "Activity Statement Wizard"
 msgstr "Assistant d'édition de relevé de compte"
+
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_report_p_s_report_activity_statement_xlsx
+msgid "Activity Statement XLSL Report"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.actions.report,name:partner_statement.action_print_activity_statement_xlsx
+msgid "Activity Statement XLSX"
+msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
@@ -151,14 +219,11 @@ msgid "Aging Report at"
 msgstr "Relevé des arriérés au"
 
 #. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
-msgid ""
-"Aging details can be shown in the report, expressed in aging         "
-"buckets, so the partner can review how much is open, due or overdue."
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Aging Report at %s in %s"
 msgstr ""
-"Le détail des arriérés peut être affiché dans le rapport, exprimé par "
-"tranche, de telle sorte que le destinataire puisse voir combien est ouvert, "
-"dû ou échu."
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -166,13 +231,18 @@ msgid "Amount"
 msgstr "Montant"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Balance"
 msgstr "Solde"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
+#, python-format
 msgid "Balance Forward"
 msgstr "Solde reporté"
 
@@ -212,8 +282,11 @@ msgid "Current"
 msgstr "Actuel"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Date"
 msgstr "Date"
 
@@ -230,16 +303,29 @@ msgid "Date Start"
 msgstr "À partir du"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Date:"
+msgstr "Date :"
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Description"
 msgstr "Description"
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__display_name
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__display_name
 msgid "Display Name"
@@ -253,7 +339,9 @@ msgid "Don't show partners with no due entries"
 msgstr "Masquer les partenaires sans soldes ouverts"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Due Date"
 msgstr "Date d'échéance"
 
@@ -268,8 +356,11 @@ msgid "Enable OCA Outstanding Statements"
 msgstr "Activer le relevé des arriérés OCA"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Ending Balance"
 msgstr "Solde final"
 
@@ -292,10 +383,18 @@ msgid "Export PDF"
 msgstr "Exporter en PDF"
 
 #. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
+msgid "Export XLSX"
+msgstr ""
+
+#. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__id
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__id
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx__id
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx__id
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__id
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__id
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__id
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common__id
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__id
 msgid "ID"
@@ -304,8 +403,11 @@ msgstr "ID"
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement____last_update
+#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard____last_update
 msgid "Last Modified on"
@@ -344,17 +446,25 @@ msgid "Older"
 msgstr "Antérieur"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Open Amount"
 msgstr "Montant ouvert"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
+#, python-format
 msgid "Original"
 msgstr "Original"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement
+#: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement_html
+#, python-format
 msgid "Outstanding Statement"
 msgstr "Relevé des arriérés"
 
@@ -362,6 +472,16 @@ msgstr "Relevé des arriérés"
 #: model:ir.model,name:partner_statement.model_outstanding_statement_wizard
 msgid "Outstanding Statement Wizard"
 msgstr "Assistant d'édition de relevé des arriérés"
+
+#. module: partner_statement
+#: model:ir.model,name:partner_statement.model_report_p_s_report_outstanding_statement_xlsx
+msgid "Outstanding Statement XLSL Report"
+msgstr ""
+
+#. module: partner_statement
+#: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement_xlsx
+msgid "Outstanding Statement XLSX"
+msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
@@ -401,6 +521,13 @@ msgid "Receivable"
 msgstr "Recevable"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Reference Number"
+msgstr ""
+
+#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Reference number"
@@ -430,10 +557,31 @@ msgid "Statement between"
 msgstr "Relevé de compte entre"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Statement from:"
+msgstr ""
+
+#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
 msgid "Statement of Account"
 msgstr "Export du relevé de compte"
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Statement of Account from %s"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Statement to:"
+msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
@@ -444,37 +592,6 @@ msgstr "Export du relevé de compte"
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "Supplier"
 msgstr "Fournisseur"
-
-#. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
-msgid ""
-"The activity statement provides details of all activity "
-"on                     a partner's receivables and payables between two "
-"selected dates. This includes all invoices,                     refunds and "
-"payments. Any outstanding balance dated prior to the chosen "
-"statement                     period will appear as a forward balance at the "
-"top of the statement. The list is                     displayed in "
-"chronological order and is split by currencies."
-msgstr ""
-"Le relevé de compte présente le détail des activités des débiteurs ou "
-"créanciers entre deux dates choisies. Ceci inclus toute facture, note de "
-"crédit ou paiement. Si un solde ouvert est préalable à la date de début du "
-"relevé, il sera affiché comme un solde reporté en haut du relevé. Les "
-"transactions sont présentées par ordre chronologique et ventilées par devise."
-
-#. module: partner_statement
-#: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
-msgid ""
-"The outstanding statement provides details of all partner's "
-"outstanding         receivables and payables up to a particular date. This "
-"includes all unpaid invoices, unclaimed         refunds and outstanding "
-"payments. The list is displayed in chronological order and is         split "
-"by currencies."
-msgstr ""
-"Le relevé de compte des arriérés présente le détail des arriérés des "
-"débiteurs ou créanciers jusqu'à une date choisie. Ceci inclus toute facture, "
-"note de crédit ou paiement échues. La liste est affichée par ordre "
-"chronologique et divisée par devise."
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
@@ -493,6 +610,18 @@ msgid "Use outstanding statements"
 msgstr "Utiliser le relevé des arriérés"
 
 #. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "VAT:"
+msgstr ""
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
+msgid "View"
+msgstr ""
+
+#. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "and"
 msgstr "et"
@@ -509,6 +638,42 @@ msgstr "en"
 msgid "or"
 msgstr "ou"
 
+#~ msgid ""
+#~ "Aging details can be shown in the report, expressed in aging         "
+#~ "buckets, so the partner can review how much is open, due or overdue."
+#~ msgstr ""
+#~ "Le détail des arriérés peut être affiché dans le rapport, exprimé par "
+#~ "tranche, de telle sorte que le destinataire puisse voir combien est "
+#~ "ouvert, dû ou échu."
+
+#~ msgid ""
+#~ "The activity statement provides details of all activity "
+#~ "on                     a partner's receivables and payables between two "
+#~ "selected dates. This includes all invoices,                     refunds "
+#~ "and payments. Any outstanding balance dated prior to the chosen "
+#~ "statement                     period will appear as a forward balance at "
+#~ "the top of the statement. The list is                     displayed in "
+#~ "chronological order and is split by currencies."
+#~ msgstr ""
+#~ "Le relevé de compte présente le détail des activités des débiteurs ou "
+#~ "créanciers entre deux dates choisies. Ceci inclus toute facture, note de "
+#~ "crédit ou paiement. Si un solde ouvert est préalable à la date de début "
+#~ "du relevé, il sera affiché comme un solde reporté en haut du relevé. Les "
+#~ "transactions sont présentées par ordre chronologique et ventilées par "
+#~ "devise."
+
+#~ msgid ""
+#~ "The outstanding statement provides details of all partner's "
+#~ "outstanding         receivables and payables up to a particular date. "
+#~ "This includes all unpaid invoices, unclaimed         refunds and "
+#~ "outstanding payments. The list is displayed in chronological order and "
+#~ "is         split by currencies."
+#~ msgstr ""
+#~ "Le relevé de compte des arriérés présente le détail des arriérés des "
+#~ "débiteurs ou créanciers jusqu'à une date choisie. Ceci inclus toute "
+#~ "facture, note de crédit ou paiement échues. La liste est affichée par "
+#~ "ordre chronologique et divisée par devise."
+
 #~ msgid "Payment"
 #~ msgstr "Paiement"
 
@@ -520,9 +685,6 @@ msgstr "ou"
 
 #~ msgid "Balance Due"
 #~ msgstr "Solde dû"
-
-#~ msgid "Date:"
-#~ msgstr "Date :"
 
 #~ msgid "Partner ref:"
 #~ msgstr "Réf. partenaire :"
