@@ -69,7 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </group>
                     <notebook>
                         <page string="SQL Query">
-                            <field name="query" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="query" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'draft')]}" widget="ace"/>
                         </page>
                         <page string="SQL Fields" attrs="{'invisible': [('state', '=', 'draft')]}">
                             <field name="bi_sql_view_field_ids" nolabel="1" colspan="4" attrs="{'readonly': [('state', '!=', 'sql_valid')]}">
