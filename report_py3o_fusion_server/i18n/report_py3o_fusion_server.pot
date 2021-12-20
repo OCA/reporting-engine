@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -164,7 +164,9 @@ msgid "Display Document Title"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__display_name
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__display_name
 msgid "Display Name"
 msgstr ""
@@ -296,7 +298,9 @@ msgid "High Resolution"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__id
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report__id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__id
 msgid "ID"
 msgstr ""
@@ -351,7 +355,9 @@ msgid "JPEG Compression"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options____last_update
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server____last_update
 msgid "Last Modified on"
 msgstr ""
