@@ -67,7 +67,6 @@
                 </table>
             </field>
             <field name="auto_delete" eval="True" />
-            <field name="user_signature" eval="False" />
         </record>
     </data>
 </odoo>
