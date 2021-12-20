@@ -7,16 +7,14 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
-from odoo.addons.queue_job.job import job
-
 # Define all supported report_type
 REPORT_TYPES_FUNC = {
-    "qweb-pdf": "render_qweb_pdf",
-    "qweb-text": "render_qweb_text",
-    "qweb-xml": "render_qweb_xml",
-    "csv": "render_csv",
+    "qweb-pdf": "_render_qweb_pdf",
+    "qweb-text": "_render_qweb_text",
+    "qweb-xml": "_render_qweb_xml",
+    "csv": "_render_csv",
     "excel": "render_excel",
-    "xlsx": "render_xlsx",
+    "xlsx": "_render_xlsx",
 }
 
 
@@ -106,7 +104,7 @@ class ReportAsync(models.Model):
     def run_now(self):
         self.ensure_one()
         action = self.env.ref(self.action_id.xml_id)
-        result = action.read()[0]
+        result = action.sudo().read()[0]
         ctx = safe_eval(result.get("context", {}))
         ctx.update({"async_process": False})
         result["context"] = ctx
@@ -117,7 +115,7 @@ class ReportAsync(models.Model):
         if not self.allow_async:
             raise UserError(_("Background process not allowed."))
         action = self.env.ref(self.action_id.xml_id)
-        result = action.read()[0]
+        result = action.sudo().read()[0]
         ctx = safe_eval(result.get("context", {}))
         ctx.update({"async_process": True})
         result["context"] = ctx
@@ -126,20 +124,19 @@ class ReportAsync(models.Model):
     def view_files(self):
         self.ensure_one()
         action = self.env.ref("report_async.action_view_files")
-        result = action.read()[0]
+        result = action.sudo().read()[0]
         result["domain"] = [("id", "in", self.file_ids.ids)]
         return result
 
     def view_jobs(self):
         self.ensure_one()
         action = self.env.ref("queue_job.action_queue_job")
-        result = action.read()[0]
+        result = action.sudo().read()[0]
         result["domain"] = [("id", "in", self.job_ids.ids)]
         result["context"] = {}
         return result
 
     @api.model
-    @job
     def run_report(self, docids, data, report_id, user_id):
         report = self.env["ir.actions.report"].browse(report_id)
         func = REPORT_TYPES_FUNC[report.report_type]

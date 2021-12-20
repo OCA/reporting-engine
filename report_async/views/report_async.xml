@@ -5,7 +5,7 @@
         <field name="model">report.async</field>
         <field name="arch" type="xml">
             <tree string="Report Center">
-                <field name="action_id" />
+                <field name="action_id" context="{'access_sudo': True}" />
                 <button type="object" name="run_now" string="Run Now" icon="fa-bolt" />
                 <button
                     type="object"
@@ -110,6 +110,7 @@
                             <field
                                 name="action_id"
                                 options="{'no_open': True, 'no_create_edit': True}"
+                                context="{'access_sudo': True}"
                             />
                             <field name="allow_async" />
                             <field
