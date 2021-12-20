@@ -22,6 +22,9 @@ class IrActionReport(models.Model):
     def render_py3o(self, res_ids, data):
         certificate = self._certificate_get(res_ids)
         content, filetype = super().render_py3o(res_ids, data)
+        # don't try to sign if report in attachment
+        if self.attachment_use and self._get_attachments(res_ids):
+            return content, filetype
         signed = ""
         if certificate:
             # Creating temporary origin PDF
