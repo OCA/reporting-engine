@@ -3,3 +3,4 @@
 
 from . import report_async
 from . import ir_report
+from . import ir_actions

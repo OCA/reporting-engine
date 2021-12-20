@@ -1,0 +1,6 @@
+<odoo noupdate="1">
+    <record id="job_function_report_async_run_report" model="queue.job.function">
+        <field name="model_id" ref="report_async.model_report_async" />
+        <field name="method">run_report</field>
+    </record>
+</odoo>
