@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo14-addon-bi_view_editor',
         'odoo14-addon-kpi_dashboard',
         'odoo14-addon-report_py3o',
+        'odoo14-addon-report_py3o_fusion_server',
         'odoo14-addon-report_qr',
         'odoo14-addon-report_qweb_element_page_visibility',
         'odoo14-addon-report_qweb_encrypt',
