@@ -55,7 +55,7 @@ class KpiKpi(models.Model):
         inverse_name="kpi_id",
         help="Actions that can be opened from the KPI",
     )
-    code = fields.Text("Code")
+    code = fields.Text()
     store_history = fields.Boolean()
     store_history_interval = fields.Selection(
         selection=lambda self: self.env["ir.cron"]._fields["interval_type"].selection,
@@ -122,9 +122,11 @@ class KpiKpi(models.Model):
         notifications = []
         for dashboard_item in self.dashboard_item_ids:
             channel = "kpi_dashboard_%s" % dashboard_item.dashboard_id.id
-            notifications.append([channel, dashboard_item._read_dashboard()])
+            notifications.append(
+                [self.env.user, channel, dashboard_item._read_dashboard()]
+            )
         if notifications:
-            self.env["bus.bus"].sendmany(notifications)
+            self.env["bus.bus"]._sendmany(notifications)
 
     def _compute_value_function(self):
         obj = self
