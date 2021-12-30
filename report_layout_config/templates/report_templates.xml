@@ -85,25 +85,5 @@
             />
         </div>
     </template>
-    <!-- Same as odoo/src/odoo/addons/base/wizard/base_document_layout_views.xml -->
-    <!-- the footer and the t-if for other template color was removed -->
-    <!-- this template is used by the BaseDocumentLayout wizard to display a live preview of a dummy report -->
-    <template
-        id="layout_preview"
-        name="layout preview"
-        primary="True"
-        inherit_id="base.layout_preview"
-    >
-        <!-- compute some layout specific variables -->
-        <xpath expr="//div[hasclass('header')]" position="before">
-            <t t-if="company.full_header_img">
-                <t t-call="report_layout_config.header_image" />
-            </t>
-        </xpath>
-        <xpath expr="//div[hasclass('text-center')]" position="replace">
-            <t t-if="company.full_footer_img">
-                <t t-call="report_layout_config.footer_image" />
-            </t>
-        </xpath>
-    </template>
+
 </odoo>

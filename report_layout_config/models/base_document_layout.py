@@ -25,22 +25,8 @@ class BaseDocumentLayout(models.TransientModel):
         self.need_images_layout = self.external_report_layout_id == img_lay
 
     @api.depends(
-        "report_layout_id",
-        "logo",
-        "font",
-        "primary_color",
-        "secondary_color",
         "full_footer_img",
         "full_header_img",
     )
     def _compute_preview(self):
-        self.ensure_one()
-        if not self.need_images_layout or not self.report_layout_id:
-            super()._compute_preview()
-        else:
-            ir_qweb = self.env["ir.qweb"]
-            qweb_ctx = self.env["ir.ui.view"]._prepare_qcontext()
-            qweb_ctx.update({"company": self})
-            self.preview = ir_qweb.render(
-                "report_layout_config.layout_preview", qweb_ctx
-            )
+        super()._compute_preview()
