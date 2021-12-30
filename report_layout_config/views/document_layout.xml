@@ -5,40 +5,9 @@
         <field name="model">base.document.layout</field>
         <field name="inherit_id" ref="web.view_base_document_layout" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='logo']" position="attributes">
-                <attribute
-                    name='attrs'
-                >{'invisible': [('need_images_layout', '=', True)]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='report_footer']" position="attributes">
-                <attribute
-                    name='attrs'
-                >{'invisible': [('need_images_layout', '=', True)]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='report_header']" position="attributes">
-                <attribute
-                    name='attrs'
-                >{'invisible': [('need_images_layout', '=', True)]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='report_header']" position="attributes">
-                <attribute
-                    name='attrs'
-                >{'invisible': [('need_images_layout', '=', True)]}</attribute>
-            </xpath>
             <xpath expr="//field[@name='logo']" position="after">
-                <field name="need_images_layout" invisible="True" />
-                <field
-                    name="full_header_img"
-                    widget="image"
-                    class="mb-4"
-                    attrs="{'invisible': [('need_images_layout', '=', False)]}"
-                />
-                <field
-                    name="full_footer_img"
-                    widget="image"
-                    class="mb-4"
-                    attrs="{'invisible': [('need_images_layout', '=', False)]}"
-                />
+                <field name="full_header_img" widget="image" class="mb-4" />
+                <field name="full_footer_img" widget="image" class="mb-4" />
             </xpath>
             <field name="preview" position="attributes">
                 <attribute name='style'>max-width: 450px;</attribute>

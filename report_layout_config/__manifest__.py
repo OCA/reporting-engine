@@ -12,6 +12,7 @@
     "depends": ["web", "base"],
     "data": [
         "views/document_layout.xml",
+        "templates/assets.xml",
         "templates/report_templates.xml",
         "data/report_layout.xml",
     ],
