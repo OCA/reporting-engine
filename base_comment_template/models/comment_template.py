@@ -42,3 +42,17 @@ class CommentTemplate(models.AbstractModel):
                 domain = safe_eval(template.domain)
                 if not domain or record.filtered_domain(domain):
                     record.comment_template_ids = [(4, template.id)]
+
+    def render_comment(
+        self, comment, engine="jinja", add_context=None, post_process=False
+    ):
+        self.ensure_one()
+        comment_texts = self.env["mail.render.mixin"]._render_template(
+            comment.text,
+            self._name,
+            [self.id],
+            engine=engine,
+            add_context=add_context,
+            post_process=post_process,
+        )
+        return comment_texts[self.id] or ""
