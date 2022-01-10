@@ -87,19 +87,32 @@ The template is a html field which will be rendered just like a mail template, s
 
 Change the report related to the model from configuration and add a statement like:
 
-<p t-if="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+<t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
+  <div t-raw="o.render_comment(comment_template_top)" />
 
-    <span t-raw="o.get_comment_template('before_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
+</t>
 
-</p>
 
-<p t-if="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)">
+<t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'after_lines')" t-as="comment_template_bottom">
+    <div t-raw="o.render_comment(comment_template_bottom)" />
 
-    <span t-raw="o.get_comment_template('after_lines', o.company_id.id, o.partner_id and o.partner_id.id or False)"/>
-
-</p>
+</t>
 
 You should always use t-if since the method returns False if no template is found.
+
+If you want to use Qweb templates, or different context, you can specify it just like in
+mail.render.mixin with parameters:
+
+- engine: "jinja" or "qweb",
+- add_context: dict with your own context,
+- post_process: perform a post processing on rendered result
+
+so you could use it :
+
+<t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
+    <div t-raw="o.render_comment(comment_template_top, engine='qweb', add_context={my dict}, postprocess=True)" />
+
+</t>
 
 Bug Tracker
 ===========

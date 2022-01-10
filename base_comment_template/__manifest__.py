@@ -5,7 +5,7 @@
     "name": "Base Comments Templates",
     "summary": "Add conditional mako template to any report"
     "on models that inherits comment.template.",
-    "version": "14.0.2.0.1",
+    "version": "14.0.3.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, Odoo Community Association (OCA)",
@@ -15,6 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/security.xml",
+        "wizard/base_comment_template_preview_views.xml",
         "views/base_comment_template_view.xml",
         "views/res_partner_view.xml",
     ],

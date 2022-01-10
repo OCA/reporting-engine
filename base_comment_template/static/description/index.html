@@ -433,15 +433,30 @@ It has a priority field (smaller number = higher priority)</p>
 If you create a new template with the same configuration (Model, Domain, Position) and set it as Default, the previous one will be deselected as a default one.</p>
 <p>The template is a html field which will be rendered just like a mail template, so you can use variables like ${object}, ${user}, ${ctx} to add dynamic content.</p>
 <p>Change the report related to the model from configuration and add a statement like:</p>
-<p>&lt;p t-if=”o.get_comment_template(‘before_lines’, o.company_id.id, o.partner_id and o.partner_id.id or False)”&gt;</p>
-<blockquote>
-&lt;span t-raw=”o.get_comment_template(‘before_lines’, o.company_id.id, o.partner_id and o.partner_id.id or False)”/&gt;</blockquote>
-<p>&lt;/p&gt;</p>
-<p>&lt;p t-if=”o.get_comment_template(‘after_lines’, o.company_id.id, o.partner_id and o.partner_id.id or False)”&gt;</p>
-<blockquote>
-&lt;span t-raw=”o.get_comment_template(‘after_lines’, o.company_id.id, o.partner_id and o.partner_id.id or False)”/&gt;</blockquote>
-<p>&lt;/p&gt;</p>
+<dl class="docutils">
+<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
+<dd>&lt;div t-raw=”o.render_comment(comment_template_top)” /&gt;</dd>
+</dl>
+<p>&lt;/t&gt;</p>
+<dl class="docutils">
+<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘after_lines’)” t-as=”comment_template_bottom”&gt;</dt>
+<dd>&lt;div t-raw=”o.render_comment(comment_template_bottom)” /&gt;</dd>
+</dl>
+<p>&lt;/t&gt;</p>
 <p>You should always use t-if since the method returns False if no template is found.</p>
+<p>If you want to use Qweb templates, or different context, you can specify it just like in
+mail.render.mixin with parameters:</p>
+<ul class="simple">
+<li>engine: “jinja” or “qweb”,</li>
+<li>add_context: dict with your own context,</li>
+<li>post_process: perform a post processing on rendered result</li>
+</ul>
+<p>so you could use it :</p>
+<dl class="docutils">
+<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
+<dd>&lt;div t-raw=”o.render_comment(comment_template_top, engine=’qweb’, add_context={my dict}, postprocess=True)” /&gt;</dd>
+</dl>
+<p>&lt;/t&gt;</p>
 </div>
 <div class="section" id="bug-tracker">
 <h1><a class="toc-backref" href="#id3">Bug Tracker</a></h1>
