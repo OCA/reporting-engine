@@ -44,6 +44,14 @@
                             bg_color="bg-danger"
                             attrs="{'invisible': [('active', '=', True)]}"
                         />
+                        <button
+                            class="oe_stat_button"
+                            name="%(base_comment_template_preview_action)d"
+                            icon="fa-search-plus"
+                            string="Preview"
+                            type="action"
+                            target="new"
+                        />
                     </div>
                     <div class="oe_title">
                         <h1>

@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid ""
+"<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
+"False)]}\">No records\n"
+"                            </span>"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
 msgid "Active"
 msgstr ""
@@ -29,8 +37,48 @@ msgid "Archived"
 msgstr ""
 
 #. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Base Comment Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
+msgid "Base Comment Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_base_comment_template_preview
+msgid "Base Comment Template Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Base Comment content"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
+msgid "Body"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose a language:"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose an engine:"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose an example"
 msgstr ""
 
 #. module: base_comment_template
@@ -73,16 +121,24 @@ msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__create_uid
 msgid "Created by"
 msgstr "Oluşturan"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__create_date
 msgid "Created on"
 msgstr "Oluşturuldu"
 
 #. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Discard"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_res_partner__display_name
@@ -96,6 +152,7 @@ msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__id
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__id
 #: model:ir.model.fields,field_description:base_comment_template.field_res_partner__id
@@ -104,6 +161,7 @@ msgstr "ID"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_ids
 msgid "IR Model"
 msgstr ""
 
@@ -120,7 +178,13 @@ msgid ""
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__jinja
+msgid "Jinja"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_res_partner____last_update
@@ -129,13 +193,20 @@ msgstr "Son değişiklik"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__write_uid
 msgid "Last Updated by"
 msgstr "Son güncelleyen"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__write_date
 msgid "Last Updated on"
 msgstr "Son güncelleme"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
+msgid "Model"
+msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
@@ -155,6 +226,11 @@ msgid "Name/description of this comment template"
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
+msgid "No Record"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
 msgid "Partner"
 msgstr ""
@@ -162,6 +238,26 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
 msgid "Position on document"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Preview of"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
+msgid "QWeb"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
+msgid "Record reference"
 msgstr ""
 
 #. module: base_comment_template
@@ -181,12 +277,28 @@ msgid "Template"
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
+msgid "Template Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
+msgid "Template Preview Engine"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
+msgid "Template Preview Language"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
 msgid "The smaller number = The higher priority"
 msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template_preview__model_ids
 msgid ""
 "This comment template will be available on this models. You can see here "
 "only models allowed to set the coment template."
@@ -224,4 +336,9 @@ msgstr ""
 msgid ""
 "base.comment.template to put header and footer in reports based on created "
 "comment templates"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "record:"
 msgstr ""
