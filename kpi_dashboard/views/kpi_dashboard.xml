@@ -162,15 +162,16 @@
                             widget="ace"
                             options="{'mode': 'python'}"
                         />
+                        <field
+                            name="special_context"
+                            attrs="{'invisible': [('compute_on_fly', '=', False)]}"
+                        />
+                        <field name="compute_on_fly" invisible="1" />
                     </group>
                 </sheet>
                 <footer>
-                    <button
-                        name="write"
-                        string="Save"
-                        type="object"
-                        class="oe_highlight"
-                    />
+
+                    <button string="Save" special="save" class="oe_highlight" />
                     <button special="cancel" string="Cancel" class="oe_link" />
                 </footer>
             </form>
