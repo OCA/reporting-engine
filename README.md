@@ -27,7 +27,7 @@ addon | version | maintainers | summary
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.0 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 14.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 |  | Report Qweb Element Page Visibility
-[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
+[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 14.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
