@@ -48,6 +48,7 @@ registry
             } else if (onClose) {
                 onClose();
             }
+            return Promise.resolve(true);
         }
-        return Promise.resolve(true);
+        return Promise.resolve(false);
     });
