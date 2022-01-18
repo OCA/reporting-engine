@@ -24,16 +24,16 @@ _logger = logging.getLogger(__name__)
 class ReportController(report.ReportController):
     @route()
     def report_routes(self, reportname, docids=None, converter=None, **data):
-        report = request.env["ir.actions.report"]._get_report_from_name(reportname)
-        context = dict(request.env.context)
-        if docids:
-            docids = [int(i) for i in docids.split(",")]
-        if data.get("options"):
-            data.update(json.loads(data.pop("options")))
-        if data.get("context"):
-            data["context"] = json.loads(data["context"])
-            context.update(data["context"])
         if converter == "xlsx":
+            report = request.env["ir.actions.report"]._get_report_from_name(reportname)
+            context = dict(request.env.context)
+            if docids:
+                docids = [int(i) for i in docids.split(",")]
+            if data.get("options"):
+                data.update(json.loads(data.pop("options")))
+            if data.get("context"):
+                data["context"] = json.loads(data["context"])
+                context.update(data["context"])
             xlsx = report.with_context(**context)._render_xlsx(docids, data=data)[0]
             xlsxhttpheaders = [
                 (
