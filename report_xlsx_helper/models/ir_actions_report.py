@@ -14,6 +14,6 @@ class IrActionsReport(models.Model):
             report_model_name = "report.{}".format(self.env.context["report_name"])
             report_model = self.env.get(report_model_name)
             if report_model is None:
-                raise UserError(_("%s model was not found" % report_model_name))
+                raise UserError(_("%s model was not found") % report_model_name)
             return report_model.create_xlsx_report(docids, data)
         return super()._render_xlsx(docids, data)
