@@ -20,13 +20,11 @@ To manipulate the ``workbook`` and ``sheet`` objects, refer to the
 `documentation <http://xlsxwriter.readthedocs.org/>`_ of ``xlsxwriter``.
 
 A report XML record ::
-
-    <report
-        id="partner_xlsx"
-        model="res.partner"
-        string="Print to XLSX"
-        report_type="xlsx"
-        name="module_name.report_name"
-        file="res_partner"
-        attachment_use="False"
-    />
+    
+    <record id="partner_xlsx" model="ir.actions.report">
+        <field name="name">Print to XLSX</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">report_xlsx.partner_xlsx</field>
+        <field name="report_file">res_partner</field>
+    </record>
