@@ -32,7 +32,7 @@ class ReportController(ReportController):
                 context.update(data["context"])
             context["report_name"] = reportname
 
-            xlsx = report.with_context(context)._render_xlsx(docids, data=data)[0]
+            xlsx = report.with_context(**context)._render_xlsx(docids, data=data)[0]
             report_file = context.get("report_file")
             if not report_file:
                 active_model = context.get("active_model", "export")
