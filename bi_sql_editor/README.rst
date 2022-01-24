@@ -14,13 +14,13 @@ BI SQL Editor
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/14.0/bi_sql_editor
+    :target: https://github.com/OCA/reporting-engine/tree/15.0/bi_sql_editor
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-14-0/reporting-engine-14-0-bi_sql_editor
+    :target: https://translation.odoo-community.org/projects/reporting-engine-15-0/reporting-engine-15-0-bi_sql_editor
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/143/14.0
+    :target: https://runbot.odoo-community.org/runbot/143/15.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -86,12 +86,12 @@ To configure this module, you need to:
 
 * tip your SQL request
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/01_sql_request.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/01_sql_request.png
      :width: 800 px
 
 * Select the group(s) that could have access to the view
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/02_security_access.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/02_security_access.png
      :width: 800 px
 
 * Click on the button 'Clean and Check Request'
@@ -101,7 +101,7 @@ To configure this module, you need to:
   and set if it will be displayed on the pivot graph as a column, a row or a
   measure.
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/03_field_mapping.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/03_field_mapping.png
      :width: 800 px
 
 * Click on the button 'Create SQL View, Indexes and Models'. (this step could
@@ -113,7 +113,7 @@ To configure this module, you need to:
       the view. You can so define the frequency of the refresh.
     * the size of view (and the indexes is displayed)
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/04_materialized_view_setting.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/04_materialized_view_setting.png
      :width: 800 px
 
 * Finally, click on 'Create UI', to create new menu, action, graph view and
@@ -128,12 +128,12 @@ To use this module, you need to:
 
 #. Select the desired report
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/05_reporting_pivot.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/05_reporting_pivot.png
      :width: 800 px
 
 * You can switch to 'Pie' chart or 'Line Chart' as any report,
 
-  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/bi_sql_editor/static/description/05_reporting_pie.png
+  .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/15.0/bi_sql_editor/static/description/05_reporting_pie.png
      :width: 800 px
 
 Bug Tracker
@@ -142,7 +142,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_sql_editor%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_sql_editor%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -185,6 +185,14 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/bi_sql_editor>`_ project on GitHub.
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-legalsylvain| 
+
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/15.0/bi_sql_editor>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
