@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,19 +16,13 @@ msgstr ""
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
-msgid "%m/%d/%Y %H:%M:%S UTC"
+msgid "%(model_name)s Access %(full_name)s"
 msgstr ""
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s (Copy)"
-msgstr ""
-
-#. module: bi_sql_editor
-#: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
-msgid "%s Access %s"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -180,7 +174,6 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__display_name
-#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -256,7 +249,6 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__id
-#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__id
 msgid "ID"
 msgstr ""
 
@@ -283,7 +275,6 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field____last_update
-#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -435,8 +426,8 @@ msgstr ""
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid ""
-"SQL Error while creating %s VIEW %s :\n"
-" %s"
+"SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
+" %(error)s"
 msgstr ""
 
 #. module: bi_sql_editor
