@@ -15,11 +15,8 @@ class ReportPaperformatParameter(models.Model):
     )
 
     name = fields.Char(
-        "Name",
         required=True,
         help="The command argument name. Remember to add prefix -- or -",
     )
 
-    value = fields.Char(
-        "Value",
-    )
+    value = fields.Char()
