@@ -25,7 +25,7 @@ class TestWkhtmltopdf(odoo.tests.TransactionCase):
                 )
             except ValidationError:
                 error = True
-            self.assertEquals(
+            self.assertEqual(
                 error,
                 False,
                 "There was an error adding wkhtmltopdf "
