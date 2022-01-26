@@ -33,11 +33,10 @@ class Paper(models.Model):
                     </body>
                 </html>
             """
-            contenthtml = [bytes(sample_html, "utf-8")]
             report = self.env["ir.actions.report"].new(
                 {"paperformat_id": paperformat.id}
             )
-            content = report._run_wkhtmltopdf(contenthtml)
+            content = report._run_wkhtmltopdf(sample_html)
             if not content:
                 raise ValidationError(
                     _("Failed to create a PDF using the provided parameters.")
