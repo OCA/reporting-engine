@@ -20,6 +20,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [bi_sql_editor](bi_sql_editor/) | 15.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
+[report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 15.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 15.0.1.0.3 |  | Base module to create xlsx report
 [report_xml](report_xml/) | 15.0.1.0.0 |  | Allow to generate XML reports
 [sql_request_abstract](sql_request_abstract/) | 15.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Model to manage SQL Requests
