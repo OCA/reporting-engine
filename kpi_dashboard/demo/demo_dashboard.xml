@@ -29,8 +29,7 @@ result = {"value": 12000,"previous": 10000}
         </field>
     </record>
 
-    <function model="kpi.kpi" name="compute"
-              eval="[[ref('widget_number_01'), ref('widget_number_02')]]"/>
+    <function model="kpi.kpi" name="compute" eval="[[ref('widget_number_01'), ref('widget_number_02')]]"/>
 
     <record id="widget_meter_01" model="kpi.kpi">
         <field name="name">Meter 01</field>
@@ -52,19 +51,32 @@ result = {"min": 0, "max": 100, "value": 40}
         </field>
     </record>
 
-    <function model="kpi.kpi" name="compute"
-              eval="[[ref('widget_meter_01'), ref('widget_meter_02')]]"/>
+    <function model="kpi.kpi" name="compute" eval="[[ref('widget_meter_01'), ref('widget_meter_02')]]"/>
 
     <record id="widget_graph" model="kpi.kpi">
         <field name="name">Graph</field>
         <field name="computation_method">code</field>
         <field name="widget">graph</field>
         <field name="code">
+months= [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
 result = {"graphs": [
     {
         "values": [
-            {"x": i, "y": i * 1000}
-            for i in range(1, 12)
+            {"x": i, "y": i * 1000, "label": months[i]}
+            for i in range(0, 12)
         ],
         "title": "Current Year",
         "key": "current",
@@ -73,8 +85,8 @@ result = {"graphs": [
     },
     {
         "values": [
-            {"x": i, "y": 1000 * (12-i)}
-            for i in range(1, 12)
+            {"x": i, "y": 1000 * (11-i), "label": months[i]}
+            for i in range(0, 12)
         ],
         "title": "Previous Year",
         "key": "previous",
@@ -85,8 +97,7 @@ result = {"graphs": [
         </field>
     </record>
 
-    <function model="kpi.kpi" name="compute"
-              eval="[[ref('widget_graph')]]"/>
+    <function model="kpi.kpi" name="compute" eval="[[ref('widget_graph')]]"/>
 
     <record id="widget_integer" model="kpi.kpi">
         <field name="name">Integer counter</field>

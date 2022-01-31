@@ -86,11 +86,13 @@ Authors
 ~~~~~~~
 
 * Creu Blanca
+* Planeta Huerto
 
 Contributors
 ~~~~~~~~~~~~
 
 * Enric Tobella <etobella@creublanca.es>
+*  Pere Albujer (`Planeta Huerto <https://planetahuerto.es>`_) <perealbujer@planetahuerto.es>
 
 Maintainers
 ~~~~~~~~~~~

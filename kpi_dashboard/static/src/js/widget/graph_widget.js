@@ -34,10 +34,10 @@ odoo.define('kpi_dashboard.GraphWidget', function (require) {
         _getChartOptions: function (values) {
             return {
                 x: function (d, u) { return u; },
-                margin: {'left': 0, 'right': 0, 'top': 5, 'bottom': 0},
+                margin: { 'left': 0, 'right': 0, 'top': 5, 'bottom': 0 },
                 showYAxis: false,
                 showXAxis: false,
-                showLegend: false,
+                showLegend: true,
                 height: this.widget_size_y - 90,
                 width: this.widget_size_x - 20,
             };
@@ -59,7 +59,7 @@ odoo.define('kpi_dashboard.GraphWidget', function (require) {
             this.chart.tooltip.contentGenerator(function (key) {
                 return qweb.render('GraphCustomTooltip', {
                     'color': key.point.color,
-                    'key': key.series[0].title,
+                    'key': key.point.label,
                     'value': d3.format(',.2f')(key.point.y)
                 });
             });
