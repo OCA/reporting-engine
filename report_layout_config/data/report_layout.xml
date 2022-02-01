@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="external_layout_images_standard" model="report.layout">
+        <field name="name">Layout images standard</field>
+        <field
+            name="view_id"
+            ref="report_layout_config.external_standard_layout_images_template"
+        />
+        <field
+            name="image"
+        >/report_layout_config/static/img/preview_standard.png</field>
+        <field name="pdf">/report_layout_config/static/pdf/preview_standard.pdf</field>
+    </record>
+
+    <record id="external_layout_images_clean" model="report.layout">
+        <field name="name">Layout images clean</field>
+        <field
+            name="view_id"
+            ref="report_layout_config.external_clean_layout_images_template"
+        />
+        <field
+            name="image"
+        >/report_layout_config/static/img/preview_standard.png</field>
+        <field name="pdf">/report_layout_config/static/pdf/preview_standard.pdf</field>
+    </record>
+
+</odoo>

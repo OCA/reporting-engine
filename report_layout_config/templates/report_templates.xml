@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="external_standard_layout_images_template"
+        primary="True"
+        inherit_id="web.external_layout_standard"
+    >
+        <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
+            <div class="header">
+                <div class="row">
+                    <div class="col-3 mb4">
+                        <img
+                            t-if="company.full_header_img"
+                            t-att-src="image_data_uri(company.full_header_img)"
+                            class="header-full-image"
+                            alt="Logo"
+                        />
+                    </div>
+                    <div
+                        class="col-9 text-right header-image"
+                        t-field="company.report_header"
+                        name="report_header"
+                    />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+            <div class="footer o_standard_footer">
+                <div class="text-center">
+                    <img
+                        t-if="company.full_footer_img"
+                        t-att-src="image_data_uri(company.full_footer_img)"
+                        class="footer-image"
+                        alt="Footer logo"
+                    />
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page" /> / <span class="topage" />
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template
+        id="external_clean_layout_images_template"
+        primary="True"
+        inherit_id="web.external_layout_clean"
+    >
+        <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
+            <div class="header">
+                <div class="row">
+                    <img
+                        t-if="company.full_header_img"
+                        t-att-src="image_data_uri(company.full_header_img)"
+                        class="header-full-image"
+                        alt="Logo"
+                    />
+                    </div>
+                    <div
+                    class="col-9 text-right header-image"
+                    t-field="company.report_header"
+                    name="report_header"
+                />
+            </div>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+            <div class="footer o_standard_footer">
+                <div class="text-center">
+                    <img
+                        t-if="company.full_footer_img"
+                        t-att-src="image_data_uri(company.full_footer_img)"
+                        class="footer-image"
+                        alt="Footer logo"
+                    />
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page" /> / <span class="topage" />
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="styles_company_report" inherit_id="web.styles_company_report">
+        <xpath expr="//t[contains(@t-elif, 'layout')]" position="after">
+            <!-- next part is the same as in web/views/report_templates web.external_layout_standard -->
+            <t
+                t-elif="layout == 'report_layout_config.external_standard_layout_images_template'"
+            >
+                &amp;.o_report_layout_standard {
+                    h2 {
+                        color: <t t-esc='primary' />;
+                    }
+                    #informations strong {
+                        color: <t t-esc='secondary' />;
+                    }
+                    #total strong{
+                        color: <t t-esc='primary' />;
+                    }
+                    table {
+                        thead {
+                            color: <t t-esc='secondary' />;
+                        }
+                    }
+                }
+            </t>
+            <!-- next part is the same as in web/views/report_templates web.external_layout_clean -->
+            <t
+                t-elif="layout == 'report_layout_config.external_clean_layout_images_template'"
+            >
+                &amp;.o_clean_footer {
+                        border-top: 3px solid <t t-esc='secondary' />;
+                        h4 {
+                            color: <t t-esc='secondary' />;
+                        }
+                        .pagenumber {
+                            border: 3px solid <t t-esc='primary' />;
+                            background-color: <t t-esc='secondary' />;
+                        }
+                    }
+                &amp;.o_report_layout_clean {
+                    h1, h2, h3 {
+                        color: <t t-esc='primary' />;
+                    }
+                    strong {
+                        color: <t t-esc='secondary' />;
+                    }
+                    table {
+                        thead {
+                            color: <t t-esc='secondary' />;
+                            tr th {
+                                border-top: 3px solid <t
+                    t-esc='secondary'
+                /> !important;
+                            }
+                        }
+                        tbody {
+                            tr:last-child td {
+                                border-bottom: 3px solid <t t-esc='secondary' />;
+                            }
+                        }
+                    }
+                    #total {
+                        strong {
+                            color: <t t-esc='secondary' />;
+                        }
+                    }
+                }
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
