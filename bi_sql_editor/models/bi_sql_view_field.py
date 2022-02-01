@@ -80,7 +80,7 @@ class BiSQLViewField(models.Model):
         " a 'group by' option in the search view",
     )
 
-    index_name = fields.Char(ompute="_compute_index_name")
+    index_name = fields.Char(compute="_compute_index_name")
 
     graph_type = fields.Selection(selection=_GRAPH_TYPE_SELECTION)
 
