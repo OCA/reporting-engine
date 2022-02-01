@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo-addon-report_wkhtmltopdf_param>=15.0dev,<15.1dev',
         'odoo-addon-report_xlsx>=15.0dev,<15.1dev',
         'odoo-addon-report_xml>=15.0dev,<15.1dev',
+        'odoo-addon-sql_export>=15.0dev,<15.1dev',
         'odoo-addon-sql_request_abstract>=15.0dev,<15.1dev',
     ],
     classifiers=[
