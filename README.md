@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [report_xlsx](report_xlsx/) | 15.0.1.0.3 |  | Base module to create xlsx report
 [report_xml](report_xml/) | 15.0.1.0.0 |  | Allow to generate XML reports
 [sql_export](sql_export/) | 15.0.1.0.0 |  | Export data in csv file with SQL requests
+[sql_export_excel](sql_export_excel/) | 15.0.1.0.0 |  | Allow to export a sql query to an excel file.
 [sql_request_abstract](sql_request_abstract/) | 15.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Model to manage SQL Requests
 
 [//]: # (end addons)
