@@ -37,7 +37,6 @@ class StatementCommon(models.AbstractModel):
 
     account_type = fields.Selection(
         [("receivable", "Receivable"), ("payable", "Payable")],
-        string="Account type",
         default="receivable",
     )
 

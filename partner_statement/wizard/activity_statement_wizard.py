@@ -23,11 +23,12 @@ class ActivityStatementWizard(models.TransientModel):
 
     @api.onchange("aging_type")
     def onchange_aging_type(self):
-        super().onchange_aging_type()
+        res = super().onchange_aging_type()
         if self.aging_type == "months":
             self.date_start = self.date_end.replace(day=1)
         else:
             self.date_start = self.date_end - relativedelta(days=30)
+        return res
 
     def _prepare_statement(self):
         res = super()._prepare_statement()

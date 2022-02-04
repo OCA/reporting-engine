@@ -26,14 +26,12 @@ class OutstandingStatementXslx(models.AbstractModel):
         currency_data = partner_data.get("currencies", {}).get(currency.id)
         account_type = data.get("account_type", False)
         row_pos += 2
-        statement_header = _(
-            "%sStatement up to %s in %s"
-            % (
-                account_type == "payable" and _("Supplier ") or "",
-                partner_data.get("end"),
-                currency.display_name,
-            )
-        )
+        statement_header = _("%(payable)sStatement up to %(end)s in %(currency)s") % {
+            "payable": account_type == "payable" and _("Supplier ") or "",
+            "end": partner_data.get("end"),
+            "currency": currency.display_name,
+        }
+
         sheet.merge_range(
             row_pos, 0, row_pos, 6, statement_header, FORMATS["format_right_bold"]
         )
@@ -106,10 +104,11 @@ class OutstandingStatementXslx(models.AbstractModel):
         currency_data = partner_data.get("currencies", {}).get(currency.id)
         if currency_data.get("buckets"):
             row_pos += 2
-            buckets_header = _("Aging Report at %s in %s") % (
-                partner_data.get("end"),
-                currency.display_name,
-            )
+            buckets_header = _("Aging Report at %(end)s in %(currency)s") % {
+                "end": partner_data.get("end"),
+                "currency": currency.display_name,
+            }
+
             sheet.merge_range(
                 row_pos, 0, row_pos, 6, buckets_header, FORMATS["format_right_bold"]
             )
@@ -193,7 +192,7 @@ class OutstandingStatementXslx(models.AbstractModel):
             0,
             row_pos,
             6,
-            _("Statement of Account from %s" % (company.display_name)),
+            _("Statement of Account from %s") % (company.display_name),
             FORMATS["format_ws_title"],
         )
         row_pos += 1

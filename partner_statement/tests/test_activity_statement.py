@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 
 
 class TestActivityStatement(TransactionCase):
-    """ Tests for Activity Statement."""
+    """Tests for Activity Statement."""
 
     def setUp(self):
         super().setUp()

@@ -5,7 +5,7 @@ from odoo.tests.common import TransactionCase
 
 
 class TestOutstandingStatement(TransactionCase):
-    """ Tests for Outstanding Statement."""
+    """Tests for Outstanding Statement."""
 
     def setUp(self):
         super().setUp()
