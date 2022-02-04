@@ -52,25 +52,31 @@ class TestOutstandingStatement(TransactionCase):
 
         statement = wiz_id.button_export_pdf()
 
-        self.assertDictContainsSubset(
-            {
-                "type": "ir.actions.report",
-                "report_name": self.report_name,
-                "report_type": "qweb-pdf",
-            },
+        self.assertDictEqual(
             statement,
+            {
+                **{
+                    "type": "ir.actions.report",
+                    "report_name": self.report_name,
+                    "report_type": "qweb-pdf",
+                },
+                **statement,
+            },
             "There was an error and the PDF report was not generated.",
         )
 
         statement_xlsx = wiz_id.button_export_xlsx()
 
-        self.assertDictContainsSubset(
-            {
-                "type": "ir.actions.report",
-                "report_name": self.report_name_xlsx,
-                "report_type": "xlsx",
-            },
+        self.assertDictEqual(
             statement_xlsx,
+            {
+                **{
+                    "type": "ir.actions.report",
+                    "report_name": self.report_name_xlsx,
+                    "report_type": "xlsx",
+                },
+                **statement_xlsx,
+            },
             "There was an error and the PDF report was not generated.",
         )
 

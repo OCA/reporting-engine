@@ -6,8 +6,8 @@ Users willing to access to this report should have proper Accounting & Finance r
 
 To configure this module, you need to:
 
-#. Go to *Configuration / Settings*
-#. Under the *Followup Section* of *Accounting* option select either or both of OCA Activity or Outstanding Statement
+#. Go to *Invoicing / Configuration / Settings*
+#. Under the *Partner Statements* of *Accounting* option select either or both of OCA Activity or Outstanding Statement
 #. Once selected, you may set default options for the reports.
 #. Click *Save*
 
