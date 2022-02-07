@@ -31,5 +31,5 @@ class IrActionsReport(models.Model):
             arr = io.BytesIO()
             img.save(arr)
             return arr.getvalue()
-        except Exception:
-            raise ValueError("Cannot convert into barcode.")
+        except Exception as e:
+            raise ValueError("Cannot convert into barcode.") from e
