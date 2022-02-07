@@ -14,5 +14,5 @@ class TestReportQr(HttpCase):
         """There is a QR limitation for 4296 characters, we will test that an
         Exception is raised"""
         new_data = "".join(["TEST"] * 1500)
-        with self.assertRaises(Exception):
+        with self.assertRaises(ValueError):
             self.env["ir.actions.report"].qr_generate(new_data)
