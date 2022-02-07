@@ -11,10 +11,10 @@ class Home(http.Controller):
             barcode = request.env["ir.actions.report"].qr_generate(
                 value, box_size=box_size, border=border, factory=factory, **kwargs
             )
-        except (ValueError, AttributeError):
+        except (ValueError, AttributeError) as e:
             raise werkzeug.exceptions.HTTPException(
                 description="Cannot convert into barcode."
-            )
+            ) from e
         if factory != "png":
             return request.make_response(
                 barcode, headers=[("Content-Type", "image/svg+xml")]
