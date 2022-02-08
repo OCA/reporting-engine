@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="report_dynamic_alias_tree" model="ir.ui.view">
+        <field name="name">report.dynamic.alias.tree</field>
+        <field name="model">report.dynamic.alias</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="expression_from" />
+                <field name="expression_to" />
+                <field name="is_active" />
+            </tree>
+        </field>
+    </record>
+    <record id="report_dynamic_alias_action" model="ir.actions.act_window">
+        <field name="name">Aliases</field>
+        <field name="res_model">report.dynamic.alias</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        name="Aliases"
+        id="report_dynamic_alias_menu_root"
+        parent="report_dynamic_menu_root"
+        sequence="600"
+        action="report_dynamic_alias_action"
+    />
+</odoo>

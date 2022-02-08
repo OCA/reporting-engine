@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="alias_1" model="report.dynamic.alias">
+        <field name="expression_from">[H1val]</field>
+        <field name="expression_to">${h.value}</field>
+    </record>
+    <record id="alias_2" model="report.dynamic.alias">
+        <field name="expression_from">[H2val]</field>
+        <field name="expression_to">${h.child.value}</field>
+    </record>
+    <record id="alias_3" model="report.dynamic.alias">
+        <field name="expression_from">[H3val]</field>
+        <field name="expression_to">${h.child.child.value}</field>
+    </record>
+    <record id="alias_4" model="report.dynamic.alias">
+        <field name="expression_from">[H1]</field>
+        <field name="expression_to">${h.next}</field>
+    </record>
+    <record id="alias_5" model="report.dynamic.alias">
+        <field name="expression_from">[H2]</field>
+        <field name="expression_to">${h.value}.${h.child.next}</field>
+    </record>
+    <record id="alias_6" model="report.dynamic.alias">
+        <field name="expression_from">[H3]</field>
+        <field
+            name="expression_to"
+        >${h.value}.${h.child.value}.${h.child.child.next}</field>
+    </record>
+</odoo>

@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_report_dynamic_section_search" model="ir.ui.view">
+        <field name="name">report.dynamic.section.search</field>
+        <field name="type">search</field>
+        <field name="model">report.dynamic.section</field>
+        <field name="arch" type="xml">
+            <search string="Sections">
+                <field name="name" />
+                <field name="report_id" />
+                <filter
+                    name="Paragraph"
+                    string="Paragraph"
+                    domain="[('is_paragraph','=','True')]"
+                />
+            </search>
+        </field>
+    </record>
+    <record id="view_report_dynamic_section_tree" model="ir.ui.view">
+        <field name="name">report.dynamic.section.tree</field>
+        <field name="model">report.dynamic.section</field>
+        <field name="arch" type="xml">
+            <tree string="Report Section">
+                <field name="sequence" />
+                <field name="name" />
+                <field name="report_id" />
+                <field name="condition_python" />
+                <field name="condition_domain" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_report_dynamic_section_form" model="ir.ui.view">
+        <field name="name">report.dynamic.section.form</field>
+        <field name="model">report.dynamic.section</field>
+        <field name="arch" type="xml">
+            <form string="Report Section">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <div>
+                        <label for="report_id" />
+                        <field name="report_id" readonly="1" />
+                    </div>
+                    <div>
+                        <label for="resource_ref_preview" />
+                        <field name="resource_ref_preview" />
+                    </div>
+                    <group name="main">
+                        <notebook>
+                            <page name="content" string="Content">
+                                <field name="content" widget="html" />
+                                <div>
+                                    <label for="is_paragraph" />
+                                    <field name="is_paragraph" />
+                                </div>
+                            </page>
+                            <page name="conditions" string="Conditions">
+                                <group>
+                                    <field name="condition_python" />
+                                    <field
+                                        name="condition_python_preview"
+                                        string="Python Condition Preview"
+                                    />
+                                    <field name="model_id_model" invisible="1" />
+                                    <field
+                                        name="condition_domain"
+                                        widget="domain"
+                                        options="{'model': 'model_id_model', 'in_dialog': True}"
+                                    />
+                                </group>
+                                <div>
+                                    <p
+                                    >You can add a condition to show or hide this block, either a Python expression that should evaluate to a boolean value (eg. "object.gender == 'male'" or "not object.parent_id") or a domain expression eg. [('name', '=ilike', 'John%')]).</p>
+
+                                    <p
+                                    >For the domain expressions, you can arrive at a functional domain without having to type anything: simply open the popup with Matched records, then make a search for the records that you want to match. Select one or all of them with the checkbox and return to this dialog. The domain condition will have updated to a value that will match the rules that you followed in creating the selection. (Note: for this you need to have the OCA module web_widget_domain_editor_dialog installed).
+                                    </p>
+                                </div>
+                            </page>
+                            <page
+                                name="dynamic_placeholder"
+                                string="Dynamic Placeholder"
+                            >
+                                <group>
+                                    <field name="sequence" />
+                                    <field name="resource_ref_model_id" />
+                                    <field
+                                        name="field_id"
+                                        domain="[('model_id', '=', model_id_model),
+                                                ('ttype', '!=', 'one2many'),
+                                                ('ttype', '!=', 'many2many')]"
+                                        options="{'no_open': True, 'no_create': True}"
+                                    />
+                                    <field name="sub_object_id" readonly="1" />
+                                    <field
+                                        name="sub_model_object_field_id"
+                                        domain="[('model_id', '=', sub_object_id),
+                                                ('ttype', '!=', 'one2many'),
+                                                ('ttype', '!=', 'many2many')]"
+                                        attrs="{'readonly':[('sub_object_id', '=', False)],
+                                               'required':[('sub_object_id', '!=', False)]}"
+                                        options="{'no_open': True, 'no_create': True}"
+                                    />
+                                    <field name="default_value" />
+                                    <field name="copyvalue" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

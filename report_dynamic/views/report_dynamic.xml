@@ -1,0 +1,275 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="report_dynamic_form" model="ir.ui.view">
+        <field name="name">report.dynamic.form</field>
+        <field name="model">report.dynamic</field>
+        <field name="arch" type="xml">
+            <form string="Report">
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <div class="oe_button_box" name="button_box">
+                        <field name="window_action_exists" invisible="1" />
+                        <button
+                            name="create_action"
+                            type="object"
+                            string="Add Report Button"
+                            class="oe_inline oe_stat_button"
+                            attrs="{'invisible':['|',('window_action_exists','=',True),('is_template', '=', False)]}"
+                            icon="fa-plus"
+                            help="Display a button in the sidebar of related documents to open a composition wizard"
+                        />
+                        <button
+                            name="unlink_action"
+                            type="object"
+                            string="Remove Report Button"
+                            class="oe_stat_button"
+                            icon="fa-minus"
+                            attrs="{'invisible':['|',('window_action_exists','=',False),('is_template', '=', False)]}"
+                            help="Remove the contextual action to use this template on related documents"
+                            widget="statinfo"
+                        />
+                        <field name="section_ids" invisible="1" />
+                        <button
+                            type="object"
+                            name="action_view_section"
+                            class="oe_stat_button"
+                            icon="fa-file-text-o"
+                            attrs="{'invisible': [('section_count', '=', 0)]}"
+                            groups="base.group_user"
+                        >
+                            <field
+                                name="section_count"
+                                widget="statinfo"
+                                string="Sections"
+                            />
+                        </button>
+                        <button
+                            name="action_toggle_active"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-archive"
+                        >
+                            <field
+                                name="active"
+                                widget="boolean_button"
+                                options="{'terminology': {
+                            'string_true': 'Active',
+                            'hover_true': 'Archive',
+                            'string_false': 'Archived',
+                            'hover_false': 'Unarchive'
+                        }}"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Report name" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                        <h2 attrs="{'invisible': [('is_template', '=', False)]}">
+                            <label for="model_name" />
+                            <field name="model_name" />
+                        </h2>
+                    </div>
+                    <group name="main">
+                        <group name="left">
+                            <field
+                                name="model_id"
+                                attrs="{'invisible':[('is_template', '=', False)]}"
+                            />
+                            <label for="resource_ref" />
+                            <div>
+                                <field
+                                    name="resource_ref"
+                                    options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                                    class="oe_inline"
+                                />
+                                <!-- Make it obvious that target record for templates is for previewing -->
+                                <span
+                                    attrs="{'invisible':['|', ('is_template', '=', False),('model_id', '=', False)]}"
+                                >
+                                    <strong> (for preview only)</strong>
+                                </span>
+                            </div>
+                            <field name="model_model" invisible="1" />
+                            <field
+                                name="condition_domain_global"
+                                widget="domain"
+                                options="{'model': 'model_model', 'in_dialog': True}"
+                                attrs="{'invisible': [('is_template', '=', False)]}"
+                                help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
+                            />
+                            <field
+                                name="template_id"
+                                attrs="{'readonly': [('lock_date', '!=', False)], 'invisible': [('is_template', '=', True)]}"
+                            />
+                            <!-- user might be tempted to turn a report into a template.
+                                                Not going to happen
+                            -->
+                            <field
+                                name="is_template"
+                                groups="report_dynamic.group_report_dynamic_template_editors"
+                                attrs="{'invisible': [('template_id', '!=', False)]}"
+                            />
+                            <button
+                                name="action_wizard_lock_report"
+                                string="Lock report"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('lock_date', '!=', False)]}"
+                                context="{'default_report_id': active_id}"
+                            />
+                        </group>
+                        <group name="right">
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="dynamic_content" string="Dynamic content">
+                            <!-- Show this when agreement is locked-->
+                            <div attrs="{'invisible': [('lock_date', '=', False)]}">
+                                <p>
+                                    <h2>
+                                        <strong>LOCKED</strong>
+                                    </h2>
+                                </p>
+                            </div>
+                            <!-- add groups to make this look less repulsive to the eye-->
+                            <group name="main">
+                                <group col="1">
+                                    <field
+                                        name='lock_date'
+                                        attrs="{'readonly': [('lock_date','!=', False)], 'invisible': [('lock_date', '=', False)]}"
+                                        force_save='True'
+                                    />
+                                    <field name="model_name" />
+                                    <field
+                                        name="wrapper_report_id"
+                                        attrs="{'readonly': [('lock_date','!=', False)]}"
+                                    />
+                                </group>
+                                <group name="content_buttons" col="1">
+                                    <button
+                                        name="action_preview_content"
+                                        string="Preview"
+                                        type="object"
+                                        class="oe_highlight"
+                                        attrs="{'invisible':[('resource_ref', '=', False)]}"
+                                    />
+                                </group>
+                            </group>
+                            <field
+                                name="section_ids"
+                                attrs="{'readonly':[('lock_date', '!=', False)]}"
+                            >
+                                <tree decoration-bf="is_paragraph">
+                                    <field name="sequence" widget="handle" />
+                                    <field name="name" />
+                                    <field name="condition_python" />
+                                    <field name="condition_domain" />
+                                    <field name="is_paragraph" invisible="1" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page
+                            name="reports"
+                            string="Reports"
+                            attrs="{'invisible':[('is_template', '=', False)]}"
+                        >
+                            <field
+                                name="report_ids"
+                                context="{'default_template_id': active_id}"
+                            />
+                        </page>
+                        <page name="help" string="Help">
+                            <field name="documentation" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="report_dynamic_tree" model="ir.ui.view">
+        <field name="name">report.dynamic.tree</field>
+        <field name="model">report.dynamic</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" readonly="True" />
+                <field name="model_id" readonly="True" />
+                <field
+                    name="resource_ref"
+                    readonly="True"
+                    invisible="context.get('is_template')==True"
+                    string="For"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="report_dynamic_search" model="ir.ui.view">
+        <field name="name">report.dynamic.search</field>
+        <field name="model">report.dynamic</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="model_id" />
+                <!-- TODO: add string here -->
+                <field name="group_by_record_name" />
+                <filter
+                    string="Archived"
+                    name="active"
+                    domain="[('active', '=',False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Model"
+                        name="Model"
+                        context="{'group_by': 'model_id'}"
+                    />
+                    <filter
+                        string="Record"
+                        name="Record"
+                        context="{'group_by': 'group_by_record_name'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- action and menu for reports-->
+    <record id="report_dynamic_action" model="ir.actions.act_window">
+        <field name="name">Dynamic Reports</field>
+        <field name="res_model">report.dynamic</field>
+        <field name="domain">[('is_template', '=', False)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        name="Dynamic Reports"
+        id="report_dynamic_menu_root"
+        sequence="300"
+        action="report_dynamic_action"
+    />
+    <!-- action and menu for templates-->
+    <record id="report_dynamic_template_action" model="ir.actions.act_window">
+        <field name="name">Templates</field>
+        <field name="res_model">report.dynamic</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_template', '=', True)]</field>
+        <field name="context">{'default_is_template': True, 'is_template':True}</field>
+    </record>
+    <menuitem
+        name="Templates"
+        id="report_dynamic_template_menu_root"
+        parent="report_dynamic_menu_root"
+        sequence="400"
+        action="report_dynamic_template_action"
+        groups="report_dynamic.group_report_dynamic_template_editors"
+    />
+</odoo>

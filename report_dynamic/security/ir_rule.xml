@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- allow internal people to crud report_dynamics -->
+    <record id="rule_report_dynamic_crud" model="ir.rule">
+        <field name="name">CRUD report_dynamic</field>
+        <field name="model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="domain_force">[('is_template','=', False)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <!-- allow only this group to view and edit templates -->
+    <record id="rule_report_dynamic_template_crud" model="ir.rule">
+        <field name="name">CRUD report_dynamic templates</field>
+        <field name="model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="domain_force">[(1,'=', 1)]</field>
+        <field
+            name="groups"
+            eval="[(4, ref('group_report_dynamic_template_editors'))]"
+        />
+    </record>
+    <record id="rule_report_dynamic_report_crud" model="ir.rule">
+        <field name="name">CRUD report_dynamic reports</field>
+        <field name="model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="domain_force">[('is_template','=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_report_dynamic_report_editors'))]" />
+    </record>
+    <record id="rule_report_dynamic_report_r" model="ir.rule">
+        <field name="name">R report_dynamic reports</field>
+        <field name="model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="domain_force">[('is_template','=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_report_dynamic_report_users'))]" />
+    </record>
+</odoo>
