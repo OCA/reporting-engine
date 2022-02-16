@@ -18,10 +18,10 @@ class ReportAction(models.Model):
         report_model = self.env.get(report_model_name)
         if report_model is None:
             raise UserError(_("%s model was not found") % report_model_name)
-        return report_model.with_context(
-            active_model=self.model
-        ).create_xlsx_report(  # noqa
-            docids, data
+        return (
+            report_model.with_context(active_model=self.model)
+            .sudo(False)
+            .create_xlsx_report(docids, data)  # noqa
         )
 
     @api.model
