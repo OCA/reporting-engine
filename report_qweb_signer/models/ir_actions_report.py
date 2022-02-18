@@ -38,7 +38,7 @@ class IrActionsReport(models.Model):
         """Obtain the proper certificate for the report and the conditions."""
         if self.report_type != "qweb-pdf":
             return False
-        company_id = self.env.user.company_id.id
+        company_id = self.env.company.id
         if res_ids:
             obj = self.env[self.model].browse(res_ids[0])
             if "company_id" in obj:
