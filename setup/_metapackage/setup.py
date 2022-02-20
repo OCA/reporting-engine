@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-bi_sql_editor>=15.0dev,<15.1dev',
         'odoo-addon-report_wkhtmltopdf_param>=15.0dev,<15.1dev',
         'odoo-addon-report_xlsx>=15.0dev,<15.1dev',
+        'odoo-addon-report_xlsx_helper>=15.0dev,<15.1dev',
         'odoo-addon-report_xml>=15.0dev,<15.1dev',
         'odoo-addon-sql_export>=15.0dev,<15.1dev',
         'odoo-addon-sql_export_excel>=15.0dev,<15.1dev',
