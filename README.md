@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
+[report_qweb_signer](report_qweb_signer/) | 14.0.1.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 14.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 14.0.1.0.6 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.1 |  | Report xlsx helpers
