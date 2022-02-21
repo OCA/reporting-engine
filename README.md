@@ -1,5 +1,6 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/143/14.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-reporting-engine-143)
-[![Build Status](https://travis-ci.com/OCA/reporting-engine.svg?branch=14.0)](https://travis-ci.com/OCA/reporting-engine)
+[![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=14.0)
+[![Pre-commit Status](https://github.com/OCA/reporting-engine/actions/workflows/pre-commit.yml/badge.svg?branch=14.0)](https://github.com/OCA/reporting-engine/actions/workflows/pre-commit.yml?query=branch%3A14.0)
+[![Build Status](https://github.com/OCA/reporting-engine/actions/workflows/test.yml/badge.svg?branch=14.0)](https://github.com/OCA/reporting-engine/actions/workflows/test.yml?query=branch%3A14.0)
 [![codecov](https://codecov.io/gh/OCA/reporting-engine/branch/14.0/graph/badge.svg)](https://codecov.io/gh/OCA/reporting-engine)
 [![Translation Status](https://translation.odoo-community.org/widgets/reporting-engine-14-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/reporting-engine-14-0/?utm_source=widget)
 
