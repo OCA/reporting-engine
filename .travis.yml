@@ -14,6 +14,7 @@ addons:
       - expect-dev # provides unbuffer utility
       - libreoffice
       - graphviz
+      - "swig"
 
 stages:
   - test
