@@ -12,6 +12,9 @@
     "version": "14.0.1.0.0",
     "development_status": "Beta",
     "depends": ["web"],
+    "external_dependencies": {
+        "deb": ["graphviz"],
+    },
     "data": [
         "security/ir.model.access.csv",
         "security/rules.xml",
