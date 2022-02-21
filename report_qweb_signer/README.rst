@@ -14,13 +14,13 @@ Qweb PDF reports signer
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/13.0/report_qweb_signer
+    :target: https://github.com/OCA/reporting-engine/tree/14.0/report_qweb_signer
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-13-0/reporting-engine-13-0-report_qweb_signer
+    :target: https://translation.odoo-community.org/projects/reporting-engine-14-0/reporting-engine-14-0-report_qweb_signer
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/143/13.0
+    :target: https://runbot.odoo-community.org/runbot/143/14.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -38,7 +38,7 @@ Installation
 
 To install this module, you need to install Java JDK Headlees, e.g.:
 
-  apt-get install openjdk-8-jre-headless
+  apt-get install default-jre-headless
 
 Configuration
 =============
@@ -88,13 +88,17 @@ when signing date is important, for example, when signing customer invoices.
 You can try the signing with the demo report that is included for customers
 called "Test PDF certificate".
 
+You can set extra parameters of JSignPdf library in the system parameter
+named 'report_qweb_signer.java_position_parameters', for example '-V' to
+visible signature into pdf. You can also set extra parameters for Java in the
+system parameter named 'report_qweb_signer.java_parameters'.
+
 Known issues / Roadmap
 ======================
 
 * When signing multiple documents (if 'Allow only one document' is disable)
   then 'Save as attachment' is not applied and signed result is not
   saved as attachment.
-* To have a visible signature through an image embedded in the resulting PDF.
 * Add tests.
 
 Bug Tracker
@@ -103,7 +107,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -125,6 +129,8 @@ Contributors
     * Pedro M. Baeza
     * Jairo Llopis
     * David Vidal
+* Santi Argüeso <santi@comunitea.com>
+* Omar Castiñeira <omar@comunitea.com>
 
 Other credits
 ~~~~~~~~~~~~~
@@ -132,9 +138,7 @@ Other credits
 External utilities
 ++++++++++++++++++
 
-* iText v1.4.8: © 2000-2006, Paulo Soares, Bruno Lowagie and others - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ - http://sourceforge.net/projects/itext
-* jPdfSign: © 2006 Jan Peter Stotz - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ (inherited from iText) - http://private.sit.fraunhofer.de/~stotz/software/jpdfsign
-* Modified jPdfSign: © 2015 Antonio Espinosa - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ (inherited from iText) - static/src/java/JPdfSign.java
+* JSignPdf: © Josef Cacek - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ - http://jsignpdf.sourceforge.net/
 
 Icon
 ++++
@@ -154,6 +158,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/13.0/report_qweb_signer>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/report_qweb_signer>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
