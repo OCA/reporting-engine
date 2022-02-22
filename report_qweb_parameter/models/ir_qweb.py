@@ -16,7 +16,7 @@ class IrQWeb(models.AbstractModel):
             raise ValidationError(_("Length cannot be more than %s") % str(max_length))
         return value
 
-    def _compile_directive_esc(self, el, options):
+    def _compile_directive_esc(self, el, options, indent):
         min_value = el.attrib.pop("t-minlength", False)
         max_value = el.attrib.pop("t-maxlength", False)
         if min_value or max_value:
@@ -32,9 +32,9 @@ class IrQWeb(models.AbstractModel):
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
             el.attrib["t-esc"] = "(" + el.attrib["t-esc"] + ")[:" + tlength + "]"
-        return super()._compile_directive_esc(el, options)
+        return super()._compile_directive_esc(el, options, indent)
 
-    def _compile_directive_raw(self, el, options):
+    def _compile_directive_raw(self, el, options, indent):
         min_value = el.attrib.pop("t-minlength", False)
         max_value = el.attrib.pop("t-maxlength", False)
         if min_value or max_value:
@@ -50,4 +50,4 @@ class IrQWeb(models.AbstractModel):
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
             el.attrib["t-raw"] = el.attrib["t-raw"] + "[:" + tlength + "]"
-        return super()._compile_directive_raw(el, options)
+        return super()._compile_directive_raw(el, options, indent)
