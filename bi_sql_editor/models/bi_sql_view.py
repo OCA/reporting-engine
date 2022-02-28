@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from psycopg2 import ProgrammingError
 
@@ -381,7 +381,6 @@ class BiSQLView(models.Model):
         return res
 
     def _prepare_cron(self):
-        now = datetime.now()
         return {
             "name": _("Refresh Materialized View %s") % self.view_name,
             "user_id": SUPERUSER_ID,
@@ -393,7 +392,7 @@ class BiSQLView(models.Model):
             "numbercall": -1,
             "interval_number": 1,
             "interval_type": "days",
-            "nextcall": datetime(now.year, now.month, now.day + 1),
+            "nextcall": datetime.now() + timedelta(days=1),
             "active": True,
         }
 
