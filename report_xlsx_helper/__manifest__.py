@@ -6,6 +6,7 @@
     "author": "Noviat, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
+    "development_status": "Production/Stable",
     "version": "13.0.1.1.1",
     "license": "AGPL-3",
     "depends": ["report_xlsx"],
