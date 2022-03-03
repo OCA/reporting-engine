@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,13 +16,13 @@ msgstr ""
 #. module: partner_statement
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #, python-format
-msgid "%sStatement between %s and %s in %s"
+msgid "%(payable)sStatement between %(start)s and %(end)s in %(currency)s"
 msgstr ""
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
-msgid "%sStatement up to %s in %s"
+msgid "%(payable)sStatement up to %(end)s in %(currency)s"
 msgstr ""
 
 #. module: partner_statement
@@ -140,7 +140,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__account_type
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__account_type
 #: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__account_type
-msgid "Account type"
+msgid "Account Type"
 msgstr ""
 
 #. module: partner_statement
@@ -205,7 +205,7 @@ msgstr ""
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
-msgid "Aging Report at %s in %s"
+msgid "Aging Report at %(end)s in %(currency)s"
 msgstr ""
 
 #. module: partner_statement
@@ -305,13 +305,6 @@ msgstr ""
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__display_name
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common__display_name
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -374,26 +367,12 @@ msgstr ""
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__id
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__id
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx__id
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx__id
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement__id
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement__id
-#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__id
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common__id
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard__id
 msgid "ID"
 msgstr ""
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard____last_update
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_activity_statement_xlsx____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_report_p_s_report_outstanding_statement_xlsx____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_activity_statement____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_report_partner_statement_outstanding_statement____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_res_config_settings____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_statement_common_wizard____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -486,6 +465,11 @@ msgid "Partner Outstanding Statement"
 msgstr ""
 
 #. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
+msgid "Partner Statements"
+msgstr ""
+
+#. module: partner_statement
 #: model:ir.model.fields.selection,name:partner_statement.selection__activity_statement_wizard__account_type__payable
 #: model:ir.model.fields.selection,name:partner_statement.selection__outstanding_statement_wizard__account_type__payable
 #: model:ir.model.fields.selection,name:partner_statement.selection__statement_common_wizard__account_type__payable
@@ -575,6 +559,13 @@ msgstr ""
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
 msgid "Supplier"
+msgstr ""
+
+#. module: partner_statement
+#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
+#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
+#, python-format
+msgid "Supplier "
 msgstr ""
 
 #. module: partner_statement
