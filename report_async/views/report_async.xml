@@ -109,7 +109,6 @@
 
     <menuitem
         id="menu_report_async"
-        parent="base.menu_board_root"
         action="action_report_async"
         sequence="10"/>
 
