@@ -3,13 +3,14 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
+import pytz
 from datetime import datetime
-from psycopg2 import ProgrammingError
 
-from odoo import _, api, fields, models, SUPERUSER_ID
+from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo.addons.base.models.ir_model import IrModel
 from odoo.exceptions import UserError
 from odoo.tools import pycompat, safe_eval, sql
-from odoo.addons.base.models.ir_model import IrModel
+from psycopg2 import ProgrammingError
 
 _logger = logging.getLogger(__name__)
 
@@ -512,7 +513,25 @@ class BiSQLView(models.Model):
             return self.name
         return "%s (%s)" % (
             self.name,
-            datetime.utcnow().strftime(_("%m/%d/%Y %H:%M:%S UTC")))
+            self._prepare_string_datetime())
+
+    @api.multi
+    def _prepare_string_datetime(self):
+        self.ensure_one()
+        tz_param = self.env["ir.config_parameter"].sudo().get_param(
+            "bi_sql_editor.tz", 'UTC')
+        time_format = self.env["ir.config_parameter"].sudo().get_param(
+            "bi_sql_editor.datetime_format", '%m/%d/%Y %H:%M:%S %Z')
+        try:
+            tz = pytz.timezone(tz_param)
+        except Exception:
+            tz = pytz.utc
+        try:
+            datetime.now().strftime(time_format)
+        except Exception:
+            time_format = "%m/%d/%Y %H:%M:%S %Z"
+        now = datetime.now(tz)
+        return now.strftime(time_format)
 
     @api.multi
     def _prepare_menu(self):

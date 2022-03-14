@@ -116,6 +116,12 @@ To configure this module, you need to:
   .. figure:: https://raw.githubusercontent.com/OCA/reporting-engine/12.0/bi_sql_editor/static/description/04_materialized_view_setting.png
      :width: 800 px
 
+* To configure custom datetime format and timezone in action name,
+  set following ir.config_parameter:
+
+  .. figure:: ../static/description/07_ir_config_parameter.png
+     :width: 800 px
+
 * Finally, click on 'Create UI', to create new menu, action, graph view and
   search view.
 
