@@ -9,37 +9,10 @@ from psycopg2 import ProgrammingError
 
 from odoo import SUPERUSER_ID, _, api, fields, models
 from odoo.exceptions import UserError
-from odoo.tools import pycompat, sql, table_columns
+from odoo.tools import sql, table_columns
 from odoo.tools.safe_eval import safe_eval
 
-from odoo.addons.base.models.ir_model import IrModel
-
 _logger = logging.getLogger(__name__)
-
-
-@api.model
-def _instanciate(self, model_data):
-    """Return a class for the custom model given by
-    parameters ``model_data``."""
-    # This monkey patch is meant to avoid create/search tables for those
-    # materialized views. Doing "super" doesn't work.
-    class CustomModel(models.Model):
-        _name = pycompat.to_text(model_data["model"])
-        _description = model_data["name"]
-        _module = False
-        _custom = True
-        _transient = bool(model_data["transient"])
-        __doc__ = model_data["info"]
-
-    # START OF patch
-    if model_data["model"].startswith(BiSQLView._model_prefix):
-        CustomModel._auto = False
-        CustomModel._abstract = True
-    # END of patch
-    return CustomModel
-
-
-IrModel._instanciate = _instanciate
 
 
 class BiSQLView(models.Model):
