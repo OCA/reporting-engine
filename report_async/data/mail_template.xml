@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="async_report_delivery" model="mail.template">
+            <field name="name">Report Async: New Report Available</field>
+            <field name="model_id" ref="base.model_ir_attachment" />
+            <field name="subject">Your report is available, ${object.name}</field>
+            <field
+                name="email_from"
+            >${object.company_id.partner_id.email_formatted|safe}</field>
+            <field name="partner_to">${user.partner_id.id}</field>
+            <field name="body_html" type="html">
+                <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"
+                >
+                    <tr>
+                        <td align="center">
+                            <table
+                                border="0"
+                                cellpadding="0"
+                                cellspacing="0"
+                                width="590"
+                                style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;"
+                            >
+                                <tbody>
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table
+                                                border="0"
+                                                cellpadding="0"
+                                                cellspacing="0"
+                                                width="590"
+                                                style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
+                                            >
+                                                <tr>
+                                                    <td
+                                                        valign="top"
+                                                        style="font-size: 13px;"
+                                                    >
+                                        % set base_url_async = object.env['ir.config_parameter'].sudo().get_param('web.base.url.async_reports')
+                                        % set base_url = base_url_async or object.env['ir.config_parameter'].sudo().get_param('web.base.url')
+                                        % set download_url = '%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )
+                                        <div>
+                                            Dear ${object.create_uid.partner_id.name or ''},
+                                            <br /><br />
+                                            Your requested report, ${object.name}, is available for <b
+                                                            >
+                                                                <a
+                                                                    href='${download_url}'
+                                                                >download</a>
+                                                            </b>.
+                                            <br /><br />
+                                            Have a nice day!<br />
+                                            --<br />${object.company_id.name}
+                                        </div>
+                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="auto_delete" eval="True" />
+        </record>
+    </data>
+</odoo>
