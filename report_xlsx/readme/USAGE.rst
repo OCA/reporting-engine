@@ -27,4 +27,6 @@ A report XML record ::
         <field name="report_type">xlsx</field>
         <field name="report_name">report_xlsx.partner_xlsx</field>
         <field name="report_file">res_partner</field>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="binding_type">report</field>
     </record>
