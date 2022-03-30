@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="report_page_orientation_demo_reports" model="ir.actions.report">
+            <field name="name">Demo report</field>
+            <field name="model">res.users</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_page_orientation.report_page_orientation_demo_report_view</field>
+            <field name="report_file">report_page_orientation.report_page_orientation_demo_report_view</field>
+            <field name="paperformat_id" ref="base.paperformat_euro"/>
+            <field name="binding_model_id" ref="base.model_res_users"/>
+            <field name="attachment">'Demo Report.pdf'</field>
+            <field name="binding_type">report</field>
+        </record>
+        <template id="report_page_orientation_demo_report_view">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        List of Current Users in The system
+                        <ul>
+                            <li t-foreach="docs" t-as="doc">
+                                <t t-esc="doc.name"/>
+                            </li>
+                        </ul>
+                        <h2>Hello this is a page</h2>
+                        <t t-foreach="range(100)" t-as="index">
+                            <div class="rotated-page-orientation">
+                                <p>Hello these are on rotated pages
+                                    <t t-esc="index"/>
+                                </p>
+                            </div>
+                        </t>
+                        <div>
+                            <p>Hello this is a normal page again</p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
