@@ -17,10 +17,10 @@ class ReportAction(models.Model):
         report_model_name = "report.%s" % self.report_name
         report_model = self.env.get(report_model_name)
         if report_model is None:
-            raise UserError(_("%s model was not found" % report_model_name))
-        return report_model.with_context(
-            {"active_model": self.model}
-        ).create_csv_report(docids, data)
+            raise UserError(_("%s model was not found") % report_model_name)
+        return report_model.with_context(active_model=self.model).create_csv_report(
+            docids, data
+        )
 
     @api.model
     def _get_report_from_name(self, report_name):
@@ -34,4 +34,4 @@ class ReportAction(models.Model):
             ("report_name", "=", report_name),
         ]
         context = self.env["res.users"].context_get()
-        return report_obj.with_context(context).search(conditions, limit=1)
+        return report_obj.with_context(**context).search(conditions, limit=1)
