@@ -2,10 +2,16 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 import base64
+import logging
+
+import mock
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from odoo.http import request
 from odoo.tools.safe_eval import safe_eval
+
+_logger = logging.getLogger(__name__)
 
 # Define all supported report_type
 REPORT_TYPES_FUNC = {
@@ -137,13 +143,48 @@ class ReportAsync(models.Model):
         return result
 
     @api.model
-    def run_report(self, docids, data, report_id, user_id):
+    def print_document_async(
+        self, record_ids, report_name, html=None, data=None, to_email=""
+    ):
+        """Generate a document async, do not return the document file"""
+        user_email = to_email or self.env.user.email
+        report = self.env["ir.actions.report"]._get_report_from_name(report_name)
+        self.with_delay().run_report(
+            record_ids,
+            data or {},
+            report.id,
+            self._uid,
+            email_notify=True,
+            to_email=user_email,
+            session_id=request.session.sid,
+        )
+
+    @api.model
+    def run_report(
+        self,
+        docids,
+        data,
+        report_id,
+        user_id,
+        email_notify=False,
+        to_email=None,
+        session_id=None,
+    ):
         report = self.env["ir.actions.report"].browse(report_id)
         func = REPORT_TYPES_FUNC[report.report_type]
+        if user_id:
+            report = report.with_user(user_id)
+        if session_id:
+            # necessary for correct CSS headers
+            with mock.patch("odoo.http.request.session") as session:
+                session.sid = session_id
+                out_file, file_ext = getattr(report, func)(docids, data)
+        else:
+            out_file, file_ext = getattr(report, func)(docids, data)
         # Run report
-        out_file, file_ext = getattr(report, func)(docids, data)
         out_file = base64.b64encode(out_file)
         out_name = "{}.{}".format(report.name, file_ext)
+        _logger.info("ASYNC GENERATION OF REPORT %s", (out_name,))
         # Save report to attachment
         attachment = (
             self.env["ir.attachment"]
@@ -165,11 +206,20 @@ class ReportAsync(models.Model):
             (self._uid, self._uid, attachment.id),
         )
         # Send email
-        if self.email_notify:
-            self._send_email(attachment)
+        if email_notify or self.email_notify:
+            self._send_email(attachment, to_email=to_email)
 
-    def _send_email(self, attachment):
+    def _send_email(self, attachment, to_email=None):
         template = self.env.ref("report_async.async_report_delivery")
+        email_values = {}
+        if to_email:
+            email_values = {
+                "recipient_ids": [],
+                "email_to": to_email,
+            }
         template.send_mail(
-            attachment.id, notif_layout="mail.mail_notification_light", force_send=False
+            attachment.id,
+            notif_layout="mail.mail_notification_light",
+            force_send=False,
+            email_values=email_values,
         )

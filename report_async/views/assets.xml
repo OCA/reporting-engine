@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="report_async_assets_backend"
+        inherit_id="web.assets_backend"
+        name="Report Async Assets"
+    >
+        <xpath expr="//script[last()]" position="after">
+            <script
+                type="text/javascript"
+                src="/report_async/static/src/js/components/action_menus.js"
+            />
+        </xpath>
+    </template>
+
+    <template
+        id="report_async_tests"
+        name="Report Async Tests"
+        inherit_id="web.qunit_suite_tests"
+    >
+        <xpath expr="//script[last()]" position="after">
+            <script
+                type="text/javascript"
+                src="/report_async/static/src/tests/report_async_tests.js"
+            />
+        </xpath>
+    </template>
+</odoo>
