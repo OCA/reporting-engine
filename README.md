@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [bi_sql_editor](bi_sql_editor/) | 14.0.1.0.0 |  | BI Views builder, based on Materialized or Normal SQL Views
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 |  | Graphical BI views builder for Odoo
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[report_async](report_async/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_layout_config](report_layout_config/) | 14.0.1.0.0 |  | Add possibility to easily modify the global report layout
 [report_py3o](report_py3o/) | 14.0.1.0.0 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.0 |  | Let the fusion server handle format conversion.
