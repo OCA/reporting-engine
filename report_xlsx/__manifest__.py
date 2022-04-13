@@ -7,7 +7,7 @@
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
     "version": "15.0.1.0.4",
-    "development_status": "Production/Stable",
+    "development_status": "Mature",
     "license": "AGPL-3",
     "external_dependencies": {"python": ["xlsxwriter", "xlrd"]},
     "depends": ["base", "web"],
