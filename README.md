@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [report_qweb_parameter](report_qweb_parameter/) | 15.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 15.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 15.0.1.0.5 |  | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 15.0.1.0.0 |  | Report xlsx helpers
+[report_xlsx_helper](report_xlsx_helper/) | 15.0.1.0.1 |  | Report xlsx helpers
 [report_xml](report_xml/) | 15.0.1.0.0 |  | Allow to generate XML reports
 [sql_export](sql_export/) | 15.0.1.0.0 |  | Export data in csv file with SQL requests
 [sql_export_excel](sql_export_excel/) | 15.0.1.0.0 |  | Allow to export a sql query to an excel file.
