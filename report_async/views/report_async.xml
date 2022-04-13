@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_report_async_tree" model="ir.ui.view">
+        <field name="name">report.async.tree</field>
+        <field name="model">report.async</field>
+        <field name="arch" type="xml">
+            <tree string="Report Center">
+                <field name="action_id" context="{'access_sudo': True}" />
+                <button type="object" name="run_now" string="Run Now" icon="fa-bolt" />
+                <button
+                    type="object"
+                    name="run_async"
+                    string="Run Background"
+                    icon="fa-cogs"
+                    attrs="{'invisible': [('allow_async', '=', False)]}"
+                />
+                <button
+                    type="object"
+                    name="view_files"
+                    string="Files"
+                    icon="fa-copy"
+                    attrs="{'invisible': [('allow_async', '=', False)]}"
+                />
+                <field name="allow_async" invisible="1" />
+                <field
+                    name="job_status"
+                    attrs="{'invisible': [('allow_async', '=', False)]}"
+                />
+                <field name="email_notify" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_report_async_form" model="ir.ui.view">
+        <field name="name">report.async.form</field>
+        <field name="model">report.async</field>
+        <field name="arch" type="xml">
+            <form>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    attrs="{'invisible': ['|', ('job_status', 'in', ['done', 'failed', False]),
+                                           ('allow_async', '=', False)]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p>
+                        The report will be running by <i class="fa fa-cogs" />
+                        <b>job</b>, and will be available at
+                        <i class="fa fa-copy" /><b> Files</b>
+                    </p>
+                </div>
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    attrs="{'invisible': ['|', ('job_status', '!=', 'failed'),
+                                           ('allow_async', '=', False)]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p>
+                        The last <i class="fa fa-cogs" /> <b>running job</b> was failed.
+                        Please contact your system administrator.
+                    </p>
+                </div>
+                <div
+                    class="alert alert-success"
+                    role="alert"
+                    attrs="{'invisible': ['|', ('job_status', '!=', 'done'),
+                                           ('allow_async', '=', False)]}"
+                    style="margin-bottom:0px;"
+                >
+                    <p>
+                        The last <i class="fa fa-cogs" /> <b
+                        >running job</b> was succeed.
+                        You can check the result in <i class="fa fa-copy" /><b
+                        > Files</b>
+                    </p>
+                </div>
+                <sheet>
+                    <div class="oe_read_only oe_right oe_button_box" name="buttons">
+                        <button
+                            type="object"
+                            name="run_now"
+                            string="Run Now"
+                            icon="fa-bolt"
+                        />
+                        <button
+                            type="object"
+                            name="run_async"
+                            string="Run Background"
+                            icon="fa-cogs"
+                            attrs="{'invisible': [('allow_async', '=', False)]}"
+                        />
+                        <button
+                            type="object"
+                            name="view_files"
+                            string="Files"
+                            icon="fa-copy"
+                            attrs="{'invisible': [('allow_async', '=', False)]}"
+                        />
+                        <button
+                            type="object"
+                            name="view_jobs"
+                            string="Jobs"
+                            icon="fa-align-justify"
+                            groups="queue_job.group_queue_job_manager"
+                            attrs="{'invisible': [('allow_async', '=', False)]}"
+                        />
+                    </div>
+                    <group>
+                        <group>
+                            <field
+                                name="action_id"
+                                options="{'no_open': True, 'no_create_edit': True}"
+                                context="{'access_sudo': True}"
+                            />
+                            <field name="allow_async" />
+                            <field
+                                name="email_notify"
+                                attrs="{'invisible': [('allow_async', '=', False)]}"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="job_status"
+                                attrs="{'invisible': [('allow_async', '=', False)]}"
+                            />
+                            <field name="group_ids" widget="many2many_tags" />
+                        </group>
+                        <group
+                            name="job_info"
+                            string="Last Run Job Error"
+                            colspan="2"
+                            attrs="{'invisible': ['|', ('job_info', '=', False), ('allow_async', '=', False)]}"
+                        >
+                            <field nolabel="1" name="job_info" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_report_async_search" model="ir.ui.view">
+        <field name="name">report.async.search</field>
+        <field name="model">report.async</field>
+        <field name="arch" type="xml">
+            <search string="Report Center">
+                <field name="action_id" />
+            </search>
+        </field>
+    </record>
+    <record id="action_report_async" model="ir.actions.act_window">
+        <field name="name">Report Center</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.async</field>
+        <field name="help">Run reports asyncronously</field>
+    </record>
+    <menuitem
+        id="menu_report_async"
+        parent="base.menu_board_root"
+        action="action_report_async"
+        sequence="10"
+    />
+    <record id="action_view_files" model="ir.actions.act_window">
+        <field name="name">Report Files</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_id" eval="False" />
+        <field name="search_view_id" ref="base.view_attachment_search" />
+        <field name="view_mode">kanban,tree,form</field>
+        <field
+            name="domain"
+        >[('res_model', '=', 'report.async'), ('create_uid', '=', uid)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No files found
+            </p>
+        </field>
+    </record>
+</odoo>
