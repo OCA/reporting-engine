@@ -261,6 +261,13 @@ msgid "ID"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
 msgid "Index Name"
 msgstr ""
@@ -587,6 +594,11 @@ msgstr ""
 msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__use_external_database
+msgid "Use External Database"
 msgstr ""
 
 #. module: bi_sql_editor
