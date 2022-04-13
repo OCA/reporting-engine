@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_async
+# 	* report_async
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,36 +15,39 @@ msgstr ""
 
 #. module: report_async
 #: model:mail.template,body_html:report_async.async_report_delivery
-msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
-"    <tr>\n"
-"        <td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
-"                <tbody>\n"
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
 "                    <tr>\n"
-"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                                <tr>\n"
-"                                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                        <td align=\"center\">\n"
+"                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"                                <tbody>\n"
+"                                    <tr>\n"
+"                                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                                <tr>\n"
+"                                                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
 "                                        % set base_url = object.env['ir.config_parameter'].sudo().get_param('web.base.url')\n"
 "                                        % set download_url = '%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )\n"
 "                                        <div>\n"
 "                                            Dear ${object.create_uid.partner_id.name or ''},\n"
 "                                            <br/><br/>\n"
-"                                            Your requested report, ${object.name}, is available for <b><a href=\"${download_url}\">download</a></b>.\n"
+"                                            Your requested report, ${object.name}, is available for <b>\n"
+"                                                                <a href=\"${download_url}\">download</a>\n"
+"                                                            </b>.\n"
 "                                            <br/><br/>\n"
 "                                            Have a nice day!<br/>\n"
 "                                            --<br/>${object.company_id.name}\n"
 "                                        </div>\n"
 "                                    </td>\n"
-"                                </tr>\n"
+"                                                </tr>\n"
+"                                            </table>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                </tbody>\n"
 "                            </table>\n"
 "                        </td>\n"
 "                    </tr>\n"
-"                </tbody>\n"
-"            </table>\n"
-"        </td>\n"
-"    </tr>\n"
-"</table>\n"
+"                </table>\n"
 "            "
 msgstr ""
 
@@ -54,7 +57,7 @@ msgid "Allow Async"
 msgstr ""
 
 #. module: report_async
-#: code:addons/report_async/models/report_async.py:108
+#: code:addons/report_async/models/report_async.py:0
 #, python-format
 msgid "Background process not allowed."
 msgstr ""
@@ -88,7 +91,7 @@ msgid "Document"
 msgstr ""
 
 #. module: report_async
-#: selection:report.async,job_status:0
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__done
 msgid "Done"
 msgstr ""
 
@@ -98,7 +101,7 @@ msgid "Email Notification"
 msgstr ""
 
 #. module: report_async
-#: selection:report.async,job_status:0
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__enqueued
 msgid "Enqueued"
 msgstr ""
 
@@ -108,7 +111,7 @@ msgid "Execute"
 msgstr ""
 
 #. module: report_async
-#: selection:report.async,job_status:0
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__failed
 msgid "Failed"
 msgstr ""
 
@@ -209,11 +212,13 @@ msgstr ""
 
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__group_ids
-msgid "Only user in selected groups can use this report.If left blank, everyone can use"
+msgid ""
+"Only user in selected groups can use this report.If left blank, everyone can"
+" use"
 msgstr ""
 
 #. module: report_async
-#: selection:report.async,job_status:0
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__pending
 msgid "Pending"
 msgstr ""
 
@@ -283,36 +288,40 @@ msgid "Send email with link to report, when it is ready"
 msgstr ""
 
 #. module: report_async
-#: selection:report.async,job_status:0
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__started
 msgid "Started"
 msgstr ""
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
-msgid "The last <i class=\"fa fa-cogs\"/> <b>running job</b> was failed.\n"
+msgid ""
+"The last <i class=\"fa fa-cogs\"/> <b>running job</b> was failed.\n"
 "                        Please contact your system administrator."
 msgstr ""
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
-msgid "The last <i class=\"fa fa-cogs\"/> <b>running job</b> was succeed.\n"
+msgid ""
+"The last <i class=\"fa fa-cogs\"/> <b>running job</b> was succeed.\n"
 "                        You can check the result in <i class=\"fa fa-copy\"/><b> Files</b>"
 msgstr ""
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
-msgid "The report will be running by <i class=\"fa fa-cogs\"/>\n"
+msgid ""
+"The report will be running by <i class=\"fa fa-cogs\"/>\n"
 "                        <b>job</b>, and will be available at\n"
 "                        <i class=\"fa fa-copy\"/><b> Files</b>"
 msgstr ""
 
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__allow_async
-msgid "This is not automatic field, please check if you want to allow this report in background process"
+msgid ""
+"This is not automatic field, please check if you want to allow this report "
+"in background process"
 msgstr ""
 
 #. module: report_async
 #: model:mail.template,subject:report_async.async_report_delivery
 msgid "Your report is available, ${object.name}"
 msgstr ""
-
