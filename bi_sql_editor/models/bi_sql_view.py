@@ -279,7 +279,7 @@ class BiSQLView(models.Model):
 
     # Overload Section
     def write(self, vals):
-        res = super(BiSQLView, self).write(vals)
+        res = super().write(vals)
         if vals.get("sequence", False):
             for rec in self.filtered(lambda x: x.menu_id):
                 rec.menu_id.sequence = rec.sequence
@@ -293,8 +293,9 @@ class BiSQLView(models.Model):
                     "If you want to delete them, first set them to draft."
                 )
             )
-        self.cron_id.unlink()
-        return super(BiSQLView, self).unlink()
+        if self.mapped("cron_id"):
+            self.mapped("cron_id").unlink()
+        return super().unlink()
 
     def copy(self, default=None):
         self.ensure_one()
@@ -305,7 +306,7 @@ class BiSQLView(models.Model):
                 "technical_name": "%s_copy" % self.technical_name,
             }
         )
-        return super(BiSQLView, self).copy(default=default)
+        return super().copy(default=default)
 
     # Action Section
     def button_create_sql_view_and_model(self):
@@ -658,7 +659,7 @@ class BiSQLView(models.Model):
         the database structure is done, to know fields type."""
         self.ensure_one()
         sql_view_field_obj = self.env["bi.sql.view.field"]
-        columns = super(BiSQLView, self)._check_execution()
+        columns = super()._check_execution()
         field_ids = []
         for column in columns:
             existing_field = self.bi_sql_view_field_ids.filtered(

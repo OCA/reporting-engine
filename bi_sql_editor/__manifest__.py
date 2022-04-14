@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "category": "Reporting",
     "author": "GRAP,Odoo Community Association (OCA)",
+    "maintainers": ["legalsylvain"],
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["base", "sql_request_abstract"],
     "data": [
