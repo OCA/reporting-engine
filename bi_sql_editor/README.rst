@@ -185,6 +185,14 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-legalsylvain| 
+
 This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/bi_sql_editor>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
