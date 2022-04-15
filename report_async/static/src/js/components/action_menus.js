@@ -12,7 +12,7 @@ odoo.define("report_async.ActionMenus", function (require) {
 
     function validate_email(email) {
         const res = email.match(
-            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
         if (!res) {
             return false;
@@ -25,7 +25,7 @@ odoo.define("report_async.ActionMenus", function (require) {
         async _executeAction(action) {
             const self = this;
             const _super = this._super;
-            const args = arguments; // Dict action
+            const args = arguments;
             const records = this.props.activeIds;
             var $content = $(QWeb.render("ReportAsyncConfiguration", {}));
 

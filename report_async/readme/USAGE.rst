@@ -17,3 +17,12 @@ As normal user, you can run your reports from Report Center
 - **Job Status:** show status of the latest run job. If job fail, exception error will also shown
 - **Files:** show all files being produced by the job as run by the user.
 - **Jobs:** show all jobs triggered by this report as run by the user. Only job queue manager have access to this button.
+
+As additional improvement, you can now generate reports async directly from the form view itself,
+and not have to go into the "Report Center" specifically to do it. This can be done by pressing
+*Print*, you will get a popup asking you if you want to run it Async, and then to verify the email
+address that it should be sent to. See below sample:
+
+.. image:: ../static/description/sample.gif
+   :width: 800
+   :alt: How It Works
