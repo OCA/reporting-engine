@@ -9,5 +9,6 @@
     "version": "14.0.1.0.1",
     "license": "AGPL-3",
     "depends": ["report_xlsx"],
+    "development_status": "Mature",
     "installable": True,
 }
