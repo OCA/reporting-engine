@@ -5,6 +5,7 @@
     "version": "14.0.1.0.1",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
+    "development_status": "Production/Stable",
     "author": "Tecnativa, Odoo Community Association (OCA), Avoin.Systems",
     "license": "AGPL-3",
     "installable": True,
