@@ -42,7 +42,7 @@ class IrActionsReport(models.Model):
         if res_ids:
             obj = self.env[self.model].browse(res_ids[0])
             if "company_id" in obj:
-                company_id = obj.company_id.id
+                company_id = obj.company_id.id or company_id
         certificates = self.env["report.certificate"].search(
             [
                 ("company_id", "=", company_id),
