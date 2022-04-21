@@ -39,11 +39,13 @@ class IrActionsReport(models.Model):
         """Obtain the proper certificate for the report and the conditions."""
         if self.report_type != "qweb-pdf":
             return False
+        company_id = self.env.company.id
+        if res_ids:
+            obj = self.env[self.model].browse(res_ids[0])
+            if "company_id" in obj:
+                company_id = obj.company_id.id or company_id
         certificates = self.env["report.certificate"].search(
-            [
-                ("company_id", "=", self.env.user.company_id.id),
-                ("model_id", "=", self.model),
-            ]
+            [("company_id", "=", company_id), ("model_id", "=", self.model)]
         )
         if not certificates:
             return False
@@ -122,8 +124,13 @@ class IrActionsReport(models.Model):
         irc_param = self.env["ir.config_parameter"].sudo()
         java_bin = "java -jar"
         java_param = irc_param.get_param("report_qweb_signer.java_parameters")
-        jar = "{}/../static/jar/jPdfSign.jar".format(me)
-        return "{} {} {} {}".format(java_bin, java_param, jar, opts)
+        java_position_param = irc_param.get_param(
+            "report_qweb_signer.java_position_parameters"
+        )
+        jar = "{}/../static/jar/JSignPdf.jar".format(me)
+        return "{} {} {} {} {}".format(
+            java_bin, java_param, jar, opts, java_position_param
+        )
 
     def _get_endesive_params(self, certificate):
         date = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
@@ -160,7 +167,7 @@ class IrActionsReport(models.Model):
         return pdfsigned
 
     def pdf_sign(self, pdf, certificate):
-        pdfsigned = pdf + ".signed.pdf"
+        pdfsigned = pdf[:-4] + "_signed.pdf"
         p12 = _normalize_filepath(certificate.path)
         passwd = _normalize_filepath(certificate.password_file)
         method_used = certificate.signing_method
@@ -169,7 +176,10 @@ class IrActionsReport(models.Model):
                 _("Signing report (PDF): " "Certificate or password file not found")
             )
         if method_used == "java":
-            signer_opts = '"{}" "{}" "{}" "{}"'.format(p12, pdf, pdfsigned, passwd)
+            passwd_f = open(passwd, "tr")
+            passwd = passwd_f.read().strip()
+            passwd_f.close()
+            signer_opts = ' "{}" -ksf "{}" -ksp "{}" -d "/tmp"'.format(pdf, p12, passwd)
             signer = self._signer_bin(signer_opts)
             process = subprocess.Popen(
                 signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
@@ -220,7 +230,7 @@ class IrActionsReport(models.Model):
             for fname in (pdf, signed):
                 try:
                     os.unlink(fname)
-                except (OSError, IOError):
+                except OSError:
                     _logger.error("Error when trying to remove file %s", fname)
             if certificate.attachment:
                 self._attach_signed_write(res_ids, certificate, content)
