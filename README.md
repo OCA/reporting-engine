@@ -39,7 +39,7 @@ addon | version | maintainers | summary
 [report_xlsx](report_xlsx/) | 14.0.1.0.7 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.2 |  | Report xlsx helpers
 [report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 |  | Report xlsx helpers - demo
-[report_xml](report_xml/) | 14.0.1.0.1 |  | Allow to generate XML reports
+[report_xml](report_xml/) | 14.0.1.0.2 |  | Allow to generate XML reports
 
 [//]: # (end addons)
 
