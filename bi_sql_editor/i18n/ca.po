@@ -9,59 +9,60 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2017-08-12 02:51+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2022-04-22 13:05+0000\n"
+"Last-Translator: pablontura <pablo.ruiz@qubiq.es>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
-msgstr ""
+msgstr "%d/%m/%Y %H:%M:%S UTC"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s (Copy)"
-msgstr ""
+msgstr "%s (Còpia)"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s Access %s"
-msgstr ""
+msgstr "%s Accés %s"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Access %s"
-msgstr ""
+msgstr "Accés %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
-msgstr ""
+msgstr "Context d'acció"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Action Settings"
-msgstr ""
+msgstr "Configuració d'acció"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__group_ids
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Grups permesos"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__user_ids
 msgid "Allowed Users"
-msgstr ""
+msgstr "Usuaris permesos"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -69,27 +70,31 @@ msgid ""
 "Are you sure you want to set to draft this SQL View. It will delete the "
 "materialized view, and all the previous mapping realized with the columns"
 msgstr ""
+"Esteu segur que voleu configurar l'esborrany d'aquesta vista SQL? Esborrarà "
+"la vista materialitzada, i tot el mapeig anterior realitzat amb les columnes"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__available
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
 msgid "BI SQL View"
-msgstr ""
+msgstr "Vista BI SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
 msgid "Bi SQL View Field"
-msgstr ""
+msgstr "Camp de vista Bi SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid ""
 "Check this box if you want to create a 'group by' option in the search view"
 msgstr ""
+"Marqueu aquesta casella si voleu crear una opció \"agrupa per\" a la vista "
+"de cerca"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_index
@@ -97,31 +102,34 @@ msgid ""
 "Check this box if you want to create an index on that field. This is "
 "recommended for searchable and groupable fields, to reduce duration"
 msgstr ""
+"Marqueu aquesta casella si voleu crear un índex en aquest camp. Això es "
+"recomana per a camps cercables i agrupables, per reduir la durada"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__col
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
 msgstr ""
+"Text separat per comes. Valors possibles: \"gràfic\", \"pivot\" o \"arbre\""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Context"
-msgstr ""
+msgstr "Context"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create SQL View, Indexes and Models"
-msgstr ""
+msgstr "Crea una vista SQL, índexs i models"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create UI"
-msgstr ""
+msgstr "Crea IU"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__create_uid
@@ -137,19 +145,20 @@ msgstr "Creat el"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__cron_id
+#, fuzzy
 msgid "Cron Task that will refresh the materialized view"
-msgstr ""
+msgstr "Tasca Cron que actualitzarà la vista materialitzada"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__size
 msgid "Database Size"
-msgstr ""
+msgstr "Mida de la base de dades"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__action_context
 msgid ""
 "Define here a context that will be used by default, when creating the action."
-msgstr ""
+msgstr "Definiu aquí un context que s'utilitzarà per defecte en crear l'acció."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
@@ -160,6 +169,11 @@ msgid ""
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
 msgstr ""
+"Definiu aquí la restricció d'accés a les dades.\n"
+" Tingueu cura d'utilitzar el nom del camp amb el prefix 'x_'. Es crearà una "
+"\"ir.rule\" global. Per exemple, una regla típica de múltiples empreses és\n"
+"  ['|', ('x_company_id','fill_de', [user.company_id."
+"id]),('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -170,29 +184,32 @@ msgstr "Veure el nom"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__domain_force
 msgid "Extra Rule Definition"
-msgstr ""
+msgstr "Definició de regla addicional"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Extras Information"
-msgstr ""
+msgstr "Informació addicional"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "Field Description"
-msgstr ""
+msgstr "Descripció del camp"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__ttype
 msgid "Field Type"
-msgstr ""
+msgstr "Tipus de camp"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
+#, fuzzy
 msgid ""
 "For 'Many2one' Odoo field.\n"
 " Comodel of the field."
 msgstr ""
+"Per al camp Odoo 'Many2one'.\n"
+"  Comodel del camp."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -201,31 +218,35 @@ msgid ""
 " List of options, specified as a Python expression defining a list of (key, "
 "label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
+"Per al camp Odoo \"Selecció\".\n"
+" Llista d'opcions, especificada com una expressió Python que defineix una "
+"llista de (clau, etiqueta) parells. Per exemple: [('blau', 'blau'), ('groc', "
+"'groc')]"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__model_name
 msgid "Full Qualified Name of the transient model that will be created."
-msgstr ""
+msgstr "Nom qualificat complet del model transitori que es crearà."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_name
 msgid "Full name of the SQL view"
-msgstr ""
+msgstr "Nom complet de la vista SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__graph_type
 msgid "Graph Type"
-msgstr ""
+msgstr "Tipus de gràfic"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
 msgid "Has Group Changed"
-msgstr ""
+msgstr "Ha canviat de grup"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__hidden
 msgid "Hidden"
-msgstr ""
+msgstr "Ocult"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
@@ -236,12 +257,12 @@ msgstr "ID"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
 msgid "Index Name"
-msgstr "Nom del índex "
+msgstr "Nom del índex"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid "Is Group by"
-msgstr ""
+msgstr "Està agrupat per"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_index
