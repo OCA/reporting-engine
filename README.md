@@ -28,7 +28,7 @@ addon | version | maintainers | summary
 [base_comment_template](base_comment_template/) | 13.0.3.0.1 |  | Add conditional mako template to any report on models that inherits comment.template.
 [bi_sql_editor](bi_sql_editor/) | 13.0.1.0.1 |  | BI Views builder, based on Materialized or Normal SQL Views
 [kpi](kpi/) | 13.0.1.0.1 |  | Key Performance Indicator
-[kpi_dashboard](kpi_dashboard/) | 13.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[kpi_dashboard](kpi_dashboard/) | 13.0.1.1.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
 [report_async](report_async/) | 13.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_batch](report_batch/) | 13.0.1.0.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Ability to print multiple QWeb reports in a single batch.
 [report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
