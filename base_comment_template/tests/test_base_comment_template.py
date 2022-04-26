@@ -7,7 +7,7 @@ from odoo.tools.misc import mute_logger
 from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
 
-class TestCommentTemplate(common.SavepointCase):
+class TestCommentTemplate(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -45,7 +45,7 @@ class TestCommentTemplate(common.SavepointCase):
     @classmethod
     def tearDownClass(cls):
         teardown_test_model(cls.env, ResUsers)
-        super(TestCommentTemplate, cls).tearDownClass()
+        return super(TestCommentTemplate, cls).tearDownClass()
 
     def test_template_name_get(self):
         self.assertEqual(
@@ -110,7 +110,9 @@ class TestCommentTemplate(common.SavepointCase):
         )
         # Adding translated terms
         ctx = dict(lang="ro_RO")
-        partner_title.with_context(ctx).write({"name": "Ambasador", "shortcut": "Amb."})
+        partner_title.with_context(**ctx).write(
+            {"name": "Ambasador", "shortcut": "Amb."}
+        )
         self.user.partner_id.title = partner_title
         self.before_template_id.text = "Test comment render ${object.title.name}"
 
@@ -121,7 +123,7 @@ class TestCommentTemplate(common.SavepointCase):
                 self.user.render_comment(self.before_template_id), expected_en_text
             )
             self.assertEqual(
-                self.user.with_context(ctx).render_comment(self.before_template_id),
+                self.user.with_context(**ctx).render_comment(self.before_template_id),
                 expected_ro_text,
             )
 
