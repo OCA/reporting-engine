@@ -22,7 +22,6 @@ class BaseCommentTemplate(models.Model):
         help="This field allows to select the position of the comment on reports.",
     )
     name = fields.Char(
-        string="Name",
         translate=True,
         required=True,
         help="Name/description of this comment template",
