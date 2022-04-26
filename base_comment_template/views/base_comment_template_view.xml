@@ -4,7 +4,7 @@
         <field name="name">base.comment.template.search</field>
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
-            <tree string="Comment Templates">
+            <tree>
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="position" />
