@@ -738,7 +738,7 @@ class ReportXlsxAbstract(models.AbstractModel):
 
     @staticmethod
     def _apply_formula_quirk(args_data, cell_type, cell_format):
-        """ Insert empty value to force LibreOffice to recompute the value """
+        """Insert empty value to force LibreOffice to recompute the value"""
         if cell_type == "formula":
             if not cell_format:
                 # Insert positional argument for missing format

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+    <t t-name="kpi_dashboard.bokeh" t-extend="kpi_dashboard.base_widget">
+        <t t-jquery="h1" t-operation="after">
+            <div data-bind="value" />
+        </t>
+    </t>
+
+</template>

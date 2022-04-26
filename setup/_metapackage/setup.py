@@ -12,6 +12,8 @@ setuptools.setup(
         'odoo14-addon-bi_sql_editor',
         'odoo14-addon-bi_view_editor',
         'odoo14-addon-kpi_dashboard',
+        'odoo14-addon-kpi_dashboard_bokeh',
+        'odoo14-addon-report_async',
         'odoo14-addon-report_layout_config',
         'odoo14-addon-report_py3o',
         'odoo14-addon-report_py3o_fusion_server',
