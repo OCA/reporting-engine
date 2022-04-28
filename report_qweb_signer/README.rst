@@ -38,7 +38,7 @@ Installation
 
 To install this module, you need to install Java JDK Headlees, e.g.:
 
-  apt-get install openjdk-8-jre-headless
+  apt-get install default-jre-headless
 
 Configuration
 =============
@@ -88,13 +88,17 @@ when signing date is important, for example, when signing customer invoices.
 You can try the signing with the demo report that is included for customers
 called "Test PDF certificate".
 
+You can set extra parameters of JSignPdf library in the system parameter
+named 'report_qweb_signer.java_position_parameters', for example '-V' to
+visible signature into pdf. You can also set extra parameters for Java in the
+system parameter named 'report_qweb_signer.java_parameters'.
+
 Known issues / Roadmap
 ======================
 
 * When signing multiple documents (if 'Allow only one document' is disable)
   then 'Save as attachment' is not applied and signed result is not
   saved as attachment.
-* To have a visible signature through an image embedded in the resulting PDF.
 * Add tests.
 
 Bug Tracker
@@ -125,6 +129,8 @@ Contributors
     * Pedro M. Baeza
     * Jairo Llopis
     * David Vidal
+* Santi Argüeso <santi@comunitea.com>
+* Omar Castiñeira <omar@comunitea.com>
 
 Other credits
 ~~~~~~~~~~~~~
@@ -132,9 +138,7 @@ Other credits
 External utilities
 ++++++++++++++++++
 
-* iText v1.4.8: © 2000-2006, Paulo Soares, Bruno Lowagie and others - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ - http://sourceforge.net/projects/itext
-* jPdfSign: © 2006 Jan Peter Stotz - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ (inherited from iText) - http://private.sit.fraunhofer.de/~stotz/software/jpdfsign
-* Modified jPdfSign: © 2015 Antonio Espinosa - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ (inherited from iText) - static/src/java/JPdfSign.java
+* JSignPdf: © Josef Cacek - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ - http://jsignpdf.sourceforge.net/
 
 Icon
 ++++
