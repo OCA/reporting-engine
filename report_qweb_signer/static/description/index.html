@@ -398,7 +398,7 @@ PDFs using a PKCS#12 certificate.</p>
 <h1><a class="toc-backref" href="#id1">Installation</a></h1>
 <p>To install this module, you need to install Java JDK Headlees, e.g.:</p>
 <blockquote>
-apt-get install openjdk-8-jre-headless</blockquote>
+apt-get install default-jre-headless</blockquote>
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#id2">Configuration</a></h1>
@@ -443,6 +443,10 @@ next time saved one is downloaded without signing again. This is appropiate
 when signing date is important, for example, when signing customer invoices.</p>
 <p>You can try the signing with the demo report that is included for customers
 called “Test PDF certificate”.</p>
+<p>You can set extra parameters of JSignPdf library in the system parameter
+named ‘report_qweb_signer.java_position_parameters’, for example ‘-V’ to
+visible signature into pdf. You can also set extra parameters for Java in the
+system parameter named ‘report_qweb_signer.java_parameters’.</p>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#id5">Known issues / Roadmap</a></h1>
@@ -450,7 +454,6 @@ called “Test PDF certificate”.</p>
 <li>When signing multiple documents (if ‘Allow only one document’ is disable)
 then ‘Save as attachment’ is not applied and signed result is not
 saved as attachment.</li>
-<li>To have a visible signature through an image embedded in the resulting PDF.</li>
 <li>Add tests.</li>
 </ul>
 </div>
@@ -484,6 +487,10 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 </ul>
 </blockquote>
 </li>
+<li><p class="first">Santi Argüeso &lt;<a class="reference external" href="mailto:santi&#64;comunitea.com">santi&#64;comunitea.com</a>&gt;</p>
+</li>
+<li><p class="first">Omar Castiñeira &lt;<a class="reference external" href="mailto:omar&#64;comunitea.com">omar&#64;comunitea.com</a>&gt;</p>
+</li>
 </ul>
 </div>
 <div class="section" id="other-credits">
@@ -491,9 +498,7 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <div class="section" id="external-utilities">
 <h3><a class="toc-backref" href="#id11">External utilities</a></h3>
 <ul class="simple">
-<li>iText v1.4.8: © 2000-2006, Paulo Soares, Bruno Lowagie and others - License <a class="reference external" href="http://www.mozilla.org/MPL">MPL</a> or <a class="reference external" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html">LGPL2</a> - <a class="reference external" href="http://sourceforge.net/projects/itext">http://sourceforge.net/projects/itext</a></li>
-<li>jPdfSign: © 2006 Jan Peter Stotz - License <a class="reference external" href="http://www.mozilla.org/MPL">MPL</a> or <a class="reference external" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html">LGPL2</a> (inherited from iText) - <a class="reference external" href="http://private.sit.fraunhofer.de/~stotz/software/jpdfsign">http://private.sit.fraunhofer.de/~stotz/software/jpdfsign</a></li>
-<li>Modified jPdfSign: © 2015 Antonio Espinosa - License <a class="reference external" href="http://www.mozilla.org/MPL">MPL</a> or <a class="reference external" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html">LGPL2</a> (inherited from iText) - static/src/java/JPdfSign.java</li>
+<li>JSignPdf: © Josef Cacek - License <a class="reference external" href="http://www.mozilla.org/MPL">MPL</a> or <a class="reference external" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html">LGPL2</a> - <a class="reference external" href="http://jsignpdf.sourceforge.net/">http://jsignpdf.sourceforge.net/</a></li>
 </ul>
 </div>
 <div class="section" id="icon">
