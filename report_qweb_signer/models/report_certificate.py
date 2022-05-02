@@ -31,6 +31,7 @@ class ReportCertificate(models.Model):
         required=True,
         comodel_name="ir.model",
         help="Model where apply this certificate",
+        ondelete="cascade",
     )
     domain = fields.Char(
         string="Domain", help="Domain for filtering if sign or not the document",

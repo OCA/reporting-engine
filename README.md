@@ -1,5 +1,7 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/143/13.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-reporting-engine-143)
-[![Build Status](https://travis-ci.com/OCA/reporting-engine.svg?branch=13.0)](https://travis-ci.com/OCA/reporting-engine)
+
+[![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=13.0)
+[![Pre-commit Status](https://github.com/OCA/reporting-engine/actions/workflows/pre-commit.yml/badge.svg?branch=13.0)](https://github.com/OCA/reporting-engine/actions/workflows/pre-commit.yml?query=branch%3A13.0)
+[![Build Status](https://github.com/OCA/reporting-engine/actions/workflows/test.yml/badge.svg?branch=13.0)](https://github.com/OCA/reporting-engine/actions/workflows/test.yml?query=branch%3A13.0)
 [![codecov](https://codecov.io/gh/OCA/reporting-engine/branch/13.0/graph/badge.svg)](https://codecov.io/gh/OCA/reporting-engine)
 [![Translation Status](https://translation.odoo-community.org/widgets/reporting-engine-13-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/reporting-engine-13-0/?utm_source=widget)
 
@@ -26,7 +28,8 @@ addon | version | maintainers | summary
 [base_comment_template](base_comment_template/) | 13.0.3.0.1 |  | Add conditional mako template to any report on models that inherits comment.template.
 [bi_sql_editor](bi_sql_editor/) | 13.0.1.0.1 |  | BI Views builder, based on Materialized or Normal SQL Views
 [kpi](kpi/) | 13.0.1.0.1 |  | Key Performance Indicator
-[kpi_dashboard](kpi_dashboard/) | 13.0.1.0.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[kpi_dashboard](kpi_dashboard/) | 13.0.1.1.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[report_async](report_async/) | 13.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_batch](report_batch/) | 13.0.1.0.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Ability to print multiple QWeb reports in a single batch.
 [report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
 [report_csv](report_csv/) | 13.0.1.0.2 |  | Base module to create csv report
@@ -41,8 +44,8 @@ addon | version | maintainers | summary
 [report_qweb_signer](report_qweb_signer/) | 13.0.2.1.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 13.0.1.0.6 |  | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.1 |  | Report xlsx helpers
-[report_xml](report_xml/) | 13.0.1.0.1 |  | Allow to generate XML reports
+[report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.3 |  | Report xlsx helpers
+[report_xml](report_xml/) | 13.0.1.1.0 |  | Allow to generate XML reports
 
 [//]: # (end addons)
 
@@ -52,12 +55,11 @@ addon | version | maintainers | summary
 
 This repository is licensed under [AGPL-3.0](LICENSE).
 
-However, each module can have a totally different license, as long as they adhere to OCA
+However, each module can have a totally different license, as long as they adhere to Odoo Community Association (OCA)
 policy. Consult each module's `__manifest__.py` file, which contains a `license` key
 that explains its license.
 
 ----
-
 OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit
 organization whose mission is to support the collaborative development of Odoo features
 and promote its widespread use.

@@ -1,11 +1,13 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.3.6
+_commit: v1.6.1
 _src_path: git+https://github.com/OCA/oca-addons-repo-template
-ci: Travis
+ci: GitHub
 dependency_installation_mode: PIP
 generate_requirements_txt: true
 include_wkhtmltopdf: true
 odoo_version: 13.0
+org_name: Odoo Community Association (OCA)
+org_slug: OCA
 rebel_module_groups: []
 repo_description: 'This repository hosts alternative reporting engines to the ones
   included on Odoo core (RML, QWeb and Webkit).
@@ -19,6 +21,7 @@ repo_description: 'This repository hosts alternative reporting engines to the on
   utils, checkers, signing tools and so on).'
 repo_name: OCA alternative reporting engines and reporting utilities for Odoo
 repo_slug: reporting-engine
+repo_website: https://github.com/OCA/reporting-engine
 travis_apt_packages:
 - swig
 - libreoffice

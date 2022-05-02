@@ -5,3 +5,5 @@
     * Pedro M. Baeza
     * Jairo Llopis
     * David Vidal
+* Santi Argüeso <santi@comunitea.com>
+* Omar Castiñeira <omar@comunitea.com>
