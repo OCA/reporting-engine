@@ -99,6 +99,7 @@ msgid "Computation Method"
 msgstr ""
 
 #. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__compute_on_fly
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_kpi__compute_on_fly
 msgid "Compute On Fly"
 msgstr ""
@@ -547,6 +548,11 @@ msgstr ""
 #: code:addons/kpi_dashboard/models/kpi_dashboard.py:0
 #, python-format
 msgid "Size Y of the widget cannot be bigger than 10"
+msgstr ""
+
+#. module: kpi_dashboard
+#: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__special_context
+msgid "Special Context"
 msgstr ""
 
 #. module: kpi_dashboard
