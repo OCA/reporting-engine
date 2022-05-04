@@ -3,6 +3,7 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 
 class KpiDashboard(models.Model):
@@ -119,9 +120,11 @@ class KpiDashboardItem(models.Model):
     color = fields.Char()
     font_color = fields.Char()
     modify_context = fields.Boolean()
+    compute_on_fly = fields.Boolean(related="kpi_id.compute_on_fly")
     modify_context_expression = fields.Char()
     modify_color = fields.Boolean()
     modify_color_expression = fields.Char()
+    special_context = fields.Char()
 
     @api.depends("row", "size_y")
     def _compute_end_row(self):
@@ -195,9 +198,17 @@ class KpiDashboardItem(models.Model):
                 }
             )
             if self.kpi_id.compute_on_fly:
+                kpi = self.kpi_id
+                if self.special_context:
+                    try:
+                        ctx = safe_eval(self.special_context)
+                        if isinstance(ctx, dict):
+                            kpi = kpi.with_context(**ctx)
+                    except SyntaxError:
+                        pass
                 vals.update(
                     {
-                        "value": self.kpi_id._compute_value(),
+                        "value": kpi._compute_value(),
                         "value_last_update": fields.Datetime.now(),
                     }
                 )
