@@ -12,8 +12,8 @@ from odoo.addons.web.controllers import main as report
 
 class ReportController(report.ReportController):
     @route()
-    def report_download(self, data, token):
-        result = super().report_download(data, token)
+    def report_download(self, data, token, context=None):
+        result = super().report_download(data, token, context=context)
         # When report is downloaded from print action, this function is called,
         # but this function cannot pass context (manually entered password) to
         # report.render_qweb_pdf(), encrypton for manual password is done here.
