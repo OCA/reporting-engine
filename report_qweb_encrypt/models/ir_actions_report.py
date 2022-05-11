@@ -34,10 +34,11 @@ class IrActionsReport(models.Model):
         document, ttype = super(IrActionsReport, self)._render_qweb_pdf(
             res_ids=res_ids, data=data
         )
-        if isinstance(res_ids, int):
-            res_ids = [res_ids]
-        password = self._get_pdf_password(res_ids[:1])
-        document = self._encrypt_pdf(document, password)
+        if res_ids:
+            if isinstance(res_ids, int):
+                res_ids = [res_ids]
+            password = self._get_pdf_password(res_ids[:1])
+            document = self._encrypt_pdf(document, password)
         return document, ttype
 
     def _get_pdf_password(self, res_id):
