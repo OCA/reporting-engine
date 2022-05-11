@@ -57,7 +57,7 @@ class ReportController(main.ReportController):
         return request.make_response(res, headers=http_headers)
 
     @route()
-    def report_download(self, data, token):
+    def report_download(self, data, token, context=None):
         """This function is used by 'qwebactionmanager.js' in order to trigger
         the download of a py3o/controller report.
 
@@ -68,7 +68,9 @@ class ReportController(main.ReportController):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         if "py3o" not in report_type:
-            return super(ReportController, self).report_download(data, token)
+            return super(ReportController, self).report_download(
+                data, token, context=context
+            )
         try:
             reportname = url.split("/report/py3o/")[1].split("?")[0]
             docids = None
