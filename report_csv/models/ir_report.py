@@ -8,7 +8,8 @@ from odoo.exceptions import UserError
 class ReportAction(models.Model):
     _inherit = "ir.actions.report"
 
-    report_type = fields.Selection(selection_add=[("csv", "csv")])
+    report_type = fields.Selection(selection_add=[("csv", "csv")],
+        ondelete={'csv': 'cascade'})
 
     @api.model
     def render_csv(self, docids, data):
