@@ -12,6 +12,7 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": ["base", "mail"],
+    "development_status": "Mature",
     "data": [
         "security/ir.model.access.csv",
         "security/security.xml",
