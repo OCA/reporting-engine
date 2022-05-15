@@ -38,7 +38,7 @@ class ReportController(main.ReportController):
         ir_action = request.env["ir.actions.report"]
         action_py3o_report = ir_action.get_from_report_name(
             reportname, "py3o"
-        ).with_context(context)
+        ).with_context(**context)
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description="Py3o action report not found for report_name "
@@ -57,7 +57,7 @@ class ReportController(main.ReportController):
         return request.make_response(res, headers=http_headers)
 
     @route()
-    def report_download(self, data, token):
+    def report_download(self, data, context=None):
         """This function is used by 'qwebactionmanager.js' in order to trigger
         the download of a py3o/controller report.
 
@@ -68,7 +68,7 @@ class ReportController(main.ReportController):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         if "py3o" not in report_type:
-            return super(ReportController, self).report_download(data, token)
+            return super(ReportController, self).report_download(data, context)
         try:
             reportname = url.split("/report/py3o/")[1].split("?")[0]
             docids = None
@@ -87,7 +87,7 @@ class ReportController(main.ReportController):
                 response = self.report_routes(
                     reportname, converter="py3o", **dict(data)
                 )
-            response.set_cookie("fileToken", token)
+            response.set_cookie("fileToken", context)
             return response
         except Exception as e:
             se = _serialize_exception(e)
