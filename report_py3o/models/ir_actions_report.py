@@ -58,9 +58,7 @@ class IrActionsReport(models.Model):
     )
     is_py3o_native_format = fields.Boolean(compute="_compute_is_py3o_native_format")
     py3o_template_id = fields.Many2one("py3o.template", "Template")
-    module = fields.Char(
-        "Module", help="The implementer module that provides this report"
-    )
+    module = fields.Char(help="The implementer module that provides this report")
     py3o_template_fallback = fields.Char(
         "Fallback",
         size=128,

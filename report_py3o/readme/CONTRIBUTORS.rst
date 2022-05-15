@@ -4,3 +4,4 @@
 * Guewen Baconnier <guewen.baconnier@camptocamp.com>
 * Omar Castiñeira <omar@comunitea.com>
 * Holger Brunn <hbrunn@therp.nl>
+* Phuc Tran Thanh <phuc@trobz.com>
