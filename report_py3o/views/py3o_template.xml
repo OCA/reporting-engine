@@ -34,7 +34,7 @@
         <field name="name">py3o.template.configuration.tree.view</field>
         <field name="model">py3o.template</field>
         <field name="arch" type="xml">
-            <tree string="Py3o Templates">
+            <tree>
                 <field name="name" />
                 <field name="filetype" />
             </tree>
@@ -47,7 +47,7 @@
     </record>
     <menuitem
         id="py3o_template_configuration_menu"
-        parent="py3o_config_menu"
+        parent="base.reporting_menuitem"
         action="py3o_template_configuration_action"
     />
 </odoo>
