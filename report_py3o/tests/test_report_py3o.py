@@ -165,7 +165,7 @@ class TestReportPy3o(TransactionCase):
         with temporary_copy(flbk_filename) as tmp_filename:
             self.report.py3o_template_fallback = tmp_filename
             tools.config.misc["report_py3o"] = {
-                "root_tmpl_path": os.path.dirname(tmp_filename)
+                "root_tmpl_path": os.path.realpath(os.path.dirname(tmp_filename))
             }
             res = self.report._render(self.env.user.ids)
             self.assertTrue(res)
