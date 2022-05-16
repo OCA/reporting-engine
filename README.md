@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.1.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
 [kpi_dashboard_bokeh](kpi_dashboard_bokeh/) | 14.0.1.0.0 |  | Create dashboards using bokeh
 [report_async](report_async/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
+[report_csv](report_csv/) | 14.0.1.0.0 |  | Base module to create csv report
 [report_layout_config](report_layout_config/) | 14.0.1.0.0 |  | Add possibility to easily modify the global report layout
 [report_py3o](report_py3o/) | 14.0.1.0.1 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.0 |  | Let the fusion server handle format conversion.
