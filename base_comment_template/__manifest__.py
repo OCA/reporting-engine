@@ -15,6 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "security/security.xml",
+        "wizard/base_comment_template_preview_views.xml",
         "views/base_comment_template_view.xml",
         "views/res_partner_view.xml",
     ],
