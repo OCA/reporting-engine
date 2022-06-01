@@ -29,19 +29,19 @@ addon | version | maintainers | summary
 [report_async](report_async/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_csv](report_csv/) | 14.0.1.0.0 |  | Base module to create csv report
 [report_layout_config](report_layout_config/) | 14.0.1.0.0 |  | Add possibility to easily modify the global report layout
-[report_py3o](report_py3o/) | 14.0.1.0.1 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
+[report_py3o](report_py3o/) | 14.0.1.0.2 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.0 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 14.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.1 |  | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 14.0.1.0.1 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 14.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 14.0.1.0.7 |  | Base module to create xlsx report
+[report_xlsx](report_xlsx/) | 14.0.1.0.8 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 14.0.1.0.2 |  | Report xlsx helpers
 [report_xlsx_helper_demo](report_xlsx_helper_demo/) | 14.0.1.0.0 |  | Report xlsx helpers - demo
-[report_xml](report_xml/) | 14.0.1.0.2 |  | Allow to generate XML reports
+[report_xml](report_xml/) | 14.0.1.0.3 |  | Allow to generate XML reports
 
 [//]: # (end addons)
 
