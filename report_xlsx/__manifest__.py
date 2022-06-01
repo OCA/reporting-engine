@@ -9,7 +9,6 @@
     "version": "13.0.1.1.0",
     "development_status": "Production/Stable",
     "license": "AGPL-3",
-    "external_dependencies": {"python": ["xlsxwriter", "xlrd"]},
     "depends": ["base", "web"],
     "data": ["views/webclient_templates.xml"],
     "demo": ["demo/report.xml"],
