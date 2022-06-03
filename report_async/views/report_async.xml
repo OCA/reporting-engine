@@ -4,7 +4,7 @@
         <field name="name">report.async.tree</field>
         <field name="model">report.async</field>
         <field name="arch" type="xml">
-            <tree string="Report Center">
+            <tree>
                 <field name="action_id" context="{'access_sudo': True}" />
                 <button type="object" name="run_now" string="Run Now" icon="fa-bolt" />
                 <button
