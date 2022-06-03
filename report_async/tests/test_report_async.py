@@ -19,7 +19,11 @@ class TestJobChannel(common.TransactionCase):
             "active_id": self.print_doc.id,
         }
         ctx.update(res["context"])
-        with Form(obj.with_context(ctx)) as form:
+        with Form(
+            obj.with_context(
+                active_model=self.print_doc._name, active_id=self.print_doc.id
+            )
+        ) as form:
             form.reference = "{},{}".format(self.test_rec._name, self.test_rec.id)
             form.action_report_id = self.test_rpt
         print_wizard = form.save()
@@ -29,7 +33,7 @@ class TestJobChannel(common.TransactionCase):
         """Run now will return report action as normal"""
         res = self.print_doc.run_now()
         report_action = self._print_wizard(res).print_report()
-        self.assertEquals(report_action["type"], "ir.actions.report")
+        self.assertEqual(report_action["type"], "ir.actions.report")
 
     def test_2_run_async(self):
         """Run background will return nothing, job started"""
@@ -39,8 +43,8 @@ class TestJobChannel(common.TransactionCase):
         res = self.print_doc.run_async()
         print_wizard = self._print_wizard(res)
         report_action = print_wizard.print_report()
-        self.assertEquals(report_action, {})  # Do not run report yet
-        self.assertEquals(self.print_doc.job_status, "pending")  # Job started
+        self.assertEqual(report_action, {})  # Do not run report yet
+        self.assertEqual(self.print_doc.job_status, "pending")  # Job started
         # Test produce file (as queue will not run in test mode)
         docids = [print_wizard.reference.id]
         data = None
