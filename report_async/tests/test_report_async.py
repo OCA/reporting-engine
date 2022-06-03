@@ -14,14 +14,11 @@ class TestJobChannel(common.TransactionCase):
 
     def _print_wizard(self, res):
         obj = self.env[res["res_model"]]
-        ctx = {
-            "active_model": self.print_doc._name,
-            "active_id": self.print_doc.id,
-        }
-        ctx.update(res["context"])
         with Form(
             obj.with_context(
-                active_model=self.print_doc._name, active_id=self.print_doc.id
+                active_model=self.print_doc._name,
+                active_id=self.print_doc.id,
+                async_process=res["context"].get("async_process"),
             )
         ) as form:
             form.reference = "{},{}".format(self.test_rec._name, self.test_rec.id)
@@ -37,6 +34,7 @@ class TestJobChannel(common.TransactionCase):
 
     def test_2_run_async(self):
         """Run background will return nothing, job started"""
+        self.print_doc.write({"allow_async": False})
         with self.assertRaises(UserError):
             self.print_doc.run_async()
         self.print_doc.write({"allow_async": True, "email_notify": True})
