@@ -28,7 +28,6 @@ class ReportAsync(models.Model):
         required=True,
     )
     allow_async = fields.Boolean(
-        string="Allow Async",
         default=False,
         help="This is not automatic field, please check if you want to allow "
         "this report in background process",
