@@ -45,7 +45,7 @@ class BaseCommentTemplatePreview(models.TransientModel):
     engine = fields.Selection(
         [("jinja", "Jinja"), ("qweb", "QWeb")],
         string="Template Preview Engine",
-        defult="jinja",
+        default="jinja",
     )
     model_ids = fields.Many2many(
         "ir.model", related="base_comment_template_id.model_ids"
