@@ -10,31 +10,32 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
-"PO-Revision-Date: 2017-06-06 02:51+0000\n"
-"Last-Translator: Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017\n"
+"PO-Revision-Date: 2022-06-15 18:05+0000\n"
+"Last-Translator: jabelchi <jabelchi@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_file_wizard
 msgid "Allow the user to save the file with sql request's data"
-msgstr ""
+msgstr "Permet que l'usuari gravi el fitxer amb dades d'ordre SQL"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Grups autoritzats"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Allowed Users"
-msgstr ""
+msgstr "Usuaris autoritzats"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__field_ids
@@ -58,7 +59,7 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__file_format__csv
 msgid "CSV"
-msgstr ""
+msgstr "CSV"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
@@ -80,7 +81,7 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
 msgid "Copy Options"
-msgstr ""
+msgstr "Opcions de còpia"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__count_pending_changeset_changes
@@ -109,12 +110,12 @@ msgstr "Creat el"
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
 msgid "Csv File"
-msgstr ""
+msgstr "Fitxer CSV"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.date_field_variable_sql
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__display_name
@@ -125,13 +126,14 @@ msgstr "Veure el nom"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__encoding
 msgid "Encoding"
-msgstr ""
+msgstr "Codificació"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
+#, fuzzy
 msgid "Execute Query"
-msgstr ""
+msgstr "Executar consulta"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
@@ -141,17 +143,17 @@ msgstr "Exportar "
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
 msgid "Export file"
-msgstr ""
+msgstr "Fitxer d'exportació"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
 msgid "File"
-msgstr ""
+msgstr "Fitxer"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__file_format
 msgid "File Format"
-msgstr ""
+msgstr "Format de fitxer"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__file_name
@@ -191,17 +193,18 @@ msgstr "Nom"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__field_ids
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Parameters"
-msgstr ""
+msgstr "Paràmetres"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.m2m_field_variable_sql
 msgid "Partner Categories"
-msgstr ""
+msgstr "Categories de partner"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+#, fuzzy
 msgid "Preview Results"
-msgstr ""
+msgstr "Vista prèvia"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query
@@ -210,55 +213,57 @@ msgstr "Consulta "
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+#, fuzzy
 msgid "Request Name"
-msgstr ""
+msgstr "Nom petició"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
 msgid "SQL Export"
-msgstr ""
+msgstr "Exportació SQL"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_parameter_action
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_parameter_view_tree
 msgid "SQL Parameter"
-msgstr ""
+msgstr "Paràmetre SQL"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "SQL Request"
-msgstr ""
+msgstr "Petició SQL"
 
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_parameter_view_form
+#, fuzzy
 msgid "SQL export"
-msgstr ""
+msgstr "Exporta SQL"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Set to Draft"
-msgstr ""
+msgstr "Passar a esborrany"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__smart_search
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__smart_search
 msgid "Smart Search"
-msgstr ""
+msgstr "Cerca intel·ligent"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
 #: model:ir.ui.menu,name:sql_export.sql_export_menu
 #: model:ir.ui.menu,name:sql_export.sql_export_menu_view
 msgid "Sql Export"
-msgstr ""
+msgstr "Exportació SQL"
 
 #. module: sql_export
 #: model:ir.ui.menu,name:sql_export.sql_parameter_menu_view
 msgid "Sql Export Variables"
-msgstr ""
+msgstr "Variables d'exportació SQL"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__state
@@ -272,6 +277,9 @@ msgid ""
 " * 'Draft': Not tested\n"
 " * 'SQL Valid': SQL Request has been checked and is valid"
 msgstr ""
+"Estat d ela petició:\n"
+" * 'Esborrany': No testat\n"
+" * 'SQL Vàlid': Petició SQL s'ha testat i és vàlida"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__user_can_see_changeset
@@ -282,7 +290,7 @@ msgstr ""
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Validate SQL Expression"
-msgstr ""
+msgstr "Valida expressió SQL"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__query
@@ -290,6 +298,8 @@ msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
 "TRUNCATE, EXECUTE, UPDATE."
 msgstr ""
+"No podeu fer servir aquestes paraules: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__big5
@@ -324,7 +334,7 @@ msgstr "o"
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "select * from res_partner"
-msgstr ""
+msgstr "select * from res_partner"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
@@ -359,7 +369,7 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.integer_field_variable_sql
 msgid "x_ID"
-msgstr ""
+msgstr "x_ID"
 
 #~ msgid "Draft"
 #~ msgstr "Esborrany"
