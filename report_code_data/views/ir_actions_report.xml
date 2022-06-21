@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="ir_actions_report_form_view">
+        <field name="name">ir.actions.report.form (in report_code_data)</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="code_data" string="Extra data code">
+                    <field name="code_data" widget="ace" options="{'mode': 'python'}" />
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+
+</odoo>
