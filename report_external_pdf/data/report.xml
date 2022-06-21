@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    © 2017 Creu Blanca
+    License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+    -->
+    <report
+        id="company_external_pdf"
+        model="res.company"
+        string="External PDF Demo"
+        report_type="external_pdf"
+        name="report_external_pdf.company_external_pdf"
+        file="demo_external_file"
+        attachment_use="False"
+        groups="base.group_no_one"
+    />
+</odoo>

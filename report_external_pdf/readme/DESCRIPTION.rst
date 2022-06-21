@@ -1,0 +1,1 @@
+This module allows creating a report action of type "external_pdf". When creating a report of this type, a render_report() function allows adding the desired behavior. For example, in a specific report maybe we want to render one template or another depending on a record condition. The report will always be rendered as a pdf.
