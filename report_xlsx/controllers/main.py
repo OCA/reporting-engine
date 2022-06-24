@@ -90,9 +90,10 @@ class ReportController(report.ReportController):
                             report.print_report_name, {"object": obj, "time": time}
                         )
                         filename = "%s.%s" % (report_name, "xlsx")
-                response.headers.add(
-                    "Content-Disposition", content_disposition(filename)
-                )
+                if not response.headers.get("Content-Disposition"):
+                    response.headers.add(
+                        "Content-Disposition", content_disposition(filename)
+                    )
                 return response
             else:
                 return super(ReportController, self).report_download(data, context)
