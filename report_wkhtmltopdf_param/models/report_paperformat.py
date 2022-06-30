@@ -33,7 +33,7 @@ class Paper(models.Model):
                     </body>
                 </html>
             """
-            contenthtml = [bytes(sample_html, "utf-8")]
+            contenthtml = [sample_html]
             report = self.env["ir.actions.report"].new(
                 {"paperformat_id": paperformat.id}
             )

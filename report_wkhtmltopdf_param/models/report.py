@@ -20,10 +20,8 @@ class IrActionsReport(models.Model):
         command_args = super(IrActionsReport, self)._build_wkhtmltopdf_args(
             paperformat_id, landscape, specific_paperformat_args, set_viewport_size
         )
-
         for param in paperformat_id.custom_params:
             command_args.extend([param.name])
             if param.value:
                 command_args.extend([param.value])
-
         return command_args
