@@ -331,7 +331,7 @@ class BveView(models.Model):
                 _("Error creating the view '{query}':\n{error}").format(
                     query=query, error=e
                 )
-            )
+            ) from e
 
     @api.depends("line_ids", "state", "over_condition")
     def _compute_sql_query(self):
@@ -485,12 +485,16 @@ class BveView(models.Model):
                 for group in access_records.mapped("group_id"):
                     group_list += " * {}\n".format(group.full_name)
                 msg_title = _(
-                    'The model "%s" cannot be accessed by users with the '
-                    "selected groups only." % (line_model.name,)
-                )
+                    'The model "%s" cannot be accessed by users with the selected groups only.'
+                ) % (line_model.name,)
                 msg_details = _("At least one of the following groups must be added:")
                 raise UserError(
-                    _("{}\n\n{}\n{}".format(msg_title, msg_details, group_list))
+                    _("%(msg_title)s\n\n%(msg_details)s\n%(group_list)s")
+                    % {
+                        "msg_title": msg_title,
+                        "msg_details": msg_details,
+                        "group_list": group_list,
+                    }
                 )
 
     def _check_invalid_lines(self):
@@ -503,15 +507,16 @@ class BveView(models.Model):
             missing_models = ", ".join(set(invalid_lines.mapped("model_name")))
             raise ValidationError(
                 _(
-                    "Following models are missing: %s.\n"
-                    "Probably some modules were uninstalled." % (missing_models,)
+                    "Following models are missing: %s.\nProbably some modules were uninstalled."
                 )
+                % (missing_models,)
             )
         invalid_lines = self.line_ids.filtered(lambda l: not l.field_id)
         if invalid_lines:
             missing_fields = ", ".join(set(invalid_lines.mapped("field_name")))
             raise ValidationError(
-                _("Following fields are missing: {}.".format(missing_fields))
+                _("Following fields are missing: %(missing_fields)s.")
+                % ({"missing_fields": missing_fields})
             )
 
     def open_view(self):
