@@ -68,9 +68,14 @@ class BveViewLine(models.Model):
                     )
                 )
             else:
+                field_model = line.field_id.model
+                field_name = line.field_id.name
                 raise ValidationError(
-                    _("Field %s/%s is duplicated.\n" "Please remove the duplications.")
-                    % (line.field_id.model, line.field_id.name)
+                    _(
+                        "Field %(field_model)s/%(field_name)s is duplicated.\n"
+                        "Please remove the duplications."
+                    )
+                    % {"field_model": field_model, "field_name": field_name}
                 )
 
     @api.depends("field_id", "sequence")
