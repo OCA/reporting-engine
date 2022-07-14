@@ -10,7 +10,11 @@
     "development_status": "Mature",
     "license": "AGPL-3",
     "depends": ["base", "web"],
-    "data": ["views/webclient_templates.xml"],
+    "external_dependencies": {
+        "python": ["xlsxwriter"],
+        "deb": ["libreoffice"],
+    },
+    "data": ["views/webclient_templates.xml", "views/ir_actions_report.xml"],
     "demo": ["demo/report.xml"],
     "installable": True,
 }

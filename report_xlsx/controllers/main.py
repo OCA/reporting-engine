@@ -40,16 +40,29 @@ class ReportController(report.ReportController):
             if report.print_report_name and not len(docids) > 1:
                 obj = request.env[report.model].browse(docids[0])
                 report_name = safe_eval(report.print_report_name, {"object": obj})
-            xlsxhttpheaders = [
-                (
-                    "Content-Type",
-                    "application/vnd.openxmlformats-"
-                    "officedocument.spreadsheetml.sheet",
-                ),
-                ("Content-Length", len(xlsx)),
-                ("Content-Disposition", content_disposition(report_name + ".xlsx")),
-            ]
-            return request.make_response(xlsx, headers=xlsxhttpheaders)
+            else:
+                obj = request.env[report.model].browse(docids)
+            if report.report_xlsx_to_pdf:
+                # if "PDF" in report.name:
+                # convertire xlsx in pdf
+                xlsxpdf = report._create_single_report(obj, data, xlsx)
+                xlsxpdfhttpheaders = [
+                    ("Content-Type", "application/pdf"),
+                    ("Content-Length", len(xlsxpdf)),
+                    ("Content-Disposition", content_disposition(report_name + ".pdf")),
+                ]
+                return request.make_response(xlsxpdf, headers=xlsxpdfhttpheaders)
+            else:
+                xlsxhttpheaders = [
+                    (
+                        "Content-Type",
+                        "application/vnd.openxmlformats-"
+                        "officedocument.spreadsheetml.sheet",
+                    ),
+                    ("Content-Length", len(xlsx)),
+                    ("Content-Disposition", content_disposition(report_name + ".xlsx")),
+                ]
+                return request.make_response(xlsx, headers=xlsxhttpheaders)
         except Exception as e:
             se = serialize_exception(e)
             error = {"code": 200, "message": "Odoo Server Error", "data": se}
