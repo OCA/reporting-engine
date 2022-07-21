@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="act_report_xml_view_xlsx" model="ir.ui.view">
+        <field name="name">act_report_xml_view_xlsx</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <field name="report_type" position="after">
+                <field
+                    name="report_xlsx_to_pdf"
+                    attrs="{'invisible':[('report_type', '!=', 'xlsx')]}"
+                />
+            </field>
+        </field>
+    </record>
+
+</odoo>
