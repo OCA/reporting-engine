@@ -42,7 +42,7 @@ Configure KPIs
 #. Create a new KPI specifying the computation method and the kpi type
 
    #. Number: result must contain a `value` and, if needed, a `previous`
-   #. Meter: result must contain `value`, `min` and `max`
+   #. Meter: To display percentage values, result must contain `value`, `min` and `max`. To display actual values, result must contain `min`, `total` and `used`.
    #. Graph: result must contain a list on `graphs` containing `values`, `title` and `key`
 
 #. In order to compute the KPI you can use a predefined function from a model or

@@ -17,7 +17,10 @@ odoo.define("kpi_dashboard.MeterWidget", function (require) {
         _getMeterOptions: function (values) {
             var size = Math.min(this.widget_size_x, this.widget_size_y - 40) - 10;
             return {
-                percent: values.value.value,
+                ...(values.value.value && {percent: values.value.value}),
+                ...(values.value.min && {min: values.value.min}),
+                ...(values.value.total && {total: values.value.total}),
+                ...(values.value.used && {used: values.value.used}),
                 style: "Arch",
                 width: 10,
                 size: size,
