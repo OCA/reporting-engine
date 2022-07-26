@@ -17,7 +17,6 @@ odoo.define("kpi_dashboard.MeterWidget", function (require) {
         _getMeterOptions: function (values) {
             var size = Math.min(this.widget_size_x, this.widget_size_y - 40) - 10;
             return {
-                percent: values.value.value,
                 style: "Arch",
                 width: 10,
                 size: size,
@@ -25,6 +24,8 @@ odoo.define("kpi_dashboard.MeterWidget", function (require) {
                 append: values.suffix === undefined ? "" : values.suffix,
                 color: values.font_color,
                 animate_text_colors: true,
+                ...(values.value.value && {percent: values.value.value}),
+                ...values.value,
             };
         },
     });

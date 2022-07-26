@@ -29,17 +29,19 @@
     />
     <record id="widget_meter_01" model="kpi.kpi">
         <field name="name">Meter 01</field>
-        <field name="suffix">€</field>
+        <field name="suffix">%</field>
         <field name="computation_method">code</field>
         <field name="widget">meter</field>
-        <field name="code">result = {"min": 0, "max": 100, "value": 90}</field>
+        <field name="code">result = {"value": 90}</field>
     </record>
     <record id="widget_meter_02" model="kpi.kpi">
         <field name="name">Meter 02</field>
         <field name="prefix">$</field>
         <field name="computation_method">code</field>
         <field name="widget">meter</field>
-        <field name="code">result = {"min": 0, "max": 100, "value": 40}</field>
+        <field
+            name="code"
+        >result = {"min": 0, "total": 200, "used": 90, showvalue: True}</field>
     </record>
     <function
         model="kpi.kpi"
