@@ -56,8 +56,16 @@ class KPI(models.Model):
 
     name = fields.Char("Name", required=True)
     description = fields.Text("Description")
-    category_id = fields.Many2one("kpi.category", "Category", required=True,)
-    threshold_id = fields.Many2one("kpi.threshold", "Threshold", required=True,)
+    category_id = fields.Many2one(
+        "kpi.category",
+        "Category",
+        required=True,
+    )
+    threshold_id = fields.Many2one(
+        "kpi.threshold",
+        "Threshold",
+        required=True,
+    )
     periodicity = fields.Integer("Periodicity", default=1)
 
     periodicity_uom = fields.Selection(
@@ -73,11 +81,21 @@ class KPI(models.Model):
         default="day",
     )
 
-    next_execution_date = fields.Datetime("Next execution date", readonly=True,)
-    value = fields.Float(string="Value", compute="_compute_display_last_kpi_value",)
-    color = fields.Text("Color", compute="_compute_display_last_kpi_value",)
+    next_execution_date = fields.Datetime(
+        "Next execution date",
+        readonly=True,
+    )
+    value = fields.Float(
+        string="Value",
+        compute="_compute_display_last_kpi_value",
+    )
+    color = fields.Text(
+        "Color",
+        compute="_compute_display_last_kpi_value",
+    )
     last_execution = fields.Datetime(
-        "Last execution", compute="_compute_display_last_kpi_value",
+        "Last execution",
+        compute="_compute_display_last_kpi_value",
     )
     kpi_type = fields.Selection(
         [
@@ -88,14 +106,21 @@ class KPI(models.Model):
         "KPI Computation Type",
     )
 
-    dbsource_id = fields.Many2one("base.external.dbsource", "External DB Source",)
+    dbsource_id = fields.Many2one(
+        "base.external.dbsource",
+        "External DB Source",
+    )
     kpi_code = fields.Text(
         "KPI Code",
         help=(
             "SQL code must return the result as 'value' " "(i.e. 'SELECT 5 AS value')."
         ),
     )
-    history_ids = fields.One2many("kpi.history", "kpi_id", "History",)
+    history_ids = fields.One2many(
+        "kpi.history",
+        "kpi_id",
+        "History",
+    )
     active = fields.Boolean(
         "Active",
         help=(
