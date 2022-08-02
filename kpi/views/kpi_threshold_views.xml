@@ -7,7 +7,7 @@
         <field name="name">kpi.threshold.tree</field>
         <field name="model">kpi.threshold</field>
         <field name="arch" type="xml">
-            <tree string="Thresholds" decoration-danger="invalid_message">
+            <tree decoration-danger="invalid_message">
                 <field name="name" />
                 <field name="invalid_message" />
                 <field name="company_id" groups="base.group_multi_company" />
