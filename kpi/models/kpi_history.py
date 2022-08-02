@@ -11,7 +11,12 @@ class KPIHistory(models.Model):
     _description = "History of the KPI"
     _order = "date desc"
 
-    name = fields.Char("Name", size=150, required=True, default=fields.Datetime.now(),)
+    name = fields.Char(
+        "Name",
+        size=150,
+        required=True,
+        default=fields.Datetime.now(),
+    )
     kpi_id = fields.Many2one("kpi", "KPI", required=True)
     date = fields.Datetime(
         "Execution Date",
