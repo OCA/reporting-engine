@@ -7,7 +7,7 @@
         <field name="name">kpi.history.tree</field>
         <field name="model">kpi.history</field>
         <field name="arch" type="xml">
-            <tree string="KPI History">
+            <tree>
                 <field name="name" />
                 <field name="date" />
                 <field name="value" />

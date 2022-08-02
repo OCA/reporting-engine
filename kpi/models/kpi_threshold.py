@@ -34,7 +34,7 @@ class KPIThreshold(models.Model):
                     "Please make sure your ranges do not overlap."
                 )
 
-    name = fields.Char("Name", size=50, required=True)
+    name = fields.Char(required=True)
     range_ids = fields.Many2many(
         "kpi.threshold.range",
         "kpi_threshold_range_rel",
@@ -43,7 +43,6 @@ class KPIThreshold(models.Model):
         "Ranges",
     )
     valid = fields.Boolean(
-        string="Valid",
         required=True,
         compute="_compute_is_valid_threshold",
         default=True,

@@ -12,8 +12,6 @@ class KPIHistory(models.Model):
     _order = "date desc"
 
     name = fields.Char(
-        "Name",
-        size=150,
         required=True,
         default=fields.Datetime.now(),
     )
@@ -24,8 +22,8 @@ class KPIHistory(models.Model):
         readonly=True,
         default=lambda r: fields.Datetime.now(),
     )
-    value = fields.Float("Value", required=True, readonly=True)
-    color = fields.Text("Color", required=True, readonly=True, default="#FFFFFF")
+    value = fields.Float(required=True, readonly=True)
+    color = fields.Text(required=True, readonly=True, default="#FFFFFF")
     company_id = fields.Many2one(
         "res.company", "Company", default=lambda self: self.env.company
     )

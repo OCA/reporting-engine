@@ -54,19 +54,11 @@ class KPI(models.Model):
     _name = "kpi"
     _description = "Key Performance Indicator"
 
-    name = fields.Char("Name", required=True)
-    description = fields.Text("Description")
-    category_id = fields.Many2one(
-        "kpi.category",
-        "Category",
-        required=True,
-    )
-    threshold_id = fields.Many2one(
-        "kpi.threshold",
-        "Threshold",
-        required=True,
-    )
-    periodicity = fields.Integer("Periodicity", default=1)
+    name = fields.Char(required=True)
+    description = fields.Text()
+    category_id = fields.Many2one("kpi.category", required=True)
+    threshold_id = fields.Many2one("kpi.threshold", required=True)
+    periodicity = fields.Integer(default=1)
 
     periodicity_uom = fields.Selection(
         [
@@ -76,27 +68,14 @@ class KPI(models.Model):
             ("week", "Week"),
             ("month", "Month"),
         ],
-        "Periodicity UoM",
         required=True,
         default="day",
     )
 
-    next_execution_date = fields.Datetime(
-        "Next execution date",
-        readonly=True,
-    )
-    value = fields.Float(
-        string="Value",
-        compute="_compute_display_last_kpi_value",
-    )
-    color = fields.Text(
-        "Color",
-        compute="_compute_display_last_kpi_value",
-    )
-    last_execution = fields.Datetime(
-        "Last execution",
-        compute="_compute_display_last_kpi_value",
-    )
+    next_execution_date = fields.Datetime(readonly=True)
+    value = fields.Float(compute="_compute_display_last_kpi_value")
+    color = fields.Text(compute="_compute_display_last_kpi_value")
+    last_execution = fields.Datetime(compute="_compute_display_last_kpi_value")
     kpi_type = fields.Selection(
         [
             ("python", "Python"),
@@ -106,23 +85,14 @@ class KPI(models.Model):
         "KPI Computation Type",
     )
 
-    dbsource_id = fields.Many2one(
-        "base.external.dbsource",
-        "External DB Source",
-    )
+    dbsource_id = fields.Many2one("base.external.dbsource", "External DB Source")
     kpi_code = fields.Text(
-        "KPI Code",
         help=(
             "SQL code must return the result as 'value' " "(i.e. 'SELECT 5 AS value')."
         ),
     )
-    history_ids = fields.One2many(
-        "kpi.history",
-        "kpi_id",
-        "History",
-    )
+    history_ids = fields.One2many("kpi.history", "kpi_id")
     active = fields.Boolean(
-        "Active",
         help=(
             "Only active KPIs will be updated by the scheduler based on"
             " the periodicity configuration."
