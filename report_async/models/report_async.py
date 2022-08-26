@@ -144,8 +144,13 @@ class ReportAsync(models.Model):
 
     @api.model
     def print_document_async(
-        self, record_ids, report_name, html=None, data=None, to_email="",
-        save_attachment_to_records=False
+        self,
+        record_ids,
+        report_name,
+        html=None,
+        data=None,
+        to_email="",
+        save_attachment_to_records=False,
     ):
         """Generate a document async, do not return the document file"""
         user_email = to_email or self.env.user.email
@@ -158,7 +163,7 @@ class ReportAsync(models.Model):
             email_notify=True,
             to_email=user_email,
             session_id=request.session.sid,
-            save_attachment_to_records=save_attachment_to_records
+            save_attachment_to_records=save_attachment_to_records,
         )
 
     @api.model
@@ -171,7 +176,7 @@ class ReportAsync(models.Model):
         email_notify=False,
         to_email=None,
         session_id=None,
-        save_attachment_to_records=False
+        save_attachment_to_records=False,
     ):
         report = self.env["ir.actions.report"].browse(report_id)
         func = REPORT_TYPES_FUNC[report.report_type]
@@ -207,16 +212,20 @@ class ReportAsync(models.Model):
             model = report.model
             records = self.env[model].browse(docids)
             for record in records:
-                attachment = self.env["ir.attachment"].sudo().create(
-                    {
-                        "name": out_name,
-                        "datas": out_file,
-                        "type": "binary",
-                        "res_model": model,
-                        "res_id": record.id,
-                    }
+                attachment = (
+                    self.env["ir.attachment"]
+                    .sudo()
+                    .create(
+                        {
+                            "name": out_name,
+                            "datas": out_file,
+                            "type": "binary",
+                            "res_model": model,
+                            "res_id": record.id,
+                        }
+                    )
                 )
-                if hasattr(record, 'message_post'):
+                if hasattr(record, "message_post"):
                     record.message_post(attachment_ids=[attachment.id])
         self._cr.execute(
             """

@@ -67,7 +67,7 @@ odoo.define("report_async.ActionMenus", function (require) {
                                                     to_email: user_email,
                                                     data: action.data || {},
                                                     context: action.context || {},
-                                                    save_attachment_to_records: save_report_attachment
+                                                    save_attachment_to_records: save_report_attachment,
                                                 },
                                             })
                                                 .then(() => {

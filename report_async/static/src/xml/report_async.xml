@@ -29,13 +29,11 @@
                         checked="checked"
                         id="async-save-report-checker"
                     />
-                    <label class="form-check-label"
-                           for="async-save-report-checker">
+                    <label class="form-check-label" for="async-save-report-checker">
                         Save attachment to records
                     </label>
                 </div>
-                <small id="async-save-report-checker-help"
-                       class="form-text text-muted">
+                <small id="async-save-report-checker-help" class="form-text text-muted">
                     Checker enables async report attachment to be created and
                     saved to the records. NB: Records should support attachments
                 </small>
