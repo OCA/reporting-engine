@@ -46,6 +46,9 @@ odoo.define("report_async.ActionMenus", function (require) {
                                 const is_report_async = this.$(
                                     "#async_report_checker"
                                 ).prop("checked");
+                                const save_report_attachment = this.$(
+                                    "#async-save-report-checker"
+                                ).prop("checked");
                                 const user_email = this.$("#async-user-email").val();
                                 if (user_email !== "" && is_report_async) {
                                     // Try basic email validation
@@ -64,6 +67,7 @@ odoo.define("report_async.ActionMenus", function (require) {
                                                     to_email: user_email,
                                                     data: action.data || {},
                                                     context: action.context || {},
+                                                    save_attachment_to_records: save_report_attachment
                                                 },
                                             })
                                                 .then(() => {

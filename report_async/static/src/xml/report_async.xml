@@ -20,6 +20,26 @@
                     via queue job and sent to a below email address.
                 </small>
             </div>
+            <!-- Allow saving of attachment to record -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        checked="checked"
+                        id="async-save-report-checker"
+                    />
+                    <label class="form-check-label"
+                           for="async-save-report-checker">
+                        Save attachment to records
+                    </label>
+                </div>
+                <small id="async-save-report-checker-help"
+                       class="form-text text-muted">
+                    Checker enables async report attachment to be created and
+                    saved to the records. NB: Records should support attachments
+                </small>
+            </div>
             <!-- Email Input -->
             <div class="form-group">
                 <label for="async-user-email">Email Address</label>
