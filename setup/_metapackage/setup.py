@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo14-addon-kpi_dashboard',
         'odoo14-addon-kpi_dashboard_bokeh',
         'odoo14-addon-report_async',
+        'odoo14-addon-report_context',
         'odoo14-addon-report_csv',
         'odoo14-addon-report_layout_config',
         'odoo14-addon-report_py3o',
