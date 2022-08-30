@@ -210,7 +210,7 @@ class ReportAsync(models.Model):
         # save attachment to records
         if save_attachment_to_records:
             model = report.model
-            records = self.env[model].browse(docids)
+            records = self.env[model].sudo().browse(docids)
             for record in records:
                 attachment = (
                     self.env["ir.attachment"]
