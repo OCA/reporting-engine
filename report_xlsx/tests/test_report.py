@@ -15,7 +15,7 @@ except ImportError:
 
 class TestReport(common.TransactionCase):
     def setUp(self):
-        super(TestReport, self).setUp()
+        super().setUp()
         report_object = self.env["ir.actions.report"]
         self.xlsx_report = self.env["report.report_xlsx.abstract"].with_context(
             active_model="res.partner"
@@ -55,3 +55,13 @@ class TestReport(common.TransactionCase):
         # Typical call from render
         objs = self.xlsx_report._get_objs_for_report(self.docs.ids, {})
         self.assertEqual(objs, self.docs)
+
+    def test_currency_format(self):
+        usd = self.env.ref("base.USD")
+        self.assertEqual(
+            self.xlsx_report._report_xlsx_currency_format(usd), "$#,##0.00"
+        )
+        eur = self.env.ref("base.EUR")
+        self.assertEqual(
+            self.xlsx_report._report_xlsx_currency_format(eur), "#,##0.00 €"
+        )
