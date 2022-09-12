@@ -10,8 +10,9 @@ class MailComposeMessage(models.TransientModel):
 
     @api.onchange("template_id")
     def onchange_template_id_wrapper(self):
-        if self.template_id:
-            report_template = self.template_id.report_template
+        template = self.template_id.sudo()
+        if template:
+            report_template = template.report_template
             active_ids = []
             if self.env.context.get("active_ids"):
                 active_ids = self.env.context.get("active_ids")
@@ -23,12 +24,10 @@ class MailComposeMessage(models.TransientModel):
                 and active_ids
             ):
                 old_tmpl = report_template
-                self.template_id.report_template = old_tmpl.get_substitution_report(
-                    active_ids
-                )
+                template.report_template = old_tmpl.get_substitution_report(active_ids)
                 onchange_result_with_substituted_report = (
-                    super().onchange_template_id_wrapper()
+                    super()._onchange_template_id_wrapper()
                 )
-                self.template_id.report_template = old_tmpl
+                template.report_template = old_tmpl
                 return onchange_result_with_substituted_report
-        return super().onchange_template_id_wrapper()
+        return super()._onchange_template_id_wrapper()
