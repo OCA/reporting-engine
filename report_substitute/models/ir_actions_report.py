@@ -10,8 +10,8 @@ class IrActionReport(models.Model):
     _inherit = "ir.actions.report"
 
     action_report_substitution_rule_ids = fields.One2many(
-        comodel_name="ir.actions.report.substitution.rule",
-        inverse_name="action_report_id",
+        "ir.actions.report.substitution.rule",
+        "action_report_id",
         string="Substitution Rules",
     )
 
@@ -47,11 +47,12 @@ class IrActionReport(models.Model):
                     action_report.model, active_ids
                 )
             action.update(action_report.read()[0])
+
         return action
 
-    def render(self, res_ids, data=None):
+    def _render(self, res_ids, data=None):
         substitution_report = self.get_substitution_report(res_ids)
-        return super(IrActionReport, substitution_report).render(res_ids, data)
+        return super(IrActionReport, substitution_report)._render(res_ids, data)
 
     def report_action(self, docids, data=None, config=True):
         if docids:
@@ -66,3 +67,6 @@ class IrActionReport(models.Model):
                 docids, data, config
             )
         return super().report_action(docids, data, config)
+
+    def get_action_report_substitution_rule_ids(self):
+        return self.action_report_substitution_rule_ids.ids

@@ -27,8 +27,8 @@ class MailComposeMessage(models.TransientModel):
                     active_ids
                 )
                 onchange_result_with_substituted_report = (
-                    super().onchange_template_id_wrapper()
+                    super()._onchange_template_id_wrapper()
                 )
                 self.template_id.report_template = old_tmpl
                 return onchange_result_with_substituted_report
-        return super().onchange_template_id_wrapper()
+        return super()._onchange_template_id_wrapper()
