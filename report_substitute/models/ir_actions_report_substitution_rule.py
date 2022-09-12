@@ -19,7 +19,7 @@ class ActionsReportSubstitutionRule(models.Model):
         ondelete="cascade",
     )
     model = fields.Char(related="action_report_id.model", store=True)
-    domain = fields.Char(string="Domain", required=True, default="[]")
+    domain = fields.Char(required=True, default="[]")
     substitution_action_report_id = fields.Many2one(
         comodel_name="ir.actions.report",
         string="Substitution Report Action",
@@ -37,7 +37,8 @@ class ActionsReportSubstitutionRule(models.Model):
                 substitution_rule
             ) in substitution_report.action_report_substitution_rule_ids:
                 _check_infinite_loop(
-                    original_report, substitution_rule.substitution_action_report_id,
+                    original_report,
+                    substitution_rule.substitution_action_report_id,
                 )
 
         for rec in self:
