@@ -343,22 +343,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "明細行後"
-
-#~ msgid "Base comment template"
-#~ msgstr "Base comment template"
-
-#~ msgid "Before lines"
-#~ msgstr "明細行前"
-
-#~ msgid "Comment summary"
-#~ msgstr "コメントサマリ"
-
-#, fuzzy
-#~ msgid "Conditions template"
-#~ msgstr "コメントテンプレート"
-
-#~ msgid "Position"
-#~ msgstr "位置"
