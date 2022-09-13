@@ -355,32 +355,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "Después de las líneas"
-
-#~ msgid "Before lines"
-#~ msgstr "Antes de las líneas"
-
-#~ msgid "Priority"
-#~ msgstr "Prioridad"
-
-#~ msgid ""
-#~ "There are other records with same models, priority, domain and position."
-#~ msgstr ""
-#~ "Hay otros registros con los mismos datos en modelo, prioridad, dominio y "
-#~ "posición."
-
-#~ msgid "the highest priority = the smallest number"
-#~ msgstr "Mayor prioridad = número menor"
-
-#~ msgid "Comment summary"
-#~ msgstr "Índice de comentarios"
-
-#, fuzzy
-#~| msgid "Comment Templates"
-#~ msgid "Conditions template"
-#~ msgstr "Plantillas de comentarios"
-
-#~ msgid "Position"
-#~ msgstr "Posició"

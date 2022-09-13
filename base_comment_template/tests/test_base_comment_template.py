@@ -92,7 +92,7 @@ class TestCommentTemplate(common.TransactionCase):
 
     def test_render_comment_text(self):
         expected_text = "Test comment render %s" % self.user.name
-        self.before_template_id.text = "Test comment render ${object.name}"
+        self.before_template_id.text = "Test comment render {{object.name}}"
         with self.with_user(self.user.login):
             self.assertEqual(
                 self.user.render_comment(self.before_template_id), expected_text
@@ -114,7 +114,7 @@ class TestCommentTemplate(common.TransactionCase):
             {"name": "Ambasador", "shortcut": "Amb."}
         )
         self.user.partner_id.title = partner_title
-        self.before_template_id.text = "Test comment render ${object.title.name}"
+        self.before_template_id.text = "Test comment render {{object.title.name}}"
 
         expected_en_text = "Test comment render Ambassador"
         expected_ro_text = "Test comment render Ambasador"
