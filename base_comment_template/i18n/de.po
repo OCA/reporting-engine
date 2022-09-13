@@ -344,26 +344,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "Suffix"
-
-#~ msgid "Base comment template"
-#~ msgstr "Textbausteinvorlage"
-
-#~ msgid "Before lines"
-#~ msgstr "Präfix"
-
-#~ msgid "Comment summary"
-#~ msgstr "Textbaustein-Zusammenfassung"
-
-#~ msgid "Conditions template"
-#~ msgstr "Textbausteinvorlage"
-
-#~ msgid "If set, it'll only be available for this company"
-#~ msgstr ""
-#~ "Wenn der Haken gesetzt ist, ist die Vorlage nur das gesetzte Unternehmen "
-#~ "verfügbar."
-
-#~ msgid "Position"
-#~ msgstr "Position"

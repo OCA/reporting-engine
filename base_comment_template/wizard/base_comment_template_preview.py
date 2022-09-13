@@ -1,6 +1,8 @@
 from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
+from odoo.addons.base.models.res_partner import _lang_get
+
 
 class BaseCommentTemplatePreview(models.TransientModel):
     _name = "base.comment.template.preview"
@@ -12,12 +14,8 @@ class BaseCommentTemplatePreview(models.TransientModel):
         return [(model.model, model.name) for model in models]
 
     @api.model
-    def _selection_languages(self):
-        return self.env["res.lang"].get_installed()
-
-    @api.model
     def default_get(self, fields):
-        result = super(BaseCommentTemplatePreview, self).default_get(fields)
+        result = super().default_get(fields)
         base_comment_template_id = self.env.context.get(
             "default_base_comment_template_id"
         )
@@ -41,21 +39,25 @@ class BaseCommentTemplatePreview(models.TransientModel):
     base_comment_template_id = fields.Many2one(
         "base.comment.template", required=True, ondelete="cascade"
     )
-    lang = fields.Selection(_selection_languages, string="Template Preview Language")
+    lang = fields.Selection(_lang_get, string="Template Preview Language")
     engine = fields.Selection(
-        [("jinja", "Jinja"), ("qweb", "QWeb")],
+        [
+            ("inline_template", "Inline template"),
+            ("qweb", "QWeb"),
+            ("qweb_view", "QWeb view"),
+        ],
         string="Template Preview Engine",
-        default="jinja",
+        default="inline_template",
     )
     model_ids = fields.Many2many(
         "ir.model", related="base_comment_template_id.model_ids"
     )
     model_id = fields.Many2one("ir.model")
-    body = fields.Char("Body", compute="_compute_base_comment_template_fields")
+    body = fields.Char(compute="_compute_base_comment_template_fields")
     resource_ref = fields.Reference(
         string="Record reference", selection="_selection_target_model"
     )
-    no_record = fields.Boolean("No Record", compute="_compute_no_record")
+    no_record = fields.Boolean(compute="_compute_no_record")
 
     @api.depends("model_id")
     def _compute_no_record(self):

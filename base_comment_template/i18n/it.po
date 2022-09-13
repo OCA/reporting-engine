@@ -358,6 +358,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "Position"
-#~ msgstr "Posizione"

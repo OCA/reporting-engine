@@ -345,21 +345,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "Iza linija"
-
-#~ msgid "Base comment template"
-#~ msgstr "Osnovni Predložak komentara"
-
-#~ msgid "Before lines"
-#~ msgstr "Ispred linija"
-
-#~ msgid "Comment summary"
-#~ msgstr "Sažetak komentara"
-
-#~ msgid "Conditions template"
-#~ msgstr "Predložak uvjeta"
-
-#~ msgid "Position"
-#~ msgstr "Pozicija"

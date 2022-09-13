@@ -343,24 +343,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "Za položkami"
-
-#~ msgid "Base comment template"
-#~ msgstr "Základná šablóna komentárov"
-
-#~ msgid "Before lines"
-#~ msgstr "Pred položkami"
-
-#~ msgid "Comment summary"
-#~ msgstr "Názov"
-
-#~ msgid "Conditions template"
-#~ msgstr "Predvolená šablóna"
-
-#~ msgid "If set, it'll only be available for this company"
-#~ msgstr "Ak je nastavená, bude k dispozícii iba pre túto spoločnosť"
-
-#~ msgid "Position"
-#~ msgstr "Pozícia"
