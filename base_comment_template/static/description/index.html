@@ -431,7 +431,7 @@ It has a priority field (smaller number = higher priority)</p>
 </ol>
 <p>You should have at least one template with Default field set, if you choose a Partner the template is deselected as a Default one.
 If you create a new template with the same configuration (Model, Domain, Position) and set it as Default, the previous one will be deselected as a default one.</p>
-<p>The template is a html field which will be rendered just like a mail template, so you can use variables like ${object}, ${user}, ${ctx} to add dynamic content.</p>
+<p>The template is a html field which will be rendered just like a mail template, so you can use variables like {{object}}, {{user}}, {{ctx}} to add dynamic content.</p>
 <p>Change the report related to the model from configuration and add a statement like:</p>
 <dl class="docutils">
 <dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
@@ -447,7 +447,7 @@ If you create a new template with the same configuration (Model, Domain, Positio
 <p>If you want to use Qweb templates, or different context, you can specify it just like in
 mail.render.mixin with parameters:</p>
 <ul class="simple">
-<li>engine: “jinja” or “qweb”,</li>
+<li>engine: “inline_template”, “qweb” or “qweb_view”,</li>
 <li>add_context: dict with your own context,</li>
 <li>post_process: perform a post processing on rendered result</li>
 </ul>

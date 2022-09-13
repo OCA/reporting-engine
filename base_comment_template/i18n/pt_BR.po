@@ -344,24 +344,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr ""
-
-#~ msgid "After lines"
-#~ msgstr "Depois das linhas"
-
-#~ msgid "Base comment template"
-#~ msgstr "Modelo de comentário Base"
-
-#~ msgid "Before lines"
-#~ msgstr "Antes das linhas"
-
-#~ msgid "Comment summary"
-#~ msgstr "Índice de comentários"
-
-#~ msgid "Conditions template"
-#~ msgstr "Modelos de condições"
-
-#~ msgid "If set, it'll only be available for this company"
-#~ msgstr "Se definido, ele estará disponível apenas para esta empresa"
-
-#~ msgid "Position"
-#~ msgstr "Posição"

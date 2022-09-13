@@ -14,7 +14,7 @@ class IrModel(models.Model):
     )
 
     def _reflect_model_params(self, model):
-        vals = super(IrModel, self)._reflect_model_params(model)
+        vals = super()._reflect_model_params(model)
         vals["is_comment_template"] = issubclass(
             type(model), self.pool["comment.template"]
         )
@@ -22,7 +22,7 @@ class IrModel(models.Model):
 
     @api.model
     def _instanciate(self, model_data):
-        model_class = super(IrModel, self)._instanciate(model_data)
+        model_class = super()._instanciate(model_data)
         if (
             model_data.get("is_comment_template")
             and model_class._name != "comment.template"
