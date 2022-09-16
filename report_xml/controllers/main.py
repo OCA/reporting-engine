@@ -92,4 +92,4 @@ class ReportController(report.ReportController):
                 error = {"code": 200, "message": "Odoo Server Error", "data": se}
                 return request.make_response(html_escape(json.dumps(error)))
         else:
-            return super().report_download(data, token, context)
+            return super().report_download(data, token, context=context)
