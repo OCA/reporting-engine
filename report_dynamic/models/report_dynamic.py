@@ -1,3 +1,5 @@
+# Copyright 2022 Sunflower IT <http://sunflowerweb.nl>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -7,7 +9,7 @@ class ReportDynamic(models.Model):
     _description = "Dynamically create reports"
 
     name = fields.Char(required=True)
-    model_id = fields.Many2one("ir.model")
+    model_id = fields.Many2one(comodel_name="ir.model")
     # Inform the user about configured model_id
     # in template
     model_name = fields.Char(related="model_id.name")
@@ -20,16 +22,18 @@ class ReportDynamic(models.Model):
         inverse="_inverse_resource_ref",
         store=True,
     )
-    wrapper_report_id = fields.Many2one("ir.ui.view", domain="[('type', '=', 'qweb')]")
+    wrapper_report_id = fields.Many2one(
+        comodel_name="ir.ui.view", domain="[('type', '=', 'qweb')]"
+    )
     template_id = fields.Many2one(
-        "report.dynamic",
+        comodel_name="report.dynamic",
         domain="[('is_template', '=', True)]",
         copy=False,
         default=lambda self: self.env.company.external_report_layout_id,
     )
     report_ids = fields.One2many(
-        "report.dynamic",
-        "template_id",
+        comodel_name="report.dynamic",
+        inverse_name="template_id",
         domain="[('is_template', '=', False)]",
         copy=False,
     )
@@ -41,7 +45,11 @@ class ReportDynamic(models.Model):
     is_template = fields.Boolean(default=False)
     lock_date = fields.Date()
     field_ids = fields.Many2many(
-        "ir.model.fields", "contextual_field_rel", "contextual_id", "field_id", "Fields"
+        comodel_name="ir.model.fields",
+        relation="contextual_field_rel",
+        column1="contextual_id",
+        column2="field_id",
+        string="Fields",
     )
     window_action_exists = fields.Boolean(compute="_compute_window_action_exists")
     group_by_record_name = fields.Char(
@@ -49,6 +57,10 @@ class ReportDynamic(models.Model):
         store=True,
         help="Computed field for grouping by record name in search view",
     )
+    section_ids = fields.One2many(
+        comodel_name="report.dynamic.section", inverse_name="report_id", copy=True
+    )
+    section_count = fields.Integer(string="Sections", compute="_compute_section_count")
 
     @api.model
     def _selection_target_model(self):
@@ -57,47 +69,41 @@ class ReportDynamic(models.Model):
 
     @api.depends("model_id", "res_id", "template_id")
     def _compute_resource_ref(self):
-        for this in self:
+        for rec in self:
             model = (
-                this.model_id.model
-                if this.is_template
-                else this.template_id.model_id.model
+                rec.model_id.model
+                if rec.is_template
+                else rec.template_id.model_id.model
             )
-            if model:
-                # Return a meaningful message anytime this breaks
-                try:
-                    sample_record = self.env[model].search([], limit=1)
-                except Exception as e:
-                    raise UserError(
-                        _("Model {} is not applicable for report. Reason: {}").format(
-                            model, str(e)
-                        )
+            if not model:
+                rec.resource_ref = False
+                continue
+            # Return a meaningful message anytime this breaks
+            try:
+                sample_record = self.env[model].search([], limit=1)
+            except Exception as e:
+                raise UserError(
+                    _("Model {} is not applicable for report. Reason: {}").format(
+                        model, str(e)
                     )
-                # Tackle the problem of non-existing sample record
-                if not sample_record:
-                    raise UserError(
-                        _(
-                            "No sample record exists for Model {}. "
-                            "Please create one before proceeding"
-                        ).format(model)
-                    )
-                # we need to give a default to id part of resource_ref
-                # otherwise it is not editable
-                this.resource_ref = "{},{}".format(
-                    model, this.res_id or sample_record.id,
                 )
-            else:
-                this.resource_ref = False
+            # Tackle the problem of non-existing sample record
+            if not sample_record:
+                raise UserError(
+                    _(
+                        "No sample record exists for Model {}. "
+                        "Please create one before proceeding"
+                    ).format(model)
+                )
+            # we need to give a default to id part of resource_ref
+            # otherwise it is not editable
+            rec.resource_ref = "{},{}".format(model, rec.res_id or sample_record.id,)
 
     def _inverse_resource_ref(self):
-        for this in self:
-            if this.resource_ref:
-                this.res_id = this.resource_ref.id
-                this.model_id = (
-                    self.env["ir.model"]
-                    .search([("model", "=", this.resource_ref._name)], limit=1)
-                    .id
-                )
+        for rec in self:
+            if rec.resource_ref:
+                rec.res_id = rec.resource_ref.id
+                rec.model_id = self.env["ir.model"]._get(rec.resource_ref._name)
 
     def get_window_actions(self):
         return self.env["ir.actions.act_window"].search(
@@ -108,21 +114,21 @@ class ReportDynamic(models.Model):
         )
 
     def _compute_window_action_exists(self):
-        for this in self:
-            this.window_action_exists = bool(this.get_window_actions())
+        for rec in self:
+            rec.window_action_exists = bool(rec.get_window_actions())
 
     @api.depends("resource_ref")
     def _compute_group_by_record_name(self):
-        for this in self:
-            this.group_by_record_name = ""
-            if this.is_template:
+        for rec in self:
+            rec.group_by_record_name = ""
+            if rec.is_template:
                 continue
-            if hasattr(this.resource_ref, "name"):
-                this.group_by_record_name = this.resource_ref.name
+            if hasattr(rec.resource_ref, "display_name"):
+                rec.group_by_record_name = rec.resource_ref.display_name
                 continue
             # TODO: this is plainly wrong, fix
-            this.group_by_record_name = _("{} - {}").format(
-                this.resource_ref._name, this.resource_ref.id
+            rec.group_by_record_name = _("{} - {}").format(
+                rec.resource_ref._name, rec.resource_ref.id
             )
 
     def get_template_xml_id(self):
@@ -136,13 +142,10 @@ class ReportDynamic(models.Model):
         )
         return "{}.{}".format(record.module, record.name)
 
-    section_ids = fields.One2many("report.dynamic.section", "report_id", copy=True)
-    section_count = fields.Integer(string="Sections", compute="_compute_section_count")
-
     @api.depends("section_ids")
     def _compute_section_count(self):
-        for this in self:
-            this.section_count = len(this.section_ids)
+        for rec in self:
+            rec.section_count = len(rec.section_ids)
 
     def action_view_section(self):
         self.ensure_one()
@@ -182,12 +185,12 @@ class ReportDynamic(models.Model):
     @api.model
     def create(self, values):
         records = super().create(values)
-        for this in records:
-            if this.template_id.resource_ref and not this.res_id:
-                this.resource_ref = this.template_id.resource_ref
+        for rec in records:
+            if rec.template_id.resource_ref and not rec.res_id:
+                rec.resource_ref = rec.template_id.resource_ref
                 # Give a default to wrapper_report_id when
                 # user sets template_id
-                this.wrapper_report_id = this._set_wrapper_report_id(this.template_id)
+                rec.wrapper_report_id = rec._get_wrapper_report_id(rec.template_id)
         return records
 
     def write(self, values):
@@ -224,18 +227,18 @@ class ReportDynamic(models.Model):
             self.resource_ref = template.resource_ref
             # Give a default to wrapper_report_id when
             # user sets template_id
-            self.wrapper_report_id = self._set_wrapper_report_id(template)
+            self.wrapper_report_id = self._get_wrapper_report_id(template)
         return super().write(values)
 
     def unlink(self):
-        for this in self:
-            if not this.is_template:
+        for rec in self:
+            if not rec.is_template:
                 continue
-            if this.window_action_exists:
-                this.unlink_action()
+            if rec.window_action_exists:
+                rec.unlink_action()
         return super().unlink()
 
-    def _set_wrapper_report_id(self, template):
+    def _get_wrapper_report_id(self, template):
         self.ensure_one()
         return template.wrapper_report_id or self.env.company.external_report_layout_id
 
@@ -246,7 +249,7 @@ class ReportDynamic(models.Model):
             return
         if not self.model_id:
             return
-        self.env["ir.actions.act_window"].create(
+        self.env["ir.actions.act_window"].sudo().create(
             {
                 "name": "Dynamic Reporting",
                 "type": "ir.actions.act_window",

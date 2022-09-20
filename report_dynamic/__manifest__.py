@@ -8,6 +8,7 @@
     "author": "Sunflower IT, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
+    "development_status": "Alpha",
     "summary": "Dynamic Report Builder",
     "depends": ["base", "web_boolean_button"],
     "data": [

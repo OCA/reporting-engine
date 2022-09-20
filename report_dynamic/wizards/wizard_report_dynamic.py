@@ -1,12 +1,16 @@
+# Copyright 2022 Sunflower IT <http://sunflowerweb.nl>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, fields, models
 
 
 class WizardReportDynamic(models.TransientModel):
+    """Generate reports in bulk"""
+
     _name = "wizard.report.dynamic"
     _description = "Select template for report for record(s)"
 
     template_id = fields.Many2one(
-        "report.dynamic",
+        comodel_name="report.dynamic",
         domain=lambda self: [
             ("is_template", "=", True),
             ("model_id.model", "=", self.env.context.get("active_model")),
@@ -15,6 +19,7 @@ class WizardReportDynamic(models.TransientModel):
     model_name = fields.Char(related="template_id.model_name")
 
     def action_generate_reports(self):
+        """Generate reports for given template_id"""
         active_model = self.env.context.get("active_model")
         active_ids = self.env.context.get("active_ids")
         records = self.env[active_model].browse(active_ids)

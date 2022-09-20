@@ -1,3 +1,5 @@
+# Copyright 2022 Sunflower IT <http://sunflowerweb.nl>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import copy
 import traceback
 
@@ -51,26 +53,32 @@ class ReportDynamicSection(models.Model):
     _order = "sequence"
 
     name = fields.Char()
-    sequence = fields.Integer("Sequence", default=10)
-    content = fields.Html("Content")
+    sequence = fields.Integer(string="Sequence", default=10)
+    content = fields.Html(string="Content")
     dynamic_content = fields.Html(
         compute="_compute_dynamic_content", string="Dynamic Content",
     )
-    report_id = fields.Many2one("report.dynamic", string="Report", ondelete="cascade")
+    report_id = fields.Many2one(
+        comodel_name="report.dynamic", string="Report", ondelete="cascade"
+    )
     resource_ref = fields.Reference(related="report_id.resource_ref")
     # duplicate the field to avoid including the same field twice in the view
     resource_ref_preview = fields.Reference(
         related="report_id.resource_ref", string="Preview Record", readonly=True
     )
     res_id = fields.Integer(related="report_id.res_id")
-    resource_ref_model_id = fields.Many2one("ir.model", related="report_id.model_id")
+    resource_ref_model_id = fields.Many2one(
+        comodel_name="ir.model", related="report_id.model_id"
+    )
 
     # Dynamic field editor
-    field_id = fields.Many2one("ir.model.fields", string="Field")
-    sub_object_id = fields.Many2one("ir.model", string="Sub-model")
-    sub_model_object_field_id = fields.Many2one("ir.model.fields", string="Sub-field")
-    default_value = fields.Char("Default Value")
-    copyvalue = fields.Char("Placeholder Expression")
+    field_id = fields.Many2one(comodel_name="ir.model.fields", string="Field")
+    sub_object_id = fields.Many2one(comodel_name="ir.model", string="Sub-model")
+    sub_model_object_field_id = fields.Many2one(
+        comodel_name="ir.model.fields", string="Sub-field"
+    )
+    default_value = fields.Char(string="Default Value")
+    copyvalue = fields.Char(string="Placeholder Expression")
     is_paragraph = fields.Boolean(
         default=True, string="Paragraph", help="To highlight lines"
     )
@@ -79,7 +87,7 @@ class ReportDynamicSection(models.Model):
     )
     condition_domain = fields.Char(string="Domain Condition", default="[]")
     condition_python_preview = fields.Char(
-        "Preview", compute="_compute_condition_python_preview"
+        string="Preview", compute="_compute_condition_python_preview"
     )
     model_id_model = fields.Char(
         string="Model _description", related="report_id.model_id.model"
@@ -111,16 +119,16 @@ class ReportDynamicSection(models.Model):
     @api.onchange("condition_python")
     def _compute_condition_python_preview(self):
         """Compute condition and preview"""
-        for this in self:
-            this.condition_python_preview = False
-            if not (this.resource_ref_model_id and this.res_id and this.resource_ref):
+        for rec in self:
+            rec.condition_python_preview = False
+            if not (rec.resource_ref_model_id and rec.res_id and rec.resource_ref):
                 continue
             try:
                 # Check if there are any syntax errors etc
-                this.condition_python_preview = this._eval_condition_python()
+                rec.condition_python_preview = rec._eval_condition_python()
             except Exception as e:
                 # and show debug info
-                this.condition_python_preview = str(e)
+                rec.condition_python_preview = str(e)
                 continue
 
     def _eval_condition_python(self):
@@ -152,21 +160,21 @@ class ReportDynamicSection(models.Model):
     def _compute_dynamic_content(self):
         # a parent with two children
         h = self._get_header_object()
-        for this in self:
-            if not (this._eval_condition_python() and this._eval_condition_domain()):
-                this.dynamic_content = ""
+        for rec in self:
+            if not (rec._eval_condition_python() and rec._eval_condition_domain()):
+                rec.dynamic_content = ""
                 continue
-            prerendered_content = this._prerender()
+            prerendered_content = rec._prerender()
             try:
-                content = this._render_template(
+                content = rec._render_template(
                     prerendered_content,
-                    this.resource_ref_model_id.model,
-                    this.res_id,
+                    rec.resource_ref_model_id.model,
+                    rec.res_id,
                     datas={"h": h},
                 )
             except Exception:
-                this.dynamic_content = "<pre>%s</pre>" % (traceback.format_exc())
-            this.dynamic_content = content
+                rec.dynamic_content = "<pre>%s</pre>" % (traceback.format_exc())
+            rec.dynamic_content = content
 
     def _get_header_object(self):
         h = Header(child=Header(child=Header()))
