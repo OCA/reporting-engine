@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="agipa_114016" model="report.paperformat.label">
+            <field name="name">Label: Agipa 114016</field>
+            <field name="format">A5</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top" eval="5" />
+            <field name="margin_right" eval="13" />
+            <field name="margin_bottom" eval="0" />
+            <field name="margin_left" eval="13" />
+            <field name="dpi" eval="82" />
+            <field name="label_width" eval="38" />
+            <field name="label_height" eval="19" />
+            <field name="label_padding_top" eval="1" />
+            <field name="label_padding_right" eval="1" />
+            <field name="label_padding_bottom" eval="1" />
+            <field name="label_padding_left" eval="1" />
+            <field name="label_margin_top" eval="1" />
+            <field name="label_margin_right" eval="1" />
+            <field name="label_margin_bottom" eval="1" />
+            <field name="label_margin_left" eval="1" />
+        </record>
+
+    </data>
+</odoo>

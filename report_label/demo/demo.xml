@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="label_template_partner_address" name="Partner Label: Address">
+        <address
+            t-field="record.self"
+            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+        />
+    </template>
+
+    <record
+        id="report_paperformat_label_partner_address"
+        model="report.paperformat.label"
+    >
+        <field name="name">Partner Label</field>
+        <field name="format">A4</field>
+        <field name="label_height" eval="42.3" />
+        <field name="label_width" eval="60" />
+        <field name="label_padding_top" eval="5" />
+        <field name="label_padding_right" eval="5" />
+        <field name="label_padding_bottom" eval="5" />
+        <field name="label_padding_left" eval="5" />
+    </record>
+
+    <record id="actions_server_label_partner_address" model="ir.actions.server">
+        <field name="name">Print Address Labels</field>
+        <field name="state">report_label</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field
+            name="label_paperformat_id"
+            ref="report_paperformat_label_partner_address"
+        />
+        <field name="label_template">report_label.label_template_partner_address</field>
+    </record>
+
+    <!-- Create context action -->
+    <function
+        model="ir.actions.server"
+        eval="[ref('actions_server_label_partner_address')]"
+        name="create_action"
+    />
+
+</odoo>
