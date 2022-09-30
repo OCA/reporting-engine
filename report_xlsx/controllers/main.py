@@ -16,7 +16,7 @@ from odoo.http import (
 from odoo.tools import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 
-from odoo.addons.web.controllers import main as report
+from odoo.addons.web.controllers import report
 
 _logger = logging.getLogger(__name__)
 
@@ -34,7 +34,9 @@ class ReportController(report.ReportController):
             if data.get("context"):
                 data["context"] = json.loads(data["context"])
                 context.update(data["context"])
-            xlsx = report.with_context(**context)._render_xlsx(docids, data=data)[0]
+            xlsx = report.with_context(**context)._render_xlsx(
+                reportname, docids, data=data
+            )[0]
             xlsxhttpheaders = [
                 (
                     "Content-Type",
