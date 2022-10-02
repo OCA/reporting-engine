@@ -49,7 +49,7 @@
                             />
                         </button>
                         <button
-                            name="action_toggle_active"
+                            name="toggle_active"
                             type="object"
                             class="oe_stat_button"
                             icon="fa-archive"

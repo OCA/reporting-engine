@@ -31,7 +31,7 @@ class WizardReportDynamic(models.TransientModel):
             if hasattr(record, "name"):
                 record_name = record.name
             else:
-                record_name = _("Model {}, id {}").format(record._name, record.id)
+                record_name = _("Model %s, id %s") % (record._name, record.id)
             report = self.template_id.copy(
                 {
                     "is_template": False,

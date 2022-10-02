@@ -77,5 +77,5 @@ class TestWizardReportDynamicSection(common.TransactionCase):
         self.assertEqual(header.child.child.value, 0)
         header.child.child.next  # pylint: disable=pointless-statement
         self.assertEqual(header.child.child.value, 1)
-        header.reset  # pylint: disable=pointless-statement
+        header.reset()
         self.assertFalse(header.value + header.child.value + header.child.child.value)

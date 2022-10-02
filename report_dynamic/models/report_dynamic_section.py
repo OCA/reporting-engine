@@ -7,7 +7,7 @@ from odoo import _, api, fields, models, tools
 from odoo.exceptions import UserError
 from odoo.tools import safe_eval
 
-from .header import Header
+from ..utils import Header
 
 try:
     from jinja2.sandbox import SandboxedEnvironment

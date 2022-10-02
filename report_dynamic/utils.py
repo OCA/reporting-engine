@@ -10,7 +10,7 @@ class Header:
     def next(self):
         self.value += 1
         if self.child:
-            self.child.reset  # pylint: disable=pointless-statement
+            self.child.reset()
         return self.value
 
     @property
@@ -19,9 +19,8 @@ class Header:
             self.value -= 1
         return self.value
 
-    @property
     def reset(self):
         self.value = self.base_value
         if self.child:
-            self.child.reset  # pylint: disable=pointless-statement
+            self.child.reset()
         return self.value

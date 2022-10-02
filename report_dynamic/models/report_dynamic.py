@@ -1,7 +1,7 @@
 # Copyright 2022 Sunflower IT <http://sunflowerweb.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 class ReportDynamic(models.Model):
@@ -9,7 +9,9 @@ class ReportDynamic(models.Model):
     _description = "Dynamically create reports"
 
     name = fields.Char(required=True)
-    model_id = fields.Many2one(comodel_name="ir.model")
+    model_id = fields.Many2one(
+        comodel_name="ir.model", domain="[('transient', '=', False)]",
+    )
     # Inform the user about configured model_id
     # in template
     model_name = fields.Char(related="model_id.name")
@@ -64,8 +66,71 @@ class ReportDynamic(models.Model):
 
     @api.model
     def _selection_target_model(self):
-        models = self.env["ir.model"].search([])
+        """ These models can be a target for a dynamic report template """
+        models = self.env["ir.model"].search([("transient", "=", False)])
         return [(model.model, model.name) for model in models]
+
+    @api.model
+    def _get_sample_record(self, model):
+        """ Returns any record of given model """
+        return self.env[model].search([], limit=1)
+
+    @api.constrains("model_id", "res_id", "template_id")
+    def _prevent_broken_models(self):
+        """ Prevents user from selecting broken models """
+        for rec in self:
+            model = (
+                rec.model_id.model
+                if rec.is_template
+                else rec.template_id.model_id.model
+            )
+            if not model:
+                continue
+            try:
+                sample_record = self._get_sample_record(model)
+            except Exception as e:
+                raise ValidationError(
+                    _("Model %s is not applicable for report. Reason: %s")
+                    % (model, str(e))
+                )
+            if not sample_record:
+                raise ValidationError(
+                    _(
+                        "No sample record exists for Model %s. "
+                        "Please create one before proceeding"
+                    )
+                    % (model,)
+                )
+
+    @api.onchange("model_id")
+    def _onchange_model_id(self):
+        self.ensure_one()
+        res = {}
+        model = (
+            self.model_id.model if self.is_template else self.template_id.model_id.model
+        )
+        if not model:
+            return res
+        try:
+            sample_record = self.env[model].search([], limit=1)
+            if not sample_record:
+                res["warning"] = {
+                    "message": _(
+                        "No sample record exists for Model %s. "
+                        "Please create one before proceeding"
+                    )
+                    % (model,)
+                }
+                self.model_id = self._origin.model_id.id
+            else:
+                self.resource_ref = sample_record
+        except Exception as e:
+            res["warning"] = {
+                "message": _("Model %s is not applicable for report. Reason: %s")
+                % (model, str(e),)
+            }
+            self.model_id = self._origin.model_id.id
+        return res
 
     @api.depends("model_id", "res_id", "template_id")
     def _compute_resource_ref(self):
@@ -78,32 +143,24 @@ class ReportDynamic(models.Model):
             if not model:
                 rec.resource_ref = False
                 continue
-            # Return a meaningful message anytime this breaks
-            try:
-                sample_record = self.env[model].search([], limit=1)
-            except Exception as e:
-                raise UserError(
-                    _("Model {} is not applicable for report. Reason: {}").format(
-                        model, str(e)
-                    )
-                )
-            # Tackle the problem of non-existing sample record
-            if not sample_record:
-                raise UserError(
-                    _(
-                        "No sample record exists for Model {}. "
-                        "Please create one before proceeding"
-                    ).format(model)
-                )
             # we need to give a default to id part of resource_ref
             # otherwise it is not editable
-            rec.resource_ref = "{},{}".format(model, rec.res_id or sample_record.id,)
+            if rec.res_id:
+                rec.resource_ref = "%s,%s" % (model, rec.res_id)
+            else:
+                sample_rec = self._get_sample_record(model)
+                if sample_rec:
+                    rec.resource_ref = "%s,%s" % (model, sample_rec.id)
+                else:
+                    rec.resource_ref = False
 
     def _inverse_resource_ref(self):
         for rec in self:
             if rec.resource_ref:
                 rec.res_id = rec.resource_ref.id
                 rec.model_id = self.env["ir.model"]._get(rec.resource_ref._name)
+            else:
+                rec.res_id = False
 
     def get_window_actions(self):
         return self.env["ir.actions.act_window"].search(
@@ -121,15 +178,9 @@ class ReportDynamic(models.Model):
     def _compute_group_by_record_name(self):
         for rec in self:
             rec.group_by_record_name = ""
-            if rec.is_template:
+            if rec.is_template or not rec.resource_ref:
                 continue
-            if hasattr(rec.resource_ref, "display_name"):
-                rec.group_by_record_name = rec.resource_ref.display_name
-                continue
-            # TODO: this is plainly wrong, fix
-            rec.group_by_record_name = _("{} - {}").format(
-                rec.resource_ref._name, rec.resource_ref.id
-            )
+            rec.group_by_record_name = rec.resource_ref.display_name
 
     def get_template_xml_id(self):
         self.ensure_one()
@@ -175,10 +226,6 @@ class ReportDynamic(models.Model):
         )[0]
         return action
 
-    def action_toggle_active(self):
-        self.ensure_one()
-        self.active = not self.active
-
     # Override create() and write() to keep
     # resource_ref always the same with template
     # even if template.resource_ref=False
@@ -193,42 +240,36 @@ class ReportDynamic(models.Model):
                 rec.wrapper_report_id = rec._get_wrapper_report_id(rec.template_id)
         return records
 
-    def write(self, values):
-        # If the template is changed back to a non-template
-        # (eg is_template is set to False),
-        # and the template already has children, then disallow.
-        if all(
-            [
-                self.report_ids,
-                self.is_template,
-                "is_template" in values,
-                values.get("is_template") is False,
-            ]
-        ):
-            raise UserError(
+    @api.constrains("report_ids", "is_template")
+    def _constrain_template_status(self):
+        """ Disallow revoking template status of a template with children """
+        if any(rec.report_ids and not rec.is_template for rec in self):
+            raise ValidationError(
                 _(
                     "You cannot switch this template because "
                     "it has reports connected to it"
                 )
             )
-        # If the model is changed while
-        # the template already has children, disallow;
-        if all(
-            [
-                self.report_ids,
-                "model_id" in values,
-                self.model_id != self.env["ir.model"].browse(values.get("model_id")),
-            ]
-        ):
-            raise UserError(_("You cannot change model for this report"))
-        if "template_id" in values and values.get("template_id"):
-            # if in a report we set a template
-            template = self.browse(values.get("template_id"))
-            self.resource_ref = template.resource_ref
-            # Give a default to wrapper_report_id when
-            # user sets template_id
-            self.wrapper_report_id = self._get_wrapper_report_id(template)
-        return super().write(values)
+
+    def _forbid_model_change(self, values):
+        """ Disallow changing model of a template with children """
+        if "model_id" in values and self.mapped("report_ids"):
+            raise ValidationError(
+                _(
+                    "You cannot change model for this template because "
+                    "it has reports connected to it"
+                )
+            )
+
+    def write(self, values):
+        self._forbid_model_change(values)
+        ret = super().write(values)
+        # Set default wrapper_report and resource_ref when user sets template_id
+        if values.get("template_id"):
+            for rec in self:
+                rec.resource_ref = rec.template_id.resource_ref
+                rec.wrapper_report_id = rec._get_wrapper_report_id(rec.template_id)
+        return ret
 
     def unlink(self):
         for rec in self:
