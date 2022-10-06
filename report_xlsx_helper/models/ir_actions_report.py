@@ -9,11 +9,11 @@ class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
     @api.model
-    def _render_xlsx(self, docids, data):
+    def _render_xlsx(self, report_ref, docids, data):
         if not self and self.env.context.get("report_name"):
             report_model_name = "report.{}".format(self.env.context["report_name"])
             report_model = self.env.get(report_model_name)
             if report_model is None:
                 raise UserError(_("%s model was not found") % report_model_name)
             return report_model.create_xlsx_report(docids, data)
-        return super()._render_xlsx(docids, data)
+        return super()._render_xlsx(report_ref, docids, data)
