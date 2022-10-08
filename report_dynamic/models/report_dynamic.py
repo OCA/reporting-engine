@@ -10,8 +10,13 @@ class ReportDynamic(models.Model):
     _description = "Dynamically create reports"
 
     name = fields.Char(required=True)
-    model_id = fields.Many2one(
+    real_model_id = fields.Many2one(
         comodel_name="ir.model", domain="[('transient', '=', False)]"
+    )
+    model_id = fields.Many2one(
+        comodel_name="ir.model",
+        compute="_compute_model_id",
+        inverse="_inverse_model_id",
     )
     # Inform the user about configured model_id
     # in template
@@ -82,6 +87,19 @@ class ReportDynamic(models.Model):
         )
     ]
 
+    @api.depends("is_template", "template_id.model_id", "real_model_id")
+    def _compute_model_id(self):
+        for rec in self:
+            if rec.is_template:
+                rec.model_id = rec.real_model_id
+            else:
+                rec.model_id = rec.template_id.model_id
+
+    def _inverse_model_id(self):
+        for rec in self:
+            if rec.is_template:
+                rec.real_model_id = rec.model_id
+
     @api.model
     def _selection_target_model(self):
         """ These models can be a target for a dynamic report template """
@@ -97,11 +115,7 @@ class ReportDynamic(models.Model):
     def _prevent_broken_models(self):
         """ Prevents user from selecting broken models """
         for rec in self:
-            model = (
-                rec.model_id.model
-                if rec.is_template
-                else rec.template_id.model_id.model
-            )
+            model = rec.model_id.model
             if not model:
                 continue
             try:
@@ -123,9 +137,7 @@ class ReportDynamic(models.Model):
     def _onchange_model_id(self):
         self.ensure_one()
         res = {}
-        model = (
-            self.model_id.model if self.is_template else self.template_id.model_id.model
-        )
+        model = self.model_id.model
         if not model:
             return res
         try:
