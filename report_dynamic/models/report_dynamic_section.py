@@ -157,11 +157,11 @@ class ReportDynamicSection(models.Model):
         # a parent with two children
         h = self._get_header_object()
         for rec in self:
-            if not (rec._eval_condition_python() and rec._eval_condition_domain()):
-                rec.dynamic_content = ""
-                continue
-            prerendered_content = rec._prerender()
             try:
+                if not (rec._eval_condition_python() and rec._eval_condition_domain()):
+                    rec.dynamic_content = ""
+                    continue
+                prerendered_content = rec._prerender()
                 content = rec._render_template(
                     prerendered_content,
                     rec.resource_ref_model_id.model,
