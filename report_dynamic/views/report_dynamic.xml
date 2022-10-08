@@ -14,14 +14,23 @@
                         attrs="{'invisible': [('lock_date', '=', False)]}"
                     />
                     <div class="oe_button_box" name="button_box">
-                        <!-- button to view a preview of the report -->
+                        <!-- button to preview a HTML version of a template -->
                         <button
                             name="action_preview_content"
                             string="Preview"
                             class="oe_stat_button"
                             icon="fa-eye"
                             type="object"
-                            attrs="{'invisible':[('resource_ref', '=', False)]}"
+                            attrs="{'invisible':[('is_template', '=', False)]}"
+                        />
+                        <!-- button to quick view a HTML version of the report -->
+                        <button
+                            name="action_quick_view_content"
+                            string="Quick view"
+                            class="oe_stat_button"
+                            icon="fa-eye"
+                            type="object"
+                            attrs="{'invisible':['|', ('is_template', '=', True), ('resource_ref', '=', False)]}"
                         />
                         <!-- action to remove or create a contextual 'More..' server action on the model -->
                         <field name="window_action_exists" invisible="1" />
@@ -131,32 +140,15 @@
                                 name="model_id"
                                 attrs="{'readonly':[('is_template', '=', False)]}"
                             />
-                            <label for="resource_ref" />
-                            <div>
-                                <field
-                                    name="resource_ref"
-                                    options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
-                                    class="oe_inline"
-                                    attrs="{'readonly':[('lock_date', '!=', False)]}"
-                                />
-                                <!-- Make it obvious that target record for templates is for previewing -->
-                                <span
-                                    attrs="{'invisible':['|', ('is_template', '=', False),('model_id', '=', False)]}"
-                                >
-                                    <strong> (for preview only)</strong>
-                                </span>
-                            </div>
+                            <field
+                                name="resource_ref"
+                                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                                attrs="{'invisible': [('is_template', '=', True)], 'readonly':[('lock_date', '!=', False)]}"
+                            />
                             <field name="model_model" invisible="1" />
                             <field
                                 name="wrapper_report_id"
                                 attrs="{'invisible': [('is_template', '=', False)]}"
-                            />
-                            <field
-                                name="condition_domain_global"
-                                widget="domain"
-                                options="{'model': 'model_model', 'in_dialog': True}"
-                                attrs="{'invisible': [('is_template', '=', False)]}"
-                                help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
                             />
                             <field name="is_template" invisible="1" />
                             <field

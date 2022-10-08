@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 
 class ReportDynamic(models.Model):
@@ -66,6 +67,7 @@ class ReportDynamic(models.Model):
         comodel_name="report.dynamic.section", inverse_name="report_id", copy=True
     )
     section_count = fields.Integer(string="Sections", compute="_compute_section_count")
+    preview_res_id = fields.Integer(compute="_compute_preview_res_id")
 
     _sql_constraints = [
         (
@@ -256,8 +258,27 @@ class ReportDynamic(models.Model):
             "target": "new",
         }
 
+    def _compute_preview_res_id(self):
+        for tpl in self:
+            domain = safe_eval(tpl.condition_domain_global or "[]")
+            record = self.env[self.model_id.model].search(domain)[:1]
+            tpl.preview_res_id = record.id
+
     def action_preview_content(self):
         self.ensure_one()
+        assert self.is_template, _("Can only use preview for templates")
+        assert self.preview_res_id, _(
+            "Looking for a random record matching the domain, but did not find"
+        )
+        action = self.env.ref("report_dynamic.report_dynamic_document_preview").read(
+            []
+        )[0]
+        return action
+
+    def action_quick_view_content(self):
+        self.ensure_one()
+        assert not self.is_template, _("Can only use quick view for reports")
+        assert self.resource_ref, _("Needs a record for previewing")
         action = self.env.ref("report_dynamic.report_dynamic_document_preview").read(
             []
         )[0]

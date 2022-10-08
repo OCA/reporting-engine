@@ -56,16 +56,12 @@ class ReportDynamicSection(models.Model):
     sequence = fields.Integer(string="Sequence", default=10)
     content = fields.Html(string="Content")
     dynamic_content = fields.Html(
-        compute="_compute_dynamic_content", string="Dynamic Content",
+        compute="_compute_dynamic_content", string="Dynamic Content"
     )
     report_id = fields.Many2one(
         comodel_name="report.dynamic", string="Report", ondelete="cascade"
     )
     resource_ref = fields.Reference(related="report_id.resource_ref")
-    # duplicate the field to avoid including the same field twice in the view
-    resource_ref_preview = fields.Reference(
-        related="report_id.resource_ref", string="Preview Record", readonly=True
-    )
     res_id = fields.Integer(related="report_id.res_id")
     resource_ref_model_id = fields.Many2one(
         comodel_name="ir.model", related="report_id.model_id"
@@ -83,7 +79,7 @@ class ReportDynamicSection(models.Model):
         default=True, string="Paragraph", help="To highlight lines"
     )
     condition_python = fields.Text(
-        string="Python Condition", help="Condition for rendering section",
+        string="Python Condition", help="Condition for rendering section"
     )
     condition_domain = fields.Char(string="Domain Condition", default="[]")
     condition_python_preview = fields.Char(
@@ -169,12 +165,14 @@ class ReportDynamicSection(models.Model):
                 content = rec._render_template(
                     prerendered_content,
                     rec.resource_ref_model_id.model,
-                    rec.res_id,
+                    rec.report_id.preview_res_id
+                    if rec.report_id.is_template
+                    else rec.resource_ref.id,
                     datas={"h": h},
                 )
+                rec.dynamic_content = content
             except Exception:
                 rec.dynamic_content = "<pre>%s</pre>" % (traceback.format_exc())
-            rec.dynamic_content = content
 
     def _get_header_object(self):
         h = Header(child=Header(child=Header()))
@@ -213,9 +211,7 @@ class ReportDynamicSection(models.Model):
         for record in records:
             res_to_rec[record.id] = record
         # prepare template variables
-        variables = {
-            "ctx": self._context,  # context kw would clash with mako internals
-        }
+        variables = {"ctx": self._context}  # context kw would clash with mako internals
         if datas:
             variables.update(datas)
         for res_id, record in res_to_rec.items():
