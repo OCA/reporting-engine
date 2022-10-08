@@ -20,7 +20,7 @@
         name="Aliases"
         id="report_dynamic_alias_menu_root"
         parent="report_dynamic_menu_root"
-        sequence="600"
+        sequence="300"
         action="report_dynamic_alias_action"
     />
 </odoo>
