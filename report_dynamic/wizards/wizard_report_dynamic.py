@@ -16,7 +16,7 @@ class WizardReportDynamic(models.TransientModel):
             ("model_id.model", "=", self.env.context.get("active_model")),
         ],
     )
-    model_name = fields.Char(related="template_id.model_name")
+    model_id = fields.Many2one(related="template_id.model_id", readonly=True)
 
     def action_generate_reports(self):
         """Generate reports for given template_id"""

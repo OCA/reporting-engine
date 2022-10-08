@@ -111,10 +111,6 @@
                         <h1>
                             <field name="name" />
                         </h1>
-                        <h2 attrs="{'invisible': [('is_template', '=', False)]}">
-                            <label for="model_name" />
-                            <field name="model_name" />
-                        </h2>
                     </div>
                     <group name="main">
                         <group name="left">
@@ -124,7 +120,7 @@
                             />
                             <field
                                 name="model_id"
-                                attrs="{'invisible':[('is_template', '=', False)]}"
+                                attrs="{'readonly':[('is_template', '=', False)]}"
                             />
                             <label for="resource_ref" />
                             <div>
@@ -163,10 +159,9 @@
                             <!-- add groups to make this look less repulsive to the eye-->
                             <group name="main">
                                 <group col="1">
-                                    <field name="model_name" />
                                     <field
                                         name="wrapper_report_id"
-                                        attrs="{'readonly': [('lock_date','!=', False)]}"
+                                        attrs="{'invisible': [('is_template', '=', False)]}"
                                     />
                                 </group>
                                 <group name="content_buttons" col="1">

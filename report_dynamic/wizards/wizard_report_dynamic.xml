@@ -7,7 +7,7 @@
             <form string="Template">
                 <group>
                     <field name="template_id" options="{'no_create': True}" />
-                    <field name="model_name" />
+                    <field name="model_id" />
                 </group>
                 <footer>
                     <button
