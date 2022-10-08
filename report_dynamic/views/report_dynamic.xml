@@ -122,6 +122,7 @@
                             icon="fa-lock"
                             attrs="{'invisible': ['|', ('is_template', '=', True), ('lock_date', '!=', False)]}"
                             context="{'default_report_id': active_id}"
+                            help="Lock this report for editing"
                         />
                     </div>
                     <div class="oe_title">
