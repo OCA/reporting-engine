@@ -65,21 +65,6 @@ class TestWizardReportDynamic(common.TransactionCase):
         self.assertEquals(self.rd_report.res_id, self.rd_report.resource_ref.id)
         self.assertEquals(self.rd_report.model_id, res_partner_model)
 
-    def test_create_invalid_model(self):
-        """ Test that you can't create reports for empty models """
-        bli_model = self.env.ref("base.model_base_language_install")
-        bli_recs = self.env[bli_model.model].search([])
-        if bli_recs:
-            bli_recs.unlink()
-        with self.assertRaises(ValidationError):
-            self.env["report.dynamic"].create(
-                {
-                    "name": "language template",
-                    "model_id": bli_model.id,
-                    "is_template": True,
-                }
-            )
-
     def test_forbid_template_change(self):
         """ Test that you can't switch a template with reports connected to it """
         with self.assertRaises(ValidationError):

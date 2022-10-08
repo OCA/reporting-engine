@@ -105,19 +105,11 @@ class ReportDynamic(models.Model):
             if not model:
                 continue
             try:
-                sample_record = self._get_sample_record(model)
+                self._get_sample_record(model)
             except Exception as e:
                 raise ValidationError(
                     _("Model %s is not applicable for report. Reason: %s")
                     % (model, str(e))
-                )
-            if not sample_record:
-                raise ValidationError(
-                    _(
-                        "No sample record exists for Model %s. "
-                        "Please create one before proceeding"
-                    )
-                    % (model,)
                 )
 
     @api.onchange("template_id")
@@ -137,18 +129,7 @@ class ReportDynamic(models.Model):
         if not model:
             return res
         try:
-            sample_record = self.env[model].search([], limit=1)
-            if not sample_record:
-                res["warning"] = {
-                    "message": _(
-                        "No sample record exists for Model %s. "
-                        "Please create one before proceeding"
-                    )
-                    % (model,)
-                }
-                self.model_id = self._origin.model_id.id
-            else:
-                self.resource_ref = sample_record
+            self.env[model].search_read([], limit=1)
         except Exception as e:
             res["warning"] = {
                 "message": _("Model %s is not applicable for report. Reason: %s")
@@ -160,24 +141,10 @@ class ReportDynamic(models.Model):
     @api.depends("model_id", "res_id", "template_id")
     def _compute_resource_ref(self):
         for rec in self:
-            model = (
-                rec.model_id.model
-                if rec.is_template
-                else rec.template_id.model_id.model
-            )
-            if not model:
+            if rec.is_template or not rec.model_id or not rec.res_id:
                 rec.resource_ref = False
                 continue
-            # we need to give a default to id part of resource_ref
-            # otherwise it is not editable
-            if rec.res_id:
-                rec.resource_ref = "%s,%s" % (model, rec.res_id)
-            else:
-                sample_rec = self._get_sample_record(model)
-                if sample_rec:
-                    rec.resource_ref = "%s,%s" % (model, sample_rec.id)
-                else:
-                    rec.resource_ref = False
+            rec.resource_ref = "%s,%s" % (rec.model_id.model, rec.res_id)
 
     def _inverse_resource_ref(self):
         for rec in self:
@@ -273,10 +240,12 @@ class ReportDynamic(models.Model):
 
     def action_preview_content(self):
         self.ensure_one()
-        assert self.is_template, _("Can only use preview for templates")
-        assert self.preview_res_id, _(
-            "Looking for a random record matching the domain, but did not find"
-        )
+        if not self.is_template:
+            raise ValidationError(_("Can only use preview for templates"))
+        if not self.preview_res_id:
+            raise ValidationError(
+                _("Looking for a random record matching the domain, but did not find")
+            )
         action = self.env.ref("report_dynamic.report_dynamic_document_preview").read(
             []
         )[0]
@@ -284,8 +253,10 @@ class ReportDynamic(models.Model):
 
     def action_quick_view_content(self):
         self.ensure_one()
-        assert not self.is_template, _("Can only use quick view for reports")
-        assert self.resource_ref, _("Needs a record for previewing")
+        if self.is_template:
+            raise ValidationError(_("Can only use quick view for reports"))
+        if not self.resource_ref:
+            raise ValidationError(_("Needs a record for previewing"))
         action = self.env.ref("report_dynamic.report_dynamic_document_preview").read(
             []
         )[0]
@@ -307,9 +278,10 @@ class ReportDynamic(models.Model):
 
     def action_duplicate_as_template(self):
         self.ensure_one()
-        assert not self.is_template, _(
-            "This is not a report, you cannot create a template from it"
-        )
+        if self.is_template:
+            raise ValidationError(
+                _("This is not a report, you cannot create a template from it")
+            )
         action = self.env.ref("report_dynamic.report_dynamic_template_action").read()[0]
         action["context"] = dict(self.env.context)
         action["context"]["form_view_initial_mode"] = "edit"
