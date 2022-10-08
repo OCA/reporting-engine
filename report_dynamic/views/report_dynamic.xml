@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <form string="Report">
                 <sheet>
+                    <!-- ribbon to show the record as archived -->
                     <widget
                         name="web_ribbon"
                         title="Archived"
@@ -13,6 +14,7 @@
                         attrs="{'invisible': [('active', '=', True)]}"
                     />
                     <div class="oe_button_box" name="button_box">
+                        <!-- action to remove or create a contextual 'More..' server action on the model -->
                         <field name="window_action_exists" invisible="1" />
                         <button
                             name="create_action"
@@ -33,6 +35,7 @@
                             help="Remove the contextual action to use this template on related documents"
                             widget="statinfo"
                         />
+                        <!-- action to navigate to the dynamic sections of a report -->
                         <field name="section_ids" invisible="1" />
                         <button
                             type="object"
@@ -48,6 +51,7 @@
                                 string="Sections"
                             />
                         </button>
+                        <!-- boolean button to archive or unarchive this record -->
                         <button
                             name="toggle_active"
                             type="object"
