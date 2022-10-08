@@ -45,6 +45,7 @@ class TestWizardReportDynamic(common.TransactionCase):
         action = report.action_duplicate_as_template()
         template = self.rd_obj.browse(action["res_id"])
         self.assertTrue(template.section_ids)
+        self.assertEquals(template.model_id, report.model_id)
         self.assertEquals(template.section_count, report.section_count)
         self.assertNotEquals(template.section_ids, report.section_ids)
 

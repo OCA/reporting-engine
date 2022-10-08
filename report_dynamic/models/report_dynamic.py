@@ -302,6 +302,7 @@ class ReportDynamic(models.Model):
         ]
         action["res_id"] = self.copy(
             {
+                "model_id": self.model_id.id,
                 "is_template": True,
                 "template_id": False,
                 "lock_date": False,
