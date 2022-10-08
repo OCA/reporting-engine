@@ -14,6 +14,15 @@
                         attrs="{'invisible': [('lock_date', '=', False)]}"
                     />
                     <div class="oe_button_box" name="button_box">
+                        <!-- button to view a preview of the report -->
+                        <button
+                            name="action_preview_content"
+                            string="Preview"
+                            class="oe_stat_button"
+                            icon="fa-eye"
+                            type="object"
+                            attrs="{'invisible':[('resource_ref', '=', False)]}"
+                        />
                         <!-- action to remove or create a contextual 'More..' server action on the model -->
                         <field name="window_action_exists" invisible="1" />
                         <button
@@ -139,6 +148,10 @@
                             </div>
                             <field name="model_model" invisible="1" />
                             <field
+                                name="wrapper_report_id"
+                                attrs="{'invisible': [('is_template', '=', False)]}"
+                            />
+                            <field
                                 name="condition_domain_global"
                                 widget="domain"
                                 options="{'model': 'model_model', 'in_dialog': True}"
@@ -152,28 +165,18 @@
                                 force_save='True'
                             />
                         </group>
-                        <group name="right"/>
+                        <group name="right">
+                            <field
+                                name="condition_domain_global"
+                                widget="domain"
+                                options="{'model': 'model_model', 'in_dialog': True}"
+                                attrs="{'invisible': [('is_template', '=', False)]}"
+                                help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
+                            />
+                        </group>
                     </group>
                     <notebook>
                         <page name="dynamic_content" string="Dynamic content">
-                            <!-- add groups to make this look less repulsive to the eye-->
-                            <group name="main">
-                                <group col="1">
-                                    <field
-                                        name="wrapper_report_id"
-                                        attrs="{'invisible': [('is_template', '=', False)]}"
-                                    />
-                                </group>
-                                <group name="content_buttons" col="1">
-                                    <button
-                                        name="action_preview_content"
-                                        string="Preview"
-                                        type="object"
-                                        class="oe_highlight"
-                                        attrs="{'invisible':[('resource_ref', '=', False)]}"
-                                    />
-                                </group>
-                            </group>
                             <field
                                 name="section_ids"
                                 attrs="{'readonly':[('lock_date', '!=', False)]}"
@@ -186,16 +189,6 @@
                                     <field name="is_paragraph" invisible="1" />
                                 </tree>
                             </field>
-                        </page>
-                        <page
-                            name="reports"
-                            string="Reports"
-                            attrs="{'invisible':[('is_template', '=', False)]}"
-                        >
-                            <field
-                                name="report_ids"
-                                context="{'default_template_id': active_id}"
-                            />
                         </page>
                         <page name="help" string="Help">
                             <field name="documentation" />
