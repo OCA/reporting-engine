@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo noupdate="1">
     <!-- template for demo_report_1 -->
-    <record id="demo_report_2" model="report.dynamic">
+    <record id="demo_template_1" model="report.dynamic">
         <field name="name">Template for report</field>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="resource_ref" ref="base.res_partner_1" />
@@ -10,7 +10,7 @@
     <!-- Reports -->
     <record id="demo_report_1" model="report.dynamic">
         <field name="name">Demo report</field>
-        <field name="template_id" ref="demo_report_2" />
+        <field name="template_id" ref="demo_template_1" />
     </record>
     <!-- Sections -->
     <record id="demo_section_1" model="report.dynamic.section">
@@ -18,7 +18,7 @@
         <field name="is_paragraph">True</field>
         <field name="content">Some Black content</field>
         <field name="condition_python">object.name.startswith("D")</field>
-        <field name="report_id" ref="demo_report_1" />
+        <field name="report_id" ref="demo_template_1" />
     </record>
     <record id="demo_section_2" model="report.dynamic.section">
         <field name="name">Not a paragraph</field>
@@ -52,7 +52,7 @@
             [H1val].[H2val].[H3val] # 2.2.1
         </field>
         <field name="condition_python">object.name.endswith("r")</field>
-        <field name="report_id" ref="demo_report_1" />
+        <field name="report_id" ref="demo_template_1" />
     </record>
     <!-- Aliases -->
     <record id="demo_alias_1" model="report.dynamic.alias">

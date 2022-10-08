@@ -8,8 +8,8 @@ class TestWizardReportDynamic(common.TransactionCase):
     def setUp(self):
         super(TestWizardReportDynamic, self).setUp()
         self.demopartner = self.env.ref("base.user_demo").partner_id
-        rd_obj = self.env["report.dynamic"]
-        self.rd_template = rd_obj.create(
+        self.rd_obj = self.env["report.dynamic"]
+        self.rd_template = self.rd_obj.create(
             {
                 "name": "Template for report",
                 "model_id": self.env.ref("base.model_res_partner").id,
@@ -17,10 +17,10 @@ class TestWizardReportDynamic(common.TransactionCase):
                 "is_template": True,
             }
         )
-        self.rd_report = rd_obj.create(
+        self.rd_report = self.rd_obj.create(
             {"name": "Demo report", "template_id": self.rd_template.id}
         )
-        self.rd_template2 = rd_obj.create(
+        self.rd_template2 = self.rd_obj.create(
             {
                 "name": "Template without_children",
                 "model_id": self.env.ref("base.model_res_partner").id,
@@ -28,6 +28,29 @@ class TestWizardReportDynamic(common.TransactionCase):
                 "is_template": True,
             }
         )
+        self.section1 = self.env["report.dynamic.section"].create(
+            {"report_id": self.rd_template.id}
+        )
+
+    def test_create_report(self):
+        """ Just a regular report creation from template """
+        report = self.rd_obj.new()
+        report.template_id = self.rd_template.id
+        report._onchange_template_id()
+        self.assertTrue(report.section_ids)
+        self.assertEquals(report.section_count, self.rd_template.section_count)
+        self.assertNotEquals(report.section_ids, self.rd_template.section_ids)
+
+        # now make a template from this report
+        action = report.action_duplicate_as_template()
+        template = self.rd_obj.browse(action["res_id"])
+        self.assertTrue(template.section_ids)
+        self.assertEquals(template.section_count, report.section_count)
+        self.assertNotEquals(template.section_ids, report.section_ids)
+
+    def test_action_view_reports(self):
+        action = self.rd_template.action_view_reports()
+        self.assertEquals(action["domain"][0][2], [self.rd_report.id])
 
     def test_write_resource_ref(self):
         """ Test inverse write on resource_ref """
@@ -112,10 +135,7 @@ class TestWizardReportDynamic(common.TransactionCase):
         wiz_model = self.env["wizard.report.dynamic"]
         # TODO emulate form
         wiz = wiz_model.create({"template_id": self.rd_template.id})
-        ctx = {
-            "active_model": "res.partner",
-            "active_ids": [self.demopartner.id],
-        }
+        ctx = {"active_model": "res.partner", "active_ids": [self.demopartner.id]}
         action = wiz.with_context(ctx).action_generate_reports()
         report_id = action.get("domain")[0][2]
         report = self.env["report.dynamic"].browse(report_id)

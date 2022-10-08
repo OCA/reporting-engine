@@ -6,15 +6,20 @@ class TestWizardReportDynamicSection(common.TransactionCase):
     def setUp(self):
         super(TestWizardReportDynamicSection, self).setUp()
         # use the demodata.
-        self.RD_template = self.env.ref("report_dynamic.demo_report_2")
+        self.rd_template = self.env.ref("report_dynamic.demo_template_1")
         self.section1 = self.env.ref("report_dynamic.demo_section_1")
         # Black -> White alias
         self.alias = self.env.ref("report_dynamic.demo_alias_1")
 
+    def test_action_view_sections(self):
+        action = self.rd_template.action_view_sections()
+        self.assertTrue(self.rd_template.section_ids)
+        self.assertEquals(action["domain"][0][2], self.rd_template.section_ids.ids)
+
     def test_section_count(self):
-        self.assertFalse(self.RD_template.section_count)
-        self.env["report.dynamic.section"].create({"report_id": self.RD_template.id})
-        self.assertEqual(self.RD_template.section_count, 1)
+        self.assertEquals(self.rd_template.section_count, 2)
+        self.env["report.dynamic.section"].create({"report_id": self.rd_template.id})
+        self.assertEqual(self.rd_template.section_count, 3)
 
     def test_condition_python_preview(self):
         self.assertEqual(self.section1.condition_python, 'object.name.startswith("D")')
