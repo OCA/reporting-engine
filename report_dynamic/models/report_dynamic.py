@@ -17,11 +17,12 @@ class ReportDynamic(models.Model):
         comodel_name="ir.model",
         compute="_compute_model_id",
         inverse="_inverse_model_id",
+        store=True,
     )
     # Inform the user about configured model_id
     # in template
     model_model = fields.Char(related="model_id.model", string="Tech name of model_id")
-    res_id = fields.Integer()
+    res_id = fields.Integer(copy=False)
     resource_ref = fields.Reference(
         string="Target record",
         selection="_selection_target_model",
@@ -29,7 +30,7 @@ class ReportDynamic(models.Model):
         inverse="_inverse_resource_ref",
     )
     render_resource_ref = fields.Reference(
-        selection="_selection_target_model", compute="_compute_render_resource_ref",
+        selection="_selection_target_model", compute="_compute_render_resource_ref"
     )
     wrapper_report_id = fields.Many2one(
         comodel_name="ir.ui.view", domain="[('type', '=', 'qweb')]"
@@ -86,7 +87,17 @@ class ReportDynamic(models.Model):
             )
             """,
             "A report should always have a template, but a template cannot have one.",
-        )
+        ),
+        (
+            "res_id_check",
+            """
+            CHECK(
+                (is_template = 'f' and res_id is not null) or
+                (is_template = 't' and res_id is null)
+            )
+            """,
+            "A report should always relate to a record, but a template cannot have one.",
+        ),
     ]
 
     @api.depends("is_template", "template_id.model_id", "real_model_id")
@@ -183,7 +194,7 @@ class ReportDynamic(models.Model):
                 rec.res_id = rec.resource_ref.id
                 rec.model_id = self.env["ir.model"]._get(rec.resource_ref._name)
             else:
-                rec.res_id = False
+                rec.res_id = None
 
     def get_window_actions(self):
         return self.env["ir.actions.act_window"].search(
@@ -325,6 +336,7 @@ class ReportDynamic(models.Model):
                 "is_template": True,
                 "template_id": False,
                 "lock_date": False,
+                "resource_ref": False,
                 "name": _("New template based on report: %s") % (self.name,),
             }
         ).id
@@ -395,11 +407,17 @@ class ReportDynamic(models.Model):
         )
 
     def unlink_action(self):
-        # We make sudo as any user with rights in this model should be able
+        """ Anyone can delete this action """
         # to delete the action, not only admin
-        self.env["ir.actions.act_window"].search(
-            [
-                ("res_model", "=", "wizard.report.dynamic"),
-                ("binding_model_id", "=", self.model_id.id),
-            ]
-        ).sudo().unlink()
+        recs = (
+            self.env["ir.actions.act_window"]
+            .sudo()
+            .search(
+                [
+                    ("res_model", "=", "wizard.report.dynamic"),
+                    ("binding_model_id", "=", self.model_id.id),
+                ]
+            )
+        )
+        if recs:
+            recs.unlink()

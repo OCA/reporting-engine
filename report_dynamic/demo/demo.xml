@@ -4,12 +4,12 @@
     <record id="demo_template_1" model="report.dynamic">
         <field name="name">Template for report</field>
         <field name="model_id" ref="base.model_res_partner" />
-        <field name="resource_ref" ref="base.res_partner_1" />
         <field name="is_template">True</field>
     </record>
     <!-- Reports -->
     <record id="demo_report_1" model="report.dynamic">
         <field name="name">Demo report</field>
+        <field name="resource_ref" ref="base.res_partner_1" />
         <field name="template_id" ref="demo_template_1" />
     </record>
     <!-- Sections -->
