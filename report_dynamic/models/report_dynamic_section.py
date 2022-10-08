@@ -132,13 +132,12 @@ class ReportDynamicSection(models.Model):
             return True
         condition_python = (self.condition_python or "").strip()
         record = self.resource_ref
-        if not record:
-            return False
-        return safe_eval(condition_python, {"object": record})
+        return record and safe_eval(condition_python, {"object": record})
 
     def _eval_condition_domain(self):
         condition_domain = (self.condition_domain or "[]").strip()
-        return self.resource_ref.filtered_domain(safe_eval(condition_domain))
+        record = self.resource_ref
+        return record and record.filtered_domain(safe_eval(condition_domain))
 
     def _get_proper_default_value(self):
         self.ensure_one()
