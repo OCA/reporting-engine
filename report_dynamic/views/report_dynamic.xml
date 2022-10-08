@@ -35,11 +35,25 @@
                             help="Remove the contextual action to use this template on related documents"
                             widget="statinfo"
                         />
+                        <!-- smartbutton for linked reports -->
+                        <button
+                            type="object"
+                            name="action_view_reports"
+                            class="oe_stat_button"
+                            icon="fa-file-text-o"
+                            attrs="{'invisible': [('is_template', '=', False),('report_count', '=', 0)]}"
+                        >
+                            <field
+                                name="report_count"
+                                widget="statinfo"
+                                string="Reports"
+                            />
+                        </button>
                         <!-- action to navigate to the dynamic sections of a report -->
                         <field name="section_ids" invisible="1" />
                         <button
                             type="object"
-                            name="action_view_section"
+                            name="action_view_sections"
                             class="oe_stat_button"
                             icon="fa-file-text-o"
                             attrs="{'invisible': [('section_count', '=', 0)]}"
@@ -95,6 +109,10 @@
                     <group name="main">
                         <group name="left">
                             <field
+                                name="template_id"
+                                attrs="{'readonly': [('lock_date', '!=', False)], 'invisible': [('is_template', '=', True)], 'required': [('is_template', '=', False)]}"
+                            />
+                            <field
                                 name="model_id"
                                 attrs="{'invisible':[('is_template', '=', False)]}"
                             />
@@ -120,10 +138,6 @@
                                 attrs="{'invisible': [('is_template', '=', False)]}"
                                 help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
                             />
-                            <field
-                                name="template_id"
-                                attrs="{'readonly': [('lock_date', '!=', False)], 'invisible': [('is_template', '=', True)]}"
-                            />
                             <field name="is_template" invisible="1" />
                             <button
                                 name="action_wizard_lock_report"
@@ -134,8 +148,7 @@
                                 context="{'default_report_id': active_id}"
                             />
                         </group>
-                        <group name="right">
-                        </group>
+                        <group name="right"/>
                     </group>
                     <notebook>
                         <page name="dynamic_content" string="Dynamic content">
@@ -203,19 +216,24 @@
         </field>
     </record>
 
-
     <record id="report_dynamic_tree" model="ir.ui.view">
         <field name="name">report.dynamic.tree</field>
         <field name="model">report.dynamic</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" readonly="True" />
+                <field
+                    name="template_id"
+                    readonly="True"
+                    invisible="bool(context.get('is_template'))"
+                    string="Template"
+                />
                 <field name="model_id" readonly="True" />
                 <field
                     name="resource_ref"
                     readonly="True"
-                    invisible="context.get('is_template')==True"
-                    string="For"
+                    invisible="bool(context.get('is_template'))"
+                    string="Target record"
                 />
             </tree>
         </field>

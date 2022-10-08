@@ -10,7 +10,7 @@ class ReportDynamic(models.Model):
 
     name = fields.Char(required=True)
     model_id = fields.Many2one(
-        comodel_name="ir.model", domain="[('transient', '=', False)]",
+        comodel_name="ir.model", domain="[('transient', '=', False)]"
     )
     # Inform the user about configured model_id
     # in template
@@ -59,10 +59,27 @@ class ReportDynamic(models.Model):
         store=True,
         help="Computed field for grouping by record name in search view",
     )
+    report_ids = fields.One2many(
+        comodel_name="report.dynamic", inverse_name="template_id", copy=False
+    )
+    report_count = fields.Integer(string="Reports", compute="_compute_report_count")
     section_ids = fields.One2many(
         comodel_name="report.dynamic.section", inverse_name="report_id", copy=True
     )
     section_count = fields.Integer(string="Sections", compute="_compute_section_count")
+
+    _sql_constraints = [
+        (
+            "template_check",
+            """
+            CHECK(
+                (is_template = 'f' and template_id is not null) or
+                (is_template = 't' and template_id is null)
+            )
+            """,
+            "A report should always have a template, but a template cannot have one.",
+        )
+    ]
 
     @api.model
     def _selection_target_model(self):
@@ -127,7 +144,7 @@ class ReportDynamic(models.Model):
         except Exception as e:
             res["warning"] = {
                 "message": _("Model %s is not applicable for report. Reason: %s")
-                % (model, str(e),)
+                % (model, str(e))
             }
             self.model_id = self._origin.model_id.id
         return res
@@ -198,7 +215,7 @@ class ReportDynamic(models.Model):
         for rec in self:
             rec.section_count = len(rec.section_ids)
 
-    def action_view_section(self):
+    def action_view_sections(self):
         self.ensure_one()
         return {
             "name": _("Sections"),
@@ -208,6 +225,27 @@ class ReportDynamic(models.Model):
             "target": "current",
             "context": {"default_report_id": self.id},
             "domain": [("id", "in", self.section_ids.ids)],
+        }
+
+    @api.depends("report_ids")
+    def _compute_report_count(self):
+        for rec in self:
+            rec.report_count = len(rec.report_ids)
+
+    def action_view_reports(self):
+        self.ensure_one()
+        return {
+            "name": _("Reports"),
+            "type": "ir.actions.act_window",
+            "res_model": "report.dynamic",
+            "view_mode": "tree,form",
+            "target": "current",
+            "context": {
+                "default_is_template": False,
+                "is_template": False,
+                "default_template_id": self.id,
+            },
+            "domain": [("id", "in", self.report_ids.ids)],
         }
 
     def action_wizard_lock_report(self):
