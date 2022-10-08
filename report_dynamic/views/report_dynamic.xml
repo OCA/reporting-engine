@@ -6,12 +6,12 @@
         <field name="arch" type="xml">
             <form string="Report">
                 <sheet>
-                    <!-- ribbon to show the record as archived -->
+                    <!-- ribbon to show the record as locked -->
                     <widget
                         name="web_ribbon"
-                        title="Archived"
+                        title="Locked"
                         bg_color="bg-danger"
-                        attrs="{'invisible': [('active', '=', True)]}"
+                        attrs="{'invisible': [('lock_date', '=', False)]}"
                     />
                     <div class="oe_button_box" name="button_box">
                         <!-- action to remove or create a contextual 'More..' server action on the model -->
@@ -95,6 +95,16 @@
                         }}"
                             />
                         </button>
+                        <!-- button to lock the report -->
+                        <button
+                            name="action_wizard_lock_report"
+                            string="Lock"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-lock"
+                            attrs="{'invisible': ['|', ('is_template', '=', True), ('lock_date', '!=', False)]}"
+                            context="{'default_report_id': active_id}"
+                        />
                     </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Report name" />
@@ -122,6 +132,7 @@
                                     name="resource_ref"
                                     options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
                                     class="oe_inline"
+                                    attrs="{'readonly':[('lock_date', '!=', False)]}"
                                 />
                                 <!-- Make it obvious that target record for templates is for previewing -->
                                 <span
@@ -139,35 +150,19 @@
                                 help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
                             />
                             <field name="is_template" invisible="1" />
-                            <button
-                                name="action_wizard_lock_report"
-                                string="Lock report"
-                                type="object"
-                                class="oe_highlight"
-                                attrs="{'invisible': [('lock_date', '!=', False)]}"
-                                context="{'default_report_id': active_id}"
+                            <field
+                                name="lock_date"
+                                attrs="{'invisible': ['|', ('is_template', '=', True), ('lock_date', '=', False)]}"
+                                force_save='True'
                             />
                         </group>
                         <group name="right"/>
                     </group>
                     <notebook>
                         <page name="dynamic_content" string="Dynamic content">
-                            <!-- Show this when agreement is locked-->
-                            <div attrs="{'invisible': [('lock_date', '=', False)]}">
-                                <p>
-                                    <h2>
-                                        <strong>LOCKED</strong>
-                                    </h2>
-                                </p>
-                            </div>
                             <!-- add groups to make this look less repulsive to the eye-->
                             <group name="main">
                                 <group col="1">
-                                    <field
-                                        name='lock_date'
-                                        attrs="{'readonly': [('lock_date','!=', False)], 'invisible': [('lock_date', '=', False)]}"
-                                        force_save='True'
-                                    />
                                     <field name="model_name" />
                                     <field
                                         name="wrapper_report_id"

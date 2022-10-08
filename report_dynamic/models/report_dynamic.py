@@ -44,8 +44,8 @@ class ReportDynamic(models.Model):
         string="Global domain condition", default="[]"
     )
     active = fields.Boolean(default=True)
-    is_template = fields.Boolean(default=False)
-    lock_date = fields.Date()
+    is_template = fields.Boolean()
+    lock_date = fields.Date(readonly=True)
     field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         relation="contextual_field_rel",
@@ -293,6 +293,7 @@ class ReportDynamic(models.Model):
             {
                 "is_template": True,
                 "template_id": False,
+                "lock_date": False,
                 "name": _("New template based on report: %s") % (self.name,),
             }
         ).id
