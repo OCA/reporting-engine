@@ -28,7 +28,7 @@
                         <button
                             name="create_action"
                             type="object"
-                            string="Add Report Button"
+                            string="Add Sidebar Button"
                             class="oe_inline oe_stat_button"
                             attrs="{'invisible':['|',('window_action_exists','=',True),('is_template', '=', False)]}"
                             icon="fa-plus"
@@ -37,7 +37,7 @@
                         <button
                             name="unlink_action"
                             type="object"
-                            string="Remove Report Button"
+                            string="Remove Sidebar Button"
                             class="oe_stat_button"
                             icon="fa-minus"
                             attrs="{'invisible':['|',('window_action_exists','=',False),('is_template', '=', False)]}"
