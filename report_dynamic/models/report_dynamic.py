@@ -240,6 +240,26 @@ class ReportDynamic(models.Model):
                 rec.wrapper_report_id = rec._get_wrapper_report_id(rec.template_id)
         return records
 
+    def action_duplicate_as_template(self):
+        self.ensure_one()
+        assert not self.is_template, _(
+            "This is not a report, you cannot create a template from it"
+        )
+        action = self.env.ref("report_dynamic.report_dynamic_template_action").read()[0]
+        action["context"] = dict(self.env.context)
+        action["context"]["form_view_initial_mode"] = "edit"
+        action["views"] = [
+            (self.env.ref("report_dynamic.report_dynamic_form").id, "form")
+        ]
+        action["res_id"] = self.copy(
+            {
+                "is_template": True,
+                "template_id": False,
+                "name": _("New template based on report: %s") % (self.name,),
+            }
+        ).id
+        return action
+
     @api.constrains("report_ids", "is_template")
     def _constrain_template_status(self):
         """ Disallow revoking template status of a template with children """

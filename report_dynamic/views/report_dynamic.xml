@@ -51,6 +51,18 @@
                                 string="Sections"
                             />
                         </button>
+                        <!-- action to duplicate this report as a new template -->
+                        <button
+                            name="action_duplicate_as_template"
+                            type="object"
+                            string="Use as new template"
+                            class="oe_stat_button"
+                            attrs="{'invisible':[('is_template', '=', True)]}"
+                            icon="fa-copy"
+                            help="Use this modified report as a base to create a new template"
+                            confirm="Are you sure you want to create a new template from this?"
+                            groups="report_dynamic.group_report_dynamic_template_editors"
+                        />
                         <!-- boolean button to archive or unarchive this record -->
                         <button
                             name="toggle_active"
@@ -112,14 +124,7 @@
                                 name="template_id"
                                 attrs="{'readonly': [('lock_date', '!=', False)], 'invisible': [('is_template', '=', True)]}"
                             />
-                            <!-- user might be tempted to turn a report into a template.
-                                                Not going to happen
-                            -->
-                            <field
-                                name="is_template"
-                                groups="report_dynamic.group_report_dynamic_template_editors"
-                                attrs="{'invisible': [('template_id', '!=', False)]}"
-                            />
+                            <field name="is_template" invisible="1" />
                             <button
                                 name="action_wizard_lock_report"
                                 string="Lock report"
