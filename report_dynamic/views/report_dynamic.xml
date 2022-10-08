@@ -135,7 +135,7 @@
                         <group name="left">
                             <field
                                 name="template_id"
-                                attrs="{'readonly': [('lock_date', '!=', False)], 'invisible': [('is_template', '=', True)], 'required': [('is_template', '=', False)]}"
+                                attrs="{'readonly': [('section_ids', '!=', [])], 'invisible': [('is_template', '=', True)], 'required': [('is_template', '=', False)]}"
                             />
                             <field
                                 name="model_id"

@@ -120,6 +120,13 @@ class ReportDynamic(models.Model):
                     % (model,)
                 )
 
+    @api.onchange("template_id")
+    def _onchange_template_id(self):
+        """ When template is chosen, define section_ids """
+        for report in self:
+            if not report.is_template and report.template_id and not report.section_ids:
+                report.section_ids = report.template_id.section_ids
+
     @api.onchange("model_id")
     def _onchange_model_id(self):
         self.ensure_one()
