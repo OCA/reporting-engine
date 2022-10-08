@@ -61,7 +61,7 @@ class ReportDynamicSection(models.Model):
     report_id = fields.Many2one(
         comodel_name="report.dynamic", string="Report", ondelete="cascade"
     )
-    resource_ref = fields.Reference(related="report_id.resource_ref")
+    resource_ref = fields.Reference(related="report_id.render_resource_ref")
     res_id = fields.Integer(related="report_id.res_id")
     resource_ref_model_id = fields.Many2one(
         comodel_name="ir.model", related="report_id.model_id"

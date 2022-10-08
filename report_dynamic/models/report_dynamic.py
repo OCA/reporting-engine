@@ -29,6 +29,10 @@ class ReportDynamic(models.Model):
         inverse="_inverse_resource_ref",
         store=True,
     )
+    render_resource_ref = fields.Reference(
+        selection="_selection_target_model",
+        compute="_compute_render_resource_ref",
+    )
     wrapper_report_id = fields.Many2one(
         comodel_name="ir.ui.view", domain="[('type', '=', 'qweb')]"
     )
@@ -99,6 +103,18 @@ class ReportDynamic(models.Model):
         for rec in self:
             if rec.is_template:
                 rec.real_model_id = rec.model_id
+
+    @api.depends("resource_ref", "is_template", "preview_res_id")
+    def _compute_render_resource_ref(self):
+        for rec in self:
+            if rec.is_template and rec.preview_res_id and rec.model_id:
+                rec.render_resource_ref = "%s,%s" % (
+                    rec.model_id.model, rec.preview_res_id
+                )
+            elif not rec.is_template:
+                rec.render_resource_ref = rec.resource_ref
+            else:
+                rec.render_resource_ref = False
 
     @api.model
     def _selection_target_model(self):
