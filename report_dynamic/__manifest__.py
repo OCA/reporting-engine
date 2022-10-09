@@ -5,7 +5,7 @@
     "name": "Report Dynamic",
     "version": "13.0.1.0.0",
     "category": "Report",
-    "author": "Sunflower IT, Odoo Community Association (OCA)",
+    "author": "Sunflower IT, Therp BV, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "development_status": "Alpha",
@@ -24,6 +24,7 @@
         "wizards/wizard_lock_report.xml",
         "wizards/wizard_report_dynamic.xml",
     ],
+    "maintainers": ["thomaspaulb"],
     "demo": ["demo/demo.xml"],
     "installable": True,
 }
