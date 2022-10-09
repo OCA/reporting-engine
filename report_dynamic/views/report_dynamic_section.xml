@@ -45,10 +45,6 @@
                         <label for="report_id" />
                         <field name="report_id" readonly="1" />
                     </div>
-                    <div>
-                        <label for="resource_ref_preview" />
-                        <field name="resource_ref_preview" />
-                    </div>
                     <group name="main">
                         <notebook>
                             <page name="content" string="Content">
