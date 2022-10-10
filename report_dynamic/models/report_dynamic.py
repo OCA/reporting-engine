@@ -76,6 +76,7 @@ class ReportDynamic(models.Model):
     )
     section_count = fields.Integer(string="Sections", compute="_compute_section_count")
     preview_res_id = fields.Integer(compute="_compute_preview_res_id")
+    preview_res_id_display_name = fields.Char(compute="_compute_preview_res_id")
 
     _sql_constraints = [
         (
@@ -275,10 +276,15 @@ class ReportDynamic(models.Model):
         }
 
     def _compute_preview_res_id(self):
+        ""
         for tpl in self:
             domain = safe_eval(tpl.condition_domain_global or "[]")
             record = self.env[self.model_id.model].search(domain)[:1]
             tpl.preview_res_id = record.id
+            if "display_name" in record._fields:
+                tpl.preview_res_id_display_name = record.display_name
+                continue
+            tpl.preview_res_id_display_name = _("Not Available.")
 
     def action_preview_content(self):
         self.ensure_one()

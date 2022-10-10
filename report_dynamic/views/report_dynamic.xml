@@ -166,6 +166,11 @@
                                 attrs="{'invisible': [('is_template', '=', False)]}"
                                 help="When you have multiple templates for one model (eg. a contract for senior employees and another for juniors), this domain is used to determine the domain condition that decides for which records to choose this template (eg. [('employee_id.skill_level', '=', 'junior')])"
                             />
+                            <field
+                                name="preview_res_id_display_name"
+                                attrs="{'invisible': [('is_template', '=', False)]}"
+                                string="Sample record display name"
+                            />
                         </group>
                     </group>
                     <notebook>

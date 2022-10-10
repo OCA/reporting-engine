@@ -142,3 +142,13 @@ class TestWizardReportDynamic(common.TransactionCase):
     def test_default_wrapper(self):
         self.rd_template.wrapper_report_id = False
         self.assertEqual(self.rd_template.get_template_xml_id(), "web.external_layout")
+
+    def test_preview_record(self):
+        self.rd_template.condition_domain_global = [
+            ("name", "=", self.partner_wood_corner.name)
+        ]
+        self.assertEqual(self.rd_template.preview_res_id, self.partner_wood_corner.id)
+        self.assertEqual(
+            self.rd_template.preview_res_id_display_name,
+            self.partner_wood_corner.display_name,
+        )
