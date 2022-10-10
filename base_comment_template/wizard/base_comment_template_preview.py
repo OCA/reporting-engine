@@ -60,7 +60,7 @@ class BaseCommentTemplatePreview(models.TransientModel):
     @api.depends("model_id")
     def _compute_no_record(self):
         for preview in self:
-            domain = safe_eval(self.base_comment_template_id.domain)
+            domain = safe_eval(preview.base_comment_template_id.domain)
             preview.no_record = (
                 (self.env[preview.model_id.model].search_count(domain) == 0)
                 if preview.model_id
@@ -78,6 +78,6 @@ class BaseCommentTemplatePreview(models.TransientModel):
             ):
                 wizard.body = wizard.resource_ref.with_context(
                     lang=wizard.lang
-                ).render_comment(self.base_comment_template_id, engine=wizard.engine)
+                ).render_comment(wizard.base_comment_template_id, engine=wizard.engine)
             else:
                 wizard.body = wizard.base_comment_template_id.text
