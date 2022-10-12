@@ -8,9 +8,8 @@
         <xpath expr="." position="inside">
             <script
                 type="text/javascript"
-                src="/report_fillpdf/static/src/js/report/qwebactionmanager.js"
+                src="/report_fillpdf/static/src/js/report/action_manager_report.js"
             />
         </xpath>
-
     </template>
 </odoo>
