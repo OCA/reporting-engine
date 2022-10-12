@@ -8,7 +8,9 @@ from odoo.exceptions import UserError
 class ReportAction(models.Model):
     _inherit = "ir.actions.report"
 
-    report_type = fields.Selection(selection_add=[("fillpdf", "PDF Filler")])
+    report_type = fields.Selection(
+        selection_add=[("fillpdf", "PDF Filler")], ondelete={"fillpdf": "set default"}
+    )
 
     @api.model
     def render_fillpdf(self, docids, data):
