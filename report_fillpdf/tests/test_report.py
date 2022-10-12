@@ -11,4 +11,4 @@ class TestReport(common.TransactionCase):
         report = report_object._get_report_from_name(report_name)
         docs = self.env["res.company"].search([], limit=1).partner_id
         self.assertEqual(report.report_type, "fillpdf")
-        report.render(docs.ids, {})
+        report._render(docs.ids, {})
