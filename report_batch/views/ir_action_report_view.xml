@@ -11,7 +11,7 @@
             <page name="advanced" position="after">
                 <page name="batch_report" string="Batch Report">
                     <field name="subreport_ids">
-                        <tree string="Batch Reports" editable="bottom">
+                        <tree editable="bottom">
                             <field name="sequence" widget="handle" />
                             <field
                                 name="subreport_id"
@@ -27,7 +27,7 @@
         <field name="name">ir.actions.report.subreport.tree</field>
         <field name="model">ir.actions.report.subreport</field>
         <field name="arch" type="xml">
-            <tree string="Batch Reports" editable="bottom">
+            <tree editable="bottom">
                 <field name="sequence" />
                 <field name="parent_report_id" />
                 <field name="model" invisible="1" />
