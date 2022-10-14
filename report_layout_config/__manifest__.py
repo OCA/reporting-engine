@@ -4,7 +4,7 @@
 {
     "name": "Report layout configuration",
     "summary": "Add possibility to easily modify the global report layout",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, " "Odoo Community Association (OCA)",
@@ -12,10 +12,14 @@
     "depends": ["web", "base"],
     "data": [
         "views/document_layout.xml",
-        "templates/assets.xml",
         "templates/report_templates.xml",
         "data/report_layout.xml",
     ],
     "application": False,
     "installable": True,
+    "assets": {
+        "web.report_assets_common": [
+            "/report_layout_config/static/src/scss/style.scss",
+        ],
+    },
 }
