@@ -1,7 +1,7 @@
 # Copyright (C) 2014-2015  Grupo ESOC <www.grupoesoc.es>
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class IrActionsReport(models.Model):
@@ -13,30 +13,25 @@ class IrActionsReport(models.Model):
     xsd_schema = fields.Binary(
         string="XSD Validation Schema",
         attachment=True,
-        help=(
-            "File with XSD Schema for checking content of result report. "
-            "Can be empty if validation is not required."
-        ),
+        help="File with XSD Schema for checking content of result report. Can be empty "
+        "if validation is not required.",
     )
     xml_encoding = fields.Selection(
         selection=[
             ("UTF-8", "UTF-8")  # will be used as default even if nothing is selected
         ],
         string="XML Encoding",
-        help=(
-            "Encoding for XML reports. If nothing is selected, "
-            "then UTF-8 will be applied."
-        ),
+        help="Encoding for XML reports. If nothing is selected, then UTF-8 will be "
+        "applied.",
     )
     xml_declaration = fields.Boolean(
         string="XML Declaration",
-        help=(
-            """Add `<?xml encoding="..." version="..."?>` at the start """
-            """of final report file."""
-        ),
+        help='Add `<?xml encoding="..." version="..."?>` at the start of final report '
+        "file.",
     )
 
-    def _render_qweb_xml(self, docids, data=None):
+    @api.model
+    def _render_qweb_xml(self, report_ref, res_ids, data=None):
         """
         Call `generate_report` method of report abstract class
         `report.<report technical name>` or of standard class for XML report
@@ -50,15 +45,12 @@ class IrActionsReport(models.Model):
          * str - result content of report
          * str - type of result content
         """
-        report_model_name = "report.{}".format(self.report_name)
-
-        report_model = self.env.get(report_model_name)
-        if report_model is None:
-            report_model = self.env["report.report_xml.abstract"]
-
-        content, ttype = report_model.generate_report(
-            ir_report=self,  # will be used to get settings of report
-            docids=docids,
-            data=data,
+        report = self._get_report(report_ref)
+        report_model = self.env.get(
+            f"report.{report.report_name}", self.env["report.report_xml.abstract"]
         )
-        return content, ttype
+        return report_model.generate_report(
+            ir_report=report,  # will be used to get settings of report
+            docids=res_ids,
+            data=data or {},
+        )

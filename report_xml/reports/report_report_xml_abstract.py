@@ -45,10 +45,9 @@ class ReportXmlAbstract(models.AbstractModel):
          * Default encoding is `UTF-8`
         """
         # collect variable for rendering environment
-        if not data:
-            data = {}
+        data = data or {}
         data.setdefault("report_type", "text")
-        data = ir_report._get_rendering_context(docids, data)
+        data = ir_report._get_rendering_context(ir_report, docids, data)
 
         # render template
         result_bin = ir_report._render_template(ir_report.report_name, data)
@@ -56,7 +55,7 @@ class ReportXmlAbstract(models.AbstractModel):
         # prettify result content
         # normalize indents
         parsed_result_bin = minidom.parseString(result_bin)
-        result = parsed_result_bin.toprettyxml(indent=" " * 4)
+        result = parsed_result_bin.toprettyxml(indent="    ")
 
         # remove empty lines
         utf8 = "UTF-8"
@@ -118,6 +117,4 @@ class ReportXmlAbstract(models.AbstractModel):
         Returns:
          * dict - extra variables for report render
         """
-        if not data:
-            data = {}
-        return data
+        return data or {}

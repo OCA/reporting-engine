@@ -3,64 +3,47 @@
 import {download} from "@web/core/network/download";
 import {registry} from "@web/core/registry";
 
-async function xmlReportHandler(action, options, env) {
-    if (action.report_type === "qweb-xml") {
-        // Workaround/hack: Odoo does not expose the _triggerDownload method on
-        // the service, so we have no way to access it from here. We therefore
-        // copy the code; as it is private, it doesn't really give any
-        // stability guarantees anyway
-        // If _triggerDownload were publically available on the service, the
-        // code below could be replaced by
-        // env.services.action._triggerDownload(action, options, "xml");
-
-        const type = "xml";
-        // COPY actionManager._getReportUrl
-        let url_ = `/report/${type}/${action.report_name}`;
-        const actionContext = action.context || {};
-        if (action.data && JSON.stringify(action.data) !== "{}") {
-            // Build a query string with `action.data` (it's the place where reports
-            // using a wizard to customize the output traditionally put their options)
-            const options_ = encodeURIComponent(JSON.stringify(action.data));
-            const context_ = encodeURIComponent(JSON.stringify(actionContext));
-            url_ += `?options=${options_}&context=${context_}`;
-        } else {
-            if (actionContext.active_ids) {
-                url_ += `/${actionContext.active_ids.join(",")}`;
-            }
-            if (type === "xml") {
-                const context = encodeURIComponent(
-                    JSON.stringify(env.services.user.context)
-                );
-                url_ += `?context=${context}`;
-            }
-        }
-        // COPY actionManager._triggerDownload
-        env.services.ui.block();
-        try {
-            await download({
-                url: "/report/download",
-                data: {
-                    data: JSON.stringify([url_, action.report_type]),
-                    context: JSON.stringify(env.services.user.context),
-                },
-            });
-        } finally {
-            env.services.ui.unblock();
-        }
-        const onClose = options.onClose;
-        if (action.close_on_report_download) {
-            return env.services.action.doAction(
-                {type: "ir.actions.act_window_close"},
-                {onClose}
-            );
-        } else if (onClose) {
-            onClose();
-        }
-        // DIFF: need to inform success to the original method. Otherwise it
-        // will think our hook function did nothing and run the original
-        // method.
-        return Promise.resolve(true);
+function getReportUrl({report_name, context, data}, env) {
+    // Rough copy of action_service.js _getReportUrl method.
+    let url = `/report/xml/${report_name}`;
+    const actionContext = context || {};
+    if (data && JSON.stringify(data) !== "{}") {
+        const encodedOptions = encodeURIComponent(JSON.stringify(data));
+        const encodedContext = encodeURIComponent(JSON.stringify(actionContext));
+        return `${url}?options=${encodedOptions}&context=${encodedContext}`;
+    }
+    if (actionContext.active_ids) {
+        url += `/${actionContext.active_ids.join(",")}`;
+    }
+    const userContext = encodeURIComponent(JSON.stringify(env.services.user.context));
+    return `${url}?context=${userContext}`;
+}
+async function triggerDownload(action, {onClose}, env) {
+    // Rough copy of action_service.js _triggerDownload method.
+    env.services.ui.block();
+    const data = JSON.stringify([getReportUrl(action, env), action.report_type]);
+    const context = JSON.stringify(env.services.user.context);
+    try {
+        await download({url: "/report/download", data: {data, context}});
+    } finally {
+        env.services.ui.unblock();
+    }
+    if (action.close_on_report_download) {
+        return env.services.action.doAction(
+            {type: "ir.actions.act_window_close"},
+            {onClose}
+        );
+    }
+    if (onClose) {
+        onClose();
     }
 }
-
-registry.category("ir.actions.report handlers").add("xml_handler", xmlReportHandler);
+registry
+    .category("ir.actions.report handlers")
+    .add("xml_handler", async function (action, options, env) {
+        if (action.report_type === "qweb-xml") {
+            await triggerDownload(action, options, env);
+            return true;
+        }
+        return false;
+    });
