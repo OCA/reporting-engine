@@ -23,7 +23,7 @@ Base Comments Templates
     :target: https://runbot.odoo-community.org/runbot/143/15.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 Add a new mixin class to define templates of comments to print on documents.
 The comment templates can be defined like make templates, so you can use variables from linked models.
@@ -161,6 +161,10 @@ Contributors
 * `Jarsa <https://www.jarsa.com>`_:
 
   * Alan Ramos <alan.ramos@jarsa.com>
+
+* `Bloopark systems <https://www.bloopark.de/>`_:
+
+  * Achraf Mhadhbi <machraf@bloopark.de>
 
 Maintainers
 ~~~~~~~~~~~
