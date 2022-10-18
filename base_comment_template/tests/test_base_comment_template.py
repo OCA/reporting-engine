@@ -1,6 +1,7 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from odoo import Command
 from odoo.tests import common
 from odoo.tools.misc import mute_logger
 
@@ -99,12 +100,24 @@ class TestCommentTemplate(common.TransactionCase):
             )
 
     def test_render_comment_text_(self):
+        ro_RO_lang = (
+            self.env["res.lang"]
+            .with_context(active_test=False)
+            .search([("code", "=", "ro_RO")])
+        )
         with mute_logger("odoo.addons.base.models.ir_translation"):
             self.env["base.language.install"].create(
-                {"lang": "ro_RO", "overwrite": True}
+                {"overwrite": True, "lang_ids": [(6, 0, [ro_RO_lang.id])]}
             ).lang_install()
-        with mute_logger("odoo.tools.translate"):
-            self.env["base.update.translations"].create({"lang": "ro_RO"}).act_update()
+
+        module = self.env.ref("base.module_test_translation_import")
+        export = self.env["base.language.export"].create(
+            {"lang": "ro_RO", "format": "po", "modules": [Command.set([module.id])]}
+        )
+        export.act_getfile()
+        po_file = export.data
+        self.assertIsNotNone(po_file)
+
         partner_title = self.ResPartnerTitle.create(
             {"name": "Ambassador", "shortcut": "Amb."}
         )
