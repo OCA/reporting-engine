@@ -20,11 +20,6 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: report_xml
-#: model:ir.actions.report,print_report_name:report_xml.demo_xml_report
-msgid "'Demo xml report'"
-msgstr "'Informe XML de demo'"
-
-#. module: report_xml
 #: model:ir.model,name:report_xml.model_report_report_xml_abstract
 #, fuzzy
 msgid "Abstract XML Report"
@@ -45,11 +40,6 @@ msgid "Demo xml report"
 msgstr "Informe XML de demo"
 
 #. module: report_xml
-#: model:ir.model.fields,field_description:report_xml.field_report_report_xml_abstract__display_name
-msgid "Display Name"
-msgstr "Nom a mostrar"
-
-#. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_encoding
 msgid ""
 "Encoding for XML reports. If nothing is selected, then UTF-8 will be applied."
@@ -64,16 +54,6 @@ msgid ""
 msgstr ""
 "Fitxer amb esquema XSD per a comprovar el contingut de l'informe resultant. "
 "Pot restar buit si no es requereix validació."
-
-#. module: report_xml
-#: model:ir.model.fields,field_description:report_xml.field_report_report_xml_abstract__id
-msgid "ID"
-msgstr "ID"
-
-#. module: report_xml
-#: model:ir.model.fields,field_description:report_xml.field_report_report_xml_abstract____last_update
-msgid "Last Modified on"
-msgstr "Darrera modificació el"
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
@@ -127,3 +107,15 @@ msgstr "Configuració informe XML"
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
 msgid "XSD Validation Schema"
 msgstr "Esquema de validació XSD"
+
+#~ msgid "'Demo xml report'"
+#~ msgstr "'Informe XML de demo'"
+
+#~ msgid "Display Name"
+#~ msgstr "Nom a mostrar"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Darrera modificació el"
