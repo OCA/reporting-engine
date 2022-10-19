@@ -7,9 +7,13 @@ from odoo import fields, models
 _logger = logging.getLogger(__name__)
 
 try:
-    _logger.info("Initializing Bokeh")
+    _logger.info("Initializing Bokeh components")
     from bokeh.embed import components
+
+    _logger.info("Initializing Bokeh figure")
     from bokeh.plotting import figure
+
+    _logger.info("Initializing Bokeh theme")
     from bokeh.themes import Theme
 
     _logger.info("Initialized Bokeh")
