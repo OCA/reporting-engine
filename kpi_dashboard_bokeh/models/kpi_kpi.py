@@ -47,6 +47,7 @@ class KpiKpi(models.Model):
     def _get_code_input_dict(self):
         res = super()._get_code_input_dict()
         if self.widget == "bokeh":
+            _logger.info(bokeh.__version__)
             res.update(
                 {
                     "figure": bokeh.plotting.figure,
