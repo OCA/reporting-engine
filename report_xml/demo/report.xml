@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="demo_xml_report" model="ir.actions.report">
+        <field name="name">Demo xml report</field>
+        <field name="model">res.company</field>
+        <field name="report_type">qweb-xml</field>
+        <field name="report_name">report_xml.demo_report_xml_view</field>
+        <field name="report_file">res_company</field>
+        <!--
+        In case of demo data next definition will not work. So it just example
+        how it should look. If report is a part of demo data you will need
+        add file to report instance via `post_install_hook`
+        -->
+        <field name="xsd_schema" type="base64" file="report_xml/demo/demo_report.xsd" />
+    </record>
+</odoo>

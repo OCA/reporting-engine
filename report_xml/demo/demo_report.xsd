@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="root" type="root_type" />
+
+    <xs:complexType name="root_type">
+        <xs:sequence>
+            <xs:element
+        name="user"
+        type="user_type"
+        minOccurs="0"
+        maxOccurs="unbounded"
+      />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="user_type">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="vat" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
