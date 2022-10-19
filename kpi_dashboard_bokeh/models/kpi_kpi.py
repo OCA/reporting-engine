@@ -18,7 +18,7 @@ class KpiKpi(models.Model):
     def _get_bokeh_theme(self):
         try:
             from bokeh.themes import Theme
-        except ImportError as e:
+        except Exception as e:
             _logger.warn(e)
         return Theme(
             json={
@@ -46,7 +46,7 @@ class KpiKpi(models.Model):
             try:
                 from bokeh.embed import components
                 from bokeh.plotting import figure
-            except ImportError as e:
+            except Exception as e:
                 _logger.error(e)
             res.update(
                 {
