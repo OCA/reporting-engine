@@ -6,14 +6,6 @@ from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
-try:
-    _logger.info("Initializing Bokeh components")
-    import bokeh
-except ImportError as e:
-    _logger.error(e)
-
-_logger.info("Importing KPI")
-
 
 class KpiKpi(models.Model):
 
@@ -24,7 +16,11 @@ class KpiKpi(models.Model):
     )
 
     def _get_bokeh_theme(self):
-        return bokeh.themes.Theme(
+        try:
+            from bokeh.themes import Theme
+        except ImportError as e:
+            _logger.warn(e)
+        return Theme(
             json={
                 "attrs": {
                     "Figure": {
@@ -47,12 +43,16 @@ class KpiKpi(models.Model):
     def _get_code_input_dict(self):
         res = super()._get_code_input_dict()
         if self.widget == "bokeh":
-            _logger.info(bokeh.__version__)
+            try:
+                from bokeh.embed import components
+                from bokeh.plotting import figure
+            except ImportError as e:
+                _logger.error(e)
             res.update(
                 {
-                    "figure": bokeh.plotting.figure,
-                    "components": bokeh.embed.components,
-                    "simple_components": lambda r: bokeh.embed.components(
+                    "figure": figure,
+                    "components": components,
+                    "simple_components": lambda r: components(
                         r, theme=self._get_bokeh_theme()
                     ),
                 }
