@@ -13,4 +13,5 @@
     "data": ["views/webclient_templates.xml"],
     "qweb": ["static/src/xml/dashboard.xml"],
     "demo": ["demo/demo_dashboard.xml"],
+    "installable": False,
 }
