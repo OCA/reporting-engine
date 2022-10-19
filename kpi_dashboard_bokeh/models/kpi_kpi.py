@@ -15,6 +15,8 @@ try:
     _logger.info("Initialized Bokeh")
 except ImportError as e:
     _logger.error(e)
+except Exception as e:
+    _logger.error(e)
 
 _logger.info("Importing KPI")
 
