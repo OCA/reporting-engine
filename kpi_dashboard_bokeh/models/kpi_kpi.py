@@ -8,18 +8,8 @@ _logger = logging.getLogger(__name__)
 
 try:
     _logger.info("Initializing Bokeh components")
-    from bokeh.embed import components
-
-    _logger.info("Initializing Bokeh figure")
-    from bokeh.plotting import figure
-
-    _logger.info("Initializing Bokeh theme")
-    from bokeh.themes import Theme
-
-    _logger.info("Initialized Bokeh")
+    import bokeh
 except ImportError as e:
-    _logger.error(e)
-except Exception as e:
     _logger.error(e)
 
 _logger.info("Importing KPI")
@@ -34,7 +24,7 @@ class KpiKpi(models.Model):
     )
 
     def _get_bokeh_theme(self):
-        return Theme(
+        return bokeh.themes.Theme(
             json={
                 "attrs": {
                     "Figure": {
@@ -59,9 +49,9 @@ class KpiKpi(models.Model):
         if self.widget == "bokeh":
             res.update(
                 {
-                    "figure": figure,
-                    "components": components,
-                    "simple_components": lambda r: components(
+                    "figure": bokeh.plotting.figure,
+                    "components": bokeh.embed.components,
+                    "simple_components": lambda r: bokeh.embed.components(
                         r, theme=self._get_bokeh_theme()
                     ),
                 }
