@@ -7,11 +7,16 @@ from odoo import fields, models
 _logger = logging.getLogger(__name__)
 
 try:
+    _logger.info("Initializing Bokeh")
     from bokeh.embed import components
     from bokeh.plotting import figure
     from bokeh.themes import Theme
+
+    _logger.info("Initialized Bokeh")
 except ImportError as e:
     _logger.error(e)
+
+_logger.info("Importing KPI")
 
 
 class KpiKpi(models.Model):
