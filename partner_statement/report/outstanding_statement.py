@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models
+from odoo.tools.float_utils import float_is_zero
 
 
 class OutstandingStatement(models.AbstractModel):
@@ -138,6 +139,11 @@ class OutstandingStatement(models.AbstractModel):
         for row in self.env.cr.dictfetchall():
             res[row.pop("partner_id")].append(row)
         return res
+
+    def _add_currency_line(self, line, currency):
+        if float_is_zero(line["open_amount"], precision_rounding=currency.rounding):
+            return []
+        return [line]
 
     @api.model
     def _get_report_values(self, docids, data=None):
