@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 |  | Graphical BI views builder for Odoo
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.1.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
 [kpi_dashboard_bokeh](kpi_dashboard_bokeh/) | 14.0.1.0.0 |  | Create dashboards using bokeh
-[report_async](report_async/) | 14.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
+[report_async](report_async/) | 14.0.1.1.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_context](report_context/) | 14.0.1.0.1 |  | Adding context to reports
 [report_csv](report_csv/) | 14.0.1.0.0 |  | Base module to create csv report
 [report_label](report_label/) | 14.0.1.0.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
@@ -35,7 +35,7 @@ addon | version | maintainers | summary
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.0 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 14.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.0.0 |  | Report Qweb Element Page Visibility
-[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
+[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.1.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.1 |  | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 14.0.1.0.1 |  | Sign Qweb PDFs usign a PKCS#12 certificate
