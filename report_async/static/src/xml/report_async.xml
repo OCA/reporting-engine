@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-name='ReportAsyncConfiguration'>
+        <div class="form">
+            <!-- Async Checkbox -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        checked="checked"
+                        id="async_report_checker"
+                    />
+                    <label class="form-check-label" for="async_report_checker">
+                        Async Report
+                    </label>
+                </div>
+                <small id="async-report-checker-help" class="form-text text-muted">
+                    Checker enables async report to be created on the background
+                    via queue job and sent to a below email address.
+                </small>
+            </div>
+            <!-- Allow saving of attachment to record -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        checked="checked"
+                        id="async-save-report-checker"
+                    />
+                    <label class="form-check-label" for="async-save-report-checker">
+                        Save attachment to records
+                    </label>
+                </div>
+                <small id="async-save-report-checker-help" class="form-text text-muted">
+                    Checker enables async report attachment to be created and
+                    saved to the records. NB: Records should support attachments
+                </small>
+            </div>
+            <!-- Email Input -->
+            <div class="form-group">
+                <label for="async-user-email">Email Address</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="async-user-email"
+                    aria-describedby="emailHelp"
+                    placeholder="admin@example.com"
+                />
+                <small id="async-user-email-help" class="form-text text-muted">
+                    Email will be used to send the async report after queue job
+                    is done on the background
+                </small>
+            </div>
+        </div>
+    </t>
+</templates>

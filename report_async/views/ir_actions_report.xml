@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="async_act_report_xml_view" model="ir.ui.view">
+        <field name="name">async_report_view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='advanced']/group" position="after">
+                <group name="async_opts" string="Async Options">
+                    <field name="async_report" />
+                    <field name="async_no_records" />
+                    <field name="async_mail_recipient" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -70,6 +70,15 @@ As normal user, you can run your reports from Report Center
 - **Files:** show all files being produced by the job as run by the user.
 - **Jobs:** show all jobs triggered by this report as run by the user. Only job queue manager have access to this button.
 
+As additional improvement, you can now generate reports async directly from the form view itself,
+and not have to go into the "Report Center" specifically to do it. This can be done by pressing
+*Print*, you will get a popup asking you if you want to run it Async, and then to verify the email
+address that it should be sent to. See below sample:
+
+.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_async/static/description/sample.gif
+   :width: 800
+   :alt: How It Works
+
 Bug Tracker
 ===========
 
@@ -96,6 +105,11 @@ Contributors
   * Kitti U. <kittiu@ecosoft.co.th>
   * Saran Lim. <saranl@ecosoft.co.th>
   * Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
+
+* `Sunflower IT <https://sunflowerweb.nl>`__:
+
+  * Tom Blauwendraat <tom@sunflowerweb.nl>
+  * Kevin Kamau <kevin@sunflowerweb.nl>
 
 Maintainers
 ~~~~~~~~~~~
