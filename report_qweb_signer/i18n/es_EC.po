@@ -35,6 +35,11 @@ msgid "Allow only one document"
 msgstr ""
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__action_report_ids
+msgid "Allowed reports"
+msgstr ""
+
+#. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
 msgid "Certificate file path"
 msgstr ""
@@ -193,6 +198,13 @@ msgstr ""
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report_certificate
 msgid "Report Certificate"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__action_report_ids
+msgid ""
+"Reports to sign for the selected model.No report selected means all reports "
+"are allowed."
 msgstr ""
 
 #. module: report_qweb_signer
