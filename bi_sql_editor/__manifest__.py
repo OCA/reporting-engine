@@ -5,17 +5,18 @@
 {
     "name": "BI SQL Editor",
     "summary": "BI Views builder, based on Materialized or Normal SQL Views",
-    "version": "15.0.1.0.2",
+    "version": "16.0.1.0.2",
     "license": "AGPL-3",
     "category": "Reporting",
     "author": "GRAP,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
-    "depends": ["base", "sql_request_abstract"],
+    "depends": [
+        "spreadsheet_dashboard",
+        "sql_request_abstract",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "views/view_bi_sql_view.xml",
-        "views/action.xml",
-        "views/menu.xml",
     ],
     "demo": ["demo/res_groups_demo.xml", "demo/bi_sql_view_demo.xml"],
     "installable": True,

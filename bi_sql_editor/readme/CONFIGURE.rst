@@ -1,6 +1,4 @@
-To configure this module, you need to:
-
-* Go to Settings / Technical / Database Structure / SQL Views
+* Go to Dashboard / Configuration / SQL Views
 
 * tip your SQL request
 
@@ -12,7 +10,13 @@ To configure this module, you need to:
   .. figure:: ../static/description/02_security_access.png
      :width: 800 px
 
-* Click on the button 'Clean and Check Request'
+Optionnaly, you can add a domain.
+
+A tipical domain in a multi company context is to write
+``['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]``
+to make reporting depending on the current companies of the user.
+
+* Click on the button 'Validate SQL Expression'
 
 * Once the sql request checked, the module analyses the column of the view,
   and propose field mapping. For each field, you can decide to create an index
@@ -22,7 +26,7 @@ To configure this module, you need to:
   .. figure:: ../static/description/03_field_mapping.png
      :width: 800 px
 
-* Click on the button 'Create SQL View, Indexes and Models'. (this step could
+* Click on the button 'Create SQL elements'. (this step could
   take a while, if view is materialized)
 
 * If it's a MATERIALIZED view:
