@@ -23,7 +23,7 @@ Qweb PDF reports signer
     :target: https://runbot.odoo-community.org/runbot/143/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module extends the functionality of report module to sign
 PDFs using a PKCS#12 certificate.
@@ -100,6 +100,9 @@ Known issues / Roadmap
   then 'Save as attachment' is not applied and signed result is not
   saved as attachment.
 * Add tests.
+* Why not taking the occasion to add the whole configuration at report level
+  (if to be signed or not, the domain, etc...)?
+  See https://github.com/OCA/reporting-engine/pull/533#issuecomment-898321161
 
 Bug Tracker
 ===========
