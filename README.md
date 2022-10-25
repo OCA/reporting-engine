@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[base_comment_template](base_comment_template/) | 16.0.1.0.0 |  | Add conditional mako template to any reporton models that inherits comment.template.
 [report_xml](report_xml/) | 16.0.1.0.0 |  | Allow to generate XML reports
 
 [//]: # (end addons)
