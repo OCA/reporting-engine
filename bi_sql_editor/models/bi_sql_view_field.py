@@ -32,7 +32,9 @@ class BiSQLViewField(models.Model):
 
     _TREE_VISIBILITY_SELECTION = [
         ("unavailable", "Unavailable"),
-        ("hidden", "Hidden"),
+        ("invisible", "Invisible"),
+        ("optional_hide", "Optional (hidden)"),
+        ("optional_show", "Optional (shown)"),
         ("available", "Available"),
     ]
 
@@ -91,7 +93,8 @@ class BiSQLViewField(models.Model):
     )
 
     field_description = fields.Char(
-        help="This will be used as the name" " of the Odoo field, displayed for users",
+        help="This will be used as the name of the Odoo field, displayed for users",
+        required=True,
     )
 
     ttype = fields.Selection(
@@ -142,41 +145,42 @@ class BiSQLViewField(models.Model):
             )
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        field_without_prefix = vals["name"][2:]
-        # guess field description
-        field_description = re.sub(
-            r"\w+",
-            lambda m: m.group(0).capitalize(),
-            field_without_prefix.replace("_id", "").replace("_", " "),
-        )
-
-        # Guess ttype
-        # Don't execute as simple .get() in the dict to manage
-        # correctly the type 'character varying(x)'
-        ttype = False
-        for k, v in self._SQL_MAPPING.items():
-            if k in vals["sql_type"]:
-                ttype = v
-
-        # Guess many2one_model_id
-        many2one_model_id = False
-        if vals["sql_type"] == "integer" and (vals["name"][-3:] == "_id"):
-            ttype = "many2one"
-            model_name = self._model_mapping().get(field_without_prefix, "")
-            many2one_model_id = (
-                self.env["ir.model"].search([("model", "=", model_name)]).id
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            field_without_prefix = vals["name"][2:]
+            # guess field description
+            field_description = re.sub(
+                r"\w+",
+                lambda m: m.group(0).capitalize(),
+                field_without_prefix.replace("_id", "").replace("_", " "),
             )
 
-        vals.update(
-            {
-                "ttype": ttype,
-                "field_description": field_description,
-                "many2one_model_id": many2one_model_id,
-            }
-        )
-        return super(BiSQLViewField, self).create(vals)
+            # Guess ttype
+            # Don't execute as simple .get() in the dict to manage
+            # correctly the type 'character varying(x)'
+            ttype = False
+            for k, v in self._SQL_MAPPING.items():
+                if k in vals["sql_type"]:
+                    ttype = v
+
+            # Guess many2one_model_id
+            many2one_model_id = False
+            if vals["sql_type"] == "integer" and (vals["name"][-3:] == "_id"):
+                ttype = "many2one"
+                model_name = self._model_mapping().get(field_without_prefix, "")
+                many2one_model_id = (
+                    self.env["ir.model"].search([("model", "=", model_name)]).id
+                )
+
+            vals.update(
+                {
+                    "ttype": ttype,
+                    "field_description": field_description,
+                    "many2one_model_id": many2one_model_id,
+                }
+            )
+        return super().create(vals)
 
     # Custom Section
     @api.model
@@ -217,45 +221,39 @@ class BiSQLViewField(models.Model):
 
     def _prepare_tree_field(self):
         self.ensure_one()
-        res = ""
-        if self.field_description and self.tree_visibility != "unavailable":
-            res = """<field name="{}" {}/>""".format(
-                self.name, self.tree_visibility == "hidden" and 'invisible="1"' or ""
-            )
-        return res
+        if self.tree_visibility == "unavailable":
+            return ""
+        visibility_text = ""
+        if self.tree_visibility == "invisible":
+            visibility_text = 'invisible="1"'
+        elif self.tree_visibility == "optional_hide":
+            visibility_text = 'option="hide"'
+        elif self.tree_visibility == "optional_show":
+            visibility_text = 'option="show"'
+
+        return f"""<field name="{self.name}" {visibility_text}/>\n"""
 
     def _prepare_graph_field(self):
         self.ensure_one()
-        res = ""
-        if self.graph_type and self.field_description:
-            res = """<field name="{}" type="{}" />\n""".format(
-                self.name, self.graph_type
-            )
-        return res
+        if not self.graph_type:
+            return ""
+        return f"""<field name="{self.name}" type="{self.graph_type}" />\n"""
 
     def _prepare_pivot_field(self):
         self.ensure_one()
-        res = ""
-        if self.field_description:
-            graph_type_text = self.graph_type and 'type="%s"' % (self.graph_type) or ""
-            res = """<field name="{}" {} />\n""".format(self.name, graph_type_text)
-        return res
+        graph_type_text = self.graph_type and f'type="{self.graph_type}"' or ""
+        return f"""<field name="{self.name}" {graph_type_text} />\n"""
 
     def _prepare_search_field(self):
         self.ensure_one()
-        res = ""
-        if self.field_description:
-            res = """<field name="{}"/>\n""".format(self.name)
-        return res
+        return """<field name="{}"/>\n""".format(self.name)
 
     def _prepare_search_filter_field(self):
         self.ensure_one()
-        res = ""
-        if self.field_description and self.is_group_by:
-            res = """<filter name="group_by_%s" string="%s"
-                        context="{'group_by':'%s'}"/>\n""" % (
-                self.name,
-                self.field_description,
-                self.name,
-            )
-        return res
+        if not self.is_group_by:
+            return ""
+        return (
+            f"""<filter name="group_by_{self.name}" """
+            f"""string="{self.field_description}" """
+            f"""context="{{'group_by':'{self.name}'}}"/>\n"""
+        )
