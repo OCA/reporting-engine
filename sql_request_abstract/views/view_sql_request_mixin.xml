@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_sql_request_mixin_tree" model="ir.ui.view">
+        <field name="model">sql.request.mixin</field>
+        <field name="arch" type="xml">
+            <tree
+                decoration-info="state=='draft'"
+                decoration-warning="state in ('sql_valid', 'model_valid')"
+            >
+                <field name="name" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sql_request_mixin_form" model="ir.ui.view">
+        <field name="model">sql.request.mixin</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="button_validate_sql_expression"
+                        type="object"
+                        states="draft"
+                        string="Validate SQL Expression"
+                        class="oe_highlight"
+                        groups="sql_request_abstract.group_sql_request_manager"
+                    />
+                    <button
+                        name="button_set_draft"
+                        type="object"
+                        states="sql_valid"
+                        string="Set to Draft"
+                        groups="sql_request_abstract.group_sql_request_manager"
+                    />
+                    <button
+                        name="button_preview_sql_expression"
+                        type="object"
+                        states="draft"
+                        string="Preview Results"
+                        groups="sql_request_abstract.group_sql_request_manager"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <div>
+                                <field name="name" />
+                            </div>
+                        </h1>
+                    </div>
+                    <group name="group_main_info" />
+                    <notebook>
+                        <page name="page_sql" string="SQL Settings">
+                            <group string="SQL Query" name="group_query">
+                            <field
+                                    name="query"
+                                    nolabel="1"
+                                    colspan="2"
+                                    attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                    widget="ace"
+                                    options="{'mode': 'pgsql'}"
+                                />
+                        </group>
+                        </page>
+                        <page name="page_security" string="Security">
+                            <group string="Allowed Groups" name="group_allowed_groups">
+                                <field
+                                    name="group_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                    widget="many2many_tags"
+                                />
+                                <field name="has_group_changed" invisible="1" />
+                            </group>
+                            <group string="Allowed Users" name="group_allowed_users">
+                                <field
+                                    name="user_ids"
+                                    nolabel="1"
+                                    colspan="2"
+                                    widget="many2many_tags"
+                                />
+                            </group>
+                        </page>
+                        <page name="page_note" string="Note">
+                            <field name="note" nolabel="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="message_ids" />
+                </div>
+            </form>
+
+        </field>
+    </record>
+
+</odoo>
