@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="base_comment_template_preview_form">
+        <field name="name">base.comment.template.preview.form</field>
+        <field name="model">base.comment.template.preview</field>
+        <field name="arch" type="xml">
+            <form string="Base Comment Preview">
+                <h3>Preview of
+                    <field
+                        name="base_comment_template_id"
+                        readonly="1"
+                        nolabel="1"
+                        class="oe_inline"
+                    />
+                </h3>
+                <field name="no_record" invisible="1" />
+                <field name="model_ids" />
+                <div class="o_row">
+                    <span>Choose an example
+                        <field
+                            name="model_id"
+                            domain="[('id', 'in', model_ids or False)]"
+                        />
+                        record:
+                    </span>
+                    <div>
+                        <field
+                            name="resource_ref"
+                            class="oe_inline"
+                            options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                            attrs="{'invisible': [('no_record', '=', True)]}"
+                        />
+                        <span
+                            class="text-warning"
+                            attrs="{'invisible': [('no_record', '=', False)]}"
+                        >No records
+                        </span>
+                    </div>
+                </div>
+                <p>Choose a language:
+                    <field name="lang" class="oe_inline ml8" />
+                </p>
+                <p>Choose an engine:
+                    <field name="engine" class="oe_inline ml8" />
+                </p>
+                <label for="body" string="Base Comment content" />
+                <hr />
+                <field name="body" readonly="1" nolabel="1" options='{"safe": True}' />
+                <hr />
+                <footer>
+                    <button string="Discard" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="base_comment_template_preview_action" model="ir.actions.act_window">
+        <field name="name">Template Preview</field>
+        <field name="res_model">base.comment.template.preview</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="base_comment_template_preview_form" />
+        <field name="target">new</field>
+        <field name="context">{'default_base_comment_template_id':active_id}</field>
+    </record>
+</odoo>
