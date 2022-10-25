@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-reporting-engine Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-base_comment_template>=16.0dev,<16.1dev',
         'odoo-addon-report_xml>=16.0dev,<16.1dev',
     ],
     classifiers=[
