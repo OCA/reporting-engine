@@ -16,6 +16,7 @@ You can specify extra groups that have the right to access to a specific view.
 
 Warning
 -------
+
 This module is intended for technician people in a company and for Odoo integrators.
 
 It requires the user to know SQL syntax and Odoo models.
