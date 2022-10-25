@@ -23,7 +23,7 @@ msgstr ""
 msgid ""
 "<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
 "False)]}\">No records\n"
-"                            </span>"
+"                        </span>"
 msgstr ""
 
 #. module: base_comment_template
@@ -99,7 +99,6 @@ msgstr ""
 #: model:ir.ui.menu,name:base_comment_template.reports_base_comment_template_menuitem
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
-#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_tree
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Comment Templates"
 msgstr ""
@@ -139,9 +138,6 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__display_name
 msgid "Display Name"
 msgstr "표시 이름"
 
@@ -153,9 +149,6 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__id
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__id
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__id
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__id
 msgid "ID"
 msgstr "ID"
 
@@ -178,16 +171,13 @@ msgid ""
 msgstr ""
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__jinja
-msgid "Jinja"
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
+msgid "Inline template"
 msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "최근 수정"
 
@@ -253,6 +243,11 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
+msgid "QWeb view"
 msgstr ""
 
 #. module: base_comment_template
