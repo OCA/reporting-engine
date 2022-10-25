@@ -36,6 +36,11 @@ msgid "Allow only one document"
 msgstr "Sólo un documento"
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__action_report_ids
+msgid "Allowed reports"
+msgstr ""
+
+#. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
 msgid "Certificate file path"
 msgstr "Ruta al certificado"
@@ -66,7 +71,9 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__display_name
+#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -100,7 +107,9 @@ msgstr ""
 "Dejar en blanco para no guardar el documento firmado."
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__id
+#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__id
 msgid "ID"
 msgstr "ID"
 
@@ -119,7 +128,9 @@ msgid "Java"
 msgstr ""
 
 #. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
+#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -203,6 +214,13 @@ msgstr "Informe"
 #, fuzzy
 msgid "Report Certificate"
 msgstr "report.certificate"
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__action_report_ids
+msgid ""
+"Reports to sign for the selected model.No report selected means all reports "
+"are allowed."
+msgstr ""
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__attachment
