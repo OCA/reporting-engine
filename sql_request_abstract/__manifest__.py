@@ -4,18 +4,19 @@
 
 {
     "name": "SQL Request Abstract",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "GRAP,Akretion,Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Tools",
     "summary": "Abstract Model to manage SQL Requests",
-    "depends": ["base"],
+    "depends": ["mail"],
     "data": [
         "security/ir_module_category.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
+        "views/view_sql_request_mixin.xml",
     ],
     "installable": True,
 }

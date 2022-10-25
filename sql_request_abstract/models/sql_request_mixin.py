@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 class SQLRequestMixin(models.AbstractModel):
     _name = "sql.request.mixin"
+    _inherit = ["mail.thread"]
+
     _description = "SQL Request Mixin"
 
     _clean_query_enabled = True
@@ -61,6 +63,8 @@ class SQLRequestMixin(models.AbstractModel):
     # Columns Section
     name = fields.Char(required=True)
 
+    note = fields.Html()
+
     query = fields.Text(
         required=True,
         help="You can't use the following words"
@@ -93,6 +97,19 @@ class SQLRequestMixin(models.AbstractModel):
         default=_default_user_ids,
     )
 
+    has_group_changed = fields.Boolean(
+        copy=False,
+        help="Technical fields, used in modules"
+        " that depends on this one to know"
+        " if groups has changed, and that according"
+        " access should be updated.",
+    )
+
+    @api.onchange("group_ids")
+    def onchange_group_ids(self):
+        if self.state not in ("draft", "sql_valid"):
+            self.has_group_changed = True
+
     # Action Section
     def button_validate_sql_expression(self):
         for item in self:
@@ -105,7 +122,12 @@ class SQLRequestMixin(models.AbstractModel):
             item.state = "sql_valid"
 
     def button_set_draft(self):
-        self.write({"state": "draft"})
+        self.write(
+            {
+                "has_group_changed": False,
+                "state": "draft",
+            }
+        )
 
     # API Section
     def _execute_sql_request(
