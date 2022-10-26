@@ -4,22 +4,26 @@
 
 {
     "name": "SQL Export",
-    "version": "15.0.1.0.0",
-    "author": "Akretion,Odoo Community Association (OCA)",
+    "version": "16.0.1.0.0",
+    "author": "Akretion,GRAP,Odoo Community Association (OCA)",
+    "maintainers": ["legalsylvain"],
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Generic Modules/Others",
     "summary": "Export data in csv file with SQL requests",
     "depends": [
+        "spreadsheet_dashboard",
         "sql_request_abstract",
     ],
     "data": [
         "views/sql_export_view.xml",
+        "views/ir_model_fields_view.xml",
         "wizard/wizard_file_view.xml",
         "security/sql_export_security.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [
+        "demo/ir_model_fields.xml",
         "demo/sql_export.xml",
     ],
     "installable": True,
