@@ -7,7 +7,7 @@ from datetime import datetime
 
 from lxml import etree
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
@@ -18,6 +18,20 @@ class SqlFileWizard(models.TransientModel):
     binary_file = fields.Binary("File", readonly=True)
     file_name = fields.Char(readonly=True)
     sql_export_id = fields.Many2one(comodel_name="sql.export", required=True)
+
+    @api.model
+    def get_view(self, view_id=None, view_type="form", **options):
+        export_obj = self.env["sql.export"]
+        sql_export = export_obj.browse(self.env.context.get("active_id"))
+
+        result = super().get_view(view_id=view_id, view_type=view_type, **options)
+
+        if sql_export.field_ids:
+            etree.fromstring(result["arch"])
+            raise NotImplementedError(
+                _("The export with parameters is not implemented in V16")
+            )
+        return result
 
     @api.model
     def fields_view_get(

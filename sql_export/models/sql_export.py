@@ -13,8 +13,6 @@ class SqlExport(models.Model):
 
     _sql_request_users_relation = "users_sqlquery_rel"
 
-    _check_execution_enabled = False
-
     copy_options = fields.Char(required=False, default="CSV HEADER DELIMITER ';'")
 
     file_format = fields.Selection([("csv", "CSV")], default="csv", required=True)
