@@ -1,11 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* sql_export
+#   * sql_export
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-26 11:41+0000\n"
+"PO-Revision-Date: 2022-10-26 11:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,13 +22,11 @@ msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Allowed Groups"
 msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Allowed Users"
 msgstr ""
 
@@ -121,6 +121,11 @@ msgid "File Name"
 msgstr ""
 
 #. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_group_changed
+msgid "Has Group Changed"
+msgstr ""
+
+#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__id
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__id
 msgid "ID"
@@ -156,13 +161,8 @@ msgid "Parameters"
 msgstr ""
 
 #. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.m2m_field_variable_sql
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__x_partner_categ_ids
 msgid "Partner Categories"
-msgstr ""
-
-#. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "Preview Results"
 msgstr ""
 
 #. module: sql_export
@@ -171,13 +171,13 @@ msgid "Query"
 msgstr ""
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "Request Name"
+#: model:ir.ui.menu,name:sql_export.sql_parameter_menu_view
+msgid "SQL Export Variables"
 msgstr ""
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
-msgid "SQL Export"
+msgid "SQL Exports"
 msgstr ""
 
 #. module: sql_export
@@ -186,32 +186,15 @@ msgid "SQL Parameter"
 msgstr ""
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "SQL Request"
-msgstr ""
-
-#. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_parameter_view_form
 msgid "SQL export"
 msgstr ""
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "Set to Draft"
-msgstr ""
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
-#: model:ir.ui.menu,name:sql_export.sql_export_menu
 #: model:ir.ui.menu,name:sql_export.sql_export_menu_view
 msgid "Sql Export"
-msgstr ""
-
-#. module: sql_export
-#: model:ir.ui.menu,name:sql_export.sql_parameter_menu_view
-msgid "Sql Export Variables"
 msgstr ""
 
 #. module: sql_export
@@ -228,8 +211,9 @@ msgid ""
 msgstr ""
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "Validate SQL Expression"
+#: code:addons/sql_export/wizard/wizard_file.py:0
+#, python-format
+msgid "The export with parameters is not implemented in V16"
 msgstr ""
 
 #. module: sql_export
@@ -270,11 +254,6 @@ msgid "or"
 msgstr ""
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
-msgid "select * from res_partner"
-msgstr ""
-
-#. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
 msgid "shift_jis"
 msgstr ""
@@ -305,6 +284,6 @@ msgid "windows-1252"
 msgstr ""
 
 #. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.integer_field_variable_sql
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__x_id
 msgid "x_ID"
 msgstr ""
