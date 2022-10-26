@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-10-24 10:43+0000\n"
+"PO-Revision-Date: 2022-10-26 16:43+0000\n"
 "Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -322,6 +322,7 @@ msgstr "Stato lavoro"
 #, python-format
 msgid "Job started to generate report. Upon completion, mail sent to:"
 msgstr ""
+"Lavoro iniziato per generare la stampa. Una volta completo, mail inviata a:"
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
@@ -377,17 +378,18 @@ msgstr "Elenca tutti i lavori relativi a questa stampa in corso"
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_ir_actions_report__async_mail_recipient
 msgid "Mail Recipient"
-msgstr ""
+msgstr "Destinatario email"
 
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_ir_actions_report__async_no_records
 msgid "Min no of records to use async report functionality; e.g 100+"
 msgstr ""
+"Numero minimo di record per usare la funzionalità stampa asincrona, es: 100+"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_ir_actions_report__async_no_records
 msgid "Min of Records"
-msgstr ""
+msgstr "Minimo di records"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__name
@@ -418,14 +420,14 @@ msgstr "In attesa"
 #: code:addons/report_async/static/src/js/components/action_menus.js:0
 #, python-format
 msgid "Please check your email syntax and try again"
-msgstr ""
+msgstr "Verifica l'email e riprova"
 
 #. module: report_async
 #. openerp-web
 #: code:addons/report_async/static/src/js/components/action_menus.js:0
 #, python-format
 msgid "Print"
-msgstr ""
+msgstr "Stampa"
 
 #. module: report_async
 #: model:ir.actions.act_window,name:report_async.action_print_report_wizard
@@ -440,14 +442,14 @@ msgstr "Wizard stampa"
 #. module: report_async
 #: model:ir.model,name:report_async.model_queue_job
 msgid "Queue Job"
-msgstr ""
+msgstr "Lavoro in coda"
 
 #. module: report_async
 #. openerp-web
 #: code:addons/report_async/static/src/js/components/action_menus.js:0
 #, python-format
 msgid "Report"
-msgstr ""
+msgstr "Stampa"
 
 #. module: report_async
 #: model:ir.model,name:report_async.model_ir_actions_report
@@ -504,7 +506,7 @@ msgstr "Lancia stampe asincronicamente"
 #: code:addons/report_async/static/src/xml/report_async.xml:0
 #, python-format
 msgid "Save attachment to records"
-msgstr ""
+msgstr "Salva l'allegato nei record"
 
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__email_notify
@@ -519,7 +521,7 @@ msgstr "Iniziato"
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_ir_actions_report__async_mail_recipient
 msgid "The email that will receive the async report"
-msgstr ""
+msgstr "L'email che riceverà la stampa asincrona"
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
@@ -572,7 +574,7 @@ msgstr "La tua stampa è pronta, ${object.name}"
 #: code:addons/report_async/static/src/xml/report_async.xml:0
 #, python-format
 msgid "admin@example.com"
-msgstr ""
+msgstr "admin@example.com"
 
 #~ msgid ""
 #~ "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style="
