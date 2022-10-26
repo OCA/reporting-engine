@@ -22,12 +22,14 @@ msgid "Length Report"
 msgstr "Lunghezza Report"
 
 #. module: report_qweb_parameter
+#. odoo-python
 #: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be less than %s"
 msgstr "La lunghezza non può essere meno di %s"
 
 #. module: report_qweb_parameter
+#. odoo-python
 #: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be more than %s"
