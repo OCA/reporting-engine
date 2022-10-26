@@ -16,7 +16,7 @@ class IrQWeb(models.AbstractModel):
             raise ValidationError(_("Length cannot be more than %s") % str(max_length))
         return value
 
-    def _compile_directive_esc(self, el, options, indent):
+    def _compile_directive_esc(self, el, compile_context, level):
         min_value = el.attrib.pop("t-minlength", False)
         max_value = el.attrib.pop("t-maxlength", False)
         if min_value or max_value:
@@ -32,9 +32,28 @@ class IrQWeb(models.AbstractModel):
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
             el.attrib["t-esc"] = "(" + el.attrib["t-esc"] + ")[:" + tlength + "]"
-        return super()._compile_directive_esc(el, options, indent)
+        return super()._compile_directive_esc(el, compile_context, level)
 
-    def _compile_directive_raw(self, el, options, indent):
+    def _compile_directive_out(self, el, compile_context, level):
+        min_value = el.attrib.pop("t-minlength", False)
+        max_value = el.attrib.pop("t-maxlength", False)
+        if min_value or max_value:
+            el.attrib["t-out"] = (
+                'docs.env["ir.qweb"].check_length('
+                + el.attrib["t-out"]
+                + ", "
+                + (min_value or "False")
+                + ", "
+                + (max_value or "False")
+                + ")"
+            )
+        if "t-length" in el.attrib:
+            tlength = el.attrib.pop("t-length")
+            el.attrib["t-out"] = el.attrib["t-out"] + "[:" + tlength + "]"
+        return super()._compile_directive_out(el, compile_context, level)
+
+    def _compile_directive_raw(self, el, compile_context, level):
+        # TODO: t-raw is deprecated, can it be removed?
         min_value = el.attrib.pop("t-minlength", False)
         max_value = el.attrib.pop("t-maxlength", False)
         if min_value or max_value:
@@ -50,4 +69,4 @@ class IrQWeb(models.AbstractModel):
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
             el.attrib["t-raw"] = el.attrib["t-raw"] + "[:" + tlength + "]"
-        return super()._compile_directive_raw(el, options, indent)
+        return super()._compile_directive_raw(el, compile_context, level)

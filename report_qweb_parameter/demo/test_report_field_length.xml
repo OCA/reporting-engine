@@ -34,6 +34,19 @@
                 t-raw="docs[0].company_registry"
                 t-if="docs[0].company_registry"
             />
+            <li
+                name="raw_length"
+                t-minlength="10"
+                t-length="10"
+                t-out="docs[0].vat"
+                t-if="docs[0].vat"
+            />
+            <li
+                name="raw_maxlength"
+                t-maxlength="10"
+                t-out="docs[0].company_registry"
+                t-if="docs[0].company_registry"
+            />
         </data>
     </template>
 </odoo>
