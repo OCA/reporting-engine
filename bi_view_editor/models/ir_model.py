@@ -85,11 +85,7 @@ class IrModel(models.Model):
         for field in fields:
             for table_alias in model_table_map[field.model_id.id]:
                 model_list.append(
-                    dict(
-                        dict_for_field(field),
-                        table_alias=table_alias,
-                        join_node=-1,
-                    )
+                    dict(dict_for_field(field), table_alias=table_alias, join_node=-1,)
                 )
         return model_list
 
