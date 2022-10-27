@@ -3,8 +3,8 @@
 
 {
     "name": "Web QR Manager",
-    "version": "15.0.1.0.0",
-    "author": "Creu Blanca, " "Odoo Community Association (OCA)",
+    "version": "16.0.1.0.0",
+    "author": "Creu Blanca, Odoo Community Association (OCA)",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
