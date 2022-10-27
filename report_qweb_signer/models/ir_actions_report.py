@@ -40,6 +40,8 @@ class IrActionsReport(models.Model):
             return False
         company_id = self.env.company.id
         if res_ids:
+            if isinstance(res_ids, int):
+                res_ids = [res_ids]
             obj = self.env[self.model].browse(res_ids[0])
             if "company_id" in obj:
                 company_id = obj.company_id.id or company_id
