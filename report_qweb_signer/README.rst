@@ -134,6 +134,9 @@ Contributors
     * David Vidal
 * Santi Argüeso <santi@comunitea.com>
 * Omar Castiñeira <omar@comunitea.com>
+* `Punt Sistemes <https://www.puntsistemes.es>`_:
+
+    * Isaac Gallart <igallart@puntsistemes.es>
 
 Other credits
 ~~~~~~~~~~~~~
