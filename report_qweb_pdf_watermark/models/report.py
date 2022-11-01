@@ -9,13 +9,13 @@ from PIL import Image
 from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
+logger = getLogger(__name__)
+
 try:
     # we need this to be sure PIL has loaded PDF support
     from PIL import PdfImagePlugin  # noqa: F401
 except ImportError:
-    pass
-
-logger = getLogger(__name__)
+    logger.error("ImportError: The PdfImagePlugin could not be imported")
 
 try:
     from PyPDF2 import PdfFileReader, PdfFileWriter  # pylint: disable=W0404
@@ -27,7 +27,13 @@ except ImportError:
 class Report(models.Model):
     _inherit = "ir.actions.report"
 
-    pdf_watermark = fields.Binary("Watermark")
+    use_company_watermark = fields.Boolean(
+        default=False,
+        help="Use the pdf watermark defined globally in the company settings.",
+    )
+    pdf_watermark = fields.Binary(
+        "Watermark", help="Upload an pdf file to use as an watermark on this report."
+    )
     pdf_watermark_expression = fields.Char(
         "Watermark expression",
         help="An expression yielding the base64 "
@@ -41,6 +47,17 @@ class Report(models.Model):
                 res_ids=res_ids, data=data
             )
         return super(Report, self)._render_qweb_pdf(res_ids=res_ids, data=data)
+
+    def pdf_has_usable_pages(self, numpages):
+        if numpages < 1:
+            logger.error("Your watermark pdf does not contain any pages")
+            return False
+        if numpages > 1:
+            logger.debug(
+                "Your watermark pdf contains more than one page, "
+                "all but the first one will be ignored"
+            )
+        return True
 
     @api.model
     def _run_wkhtmltopdf(
@@ -65,6 +82,8 @@ class Report(models.Model):
         watermark = None
         if self.pdf_watermark:
             watermark = b64decode(self.pdf_watermark)
+        elif self.use_company_watermark and self.env.company.pdf_watermark:
+            watermark = b64decode(self.env.company.pdf_watermark)
         elif docids:
             watermark = safe_eval(
                 self.pdf_watermark_expression or "None",
@@ -100,14 +119,8 @@ class Report(models.Model):
             logger.error("No usable watermark found, got %s...", watermark[:100])
             return result
 
-        if pdf_watermark.numPages < 1:
-            logger.error("Your watermark pdf does not contain any pages")
+        if not self.pdf_has_usable_pages(pdf_watermark.numPages):
             return result
-        if pdf_watermark.numPages > 1:
-            logger.debug(
-                "Your watermark pdf contains more than one page, "
-                "all but the first one will be ignored"
-            )
 
         for page in PdfFileReader(BytesIO(result)).pages:
             watermark_page = pdf.addBlankPage(
