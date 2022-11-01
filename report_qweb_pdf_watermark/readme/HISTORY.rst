@@ -14,3 +14,10 @@
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 * [MIG] Migration to V14.
+
+
+15.0.1.0.0 (2022-01-11)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [MIG] Migration to V15.
+* Define pdf watermark in company settings
