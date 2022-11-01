@@ -10,6 +10,7 @@ class BaseCommentTemplate(models.Model):
     """Comment templates printed on reports"""
 
     _name = "base.comment.template"
+    _inherit = "mail.render.mixin"
     _description = "Comments Template"
     _order = "sequence,id"
 
