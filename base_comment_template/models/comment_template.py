@@ -1,9 +1,10 @@
 # Copyright 2014 Guewen Baconnier (Camptocamp SA)
 # Copyright 2013-2014 Nicolas Bessi (Camptocamp SA)
 # Copyright 2020 NextERP Romania SRL
-# Copyright 2021 Tecnativa - Víctor Martínez
+# Copyright 2021-2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import api, fields, models
+from odoo.osv import expression
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -20,23 +21,28 @@ class CommentTemplate(models.AbstractModel):
 
     comment_template_ids = fields.Many2many(
         compute="_compute_comment_template_ids",
+        compute_sudo=True,
         comodel_name="base.comment.template",
         string="Comment Template",
-        domain=lambda self: [("model_ids.model", "=", self._name)],
+        domain=lambda self: [("model_ids", "=", self._name)],
         store=True,
         readonly=False,
     )
 
     @api.depends(_comment_template_partner_field_name)
     def _compute_comment_template_ids(self):
+        template_model = self.env["base.comment.template"]
+        template_domain = template_model._search_model_ids("=", self._name)
         for record in self:
             partner = record[self._comment_template_partner_field_name]
             record.comment_template_ids = [(5,)]
-            templates = self.env["base.comment.template"].search(
-                [
-                    ("id", "in", partner.base_comment_template_ids.ids),
-                    ("model_ids.model", "=", self._name),
-                ]
+            templates = template_model.search(
+                expression.AND(
+                    [
+                        [("id", "in", partner.base_comment_template_ids.ids)],
+                        template_domain,
+                    ]
+                )
             )
             for template in templates:
                 domain = safe_eval(template.domain)

@@ -1,6 +1,7 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from odoo.exceptions import ValidationError
 from odoo.tests import common
 from odoo.tools.misc import mute_logger
 
@@ -24,7 +25,7 @@ class TestCommentTemplate(common.TransactionCase):
             {
                 "name": "Top template",
                 "text": "Text before lines",
-                "model_ids": [(6, 0, cls.user_obj.ids)],
+                "models": cls.user_obj.model,
                 "company_id": cls.company.id,
             }
         )
@@ -33,7 +34,7 @@ class TestCommentTemplate(common.TransactionCase):
                 "name": "Bottom template",
                 "position": "after_lines",
                 "text": "Text after lines",
-                "model_ids": [(6, 0, cls.user_obj.ids)],
+                "models": cls.user_obj.model,
                 "company_id": cls.company.id,
             }
         )
@@ -46,6 +47,27 @@ class TestCommentTemplate(common.TransactionCase):
     def tearDownClass(cls):
         teardown_test_model(cls.env, ResUsers)
         return super(TestCommentTemplate, cls).tearDownClass()
+
+    def test_template_model_ids(self):
+        self.assertIn(
+            self.user_obj.model, self.before_template_id.mapped("model_ids.model")
+        )
+        self.assertEqual(len(self.before_template_id.model_ids), 1)
+        self.assertIn(
+            self.user_obj.model, self.after_template_id.mapped("model_ids.model")
+        )
+        self.assertEqual(len(self.after_template_id.model_ids), 1)
+
+    def test_template_models_constrains(self):
+        with self.assertRaises(ValidationError):
+            self.env["base.comment.template"].create(
+                {
+                    "name": "Custom template",
+                    "text": "Text",
+                    "models": "incorrect.model",
+                    "company_id": self.company.id,
+                }
+            )
 
     def test_template_name_get(self):
         self.assertEqual(
