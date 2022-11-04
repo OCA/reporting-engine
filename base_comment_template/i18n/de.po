@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2020-03-23 17:13+0000\n"
+"PO-Revision-Date: 2022-11-04 14:45+0000\n"
 "Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
@@ -36,42 +36,42 @@ msgstr "Aktiv"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment Preview"
-msgstr ""
+msgstr "Textbaustein-Vorschau"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
 msgid "Base Comment Template"
-msgstr ""
+msgstr "Textbaustein-Vorlagen"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template_preview
 msgid "Base Comment Template Preview"
-msgstr ""
+msgstr "Textbaustein-Vorlagen-Vorschau"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment content"
-msgstr ""
+msgstr "Textbaustein-Inhalt"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
 msgid "Body"
-msgstr ""
+msgstr "Inhalt"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
-msgstr ""
+msgstr "Suffix"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose a language:"
-msgstr ""
+msgstr "Sprache wählen:"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
@@ -81,7 +81,7 @@ msgstr ""
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an example"
-msgstr ""
+msgstr "Beispiel wählen"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -92,7 +92,7 @@ msgstr "Textbaustein"
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
 msgid "Comment Template"
-msgstr ""
+msgstr "Textbaustein-Vorlage"
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
@@ -103,12 +103,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Comment Templates"
-msgstr "Textbausteinvorlagen"
+msgstr "Textbaustein-Vorlagen"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template
 msgid "Comments Template"
-msgstr ""
+msgstr "Textbaustein-Vorlage"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
@@ -135,7 +135,7 @@ msgstr "Erstellt am"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Discard"
-msgstr ""
+msgstr "Verwerfen"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
@@ -146,7 +146,7 @@ msgstr "Anzeigename"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
 msgid "Filter Domain"
-msgstr ""
+msgstr "Filter-Domäne"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
@@ -158,19 +158,23 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_ids
 msgid "IR Model"
-msgstr ""
+msgstr "IR Model"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
 msgid ""
 "If set, the comment template will be available only for the selected company."
 msgstr ""
+"Wenn das Häkchen gesetzt ist, ist die Textbaustein-Vorlage nur für das "
+"ausgewählte Unternehmen verfügbar."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__partner_ids
 msgid ""
 "If set, the comment template will be available only for the selected partner."
 msgstr ""
+"Wenn das Häkchen gesetzt ist, ist die Textbaustein-Vorlage nur für die "
+"ausgewählten Partner verfügbar."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
@@ -198,12 +202,12 @@ msgstr "Zuletzt aktualisiert am"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modell"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modelle"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
@@ -215,17 +219,17 @@ msgstr "Bezeichnung"
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__name
 msgid "Name/description of this comment template"
-msgstr ""
+msgstr "Dies ist die Bezeichnung/Beschreibung der Textbaustein-Vorlage."
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "Kein Eintrag"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
@@ -235,17 +239,17 @@ msgstr "Position im Dokument"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Preview of"
-msgstr ""
+msgstr "Vorschau von"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
-msgstr ""
+msgstr "QWeb"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
@@ -255,12 +259,12 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
 msgid "Record reference"
-msgstr ""
+msgstr "Objekt-Referenz"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenz"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
@@ -271,12 +275,12 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
 msgid "Template"
-msgstr ""
+msgstr "Vorlage"
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
 msgid "Template Preview"
-msgstr ""
+msgstr "Vorlagen-Vorschau"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
@@ -286,12 +290,12 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
 msgid "Template Preview Language"
-msgstr ""
+msgstr "Sprache für Vorlage-Vorschau"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
 msgid "The smaller number = The higher priority"
-msgstr ""
+msgstr "Je kleiner die Nummer, desto höher die Priorität."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
@@ -300,6 +304,8 @@ msgid ""
 "This comment template will be available on this models. You can see here "
 "only models allowed to set the coment template."
 msgstr ""
+"Die Textbaustein-Vorlage wird für diese Datenmodelle verfügbar sein. Es "
+"werden nur erlaubte Datenmodell angezeigt."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__domain
@@ -307,11 +313,15 @@ msgid ""
 "This comment template will be available only for objects that satisfy the "
 "condition"
 msgstr ""
+"Die Textbaustein-Vorlage wird nur für die Objekte verfügbar sein, die dieser "
+"Bedingung genügen."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
 msgid "This field allows to select the position of the comment on reports."
 msgstr ""
+"Dieses Feld entscheidet, wo im gedruckten Dokument der Textbaustein "
+"angezeigt wird."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__text
@@ -321,7 +331,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
 msgid "Top"
-msgstr ""
+msgstr "Präfix"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
