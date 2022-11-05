@@ -1,18 +1,13 @@
 # Copyright 2020 Creu Blanca
 # Copyright 2020 Ecosoft Co., Ltd.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-import logging
 from io import BytesIO
+
+from PyPDF2 import PdfFileReader, PdfFileWriter
 
 from odoo import _, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval
-
-_logger = logging.getLogger(__name__)
-try:
-    from PyPDF2 import PdfFileReader, PdfFileWriter
-except ImportError as err:
-    _logger.debug(err)
 
 
 class IrActionsReport(models.Model):
@@ -35,13 +30,11 @@ class IrActionsReport(models.Model):
             res_ids=res_ids, data=data
         )
         if res_ids:
-            if isinstance(res_ids, int):
-                res_ids = [res_ids]
             password = self._get_pdf_password(res_ids[:1])
             document = self._encrypt_pdf(document, password)
         return document, ttype
 
-    def _get_pdf_password(self, res_id):
+    def _get_pdf_password(self, res_ids):
         encrypt_password = False
         if self.encrypt == "manual":
             # If use document print action, report_download() is called,
@@ -51,17 +44,24 @@ class IrActionsReport(models.Model):
             # Following is used just in case when context is passed in.
             encrypt_password = self._context.get("encrypt_password", False)
         elif self.encrypt == "auto" and self.encrypt_password:
-            obj = self.env[self.model].browse(res_id)
+            # access the report details with sudo() but evaluation context as sudo(False)
+            self_sudo = self.sudo()
+
+            Model = self.env[self_sudo.model]
+            record_ids = Model.browse(res_ids)
             try:
-                encrypt_password = safe_eval(self.encrypt_password, {"object": obj})
-            except Exception:
+                encrypt_password = safe_eval(
+                    self.encrypt_password, {"object": record_ids}
+                )
+            except Exception as e:
                 raise ValidationError(
                     _("Python code used for encryption password is invalid.\n%s")
                     % self.encrypt_password
-                )
+                ) from e
         return encrypt_password
 
-    def _encrypt_pdf(self, data, password):
+    @staticmethod
+    def _encrypt_pdf(data, password):
         if not password:
             return data
         output_pdf = PdfFileWriter()

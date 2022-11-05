@@ -12,8 +12,8 @@ from odoo.addons.web.controllers import main as report
 
 class ReportController(report.ReportController):
     @route()
-    def report_download(self, data, token, context=None):
-        result = super().report_download(data, token, context=context)
+    def report_download(self, data, context=None):
+        result = super(ReportController, self).report_download(data, context=context)
         # When report is downloaded from print action, this function is called,
         # but this function cannot pass context (manually entered password) to
         # report.render_qweb_pdf(), encrypton for manual password is done here.
@@ -24,14 +24,16 @@ class ReportController(report.ReportController):
             and result.headers["Content-Type"] == "application/pdf"
             and "?" in url
         ):
-            url_data = dict(url_decode(url.split("?")[1]).items())
-            if "context" in url_data:
-                context = json.loads(url_data["context"])
-                if "encrypt_password" in context:
-                    Report = request.env["ir.actions.report"]
-                    data = result.get_data()
-                    encrypted_data = Report._encrypt_pdf(
-                        data, context["encrypt_password"]
+            data = dict(
+                url_decode(url.split("?")[1]).items()
+            )  # decoding the args represented in JSON
+            if "context" in data:
+                context, data_context = json.loads(context or "{}"), json.loads(
+                    data.pop("context")
+                )
+                if "encrypt_password" in data_context:
+                    encrypted_data = request.env["ir.actions.report"]._encrypt_pdf(
+                        result.get_data(), data_context["encrypt_password"]
                     )
                     result.set_data(encrypted_data)
         return result
