@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="report_qweb_encrypt.EncryptDialogFooter" owl="1">
+        <button class="btn btn-primary" t-on-click="onClick">Ok</button>
+        <button class="btn" t-on-click="close">Cancel</button>
+    </t>
+
+    <t t-name="report_qweb_encrypt.EncryptDialogBody" owl="1">
+        <div><input class="o_password" type="password" /></div>
+    </t>
+
+</templates>
