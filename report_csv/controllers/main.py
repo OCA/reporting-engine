@@ -15,7 +15,7 @@ from odoo.http import (
 from odoo.tools import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 
-from odoo.addons.web.controllers import main as report
+from odoo.addons.web.controllers import report
 
 _logger = logging.getLogger(__name__)
 
@@ -38,7 +38,9 @@ class ReportController(report.ReportController):
                 if data["context"].get("lang"):
                     del data["context"]["lang"]
                 context.update(data["context"])
-            csv = report.with_context(**context)._render_csv(docids, data=data)[0]
+            csv = report.with_context(**context)._render_csv(
+                reportname, docids, data=data
+            )[0]
             csvhttpheaders = [
                 ("Content-Type", "text/csv"),
                 ("Content-Length", len(csv)),

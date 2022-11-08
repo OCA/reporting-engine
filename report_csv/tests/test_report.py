@@ -15,19 +15,19 @@ except ImportError:
 class TestReport(common.TransactionCase):
     def setUp(self):
         super().setUp()
-        report_object = self.env["ir.actions.report"]
+        self.report_object = self.env["ir.actions.report"]
         self.csv_report = self.env["report.report_csv.abstract"].with_context(
             active_model="res.partner"
         )
         self.report_name = "report_csv.partner_csv"
-        self.report = report_object._get_report_from_name(self.report_name)
+        self.report = self.report_object._get_report_from_name(self.report_name)
         self.docs = self.env["res.company"].search([], limit=1).partner_id
 
     def test_report(self):
         # Test if not res:
         report = self.report
         self.assertEqual(report.report_type, "csv")
-        rep = report._render(self.docs.ids, {})
+        rep = self.report_object._render(self.report_name, self.docs.ids, {})
         str_io = StringIO(rep[0])
         dict_report = list(csv.DictReader(str_io, delimiter=";", quoting=csv.QUOTE_ALL))
         self.assertEqual(self.docs.name, dict(dict_report[0])["name"])
