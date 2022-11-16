@@ -704,9 +704,9 @@ class BiSQLView(models.Model):
     def check_manual_fields(self, model):
         # check the fields we need are defined on self, to stop it going
         # early on install / startup - particularly problematic during upgrade
-        if "group_operator" in table_columns(
-            self.env.cr, "bi_sql_view_field"
-        ) and model._name.startswith(self._model_prefix):
+        if model._name.startswith(
+            self._model_prefix
+        ) and "group_operator" in table_columns(self.env.cr, "bi_sql_view_field"):
             # Use SQL instead of ORM, as ORM might not be fully initialised -
             # we have no control over the order that fields are defined!
             # We are not concerned about user security rules.
