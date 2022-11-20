@@ -19,8 +19,12 @@
         "views/menu.xml",
         "views/py3o_template.xml",
         "views/ir_actions_report.xml",
-        "views/report_py3o.xml",
         "demo/report_py3o.xml",
     ],
     "installable": True,
+        "assets": {
+        "web.assets_backend": [
+            "report_py3o/static/src/js/py3oactionmanager.js",
+        ],
+    },
 }
