@@ -22,7 +22,7 @@
         "demo/report_py3o.xml",
     ],
     "installable": True,
-        "assets": {
+    "assets": {
         "web.assets_backend": [
             "report_py3o/static/src/js/py3oactionmanager.js",
         ],
