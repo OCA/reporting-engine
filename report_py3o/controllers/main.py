@@ -38,7 +38,7 @@ class ReportController(main.ReportController):
         ir_action = request.env["ir.actions.report"]
         action_py3o_report = ir_action.get_from_report_name(
             reportname, "py3o"
-        ).with_context(context)
+        ).with_context(**context)
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description="Py3o action report not found for report_name "
