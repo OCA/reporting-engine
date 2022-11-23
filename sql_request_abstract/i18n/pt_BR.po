@@ -21,19 +21,26 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__group_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Allowed Groups"
 msgstr "Grupos Permitidos"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__user_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Allowed Users"
 msgstr "Usuários Permitidos"
 
 #. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__display_name
-msgid "Display Name"
-msgstr "Nome para Mostrar"
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
 
 #. module: sql_request_abstract
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
@@ -41,20 +48,52 @@ msgid "Draft"
 msgstr "Rascunho"
 
 #. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__id
-msgid "ID"
-msgstr "Identificação"
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_follower_ids
+msgid "Followers"
+msgstr ""
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid "Has Group Changed"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sql_request_abstract
+#. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid "It is not allowed to execute a not checked request."
 msgstr "Não é permitido executar uma solicitação não verificada."
 
 #. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin____last_update
-msgid "Last Modified on"
-msgstr "Última atualização em"
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
 
 #. module: sql_request_abstract
 #: model:res.groups,name:sql_request_abstract.group_sql_request_manager
@@ -62,6 +101,7 @@ msgid "Manager"
 msgstr "Gerente"
 
 #. module: sql_request_abstract
+#. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid ""
@@ -72,14 +112,65 @@ msgstr ""
 "PostgreSQL %s está atualmente instalado."
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__name
 msgid "Name"
 msgstr "Nome"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__note
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Note"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Preview Results"
+msgstr ""
+
+#. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
 msgid "Query"
 msgstr "Consulta"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Query"
+msgstr ""
 
 #. module: sql_request_abstract
 #: model:ir.module.category,name:sql_request_abstract.category_sql_abstract
@@ -92,13 +183,23 @@ msgid "SQL Request Mixin"
 msgstr "SQL Solicitado Mixin"
 
 #. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Settings"
+msgstr ""
+
+#. module: sql_request_abstract
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr "SQL Válido"
 
 #. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__smart_search
-msgid "Smart Search"
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Security"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Set to Draft"
 msgstr ""
 
 #. module: sql_request_abstract
@@ -118,6 +219,14 @@ msgstr ""
 "  * 'SQL Valid': a solicitação SQL foi verificada e é válida"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+
+#. module: sql_request_abstract
+#. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid ""
@@ -130,12 +239,14 @@ msgstr ""
 "  %s"
 
 #. module: sql_request_abstract
+#. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid "The query is not allowed because it contains unsafe word '%s'"
 msgstr "A consulta não é permitida porque contém a palavra não segura '%s'"
 
 #. module: sql_request_abstract
+#. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid "Unimplemented mode : '%s'"
@@ -147,6 +258,11 @@ msgid "User"
 msgstr "Usuário"
 
 #. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Validate SQL Expression"
+msgstr ""
+
+#. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
 msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
@@ -154,3 +270,12 @@ msgid ""
 msgstr ""
 "Você não pode usar as seguintes palavras: DELETE, DROP, CREATE, INSERT, "
 "ALTER, TRUNCATE, EXECUTE, UPDATE."
+
+#~ msgid "Display Name"
+#~ msgstr "Nome para Mostrar"
+
+#~ msgid "ID"
+#~ msgstr "Identificação"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última atualização em"
