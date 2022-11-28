@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="sql_export_view_form" model="ir.ui.view">
+        <field name="model">sql.export</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_form"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <button name="button_preview_sql_expression" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('field_ids', '!=', False)]}</attribute>
+            </button>
+
+            <xpath expr="//header" position="inside">
+                <button
+                    name="export_sql_query"
+                    string="Execute Query"
+                    states="sql_valid"
+                    type="object"
+                    class="oe_highlight"
+                    icon="fa-arrow-right text-success"
+                />
+            </xpath>
+            <group name="group_main_info" position="inside">
+                <group name="option">
+                    <field
+                        name="file_format"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"
+                    />
+                    <field
+                        name="copy_options"
+                        attrs="{'invisible': [('file_format', '!=', 'csv')], 'required': [('file_format', '=', 'csv')], 'readonly': [('state', '!=', 'draft')]}"
+                    />
+                    <field
+                        name="encoding"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"
+                    />
+                </group>
+            </group>
+            <group name="group_query" position="after">
+                <group string="Parameters">
+                    <field
+                        name="field_ids"
+                        nolabel="1"
+                        colspan="2"
+                        options="{'no_create': True}"
+                        context="{'tree_view_ref': 'sql_export.sql_parameter_view_tree', 'form_view_ref': 'sql_export.sql_parameter_view_form'}"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"
+                        groups="sql_request_abstract.group_sql_request_user"
+                    />
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <record id="sql_export_view_tree" model="ir.ui.view">
+        <field name="model">sql.export</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_tree"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <button
+                    name="export_sql_query"
+                    string="Execute Query"
+                    states="sql_valid"
+                    type="object"
+                    icon="fa-arrow-right text-success"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="sql_export_tree_action" model="ir.actions.act_window">
+        <field name="name">SQL Exports</field>
+        <field name="res_model">sql.export</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="sql_export_menu_view"
+        name="Sql Export"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        action="sql_export_tree_action"
+        sequence="15"
+    />
+
+</odoo>
