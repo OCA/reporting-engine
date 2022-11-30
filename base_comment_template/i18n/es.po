@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-09 09:55+0000\n"
-"PO-Revision-Date: 2021-02-09 11:21+0100\n"
+"POT-Creation-Date: 2022-11-03 08:01+0000\n"
+"PO-Revision-Date: 2022-11-03 09:03+0100\n"
 "Last-Translator: Carlos <carlos.roca@tecnativa.com>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid ""
 "<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
 "False)]}\">No records\n"
-"                            </span>"
+"                        </span>"
 msgstr ""
 
 #. module: base_comment_template
@@ -65,7 +65,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
-msgstr ""
+msgstr "Abajo"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
@@ -100,7 +100,6 @@ msgstr "Plantilla de comentario"
 #: model:ir.ui.menu,name:base_comment_template.reports_base_comment_template_menuitem
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
-#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_tree
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Comment Templates"
 msgstr "Plantillas de comentarios"
@@ -135,14 +134,11 @@ msgstr "Creado el"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Discard"
-msgstr ""
+msgstr "Descartar"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__display_name
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -154,9 +150,6 @@ msgstr "Filtro de dominio"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__id
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__id
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__id
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__id
 msgid "ID"
 msgstr "ID"
 
@@ -183,16 +176,13 @@ msgstr ""
 "contactos seleccionados."
 
 #. module: base_comment_template
-#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__jinja
-msgid "Jinja"
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
+msgid "Inline template"
 msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_comment_template____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_ir_model____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -211,10 +201,11 @@ msgstr "Última modificación el"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__models
 msgid "Models"
 msgstr "Modelos"
 
@@ -233,7 +224,7 @@ msgstr "Nombre de la plantilla de comentario"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "Sin registro"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
@@ -248,16 +239,21 @@ msgstr "Posición en el documento"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Preview"
-msgstr ""
+msgstr "Previsualizar"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Preview of"
-msgstr ""
+msgstr "Previsualización de"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
+msgid "QWeb view"
 msgstr ""
 
 #. module: base_comment_template
@@ -268,7 +264,13 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
+
+#. module: base_comment_template
+#: code:addons/base_comment_template/models/base_comment_template.py:0
+#, python-format
+msgid "Some model (%s) not found"
+msgstr "Algún modelo (%s) no se ha encontrado"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
@@ -354,4 +356,4 @@ msgstr ""
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
-msgstr ""
+msgstr "registro:"
