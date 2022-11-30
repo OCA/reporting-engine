@@ -16,18 +16,18 @@ except ImportError:
 class TestReport(common.TransactionCase):
     def setUp(self):
         super().setUp()
-        report_object = self.env["ir.actions.report"]
+        self.report_object = self.env["ir.actions.report"]
         self.xlsx_report = self.env["report.report_xlsx.abstract"].with_context(
             active_model="res.partner"
         )
         self.report_name = "report_xlsx.partner_xlsx"
-        self.report = report_object._get_report_from_name(self.report_name)
+        self.report = self.report_object._get_report_from_name(self.report_name)
         self.docs = self.env["res.company"].search([], limit=1).partner_id
 
     def test_report(self):
         report = self.report
         self.assertEqual(report.report_type, "xlsx")
-        rep = report._render(self.docs.ids, {})
+        rep = self.report_object._render(self.report_name, self.docs.ids, {})
         wb = open_workbook(file_contents=rep[0])
         sheet = wb.sheet_by_index(0)
         self.assertEqual(sheet.cell(0, 0).value, self.docs.name)
