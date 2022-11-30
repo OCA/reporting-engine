@@ -267,6 +267,7 @@ msgid "Sequence"
 msgstr "Secuencia"
 
 #. module: base_comment_template
+#. odoo-python
 #: code:addons/base_comment_template/models/base_comment_template.py:0
 #, python-format
 msgid "Some model (%s) not found"
