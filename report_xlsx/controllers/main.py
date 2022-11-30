@@ -16,12 +16,12 @@ from odoo.http import (
 from odoo.tools import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 
-from odoo.addons.web.controllers import main as report
+from odoo.addons.web.controllers.report import ReportController
 
 _logger = logging.getLogger(__name__)
 
 
-class ReportController(report.ReportController):
+class ReportController(ReportController):
     @route()
     def report_routes(self, reportname, docids=None, converter=None, **data):
         if converter == "xlsx":
@@ -34,7 +34,9 @@ class ReportController(report.ReportController):
             if data.get("context"):
                 data["context"] = json.loads(data["context"])
                 context.update(data["context"])
-            xlsx = report.with_context(**context)._render_xlsx(docids, data=data)[0]
+            xlsx = report.with_context(**context)._render_xlsx(
+                reportname, docids, data=data
+            )[0]
             xlsxhttpheaders = [
                 (
                     "Content-Type",
@@ -44,9 +46,7 @@ class ReportController(report.ReportController):
                 ("Content-Length", len(xlsx)),
             ]
             return request.make_response(xlsx, headers=xlsxhttpheaders)
-        return super(ReportController, self).report_routes(
-            reportname, docids, converter, **data
-        )
+        return super().report_routes(reportname, docids, converter, **data)
 
     @route()
     def report_download(self, data, context=None):
@@ -96,7 +96,7 @@ class ReportController(report.ReportController):
                     )
                 return response
             else:
-                return super(ReportController, self).report_download(data, context)
+                return super().report_download(data, context)
         except Exception as e:
             _logger.exception("Error while generating report %s", reportname)
             se = _serialize_exception(e)
