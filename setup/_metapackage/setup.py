@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo-addon-base_comment_template>=16.0dev,<16.1dev',
         'odoo-addon-report_xlsx>=16.0dev,<16.1dev',
+        'odoo-addon-report_xlsx_helper>=16.0dev,<16.1dev',
         'odoo-addon-report_xml>=16.0dev,<16.1dev',
         'odoo-addon-sql_export>=16.0dev,<16.1dev',
         'odoo-addon-sql_request_abstract>=16.0dev,<16.1dev',
