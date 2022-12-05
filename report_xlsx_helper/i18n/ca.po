@@ -17,6 +17,7 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -27,12 +28,14 @@ msgstr ""
 "col_specs_section %(col_specs_section)s, columna %(col)s"
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
 #, python-format
 msgid "%s model was not found"
 msgstr "No s'ha trobat el model %s"
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ", cellvalue %s"
@@ -45,12 +48,14 @@ msgid "Abstract XLSX Report"
 msgstr "Informe XLSX abstracte"
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
-"Excel Sheet name '%(name)s' contains unsupported special characters: '%(special_chars)s'."
+"Excel Sheet name '%(name)s' contains unsupported special characters: "
+"'%(special_chars)s'."
 msgstr ""
 "Error de programació:\n"
 "\n"
@@ -58,6 +63,7 @@ msgstr ""
 "'%(special_chars)s'."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -71,6 +77,7 @@ msgstr ""
 "caràcters."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -84,6 +91,7 @@ msgstr ""
 "de càlcul."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -97,6 +105,7 @@ msgstr ""
 "de càlcul."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
