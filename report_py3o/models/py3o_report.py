@@ -16,6 +16,8 @@ from zipfile import ZIP_DEFLATED, ZipFile
 import pkg_resources
 
 from odoo import _, api, fields, models, tools
+from odoo.exceptions import AccessError
+from odoo.tools.safe_eval import safe_eval, time
 
 from ._py3o_parser_context import Py3oParserContext
 
@@ -187,7 +189,9 @@ class Py3oReport(models.TransientModel):
     def _get_parser_context(self, model_instance, data):
         report_xml = self.ir_actions_report_id
         context = Py3oParserContext(self.env).localcontext
-        context.update(report_xml._get_rendering_context(model_instance.ids, data))
+        context.update(
+            report_xml._get_rendering_context(report_xml, model_instance.ids, data)
+        )
         context["objects"] = model_instance
         self._extend_parser_context(context, report_xml)
         return context
@@ -199,9 +203,30 @@ class Py3oReport(models.TransientModel):
                 # consumption...
                 # ... but odoo wants the whole data in memory anyways :)
                 buffer = BytesIO(f.read())
-                self.ir_actions_report_id._postprocess_pdf_report(
-                    model_instance, buffer
+                attachment_name = safe_eval(
+                    self.ir_actions_report_id.attachment,
+                    {"object": model_instance, "time": time},
                 )
+                if attachment_name:
+                    attachment_vals = {
+                        "name": attachment_name,
+                        "res_model": self.ir_actions_report_id.model,
+                        "res_id": model_instance.id,
+                        "raw": buffer.getvalue(),
+                    }
+                    try:
+                        attach = self.env["ir.attachment"].create(attachment_vals)
+                    except AccessError:
+                        logger.info(
+                            "Cannot save PDF report %s as attachment",
+                            attachment_vals["name"],
+                        )
+                    else:
+                        logger.info(
+                            "PDF document %s saved as attachment ID %d",
+                            attachment_vals["name"],
+                            attach.id,
+                        )
         return result_path
 
     def _create_single_report(self, model_instance, data):

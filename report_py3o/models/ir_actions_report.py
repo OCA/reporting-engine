@@ -157,16 +157,17 @@ class IrActionsReport(models.Model):
             [("report_name", "=", report_name), ("report_type", "=", report_type)]
         )
 
-    def _render_py3o(self, res_ids, data):
-        self.ensure_one()
-        if self.report_type != "py3o":
+    @api.model
+    def _render_py3o(self, report_ref, res_ids, data=None):
+        report = self._get_report(report_ref)
+        if report.report_type != "py3o":
             raise RuntimeError(
                 "py3o rendition is only available on py3o report.\n"
-                "(current: '{}', expected 'py3o'".format(self.report_type)
+                "(current: '{}', expected 'py3o'".format(report.report_type)
             )
         return (
             self.env["py3o.report"]
-            .create({"ir_actions_report_id": self.id})
+            .create({"ir_actions_report_id": report.id})
             .create_report(res_ids, data)
         )
 
