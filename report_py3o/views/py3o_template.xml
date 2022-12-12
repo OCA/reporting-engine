@@ -4,7 +4,7 @@
         <field name="name">py3o.template.configuration.search.view</field>
         <field name="model">py3o.template</field>
         <field name="arch" type="xml">
-            <search string="Py3o Templates">
+            <search>
                 <field name="name" />
                 <field name="filetype" />
                 <group string="Group By" name="groupby">
@@ -21,7 +21,7 @@
         <field name="name">py3o.template.configuration.form.view</field>
         <field name="model">py3o.template</field>
         <field name="arch" type="xml">
-            <form string="Py3o Templates">
+            <form>
                 <group name="main">
                     <field name="name" />
                     <field name="filetype" />
@@ -47,7 +47,8 @@
     </record>
     <menuitem
         id="py3o_template_configuration_menu"
-        parent="py3o_config_menu"
+        parent="base.reporting_menuitem"
         action="py3o_template_configuration_action"
+        sequence="100"
     />
 </odoo>
