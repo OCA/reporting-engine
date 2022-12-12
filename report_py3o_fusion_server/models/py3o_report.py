@@ -83,7 +83,7 @@ class Py3oReport(models.TransientModel):
                 fields["pdf_options"] = json.dumps(pdf_options_dict)
                 logger.debug("PDF Export options: %s", pdf_options_dict)
         start_chrono = datetime.now()
-        r = requests.post(url, data=fields, files=files)
+        r = requests.post(url, data=fields, files=files, timeout=10)
         if r.status_code != 200:
             # server says we have an issue... let's tell that to enduser
             logger.error("Py3o fusion server error: %s", r.text)

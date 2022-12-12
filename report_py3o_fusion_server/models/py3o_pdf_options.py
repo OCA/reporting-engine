@@ -19,7 +19,6 @@ class Py3oPdfOptions(models.Model):
     # UseLosslessCompression (bool)
     image_compression = fields.Selection(
         [("lossless", "Lossless Compression"), ("jpeg", "JPEG Compression")],
-        string="Image Compression",
         default="jpeg",
     )
     # Quality (int)
@@ -65,11 +64,11 @@ class Py3oPdfOptions(models.Model):
     # AllowDuplicateFieldNames (bool)
     pdf_form_allow_duplicate = fields.Boolean("Allow Duplicate Field Names")
     # ExportBookmarks (bool)
-    export_bookmarks = fields.Boolean("Export Bookmarks", default=True)
+    export_bookmarks = fields.Boolean(default=True)
     # ExportPlaceholders (bool)
-    export_placeholders = fields.Boolean("Export Placeholders", default=True)
+    export_placeholders = fields.Boolean(default=True)
     # ExportNotes (bool)
-    export_comments = fields.Boolean("Export Comments")
+    export_comments = fields.Boolean()
     # ExportHiddenSlides (bool) ??
     export_hidden_slides = fields.Boolean("Export Automatically Insered Blank Pages")
     # Doesn't make sense to have the option "View PDF after export" ! :)
@@ -81,7 +80,7 @@ class Py3oPdfOptions(models.Model):
         default="0",
     )
     # InitialPage (int)
-    initial_page = fields.Integer(string="Initial Page", default=1)
+    initial_page = fields.Integer(default=1)
     # Magnification (int)
     magnification = fields.Selection(
         [
@@ -91,7 +90,6 @@ class Py3oPdfOptions(models.Model):
             ("3", "Fit Visible"),
             ("4", "Zoom"),
         ],
-        string="Magnification",
         default="0",
     )
     # Zoom (int)
@@ -106,7 +104,6 @@ class Py3oPdfOptions(models.Model):
             ("2", "Continuous"),
             ("3", "Continuous Facing"),
         ],
-        string="Page Layout",
         default="0",
     )
     # USER INTERFACE TAB
@@ -119,11 +116,11 @@ class Py3oPdfOptions(models.Model):
     # OpenInFullScreenMode (bool)
     open_fullscreen = fields.Boolean(string="Open in Full Screen Mode")
     # DisplayPDFDocumentTitle (bool)
-    display_document_title = fields.Boolean(string="Display Document Title")
+    display_document_title = fields.Boolean()
     # HideViewerMenubar (bool)
-    hide_menubar = fields.Boolean(string="Hide Menubar")
+    hide_menubar = fields.Boolean()
     # HideViewerToolbar (bool)
-    hide_toolbar = fields.Boolean(string="Hide Toolbar")
+    hide_toolbar = fields.Boolean()
     # HideViewerWindowControls (bool)
     hide_window_controls = fields.Boolean(string="Hide Windows Controls")
     # OpenBookmarkLevels (int)  -1 = all (default)  from 1 to 10
@@ -167,13 +164,13 @@ class Py3oPdfOptions(models.Model):
     )
     # SECURITY TAB
     # EncryptFile (bool)
-    encrypt = fields.Boolean("Encrypt")
+    encrypt = fields.Boolean()
     # DocumentOpenPassword (char)
-    document_password = fields.Char(string="Document Password")
+    document_password = fields.Char()
     # RestrictPermissions (bool)
-    restrict_permissions = fields.Boolean("Restrict Permissions")
+    restrict_permissions = fields.Boolean()
     # PermissionPassword (char)
-    permission_password = fields.Char(string="Permission Password")
+    permission_password = fields.Char()
     # TODO PreparedPasswords  + PreparedPermissionPassword
     # I don't see those fields in the LO interface !
     # But they are used in the LO code...
@@ -184,7 +181,6 @@ class Py3oPdfOptions(models.Model):
             ("1", "Low Resolution (150 dpi)"),
             ("2", "High Resolution"),
         ],
-        string="Printing",
         default="2",
     )
     # Changes (int)
@@ -196,7 +192,6 @@ class Py3oPdfOptions(models.Model):
             ("3", "Commenting, Filling in Form Fields"),
             ("4", "Any Except Extracting Pages"),
         ],
-        string="Changes",
         default="4",
     )
     # EnableCopyingOfContent (bool)
