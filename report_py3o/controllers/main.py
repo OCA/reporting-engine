@@ -6,18 +6,17 @@ import mimetypes
 from werkzeug import exceptions
 from werkzeug.urls import url_decode
 
-from odoo.http import request, route
+from odoo.http import content_disposition, request, route, serialize_exception
 from odoo.tools import html_escape
 
-from odoo.addons.web.controllers import main
-from odoo.addons.web.controllers.main import _serialize_exception, content_disposition
+from odoo.addons.web.controllers.report import ReportController
 
 
-class ReportController(main.ReportController):
+class ReportController(ReportController):
     @route()
     def report_routes(self, reportname, docids=None, converter=None, **data):
         if converter != "py3o":
-            return super(ReportController, self).report_routes(
+            return super().report_routes(
                 reportname=reportname, docids=docids, converter=converter, **data
             )
         context = dict(request.env.context)
@@ -44,7 +43,7 @@ class ReportController(main.ReportController):
                 description="Py3o action report not found for report_name "
                 "%s" % reportname
             )
-        res, filetype = action_py3o_report._render(docids, data)
+        res, filetype = ir_action._render(reportname, docids, data)
         filename = action_py3o_report.gen_report_download_filename(docids, data)
         if not filename.endswith(filetype):
             filename = "{}.{}".format(filename, filetype)
@@ -57,7 +56,7 @@ class ReportController(main.ReportController):
         return request.make_response(res, headers=http_headers)
 
     @route()
-    def report_download(self, data, context=None):
+    def report_download(self, data, context=None, token=None):
         """This function is used by 'qwebactionmanager.js' in order to trigger
         the download of a py3o/controller report.
 
@@ -68,7 +67,7 @@ class ReportController(main.ReportController):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         if "py3o" not in report_type:
-            return super(ReportController, self).report_download(data, context)
+            return super().report_download(data, context=context, token=token)
         try:
             reportname = url.split("/report/py3o/")[1].split("?")[0]
             docids = None
@@ -90,6 +89,6 @@ class ReportController(main.ReportController):
             response.set_cookie("fileToken", context)
             return response
         except Exception as e:
-            se = _serialize_exception(e)
+            se = serialize_exception(e)
             error = {"code": 200, "message": "Odoo Server Error", "data": se}
             return request.make_response(html_escape(json.dumps(error)))

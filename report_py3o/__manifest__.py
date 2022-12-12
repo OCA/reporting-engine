@@ -4,10 +4,10 @@
     "name": "Py3o Report Engine",
     "summary": "Reporting engine based on Libreoffice (ODT -> ODT, "
     "ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "category": "Reporting",
     "license": "AGPL-3",
-    "author": "XCG Consulting," "ACSONE SA/NV," "Odoo Community Association (OCA)",
+    "author": "XCG Consulting, ACSONE SA/NV, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["web"],
     "external_dependencies": {
@@ -21,7 +21,6 @@
     },
     "data": [
         "security/ir.model.access.csv",
-        "views/menu.xml",
         "views/py3o_template.xml",
         "views/ir_actions_report.xml",
         "demo/report_py3o.xml",

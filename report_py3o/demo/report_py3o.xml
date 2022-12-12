@@ -11,6 +11,9 @@
         <field name="py3o_filetype">odt</field>
         <field name="module">report_py3o</field>
         <field name="py3o_template_fallback">demo/res_user.odt</field>
+        <field
+            name="print_report_name"
+        >object.name.replace(' ', '_') + '-demo.odt'</field>
         <field name="binding_model_id" ref="base.model_res_users" />
         <field name="binding_type">report</field>
     </record>
