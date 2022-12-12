@@ -8,7 +8,7 @@
         <field name="name">py3o.pdf.options.form</field>
         <field name="model">py3o.pdf.options</field>
         <field name="arch" type="xml">
-            <form string="Py3o PDF Export Options">
+            <form>
                 <div class="oe_title">
                     <label for="name" />
                     <h1>
@@ -182,7 +182,7 @@
         <field name="name">py3o.pdf.options.tree</field>
         <field name="model">py3o.pdf.options</field>
         <field name="arch" type="xml">
-            <tree string="Py3o PDF Export Options">
+            <tree>
                 <field name="name" />
             </tree>
         </field>
@@ -194,8 +194,8 @@
     </record>
     <menuitem
         id="py3o_pdf_options_menu"
-        parent="report_py3o.py3o_config_menu"
+        parent="base.reporting_menuitem"
         action="py3o_pdf_options_action"
-        sequence="40"
+        sequence="120"
     />
 </odoo>
