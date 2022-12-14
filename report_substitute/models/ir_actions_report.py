@@ -50,9 +50,12 @@ class IrActionReport(models.Model):
 
         return action
 
-    def _render(self, res_ids, data=None):
-        substitution_report = self.get_substitution_report(res_ids)
-        return super(IrActionReport, substitution_report)._render(res_ids, data)
+    def _render(self, report_ref, res_ids, data=None):
+        report = self._get_report(report_ref)
+        substitution_report = report.get_substitution_report(res_ids)
+        return super(IrActionReport, self)._render(
+            substitution_report.report_name, res_ids, data=data
+        )
 
     def report_action(self, docids, data=None, config=True):
         if docids:

@@ -20,15 +20,27 @@ class TestReportSubstitute(TransactionCase):
         ).id
 
     def test_substitution(self):
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertIn('<div class="page">Substitution Report</div>', res)
         # remove the substation rule
         self.substitution_rule.unlink()
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertNotIn('<div class="page">Substitution Report</div>', res)
 
     def test_recursive_substitution(self):
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertNotIn('<div class="page">Substitution Report 2</div>', res)
         self.env["ir.actions.report.substitution.rule"].create(
             {
@@ -40,15 +52,27 @@ class TestReportSubstitute(TransactionCase):
                 ).id,
             }
         )
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertIn('<div class="page">Substitution Report 2</div>', res)
 
     def test_substitution_with_domain(self):
         self.substitution_rule.write({"domain": "[('name', '=', 'base')]"})
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertIn('<div class="page">Substitution Report</div>', res)
         self.substitution_rule.write({"domain": "[('name', '!=', 'base')]"})
-        res = str(self.action_report.render(res_ids=self.res_ids)[0])
+        res = str(
+            self.action_report._render(
+                self.action_report.report_name, res_ids=self.res_ids
+            )[0]
+        )
         self.assertNotIn('<div class="page">Substitution Report</div>', res)
 
     def test_substitution_with_action_dict(self):
