@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_comment_template](base_comment_template/) | 16.0.2.0.0 |  | Add conditional mako template to any reporton models that inherits comment.template.
-[report_xlsx](report_xlsx/) | 16.0.1.0.0 |  | Base module to create xlsx report
+[report_xlsx](report_xlsx/) | 16.0.1.0.1 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 16.0.1.0.0 |  | Report xlsx helpers
 [report_xml](report_xml/) | 16.0.1.0.0 |  | Allow to generate XML reports
 [sql_export](sql_export/) | 16.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Export data in csv file with SQL requests
