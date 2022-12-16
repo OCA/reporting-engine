@@ -5,3 +5,8 @@
 * [ADD] New features.
   * Age by months or days
   * Filter negative balances
+
+14.0.2.0.0 (2022-12-16)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [ADD] Detailed Activity Statement.

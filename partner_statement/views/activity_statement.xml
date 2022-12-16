@@ -2,6 +2,119 @@
 <!-- Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <template id="activity_balance">
+        <p>
+            <span t-if="is_detailed">Detailed </span>
+            <span
+                t-if="account_type == 'payable'"
+            >Supplier </span>Statement between <span t-esc="d['start']" /> and <span
+                t-esc="d['end']"
+            /> in <span t-esc="display_currency.name" />
+        </p>
+        <table class="table table-condensed table-statement">
+            <thead>
+                <tr>
+                    <th>Reference number</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th class="amount">Original Amount</th>
+                    <th class="amount">Applied Amount</th>
+                    <th class="amount">Open Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td />
+                    <td>
+                        <span t-esc="d['prior_day']" />
+                    </td>
+                    <td t-if="is_detailed">Initial Balance</td>
+                    <td t-else="">Balance Forward</td>
+                    <td />
+                    <td />
+                    <td class="amount">
+                        <span
+                            t-esc="currency['balance_forward']"
+                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
+                        />
+                    </td>
+                </tr>
+                <tr
+                    t-foreach="currency['lines']"
+                    t-as="line"
+                    t-att-class="('statement-blocked ' if line['blocked'] else '') + ('statement-reconciled' if line['reconciled_line'] else '')"
+                >
+                    <td>
+                        <span
+                            t-if="line['reconciled_line']"
+                            style="padding-left: 11px;"
+                        /><span t-esc="line['move_id']" />
+                    </td>
+                    <td>
+                        <span t-esc="line['date']" />
+                    </td>
+                    <td>
+                        <t t-if="line['name'] != '/'">
+                            <t t-if="not line['ref'] and line['name']">
+                                <span t-esc="line['name']" />
+                            </t>
+                            <t t-if="line['ref'] and not line['name']">
+                                <span t-esc="line['ref']" />
+                            </t>
+                            <t t-if="line['ref'] and line['name']">
+                                <t
+                                    t-if="line['name'] not in line['ref'] or line['name'] == line['ref']"
+                                >
+                                    <span t-esc="line['name']" />
+                                </t>
+                                <t t-if="line['ref'] not in line['name']">
+                                    <span t-esc="line['ref']" />
+                                </t>
+                            </t>
+                        </t>
+                        <t t-if="line['name'] == '/'">
+                            <span t-esc="line['ref']" />
+                        </t>
+                    </td>
+                    <td class="amount">
+                        <span
+                            t-esc="line['amount']"
+                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
+                            t-if="not line['reconciled_line']"
+                        />
+                    </td>
+                    <td class="amount">
+                        <span
+                            t-esc="line['applied_amount']"
+                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
+                        />
+                    </td>
+                    <td class="amount">
+                        <span
+                            t-esc="line['open_amount']"
+                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
+                            t-if="not line['reconciled_line']"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td />
+                    <td>
+                        <span t-esc="d['end']" />
+                    </td>
+                    <td>Ending Balance</td>
+                    <td />
+                    <td />
+                    <td class="amount">
+                        <span
+                            t-esc="currency['amount_due']"
+                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
+                        />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
     <template id="partner_statement.activity_statement_document">
         <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context({'lang': lang})" />
@@ -35,109 +148,10 @@
                     <t t-foreach="d['currencies'].items()" t-as="currency">
                         <t t-set="display_currency" t-value="Currencies[currency[0]]" />
                         <t t-set="currency" t-value="currency[1]" />
-                        <p>
-                                <span
-                                t-if="account_type == 'payable'"
-                            >Supplier </span>Statement between <span
-                                t-esc="d['start']"
-                            /> and <span t-esc="d['end']" /> in <span
-                                t-esc="display_currency.name"
-                            />
-                            </p>
-                        <table class="table table-condensed table-statement">
-                            <thead>
-                                <tr>
-                                    <th>Reference number</th>
-                                    <th>Date</th>
-                                    <th>Description</th>
-                                    <th class="amount">Amount</th>
-                                    <th class="amount">Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td />
-                                    <td>
-                                        <span t-esc="d['start']" />
-                                    </td>
-                                    <td>
-                                            Balance Forward
-                                        </td>
-                                    <td />
-                                    <td class="amount">
-                                        <span
-                                            t-esc="currency['balance_forward']"
-                                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr
-                                    t-foreach="currency['lines']"
-                                    t-as="line"
-                                    t-att-class="'statement-blocked' if line['blocked'] else ''"
-                                >
-                                    <td>
-                                        <span t-esc="line['move_id']" />
-                                    </td>
-                                    <td>
-                                        <span t-esc="line['date']" />
-                                    </td>
-                                    <td>
-                                        <t t-if="line['name'] != '/'">
-                                            <t t-if="not line['ref'] and line['name']">
-                                                <span t-esc="line['name']" />
-                                            </t>
-                                            <t t-if="line['ref'] and not line['name']">
-                                                <span t-esc="line['ref']" />
-                                            </t>
-                                            <t t-if="line['ref'] and line['name']">
-                                                <t
-                                                    t-if="line['name'] not in line['ref'] or line['name'] == line['ref']"
-                                                >
-                                                    <span t-esc="line['name']" />
-                                                </t>
-                                                <t
-                                                    t-if="line['ref'] not in line['name']"
-                                                >
-                                                    <span t-esc="line['ref']" />
-                                                </t>
-                                            </t>
-                                        </t>
-                                        <t t-if="line['name'] == '/'">
-                                            <span t-esc="line['ref']" />
-                                        </t>
-                                    </td>
-                                    <td class="amount">
-                                        <span
-                                            t-esc="line['amount']"
-                                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
-                                        />
-                                    </td>
-                                    <td class="amount">
-                                        <span
-                                            t-esc="line['balance']"
-                                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td />
-                                    <td>
-                                        <span t-esc="d['end']" />
-                                    </td>
-                                    <td>
-                                            Ending Balance
-                                        </td>
-                                    <td />
-                                    <td class="amount">
-                                        <span
-                                            t-esc="currency['amount_due']"
-                                            t-options="{'widget': 'monetary', 'display_currency': display_currency}"
-                                        />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <t
+                            t-call="partner_statement.activity_balance"
+                            name="activity"
+                        />
                         <t
                             t-call="partner_statement.aging_buckets"
                             t-if="currency['buckets']"

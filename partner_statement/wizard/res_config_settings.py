@@ -5,7 +5,7 @@ class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
     group_activity_statement = fields.Boolean(
-        "Enable OCA Activity Statements",
+        "Enable OCA Activity & Detailed Activity Statements",
         group="account.group_account_invoice",
         implied_group="partner_statement.group_activity_statement",
     )
@@ -55,4 +55,5 @@ class ResConfigSettings(models.TransientModel):
                     value = self[name]
                 IrDefault.set("activity.statement.wizard", name[8:], value)
                 IrDefault.set("outstanding.statement.wizard", name[8:], value)
+                IrDefault.set("detailed.activity.statement.wizard", name[8:], value)
         return super().set_values()

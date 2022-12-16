@@ -25,6 +25,20 @@
         />
         <field name="target">new</field>
     </record>
+    <record
+        id="detailed_activity_statement_wizard_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Partner Detailed Activity Statement</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="res_model">detailed.activity.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('partner_statement.group_activity_statement'))]"
+        />
+        <field name="target">new</field>
+    </record>
     <!-- wizard view -->
     <record id="statement_common_view" model="ir.ui.view">
         <field name="name">Statement Common Wizard View</field>
@@ -129,6 +143,26 @@
                     refunds and payments. Any outstanding balance dated prior to the chosen statement
                     period will appear as a forward balance at the top of the statement. The list is
                     displayed in chronological order and is split by currencies.
+                </span>
+                <br />
+                <br />
+            </xpath>
+            <xpath expr="//field[@name='date_end']" position="before">
+                <field name="date_start" />
+            </xpath>
+        </field>
+    </record>
+    <record id="detailed_activity_statement_wizard_view" model="ir.ui.view">
+        <field name="name">Detailed Activity Statement Wizard</field>
+        <field name="model">detailed.activity.statement.wizard</field>
+        <field name="inherit_id" ref="partner_statement.statement_common_view" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='info']/span" position="before">
+                <span
+                    class="o_form_label"
+                >The detailed activity statement is an extension of the activity statement, and intends to explain the transactions
+that have happened during the period, also providing with a Prior Balance section and an Ending Balance section.
                 </span>
                 <br />
                 <br />

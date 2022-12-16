@@ -1,21 +1,24 @@
 # Copyright 2018 ForgeFlow, S.L. (http://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import models
+from odoo import fields, models
 
 
-class OutstandingStatementWizard(models.TransientModel):
-    """Outstanding Statement wizard."""
+class DetailedActivityStatementWizard(models.TransientModel):
+    """Detailed Activity Statement wizard."""
 
-    _name = "outstanding.statement.wizard"
-    _inherit = "statement.common.wizard"
-    _description = "Outstanding Statement Wizard"
+    _inherit = "activity.statement.wizard"
+    _name = "detailed.activity.statement.wizard"
+    _description = "Detailed Activity Statement Wizard"
+
+    show_aging_buckets = fields.Boolean(default=False)
+    show_balance = fields.Boolean(string="Show Balance column")
 
     def _prepare_statement(self):
         res = super()._prepare_statement()
         res.update(
             {
-                "is_outstanding": True,
+                "is_detailed": True,
             }
         )
         return res
@@ -24,9 +27,9 @@ class OutstandingStatementWizard(models.TransientModel):
         self.ensure_one()
         data = self._prepare_statement()
         if report_type == "xlsx":
-            report_name = "p_s.report_outstanding_statement_xlsx"
+            report_name = "p_s.report_detailed_activity_statement_xlsx"
         else:
-            report_name = "partner_statement.outstanding_statement"
+            report_name = "partner_statement.detailed_activity_statement"
         return (
             self.env["ir.actions.report"]
             .search(
@@ -35,7 +38,3 @@ class OutstandingStatementWizard(models.TransientModel):
             )
             .report_action(self, data=data)
         )
-
-    def _export(self, report_type):
-        """Default export is PDF."""
-        return self._print_report(report_type)

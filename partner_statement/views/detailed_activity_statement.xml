@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 ForgeFlow, S.L. (https://www.forgeflow.com)
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="detailed_activity_statement_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context({'lang': lang})" />
+            <t t-set="address">
+                <address
+                    t-esc="get_inv_addr(o)"
+                    t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+                />
+                <div t-if="o.vat" class="mt16"><t
+                        t-esc="company.country_id.vat_label or 'Tax ID'"
+                    />: <span t-field="o.vat" /></div>
+            </t>
+            <div class="page">
+                <h2>Statement of Account</h2>
+                <div id="informations" class="row mt32 mb32">
+                    <div class="col-3 bm-2">
+                        <strong>Date:</strong>
+                        <p t-esc="d['today']" class="m-0" />
+                    </div>
+                    <div class="col-3 bm-2">
+                        <strong>Partner Name:</strong>
+                        <p t-field="o.name" class="m-0" />
+                    </div>
+                    <div t-if="o.ref" class="col-3 bm-2">
+                        <strong>Partner Code:</strong>
+                        <p t-field="o.ref" class="m-0" />
+                    </div>
+                </div>
+                <t t-if="d['currencies']">
+                    <br />
+                    <t t-foreach="d['currencies'].items()" t-as="currency">
+                        <t t-set="display_currency" t-value="Currencies[currency[0]]" />
+                        <t t-set="currency" t-value="currency[1]" />
+                        <t t-set="line_type" t-value="'prior_lines'" />
+                        <t t-set="title_name" t-value="'Prior Balance'" />
+                        <t
+                            t-set="ending_amount"
+                            t-value="currency['balance_forward']"
+                        />
+                        <t t-set="ending_date" t-value="d['prior_day']" />
+                        <t
+                            t-call="partner_statement.outstanding_balance"
+                            name="prior_balance"
+                        />
+                        <t
+                            t-call="partner_statement.activity_balance"
+                            name="detailed_activity"
+                        />
+                        <t t-set="line_type" t-value="'ending_lines'" />
+                        <t t-set="title_name" t-value="'Ending Balance'" />
+                        <t t-set="ending_amount" t-value="currency['amount_due']" />
+                        <t t-set="ending_date" t-value="d['end']" />
+                        <t
+                            t-call="partner_statement.outstanding_balance"
+                            name="ending_balance"
+                        />
+                        <t
+                            t-call="partner_statement.aging_buckets"
+                            t-if="currency['buckets']"
+                        />
+                    </t>
+                </t>
+                <p t-if="d.get('no_entries')">
+                    <strong>The partner doesn't have due entries.</strong>
+                </p>
+            </div>
+        </t>
+    </template>
+    <template id="detailed_activity_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="d" t-value="data.get(o.id)" />
+                <t
+                    t-call="partner_statement.detailed_activity_statement_document"
+                    t-lang="o.lang"
+                />
+            </t>
+        </t>
+    </template>
+    <record id="action_print_detailed_activity_statement" model="ir.actions.report">
+        <field name="name">Detailed Activity Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">partner_statement.detailed_activity_statement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">partner_statement.detailed_activity_statement</field>
+    </record>
+    <record
+        id="action_print_detailed_activity_statement_html"
+        model="ir.actions.report"
+    >
+        <field name="name">Detailed Activity Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">partner_statement.detailed_activity_statement</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_file">partner_statement.detailed_activity_statement</field>
+    </record>
+    <record
+        id="action_print_detailed_activity_statement_xlsx"
+        model="ir.actions.report"
+    >
+        <field name="name">Detailed Activity Statement XLSX</field>
+        <field name="model">res.partner</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">p_s.report_detailed_activity_statement_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_file">report_detailed_activity_statement</field>
+    </record>
+</odoo>

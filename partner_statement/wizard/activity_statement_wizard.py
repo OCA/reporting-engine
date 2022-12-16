@@ -32,7 +32,12 @@ class ActivityStatementWizard(models.TransientModel):
 
     def _prepare_statement(self):
         res = super()._prepare_statement()
-        res.update({"date_start": self.date_start})
+        res.update(
+            {
+                "date_start": self.date_start,
+                "is_activity": True,
+            }
+        )
         return res
 
     def _print_report(self, report_type):
