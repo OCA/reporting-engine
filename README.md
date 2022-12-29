@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [report_qr](report_qr/) | 15.0.1.0.0 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 15.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 15.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 15.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 15.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 15.0.1.1.1 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 15.0.1.0.1 |  | Report xlsx helpers
