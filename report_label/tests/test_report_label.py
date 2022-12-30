@@ -24,4 +24,4 @@ class TestReportLabel(common.TransactionCase):
         )
         wizard = self.env[model].with_context(context).create({})
         report_action = wizard.print_report()
-        self.assertEquals(report_action["type"], "ir.actions.report")
+        self.assertEqual(report_action["type"], "ir.actions.report")
