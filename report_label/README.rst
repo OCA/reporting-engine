@@ -40,9 +40,12 @@ your self-adhesive label paper formats.
 
 .. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_label/static/description/configure_paperformat.png
 
+You'll need to create or reuse a QWeb template for you label.
+
+`By design <https://github.com/OCA/reporting-engine/blob/14.0/report_label/reports/report_label.xml#L34>`_, the variable used in this QWeb template must be named `record`.
+
 Go to **Settings > Technical > Analysis > Label Report** and create your label
-report, and its context action. You'll also need to create or reuse a
-QWeb template for you label.
+report, and its context action.
 
 .. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_label/static/description/configure_report_label.png
 
