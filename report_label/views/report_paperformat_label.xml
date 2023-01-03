@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record id="paperformat_label_view_form" model="ir.ui.view">
+    <record id="view_paperformat_label_view_form" model="ir.ui.view">
         <field name="model">report.paperformat.label</field>
-        <field name="inherit_id" ref="base.paperformat_view_form" />
-        <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <!-- Hide irrelevant fields -->
-            <field name="header_line" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="header_spacing" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="report_ids" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <!-- Add label paper format fields -->
-            <sheet position="inside">
-                <group name="label">
-                    <group name="label_size" string="Label Size" colspan="2">
-                        <field name="label_height" />
-                        <field name="label_width" />
+            <form string="Paper format configuration">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="paperformat_id" />
                     </group>
-                    <group name="label_padding" string="Label Padding">
-                        <field string="Top (mm)" name="label_padding_top" />
-                        <field string="Right (mm)" name="label_padding_right" />
-                        <field string="Bottom (mm)" name="label_padding_bottom" />
-                        <field string="Left (mm)" name="label_padding_left" />
+                    <group name="label">
+                        <group
+                            name="label_settings"
+                            string="Label Settings"
+                            colspan="2"
+                        >
+                            <field name="label_height" />
+                            <field name="label_width" />
+                            <field name="label_background_color" widget="color" />
+                        </group>
+                        <group name="label_padding" string="Label Padding">
+                            <field string="Top (mm)" name="label_padding_top" />
+                            <field string="Right (mm)" name="label_padding_right" />
+                            <field string="Bottom (mm)" name="label_padding_bottom" />
+                            <field string="Left (mm)" name="label_padding_left" />
+                        </group>
+                        <group name="label_margin" string="Label Margin">
+                            <field string="Top (mm)" name="label_margin_top" />
+                            <field string="Right (mm)" name="label_margin_right" />
+                            <field string="Bottom (mm)" name="label_margin_bottom" />
+                            <field string="Left (mm)" name="label_margin_left" />
+                        </group>
                     </group>
-                    <group name="label_margin" string="Label Margin">
-                        <field string="Top (mm)" name="label_margin_top" />
-                        <field string="Right (mm)" name="label_margin_right" />
-                        <field string="Bottom (mm)" name="label_margin_bottom" />
-                        <field string="Left (mm)" name="label_margin_left" />
-                    </group>
-                </group>
-            </sheet>
+                </sheet>
+            </form>
         </field>
     </record>
 
     <record id="paperformat_label_view_tree" model="ir.ui.view">
         <field name="model">report.paperformat.label</field>
         <field name="arch" type="xml">
-            <tree string="Label paper format configuration">
+            <tree>
                 <field name="name" />
+                <field name="paperformat_id" />
                 <field name="label_height" />
                 <field name="label_width" />
             </tree>

@@ -21,7 +21,7 @@
                             <field name="offset" />
                             <field name="model_id" invisible="1" />
                             <field name="label_paperformat_id" />
-                            <field name="label_template" invisible="1" />
+                            <field name="label_template_view_id" invisible="1" />
                         </group>
                     </group>
                 </sheet>
