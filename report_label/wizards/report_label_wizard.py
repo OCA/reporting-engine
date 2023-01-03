@@ -38,11 +38,13 @@ class ReportLabelWizard(models.TransientModel):
         required=True,
         default=lambda self: self.env.context.get("label_paperformat_id"),
     )
-    label_template = fields.Char(
-        "Label QWeb Template",
+
+    label_template_view_id = fields.Many2one(
+        string="Label QWeb Template",
+        comodel_name="ir.ui.view",
         readonly=True,
         required=True,
-        default=lambda self: self.env.context.get("label_template"),
+        default=lambda self: self.env.context.get("label_template_view_id"),
     )
     offset = fields.Integer(
         help="Number of labels to skip when printing",
@@ -59,7 +61,7 @@ class ReportLabelWizard(models.TransientModel):
         self.ensure_one()
         return {
             "label_format": self.label_paperformat_id.read()[0],
-            "label_template": self.label_template,
+            "label_template": self.label_template_view_id.key,
             "offset": self.offset,
             "res_model": self.model_id.model,
             "lines": [
@@ -79,30 +81,3 @@ class ReportLabelWizard(models.TransientModel):
             "paperformat_id": self.label_paperformat_id.paperformat_id.id,
         }
         return action
-
-
-class ReportLabelWizardLine(models.TransientModel):
-    _name = "report.label.wizard.line"
-    _description = "Report Label Wizard Line"
-    _order = "sequence"
-
-    wizard_id = fields.Many2one(
-        "report.label.wizard",
-        "Wizard",
-        required=True,
-        ondelete="cascade",
-    )
-    sequence = fields.Integer(default=10)
-    res_id = fields.Integer("Resource ID", required=True)
-    res_name = fields.Char(compute="_compute_res_name")
-    quantity = fields.Integer(default=1, required=True)
-
-    @api.depends("wizard_id.model_id", "res_id")
-    def _compute_res_name(self):
-        wizard = self.mapped("wizard_id")
-        wizard.ensure_one()
-        res_model = wizard.model_id.model
-        res_ids = self.mapped("res_id")
-        names_map = dict(self.env[res_model].browse(res_ids).name_get())
-        for rec in self:
-            rec.res_name = names_map.get(rec.res_id)

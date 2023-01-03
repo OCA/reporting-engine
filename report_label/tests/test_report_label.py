@@ -22,6 +22,6 @@ class TestReportLabel(common.TransactionCase):
                 "discard_logo_check": True,
             }
         )
-        wizard = self.env[model].with_context(context).create({})
+        wizard = self.env[model].with_context(**context).create({})
         report_action = wizard.print_report()
         self.assertEqual(report_action["type"], "ir.actions.report")

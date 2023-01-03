@@ -1,10 +1,27 @@
-Go to **Settings > Technical > Analysis > Label Paper Format** and create
-your self-adhesive label paper formats.
+**Configure your Report Label Paperformat**
 
-.. image:: ../static/description/configure_paperformat.png
+* Go to "Settings > Technical > Reporting > Label Paper Format"
 
-Go to **Settings > Technical > Analysis > Label Report** and create your label
-report, and its context action. You'll also need to create or reuse a
-QWeb template for you label.
+* Create your self-adhesive label paper formats.
 
-.. image:: ../static/description/configure_report_label.png
+You should reuse or create a Paperformat.
+
+.. image:: ../static/description/report_paperformat_label_form.png
+
+**Configure your Server action**
+
+* Go to "Settings > Technical > Actions > Server Actions"
+
+Create your label report :
+
+* In the 'Action to do' field, select 'Print Self-adhesive Labels'
+
+* In the 'Label Paper Format' field, select your label paper format previously created
+
+* In the 'Label Qweb Template' create or reuse a QWeb template for your label.
+
+.. image:: ../static/description/ir_actions_server.png
+
+**Importante Note**
+
+`By design <https://github.com/OCA/reporting-engine/blob/14.0/report_label/reports/report_label.xml#L34>`_, the variable used in this QWeb template must be named `record`.
