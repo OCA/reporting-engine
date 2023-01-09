@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="sql_export_mail_view_form" model="ir.ui.view">
+        <field name="model">sql.export</field>
+        <field name="inherit_id" ref="sql_export.sql_export_view_form" />
+        <field name="arch" type="xml">
+            <button name="export_sql_query" position="after">
+                <button
+                    name="create_cron"
+                    string="Create Cron"
+                    type="object"
+                    attrs="{'invisible': ['|', ('state', '=', 'draft'), ('mail_user_ids', '=', [(6, False, [])])]}"
+                />
+            </button>
+            <field name="copy_options" position="after">
+                <field
+                    name="mail_condition"
+                    attrs="{'invisible': [('cron_ids', '=', [(6, False, [])])]}"
+                />
+            </field>
+            <page name="page_sql" position="after">
+                <page name="page_mail" string="Mail">
+                        <group string="Users Notified by e-mail">
+                            <field
+                            name="mail_user_ids"
+                            nolabel="1"
+                            widget="many2many_tags"
+                            colspan="2"
+                        />
+                        </group>
+                        <group string="Crons">
+                            <field
+                            name="cron_ids"
+                            nolabel="1"
+                            colspan="2"
+                            domain="[('model_id', '=', 'sql.export')]"
+                        />
+                        </group>
+
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>
