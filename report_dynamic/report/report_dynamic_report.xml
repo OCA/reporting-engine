@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="report_dynamic_document" model="ir.actions.report">
+        <field name="name">Report Dynamic</field>
+        <field name="model">report.dynamic</field>
+        <field name="binding_model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >report_dynamic.report_dynamic_document_document</field>
+        <field
+            name="report_file"
+        >report_dynamic.report_dynamic_document_document</field>
+        <field name="binding_view_types">list,form</field>
+    </record>
+    <record id="report_dynamic_document_preview" model="ir.actions.report">
+        <field name="name">Report Dynamic Preview</field>
+        <field name="model">report.dynamic</field>
+        <field name="binding_model_id" ref="report_dynamic.model_report_dynamic" />
+        <field name="report_type">qweb-html</field>
+        <field
+            name="report_name"
+        >report_dynamic.report_dynamic_document_document</field>
+        <field
+            name="report_file"
+        >report_dynamic.report_dynamic_document_document</field>
+        <field name="binding_view_types">list,form</field>
+    </record>
+    <template id="report_dynamic_document_document">
+        <t t-name="report_dynamic.report_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="#{doc.get_template_xml_id()}">
+                        <div class="page">
+                            <h1 t-field="doc.name" />
+                            <h2>Report</h2>
+                            <h3>Content</h3>
+                            <t t-foreach="doc.section_ids" t-as="s">
+                                <t t-raw="s.dynamic_content" />
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

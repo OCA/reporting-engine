@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_dynamic_section_read,Read access on report_dynamic section to employees,model_report_dynamic_section,base.group_user,1,0,0,0
+access_report_dynamic_templ_crud,Full access on report_dynamic template records,model_report_dynamic,report_dynamic.group_report_dynamic_template_editors,1,1,1,1
+access_report_dynamic_report_crud,Full access on report_dynamic report records,model_report_dynamic,report_dynamic.group_report_dynamic_report_editors,1,1,1,1
+access_report_dynamic_report_r,Read access on report_dynamic report records,model_report_dynamic,report_dynamic.group_report_dynamic_report_users,1,0,0,0
+access_report_dynamic_section_full,Full access on report_dynamic section,model_report_dynamic_section,base.group_system,1,1,1,1
+access_report_dynamic_section_editors,Editor access on report_dynamic section,model_report_dynamic_section,report_dynamic.group_report_dynamic_report_editors,1,1,1,1
+access_report_dynamic_alias_full,Full access on report dynamic alias,model_report_dynamic_alias,base.group_system,1,1,1,1

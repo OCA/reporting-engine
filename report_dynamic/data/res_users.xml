@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Make admin a report dynamic admin by default-->
+    <record id="base.user_admin" model="res.users">
+        <field
+            name="groups_id"
+            eval="[(4,ref('group_report_dynamic_template_editors'))]"
+        />
+    </record>
+
+</odoo>

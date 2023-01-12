@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<odoo noupdate="0">
+    <record id="group_report_dynamic_template_editors" model="res.groups">
+        <field name="name">Edit dynamic report template</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+    <record id="group_report_dynamic_report_editors" model="res.groups">
+        <field name="name">Edit dynamic report</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+    <record id="group_report_dynamic_report_users" model="res.groups">
+        <field name="name">View dynamic report</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+</odoo>

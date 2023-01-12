@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- template for demo_report_1 -->
+    <record id="demo_template_1" model="report.dynamic">
+        <field name="name">Template for report</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="is_template">True</field>
+    </record>
+    <!-- Reports -->
+    <record id="demo_report_1" model="report.dynamic">
+        <field name="name">Demo report</field>
+        <field name="resource_ref" ref="base.res_partner_1" />
+        <field name="template_id" ref="demo_template_1" />
+    </record>
+    <!-- Sections -->
+    <record id="demo_section_1" model="report.dynamic.section">
+        <field name="name">A paragraph</field>
+        <field name="is_paragraph">True</field>
+        <field name="content">Some Black content</field>
+        <field name="condition_python">object.name.startswith("D")</field>
+        <field name="report_id" ref="demo_template_1" />
+    </record>
+    <record id="demo_section_2" model="report.dynamic.section">
+        <field name="name">Not a paragraph</field>
+        <field name="is_paragraph">False</field>
+        <field name="content">
+            ${object.name}
+            [H1] # 1
+            ${page}
+            [H2] # 1.1
+            ${page}
+            [H2] # 1.2
+            ${page}
+            [H2] # 1.3
+
+            [H3] # 1.3.1
+            ${page}
+            [H3] # 1.3.2
+            ${page}
+            [H3] # 1.3.3
+            ${page}
+            [H3] # 1.3.4
+            ${page}
+            [H1] # 2
+            ${page}
+            [H2] # 2.1
+            ${page}
+            [H2] # 2.2
+            ${page}
+            [H3] # 2.2.1
+            ${page}
+            [H1val].[H2val].[H3val] # 2.2.1
+        </field>
+        <field name="condition_python">object.name.endswith("r")</field>
+        <field name="report_id" ref="demo_template_1" />
+    </record>
+    <!-- Aliases -->
+    <record id="demo_alias_1" model="report.dynamic.alias">
+        <field name="expression_from">Black</field>
+        <field name="expression_to">White</field>
+    </record>
+    <record id="demo_alias_2" model="report.dynamic.alias">
+        <field name="expression_from">${object.name}</field>
+        <field name="expression_to">Name: ${object.name}</field>
+    </record>
+    <!-- Make Marc Demo a dynamic report reader-->
+    <record id="base.user_demo" model="res.users">
+        <field name="groups_id" eval="[(4,ref('group_report_dynamic_report_users'))]" />
+    </record>
+</odoo>
