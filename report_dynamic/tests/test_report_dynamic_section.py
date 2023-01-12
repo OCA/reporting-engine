@@ -2,39 +2,43 @@
 from odoo.tests import common
 
 
-class TestWizardReportDynamicSection(common.TransactionCase):
-    def setUp(self):
-        super(TestWizardReportDynamicSection, self).setUp()
-        self.rd_obj = self.env["report.dynamic"]
-        self.partner_wood_corner = self.env.ref("base.res_partner_1")
-        self.partner_deco_addict = self.env.ref("base.res_partner_2")
-        self.rd_template = self.rd_obj.create(
+class TestWizardReportDynamicSection(common.SavepointCase):
+    @classmethod
+    def setUp(cls):
+        super(TestWizardReportDynamicSection, cls).setUpClass()
+        cls.rd_obj = cls.env["report.dynamic"]
+        cls.partner_wood_corner = cls.env.ref("base.res_partner_1")
+        cls.partner_deco_addict = cls.env.ref("base.res_partner_2")
+        cls.rd_template = cls.rd_obj.create(
             {
                 "name": "Template for report",
-                "model_id": self.env.ref("base.model_res_partner").id,
+                "model_id": cls.env.ref("base.model_res_partner").id,
                 "is_template": True,
             }
         )
-        self.tpl_section = self.env["report.dynamic.section"].create(
+        cls.tpl_section = cls.env["report.dynamic.section"].create(
             {
-                "report_id": self.rd_template.id,
+                "report_id": cls.rd_template.id,
                 "content": "<p>Some Green content</p>",
                 "condition_python": "object.name.startswith('D')",
             }
         )
-        self.rd_report = self.rd_obj.new()
-        self.rd_report.template_id = self.rd_template.id
-        self.rd_report._onchange_template_id()
-        self.assertEquals(self.rd_report.model_id.model, "res.partner")
-        self.rd_report.res_id = self.partner_wood_corner.id
-        self.assertTrue(self.rd_report.resource_ref)
-        self.rd_report._onchange_template_id()
-        self.report_section = self.rd_report.section_ids
-        self.assertEquals(len(self.report_section), 1)
-        self.assertIn("D", self.report_section.condition_python)
-        self.alias = self.env["report.dynamic.alias"].create(
+        cls.rd_report = cls.rd_obj.new()
+        cls.rd_report.template_id = cls.rd_template.id
+        cls.rd_report._onchange_template_id()
+        cls.rd_report.res_id = cls.partner_wood_corner.id
+        cls.rd_report._onchange_template_id()
+        cls.report_section = cls.rd_report.section_ids
+
+        cls.alias = cls.env["report.dynamic.alias"].create(
             {"expression_from": "Green", "expression_to": "Blue"}
         )
+
+    def test_setup_class_data(self):
+        self.assertEquals(self.rd_report.model_id.model, "res.partner")
+        self.assertTrue(self.rd_report.resource_ref)
+        self.assertEquals(len(self.report_section), 1)
+        self.assertIn("D", self.report_section.condition_python)
 
     def test_action_view_sections(self):
         action = self.rd_template.action_view_sections()
