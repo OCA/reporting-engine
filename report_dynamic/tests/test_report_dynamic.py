@@ -4,35 +4,36 @@ from odoo.exceptions import ValidationError
 from odoo.tests import common
 
 
-class TestWizardReportDynamic(common.TransactionCase):
-    def setUp(self):
-        super(TestWizardReportDynamic, self).setUp()
-        self.partner_wood_corner = self.env.ref("base.res_partner_1")
-        self.partner_deco_addict = self.env.ref("base.res_partner_2")
-        self.rd_obj = self.env["report.dynamic"]
-        self.rd_template = self.rd_obj.create(
+class TestWizardReportDynamic(common.SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super(TestWizardReportDynamic, cls).setUpClass()
+        cls.partner_wood_corner = cls.env.ref("base.res_partner_1")
+        cls.partner_deco_addict = cls.env.ref("base.res_partner_2")
+        cls.rd_obj = cls.env["report.dynamic"]
+        cls.rd_template = cls.rd_obj.create(
             {
                 "name": "Template for report",
-                "model_id": self.env.ref("base.model_res_partner").id,
+                "model_id": cls.env.ref("base.model_res_partner").id,
                 "is_template": True,
             }
         )
-        self.rd_report = self.rd_obj.create(
+        cls.rd_report = cls.rd_obj.create(
             {
                 "name": "Demo report",
-                "template_id": self.rd_template.id,
-                "resource_ref": self.env.ref("base.res_partner_1"),
+                "template_id": cls.rd_template.id,
+                "resource_ref": cls.env.ref("base.res_partner_1"),
             }
         )
-        self.rd_template2 = self.rd_obj.create(
+        cls.rd_template2 = cls.rd_obj.create(
             {
                 "name": "Template without_children",
-                "model_id": self.env.ref("base.model_res_partner").id,
+                "model_id": cls.env.ref("base.model_res_partner").id,
                 "is_template": True,
             }
         )
-        self.section1 = self.env["report.dynamic.section"].create(
-            {"report_id": self.rd_template.id}
+        cls.section1 = cls.env["report.dynamic.section"].create(
+            {"report_id": cls.rd_template.id}
         )
 
     def test_create_report(self):
