@@ -36,3 +36,5 @@ A report XML record ::
         file="res_partner"
         attachment_use="False"
     />
+
+Update encoding with an appropriate value (e.g. cp932) as necessary.
