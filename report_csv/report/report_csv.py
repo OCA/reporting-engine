@@ -4,7 +4,8 @@
 import logging
 from io import StringIO
 
-from odoo import models
+from odoo import _, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -46,7 +47,18 @@ class ReportCSVAbstract(models.AbstractModel):
         file = csv.DictWriter(file_data, **self.csv_report_options())
         self.generate_csv_report(file, data, objs)
         file_data.seek(0)
-        return file_data.read(), "csv"
+        encoding = self._context.get("encoding")
+        if not encoding:
+            return file_data.read(), "csv"
+        error_handling = self._context.get("encode_error_handling")
+        if error_handling:
+            return file_data.read().encode(encoding, errors=error_handling), "csv"
+        try:
+            return file_data.read().encode(encoding), "csv"
+        except Exception as e:
+            raise UserError(
+                _("Failed to encode the data with the encoding set in the report.")
+            ) from e
 
     def csv_report_options(self):
         """
