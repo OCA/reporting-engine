@@ -6,6 +6,7 @@ from io import StringIO
 from unittest import mock
 
 from odoo import http
+from odoo.exceptions import UserError
 from odoo.tests import common
 from odoo.tools import mute_logger
 
@@ -69,6 +70,18 @@ class TestReport(common.TransactionCase):
         # Typical call from render
         objs = self.csv_report._get_objs_for_report(self.docs.ids, {})
         self.assertEqual(objs, self.docs)
+
+    def test_report_with_encoding(self):
+        report = self.report
+        report.write({"encoding": "cp932"})
+        rep = report._render_csv(self.report_name, self.docs.ids, {})
+        str_io = StringIO(rep[0].decode())
+        dict_report = list(csv.DictReader(str_io, delimiter=";", quoting=csv.QUOTE_ALL))
+        self.assertEqual(self.docs.name, dict(dict_report[0])["name"])
+
+        report.write({"encoding": "xyz"})
+        with self.assertRaises(UserError):
+            rep = report._render_csv(self.report_name, self.docs.ids, {})
 
 
 class TestCsvReport(common.HttpCase):
