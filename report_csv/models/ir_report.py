@@ -9,6 +9,14 @@ class ReportAction(models.Model):
     _inherit = "ir.actions.report"
 
     report_type = fields.Selection(selection_add=[("csv", "csv")])
+    encoding = fields.Char(
+        help="Encoding to be applied to the generated CSV file. e.g. cp932"
+    )
+    encode_error_handling = fields.Selection(
+        selection=[("ignore", "Ignore"), ("replace", "Replace")],
+        help="If nothing is selected, CSV export will fail with an error message when "
+        "there is a character that fail to be encoded.",
+    )
 
     @api.model
     def render_csv(self, docids, data):
@@ -17,7 +25,11 @@ class ReportAction(models.Model):
         if report_model is None:
             raise UserError(_("%s model was not found" % report_model_name))
         return report_model.with_context(
-            {"active_model": self.model}
+            {
+                "active_model": self.model,
+                "encoding": self.encoding,
+                "encode_error_handling": self.encode_error_handling,
+            }
         ).create_csv_report(docids, data)
 
     @api.model
