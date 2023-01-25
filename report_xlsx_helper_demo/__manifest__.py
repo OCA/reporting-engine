@@ -5,6 +5,7 @@
     'name': 'Report xlsx helpers - demo',
     'author': 'Noviat,'
               'Odoo Community Association (OCA)',
+    'website': "https://github.com/OCA/reporting-engine",
     'category': 'Reporting',
     'version': '12.0.1.1.0',
     'license': 'AGPL-3',

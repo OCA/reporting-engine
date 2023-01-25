@@ -12,7 +12,7 @@
     """,
     "author": "Creu Blanca,"
               "Odoo Community Association (OCA)",
-    "website": "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     "category": "Technical Settings",
     "depends": [
         "web",

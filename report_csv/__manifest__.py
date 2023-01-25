@@ -6,7 +6,7 @@
     'summary': "Base module to create csv report",
     'author': 'Creu Blanca,'
               'Odoo Community Association (OCA)',
-    'website': "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     'category': 'Reporting',
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',

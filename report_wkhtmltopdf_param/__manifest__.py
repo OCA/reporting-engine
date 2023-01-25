@@ -13,7 +13,7 @@
     "author": "Avoin.Systems,"
               "Eficent,"
               "Odoo Community Association (OCA)",
-    "website": "https://avoin.systems",
+    "website": "https://github.com/OCA/reporting-engine",
     "category": "Technical Settings",
     "depends": [
         "web",
