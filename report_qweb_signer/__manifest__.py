@@ -18,6 +18,7 @@
     ],
     "external_dependencies": {
         "bin": ['/usr/bin/java'],
+        "deb": ["default-jre-headless"],
     },
     "data": [
         "data/defaults.xml",
