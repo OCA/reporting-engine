@@ -15,7 +15,8 @@
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats',
-                   'PyPDF2']
+                   'PyPDF2'],
+        "deb": ["libreoffice"],
     },
     'data': [
         'security/ir.model.access.csv',
