@@ -3,7 +3,7 @@
 {
     'name': 'Py3o Report Engine - Fusion server support',
     'summary': 'Let the fusion server handle format conversion.',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     'category': 'Reporting',
     'license': 'AGPL-3',
     'author': 'XCG Consulting,'
