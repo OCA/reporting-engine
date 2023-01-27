@@ -23,6 +23,10 @@
     'qweb': [
         'static/src/xml/bi_view_editor.xml'
     ],
+    'external_dependencies': {
+        'python': ['pydot'],
+        'deb': ['graphviz']
+    },
     'post_load': 'post_load',
     'uninstall_hook': 'uninstall_hook',
     'installable': True,
