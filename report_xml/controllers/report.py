@@ -70,7 +70,7 @@ class ReportController(report.ReportController):
                     report_name = safe_eval(
                         report.print_report_name, {"object": obj, "time": time}
                     )
-                    filename = f"{report_name}.xml"
+                    filename = f"{report_name}.{report.xml_extension}"
             else:
                 data = url_parse(url).decode_query(cls=dict)
                 if "context" in data:
@@ -80,7 +80,7 @@ class ReportController(report.ReportController):
                 response = self.report_routes(
                     reportname, converter="xml", context=context, **data
                 )
-            filename = filename or f"{report.name}.xml"
+            filename = filename or f"{report.name}.{report.xml_extension}"
             response.headers.add("Content-Disposition", content_disposition(filename))
             return response
         except Exception as e:

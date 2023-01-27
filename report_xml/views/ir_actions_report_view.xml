@@ -24,6 +24,7 @@
                 >
                     <field name="xsd_schema" />
                     <field name="xml_encoding" />
+                    <field name="xml_extension" />
                     <field name="xml_declaration" />
                 </group>
             </xpath>

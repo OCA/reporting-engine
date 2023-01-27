@@ -29,6 +29,10 @@ class IrActionsReport(models.Model):
         help='Add `<?xml encoding="..." version="..."?>` at the start of final report '
         "file.",
     )
+    xml_extension = fields.Char(
+        default="xml",
+        help="Extension for XML Reports, by default is `xml`",
+    )
 
     @api.model
     def _render_qweb_xml(self, report_ref, res_ids, data=None):

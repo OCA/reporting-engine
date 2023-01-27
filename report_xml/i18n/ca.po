@@ -47,6 +47,11 @@ msgstr ""
 "Codificació per informes XML. Si no es selecciona res es farà servir UTF-8."
 
 #. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_extension
+msgid "Extension for XML Reports, by default is `xml`"
+msgstr ""
+
+#. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xsd_schema
 msgid ""
 "File with XSD Schema for checking content of result report. Can be empty if "
@@ -107,6 +112,11 @@ msgstr "Configuració informe XML"
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
 msgid "XSD Validation Schema"
 msgstr "Esquema de validació XSD"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_extension
+msgid "Xml Extension"
+msgstr ""
 
 #~ msgid "'Demo xml report'"
 #~ msgstr "'Informe XML de demo'"
