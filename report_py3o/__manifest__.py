@@ -10,12 +10,13 @@
     'author': 'XCG Consulting,'
               'ACSONE SA/NV,'
               'Odoo Community Association (OCA)',
-    'website': 'http://odoo.consulting/',
+    "website": "https://github.com/OCA/reporting-engine",
     'depends': ['web'],
     'external_dependencies': {
         'python': ['py3o.template',
                    'py3o.formats',
-                   'PyPDF2']
+                   'PyPDF2'],
+        "deb": ["libreoffice"],
     },
     'data': [
         'security/ir.model.access.csv',

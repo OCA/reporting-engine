@@ -171,7 +171,7 @@ class BveView(models.Model):
             try:
                 png_base64_image = base64.b64encode(graph.create_png())
                 bve_view.er_diagram_image = png_base64_image
-            except:
+            except Exception:
                 bve_view.er_diagram_image = False
 
     def _create_view_arch(self):

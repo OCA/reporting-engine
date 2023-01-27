@@ -16,6 +16,7 @@
             'py3o.template',
             'py3o.formats',
         ],
+        "deb": ["libreoffice"],
     },
     'demo': [
         "demo/report_py3o.xml",

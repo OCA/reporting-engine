@@ -8,7 +8,7 @@
     "summary": "Sign Qweb PDFs usign a PKCS#12 certificate",
     "version": "12.0.1.1.0",
     "category": "Reporting",
-    "website": "https://github.com/oca/reporting-engine",
+    "website": "https://github.com/OCA/reporting-engine",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -18,6 +18,7 @@
     ],
     "external_dependencies": {
         "bin": ['/usr/bin/java'],
+        "deb": ["default-jre-headless"],
     },
     "data": [
         "data/defaults.xml",
