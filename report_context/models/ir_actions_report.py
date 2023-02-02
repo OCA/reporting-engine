@@ -29,8 +29,8 @@ class IrActionsReport(models.Model):
         context.update(self.env.context)
         return context
 
-    def render(self, res_ids, data=None):
-        return super(IrActionsReport, self.with_context(self._get_context())).render(
+    def _render(self, res_ids, data=None):
+        return super(IrActionsReport, self.with_context(self._get_context()))._render(
             res_ids, data=data
         )
 
