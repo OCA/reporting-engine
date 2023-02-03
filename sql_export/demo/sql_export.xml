@@ -30,14 +30,14 @@ SELECT p.id
 FROM res_partner p
 LEFT JOIN res_partner_res_partner_category_rel rel
     ON rel.partner_id = p.id
-WHERE create_date &lt; %(x_date)s
-AND id = %(x_id)s
-AND rel.category_id in %(x_partner_categ_ids)s
+            WHERE create_date > %(Date)s
+AND id = %(ID)s
+AND rel.category_id in %(Categories)s
 ]]>
         </field>
         <field
-            eval="[(6, 0, [ref('date_field_variable_sql'), ref('integer_field_variable_sql'), ref('m2m_field_variable_sql')])]"
-            name="field_ids"
+            name="query_properties_definition"
+            eval="[{'name': '630eca383bc142e6', 'type': 'date', 'string': 'Date'}, {'name': '907ac618eccbab74', 'type': 'integer', 'string': 'ID'}, {'name': 'ec0556e22932334b', 'string': 'Categories', 'type': 'many2many', 'default': False, 'comodel': 'res.partner.category', 'domain': False}]"
         />
     </record>
 

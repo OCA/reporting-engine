@@ -113,10 +113,10 @@ class SqlExport(models.Model):
             else:
                 export.send_mail()
 
-    @api.constrains("field_ids", "mail_user_ids")
+    @api.constrains("query_properties_definition", "mail_user_ids")
     def check_no_parameter_if_sent_by_mail(self):
         for export in self:
-            if export.field_ids and export.mail_user_ids:
+            if export.query_properties_definition and export.mail_user_ids:
                 raise UserError(
                     _(
                         "It is not possible to execute and send a query "
