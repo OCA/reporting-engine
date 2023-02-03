@@ -14,5 +14,3 @@ See sql_request_abstract module to fix this issue.
 * checking SQL request by execution and rollback is disabled in this module
   since variables features has been introduced. This can be fixed by
   overloading _prepare_request_check_execution() function.
-
-* V16 : Restore export with parameters features.
