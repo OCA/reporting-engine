@@ -17,14 +17,17 @@
     ],
     "data": [
         "views/sql_export_view.xml",
-        "views/ir_model_fields_view.xml",
         "wizard/wizard_file_view.xml",
         "security/sql_export_security.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [
-        "demo/ir_model_fields.xml",
         "demo/sql_export.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "sql_export/static/src/scss/modal_properties.scss",
+        ]
+    },
     "installable": True,
 }
