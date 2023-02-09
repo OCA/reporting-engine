@@ -179,8 +179,9 @@ class KpiKpi(models.Model):
 
     def show_value(self):
         self.ensure_one()
-        action = self.env.ref("kpi_dashboard.kpi_kpi_act_window")
-        result = action.read()[0]
+        result = self.env["ir.actions.act_window"]._for_xml_id(
+            "kpi_dashboard.kpi_kpi_act_window"
+        )
         result.update(
             {
                 "res_id": self.id,
@@ -247,8 +248,9 @@ class KpiKpiHistory(models.Model):
 
     def show_form(self):
         self.ensure_one()
-        action = self.env.ref("kpi_dashboard.kpi_kpi_history_act_window")
-        result = action.read()[0]
+        result = self.env["ir.actions.act_window"]._for_xml_id(
+            "kpi_dashboard.kpi_kpi_history_act_window"
+        )
         result.update(
             {
                 "res_id": self.id,
