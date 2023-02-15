@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 
-from odoo import api, models
+from odoo import _, api, models
 
 from .outstanding_statement import OutstandingStatement
 
@@ -118,6 +118,7 @@ class ActivityStatement(models.AbstractModel):
     def _display_activity_lines_sql_q1(
         self, partners, date_start, date_end, account_type
     ):
+        payment_ref = _("Payment")
         return str(
             self._cr.mogrify(
                 """
@@ -130,11 +131,9 @@ class ActivityStatement(models.AbstractModel):
                 CASE
                     WHEN (aj.type IN ('sale', 'purchase')) AND l.name IS NOT NULL
                         THEN l.ref
-                    WHEN aj.type IN ('sale', 'purchase') AND l.name IS NULL
-                        THEN m.ref
                     WHEN (aj.type in ('bank', 'cash'))
-                        THEN 'Payment'
-                    ELSE ''
+                        THEN %(payment_ref)s
+                    ELSE m.ref
                 END as case_ref,
                 l.blocked, l.currency_id, l.company_id,
                 sum(CASE WHEN (l.currency_id is not null AND l.amount_currency > 0.0)
