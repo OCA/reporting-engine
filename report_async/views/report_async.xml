@@ -73,6 +73,8 @@
                             <field name="allow_async"/>
                             <field name="email_notify"
                               attrs="{'invisible': [('allow_async', '=', False)]}"/>
+                            <field name="schedule_time" placeholder="23:30"
+                              attrs="{'invisible': [('allow_async', '=', False)]}"/>
                         </group>
                         <group>
                             <field name="job_status"
