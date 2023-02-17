@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_bi_sql_view_tree" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_tree"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle" />
+            </field>
+            <field name="name" position="after">
+                <field name="technical_name" />
+                <field name="size" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_bi_sql_view_form" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_form"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="button_set_draft"
+                    type="object"
+                    states="model_valid,ui_valid"
+                    string="Set to Draft"
+                    groups="sql_request_abstract.group_sql_request_manager"
+                    confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"
+                />
+
+                <button
+                    name="button_create_sql_view_and_model"
+                    type="object"
+                    states="sql_valid"
+                    string="Create SQL Elements"
+                    class="oe_highlight"
+                    help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"
+                />
+                <button
+                    name="button_update_model_access"
+                    type="object"
+                    string="Update Model Access"
+                    class="oe_highlight"
+                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('has_group_changed', '=', False)]}"
+                    help="Update Model Access. Required if you changed groups list after having created the model"
+                />
+                <button
+                    name="button_create_ui"
+                    type="object"
+                    states="model_valid"
+                    string="Create UI"
+                    class="oe_highlight"
+                    help="This will create Odoo View, Action and Menu"
+                />
+                <button
+                    name="button_refresh_materialized_view"
+                    type="object"
+                    string="Refresh"
+                    help="Refresh Materialized View"
+                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                />
+                <button
+                    name="button_open_view"
+                    type="object"
+                    string="Open View"
+                    states="ui_valid"
+                    class="oe_highlight"
+                />
+            </xpath>
+            <group name="group_main_info" position="inside">
+                <group>
+                    <field
+                        name="technical_name"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"
+                    />
+                    <field name="view_name" />
+                    <field name="view_order" />
+                    <field name="is_materialized" />
+                    <field
+                        name="size"
+                        attrs="{'invisible': ['|', ('state', '=', 'draft'), ('is_materialized', '=', False)]}"
+                    />
+                    <field
+                        name="cron_id"
+                        attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                    />
+                    <field name="option_context_field" />
+                </group>
+            </group>
+            <page name="page_sql" position="after">
+                <page
+                    string="SQL Fields"
+                    attrs="{'invisible': [('state', '=', 'draft')]}"
+                >
+                    <field
+                        name="bi_sql_view_field_ids"
+                        nolabel="1"
+                        colspan="4"
+                        attrs="{'readonly': [('state', '!=', 'sql_valid')]}"
+                    >
+                        <tree
+                            editable="bottom"
+                            decoration-info="field_description==False"
+                        >
+                            <field name="sequence" widget="handle" />
+                            <field name="name" />
+                            <field name="sql_type" />
+                            <field name="field_description" />
+                            <field name="ttype" />
+                            <field
+                                name="many2one_model_id"
+                                attrs="{
+                                'invisible': [('ttype', '!=', 'many2one')],
+                                'required': [('ttype', '=', 'many2one')],
+                            }"
+                            />
+                            <field
+                                name="selection"
+                                attrs="{
+                                'invisible': [('ttype', '!=', 'selection')],
+                                'required': [
+                                    ('field_description', '!=', False),
+                                    ('ttype', '=', 'selection')]}"
+                            />
+                            <field
+                                name='group_operator'
+                                optional="hide"
+                                attrs="{
+                                'invisible': [('ttype', 'not in', ('float', 'integer'))]}"
+                            />
+                            <field
+                                name="is_index"
+                                optional="hide"
+                                attrs="{'invisible': [('field_description', '=', False)]}"
+                            />
+                            <field
+                                name="graph_type"
+                                attrs="{'invisible': [('field_description', '=', False)]}"
+                            />
+                            <field
+                                name="is_group_by"
+                                optional="hide"
+                                attrs="{'invisible': [('field_description', '=', False)]}"
+                            />
+                            <field
+                                name="tree_visibility"
+                                optional="hide"
+                                attrs="{'invisible': [('field_description', '=', False)]}"
+                            />
+                            <field
+                                name="field_context"
+                                attrs="{
+                                    'invisible': [('field_description', '=', False)],
+                                    'column_invisible': [('parent.option_context_field', '=', False)],
+                                }"
+                            />
+                        </tree>
+                    </field>
+                </page>
+            </page>
+            <page name="page_security" position="inside">
+                <group string="Rule Definition">
+                    <field
+                        name="domain_force"
+                        nolabel="1"
+                        colspan="2"
+                        widget="ace"
+                        options="{'mode': 'python'}"
+                    />
+                </group>
+            </page>
+            <!-- user_ids are not used for the time being in bi_sql_editor module -->
+            <group name="group_allowed_users" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
+            <field name="user_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <page name="page_security" position="after">
+                        <page string="Action Settings">
+                            <group string="Computed Context">
+                                <field
+                            name="computed_action_context"
+                            nolabel="1"
+                            colspan="2"
+                        />
+                            </group>
+                            <group string="Custom Context">
+                                <field
+                            name="action_context"
+                            nolabel="1"
+                            colspan="2"
+                            widget="ace"
+                            options="{'mode': 'python'}"
+                        />
+                            </group>
+                        </page>
+                        <page string="Extras Information">
+                            <group>
+                                <group string="Model">
+                                    <field name="model_name" />
+                                    <field
+                                name="model_id"
+                                attrs="{'invisible': [('state', '=', 'draft')]}"
+                            />
+                                </group>
+                                <group string="User Interface">
+                                    <field name="tree_view_id" />
+                                    <field name="graph_view_id" />
+                                    <field name="pivot_view_id" />
+                                    <field name="search_view_id" />
+                                    <field name="action_id" />
+                                    <field name="menu_id" />
+                                </group>
+                            </group>
+                        </page>
+
+            </page>
+        </field>
+    </record>
+
+    <record id="action_bi_sql_view" model="ir.actions.act_window">
+        <field name="name">SQL Views</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bi.sql.view</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_bi_sql_view"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration"
+        groups="sql_request_abstract.group_sql_request_manager"
+        action="action_bi_sql_view"
+    />
+
+    <!-- Menu that will contain all the SQL report generated by this module -->
+    <menuitem
+        id="menu_bi_sql_editor"
+        name="SQL Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        groups="sql_request_abstract.group_sql_request_user"
+        sequence="5"
+    />
+
+</odoo>
