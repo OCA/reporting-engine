@@ -1,13 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * bi_sql_editor
+# 	* bi_sql_editor
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 11:45+0000\n"
-"PO-Revision-Date: 2022-10-26 11:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,18 +14,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%(model_name)s Access %(full_name)s"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s (Copy)"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Access %s"
@@ -36,6 +37,11 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction
+msgid "Action Needed"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -58,6 +64,11 @@ msgstr ""
 msgid ""
 "Are you sure you want to set to draft this SQL View. It will delete the "
 "materialized view, and all the previous mapping realized with the columns"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
+msgid "Attachment Count"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -85,6 +96,13 @@ msgstr ""
 msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the"
 " behaviour, choose an alternate Group Operator"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__option_context_field
+msgid ""
+"Check this box if you want to add a context column in the field list view. "
+"Custom Context will be inserted in the created views."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -118,6 +136,13 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Computed Context"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_context
+msgid ""
+"Context value that will be inserted for this field in all the views. "
+"Important note : please write a context with single quote."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -189,6 +214,11 @@ msgid "Extras Information"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_context
+msgid "Field Context"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "Field Description"
 msgstr ""
@@ -201,6 +231,16 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_ir_model_fields
 msgid "Fields"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_partner_ids
+msgid "Followers (Partners)"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -243,9 +283,25 @@ msgid "Has Group Changed"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__id
 msgid "ID"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -256,6 +312,11 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__invisible
 msgid "Invisible"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_is_follower
+msgid "Is Follower"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -292,6 +353,11 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
 msgid "Materialized Text"
 msgstr ""
@@ -304,6 +370,16 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
 msgid "Measure"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_ids
+msgid "Messages"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -329,11 +405,37 @@ msgid "Name"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid ""
 "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__note
+msgid "Note"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error_counter
+msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -382,6 +484,7 @@ msgid "Odoo Tree View"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
@@ -418,6 +521,7 @@ msgid "Refresh Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Refresh Materialized View %s"
@@ -434,6 +538,12 @@ msgid "Rule Definition"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid ""
@@ -535,6 +645,13 @@ msgid "Technical Name"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups"
+" has changed, and that according access should be updated."
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "This will be used as the name of the Odoo field, displayed for users"
 msgstr ""
@@ -582,6 +699,11 @@ msgid ""
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__option_context_field
+msgid "Use Context Field"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
 msgstr ""
@@ -602,6 +724,7 @@ msgid "Views, Action and Menu Created"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
 #, python-format
@@ -609,6 +732,7 @@ msgid "You can not create indexes on non materialized views"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid ""
