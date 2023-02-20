@@ -17,7 +17,7 @@ class IrActionsReport(models.Model):
         set_viewport_size=False,
     ):
         # noinspection PyUnresolvedReferences,PyProtectedMember
-        command_args = super(IrActionsReport, self)._build_wkhtmltopdf_args(
+        command_args = super()._build_wkhtmltopdf_args(
             paperformat_id, landscape, specific_paperformat_args, set_viewport_size
         )
 
