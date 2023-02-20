@@ -1,5 +1,9 @@
-py3o.template
-py3o.formats
-genshi>=0.7
+# generated from manifests external_dependencies
 cryptography
 endesive
+lxml
+py3o.formats
+py3o.template
+PyPDF2
+xlrd
+xlsxwriter
