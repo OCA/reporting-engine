@@ -27,7 +27,7 @@ addon | version | maintainers | summary
 [kpi_dashboard](kpi_dashboard/) | 14.0.1.1.1 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
 [kpi_dashboard_bokeh](kpi_dashboard_bokeh/) | 14.0.1.0.0 |  | Create dashboards using bokeh
 [report_async](report_async/) | 14.0.1.1.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
-[report_context](report_context/) | 14.0.1.0.1 |  | Adding context to reports
+[report_context](report_context/) | 14.0.1.0.2 |  | Adding context to reports
 [report_csv](report_csv/) | 14.0.1.0.0 |  | Base module to create csv report
 [report_label](report_label/) | 14.0.1.0.2 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
 [report_layout_config](report_layout_config/) | 14.0.1.0.0 |  | Add possibility to easily modify the global report layout
