@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+        <record model="ir.rule" id="base.ir_ui_view_custom_personal">
+            <field name="name">ir.ui.view_custom rule</field>
+            <field name="model_id" ref="model_ir_ui_view_custom" />
+            <field
+            name="domain_force"
+        >['|', ('user_id','=',user.id), ('user_id', '=', False)]</field>
+        </record>
+
+        <!-- normal user can only change their own views -->
+        <record model="ir.rule" id="ir_ui_view_custom_personal_normal_users">
+            <field name="name">ir.ui.view_custom rule</field>
+            <field name="model_id" ref="model_ir_ui_view_custom" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]" />
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+        </record>
+        <!-- Administration/Settings can act on global custom views -->
+        <record model="ir.rule" id="ir_ui_view_custom_personal_sytem_users">
+            <field name="name">ir.ui.view_custom rule</field>
+            <field name="model_id" ref="model_ir_ui_view_custom" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]" />
+            <field
+            name="domain_force"
+        >['|', ('user_id','=',user.id), ('user_id', '=', False)]</field>
+        </record>
+
+</odoo>
