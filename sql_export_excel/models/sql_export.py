@@ -110,6 +110,9 @@ class SqlExport(models.Model):
             col_position = 1
         for index, row in enumerate(res, row_position):
             for col, val in enumerate(row, col_position):
+                # manage jsonb field as dict are not writable on the excel cell
+                if isinstance(val, dict):
+                    val = str(val)
                 ws.cell(row=index, column=col).value = val
         output = BytesIO()
         wb.save(output)
