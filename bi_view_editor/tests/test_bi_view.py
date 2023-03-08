@@ -15,13 +15,15 @@ class TestBiViewEditor(TransactionCase):
     def setUp(self):
         def _get_models(model_name_list):
             return (
-                self.env["ir.model"].search([("model", "=", name)])
+                self.env["ir.model"].sudo().search([("model", "=", name)])
                 for name in model_name_list
             )
 
         def _get_fields(model_field_list):
             return (
-                self.env["ir.model.fields"].search(
+                self.env["ir.model.fields"]
+                .sudo()
+                .search(
                     [("model", "=", model_field[0]), ("name", "=", model_field[1])],
                     limit=1,
                 )
@@ -117,8 +119,10 @@ class TestBiViewEditor(TransactionCase):
         self.assertGreater(len(fields), 0)
 
     def test_02_get_join_nodes(self):
-        field_res_users = self.env["ir.model.fields"].search(
-            [("name", "=", "login"), ("model", "=", "res.users")], limit=1
+        field_res_users = (
+            self.env["ir.model.fields"]
+            .sudo()
+            .search([("name", "=", "login"), ("model", "=", "res.users")], limit=1)
         )
         field_data = [
             {
@@ -223,8 +227,10 @@ class TestBiViewEditor(TransactionCase):
 
         # create bve object
         bi_view.action_create()
-        model = self.env["ir.model"].search(
-            [("model", "=", "x_bve.testview4"), ("name", "=", "Test View4")]
+        model = (
+            self.env["ir.model"]
+            .sudo()
+            .search([("model", "=", "x_bve.testview4"), ("name", "=", "Test View4")])
         )
         self.assertEqual(len(model), 1)
 
@@ -367,12 +373,16 @@ class TestBiViewEditor(TransactionCase):
 
     @odoo.tests.tagged("post_install", "-at_install")
     def test_19_field_selection(self):
-        field = self.env["ir.model.fields"].search(
-            [
-                ("model", "=", self.company_model_name),
-                ("name", "=", "base_onboarding_company_state"),
-            ],
-            limit=1,
+        field = (
+            self.env["ir.model.fields"]
+            .sudo()
+            .search(
+                [
+                    ("model", "=", self.company_model_name),
+                    ("name", "=", "base_onboarding_company_state"),
+                ],
+                limit=1,
+            )
         )
         selection_data = [
             {
