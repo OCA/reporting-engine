@@ -18,10 +18,20 @@
     "data": [
         "security/ir.model.access.csv",
         "security/rules.xml",
-        "templates/assets_template.xml",
         "views/bve_view.xml",
     ],
-    "qweb": ["static/src/xml/bi_view_editor.xml"],
+    "assets": {
+        "web.assets_backend": [
+            "bi_view_editor/static/src/css/bve.css",
+            "bi_view_editor/static/src/js/bi_view_editor.js",
+            "bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js",
+            "bi_view_editor/static/src/js/bi_view_editor.ModelList.js",
+            "bi_view_editor/static/src/js/bi_view_editor.FieldList.js",
+        ],
+        "web.assets_qweb": [
+            "bi_view_editor/static/src/xml/bi_view_editor.xml",
+        ],
+    },
     "uninstall_hook": "uninstall_hook",
     "installable": True,
 }

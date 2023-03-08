@@ -393,7 +393,7 @@ class BveView(models.Model):
         if self.state != "created":
             return
         self = self.sudo()
-        model = self.env["ir.model"].search([("model", "=", self.model_name)])
+        model = self.env["ir.model"].sudo().search([("model", "=", self.model_name)])
         IrTranslation = self.env["ir.translation"]
         IrTranslation.translate_fields("ir.model", model.id)
         for field in model.field_id:

@@ -19,9 +19,10 @@ class WizardModelMenuCreate(models.TransientModel):
                     "action": "ir.actions.act_window,%d" % (bve_view.action_id,),
                 }
             )
-            self.env["ir.model.data"].create(
+            self.env["ir.model.data"].sudo().create(
                 {
-                    "name": bve_view.name + ",id=" + str(menu.id),
+                    "name": bve_view.name
+                    and str(bve_view.name).replace(" ", "") + ",id=" + str(menu.id),
                     "noupdate": True,
                     "module": "bi_view_editor",
                     "model": "ir.ui.menu",

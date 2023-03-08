@@ -42,11 +42,11 @@
                         >
                             Use the field
                             <b>
-                                <t t-esc="choice.model_name" />
+                                <t t-out="choice.model_name" />
                             </b>
                             <i class="fa fa-caret-right" />
                             <b>
-                                <t t-esc="choice.description" />
+                                <t t-out="choice.description" />
                             </b>
                             <span class="badge">new</span>
                         </li>
@@ -58,11 +58,11 @@
                         >
                             Use the field
                             <b>
-                                <t t-esc="choice.model_name" />
+                                <t t-out="choice.model_name" />
                             </b>
                             <i class="fa fa-caret-right" />
                             <b>
-                                <t t-esc="choice.description" />
+                                <t t-out="choice.description" />
                             </b>
                         </li>
                     </t>
@@ -86,14 +86,14 @@
     <t t-name="bi_view_editor.ModelListItem">
         <div class="class-container">
             <div class="class" t-attf-title="#{model}" t-attf-data-id="#{id}">
-                <t t-esc="name" />
+                <t t-out="name" />
             </div>
         </div>
     </t>
     <!-- ModelListFieldItem-->
     <t t-name="bi_view_editor.ModelListFieldItem">
         <div class="field" t-attf-title="#{name}" t-attf-data-id="#{name}">
-            <t t-esc="description" />
+            <t t-out="description" />
         </div>
     </t>
     <!-- FieldList -->
@@ -190,7 +190,7 @@
                 />
             </td>
             <td>
-                <t t-esc="field.model_name" />
+                <t t-out="field.model_name" />
             </td>
             <td>
                 <span
@@ -233,20 +233,20 @@
                 />
                 <t t-if="field.join_node > field.table_alias">
                     <b>
-                        <t t-esc="field.model_name" />
+                        <t t-out="field.model_name" />
                     </b>
                     <i class="fa fa-caret-right" />
                     <small>
-                        <t t-esc="field.description" />
+                        <t t-out="field.description" />
                     </small>
                 </t>
                 <t t-else="">
                     <small>
-                        <t t-esc="field.description" />
+                        <t t-out="field.description" />
                     </small>
                     <i class="fa fa-caret-left" />
                     <b>
-                        <t t-esc="field.model_name" />
+                        <t t-out="field.model_name" />
                     </b>
                 </t>
                 <span

@@ -69,7 +69,9 @@ class IrModel(models.Model):
         count_check += _check_contains(model_model)
         count_check += _check_unknown(model_name)
         if not count_check:
-            return self.env["ir.model.access"].check(model["model"], "read", False)
+            return (
+                self.env["ir.model.access"].sudo().check(model["model"], "read", False)
+            )
         return False
 
     def get_model_list(self, model_table_map):
