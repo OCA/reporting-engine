@@ -11,27 +11,27 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 16:14+0000\n"
-"PO-Revision-Date: 2021-03-16 13:45+0000\n"
-"Last-Translator: Ana Suárez <ana.suarez@qubiq.es>\n"
+"PO-Revision-Date: 2023-07-28 22:12+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #, python-format
 msgid "%sStatement between %s and %s in %s"
-msgstr ""
+msgstr "%sDeclaración entre %s y %s en %s"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "%sStatement up to %s in %s"
-msgstr ""
+msgstr "%sDeclaración hasta %s en %s"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/report_statement_common.py:0
@@ -96,6 +96,11 @@ msgid ""
 "overdue.\n"
 "                    </span>"
 msgstr ""
+"<span class=\"o_form_label\">En el informe se pueden mostrar detalles de "
+"antigüedad, expresados en cubos de antigüedad.\n"
+"                    para que el socio pueda revisar cuánto está abierto, "
+"vencido o atrasado.\n"
+"                               </span>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
@@ -114,6 +119,19 @@ msgid ""
 "                <br/>\n"
 "                <br/>"
 msgstr ""
+"<span class=\"o_form_label\">La declaración de actividad proporciona "
+"detalles de toda la actividad en\n"
+"                    las cuentas por cobrar y por pagar de un socio entre dos "
+"fechas seleccionadas. Esto incluye todas las facturas,\n"
+"                    devoluciones y pagos. Cualquier saldo pendiente con "
+"fecha anterior al estado de cuenta elegido\n"
+"                    período aparecerá como un saldo adelantado en la parte "
+"superior del estado de cuenta. la lista es\n"
+"                    se muestra en orden cronológico y se divide por monedas."
+"\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
@@ -129,6 +147,16 @@ msgid ""
 "                <br/>\n"
 "                <br/>"
 msgstr ""
+"<span class=\"o_form_label\">La declaración pendiente proporciona detalles "
+"de todos los socios pendientes\n"
+"        cuentas por cobrar y por pagar hasta una fecha determinada. Esto "
+"incluye todas las facturas no pagadas, no reclamadas\n"
+"        devoluciones y pagos pendientes. La lista se muestra en orden "
+"cronológico y se\n"
+"        dividido por monedas.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -177,12 +205,12 @@ msgstr "Asistente de Estado de la cuenta"
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_report_p_s_report_activity_statement_xlsx
 msgid "Activity Statement XLSL Report"
-msgstr ""
+msgstr "Informe XLSL de la declaración de actividad"
 
 #. module: partner_statement
 #: model:ir.actions.report,name:partner_statement.action_print_activity_statement_xlsx
 msgid "Activity Statement XLSX"
-msgstr ""
+msgstr "Declaración de actividad XLSX"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
@@ -223,7 +251,7 @@ msgstr "Informe de antigüedad a"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Aging Report at %s in %s"
-msgstr ""
+msgstr "Informe de antigüedad %s en %s"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -385,7 +413,7 @@ msgstr "Exportar a PDF"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "Export XLSX"
-msgstr ""
+msgstr "Exportar XLSX"
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__id
@@ -476,12 +504,12 @@ msgstr "Asistente de estado pendientes"
 #. module: partner_statement
 #: model:ir.model,name:partner_statement.model_report_p_s_report_outstanding_statement_xlsx
 msgid "Outstanding Statement XLSL Report"
-msgstr ""
+msgstr "Informe XLSL de extractos pendientes"
 
 #. module: partner_statement
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement_xlsx
 msgid "Outstanding Statement XLSX"
-msgstr ""
+msgstr "Declaración pendiente XLSX"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
@@ -525,7 +553,7 @@ msgstr "Por cobrar"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Reference Number"
-msgstr ""
+msgstr "Número de referencia"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -561,7 +589,7 @@ msgstr "Informe entre"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Statement from:"
-msgstr ""
+msgstr "Declaración desde:"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -574,14 +602,14 @@ msgstr "Estado de la cuenta"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Statement of Account from %s"
-msgstr ""
+msgstr "Declaración de cuenta desde %s"
 
 #. module: partner_statement
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Statement to:"
-msgstr ""
+msgstr "Declaración hasta:"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_document
@@ -614,12 +642,12 @@ msgstr "Usar pendientes en el estado de la cuenta"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "VAT:"
-msgstr ""
+msgstr "IVA:"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document

@@ -388,6 +388,8 @@ class DetailedActivityStatementXslx(models.AbstractModel):
             sheet.set_column(0, i, 20)
 
     def generate_xlsx_report(self, workbook, data, objects):
+        lang = objects.lang or self.env.user.partner_id.lang
+        self = self.with_context(lang=lang)
         report_model = self.env["report.partner_statement.detailed_activity_statement"]
         self._define_formats(workbook)
         FORMATS["format_distributed"] = workbook.add_format({"align": "vdistributed"})
