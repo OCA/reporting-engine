@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,6 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: bi_view_editor
+#: code:addons/bi_view_editor/models/bve_view.py:0
+#, python-format
+msgid ""
+"%(msg_title)s\n"
+"\n"
+"%(msg_details)s\n"
+"%(group_list)s"
+msgstr ""
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -172,8 +182,6 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__display_name
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__display_name
-#: model:ir.model.fields,field_description:bi_view_editor.field_ir_model__display_name
-#: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -210,7 +218,7 @@ msgstr ""
 #: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid ""
-"Field %s/%s is duplicated.\n"
+"Field %(field_model)s/%(field_name)s is duplicated.\n"
 "Please remove the duplications."
 msgstr ""
 
@@ -227,7 +235,7 @@ msgstr ""
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
-msgid "Following fields are missing: {}."
+msgid "Following fields are missing: %(missing_fields)s."
 msgstr ""
 
 #. module: bi_view_editor
@@ -251,8 +259,6 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__id
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__id
-#: model:ir.model.fields,field_description:bi_view_editor.field_ir_model__id
-#: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create__id
 msgid "ID"
 msgstr ""
 
@@ -294,8 +300,6 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view____last_update
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line____last_update
-#: model:ir.model.fields,field_description:bi_view_editor.field_ir_model____last_update
-#: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create____last_update
 msgid "Last Modified on"
 msgstr ""
 
