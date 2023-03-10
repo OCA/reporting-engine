@@ -63,6 +63,7 @@ class KpiDashboard(models.Model):
     def read_dashboard(self):
         self.ensure_one()
         result = {
+            "id": self.id,
             "name": self.name,
             "width": self.width,
             "item_ids": self.item_ids.read_dashboard(),

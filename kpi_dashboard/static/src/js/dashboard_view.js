@@ -23,7 +23,7 @@ odoo.define("kpi_dashboard.DashboardView", function (require) {
             Model: DashboardModel,
         }),
         multi_record: false,
-        searchable: false,
+        withSearchBar: false,
         init: function () {
             this._super.apply(this, arguments);
             this.controllerParams.mode = "readonly";
