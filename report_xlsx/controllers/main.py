@@ -52,6 +52,7 @@ class ReportController(ReportController):
     def report_download(self, data, context=None, token=None):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
+        reportname = "???"
         try:
             if report_type == "xlsx":
                 reportname = url.split("/report/xlsx/")[1].split("?")[0]
