@@ -26,11 +26,8 @@ class ReportFillPDFAbstract(models.AbstractModel):
 
     def fill_report(self, docids, data):
         objs = self.env[self.env.context.get("active_model")].browse(docids)
-        return (
-            self.fill_pdf_form(
-                self.get_form(data, objs), self.get_document_values(data, objs)
-            ),
-            "pdf",
+        return self.fill_pdf_form(
+            self.get_form(data, objs), self.get_document_values(data, objs)
         )
 
     @api.model
