@@ -1,4 +1,5 @@
 # © 2016 Therp BV <http://therp.nl>
+# Copyright 2023 Onestein - Anjeel Haria
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from base64 import b64decode
 from io import BytesIO
@@ -41,12 +42,14 @@ class Report(models.Model):
         "You have access to variables `env` and `docs`",
     )
 
-    def _render_qweb_pdf(self, res_ids=None, data=None):
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
             return super(Report, self.with_context(res_ids=res_ids))._render_qweb_pdf(
-                res_ids=res_ids, data=data
+                report_ref, res_ids=res_ids, data=data
             )
-        return super(Report, self)._render_qweb_pdf(res_ids=res_ids, data=data)
+        return super(Report, self)._render_qweb_pdf(
+            report_ref, res_ids=res_ids, data=data
+        )
 
     def pdf_has_usable_pages(self, numpages):
         if numpages < 1:
@@ -63,6 +66,7 @@ class Report(models.Model):
     def _run_wkhtmltopdf(
         self,
         bodies,
+        report_ref=False,
         header=None,
         footer=None,
         landscape=False,
@@ -71,6 +75,7 @@ class Report(models.Model):
     ):
         result = super(Report, self)._run_wkhtmltopdf(
             bodies,
+            report_ref=report_ref,
             header=header,
             footer=footer,
             landscape=landscape,
@@ -79,15 +84,23 @@ class Report(models.Model):
         )
 
         docids = self.env.context.get("res_ids", False)
+        report_sudo = self._get_report(report_ref)
         watermark = None
-        if self.pdf_watermark:
-            watermark = b64decode(self.pdf_watermark)
-        elif self.use_company_watermark and self.env.company.pdf_watermark:
+        if self.pdf_watermark or report_sudo.pdf_watermark:
+            watermark = b64decode(self.pdf_watermark or report_sudo.pdf_watermark)
+        elif (
+            self.use_company_watermark or report_sudo.use_company_watermark
+        ) and self.env.company.pdf_watermark:
             watermark = b64decode(self.env.company.pdf_watermark)
         elif docids:
             watermark = safe_eval(
-                self.pdf_watermark_expression or "None",
-                dict(env=self.env, docs=self.env[self.model].browse(docids)),
+                self.pdf_watermark_expression
+                or report_sudo.pdf_watermark_expression
+                or "None",
+                dict(
+                    env=self.env,
+                    docs=self.env[self.model or report_sudo.model].browse(docids),
+                ),
             )
             if watermark:
                 watermark = b64decode(watermark)
