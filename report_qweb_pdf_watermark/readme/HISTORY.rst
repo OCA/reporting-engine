@@ -21,3 +21,8 @@
 
 * [MIG] Migration to V15.
 * Define pdf watermark in company settings
+
+16.0.1.0.0 (2023-03-13)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [MIG] Migration to V16.
