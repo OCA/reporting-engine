@@ -1,10 +1,10 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * report_label
+# 	* report_label
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,18 +21,8 @@ msgid "Action To Do"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__report_ids
-msgid "Associated reports"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Bottom (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__margin_bottom
-msgid "Bottom Margin (mm)"
 msgstr ""
 
 #. module: report_label
@@ -55,23 +45,6 @@ msgid "Created on"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__custom_params
-msgid "Custom Parameters"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,help:report_label.field_report_paperformat_label__custom_params
-msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__default
-msgid "Default paper format ?"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_report__display_name
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_server__display_name
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__display_name
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__display_name
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__display_name
@@ -79,32 +52,15 @@ msgid "Display Name"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.view_server_action_form
-msgid "Display a button in the sidebar of related model to open a wizard"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__header_line
-msgid "Display a header line"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,help:report_label.field_report_paperformat_label__report_ids
-msgid "Explicitly associated reports"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__header_spacing
-msgid "Header spacing"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_report__id
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_server__id
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__id
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__id
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__id
 msgid "ID"
+msgstr ""
+
+#. module: report_label
+#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_background_color
+msgid "Label Background Color"
 msgstr ""
 
 #. module: report_label
@@ -113,7 +69,7 @@ msgid "Label Height (mm)"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Label Margin"
 msgstr ""
 
@@ -138,7 +94,7 @@ msgid "Label Margin Top (mm)"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Label Padding"
 msgstr ""
 
@@ -177,10 +133,10 @@ msgid "Label Paper Formats"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_base_automation__label_template
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_server__label_template
-#: model:ir.model.fields,field_description:report_label.field_ir_cron__label_template
-#: model:ir.model.fields,field_description:report_label.field_report_label_wizard__label_template
+#: model:ir.model.fields,field_description:report_label.field_base_automation__label_template_view_id
+#: model:ir.model.fields,field_description:report_label.field_ir_actions_server__label_template_view_id
+#: model:ir.model.fields,field_description:report_label.field_ir_cron__label_template_view_id
+#: model:ir.model.fields,field_description:report_label.field_report_label_wizard__label_template_view_id
 msgid "Label QWeb Template"
 msgstr ""
 
@@ -190,14 +146,8 @@ msgid "Label Report"
 msgstr ""
 
 #. module: report_label
-#: model:ir.actions.act_window,name:report_label.report_label_action
-#: model:ir.ui.menu,name:report_label.report_label_menu
-msgid "Label Reports"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
-msgid "Label Size"
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
+msgid "Label Settings"
 msgstr ""
 
 #. module: report_label
@@ -207,13 +157,10 @@ msgstr ""
 
 #. module: report_label
 #: model:ir.actions.act_window,name:report_label.paperformat_label_action
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_tree
 msgid "Label paper format configuration"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_report____last_update
-#: model:ir.model.fields,field_description:report_label.field_ir_actions_server____last_update
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard____last_update
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line____last_update
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label____last_update
@@ -235,13 +182,8 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Left (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__margin_left
-msgid "Left Margin (mm)"
 msgstr ""
 
 #. module: report_label
@@ -270,33 +212,13 @@ msgid "Offset"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__orientation
-msgid "Orientation"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__dpi
-msgid "Output DPI"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__page_height
-msgid "Page height (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__page_width
-msgid "Page width (mm)"
-msgstr ""
-
-#. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__paperformat_id
 msgid "Paper Format"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__format
-msgid "Paper size"
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
+msgid "Paper format configuration"
 msgstr ""
 
 #. module: report_label
@@ -312,16 +234,6 @@ msgstr ""
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Print Labels"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__print_page_height
-msgid "Print page height (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__print_page_width
-msgid "Print page width (mm)"
 msgstr ""
 
 #. module: report_label
@@ -365,18 +277,8 @@ msgid "Resource ID"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Right (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__margin_right
-msgid "Right Margin (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,help:report_label.field_report_paperformat_label__format
-msgid "Select Proper Paper size"
 msgstr ""
 
 #. module: report_label
@@ -395,20 +297,15 @@ msgid "Settings"
 msgstr ""
 
 #. module: report_label
-#: model:ir.model.fields,help:report_label.field_base_automation__label_template
-#: model:ir.model.fields,help:report_label.field_ir_actions_server__label_template
-#: model:ir.model.fields,help:report_label.field_ir_cron__label_template
+#: model:ir.model.fields,help:report_label.field_base_automation__label_template_view_id
+#: model:ir.model.fields,help:report_label.field_ir_actions_server__label_template_view_id
+#: model:ir.model.fields,help:report_label.field_ir_cron__label_template_view_id
 msgid "The QWeb template key to render the labels"
 msgstr ""
 
 #. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_form
+#: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Top (mm)"
-msgstr ""
-
-#. module: report_label
-#: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__margin_top
-msgid "Top Margin (mm)"
 msgstr ""
 
 #. module: report_label
@@ -418,100 +315,16 @@ msgstr ""
 msgid ""
 "Type of server action. The following values are available:\n"
 "- 'Execute Python Code': a block of python code that will be executed\n"
-"- 'Create': create a new record with new values\n"
+"- 'Create a new Record': create a new record with new values\n"
 "- 'Update a Record': update the values of a record\n"
 "- 'Execute several actions': define an action that triggers several other server actions\n"
-"- 'Send Email': automatically send an email (Discuss)\n"
+"- 'Send Email': post a message, a note or send an email (Discuss)\n"
 "- 'Add Followers': add followers to a record (Discuss)\n"
-"- 'Create Next Activity': create an activity (Discuss)"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.view_server_action_form
-msgid "View QWeb templates"
+"- 'Create Next Activity': create an activity (Discuss)\n"
+"- 'Send SMS Text Message': send SMS, log them on documents (SMS)"
 msgstr ""
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__wizard_id
 msgid "Wizard"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid "height:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                display: inline-block;\n"
-"                overflow: hidden;\n"
-"                float: left;\n"
-"                position: relative;\n"
-"                page-break-inside: avoid;\n"
-"                box-sizing: border-box;"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                margin-bottom:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                margin-left:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                margin-right:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                margin-top:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                padding-bottom:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                padding-left:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                padding-right:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                padding-top:"
-msgstr ""
-
-#. module: report_label
-#: model_terms:ir.ui.view,arch_db:report_label.report_label_template
-msgid ""
-"mm;\n"
-"                width:"
 msgstr ""
