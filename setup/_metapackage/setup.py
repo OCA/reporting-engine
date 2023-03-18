@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-base_comment_template>=15.0dev,<15.1dev',
         'odoo-addon-bi_sql_editor>=15.0dev,<15.1dev',
         'odoo-addon-bi_view_editor>=15.0dev,<15.1dev',
+        'odoo-addon-board_eval_context>=15.0dev,<15.1dev',
         'odoo-addon-report_async>=15.0dev,<15.1dev',
         'odoo-addon-report_qr>=15.0dev,<15.1dev',
         'odoo-addon-report_qweb_element_page_visibility>=15.0dev,<15.1dev',
