@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [bi_view_editor](bi_view_editor/) | 15.0.1.0.0 |  | Graphical BI views builder for Odoo
 [board_eval_context](board_eval_context/) | 15.0.1.0.0 | [![gurneyalex](https://github.com/gurneyalex.png?size=30px)](https://github.com/gurneyalex) | Add some keys to board.board eval context
 [report_async](report_async/) | 15.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
+[report_csv](report_csv/) | 15.0.1.0.0 |  | Base module to create csv report
 [report_qr](report_qr/) | 15.0.1.0.0 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 15.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 15.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
