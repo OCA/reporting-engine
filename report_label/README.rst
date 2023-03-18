@@ -14,13 +14,13 @@ Report Labels
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/14.0/report_label
+    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_label
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-14-0/reporting-engine-14-0-report_label
+    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_label
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/143/14.0
+    :target: https://runbot.odoo-community.org/runbot/143/16.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -35,39 +35,64 @@ This module allows you to create self-adhesive label printing actions on any mod
 Configuration
 =============
 
-Go to **Settings > Technical > Analysis > Label Paper Format** and create
-your self-adhesive label paper formats.
+**Configure your Report Label Paperformat**
 
-.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_label/static/description/configure_paperformat.png
+* Go to "Settings > Technical > Reporting > Label Paper Format"
 
-Go to **Settings > Technical > Analysis > Label Report** and create your label
-report, and its context action. You'll also need to create or reuse a
-QWeb template for you label.
+* Create your self-adhesive label paper formats.
 
-.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_label/static/description/configure_report_label.png
+You should reuse or create a Paperformat.
+
+.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/16.0/report_label/static/description/report_paperformat_label_form.png
+
+**Configure your Server action**
+
+* Go to "Settings > Technical > Actions > Server Actions"
+
+Create your label report :
+
+* In the 'Action to do' field, select 'Print Self-adhesive Labels'
+
+* In the 'Label Paper Format' field, select your label paper format previously created
+
+* In the 'Label Qweb Template' create or reuse a QWeb template for your label.
+
+.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/16.0/report_label/static/description/ir_actions_server.png
+
+**Importante Note**
+
+`By design <https://github.com/OCA/reporting-engine/blob/14.0/report_label/reports/report_label.xml#L34>`_, the variable used in this QWeb template must be named `record`.
 
 Usage
 =====
 
-1. In the target model's tree view, select the records to print.
-2. Click *Action* and your label report action name.
-3. Select the number of labels per record to print, and click Print.
+* In the target model's tree view, select the records to print.
+* Click *Action* and your label report action name.
+* Select the number of labels per record to print, and click Print.
 
-.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/14.0/report_label/static/description/label_wizard.png
+you can optionaly define an offset
+
+.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/16.0/report_label/static/description/report_label_wizard_form.png
+
+The items will be printed in a pdf document.
+
+.. image:: https://raw.githubusercontent.com/OCA/reporting-engine/16.0/report_label/static/description/report_result.png
 
 Known issues / Roadmap
 ======================
 
 Known issues:
 
-* `wkhtmltopdf` doesn't always respect dpi, and mm measures don't match. For
-  this matter, it's recommended to use this module along with
-  `report_wkhtmltopdf_param` and enable `--disable-smart-shrinking`.
-
 * This module depends on `base_automation` only because this module extends
   `ir.actions.server` with a new kind of action, and `base.automation` inherits
   from `ir.actions.server` by delegation in such a way that the modules cannot
   be loaded in another order.
+  To do when migrating in version > 16 :
+  1. remove  ``base_automation`` dependency
+  2. install ``report_label``
+  3. install then ``base_automation``.
+  If the installation of ``base_automation`` works, the dependency can be
+  replaced by ``base``.
 
 Bug Tracker
 ===========
@@ -75,7 +100,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_label%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_label%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -120,6 +145,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-ivantodorovich| 
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/report_label>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_label>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
