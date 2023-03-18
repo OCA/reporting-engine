@@ -17,8 +17,10 @@ msgstr ""
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt
 msgid ""
-"* Manual Input Password: allow user to key in password on the fly. This option available only on document print action.\n"
-"* Auto Generated Password: system will auto encrypt password when PDF created, based on provided python syntax."
+"* Manual Input Password: allow user to key in password on the fly. This "
+"option available only on document print action.\n"
+"* Auto Generated Password: system will auto encrypt password when PDF "
+"created, based on provided python syntax."
 msgstr ""
 
 #. module: report_qweb_encrypt
@@ -28,21 +30,9 @@ msgstr ""
 
 #. module: report_qweb_encrypt
 #. openerp-web
-#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
+#: code:addons/report_qweb_encrypt/static/src/js/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Cancel"
-msgstr ""
-
-#. module: report_qweb_encrypt
-#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: report_qweb_encrypt
-#. openerp-web
-#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
-#, python-format
-msgid "Encrypt"
 msgstr ""
 
 #. module: report_qweb_encrypt
@@ -56,23 +46,13 @@ msgid "Encryption"
 msgstr ""
 
 #. module: report_qweb_encrypt
-#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__id
-msgid "ID"
-msgstr ""
-
-#. module: report_qweb_encrypt
-#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: report_qweb_encrypt
 #: model:ir.model.fields.selection,name:report_qweb_encrypt.selection__ir_actions_report__encrypt__manual
 msgid "Manual Input Password"
 msgstr ""
 
 #. module: report_qweb_encrypt
 #. openerp-web
-#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
+#: code:addons/report_qweb_encrypt/static/src/js/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Ok"
 msgstr ""
