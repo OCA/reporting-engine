@@ -7,20 +7,20 @@ Board Eval Context
    !! changes will be overwritten.                   !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-.. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
+.. |badge1| image:: https://img.shields.io/badge/maturity-Alpha-red.png
     :target: https://odoo-community.org/page/development-status
-    :alt: Beta
+    :alt: Alpha
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fserver--ux-lightgray.png?logo=github
-    :target: https://github.com/OCA/server-ux/tree/15.0/board_eval_context
-    :alt: OCA/server-ux
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
+    :target: https://github.com/OCA/reporting-engine/tree/15.0/board_eval_context
+    :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/server-ux-15-0/server-ux-15-0-board_eval_context
+    :target: https://translation.odoo-community.org/projects/reporting-engine-15-0/reporting-engine-15-0-board_eval_context
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/250/15.0
+    :target: https://runbot.odoo-community.org/runbot/143/15.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -39,6 +39,11 @@ At the moment it allows using the following values in the domains of a board.boa
 * relativedelta: the dateutil.relativedelta.relativedelta class
 * uid: the ID of the current user
 
+.. IMPORTANT::
+   This is an alpha version, the data model and design can change at any time without warning.
+   Only for development or testing purpose, do not use in production.
+   `More details on development status <https://odoo-community.org/page/development-status>`_
+
 **Table of contents**
 
 .. contents::
@@ -47,10 +52,10 @@ At the moment it allows using the following values in the domains of a board.boa
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/server-ux/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/server-ux/issues/new?body=module:%20board_eval_context%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20board_eval_context%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -75,6 +80,14 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/server-ux <https://github.com/OCA/server-ux/tree/15.0/board_eval_context>`_ project on GitHub.
+.. |maintainer-gurneyalex| image:: https://github.com/gurneyalex.png?size=40px
+    :target: https://github.com/gurneyalex
+    :alt: gurneyalex
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-gurneyalex| 
+
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/15.0/board_eval_context>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
