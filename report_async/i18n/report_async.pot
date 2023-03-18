@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,38 +17,38 @@ msgstr ""
 #: model:mail.template,body_html:report_async.async_report_delivery
 msgid ""
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
-"                    <tr>\n"
-"                        <td align=\"center\">\n"
-"                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
-"                                <tbody>\n"
-"                                    <tr>\n"
-"                                        <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                                            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                                                <tr>\n"
-"                                                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
-"                                        % set base_url = object.env['ir.config_parameter'].sudo().get_param('web.base.url')\n"
-"                                        % set download_url = '%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )\n"
-"                                        <div>\n"
-"                                            Dear ${object.create_uid.partner_id.name or ''},\n"
-"                                            <br/><br/>\n"
-"                                            Your requested report, ${object.name}, is available for <b>\n"
-"                                                                <a href=\"${download_url}\">download</a>\n"
-"                                                            </b>.\n"
-"                                            <br/><br/>\n"
-"                                            Have a nice day!<br/>\n"
-"                                            --<br/>${object.company_id.name}\n"
-"                                        </div>\n"
+"                <tr>\n"
+"                    <td align=\"center\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                    % set base_url = object.env['ir.config_parameter'].sudo().get_param('web.base.url')\n"
+"                                    % set download_url = '%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )\n"
+"                                    <div>\n"
+"                                        Dear ${object.create_uid.partner_id.name or ''},\n"
+"                                        <br/><br/>\n"
+"                                        Your requested report, ${object.name}, is available for <b>\n"
+"                                                            <a href=\"${download_url}\">download</a>\n"
+"                                                        </b>.\n"
+"                                        <br/><br/>\n"
+"                                        Have a nice day!<br/>\n"
+"                                        --<br/>${object.company_id.name}\n"
+"                                    </div>\n"
+"                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
 "                                    </td>\n"
-"                                                </tr>\n"
-"                                            </table>\n"
-"                                        </td>\n"
-"                                    </tr>\n"
-"                                </tbody>\n"
-"                            </table>\n"
-"                        </td>\n"
-"                    </tr>\n"
-"                </table>\n"
-"            "
+"                                </tr>\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        "
 msgstr ""
 
 #. module: report_async
@@ -85,8 +85,6 @@ msgid "Created on"
 msgstr ""
 
 #. module: report_async
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_act_window__display_name
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__display_name
 #: model:ir.model.fields,field_description:report_async.field_report_async__display_name
 msgid "Display Name"
@@ -139,8 +137,6 @@ msgid "Groups"
 msgstr ""
 
 #. module: report_async
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_act_window__id
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__id
 #: model:ir.model.fields,field_description:report_async.field_report_async__id
 msgid "ID"
@@ -167,8 +163,6 @@ msgid "Jobs"
 msgstr ""
 
 #. module: report_async
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_act_window____last_update
-#: model:ir.model.fields,field_description:report_async.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard____last_update
 #: model:ir.model.fields,field_description:report_async.field_report_async____last_update
 msgid "Last Modified on"
@@ -254,10 +248,14 @@ msgid "Report Async"
 msgstr ""
 
 #. module: report_async
+#: model:mail.template,name:report_async.async_report_delivery
+msgid "Report Async: New Report Available"
+msgstr ""
+
+#. module: report_async
 #: model:ir.actions.act_window,name:report_async.action_report_async
 #: model:ir.ui.menu,name:report_async.menu_report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_search
-#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
 msgid "Report Center"
 msgstr ""
 
