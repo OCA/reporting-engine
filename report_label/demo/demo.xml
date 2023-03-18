@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="label_template_partner_address" name="Partner Label: Address">
+        <address
+            t-field="record.self"
+            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+        />
+    </template>
+
+    <record id="report_paperformat_partner_address" model="report.paperformat">
+        <field name="name">Paperformat for labels (A4: 210mm x 297mm)</field>
+        <field name="format">A4</field>
+        <field name="dpi">96</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_right">0</field>
+        <field name="margin_left">0</field>
+        <field name="header_spacing">0</field>
+        <field name="disable_shrinking" eval="True" />
+    </record>
+
+    <record
+        id="report_paperformat_label_partner_address"
+        model="report.paperformat.label"
+    >
+        <field name="name">Partner Labels (3 x 6 = 18 labels per sheet)</field>
+        <field name="paperformat_id" ref="report_paperformat_partner_address" />
+        <field name="label_height" eval="49.5" />
+        <field name="label_width" eval="70" />
+        <field name="label_padding_top" eval="5" />
+        <field name="label_padding_right" eval="5" />
+        <field name="label_padding_bottom" eval="5" />
+        <field name="label_padding_left" eval="5" />
+        <field name="label_margin_top" eval="0" />
+        <field name="label_margin_right" eval="0" />
+        <field name="label_margin_bottom" eval="0" />
+        <field name="label_margin_left" eval="0" />
+        <field name="label_background_color">#729fcf</field>
+    </record>
+
+    <record id="actions_server_label_partner_address" model="ir.actions.server">
+        <field name="name">Print Address Labels</field>
+        <field name="state">report_label</field>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field
+            name="label_paperformat_id"
+            ref="report_paperformat_label_partner_address"
+        />
+        <field
+            name="label_template_view_id"
+            ref="report_label.label_template_partner_address"
+        />
+    </record>
+
+    <!-- Create context action -->
+    <function
+        model="ir.actions.server"
+        eval="[ref('actions_server_label_partner_address')]"
+        name="create_action"
+    />
+
+</odoo>
