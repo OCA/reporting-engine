@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_encrypt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt
+msgid ""
+"* Manual Input Password: allow user to key in password on the fly. This option available only on document print action.\n"
+"* Auto Generated Password: system will auto encrypt password when PDF created, based on provided python syntax."
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields.selection,name:report_qweb_encrypt.selection__ir_actions_report__encrypt__auto
+msgid "Auto Generated Password"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#. openerp-web
+#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
+#, python-format
+msgid "Cancel"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#. openerp-web
+#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
+#, python-format
+msgid "Encrypt"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__encrypt_password
+msgid "Encrypt Password"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__encrypt
+msgid "Encryption"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__id
+msgid "ID"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields.selection,name:report_qweb_encrypt.selection__ir_actions_report__encrypt__manual
+msgid "Manual Input Password"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#. openerp-web
+#: code:addons/report_qweb_encrypt/static/src/js/report/action_manager_report.js:0
+#, python-format
+msgid "Ok"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt_password
+msgid "Python code syntax to gnerate password."
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: code:addons/report_qweb_encrypt/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Python code used for encryption password is invalid.\n"
+"%s"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model:ir.model,name:report_qweb_encrypt.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_qweb_encrypt
+#: model_terms:ir.ui.view,arch_db:report_qweb_encrypt.ir_actions_report_form_view
+msgid "python syntax, i.e., (object.default_code or 'secretcode')"
+msgstr ""
