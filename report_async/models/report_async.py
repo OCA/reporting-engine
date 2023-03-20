@@ -140,7 +140,7 @@ class ReportAsync(models.Model):
         report = self.env["ir.actions.report"].browse(report_id)
         func = REPORT_TYPES_FUNC[report.report_type]
         # Run report
-        out_file, file_ext = getattr(report, func)(docids, data)
+        out_file, file_ext = getattr(report, func)(report.xml_id, docids, data)
         out_file = base64.b64encode(out_file)
         out_name = "{}.{}".format(report.name, file_ext)
         # Save report to attachment
@@ -170,5 +170,7 @@ class ReportAsync(models.Model):
     def _send_email(self, attachment):
         template = self.env.ref("report_async.async_report_delivery")
         template.send_mail(
-            attachment.id, notif_layout="mail.mail_notification_light", force_send=False
+            attachment.id,
+            email_layout_xmlid="mail.mail_notification_light",
+            force_send=False,
         )
