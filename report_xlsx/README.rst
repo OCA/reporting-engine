@@ -89,7 +89,7 @@ Or ::
         <field name="report_file">module_name.template_name</field>
         <field name="binding_type">report</field>
     </record>
- 
+
 
 Bug Tracker
 ===========
