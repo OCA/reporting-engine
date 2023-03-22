@@ -79,6 +79,17 @@ A report XML record ::
         attachment_use="False"
     />
 
+Or
+    <record id="partner_xlsx" model="ir.actions.report">
+        <field name="name">Partner Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">module_name.template_name</field>
+        <field name="report_file">module_name.template_name</field>
+        <field name="binding_type">report</field>
+    </record>
+
+
 Bug Tracker
 ===========
 
