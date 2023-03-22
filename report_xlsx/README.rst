@@ -79,7 +79,7 @@ A report XML record ::
         attachment_use="False"
     />
 
-Or
+Or ::
     <record id="partner_xlsx" model="ir.actions.report">
         <field name="name">Partner Report</field>
         <field name="model">res.partner</field>
