@@ -23,7 +23,7 @@ Report Qweb Element Page Visibility
     :target: https://runbot.odoo-community.org/runbot/143/15.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module allows you to use 4 classes in QWEB reports:
 
@@ -89,6 +89,7 @@ Contributors
 * Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
 * `Trobz <https://trobz.com>`_:
     * Hai Lang <hailn@trobz.com>
+* Ángel Tornero Hernández <angel.tornero@braintec.com>
 
 Other credits
 ~~~~~~~~~~~~~
