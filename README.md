@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [report_company_details_translatable](report_company_details_translatable/) | 16.0.1.0.0 |  | Report Company Details Translatable
 [report_csv](report_csv/) | 16.0.1.0.0 |  | Base module to create csv report
 [report_label](report_label/) | 16.0.1.0.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 16.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 16.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 16.0.1.0.2 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 16.0.1.0.0 |  | Report xlsx helpers
