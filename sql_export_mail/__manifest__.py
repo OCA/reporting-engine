@@ -13,6 +13,7 @@
     ],
     "license": "AGPL-3",
     "data": [
+        "security/ir.model.access.csv",
         "views/sql_export_view.xml",
         "data/mail_template.xml",
     ],

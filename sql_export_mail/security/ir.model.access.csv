@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_read_cron_sql_user","access_read_cron_sql_user","base.model_ir_cron",sql_request_abstract.group_sql_request_user,1,0,0,0
+"access_read_actions_server_sql_user","access_read_actions_server_sql_user","base.model_ir_actions_server",sql_request_abstract.group_sql_request_user,1,0,0,0

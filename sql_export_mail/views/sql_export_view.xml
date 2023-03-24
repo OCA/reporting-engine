@@ -10,6 +10,7 @@
                 <button
                     name="create_cron"
                     string="Create Cron"
+                    groups="sql_request_abstract.group_sql_request_manager"
                     type="object"
                     attrs="{'invisible': ['|', ('state', '=', 'draft'), ('mail_user_ids', '=', [(6, False, [])])]}"
                 />
