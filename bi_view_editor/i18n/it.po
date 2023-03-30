@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-21 05:51+0000\n"
-"PO-Revision-Date: 2023-03-21 18:23+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-03-30 14:31+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/"
 "OCA-reporting-engine-8-0/language/it/)\n"
 "Language: it\n"
@@ -207,7 +207,7 @@ msgstr "Dettagli"
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__display_name
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__display_name
 msgid "Display Name"
-msgstr "Nome da visualizzare"
+msgstr "Nome visualizzato"
 
 #. module: bi_view_editor
 #: selection:bve.view,state:0
