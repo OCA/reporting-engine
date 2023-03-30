@@ -92,7 +92,7 @@ msgid "Data Sources"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__day
 msgid "Day"
 msgstr "Dan"
 
@@ -131,22 +131,14 @@ msgstr "Vir zunanje podatkovne baze"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Maximum"
 msgstr "Vir zunanje podatkovne baze"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 #, fuzzy
-#| msgid "External DB Source"
 msgid "External DB Source Minimum"
 msgstr "Vir zunanje podatkovne baze"
-
-#. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Fixed value"
-msgstr ""
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
@@ -160,7 +152,7 @@ msgid "History of the KPI"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__hour
 msgid "Hour"
 msgstr "Ura"
 
@@ -278,7 +270,7 @@ msgid "Last execution"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:68
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
 msgstr ""
@@ -306,7 +298,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Maksimum"
 
@@ -318,7 +309,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Maksimum"
 
@@ -346,7 +336,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Minimum"
 
@@ -358,17 +347,16 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Minimum"
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__minute
 msgid "Minute"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__month
 msgid "Month"
 msgstr "Mesec"
 
@@ -411,15 +399,9 @@ msgid "Periodicity UoM"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__python
 msgid "Python"
 msgstr ""
-
-#. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Python Code"
-msgstr "Python koda"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
@@ -436,18 +418,12 @@ msgid "Ranges"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi.threshold.range,min_type:0
-msgid "SQL - Externa DB"
-msgstr ""
-
-#. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__local
 msgid "SQL - Local DB"
 msgstr ""
 
@@ -472,7 +448,7 @@ msgid "Thresholds"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:67
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
 msgstr ""
@@ -497,9 +473,12 @@ msgid "Value"
 msgstr "Vrednost"
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
 msgstr "Teden"
+
+#~ msgid "Python Code"
+#~ msgstr "Python koda"
 
 #~ msgid "Group By..."
 #~ msgstr "Združi po..."

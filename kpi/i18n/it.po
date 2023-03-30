@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
-"PO-Revision-Date: 2018-02-23 18:00+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"PO-Revision-Date: 2023-04-17 16:38+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__active
@@ -91,7 +92,7 @@ msgid "Data Sources"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__day
 msgid "Day"
 msgstr "Giorno"
 
@@ -109,7 +110,7 @@ msgstr "Descrizione"
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__display_name
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__display_name
 msgid "Display Name"
-msgstr "Nome da visualizzare"
+msgstr "Nome visualizzato"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
@@ -138,12 +139,6 @@ msgid "External DB Source Minimum"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Fixed value"
-msgstr ""
-
-#. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "History"
@@ -155,7 +150,7 @@ msgid "History of the KPI"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__hour
 msgid "Hour"
 msgstr "Ora"
 
@@ -256,7 +251,7 @@ msgstr "Ultima modifica il"
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__write_uid
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultimo aggiornamento di"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__write_date
@@ -265,7 +260,7 @@ msgstr "Last Updated by"
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__write_date
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Ultimo aggiornamento il"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__last_execution
@@ -273,7 +268,7 @@ msgid "Last execution"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:68
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
 msgstr ""
@@ -301,7 +296,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Error"
 msgstr "Massimo"
 
@@ -313,7 +307,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 #, fuzzy
-#| msgid "Maximum"
 msgid "Maximum Value"
 msgstr "Massimo"
 
@@ -341,7 +334,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Error"
 msgstr "Minimo"
 
@@ -353,17 +345,16 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 #, fuzzy
-#| msgid "Minimum"
 msgid "Minimum Value"
 msgstr "Minimo"
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__minute
 msgid "Minute"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__month
 msgid "Month"
 msgstr "Mese"
 
@@ -406,15 +397,9 @@ msgid "Periodicity UoM"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__python
 msgid "Python"
 msgstr ""
-
-#. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Python Code"
-msgstr "Python Code"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
@@ -431,18 +416,12 @@ msgid "Ranges"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi.threshold.range,min_type:0
-msgid "SQL - Externa DB"
-msgstr ""
-
-#. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__local
 msgid "SQL - Local DB"
 msgstr ""
 
@@ -467,7 +446,7 @@ msgid "Thresholds"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:67
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
 msgstr ""
@@ -492,9 +471,12 @@ msgid "Value"
 msgstr "Valore"
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
 msgstr "Settimana"
+
+#~ msgid "Python Code"
+#~ msgstr "Python Code"
 
 #~ msgid "Group By..."
 #~ msgstr "Raggruppa per..."
