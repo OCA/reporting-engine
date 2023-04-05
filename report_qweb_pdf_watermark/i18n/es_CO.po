@@ -27,8 +27,8 @@ msgid ""
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
-#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
-msgid "Demo report"
+#: model:ir.model,name:report_qweb_pdf_watermark.model_res_company
+msgid "Companies"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
@@ -38,8 +38,36 @@ msgid "Report Action"
 msgstr "Iforme"
 
 #. module: report_qweb_pdf_watermark
+#: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_company_form
+msgid ""
+"Upload an pdf file to use as an Company watermark. You need to activate the "
+"setting 'use company watermark' on the reports where you want to use it."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+msgid "Upload an pdf file to use as an watermark on this report."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use Company Watermark"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use the pdf watermark defined globally in the company settings."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
 msgid "Watermark"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
+msgid "Watermark Demo report"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
