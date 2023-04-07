@@ -47,14 +47,15 @@ class TestReportQwebPdfWatermark(HttpCase):
         )
         self.assertEqual(pdf.count(b"/Subtype /Image"), number)
 
-    def test_pdf_has_usable_pages(self):
-        # test 0
-        numpages = 0
+    def _test_pdf_has_usable_pages(self, pdf_watermark):
+        pdf_watermark.numPages = 0
         # pdf_has_usable_pages(self, pdf_watermark)
-        self.assertFalse(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
+        self.assertFalse(
+            self.env["ir.actions.report"].pdf_has_usable_pages(self, pdf_watermark)
+        )
+        # test 0
+        pdf_watermark.numPages = 1
+        self.assertTrue()
         # test 1
-        numpages = 1
-        self.assertTrue(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
-        # test 2
-        numpages = 2
-        self.assertTrue(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
+        pdf_watermark.numPages = 2
+        # test 1
