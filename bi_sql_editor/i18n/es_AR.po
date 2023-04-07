@@ -9,60 +9,61 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2017-08-12 02:51+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
-"teams/23907/es_AR/)\n"
+"PO-Revision-Date: 2023-04-07 20:23+0000\n"
+"Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
+"23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%m/%d/%Y %H:%M:%S UTC"
-msgstr ""
+msgstr "%m/%d/%Y %H:%M:%S UTC"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s (Copy)"
-msgstr ""
+msgstr "%s (Copia)"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s Access %s"
-msgstr ""
+msgstr "%s Acceso %s"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Access %s"
-msgstr ""
+msgstr "Acceso %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
-msgstr ""
+msgstr "Acción de Contexto"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Action Settings"
-msgstr ""
+msgstr "Acción de Ajustes"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__group_ids
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Grupos Permitidos"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__user_ids
 msgid "Allowed Users"
-msgstr ""
+msgstr "Usuarios Permitidos"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -70,27 +71,31 @@ msgid ""
 "Are you sure you want to set to draft this SQL View. It will delete the "
 "materialized view, and all the previous mapping realized with the columns"
 msgstr ""
+"¿Está seguro de que desea configurar para redactar esta vista SQL? Borrará "
+"la vista materializada, y todo el mapeo anterior realizado con las columnas"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__available
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
 msgid "BI SQL View"
-msgstr ""
+msgstr "Vista BI SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
 msgid "Bi SQL View Field"
-msgstr ""
+msgstr "Campo de Vista BI SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid ""
 "Check this box if you want to create a 'group by' option in the search view"
 msgstr ""
+"Marque esta casilla si desea crear una opción de 'Agrupar por' en la vista "
+"de búsqueda"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_index
@@ -98,31 +103,35 @@ msgid ""
 "Check this box if you want to create an index on that field. This is "
 "recommended for searchable and groupable fields, to reduce duration"
 msgstr ""
+"Marque esta casilla si desea crear un índice en ese campo. Esto se "
+"recomienda para campos que se pueden buscar y agrupar, para reducir la "
+"duración"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__col
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
 msgstr ""
+"Texto separado por comas. Valores posibles: \"graph\", \"pivot\" o \"tree\""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Context"
-msgstr ""
+msgstr "Contexto"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create SQL View, Indexes and Models"
-msgstr ""
+msgstr "Crea una Vista SQL, Índices y Modelos"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create UI"
-msgstr ""
+msgstr "Crear UI"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__create_uid
@@ -139,18 +148,18 @@ msgstr "Creado en"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__cron_id
 msgid "Cron Task that will refresh the materialized view"
-msgstr ""
+msgstr "Tarea Cron que actualizará la vista materializada"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__size
 msgid "Database Size"
-msgstr ""
+msgstr "Tamaño de la Base de Datos"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__action_context
 msgid ""
 "Define here a context that will be used by default, when creating the action."
-msgstr ""
+msgstr "Defina aquí un contexto que se usará por defecto, al crear la acción."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
@@ -161,6 +170,11 @@ msgid ""
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
 msgstr ""
+"Defina aquí la restricción de acceso a los datos.\n"
+" Tenga cuidado de usar el nombre de campo con el prefijo 'x_'. Se creará una "
+"'ir.rule' global. Una regla típica de varias compañías es, por ejemplo,\n"
+" ['|', ('x_company_id','child_of', [user.company_id."
+"id]),('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -171,22 +185,22 @@ msgstr "Mostrar Nombre"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__domain_force
 msgid "Extra Rule Definition"
-msgstr ""
+msgstr "Definición de Regla Extra"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Extras Information"
-msgstr ""
+msgstr "Información Extra"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "Field Description"
-msgstr ""
+msgstr "Descripción de Campo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__ttype
 msgid "Field Type"
-msgstr ""
+msgstr "Tipo de Campo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
@@ -194,6 +208,8 @@ msgid ""
 "For 'Many2one' Odoo field.\n"
 " Comodel of the field."
 msgstr ""
+"Para campos de Odoo 'Many2one'.\n"
+" Comodel del campo."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -202,31 +218,35 @@ msgid ""
 " List of options, specified as a Python expression defining a list of (key, "
 "label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
+"Para Campos de Odoo 'Selection'.\n"
+" Lista de opciones, especificada como una expresión de Python que define una "
+"lista de pares (clave, etiqueta). Por ejemplo: [('azul','Azul'), "
+"('amarillo','Amarillo')]"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__model_name
 msgid "Full Qualified Name of the transient model that will be created."
-msgstr ""
+msgstr "Nombre Calificado Completo del modelo transitorio que se creará."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_name
 msgid "Full name of the SQL view"
-msgstr ""
+msgstr "Nombre completo de la vista SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__graph_type
 msgid "Graph Type"
-msgstr ""
+msgstr "Tipo de Gráfico"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
 msgid "Has Group Changed"
-msgstr ""
+msgstr "Ha Cambiado de Grupo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__hidden
 msgid "Hidden"
-msgstr ""
+msgstr "Oculto"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
@@ -237,22 +257,22 @@ msgstr "ID"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
 msgid "Index Name"
-msgstr ""
+msgstr "Nombre del Índice"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid "Is Group by"
-msgstr ""
+msgstr "Está Agrupado por"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_index
 msgid "Is Index"
-msgstr ""
+msgstr "Es Índice"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__is_materialized
 msgid "Is Materialized View"
-msgstr ""
+msgstr "Es una Vista Materializada"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
@@ -275,23 +295,23 @@ msgstr "Última actualización el"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
 msgid "Materialized Text"
-msgstr ""
+msgstr "Texto Materializado"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
 msgid "Measure"
-msgstr ""
+msgstr "Medida"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__model_name
 msgid "Model Name"
-msgstr ""
+msgstr "Nombre del Modelo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__name
@@ -306,93 +326,95 @@ msgid ""
 "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
 msgstr ""
+"No se encontraron Columnas.\n"
+"Los nombres de las columnas deben tener de prefijo 'x_'."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_id
 msgid "Odoo Action"
-msgstr ""
+msgstr "Acción de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__cron_id
 msgid "Odoo Cron"
-msgstr ""
+msgstr "Cron de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
-msgstr ""
+msgstr "Vista Gráfico de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
 msgid "Odoo Menu"
-msgstr ""
+msgstr "Menú de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__model_id
 msgid "Odoo Model"
-msgstr ""
+msgstr "Modelo de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__pivot_view_id
 msgid "Odoo Pivot View"
-msgstr ""
+msgstr "Vista Pivot de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__rule_id
 msgid "Odoo Rule"
-msgstr ""
+msgstr "Regla de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__search_view_id
 msgid "Odoo Search View"
-msgstr ""
+msgstr "Vista de Búsqueda de Odoo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
 msgid "Odoo Tree View"
-msgstr ""
+msgstr "Vista Lista de Odoo"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
-msgstr ""
+msgstr "Solo se soportan vistas gráfico, pivot o lista"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Open View"
-msgstr ""
+msgstr "Abrir Vista"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Preview SQL Expression"
-msgstr ""
+msgstr "Previsualizar Expresión SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
 msgid "Query"
-msgstr ""
+msgstr "Consulta"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Refresh Materialized View"
-msgstr ""
+msgstr "Recargar Vista Materializada"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Refresh Materialized View %s"
-msgstr ""
+msgstr "Recargar Vista Materializada %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__row
 msgid "Row"
-msgstr ""
+msgstr "Fila"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Rule Definition"
-msgstr ""
+msgstr "Definición de Regla"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
@@ -401,22 +423,24 @@ msgid ""
 "SQL Error while creating %s VIEW %s :\n"
 " %s"
 msgstr ""
+"Error SQL mientras se creaba %s VIEW %s :\n"
+" %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__bi_sql_view_field_ids
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "SQL Fields"
-msgstr ""
+msgstr "Campos SQL"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "SQL Query"
-msgstr ""
+msgstr "Consulta SQL"
 
 #. module: bi_sql_editor
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_editor
 msgid "SQL Reports"
-msgstr ""
+msgstr "Reportes SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__query
@@ -427,32 +451,37 @@ msgid ""
 " * Do not use 'SELECT *' or 'SELECT table.*';\n"
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
+"Solicitud SQL que se insertará como la vista. Tenga cuidado de:\n"
+" * Establezca un nombre para todos sus campos seleccionados, especialmente "
+"si usa la función SQL (como EXTRACT, ...);\n"
+" * No use 'SELECT *' o 'SELECT table.*';\n"
+" * Prefije el nombre de las columnas seleccionables con 'x_';"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sql_type
 msgid "SQL Type"
-msgstr ""
+msgstr "Tipo SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__sql_type
 msgid "SQL Type in the database"
-msgstr ""
+msgstr "Tipo SQL en la base de datos"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__bi_sql_view_id
 msgid "SQL View"
-msgstr ""
+msgstr "Vista SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__model_valid
 msgid "SQL View and Model Created"
-msgstr ""
+msgstr "Vista SQL y Modelo Creado"
 
 #. module: bi_sql_editor
 #: model:ir.actions.act_window,name:bi_sql_editor.action_bi_sql_view
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_view
 msgid "SQL Views"
-msgstr ""
+msgstr "Vistas SQL"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -462,22 +491,22 @@ msgstr "Seguridad"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__selection
 msgid "Selection Options"
-msgstr ""
+msgstr "Opciones de Selección"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Set to Draft"
-msgstr ""
+msgstr "Restablecer a Borrador"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__size
 msgid "Size of the materialized view and its indexes"
-msgstr ""
+msgstr "Tamaño de la vista materializada y sus índices"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__state
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__state
@@ -486,6 +515,9 @@ msgid ""
 " * 'Draft': Not tested\n"
 " * 'SQL Valid': SQL Request has been checked and is valid"
 msgstr ""
+"Estado de la Solicitud:\n"
+" * 'Borrador': No probado\n"
+" * 'SQL Válido': La solicitud de SQL ha sido verificada y es válida"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__technical_name
@@ -494,21 +526,26 @@ msgid ""
 "'x_bi_sql_view_'. Syntax should follow: https://www.postgresql.org/docs/"
 "current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
+"Sufijo de la vista SQL. El nombre completo de SQL se calculará y tendrá el "
+"prefijo 'x_bi_sql_view_'. La sintaxis debe seguir: https://www.postgresql."
+"org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__technical_name
 msgid "Technical Name"
-msgstr ""
+msgstr "Nombre Técnico"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "This will be used as the name of the Odoo field, displayed for users"
 msgstr ""
+"Esto se utilizará como el nombre del campo de Odoo, que se muestra a los "
+"usuarios"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "This will create Odoo View, Action and Menu"
-msgstr ""
+msgstr "Esto creará una Vista, Acción y Menú de Odoo"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -516,11 +553,13 @@ msgid ""
 "This will try to create an SQL View, based on the SQL request and the "
 "according Transient Model and fields, based on settings"
 msgstr ""
+"Esto intentará crear una Vista SQL, basada en la solicitud SQL y el modelo "
+"transitorio y los campos correspondientes, según la configuración"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__tree_visibility
 msgid "Tree Visibility"
-msgstr ""
+msgstr "Visibilidad de la Lista"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__ttype
@@ -529,16 +568,19 @@ msgid ""
 "create a new field. If empty, this field will not be displayed neither "
 "available for search or group by function"
 msgstr ""
+"Tipo de campo de Odoo que se creará. Manténgalo vacío si no desea crear un "
+"nuevo campo. Si está vacío, este campo no se mostrará ni estará disponible "
+"para buscar o agrupar por función"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__unavailable
 msgid "Unavailable"
-msgstr ""
+msgstr "No Disponible"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Update Model Access"
-msgstr ""
+msgstr "Actualizar Modelos de Acceso"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -546,44 +588,46 @@ msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
 msgstr ""
+"Actualizar Modelos de Acceso. Obligatorio si cambió la lista de grupos "
+"después de haber creado el modelo"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
-msgstr ""
+msgstr "Interfaz de Usuario"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Validate SQL Expression"
-msgstr ""
+msgstr "Validar Expresión SQL"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_name
 msgid "View Name"
-msgstr ""
+msgstr "Nombre de la Vista"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_order
 msgid "View Order"
-msgstr ""
+msgstr "Ordenar Vista"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__ui_valid
 msgid "Views, Action and Menu Created"
-msgstr ""
+msgstr "Vistas, Acción y Menú Creado"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
 #, python-format
 msgid "You can not create indexes on non materialized views"
-msgstr ""
+msgstr "No puede crear índice en vistas no materializadas"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "You can only process this action on SQL Valid items"
-msgstr ""
+msgstr "Solo puede procesar esta acción en elementos SQL Válidos"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
@@ -592,54 +636,56 @@ msgid ""
 "You can only unlink draft views.If you want to delete them, first set them "
 "to draft."
 msgstr ""
+"Solo puede desvincular vistas de borrador. Si desea eliminarlas, primero "
+"configúrelas como borrador."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
 msgid "boolean"
-msgstr ""
+msgstr "boolean"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__char
 msgid "char"
-msgstr ""
+msgstr "char"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__date
 msgid "date"
-msgstr ""
+msgstr "date"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__datetime
 msgid "datetime"
-msgstr ""
+msgstr "datetime"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__float
 msgid "float"
-msgstr ""
+msgstr "float"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__integer
 msgid "integer"
-msgstr ""
+msgstr "integer"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__many2one
 msgid "many2one"
-msgstr ""
+msgstr "many2one"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__selection
 msgid "selection"
-msgstr ""
+msgstr "selection"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__sequence
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
-msgstr ""
+msgstr "sequence"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "this will refresh the materialized view"
-msgstr ""
+msgstr "esto recargará la vista materializada"
