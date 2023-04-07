@@ -48,11 +48,11 @@ class Report(models.Model):
             )
         return super(Report, self)._render_qweb_pdf(res_ids=res_ids, data=data)
 
-    def pdf_has_usable_pages(self, numpages):
-        if numpages < 1:
+    def pdf_has_usable_pages(self, pdf_watermark):
+        if pdf_watermark.numPages < 1:
             logger.error("Your watermark pdf does not contain any pages")
             return False
-        if numpages > 1:
+        if pdf_watermark.numPages > 1:
             logger.debug(
                 "Your watermark pdf contains more than one page, "
                 "all but the first one will be ignored"
@@ -115,11 +115,11 @@ class Report(models.Model):
             except Exception as e:
                 logger.exception("Failed to load watermark", e)
 
-        if not pdf_watermark:
-            logger.error("No usable watermark found, got %s...", watermark[:100])
+        if not self.pdf_has_usable_pages(pdf_watermark):
             return result
 
-        if not self.pdf_has_usable_pages(pdf_watermark.numPages):
+        if not pdf_watermark:
+            logger.error("No usable watermark found, got %s...", watermark[:100])
             return result
 
         for page in PdfFileReader(BytesIO(result)).pages:
