@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2023-04-07 18:15+0000\n"
+"PO-Revision-Date: 2023-04-07 20:22+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
 "23907/es_AR/)\n"
@@ -156,7 +156,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_object_field
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
@@ -231,7 +231,7 @@ msgstr "Modelo"
 #: model:ir.model,name:base_comment_template.model_ir_model
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__models
 msgid "Models"
-msgstr ""
+msgstr "Modelos"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
@@ -320,7 +320,7 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 #. module: base_comment_template
 #: code:addons/base_comment_template/models/base_comment_template.py:0
