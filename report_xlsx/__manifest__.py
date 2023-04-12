@@ -6,7 +6,7 @@
     "author": "ACSONE SA/NV," "Creu Blanca," "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
-    "version": "13.0.1.1.0",
+    "version": "13.0.1.1.1",
     "development_status": "Production/Stable",
     "license": "AGPL-3",
     "depends": ["base", "web"],
