@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template>
+    <!-- FieldList -->
+    <t t-name="bi_view_editor.FieldList" owl="1">
+        <div>
+            <table class="field-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Options</th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="props.fields" t-as="item" t-key="item.id">
+                        <FieldListItem
+                            field="item"
+                            onFieldRemove.bind="props.onFieldRemove"
+                            updateOption.bind="props.updateOption"
+                        />
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+    <!-- FieldContextMenu -->
+    <t t-name="bi_view_editor.FieldContextMenu" owl="1">
+        <ul class="context-menu">
+            <span><t t-out="measureable.value"/></span>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-for="column"
+                            class="checkbox-column"
+                            t-on-change="ev => props.updateOption(ev, props.field)"
+                            t-att-checked="props.field.column"
+                            t-att-disabled="measureable.value"
+                        />
+                        <span>Column</span>
+
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-for="row" class="checkbox-row" 
+                            t-on-change="ev => props.updateOption(ev, props.field)"
+                            t-att-checked="props.field.row"
+                            t-att-disabled="measureable.value"
+                            />
+                        <span>Row</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            t-on-change="ev => props.updateOption(ev, props.field)"
+                            type="checkbox"
+                            t-att-checked="props.field.measure"
+                            data-for="measure"
+                            class="checkbox-measure"
+                            t-att-disabled="!measureable.value"
+                        />
+                        <span>Measure</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-for="list" class="checkbox-list" 
+                            t-att-checked="props.field.list"
+                            t-on-change="ev => props.updateOption(ev, props.field)"
+                            />
+                        <span>List</span>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+    <!-- JoinContextMenu -->
+    <t t-name="bi_view_editor.FieldList.JoinContextMenu" owl="1">
+        <ul class="context-menu d-none">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            data-for="join_left"
+                            class="checkbox-join-left"
+                            t-on-change="ev => props.updateOption(ev, props.field)"
+                        />
+                        Join Left
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+    <!-- FieldListItem -->
+    <t t-name="bi_view_editor.FieldListItem" owl="1">
+        <tr
+            t-if="props.field.join_node"
+            t-attf-data-id="#{props.field._id}"
+            class="join-node"
+        >
+            <td colspan="4">
+                <input
+                    class="d-none"
+                    type="text"
+                    name="description"
+                    t-attf-value="#{props.field.description}"
+                />
+                <t t-if="props.field.join_node > props.field.table_alias">
+                    <b>
+                        <t t-out="props.field.model_name" />
+                    </b>
+                    <i class="fa fa-caret-right" />
+                    <small>
+                        <t t-out="props.field.description" />
+                    </small>
+                </t>
+                <t t-else="">
+                    <small>
+                        <t t-out="props.field.description" />
+                    </small>
+                    <i class="fa fa-caret-left" />
+                    <b>
+                        <t t-out="props.field.model_name" />
+                    </b>
+                </t>
+                <span
+                    t-attf-class="#{!props.field.join_left and 'd-none' or ''}"
+                    data-for="join_left"
+                >
+                    <i>(join left)</i>
+                </span>
+            </td>
+        </tr>
+        <tr t-else="" t-attf-data-id="#{props.field._id}" class="field-node">
+            <td>
+                <input
+                    t-attf-data-id="#{props.field._id}"
+                    t-attf-title="#{props.field.model_name} (#{props.field.model})"
+                    class="form-control input-sm"
+                    type="text"
+                    name="description"
+                    t-attf-value="#{props.field.description}"
+                />
+            </td>
+            <td>
+                <t t-out="props.field.model_name" />
+            </td>
+            <td t-on-mouseover="showContextMenu" t-on-mouseleave="hideContextMenu">
+                <t t-if="contextMenu.value === true">
+                    <FieldContextMenu updateOption.bind="props.updateOption" field="props.field"/>
+                </t>
+                <span
+                    data-for="column"
+                    t-attf-class="#{props.field.column and 'fa fa-columns' or 'fa fa-columns d-none'}"
+                    title='Column'
+                />
+                <span
+                    data-for="row"
+                    t-attf-class="#{props.field.row and 'fa fa-bars' or 'fa fa-bars d-none'}"
+                    title='Row'
+                />
+                <span
+                    data-for="measure"
+                    t-attf-class="#{props.field.measure and 'fa fa-bar-chart-o' or 'fa fa-bar-chart-o d-none'}"
+                    title='Measure'
+                />
+                <span
+                    data-for="list"
+                    t-attf-class="#{props.field.list and 'fa fa-list' or 'fa fa-list d-none'}"
+                    title='List'
+                />
+            </td>
+            <td>
+                <span
+                    t-attf-data-id="#{props.field._id}"
+                    class="delete-button fa fa-trash-o"
+                    t-on-click="ev => props.onFieldRemove(ev, props.field)"
+                />
+            </td>
+        </tr>
+    </t>
+</template>

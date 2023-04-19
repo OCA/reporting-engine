@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template>
+    <t t-name="bi_view_editor.Frame" owl="1">
+        <div class="oe_form_field_bi_editor">
+            <div class="body">
+                <div class="left">
+                    <ModelFieldSelector onFieldClicked.bind="addField" />
+                </div>
+                <div class="right">
+                    <FieldList
+                        fields="fields.fields"
+                        onFieldRemove.bind="removeField"
+                        updateOption.bind="updateOption"
+                    />
+                </div>
+                <div class="clear" />
+            </div>
+            <div class="footer">
+                <div class="left" />
+                <div class="right">
+                    <button class="clear-btn d-none" t-on-click="clear">
+                        <span class="fa fa-eraser" />
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>

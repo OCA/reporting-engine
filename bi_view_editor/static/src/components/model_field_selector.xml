@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template>
+    <!-- ModelFieldSelector -->
+    <t t-name="bi_view_editor.ModelFieldSelector" owl="1">
+        <div>
+            <div class="search-bar">
+                <span class="fa fa-search" />
+                <input t-on-input="filterChanged" type="text" class="search-bar" />
+            </div>
+            <div class="class-list">
+                <t t-foreach="displayedModels" t-as="model" t-key="model.id">
+                    <ModelListItem
+                        model="model"
+                        onFieldClicked.bind="props.onFieldClicked"
+                    />
+                </t>
+            </div>
+        </div>
+    </t>
+    <!-- ModelListItem -->
+    <t t-name="bi_view_editor.ModelListItem" owl="1">
+        <div class="class-container">
+            <div
+                class="class"
+                t-attf-title="props.model.model"
+                t-attf-data-id="props.model.id"
+                t-on-click="modelClicked"
+            >
+                <t t-out="props.model.name" />
+            </div>
+            <t t-foreach="displayedFields" t-as="field" t-key="field.name">
+                <ModelListFieldItem
+                    field="field"
+                    onFieldClicked.bind="props.onFieldClicked"
+                />
+            </t>
+        </div>
+    </t>
+    <!-- ModelListFieldItem-->
+    <t t-name="bi_view_editor.ModelListFieldItem" owl="1">
+        <div
+            class="field"
+            t-attf-title="props.field.name"
+            t-attf-data-id="props.field.name"
+            t-on-click="ev => props.onFieldClicked(ev, props.field)"
+        >
+            <t t-out="props.field.description" />
+        </div>
+    </t>
+</template>

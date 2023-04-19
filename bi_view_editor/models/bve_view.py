@@ -69,6 +69,7 @@ class BveView(models.Model):
     data = fields.Char(
         compute="_compute_serialized_data",
         inverse="_inverse_serialized_data",
+        default="[]",
         help="Use the special query builder to define the query "
         "to generate your report dataset. "
         "NOTE: To be edited, the query should be in 'Draft' status.",
@@ -108,7 +109,7 @@ class BveView(models.Model):
         "IDs ordered in the same way as t1's IDs; otherwise "
         "IDs are assigned with no specific order.",
     )
-    er_diagram_image = fields.Binary(compute="_compute_er_diagram_image")
+    er_diagram_image = fields.Image(compute="_compute_er_diagram_image")
 
     _sql_constraints = [
         ("name_uniq", "unique(name)", _("Custom BI View names must be unique!")),

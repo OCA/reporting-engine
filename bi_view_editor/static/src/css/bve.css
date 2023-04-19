@@ -1,6 +1,7 @@
 .oe_form_field_bi_editor {
     /*box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);*/
     border: 1px solid #dddddd;
+    width: 120rem;
 }
 
 .oe_form_field_bi_editor .header,
@@ -52,7 +53,7 @@
 }
 
 .oe_form_field_bi_editor .body .left .search-bar input {
-    width: 100%;
+    width: 30rem;
     border-radius: 0;
     border-left: 0;
     border-right: 0;

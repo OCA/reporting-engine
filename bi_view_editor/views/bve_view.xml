@@ -68,10 +68,10 @@
                     </h1>
                     <notebook>
                         <page string="Query Builder">
-                            <group>
+                            <group col="1">
                                 <field
                                     name="data"
-                                    widget="BVEEditor"
+                                    widget="bi_view_editor"
                                     nolabel="1"
                                     attrs="{'readonly': [('state','=','created')]}"
                                 />
@@ -81,7 +81,7 @@
                             string="ER Diagram"
                             attrs="{'invisible': [('er_diagram_image','=',False)]}"
                         >
-                            <group>
+                            <group col="1">
                                 <field
                                     nolabel="1"
                                     name="er_diagram_image"
@@ -107,17 +107,17 @@
                                         <field name="ttype" invisible="1" />
                                         <field
                                             name="row"
-                                            widget="toggle_button"
+                                            widget="boolean_toggle"
                                             attrs="{'invisible': [('ttype','in',('float', 'integer', 'monetary'))]}"
                                         />
                                         <field
                                             name="column"
-                                            widget="toggle_button"
+                                            widget="boolean_toggle"
                                             attrs="{'invisible': [('ttype','in',('float', 'integer', 'monetary'))]}"
                                         />
                                         <field
                                             name="measure"
-                                            widget="toggle_button"
+                                            widget="boolean_toggle"
                                             attrs="{'invisible': [('ttype','not in',('float', 'integer', 'monetary'))]}"
                                         />
                                         <field name="in_list" widget="boolean_toggle" />
@@ -142,7 +142,7 @@
                                         <field name="join_node" />
                                         <field
                                             name="left_join"
-                                            widget="toggle_button"
+                                            widget="boolean_toggle"
                                         />
                                     </tree>
                                 </field>
