@@ -38,7 +38,7 @@ addon | version | maintainers | summary
 [report_py3o](report_py3o/) | 13.0.1.0.6 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 13.0.1.0.0 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 13.0.1.0.1 |  | Web QR Manager
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.0.1 |  | Report Qweb Element Page Visibility
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.1.0 |  | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 13.0.1.0.2 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | [![Tardo](https://github.com/Tardo.png?size=30px)](https://github.com/Tardo) | Fix auto-col to not change report font size caused by a boundary overflow
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 13.0.1.0.3 |  | Add watermarks to your QWEB PDF reports
