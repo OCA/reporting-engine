@@ -2,6 +2,7 @@
 # Copyright 2013-2014 Nicolas Bessi (Camptocamp SA)
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
+# Copyright 2023 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
@@ -31,14 +32,22 @@ class CommentTemplate(models.AbstractModel):
     def _compute_comment_template_ids(self):
         for record in self:
             partner = record[self._comment_template_partner_field_name]
-            record.comment_template_ids = [(5,)]
-            templates = self.env["base.comment.template"].search(
-                [
-                    ("id", "in", partner.base_comment_template_ids.ids),
-                    ("model_ids.model", "=", self._name),
+            domain = [
+                "|",
+                ("partner_ids", "=", False),
+                ("partner_ids", "=", partner.id),
+                ("model_ids.model", "=", self._name),
+            ]
+            if "company_id" in self._fields:
+                domain += [
+                    "|",
+                    ("company_id", "=", False),
+                    ("company_id", "=", self.company_id.id),
                 ]
-            )
+            templates = self.env["base.comment.template"].search(domain)
             for template in templates:
                 domain = safe_eval(template.domain)
                 if not domain or record.filtered_domain(domain):
                     record.comment_template_ids = [(4, template.id)]
+            if not templates:
+                record.comment_template_ids = False

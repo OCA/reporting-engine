@@ -1,5 +1,6 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
+# Copyright 2023 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo.tests import common
 
@@ -7,9 +8,6 @@ from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
 
 class TestCommentTemplate(common.SavepointCase):
-    at_install = False
-    post_install = True
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -37,10 +35,6 @@ class TestCommentTemplate(common.SavepointCase):
                 "company_id": cls.company.id,
             }
         )
-        cls.user.partner_id.base_comment_template_ids = [
-            (4, cls.before_template_id.id),
-            (4, cls.after_template_id.id),
-        ]
 
     @classmethod
     def tearDownClass(cls):
