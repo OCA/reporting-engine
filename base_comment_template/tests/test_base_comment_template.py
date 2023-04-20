@@ -1,8 +1,8 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
+# Copyright 2023 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo.tests import common
-from odoo.tools.misc import mute_logger
 
 from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
@@ -18,14 +18,12 @@ class TestCommentTemplate(common.SavepointCase):
         cls.partner_id = cls.env.ref("base.res_partner_12")
         cls.partner2_id = cls.env.ref("base.res_partner_10")
         cls.ResPartnerTitle = cls.env["res.partner.title"]
-        cls.main_company = cls.env.ref("base.main_company")
-        cls.company = cls.env["res.company"].create({"name": "Test company"})
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
                 "name": "Top template",
                 "text": "Text before lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
-                "company_id": cls.company.id,
+                "company_id": False,
             }
         )
         cls.after_template_id = cls.env["base.comment.template"].create(
@@ -34,13 +32,9 @@ class TestCommentTemplate(common.SavepointCase):
                 "position": "after_lines",
                 "text": "Text after lines",
                 "model_ids": [(6, 0, cls.user_obj.ids)],
-                "company_id": cls.company.id,
+                "company_id": False,
             }
         )
-        cls.user.partner_id.base_comment_template_ids = [
-            (4, cls.before_template_id.id),
-            (4, cls.after_template_id.id),
-        ]
 
     @classmethod
     def tearDownClass(cls):
@@ -99,12 +93,7 @@ class TestCommentTemplate(common.SavepointCase):
             )
 
     def test_render_comment_text_(self):
-        with mute_logger("odoo.addons.base.models.ir_translation"):
-            self.env["base.language.install"].create(
-                {"lang": "ro_RO", "overwrite": True}
-            ).lang_install()
-        with mute_logger("odoo.tools.translate"):
-            self.env["base.update.translations"].create({"lang": "ro_RO"}).act_update()
+        self.env["res.lang"]._activate_lang("ro_RO")
         partner_title = self.ResPartnerTitle.create(
             {"name": "Ambassador", "shortcut": "Amb."}
         )
