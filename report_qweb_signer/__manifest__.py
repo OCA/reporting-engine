@@ -14,7 +14,7 @@
     "installable": True,
     "depends": ["web_editor"],
     "external_dependencies": {
-        "python": ["endesive", "cryptography"],
+        "python": ["endesive"],
         "deb": ["default-jre-headless"],
     },
     "data": [

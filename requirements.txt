@@ -1,5 +1,4 @@
 # generated from manifests external_dependencies
-cryptography
 endesive
 py3o.formats
 py3o.template
