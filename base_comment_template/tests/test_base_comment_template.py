@@ -3,7 +3,6 @@
 # Copyright 2023 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo.tests import common
-from odoo.tools.misc import mute_logger
 
 from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
@@ -94,12 +93,7 @@ class TestCommentTemplate(common.SavepointCase):
             )
 
     def test_render_comment_text_(self):
-        with mute_logger("odoo.addons.base.models.ir_translation"):
-            self.env["base.language.install"].create(
-                {"lang": "ro_RO", "overwrite": True}
-            ).lang_install()
-        with mute_logger("odoo.tools.translate"):
-            self.env["base.update.translations"].create({"lang": "ro_RO"}).act_update()
+        self.env["res.lang"]._activate_lang("ro_RO")
         partner_title = self.ResPartnerTitle.create(
             {"name": "Ambassador", "shortcut": "Amb."}
         )
