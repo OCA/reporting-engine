@@ -3,7 +3,7 @@
 import logging
 import time
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -17,8 +17,7 @@ class IrActionsReport(models.Model):
         string="PDF Engine",
     )
 
-    @api.multi
-    def render_qweb_pdf(self, res_ids=None, data=None):
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         qweb_pdf_engine = "wkhtmltopdf"
         qweb_pdf_engine = "weasyprint"
 
@@ -27,12 +26,14 @@ class IrActionsReport(models.Model):
         _logger.info("========================================")
         time_1 = time.time()
         if qweb_pdf_engine == "wkhtmltopdf":
-            result = super(IrActionsReport, self).render_qweb_pdf(
+            result = super()._render_qweb_pdf(
+                report_ref,
                 res_ids=res_ids,
                 data=data,
             )
         else:
             result = getattr(self, "_render_qweb_pdf_%s" % qweb_pdf_engine)(
+                report_ref,
                 res_ids=res_ids,
                 data=data,
             )

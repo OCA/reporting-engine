@@ -1,11 +1,15 @@
 # Copyright 2018 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import api, fields, models
+import logging
+
+from odoo import fields, models
 
 try:
     from weasyprint import HTML
 except ImportError:
     HTML = None
+
+_logger = logging.getLogger(__name__)
 
 
 class IrActionsReport(models.Model):
@@ -15,17 +19,21 @@ class IrActionsReport(models.Model):
         selection_add=[("weasyprint", "WeasyPrint")],
     )
 
-    @api.multi
-    def _render_qweb_pdf_weasyprint(self, res_ids=None, data=None):
+    def _render_qweb_pdf_weasyprint(self, report_ref, res_ids=None, data=None):
         data = data or {}
         data["enable_editor"] = (False,)
         context = dict(self.env.context)
         context["qweb_pdf_engine"] = "weasyprint"
 
-        html = self.with_context(**context).render_qweb_html(res_ids, data=data)[0]
+        html = self.with_context(**context)._render_qweb_html(
+            report_ref, res_ids, data=data
+        )
+        with open("/tmp/tralala_weasyprint.html", "wb+") as f:
+            f.write(html[0])
+
         return (
             HTML(
-                string=html,
+                string=html[0],
                 # TODO: pass a custom url fetcher to never actually use the port
                 base_url=self.env["ir.config_parameter"].get_param("report.url")
                 or self.env["ir.config_parameter"].get_param("web.base.url"),
