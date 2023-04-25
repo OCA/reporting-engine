@@ -1,0 +1,34 @@
+@page {
+    margin-left: 1cm;
+    margin-right: 1cm;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+    @top-center {
+        content: element(header);
+        width: 100%;
+    }
+    @bottom-center {
+        content: element(footer);
+        width: 100%;
+    }
+}
+body {
+    margin: 0px;
+    padding: 0px;
+}
+.header {
+    position: running(header);
+}
+.header * {
+    white-space: nowrap;
+}
+.footer {
+    position: running(footer);
+    width: 100%;
+}
+.page:before {
+    content: counter(page);
+}
+.topage:before {
+    content: counter(pages);
+}
