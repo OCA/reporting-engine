@@ -16,13 +16,13 @@ except ImportError:
 
 _logger = logging.getLogger(__name__)
 _weasyprint_logger = logging.getLogger("weasyprint")
-_weasyprint_logger.setLevel(logging.CRITICAL)
+_weasyprint_logger.setLevel(logging.WARNING)
 _fonttools_logger = logging.getLogger("fontTools")
 _fonttools_logger.setLevel(logging.CRITICAL)
 
 
-_STATIC_MODULE_FILE_REG = (
-    r"/(?P<module_name>\w+)" r"/(?P<relative_file_path>static/[\w+|\/|\-|\.]+)"
+_STATIC_MODULE_FILE_REGEX = (
+    r"/(?P<module_name>\w+)/(?P<relative_file_path>static/[\w+|\/|\-|\.]+)"
 )
 
 
@@ -33,14 +33,20 @@ def _weasyprint_url_fetcher(url):
     to your odoo instance or odoocdn, and will return
     assets more quickly.
     """
-    static_asset_search = re.search(_STATIC_MODULE_FILE_REG, url)
+    static_asset_search = re.search(_STATIC_MODULE_FILE_REGEX, url)
     if static_asset_search:
         module_name, relative_file_path = static_asset_search.groups()
         file = Path(get_module_path(module_name)) / relative_file_path
-        return {"string": file.read_bytes()}
+        return default_url_fetcher(file.as_uri())
+        # return {"string": file.read_bytes()}
 
-    # if "odoocdn" in url:
-    #     return
+    if "fonts.odoocdn.com" in url:
+        # We ignore all the fonts because:
+        # - 14 fonts are unused.
+        # - 16 fonts url return 404.
+        # - 0 fonts are used. ;-)
+        return
+
     return default_url_fetcher(url)
 
 
@@ -53,7 +59,6 @@ class IrActionsReport(models.Model):
 
     def _render_qweb_pdf_weasyprint(self, report_ref, res_ids=None, data=None):
         data = data or {}
-        data["enable_editor"] = (False,)
         data["report_type"] = "pdf"
         context = dict(self.env.context)
         context["qweb_pdf_engine"] = "weasyprint"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="weasyprint_wkhtmltopf" inherit_id="web.report_layout" active="True">
+    <template id="report_layout" inherit_id="web.report_layout" active="True">
         <xpath expr="html/head" position="inside">
             <!-- this doesn't work yet /-->
             <link
@@ -10,4 +10,70 @@
             />
         </xpath>
     </template>
+
+    <!-- Move footer just after the header in all standard external_layout -->
+    <template
+        id="external_layout_striped"
+        inherit_id="web.external_layout_striped"
+        active="True"
+    >
+        <xpath
+            expr="div[@t-attf-class='o_company_#{company.id}_layout header']"
+            position="after"
+        >
+            <xpath
+                expr="div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']"
+                position="move"
+            />
+        </xpath>
+    </template>
+
+    <template
+        id="external_layout_boxed"
+        inherit_id="web.external_layout_boxed"
+        active="True"
+    >
+        <xpath
+            expr="div[@t-attf-class='header o_company_#{company.id}_layout']"
+            position="after"
+        >
+            <xpath
+                expr="div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']"
+                position="move"
+            />
+        </xpath>
+    </template>
+
+    <template
+        id="external_layout_bold"
+        inherit_id="web.external_layout_bold"
+        active="True"
+    >
+        <xpath
+            expr="div[@t-attf-class='header o_company_#{company.id}_layout']"
+            position="after"
+        >
+            <xpath
+                expr="div[@t-attf-class='footer o_clean_footer o_company_#{company.id}_layout']"
+                position="move"
+            />
+        </xpath>
+    </template>
+
+    <template
+        id="report_layout_standard"
+        inherit_id="web.external_layout_standard"
+        active="True"
+    >
+        <xpath
+            expr="div[@t-attf-class='header o_company_#{company.id}_layout']"
+            position="after"
+        >
+            <xpath
+                expr="div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']"
+                position="move"
+            />
+        </xpath>
+    </template>
+
 </odoo>

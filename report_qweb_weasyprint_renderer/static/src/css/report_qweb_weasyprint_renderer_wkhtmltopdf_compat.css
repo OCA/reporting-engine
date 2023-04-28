@@ -1,18 +1,26 @@
 @page {
+    font-family: Lato;
+    font-size: 0.85em;
     margin-left: 1cm;
     margin-right: 1cm;
-    margin-top: 2cm;
+    margin-top: 4cm;
     margin-bottom: 2cm;
     @top-center {
         content: element(header);
+        vertical-align: top;
+        margin-top: 1.5em;
         width: 100%;
     }
     @bottom-center {
         content: element(footer);
+        vertical-align: bottom;
+        margin-bottom: 1.5em;
         width: 100%;
     }
 }
 body {
+    font-family: Lato;
+    font-size: 0.85em;
     margin: 0px;
     padding: 0px;
 }
@@ -26,9 +34,12 @@ body {
     position: running(footer);
     width: 100%;
 }
-.page:before {
+.footer .page:before {
     content: counter(page);
 }
-.topage:before {
+.footer .topage:before {
     content: counter(pages);
+}
+.o_standard_footer {
+    margin-top: 0;
 }
