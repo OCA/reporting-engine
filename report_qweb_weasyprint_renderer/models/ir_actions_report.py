@@ -1,15 +1,37 @@
 # Copyright 2018 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 import logging
+from pathlib import Path
 
 from odoo import fields, models
 
 try:
-    from weasyprint import HTML
+    from weasyprint import HTML, default_url_fetcher
 except ImportError:
     HTML = None
+    default_url_fetcher = None
+
 
 _logger = logging.getLogger(__name__)
+_weasyprint_logger = logging.getLogger("weasyprint")
+_weasyprint_logger.setLevel(logging.DEBUG)
+
+
+def _weasyprint_url_fetcher(url):
+    if False and "/web/static/" in url:
+        base, end = url.split("/web/static/")
+        file_cool, file_naze = end.split("?")
+        file_cool, file_naze = file_cool.split("#")
+        file = (
+            Path(
+                "/home/sylvain/grap_dev/grap-odoo-env-16.0/src/odoo/addons/web/static/"
+            )
+            / file_cool
+        )
+        return {"string": file.read_bytes()}
+    if "odoocdn" in url:
+        return
+    return default_url_fetcher(url)
 
 
 class IrActionsReport(models.Model):
@@ -37,6 +59,7 @@ class IrActionsReport(models.Model):
                 # TODO: pass a custom url fetcher to never actually use the port
                 base_url=self.env["ir.config_parameter"].get_param("report.url")
                 or self.env["ir.config_parameter"].get_param("web.base.url"),
+                url_fetcher=_weasyprint_url_fetcher,
             ).write_pdf(),
             "pdf",
         )
