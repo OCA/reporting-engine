@@ -14,9 +14,9 @@ odoo.define("kpi_dashboard.DashboardView", function (require) {
         jsLibs: ["/kpi_dashboard/static/lib/gridster/jquery.dsmorse-gridster.min.js"],
         cssLibs: ["/kpi_dashboard/static/lib/gridster/jquery.dsmorse-gridster.min.css"],
         accesskey: "d",
-        display_name: _lt("Dashboard"),
+        display_name: _lt("KPI Dashboard"),
         icon: "fa-tachometer",
-        viewType: "dashboard",
+        viewType: "kpi_dashboard",
         config: _.extend({}, BasicView.prototype.config, {
             Controller: DashboardController,
             Renderer: DashboardRenderer,
@@ -34,7 +34,7 @@ odoo.define("kpi_dashboard.DashboardView", function (require) {
         },
     });
 
-    view_registry.add("dashboard", DashboardView);
+    view_registry.add("kpi_dashboard", DashboardView);
 
     return DashboardView;
 });

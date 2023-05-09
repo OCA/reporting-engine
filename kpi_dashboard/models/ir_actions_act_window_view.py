@@ -8,5 +8,6 @@ class IrActionsActWindowView(models.Model):
     _inherit = "ir.actions.act_window.view"
 
     view_mode = fields.Selection(
-        selection_add=[("dashboard", "Dashboard")], ondelete={"dashboard": "cascade"}
+        selection_add=[("kpi_dashboard", "Dashboard")],
+        ondelete={"kpi_dashboard": "cascade"},
     )

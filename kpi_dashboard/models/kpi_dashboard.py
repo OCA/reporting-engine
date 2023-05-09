@@ -90,7 +90,7 @@ class KpiDashboard(models.Model):
         return {
             "name": self.name,
             "res_model": self._name,
-            "view_mode": "dashboard",
+            "view_mode": "kpi_dashboard",
             "res_id": self.id,
         }
 
