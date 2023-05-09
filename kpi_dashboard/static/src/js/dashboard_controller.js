@@ -46,12 +46,11 @@ odoo.define("kpi_dashboard.DashboardController", function (require) {
             });
             this._super($node, options);
         },
-        _pushState: function (state) {
-            // eslint-disable-next-line no-param-reassign
-            state = state || {};
-            var env = this.model.get(this.handle, {env: true});
+        getState: function () {
+            const state = this._super.apply(this, arguments);
+            const env = this.model.get(this.handle, {env: true});
             state.id = env.currentId;
-            this._super(state);
+            return state;
         },
         _addDashboard: function () {
             var self = this;
