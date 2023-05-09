@@ -84,10 +84,10 @@
         </t>
     </t>
     <t t-name="kpi_dashboard.buttons">
-        <div class="o_dashboard_buttons" role="toolbar" aria-label="Main actions">
+        <div class="o_kpi_dashboard_buttons" role="toolbar" aria-label="Main actions">
             <button
                 type="button"
-                class="btn btn-primary o_dashboard_button_add"
+                class="btn btn-primary o_kpi_dashboard_button_add"
                 accesskey="d"
             >
                 Add to Dashboard

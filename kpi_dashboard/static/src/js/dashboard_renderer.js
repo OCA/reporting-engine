@@ -7,7 +7,7 @@ odoo.define("kpi_dashboard.DashboardRenderer", function (require) {
     var qweb = core.qweb;
 
     var DashboardRenderer = BasicRenderer.extend({
-        className: "o_dashboard_view",
+        className: "o_kpi_dashboard_view",
         _getDashboardWidget: function (kpi) {
             var Widget = registry.getAny([kpi.widget, "abstract"]);
             var widget = new Widget(this, kpi);
