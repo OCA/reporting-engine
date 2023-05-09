@@ -182,14 +182,11 @@ msgid "Cron"
 msgstr ""
 
 #. module: kpi_dashboard
-#. openerp-web
-#: code:addons/kpi_dashboard/static/src/js/dashboard_view.js:0
 #: model:ir.model,name:kpi_dashboard.model_kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__dashboard_id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__dashboard_id
-#: model:ir.model.fields.selection,name:kpi_dashboard.selection__ir_actions_act_window_view__view_mode__dashboard
-#: model:ir.model.fields.selection,name:kpi_dashboard.selection__ir_ui_view__type__dashboard
-#, python-format
+#: model:ir.model.fields.selection,name:kpi_dashboard.selection__ir_actions_act_window_view__view_mode__kpi_dashboard
+#: model:ir.model.fields.selection,name:kpi_dashboard.selection__ir_ui_view__type__kpi_dashboard
 msgid "Dashboard"
 msgstr ""
 
@@ -315,6 +312,13 @@ msgstr ""
 #. module: kpi_dashboard
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__item_ids
 msgid "Item"
+msgstr ""
+
+#. module: kpi_dashboard
+#. openerp-web
+#: code:addons/kpi_dashboard/static/src/js/dashboard_view.js:0
+#, python-format
+msgid "KPI Dashboard"
 msgstr ""
 
 #. module: kpi_dashboard
