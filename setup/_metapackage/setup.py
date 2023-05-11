@@ -15,6 +15,7 @@ setuptools.setup(
         'odoo-addon-report_label>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_element_page_visibility>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_pdf_watermark>=16.0dev,<16.1dev',
+        'odoo-addon-report_substitute>=16.0dev,<16.1dev',
         'odoo-addon-report_wkhtmltopdf_param>=16.0dev,<16.1dev',
         'odoo-addon-report_xlsx>=16.0dev,<16.1dev',
         'odoo-addon-report_xlsx_helper>=16.0dev,<16.1dev',
