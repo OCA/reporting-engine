@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="test_report_length_report_id" model="ir.actions.report">
+        <field name="name">Length Report</field>
+        <field name="model">res.company</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">report_qweb_parameter.test_report_length</field>
+    </record>
+    <template id="test_report_length">
+        <data>
+            <li
+                name="esc_length"
+                t-minlength="10"
+                t-length="10"
+                t-esc="docs[0].street"
+                t-if="docs[0].street"
+            />
+            <li
+                name="esc_maxlength"
+                t-maxlength="10"
+                t-esc="docs[0].website"
+                t-if="docs[0].website"
+            />
+            <li
+                name="raw_length"
+                t-minlength="10"
+                t-length="10"
+                t-raw="docs[0].vat"
+                t-if="docs[0].vat"
+            />
+            <li
+                name="raw_maxlength"
+                t-maxlength="10"
+                t-raw="docs[0].company_registry"
+                t-if="docs[0].company_registry"
+            />
+            <li
+                name="raw_length"
+                t-minlength="10"
+                t-length="10"
+                t-out="docs[0].vat"
+                t-if="docs[0].vat"
+            />
+            <li
+                name="raw_maxlength"
+                t-maxlength="10"
+                t-out="docs[0].company_registry"
+                t-if="docs[0].company_registry"
+            />
+        </data>
+    </template>
+</odoo>
