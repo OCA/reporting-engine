@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2023-03-30 14:25+0000\n"
+"PO-Revision-Date: 2023-05-18 16:28+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.16.4\n"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
@@ -38,7 +38,7 @@ msgstr ""
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Comment"
-msgstr "Coomento"
+msgstr "Commento"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
