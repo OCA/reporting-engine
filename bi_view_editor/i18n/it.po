@@ -10,14 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-14 03:52+0000\n"
-"PO-Revision-Date: 2017-03-14 03:52+0000\n"
-"Last-Translator: Paolo Valier <paolo.valier@hotmail.it>, 2017\n"
+"PO-Revision-Date: 2023-05-22 15:09+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:388
@@ -53,7 +54,7 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/js/bve.js:43
 #, python-format
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #. module: bi_view_editor
 #. openerp-web
