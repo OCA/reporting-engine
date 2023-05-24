@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-03-23 13:24+0000\n"
-"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"PO-Revision-Date: 2023-05-24 19:08+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_async
 #: model:mail.template,body_html:report_async.async_report_delivery
@@ -129,7 +129,7 @@ msgstr "Azione finestra"
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__allow_async
 msgid "Allow Async"
-msgstr "Permetti Asincrono"
+msgstr "Permetti asincrono"
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.async_act_report_xml_view
@@ -309,7 +309,7 @@ msgstr "Lavoro"
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__job_info
 msgid "Job Info"
-msgstr "Info Lavoro"
+msgstr "Info lavoro"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__job_status
@@ -437,7 +437,7 @@ msgstr "Stampa documento"
 #. module: report_async
 #: model:ir.model,name:report_async.model_print_report_wizard
 msgid "Print Report Wizard"
-msgstr "Wizard stampa"
+msgstr "Procedura guidata stampa"
 
 #. module: report_async
 #: model:ir.model,name:report_async.model_queue_job
@@ -454,7 +454,7 @@ msgstr "Stampa"
 #. module: report_async
 #: model:ir.model,name:report_async.model_ir_actions_report
 msgid "Report Action"
-msgstr "Azione stampa"
+msgstr "Azione resoconto"
 
 #. module: report_async
 #: model:ir.model,name:report_async.model_report_async
