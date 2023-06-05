@@ -18,25 +18,26 @@ class IrActionsReport(models.Model):
     )
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        qweb_pdf_engine = self.qweb_pdf_engine or "wkhtmltopdf"
+
+        qweb_pdf_engine = "weasyprint"
         _logger.info("========================================")
-        _logger.info("=================<begin> render_qweb_pdf")
+        _logger.info("============= %s ==============" % qweb_pdf_engine)
         _logger.info("========================================")
         time_1 = time.time()
-        if self.qweb_pdf_engine == "wkhtmltopdf":
-            result = super()._render_qweb_pdf(
-                report_ref,
-                res_ids=res_ids,
-                data=data,
-            )
+        if qweb_pdf_engine == "wkhtmltopdf":
+            function = super()._render_qweb_pdf
         else:
-            result = getattr(self, "_render_qweb_pdf_%s" % self.qweb_pdf_engine)(
-                report_ref,
-                res_ids=res_ids,
-                data=data,
-            )
+            function = getattr(self, "_render_qweb_pdf_%s" % qweb_pdf_engine)
+        result = function(
+            report_ref,
+            res_ids=res_ids,
+            data=data,
+        )
         time_2 = time.time()
-        _logger.info("%s: %s seconds" % (self.qweb_pdf_engine, time_2 - time_1))
+        _logger.info(
+            "%s: %s seconds" % (qweb_pdf_engine or "wkhtmltopdf", time_2 - time_1)
+        )
         _logger.info("========================================")
-        _logger.info("=================<end> render_qweb_pdf")
         _logger.info("========================================")
         return result

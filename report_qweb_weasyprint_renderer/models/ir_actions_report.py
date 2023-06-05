@@ -16,7 +16,7 @@ except ImportError:
 
 _logger = logging.getLogger(__name__)
 _weasyprint_logger = logging.getLogger("weasyprint")
-_weasyprint_logger.setLevel(logging.WARNING)
+_weasyprint_logger.setLevel(logging.ERROR)
 _fonttools_logger = logging.getLogger("fontTools")
 _fonttools_logger.setLevel(logging.CRITICAL)
 
