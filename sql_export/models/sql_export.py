@@ -72,7 +72,6 @@ class SqlExport(models.Model):
                 "type": "ir.actions.act_window",
                 "target": "new",
                 "context": self.env.context,
-                "nodestroy": True,
             }
 
     def _get_file_extension(self):
