@@ -98,14 +98,14 @@
         <field name="name">kpi.dashboard.dashboard (in kpi_dashboard)</field>
         <field name="model">kpi.dashboard</field>
         <field name="arch" type="xml">
-            <dashboard />
+            <kpi_dashboard />
         </field>
     </record>
     <record model="ir.actions.act_window" id="kpi_dashboard_act_window">
         <field name="name">Kpi Dashboard</field>
         <!-- TODO -->
         <field name="res_model">kpi.dashboard</field>
-        <field name="view_mode">tree,form,dashboard</field>
+        <field name="view_mode">tree,form,kpi_dashboard</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>

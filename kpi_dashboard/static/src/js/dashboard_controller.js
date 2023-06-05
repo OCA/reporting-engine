@@ -46,12 +46,11 @@ odoo.define("kpi_dashboard.DashboardController", function (require) {
             });
             this._super($node, options);
         },
-        _pushState: function (state) {
-            // eslint-disable-next-line no-param-reassign
-            state = state || {};
-            var env = this.model.get(this.handle, {env: true});
+        getState: function () {
+            const state = this._super.apply(this, arguments);
+            const env = this.model.get(this.handle, {env: true});
             state.id = env.currentId;
-            this._super(state);
+            return state;
         },
         _addDashboard: function () {
             var self = this;
@@ -67,7 +66,7 @@ odoo.define("kpi_dashboard.DashboardController", function (require) {
                         action_id: action,
                         context_to_save: {res_id: self.initialState.res_id},
                         domain: [("id", "=", self.initialState.res_id)],
-                        view_mode: "dashboard",
+                        view_mode: "kpi_dashboard",
                         name: name,
                     },
                 })
@@ -88,7 +87,7 @@ odoo.define("kpi_dashboard.DashboardController", function (require) {
             // HOOK Function
             this.$buttons.on(
                 "click",
-                ".o_dashboard_button_add",
+                ".o_kpi_dashboard_button_add",
                 this._addDashboard.bind(this)
             );
         },
