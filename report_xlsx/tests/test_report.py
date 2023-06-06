@@ -32,6 +32,15 @@ class TestReport(common.TransactionCase):
         sheet = wb.sheet_by_index(0)
         self.assertEqual(sheet.cell(0, 0).value, self.docs.name)
 
+    def test_save_attachment(self):
+        self.report.attachment = 'object.name + ".xlsx"'
+        self.report_object._render(self.report_name, self.docs.ids, {})
+        attachment = self.env["ir.attachment"].search(
+            [("res_id", "=", self.docs.id), ("res_model", "=", self.docs._name)]
+        )
+        self.assertEqual(len(attachment), 1)
+        self.assertEqual(attachment.name, f"{self.docs.name}.xlsx")
+
     def test_id_retrieval(self):
 
         # Typical call from WebUI with wizard
