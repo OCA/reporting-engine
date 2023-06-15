@@ -263,7 +263,8 @@ class BiSQLView(models.Model):
                     "If you want to delete them, first set them to draft."
                 )
             )
-        self.cron_id.unlink()
+        if self.cron_id:
+            self.cron_id.unlink()
         return super().unlink()
 
     def copy(self, default=None):
