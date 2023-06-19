@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo noupdate="1">
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
 
-    <!-- Error Email template  -->
     <record id="sql_export_mailer" model="mail.template">
-        <field name="name">SQL Export</field>
-        <field name="email_from">admin@example.com</field>
         <field name="email_to">{{object.get_email_address_for_template()}}</field>
         <field name="subject">{{object.name or ''}}</field>
-        <field name="model_id" ref="sql_export.model_sql_export" />
-        <field name="auto_delete" eval="True" />
         <field name="body_html" type="html">
 <div
                 style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; "
@@ -21,5 +16,4 @@
 </div>
         </field>
     </record>
-
 </odoo>
