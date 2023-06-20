@@ -20,7 +20,12 @@ class SqlExport(models.Model):
         "need to link the sql query with a cron to send mail automatically",
     )
     cron_ids = fields.Many2many(
-        "ir.cron", "cron_sqlquery_rel", "sql_id", "cron_id", "Crons"
+        "ir.cron",
+        "cron_sqlquery_rel",
+        "sql_id",
+        "cron_id",
+        "Crons",
+        groups="base.group_system",
     )
     # We could implement other conditions, that is why it is a selection field
     mail_condition = fields.Selection(
