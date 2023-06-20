@@ -4,7 +4,8 @@
 
 from datetime import datetime
 
-from odoo import fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
@@ -23,6 +24,15 @@ class SqlFileWizard(models.TransientModel):
 
     def export_sql(self):
         self.ensure_one()
+
+        # Check properties
+        bad_props = [x for x in self.query_properties if not x["value"]]
+        if bad_props:
+            raise UserError(
+                _("Please enter a values for the following properties : %s")
+                % (",".join([x["string"] for x in bad_props]))
+            )
+
         sql_export = self.sql_export_id
 
         # Manage Params
@@ -30,7 +40,7 @@ class SqlFileWizard(models.TransientModel):
         now_tz = fields.Datetime.context_timestamp(sql_export, datetime.now())
         date = now_tz.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         for prop in self.query_properties:
-            if prop["type"] == "many2many" and prop["value"]:
+            if prop["type"] == "many2many":
                 variable_dict[prop["string"]] = tuple(prop["value"])
             else:
                 variable_dict[prop["string"]] = prop["value"]
@@ -60,5 +70,4 @@ class SqlFileWizard(models.TransientModel):
             "type": "ir.actions.act_window",
             "target": "new",
             "context": self.env.context,
-            "nodestroy": True,
         }

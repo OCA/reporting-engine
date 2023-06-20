@@ -10,6 +10,7 @@
                     nolabel="1"
                     columns="1"
                     hideKanbanOption="1"
+                    required="1"
                 />
                     <separator
                     string="Export file"
