@@ -18,6 +18,7 @@
                 <field
                     name="mail_condition"
                     attrs="{'invisible': [('cron_ids', '=', [(6, False, [])])]}"
+                    groups="base.group_system"
                 />
             </field>
             <page name="page_sql" position="after">
@@ -30,7 +31,7 @@
                             colspan="2"
                         />
                         </group>
-                        <group string="Crons">
+                        <group string="Crons" groups="base.group_system">
                             <field
                             name="cron_ids"
                             nolabel="1"
