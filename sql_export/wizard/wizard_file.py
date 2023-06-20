@@ -70,5 +70,4 @@ class SqlFileWizard(models.TransientModel):
             "type": "ir.actions.act_window",
             "target": "new",
             "context": self.env.context,
-            "nodestroy": True,
         }
