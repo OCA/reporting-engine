@@ -54,6 +54,7 @@ class ReportController(report.ReportController):
     def report_download(self, data, context=None):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
+        reportname = ""
         try:
             if report_type == "csv":
                 reportname = url.split("/report/csv/")[1].split("?")[0]
