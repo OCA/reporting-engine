@@ -4,6 +4,7 @@
 import json
 import logging
 
+from werkzeug.exceptions import InternalServerError
 from werkzeug.urls import url_decode
 
 from odoo.http import (
@@ -103,4 +104,5 @@ class ReportController(report.ReportController):
             _logger.exception("Error while generating report %s", reportname)
             se = _serialize_exception(e)
             error = {"code": 200, "message": "Odoo Server Error", "data": se}
-            return request.make_response(html_escape(json.dumps(error)))
+            res = request.make_response(html_escape(json.dumps(error)))
+            raise InternalServerError(response=res) from e
