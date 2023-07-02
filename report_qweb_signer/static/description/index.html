@@ -413,11 +413,11 @@ to use in your company.</p>
 <li>Set name, certificate file, password file and model</li>
 <li>Optionally you can set a domain and filename pattern for saving as attachment</li>
 </ul>
-<p>For example, if you want to sign only customer invoices in open or paid state:</p>
+<p>For example, if you want to sign only customer invoices in posted state:</p>
 <ul class="simple">
-<li>Model: <tt class="docutils literal">account.invoice</tt></li>
-<li>Domain: <tt class="docutils literal"><span class="pre">[('type','=','out_invoice'),</span> ('state', 'in', ('open', <span class="pre">'paid'))]</span></tt></li>
-<li>Save as attachment: <tt class="docutils literal">(object.number or <span class="pre">'').replace('/','_')</span> + '.signed.pdf'</tt></li>
+<li>Model: <tt class="docutils literal">account.move</tt></li>
+<li>Domain: <tt class="docutils literal"><span class="pre">[('move_type','=','out_invoice'),</span> ('state', <span class="pre">'=',</span> <span class="pre">'posted')]</span></tt></li>
+<li>Save as attachment: <tt class="docutils literal">(object.name or <span class="pre">'').replace('/','_')</span> + '.signed.pdf'</tt></li>
 </ul>
 <p><strong>Note</strong>: Linux user that executes Odoo server process must have
 read access to certificate file and password file</p>
