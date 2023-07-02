@@ -54,11 +54,11 @@ to use in your company.
 * Set name, certificate file, password file and model
 * Optionally you can set a domain and filename pattern for saving as attachment
 
-For example, if you want to sign only customer invoices in open or paid state:
+For example, if you want to sign only customer invoices in posted state:
 
-* Model: ``account.invoice``
-* Domain: ``[('type','=','out_invoice'), ('state', 'in', ('open', 'paid'))]``
-* Save as attachment: ``(object.number or '').replace('/','_') + '.signed.pdf'``
+* Model: ``account.move``
+* Domain: ``[('move_type','=','out_invoice'), ('state', '=', 'posted')]``
+* Save as attachment: ``(object.name or '').replace('/','_') + '.signed.pdf'``
 
 **Note**: Linux user that executes Odoo server process must have
 read access to certificate file and password file
