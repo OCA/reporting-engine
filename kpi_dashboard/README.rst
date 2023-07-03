@@ -42,7 +42,7 @@ Configure KPIs
 #. Create a new KPI specifying the computation method and the kpi type
 
    #. Number: result must contain a `value` and, if needed, a `previous`
-   #. Meter: result must contain `value`, `min` and `max`
+   #. Meter: To show a percentage value, result must contain `value`. `value` must be a positive integer between 0 to 100. Meter is implemented with GaugeMeter (https://github.com/Mictronics/GaugeMeter). It can be customized by setting parameters for GaugeMeter in result. See https://github.com/Mictronics/GaugeMeter#parameter-definitions for details.
    #. Graph: result must contain a list on `graphs` containing `values`, `title` and `key`
 
 #. In order to compute the KPI you can use a predefined function from a model or

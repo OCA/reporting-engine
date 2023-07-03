@@ -395,7 +395,7 @@ ul.auto-toc {
 <li>Access <cite>Dashboards &gt; Configuration &gt; KPI Dashboards &gt; Configure KPI</cite></li>
 <li>Create a new KPI specifying the computation method and the kpi type<ol class="arabic">
 <li>Number: result must contain a <cite>value</cite> and, if needed, a <cite>previous</cite></li>
-<li>Meter: result must contain <cite>value</cite>, <cite>min</cite> and <cite>max</cite></li>
+<li>Meter: To show a percentage value, result must contain <cite>value</cite>. <cite>value</cite> must be a positive integer between 0 to 100. Meter is implemented with GaugeMeter (<a class="reference external" href="https://github.com/Mictronics/GaugeMeter">https://github.com/Mictronics/GaugeMeter</a>). It can be customized by setting parameters for GaugeMeter in result. See <a class="reference external" href="https://github.com/Mictronics/GaugeMeter#parameter-definitions">https://github.com/Mictronics/GaugeMeter#parameter-definitions</a> for details.</li>
 <li>Graph: result must contain a list on <cite>graphs</cite> containing <cite>values</cite>, <cite>title</cite> and <cite>key</cite></li>
 </ol>
 </li>
