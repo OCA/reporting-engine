@@ -10,6 +10,7 @@
     "development_status": "Production/Stable",
     "license": "AGPL-3",
     "depends": ["base", "web"],
+    "external_dependencies": {"python": ["openpyxl"]},
     "data": ["views/webclient_templates.xml"],
     "demo": ["demo/report.xml"],
     "installable": True,

@@ -6,3 +6,4 @@
 * Cristian Salamea <cs@prisehub.com>
 * Rod Schouteden <rod.schouteden@dynapps.be>
 * Eugene Molotov <molotov@it-projects.info>
+* Guillem Casassas <guillem.casassas@forgeflow.com>
