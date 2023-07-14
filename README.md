@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 [bi_sql_editor](bi_sql_editor/) | 16.0.1.0.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
 [report_async](report_async/) | 16.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_company_details_translatable](report_company_details_translatable/) | 16.0.1.0.0 |  | Report Company Details Translatable
-[report_csv](report_csv/) | 16.0.1.0.0 |  | Base module to create csv report
+[report_csv](report_csv/) | 16.0.1.0.1 |  | Base module to create csv report
 [report_label](report_label/) | 16.0.1.0.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 16.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 16.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
