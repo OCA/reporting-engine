@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="price_unit_value_format">
+        <t t-if="currency.apply_price_decimal_place">
+            <span
+                class="text-nowrap"
+                t-esc="price_unit"
+                t-options='{"widget": "float", "precision": currency.price_decimal_places}'
+            />
+        </t>
+    </template>
+
+</odoo>
