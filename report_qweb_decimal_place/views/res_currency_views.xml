@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_currency_form" model="ir.ui.view">
+        <field name="name">res.currency</field>
+        <field name="model">res.currency</field>
+        <field name="inherit_id" ref="base.view_currency_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_subunit_label']" position="after">
+                <field name="apply_price_decimal_place" />
+                <field
+                    name="price_decimal_places"
+                    attrs="{'invisible': [('apply_price_decimal_place', '=', False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
