@@ -11,6 +11,7 @@
                     name="create_cron"
                     string="Create Cron"
                     type="object"
+                    groups="base.group_system"
                     attrs="{'invisible': ['|', ('state', '=', 'draft'), ('mail_user_ids', '=', [(6, False, [])])]}"
                 />
             </button>
@@ -20,27 +21,21 @@
                     attrs="{'invisible': [('cron_ids', '=', [(6, False, [])])]}"
                 />
             </field>
-            <page name="page_sql" position="after">
-                <page name="page_mail" string="Mail">
-                        <group string="Users Notified by e-mail">
-                            <field
-                            name="mail_user_ids"
-                            nolabel="1"
-                            widget="many2many_tags"
-                            colspan="2"
-                        />
-                        </group>
-                        <group string="Crons">
-                            <field
+            <group name="parameters" position="after">
+                <group groups="sql_request_abstract.group_sql_request_user">
+                    <group string="Users Notified by e-mail">
+                        <field name="mail_user_ids" nolabel="1" />
+                    </group>
+                    <group string="Crons" groups="base.group_system">
+                        <field
                             name="cron_ids"
                             nolabel="1"
-                            colspan="2"
                             domain="[('model_id', '=', 'sql.export')]"
+                            groups="base.group_system"
                         />
-                        </group>
-
-                </page>
-            </page>
+                    </group>
+                </group>
+            </group>
         </field>
     </record>
 
