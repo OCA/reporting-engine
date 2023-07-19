@@ -119,6 +119,8 @@ class BaseCommentTemplate(models.Model):
     def _search_model_ids(self, operator, value):
         # We cannot use model_ids.model in search() method to avoid access errors
         allowed_items = (
-            self.sudo().search([]).filtered(lambda x: x.model_ids.model == value)
+            self.sudo()
+            .search([])
+            .filtered(lambda x: value in x.model_ids.mapped("model"))
         )
         return [("id", "in", allowed_items.ids)]

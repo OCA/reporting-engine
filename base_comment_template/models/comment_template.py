@@ -24,7 +24,7 @@ class CommentTemplate(models.AbstractModel):
         compute_sudo=True,
         comodel_name="base.comment.template",
         string="Comment Template",
-        domain=lambda self: [("model_ids", "=", self._name)],
+        domain=lambda self: [("model_ids", "in", self._name)],
         store=True,
         readonly=False,
     )
@@ -32,7 +32,7 @@ class CommentTemplate(models.AbstractModel):
     @api.depends(_comment_template_partner_field_name)
     def _compute_comment_template_ids(self):
         template_model = self.env["base.comment.template"]
-        template_domain = template_model._search_model_ids("=", self._name)
+        template_domain = template_model._search_model_ids("in", self._name)
         for record in self:
             partner = record[self._comment_template_partner_field_name]
             record.comment_template_ids = [(5,)]
