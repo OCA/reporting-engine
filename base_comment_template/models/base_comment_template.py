@@ -113,7 +113,7 @@ class BaseCommentTemplate(models.Model):
                 item.name, dict(self._fields["position"].selection).get(item.position)
             )
             if self.env.context.get("comment_template_model_display"):
-                name += " (%s)" % ", ".join(item.model_ids.mapped("name"))
+                name += " (%s)" % ", ".join(item.sudo().model_ids.mapped("name"))
             res.append((item.id, name))
         return res
 
