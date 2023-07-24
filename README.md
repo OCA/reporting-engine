@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [report_async](report_async/) | 13.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_batch](report_batch/) | 13.0.1.0.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Ability to print multiple QWeb reports in a single batch.
 [report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
-[report_csv](report_csv/) | 13.0.1.0.2 |  | Base module to create csv report
+[report_csv](report_csv/) | 13.0.1.0.3 |  | Base module to create csv report
 [report_layout_config](report_layout_config/) | 13.0.1.0.1 |  | Add possibility to easily modify the global report layout
 [report_py3o](report_py3o/) | 13.0.1.0.6 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 13.0.1.0.0 |  | Let the fusion server handle format conversion.
