@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -32,7 +32,6 @@ msgid "Created on"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
 msgid "Display Name"
@@ -60,7 +59,6 @@ msgid "Group By"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__id
 msgid "ID"
@@ -98,7 +96,6 @@ msgid "Is Py3O Report Not Available"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template____last_update
 msgid "Last Modified on"
@@ -219,7 +216,6 @@ msgstr ""
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr ""
 
