@@ -25,12 +25,16 @@ class IrActionsReport(models.Model):
         help="Python code syntax to gnerate password.",
     )
 
-    def _render_qweb_pdf(self, res_ids=None, data=None):
-        document, ttype = super(IrActionsReport, self)._render_qweb_pdf(
-            res_ids=res_ids, data=data
+    def _render_qweb_pdf(self, reportname, res_ids=None, data=None):
+        document, ttype = super()._render_qweb_pdf(
+            reportname, res_ids=res_ids, data=data
         )
         if res_ids:
-            password = self._get_pdf_password(res_ids[:1])
+            encrypt_password = self._context.get("encrypt_password")
+            report = self._get_report_from_name(reportname).with_context(
+                encrypt_password=encrypt_password
+            )
+            password = report._get_pdf_password(res_ids[:1])
             document = self._encrypt_pdf(document, password)
         return document, ttype
 
@@ -55,8 +59,10 @@ class IrActionsReport(models.Model):
                 )
             except Exception as e:
                 raise ValidationError(
-                    _("Python code used for encryption password is invalid.\n%s")
-                    % self.encrypt_password
+                    _(
+                        "Python code used for encryption password is invalid.\n%s",
+                        self.encrypt_password,
+                    )
                 ) from e
         return encrypt_password
 
