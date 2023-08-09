@@ -30,7 +30,7 @@ addon | version | maintainers | summary
 [report_py3o](report_py3o/) | 15.0.1.0.0 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_qr](report_qr/) | 15.0.1.0.0 |  | Web QR Manager
 [report_qweb_decimal_place](report_qweb_decimal_place/) | 15.0.1.0.0 |  | Report Qweb Decimal Place
-[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 15.0.1.0.2 |  | Report Qweb Element Page Visibility
+[report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 15.0.1.0.3 |  | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 15.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 15.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 15.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
