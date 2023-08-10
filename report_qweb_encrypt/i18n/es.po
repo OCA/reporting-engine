@@ -37,8 +37,8 @@ msgid "Auto Generated Password"
 msgstr "Contraseña generada automáticamente"
 
 #. module: report_qweb_encrypt
-#. openerp-web
-#: code:addons/report_qweb_encrypt/static/src/js/report/encrypt_dialog.xml:0
+#. odoo-javascript
+#: code:addons/report_qweb_encrypt/static/src/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Cancel"
 msgstr "Cancelar"
@@ -59,8 +59,8 @@ msgid "Manual Input Password"
 msgstr "Contraseña de entrada manual"
 
 #. module: report_qweb_encrypt
-#. openerp-web
-#: code:addons/report_qweb_encrypt/static/src/js/report/encrypt_dialog.xml:0
+#. odoo-javascript
+#: code:addons/report_qweb_encrypt/static/src/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Ok"
 msgstr "Aceptar"
@@ -71,6 +71,7 @@ msgid "Python code syntax to gnerate password."
 msgstr "Sintaxis del código Python para generar la contraseña."
 
 #. module: report_qweb_encrypt
+#. odoo-python
 #: code:addons/report_qweb_encrypt/models/ir_actions_report.py:0
 #, python-format
 msgid ""
