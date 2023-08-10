@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="report_qweb_encrypt.EncryptDialogBody" owl="1">
+        <Dialog size="'sm'" title="'Encrypt'">
+            <div id="qweb_encrypt_pdf_password">
+                <input class="o_password" type="password" />
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="onClick">Ok</button>
+                <button class="btn" t-on-click="this.props.close">Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>
