@@ -16,7 +16,6 @@ class IrActionsReport(models.Model):
     )
 
     def _get_context(self):
-        self.ensure_one()
         context = (
             self.env["ir.config_parameter"]
             .sudo()
@@ -29,12 +28,12 @@ class IrActionsReport(models.Model):
         context.update(self.env.context)
         return context
 
-    def _render(self, res_ids, data=None):
-        return super(IrActionsReport, self.with_context(self._get_context()))._render(
-            res_ids, data=data
+    def _render(self, report_ref, res_ids, data=None):
+        return super(IrActionsReport, self.with_context(**self._get_context()))._render(
+            report_ref, res_ids, data=data
         )
 
     def report_action(self, docids, data=None, config=True):
         return super(
-            IrActionsReport, self.with_context(self._get_context())
+            IrActionsReport, self.with_context(**self._get_context())
         ).report_action(docids, data=data, config=config)
