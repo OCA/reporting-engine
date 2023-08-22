@@ -12,12 +12,12 @@ It has a priority field (smaller number = higher priority)
 
 In existing reports, if you add this line will get the comment template if you created one like
 
-* <span t-raw="o.get_comment_template('position',company_id=o.company_id, partner_id=o.parnter_id )"/> ( or without any parameter)
+* <span t-out="o.get_comment_template('position',company_id=o.company_id, partner_id=o.parnter_id )"/> ( or without any parameter)
 
 
 This module is the base module for following modules:
 
 * sale_comment_template
 * purchase_comment_template
-* invoice_comment_template
+* account_comment_template
 * stock_picking_comment_template
