@@ -17,13 +17,13 @@ The template is a html field which will be rendered just like a mail template, s
 Change the report related to the model from configuration and add a statement like:
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
-  <div t-raw="o.render_comment(comment_template_top)" />
+  <div t-out="o.render_comment(comment_template_top)" />
 
 </t>
 
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'after_lines')" t-as="comment_template_bottom">
-    <div t-raw="o.render_comment(comment_template_bottom)" />
+    <div t-out="o.render_comment(comment_template_bottom)" />
 
 </t>
 
@@ -39,6 +39,6 @@ mail.render.mixin with parameters:
 so you could use it :
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
-    <div t-raw="o.render_comment(comment_template_top, engine='qweb', add_context={my dict}, postprocess=True)" />
+    <div t-out="o.render_comment(comment_template_top, engine='qweb', add_context={my dict}, postprocess=True)" />
 
 </t>
