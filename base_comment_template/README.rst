@@ -42,14 +42,14 @@ It has a priority field (smaller number = higher priority)
 
 In existing reports, if you add this line will get the comment template if you created one like
 
-* <span t-raw="o.get_comment_template('position',company_id=o.company_id, partner_id=o.parnter_id )"/> ( or without any parameter)
+* <span t-out="o.get_comment_template('position',company_id=o.company_id, partner_id=o.parnter_id )"/> ( or without any parameter)
 
 
 This module is the base module for following modules:
 
 * sale_comment_template
 * purchase_comment_template
-* invoice_comment_template
+* account_comment_template
 * stock_picking_comment_template
 
 **Table of contents**
@@ -91,13 +91,13 @@ The template is a html field which will be rendered just like a mail template, s
 Change the report related to the model from configuration and add a statement like:
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
-  <div t-raw="o.render_comment(comment_template_top)" />
+  <div t-out="o.render_comment(comment_template_top)" />
 
 </t>
 
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'after_lines')" t-as="comment_template_bottom">
-    <div t-raw="o.render_comment(comment_template_bottom)" />
+    <div t-out="o.render_comment(comment_template_bottom)" />
 
 </t>
 
@@ -113,7 +113,7 @@ mail.render.mixin with parameters:
 so you could use it :
 
 <t t-foreach="o.comment_template_ids.filtered(lambda x: x.position == 'before_lines')" t-as="comment_template_top">
-    <div t-raw="o.render_comment(comment_template_top, engine='qweb', add_context={my dict}, postprocess=True)" />
+    <div t-out="o.render_comment(comment_template_top, engine='qweb', add_context={my dict}, postprocess=True)" />
 
 </t>
 
