@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo-addon-report_company_details_translatable>=16.0dev,<16.1dev',
         'odoo-addon-report_csv>=16.0dev,<16.1dev',
         'odoo-addon-report_label>=16.0dev,<16.1dev',
+        'odoo-addon-report_py3o>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_decimal_place>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_element_page_visibility>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_encrypt>=16.0dev,<16.1dev',
