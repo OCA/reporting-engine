@@ -14,6 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid "23:30"
+msgstr ""
+
+#. module: report_async
 #: model:mail.template,body_html:report_async.async_report_delivery
 msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
 "    <tr>\n"
@@ -54,7 +59,7 @@ msgid "Allow Async"
 msgstr ""
 
 #. module: report_async
-#: code:addons/report_async/models/report_async.py:108
+#: code:addons/report_async/models/report_async.py:111
 #, python-format
 msgid "Background process not allowed."
 msgstr ""
@@ -275,6 +280,11 @@ msgstr ""
 #. module: report_async
 #: model_terms:ir.actions.act_window,help:report_async.action_report_async
 msgid "Run reports asyncronously"
+msgstr ""
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__schedule_time
+msgid "Schedule time"
 msgstr ""
 
 #. module: report_async
