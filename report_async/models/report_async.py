@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 import base64
+from datetime import datetime, timedelta
 from odoo import api, fields, models, _
 from odoo.tools.safe_eval import safe_eval
 from odoo.exceptions import UserError
@@ -70,6 +71,8 @@ class ReportAsync(models.Model):
         help="List all files created by this report background process",
     )
 
+    schedule_time = fields.Char(string='Schedule time')
+
     @api.multi
     def _compute_job(self):
         for rec in self:
@@ -110,6 +113,8 @@ class ReportAsync(models.Model):
         result = action.read()[0]
         ctx = safe_eval(result.get('context', {}))
         ctx.update({'async_process': True})
+        if self.schedule_time:
+            ctx.update({'eta': self._get_next_schedule_time()})
         result['context'] = ctx
         return result
 
@@ -160,3 +165,11 @@ class ReportAsync(models.Model):
         template.send_mail(attachment.id,
                            notif_layout='mail.mail_notification_light',
                            force_send=False)
+
+    def _get_next_schedule_time(self):
+        target_time = datetime.strptime(self.schedule_time, "%H:%M").time()
+        now = fields.Datetime.now()
+        target_datetime = datetime.combine(now.date(), target_time)
+        if now.time() > target_time:
+            target_datetime += timedelta(days=1)
+        return target_datetime
