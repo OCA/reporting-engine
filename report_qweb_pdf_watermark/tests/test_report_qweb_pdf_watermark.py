@@ -51,7 +51,10 @@ class TestReportQwebPdfWatermark(HttpCase):
         # test 0
         numpages = 0
         # pdf_has_usable_pages(self, pdf_watermark)
-        self.assertFalse(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
+        with self.assertLogs(level="ERROR"):
+            self.assertFalse(
+                self.env["ir.actions.report"].pdf_has_usable_pages(numpages)
+            )
         # test 1
         numpages = 1
         self.assertTrue(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
