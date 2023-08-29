@@ -50,14 +50,14 @@ class CommentTemplate(models.AbstractModel):
                     record.comment_template_ids = [(4, template.id)]
 
     def render_comment(
-        self, comment, engine="inline_template", add_context=None, post_process=False
+        self, comment, engine=False, add_context=None, post_process=False
     ):
         self.ensure_one()
         comment_texts = self.env["mail.render.mixin"]._render_template(
             template_src=comment.text,
             model=self._name,
             res_ids=[self.id],
-            engine=engine,
+            engine=engine or comment.engine,
             add_context=add_context,
             post_process=post_process,
         )
