@@ -71,6 +71,7 @@
                             <field name="domain" />
                             <field name="models" />
                             <field name="partner_ids" widget="many2many_tags" />
+                            <field name="engine" groups="base.group_no_one" />
                         </group>
                     </group>
                     <notebook>
