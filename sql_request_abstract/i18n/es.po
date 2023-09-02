@@ -42,6 +42,8 @@ msgid "Attachment Count"
 msgstr "recuento de archivos adjuntos"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__draft
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
 msgid "Draft"
 msgstr "No suscrito"
@@ -143,8 +145,8 @@ msgstr "número de errores"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Número de mensajes que requiere una acción"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
@@ -187,6 +189,8 @@ msgid "SQL Settings"
 msgstr "Configuración SQL"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr "SQL Válido"
@@ -244,7 +248,8 @@ msgstr ""
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 #, python-format
 msgid "The query is not allowed because it contains unsafe word '%s'"
-msgstr "La consulta no está permitida porque contiene la palabra no segura '%s'"
+msgstr ""
+"La consulta no está permitida porque contiene la palabra no segura '%s'"
 
 #. module: sql_request_abstract
 #. odoo-python
@@ -271,6 +276,9 @@ msgid ""
 msgstr ""
 "No puedes usar las siguientes palabras BORRAR, ELIMINAR, CREAR, INSERTAR, "
 "ALTERAR, TRUNCAR, EJECUTAR, ACTUALIZAR."
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Número de mensajes que requiere una acción"
 
 #~ msgid "Display Name"
 #~ msgstr "Nombre a mostrar"
