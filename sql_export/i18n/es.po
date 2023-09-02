@@ -29,7 +29,8 @@ msgstr "Acción necesaria"
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_file_wizard
 msgid "Allow the user to save the file with sql request's data"
-msgstr "Permitir al usuario guardar el fichero con los datos de la petición sql"
+msgstr ""
+"Permitir al usuario guardar el fichero con los datos de la petición sql"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
@@ -256,8 +257,8 @@ msgstr "número de errores"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Número de mensajes que requieren una acción"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error_counter
@@ -417,6 +418,9 @@ msgstr "windows-1252"
 #: model:ir.model.fields,field_description:sql_export.integer_field_variable_sql
 msgid "x_ID"
 msgstr "x_ID"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Número de mensajes que requieren una acción"
 
 #~ msgid "Set to Draft"
 #~ msgstr "Cambiar a borrador"
