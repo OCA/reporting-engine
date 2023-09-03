@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: report_py3o
+#. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "(Native)"
@@ -48,6 +49,7 @@ msgid "Fallback"
 msgstr ""
 
 #. module: report_py3o
+#. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
@@ -129,6 +131,7 @@ msgid "LibreOffice Template File Type"
 msgstr ""
 
 #. module: report_py3o
+#. odoo-python
 #: code:addons/report_py3o/models/py3o_report.py:0
 #, python-format
 msgid "Libreoffice runtime not available. Please contact your administrator."
@@ -155,6 +158,7 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: report_py3o
+#. odoo-python
 #: code:addons/report_py3o/models/py3o_report.py:0
 #, python-format
 msgid "No template found. Aborting."
@@ -201,12 +205,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
-#: model:ir.ui.menu,name:report_py3o.py3o_config_menu
-msgid "Py3o"
-msgstr ""
-
-#. module: report_py3o
 #: model:ir.actions.report,name:report_py3o.res_users_report_py3o
 msgid "Py3o Demo Report"
 msgstr ""
@@ -219,9 +217,6 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr ""
 
@@ -258,6 +253,7 @@ msgid "The implementer module that provides this report"
 msgstr ""
 
 #. module: report_py3o
+#. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid ""
@@ -275,4 +271,14 @@ msgid ""
 "rendering method. HTML means the report will be opened directly in your "
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.actions.report,print_report_name:report_py3o.res_users_report_py3o
+msgid "object.name.replace(' ', '_') + '-demo.odt'"
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
 msgstr ""
