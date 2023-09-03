@@ -143,6 +143,11 @@ msgid "Display Name"
 msgstr "Nome"
 
 #. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__engine
+msgid "Engine"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
 msgid "Filter Domain"
 msgstr "Domínio Filtro"
@@ -174,6 +179,11 @@ msgid ""
 msgstr ""
 "Se definido, o modelo de comentário estará disponível apenas para o parceiro "
 "selecionado."
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__inline_template
+msgid "Inline Template"
+msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
@@ -247,8 +257,14 @@ msgid "Preview of"
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb_view
+msgid "QWeb View"
 msgstr ""
 
 #. module: base_comment_template
@@ -323,6 +339,12 @@ msgid ""
 msgstr ""
 "Este modelo de comentário estará disponível apenas para objetos que "
 "satisfaçam a condição"
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__engine
+msgid ""
+"This field allows to select the engine to use for rendering the template."
+msgstr ""
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
