@@ -28,7 +28,8 @@ class ReportController(report.ReportController):
                 options=options,
                 **kwargs,
             )
-        docids = [int(_id) for _id in (docids or "").split(",")]
+        if docids:
+            docids = [int(_id) for _id in docids.split(",")]
         data = {**json.loads(options or "{}"), **kwargs}
         context = dict(request.env.context)
         if "context" in data:
