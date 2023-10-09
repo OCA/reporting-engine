@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_xlsx
+# 	* report_xlsx
 #
 msgid ""
 msgstr ""
@@ -26,7 +26,9 @@ msgstr "%s model blev ikke fundet"
 #. openerp-web
 #: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:49
 #, python-format
-msgid "A popup window with your report was blocked. You may need to change your browser settings to allow popup windows for this page."
+msgid ""
+"A popup window with your report was blocked. You may need to change your "
+"browser settings to allow popup windows for this page."
 msgstr ""
 "Et popup-vindue med din rapport blev blokeret. Du skal muligvis ændre dine "
 "browserindstillinger for at tillade popup-vinduer til denne side."
@@ -86,7 +88,11 @@ msgstr "Tekst"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
-msgid "The type of the report that will be rendered, each one having its own rendering method. HTML means the report will be opened directly in your browser PDF means the report will be rendered using Wkhtmltopdf and downloaded by the user."
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
 msgstr ""
 "Den type rapport, der skal gengives, hver med sin egen gengivelsesmetode. "
 "HTML betyder, at rapporten åbnes direkte i din browser PDF betyder, at "
