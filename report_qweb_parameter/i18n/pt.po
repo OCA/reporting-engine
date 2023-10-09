@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_qweb_parameter
+# 	* report_qweb_parameter
 #
 msgid ""
 msgstr ""
