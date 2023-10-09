@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
 "PO-Revision-Date: 2023-08-24 22:01+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
-"23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
+"teams/23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,7 +211,6 @@ msgid "Path to the libreoffice runtime"
 msgstr "Ruta al tiempo de ejecución de libreoffice"
 
 #. module: report_py3o
-#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr "Py3o"
@@ -231,7 +230,6 @@ msgstr "Reportes Py3o"
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr "Plantillas Py3o"
 
@@ -294,3 +292,8 @@ msgstr ""
 "renderizado. HTML significa que el reporte se abrirá directamente en su "
 "navegador. PDF significa que el reporte se procesará mediante Wkhtmltopdf y "
 "el usuario lo descargará."
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
+msgstr ""

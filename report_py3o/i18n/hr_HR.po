@@ -205,7 +205,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr ""
@@ -225,7 +224,6 @@ msgstr ""
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr ""
 
@@ -280,4 +278,9 @@ msgid ""
 "rendering method. HTML means the report will be opened directly in your "
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
 msgstr ""
