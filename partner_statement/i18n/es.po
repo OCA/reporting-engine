@@ -454,7 +454,8 @@ msgstr "Fecha Vencimiento"
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_activity_statement
 msgid "Enable OCA Activity & Detailed Activity Statements"
-msgstr "Activar la actividad de OCA y las declaraciones detalladas de actividad"
+msgstr ""
+"Activar la actividad de OCA y las declaraciones detalladas de actividad"
 
 #. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_res_config_settings__group_outstanding_statement
