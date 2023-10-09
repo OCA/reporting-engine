@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* bi_sql_editor_aggregate
+# 	* bi_sql_editor_aggregate
 #
 msgid ""
 msgstr ""
@@ -28,7 +28,9 @@ msgstr "Campo da Vista Bi SQL"
 
 #. module: bi_sql_editor_aggregate
 #: model:ir.model.fields,help:bi_sql_editor_aggregate.field_bi_sql_view_field__group_operator
-msgid "By default, Odoo will sum the values when grouping. If you wish to alter the behaviour, choose an alternate Group Operator"
+msgid ""
+"By default, Odoo will sum the values when grouping. If you wish to alter the "
+"behaviour, choose an alternate Group Operator"
 msgstr ""
 "Por defeito, o Odoo irá somar os valores quando agrupa. Se deseja alterar "
 "este comportamento, escolha um Operador de Grupo alternativo"
