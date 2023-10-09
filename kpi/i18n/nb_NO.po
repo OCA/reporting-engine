@@ -92,7 +92,7 @@ msgid "Data Sources"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__day
 msgid "Day"
 msgstr ""
 
@@ -139,12 +139,6 @@ msgid "External DB Source Minimum"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Fixed value"
-msgstr ""
-
-#. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "History"
@@ -156,7 +150,7 @@ msgid "History of the KPI"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__hour
 msgid "Hour"
 msgstr ""
 
@@ -274,7 +268,7 @@ msgid "Last execution"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:68
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
 msgstr ""
@@ -351,12 +345,12 @@ msgid "Minimum Value"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__minute
 msgid "Minute"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__month
 msgid "Month"
 msgstr ""
 
@@ -399,14 +393,8 @@ msgid "Periodicity UoM"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__python
 msgid "Python"
-msgstr ""
-
-#. module: kpi
-#: selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
-msgid "Python Code"
 msgstr ""
 
 #. module: kpi
@@ -424,18 +412,12 @@ msgid "Ranges"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi.threshold.range,min_type:0
-msgid "SQL - Externa DB"
-msgstr ""
-
-#. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,kpi_type:0 selection:kpi.threshold.range,max_type:0
-#: selection:kpi.threshold.range,min_type:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__local
 msgid "SQL - Local DB"
 msgstr ""
 
@@ -460,7 +442,7 @@ msgid "Thresholds"
 msgstr ""
 
 #. module: kpi
-#: code:addons/kpi/models/kpi_threshold.py:67
+#: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
 msgstr ""
@@ -485,6 +467,6 @@ msgid "Value"
 msgstr ""
 
 #. module: kpi
-#: selection:kpi,periodicity_uom:0
+#: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
 msgstr ""
