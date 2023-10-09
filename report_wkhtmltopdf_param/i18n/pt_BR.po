@@ -43,6 +43,8 @@ msgstr ""
 "Parâmetros personalizados transmitidos como argumentos de comando wkhtmltopdf"
 
 #. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__display_name
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__display_name
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__display_name
 msgid "Display Name"
 msgstr "Nome para Mostrar"
@@ -54,11 +56,15 @@ msgid "Failed to create a PDF using the provided parameters."
 msgstr "Falha ao criar um PDF usando os parâmetros fornecidos."
 
 #. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__id
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__id
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__id
 msgid "ID"
 msgstr "Identificação"
 
 #. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report____last_update
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat____last_update
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
 msgid "Last Modified on"
 msgstr "Última atualização em"
