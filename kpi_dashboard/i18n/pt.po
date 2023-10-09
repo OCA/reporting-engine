@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* kpi_dashboard
+# 	* kpi_dashboard
 #
 msgid ""
 msgstr ""
@@ -57,8 +57,7 @@ msgid "Active"
 msgstr "Ativo"
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Activity"
 msgstr "Atividade"
 
@@ -90,8 +89,7 @@ msgid "Bokeh"
 msgstr ""
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Calendar"
 msgstr "Calendário"
 
@@ -270,8 +268,7 @@ msgid "Font Color"
 msgstr "Cor do Texto"
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Form"
 msgstr "Formulário"
 
@@ -282,8 +279,7 @@ msgid "Function"
 msgstr "Função"
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Gantt"
 msgstr ""
 
@@ -315,8 +311,7 @@ msgid "Go to"
 msgstr "Ir Para"
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 #: selection:kpi.kpi,widget:0
 msgid "Graph"
 msgstr "Gráfico"
@@ -377,8 +372,7 @@ msgid "KPIs"
 msgstr ""
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Kanban"
 msgstr ""
 
@@ -522,8 +516,7 @@ msgid "Number Of Columns"
 msgstr "Número de Colunas"
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Pivot"
 msgstr ""
 
@@ -636,8 +629,7 @@ msgid "The code cannot contain the following terms: %s."
 msgstr "O código não contém os seguintes elementos: %s."
 
 #. module: kpi_dashboard
-#: selection:ir.actions.act_window.view,view_mode:0
-#: selection:ir.ui.view,type:0
+#: selection:ir.actions.act_window.view,view_mode:0 selection:ir.ui.view,type:0
 msgid "Tree"
 msgstr "Árvore"
 
