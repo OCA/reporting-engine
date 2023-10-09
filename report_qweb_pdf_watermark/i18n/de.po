@@ -31,8 +31,24 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_reports
 msgid "Demo report"
 msgstr "Beispielbericht"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__id
+msgid "ID"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
