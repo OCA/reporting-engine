@@ -17,8 +17,10 @@ msgstr ""
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt
 msgid ""
-"* Manual Input Password: allow user to key in password on the fly. This option available only on document print action.\n"
-"* Auto Generated Password: system will auto encrypt password when PDF created, based on provided python syntax."
+"* Manual Input Password: allow user to key in password on the fly. This "
+"option available only on document print action.\n"
+"* Auto Generated Password: system will auto encrypt password when PDF "
+"created, based on provided python syntax."
 msgstr ""
 
 #. module: report_qweb_encrypt
