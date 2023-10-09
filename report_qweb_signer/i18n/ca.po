@@ -22,7 +22,8 @@ msgstr ""
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<span>This is a sample report for testing PDF certificates.</span>"
-msgstr "<span>Això és un informe de mostra per a provar certificats PDF.</span>"
+msgstr ""
+"<span>Això és un informe de mostra per a provar certificats PDF.</span>"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
@@ -147,8 +148,8 @@ msgstr "Darrera Actualització el"
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Location to include in digital signature (typically, a city name). "
 msgstr ""
-"Ubicació per a incloure a la signatura digital (típicament, un nom de ciutat)"
-" "
+"Ubicació per a incloure a la signatura digital (típicament, un nom de "
+"ciutat) "
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
