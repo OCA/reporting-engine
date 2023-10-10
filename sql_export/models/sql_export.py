@@ -17,29 +17,8 @@ class SqlExport(models.Model):
 
     file_format = fields.Selection([("csv", "CSV")], default="csv", required=True)
 
-    field_ids = fields.Many2many(
-        "ir.model.fields",
-        "fields_sqlquery_rel",
-        "sql_id",
-        "field_id",
-        "Parameters",
-        domain=[("model", "=", "sql.file.wizard"), ("state", "=", "manual")],
-        help="Before adding parameters, make sure you have created one that fill your "
-        "need in the dedicated menu with the right type and label. \n"
-        "Then, when you add a parameter here, you have to include it in the SQL "
-        "query in order to have dynamic values depending on the user choice.\n"
-        "The format of the parameters in the SQL query must be like this :"
-        " %(parameter_field_name)s. \n"
-        "Example : from the variable menu, create an variable with type 'char', "
-        "having field name 'x_name' and field label : 'Name' \n"
-        "Then, you can create a SQL query like this : "
-        "SELECT * FROM res_partner WHERE name =  %(x_name)s the variable "
-        "can be used in any number of different SQL queries. \n"
-        "In the SQL query, you can also include these 2 special parameters "
-        "%(user_id)s and %(company_id)s which will be replaced respectively by "
-        "the user executing the query and the company of the user executing the"
-        " query.",
-    )
+    use_properties = fields.Boolean(compute="_compute_use_properties")
+    query_properties_definition = fields.PropertiesDefinition("Query Properties")
 
     encoding = fields.Selection(
         [
@@ -58,11 +37,27 @@ class SqlExport(models.Model):
         default="utf-8",
     )
 
+    def _compute_use_properties(self):
+        for rec in self:
+            rec.use_properties = bool(rec.query_properties_definition)
+
+    def configure_properties(self):
+        # we need a full window in order for property configuration to work, not a modal
+        wiz = self.env["sql.file.wizard"].create({"sql_export_id": self.id})
+        return {
+            "view_mode": "form",
+            "res_model": "sql.file.wizard",
+            "res_id": wiz.id,
+            "type": "ir.actions.act_window",
+            "context": self.env.context,
+            "nodestroy": True,
+        }
+
     def export_sql_query(self):
         self.ensure_one()
         wiz = self.env["sql.file.wizard"].create({"sql_export_id": self.id})
         # no variable input, we can return the file directly
-        if not self.field_ids:
+        if not self.query_properties_definition:
             return wiz.export_sql()
         else:
             return {
@@ -88,3 +83,10 @@ class SqlExport(models.Model):
         if self.encoding:
             res = res.decode(self.encoding)
         return res
+
+    def _check_execution(self):
+        self.ensure_one()
+        # only check execution if query does not contains variable
+        if self.query_properties_definition:
+            return True
+        return super()._check_execution()
