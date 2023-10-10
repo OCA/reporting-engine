@@ -17,12 +17,6 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: report_xlsx
-#: code:addons/report_xlsx/models/ir_report.py:0
-#, python-format
-msgid "%s model was not found"
-msgstr "No s'ha trobat el model %s"
-
-#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
 msgstr "Informe XLSX abstracte"
@@ -64,3 +58,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
 msgid "XLSX"
 msgstr "XLSX"
+
+#, python-format
+#~ msgid "%s model was not found"
+#~ msgstr "No s'ha trobat el model %s"
