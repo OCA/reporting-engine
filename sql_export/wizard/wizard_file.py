@@ -67,11 +67,12 @@ class SqlFileWizard(models.TransientModel):
                 "file_name": f"{sql_export.name}_{date}.{extension}",
             }
         )
-        return {
-            "view_mode": "form",
-            "res_model": "sql.file.wizard",
-            "res_id": self.id,
-            "type": "ir.actions.act_window",
-            "target": "new",
-            "context": self.env.context,
+        action = {
+            "name": "SQL Export",
+            "type": "ir.actions.act_url",
+            "url": "web/content/?model=%s&id=%d&filename_field=filename&"
+            "field=binary_file&download=true&filename=%s"
+            % (self._name, self.id, self.file_name),
+            "target": "self",
         }
+        return action
