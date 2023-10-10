@@ -20,44 +20,9 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: report_xlsx
-#: code:addons/report_xlsx/models/ir_report.py:0
-#, python-format
-msgid "%s model was not found"
-msgstr "%s Modell wurde nicht gefunden"
-
-#. module: report_xlsx
-#. openerp-web
-#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:0
-#, python-format
-msgid ""
-"A popup window with your report was blocked. You may need to change your "
-"browser settings to allow popup windows for this page."
-msgstr ""
-"Ein Popup-Fenster wurde abgewiesen. Sie werden vermutlich Ihre Browser-"
-"Einstellungen ändern müssen, damit die Anzeige dieser Seite möglich wird."
-
-#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
 msgstr "Abstrakter XLSX-Bericht"
-
-#. module: report_xlsx
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__display_name
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__display_name
-msgid "Display Name"
-msgstr "Name anzeigen"
-
-#. module: report_xlsx
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__id
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__id
-msgid "ID"
-msgstr "ID"
-
-#. module: report_xlsx
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract____last_update
-#: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx____last_update
-msgid "Last Modified on"
-msgstr "Zuletzt geändert am"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
@@ -94,16 +59,34 @@ msgstr ""
 "vom Anwender heruntergeladen wird."
 
 #. module: report_xlsx
-#. openerp-web
-#: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:0
-#, python-format
-msgid "Warning"
-msgstr "Hinweis"
-
-#. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
 msgid "XLSX"
 msgstr "XLSX"
+
+#, python-format
+#~ msgid "%s model was not found"
+#~ msgstr "%s Modell wurde nicht gefunden"
+
+#, python-format
+#~ msgid ""
+#~ "A popup window with your report was blocked. You may need to change your "
+#~ "browser settings to allow popup windows for this page."
+#~ msgstr ""
+#~ "Ein Popup-Fenster wurde abgewiesen. Sie werden vermutlich Ihre Browser-"
+#~ "Einstellungen ändern müssen, damit die Anzeige dieser Seite möglich wird."
+
+#~ msgid "Display Name"
+#~ msgstr "Name anzeigen"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Zuletzt geändert am"
+
+#, python-format
+#~ msgid "Warning"
+#~ msgstr "Hinweis"
 
 #~ msgid "HTML"
 #~ msgstr "HTML"
