@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
 "PO-Revision-Date: 2023-04-07 17:39+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
-"23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
+"teams/23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,8 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_file_wizard
 msgid "Allow the user to save the file with sql request's data"
-msgstr "Permite al usuario guardar el archivo con los datos de la solicitud SQL"
+msgstr ""
+"Permite al usuario guardar el archivo con los datos de la solicitud SQL"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
@@ -82,33 +83,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__changeset_change_ids
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__changeset_change_ids
-msgid "Changeset Changes"
-msgstr "Cambios en el Conjunto de Cambios"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__changeset_ids
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__changeset_ids
-msgid "Changesets"
-msgstr "Conjunto de Cambios"
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
 msgid "Copy Options"
 msgstr "Copiar Opciones"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__count_pending_changeset_changes
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__count_pending_changeset_changes
-msgid "Count Pending Changeset Changes"
-msgstr "Cuenta Pendiente de Cambios en el Conjunto de Cambios"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__count_pending_changesets
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__count_pending_changesets
-msgid "Count Pending Changesets"
-msgstr "Cuenta Pendiente del Conjunto de Cambios"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
@@ -231,13 +208,11 @@ msgstr "Solicitar Nombre"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
 msgid "SQL Export"
 msgstr "Exportar SQL"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_parameter_action
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_parameter_view_tree
 msgid "SQL Parameter"
 msgstr "Parámetro SQL"
 
@@ -257,12 +232,6 @@ msgstr "Exportar SQL"
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Set to Draft"
 msgstr "Restablecer a Borrador"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__smart_search
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__smart_search
-msgid "Smart Search"
-msgstr "Búsqueda Inteligente"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
@@ -291,12 +260,6 @@ msgstr ""
 "Estado de la Solicitud:\n"
 " * 'Borrador': No probado\n"
 " * 'SQL Válido': La solicitud de SQL ha sido verificada y es válida"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__user_can_see_changeset
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__user_can_see_changeset
-msgid "User Can See Changeset"
-msgstr "El Usuario Puede Ver el Conjunto de Cambios"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
@@ -381,3 +344,21 @@ msgstr "windows-1252"
 #: model:ir.model.fields,field_description:sql_export.integer_field_variable_sql
 msgid "x_ID"
 msgstr "x_ID"
+
+#~ msgid "Changeset Changes"
+#~ msgstr "Cambios en el Conjunto de Cambios"
+
+#~ msgid "Changesets"
+#~ msgstr "Conjunto de Cambios"
+
+#~ msgid "Count Pending Changeset Changes"
+#~ msgstr "Cuenta Pendiente de Cambios en el Conjunto de Cambios"
+
+#~ msgid "Count Pending Changesets"
+#~ msgstr "Cuenta Pendiente del Conjunto de Cambios"
+
+#~ msgid "Smart Search"
+#~ msgstr "Búsqueda Inteligente"
+
+#~ msgid "User Can See Changeset"
+#~ msgstr "El Usuario Puede Ver el Conjunto de Cambios"

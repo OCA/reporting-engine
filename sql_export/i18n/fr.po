@@ -67,33 +67,9 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__changeset_change_ids
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__changeset_change_ids
-msgid "Changeset Changes"
-msgstr ""
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__changeset_ids
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__changeset_ids
-msgid "Changesets"
-msgstr ""
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
 msgid "Copy Options"
 msgstr "Options de copie"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__count_pending_changeset_changes
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__count_pending_changeset_changes
-msgid "Count Pending Changeset Changes"
-msgstr ""
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__count_pending_changesets
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__count_pending_changesets
-msgid "Count Pending Changesets"
-msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
@@ -216,13 +192,11 @@ msgstr "Nom de la requête"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
 msgid "SQL Export"
 msgstr "Export SQL"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_parameter_action
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_parameter_view_tree
 msgid "SQL Parameter"
 msgstr "Paramètre SQL"
 
@@ -242,12 +216,6 @@ msgstr "export SQL"
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Set to Draft"
 msgstr "Remettre en brouillon"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__smart_search
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__smart_search
-msgid "Smart Search"
-msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
@@ -276,12 +244,6 @@ msgstr ""
 "Etat de la requête:\n"
 " * 'En brouillon': non testée\n"
 " * 'SQL Validé': La requête SQL a été vérifiée et est valide"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__user_can_see_changeset
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__user_can_see_changeset
-msgid "User Can See Changeset"
-msgstr ""
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
