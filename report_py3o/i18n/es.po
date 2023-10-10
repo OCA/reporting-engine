@@ -275,8 +275,8 @@ msgstr ""
 "El programa libreoffice es necesario para generar el informe py3o '%s' pero "
 "no se encuentra en la ruta bin. Debe instalar el runtime libreoffice en el "
 "servidor. Si el runtime ya está instalado y no es encontrado por Odoo, puede "
-"proporcionar la ruta completa al runtime estableciendo la clave "
-"'py3o.conversion_command' en los parámetros de configuración."
+"proporcionar la ruta completa al runtime estableciendo la clave 'py3o."
+"conversion_command' en los parámetros de configuración."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
