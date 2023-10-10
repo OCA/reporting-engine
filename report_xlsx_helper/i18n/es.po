@@ -17,21 +17,23 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"%(__name__)s, _write_line : programming error detected while processing "
+"col_specs_section %(col_specs_section)s, column %(col)s"
+msgstr ""
+
+#. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
 #, python-format
 msgid "%s model was not found"
 msgstr "%s modelo no fue encontrado"
 
 #. module: report_xlsx_helper
-#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
-msgid ""
-"%s, _write_line : programming error detected while processing "
-"col_specs_section %s, column %s"
-msgstr ""
-"%s, _write_line : detectado error procesando col_specs_section %s, column %s"
-
-#. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ", cellvalue %s"
@@ -43,52 +45,28 @@ msgid "Abstract XLSX Report"
 msgstr "Informe XLSX en abstracto"
 
 #. module: report_xlsx_helper
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__display_name
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__display_name
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: report_xlsx_helper
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__id
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__id
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__id
-msgid "ID"
-msgstr "ID (identificación)"
-
-#. module: report_xlsx_helper
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report____last_update
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract____last_update
-#: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
-
-#. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
-"Excel Sheet name '%s' contains unsupported special characters: '%s'."
+"Excel Sheet name '%(name)s' contains unsupported special characters: "
+"'%(special_chars)s'."
 msgstr ""
-"Error de programación:\n"
-"\n"
-"El nombre de la hoja Excel '%s' contiene caracteres especiales no admitidos: "
-"'%s'."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
-"Excel Sheet name '%s' should not exceed %s characters."
+"Excel Sheet name '%(name)s' should not exceed %(max_chars)s characters."
 msgstr ""
-"Error de programación:\n"
-"\n"
-"El nombre de la hoja Excel '%s' no debe superar los %s caracteres."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -102,6 +80,7 @@ msgstr ""
 "hoja de cálculo."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -115,6 +94,7 @@ msgstr ""
 "hoja de cálculo."
 
 #. module: report_xlsx_helper
+#. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ""
@@ -135,3 +115,41 @@ msgstr "Informar Acción"
 #: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_helper_test_partner_xlsx
 msgid "Test Partner XLSX Report"
 msgstr "Informe XLSX del socio de prueba"
+
+#, python-format
+#~ msgid ""
+#~ "%s, _write_line : programming error detected while processing "
+#~ "col_specs_section %s, column %s"
+#~ msgstr ""
+#~ "%s, _write_line : detectado error procesando col_specs_section %s, column "
+#~ "%s"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID (identificación)"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
+
+#, python-format
+#~ msgid ""
+#~ "Programming Error:\n"
+#~ "\n"
+#~ "Excel Sheet name '%s' contains unsupported special characters: '%s'."
+#~ msgstr ""
+#~ "Error de programación:\n"
+#~ "\n"
+#~ "El nombre de la hoja Excel '%s' contiene caracteres especiales no "
+#~ "admitidos: '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Programming Error:\n"
+#~ "\n"
+#~ "Excel Sheet name '%s' should not exceed %s characters."
+#~ msgstr ""
+#~ "Error de programación:\n"
+#~ "\n"
+#~ "El nombre de la hoja Excel '%s' no debe superar los %s caracteres."
