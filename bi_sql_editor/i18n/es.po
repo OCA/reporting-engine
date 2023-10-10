@@ -174,8 +174,8 @@ msgstr ""
 "Defina aquí restricciones de acceso a los datos.\n"
 " Asegúrese de utilizar nombres de campo con el prefijo 'x_'. Se crearà una "
 "'ir.rule' global. Una regla típica multi-compañía, por ejemplo \n"
-" ['|', ('x_company_id','child_of', [user.company_id."
-"id]),('x_company_id','=',False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
