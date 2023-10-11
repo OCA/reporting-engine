@@ -1,47 +1,41 @@
 # Copyright 2018 ForgeFlow, S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from odoo.tests import new_test_user
 from odoo.tests.common import TransactionCase
 
 
 class TestOutstandingStatement(TransactionCase):
     """Tests for Outstanding Statement."""
 
-    def setUp(self):
-        super().setUp()
-
-        self.res_users_model = self.env["res.users"]
-        self.company = self.env.ref("base.main_company")
-        self.company.external_report_layout_id = self.env.ref(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(
+            context=dict(
+                cls.env.context,
+                mail_create_nolog=True,
+                mail_create_nosubscribe=True,
+                mail_notrack=True,
+                no_reset_password=True,
+                tracking_disable=True,
+            )
+        )
+        cls.res_users_model = cls.env["res.users"]
+        cls.company = cls.env.ref("base.main_company")
+        cls.company.external_report_layout_id = cls.env.ref(
             "web.external_layout_standard"
         )
-        self.partner1 = self.env.ref("base.res_partner_2")
-        self.partner2 = self.env.ref("base.res_partner_3")
-        self.g_account_user = self.env.ref("account.group_account_user")
-
-        self.user = self._create_user("user_1", [self.g_account_user], self.company).id
-
-        self.statement_model = self.env[
-            "report.partner_statement.outstanding_statement"
-        ]
-        self.wiz = self.env["outstanding.statement.wizard"]
-        self.report_name = "partner_statement.outstanding_statement"
-        self.report_name_xlsx = "p_s.report_outstanding_statement_xlsx"
-        self.report_title = "Outstanding Statement"
-
-    def _create_user(self, login, groups, company):
-        group_ids = [group.id for group in groups]
-        user = self.res_users_model.create(
-            {
-                "name": login,
-                "login": login,
-                "email": "example@yourcompany.com",
-                "company_id": company.id,
-                "company_ids": [(4, company.id)],
-                "groups_id": [(6, 0, group_ids)],
-            }
+        cls.partner1 = cls.env.ref("base.res_partner_2")
+        cls.partner2 = cls.env.ref("base.res_partner_3")
+        cls.user = new_test_user(
+            cls.env, login="user_1", groups="account.group_account_user"
         )
-        return user
+        cls.statement_model = cls.env["report.partner_statement.outstanding_statement"]
+        cls.wiz = cls.env["outstanding.statement.wizard"]
+        cls.report_name = "partner_statement.outstanding_statement"
+        cls.report_name_xlsx = "p_s.report_outstanding_statement_xlsx"
+        cls.report_title = "Outstanding Statement"
 
     def test_customer_outstanding_statement(self):
 
