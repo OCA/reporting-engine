@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-05-24 19:08+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-10-11 09:37+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr "File"
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
 msgid "Files"
-msgstr "Files"
+msgstr "File"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__group_ids
