@@ -5,7 +5,7 @@ import logging
 import re
 from io import BytesIO
 
-from odoo import models
+from odoo import api, models
 
 _logger = logging.getLogger(__name__)
 
@@ -71,9 +71,9 @@ class ReportXlsxAbstract(models.AbstractModel):
 
     def _get_objs_for_report(self, docids, data):
         """
-        Returns objects for xlx report.  From WebUI these
+        Returns objects for xlsx report.  From WebUI these
         are either as docids taken from context.active_ids or
-        in the case of wizard are in data.  Manual calls may rely
+        in the case of wizard are in data. Manual calls may rely
         on regular context, setting docids, or setting data.
 
         :param docids: list of integers, typically provided by
@@ -101,7 +101,7 @@ class ReportXlsxAbstract(models.AbstractModel):
     def create_xlsx_report(self, docids, data):
         objs = self._get_objs_for_report(docids, data)
         file_data = BytesIO()
-        workbook = xlsxwriter.Workbook(file_data, self.get_workbook_options())
+        workbook = self.get_workbook(file_data)
         self.generate_xlsx_report(workbook, data, objs)
         workbook.close()
         file_data.seek(0)
@@ -116,3 +116,15 @@ class ReportXlsxAbstract(models.AbstractModel):
 
     def generate_xlsx_report(self, workbook, data, objs):
         raise NotImplementedError()
+
+    @api.model
+    def _get_new_workbook(self, file_data):
+        """
+        :return: empty Workbook
+        :rtype: xlsxwriter.Workbook object
+        """
+        return xlsxwriter.Workbook(file_data, self.get_workbook_options())
+
+    @api.model
+    def get_workbook(self, file_data):
+        return self._get_new_workbook(file_data)
