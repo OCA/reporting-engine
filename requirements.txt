@@ -1,4 +1,5 @@
 # generated from manifests external_dependencies
+fdfgen
 lxml
 openpyxl
 py3o.formats
