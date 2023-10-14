@@ -2,6 +2,7 @@
 cryptography
 endesive ; python_version >= '3.12'
 endesive<=2.18.5 ; python_version < '3.12'
+fdfgen
 mock
 openpyxl
 py3o.formats
