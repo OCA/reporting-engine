@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-10 03:40+0000\n"
-"PO-Revision-Date: 2023-07-13 20:08+0000\n"
+"PO-Revision-Date: 2023-10-15 18:36+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -33,7 +33,7 @@ msgstr ""
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Compañías"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
@@ -46,21 +46,27 @@ msgid ""
 "Upload an pdf file to use as an Company watermark. You need to activate the "
 "setting 'use company watermark' on the reports where you want to use it."
 msgstr ""
+"Cargue un archivo pdf para utilizarlo como marca de agua de la compañía. "
+"Debe activar la opción \"utilizar marca de agua de la compañía\" en los "
+"informes en los que desee utilizarla."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
 msgid "Upload an pdf file to use as an watermark on this report."
 msgstr ""
+"Cargue un archivo pdf para utilizarlo como marca de agua en este informe."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
 msgid "Use Company Watermark"
-msgstr ""
+msgstr "Utilizar la marca de agua de la compañía"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
 msgid "Use the pdf watermark defined globally in the company settings."
 msgstr ""
+"Utilice la marca de agua pdf definida globalmente en la configuración de la "
+"compañía."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
@@ -71,7 +77,7 @@ msgstr "Marca de agua"
 #. module: report_qweb_pdf_watermark
 #: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Watermark Demo report"
-msgstr ""
+msgstr "Informe de demostración de marca de agua"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
