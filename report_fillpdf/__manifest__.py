@@ -7,7 +7,7 @@
     "author": "Creu Blanca," "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
-    "version": "14.0.1.0.1",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "external_dependencies": {
         "python": [
@@ -21,11 +21,14 @@
         "base",
         "web",
     ],
-    "data": [
-        "views/webclient_templates.xml",
-    ],
+    "data": [],
     "demo": [
         "demo/report.xml",
     ],
     "installable": True,
+    "assets": {
+        "web.assets_backend": [
+            "report_fillpdf/static/src/js/report/action_manager_report.esm.js",
+        ],
+    },
 }
