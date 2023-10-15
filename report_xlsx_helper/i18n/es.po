@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-09-02 20:42+0000\n"
+"PO-Revision-Date: 2023-10-15 16:37+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -24,6 +24,8 @@ msgid ""
 "%(__name__)s, _write_line : programming error detected while processing "
 "col_specs_section %(col_specs_section)s, column %(col)s"
 msgstr ""
+"%(__name__)s, _write_line : error de programación detectado al procesar "
+"col_specs_section %(col_specs_section)s, columna %(col)s"
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -54,6 +56,10 @@ msgid ""
 "Excel Sheet name '%(name)s' contains unsupported special characters: "
 "'%(special_chars)s'."
 msgstr ""
+"Error de programación:\n"
+"\n"
+"El nombre de la hoja Excel '%(name)s' contiene caracteres especiales no "
+"admitidos: '%(special_chars)s'."
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -64,6 +70,10 @@ msgid ""
 "\n"
 "Excel Sheet name '%(name)s' should not exceed %(max_chars)s characters."
 msgstr ""
+"Error de programación:\n"
+"\n"
+"El nombre de la hoja Excel '%(name)s' no debe exceder %(max_chars)s "
+"caracteres."
 
 #. module: report_xlsx_helper
 #. odoo-python
