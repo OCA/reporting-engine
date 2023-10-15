@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
-"PO-Revision-Date: 2023-10-15 16:37+0000\n"
+"PO-Revision-Date: 2023-10-15 19:36+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -171,6 +171,10 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
+"En caso de utilizar propiedades en la consulta, utilice esta sintaxis: %("
+"Property String)s. <br/>\n"
+"                                Ejemplo: SELECCIONE la identificación DE "
+"sale_order DONDE create_date &gt; %(Start Date)s"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
@@ -245,12 +249,12 @@ msgstr "número de mensajes con error de entrega"
 #: code:addons/sql_export/wizard/wizard_file.py:0
 #, python-format
 msgid "Please enter a values for the following properties : %s"
-msgstr ""
+msgstr "Por favor, introduzca un valor para las siguientes propiedades : %s"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__query_properties
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query
@@ -260,7 +264,7 @@ msgstr "Consulta"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
-msgstr ""
+msgstr "Propiedades de Consulta"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
@@ -311,7 +315,7 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
 msgid "Use Properties"
-msgstr ""
+msgstr "Usar Propiedades"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__query
