@@ -29,6 +29,7 @@ setuptools.setup(
         'odoo13-addon-report_substitute',
         'odoo13-addon-report_wkhtmltopdf_param',
         'odoo13-addon-report_xlsx',
+        'odoo13-addon-report_xlsx_boilerplate',
         'odoo13-addon-report_xlsx_helper',
         'odoo13-addon-report_xml',
     ],

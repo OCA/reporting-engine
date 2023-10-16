@@ -46,6 +46,7 @@ addon | version | maintainers | summary
 [report_substitute](report_substitute/) | 13.0.1.0.0 | [![sbejaoui](https://github.com/sbejaoui.png?size=30px)](https://github.com/sbejaoui) | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 13.0.1.1.1 |  | Base module to create xlsx report
+[report_xlsx_boilerplate](report_xlsx_boilerplate/) | 13.0.1.0.0 |  | Module extending Base Report XLSX to add Boilerplate on XLSX reports.
 [report_xlsx_helper](report_xlsx_helper/) | 13.0.1.1.3 |  | Report xlsx helpers
 [report_xml](report_xml/) | 13.0.1.1.1 |  | Allow to generate XML reports
 
