@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bve_view_everyone,bve.view,bi_view_editor.model_bve_view,,1,1,1,1
-access_bve_view_line,access_bve_view_line,model_bve_view_line,,1,1,1,1
+access_bve_view_everyone_user,bve.view.user,bi_view_editor.model_bve_view,base.group_user,1,0,0,0
+access_bve_view_everyone_manager,bve.view.manager,bi_view_editor.model_bve_view,bi_view_editor.group_bve_manager,1,1,1,1
+access_bve_view_line_user,access_bve_view_line_user,bi_view_editor.model_bve_view_line,base.group_user,1,0,0,0
+access_bve_view_line_manager,access_bve_view_line_manager,bi_view_editor.model_bve_view_line,bi_view_editor.group_bve_manager,1,1,1,1

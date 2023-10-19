@@ -1,6 +1,8 @@
 To graphically design your analysis data-set:
 
 - From the Dashboards menu, select "Custom BI Views"
+- BI Views creation is restricted to members of "BI View Editor Manager" group.
+  You can add this group to a user in User form, Access Rights, Technical section.
 - Browse trough the business objects in the "Query Builder" tab
 - Pick the interesting fields (Drag & Drop)
 - For each selected field, right-click on the Options column and select whether
@@ -13,6 +15,7 @@ To access the created BI View with a dedicated menu:
 
 - If module Dashboard (board) is installed, the standard "Add to My Dashboard"
   functionality would be available
+- "Create a menu" is restricted to members of "BI View Editor Manager" group.
 - Click "Create a menu" to create a new menu item directly linked to your new
   BI view (this feature is available in developer mode); when the BI view is
   reset back to draft this menu will be removed, and you will need to re-create
