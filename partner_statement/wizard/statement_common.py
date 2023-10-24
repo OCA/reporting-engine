@@ -36,8 +36,8 @@ class StatementCommon(models.AbstractModel):
     )
 
     account_type = fields.Selection(
-        [("receivable", "Receivable"), ("payable", "Payable")],
-        default="receivable",
+        [("asset_receivable", "Receivable"), ("liability_payable", "Payable")],
+        default="asset_receivable",
     )
 
     @api.onchange("aging_type")

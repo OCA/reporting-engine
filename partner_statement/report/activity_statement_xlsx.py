@@ -41,7 +41,7 @@ class ActivityStatementXslx(models.AbstractModel):
         statement_header = _(
             "%(payable)sStatement between %(start)s and %(end)s in %(currency)s"
         ) % {
-            "payable": account_type == "payable" and _("Supplier ") or "",
+            "payable": account_type == "liability_payable" and _("Supplier ") or "",
             "start": partner_data.get("start"),
             "end": partner_data.get("end"),
             "currency": currency.display_name,

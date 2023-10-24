@@ -39,7 +39,7 @@ class OutstandingStatementXslx(models.AbstractModel):
         account_type = data.get("account_type", False)
         row_pos += 2
         statement_header = _("%(payable)sStatement up to %(end)s in %(currency)s") % {
-            "payable": account_type == "payable" and _("Supplier ") or "",
+            "payable": account_type == "liability_payable" and _("Supplier ") or "",
             "end": partner_data.get("end"),
             "currency": currency.display_name,
         }

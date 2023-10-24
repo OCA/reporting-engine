@@ -6,7 +6,7 @@
         <p>
             <span t-if="is_detailed">Detailed </span>
             <span
-                t-if="account_type == 'payable'"
+                t-if="account_type == 'liability_payable'"
             >Supplier </span>Statement between <span t-esc="d['start']" /> and <span
                 t-esc="d['end']"
             /> in <span t-esc="display_currency.name" />

@@ -45,7 +45,6 @@ class OutstandingStatement(models.AbstractModel):
             END as date_maturity
             FROM account_move_line l
             JOIN account_account aa ON (aa.id = l.account_id)
-            JOIN account_account_type at ON (at.id = aa.user_type_id)
             JOIN account_move m ON (l.move_id = m.id)
             LEFT JOIN (SELECT pr.*
                 FROM account_partial_reconcile pr
@@ -59,7 +58,7 @@ class OutstandingStatement(models.AbstractModel):
                 ON pr.debit_move_id = l2.id
                 WHERE l2.date <= %(date_end)s
             ) as pc ON pc.credit_move_id = l.id
-            WHERE l.partner_id IN %(partners)s AND at.type = %(account_type)s
+            WHERE l.partner_id IN %(partners)s
                 AND (
                     (pd.id IS NOT NULL AND
                         pd.max_date <= %(date_end)s) OR
@@ -67,6 +66,7 @@ class OutstandingStatement(models.AbstractModel):
                         pc.max_date <= %(date_end)s) OR
                     (pd.id IS NULL AND pc.id IS NULL)
                 ) AND l.date <= %(date_end)s AND m.state IN ('posted')
+                AND aa.account_type = %(account_type)s
             GROUP BY l.id, l.partner_id, m.name, l.date, l.date_maturity, l.name,
                 CASE WHEN l.ref IS NOT NULL
                     THEN l.ref
