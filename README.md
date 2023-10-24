@@ -35,9 +35,9 @@ addon | version | maintainers | summary
 [report_qweb_parameter](report_qweb_parameter/) | 15.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 15.0.1.0.0 |  | Add watermarks to your QWEB PDF reports
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 15.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
-[report_xlsx](report_xlsx/) | 15.0.1.1.3 |  | Base module to create xlsx report
-[report_xlsx_helper](report_xlsx_helper/) | 15.0.1.0.1 |  | Report xlsx helpers
-[report_xml](report_xml/) | 15.0.1.0.1 |  | Allow to generate XML reports
+[report_xlsx](report_xlsx/) | 15.0.1.1.4 |  | Base module to create xlsx report
+[report_xlsx_helper](report_xlsx_helper/) | 15.0.1.0.2 |  | Report xlsx helpers
+[report_xml](report_xml/) | 15.0.1.0.2 |  | Allow to generate XML reports
 [sql_export](sql_export/) | 15.0.1.0.0 |  | Export data in csv file with SQL requests
 [sql_export_excel](sql_export_excel/) | 15.0.1.0.0 |  | Allow to export a sql query to an excel file.
 [sql_request_abstract](sql_request_abstract/) | 15.0.1.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Model to manage SQL Requests

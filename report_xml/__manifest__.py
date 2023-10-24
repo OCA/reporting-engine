@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 {
     "name": "XML Reports",
-    "version": "15.0.1.0.1",
+    "version": "15.0.1.0.2",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "development_status": "Production/Stable",
