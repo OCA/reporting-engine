@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="bi_view_editor.ModelList" owl="1">
+        <div>
+            <div class="search-bar">
+                <span class="fa fa-search" />
+                <input
+                    type="text"
+                    class="search-bar"
+                    t-att-disabled="props.readonly"
+                    t-on-keyup="filterChanged"
+                />
+            </div>
+            <div class="class-list" t-att-class="{readonly: props.readonly}">
+                <t t-foreach="props.models" t-as="model" t-key="model.id">
+                    <ModelListItem
+                        model="model"
+                        filter="state.filter"
+                        fieldClicked.bind="props.fieldClicked"
+                        readonly="props.readonly"
+                    />
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="bi_view_editor.ModelListItem" owl="1">
+        <div t-if="matchesFilter" class="class-container">
+            <div
+                class="class"
+                t-att-class="{readonly: props.readonly}"
+                t-att-title="props.model.model"
+                t-on-click="clicked"
+            >
+                <t t-out="props.model.name" />
+            </div>
+            <t t-if="expanded">
+                <t t-foreach="state.fields" t-as="field" t-key="field.name">
+                    <ModelListFieldItem
+                        field="field"
+                        fieldClicked.bind="props.fieldClicked"
+                        readonly="props.readonly"
+                    />
+                </t>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="bi_view_editor.ModelListFieldItem" owl="1">
+        <div
+            class="field"
+            t-att-title="props.field.name"
+            t-on-click="clicked"
+            draggable="true"
+            t-on-dragstart="onDragStart"
+        >
+            <t t-out="props.field.description" />
+        </div>
+    </t>
+</templates>

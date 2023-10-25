@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="bi_view_editor.FieldList" owl="1">
+        <div>
+            <table class="field-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Options</th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="props.fields" t-as="field" t-key="field._id">
+                        <t t-if="field.join_node">
+                            <JoinListItem
+                                field="field"
+                                readonly="props.readonly"
+                                t-on-contextmenu="(e) => this.openContextMenu('join', field, e)"
+                            />
+                        </t>
+                        <t t-else="">
+                            <FieldListItem
+                                field="field"
+                                delete.bind="props.deleteField"
+                                setDescription.bind="setFieldDescription"
+                                readonly="props.readonly"
+                                t-on-contextmenu="(e) => this.openContextMenu('field', field, e)"
+                            />
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <FieldListFieldContextMenu
+            t-if="state.contextMenuOpen === 'field'"
+            field="state.contextMenuField"
+            position="state.contextMenuPosition"
+            close.bind="closeContextMenu"
+            onChange.bind="setFieldProperty"
+        />
+        <FieldListJoinContextMenu
+            t-if="state.contextMenuOpen === 'join'"
+            field="state.contextMenuField"
+            position="state.contextMenuPosition"
+            close.bind="closeContextMenu"
+            onChange.bind="setFieldProperty"
+        />
+    </t>
+
+    <t t-name="bi_view_editor.FieldList.FieldContextMenu" owl="1">
+        <ul t-ref="main" class="context-menu" t-on-mouseleave="close">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            t-att-checked="props.field.column"
+                            t-att-disabled="measurable"
+                            t-on-change="(e) => this.onChange('column', e)"
+                        />
+                        <span>Column</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            t-att-checked="props.field.row"
+                            t-att-disabled="measurable"
+                            t-on-change="(e) => this.onChange('row', e)"
+                        />
+                        <span>Row</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            t-att-checked="props.field.measure"
+                            t-att-disabled="!measurable"
+                            t-on-change="(e) => this.onChange('measure', e)"
+                        />
+                        <span>Measure</span>
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            t-att-checked="props.field.list"
+                            t-on-change="(e) => this.onChange('list', e)"
+                        />
+                        <span>List</span>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+
+    <t t-name="bi_view_editor.FieldList.JoinContextMenu" owl="1">
+        <ul t-ref="main" class="context-menu" t-on-mouseleave="close">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input
+                            type="checkbox"
+                            t-att-checked="props.field.join_left"
+                            t-on-change="(e) => this.onChange('join_left', e)"
+                        />
+                        Join Left
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </t>
+
+    <t t-name="bi_view_editor.FieldListItem" owl="1">
+        <tr class="field-node" t-att-class="{readonly: props.readonly}">
+            <td>
+                <input
+                    t-attf-title="#{props.field.model_name} (#{props.field.model})"
+                    class="form-control input-sm"
+                    type="text"
+                    name="description"
+                    t-att-value="props.field.description"
+                    t-att-disabled="props.readonly"
+                    t-on-input="descriptionChanged"
+                />
+            </td>
+            <td>
+                <t t-out="props.field.model_name" />
+            </td>
+            <td>
+                <!-- a space is needed to separate the icons -->
+                <span
+                    t-if="props.field.column"
+                    class="fa fa-columns"
+                    title="Column"
+                /> <span t-if="props.field.row" class="fa fa-bars" title="Row" /> <span
+                    t-if="props.field.measure"
+                    class="fa fa-bar-chart-o"
+                    title="Measure"
+                /> <span t-if="props.field.list" class="fa fa-list" title="List" />
+            </td>
+            <td>
+                <button
+                    t-if="!props.readonly"
+                    class="delete-button fa fa-trash-o"
+                    t-on-click="delete"
+                />
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="bi_view_editor.JoinListItem" owl="1">
+        <tr class="join-node">
+            <td colspan="4">
+                <t t-if="props.field.join_node > props.field.table_alias">
+                    <b>
+                        <t t-out="props.field.model_name" />
+                    <!-- spaces around the icon are needed -->
+                    </b> <i class="fa fa-caret-right" /> <small>
+                        <t t-out="props.field.description" />
+                    </small>
+                </t>
+                <t t-else="">
+                    <small>
+                        <t t-out="props.field.description" />
+                    <!-- spaces around the icon are needed -->
+                    </small> <i class="fa fa-caret-left" /> <b>
+                        <t t-out="props.field.model_name" />
+                    </b>
+                </t>
+                <span t-if="props.field.join_left">
+                    <i>(join left)</i>
+                </span>
+            </td>
+        </tr>
+    </t>
+</templates>

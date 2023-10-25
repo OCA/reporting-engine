@@ -91,12 +91,17 @@
 }
 
 .oe_form_field_bi_editor .body .left .class-list .class.readonly {
-    cursor: default;
+    cursor: inherit;
 }
 
 .oe_form_field_bi_editor .body .left .class-list .class:hover {
     background-color: #7c7bad;
     color: #fff;
+}
+
+.oe_form_field_bi_editor .body .left .class-list .class.readonly:hover {
+    background-color: inherit;
+    color: inherit;
 }
 
 .oe_form_field_bi_editor .body .left .class-list .field {
@@ -134,11 +139,14 @@
     border: none;
     background-image: none;
     padding: 0;
-    cursor: pointer;
 }
 
 .oe_form_field_bi_editor .body .right .field-list tbody tr:hover {
     background-color: #ddd;
+}
+
+.oe_form_field_bi_editor .body .right .field-list tbody tr.readonly:hover {
+    background-color: inherit;
 }
 
 .oe_form_field_bi_editor .body .right .field-list tbody tr.join-node {
@@ -195,4 +203,8 @@
 
 .oe_bi_view_editor_join_node_dialog li {
     cursor: pointer;
+}
+
+.o_field_widget.o_field_BVEEditor {
+    width: 100%;
 }
