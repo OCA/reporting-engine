@@ -212,7 +212,7 @@ class IrModel(models.Model):
                     ("name", "not in", models.MAGIC_COLUMNS),
                     ("ttype", "not in", NO_BI_TTYPES),
                 ],
-                order="field_description desc",
+                order="field_description",
             )
         )
         fields_dict = list(map(dict_for_field, fields))

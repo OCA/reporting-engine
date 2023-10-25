@@ -324,7 +324,7 @@ class TestBiViewEditor(TransactionCase):
             self.assertTrue(line.model_id)
             self.assertTrue(line.model_name)
         self.env.cr.execute("UPDATE bve_view_line SET model_id = null")
-        bi_view1.invalidate_cache()
+        bi_view1.line_ids.invalidate_recordset()
         for line in bi_view1.line_ids:
             self.assertFalse(line.model_id)
             self.assertTrue(line.model_name)
@@ -340,7 +340,7 @@ class TestBiViewEditor(TransactionCase):
             self.assertTrue(line.field_id)
             self.assertTrue(line.field_name)
         self.env.cr.execute("UPDATE bve_view_line SET field_id = null")
-        bi_view1.invalidate_cache()
+        bi_view1.line_ids.invalidate_recordset()
         for line in bi_view1.line_ids:
             self.assertFalse(line.field_id)
             self.assertTrue(line.field_name)
@@ -358,18 +358,6 @@ class TestBiViewEditor(TransactionCase):
 
     def test_17_uninstall_hook(self):
         uninstall_hook(self.cr, self.env)
-
-    def test_18_action_translations(self):
-        self.env["res.lang"]._activate_lang("it_IT")
-        vals = self.bi_view1_vals
-        vals.update({"name": "Test View1"})
-        bi_view1 = self.env["bve.view"].create(vals)
-        res = bi_view1.action_translations()
-        self.assertFalse(res)
-
-        bi_view1.action_create()
-        res = bi_view1.action_translations()
-        self.assertTrue(res)
 
     @odoo.tests.tagged("post_install", "-at_install")
     def test_19_field_selection(self):

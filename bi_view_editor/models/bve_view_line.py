@@ -101,12 +101,16 @@ class BveViewLine(models.Model):
                 "complete_name": field.complete_name,
                 "model": line.bve_view_id.model_name,
                 "relation": field.relation,
+                # FIXME: this sets the en_US value from the current language's
+                # translation. instead, all translations should be set with
+                # their corresponding value.
                 "field_description": line.description,
                 "ttype": field.ttype,
                 "selection": field.selection,
                 "size": field.size,
                 "state": "manual",
                 "readonly": True,
+                "translate": field.translate,
                 "groups": [(6, 0, field.groups.ids)],
             }
             if vals["ttype"] == "monetary":

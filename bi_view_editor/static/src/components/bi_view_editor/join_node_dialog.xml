@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="bi_view_editor.JoinNodeDialog" owl="1">
+        <Dialog title="title">
+            <div class="oe_bi_view_editor_join_node_dialog">
+                <ul class="list-group">
+                    <t t-foreach="choices" t-as="choice" t-key="choice.index">
+                        <t t-if="choice.join_node !== -1 and choice.table_alias !== -1">
+                            <li
+                                class="list-group-item list-group-item-action text-primary"
+                                t-on-click="() => this.choiceClicked(choice)"
+                            >
+                                <b>Use the existing node</b>
+                            </li>
+                        </t>
+                        <t t-elif="choice.join_node !== -1">
+                            <li
+                                class="list-group-item list-group-item-action text-success"
+                                t-on-click="() => this.choiceClicked(choice)"
+                            >
+                                Use the field
+                                <b>
+                                    <t t-out="choice.model_name" />
+                                <!-- spaces around the icon are needed -->
+                                </b> <i class="fa fa-caret-right" /> <b>
+                                    <t t-out="choice.description" />
+                                </b>
+                                <span class="badge">new</span>
+                            </li>
+                        </t>
+                        <t t-else="">
+                            <li
+                                class="list-group-item list-group-item-action"
+                                t-on-click="() => this.choiceClicked(choice)"
+                            >
+                                Use the field
+                                <b>
+                                    <t t-out="choice.model_name" />
+                                <!-- spaces around the icon are needed -->
+                                </b> <i class="fa fa-caret-right" /> <b>
+                                    <t t-out="choice.description" />
+                                </b>
+                            </li>
+                        </t>
+                    </t>
+                </ul>
+            </div>
+            <t t-set-slot="footer" owl="1">
+                <button class="btn btn-secondary" t-on-click="props.close">
+                    <t>Cancel</t>
+                </button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

@@ -7,3 +7,6 @@
 * Antonio Esposito <a.esposito@onestein.nl>
 * Jordi Ballester Alomar <jordi.ballester@eficent.com>
 * Italo LOPES <italo.lopes@camptocamp.com>
+* `Coop IT Easy SC <https://coopiteasy.be>`_:
+
+  * hugues de keyzer

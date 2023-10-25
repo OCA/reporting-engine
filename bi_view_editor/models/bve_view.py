@@ -60,7 +60,7 @@ class BveView(models.Model):
             line_ids = self._sync_lines_and_data(bve_view.data)
             bve_view.write({"line_ids": line_ids})
 
-    name = fields.Char(required=True, copy=False, default="")
+    name = fields.Char(required=True, copy=False, translate=True)
     model_name = fields.Char(compute="_compute_model_name", store=True)
     note = fields.Text(string="Notes")
     state = fields.Selection(
@@ -388,35 +388,6 @@ class BveView(models.Model):
                 AsIs(from_str),
             )
 
-    def action_translations(self):
-        self.ensure_one()
-        if self.state != "created":
-            return
-        self = self.sudo()
-        model = self.env["ir.model"].sudo().search([("model", "=", self.model_name)])
-        IrTranslation = self.env["ir.translation"]
-        IrTranslation.translate_fields("ir.model", model.id)
-        for field in model.field_id:
-            IrTranslation.translate_fields("ir.model.fields", field.id)
-        return {
-            "name": "Translations",
-            "res_model": "ir.translation",
-            "type": "ir.actions.act_window",
-            "view_mode": "tree",
-            "view_id": self.env.ref("base.view_translation_dialog_tree").id,
-            "target": "current",
-            "flags": {"search_view": True, "action_buttons": True},
-            "domain": [
-                "|",
-                "&",
-                ("res_id", "in", model.field_id.ids),
-                ("name", "=", "ir.model.fields,field_description"),
-                "&",
-                ("res_id", "=", model.id),
-                ("name", "=", "ir.model,name"),
-            ],
-        }
-
     def action_create(self):
         self.ensure_one()
 
@@ -441,7 +412,10 @@ class BveView(models.Model):
                     "name": self.name,
                     "model": self.model_name,
                     "state": "manual",
-                    "field_id": [(0, 0, f) for f in bve_fields._prepare_field_vals()],
+                    "field_id": [
+                        fields.Command.create(f)
+                        for f in bve_fields._prepare_field_vals()
+                    ],
                 }
             )
         )
