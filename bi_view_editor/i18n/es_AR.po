@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2023-04-07 18:15+0000\n"
+"PO-Revision-Date: 2023-10-29 23:44+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/OCA-"
-"reporting-engine-8-0/language/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/"
+"OCA-reporting-engine-8-0/language/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -28,6 +28,10 @@ msgid ""
 "%(msg_details)s\n"
 "%(group_list)s"
 msgstr ""
+"%(msg_title)s\n"
+"\n"
+"%(msg_details)s\n"
+"%(group_list)s"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -124,6 +128,10 @@ msgid ""
 "For instance, 'ORDER BY t1.id' would create IDs ordered in the same way as "
 "t1's IDs; otherwise IDs are assigned with no specific order."
 msgstr ""
+"Condición que se insertará en la parte OVER de la función row_number del ID."
+"\n"
+"Por ejemplo, 'ORDER BY t1.id' crearía ID ordenados de la misma manera que "
+"los ID de t1; de lo contrario, los ID se asignan sin ningún orden específico."
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
@@ -213,6 +221,8 @@ msgid ""
 "Error creating the view '{query}':\n"
 "{error}"
 msgstr ""
+"Error al crear la vista '{query}':\n"
+"{error}"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_id
@@ -227,6 +237,8 @@ msgid ""
 "Field %(field_model)s/%(field_name)s is duplicated.\n"
 "Please remove the duplications."
 msgstr ""
+"El campo %(field_model)s/%(field_name)s está duplicado.\n"
+"Por favor, elimine las duplicaciones."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
@@ -242,7 +254,7 @@ msgstr "Campos"
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Following fields are missing: %(missing_fields)s."
-msgstr ""
+msgstr "Los siguientes campos faltan: %(missing_fields)s."
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -414,7 +426,7 @@ msgstr "Opciones"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__over_condition
 msgid "Over Condition"
-msgstr ""
+msgstr "Condición Over"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__query
