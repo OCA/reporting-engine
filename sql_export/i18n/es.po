@@ -159,7 +159,6 @@ msgstr "Si está marcado, nuevos mensajes necesitan su atención."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
-#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "si está marcada, algunos mensajes tienen un error de entrega."
 
@@ -171,8 +170,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"En caso de utilizar propiedades en la consulta, utilice esta sintaxis: %("
-"Property String)s. <br/>\n"
+"En caso de utilizar propiedades en la consulta, utilice esta sintaxis: "
+"%(Property String)s. <br/>\n"
 "                                Ejemplo: SELECCIONE la identificación DE "
 "sale_order DONDE create_date &gt; %(Start Date)s"
 
@@ -265,11 +264,6 @@ msgstr "Consulta"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Propiedades de Consulta"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Error en la entrega de SMS"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -380,6 +374,9 @@ msgstr "windows-1251"
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
 msgstr "windows-1252"
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Error en la entrega de SMS"
 
 #~ msgid ""
 #~ "Before adding parameters, make sure you have created one that fill your "
