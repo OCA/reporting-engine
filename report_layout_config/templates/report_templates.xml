@@ -4,6 +4,7 @@
         id="external_standard_layout_images_template"
         primary="True"
         inherit_id="web.external_layout_standard"
+        priority="99"
     >
         <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
             <div class="header">
@@ -45,6 +46,7 @@
         id="external_clean_layout_images_template"
         primary="True"
         inherit_id="web.external_layout_clean"
+        priority="99"
     >
         <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
             <div class="header">
