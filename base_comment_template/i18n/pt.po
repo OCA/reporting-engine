@@ -100,7 +100,6 @@ msgstr "Modelo de Comentário"
 #: model:ir.ui.menu,name:base_comment_template.reports_base_comment_template_menuitem
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
-#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_tree
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Comment Templates"
 msgstr "Modelos de Comentários"
