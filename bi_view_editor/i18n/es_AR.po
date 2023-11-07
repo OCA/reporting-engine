@@ -10,8 +10,8 @@ msgstr ""
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
 "PO-Revision-Date: 2023-10-29 23:44+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/"
-"OCA-reporting-engine-8-0/language/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/OCA-"
+"reporting-engine-8-0/language/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,6 +85,11 @@ msgid "BI View Editor Lines"
 msgstr "Líneas de Editor de Vista BI"
 
 #. module: bi_view_editor
+#: model:res.groups,name:bi_view_editor.group_bve_manager
+msgid "BI View Editor Manager"
+msgstr ""
+
+#. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
 msgid "Base"
 msgstr "Base"
@@ -128,8 +133,8 @@ msgid ""
 "For instance, 'ORDER BY t1.id' would create IDs ordered in the same way as "
 "t1's IDs; otherwise IDs are assigned with no specific order."
 msgstr ""
-"Condición que se insertará en la parte OVER de la función row_number del ID."
-"\n"
+"Condición que se insertará en la parte OVER de la función row_number del "
+"ID.\n"
 "Por ejemplo, 'ORDER BY t1.id' crearía ID ordenados de la misma manera que "
 "los ID de t1; de lo contrario, los ID se asignan sin ningún orden específico."
 
