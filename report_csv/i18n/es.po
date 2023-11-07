@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-07-13 20:08+0000\n"
+"PO-Revision-Date: 2023-11-07 19:37+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -30,23 +30,25 @@ msgstr "Modelo abstracto para informes CSV"
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encode_error_handling
 msgid "Encode Error Handling"
-msgstr ""
+msgstr "Tratamiento de Errores de Codificación"
 
 #. module: report_csv
 #: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encoding
 msgid "Encoding"
-msgstr ""
+msgstr "Codificación"
 
 #. module: report_csv
 #: model:ir.model.fields,help:report_csv.field_ir_actions_report__encoding
 msgid "Encoding to be applied to the generated CSV file. e.g. cp932"
-msgstr ""
+msgstr "Codificación que se aplicará al archivo CSV generado. p. ej. cp932"
 
 #. module: report_csv
 #: code:addons/report_csv/report/report_csv.py:0
 #, python-format
 msgid "Failed to encode the data with the encoding set in the report."
 msgstr ""
+"No se han podido codificar los datos con la codificación establecida en el "
+"informe."
 
 #. module: report_csv
 #: model:ir.model.fields,help:report_csv.field_ir_actions_report__encode_error_handling
@@ -54,11 +56,13 @@ msgid ""
 "If nothing is selected, CSV export will fail with an error message when "
 "there is a character that fail to be encoded."
 msgstr ""
+"No se han podido codificar los datos con la codificación establecida en el "
+"informe."
 
 #. module: report_csv
 #: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__ignore
 msgid "Ignore"
-msgstr ""
+msgstr "Ignorar"
 
 #. module: report_csv
 #: model:ir.actions.report,name:report_csv.partner_csv
@@ -68,7 +72,7 @@ msgstr "Imprimir en CSV"
 #. module: report_csv
 #: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__replace
 msgid "Replace"
-msgstr ""
+msgstr "Reemplazar"
 
 #. module: report_csv
 #: model:ir.model,name:report_csv.model_ir_actions_report
