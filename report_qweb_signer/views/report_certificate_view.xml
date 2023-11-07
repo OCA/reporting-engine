@@ -60,7 +60,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">report.certificate.tree</field>
         <field name="model">report.certificate</field>
         <field name="arch" type="xml">
-            <tree string="PDF report certificates">
+            <tree name="PDF report certificates">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="path" />
