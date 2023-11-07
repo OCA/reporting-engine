@@ -19,8 +19,47 @@ msgid "Abstract Model for CSV reports"
 msgstr ""
 
 #. module: report_csv
+#: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encode_error_handling
+msgid "Encode Error Handling"
+msgstr ""
+
+#. module: report_csv
+#: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encoding
+msgid "Encoding"
+msgstr ""
+
+#. module: report_csv
+#: model:ir.model.fields,help:report_csv.field_ir_actions_report__encoding
+msgid "Encoding to be applied to the generated CSV file. e.g. cp932"
+msgstr ""
+
+#. module: report_csv
+#. odoo-python
+#: code:addons/report_csv/report/report_csv.py:0
+#, python-format
+msgid "Failed to encode the data with the encoding set in the report."
+msgstr ""
+
+#. module: report_csv
+#: model:ir.model.fields,help:report_csv.field_ir_actions_report__encode_error_handling
+msgid ""
+"If nothing is selected, CSV export will fail with an error message when "
+"there is a character that fail to be encoded."
+msgstr ""
+
+#. module: report_csv
+#: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__ignore
+msgid "Ignore"
+msgstr ""
+
+#. module: report_csv
 #: model:ir.actions.report,name:report_csv.partner_csv
 msgid "Print to CSV"
+msgstr ""
+
+#. module: report_csv
+#: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__replace
+msgid "Replace"
 msgstr ""
 
 #. module: report_csv
