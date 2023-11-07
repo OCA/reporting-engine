@@ -233,7 +233,6 @@ msgstr "Rapports Py3o"
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr "Py3o Templates"
 
