@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -44,6 +44,7 @@ msgid "75 DPI"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:0
 #, python-format
 msgid ""
@@ -164,9 +165,7 @@ msgid "Display Document Title"
 msgstr ""
 
 #. module: report_py3o_fusion_server
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__display_name
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__display_name
 msgid "Display Name"
 msgstr ""
@@ -257,6 +256,7 @@ msgid "Fusion Server"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_report.py:0
 #, python-format
 msgid "Fusion server error %s"
@@ -298,9 +298,7 @@ msgid "High Resolution"
 msgstr ""
 
 #. module: report_py3o_fusion_server
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__id
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report__id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__id
 msgid "ID"
 msgstr ""
@@ -355,9 +353,7 @@ msgid "JPEG Compression"
 msgstr ""
 
 #. module: report_py3o_fusion_server
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options____last_update
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -497,25 +493,13 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_pdf_options_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_pdf_options_menu
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_tree
 msgid "Py3o PDF Export Options"
-msgstr ""
-
-#. module: report_py3o_fusion_server
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_form_view
-msgid "Py3o Server Configuration"
 msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_server_configuration_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_server_configuration_menu
 msgid "Py3o Servers"
-msgstr ""
-
-#. module: report_py3o_fusion_server
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_tree_view
-msgid "Py3o Servers Configuration"
 msgstr ""
 
 #. module: report_py3o_fusion_server
@@ -574,6 +558,7 @@ msgid "Tagged PDF (add document structure)"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 #, python-format
 msgid ""
@@ -582,6 +567,7 @@ msgid ""
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 #, python-format
 msgid ""
@@ -589,6 +575,7 @@ msgid ""
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 #, python-format
 msgid ""
@@ -604,6 +591,7 @@ msgid ""
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 #, python-format
 msgid ""
@@ -651,6 +639,7 @@ msgid "XML"
 msgstr ""
 
 #. module: report_py3o_fusion_server
+#. odoo-python
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:0
 #, python-format
 msgid ""
