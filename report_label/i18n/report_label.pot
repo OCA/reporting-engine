@@ -207,7 +207,6 @@ msgstr ""
 
 #. module: report_label
 #: model:ir.actions.act_window,name:report_label.paperformat_label_action
-#: model_terms:ir.ui.view,arch_db:report_label.paperformat_label_view_tree
 msgid "Label paper format configuration"
 msgstr ""
 
