@@ -18,6 +18,7 @@
         "deb": ["graphviz"],
     },
     "data": [
+        "security/res_groups.xml",
         "security/ir.model.access.csv",
         "security/rules.xml",
         "views/bve_view.xml",
