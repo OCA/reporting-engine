@@ -21,30 +21,33 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:418
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid ""
-"%s\n"
+"%(msg_title)s\n"
 "\n"
-"%s\n"
-"%s"
+"%(msg_details)s\n"
+"%(group_list)s"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:452
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "%s (copy)"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:179
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, python-format
 msgid "(join left)"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:544
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Abstract models not supported."
 msgstr ""
@@ -55,18 +58,20 @@ msgid "Action"
 msgstr "Ukrep"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:415
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "At least one of the following groups must be added:"
 msgstr ""
 
 #. module: bi_view_editor
-#: selection:bve.view.line,list_attr:0
+#: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view_line__list_attr__avg
 msgid "Average"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:446
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, fuzzy, python-format
 msgid "BI View"
 msgstr "Odpri BI prikaz"
@@ -79,7 +84,6 @@ msgstr "BI urejevalnik prikazov"
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view_line
 #, fuzzy
-#| msgid "BI View Editor"
 msgid "BI View Editor Lines"
 msgstr "BI urejevalnik prikazov"
 
@@ -95,15 +99,15 @@ msgid "Bve View"
 msgstr "Odpri BI prikaz"
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js:36
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.xml:0
 #, python-format
 msgid "Cancel"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:18
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/bi_view_editor.xml:0
 #, python-format
 msgid "Clear"
 msgstr ""
@@ -114,12 +118,19 @@ msgid "Click to create a Custom Query Object."
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:103
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:154
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__column
 #, python-format
 msgid "Column"
+msgstr ""
+
+#. module: bi_view_editor
+#: model:ir.model.fields,help:bi_view_editor.field_bve_view__over_condition
+msgid ""
+"Condition to be inserted in the OVER part of the ID's row_number function.\n"
+"For instance, 'ORDER BY t1.id' would create IDs ordered in the same way as "
+"t1's IDs; otherwise IDs are assigned with no specific order."
 msgstr ""
 
 #. module: bi_view_editor
@@ -135,7 +146,7 @@ msgid "Create a Menu"
 msgstr "Ustvarjeno"
 
 #. module: bi_view_editor
-#: selection:bve.view,state:0
+#: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__created
 msgid "Created"
 msgstr "Nastanek"
 
@@ -152,31 +163,19 @@ msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: bi_view_editor
-#: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_tree
-msgid "Custom BI View"
-msgstr "Prilagojen BI prikaz"
-
-#. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:106 sql_constraint:bve.view:0
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
+#: model:ir.model.constraint,message:bi_view_editor.constraint_bve_view_name_uniq
 #, python-format
 msgid "Custom BI View names must be unique!"
 msgstr "Nazivi prilagojenih BI prikazov morajo biti unikatni!"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
+#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
 msgid "Custom BI Views"
 msgstr "Prilagojeni BI prikazi"
-
-#. module: bi_view_editor
-#: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
-msgid "Custom Object"
-msgstr "Prilagojen objekt"
-
-#. module: bi_view_editor
-#: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
-msgid "Custom Reports"
-msgstr "Prilagojena poročila"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__data
@@ -200,7 +199,7 @@ msgid "Display Name"
 msgstr "Prikazni naziv"
 
 #. module: bi_view_editor
-#: selection:bve.view,state:0
+#: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__draft
 msgid "Draft"
 msgstr "Osnutek"
 
@@ -215,39 +214,51 @@ msgid "Er Diagram Image"
 msgstr ""
 
 #. module: bi_view_editor
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
+#, python-format
+msgid ""
+"Error creating the view '{query}':\n"
+"{error}"
+msgstr ""
+
+#. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_id
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Field"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view_line.py:64
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid ""
-"Field %s/%s is duplicated.\n"
+"Field %(field_model)s/%(field_name)s is duplicated.\n"
 "Please remove the duplications."
 msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
 #, fuzzy
-#| msgid "Model Name"
 msgid "Field Name"
 msgstr "Naziv modela"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__field_ids
+#: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Fields"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:439
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
-msgid "Following fields are missing: %s."
+msgid "Following fields are missing: %(missing_fields)s."
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:432
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid ""
 "Following models are missing: %s.\n"
@@ -276,14 +287,15 @@ msgid "In List"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:537
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Inconsistent lines."
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:137
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, python-format
 msgid "Join Left"
 msgstr ""
@@ -300,8 +312,8 @@ msgid "Join Node"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js:30
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.esm.js:0
 #, python-format
 msgid "Join..."
 msgstr ""
@@ -335,9 +347,8 @@ msgid "Lines"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:124
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:157
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, python-format
 msgid "List"
 msgstr ""
@@ -348,17 +359,16 @@ msgid "List Attribute"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:117
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:156
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__measure
 #, python-format
 msgid "Measure"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:86
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__model_id
 #, fuzzy, python-format
 msgid "Model"
@@ -376,8 +386,8 @@ msgid "Models"
 msgstr "Modeli"
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:85
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__name
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__name
 #, python-format
@@ -385,13 +395,15 @@ msgid "Name"
 msgstr "Naziv"
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/models.py:56
+#. odoo-python
+#: code:addons/bi_view_editor/models/models.py:0
 #, python-format
 msgid "No data to be displayed."
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:424
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "No data to process."
 msgstr ""
@@ -408,11 +420,16 @@ msgid "Open BI View"
 msgstr "Odpri BI prikaz"
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:87
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, fuzzy, python-format
 msgid "Options"
 msgstr "Ukrep"
+
+#. module: bi_view_editor
+#: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__over_condition
+msgid "Over Condition"
+msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__query
@@ -431,6 +448,7 @@ msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__relation_ids
+#: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 #, fuzzy
 msgid "Relations"
 msgstr "Ukrep"
@@ -441,9 +459,8 @@ msgid "Reset to Draft"
 msgstr "Ponastavi v osnutek"
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:110
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:155
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__row
 #, python-format
 msgid "Row"
@@ -470,7 +487,7 @@ msgid "State"
 msgstr "Stanje"
 
 #. module: bi_view_editor
-#: selection:bve.view.line,list_attr:0
+#: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view_line__list_attr__sum
 msgid "Sum"
 msgstr ""
 
@@ -480,28 +497,25 @@ msgid "Table Alias"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:414
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid ""
 "The model \"%s\" cannot be accessed by users with the selected groups only."
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view_line.py:54
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid "This field cannot be a measure."
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view_line.py:50
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid "This field cannot be a row or a column."
-msgstr ""
-
-#. module: bi_view_editor
-#: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_translations
-#: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
-msgid "Translations"
 msgstr ""
 
 #. module: bi_view_editor
@@ -510,16 +524,15 @@ msgid "Type"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:30
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.xml:0
 #, python-format
 msgid "Use the existing node"
 msgstr ""
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:34
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:43
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.xml:0
 #, python-format
 msgid "Use the field"
 msgstr ""
@@ -559,7 +572,8 @@ msgid "View Field Type"
 msgstr ""
 
 #. module: bi_view_editor
-#: code:addons/bi_view_editor/models/bve_view.py:489
+#. odoo-python
+#: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
@@ -567,11 +581,20 @@ msgstr ""
 "osnutek."
 
 #. module: bi_view_editor
-#. openerp-web
-#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:39
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.xml:0
 #, python-format
 msgid "new"
 msgstr ""
+
+#~ msgid "Custom BI View"
+#~ msgstr "Prilagojen BI prikaz"
+
+#~ msgid "Custom Object"
+#~ msgstr "Prilagojen objekt"
+
+#~ msgid "Custom Reports"
+#~ msgstr "Prilagojena poročila"
 
 #~ msgid ""
 #~ "<p class=\"oe_view_nocontent_create\">\n"
