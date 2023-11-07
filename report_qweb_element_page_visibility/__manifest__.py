@@ -3,7 +3,7 @@
 
 {
     "name": "Report Qweb Element Page Visibility",
-    "version": "14.0.1.1.1",
+    "version": "14.0.1.1.2",
     "author": "Agile Business Group, Odoo Community Association (OCA)",
     "category": "Tools",
     "website": "https://github.com/OCA/reporting-engine",
