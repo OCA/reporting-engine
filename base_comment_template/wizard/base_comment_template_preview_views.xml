@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
         <!-- SMS Template Preview -->
         <record model="ir.ui.view" id="base_comment_template_preview_form">
             <field name="name">base.comment.template.preview.form</field>
@@ -9,33 +8,33 @@
                 <form string="Base Comment Preview">
                     <h3>Preview of
                         <field
-                            name="base_comment_template_id"
-                            readonly="1"
-                            nolabel="1"
-                            class="oe_inline"
-                        />
+                        name="base_comment_template_id"
+                        readonly="1"
+                        nolabel="1"
+                        class="oe_inline"
+                    />
                     </h3>
                     <field name="no_record" invisible="1" />
                     <field name="model_ids" />
                     <div class="o_row">
                         <span>Choose an example
                             <field
-                                name="model_id"
-                                domain="[('id', 'in', model_ids or False)]"
-                            />
+                            name="model_id"
+                            domain="[('id', 'in', model_ids or False)]"
+                        />
                             record:
                         </span>
                         <div>
                             <field
-                                name="resource_ref"
-                                class="oe_inline"
-                                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
-                                attrs="{'invisible': [('no_record', '=', True)]}"
-                            />
+                            name="resource_ref"
+                            class="oe_inline"
+                            options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                            attrs="{'invisible': [('no_record', '=', True)]}"
+                        />
                             <span
-                                class="text-warning"
-                                attrs="{'invisible': [('no_record', '=', False)]}"
-                            >No records
+                            class="text-warning"
+                            attrs="{'invisible': [('no_record', '=', False)]}"
+                        >No records
                             </span>
                         </div>
                     </div>
@@ -48,18 +47,18 @@
                     <label for="body" string="Base Comment content" />
                     <hr />
                     <field
-                        name="body"
-                        readonly="1"
-                        nolabel="1"
-                        options='{"safe": True}'
-                    />
+                    name="body"
+                    readonly="1"
+                    nolabel="1"
+                    options='{"safe": True}'
+                />
                     <hr />
                     <footer>
                         <button
-                            string="Discard"
-                            class="btn-secondary"
-                            special="cancel"
-                        />
+                        string="Discard"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
                     </footer>
                 </form>
             </field>
@@ -76,5 +75,4 @@
         </record>
 
 
-    </data>
 </odoo>

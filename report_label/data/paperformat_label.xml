@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="agipa_114016" model="report.paperformat.label">
             <field name="name">Label: Agipa 114016</field>
@@ -22,6 +21,4 @@
             <field name="label_margin_bottom" eval="1" />
             <field name="label_margin_left" eval="1" />
         </record>
-
-    </data>
 </odoo>

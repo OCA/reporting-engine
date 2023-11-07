@@ -43,7 +43,7 @@
     <record id="paperformat_label_view_tree" model="ir.ui.view">
         <field name="model">report.paperformat.label</field>
         <field name="arch" type="xml">
-            <tree string="Label paper format configuration">
+            <tree name="Label paper format configuration">
                 <field name="name" />
                 <field name="label_height" />
                 <field name="label_width" />

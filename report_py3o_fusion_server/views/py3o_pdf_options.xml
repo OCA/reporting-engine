@@ -182,7 +182,7 @@
         <field name="name">py3o.pdf.options.tree</field>
         <field name="model">py3o.pdf.options</field>
         <field name="arch" type="xml">
-            <tree string="Py3o PDF Export Options">
+            <tree name="Py3o PDF Export Options">
                 <field name="name" />
             </tree>
         </field>
