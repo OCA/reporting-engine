@@ -175,7 +175,6 @@ msgstr "PDF-Berichts-Zertifikat"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__report_certificate_ids
-#: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_tree
 msgid "PDF report certificates"
 msgstr "PDF-Berichtszertifikate"
 
