@@ -450,7 +450,7 @@ class BiSQLView(models.Model):
             "type": "tree",
             "model": self.model_id.model,
             "arch": """<?xml version="1.0"?>"""
-            """<tree string="Analysis">{}"""
+            """<tree name="Analysis">{}"""
             """</tree>""".format(
                 "".join([x._prepare_tree_field() for x in self.bi_sql_view_field_ids])
             ),

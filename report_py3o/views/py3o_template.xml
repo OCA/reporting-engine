@@ -34,7 +34,7 @@
         <field name="name">py3o.template.configuration.tree.view</field>
         <field name="model">py3o.template</field>
         <field name="arch" type="xml">
-            <tree string="Py3o Templates">
+            <tree name="Py3o Templates">
                 <field name="name" />
                 <field name="filetype" />
             </tree>

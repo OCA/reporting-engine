@@ -1,5 +1,5 @@
 <odoo>
-    <template id="minimal_layout" inherit_id="web.minimal_layout">
+    <template id="minimal_layout" inherit_id="web.minimal_layout" priority="99">
         <xpath expr="//t[@t-if='subst_needed']" position="replace">
             <t t-if="subst is True">
                 <script>

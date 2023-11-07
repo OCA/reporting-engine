@@ -385,7 +385,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:report_async.action_report_async
 #: model:ir.ui.menu,name:report_async.menu_report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_search
-#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
 msgid "Report Center"
 msgstr ""
 

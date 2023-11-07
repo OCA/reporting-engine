@@ -17,7 +17,7 @@
         <field name="name">py3o.server.configuration.tree.view</field>
         <field name="model">py3o.server</field>
         <field name="arch" type="xml">
-            <tree string="Py3o Servers Configuration">
+            <tree name="Py3o Servers Configuration">
                 <field name="url" />
                 <field name="pdf_options_id" />
                 <field name="is_active" />
