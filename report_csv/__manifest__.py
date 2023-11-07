@@ -10,6 +10,7 @@
     "license": "AGPL-3",
     "depends": ["base", "web"],
     "demo": ["demo/report.xml"],
+    "data": ["views/ir_actions_views.xml"],
     "assets": {
         "web.assets_backend": [
             "report_csv/static/src/js/report/qwebactionmanager.esm.js"
