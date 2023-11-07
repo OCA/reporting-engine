@@ -506,7 +506,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_pdf_options_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_pdf_options_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_tree
 msgid "Py3o PDF Export Options"
 msgstr ""
 
@@ -519,11 +518,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_server_configuration_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_server_configuration_menu
 msgid "Py3o Servers"
-msgstr ""
-
-#. module: report_py3o_fusion_server
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_tree_view
-msgid "Py3o Servers Configuration"
 msgstr ""
 
 #. module: report_py3o_fusion_server

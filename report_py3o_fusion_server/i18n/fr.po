@@ -509,7 +509,6 @@ msgstr "URL sur serveur Fusion Py3o"
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_pdf_options_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_pdf_options_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_tree
 msgid "Py3o PDF Export Options"
 msgstr ""
 
@@ -523,11 +522,6 @@ msgstr "Configuration du serveur Py3o"
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_server_configuration_menu
 msgid "Py3o Servers"
 msgstr "Serveurs Py3o"
-
-#. module: report_py3o_fusion_server
-#: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_server_configuration_tree_view
-msgid "Py3o Servers Configuration"
-msgstr "Configuration des serveurs Py3o"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
@@ -681,6 +675,9 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__zoom
 msgid "Zoom Factor"
 msgstr ""
+
+#~ msgid "Py3o Servers Configuration"
+#~ msgstr "Configuration des serveurs Py3o"
 
 #~ msgid "ir.actions.report.xml"
 #~ msgstr "ir.actions.report.xml"
