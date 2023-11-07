@@ -88,6 +88,11 @@ msgid "BI View Editor Lines"
 msgstr "BI urejevalnik prikazov"
 
 #. module: bi_view_editor
+#: model:res.groups,name:bi_view_editor.group_bve_manager
+msgid "BI View Editor Manager"
+msgstr ""
+
+#. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
 msgid "Base"
 msgstr ""
