@@ -309,7 +309,9 @@ class Py3oReport(models.TransientModel):
         attachment = existing_reports_attachment.get(model_instance.id)
         if attachment and self.ir_actions_report_id.attachment_use:
             content = base64.b64decode(attachment.datas)
-            fd, report_file = tempfile.mkstemp("." + self.ir_actions_report_id.py3o_filetype)
+            fd, report_file = tempfile.mkstemp(
+                "." + self.ir_actions_report_id.py3o_filetype
+            )
             os.close(fd)
             with open(report_file, "wb") as f:
                 f.write(content)
