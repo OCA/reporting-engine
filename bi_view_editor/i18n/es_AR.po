@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2023-10-29 23:44+0000\n"
+"PO-Revision-Date: 2023-11-12 17:37+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/OCA-"
-"reporting-engine-8-0/language/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/"
+"OCA-reporting-engine-8-0/language/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,7 @@ msgstr "Líneas de Editor de Vista BI"
 #. module: bi_view_editor
 #: model:res.groups,name:bi_view_editor.group_bve_manager
 msgid "BI View Editor Manager"
-msgstr ""
+msgstr "Gestor de Editor de Vistas BI"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
