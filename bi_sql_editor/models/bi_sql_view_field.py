@@ -168,6 +168,13 @@ class BiSQLViewField(models.Model):
             many2one_model_id = (
                 self.env["ir.model"].search([("model", "=", model_name)]).id
             )
+            if not many2one_model_id:
+                raise UserError(
+                    _(
+                        "There is no relation matching for the field %s",
+                        field_without_prefix,
+                    )
+                )
 
         vals.update(
             {
