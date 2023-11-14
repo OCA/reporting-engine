@@ -156,6 +156,7 @@ class BiSQLView(models.Model):
         comodel_name="ir.cron",
         readonly=True,
         help="Cron Task that will refresh the materialized view",
+        ondelete="cascade",
     )
 
     rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule", readonly=True)
@@ -263,8 +264,6 @@ class BiSQLView(models.Model):
                     "If you want to delete them, first set them to draft."
                 )
             )
-        if self.cron_id:
-            self.cron_id.unlink()
         return super().unlink()
 
     def copy(self, default=None):
