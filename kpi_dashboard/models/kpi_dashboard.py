@@ -1,9 +1,12 @@
 # Copyright 2020 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+import logging
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval
+
+_logger = logging.getLogger(__name__)
 
 
 class KpiDashboard(models.Model):
@@ -204,8 +207,8 @@ class KpiDashboardItem(models.Model):
                         ctx = safe_eval(self.special_context)
                         if isinstance(ctx, dict):
                             kpi = kpi.with_context(**ctx)
-                    except SyntaxError:
-                        pass
+                    except SyntaxError as e:
+                        _logger.info(e)
                 vals.update(
                     {
                         "value": kpi._compute_value(),
