@@ -9,7 +9,7 @@ class TestReportQwebSigner(HttpCase):
         super(TestReportQwebSigner, self).setUp()
         self.partner = self.env["res.partner"].create({"name": "Test partner"})
         self.report = self.env.ref(
-            "report_qweb_signer.partner_demo_report"
+            "report_keep_latest_attachment.report_keep_latest_attachment_demo"
         ).with_context(force_report_rendering=True)
 
     def test_report_qweb_signer(self):
