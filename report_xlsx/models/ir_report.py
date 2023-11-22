@@ -26,7 +26,7 @@ class ReportAction(models.Model):
             .sudo(False)
             .create_xlsx_report(docids, data)  # noqa
         )
-        if ret and isinstance(ret, (tuple, list)):  # data, "xlsx"
+        if ret and isinstance(ret, (tuple | list)):  # data, "xlsx"
             report_sudo.save_xlsx_report_attachment(docids, ret[0])
         return ret
 
