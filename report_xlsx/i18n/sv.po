@@ -34,7 +34,7 @@ msgstr "Skriv ut till XLSX"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr "Rapport??tg??rd"
+msgstr "Rapportåtgärd"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
@@ -50,8 +50,8 @@ msgid ""
 "downloaded by the user."
 msgstr ""
 "Den typ av rapport som ska renderas, var och en har sin egen "
-"renderingsmetod. HTML inneb??r att rapporten ??ppnas direkt i webbl??saren, PDF "
-"betyder att rapporten renderas med Wkhtmltopdf och laddas ner av anv??ndaren."
+"renderingsmetod. HTML innebär att rapporten öppnas direkt i webbläsaren, PDF "
+"betyder att rapporten renderas med Wkhtmltopdf och laddas ner av användaren."
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
@@ -67,8 +67,8 @@ msgstr "XLSX"
 #~ "A popup window with your report was blocked. You may need to change your "
 #~ "browser settings to allow popup windows for this page."
 #~ msgstr ""
-#~ "Ett popup-f??nster med din rapport blockerades. Du kan beh??va ??ndra "
-#~ "inst??llningarna i din webbl??sare f??r att till??ta popup-f??nster p?? den h??r "
+#~ "Ett popup-fönster med din rapport blockerades. Du kan behöva ändra "
+#~ "inställningarna i din webbläsare för att tillåta popup-fönster på den här "
 #~ "sidan."
 
 #~ msgid "Display Name"
@@ -78,7 +78,7 @@ msgstr "XLSX"
 #~ msgstr "ID"
 
 #~ msgid "Last Modified on"
-#~ msgstr "Senast ??ndrad den"
+#~ msgstr "Senast ändrad den"
 
 #, python-format
 #~ msgid "Warning"

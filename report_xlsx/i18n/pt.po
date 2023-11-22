@@ -19,12 +19,12 @@ msgstr ""
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr "Relat??rio XLSX Abstrato"
+msgstr "Relatório XLSX Abstrato"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "Partner XLSX Report"
-msgstr "Relat??rio de Parceiro XLSX"
+msgstr "Relatório de Parceiro XLSX"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
@@ -34,12 +34,12 @@ msgstr "Imprimir para XLSX"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr "A????o do Relat??rio"
+msgstr "Ação do Relatório"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr "Tipo de Relat??rio"
+msgstr "Tipo de Relatório"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
@@ -49,9 +49,9 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
-"O tipo de relat??rio que ser?? produzido, tendo cada qual o seu m??todo de "
-"produ????o. HTML significa que o relat??rio ser?? aberto diretamente no seu "
-"browser. PDF indica que o relat??rio ser?? produzido com o Wkhtmltopdf e "
+"O tipo de relatório que será produzido, tendo cada qual o seu método de "
+"produção. HTML significa que o relatório será aberto diretamente no seu "
+"browser. PDF indica que o relatório será produzido com o Wkhtmltopdf e "
 "descarregado pelo utilizador."
 
 #. module: report_xlsx
@@ -61,16 +61,16 @@ msgstr "XLSX"
 
 #, python-format
 #~ msgid "%s model was not found"
-#~ msgstr "O modelo %s n??o foi encontrado"
+#~ msgstr "O modelo %s não foi encontrado"
 
 #, python-format
 #~ msgid ""
 #~ "A popup window with your report was blocked. You may need to change your "
 #~ "browser settings to allow popup windows for this page."
 #~ msgstr ""
-#~ "Uma janela popup com o seu relat??rio foi bloqueada. Pode necessitar de "
-#~ "mudar as configura????es do browser para permitir janelas popup nesta "
-#~ "p??gina."
+#~ "Uma janela popup com o seu relatório foi bloqueada. Pode necessitar de "
+#~ "mudar as configurações do browser para permitir janelas popup nesta "
+#~ "página."
 
 #~ msgid "Display Name"
 #~ msgstr "Nome a Exibir"
@@ -79,7 +79,7 @@ msgstr "XLSX"
 #~ msgstr "ID"
 
 #~ msgid "Last Modified on"
-#~ msgstr "??ltima Modifica????o em"
+#~ msgstr "Última Modificação em"
 
 #, python-format
 #~ msgid "Warning"
