@@ -71,5 +71,5 @@ class TestReport(common.TransactionCase):
         )
         eur = self.env.ref("base.EUR")
         self.assertEqual(
-            self.xlsx_report._report_xlsx_currency_format(eur), "#,##0.00 ???"
+            self.xlsx_report._report_xlsx_currency_format(eur), "#,##0.00 €"
         )

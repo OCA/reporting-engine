@@ -37,7 +37,7 @@ msgstr "Imprimir en XLSX"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr "Informar Acci??n"
+msgstr "Informar Acción"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
@@ -52,10 +52,10 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
-"El tipo de informe que se representar??, cada uno con su propio m??todo de "
-"representaci??n. HTML significa que el informe se abrir?? directamente en el "
-"PDF de su navegador significa que el informe se representar?? usando "
-"Wkhtmltopdf y el usuario lo descargar??."
+"El tipo de informe que se representará, cada uno con su propio método de "
+"representación. HTML significa que el informe se abrirá directamente en el "
+"PDF de su navegador significa que el informe se representará usando "
+"Wkhtmltopdf y el usuario lo descargará."
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
@@ -73,7 +73,7 @@ msgstr "XLSX"
 #~ msgstr ""
 #~ "Una ventana emergente con su informe fue bloqueada. Puede que necesite "
 #~ "cambiar las preferencias de su navegador para que permita ventanas "
-#~ "emergentes en esta p??gina."
+#~ "emergentes en esta página."
 
 #~ msgid "Display Name"
 #~ msgstr "Nombre mostrado"
@@ -82,7 +82,7 @@ msgstr "XLSX"
 #~ msgstr "ID"
 
 #~ msgid "Last Modified on"
-#~ msgstr "??ltima modificaci??n el"
+#~ msgstr "Última modificación el"
 
 #, python-format
 #~ msgid "Warning"

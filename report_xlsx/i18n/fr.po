@@ -59,7 +59,7 @@ msgstr ""
 
 #, python-format
 #~ msgid "%s model was not found"
-#~ msgstr "model '%s' n'a pas ??t?? trouv??"
+#~ msgstr "model '%s' n'a pas été trouvé"
 
 #~ msgid "Display Name"
 #~ msgstr "Nom"
@@ -68,7 +68,7 @@ msgstr ""
 #~ msgstr "ID"
 
 #~ msgid "Last Modified on"
-#~ msgstr "Derni??re modification le"
+#~ msgstr "Dernière modification le"
 
 #~ msgid "report.report_xlsx.partner_xlsx"
 #~ msgstr "report.report_xlsx.partner_xlsx"
