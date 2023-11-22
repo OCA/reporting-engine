@@ -61,15 +61,15 @@ msgstr ""
 
 #, python-format
 #~ msgid "%s model was not found"
-#~ msgstr "%s model nije prona??en"
+#~ msgstr "%s model nije pronađen"
 
 #, python-format
 #~ msgid ""
 #~ "A popup window with your report was blocked. You may need to change your "
 #~ "browser settings to allow popup windows for this page."
 #~ msgstr ""
-#~ "Sko??ni prozor sa va??im izvje??tajem je blokiran. Mo??da trebate promijeniti "
-#~ "postavke pretra??iva??a da dozvolite sko??ne prozore za ovu stranicu."
+#~ "Skočni prozor sa vašim izvještajem je blokiran. Možda trebate promijeniti "
+#~ "postavke pretraživača da dozvolite skočne prozore za ovu stranicu."
 
 #~ msgid "Display Name"
 #~ msgstr "Naziv za prikaz"

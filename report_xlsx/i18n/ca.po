@@ -34,7 +34,7 @@ msgstr "Imprimeix a XLSX"
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr "Informe d'acci??"
+msgstr "Informe d'acció"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
@@ -49,10 +49,10 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
-"El tipus d'informe que es render??, cadascun amb el seu propi m??tode de "
-"representaci??. HTML significa que l'informe s'obrir?? directament al vostre "
-"navegador, PDF significa que l'informe es representar?? amb Wkhtmltopdf i "
-"l'usuari el baixar??."
+"El tipus d'informe que es renderà, cadascun amb el seu propi mètode de "
+"representació. HTML significa que l'informe s'obrirà directament al vostre "
+"navegador, PDF significa que l'informe es representarà amb Wkhtmltopdf i "
+"l'usuari el baixarà."
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx

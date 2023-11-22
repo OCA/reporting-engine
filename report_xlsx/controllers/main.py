@@ -83,7 +83,7 @@ class ReportController(ReportController):
                 report = request.env["ir.actions.report"]._get_report_from_name(
                     reportname
                 )
-                filename = "%s.%s" % (report.name, "xlsx")
+                filename = f"{report.name}.xlsx"
 
                 if docids:
                     ids = [int(x) for x in docids.split(",")]
@@ -92,7 +92,7 @@ class ReportController(ReportController):
                         report_name = safe_eval(
                             report.print_report_name, {"object": obj, "time": time}
                         )
-                        filename = "%s.%s" % (report_name, "xlsx")
+                        filename = f"{report_name}.xlsx"
                 if not response.headers.get("Content-Disposition"):
                     response.headers.add(
                         "Content-Disposition", content_disposition(filename)
