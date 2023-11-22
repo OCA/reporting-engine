@@ -45,7 +45,7 @@ try:
                     re.search(pattern, sheetname) and int(sheetname[-2:]) or 0
                 )
                 # Only up to 100 duplicates
-                deduplicated_secuence = "~{:02d}".format(duplicated_secuence + 1)
+                deduplicated_secuence = f"~{duplicated_secuence + 1:02d}"
                 if duplicated_secuence > 99:
                     raise xlsxwriter.exceptions.DuplicateWorksheetName  # noqa: B904
                 if duplicated_secuence:

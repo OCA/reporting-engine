@@ -42,7 +42,6 @@ class TestReport(common.TransactionCase):
         self.assertEqual(attachment.name, f"{self.docs.name}.xlsx")
 
     def test_id_retrieval(self):
-
         # Typical call from WebUI with wizard
         objs = self.xlsx_report._get_objs_for_report(
             False, {"context": {"active_ids": self.docs.ids}}
