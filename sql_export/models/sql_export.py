@@ -50,7 +50,6 @@ class SqlExport(models.Model):
             "res_id": wiz.id,
             "type": "ir.actions.act_window",
             "context": self.env.context,
-            "nodestroy": True,
         }
 
     def export_sql_query(self):
