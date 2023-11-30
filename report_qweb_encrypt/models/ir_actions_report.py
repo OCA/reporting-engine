@@ -31,7 +31,7 @@ class IrActionsReport(models.Model):
         )
         if res_ids:
             encrypt_password = self._context.get("encrypt_password")
-            report = self._get_report_from_name(reportname).with_context(
+            report = self._get_report(reportname).with_context(
                 encrypt_password=encrypt_password
             )
             password = report._get_pdf_password(res_ids[:1])
