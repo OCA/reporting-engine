@@ -269,12 +269,10 @@ class BiSQLView(models.Model):
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or {})
-        default.update(
-            {
-                "name": _("%s (Copy)") % self.name,
-                "technical_name": "%s_copy" % self.technical_name,
-            }
-        )
+        if "name" not in default:
+            default["name"] = _("%s (Copy)") % self.name
+        if "technical_name" not in default:
+            default["technical_name"] = f"{self.technical_name}_copy"
         return super().copy(default=default)
 
     # Action Section
