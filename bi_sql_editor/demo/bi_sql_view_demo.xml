@@ -49,19 +49,4 @@ FROM ir_module_module
 ]]>
             </field>
     </record>
-    <function
-        model="bi.sql.view"
-        name="button_validate_sql_expression"
-        eval="([ref('module_sql_view')])"
-    />
-    <function
-        model="bi.sql.view"
-        name="button_create_sql_view_and_model"
-        eval="([ref('module_sql_view')])"
-    />
-    <function
-        model="bi.sql.view"
-        name="button_create_ui"
-        eval="([ref('module_sql_view')])"
-    />
 </odoo>
