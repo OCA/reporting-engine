@@ -304,28 +304,33 @@ class BiSQLView(models.Model):
                     sql_view.cron_id.active = True
             sql_view.state = "model_valid"
 
+    def button_reset_to_model_valid(self):
+        views = self.filtered(lambda x: x.state == "ui_valid")
+        views.mapped("tree_view_id").unlink()
+        views.mapped("graph_view_id").unlink()
+        views.mapped("pivot_view_id").unlink()
+        views.mapped("search_view_id").unlink()
+        views.mapped("action_id").unlink()
+        views.mapped("menu_id").unlink()
+        return views.write({"state": "model_valid"})
+
+    def button_reset_to_sql_valid(self):
+        self.button_reset_to_model_valid()
+        views = self.filtered(lambda x: x.state == "model_valid")
+        for sql_view in views:
+            # Drop SQL View (and indexes by cascade)
+            if sql_view.is_materialized:
+                sql_view._drop_view()
+            if sql_view.cron_id:
+                sql_view.cron_id.active = False
+            # Drop ORM
+            sql_view._drop_model_and_fields()
+        return views.write({"state": "sql_valid"})
+
     def button_set_draft(self):
-        for sql_view in self.filtered(lambda x: x.state != "draft"):
-            sql_view.menu_id.unlink()
-            sql_view.action_id.unlink()
-            sql_view.tree_view_id.unlink()
-            sql_view.graph_view_id.unlink()
-            sql_view.pivot_view_id.unlink()
-            sql_view.search_view_id.unlink()
-
-            if sql_view.state in ("model_valid", "ui_valid"):
-                # Drop SQL View (and indexes by cascade)
-                if sql_view.is_materialized:
-                    sql_view._drop_view()
-
-                if sql_view.cron_id:
-                    sql_view.cron_id.active = False
-
-                # Drop ORM
-                sql_view._drop_model_and_fields()
-
-            super(BiSQLView, sql_view).button_set_draft()
-        return True
+        self.button_reset_to_model_valid()
+        self.button_reset_to_sql_valid()
+        return super().button_set_draft()
 
     def button_create_ui(self):
         self.tree_view_id = self.env["ir.ui.view"].create(self._prepare_tree_view()).id
