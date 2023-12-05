@@ -34,14 +34,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button
-                    name="button_set_draft"
+                    name="button_reset_to_sql_valid"
                     type="object"
-                    states="model_valid,ui_valid"
-                    string="Set to Draft"
+                    states="model_valid"
+                    string="Delete SQL Elements"
                     groups="sql_request_abstract.group_sql_request_manager"
-                    confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"
+                    confirm="It will delete the materialized view, and all the previous mapping realized with the columns"
                 />
-
+                <button
+                    name="button_reset_to_model_valid"
+                    type="object"
+                    states="ui_valid"
+                    string="Delete UI"
+                    groups="sql_request_abstract.group_sql_request_manager"
+                />
                 <button
                     name="button_create_sql_view_and_model"
                     type="object"
@@ -67,18 +73,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     help="This will create Odoo View, Action and Menu"
                 />
                 <button
-                    name="button_refresh_materialized_view"
-                    type="object"
-                    string="Refresh"
-                    help="Refresh Materialized View"
-                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
-                />
-                <button
                     name="button_open_view"
                     type="object"
                     string="Open View"
                     states="ui_valid"
                     class="oe_highlight"
+                />
+                <button
+                    name="button_refresh_materialized_view"
+                    type="object"
+                    string="Refresh"
+                    help="Refresh Materialized View"
+                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
                 />
             </xpath>
             <group name="group_main_info" position="inside">
