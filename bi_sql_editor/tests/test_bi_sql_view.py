@@ -29,20 +29,21 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         return cls.demo_user
 
     def test_process_view(self):
-        self.assertEqual(self.view.state, "draft")
-        self.view.button_validate_sql_expression()
-        self.assertEqual(self.view.state, "sql_valid")
-        self.view.button_create_sql_view_and_model()
-        self.assertEqual(self.view.state, "model_valid")
-        self.view.button_create_ui()
-        self.assertEqual(self.view.state, "ui_valid")
-        self.view.button_update_model_access()
-        self.assertEqual(self.view.has_group_changed, False)
+        copy_view = self.view.copy(default={"technical_name": "test_process_view"})
+        self.assertEqual(copy_view.state, "draft")
+        copy_view.button_validate_sql_expression()
+        self.assertEqual(copy_view.state, "sql_valid")
+        copy_view.button_create_sql_view_and_model()
+        self.assertEqual(copy_view.state, "model_valid")
+        copy_view.button_create_ui()
+        self.assertEqual(copy_view.state, "ui_valid")
+        copy_view.button_update_model_access()
+        self.assertEqual(copy_view.has_group_changed, False)
         # Check that cron works correctly
-        self.view.cron_id.method_direct_trigger()
+        copy_view.cron_id.method_direct_trigger()
 
     def test_copy(self):
-        copy_view = self.view.copy()
+        copy_view = self.view.copy(default={"technical_name": "test_copy"})
         self.assertEqual(copy_view.name, f"{self.view.name} (Copy)")
 
     def test_security(self):
@@ -58,16 +59,25 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         )
 
     def test_unlink(self):
-        view_name = self.view.name
-        self.assertEqual(self.view.state, "ui_valid")
+        copy_view = self.view.copy(
+            default={
+                "name": "Test Unlink",
+                "technical_name": "test_unlink",
+            }
+        )
+        view_name = copy_view.name
+        copy_view.button_validate_sql_expression()
+        copy_view.button_create_sql_view_and_model()
+        copy_view.button_create_ui()
+        self.assertEqual(copy_view.state, "ui_valid")
         with self.assertRaises(UserError):
-            self.view.unlink()
-        self.view.button_set_draft()
+            copy_view.unlink()
+        copy_view.button_set_draft()
         self.assertNotEqual(
-            self.view.cron_id,
+            copy_view.cron_id,
             False,
             "Set to draft materialized view should not unlink cron",
         )
-        self.view.unlink()
+        copy_view.unlink()
         res = self.bi_sql_view.search([("name", "=", view_name)])
         self.assertEqual(len(res), 0, "View not deleted")
