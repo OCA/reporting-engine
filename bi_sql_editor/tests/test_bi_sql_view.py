@@ -10,85 +10,64 @@ from odoo.tests.common import SingleTransactionCase
 class TestBiSqlViewEditor(SingleTransactionCase):
     @classmethod
     def setUpClass(cls):
-        super(TestBiSqlViewEditor, cls).setUpClass()
+        super().setUpClass()
 
-        cls.res_partner = cls.env["res.partner"]
-        cls.res_users = cls.env["res.users"]
         cls.bi_sql_view = cls.env["bi.sql.view"]
-        cls.group_bi_user = cls.env.ref(
+        cls.group_bi_manager = cls.env.ref(
             "sql_request_abstract.group_sql_request_manager"
         )
-        cls.group_user = cls.env.ref("base.group_user")
-        cls.view = cls.bi_sql_view.create(
-            {
-                "name": "Partners View 2",
-                "is_materialized": True,
-                "technical_name": "partners_view_2",
-                "query": "SELECT name as x_name, street as x_street,"
-                "company_id as x_company_id FROM res_partner "
-                "ORDER BY name",
-            }
-        )
-        cls.company = cls.env.ref("base.main_company")
-        # Create bi user
-        cls.bi_user = cls._create_user("bi_user", cls.group_bi_user, cls.company)
-        cls.no_bi_user = cls._create_user("no_bi_user", cls.group_user, cls.company)
+        cls.group_bi_no_access = cls.env.ref("base.group_user")
+        cls.demo_user = cls.env.ref("base.user_demo")
+        cls.view = cls.env.ref("bi_sql_editor.partner_sql_view")
 
     @classmethod
-    def _create_user(cls, login, groups, company):
-        """Create a user."""
-        user = cls.res_users.create(
-            {
-                "name": login,
-                "login": login,
-                "password": "demo",
-                "email": "example@yourcompany.com",
-                "company_id": company.id,
-                "groups_id": [(6, 0, groups.ids)],
-            }
-        )
-        return user
+    def _get_user(cls, access_level=False):
+        if access_level == "manager":
+            cls.demo_user.write({"groups_id": [(6, 0, cls.group_bi_manager.ids)]})
+        else:
+            cls.demo_user.write({"groups_id": [(6, 0, cls.group_bi_no_access.ids)]})
+        return cls.demo_user
 
     def test_process_view(self):
-        view = self.view
-        self.assertEqual(view.state, "draft", "state not draft")
-        view.button_validate_sql_expression()
-        self.assertEqual(view.state, "sql_valid", "state not sql_valid")
-        view.button_create_sql_view_and_model()
-        self.assertEqual(view.state, "model_valid", "state not model_valid")
-        view.button_create_ui()
-        self.assertEqual(view.state, "ui_valid", "state not ui_valid")
-        view.button_update_model_access()
-        self.assertEqual(view.has_group_changed, False, "has_group_changed not False")
-        cron_res = view.cron_id.method_direct_trigger()
-        self.assertEqual(cron_res, True, "something went wrong with the cron")
+        self.assertEqual(self.view.state, "draft")
+        self.view.button_validate_sql_expression()
+        self.assertEqual(self.view.state, "sql_valid")
+        self.view.button_create_sql_view_and_model()
+        self.assertEqual(self.view.state, "model_valid")
+        self.view.button_create_ui()
+        self.assertEqual(self.view.state, "ui_valid")
+        self.view.button_update_model_access()
+        self.assertEqual(self.view.has_group_changed, False)
+        # Check that cron works correctly
+        self.view.cron_id.method_direct_trigger()
 
     def test_copy(self):
         copy_view = self.view.copy()
-        self.assertEqual(copy_view.name, "Partners View 2 (Copy)", "Wrong name")
+        self.assertEqual(copy_view.name, f"{self.view.name} (Copy)")
 
     def test_security(self):
         with self.assertRaises(AccessError):
-            self.bi_sql_view.with_user(self.no_bi_user.id).search(
-                [("name", "=", "Partners View 2")]
+            self.bi_sql_view.with_user(self._get_user()).search(
+                [("name", "=", self.view.name)]
             )
-        bi = self.bi_sql_view.with_user(self.bi_user.id).search(
-            [("name", "=", "Partners View 2")]
+        bi = self.bi_sql_view.with_user(self._get_user("manager")).search(
+            [("name", "=", self.view.name)]
         )
         self.assertEqual(
-            len(bi), 1, "Bi user should not have access to " "bi %s" % self.view.name
+            len(bi), 1, "Bi Manager should have access to bi %s" % self.view.name
         )
 
     def test_unlink(self):
-        self.assertEqual(self.view.state, "ui_valid", "state not ui_valid")
+        view_name = self.view.name
+        self.assertEqual(self.view.state, "ui_valid")
         with self.assertRaises(UserError):
             self.view.unlink()
         self.view.button_set_draft()
         self.assertNotEqual(
             self.view.cron_id,
             False,
-            "Set to draft materialized view should" " not unlink cron",
+            "Set to draft materialized view should not unlink cron",
         )
         self.view.unlink()
-        res = self.bi_sql_view.search([("name", "=", "Partners View 2")])
+        res = self.bi_sql_view.search([("name", "=", view_name)])
         self.assertEqual(len(res), 0, "View not deleted")
