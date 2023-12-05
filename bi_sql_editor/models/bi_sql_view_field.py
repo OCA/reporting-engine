@@ -233,12 +233,12 @@ class BiSQLViewField(models.Model):
         if self.tree_visibility == "invisible":
             visibility_text = 'invisible="1"'
         elif self.tree_visibility == "optional_hide":
-            visibility_text = 'option="hide"'
+            visibility_text = 'optional="hide"'
         elif self.tree_visibility == "optional_show":
-            visibility_text = 'option="show"'
+            visibility_text = 'optional="show"'
 
         return (
-            f"""<field name="{self.name}" {visibility_text} """
+            f"""<field name="{self.name}" {visibility_text}"""
             f""" context="{self.field_context}"/>\n"""
         )
 
