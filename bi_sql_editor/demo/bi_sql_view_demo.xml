@@ -20,6 +20,7 @@ ORDER BY unexisting_field
     <record id="partner_sql_view" model="bi.sql.view">
         <field name="name">Partners View</field>
         <field name="technical_name">partners_view</field>
+        <field name="is_materialized" eval="True" />
         <field
             name="query"
         ><![CDATA[
