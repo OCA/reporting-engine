@@ -33,8 +33,26 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         self.assertEqual(copy_view.state, "draft")
         copy_view.button_validate_sql_expression()
         self.assertEqual(copy_view.state, "sql_valid")
+
+        field_lines = copy_view.bi_sql_view_field_ids
+        self.assertEqual(len(field_lines), 3)
+        field_lines.filtered(lambda x: x.name == "x_company_id").is_index = True
+
         copy_view.button_create_sql_view_and_model()
         self.assertEqual(copy_view.state, "model_valid")
+
+        field_lines.filtered(lambda x: x.name == "x_name").tree_visibility = "invisible"
+        field_lines.filtered(
+            lambda x: x.name == "x_street"
+        ).tree_visibility = "optional_hide"
+        field_lines.filtered(
+            lambda x: x.name == "x_company_id"
+        ).tree_visibility = "optional_show"
+
+        field_lines.filtered(lambda x: x.name == "x_company_id").is_group_by = True
+
+        field_lines.filtered(lambda x: x.name == "x_company_id").graph_type = "row"
+
         copy_view.button_create_ui()
         self.assertEqual(copy_view.state, "ui_valid")
         copy_view.button_update_model_access()
