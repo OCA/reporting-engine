@@ -111,13 +111,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     string="SQL Fields"
                     attrs="{'invisible': [('state', '=', 'draft')]}"
                 >
-                    <field
-                        name="bi_sql_view_field_ids"
-                        nolabel="1"
-                        colspan="4"
-                        attrs="{'readonly': [('state', '!=', 'sql_valid')]}"
-                    >
-                        <tree editable="bottom">
+                    <field name="bi_sql_view_field_ids" nolabel="1" colspan="4">
+                        <tree editable="bottom" create="false">
                             <field name="sequence" widget="handle" />
                             <field name="name" />
                             <field name="sql_type" />
@@ -148,6 +143,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="is_group_by" optional="hide" />
                             <field name="tree_visibility" optional="hide" />
                             <field name="field_context" optional="hide" />
+                            <field name="state" invisible="1" />
                         </tree>
                     </field>
                 </page>
