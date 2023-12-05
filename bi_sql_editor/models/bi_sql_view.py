@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from psycopg2 import ProgrammingError
 
 from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools import sql, table_columns
 from odoo.tools.safe_eval import safe_eval
 
@@ -272,6 +272,15 @@ class BiSQLView(models.Model):
     # Action Section
     def button_create_sql_view_and_model(self):
         for sql_view in self.filtered(lambda x: x.state == "sql_valid"):
+            # Check if many2one fields are correctly
+            bad_fields = sql_view.bi_sql_view_field_ids.filtered(
+                lambda x: x.ttype == "many2one" and not x.many2one_model_id.id
+            )
+            if bad_fields:
+                raise ValidationError(
+                    _("Please set related models on the following fields %s")
+                    % ",".join(bad_fields.mapped("name"))
+                )
             # Create ORM and access
             sql_view._create_model_and_fields()
             sql_view._create_model_access()
