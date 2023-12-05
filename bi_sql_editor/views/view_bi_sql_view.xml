@@ -104,7 +104,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         name="cron_id"
                         attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
                     />
-                    <field name="option_context_field" />
                 </group>
             </group>
             <page name="page_sql" position="after">
@@ -148,12 +147,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="graph_type" />
                             <field name="is_group_by" optional="hide" />
                             <field name="tree_visibility" optional="hide" />
-                            <field
-                                name="field_context"
-                                attrs="{
-                                    'column_invisible': [('parent.option_context_field', '=', False)],
-                                }"
-                            />
+                            <field name="field_context" optional="hide" />
                         </tree>
                     </field>
                 </page>
