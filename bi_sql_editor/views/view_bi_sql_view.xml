@@ -118,10 +118,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         colspan="4"
                         attrs="{'readonly': [('state', '!=', 'sql_valid')]}"
                     >
-                        <tree
-                            editable="bottom"
-                            decoration-info="field_description==False"
-                        >
+                        <tree editable="bottom">
                             <field name="sequence" widget="handle" />
                             <field name="name" />
                             <field name="sql_type" />
@@ -138,9 +135,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 name="selection"
                                 attrs="{
                                 'invisible': [('ttype', '!=', 'selection')],
-                                'required': [
-                                    ('field_description', '!=', False),
-                                    ('ttype', '=', 'selection')]}"
+                                'required': [('ttype', '=', 'selection')],
+                            }"
                             />
                             <field
                                 name='group_operator'
@@ -148,29 +144,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 attrs="{
                                 'invisible': [('ttype', 'not in', ('float', 'integer'))]}"
                             />
-                            <field
-                                name="is_index"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="graph_type"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="is_group_by"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="tree_visibility"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
+                            <field name="is_index" optional="hide" />
+                            <field name="graph_type" />
+                            <field name="is_group_by" optional="hide" />
+                            <field name="tree_visibility" optional="hide" />
                             <field
                                 name="field_context"
                                 attrs="{
-                                    'invisible': [('field_description', '=', False)],
                                     'column_invisible': [('parent.option_context_field', '=', False)],
                                 }"
                             />
