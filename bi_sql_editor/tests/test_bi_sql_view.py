@@ -1,7 +1,7 @@
 # Copyright 2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.exceptions import AccessError, UserError
+from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tests import tagged
 from odoo.tests.common import SingleTransactionCase
 
@@ -81,3 +81,18 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         copy_view.unlink()
         res = self.bi_sql_view.search([("name", "=", view_name)])
         self.assertEqual(len(res), 0, "View not deleted")
+
+    def test_many2one_not_found(self):
+        copy_view = self.view.copy(
+            default={"technical_name": "test_many2one_not_found"}
+        )
+
+        copy_view.query = "SELECT parent_id as x_weird_name_id FROM res_partner;"
+        copy_view.button_validate_sql_expression()
+        field_lines = copy_view.bi_sql_view_field_ids
+        self.assertEqual(len(field_lines), 1)
+        self.assertEqual(field_lines[0].ttype, "many2one")
+        self.assertEqual(field_lines[0].many2one_model_id.id, False)
+
+        with self.assertRaises(ValidationError):
+            copy_view.button_create_sql_view_and_model()
