@@ -32,7 +32,7 @@ def post_init_hook(cr, registry):
         xsd_file_relative_path = "demo/demo_report.xsd"
         xsd_file_full_path = os.path.join(dir_path, xsd_file_relative_path)
 
-        with open(xsd_file_full_path, "r") as xsd:
+        with open(xsd_file_full_path) as xsd:
             # `xsd_schema` is binary fields with an attribute
             # `attachment=True` so XSD Schema will be added as attachment
             attach_vals = {
