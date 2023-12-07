@@ -6,6 +6,8 @@
         <field name="report_type">qweb-xml</field>
         <field name="report_name">report_xml.demo_report_xml_view</field>
         <field name="report_file">res_company</field>
+        <field name="binding_model_id" ref="base.model_res_company" />
+        <field name="binding_type">report</field>
         <!--
         In case of demo data next definition will not work. So it just example
         how it should look. If report is a part of demo data you will need

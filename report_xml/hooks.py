@@ -2,10 +2,8 @@
 
 import os
 
-from odoo import SUPERUSER_ID, api
 
-
-def post_init_hook(cr, registry):
+def post_init_hook(env):
     """
     Loaded after installing this module, and before the next module starts
     installing.
@@ -18,11 +16,8 @@ def post_init_hook(cr, registry):
     to `xsd_schema` field for demo record only via hook.
 
     Args:
-     * cr(odoo.sql_db.Cursor) - database cursor.
-     * registry(odoo.modules.registry.RegistryManager) - a mapping between
-     model names and model classes.
+     * env(odoo.api.Environment) - provides access to the models
     """
-    env = api.Environment(cr, SUPERUSER_ID, {})
     report_domain = [
         ("report_name", "=", "report_xml.demo_report_xml_view")  # report tech name
     ]
