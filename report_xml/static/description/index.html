@@ -369,10 +369,10 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:ee669446f046a3e31fa4d2fb92a1fc85e3d2c57d618bf432aa8355f7c205d7c8
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/report_xml"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_xml"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module was written to extend the functionality of the reporting engine to
-support XML reports and allow modules to generate them by code or by QWeb
-templates.</p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/17.0/report_xml"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_xml"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module was written to extend the functionality of the reporting
+engine to support XML reports and allow modules to generate them by code
+or by QWeb templates.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -396,38 +396,49 @@ templates.</p>
 <p>To install this module, you need to:</p>
 <ul class="simple">
 <li>Install <a class="reference external" href="http://lxml.de/">lxml</a> in Odoo’s <tt class="docutils literal">$PYTHONPATH</tt>.</li>
-<li>Install the repository <a class="reference external" href="https://github.com/OCA/reporting-engine">reporting-engine</a>.</li>
+<li>Install the repository
+<a class="reference external" href="https://github.com/OCA/reporting-engine">reporting-engine</a>.</li>
 </ul>
-<p>But this module does nothing for the end user by itself, so if you have it
-installed it’s probably because there is another module that depends on it.</p>
+<p>But this module does nothing for the end user by itself, so if you have
+it installed it’s probably because there is another module that depends
+on it.</p>
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
-<p>This module is intended as a base engine for other modules to use it, so no direct result if you are a user.</p>
+<p>This module is intended as a base engine for other modules to use it, so
+no direct result if you are a user.</p>
 <div class="section" id="if-you-are-a-developer">
 <h2><a class="toc-backref" href="#toc-entry-3">If you are a developer</a></h2>
-<p>To learn from an example, just check the <a class="reference external" href="https://github.com/OCA/reporting-engine/blob/13.0/report_xml/demo/demo_report.xml">demo report</a> on GitHub for
-the model <tt class="docutils literal">res.company</tt> or check it in interface from companies views.</p>
+<p>To learn from an example, just check the <a class="reference external" href="https://github.com/OCA/reporting-engine/blob/13.0/report_xml/demo/demo_report.xml">demo
+report</a>
+on GitHub for the model <tt class="docutils literal">res.company</tt> or check it in interface from
+companies views.</p>
 <p>To develop with this module, you need to:</p>
 <ul class="simple">
 <li>Create a module.</li>
 <li>Make it depend on this one.</li>
-<li>Follow <a class="reference external" href="https://www.odoo.com/documentation/13.0/reference/reports.html">instructions to create reports</a> having in mind that the
-<tt class="docutils literal">report_type</tt> field in your <tt class="docutils literal">ir.actions.report</tt> record must be
-<tt class="docutils literal"><span class="pre">qweb-xml</span></tt>.</li>
+<li>Follow <a class="reference external" href="https://www.odoo.com/documentation/13.0/reference/reports.html">instructions to create
+reports</a>
+having in mind that the <tt class="docutils literal">report_type</tt> field in your
+<tt class="docutils literal">ir.actions.report</tt> record must be <tt class="docutils literal"><span class="pre">qweb-xml</span></tt>.</li>
 </ul>
-<p>In case you want to create a <a class="reference external" href="https://www.odoo.com/documentation/13.0/reference/reports.html#custom-reports">custom report</a>, the instructions remain the same
-as for HTML reports, and the method that you must override is also called
-<tt class="docutils literal">_get_report_values</tt>, even when this time you are creating a XML report.</p>
-<p>You can make your custom report inherit <tt class="docutils literal">report.report_xml.abstract</tt>, name
-it in such way <tt class="docutils literal"><span class="pre">report.&lt;module.report_name&gt;</span></tt>. Also you can add a XSD file for
-report validation into <tt class="docutils literal">xsd_schema</tt> field of your report (check
-<a class="reference external" href="https://github.com/OCA/reporting-engine/blob/13.0/report_xml/demo/report.xml">report definition</a>) and have XSD automatic checking for
-free.</p>
-<p>You can customize rendering process and validation way via changing logic of
-<tt class="docutils literal">generate_report</tt> and <tt class="docutils literal">validate_report</tt> methods in your report class.</p>
-<p>You can visit <tt class="docutils literal"><span class="pre">http://&lt;server-address&gt;/report/xml/&lt;module.report_name&gt;/&lt;ids&gt;</span></tt>
-to see your XML report online as a web page.</p>
+<p>In case you want to create a <a class="reference external" href="https://www.odoo.com/documentation/13.0/reference/reports.html#custom-reports">custom
+report</a>,
+the instructions remain the same as for HTML reports, and the method
+that you must override is also called <tt class="docutils literal">_get_report_values</tt>, even when
+this time you are creating a XML report.</p>
+<p>You can make your custom report inherit <tt class="docutils literal">report.report_xml.abstract</tt>,
+name it in such way <tt class="docutils literal"><span class="pre">report.&lt;module.report_name&gt;</span></tt>. Also you can add a
+XSD file for report validation into <tt class="docutils literal">xsd_schema</tt> field of your report
+(check <a class="reference external" href="https://github.com/OCA/reporting-engine/blob/13.0/report_xml/demo/report.xml">report
+definition</a>)
+and have XSD automatic checking for free.</p>
+<p>You can customize rendering process and validation way via changing
+logic of <tt class="docutils literal">generate_report</tt> and <tt class="docutils literal">validate_report</tt> methods in your
+report class.</p>
+<p>You can visit
+<tt class="docutils literal"><span class="pre">http://&lt;server-address&gt;/report/xml/&lt;module.report_name&gt;/&lt;ids&gt;</span></tt> to see
+your XML report online as a web page.</p>
 <p>For further information, please visit:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.odoo.com/forum/help-1">https://www.odoo.com/forum/help-1</a></li>
@@ -440,7 +451,7 @@ to see your XML report online as a web page.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xml%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xml%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -456,21 +467,13 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <h2><a class="toc-backref" href="#toc-entry-7">Contributors</a></h2>
 <ul class="simple">
 <li>Enric Tobella &lt;<a class="reference external" href="mailto:etobella&#64;creublanca.es">etobella&#64;creublanca.es</a>&gt;</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://www.tecnativa.com">Tecnativa</a>:</dt>
-<dd><ul class="first last">
+<li><a class="reference external" href="https://www.tecnativa.com">Tecnativa</a>:<ul>
 <li>Jairo Llopis</li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://avoin.systems/">Avoin.Systems</a>:</dt>
-<dd><ul class="first last">
+<li><a class="reference external" href="https://avoin.systems/">Avoin.Systems</a>:<ul>
 <li>Tatiana Deribina</li>
 </ul>
-</dd>
-</dl>
 </li>
 <li>Iván Antón &lt;<a class="reference external" href="mailto:ozono&#64;ozonomultimedia.com">ozono&#64;ozonomultimedia.com</a>&gt;</li>
 </ul>
@@ -488,7 +491,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/report_xml">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/17.0/report_xml">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
