@@ -25,13 +25,14 @@ class IrActionsReport(models.Model):
         help="Python code syntax to gnerate password.",
     )
 
-    def _render_qweb_pdf(self, reportname, res_ids=None, data=None):
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         document, ttype = super()._render_qweb_pdf(
-            reportname, res_ids=res_ids, data=data
+            report_ref, res_ids=res_ids, data=data
         )
+        report = self._get_report(report_ref)
         if res_ids:
             encrypt_password = self._context.get("encrypt_password")
-            report = self._get_report(reportname).with_context(
+            report = self._get_report_from_name(report.report_name).with_context(
                 encrypt_password=encrypt_password
             )
             password = report._get_pdf_password(res_ids[:1])
