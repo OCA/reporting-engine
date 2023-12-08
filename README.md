@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [bi_view_editor_spreadsheet_dashboard](bi_view_editor_spreadsheet_dashboard/) | 16.0.1.0.0 |  | Glue module for BI View Editor and Spreadsheet Dashboard
 [report_async](report_async/) | 16.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_company_details_translatable](report_company_details_translatable/) | 16.0.1.0.0 |  | Report Company Details Translatable
+[report_context](report_context/) | 16.0.1.0.0 |  | Adding context to reports
 [report_csv](report_csv/) | 16.0.2.0.0 |  | Base module to create csv report
 [report_label](report_label/) | 16.0.1.0.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
 [report_py3o](report_py3o/) | 16.0.1.0.1 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)

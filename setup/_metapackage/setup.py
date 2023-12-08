@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo-addon-bi_view_editor_spreadsheet_dashboard>=16.0dev,<16.1dev',
         'odoo-addon-report_async>=16.0dev,<16.1dev',
         'odoo-addon-report_company_details_translatable>=16.0dev,<16.1dev',
+        'odoo-addon-report_context>=16.0dev,<16.1dev',
         'odoo-addon-report_csv>=16.0dev,<16.1dev',
         'odoo-addon-report_label>=16.0dev,<16.1dev',
         'odoo-addon-report_py3o>=16.0dev,<16.1dev',
