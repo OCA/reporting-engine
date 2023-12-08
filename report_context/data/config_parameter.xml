@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+        <record
+        id="report_default_context"
+        model="ir.config_parameter"
+        forcecreate="True"
+    >
+            <field name="key">report.default.context</field>
+            <field name="value">{}</field>
+        </record>
+</odoo>
