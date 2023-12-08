@@ -309,7 +309,10 @@ class Py3oReport(models.TransientModel):
         attachment = existing_reports_attachment.get(model_instance.id)
         if attachment and self.ir_actions_report_id.attachment_use:
             content = base64.b64decode(attachment.datas)
-            report_file = tempfile.mktemp("." + self.ir_actions_report_id.py3o_filetype)
+            fd, report_file = tempfile.mkstemp(
+                "." + self.ir_actions_report_id.py3o_filetype
+            )
+            os.close(fd)
             with open(report_file, "wb") as f:
                 f.write(content)
             return report_file
@@ -318,7 +321,8 @@ class Py3oReport(models.TransientModel):
     def _zip_results(self, reports_path):
         self.ensure_one()
         zfname_prefix = self.ir_actions_report_id.name
-        result_path = tempfile.mktemp(suffix="zip", prefix="py3o-zip-result")
+        fd, result_path = tempfile.mkstemp(suffix="zip", prefix="py3o-zip-result")
+        os.close(fd)
         with ZipFile(result_path, "w", ZIP_DEFLATED) as zf:
             cpt = 0
             for report in reports_path:
