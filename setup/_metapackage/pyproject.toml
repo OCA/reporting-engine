@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-reporting-engine"
-version = "17.0.20231208.0"
+version = "17.0.20231209.0"
 dependencies = [
+    "odoo-addon-report_qweb_parameter>=17.0dev,<17.1dev",
     "odoo-addon-report_xlsx>=17.0dev,<17.1dev",
 ]
 classifiers=[
