@@ -61,9 +61,9 @@ class ReportLabelWizard(models.TransientModel):
         self.ensure_one()
         return {
             "label_format": self.label_paperformat_id.read()[0],
-            "label_template": self.label_template_view_id.key,
+            "label_template": self.label_template_view_id.sudo().key,
             "offset": self.offset,
-            "res_model": self.model_id.model,
+            "res_model": self.model_id.sudo().model,
             "lines": [
                 {
                     "res_id": line.res_id,
