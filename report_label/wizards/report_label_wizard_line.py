@@ -22,7 +22,7 @@ class ReportLabelWizardLine(models.TransientModel):
     def _compute_res_name(self):
         wizard = self.mapped("wizard_id")
         wizard.ensure_one()
-        res_model = wizard.model_id.model
+        res_model = wizard.model_id.sudo().model
         res_ids = self.mapped("res_id")
         names_map = dict(self.env[res_model].browse(res_ids).name_get())
         for rec in self:
