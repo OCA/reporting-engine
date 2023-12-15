@@ -4,7 +4,7 @@ import {registry} from "@web/core/registry";
 
 registry
     .category("ir.actions.report handlers")
-    .add("sustitution_handler", async function (action, options, env) {
+    .add("substitution_handler", async function (action, options, env) {
         const orm = env.services.orm;
         const action_report_substitution_rule_ids = await orm.call(
             "ir.actions.report",
