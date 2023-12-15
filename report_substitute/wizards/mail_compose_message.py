@@ -5,7 +5,6 @@ from odoo import api, models
 
 
 class MailComposeMessage(models.TransientModel):
-
     _inherit = "mail.compose.message"
 
     @api.onchange("template_id")
