@@ -6,7 +6,6 @@ from odoo.tools.safe_eval import safe_eval
 
 
 class IrActionReport(models.Model):
-
     _inherit = "ir.actions.report"
 
     action_report_substitution_rule_ids = fields.One2many(

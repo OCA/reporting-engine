@@ -6,7 +6,6 @@ from odoo.exceptions import ValidationError
 
 
 class ActionsReportSubstitutionRule(models.Model):
-
     _name = "ir.actions.report.substitution.rule"
     _description = "Action Report Substitution Rule"
     _order = "sequence ASC"
