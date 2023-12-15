@@ -5,7 +5,6 @@ from odoo import models
 
 
 class MailThread(models.AbstractModel):
-
     _inherit = "mail.thread"
 
     def message_post_with_template(self, template_id, **kwargs):
