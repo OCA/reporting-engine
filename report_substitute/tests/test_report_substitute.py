@@ -9,7 +9,7 @@ class TestReportSubstitute(TransactionCase):
     def setUp(self):
         # In the demo file we create a new report for ir.module.module model
         # with a substation rule from the original report action
-        super(TestReportSubstitute, self).setUp()
+        super().setUp()
         self.action_report = self.env.ref("base.ir_module_reference_print")
         self.res_ids = self.env.ref("base.module_base").ids
         self.substitution_rule = self.env.ref(
