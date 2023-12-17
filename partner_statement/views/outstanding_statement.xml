@@ -5,9 +5,9 @@
     <template id="outstanding_balance">
         <p>
             <span
-                t-esc="'' if  account_type == 'asset_receivable' else 'Supplier '"
-            /><span t-esc="title_name" /> up to <span t-esc="ending_date" /> in <span
-                t-esc="display_currency.name"
+                t-out="'' if  account_type == 'asset_receivable' else 'Supplier '"
+            /><span t-out="title_name" /> up to <span t-out="ending_date" /> in <span
+                t-out="display_currency.name"
             />
         </p>
         <table class="table table-sm table-statement">
@@ -29,52 +29,52 @@
                     t-att-class="'statement-blocked' if line['blocked'] else ''"
                 >
                     <td>
-                        <span t-esc="line['move_id']" />
+                        <span t-out="line['move_id']" />
                     </td>
                     <td>
-                        <span t-esc="line['date']" />
+                        <span t-out="line['date']" />
                     </td>
                     <td>
-                        <span t-esc="line['date_maturity']" />
+                        <span t-out="line['date_maturity']" />
                     </td>
                     <td>
                         <t t-if="line['name'] != '/'">
                             <t t-if="not line['ref']">
-                                <span t-esc="line['name']" />
+                                <span t-out="line['name']" />
                             </t>
                             <t t-if="line['ref'] and not line['name']">
-                                <span t-esc="line['ref']" />
+                                <span t-out="line['ref']" />
                             </t>
                             <t t-if="line['ref'] and line['name']">
                                 <t
                                     t-if="line['name'] not in line['ref'] or line['name'] == line['ref']"
                                 >
-                                    <span t-esc="line['name']" />
+                                    <span t-out="line['name']" />
                                 </t>
                                 <t t-if="line['ref'] not in line['name']">
-                                    <span t-esc="line['ref']" />
+                                    <span t-out="line['ref']" />
                                 </t>
                             </t>
                         </t>
                         <t t-if="line['name'] == '/'">
-                            <span t-esc="line['ref']" />
+                            <span t-out="line['ref']" />
                         </t>
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['amount']"
+                            t-out="line['amount']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['open_amount']"
+                            t-out="line['open_amount']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['balance']"
+                            t-out="line['balance']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
@@ -82,7 +82,7 @@
                 <tr>
                     <td />
                     <td>
-                        <span t-esc="ending_date" />
+                        <span t-out="ending_date" />
                     </td>
                     <td>
                             Ending Balance
@@ -92,7 +92,7 @@
                     <td />
                     <td class="amount">
                         <span
-                            t-esc="ending_amount"
+                            t-out="ending_amount"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
@@ -105,11 +105,11 @@
             <t t-set="o" t-value="o.with_context({'lang': lang})" />
             <t t-set="address">
                 <address
-                    t-esc="get_inv_addr(o)"
+                    t-out="get_inv_addr(o)"
                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
                 />
                 <div t-if="o.vat" class="mt16"><t
-                        t-esc="company.country_id.vat_label or 'Tax ID'"
+                        t-out="company.country_id.vat_label or 'Tax ID'"
                     />: <span t-field="o.vat" /></div>
             </t>
             <div class="page">
@@ -118,7 +118,7 @@
                 <div id="informations" class="row mt32 mb32">
                     <div class="col-3 bm-2">
                         <strong>Date:</strong>
-                        <p t-esc="d['today']" class="m-0" />
+                        <p t-out="d['today']" class="m-0" />
                     </div>
                     <div class="col-3 bm-2">
                         <strong>Partner Name:</strong>

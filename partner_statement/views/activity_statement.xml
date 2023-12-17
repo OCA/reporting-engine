@@ -7,9 +7,9 @@
             <span t-if="is_detailed">Detailed </span>
             <span
                 t-if="account_type == 'liability_payable'"
-            >Supplier </span>Statement between <span t-esc="d['start']" /> and <span
-                t-esc="d['end']"
-            /> in <span t-esc="display_currency.name" />
+            >Supplier </span>Statement between <span t-out="d['start']" /> and <span
+                t-out="d['end']"
+            /> in <span t-out="display_currency.name" />
         </p>
         <table class="table table-condensed table-statement">
             <thead>
@@ -26,7 +26,7 @@
                 <tr>
                     <td />
                     <td>
-                        <span t-esc="d['prior_day']" />
+                        <span t-out="d['prior_day']" />
                     </td>
                     <td t-if="is_detailed">Initial Balance</td>
                     <td t-else="">Balance Forward</td>
@@ -34,7 +34,7 @@
                     <td />
                     <td class="amount">
                         <span
-                            t-esc="currency['balance_forward']"
+                            t-out="currency['balance_forward']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
@@ -48,50 +48,50 @@
                         <span
                             t-if="line['reconciled_line']"
                             style="padding-left: 11px;"
-                        /><span t-esc="line['move_id']" />
+                        /><span t-out="line['move_id']" />
                     </td>
                     <td>
-                        <span t-esc="line['date']" />
+                        <span t-out="line['date']" />
                     </td>
                     <td>
                         <t t-if="line['name'] != '/'">
                             <t t-if="not line['ref'] and line['name']">
-                                <span t-esc="line['name']" />
+                                <span t-out="line['name']" />
                             </t>
                             <t t-if="line['ref'] and not line['name']">
-                                <span t-esc="line['ref']" />
+                                <span t-out="line['ref']" />
                             </t>
                             <t t-if="line['ref'] and line['name']">
                                 <t
                                     t-if="line['name'] not in line['ref'] or line['name'] == line['ref']"
                                 >
-                                    <span t-esc="line['name']" />
+                                    <span t-out="line['name']" />
                                 </t>
                                 <t t-if="line['ref'] not in line['name']">
-                                    <span t-esc="line['ref']" />
+                                    <span t-out="line['ref']" />
                                 </t>
                             </t>
                         </t>
                         <t t-if="line['name'] == '/'">
-                            <span t-esc="line['ref']" />
+                            <span t-out="line['ref']" />
                         </t>
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['amount']"
+                            t-out="line['amount']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                             t-if="not line['reconciled_line']"
                         />
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['applied_amount']"
+                            t-out="line['applied_amount']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
                     <td class="amount">
                         <span
-                            t-esc="line['open_amount']"
+                            t-out="line['open_amount']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                             t-if="not line['reconciled_line']"
                         />
@@ -100,14 +100,14 @@
                 <tr>
                     <td />
                     <td>
-                        <span t-esc="d['end']" />
+                        <span t-out="d['end']" />
                     </td>
                     <td>Ending Balance</td>
                     <td />
                     <td />
                     <td class="amount">
                         <span
-                            t-esc="currency['amount_due']"
+                            t-out="currency['amount_due']"
                             t-options="{'widget': 'monetary', 'display_currency': display_currency}"
                         />
                     </td>
@@ -120,11 +120,11 @@
             <t t-set="o" t-value="o.with_context({'lang': lang})" />
             <t t-set="address">
                 <address
-                    t-esc="get_inv_addr(o)"
+                    t-out="get_inv_addr(o)"
                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
                 />
                 <div t-if="o.vat" class="mt16"><t
-                        t-esc="company.country_id.vat_label or 'Tax ID'"
+                        t-out="company.country_id.vat_label or 'Tax ID'"
                     />: <span t-field="o.vat" /></div>
             </t>
             <div class="page">
@@ -132,7 +132,7 @@
                 <div id="informations" class="row mt32 mb32">
                     <div class="col-3 bm-2">
                         <strong>Date:</strong>
-                        <p t-esc="d['today']" class="m-0" />
+                        <p t-out="d['today']" class="m-0" />
                     </div>
                     <div class="col-3 bm-2">
                         <strong>Partner Name:</strong>
