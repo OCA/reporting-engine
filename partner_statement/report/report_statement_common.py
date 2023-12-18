@@ -468,13 +468,14 @@ class ReportStatementCommon(models.AbstractModel):
                         line["currency_id"], currencies, 0.0, 0.0
                     )
                 line_currency = currency_dict[line["currency_id"]]
-                if not line["blocked"]:
-                    if not is_activity:
+                if not is_activity:
+                    if not line["blocked"]:
                         line_currency["amount_due"] += line[amount_field]
-                        line["balance"] = line_currency["amount_due"]
-                    else:
+                    line["balance"] = line_currency["amount_due"]
+                else:
+                    if not line["blocked"]:
                         line_currency["ending_balance"] += line[amount_field]
-                        line["balance"] = line_currency["ending_balance"]
+                    line["balance"] = line_currency["ending_balance"]
                 line["date"] = format_date(
                     line["date"], date_formats.get(partner_id, default_fmt)
                 )
