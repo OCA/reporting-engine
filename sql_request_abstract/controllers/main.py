@@ -10,7 +10,6 @@ from odoo.addons.web.controllers.webclient import WebClient
 
 
 class SqlRequestAbstractWebClient(WebClient):
-
     # if a field, widget="ace" option="{'mode': 'xxx'}"
     # is present, The ace lib (odoo/addons/web/static/lib/ace)
     # will generate a call to /web/static/lib/ace/mode-xxx.js
