@@ -235,18 +235,12 @@ class BiSQLView(models.Model):
     @api.depends("technical_name")
     def _compute_view_name(self):
         for sql_view in self:
-            sql_view.view_name = "{}{}".format(
-                sql_view._sql_prefix,
-                sql_view.technical_name,
-            )
+            sql_view.view_name = f"{sql_view._sql_prefix}{sql_view.technical_name}"
 
     @api.depends("technical_name")
     def _compute_model_name(self):
         for sql_view in self:
-            sql_view.model_name = "{}{}".format(
-                sql_view._model_prefix,
-                sql_view.technical_name,
-            )
+            sql_view.model_name = f"{sql_view._model_prefix}{sql_view.technical_name}"
 
     # Overload Section
     def write(self, vals):
@@ -607,7 +601,7 @@ class BiSQLView(models.Model):
 
     def _prepare_request_check_execution(self):
         self.ensure_one()
-        return "CREATE VIEW {} AS ({});".format(self.view_name, self.query)
+        return f"CREATE VIEW {self.view_name} AS ({self.query});"
 
     def _prepare_request_for_execution(self):
         self.ensure_one()
@@ -625,11 +619,7 @@ class BiSQLView(models.Model):
         """
             % self.query
         )
-        return "CREATE {} VIEW {} AS ({});".format(
-            self.materialized_text,
-            self.view_name,
-            query,
-        )
+        return f"CREATE {self.materialized_text} VIEW {self.view_name} AS ({query});"
 
     def _check_execution(self):
         """Ensure that the query is valid, trying to execute it.
@@ -686,10 +676,7 @@ class BiSQLView(models.Model):
 
     def _refresh_materialized_view(self):
         for sql_view in self.filtered(lambda x: x.is_materialized):
-            req = "REFRESH {} VIEW {}".format(
-                sql_view.materialized_text,
-                sql_view.view_name,
-            )
+            req = f"REFRESH {sql_view.materialized_text} VIEW {sql_view.view_name}"
             self._log_execute(req)
             sql_view._refresh_size()
             if sql_view.action_id:
