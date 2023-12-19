@@ -261,10 +261,7 @@ class BiSQLViewField(models.Model):
 
     def _prepare_search_field(self):
         self.ensure_one()
-        return """<field name="{}" context="{}"/>\n""".format(
-            self.name,
-            self.field_context,
-        )
+        return f"""<field name="{self.name}" context="{self.field_context}"/>\n"""
 
     def _prepare_search_filter_field(self):
         self.ensure_one()
