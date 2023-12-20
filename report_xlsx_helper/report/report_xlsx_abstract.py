@@ -698,7 +698,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                         cell_type = "boolean"
                     elif isinstance(cell_value, str):
                         cell_type = "string"
-                    elif isinstance(cell_value, (int, float)):
+                    elif isinstance(cell_value, int | float):
                         cell_type = "number"
                     elif isinstance(cell_value, datetime):
                         cell_type = "datetime"

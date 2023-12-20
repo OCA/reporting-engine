@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 
 class TestReportXlsxHelper(TransactionCase):
     def setUp(self):
-        super(TestReportXlsxHelper, self).setUp()
+        super().setUp()
         today = date.today()
         p1 = self.env.ref("base.res_partner_1")
         p2 = self.env.ref("base.res_partner_2")
