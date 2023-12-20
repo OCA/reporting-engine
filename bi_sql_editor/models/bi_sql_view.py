@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from psycopg2 import ProgrammingError
 
 from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools import sql, table_columns
 from odoo.tools.safe_eval import safe_eval
 
@@ -169,12 +169,6 @@ class BiSQLView(models.Model):
 
     sequence = fields.Integer(string="sequence")
 
-    option_context_field = fields.Boolean(
-        string="Use Context Field",
-        help="Check this box if you want to add a context column in the field list view."
-        " Custom Context will be inserted in the created views.",
-    )
-
     # Constrains Section
     @api.constrains("is_materialized")
     def _check_index_materialized(self):
@@ -269,17 +263,24 @@ class BiSQLView(models.Model):
     def copy(self, default=None):
         self.ensure_one()
         default = dict(default or {})
-        default.update(
-            {
-                "name": _("%s (Copy)") % self.name,
-                "technical_name": "%s_copy" % self.technical_name,
-            }
-        )
+        if "name" not in default:
+            default["name"] = _("%s (Copy)") % self.name
+        if "technical_name" not in default:
+            default["technical_name"] = f"{self.technical_name}_copy"
         return super().copy(default=default)
 
     # Action Section
     def button_create_sql_view_and_model(self):
         for sql_view in self.filtered(lambda x: x.state == "sql_valid"):
+            # Check if many2one fields are correctly
+            bad_fields = sql_view.bi_sql_view_field_ids.filtered(
+                lambda x: x.ttype == "many2one" and not x.many2one_model_id.id
+            )
+            if bad_fields:
+                raise ValidationError(
+                    _("Please set related models on the following fields %s")
+                    % ",".join(bad_fields.mapped("name"))
+                )
             # Create ORM and access
             sql_view._create_model_and_fields()
             sql_view._create_model_access()
@@ -297,28 +298,33 @@ class BiSQLView(models.Model):
                     sql_view.cron_id.active = True
             sql_view.state = "model_valid"
 
+    def button_reset_to_model_valid(self):
+        views = self.filtered(lambda x: x.state == "ui_valid")
+        views.mapped("tree_view_id").unlink()
+        views.mapped("graph_view_id").unlink()
+        views.mapped("pivot_view_id").unlink()
+        views.mapped("search_view_id").unlink()
+        views.mapped("action_id").unlink()
+        views.mapped("menu_id").unlink()
+        return views.write({"state": "model_valid"})
+
+    def button_reset_to_sql_valid(self):
+        self.button_reset_to_model_valid()
+        views = self.filtered(lambda x: x.state == "model_valid")
+        for sql_view in views:
+            # Drop SQL View (and indexes by cascade)
+            if sql_view.is_materialized:
+                sql_view._drop_view()
+            if sql_view.cron_id:
+                sql_view.cron_id.active = False
+            # Drop ORM
+            sql_view._drop_model_and_fields()
+        return views.write({"state": "sql_valid"})
+
     def button_set_draft(self):
-        for sql_view in self.filtered(lambda x: x.state != "draft"):
-            sql_view.menu_id.unlink()
-            sql_view.action_id.unlink()
-            sql_view.tree_view_id.unlink()
-            sql_view.graph_view_id.unlink()
-            sql_view.pivot_view_id.unlink()
-            sql_view.search_view_id.unlink()
-
-            if sql_view.state in ("model_valid", "ui_valid"):
-                # Drop SQL View (and indexes by cascade)
-                if sql_view.is_materialized:
-                    sql_view._drop_view()
-
-                if sql_view.cron_id:
-                    sql_view.cron_id.active = False
-
-                # Drop ORM
-                sql_view._drop_model_and_fields()
-
-            super(BiSQLView, sql_view).button_set_draft()
-        return True
+        self.button_reset_to_model_valid()
+        self.button_reset_to_sql_valid()
+        return super().button_set_draft()
 
     def button_create_ui(self):
         self.tree_view_id = self.env["ir.ui.view"].create(self._prepare_tree_view()).id

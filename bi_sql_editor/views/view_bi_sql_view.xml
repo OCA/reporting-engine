@@ -34,14 +34,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button
-                    name="button_set_draft"
+                    name="button_reset_to_sql_valid"
                     type="object"
-                    states="model_valid,ui_valid"
-                    string="Set to Draft"
+                    states="model_valid"
+                    string="Delete SQL Elements"
                     groups="sql_request_abstract.group_sql_request_manager"
-                    confirm="Are you sure you want to set to draft this SQL View. It will delete the materialized view, and all the previous mapping realized with the columns"
+                    confirm="It will delete the materialized view, and all the previous mapping realized with the columns"
                 />
-
+                <button
+                    name="button_reset_to_model_valid"
+                    type="object"
+                    states="ui_valid"
+                    string="Delete UI"
+                    groups="sql_request_abstract.group_sql_request_manager"
+                />
                 <button
                     name="button_create_sql_view_and_model"
                     type="object"
@@ -67,18 +73,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     help="This will create Odoo View, Action and Menu"
                 />
                 <button
-                    name="button_refresh_materialized_view"
-                    type="object"
-                    string="Refresh"
-                    help="Refresh Materialized View"
-                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
-                />
-                <button
                     name="button_open_view"
                     type="object"
                     string="Open View"
                     states="ui_valid"
                     class="oe_highlight"
+                />
+                <button
+                    name="button_refresh_materialized_view"
+                    type="object"
+                    string="Refresh"
+                    help="Refresh Materialized View"
+                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
                 />
             </xpath>
             <group name="group_main_info" position="inside">
@@ -98,7 +104,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         name="cron_id"
                         attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
                     />
-                    <field name="option_context_field" />
                 </group>
             </group>
             <page name="page_sql" position="after">
@@ -106,16 +111,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     string="SQL Fields"
                     attrs="{'invisible': [('state', '=', 'draft')]}"
                 >
-                    <field
-                        name="bi_sql_view_field_ids"
-                        nolabel="1"
-                        colspan="4"
-                        attrs="{'readonly': [('state', '!=', 'sql_valid')]}"
-                    >
-                        <tree
-                            editable="bottom"
-                            decoration-info="field_description==False"
-                        >
+                    <field name="bi_sql_view_field_ids" nolabel="1" colspan="4">
+                        <tree editable="bottom" create="false">
                             <field name="sequence" widget="handle" />
                             <field name="name" />
                             <field name="sql_type" />
@@ -132,9 +129,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 name="selection"
                                 attrs="{
                                 'invisible': [('ttype', '!=', 'selection')],
-                                'required': [
-                                    ('field_description', '!=', False),
-                                    ('ttype', '=', 'selection')]}"
+                                'required': [('ttype', '=', 'selection')],
+                            }"
                             />
                             <field
                                 name='group_operator'
@@ -142,32 +138,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 attrs="{
                                 'invisible': [('ttype', 'not in', ('float', 'integer'))]}"
                             />
-                            <field
-                                name="is_index"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="graph_type"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="is_group_by"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="tree_visibility"
-                                optional="hide"
-                                attrs="{'invisible': [('field_description', '=', False)]}"
-                            />
-                            <field
-                                name="field_context"
-                                attrs="{
-                                    'invisible': [('field_description', '=', False)],
-                                    'column_invisible': [('parent.option_context_field', '=', False)],
-                                }"
-                            />
+                            <field name="is_index" optional="hide" />
+                            <field name="graph_type" />
+                            <field name="is_group_by" optional="hide" />
+                            <field name="tree_visibility" optional="hide" />
+                            <field name="field_context" optional="hide" />
+                            <field name="state" invisible="1" />
                         </tree>
                     </field>
                 </page>

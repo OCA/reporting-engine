@@ -70,31 +70,40 @@ class BiSQLViewField(models.Model):
         string="SQL View", comodel_name="bi.sql.view", ondelete="cascade"
     )
 
+    state = fields.Selection(related="bi_sql_view_id.state", store=True)
+
     is_index = fields.Boolean(
         help="Check this box if you want to create"
         " an index on that field. This is recommended for searchable and"
         " groupable fields, to reduce duration",
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     is_group_by = fields.Boolean(
         string="Is Group by",
         help="Check this box if you want to create"
         " a 'group by' option in the search view",
+        states={"ui_valid": [("readonly", True)]},
     )
 
     index_name = fields.Char(compute="_compute_index_name")
 
-    graph_type = fields.Selection(selection=_GRAPH_TYPE_SELECTION)
+    graph_type = fields.Selection(
+        selection=_GRAPH_TYPE_SELECTION,
+        states={"ui_valid": [("readonly", True)]},
+    )
 
     tree_visibility = fields.Selection(
         selection=_TREE_VISIBILITY_SELECTION,
         default="available",
         required=True,
+        states={"ui_valid": [("readonly", True)]},
     )
 
     field_description = fields.Char(
         help="This will be used as the name of the Odoo field, displayed for users",
         required=True,
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     ttype = fields.Selection(
@@ -104,6 +113,7 @@ class BiSQLViewField(models.Model):
         " Odoo field that will be created. Keep empty if you don't want to"
         " create a new field. If empty, this field will not be displayed"
         " neither available for search or group by function",
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     selection = fields.Text(
@@ -113,24 +123,28 @@ class BiSQLViewField(models.Model):
         " List of options, specified as a Python expression defining a list of"
         " (key, label) pairs. For example:"
         " [('blue','Blue'), ('yellow','Yellow')]",
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     many2one_model_id = fields.Many2one(
         comodel_name="ir.model",
         string="Model",
         help="For 'Many2one' Odoo field.\n" " Comodel of the field.",
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     group_operator = fields.Selection(
         selection=_GROUP_OPERATOR_SELECTION,
         help="By default, Odoo will sum the values when grouping. If you wish "
         "to alter the behaviour, choose an alternate Group Operator",
+        states={"model_valid": [("readonly", True)], "ui_valid": [("readonly", True)]},
     )
 
     field_context = fields.Char(
         default="{}",
         help="Context value that will be inserted for this field in all the views."
         " Important note : please write a context with single quote.",
+        states={"ui_valid": [("readonly", True)]},
     )
 
     # Constrains Section
@@ -188,6 +202,16 @@ class BiSQLViewField(models.Model):
             )
         return super().create(vals_list)
 
+    def unlink(self):
+        if self.filtered(lambda x: x.state in ("model_valid", "ui_valid")):
+            raise UserError(
+                _(
+                    "Impossible to delete fields if the view"
+                    " is in the state 'Model Valid' or 'UI Valid'."
+                )
+            )
+        return super().unlink()
+
     # Custom Section
     @api.model
     def _model_mapping(self):
@@ -233,12 +257,12 @@ class BiSQLViewField(models.Model):
         if self.tree_visibility == "invisible":
             visibility_text = 'invisible="1"'
         elif self.tree_visibility == "optional_hide":
-            visibility_text = 'option="hide"'
+            visibility_text = 'optional="hide"'
         elif self.tree_visibility == "optional_show":
-            visibility_text = 'option="show"'
+            visibility_text = 'optional="show"'
 
         return (
-            f"""<field name="{self.name}" {visibility_text} """
+            f"""<field name="{self.name}" {visibility_text}"""
             f""" context="{self.field_context}"/>\n"""
         )
 
