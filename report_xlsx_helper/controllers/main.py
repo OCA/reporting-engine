@@ -21,7 +21,6 @@ class ReportController(ReportController):
     def report_routes(self, reportname, docids=None, converter=None, **data):
         report = request.env["ir.actions.report"]._get_report_from_name(reportname)
         if converter == "xlsx" and not report:
-
             context = dict(request.env.context)
             if docids:
                 docids = [int(i) for i in docids.split(",")]
