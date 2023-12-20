@@ -3,6 +3,8 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021-2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+import markupsafe
+
 from odoo import api, fields, models
 from odoo.osv import expression
 from odoo.tools.safe_eval import safe_eval
@@ -61,4 +63,4 @@ class CommentTemplate(models.AbstractModel):
             add_context=add_context,
             post_process=post_process,
         )
-        return comment_texts[self.id] or ""
+        return markupsafe.Markup(comment_texts[self.id]) or ""
