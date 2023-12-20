@@ -67,15 +67,6 @@ msgid "Allowed Users"
 msgstr "Usuarios Permitidos"
 
 #. module: bi_sql_editor
-#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid ""
-"Are you sure you want to set to draft this SQL View. It will delete the "
-"materialized view, and all the previous mapping realized with the columns"
-msgstr ""
-"¿Está seguro de que desea configurar para redactar esta vista SQL? Borrará "
-"la vista materializada, y todo el mapeo anterior realizado con las columnas"
-
-#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -105,13 +96,6 @@ msgstr "Campo de Vista BI SQL"
 msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
-msgstr ""
-
-#. module: bi_sql_editor
-#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__option_context_field
-msgid ""
-"Check this box if you want to add a context column in the field list view. "
-"Custom Context will be inserted in the created views."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -217,6 +201,16 @@ msgstr ""
 "'ir.rule' global. Una regla típica de varias compañías es, por ejemplo,\n"
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Delete SQL Elements"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Delete UI"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -332,6 +326,15 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
+#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
+#, python-format
+msgid ""
+"Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
+"Valid'."
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
 msgid "Index Name"
 msgstr "Nombre del Índice"
@@ -360,6 +363,13 @@ msgstr "Es Índice"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__is_materialized
 msgid "Is Materialized View"
 msgstr "Es una Vista Materializada"
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid ""
+"It will delete the materialized view, and all the previous mapping realized "
+"with the columns"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
@@ -535,6 +545,13 @@ msgid "Optional (shown)"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:0
+#, python-format
+msgid "Please set related models on the following fields %s"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
 msgid "Query"
 msgstr "Consulta"
@@ -633,22 +650,19 @@ msgid "Selection Options"
 msgstr "Opciones de Selección"
 
 #. module: bi_sql_editor
-#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid "Set to Draft"
-msgstr "Restablecer a Borrador"
-
-#. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__size
 msgid "Size of the materialized view and its indexes"
 msgstr "Tamaño de la vista materializada y sus índices"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__state
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__state
 msgid "State"
 msgstr "Estado"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__state
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__state
 msgid ""
 "State of the Request:\n"
 " * 'Draft': Not tested\n"
@@ -743,11 +757,6 @@ msgstr ""
 "después de haber creado el modelo"
 
 #. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__option_context_field
-msgid "Use Context Field"
-msgstr ""
-
-#. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
 msgstr "Interfaz de Usuario"
@@ -831,6 +840,17 @@ msgstr "selection"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
 msgstr "sequence"
+
+#~ msgid ""
+#~ "Are you sure you want to set to draft this SQL View. It will delete the "
+#~ "materialized view, and all the previous mapping realized with the columns"
+#~ msgstr ""
+#~ "¿Está seguro de que desea configurar para redactar esta vista SQL? "
+#~ "Borrará la vista materializada, y todo el mapeo anterior realizado con "
+#~ "las columnas"
+
+#~ msgid "Set to Draft"
+#~ msgstr "Restablecer a Borrador"
 
 #, python-format
 #~ msgid "%m/%d/%Y %H:%M:%S UTC"
