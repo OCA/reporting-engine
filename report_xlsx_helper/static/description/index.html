@@ -369,8 +369,9 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:07e670ba3bc592076c782c24a73763641c491d37b4e44f75b894ea10315a47bb
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Mature" src="https://img.shields.io/badge/maturity-Mature-brightgreen.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/report_xlsx_helper"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_xlsx_helper"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module provides a set of tools to facilitate the creation of excel reports with format xlsx.</p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Mature" src="https://img.shields.io/badge/maturity-Mature-brightgreen.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/17.0/report_xlsx_helper"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_xlsx_helper"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module provides a set of tools to facilitate the creation of excel
+reports with format xlsx.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -391,33 +392,34 @@ ul.auto-toc {
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
-<p>In order to create an Excel report you can define a report of type ‘xlsx’ in a static or dynamic way:</p>
+<p>In order to create an Excel report you can define a report of type
+‘xlsx’ in a static or dynamic way:</p>
 <ul class="simple">
 <li>Static syntax: cf. <tt class="docutils literal">account_move_line_report_xls</tt> for an example.</li>
 <li>Dynamic syntax: cf. <tt class="docutils literal">report_xlsx_helper_demo</tt> for an example</li>
 </ul>
-<p>The <tt class="docutils literal">AbstractReportXlsx</tt> class contains a number of attributes and methods to
-facilitate the creation excel reports in Odoo.</p>
+<p>The <tt class="docutils literal">AbstractReportXlsx</tt> class contains a number of attributes and
+methods to facilitate the creation excel reports in Odoo.</p>
 <ul>
 <li><p class="first">Cell types</p>
 <p>string, number, boolean, datetime.</p>
 </li>
 <li><p class="first">Cell formats</p>
-<p>The predefined cell formats result in a consistent
-look and feel of the Odoo Excel reports.</p>
+<p>The predefined cell formats result in a consistent look and feel of
+the Odoo Excel reports.</p>
 </li>
 <li><p class="first">Cell formulas</p>
-<p>Cell formulas can be easily added with the help of the <tt class="docutils literal">_rowcol_to_cell()</tt> method.</p>
+<p>Cell formulas can be easily added with the help of the
+<tt class="docutils literal">_rowcol_to_cell()</tt> method.</p>
 </li>
 <li><p class="first">Excel templates</p>
-<p>It is possible to define Excel templates which can be adapted
-by ‘inherited’ modules.
-Download the <tt class="docutils literal">account_move_line_report_xls</tt> module
-from <a class="reference external" href="http://apps.odoo.com">http://apps.odoo.com</a> as example.</p>
+<p>It is possible to define Excel templates which can be adapted by
+‘inherited’ modules. Download the <tt class="docutils literal">account_move_line_report_xls</tt>
+module from <a class="reference external" href="http://apps.odoo.com">http://apps.odoo.com</a> as example.</p>
 </li>
 <li><p class="first">Excel with multiple sheets</p>
-<p>Download the <tt class="docutils literal">account_asset_management_xls</tt> module
-from <a class="reference external" href="http://apps.odoo.com">http://apps.odoo.com</a> as example.</p>
+<p>Download the <tt class="docutils literal">account_asset_management_xls</tt> module from
+<a class="reference external" href="http://apps.odoo.com">http://apps.odoo.com</a> as example.</p>
 </li>
 </ul>
 </div>
@@ -426,7 +428,7 @@ from <a class="reference external" href="http://apps.odoo.com">http://apps.odoo.
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xlsx_helper%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xlsx_helper%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -443,13 +445,9 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <li>Luc De Meyer &lt;<a class="reference external" href="mailto:luc.demeyer&#64;noviat.com">luc.demeyer&#64;noviat.com</a>&gt;</li>
 <li>Rattapong Chokmasermkul &lt;<a class="reference external" href="mailto:rattapongc&#64;ecosoft.co.th">rattapongc&#64;ecosoft.co.th</a>&gt;</li>
 <li>Saran Lim. &lt;<a class="reference external" href="mailto:saranl&#64;ecosoft.co.th">saranl&#64;ecosoft.co.th</a>&gt;</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://www.sinerkia.com">Sinerkia Innovación y Desarrollo S.L.</a>:</dt>
-<dd><ul class="first last">
+<li><a class="reference external" href="https://www.sinerkia.com">Sinerkia Innovación y Desarrollo S.L.</a>:<ul>
 <li>Luis Pomar</li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
 </div>
@@ -460,7 +458,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/report_xlsx_helper">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/17.0/report_xlsx_helper">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
