@@ -59,8 +59,6 @@ class BiSQLView(models.Model):
     is_materialized = fields.Boolean(
         string="Is Materialized View",
         default=True,
-        readonly=True,
-        states={"draft": [("readonly", False)], "sql_valid": [("readonly", False)]},
     )
 
     materialized_text = fields.Char(compute="_compute_materialized_text", store=True)
@@ -75,8 +73,6 @@ class BiSQLView(models.Model):
 
     view_order = fields.Char(
         required=True,
-        readonly=False,
-        states={"ui_valid": [("readonly", True)]},
         default="pivot,graph,tree",
         help="Comma-separated text. Possible values:" ' "graph", "pivot" or "tree"',
     )
@@ -93,28 +89,20 @@ class BiSQLView(models.Model):
     domain_force = fields.Text(
         string="Extra Rule Definition",
         default="[]",
-        readonly=True,
         help="Define here access restriction to data.\n"
         " Take care to use field name prefixed by 'x_'."
         " A global 'ir.rule' will be created."
         " A typical Multi Company rule is for exemple \n"
         " ['|', ('x_company_id','child_of', [user.company_id.id]),"
         "('x_company_id','=',False)].",
-        states={"draft": [("readonly", False)], "sql_valid": [("readonly", False)]},
     )
 
     computed_action_context = fields.Text(compute="_compute_computed_action_context")
 
     action_context = fields.Text(
         default="{}",
-        readonly=True,
         help="Define here a context that will be used"
         " by default, when creating the action.",
-        states={
-            "draft": [("readonly", False)],
-            "sql_valid": [("readonly", False)],
-            "model_valid": [("readonly", False)],
-        },
     )
 
     bi_sql_view_field_ids = fields.One2many(
@@ -160,12 +148,6 @@ class BiSQLView(models.Model):
     )
 
     rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule", readonly=True)
-
-    group_ids = fields.Many2many(
-        comodel_name="res.groups",
-        readonly=True,
-        states={"draft": [("readonly", False)], "sql_valid": [("readonly", False)]},
-    )
 
     sequence = fields.Integer(string="sequence")
 
@@ -522,8 +504,7 @@ class BiSQLView(models.Model):
     def _drop_view(self):
         for sql_view in self:
             self._log_execute(
-                "DROP %s VIEW IF EXISTS %s"
-                % (sql_view.materialized_text, sql_view.view_name)
+                f"DROP {sql_view.materialized_text} VIEW IF EXISTS {sql_view.view_name}"
             )
             sql_view.size = False
 
@@ -552,12 +533,7 @@ class BiSQLView(models.Model):
                 lambda x: x.is_index is True
             ):
                 self._log_execute(
-                    "CREATE INDEX %(index_name)s ON %(view_name)s (%(field_name)s);"
-                    % {
-                        "index_name": sql_field.index_name,
-                        "view_name": sql_view.view_name,
-                        "field_name": sql_field.name,
-                    }
+                    f"CREATE INDEX {sql_field.index_name} ON {sql_view.view_name} ({sql_field.name});"
                 )
 
     def _create_model_and_fields(self):
@@ -639,7 +615,7 @@ class BiSQLView(models.Model):
         field_ids = []
         for column in columns:
             existing_field = self.bi_sql_view_field_ids.filtered(
-                lambda x: x.name == column[1]
+                lambda x, c=column: x.name == c[1]
             )
             if existing_field:
                 # Update existing field

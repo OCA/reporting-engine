@@ -135,11 +135,11 @@ To use this module, you need to:
 
 ..
 
-   |image1|
+   |usage-image1|
 
 -  You can switch to 'Graph' or 'tree' views as any report.
 
-.. |image1| image:: https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/05_reporting_pivot.png
+.. |usage-image1| image:: https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/05_reporting_pivot.png
 
 Bug Tracker
 ===========

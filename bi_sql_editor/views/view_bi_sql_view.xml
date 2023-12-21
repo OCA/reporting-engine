@@ -36,7 +36,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <button
                     name="button_reset_to_sql_valid"
                     type="object"
-                    states="model_valid"
+                    invisible="state != 'model_valid'"
                     string="Delete SQL Elements"
                     groups="sql_request_abstract.group_sql_request_manager"
                     confirm="It will delete the materialized view, and all the previous mapping realized with the columns"
@@ -44,14 +44,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <button
                     name="button_reset_to_model_valid"
                     type="object"
-                    states="ui_valid"
+                    invisible="state != 'ui_valid'"
                     string="Delete UI"
                     groups="sql_request_abstract.group_sql_request_manager"
                 />
                 <button
                     name="button_create_sql_view_and_model"
                     type="object"
-                    states="sql_valid"
+                    invisible="state != 'sql_valid'"
                     string="Create SQL Elements"
                     class="oe_highlight"
                     help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"
@@ -61,13 +61,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     type="object"
                     string="Update Model Access"
                     class="oe_highlight"
-                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('has_group_changed', '=', False)]}"
+                    invisible="state in ('draft', 'sql_valid') or not has_group_changed"
                     help="Update Model Access. Required if you changed groups list after having created the model"
                 />
                 <button
                     name="button_create_ui"
                     type="object"
-                    states="model_valid"
+                    invisible="state != 'model_valid'"
                     string="Create UI"
                     class="oe_highlight"
                     help="This will create Odoo View, Action and Menu"
@@ -76,7 +76,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     name="button_open_view"
                     type="object"
                     string="Open View"
-                    states="ui_valid"
+                    invisible="state != 'ui_valid'"
                     class="oe_highlight"
                 />
                 <button
@@ -84,66 +84,82 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     type="object"
                     string="Refresh"
                     help="Refresh Materialized View"
-                    attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                    invisible="state in ('draft', 'sql_valid') or not is_materialized"
                 />
             </xpath>
             <group name="group_main_info" position="inside">
                 <group>
-                    <field
-                        name="technical_name"
-                        attrs="{'readonly': [('state', '!=', 'draft')]}"
-                    />
+                    <field name="technical_name" readonly="state != 'draft'" />
                     <field name="view_name" />
-                    <field name="view_order" />
-                    <field name="is_materialized" />
+                    <field name="view_order" readonly="state == 'ui_valid'" />
+                    <field
+                        name="is_materialized"
+                        readonly="state not in ('draft', 'sql_valid')"
+                    />
                     <field
                         name="size"
-                        attrs="{'invisible': ['|', ('state', '=', 'draft'), ('is_materialized', '=', False)]}"
+                        invisible="state == 'draft' or not is_materialized"
                     />
                     <field
                         name="cron_id"
-                        attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                        invisible="state in ('draft', 'sql_valid') or not is_materialized"
                     />
                 </group>
             </group>
             <page name="page_sql" position="after">
-                <page
-                    string="SQL Fields"
-                    attrs="{'invisible': [('state', '=', 'draft')]}"
-                >
+                <page string="SQL Fields" invisible="state == 'draft'">
                     <field name="bi_sql_view_field_ids" nolabel="1" colspan="4">
-                        <tree editable="bottom" create="false">
+                        <tree editable="bottom">
                             <field name="sequence" widget="handle" />
                             <field name="name" />
                             <field name="sql_type" />
-                            <field name="field_description" />
-                            <field name="ttype" />
+                            <field
+                                name="field_description"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name="ttype"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
                             <field
                                 name="many2one_model_id"
-                                attrs="{
-                                'invisible': [('ttype', '!=', 'many2one')],
-                                'required': [('ttype', '=', 'many2one')],
-                            }"
+                                invisible="ttype != 'many2one'"
+                                required="ttype == 'many2one'"
+                                readonly="state in ('model_valid', 'ui_valid')"
                             />
                             <field
                                 name="selection"
-                                attrs="{
-                                'invisible': [('ttype', '!=', 'selection')],
-                                'required': [('ttype', '=', 'selection')],
-                            }"
+                                invisible="ttype != 'selection'"
+                                required="ttype == 'selection'"
+                                readonly="state in ('model_valid', 'ui_valid')"
                             />
                             <field
                                 name='group_operator'
                                 optional="hide"
-                                attrs="{
-                                'invisible': [('ttype', 'not in', ('float', 'integer'))]}"
+                                invisible="ttype not in ('float', 'integer')"
+                                readonly="state in ('model_valid', 'ui_valid')"
                             />
-                            <field name="is_index" optional="hide" />
-                            <field name="graph_type" />
-                            <field name="is_group_by" optional="hide" />
-                            <field name="tree_visibility" optional="hide" />
-                            <field name="field_context" optional="hide" />
-                            <field name="state" invisible="1" />
+                            <field
+                                name="is_index"
+                                optional="hide"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field name="graph_type" readonly="state == 'ui_valid'" />
+                            <field
+                                name="is_group_by"
+                                optional="hide"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field
+                                name="tree_visibility"
+                                optional="hide"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field
+                                name="field_context"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field name="state" column_invisible="1" />
                         </tree>
                     </field>
                 </page>
@@ -156,6 +172,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         colspan="2"
                         widget="ace"
                         options="{'mode': 'python'}"
+                        readonly="state not in ('draft', 'sql_valid')"
                     />
                 </group>
             </page>
@@ -179,6 +196,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <group string="Custom Context">
                                 <field
                             name="action_context"
+                            readonly="state not in ('draft', 'sql_valid', 'model_valid')"
                             nolabel="1"
                             colspan="2"
                             widget="ace"
@@ -192,7 +210,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field name="model_name" />
                                     <field
                                 name="model_id"
-                                attrs="{'invisible': [('state', '=', 'draft')]}"
+                                invisible="state == 'draft'"
                             />
                                 </group>
                                 <group string="User Interface">
@@ -207,6 +225,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </page>
 
             </page>
+
+            <field name="group_ids" position="attributes">
+                <attribute
+                    name="invisible"
+                >state not in ('draft', 'sql_valid')</attribute>
+            </field>
         </field>
     </record>
 
