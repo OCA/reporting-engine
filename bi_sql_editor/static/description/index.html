@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -369,38 +368,43 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:2cd8ab59abe1f67505f360059541525311a4e5f9d41ecf7e5713ea9bedb55540
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/bi_sql_editor"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-bi_sql_editor"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/17.0/bi_sql_editor"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-bi_sql_editor"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>This module extends the functionality of reporting, to support creation
-of extra custom reports.
-It allows user to write a custom SQL request. (Generally, admin users)</p>
-<p>Once written, a new model is generated, and user can map the selected field
-with odoo fields.
-Then user ends the process, creating new menu, action and graph view.</p>
-<p>Technically, the module create SQL View (or materialized view, if option is
-checked). Materialized view duplicates datas, but request are fastest. If
-materialized view is enabled, this module will create a cron task to refresh
-the data).</p>
+of extra custom reports. It allows user to write a custom SQL request.
+(Generally, admin users)</p>
+<p>Once written, a new model is generated, and user can map the selected
+field with odoo fields. Then user ends the process, creating new menu,
+action and graph view.</p>
+<p>Technically, the module create SQL View (or materialized view, if option
+is checked). Materialized view duplicates datas, but request are
+fastest. If materialized view is enabled, this module will create a cron
+task to refresh the data).</p>
 <p>By default, users member of ‘SQL Request / User’ can see all the views.
-You can specify extra groups that have the right to access to a specific view.</p>
+You can specify extra groups that have the right to access to a specific
+view.</p>
 <div class="section" id="warning">
 <h1>Warning</h1>
-<p>This module is intended for technician people in a company and for Odoo integrators.</p>
+<p>This module is intended for technician people in a company and for Odoo
+integrators.</p>
 <p>It requires the user to know SQL syntax and Odoo models.</p>
-<p>If you don’t have such skills, do not try to use this module specially on a production
-environment.</p>
+<p>If you don’t have such skills, do not try to use this module specially
+on a production environment.</p>
 </div>
 <div class="section" id="use-cases">
 <h1>Use Cases</h1>
 <p>this module is interesting for the following use cases</p>
 <ul class="simple">
-<li>You want to realize technical SQL requests, that Odoo framework doesn’t allow
-(For exemple, UNION with many SELECT) A typical use case is if you want to have
-Sale Orders and PoS Orders datas in a same table</li>
-<li>You want to customize an Odoo report, removing some useless fields and adding
-some custom ones. In that case, you can simply select the fields of the original
-report (sale.report model for exemple), and add your custom fields</li>
-<li>You have a lot of data, and classical SQL Views have very bad performance.
-In that case, MATERIALIZED VIEW will be a good solution to reduce display duration</li>
+<li>You want to realize technical SQL requests, that Odoo framework
+doesn’t allow (For exemple, UNION with many SELECT) A typical use
+case is if you want to have Sale Orders and PoS Orders datas in a
+same table</li>
+<li>You want to customize an Odoo report, removing some useless fields
+and adding some custom ones. In that case, you can simply select the
+fields of the original report (sale.report model for exemple), and
+add your custom fields</li>
+<li>You have a lot of data, and classical SQL Views have very bad
+performance. In that case, MATERIALIZED VIEW will be a good solution
+to reduce display duration</li>
 </ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
@@ -408,12 +412,7 @@ In that case, MATERIALIZED VIEW will be a good solution to reduce display durati
 <li><a class="reference internal" href="#configuration" id="toc-entry-1">Configuration</a></li>
 <li><a class="reference internal" href="#usage" id="toc-entry-2">Usage</a></li>
 <li><a class="reference internal" href="#bug-tracker" id="toc-entry-3">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-4">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-5">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-6">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-7">Maintainers</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#credits" id="toc-entry-4">Credits</a></li>
 </ul>
 </div>
 <div class="section" id="configuration">
@@ -422,14 +421,10 @@ In that case, MATERIALIZED VIEW will be a good solution to reduce display durati
 <li><p class="first">Go to Dashboard / Configuration / SQL Views</p>
 </li>
 <li><p class="first">tip your SQL request</p>
-<div class="figure">
-<img alt="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/01_sql_request.png" src="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/01_sql_request.png" style="width: 800px;" />
-</div>
+<p><img alt="image1" src="https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/01_sql_request.png" /></p>
 </li>
 <li><p class="first">Select the group(s) that could have access to the view</p>
-<div class="figure">
-<img alt="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/02_security_access.png" src="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/02_security_access.png" style="width: 800px;" />
-</div>
+<p><img alt="image2" src="https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/02_security_access.png" /></p>
 </li>
 </ul>
 <p>Optionnaly, you can add a domain.</p>
@@ -439,31 +434,27 @@ to make reporting depending on the current companies of the user.</p>
 <ul>
 <li><p class="first">Click on the button ‘Validate SQL Expression’</p>
 </li>
-<li><p class="first">Once the sql request checked, the module analyses the column of the view,
-and propose field mapping. For each field, you can decide to create an index
-and set if it will be displayed on the pivot graph as a column, a row or a
-measure.</p>
-<div class="figure">
-<img alt="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/03_field_mapping.png" src="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/03_field_mapping.png" style="width: 800px;" />
-</div>
+<li><p class="first">Once the sql request checked, the module analyses the column of the
+view, and propose field mapping. For each field, you can decide to
+create an index and set if it will be displayed on the pivot graph as
+a column, a row or a measure.</p>
+<p><img alt="image3" src="https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/03_field_mapping.png" /></p>
 </li>
-<li><p class="first">Click on the button ‘Create SQL elements’. (this step could
-take a while, if view is materialized)</p>
+<li><p class="first">Click on the button ‘Create SQL elements’. (this step could take a
+while, if view is materialized)</p>
 </li>
 <li><p class="first">If it’s a MATERIALIZED view:</p>
 <blockquote>
 <ul class="simple">
-<li>a cron task is created to refresh
-the view. You can so define the frequency of the refresh.</li>
+<li>a cron task is created to refresh the view. You can so define
+the frequency of the refresh.</li>
 <li>the size of view (and the indexes is displayed)</li>
 </ul>
 </blockquote>
-<div class="figure">
-<img alt="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/04_materialized_view_setting.png" src="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/04_materialized_view_setting.png" style="width: 800px;" />
-</div>
+<p><img alt="image4" src="https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/04_materialized_view_setting.png" /></p>
 </li>
-<li><p class="first">Finally, click on ‘Create UI’, to create new menu, action, graph view and
-search view.</p>
+<li><p class="first">Finally, click on ‘Create UI’, to create new menu, action, graph view
+and search view.</p>
 </li>
 </ul>
 </div>
@@ -474,11 +465,9 @@ search view.</p>
 <li>Go to ‘Dashboards &gt; SQL Reports’</li>
 <li>Select the desired report</li>
 </ol>
+<!--  -->
 <blockquote>
-<div class="figure">
-<img alt="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/05_reporting_pivot.png" src="https://raw.githubusercontent.com/OCA/reporting-engine/16.0/bi_sql_editor/static/description/05_reporting_pivot.png" style="width: 800px;" />
-</div>
-</blockquote>
+<img alt="usage-image1" src="https://raw.githubusercontent.com/OCA/reporting-engine/17.0/bi_sql_editor/static/description/05_reporting_pivot.png" /></blockquote>
 <ul class="simple">
 <li>You can switch to ‘Graph’ or ‘tree’ views as any report.</li>
 </ul>
@@ -488,43 +477,42 @@ search view.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_sql_editor%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_sql_editor%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
 <h2><a class="toc-backref" href="#toc-entry-4">Credits</a></h2>
+</div>
+</div>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-5">Authors</a></h3>
+<h1>Authors</h1>
 <ul class="simple">
 <li>GRAP</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-6">Contributors</a></h3>
+<h1>Contributors</h1>
 <ul class="simple">
 <li>Sylvain LE GAL (<a class="reference external" href="https://twitter.com/legalsylvain">https://twitter.com/legalsylvain</a>)</li>
 <li>Richard deMeester, WilldooIT (<a class="reference external" href="http://www.willdooit.com/">http://www.willdooit.com/</a>)</li>
 <li>David James, WilldooIT (<a class="reference external" href="http://www.willdooit.com/">http://www.willdooit.com/</a>)</li>
-<li><dl class="first docutils">
-<dt>This module is highly inspired by the work of</dt>
-<dd><ul class="first last">
-<li>Onestein: (<a class="reference external" href="http://www.onestein.nl/">http://www.onestein.nl/</a>)
-Module: OCA/server-tools/bi_view_editor.
-Link: <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor">https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor</a></li>
-<li>Anybox: (<a class="reference external" href="https://anybox.fr/">https://anybox.fr/</a>)
-Module : OCA/server-tools/materialized_sql_view
-link: <a class="reference external" href="https://github.com/OCA/server-tools/pull/110">https://github.com/OCA/server-tools/pull/110</a></li>
-<li>GRAP, Groupement Régional Alimentaire de Proximité: (<a class="reference external" href="http://www.grap.coop/">http://www.grap.coop/</a>)
-Module: grap/odoo-addons-misc/pos_sale_reporting
-link: <a class="reference external" href="https://github.com/grap/odoo-addons-misc/tree/7.0/pos_sale_reporting">https://github.com/grap/odoo-addons-misc/tree/7.0/pos_sale_reporting</a></li>
+<li>This module is highly inspired by the work of<ul>
+<li>Onestein: (<a class="reference external" href="http://www.onestein.nl/">http://www.onestein.nl/</a>) Module:
+OCA/server-tools/bi_view_editor. Link:
+<a class="reference external" href="https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor">https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor</a></li>
+<li>Anybox: (<a class="reference external" href="https://anybox.fr/">https://anybox.fr/</a>) Module :
+OCA/server-tools/materialized_sql_view link:
+<a class="reference external" href="https://github.com/OCA/server-tools/pull/110">https://github.com/OCA/server-tools/pull/110</a></li>
+<li>GRAP, Groupement Régional Alimentaire de Proximité:
+(<a class="reference external" href="http://www.grap.coop/">http://www.grap.coop/</a>) Module:
+grap/odoo-addons-misc/pos_sale_reporting link:
+<a class="reference external" href="https://github.com/grap/odoo-addons-misc/tree/7.0/pos_sale_reporting">https://github.com/grap/odoo-addons-misc/tree/7.0/pos_sale_reporting</a></li>
 </ul>
-</dd>
-</dl>
 </li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-7">Maintainers</a></h3>
+<h1>Maintainers</h1>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
@@ -532,10 +520,8 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/legalsylvain"><img alt="legalsylvain" src="https://github.com/legalsylvain.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/bi_sql_editor">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/17.0/bi_sql_editor">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
-</div>
-</div>
 </div>
 </div>
 </body>
