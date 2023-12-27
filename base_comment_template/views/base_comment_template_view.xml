@@ -76,7 +76,7 @@
                     </group>
                     <notebook>
                         <page name="text" string="Comment">
-                            <field name="text" />
+                            <field name="text" options="{'codeview': true}" />
                         </page>
                     </notebook>
                 </sheet>
