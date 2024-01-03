@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-11 09:37+0000\n"
+"PO-Revision-Date: 2024-01-03 14:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -229,7 +229,7 @@ msgstr "Fatto"
 #: code:addons/report_async/static/src/xml/report_async.xml:0
 #, python-format
 msgid "Email Address"
-msgstr "Indirizzo email"
+msgstr "Indirizzo e-mail"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__email_notify
