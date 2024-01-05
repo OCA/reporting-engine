@@ -8,21 +8,22 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-24 04:38+0000\n"
-"PO-Revision-Date: 2016-03-21 15:33+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: French (Canada) (http://www.transifex.com/oca/OCA-reporting-"
-"engine-8-0/language/fr_CA/)\n"
+"PO-Revision-Date: 2024-01-05 23:55+0000\n"
+"Last-Translator: Julie LeBrun <julie.lebrun@numigi.com>\n"
+"Language-Team: French (Canada) (http://www.transifex.com/oca/"
+"OCA-reporting-engine-8-0/language/fr_CA/)\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "%s (copy)"
-msgstr ""
+msgstr "%s (copie)"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -35,68 +36,68 @@ msgstr ""
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Abstract models not supported."
-msgstr ""
+msgstr "Modèles abstraits non pris en charge."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__action_id
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "At least one of the following groups must be added:"
-msgstr ""
+msgstr "Vous devez ajouter au moins un des groupes suivants:"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view_line__list_attr__avg
 msgid "Average"
-msgstr ""
+msgstr "Moyenne"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "BI View"
-msgstr ""
+msgstr "Vue BI"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
 msgid "BI View Editor"
-msgstr ""
+msgstr "Éditeur de vue BI"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view_line
 msgid "BI View Editor Lines"
-msgstr ""
+msgstr "Lignes de l'éditeur de vue BI"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__bve_view_id
 msgid "Bve View"
-msgstr ""
+msgstr "Vue Bve"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js:0
 #, python-format
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 #. module: bi_view_editor
 #: model_terms:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
 msgid "Click to create a Custom Query Object."
-msgstr ""
+msgstr "Cliquez pour créer un objet de requête personnalisé."
 
 #. module: bi_view_editor
 #. openerp-web
@@ -104,7 +105,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__column
 #, python-format
 msgid "Column"
-msgstr ""
+msgstr "Colonne"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view__over_condition
@@ -113,23 +114,25 @@ msgid ""
 "For instance, 'ORDER BY t1.id' would create IDs ordered in the same way as "
 "t1's IDs; otherwise IDs are assigned with no specific order."
 msgstr ""
+"Condition à insérer dans la partie OVER de la fonction ID's row_number.\n"
+"Par exemple, « ORDER BY t1.id » créerait des ID ordonnés de la même manière "
+"que les ID de t1 ; sinon, les identifiants sont attribués sans ordre "
+"spécifique."
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
-#, fuzzy
 msgid "Create Menu Wizard"
-msgstr "Créé le"
+msgstr "Assistant de création de menu"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
-#, fuzzy
 msgid "Create a Menu"
-msgstr "Créé le"
+msgstr "Créer un menu"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__created
 msgid "Created"
-msgstr ""
+msgstr "Créé"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__create_uid
@@ -148,33 +151,33 @@ msgstr "Créé le"
 #: model:ir.model.constraint,message:bi_view_editor.constraint_bve_view_name_uniq
 #, python-format
 msgid "Custom BI View names must be unique!"
-msgstr ""
+msgstr "Les noms des vues BI personnalisées doivent être uniques!"
 
 #. module: bi_view_editor
 #: model:ir.actions.act_window,name:bi_view_editor.action_bi_view_editor_view_form
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
 msgid "Custom BI Views"
-msgstr ""
+msgstr "Vues personnalisées BI"
 
 #. module: bi_view_editor
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
 msgid "Custom Reports"
-msgstr ""
+msgstr "Rapports personnalisés"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__data
 msgid "Data"
-msgstr ""
+msgstr "Données"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__description
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Details"
-msgstr ""
+msgstr "Détails"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__display_name
@@ -182,22 +185,22 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_ir_model__display_name
 #: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create__display_name
 msgid "Display Name"
-msgstr "Afficher le nom"
+msgstr "Nom affiché"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__draft
 msgid "Draft"
-msgstr ""
+msgstr "Brouillon"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "ER Diagram"
-msgstr ""
+msgstr "Diagramme ER"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__er_diagram_image
 msgid "Er Diagram Image"
-msgstr ""
+msgstr "Image du diagramme ER"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -206,12 +209,14 @@ msgid ""
 "Error creating the view '{query}':\n"
 "{error}"
 msgstr ""
+"Erreur lors de la création de la vue '{query}':\n"
+"{error}"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_id
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Field"
-msgstr ""
+msgstr "Champ"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view_line.py:0
@@ -220,23 +225,24 @@ msgid ""
 "Field %s/%s is duplicated.\n"
 "Please remove the duplications."
 msgstr ""
+"Le champ %s/%s est dupliqué.\n"
+"S.v.p. retirer les doublons."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
-#, fuzzy
 msgid "Field Name"
-msgstr "Afficher le nom"
+msgstr "Nom du champ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__field_ids
 msgid "Fields"
-msgstr ""
+msgstr "Champs"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Following fields are missing: {}."
-msgstr ""
+msgstr "Les champs suivants sont manquants: {}."
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -245,16 +251,18 @@ msgid ""
 "Following models are missing: %s.\n"
 "Probably some modules were uninstalled."
 msgstr ""
+"Les modèles suivants sont manquants: %s.\n"
+"Certains modules ont probablement été désinstallés."
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Generate BI View"
-msgstr ""
+msgstr "Générer la vue BI"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__group_ids
 msgid "Groups"
-msgstr ""
+msgstr "Groupes"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__id
@@ -262,18 +270,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_ir_model__id
 #: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create__id
 msgid "ID"
-msgstr "Identifiant"
+msgstr "ID"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__in_list
 msgid "In List"
-msgstr ""
+msgstr "En vue liste"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "Inconsistent lines."
-msgstr ""
+msgstr "Lignes incohérentes."
 
 #. module: bi_view_editor
 #. openerp-web
@@ -285,19 +293,19 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__join_model_id
 msgid "Join Model"
-msgstr ""
+msgstr "Unir Modèle"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__join_node
 msgid "Join Node"
-msgstr ""
+msgstr "Unir Nœud"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/js/bi_view_editor.JoinNodeDialog.js:0
 #, python-format
 msgid "Join..."
-msgstr ""
+msgstr "Unir..."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view____last_update
@@ -305,7 +313,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_ir_model____last_update
 #: model:ir.model.fields,field_description:bi_view_editor.field_wizard_ir_model_menu_create____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__write_uid
@@ -327,19 +335,19 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__line_ids
 msgid "Lines"
-msgstr ""
+msgstr "Lignes"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__list_attr
 msgid "List Attribute"
-msgstr ""
+msgstr "Attribut de liste"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -347,7 +355,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__measure
 #, python-format
 msgid "Measure"
-msgstr ""
+msgstr "Mesure"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -355,18 +363,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__model_id
 #, python-format
 msgid "Model"
-msgstr ""
+msgstr "Modèle"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__model_name
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__model_name
 msgid "Model Name"
-msgstr ""
+msgstr "Nom du modèle"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modèles"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -381,61 +389,61 @@ msgstr "Nom"
 #: code:addons/bi_view_editor/models/models.py:0
 #, python-format
 msgid "No data to be displayed."
-msgstr ""
+msgstr "Aucune donnée à afficher."
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "No data to process."
-msgstr ""
+msgstr "Aucune donnée à traiter."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__note
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Open BI View"
-msgstr ""
+msgstr "Ouvrir la vue BI"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__over_condition
 msgid "Over Condition"
-msgstr ""
+msgstr "Condition Over"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__query
 msgid "Query"
-msgstr ""
+msgstr "Requête"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query Builder"
-msgstr ""
+msgstr "Générateur de requête"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__relation
 msgid "Relation"
-msgstr ""
+msgstr "Relation"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__relation_ids
 msgid "Relations"
-msgstr ""
+msgstr "Relations"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Reset to Draft"
-msgstr ""
+msgstr "Remettre en brouillon"
 
 #. module: bi_view_editor
 #. openerp-web
@@ -443,37 +451,37 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__row
 #, python-format
 msgid "Row"
-msgstr ""
+msgstr "Ligne"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Security"
-msgstr ""
+msgstr "Sécurité"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Séquence"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__state
 msgid "State"
-msgstr ""
+msgstr "État"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view_line__list_attr__sum
 msgid "Sum"
-msgstr ""
+msgstr "Somme"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__table_alias
 msgid "Table Alias"
-msgstr ""
+msgstr "Alias de la table"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
@@ -481,42 +489,44 @@ msgstr ""
 msgid ""
 "The model \"%s\" cannot be accessed by users with the selected groups only."
 msgstr ""
+"Le modèle \"%s\" n'est pas accessible aux utilisateurs des groupes "
+"sélectionnés."
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid "This field cannot be a measure."
-msgstr ""
+msgstr "Ce champ ne peut pas être une mesure."
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view_line.py:0
 #, python-format
 msgid "This field cannot be a row or a column."
-msgstr ""
+msgstr "Ce champ ne peut pas être une ligne ou une colonne."
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Translations"
-msgstr ""
+msgstr "Traductions"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__ttype
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "Use the existing node"
-msgstr ""
+msgstr "Utiliser le nœud existant"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "Use the field"
-msgstr ""
+msgstr "Utiliser le champ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view__data
@@ -524,6 +534,9 @@ msgid ""
 "Use the special query builder to define the query to generate your report "
 "dataset. NOTE: To be edited, the query should be in 'Draft' status."
 msgstr ""
+"Utilisez le générateur spécial de requêtes pour définir la requête "
+"permettant de générer votre ensemble de données de rapport. REMARQUE : Pour "
+"être modifiée, la requête doit être au statut « Brouillon »."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view__group_ids
@@ -531,31 +544,35 @@ msgid ""
 "User groups allowed to see the generated report; if NO groups are specified "
 "the report will be public for everyone."
 msgstr ""
+"Les groupes d'utilisateurs qui sont autorisés à voir le rapport généré; si "
+"AUCUN groupe n'est spécifié le rapport sera public et disponible à tous."
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__user_ids
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__view_id
 msgid "View"
-msgstr ""
+msgstr "Vue"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__view_field_type
 msgid "View Field Type"
-msgstr ""
+msgstr "Afficher le type de champ"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "You cannot delete a created view! Reset the view to draft first."
 msgstr ""
+"Vous ne pouvez pas supprimer une vue créée ! Réinitialisez d'abord la vue en "
+"mode brouillon."
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "new"
-msgstr ""
+msgstr "nouveau"
