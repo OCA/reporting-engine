@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2024-01-06 13:36+0000\n"
+"PO-Revision-Date: 2024-01-09 06:35+0000\n"
 "Last-Translator: \"Ivy Liu (QRTL)\" <liuhehe@quartile.co>\n"
 "Language-Team: Japanese (https://www.transifex.com/oca/teams/23907/ja/)\n"
 "Language: ja\n"
@@ -184,7 +184,8 @@ msgstr "データベースサイズ"
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__action_context
 msgid ""
 "Define here a context that will be used by default, when creating the action."
-msgstr ""
+msgstr "アクションを作成する際に、デフォルトで使用されるコンテキストをここで定義しま"
+"す。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
@@ -195,16 +196,21 @@ msgid ""
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
 msgstr ""
+"ここでデータへのアクセス制限を定義します。.\n"
+" フィールド名の先頭に'x_'をつけてください。 グローバルな「ir."
+"rule」が作成されます。典型的なマルチカンパニールールは以下の通り \n"
+" ['|', ('x_company_id','child_of', [user.company_id."
+"id]),('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Delete SQL Elements"
-msgstr ""
+msgstr "SQLエレメント削除"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Delete UI"
-msgstr ""
+msgstr "UI削除"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -215,42 +221,42 @@ msgstr "表示名"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__domain_force
 msgid "Extra Rule Definition"
-msgstr ""
+msgstr "追加ルール定義"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Extras Information"
-msgstr ""
+msgstr "追加情報"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_context
 msgid "Field Context"
-msgstr ""
+msgstr "フィールドコンテキスト"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "Field Description"
-msgstr ""
+msgstr "フィールド詳細"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__ttype
 msgid "Field Type"
-msgstr ""
+msgstr "フィールドタイプ"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_ir_model_fields
 msgid "Fields"
-msgstr ""
+msgstr "フィールド"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "フォロワー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "フォロワー(パートナー)"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
@@ -258,6 +264,8 @@ msgid ""
 "For 'Many2one' Odoo field.\n"
 " Comodel of the field."
 msgstr ""
+"'Many2one' Odooフィールドについて、\n"
+"フィールドのモデル。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -266,36 +274,40 @@ msgid ""
 " List of options, specified as a Python expression defining a list of (key, "
 "label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
+"'Selection' Odoo フィールドについて、\n"
+"(key, label) ペアのリストを定義する Python "
+"式として指定されたオプションのリスト。例：[('blue','Blue'), "
+"('yellow','Yellow')]"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__model_name
 msgid "Full Qualified Name of the transient model that will be created."
-msgstr ""
+msgstr "作成されるトランジェントモデルの完全修飾名。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_name
 msgid "Full name of the SQL view"
-msgstr ""
+msgstr "SQLビューのフルネーム"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__graph_type
 msgid "Graph Type"
-msgstr ""
+msgstr "グラフタイプ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__group_operator
 msgid "Group Operator"
-msgstr ""
+msgstr "グループオペレーター"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
 msgid "Has Group Changed"
-msgstr ""
+msgstr "グループに変化あり"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "メッセージあり"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
@@ -306,12 +318,12 @@ msgstr "ID"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "チェックが入っている場合、新着メッセージに注意が必要です。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "チェックが入っている場合、一部のメッセージに送信エラーがあります。"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -320,44 +332,45 @@ msgstr ""
 msgid ""
 "Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
 "Valid'."
-msgstr ""
+msgstr "ビューの状態が「Model Valid」または「UI "
+"Valid」の場合フィールドを削除できません。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
 msgid "Index Name"
-msgstr ""
+msgstr "インデックス名"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__invisible
 msgid "Invisible"
-msgstr ""
+msgstr "インビジブル"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "フォロワーです"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid "Is Group by"
-msgstr ""
+msgstr "グループ化"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_index
 msgid "Is Index"
-msgstr ""
+msgstr "インデックスです"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__is_materialized
 msgid "Is Materialized View"
-msgstr ""
+msgstr "マテリアライズドビューです"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid ""
 "It will delete the materialized view, and all the previous mapping realized "
 "with the columns"
-msgstr ""
+msgstr "マテリアライズドビューを削除し、以前のカラムとの関連付けを全て削除します"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
@@ -380,48 +393,48 @@ msgstr "最終更新日"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_main_attachment_id
 msgid "Main Attachment"
-msgstr ""
+msgstr "メインアタッチメント"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
 msgid "Materialized Text"
-msgstr ""
+msgstr "マテリアライズド・テキスト"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__max
 msgid "Maximum"
-msgstr ""
+msgstr "最大値"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
 msgid "Measure"
-msgstr ""
+msgstr "メジャー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "メッセージ送信エラー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "メッセージ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__min
 msgid "Minimum"
-msgstr ""
+msgstr "最小値"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Model"
-msgstr ""
+msgstr "モデル"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__model_name
 msgid "Model Name"
-msgstr ""
+msgstr "モデル名"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__name
@@ -437,137 +450,139 @@ msgid ""
 "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
 msgstr ""
+"カラムが見つかりませんでした。\n"
+"カラム名は 'x_' で接頭辞を付ける必要があります。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__note
 msgid "Note"
-msgstr ""
+msgstr "ノート"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "アクション数"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "エラー数"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "対応必要なメッセージ数"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "送信のエラーメッセージ数"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_id
 msgid "Odoo Action"
-msgstr ""
+msgstr "Odooアクション"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__cron_id
 msgid "Odoo Cron"
-msgstr ""
+msgstr "Odooスケジュールタスク"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
-msgstr ""
+msgstr "Odooグラフビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
 msgid "Odoo Menu"
-msgstr ""
+msgstr "Odooメニュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__model_id
 msgid "Odoo Model"
-msgstr ""
+msgstr "Odooモデル"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__pivot_view_id
 msgid "Odoo Pivot View"
-msgstr ""
+msgstr "Odooピボットビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__rule_id
 msgid "Odoo Rule"
-msgstr ""
+msgstr "Odooルール"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__search_view_id
 msgid "Odoo Search View"
-msgstr ""
+msgstr "Odooサーチビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
 msgid "Odoo Tree View"
-msgstr ""
+msgstr "Odooツリービュー"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Only graph, pivot or tree views are supported"
-msgstr ""
+msgstr "グラフ、ピボットまたはツリービューのみサポートされています"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Open View"
-msgstr ""
+msgstr "オープンビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__optional_hide
 msgid "Optional (hidden)"
-msgstr ""
+msgstr "オプション（非表示）"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__optional_show
 msgid "Optional (shown)"
-msgstr ""
+msgstr "オプション（表示）"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Please set related models on the following fields %s"
-msgstr ""
+msgstr "以下のフィールドに関連モデルを設定してください %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
 msgid "Query"
-msgstr ""
+msgstr "クエリ"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Refresh"
-msgstr ""
+msgstr "リフレッシュ"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Refresh Materialized View"
-msgstr ""
+msgstr "マテリアライズドビューをリフレッシュ"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Refresh Materialized View %s"
-msgstr ""
+msgstr "マテリアライズドビューをリフレッシュ %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__row
 msgid "Row"
-msgstr ""
+msgstr "列"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Rule Definition"
-msgstr ""
+msgstr "ルール定義"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -577,17 +592,20 @@ msgid ""
 "SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
 " %(error)s"
 msgstr ""
+"%(materialized_text)s ビュー %(view_name)s を作成中に SQL "
+"エラーが発生しました : \n"
+"%(error)s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__bi_sql_view_field_ids
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "SQL Fields"
-msgstr ""
+msgstr "SQLフィールド"
 
 #. module: bi_sql_editor
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_editor
 msgid "SQL Reports"
-msgstr ""
+msgstr "SQLレポート"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__query
@@ -602,7 +620,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sql_type
 msgid "SQL Type"
-msgstr ""
+msgstr "SQLタイプ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__sql_type
