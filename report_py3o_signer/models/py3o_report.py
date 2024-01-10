@@ -13,18 +13,21 @@ class Py3oReport(models.TransientModel):
     _inherit = "py3o.report"
 
     def _postprocess_report(self, model_instance, result_path):
-        certificate = self.ir_actions_report_id._certificate_get(model_instance.ids)
+        report = self.ir_actions_report_id
+        certificate = self.env["ir.actions.report"]._certificate_get(
+            report, model_instance.ids
+        )
         if not certificate:
             return super()._postprocess_report(model_instance, result_path)
         _logger.debug(
             "Signing PDF document '%s' for ID %s with certificate '%s'",
-            self.ir_actions_report_id.report_name,
+            report.report_name,
             model_instance.id,
             certificate.name,
         )
-        signed = self.ir_actions_report_id.pdf_sign(result_path, certificate)
+        signed = report.pdf_sign(result_path, certificate)
         try:
             os.unlink(result_path)
-        except (OSError, IOError):
+        except OSError:
             _logger.error("Error when trying to remove file %s", result_path)
         return super()._postprocess_report(model_instance, signed)
