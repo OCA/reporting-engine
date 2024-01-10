@@ -27,14 +27,12 @@ class ReportCertificate(models.Model):
         help="Path to certificate password file",
     )
     model_id = fields.Many2one(
-        string="Model",
         required=True,
         comodel_name="ir.model",
         help="Model where apply this certificate",
         ondelete="cascade",
     )
     domain = fields.Char(
-        string="Domain",
         help="Domain for filtering if sign or not the document",
     )
     action_report_ids = fields.Many2many(
@@ -67,7 +65,6 @@ class ReportCertificate(models.Model):
     signing_method = fields.Selection(
         selection=[("java", "Java"), ("endesive", "Endesive")],
         default="java",
-        string="Signing Method",
         required=True,
     )
     endesive_certificate_mail = fields.Char(
