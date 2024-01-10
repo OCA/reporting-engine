@@ -34,31 +34,31 @@ def _normalize_filepath(path):
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
-    def _certificate_get(self, res_ids):
+    def _certificate_get(self, report, res_ids):
         """Obtain the proper certificate for the report and the conditions."""
-        if self.report_type != "qweb-pdf":
+        if report.report_type != "qweb-pdf":
             return False
         company_id = self.env.company.id
         if res_ids:
             if isinstance(res_ids, int):
                 res_ids = [res_ids]
-            obj = self.env[self.model].browse(res_ids[0])
+            obj = self.env[report.model].browse(res_ids[0])
             if "company_id" in obj:
                 company_id = obj.company_id.id or company_id
         certificates = self.env["report.certificate"].search(
             [
                 ("company_id", "=", company_id),
-                ("model_id", "=", self.model),
+                ("model_id", "=", report.model_id.id),
                 "|",
                 ("action_report_ids", "=", False),
-                ("action_report_ids", "in", self.id),
+                ("action_report_ids", "in", report.id),
             ]
         )
         if not certificates:
             return False
         for cert in certificates:
             # Check allow only one document
-            if cert.allow_only_one and len(self) > 1:
+            if cert.allow_only_one and len(res_ids) > 1:
                 _logger.debug(
                     "Certificate '%s' allows only one document, "
                     "but printing %d documents",
@@ -117,13 +117,13 @@ class IrActionsReport(models.Model):
                     "res_id": res_ids[0],
                 }
             )
-        except AccessError:
+        except AccessError as exc:
             raise UserError(
                 _(
                     "Saving signed report (PDF): "
                     "You do not have enough access rights to save attachments"
                 )
-            )
+            ) from exc
         return attachment
 
     def _signer_bin(self, opts):
@@ -195,28 +195,31 @@ class IrActionsReport(models.Model):
             if process.returncode:
                 raise UserError(
                     _(
-                        "Signing report (PDF): jPdfSign failed (error code: %s). "
-                        "Message: %s. Output: %s"
+                        "Signing report (PDF): jPdfSign failed (error code: %(error_code)s). "
+                        "Message: %(message)s. Output: %(output)s",
+                        error_code=process.returncode,
+                        message=err,
+                        output=out,
                     )
-                    % (process.returncode, err, out)
                 )
         elif method_used == "endesive":
             params = self._get_endesive_params(certificate)
             self._signer_endesive(params, p12, pdf, pdfsigned, passwd)
         return pdfsigned
 
-    def _render_qweb_pdf(self, res_ids=None, data=None):
-        certificate = self._certificate_get(res_ids)
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        report = self._get_report(report_ref)
+        certificate = self._certificate_get(report, res_ids)
         if certificate and certificate.attachment:
             signed_content = self._attach_signed_read(res_ids, certificate)
             if signed_content:
                 _logger.debug(
                     "The signed PDF document '%s/%s' was loaded from the " "database",
-                    self.report_name,
+                    report.report_name,
                     res_ids,
                 )
                 return signed_content, "pdf"
-        content, ext = super(IrActionsReport, self)._render_qweb_pdf(res_ids, data)
+        content, ext = super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
         if certificate:
             # Creating temporary origin PDF
             pdf_fd, pdf = tempfile.mkstemp(suffix=".pdf", prefix="report.tmp.")
