@@ -239,6 +239,10 @@ class BiSQLViewField(models.Model):
             or False,
         }
 
+    def _prepare_form_field(self):
+        self.ensure_one()
+        return f"""<field name="{self.name}" context="{self.field_context}"/>\n"""
+
     def _prepare_tree_field(self):
         self.ensure_one()
         if self.tree_visibility == "unavailable":
