@@ -78,7 +78,8 @@ class BiSQLView(models.Model):
         readonly=False,
         states={"ui_valid": [("readonly", True)]},
         default="pivot,graph,tree",
-        help="Comma-separated text. Possible values:" ' "graph", "pivot" or "tree"',
+        help="Comma-separated text. Possible values:"
+        ' "graph", "pivot", "tree" or "form"',
     )
 
     query = fields.Text(
@@ -125,6 +126,10 @@ class BiSQLView(models.Model):
 
     model_id = fields.Many2one(
         string="Odoo Model", comodel_name="ir.model", readonly=True
+    )
+
+    form_view_id = fields.Many2one(
+        string="Odoo Form View", comodel_name="ir.ui.view", readonly=True
     )
 
     tree_view_id = fields.Many2one(
@@ -183,7 +188,7 @@ class BiSQLView(models.Model):
         for rec in self:
             if rec.view_order:
                 for vtype in rec.view_order.split(","):
-                    if vtype not in ("graph", "pivot", "tree"):
+                    if vtype not in ("graph", "pivot", "tree", "form"):
                         raise UserError(
                             _("Only graph, pivot or tree views are supported")
                         )
@@ -300,6 +305,7 @@ class BiSQLView(models.Model):
 
     def button_reset_to_model_valid(self):
         views = self.filtered(lambda x: x.state == "ui_valid")
+        views.mapped("form_view_id").unlink()
         views.mapped("tree_view_id").unlink()
         views.mapped("graph_view_id").unlink()
         views.mapped("pivot_view_id").unlink()
@@ -327,6 +333,7 @@ class BiSQLView(models.Model):
         return super().button_set_draft()
 
     def button_create_ui(self):
+        self.form_view_id = self.env["ir.ui.view"].create(self._prepare_form_view()).id
         self.tree_view_id = self.env["ir.ui.view"].create(self._prepare_tree_view()).id
         self.graph_view_id = (
             self.env["ir.ui.view"].create(self._prepare_graph_view()).id
@@ -418,6 +425,19 @@ class BiSQLView(models.Model):
             "global": True,
         }
 
+    def _prepare_form_view(self):
+        self.ensure_one()
+        return {
+            "name": self.name,
+            "type": "form",
+            "model": self.model_id.model,
+            "arch": """<?xml version="1.0"?>"""
+            """<form><sheet><group string="Data" col="4">{}"""
+            """</group></sheet></form>""".format(
+                "".join([x._prepare_form_field() for x in self.bi_sql_view_field_ids])
+            ),
+        }
+
     def _prepare_tree_view(self):
         self.ensure_one()
         return {
@@ -483,6 +503,8 @@ class BiSQLView(models.Model):
         self.ensure_one()
         view_mode = self.view_order
         first_view = view_mode.split(",")[0]
+        if first_view == "form":
+            view_id = self.form_view_id.id
         if first_view == "tree":
             view_id = self.tree_view_id.id
         elif first_view == "pivot":
