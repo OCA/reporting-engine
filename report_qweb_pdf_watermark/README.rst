@@ -111,6 +111,11 @@ Changelog
 
 -  [MIG] Migration to V16.
 
+17.0.1.0.0 (2024-01-12)
+-----------------------
+
+-  [MIG] Migration to V17.
+
 Bug Tracker
 ===========
 
@@ -138,6 +143,7 @@ Contributors
 -  Robin Goots <robin.goots@dynapps.be>
 -  Foram Shah <foram.shah@initos.com>
 -  Emiel van Bokhoven <emiel@360erp.nl>
+-  Sander Lienaerts <sander.lienaerts@codeforward.nl>
 -  Anjeel Haria
 
 Maintainers

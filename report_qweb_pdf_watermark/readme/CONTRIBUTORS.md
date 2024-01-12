@@ -4,4 +4,5 @@
 - Robin Goots \<<robin.goots@dynapps.be>\>
 - Foram Shah \<<foram.shah@initos.com>\>
 - Emiel van Bokhoven \<<emiel@360erp.nl>\>
+- Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
 - Anjeel Haria
