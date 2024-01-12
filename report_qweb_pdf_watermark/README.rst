@@ -17,18 +17,22 @@ Pdf watermark
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_pdf_watermark
+    :target: https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_pdf_watermark
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_qweb_pdf_watermark
+    :target: https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_qweb_pdf_watermark
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module was written to add watermarks (backgrounds) to PDF reports. Because of the way wkhtmltopdf handles headers and footers in the current versions, it is quite impossible to have a background for the complete page using HTML and CSS. That is why this module inserts the image at the PDF level.
+This module was written to add watermarks (backgrounds) to PDF reports.
+Because of the way wkhtmltopdf handles headers and footers in the
+current versions, it is quite impossible to have a background for the
+complete page using HTML and CSS. That is why this module inserts the
+image at the PDF level.
 
 **Table of contents**
 
@@ -38,71 +42,74 @@ This module was written to add watermarks (backgrounds) to PDF reports. Because 
 Installation
 ============
 
+As PyPDF is not supported in python3, you need to install PyPDF2:
 
-As PyPDF is not supported in python3, you need to install PyPDF2::
+::
 
-$ pip install pypdf2
+   $ pip install pypdf2
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. go to your report
-#. select a PDF or image to use as watermark. Note that resolutions and size must match, otherwise you'll have funny results
-#. You can also fill in an expression that returns the data (base64 encoded) to be used as watermark
+1. go to your report
+2. select a PDF or image to use as watermark. Note that resolutions and
+   size must match, otherwise you'll have funny results
+3. You can also fill in an expression that returns the data (base64
+   encoded) to be used as watermark
 
 To use the Company watermark, you need to:
 
-#. go to settings --> company --> update info
-#. upload an pdf watermark
-#. go to settings --> technical --> reporting --> reports
-#. Select the report where you want to use it.
-#. On the 'Advanced Properties' tab of the notebook check 'use company watermark'
+1. go to settings --> company --> update info
+2. upload an pdf watermark
+3. go to settings --> technical --> reporting --> reports
+4. Select the report where you want to use it.
+5. On the 'Advanced Properties' tab of the notebook check 'use company
+   watermark'
 
-### Demo
-And demo report is available (if you have demo data installed) on the users form view.
+### Demo And demo report is available (if you have demo data installed)
+on the users form view.
 
-#. go to Configuration --> users
-#. Select an users
-#. Click the print button --> Watermark Demo report.
+1. go to Configuration --> users
+2. Select an users
+3. Click the print button --> Watermark Demo report.
 
 Known issues / Roadmap
 ======================
 
-This module depends on support for transparent backgrounds in Wkhtmltopdf, which has been flaky in the past. This module has been reported to work with Wkhtmltopdf 0.12.4.
+This module depends on support for transparent backgrounds in
+Wkhtmltopdf, which has been flaky in the past. This module has been
+reported to work with Wkhtmltopdf 0.12.4.
 
 Changelog
 =========
 
 12.0.1.0.0 (2019-11-18)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [MIG] Migration to V12.
-
+-  [MIG] Migration to V12.
 
 13.0.1.0.0 (2021-01-27)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [MIG] Migration to V13.
-
+-  [MIG] Migration to V13.
 
 14.0.1.0.0 (2021-01-29)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [MIG] Migration to V14.
-
+-  [MIG] Migration to V14.
 
 15.0.1.0.0 (2022-01-11)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [MIG] Migration to V15.
-* Define pdf watermark in company settings
+-  [MIG] Migration to V15.
+-  Define pdf watermark in company settings
 
 16.0.1.0.0 (2023-03-13)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [MIG] Migration to V16.
+-  [MIG] Migration to V16.
 
 Bug Tracker
 ===========
@@ -110,7 +117,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_watermark%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_watermark%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -118,23 +125,23 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Therp BV
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Holger Brunn <hbrunn@therp.nl>
-* Stefan Rijnhart <stefan@opener.am>
-* Rod Schouteden <rod.schouteden@dynapps.be>
-* Robin Goots <robin.goots@dynapps.be>
-* Foram Shah <foram.shah@initos.com>
-* Emiel van Bokhoven <emiel@360erp.nl>
-* Anjeel Haria
+-  Holger Brunn <hbrunn@therp.nl>
+-  Stefan Rijnhart <stefan@opener.am>
+-  Rod Schouteden <rod.schouteden@dynapps.be>
+-  Robin Goots <robin.goots@dynapps.be>
+-  Foram Shah <foram.shah@initos.com>
+-  Emiel van Bokhoven <emiel@360erp.nl>
+-  Anjeel Haria
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -146,6 +153,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_pdf_watermark>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_pdf_watermark>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
