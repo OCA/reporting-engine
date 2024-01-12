@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2016-03-21 15:33+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Japanese (http://www.transifex.com/oca/OCA-reporting-"
-"engine-8-0/language/ja/)\n"
+"PO-Revision-Date: 2024-01-12 07:36+0000\n"
+"Last-Translator: \"Ivy Liu (QRTL)\" <liuhehe@quartile.co>\n"
+"Language-Team: Japanese (http://www.transifex.com/oca/"
+"OCA-reporting-engine-8-0/language/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: bi_view_editor
 #. odoo-python
@@ -53,7 +54,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__action_id
 msgid "Action"
-msgstr ""
+msgstr "アクション"
 
 #. module: bi_view_editor
 #. odoo-python
@@ -72,17 +73,17 @@ msgstr ""
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid "BI View"
-msgstr ""
+msgstr "BIビュー"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view
 msgid "BI View Editor"
-msgstr ""
+msgstr "BIビューエディタ"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_bve_view_line
 msgid "BI View Editor Lines"
-msgstr ""
+msgstr "BIビューエディタ明細"
 
 #. module: bi_view_editor
 #: model:res.groups,name:bi_view_editor.group_bve_manager
@@ -92,7 +93,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_base
 msgid "Base"
-msgstr ""
+msgstr "ベース"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__bve_view_id
@@ -111,7 +112,7 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/components/bi_view_editor/bi_view_editor.xml:0
 #, python-format
 msgid "Clear"
-msgstr ""
+msgstr "クリア"
 
 #. module: bi_view_editor
 #: model_terms:ir.actions.act_window,help:bi_view_editor.action_bi_view_editor_view_form
@@ -124,7 +125,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__column
 #, python-format
 msgid "Column"
-msgstr ""
+msgstr "カラム"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view__over_condition
@@ -136,20 +137,18 @@ msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_wizard_ir_model_menu_create
-#, fuzzy
 msgid "Create Menu Wizard"
-msgstr "作成日"
+msgstr "メニューウィザード作成"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
-#, fuzzy
 msgid "Create a Menu"
-msgstr "作成日"
+msgstr "メニュー作成"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__created
 msgid "Created"
-msgstr ""
+msgstr "作成"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__create_uid
@@ -176,22 +175,22 @@ msgstr ""
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_custom_reports
 #: model:ir.ui.menu,name:bi_view_editor.menu_bi_view_editor_view
 msgid "Custom BI Views"
-msgstr ""
+msgstr "カスタムBIビュー"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__data
 msgid "Data"
-msgstr ""
+msgstr "データ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__description
 msgid "Description"
-msgstr ""
+msgstr "説明"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Details"
-msgstr ""
+msgstr "詳細"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__display_name
@@ -202,7 +201,7 @@ msgstr "表示名"
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view__state__draft
 msgid "Draft"
-msgstr ""
+msgstr "ドラフト"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -227,7 +226,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_id
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Field"
-msgstr ""
+msgstr "フィールド"
 
 #. module: bi_view_editor
 #. odoo-python
@@ -240,15 +239,14 @@ msgstr ""
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_name
-#, fuzzy
 msgid "Field Name"
-msgstr "表示名"
+msgstr "フィールド名"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__field_ids
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Fields"
-msgstr ""
+msgstr "フィールド"
 
 #. module: bi_view_editor
 #. odoo-python
@@ -269,12 +267,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Generate BI View"
-msgstr ""
+msgstr "BIビュー生成"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__group_ids
 msgid "Groups"
-msgstr ""
+msgstr "グループ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__id
@@ -351,12 +349,12 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, python-format
 msgid "List"
-msgstr ""
+msgstr "リスト"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__list_attr
 msgid "List Attribute"
-msgstr ""
+msgstr "属性一覧"
 
 #. module: bi_view_editor
 #. odoo-javascript
@@ -364,7 +362,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__measure
 #, python-format
 msgid "Measure"
-msgstr ""
+msgstr "計測"
 
 #. module: bi_view_editor
 #. odoo-javascript
@@ -372,18 +370,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__model_id
 #, python-format
 msgid "Model"
-msgstr ""
+msgstr "モデル"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__model_name
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__model_name
 msgid "Model Name"
-msgstr ""
+msgstr "モデル名"
 
 #. module: bi_view_editor
 #: model:ir.model,name:bi_view_editor.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "モデル"
 
 #. module: bi_view_editor
 #. odoo-javascript
@@ -412,19 +410,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__note
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Notes"
-msgstr ""
+msgstr "ノート"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Open BI View"
-msgstr ""
+msgstr "BIビューを開く"
 
 #. module: bi_view_editor
 #. odoo-javascript
 #: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
 #, python-format
 msgid "Options"
-msgstr ""
+msgstr "オプション"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__over_condition
@@ -434,12 +432,12 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__query
 msgid "Query"
-msgstr ""
+msgstr "クエリ"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "Query Builder"
-msgstr ""
+msgstr "クエリ ビルダ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__relation
@@ -463,12 +461,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__row
 #, python-format
 msgid "Row"
-msgstr ""
+msgstr "行"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 #. module: bi_view_editor
 #: model_terms:ir.ui.view,arch_db:bi_view_editor.view_bi_view_editor_view_form
@@ -478,22 +476,22 @@ msgstr "セキュリティ"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "シーケンス"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__state
 msgid "State"
-msgstr ""
+msgstr "状態"
 
 #. module: bi_view_editor
 #: model:ir.model.fields.selection,name:bi_view_editor.selection__bve_view_line__list_attr__sum
 msgid "Sum"
-msgstr ""
+msgstr "合計"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__table_alias
 msgid "Table Alias"
-msgstr ""
+msgstr "テーブル別名"
 
 #. module: bi_view_editor
 #. odoo-python
@@ -520,7 +518,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__ttype
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #. module: bi_view_editor
 #. odoo-javascript
@@ -534,7 +532,7 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/components/bi_view_editor/join_node_dialog.xml:0
 #, python-format
 msgid "Use the field"
-msgstr ""
+msgstr "フィールド使用"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,help:bi_view_editor.field_bve_view__data
@@ -553,7 +551,7 @@ msgstr ""
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__user_ids
 msgid "Users"
-msgstr ""
+msgstr "ユーザ"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__view_id
