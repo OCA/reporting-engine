@@ -254,8 +254,14 @@ class BiSQLViewField(models.Model):
         elif self.tree_visibility == "optional_show":
             visibility_text = 'optional="show"'
 
+        operator_text = ""
+        if self.group_operator == "sum":
+            operator_text = f'sum="{self.env._("Total")}"'
+        elif self.group_operator == "avg":
+            operator_text = f'avg="{self.env._("Average")}"'
+
         return (
-            f"""<field name="{self.name}" {visibility_text}"""
+            f"""<field name="{self.name}" {visibility_text} {operator_text}"""
             f""" context="{self.field_context}"/>\n"""
         )
 
