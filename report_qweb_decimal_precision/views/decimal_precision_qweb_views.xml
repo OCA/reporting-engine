@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_decimal_precision_qweb_tree" model="ir.ui.view">
+        <field name="name">decimal.precision.qweb.tree</field>
+        <field name="model">decimal.precision.qweb</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree create="1" editable="bottom">
+                <field name="res_model_id" />
+                <field
+                    name="field_id"
+                    attrs="{'readonly':[('res_model_id','=',False)]}"
+                />
+                <field
+                    name="uom_id"
+                    attrs="{'readonly':[('currency_id','!=',False)]}"
+                />
+                <field
+                    name="uom_field_id"
+                    attrs="{'readonly':[('uom_id','=',False)],'required':[('uom_id','!=',False)]}"
+                />
+                <field
+                    name="currency_id"
+                    attrs="{'readonly':[('uom_id','!=',False)]}"
+                />
+                <field
+                    name="currency_field_id"
+                    attrs="{'readonly':[('currency_id','=',False)],'required':[('currency_id','!=',False)]}"
+                />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="show"
+                />
+                <field name="digits" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_decimal_precision_qweb_searh" model="ir.ui.view">
+        <field name="name">decimal.precision.qweb.search</field>
+        <field name="model">decimal.precision.qweb</field>
+        <field name="arch" type="xml">
+            <search string="Precision QWeb Search">
+                <field name="res_model_id" />
+                <field name="field_id" />
+                <field name="uom_id" />
+                <field name="currency_id" />
+                <field name="company_id" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <filter
+                        string="Model"
+                        name="res_model_id"
+                        context="{'group_by': 'res_model_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_decimal_precision_qweb_view" model="ir.actions.act_window">
+        <field name="name">Decimal Precision QWeb</field>
+        <field name="res_model">decimal.precision.qweb</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_decimal_precision_qweb_tree" />
+    </record>
+    <menuitem
+        id="menu_decimal_precision_qweb"
+        parent="base.reporting_menuitem"
+        action="action_decimal_precision_qweb_view"
+        sequence="10"
+    />
+</odoo>
