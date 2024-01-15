@@ -6,25 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-01-15 09:37+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_company_details_translatable
 #: model:ir.model,name:report_company_details_translatable.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Aziende"
 
 #. module: report_company_details_translatable
 #: model:ir.model.fields,field_description:report_company_details_translatable.field_res_company__company_details
 msgid "Company Details"
-msgstr ""
+msgstr "Dettagli azienda"
 
 #. module: report_company_details_translatable
 #: model:ir.model.fields,help:report_company_details_translatable.field_res_company__company_details
 msgid "Header text displayed at the top of all reports."
-msgstr ""
+msgstr "Testo testata visualizzato sulla sommità di ogni resoconto."
