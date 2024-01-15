@@ -25,8 +25,10 @@ class SqlFileWizard(models.TransientModel):
     def export_sql(self):
         self.ensure_one()
 
+        properties = self.read(["query_properties"])[0]["query_properties"]
+
         # Check properties
-        bad_props = [x for x in self.query_properties if not x["value"]]
+        bad_props = [x for x in properties if not x["value"]]
         if bad_props:
             raise UserError(
                 _("Please enter a values for the following properties : %s")
@@ -39,9 +41,12 @@ class SqlFileWizard(models.TransientModel):
         variable_dict = {}
         now_tz = fields.Datetime.context_timestamp(sql_export, datetime.now())
         date = now_tz.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
-        for prop in self.query_properties:
+        for prop in properties:
             if prop["type"] == "many2many":
-                variable_dict[prop["string"]] = tuple(prop["value"])
+                m2m_ids = []
+                for m2m_id in prop["value"]:
+                    m2m_ids.append(m2m_id[0])
+                variable_dict[prop["string"]] = tuple(m2m_ids)
             else:
                 variable_dict[prop["string"]] = prop["value"]
         if "%(company_id)s" in sql_export.query:
@@ -59,8 +64,7 @@ class SqlFileWizard(models.TransientModel):
         self.write(
             {
                 "binary_file": data,
-                "file_name": "%(name)s_%(date)s.%(extension)s"
-                % {"name": sql_export.name, "date": date, "extension": extension},
+                "file_name": f"{sql_export.name}_{date}.{extension}",
             }
         )
         return {

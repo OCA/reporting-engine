@@ -4,3 +4,5 @@
   - Benoît GUILLOT \<<benoit.guillot@akretion.com>\>
 - [Eficent](https://www.eficent.com):
   - Aaron Henriquez \<<ahenriquez@eficent.com>\>
+- [Codeforward](https://www.codeforward.nl):
+  - Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
