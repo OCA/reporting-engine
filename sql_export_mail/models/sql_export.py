@@ -99,7 +99,7 @@ class SqlExport(models.Model):
                 companies = self.env["res.company"].search([])
                 for company in companies:
                     users = export.mail_user_ids.filtered(
-                        lambda u: u.company_id == company
+                        lambda user, company=company: user.company_id == company
                     )
                     if users:
                         variable_dict["company_id"] = users[0].company_id.id
