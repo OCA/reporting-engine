@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2024-01-15 09:37+0000\n"
+"PO-Revision-Date: 2024-01-15 12:34+0000\n"
 "Last-Translator: \"Ivy Liu (QRTL)\" <liuhehe@quartile.co>\n"
 "Language-Team: Japanese (https://www.transifex.com/oca/teams/23907/ja/)\n"
 "Language: ja\n"
@@ -88,7 +88,7 @@ msgstr "BI SQL View"
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
 msgid "Bi SQL View Field"
-msgstr "BI SQL View フィールド"
+msgstr "BI SQL Viewフィールド"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__group_operator
@@ -231,7 +231,7 @@ msgstr "追加情報"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_context
 msgid "Field Context"
-msgstr "フィールド コンテキスト"
+msgstr "フィールドコンテキスト"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
@@ -286,7 +286,7 @@ msgstr "作成される過渡モデルの完全修飾名。"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_name
 msgid "Full name of the SQL view"
-msgstr "SQLビューのフルネーム"
+msgstr "SQLビューフルネーム"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__graph_type
@@ -407,7 +407,7 @@ msgstr "最大値"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
 msgid "Measure"
-msgstr "MEASURES"
+msgstr "MEASURE"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error
@@ -480,47 +480,47 @@ msgstr "送信エラーメッセージ数"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_id
 msgid "Odoo Action"
-msgstr "Odoo アクション"
+msgstr "Odooアクション"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__cron_id
 msgid "Odoo Cron"
-msgstr "Odoo クーロン"
+msgstr "Odooクーロン"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
-msgstr "Odoo グラフビュー"
+msgstr "Odooグラフビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
 msgid "Odoo Menu"
-msgstr "Odoo メニュー"
+msgstr "Odooメニュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__model_id
 msgid "Odoo Model"
-msgstr "Odoo モデル"
+msgstr "Odooモデル"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__pivot_view_id
 msgid "Odoo Pivot View"
-msgstr "Odoo ピボットビュー"
+msgstr "Odooピボットビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__rule_id
 msgid "Odoo Rule"
-msgstr "Odoo ルール"
+msgstr "Odooルール"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__search_view_id
 msgid "Odoo Search View"
-msgstr "Odoo 検索ビュー"
+msgstr "Odoo検索ビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
 msgid "Odoo Tree View"
-msgstr "Odoo ツリービュー"
+msgstr "Odooツリービュー"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -532,7 +532,7 @@ msgstr "グラフ、ピボット又はツリービューのみサポートされ
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Open View"
-msgstr "オープン ビュー"
+msgstr "ビューを開く"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__optional_hide
@@ -564,14 +564,14 @@ msgstr "リフレッシュ"
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Refresh Materialized View"
-msgstr "マテリアライズド ビューをリフレッシュ"
+msgstr "マテリアライズドビューをリフレッシュ"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Refresh Materialized View %s"
-msgstr "マテリアライズド ビューをリフレッシュ %s"
+msgstr "マテリアライズドビューをリフレッシュ %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__row
@@ -591,20 +591,20 @@ msgid ""
 "SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
 " %(error)s"
 msgstr ""
-"%(materialized_text)s ビュー %(view_name)s を作成中に SQL "
-"エラーが発生しました : \n"
+"%(materialized_text)s ビュー %(view_name)s を作成中に "
+"SQLエラーが発生しました : \n"
 "%(error)s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__bi_sql_view_field_ids
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "SQL Fields"
-msgstr "SQL フィールド"
+msgstr "SQLフィールド"
 
 #. module: bi_sql_editor
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_editor
 msgid "SQL Reports"
-msgstr "SQL レポート"
+msgstr "SQLレポート"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__query
@@ -624,28 +624,28 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sql_type
 msgid "SQL Type"
-msgstr "SQL タイプ"
+msgstr "SQLタイプ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__sql_type
 msgid "SQL Type in the database"
-msgstr "データベース内のSQL タイプ"
+msgstr "データベース内のSQLタイプ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__bi_sql_view_id
 msgid "SQL View"
-msgstr "SQL ビュー"
+msgstr "SQLビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__model_valid
 msgid "SQL View and Model Created"
-msgstr "SQL ビューとモデル作成"
+msgstr "SQLビューとモデル作成"
 
 #. module: bi_sql_editor
 #: model:ir.actions.act_window,name:bi_sql_editor.action_bi_sql_view
 #: model:ir.ui.menu,name:bi_sql_editor.menu_bi_sql_view
 msgid "SQL Views"
-msgstr "SQL ビュー"
+msgstr "SQLビュー"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__selection
@@ -655,7 +655,7 @@ msgstr "選択オプション"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__size
 msgid "Size of the materialized view and its indexes"
-msgstr "マテリアライズド ビューとインデックス サイズ"
+msgstr "マテリアライズドビューとインデックスサイズ"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__state
@@ -673,7 +673,7 @@ msgid ""
 msgstr ""
 "リクエスト状態:\n"
 " * 'ドラフト': 未テスト\n"
-" * 'SQL 有効': SQL リクエストはチェックされ有効です"
+" * 'SQL有効': SQLリクエストはチェックされ有効です"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__technical_name
@@ -682,15 +682,14 @@ msgid ""
 "'x_bi_sql_view_'. Syntax should follow: https://www.postgresql.org/docs/"
 "current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
-"SQL ビューのSQLビューのサフィックス。SQL "
-"のフルネームが算出され'x_bi_sql_view_' が前置されます。構文は以下の通り：: "
-"https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-"
-"SYNTAX-IDENTIFIERS"
+"SQLビューのサフィックス。SQLフルネームが算出'x_bi_sql_view_' "
+"が前置されます。構文は以下の通り： https://www.postgresql.org/docs/current/"
+"static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__sum
 msgid "Sum"
-msgstr "合計"
+msgstr "SUM関数"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__technical_name
@@ -720,8 +719,8 @@ msgstr "これはOdooのビュー、アクション及びメニューを作成�
 msgid ""
 "This will try to create an SQL View, based on the SQL request and the "
 "according Transient Model and fields, based on settings"
-msgstr "SQLリクエストと対応する過渡モデル及びフィールドに基づき、SQL "
-"ビューを作成しようとします"
+msgstr "SQLリクエストと対応する過渡モデル及びフィールドに基づき、SQLビューを作成しよ"
+"うとします"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__tree_visibility
@@ -760,17 +759,17 @@ msgstr "モデルアクセスを更新してください。モデルを作成し
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
-msgstr "ユーザ インターフェース"
+msgstr "ユーザインターフェース"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_name
 msgid "View Name"
-msgstr "ビューの名前"
+msgstr "ビュー名前"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_order
 msgid "View Order"
-msgstr "ビュー オーダー"
+msgstr "ビュー順序"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__ui_valid
@@ -783,7 +782,7 @@ msgstr "ビュー、アクションとメニュー作成"
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
 #, python-format
 msgid "You can not create indexes on non materialized views"
-msgstr "マテリアライズド ビュー以外のビューにインデックスを作成することはできません"
+msgstr "マテリアライズドビュー以外のビューにインデックスを作成することはできません"
 
 #. module: bi_sql_editor
 #. odoo-python
