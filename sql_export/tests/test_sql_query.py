@@ -57,7 +57,7 @@ class TestExportSqlQuery(TransactionCase):
             )
             sql_export.button_validate_sql_expression()
             self.assertEqual(
-                sql_export.state, "sql_valid", "%s is a valid request" % (query)
+                sql_export.state, "sql_valid", "%s is a valid request" % query
             )
 
     def test_sql_query_with_params(self):

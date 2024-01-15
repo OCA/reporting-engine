@@ -103,6 +103,10 @@ Contributors
 
    -  Aaron Henriquez <ahenriquez@eficent.com>
 
+-  `Codeforward <https://www.codeforward.nl>`__:
+
+   -  Sander Lienaerts <sander.lienaerts@codeforward.nl>
+
 Maintainers
 -----------
 
