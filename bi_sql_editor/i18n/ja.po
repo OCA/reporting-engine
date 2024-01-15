@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2024-01-11 14:33+0000\n"
+"PO-Revision-Date: 2024-01-15 09:37+0000\n"
 "Last-Translator: \"Ivy Liu (QRTL)\" <liuhehe@quartile.co>\n"
 "Language-Team: Japanese (https://www.transifex.com/oca/teams/23907/ja/)\n"
 "Language: ja\n"
@@ -48,7 +48,7 @@ msgstr "アクションコンテキスト"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "Action Needed"
-msgstr "要対応"
+msgstr "対応必要"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -123,7 +123,7 @@ msgstr "カラム"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
-msgstr "カンマ区切りのテキスト。使用可能値 :「グラフ」、「ピボット」又は「ツリー」"
+msgstr "カンマ区切りテキスト。使用可能値 :「グラフ」、「ピボット」又は「ツリー」"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -146,7 +146,7 @@ msgstr "全てのビューでこのフィールドに挿入されるコンテキ
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create SQL Elements"
-msgstr "SQL エレメント作成"
+msgstr "SQLエレメント作成"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -205,7 +205,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Delete SQL Elements"
-msgstr "SQL エレメント削除"
+msgstr "SQLエレメント削除"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -231,12 +231,12 @@ msgstr "追加情報"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_context
 msgid "Field Context"
-msgstr "フィールドコンテキスト"
+msgstr "フィールド コンテキスト"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
 msgid "Field Description"
-msgstr "フィールド詳細"
+msgstr "フィールド説明"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__ttype
@@ -286,7 +286,7 @@ msgstr "作成される過渡モデルの完全修飾名。"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_name
 msgid "Full name of the SQL view"
-msgstr "SQL ビューのフルネーム"
+msgstr "SQLビューのフルネーム"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__graph_type
@@ -301,7 +301,7 @@ msgstr "グループ演算子"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
 msgid "Has Group Changed"
-msgstr "変更グループ"
+msgstr "グループ変更"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_message
@@ -362,14 +362,14 @@ msgstr "インデックス"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__is_materialized
 msgid "Is Materialized View"
-msgstr "マテリアライズド ビュー"
+msgstr "マテリアライズドビュー"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid ""
 "It will delete the materialized view, and all the previous mapping realized "
 "with the columns"
-msgstr "マテリアライズド ビューとカラムで実装されていたマッピングが全て削除されます"
+msgstr "マテリアライズドビューとカラムで実装されていたマッピングが全て削除されます"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
@@ -397,7 +397,7 @@ msgstr "メイン添付"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
 msgid "Materialized Text"
-msgstr "マテリアライズド テキスト"
+msgstr "マテリアライズドテキスト"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__max
@@ -407,7 +407,7 @@ msgstr "最大値"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
 msgid "Measure"
-msgstr "測定"
+msgstr "MEASURES"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error
