@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="py3o_template_configuration_search_view" model="ir.ui.view">
+        <field name="name">py3o.template.configuration.search.view.index</field>
+        <field name="model">py3o.template</field>
+        <field name="inherit_id" ref="report_py3o.py3o_template_configuration_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='filetype']" position="after">
+                <filter name="py3o" string="Has Index" domain="[('py3o_has_index_fallback', '=', True)]"/>
+                <filter name="py3o" string="Has no Index" domain="[('py3o_has_index_fallback', '=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="py3o_template_configuration_form_view" model="ir.ui.view">
+        <field name="name">py3o.template.configuration.form.view.index</field>
+        <field name="model">py3o.template</field>
+        <field name="inherit_id" ref="report_py3o.py3o_template_configuration_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='py3o_template_data']" position="after">
+                <field name="py3o_has_index" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="py3o_template_configuration_tree_view" model="ir.ui.view">
+        <field name="name">py3o.template.configuration.tree.view</field>
+        <field name="model">py3o.template</field>
+        <field name="inherit_id" ref="report_py3o.py3o_template_configuration_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='filetype']" position="after">
+                <field name="py3o_has_index" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
