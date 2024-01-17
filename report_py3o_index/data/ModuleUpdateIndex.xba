@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="ModuleUpdateIndex" script:language="StarBasic">REM  *****  BASIC  *****
+
+ Option Explicit
+
+ Sub UpdateIndexes(path As String)
+     '''Update indexes, such as for the table of contents'''
+     Dim doc As Object
+     Dim args()
+
+     doc = StarDesktop.loadComponentFromUrl(convertToUrl(path), "_default", 0, args())
+
+     Dim i As Integer
+
+     With doc ' Only process Writer documents
+	 If .supportsService("com.sun.star.text.GenericTextDocument") Then
+	     For i = 0 To .getDocumentIndexes().count - 1
+		 .getDocumentIndexes().getByIndex(i).update()
+	     Next i
+	 End If
+     End With ' ThisComponent
+
+     doc.store()
+     doc.close(True)
+
+ End Sub ' UpdateIndexes
+</script:module>
