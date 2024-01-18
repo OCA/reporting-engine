@@ -6,118 +6,120 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-01-18 09:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_base_automation__state
 #: model:ir.model.fields,field_description:report_label.field_ir_actions_server__state
 #: model:ir.model.fields,field_description:report_label.field_ir_cron__state
 msgid "Action To Do"
-msgstr ""
+msgstr "Azione da compiere"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Bottom (mm)"
-msgstr ""
+msgstr "Inferiore (mm)"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__create_uid
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__create_uid
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__create_date
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__create_date
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__display_name
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__display_name
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__id
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__id
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_background_color
 msgid "Label Background Color"
-msgstr ""
+msgstr "Colore etichetta sfondo"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_height
 msgid "Label Height (mm)"
-msgstr ""
+msgstr "Altezza etichetta (mm)"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Label Margin"
-msgstr ""
+msgstr "Margini etichetta"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_margin_bottom
 msgid "Label Margin Bottom (mm)"
-msgstr ""
+msgstr "Margine inferiore etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_margin_left
 msgid "Label Margin Left (mm)"
-msgstr ""
+msgstr "Margine sinistro etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_margin_right
 msgid "Label Margin Right (mm)"
-msgstr ""
+msgstr "Margine destro etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_margin_top
 msgid "Label Margin Top (mm)"
-msgstr ""
+msgstr "Margine superiore etichetta (mm)"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Label Padding"
-msgstr ""
+msgstr "Imbottitura etichetta"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_padding_bottom
 msgid "Label Padding Bottom (mm)"
-msgstr ""
+msgstr "Imbottitura inferiore etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_padding_left
 msgid "Label Padding Left (mm)"
-msgstr ""
+msgstr "Imbottitura sinistra etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_padding_right
 msgid "Label Padding Right (mm)"
-msgstr ""
+msgstr "Imbottitura destra etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_padding_top
 msgid "Label Padding Top (mm)"
-msgstr ""
+msgstr "Imbottitura superiore etichetta (mm)"
 
 #. module: report_label
 #: model:ir.model,name:report_label.model_report_paperformat_label
@@ -126,12 +128,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_label.field_ir_cron__label_paperformat_id
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__label_paperformat_id
 msgid "Label Paper Format"
-msgstr ""
+msgstr "Formato carta etichetta"
 
 #. module: report_label
 #: model:ir.ui.menu,name:report_label.paperformat_label_menu
 msgid "Label Paper Formats"
-msgstr ""
+msgstr "Formati carta etichetta"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_base_automation__label_template_view_id
@@ -139,175 +141,175 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_label.field_ir_cron__label_template_view_id
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__label_template_view_id
 msgid "Label QWeb Template"
-msgstr ""
+msgstr "Modello QWeb etichetta"
 
 #. module: report_label
 #: model:ir.actions.report,name:report_label.report_label
 msgid "Label Report"
-msgstr ""
+msgstr "Resoconto etichetta"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Label Settings"
-msgstr ""
+msgstr "Impostazioni etichetta"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__label_width
 msgid "Label Width (mm)"
-msgstr ""
+msgstr "Larghezza etichetta (mm)"
 
 #. module: report_label
 #: model:ir.actions.act_window,name:report_label.paperformat_label_action
 msgid "Label paper format configuration"
-msgstr ""
+msgstr "Configurazione formato carta etichetta"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard____last_update
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line____last_update
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__write_uid
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__write_uid
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__write_date
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__write_date
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Left (mm)"
-msgstr ""
+msgstr "Sinistra (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__line_ids
 msgid "Lines"
-msgstr ""
+msgstr "Righe"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: report_label
 #: model:ir.model.fields,help:report_label.field_report_label_wizard__offset
 msgid "Number of labels to skip when printing"
-msgstr ""
+msgstr "Numero di etichette da saltare quando si stampa"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard__offset
 msgid "Offset"
-msgstr ""
+msgstr "Offset"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_paperformat_label__paperformat_id
 msgid "Paper Format"
-msgstr ""
+msgstr "Formato carta"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Paper format configuration"
-msgstr ""
+msgstr "Configurazione formato carta"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Print"
-msgstr ""
+msgstr "Stampa"
 
 #. module: report_label
 #: model:ir.actions.server,name:report_label.actions_server_label_partner_address
 msgid "Print Address Labels"
-msgstr ""
+msgstr "Stampa etichette indiizzo"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Print Labels"
-msgstr ""
+msgstr "Stampa etichette"
 
 #. module: report_label
 #: model:ir.model.fields.selection,name:report_label.selection__ir_actions_server__state__report_label
 msgid "Print self-adhesive labels"
-msgstr ""
+msgstr "Stampa etichette adesive"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__quantity
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Record"
-msgstr ""
+msgstr "Record"
 
 #. module: report_label
 #: model:ir.model,name:report_label.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Azione resoconto"
 
 #. module: report_label
 #: model:ir.model,name:report_label.model_report_label_wizard
 msgid "Report Label Wizard"
-msgstr ""
+msgstr "Procedura guidata etichetta resoconto"
 
 #. module: report_label
 #: model:ir.model,name:report_label.model_report_label_wizard_line
 msgid "Report Label Wizard Line"
-msgstr ""
+msgstr "Riga procedura guidata etichetta resoconto"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__res_name
 msgid "Res Name"
-msgstr ""
+msgstr "Nome risorsa"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__res_id
 msgid "Resource ID"
-msgstr ""
+msgstr "ID risorsa"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Right (mm)"
-msgstr ""
+msgstr "Destra (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
 #. module: report_label
 #: model:ir.model,name:report_label.model_ir_actions_server
 msgid "Server Action"
-msgstr ""
+msgstr "Azione server"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.report_label_wizard_view_form
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #. module: report_label
 #: model:ir.model.fields,help:report_label.field_base_automation__label_template_view_id
 #: model:ir.model.fields,help:report_label.field_ir_actions_server__label_template_view_id
 #: model:ir.model.fields,help:report_label.field_ir_cron__label_template_view_id
 msgid "The QWeb template key to render the labels"
-msgstr ""
+msgstr "Chiave modello QWeb per realizzare le etchette"
 
 #. module: report_label
 #: model_terms:ir.ui.view,arch_db:report_label.view_paperformat_label_view_form
 msgid "Top (mm)"
-msgstr ""
+msgstr "Superiore (mm)"
 
 #. module: report_label
 #: model:ir.model.fields,help:report_label.field_base_automation__state
@@ -324,8 +326,19 @@ msgid ""
 "- 'Create Next Activity': create an activity (Discuss)\n"
 "- 'Send SMS Text Message': send SMS, log them on documents (SMS)"
 msgstr ""
+"Tipo di azione server. Sono disponibili i seguenti valori:\n"
+"- 'Esegue codice Python': un blocco di codice Python che verrà eseguito\n"
+"- 'Crea un nuovo record': crea un nuovo record con nuovi valori\n"
+"- 'Aggiorna un record': aggiorna i valori di un record\n"
+"- 'Esegue diverse azioni': definisce un'azione che attiva diverse altre "
+"azioni\n"
+"- 'Invia e-mail': inva un messagio, una nota o inviauna e-mail (Discussione)"
+"\n"
+"- 'Aggiunge chi segue': aggiunge chi segue ad un record (Discussione)\n"
+"- 'Crea attività successiva': crea un'attività (Discussione)\n"
+"- 'Invia SMS': invia SMS, registrandoli nei documenti (SMS)"
 
 #. module: report_label
 #: model:ir.model.fields,field_description:report_label.field_report_label_wizard_line__wizard_id
 msgid "Wizard"
-msgstr ""
+msgstr "Procedura guidata"
