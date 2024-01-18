@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-01-18 09:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt
@@ -20,45 +22,49 @@ msgid ""
 "* Manual Input Password: allow user to key in password on the fly. This option available only on document print action.\n"
 "* Auto Generated Password: system will auto encrypt password when PDF created, based on provided python syntax."
 msgstr ""
+"* Inserimento manuale password: consente all'utente di inserire la password "
+"al volo. Questa opzione è disponibile solo nell'azione stampa documento.\n"
+"* Password auto generata: il sistema cripterà automaticamente la password "
+"quando viene creato il PDF, in base alla sintassi Pythn fornita."
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields.selection,name:report_qweb_encrypt.selection__ir_actions_report__encrypt__auto
 msgid "Auto Generated Password"
-msgstr ""
+msgstr "Password generata automaticamente"
 
 #. module: report_qweb_encrypt
 #. odoo-javascript
 #: code:addons/report_qweb_encrypt/static/src/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__encrypt_password
 msgid "Encrypt Password"
-msgstr ""
+msgstr "Cripta password"
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,field_description:report_qweb_encrypt.field_ir_actions_report__encrypt
 msgid "Encryption"
-msgstr ""
+msgstr "Criptazione"
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields.selection,name:report_qweb_encrypt.selection__ir_actions_report__encrypt__manual
 msgid "Manual Input Password"
-msgstr ""
+msgstr "Password inserita manualmente"
 
 #. module: report_qweb_encrypt
 #. odoo-javascript
 #: code:addons/report_qweb_encrypt/static/src/report/encrypt_dialog.xml:0
 #, python-format
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #. module: report_qweb_encrypt
 #: model:ir.model.fields,help:report_qweb_encrypt.field_ir_actions_report__encrypt_password
 msgid "Python code syntax to gnerate password."
-msgstr ""
+msgstr "Sintassi codice Python per generazione password."
 
 #. module: report_qweb_encrypt
 #. odoo-python
@@ -68,13 +74,15 @@ msgid ""
 "Python code used for encryption password is invalid.\n"
 "%s"
 msgstr ""
+"Il codice Python usato per la criptazione password non è valido.\n"
+"%s"
 
 #. module: report_qweb_encrypt
 #: model:ir.model,name:report_qweb_encrypt.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Azione resoconto"
 
 #. module: report_qweb_encrypt
 #: model_terms:ir.ui.view,arch_db:report_qweb_encrypt.ir_actions_report_form_view
 msgid "python syntax, i.e., (object.default_code or 'secretcode')"
-msgstr ""
+msgstr "Sintassi Python, es., (object.default_code o 'secretcode')"
