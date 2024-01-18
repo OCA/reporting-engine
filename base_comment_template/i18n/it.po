@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2023-12-28 17:36+0000\n"
+"PO-Revision-Date: 2024-01-18 09:34+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -27,6 +27,9 @@ msgid ""
 "False)]}\">No records\n"
 "                        </span>"
 msgstr ""
+"<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
+"False)]}\">Nessun record\n"
+"                        </span>"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
@@ -41,27 +44,27 @@ msgstr "In archivio"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment Preview"
-msgstr ""
+msgstr "Anteprima commento base"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
 msgid "Base Comment Template"
-msgstr ""
+msgstr "Modello commento base"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template_preview
 msgid "Base Comment Template Preview"
-msgstr ""
+msgstr "Anteprima modello commento base"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment content"
-msgstr ""
+msgstr "Contenuto commento base"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
@@ -71,17 +74,17 @@ msgstr "In basso"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose a language:"
-msgstr ""
+msgstr "Scegliere una lingua:"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an engine:"
-msgstr ""
+msgstr "Scegliere un rogramma:"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an example"
-msgstr ""
+msgstr "Scegliere un esempio"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -135,7 +138,7 @@ msgstr "Creato il"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Discard"
-msgstr ""
+msgstr "Abbandona"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
@@ -146,7 +149,7 @@ msgstr "Nome visualizzato"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__engine
 msgid "Engine"
-msgstr ""
+msgstr "Programma"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
@@ -184,12 +187,12 @@ msgstr ""
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__inline_template
 msgid "Inline Template"
-msgstr ""
+msgstr "Modello in linea"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
 msgid "Inline template"
-msgstr ""
+msgstr "Modello in linea"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
@@ -212,7 +215,7 @@ msgstr "Ultimo aggiornamento il"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
@@ -235,7 +238,7 @@ msgstr "Nome/descrizione di questo modello commento"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "Nessun record"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
@@ -250,33 +253,33 @@ msgstr "Posizione nel documento"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Preview"
-msgstr ""
+msgstr "Anteprima"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Preview of"
-msgstr ""
+msgstr "Anteprima di"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
-msgstr ""
+msgstr "QWeb"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb_view
 msgid "QWeb View"
-msgstr ""
+msgstr "Vista Qweb"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
 msgid "QWeb view"
-msgstr ""
+msgstr "Vista Qweb"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
 msgid "Record reference"
-msgstr ""
+msgstr "Riferimento record"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
@@ -288,7 +291,7 @@ msgstr "Sequenza"
 #: code:addons/base_comment_template/models/base_comment_template.py:0
 #, python-format
 msgid "Some model (%s) not found"
-msgstr ""
+msgstr "Qualche modello (%s) non trovato"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
@@ -305,17 +308,17 @@ msgstr "Modello"
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
 msgid "Template Preview"
-msgstr ""
+msgstr "Anteprima modello"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
 msgid "Template Preview Engine"
-msgstr ""
+msgstr "Programma anteprima modello"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
 msgid "Template Preview Language"
-msgstr ""
+msgstr "Lingua anteprima modello"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
@@ -346,6 +349,8 @@ msgstr ""
 msgid ""
 "This field allows to select the engine to use for rendering the template."
 msgstr ""
+"Questo file consente di selezionare il programma da utilizzare per "
+"visualizzare il modello."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
@@ -382,4 +387,4 @@ msgstr ""
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
-msgstr ""
+msgstr "record:"
