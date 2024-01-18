@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-11 09:38+0000\n"
+"PO-Revision-Date: 2024-01-18 09:37+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -162,7 +162,7 @@ msgstr "Completato"
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__email_notify
 msgid "Email Notification"
-msgstr "Notifica email"
+msgstr "Notifica e-mail"
 
 #. module: report_async
 #: selection:report.async,job_status:0
@@ -296,7 +296,7 @@ msgstr "Stampa documento"
 #. module: report_async
 #: model:ir.model,name:report_async.model_print_report_wizard
 msgid "Print Report Wizard"
-msgstr "Procedura guidata stampa"
+msgstr "Procedura guidata stampa resoconto"
 
 #. module: report_async
 #: model:ir.model,name:report_async.model_ir_actions_report
@@ -306,7 +306,7 @@ msgstr "Azione resoconto"
 #. module: report_async
 #: model:ir.model,name:report_async.model_report_async
 msgid "Report Async"
-msgstr "Stampa asincrona"
+msgstr "Resoconto asincrono"
 
 #. module: report_async
 #: model:ir.actions.act_window,name:report_async.action_report_async
@@ -314,17 +314,17 @@ msgstr "Stampa asincrona"
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_search
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
 msgid "Report Center"
-msgstr "Centro stampe"
+msgstr "Centro resoconti"
 
 #. module: report_async
 #: model:ir.actions.act_window,name:report_async.action_view_files
 msgid "Report Files"
-msgstr "Files stampe"
+msgstr "File resoconti"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__action_report_id
 msgid "Report Template"
-msgstr "Modello stampa"
+msgstr "Modello resoconto"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__action_id
@@ -341,12 +341,12 @@ msgstr "Lancia in background"
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
 msgid "Run Now"
-msgstr "Lancia ora"
+msgstr "Esegui adesso"
 
 #. module: report_async
 #: model_terms:ir.actions.act_window,help:report_async.action_report_async
 msgid "Run reports asyncronously"
-msgstr "Lancia stampe asincronicamente"
+msgstr "Esegui resoconti in modo asincrono"
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__schedule_time
@@ -356,7 +356,7 @@ msgstr ""
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__email_notify
 msgid "Send email with link to report, when it is ready"
-msgstr "Invia una mail con il link alla stampa, quando è pronta"
+msgstr "Invia una e-mail con il link al resoconto, quando è pronto"
 
 #. module: report_async
 #: selection:report.async,job_status:0
@@ -370,7 +370,7 @@ msgid ""
 "                        Please contact your system administrator."
 msgstr ""
 "L'ultimo <i class=\"fa fa-cogs\"/> <b>lavoro lanciato</b> è fallito.\n"
-"                        Contatta il tuo amministratore di sistema."
+"                        Contattare l'amministratore di sistema."
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
@@ -381,8 +381,8 @@ msgid ""
 msgstr ""
 "L'ultimo <i class=\"fa fa-cogs\"/> <b>lavoro lanciato</b> è andato a buon "
 "fine.\n"
-"                        Puoi verificare il risultato nei <i class=\"fa fa-"
-"copy\"/><b> Files</b>"
+"                        Si può verificare il risultato nei <i class=\"fa fa-"
+"copy\"/><b> file</b>"
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
@@ -391,9 +391,9 @@ msgid ""
 "                        <b>job</b>, and will be available at\n"
 "                        <i class=\"fa fa-copy\"/><b> Files</b>"
 msgstr ""
-"La stampa verrà eseguita in un <i class=\"fa fa-cogs\"/>\n"
+"Il resoconto verrà eseguito in un <i class=\"fa fa-cogs\"/>\n"
 "                        <b>lavoro</b>, e sarà disponibile nei\n"
-"                        <i class=\"fa fa-copy\"/><b> Files</b>"
+"                        <i class=\"fa fa-copy\"/><b> file</b>"
 
 #. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__allow_async
@@ -401,10 +401,10 @@ msgid ""
 "This is not automatic field, please check if you want to allow this report "
 "in background process"
 msgstr ""
-"Questo non è un campo automatico, controlla se vuoi permettere questa stampa "
-"nel processo in background"
+"Questo non è un campo automatico, controllare se si vuole permettere quest "
+"resoconto nel processo in background"
 
 #. module: report_async
 #: model:mail.template,subject:report_async.async_report_delivery
 msgid "Your report is available, ${object.name}"
-msgstr "La tua stampa è pronta, ${object.name}"
+msgstr "Il tuo resoconto è ponto, ${object.name}"
