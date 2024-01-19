@@ -108,11 +108,11 @@ class ReportXlsxAbstract(models.AbstractModel):
         bg_yellow = "#FFFFCC"
         bg_blue = "#CCFFFF"
         num_format = "#,##0.00"
-        num_format_conditional = "{0};[Red]-{0};{0}".format(num_format)
+        num_format_conditional = f"{num_format};[Red]-{num_format};{num_format}"
         pct_format = "#,##0.00%"
-        pct_format_conditional = "{0};[Red]-{0};{0}".format(pct_format)
+        pct_format_conditional = f"{pct_format};[Red]-{pct_format};{pct_format}"
         int_format = "#,##0"
-        int_format_conditional = "{0};[Red]-{0};{0}".format(int_format)
+        int_format_conditional = f"{int_format};[Red]-{int_format};{int_format}"
         date_format = "YYYY-MM-DD"
         theader_grey = dict(theader, bg_color=bg_grey)
         theader_yellow = dict(theader, bg_color=bg_yellow)
@@ -698,7 +698,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                         cell_type = "boolean"
                     elif isinstance(cell_value, str):
                         cell_type = "string"
-                    elif isinstance(cell_value, (int, float)):
+                    elif isinstance(cell_value, int | float):
                         cell_type = "number"
                     elif isinstance(cell_value, datetime):
                         cell_type = "datetime"

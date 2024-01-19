@@ -16,7 +16,6 @@ class TestPartnerXlsx(models.AbstractModel):
     _description = "Test Partner XLSX Report"
 
     def _get_ws_params(self, wb, data, partners):
-
         partner_template = {
             "name": {
                 "header": {"value": "Name"},
@@ -46,7 +45,6 @@ class TestPartnerXlsx(models.AbstractModel):
         return [ws_params]
 
     def _partner_report(self, workbook, ws, ws_params, data, partners):
-
         ws.set_portrait()
         ws.fit_to_pages(1, 0)
         ws.set_header(XLS_HEADERS["xls_headers"]["standard"])
