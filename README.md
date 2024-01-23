@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [bi_sql_editor](bi_sql_editor/) | 17.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
 [report_qweb_parameter](report_qweb_parameter/) | 17.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_xlsx](report_xlsx/) | 17.0.1.0.0 |  | Base module to create xlsx report
+[report_xlsx_helper](report_xlsx_helper/) | 17.0.1.0.0 |  | Report xlsx helpers
 [sql_request_abstract](sql_request_abstract/) | 17.0.1.0.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Abstract Model to manage SQL Requests
 
 [//]: # (end addons)
