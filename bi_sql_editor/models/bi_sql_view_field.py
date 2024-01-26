@@ -250,12 +250,20 @@ class BiSQLViewField(models.Model):
 
     def _prepare_search_filter_field(self):
         self.ensure_one()
-        res = ""
+        group_by_filter = ""
+        field_filter = ""
         if self.field_description and self.is_group_by:
-            res = """<filter name="group_by_%s" string="%s"
+            group_by_filter = """<filter name="group_by_%s" string="%s"
                         context="{'group_by':'%s'}"/>\n""" % (
                 self.name,
                 self.field_description,
                 self.name,
             )
+        if self.field_description and self.ttype in ["date", "datetime"]:
+            field_filter = """<filter name="filter_%s" string="%s" date="%s"/>\n""" % (
+                self.name,
+                self.field_description,
+                self.name,
+            )
+        res = "%s%s" % (field_filter, group_by_filter)
         return res
