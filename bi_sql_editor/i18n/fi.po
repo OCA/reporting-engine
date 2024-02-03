@@ -65,13 +65,6 @@ msgid "Allowed Users"
 msgstr ""
 
 #. module: bi_sql_editor
-#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid ""
-"Are you sure you want to set to draft this SQL View. It will delete the "
-"materialized view, and all the previous mapping realized with the columns"
-msgstr ""
-
-#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -101,13 +94,6 @@ msgstr ""
 msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
-msgstr ""
-
-#. module: bi_sql_editor
-#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__option_context_field
-msgid ""
-"Check this box if you want to add a context column in the field list view. "
-"Custom Context will be inserted in the created views."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -201,6 +187,16 @@ msgid ""
 "created. A typical Multi Company rule is for exemple \n"
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Delete SQL Elements"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "Delete UI"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -307,7 +303,17 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: bi_sql_editor
+#. odoo-python
+#: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
+#, python-format
+msgid ""
+"Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
+"Valid'."
 msgstr ""
 
 #. module: bi_sql_editor
@@ -341,10 +347,11 @@ msgid "Is Materialized View"
 msgstr ""
 
 #. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field____last_update
-msgid "Last Modified on"
-msgstr "Viimeksi muokattu"
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid ""
+"It will delete the materialized view, and all the previous mapping realized "
+"with the columns"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__write_uid
@@ -357,11 +364,6 @@ msgstr "Viimeksi päivittänyt"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__write_date
 msgid "Last Updated on"
 msgstr "Viimeksi päivitetty"
-
-#. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
@@ -512,6 +514,13 @@ msgid "Optional (shown)"
 msgstr ""
 
 #. module: bi_sql_editor
+#. odoo-python
+#: code:addons/bi_sql_editor/models/bi_sql_view.py:0
+#, python-format
+msgid "Please set related models on the following fields %s"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
 msgid "Query"
 msgstr ""
@@ -541,6 +550,11 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Rule Definition"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_sms_error
+msgid "SMS Delivery error"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -605,22 +619,19 @@ msgid "Selection Options"
 msgstr ""
 
 #. module: bi_sql_editor
-#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-msgid "Set to Draft"
-msgstr "Aseta luonnokseksi"
-
-#. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__size
 msgid "Size of the materialized view and its indexes"
 msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__state
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__state
 msgid "State"
 msgstr "Tila"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__state
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__state
 msgid ""
 "State of the Request:\n"
 " * 'Draft': Not tested\n"
@@ -700,11 +711,6 @@ msgid ""
 msgstr ""
 
 #. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__option_context_field
-msgid "Use Context Field"
-msgstr ""
-
-#. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
 msgstr ""
@@ -722,6 +728,16 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__ui_valid
 msgid "Views, Action and Menu Created"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__website_message_ids
+msgid "Website communication history"
 msgstr ""
 
 #. module: bi_sql_editor
@@ -786,6 +802,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Viimeksi muokattu"
+
+#~ msgid "Set to Draft"
+#~ msgstr "Aseta luonnokseksi"
 
 #~ msgid "Draft"
 #~ msgstr "Luonnos"
