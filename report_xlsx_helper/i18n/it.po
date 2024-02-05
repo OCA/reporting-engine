@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_xlsx_helper
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-02-12 10:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"%(__name__)s, _write_line : programming error detected while processing "
+"col_specs_section %(col_specs_section)s, column %(col)s"
+msgstr ""
+"%(__name__)s, _write_line : rilevato errore di programmazione "
+"nell'elaborazione di col_specs_section %(col_specs_section)s, colonna %(col)s"
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
+#, python-format
+msgid "%s model was not found"
+msgstr "Il modello %s non è stato trovato"
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ", cellvalue %s"
+msgstr ", valore cella %s"
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_abstract
+msgid "Abstract XLSX Report"
+msgstr "Report XLSX astratto"
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"Excel Sheet name '%(name)s' contains unsupported special characters: '%(special_chars)s'."
+msgstr ""
+"Errore programmazione:\n"
+"\n"
+"Il foglio Excel nome '%(name)s' contene caratteri non supportati: "
+"'%(special_chars)s'."
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"Excel Sheet name '%(name)s' should not exceed %(max_chars)s characters."
+msgstr ""
+"Errore programmazione:\n"
+"\n"
+"Il foglio Excel nome '%(name)s' non dovrebbe superare i %(max_chars)s "
+"caratteri."
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The '%s' column is not defined in the worksheet column specifications."
+msgstr ""
+"Errore programmazione:\n"
+"\n"
+"La colonna '%s' non è definita nelle specifiche delle colonne del foglio di "
+"lavoro."
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The '%s' column is not defined the worksheet column specifications."
+msgstr ""
+"Errore programmazione:\n"
+"\n"
+"La colonna '%s' non è definita nelle specifiche delle colonne del foglio di "
+"lavoro."
+
+#. module: report_xlsx_helper
+#. odoo-python
+#: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
+#, python-format
+msgid ""
+"Programming Error:\n"
+"\n"
+"The 'title' parameter is mandatory when calling the '_write_ws_title' method."
+msgstr ""
+"Errore programmazione:\n"
+"\n"
+"Il parametro 'title' è obbligatorio quando si chiama il metodo "
+"'_write_ws_title'."
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_ir_actions_report
+msgid "Report Action"
+msgstr "Azione resoconto"
+
+#. module: report_xlsx_helper
+#: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_helper_test_partner_xlsx
+msgid "Test Partner XLSX Report"
+msgstr "Test resoconto XLSX partner"
