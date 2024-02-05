@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-01-29 17:34+0000\n"
+"PO-Revision-Date: 2024-02-05 09:41+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -24,7 +24,7 @@ msgstr "Nome visualizzato"
 #. module: report_qweb_parameter
 #: model:ir.model.fields,field_description:report_qweb_parameter.field_ir_qweb__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_qweb_parameter
 #: model:ir.model.fields,field_description:report_qweb_parameter.field_ir_qweb____last_update
