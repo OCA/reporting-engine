@@ -1,0 +1,131 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_xml
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-13 02:43+0000\n"
+"PO-Revision-Date: 2022-06-15 18:05+0000\n"
+"Last-Translator: jabelchi <jabelchi@gmail.com>\n"
+"Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: report_xml
+#: model:ir.model,name:report_xml.model_report_report_xml_abstract
+#, fuzzy
+msgid "Abstract XML Report"
+msgstr "Informe XML abstracte"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_declaration
+msgid ""
+"Add `<?xml encoding=\"...\" version=\"...\"?>` at the start of final report "
+"file."
+msgstr ""
+"Afegiu `<?xml encoding=\"...\" version=\"...\"?>` al començament de la "
+"darrera fila de l'informe."
+
+#. module: report_xml
+#: model:ir.actions.report,name:report_xml.demo_xml_report
+msgid "Demo xml report"
+msgstr "Informe XML de demo"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_encoding
+msgid ""
+"Encoding for XML reports. If nothing is selected, then UTF-8 will be applied."
+msgstr ""
+"Codificació per informes XML. Si no es selecciona res es farà servir UTF-8."
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_extension
+msgid "Extension for XML Reports, by default is `xml`"
+msgstr ""
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xsd_schema
+msgid ""
+"File with XSD Schema for checking content of result report. Can be empty if "
+"validation is not required."
+msgstr ""
+"Fitxer amb esquema XSD per a comprovar el contingut de l'informe resultant. "
+"Pot restar buit si no es requereix validació."
+
+#. module: report_xml
+#: model:ir.model,name:report_xml.model_ir_actions_report
+msgid "Report Action"
+msgstr "Acció d'informe"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr "Tipus d'informe"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+"El tipus de l'informe que serà renderitzat, cadascun amb el seu propi mètode "
+"de renderització. HTML significa que l'informe s'obrirà directament al "
+"navegador. ODF significa que l'informe es renderitzarà fent servir "
+"Wkhtmltopdf i serà descarregat pel usuari."
+
+#. module: report_xml
+#: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__xml_encoding__utf-8
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. module: report_xml
+#: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__report_type__qweb-xml
+msgid "XML"
+msgstr "XML"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_declaration
+msgid "XML Declaration"
+msgstr "Declaració XML"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_encoding
+msgid "XML Encoding"
+msgstr "Codificació XML"
+
+#. module: report_xml
+#: model_terms:ir.ui.view,arch_db:report_xml.ir_actions_report_view_form_report_xml
+msgid "XML Rreport Settings"
+msgstr "Configuració informe XML"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
+msgid "XSD Validation Schema"
+msgstr "Esquema de validació XSD"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_extension
+msgid "Xml Extension"
+msgstr ""
+
+#~ msgid "'Demo xml report'"
+#~ msgstr "'Informe XML de demo'"
+
+#~ msgid "Display Name"
+#~ msgstr "Nom a mostrar"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Darrera modificació el"
