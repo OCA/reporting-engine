@@ -21,11 +21,11 @@ class ReportAction(models.Model):
         report_sudo = self._get_report(report_ref)
         report_model_name = "report.%s" % report_sudo.report_name
         report_model = self.env[report_model_name]
-        ret = (
-            report_model.with_context(active_model=report_sudo.model)
-            .sudo(False)
-            .create_xlsx_report(docids, data)  # noqa
-        )
+        ret = report_model.with_context(
+            active_model=report_sudo.model
+        ).create_xlsx_report(
+            docids, data
+        )  # noqa
         if ret and isinstance(ret, (tuple, list)):  # data, "xlsx"
             report_sudo.save_xlsx_report_attachment(docids, ret[0])
         return ret
