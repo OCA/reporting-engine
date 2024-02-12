@@ -9,19 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-13 02:43+0000\n"
-"PO-Revision-Date: 2017-07-13 02:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2024-02-12 10:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_report_report_xml_abstract
 msgid "Abstract XML Report"
-msgstr ""
+msgstr "Report XML astratto"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_declaration
@@ -29,22 +30,26 @@ msgid ""
 "Add `<?xml encoding=\"...\" version=\"...\"?>` at the start of final report "
 "file."
 msgstr ""
+"Aggiungere `<?xml encoding=\"...\" version=\"...\"?>` all'inizio del file "
+"resoconto finale."
 
 #. module: report_xml
 #: model:ir.actions.report,name:report_xml.demo_xml_report
 msgid "Demo xml report"
-msgstr ""
+msgstr "Resoconto XML demo"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_encoding
 msgid ""
 "Encoding for XML reports. If nothing is selected, then UTF-8 will be applied."
 msgstr ""
+"Codifica per i resoconti XML. Se non è selezionato nulla, verrà applicato "
+"UTF-8."
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_extension
 msgid "Extension for XML Reports, by default is `xml`"
-msgstr ""
+msgstr "Estensione per resoconto XML, predefinito 'xml'"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xsd_schema
@@ -52,18 +57,18 @@ msgid ""
 "File with XSD Schema for checking content of result report. Can be empty if "
 "validation is not required."
 msgstr ""
+"File con schema XSD per il controllo del contenuto del resoconto risultato. "
+"Può essere vuoto se la validazione non è richiesta."
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Report"
+msgstr "Azione resoconto"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
-#, fuzzy
 msgid "Report Type"
-msgstr "Report"
+msgstr "Tipo resoconto"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__report_type
@@ -73,42 +78,45 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Il tipo di resoconto che verrà generato, ognuno avente il suo metodo di "
+"generazione. HTML vuol dire che il resoconto sarà aperto direttamente nel "
+"tuo browser mentre PDF vuol dire che il resoconto sarà generato usando "
+"Wkhtmltopdf e scaricato dall'utente."
 
 #. module: report_xml
 #: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__xml_encoding__utf-8
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. module: report_xml
 #: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__report_type__qweb-xml
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_declaration
 msgid "XML Declaration"
-msgstr ""
+msgstr "Dichiarazione XML"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_encoding
 msgid "XML Encoding"
-msgstr ""
+msgstr "Codifica XML"
 
 #. module: report_xml
 #: model_terms:ir.ui.view,arch_db:report_xml.ir_actions_report_view_form_report_xml
-#, fuzzy
 msgid "XML Rreport Settings"
-msgstr "Report"
+msgstr "Impostazioni resoconto XML"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
 msgid "XSD Validation Schema"
-msgstr ""
+msgstr "Schema validazione XSD"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_extension
 msgid "Xml Extension"
-msgstr ""
+msgstr "Estensione XML"
 
 #, fuzzy
 #~ msgid "ir.actions.report"
