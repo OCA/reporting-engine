@@ -1,0 +1,63 @@
+<odoo>
+    <template id="minimal_layout" inherit_id="web.minimal_layout" priority="100">
+        <script t-if="subst" position="replace">
+            <script t-if="subst">
+                function subst() {
+                    var vars = {};
+                    var x = document.location.search.substring(1).split('&amp;');
+                    for (var i in x) {
+                        var z = x[i].split('=', 2);
+                        vars[z[0]] = unescape(z[1]);
+                    }
+                    var x = ['sitepage', 'sitepages', 'section', 'subsection', 'subsubsection'];
+                    var z = {'sitepage': 'page', 'sitepages': 'topage'};
+                    for (var i in x) {
+                        var y = document.getElementsByClassName(z[x[i]] || x[i])
+                        for (var j=0; j&lt;y.length; ++j)
+                            y[j].textContent = vars[x[i]];
+                    }
+
+                    var index = vars['webpage'].split('.', 4)[3];
+                    var header = document.getElementById('minimal_layout_report_headers');
+                    if(header){
+                        var companyHeader = header.children[index];
+                        header.textContent = '';
+                        header.appendChild(companyHeader);
+                    }
+                    var footer = document.getElementById('minimal_layout_report_footers');
+                    if(footer){
+                        var companyFooter = footer.children[index];
+                        footer.textContent = '';
+                        footer.appendChild(companyFooter);
+                    }
+
+                    var operations = {
+                        'not-first-page': function (elt) {
+                            elt.style.visibility = (vars.sitepage == vars.frompage) ? "hidden" : "visible";
+                        },
+                        'not-last-page': function (elt) {
+                            elt.style.visibility = (vars.sitepage == vars.sitepages) ? "hidden" : "visible";
+                        },
+                        'first-page': function (elt) {
+                            elt.style.visibility = (vars.sitepage == vars.frompage) ? "visible" : "hidden";
+                        },
+                        'last-page': function (elt) {
+                            elt.style.visibility = (vars.sitepage == vars.sitepages) ? "visible" : "hidden";
+                        },
+                        'single-page': function (elt) {
+                            elt.style.display = (vars.sitepages === 1) ? "inherit" : "none";
+                        },
+                        'multi-page': function (elt) {
+                            elt.style.display = (vars.sitepages > 1) ? "inherit" : "none";
+                        },
+                    };
+                    for (var klass in operations) {
+                        var y = document.getElementsByClassName(klass);
+                        for (var j=0; j&lt;y.length; ++j)
+                            operations[klass](y[j]);
+                    }
+                }
+            </script>
+        </script>
+    </template>
+</odoo>
