@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2023-06-20 11:10+0000\n"
+"PO-Revision-Date: 2024-02-19 12:39+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -25,51 +25,51 @@ msgstr ""
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%(model_name)s Access %(full_name)s"
-msgstr ""
+msgstr "%(model_name)s Accesso %(full_name)s"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%s (Copy)"
-msgstr ""
+msgstr "%s (copia)"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "Access %s"
-msgstr ""
+msgstr "Accesso %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
-msgstr ""
+msgstr "Context azione"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Azione richiesta"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Action Settings"
-msgstr ""
+msgstr "Impostazioni azione"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__group_ids
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Gruppi consentiti"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__user_ids
 msgid "Allowed Users"
-msgstr ""
+msgstr "Utenti consentiti"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Conteggio allegati"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__available
@@ -79,17 +79,17 @@ msgstr "Disponibile"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__avg
 msgid "Average"
-msgstr ""
+msgstr "Media"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
 msgid "BI SQL View"
-msgstr ""
+msgstr "Vista SQL BI"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
 msgid "Bi SQL View Field"
-msgstr ""
+msgstr "Campo vista SQL BI"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__group_operator
@@ -97,12 +97,17 @@ msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
 msgstr ""
+"In modo predefinito, Odoo sommerà i valori qando raggruppa. Se si desidera "
+"modificare il comportamento, scegliere un operatore raggruppamento "
+"alternativo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid ""
 "Check this box if you want to create a 'group by' option in the search view"
 msgstr ""
+"Selezionare questa opzione se si vuole creare una opzione 'raggruppa per' "
+"nella vista ricerca"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_index
