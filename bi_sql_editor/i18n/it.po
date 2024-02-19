@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2024-01-18 09:34+0000\n"
+"PO-Revision-Date: 2024-02-19 15:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
 msgid "%(model_name)s Access %(full_name)s"
-msgstr "%(model_name)s accesso %(full_name)s"
+msgstr "%(model_name)s Accesso %(full_name)s"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -271,7 +271,7 @@ msgid ""
 "For 'Many2one' Odoo field.\n"
 " Comodel of the field."
 msgstr ""
-"Percampi Odoo 'Many2one'.\n"
+"Per campi Odoo 'Many2one'.\n"
 " Comodel del campo."
 
 #. module: bi_sql_editor
@@ -808,7 +808,7 @@ msgid ""
 "to draft."
 msgstr ""
 "Si possono scollegare solo le viste in bozza. Se si vogliono cancellare, "
-"impstarle prima a bozza."
+"impostarle prima a bozza."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
