@@ -1,0 +1,75 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_qweb_pdf_watermark
+#
+# Translators:
+# Hans Henrik Gabelgaard <hhg@gabelgaard.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-10 03:40+0000\n"
+"PO-Revision-Date: 2017-01-10 03:40+0000\n"
+"Last-Translator: Hans Henrik Gabelgaard <hhg@gabelgaard.org>, 2017\n"
+"Language-Team: Danish (https://www.transifex.com/oca/teams/23907/da/)\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+msgid ""
+"An expression yielding the base64 encoded data to be used as watermark. \n"
+"You have access to variables `env` and `docs`"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
+#, fuzzy
+msgid "Report Action"
+msgstr "Rapport"
+
+#. module: report_qweb_pdf_watermark
+#: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_company_form
+msgid ""
+"Upload an pdf file to use as an Company watermark. You need to activate the "
+"setting 'use company watermark' on the reports where you want to use it."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+msgid "Upload an pdf file to use as an watermark on this report."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use Company Watermark"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use the pdf watermark defined globally in the company settings."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
+msgid "Watermark"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
+msgid "Watermark Demo report"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+msgid "Watermark expression"
+msgstr ""
