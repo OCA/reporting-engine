@@ -49,9 +49,7 @@ class ReportController(report.ReportController):
                 ("Content-Length", len(csv)),
             ]
             return request.make_response(csv, headers=csvhttpheaders)
-        return super(ReportController, self).report_routes(
-            reportname, docids, converter, **data
-        )
+        return super().report_routes(reportname, docids, converter, **data)
 
     @route()
     def report_download(self, data, context=None):
@@ -87,8 +85,7 @@ class ReportController(report.ReportController):
                 report = request.env["ir.actions.report"]._get_report_from_name(
                     reportname
                 )
-                filename = "%s.%s" % (report.name, "csv")
-
+                filename = f"{report.name}.{report_type}"
                 if docids:
                     ids = [int(x) for x in docids.split(",")]
                     obj = request.env[report.model].browse(ids)
@@ -96,13 +93,13 @@ class ReportController(report.ReportController):
                         report_name = safe_eval(
                             report.print_report_name, {"object": obj, "time": time}
                         )
-                        filename = "%s.%s" % (report_name, "csv")
+                        filename = f"{report_name}.{report_type}"
                 response.headers.add(
                     "Content-Disposition", content_disposition(filename)
                 )
                 return response
             else:
-                return super(ReportController, self).report_download(data, context)
+                return super().report_download(data, context)
         except Exception as e:
             _logger.exception("Error while generating report %s", reportname)
             se = _serialize_exception(e)
