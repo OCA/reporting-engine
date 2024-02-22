@@ -369,7 +369,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:3d970690227b2dd444c5359798ce3ea5be684d6fbc82504e90694e193e738938
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/report_csv"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_csv"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/17.0/report_csv"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_csv"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>This module provides a basic report class to generate csv report.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
@@ -387,22 +387,27 @@ ul.auto-toc {
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
-<p>In case the exported CSV report should be encoded in another system than UTF-8, following
-fields of the report record (<em>Settings &gt; Technical &gt; Reports</em>) should be populated accordingly.</p>
+<p>In case the exported CSV report should be encoded in another system than
+UTF-8, following fields of the report record (<em>Settings &gt; Technical &gt;
+Reports</em>) should be populated accordingly.</p>
 <ul class="simple">
 <li>Encoding: set an encoding system (such as cp932)</li>
 <li>Encode Error Handling: select ‘Ignore’ or ‘Replace’ as necessary.<ul>
-<li>‘Ignore’: in case of an encoding error, the problematic character will be removed from the exported file.</li>
-<li>‘Replace’: in case of an encoding error, the problematic character will be replaced with ‘?’ symbol.</li>
-<li>Leaving the field blank: in case of an encoding error, the report generation fails with an error message.</li>
+<li>‘Ignore’: in case of an encoding error, the problematic character
+will be removed from the exported file.</li>
+<li>‘Replace’: in case of an encoding error, the problematic character
+will be replaced with ‘?’ symbol.</li>
+<li>Leaving the field blank: in case of an encoding error, the report
+generation fails with an error message.</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
-<p>An example of CSV report for partners on a module called <cite>module_name</cite>:</p>
-<p>A python class</p>
+<p>An example of CSV report for partners on a module called
+`module_name`:</p>
+<p>A python class :</p>
 <pre class="literal-block">
 from odoo import models
 
@@ -426,7 +431,7 @@ class PartnerCSV(models.AbstractModel):
         res['quoting'] = csv.QUOTE_ALL
         return res
 </pre>
-<p>A report XML record</p>
+<p>A report XML record :</p>
 <pre class="literal-block">
 &lt;report
     id=&quot;partner_csv&quot;
@@ -445,7 +450,7 @@ class PartnerCSV(models.AbstractModel):
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_csv%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_csv%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -475,7 +480,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/report_csv">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/17.0/report_csv">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>

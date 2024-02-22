@@ -11,6 +11,8 @@ from odoo.http import (
     content_disposition,
     request,
     route,
+)
+from odoo.http import (
     serialize_exception as _serialize_exception,
 )
 from odoo.tools import html_escape
@@ -73,8 +75,9 @@ class ReportController(report.ReportController):
                         url_decode(url.split("?")[1]).items()
                     )  # decoding the args represented in JSON
                     if "context" in data:
-                        context, data_context = json.loads(context or "{}"), json.loads(
-                            data.pop("context")
+                        context, data_context = (
+                            json.loads(context or "{}"),
+                            json.loads(data.pop("context")),
                         )
                         context = json.dumps({**context, **data_context})
                     response = self.report_routes(

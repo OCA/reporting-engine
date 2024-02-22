@@ -48,7 +48,6 @@ class TestReport(common.TransactionCase):
         self.assertEqual(self.docs.name, dict(dict_report[0])["name"])
 
     def test_id_retrieval(self):
-
         # Typical call from WebUI with wizard
         objs = self.csv_report._get_objs_for_report(
             False, {"context": {"active_ids": self.docs.ids}}
