@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="sql_export_partner" model="sql.export">
+        <field name="name">Export Partners (Demo Data)</field>
+        <field name="query"><![CDATA[
+SELECT name, street
+FROM res_partner;
+]]>
+        </field>
+    </record>
+
+    <function
+        model="sql.export"
+        name="button_validate_sql_expression"
+        eval="([ref('sql_export.sql_export_partner')])"
+    />
+
+    <record id="sql_export_partner_with_variables" model="sql.export">
+        <field name="name">Export Partners With Variables (Demo Data)</field>
+        <field
+            name="query"
+        ><![CDATA[
+SELECT p.id
+FROM res_partner p
+LEFT JOIN res_partner_res_partner_category_rel rel
+    ON rel.partner_id = p.id
+            WHERE create_date > %(Date)s
+AND id = %(ID)s
+AND rel.category_id in %(Categories)s
+]]>
+        </field>
+        <field
+            name="query_properties_definition"
+            eval="[{'name': '630eca383bc142e6', 'type': 'date', 'string': 'Date'}, {'name': '907ac618eccbab74', 'type': 'integer', 'string': 'ID'}, {'name': 'ec0556e22932334b', 'string': 'Categories', 'type': 'many2many', 'default': False, 'comodel': 'res.partner.category', 'domain': False}]"
+        />
+    </record>
+
+</odoo>

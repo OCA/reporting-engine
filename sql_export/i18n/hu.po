@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sql_export
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-06 02:51+0000\n"
+"PO-Revision-Date: 2017-06-06 02:51+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Hungarian (https://www.transifex.com/oca/teams/23907/hu/)\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_file_wizard
+msgid "Allow the user to save the file with sql request's data"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
+msgid "Allowed Groups"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
+msgid "Allowed Users"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__file_format__csv
+msgid "CSV"
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Cancel"
+msgstr "Mégsem"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid "Configure Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
+msgid "Copy Options"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_uid
+msgid "Created by"
+msgstr "Készítette"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_date
+msgid "Created on"
+msgstr "Létrehozás dátuma"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Csv File"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__display_name
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__display_name
+msgid "Display Name"
+msgstr "Név megjelenítése"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__encoding
+msgid "Encoding"
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
+msgid "Execute Query"
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Export"
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Export file"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
+msgid "File"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__file_format
+msgid "File Format"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__file_name
+msgid "File Name"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_group_changed
+msgid "Has Group Changed"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__id
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid ""
+"In case of use of properties in the query, use this syntax : %(Property "
+"String)s. <br/>\n"
+"                                Example : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export____last_update
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard____last_update
+msgid "Last Modified on"
+msgstr "Utolsó frissítés dátuma"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Utoljára frissítve, által"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
+msgid "Last Updated on"
+msgstr "Utoljára frissítve "
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__name
+msgid "Name"
+msgstr "Név"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__note
+msgid "Note"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sql_export
+#. odoo-python
+#: code:addons/sql_export/wizard/wizard_file.py:0
+#, python-format
+msgid "Please enter a values for the following properties : %s"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__query_properties
+msgid "Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query
+msgid "Query"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
+msgid "Query Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
+msgid "SQL Exports"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_export
+msgid "SQL export"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
+#: model:ir.ui.menu,name:sql_export.sql_export_menu_view
+msgid "Sql Export"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__state
+msgid "State"
+msgstr "Állapot"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__state
+msgid ""
+"State of the Request:\n"
+" * 'Draft': Not tested\n"
+" * 'SQL Valid': SQL Request has been checked and is valid"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
+msgid "Use Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__query
+msgid ""
+"You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__big5
+msgid "big5"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__gb18030
+msgid "gb18030"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__koir8_r
+msgid "koir8_r"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin1
+msgid "latin1"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin2
+msgid "latin2"
+msgstr ""
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "or"
+msgstr "vagy"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
+msgid "shift_jis"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-16
+msgid "utf-16"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-8
+msgid "utf-8"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1251
+msgid "windows-1251"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
+msgid "windows-1252"
+msgstr ""
+
+#~ msgid "Set to Draft"
+#~ msgstr "Beállítás tervezetnek"
+
+#~ msgid "Draft"
+#~ msgstr "Tervezet"
