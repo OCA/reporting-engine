@@ -38,21 +38,24 @@ class Report(models.Model):
     pdf_watermark_expression = fields.Char(
         "Watermark expression",
         help="An expression yielding the base64 "
-        "encoded data to be used as watermark. \n"
-        "You have access to variables `env` and `docs`",
+             "encoded data to be used as watermark. \n"
+             "You have access to variables `env` and `docs`",
     )
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         original_report_ref = report_ref
-        if 'duplicate' in report_ref:
-            report_ref = report_ref.split('_duplicate')[0]
+        if "duplicate" in report_ref:
+            report_ref = report_ref.split("_duplicate")[0]
         if not self.env.context.get("res_ids"):
-            return super(Report, self.with_context(res_ids=res_ids, original_report_ref=original_report_ref))._render_qweb_pdf(
-                report_ref, res_ids=res_ids, data=data
-            )
-        return super(Report, self.with_context(original_report_ref=original_report_ref))._render_qweb_pdf(
-            report_ref, res_ids=res_ids, data=data
-        )
+            return super(
+                Report,
+                self.with_context(
+                    res_ids=res_ids, original_report_ref=original_report_ref
+                ),
+            )._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
+        return super(
+            Report, self.with_context(original_report_ref=original_report_ref)
+        )._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
 
     def pdf_has_usable_pages(self, numpages):
         if numpages < 1:
@@ -89,7 +92,9 @@ class Report(models.Model):
         docids = self.env.context.get("res_ids", False)
         report_sudo = self._get_report(report_ref)
         if self.env.context.get("original_report_ref"):
-            original_report_sudo = self._get_report(self.env.context.get("original_report_ref"))
+            original_report_sudo = self._get_report(
+                self.env.context.get("original_report_ref")
+            )
             if original_report_sudo:
                 report_sudo = original_report_sudo
         watermark = None
