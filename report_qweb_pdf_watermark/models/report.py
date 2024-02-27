@@ -38,8 +38,8 @@ class Report(models.Model):
     pdf_watermark_expression = fields.Char(
         "Watermark expression",
         help="An expression yielding the base64 "
-             "encoded data to be used as watermark. \n"
-             "You have access to variables `env` and `docs`",
+        "encoded data to be used as watermark. \n"
+        "You have access to variables `env` and `docs`",
     )
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
