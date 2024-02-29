@@ -12,13 +12,6 @@
                     hideKanbanOption="1"
                     required="1"
                 />
-                    <separator
-                    string="Export file"
-                    colspan="4"
-                    attrs="{'invisible': [('binary_file', '=', False)]}"
-                />
-                    <field name="binary_file" filename="file_name" />
-                    <field name="file_name" invisible="1" />
                     <field name="sql_export_id" invisible="1" />
                     <footer>
                         <button
