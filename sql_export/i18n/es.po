@@ -107,11 +107,6 @@ msgid "Export"
 msgstr "Exportar"
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
-msgid "Export file"
-msgstr "Exportar archivo"
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
 msgid "File"
 msgstr "Archivo"
@@ -374,6 +369,9 @@ msgstr "windows-1251"
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
 msgstr "windows-1252"
+
+#~ msgid "Export file"
+#~ msgstr "Exportar archivo"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Error en la entrega de SMS"

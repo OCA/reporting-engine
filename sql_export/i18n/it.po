@@ -105,11 +105,6 @@ msgid "Export"
 msgstr "Esporta"
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
-msgid "Export file"
-msgstr "Esporta file"
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
 msgid "File"
 msgstr "File"
@@ -168,8 +163,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : %("
-"Property String)s. <br/>\n"
+"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : "
+"%(Property String)s. <br/>\n"
 "                                Esempio : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 
@@ -373,6 +368,9 @@ msgstr "windows-1251"
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
 msgstr "windows-1251"
+
+#~ msgid "Export file"
+#~ msgstr "Esporta file"
 
 #~ msgid "Set to Draft"
 #~ msgstr "Imposta a Bozza"
