@@ -17,26 +17,27 @@ Report Wkhtmltopdf Param
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_wkhtmltopdf_param
+    :target: https://github.com/OCA/reporting-engine/tree/17.0/report_wkhtmltopdf_param
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_wkhtmltopdf_param
+    :target: https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_wkhtmltopdf_param
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows you to add new parameters for a paper format which are
-then forwarded to wkhtmltopdf command as arguments. To display the arguments
-that wkhtmltopdf accepts go to your command line and type 'wkhtmltopdf -H'.
+This module allows you to add new parameters for a paper format which
+are then forwarded to wkhtmltopdf command as arguments. To display the
+arguments that wkhtmltopdf accepts go to your command line and type
+'wkhtmltopdf -H'.
 
-A commonly used parameter in Odoo is *--disable-smart-shrinking*, that will
-disable the automatic resizing of the PDF when converting. This is
-important when you intend to have a layout that conforms to certain alignment.
-It is very common whenever you need to conform the PDF to a predefined
-layoyut (e.g. checks, official forms,...).
+A commonly used parameter in Odoo is *--disable-smart-shrinking*, that
+will disable the automatic resizing of the PDF when converting. This is
+important when you intend to have a layout that conforms to certain
+alignment. It is very common whenever you need to conform the PDF to a
+predefined layoyut (e.g. checks, official forms,...).
 
 **Table of contents**
 
@@ -46,10 +47,11 @@ layoyut (e.g. checks, official forms,...).
 Usage
 =====
 
-#. Go to *Settings* and press 'Activate the developer mode (with assets)'
-#. Go to *Settings - Technical - Reports - Paper Format*
-#. Add additional parameters indicating the command argument name (remember to
-   add prefix -- or -) and value.
+1. Go to *Settings* and press 'Activate the developer mode (with
+   assets)'
+2. Go to *Settings - Technical - Reports - Paper Format*
+3. Add additional parameters indicating the command argument name
+   (remember to add prefix -- or -) and value.
 
 Bug Tracker
 ===========
@@ -57,7 +59,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_wkhtmltopdf_param%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_wkhtmltopdf_param%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -65,21 +67,21 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Avoin.Systems
 * Eficent
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Miku Laitinen <miku@avoin.systems>
-* Jordi Ballester <jordi.ballester@eficent.com>
-* Saran Lim. <saranl@ecosoft.co.th>
-* Foram Shah <foramshah@initos.com>
+-  Miku Laitinen <miku@avoin.systems>
+-  Jordi Ballester <jordi.ballester@eficent.com>
+-  Saran Lim. <saranl@ecosoft.co.th>
+-  Foram Shah <foramshah@initos.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -91,6 +93,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_wkhtmltopdf_param>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/17.0/report_wkhtmltopdf_param>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
