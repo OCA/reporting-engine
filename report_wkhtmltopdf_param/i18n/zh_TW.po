@@ -57,11 +57,6 @@ msgid "ID"
 msgstr "編號"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
-msgid "Last Modified on"
-msgstr "最後修改:"
-
-#. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_uid
 msgid "Last Updated by"
 msgstr "最後更新："
@@ -105,3 +100,6 @@ msgstr ""
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
 msgid "wkhtmltopdf parameters"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "最後修改:"

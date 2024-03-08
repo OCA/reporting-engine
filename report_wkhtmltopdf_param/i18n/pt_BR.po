@@ -60,11 +60,6 @@ msgid "ID"
 msgstr "Identificação"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
-msgid "Last Modified on"
-msgstr "Última atualização em"
-
-#. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_uid
 msgid "Last Updated by"
 msgstr "Última atualização por"
@@ -108,3 +103,6 @@ msgstr "Valor"
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
 msgid "wkhtmltopdf parameters"
 msgstr "parâmetros wkhtmltopdf"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última atualização em"
