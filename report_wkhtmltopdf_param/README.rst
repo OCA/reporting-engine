@@ -79,6 +79,15 @@ Contributors
 -  Jordi Ballester <jordi.ballester@eficent.com>
 -  Saran Lim. <saranl@ecosoft.co.th>
 -  Foram Shah <foramshah@initos.com>
+-  `Trobz <https://www.trobz.com>`__:
+
+   -  Tris Doan <tridm@trobz.com>
+
+Other credits
+-------------
+
+The migration of this module from 16.0 to 17.0 was financially supported
+by Camptocamp
 
 Maintainers
 -----------
