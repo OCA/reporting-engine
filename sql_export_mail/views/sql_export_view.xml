@@ -21,8 +21,8 @@
                     groups="base.group_system"
                 />
             </field>
-            <page name="page_sql" position="after">
-                <page name="page_mail" string="Mail">
+            <group name="request" position="after">
+                <group name="page_mail" string="Mail">
                         <group string="Users Notified by e-mail">
                             <field
                             name="mail_user_ids"
@@ -40,8 +40,8 @@
                         />
                         </group>
 
-                </page>
-            </page>
+                </group>
+            </group>
         </field>
     </record>
 
