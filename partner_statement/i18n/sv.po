@@ -279,7 +279,7 @@ msgstr "Åldringsrapport av"
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Aging Report at %(end)s in %(currency)s"
-msgstr "Åldersrapport vid %(slut)s i %(valuta)s"
+msgstr "Åldersrapport vid %(end)s i %(currency)s"
 
 #. module: partner_statement
 #. odoo-python
