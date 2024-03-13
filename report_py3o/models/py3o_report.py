@@ -320,16 +320,14 @@ class Py3oReport(models.TransientModel):
 
     def _zip_results(self, reports_path):
         self.ensure_one()
-        zfname_prefix = self.ir_actions_report_id.name
         fd, result_path = tempfile.mkstemp(suffix="zip", prefix="py3o-zip-result")
         os.close(fd)
         with ZipFile(result_path, "w", ZIP_DEFLATED) as zf:
-            cpt = 0
-            for report in reports_path:
-                fname = "%s_%d.%s" % (zfname_prefix, cpt, report.split(".")[-1])
+            for report_instance, report in reports_path.items():
+                fname = self.ir_actions_report_id.gen_report_download_filename(
+                    report_instance.ids, {}
+                )
                 zf.write(report, fname)
-
-                cpt += 1
         return result_path
 
     @api.model
@@ -353,12 +351,13 @@ class Py3oReport(models.TransientModel):
     def _merge_results(self, reports_path):
         self.ensure_one()
         filetype = self.ir_actions_report_id.py3o_filetype
+        path_list = list(reports_path.values())
         if not reports_path:
             return False, False
         if len(reports_path) == 1:
-            return reports_path[0], filetype
+            return path_list[0], filetype
         if filetype == formats.FORMAT_PDF:
-            return self._merge_pdf(reports_path), formats.FORMAT_PDF
+            return self._merge_pdf(path_list), formats.FORMAT_PDF
         else:
             return self._zip_results(reports_path), "zip"
 
@@ -374,22 +373,23 @@ class Py3oReport(models.TransientModel):
     def create_report(self, res_ids, data):
         """Override this function to handle our py3o report"""
         model_instances = self.env[self.ir_actions_report_id.model].browse(res_ids)
-        reports_path = []
+        reports_path = {}
         if len(res_ids) > 1 and self.ir_actions_report_id.py3o_multi_in_one:
-            reports_path.append(self._create_single_report(model_instances, data))
+            reports_path[model_instances] = self._create_single_report(
+                model_instances, data
+            )
         else:
             existing_reports_attachment = self.ir_actions_report_id._get_attachments(
                 res_ids
             )
             for model_instance in model_instances:
-                reports_path.append(
-                    self._get_or_create_single_report(
-                        model_instance, data, existing_reports_attachment
-                    )
+                reports_path[model_instance] = self._get_or_create_single_report(
+                    model_instance, data, existing_reports_attachment
                 )
 
         result_path, filetype = self._merge_results(reports_path)
-        reports_path.append(result_path)
+        cleanup_path = list(reports_path.values())
+        cleanup_path.append(result_path)
 
         # Here is a little joke about Odoo
         # we do all the generation process using files to avoid memory
@@ -398,5 +398,5 @@ class Py3oReport(models.TransientModel):
 
         with open(result_path, "r+b") as fd:
             res = fd.read()
-        self._cleanup_tempfiles(set(reports_path))
+        self._cleanup_tempfiles(set(cleanup_path))
         return res, filetype
