@@ -8,7 +8,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Generic Modules",
-    "depends": ["queue_job"],
+    "depends": ["queue_job", "spreadsheet_dashboard"],
     "data": [
         "security/ir.model.access.csv",
         "security/ir_rule.xml",
