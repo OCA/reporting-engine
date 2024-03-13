@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="kpi_dashboard_menu_form_view">
+        <field name="name">kpi.dashboard.menu.form (in kpi_dashboard)</field>
+        <field name="model">kpi.dashboard.menu</field>
+        <field name="arch" type="xml">
+            <form string="Generate Menu">
+                <group>
+                    <field name="dashboard_id" invisible="1" />
+                    <field name="menu_id" />
+                </group>
+                <footer>
+                    <button
+                        name="generate_menu"
+                        string="Generate"
+                        class="btn-primary"
+                        type="object"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="kpi_dashboard_menu_act_window">
+        <field name="name">Kpi Dashboard Menu</field>
+        <field name="res_model">kpi.dashboard.menu</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
