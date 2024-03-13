@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2024 Camptocamp SA (https://www.camptocamp.com).
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <template id="report_layout" inherit_id="web.report_layout">
+        <html position="attributes">
+            <attribute
+                name="t-att-data-report-paperformat"
+            >data_report_paperformat</attribute>
+        </html>
+    </template>
+
+    <template id="report_preview_layout" inherit_id="web.report_preview_layout">
+        <html position="attributes">
+            <attribute
+                name="t-att-data-report-paperformat"
+            >data_report_paperformat</attribute>
+        </html>
+    </template>
+
+</odoo>
