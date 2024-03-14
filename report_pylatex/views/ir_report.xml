@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    © 2017 Creu Blanca
+    License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
+    -->
+
+    <record id="act_report_xml_view_report_inherit_form" model="ir.ui.view">
+         <field name="name">act.report.xml.view.report.inherit.form</field>
+         <field name="model">ir.actions.report</field>
+         <field name="inherit_id" ref="base.act_report_xml_view"/>
+         <field name="arch" type="xml">
+            <xpath expr="//button[@name='associated_view']" position="attributes">
+                <attribute name="attrs">{'invisible':[('report_type', 'not in', ['pylatex'])]}</attribute>
+            </xpath>
+            <page name="advanced" position="after">
+                <page name="latex" string="LatexReport" attrs="{'invisible':[('report_type', 'not in', ['pylatex'])]}" >
+                    <field name="report_code"
+                           nolabel="1"
+                           widget="ace"
+                           options="{'mode': 'python'}"
+                           style="min-height:1000px;width:100%"/>
+                </page>
+            </page>
+            
+         </field>
+    </record>
+</odoo>
