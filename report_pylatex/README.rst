@@ -68,6 +68,9 @@ For example, to replace the native invoice report by a custom py3o report, add t
       <field name="report_type">pylatex</field>
       <field name="module">my_custom_module_base</field>
       <field name="report_code">
+
+.. code::
+
 def generate_unique(self, record_id, data):
     import pylatex
     geometry_options = {
@@ -187,7 +190,9 @@ def generate_unique(self, record_id, data):
             else:
                 data_table.add_row(row)
     #
-    return doc      
+    return doc 
+
+.. code::
       </field>
   </record>
 
@@ -199,14 +204,20 @@ where *my_custom_module_base* is the name of the custom Odoo module.
 Usage
 =====
 
-The templating language is `extensively documented <http://py3otemplate.readthedocs.io/en/latest/templating.html>`_, the records are exposed in libreoffice as ``objects``, on which you can also call functions.
+The templating language is `extensively documented <https://jeltef.github.io/PyLaTeX/current/>`,
 
 Available functions and objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. code::
+# manage Image from the filed binary content
+tmp_img_path = getImagePathFromContent(field_content) 
 
+# if the field is false return empty string
+getEmptyIfNot(self, record_brw, field_name)
 
-
+# get a minpage from the res_partner object  
+def get_partner_address_minipage(self, partner_id, fields=[])
 
 
 Known issues / Roadmap

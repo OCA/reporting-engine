@@ -233,7 +233,7 @@ class ReportAction(models.Model):
             return value
         return ''
         
-    def get_partner_address_minipage(self, partner_id, fields=[], width=''):
+    def get_partner_address_minipage(self, partner_id, fields=[]):
         minipage = pylatex.MiniPage()
         if 'name' in fields or not fields:
             minipage.append(f"{partner_id.name}")
