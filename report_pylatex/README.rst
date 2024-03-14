@@ -51,8 +51,8 @@ Install the required python libs:
 .. code::
 
   pip install PyLatex [Already in __manifest__]
-  sudo apt-get install latexmk for better rendering
-
+  sudo apt-get install latexmk          for better rendering
+  sudo apt-get install texlive-full     for a complete latex support
 
 Configuration
 =============

@@ -3,9 +3,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 import os
 import re
-import tempfile
-import logging
+import time
 import base64
+import logging
+import tempfile
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 import xml.etree.cElementTree as ElementTree
@@ -58,13 +59,13 @@ def generate_unique(self, record_id, data):
     with doc.create(pylatex.Tabu("X[l] X[r]")) as first_page_table:
         customer = pylatex.MiniPage(width=NoEscape(r"0.49\textwidth"), pos='h')
         customer.append("Verna Volcano")
-        customer.append("\n")
+        customer.append(pylatex.LineBreak())
         customer.append("For some Person")
         customer.append("\n")
         customer.append("Address1")
-        customer.append("\n")
+        customer.append(pylatex.LineBreak())
         customer.append("Address2")
-        customer.append("\n")
+        customer.append(pylatex.LineBreak())
         customer.append("Address3")
 
         # Add branch information
@@ -95,7 +96,7 @@ def generate_unique(self, record_id, data):
                 width=NoEscape(r"0.25\textwidth"),
                 pos='t')
             branch_address.append("960 - 22nd street east")
-            branch_address.append("\n")
+            branch_address.append(pylatex.LineBreak())
             branch_address.append("Saskatoon, SK")
 
             document_details = pylatex.MiniPage(width=pylatex.utils.NoEscape(r"0.25\textwidth"),
@@ -212,7 +213,13 @@ class ReportAction(models.Model):
         doc = locals()['generate_unique'](self, record_id, data) 
         #
         pdf_file = os.path.join(tempfile._get_default_tempdir(), next(tempfile._get_candidate_names()))
-        doc.generate_pdf(filepath=pdf_file, clean_tex=False)
+        try:
+            doc.generate_pdf(filepath=pdf_file, clean_tex=False)
+        except Exception as ex:
+            logging.error(ex)
+            time.sleep(1)
+            if os.path.exists(pdf_file):
+                raise ex
         documentContent = None
         with open(f"{pdf_file}.pdf",'rb') as f:
             documentContent = f.read()
@@ -239,16 +246,16 @@ class ReportAction(models.Model):
         minipage = pylatex.MiniPage()
         if 'name' in fields or not fields:
             minipage.append(f"{partner_id.name}")
-            minipage.append("\n")
+            minipage.append(pylatex.LineBreak())
         if 'street' in fields or not fields:
             minipage.append(f"{partner_id.street}")
-            minipage.append("\n")
+            minipage.append(pylatex.LineBreak())
         if 'zip' in fields or not fields:
             minipage.append(f"{partner_id.zip} {partner_id.city}")
-            minipage.append("\n")
+            minipage.append(pylatex.LineBreak())
         if 'state' in fields or not fields:
             minipage.append(f"{partner_id.state_id.display_name}")
-            minipage.append("\n")
+            minipage.append(pylatex.LineBreak())
         if 'country' in fields or not fields:
             minipage.append(f"{partner_id.country_id.display_name}")
         return minipage
