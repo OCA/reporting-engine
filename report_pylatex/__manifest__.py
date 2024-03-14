@@ -44,7 +44,7 @@ https://jeltef.github.io/PyLaTeX/latest/faq.html
      ],
     "assets": {
         "web.assets_backend": [
-            "pylatex_report/static/src/js/report/action_manager_report.js"
+            "report_pylatex/static/src/js/report/action_manager_report.js"
         ],
     },
     'installable': True,
