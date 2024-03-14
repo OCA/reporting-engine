@@ -1,5 +1,5 @@
 ==================
-Py3o Report Engine
+PyLatex Report Engine
 ==================
 
 .. 
@@ -28,22 +28,15 @@ Py3o Report Engine
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-The py3o reporting engine is a reporting engine for Odoo based on `Libreoffice <http://www.libreoffice.org/>`_:
+The PyLatex reporting engine is a reporting engine for Odoo based on `PyLatex Libraty <https://pypi.org/project/PyLaTeX/>`_:
 
-* the report is created with Libreoffice (ODT or ODS),
-* the report is stored on the server in OpenDocument format (.odt or .ods file)
-* the report is sent to the user in OpenDocument format or in any output format supported by Libreoffice (PDF, HTML, DOC, DOCX, Docbook, XLS, etc.)
+* the report is created in pdf format,
 
-The key advantages of a Libreoffice based reporting engine are:
 
-* no need to be a developer to create or modify a report: the report is created and modified with Libreoffice. So this reporting engine has a full WYSIWYG report development tool!
-* For a PDF report in A4/Letter format, it's easier to develop it with a tool such as Libreoffice that is designed to create A4/Letter documents than to develop it in HTML/CSS, also some print peculiarities (backgrounds, margin boxes) are not very well supported by the HTML/CSS based solutions.
-* If you want your users to be able to modify the document after its generation by Odoo, just configure the document with ODT output (or DOC or DOCX) and the user will be able to modify the document with Libreoffice (or Word) after its generation by Odoo.
-* Easy development of spreadsheet reports in ODS format (XLS output possible).
+The key advantages of a PyLatex based reporting engine are:
 
-This module *report_py3o* is the base module for the Py3o reporting engine. If used alone, it will spawn a libreoffice process for each ODT to PDF (or ODT to DOCX, ..) document conversion. This is slow and can become a problem if you have a lot of reports to convert from ODT to another format. In this case, you should consider the additionnal module *report_py3o_fusion_server* which is designed to work with a libreoffice daemon. With *report_py3o_fusion_server*, the technical environnement is more complex to setup because you have to install additionnal software components and run 2 daemons, but you have much better performances and you can configure the libreoffice PDF export options in Odoo (allows to generate PDF forms, PDF/A documents, password-protected PDFs, watermarked PDFs, etc.).
+* The possibility to use the Latex language to produce PDF document 
 
-This reporting engine is an alternative to `Aeroo <https://github.com/aeroo-community/aeroo_reports>`_: these two reporting engines have similar features but their implementation is entirely different. You cannot use aeroo templates as drop in replacement though, you'll have to change a few details.
 
 **Table of contents**
 
@@ -57,14 +50,9 @@ Install the required python libs:
 
 .. code::
 
-  pip install py3o.template
-  pip install py3o.formats
+  pip install PyLatex [Already in __manifest__]
+  sudo apt-get install latexmk for better rendering
 
-To allow the conversion of ODT or ODS reports to other formats (PDF, DOC, DOCX, etc.), install libreoffice:
-
-.. code::
-
-  apt-get --no-install-recommends install libreoffice
 
 Configuration
 =============
@@ -77,88 +65,136 @@ For example, to replace the native invoice report by a custom py3o report, add t
   <odoo>
 
   <record id="account.account_invoices" model="ir.actions.report">
-      <field name="report_type">py3o</field>
-      <field name="py3o_filetype">odt</field>
+      <field name="report_type">pylatex</field>
       <field name="module">my_custom_module_base</field>
-      <field name="py3o_template_fallback">report/account_invoice.odt</field>
+      <field name="report_code">
+def generate_unique(self, record_id, data):
+    import pylatex
+    geometry_options = {
+        "head": "40pt",
+        "margin": "0.5in",
+        "bottom": "0.6in",
+        "includeheadfoot": True
+    }
+    
+    doc = pylatex.Document(geometry_options=geometry_options)
+    #
+    # Configure heder
+    #
+    first_page = pylatex.PageStyle("firstpage")
+    #
+    # Header image
+    #
+    with first_page.create(pylatex.Head("L")) as header_left:
+        with header_left.create(pylatex.MiniPage(width=pylatex.utils.NoEscape(r"0.49\textwidth"),
+                                         pos='c')) as title_wrapper:
+            title_wrapper.append(pylatex.SmallText(pylatex.utils.bold(f"{record_id.company_id.name} • {record_id.company_id.street} • {record_id.company_id.zip} {record_id.company_id.city}")))                             
+                                           
+
+    # Add document title
+    with first_page.create(pylatex.Head("R")) as right_header:
+        with right_header.create(pylatex.MiniPage(width=NoEscape(r"0.49\textwidth"),
+                                 pos='c', align='r')) as title_wrapper:
+            logo_file = self.getImagePathFromContent(record_id.company_id.logo)
+            title_wrapper.append(pylatex.StandAloneGraphic(image_options="width=120px",
+                               filename=logo_file))
+            title_wrapper.append("\n")
+            title_wrapper.append(pylatex.LargeText(pylatex.utils.bold(record_id.partner_id.display_name)))
+            title_wrapper.append(pylatex.LineBreak())
+            title_wrapper.append(pylatex.MediumText(pylatex.utils.bold(record_id.date_order)))
+    
+    doc.preamble.append(first_page)
+    #
+    #Add customer information
+    with doc.create(pylatex.Tabu("X[l] X[r]")) as first_page_table:
+        customer = pylatex.MiniPage(width=NoEscape(r"0.49\textwidth"), pos='h')
+        customer.append("Verna Volcano")
+        customer.append("\n")
+        customer.append("For some Person")
+        customer.append("\n")
+        customer.append("Address1")
+        customer.append("\n")
+        customer.append("Address2")
+        customer.append("\n")
+        customer.append("Address3")
+
+        # Add branch information
+        branch = pylatex.MiniPage(width=NoEscape(r"0.49\textwidth"), pos='t!',
+                          align='r')
+        branch.append("Branch no.")
+        branch.append(pylatex.LineBreak())
+        branch.append(pylatex.utils.bold("1181..."))
+        branch.append(pylatex.LineBreak())
+        branch.append(pylatex.utils.bold("TIB Cheque"))
+
+        first_page_table.add_row([customer, branch])
+        first_page_table.add_empty_row()
+    
+    # Add footer
+    with first_page.create(pylatex.Foot("C")) as footer:
+        message = "Important message please read"
+        with footer.create(pylatex.Tabularx(
+                "X X X X",
+                width_argument=pylatex.utils.NoEscape(r"\textwidth"))) as footer_table:
+
+            footer_table.add_row(
+                [pylatex.MultiColumn(4, align='l', data=pylatex.TextColor("blue", message))])
+            footer_table.add_hline(color="blue")
+            footer_table.add_empty_row()
+
+            branch_address = pylatex.MiniPage(
+                width=NoEscape(r"0.25\textwidth"),
+                pos='t')
+            branch_address.append("960 - 22nd street east")
+            branch_address.append("\n")
+            branch_address.append("Saskatoon, SK")
+
+            document_details = pylatex.MiniPage(width=pylatex.utils.NoEscape(r"0.25\textwidth"),
+                                        pos='t', align='r')
+            document_details.append("1000")
+            document_details.append(pylatex.LineBreak())
+            document_details.append(pylatex.simple_page_number())
+
+            footer_table.add_row([branch_address, branch_address,
+                                  branch_address, document_details])
+    doc.change_document_style("firstpage")
+    
+    #
+    # Add statement table
+    #
+    with doc.create(pylatex.LongTabu("X[l] X[2l] X[r] X[r] X[r] X[r]",
+                             row_height=1.5)) as data_table:
+        data_table.add_row(["Position",
+                            "Name",
+                            "Description",
+                            "Qty",
+                            "UnitPrice",
+                            "RawPrice"],
+                           mapper=pylatex.utils.bold,
+                           color="lightgray")
+        data_table.add_empty_row()
+        data_table.add_hline()
+        for i, sale_order_line in enumerate(record_id.order_line):
+            row = [sale_order_line.sequence,
+                   sale_order_line.product_id.display_name,
+                   sale_order_line.name,
+                   sale_order_line.product_uom_qty,
+                   sale_order_line.price_unit,
+                   sale_order_line.price_subtotal
+                   ]
+            if (i % 2) == 0:
+                data_table.add_row(row, color="lightgray")
+            else:
+                data_table.add_row(row)
+    #
+    return doc      
+      </field>
   </record>
 
   </odoo>
 
-where *my_custom_module_base* is the name of the custom Odoo module. In this example, the invoice ODT file is located in *my_custom_module_base/report/account_invoice.odt*.
+where *my_custom_module_base* is the name of the custom Odoo module. 
 
-It's also possible to reference a template located in a trusted path of your
-Odoo server. In this case you must let the *module* entry empty and specify
-the path to the template as *py3o_template_fallback*.
-
-.. code::
-
-  <?xml version="1.0" encoding="utf-8"?>
-  <odoo>
-
-  <record id="account.account_invoices" model="ir.actions.report">
-      <field name="report_type">py3o</field>
-      <field name="py3o_filetype">odt</field>
-      <field name="py3o_template_fallback">/odoo/templates/py3o/report/account_invoice.odt</field>
-  </record>
-
-  </odoo>
-
-Moreover, you must also modify the Odoo server configuration file to declare
-the allowed root directory for your py3o templates. Only templates located
-into this directory can be loaded by py3o report.
-
-.. code::
-
-  [options]
-  ...
-
-  [report_py3o]
-  root_tmpl_path=/odoo/templates/py3o
-
-If you want an invoice in PDF format instead of ODT format, the XML file should look like:
-
-.. code::
-
-  <?xml version="1.0" encoding="utf-8"?>
-  <odoo>
-
-  <record id="account.account_invoices" model="ir.actions.report">
-      <field name="report_type">py3o</field>
-      <field name="py3o_filetype">pdf</field>
-      <field name="module">my_custom_module_base</field>
-      <field name="py3o_template_fallback">report/account_invoice.odt</field>
-  </record>
-
-  </odoo>
-
-If you want to add a new py3o PDF report (and not replace a native report), the XML file should look like this:
-
-.. code::
-
-  <?xml version="1.0" encoding="utf-8"?>
-  <odoo>
-
-  <record id="partner_summary_report" model="ir.actions.report">
-      <field name="name">Partner Summary</field>
-      <field name="model">res.partner</field>
-      <field name="report_name">res.partner.summary</field>
-      <field name="report_type">py3o</field>
-      <field name="py3o_filetype">pdf</field>
-      <field name="module">my_custom_module_base</field>
-      <field name="py3o_template_fallback">report/partner_summary.odt</field>
-      <!-- Add entry in "Print" drop-down list -->
-      <field name="binding_type">report</field>
-      <field name="binding_model_id" ref="base.model_res_partner"/>
-  </record>
-
-  </odoo>
-
-Configuration parameters
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-py3o.conversion_command
-    The command to be used to run the conversion, ``libreoffice`` by default. If you change this, whatever you set here must accept the parameters ``--headless --convert-to $ext $file`` and put the resulting file into ``$file``'s directory with extension ``$ext``. The command will be started in ``$file``'s directory.
 
 Usage
 =====
@@ -168,37 +204,17 @@ The templating language is `extensively documented <http://py3otemplate.readthed
 Available functions and objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-user
-    Browse record of current user
-lang
-    The user's company's language as string (ISO code)
-b64decode
-    ``base64.b64decode``
-format_multiline_value(string)
-    Generate the ODF equivalent of ``<br/>`` and ``&nbsp;`` for multiline fields (ODF is XML internally, so those would be skipped otherwise)
-html_sanitize(string)
-    Sanitize HTML string
-time
-    Python's ``time`` module
-display_address(partner)
-    Return a formatted string of the partner's address
-o_format_lang(value, lang_code=False, digits=None, grouping=True, monetary=False, dp=False, currency_obj=False, no_break_space=True)
-    Return a formatted numeric or monetary value according to the context language and timezone
-o_format_date(value, lang_code=False, date_format=False)
-    Return a formatted date or time value according to the context language and timezone
 
 
-Sample report templates
-~~~~~~~~~~~~~~~~~~~~~~~
 
-Sample py3o report templates for the main Odoo native reports (invoice, sale order, purchase order, picking, etc.) are available on the Github project `odoo-py3o-report-templates <https://github.com/akretion/odoo-py3o-report-templates>`_.
+
 
 Known issues / Roadmap
 ======================
 
-* generate barcode ?
-* add more detailed example in demo file to showcase features
-* add migration guide aeroo -> py3o
+
+* Manage multi report now it works only for one record at the time
+
 
 Bug Tracker
 ===========
@@ -216,19 +232,13 @@ Credits
 Authors
 ~~~~~~~
 
-* XCG Consulting
-* ACSONE SA/NV
+* OmniaSolutions
+
 
 Contributors
 ~~~~~~~~~~~~
 
-* Florent Aide (`XCG Consulting <http://odoo.consulting/>`_)
-* Laurent Mignon <laurent.mignon@acsone.eu>,
-* Alexis de Lattre <alexis.delattre@akretion.com>,
-* Guewen Baconnier <guewen.baconnier@camptocamp.com>
-* Omar Castiñeira <omar@comunitea.com>
-* Holger Brunn <hbrunn@therp.nl>
-* Phuc Tran Thanh <phuc@trobz.com>
+* Matteo Boscolo <matteo.boscolo@omniasolutions.eu>
 
 Maintainers
 ~~~~~~~~~~~
