@@ -80,10 +80,7 @@ For example, to replace the native invoice report by a custom pylatex report, ad
 
 def generate_unique(self, record_id, data):
     import pylatex
-    geometry_options = {"head": "40pt", \
-                        "margin": "0.5in", \
-                        "bottom": "0.6in", \
-                        "includeheadfoot": True}
+    geometry_options = {"head": "40pt", "margin": "0.5in", "bottom": "0.6in", "includeheadfoot": True}
     doc = pylatex.Document(geometry_options=geometry_options)
     #
     # Configure heder
