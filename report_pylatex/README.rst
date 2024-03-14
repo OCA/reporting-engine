@@ -17,10 +17,10 @@ PyLatex Report Engine
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_py3o
+    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_pylatex
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_py3o
+    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_pylatex
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
     :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
@@ -57,9 +57,9 @@ Install the required python libs:
 Configuration
 =============
 
-For example, to replace the native invoice report by a custom py3o report, add the following XML file in your custom module:
+For example, to replace the native invoice report by a custom pylatex report, add the following XML file in your custom module:
 
-.. code::
+.. code-block:: XML 
 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
@@ -68,8 +68,15 @@ For example, to replace the native invoice report by a custom py3o report, add t
       <field name="report_type">pylatex</field>
       <field name="module">my_custom_module_base</field>
       <field name="report_code">
+      def generate_unique(self, record_id, data):
+        import pylatex
+        doc = pylatex.Document()
+        return doc
+      </field>
+  </record>
+  </odoo>
 
-.. code::
+.. code-block: PYTHON
 
 def generate_unique(self, record_id, data):
     import pylatex
@@ -79,7 +86,6 @@ def generate_unique(self, record_id, data):
         "bottom": "0.6in",
         "includeheadfoot": True
     }
-    
     doc = pylatex.Document(geometry_options=geometry_options)
     #
     # Configure heder
@@ -191,13 +197,6 @@ def generate_unique(self, record_id, data):
                 data_table.add_row(row)
     #
     return doc 
-
-.. code::
-      </field>
-  </record>
-
-  </odoo>
-
 where *my_custom_module_base* is the name of the custom Odoo module. 
 
 
@@ -233,7 +232,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_py3o%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_pylatex%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -264,6 +263,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_py3o>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_pylatex>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

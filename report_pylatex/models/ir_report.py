@@ -198,6 +198,8 @@ class ReportAction(models.Model):
             #
             # TODO Use Pypdf2 to merge the file
             #
+            # aggiungere gli allegati mergiati
+            #
             break
         return pdf_content,'pdf'
 
