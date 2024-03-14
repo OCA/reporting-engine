@@ -63,20 +63,19 @@ For example, to replace the native invoice report by a custom pylatex report, ad
 
   <?xml version="1.0" encoding="utf-8"?>
   <odoo>
-
-  <record id="account.account_invoices" model="ir.actions.report">
-      <field name="report_type">pylatex</field>
-      <field name="module">my_custom_module_base</field>
-      <field name="report_code">
-      def generate_unique(self, record_id, data):
-        import pylatex
-        doc = pylatex.Document()
-        return doc
-      </field>
-  </record>
+      <record id="account.account_invoices" model="ir.actions.report">
+          <field name="report_type">pylatex</field>
+          <field name="module">my_custom_module_base</field>
+          <field name="report_code">
+          def generate_unique(self, record_id, data):
+            import pylatex
+            doc = pylatex.Document()
+            return doc
+          </field>
+      </record>
   </odoo>
 
-.. code-block: PYTHON
+.. code-block:: PYTHON
 
 def generate_unique(self, record_id, data):
     import pylatex
