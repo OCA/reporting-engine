@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-21 05:51+0000\n"
-"PO-Revision-Date: 2024-01-18 09:36+0000\n"
+"PO-Revision-Date: 2024-03-15 15:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/"
 "OCA-reporting-engine-8-0/language/it/)\n"
@@ -353,7 +353,7 @@ msgstr "Left Join"
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view__line_ids
 msgid "Lines"
-msgstr "Linee"
+msgstr "Righe"
 
 #. module: bi_view_editor
 #. openerp-web
