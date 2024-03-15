@@ -241,17 +241,20 @@ class ReportAction(models.Model):
         return os.path.join(tmp_folder , next(tempfile._get_candidate_names()))
         
     def getImagePathFromContent(self, content):
-        img_file = f"{self.tmpFolderName}.png"
-        with open(img_file, 'wb') as f:
-            f.write(base64.b64decode(content))
-        return img_file
+        return self.getPathFromContent(content,'png')
 
     def getPathFromContent(self, content, exte):
         img_file = f"{self.tmpFolderName}.{exte}"
         with open(img_file, 'wb') as f:
             f.write(base64.b64decode(content))
         return img_file
-        
+    
+    def StandAloneGraphic(self,
+                          field_content,
+                          **args):
+        args['filename'] = self.getImagePathFromContent(field_content)
+        return pylatex.StandAloneGraphic(**args)
+
     def getEmptyIfNot(self, record, field_name):
         value = getattr(record, field_name)
         if value:

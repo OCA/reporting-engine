@@ -209,7 +209,14 @@ tmp_img_path = getImagePathFromContent(field_content)
 #get the path of a generic binary content
 tmp_img_path = getPathFromContent(content, exte)
 
-
+#get PyLatexStandAloneGraphic object 
+def StandAloneGraphic(self,
+                      field_content,
+                      **args)
+es:
+    img = self.StandAloneGraphic(record_id.company_id.logo,
+                                 image_options="width=200px")
+#
 # if the field is false return empty string
 getEmptyIfNot(self, record_brw, field_name)
 
