@@ -1,8 +1,9 @@
 # Copyright (C) 2019 Creu Blanca
 # Copyright (C) 2024 Matteo Boscolo
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
-
+import os
 import json
+import shutil
 import logging
 
 from werkzeug.exceptions import InternalServerError
@@ -18,6 +19,7 @@ from odoo.tools import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 
 from odoo.addons.web.controllers import report
+import tempfile
 _logger = logging.getLogger(__name__)
 
 class ReportController(report.ReportController):
@@ -39,9 +41,24 @@ class ReportController(report.ReportController):
                 if data["context"].get("lang"):
                     del data["context"]["lang"]
                 context.update(data["context"])
-            pdf = report.with_context(**context)._render_pylatex(docids,
-                                                                 data=data
-                                                                 )[0]
+            tmp_folder = tempfile.tempdir
+            try:
+                tmp_folder = os.path.join(tmp_folder,
+                                         f"PyLatex_{reportname}{next(tempfile._get_candidate_names())}")
+                os.makedirs(tmp_folder)
+            except OSError:
+                pass
+            context['pylatex_tmp_folder'] = tmp_folder
+            #
+            try:
+                pdf = report.with_context(**context)._render_pylatex(docids,
+                                                                     data=data
+                                                                     )[0]
+                if not report.pylatex_debug:
+                    shutil.rmtree(tmp_folder, ignore_errors=True)
+            except Exception as ex:
+                raise ex
+            #
             csvhttpheaders = [
                 ("Content-Type", "text/pdf"),
                 ("Content-Length", len(pdf)),

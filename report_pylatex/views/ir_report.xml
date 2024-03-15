@@ -15,6 +15,9 @@
             </xpath>
             <page name="advanced" position="after">
                 <page name="latex" string="LatexReport" attrs="{'invisible':[('report_type', 'not in', ['pylatex'])]}" >
+                    <group>
+                        <field name="pylatex_debug"/>
+                    </group>
                     <field name="report_code"
                            nolabel="1"
                            widget="ace"

@@ -26,7 +26,7 @@ Technical : Improve odoo reporting to also use pylatex for report generation
 https://jeltef.github.io/PyLaTeX/latest/faq.html
 ============================================================================
     """,
-    'version': '16.0.1',
+    'version': '16.0.2',
     'sequence':1,
     'author': 'OmniaSolutions',
     "license": "AGPL-3",

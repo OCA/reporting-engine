@@ -150,7 +150,11 @@ class ReportAction(models.Model):
     
     report_code = fields.Text('Report Code',
                               default=template_report)
-
+    pylatex_debug = fields.Boolean("PyLate Debug",
+                                   help="""
+                                   if set to true all the file generate by PyLatex will remain in the /tmp folder
+                                   for debuggin
+                                   """)
     @api.model
     def _get_report_from_name(self, report_name):
         report_obj = self.env["ir.actions.report"]
@@ -212,7 +216,7 @@ class ReportAction(models.Model):
         #
         doc = locals()['generate_unique'](self, record_id, data) 
         #
-        pdf_file = os.path.join(tempfile._get_default_tempdir(), next(tempfile._get_candidate_names()))
+        pdf_file = self.tmpFolderName
         try:
             doc.generate_pdf(filepath=pdf_file, clean_tex=False)
         except Exception as ex:
@@ -229,9 +233,21 @@ class ReportAction(models.Model):
             logging.error(ex)
         return documentContent   
     
+    @property
+    def tmpFolderName(self):
+        tmp_folder = self.env.context.get('pylatex_tmp_folder')
+        if not tmp_folder:
+            tmp_folder = tempfile._get_default_tempdir()
+        return os.path.join(tmp_folder , next(tempfile._get_candidate_names()))
+        
     def getImagePathFromContent(self, content):
-        img_file = os.path.join(tempfile._get_default_tempdir(), next(tempfile._get_candidate_names()))
-        img_file = f"{img_file}.png"
+        img_file = f"{self.tmpFolderName}.png"
+        with open(img_file, 'wb') as f:
+            f.write(base64.b64decode(content))
+        return img_file
+
+    def getPathFromContent(self, content, exte):
+        img_file = f"{self.tmpFolderName}.{exte}"
         with open(img_file, 'wb') as f:
             f.write(base64.b64decode(content))
         return img_file
