@@ -1,5 +1,6 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
+# Copyright 2024 Simone Rubino - Aion Tech
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import Command
 from odoo.exceptions import ValidationError
@@ -184,3 +185,28 @@ class TestCommentTemplate(common.TransactionCase):
         self.assertTrue(
             "base_comment_template_ids" in self.env["res.partner"]._commercial_fields()
         )
+
+    def test_search_model_ids_model(self):
+        """Searching by "model_ids.model"
+        finds the comments matching the search criteria."""
+        # Arrange
+        comment_template_model = self.env["base.comment.template"]
+        user_ir_model = self.user_obj
+        user_model_name = user_ir_model.model
+        user_comments_by_model_ids = comment_template_model.search(
+            [
+                ("model_ids", "=", user_model_name),
+            ]
+        )
+        # pre-condition
+        self.assertTrue(user_comments_by_model_ids)
+
+        # Act
+        user_comments_by_models_path = comment_template_model.search(
+            [
+                ("model_ids.model", "=", user_model_name),
+            ]
+        )
+
+        # Assert
+        self.assertEqual(user_comments_by_model_ids, user_comments_by_models_path)
