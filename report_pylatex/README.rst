@@ -206,6 +206,10 @@ Available functions and objects
 # manage Image from the filed binary content
 tmp_img_path = getImagePathFromContent(field_content) 
 
+#get the path of a generic binary content
+tmp_img_path = getPathFromContent(content, exte)
+
+
 # if the field is false return empty string
 getEmptyIfNot(self, record_brw, field_name)
 
