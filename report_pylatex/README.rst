@@ -198,6 +198,7 @@ Usage
 =====
 
 The templating language is `extensively documented <https://jeltef.github.io/PyLaTeX/current/>`,
+Setting pepersize and margin https://www.overleaf.com/learn/latex/Page_size_and_margins
 
 Available functions and objects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

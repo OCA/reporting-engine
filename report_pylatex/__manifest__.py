@@ -34,7 +34,7 @@ https://jeltef.github.io/PyLaTeX/latest/faq.html
     'website': 'http://www.omniasolutions.website',
     "category": "Reporting",
     'depends': ["base","mail"],
-    'external_dependencies': {'python': ['pylatex']},
+    'external_dependencies': {'python': ['pylatex','cssutils','more_itertools','lxml','cssutils']},
     'data': [# security
              # views
              'views/ir_report.xml',
