@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2021-03-09 18:45+0000\n"
-"Last-Translator: Ana Suárez <ana.suarez@qubiq.es>\n"
+"PO-Revision-Date: 2024-03-28 00:00+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: bi_sql_editor
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
@@ -81,7 +81,7 @@ msgstr "Disponible"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__avg
 msgid "Average"
-msgstr ""
+msgstr "Promedio"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
@@ -99,6 +99,8 @@ msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
 msgstr ""
+"De forma predeterminada, Odoo sumará los valores al agrupar. Si desea "
+"modificar el comportamiento, elija un operador de grupo alternativo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
@@ -132,12 +134,12 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
 msgid "Computed Action Context"
-msgstr ""
+msgstr "Contexto de Acción Calculado"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Computed Context"
-msgstr ""
+msgstr "Contexto Calculado"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -169,7 +171,7 @@ msgstr "Cron Task que refrescará la vista materializada"
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Custom Context"
-msgstr ""
+msgstr "Contexto Personalizado"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__size
@@ -186,7 +188,6 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
-#, fuzzy
 msgid ""
 "Define here access restriction to data.\n"
 " Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
@@ -194,11 +195,11 @@ msgid ""
 " ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
 "False)]."
 msgstr ""
-"Defina aquí restricciones de acceso a los datos.\n"
-" Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
-"created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+"Defina aquí la restricción de acceso a los datos.\n"
+" Asegúrese de utilizar un nombre de campo precedido por \"x_\". Se creará "
+"una regla global. Una regla multiempresa típica es, por ejemplo \n"
+" ['|', ('x_company_id','child_of', [user.company_id."
+"id]),('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
