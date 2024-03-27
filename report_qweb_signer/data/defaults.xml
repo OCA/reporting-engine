@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record model="ir.config_parameter" id="report_qweb_signer_java_param">
+        <field name="key">report_qweb_signer.java_parameters</field>
+        <field name="value">-Xms16M -Xmx16M -XX:CompressedClassSpaceSize=256m</field>
+    </record>
+    <record model="ir.config_parameter" id="report_qweb_signer_java_position_param">
+        <field name="key">report_qweb_signer.java_position_parameters</field>
+        <field name="value">-llx 400 -lly 820 -urx 600 -ury 100  -fs 8</field>
+    </record>
+</odoo>
