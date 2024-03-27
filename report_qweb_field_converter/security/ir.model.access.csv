@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qweb_field_converter_all,access.qweb.field.converter.all,model_qweb_field_converter,,1,0,0,0
+access_qweb_field_converter_admin,access.qweb.field.converter.admin,model_qweb_field_converter,base.group_system,1,1,1,1
