@@ -8,7 +8,7 @@
     "category": "Reporting",
     "version": "16.0.2.0.0",
     "license": "AGPL-3",
-    "depends": ["base", "web"],
+    "depends": ["base", "web", "report_format_option"],
     "demo": ["demo/report.xml"],
     "data": ["views/ir_actions_views.xml"],
     "assets": {
