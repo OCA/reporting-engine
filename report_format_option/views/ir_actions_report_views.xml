@@ -6,13 +6,19 @@
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='report_type']" position="after">
+                <field name="show_encoding" invisible="1" />
                 <field
                     name="encoding"
-                    attrs="{'invisible': [('report_type', '!=', 'csv')]}"
+                    attrs="{'invisible': [('show_encoding', '=', False)]}"
                 />
                 <field
                     name="encode_error_handling"
                     attrs="{'invisible': [('encoding', '=', False)]}"
+                />
+                <field name="show_line_ending" invisible="1" />
+                <field
+                    name="line_ending"
+                    attrs="{'invisible': [('show_line_ending', '=', False)]}"
                 />
             </xpath>
         </field>
