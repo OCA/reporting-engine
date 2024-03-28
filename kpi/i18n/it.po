@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
-"PO-Revision-Date: 2023-06-08 12:11+0000\n"
+"PO-Revision-Date: 2024-03-29 01:08+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -148,7 +148,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "History"
-msgstr "Storico"
+msgstr "Cronologia"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_history
