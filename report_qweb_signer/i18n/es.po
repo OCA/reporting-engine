@@ -11,14 +11,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-16 01:44+0000\n"
-"PO-Revision-Date: 2018-02-16 01:44+0000\n"
-"Last-Translator: enjolras <yo@miguelrevilla.com>, 2017\n"
+"PO-Revision-Date: 2024-03-31 01:56+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
@@ -28,7 +29,7 @@ msgstr "<span>Informe de ejemplo para probar certificados PDF.</span>"
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<strong>Partner:</strong>"
-msgstr ""
+msgstr "<strong>Socio:</strong>"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__allow_only_one
@@ -38,7 +39,7 @@ msgstr "Sólo un documento"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__action_report_ids
 msgid "Allowed reports"
-msgstr ""
+msgstr "Informes permitidos"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
@@ -90,12 +91,12 @@ msgstr "Dominio para filrar si firmar o no el documento"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "E-mail address to include in PDF digital signature."
-msgstr ""
+msgstr "Dirección de correo electrónico para incluir en la firma digital PDF."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__endesive
 msgid "Endesive"
-msgstr ""
+msgstr "Endesiva"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__attachment
@@ -125,7 +126,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__java
 msgid "Java"
-msgstr ""
+msgstr "Java"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
@@ -148,6 +149,8 @@ msgstr "Última actualización el"
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Location to include in digital signature (typically, a city name). "
 msgstr ""
+"Ubicación que se incluirá en la firma digital (normalmente, el nombre de una "
+"ciudad). "
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
@@ -200,19 +203,17 @@ msgstr ""
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Reason text to include in digital signature."
-msgstr ""
+msgstr "Texto de la razón para incluir en la firma digital."
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Informe"
+msgstr "Informar Acción"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report_certificate
-#, fuzzy
 msgid "Report Certificate"
-msgstr "report.certificate"
+msgstr "Informe Certificado"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__action_report_ids
@@ -220,6 +221,8 @@ msgid ""
 "Reports to sign for the selected model.No report selected means all reports "
 "are allowed."
 msgstr ""
+"Informes a firmar para el modelo seleccionado. Si no se selecciona ningún "
+"informe, todos los informes están permitidos."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__attachment
@@ -244,22 +247,22 @@ msgstr "Secuencia"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "Signature e-mail"
-msgstr ""
+msgstr "Correo electrónico de firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Signature location"
-msgstr ""
+msgstr "Localización de la firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Signature reason"
-msgstr ""
+msgstr "Razón de la firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__signing_method
 msgid "Signing Method"
-msgstr ""
+msgstr "Método de Firma"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
