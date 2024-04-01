@@ -7,9 +7,12 @@ import lxml.html
 from lxml.cssselect import CSSSelector, ExpressionError
 import cssutils
 import re
+import uuid
 import argparse
 import os.path
 import logging
+from urllib.parse import urljoin
+import urllib.request
 #
 cssutils.log.setLevel(logging.CRITICAL)
 
@@ -41,24 +44,57 @@ def handle_paragraph(el, parser):
     out="\\begin{center}"
     for child in el:
         out+=parser.element2latex(child)
-    out+="\\end{center}"
+    out+="\\end{center}\n"
     return out
 
 def handle_table(table, parser):
     out =''
     for row in table.findall(".//tr"):
         th_s = [parser.element2latex(cell,ignore=['p']) for cell in row.findall(".//th")]
-        td_s = [parser.element2latex(cell,ignore=['p']) for cell in row.findall(".//td")]
+        td_s = [parser.element2latex(cell,) for cell in row.findall(".//td")]
         if not out:
             column_header_def = " c" * max(len(th_s),len(td_s))
-            out+=r"\begin{longtable}{" + column_header_def +"}"
+            out+=r"\begin{longtable}{" + column_header_def + "}\n"
         if th_s:
-            out+="&".join(th_s) + r"\\"
+            out+=" & ".join(th_s) + r"\\"+"\n"
         if td_s:
-            out+="&".join(td_s) + r"\\"
-    out+= r"\end{longtable}"
+            out+=" & ".join(td_s) + r"\\" + "\n"
+    out+= r"\end{longtable}"+"\n"
     return out
-    
+
+def handle_font(font, parser):
+    out=''
+    style_dict = {}
+    for pair in font.attrib['style'].split(";"):
+        split_pair = pair.split(":")
+        if len(split_pair)>=2:
+            style_dict[split_pair[0]]=split_pair[1]
+    for font_content in font:
+        out+="{"
+        color = style_dict.get('color')
+        if color:
+            tmp_color_name = parser.tmp_name
+            if 'rgb' in color:
+                colors=color.replace("rgb(","").replace(")","").split(",")
+                out+="\definecolor{" + tmp_color_name + "}{rgb}{" +f"{colors}".replace("[","").replace("]","").replace("'","").replace('"',"") + "}"
+            else:
+                tmp_color_name=color
+            out+="\color{" +tmp_color_name+ "}"
+        out+=parser.element2latex(font_content)
+        out+="}"
+    return out
+
+def handle_image(img, parser):
+    out=None
+    src = img.attrib['src']
+    if src:
+        src_path = urljoin(parser._report.env['ir.config_parameter'].get_param('web.base.url'),
+                           src)
+        image_path = parser._report.getTempImageName()
+        urllib.request.urlretrieve(src_path, image_path )   
+        out=r"\includegraphics{%s}" % image_path
+    return out 
+
 def s(start='',
       end='',
       ignoreStyle=False,
@@ -78,7 +114,7 @@ SECTORS = {
     'html': s('\\thispagestyle{empty}\n{\n', '\n}\n'),
     'head': s(ignoreContent=True, ignoreStyle=True),
     'body': s('\n\n', '\n\n\\clearpage\n\n'),
-    'blockquote': s('\n\\begin{quotation}', '\n\\end{quotation}'),
+    'blockquote': s('\n\\begin{quotation}', '\n\\end{quotation}\n'),
     'ol': s('\n\\begin{enumerate}', '\n\\end{enumerate}'),
     'ul': s('\n\\begin{itemize}', '\n\\end{itemize}'),
     'li': s('\n\t\\item '),
@@ -90,11 +126,18 @@ SECTORS = {
     'sup': s('\\textsuperscript{', '}'),
     'br': s('\\newline\n', ignoreStyle=True,ignoreContent=True),
     'hr': s('\\hrule\n', ignoreStyle=True,ignoreContent=True),
+    'img': s(function=handle_image,ignoreContent=True),
     #'a': s(function=handle_anchor),
     'table': s(function=handle_table,ignoreContent=True),
-   
+    'h1' : s('\\huge{','}\n\\newline\\par'),
+    'h2' : s('\\LARGE{','}\n\\newline\\par'),
+    'h3' : s('\\normalsize{','}\n\\newline\\par'),
+    'h4' : s('\\small{','}\n\\newline\\par'),
+    'h5' : s('\\scriptsize{','}\n\\newline\\par'),
+    'h6' : s('\\tiny{','}\n\\newline\\par'),
+    'font' : s(function=handle_font),
     # customized
-    #'p': s(function=handle_paragraph),
+    'p': s('\\par{','}'),
     '.chapter-name': s('\n\\noindent\\hfil\\charscale[2,0,-0.1\\nbs]{', '}\\hfil\\newline\n\\vspace*{2\\nbs}\n\n', ignoreStyle=True),
     '.chapter-number': s('\\vspace*{3\\nbs}\n\\noindent\\hfil\\charscale[1.0,0,-0.1\\nbs]{\\textsc{\\addfontfeature{Ligatures=NoCommon,LetterSpace=15}{\\strreplace{', '}{ }{}}}}\\hfil\\newline\n\\vspace*{0.0\\nbs}\n', ignoreStyle=True),
     'p.break': s('\n\n\\scenepause', ignoreStyle=True, ignoreContent=True),
@@ -160,18 +203,24 @@ STYLES = {
 
 class Html2Latex(object):
     """docstring for Html2Latex"""
-    def __init__(self, styles=STYLES,
+    def __init__(self,
+                 styles=STYLES,
                  selectors=SECTORS,
                  characters=CHARACHTER,
                  replacements_head={},
-                 replacements_tail={}):
+                 replacements_tail={},
+                 report=None):
+        self._report=report
         self.styles = styles
         self.selectors = selectors
         self.characters = characters
         self.replacements_head = replacements_head
         self.replacements_tail = replacements_tail
 
-
+    @property
+    def tmp_name(self):
+        return uuid.uuid4().hex.upper()[0:6]
+    
     def get_char(self, ent):
         for e in self.characters:
             if e.get('num') == ent or e.get('name') == ent:

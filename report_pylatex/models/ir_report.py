@@ -299,6 +299,9 @@ class ReportAction(models.Model):
         if not tmp_folder:
             tmp_folder = tempfile._get_default_tempdir()
         return os.path.join(tmp_folder , next(tempfile._get_candidate_names()))
+    
+    def getTempImageName(self, exte="png"):
+        return f"{self.tmpFolderName}.{exte}"
         
     def getImagePathFromContent(self, field_content):
         """
@@ -362,9 +365,10 @@ class ReportAction(models.Model):
                    field_name):
         html_content = self.odooGetattr(recordset, field_name)
         node = lxml.html.fromstring(html_content)
-        HtL = Html2Latex()
+        pyLtexObject.append(NoEscape('\\begingroup'))
+        HtL = Html2Latex(report=self)
         pyLtexObject.append(NoEscape(HtL.element2latex(node)))
-        
+        pyLtexObject.append(NoEscape('\\endgroup'))
         
     def add_row(self,
             pyLtexTable,
