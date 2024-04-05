@@ -44,10 +44,10 @@ class Report(models.Model):
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
-            return super(Report, self.with_context(res_ids=res_ids))._render_qweb_pdf(
+            return super().with_context(res_ids=res_ids)._render_qweb_pdf(
                 report_ref, res_ids=res_ids, data=data
             )
-        return super(Report, self)._render_qweb_pdf(
+        return super()._render_qweb_pdf(
             report_ref, res_ids=res_ids, data=data
         )
 
@@ -73,7 +73,7 @@ class Report(models.Model):
         specific_paperformat_args=None,
         set_viewport_size=False,
     ):
-        result = super(Report, self)._run_wkhtmltopdf(
+        result = super()._run_wkhtmltopdf(
             bodies,
             report_ref=report_ref,
             header=header,
