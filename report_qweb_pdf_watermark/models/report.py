@@ -44,12 +44,12 @@ class Report(models.Model):
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
-            return super().with_context(res_ids=res_ids)._render_qweb_pdf(
-                report_ref, res_ids=res_ids, data=data
+            return (
+                super()
+                .with_context(res_ids=res_ids)
+                ._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
             )
-        return super()._render_qweb_pdf(
-            report_ref, res_ids=res_ids, data=data
-        )
+        return super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
 
     def pdf_has_usable_pages(self, numpages):
         if numpages < 1:
