@@ -4,14 +4,14 @@
     "name": "Py3o Report Engine",
     "summary": "Reporting engine based on Libreoffice (ODT -> ODT, "
     "ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "category": "Reporting",
     "license": "AGPL-3",
     "author": "XCG Consulting, ACSONE SA/NV, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["web"],
     "external_dependencies": {
-        "python": ["py3o.template", "py3o.formats", "PyPDF2"],
+        "python": ["py3o.template", "py3o.formats"],
         "deb": ["libreoffice"],
     },
     "assets": {
