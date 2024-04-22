@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_csv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-04-22 22:43+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: report_csv
+#: model:ir.model,name:report_csv.model_report_report_csv_abstract
+msgid "Abstract Model for CSV reports"
+msgstr "Modelo abstracto para informes CSV"
+
+#. module: report_csv
+#: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encode_error_handling
+msgid "Encode Error Handling"
+msgstr "Tratamiento de Errores de Codificación"
+
+#. module: report_csv
+#: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__encoding
+msgid "Encoding"
+msgstr "Codificación"
+
+#. module: report_csv
+#: model:ir.model.fields,help:report_csv.field_ir_actions_report__encoding
+msgid "Encoding to be applied to the generated CSV file. e.g. cp932"
+msgstr "Codificación que se aplicará al archivo CSV generado. p. ej. cp932"
+
+#. module: report_csv
+#. odoo-python
+#: code:addons/report_csv/report/report_csv.py:0
+#, python-format
+msgid "Failed to encode the data with the encoding set in the report."
+msgstr ""
+"No se han podido codificar los datos con la codificación establecida en el "
+"informe."
+
+#. module: report_csv
+#: model:ir.model.fields,help:report_csv.field_ir_actions_report__encode_error_handling
+msgid ""
+"If nothing is selected, CSV export will fail with an error message when "
+"there is a character that fail to be encoded."
+msgstr ""
+"Si no se selecciona nada, la exportación CSV fallará con un mensaje de error "
+"cuando haya un carácter que no se pueda codificar."
+
+#. module: report_csv
+#: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__ignore
+msgid "Ignore"
+msgstr "Ignorar"
+
+#. module: report_csv
+#: model:ir.actions.report,name:report_csv.partner_csv
+msgid "Print to CSV"
+msgstr "Imprimir en CSV"
+
+#. module: report_csv
+#: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__encode_error_handling__replace
+msgid "Replace"
+msgstr "Reemplazar"
+
+#. module: report_csv
+#: model:ir.model,name:report_csv.model_ir_actions_report
+msgid "Report Action"
+msgstr "Informar Acción"
+
+#. module: report_csv
+#: model:ir.model,name:report_csv.model_report_report_csv_partner_csv
+msgid "Report Partner to CSV"
+msgstr "Reportar Socio a CSV"
+
+#. module: report_csv
+#: model:ir.model.fields,field_description:report_csv.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr "Tipo de Informe"
+
+#. module: report_csv
+#: model:ir.model.fields,help:report_csv.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+"El tipo de informe que se generará, cada uno con su propio método de "
+"generación. HTML significa que el informe se abrirá directamente en el "
+"navegador PDF significa que el informe se renderizará utilizando Wkhtmltopdf "
+"y será descargado por el usuario."
+
+#. module: report_csv
+#: model:ir.model.fields.selection,name:report_csv.selection__ir_actions_report__report_type__csv
+msgid "csv"
+msgstr "csv"
