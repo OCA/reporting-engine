@@ -69,9 +69,7 @@ msgid "Created on"
 msgstr "Erstellt am:"
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__display_name
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__display_name
 msgid "Display Name"
 msgstr "Anzeigename"
 
@@ -105,9 +103,7 @@ msgstr ""
 "gezeichnete Dokument nicht abzuspeichern."
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__id
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__id
 msgid "ID"
 msgstr "ID"
 
@@ -126,9 +122,7 @@ msgid "Java"
 msgstr ""
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company____last_update
 msgid "Last Modified on"
 msgstr "Zuletzt geändert am"
 
@@ -223,6 +217,7 @@ msgid "Save as attachment"
 msgstr "Speichere den Anhang"
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
@@ -256,22 +251,30 @@ msgid "Signing Method"
 msgstr ""
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
 msgstr "Bericht abzeichnen (PDF): Zertifikat oder Passwortdatei nicht gefunden"
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
-"%s"
+"Signing report (PDF): jPdfSign failed (error code: %(error_code)s). Message: "
+"%(message)s. Output: %(output)s"
 msgstr ""
-"Bericht abzeichnen (PDF): jPdfSign scheiterte (Fehlerkennzeichen: %s). "
-"Meldung; %s. Ausgabe: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report,name:report_qweb_signer.partner_demo_report
 msgid "Test PDF certificate"
 msgstr "Test-PDF-Zertifikat"
+
+#, python-format
+#~ msgid ""
+#~ "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. "
+#~ "Output: %s"
+#~ msgstr ""
+#~ "Bericht abzeichnen (PDF): jPdfSign scheiterte (Fehlerkennzeichen: %s). "
+#~ "Meldung; %s. Ausgabe: %s"
