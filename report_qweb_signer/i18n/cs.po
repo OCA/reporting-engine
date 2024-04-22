@@ -69,9 +69,7 @@ msgid "Created on"
 msgstr "Vytvořeno"
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__display_name
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__display_name
 msgid "Display Name"
 msgstr "Zobrazovaný název"
 
@@ -103,9 +101,7 @@ msgid ""
 msgstr ""
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__id
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__id
 msgid "ID"
 msgstr "ID"
 
@@ -122,9 +118,7 @@ msgid "Java"
 msgstr ""
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
-#: model:ir.model.fields,field_description:report_qweb_signer.field_res_company____last_update
 msgid "Last Modified on"
 msgstr "Naposled upraveno"
 
@@ -217,6 +211,7 @@ msgid "Save as attachment"
 msgstr ""
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
@@ -250,17 +245,19 @@ msgid "Signing Method"
 msgstr ""
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
 msgstr ""
 
 #. module: report_qweb_signer
+#. odoo-python
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid ""
-"Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
-"%s"
+"Signing report (PDF): jPdfSign failed (error code: %(error_code)s). Message: "
+"%(message)s. Output: %(output)s"
 msgstr ""
 
 #. module: report_qweb_signer
