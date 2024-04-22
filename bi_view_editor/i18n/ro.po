@@ -20,6 +20,13 @@ msgstr ""
 "2:1));\n"
 
 #. module: bi_view_editor
+#. odoo-javascript
+#: code:addons/bi_view_editor/static/src/components/bi_view_editor/field_list.xml:0
+#, python-format
+msgid "#{props.field.model_name} (#{props.field.model})"
+msgstr ""
+
+#. module: bi_view_editor
 #. odoo-python
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
