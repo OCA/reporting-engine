@@ -25,5 +25,4 @@
     "installable": True,
     "auto_install": False,
     "application": False,
-    "active": False,
 }
