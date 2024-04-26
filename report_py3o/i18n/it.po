@@ -1,0 +1,299 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_py3o
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-16 08:52+0000\n"
+"PO-Revision-Date: 2024-01-19 09:33+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/ir_actions_report.py:0
+#, python-format
+msgid "(Native)"
+msgstr "(nativo)"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
+msgid "Fallback"
+msgstr "Alternativa"
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/ir_actions_report.py:0
+#, python-format
+msgid "Field 'Output Format' is required for Py3O report"
+msgstr "Il campo 'Formato output' è richiesto per il resoconto Py3o"
+
+#. module: report_py3o
+#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
+msgid "File Type"
+msgstr "Tipo file"
+
+#. module: report_py3o
+#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
+msgid "Group By"
+msgstr "Raggruppa per"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_py3o
+#: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_template_fallback
+msgid ""
+"If the user does not provide a template this will be used it should be a "
+"relative path to root of YOUR module or an absolute path on your server."
+msgstr ""
+"Se l'utente non fornisce un modello, verrà utilizzato questo. Dovrebbe "
+"essere un percorso relativo alla radice del TUO modulo o un percorso "
+"assoluto sul tuo server."
+
+#. module: report_py3o
+#: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_multi_in_one
+msgid ""
+"If you execute a report on several records, by default Odoo will generate a "
+"ZIP file that contains as many files as selected records. If you enable this "
+"option, Odoo will generate instead a single report for the selected records."
+msgstr ""
+"Se si esegue un resoconto su diversi record, Odoo genererà in modo "
+"predefinito un file ZIP che contiene diversi file quanti sono i record "
+"selezionati. Se si abilita questa opzione, invece Odoo genererà un singolo "
+"resoconto per i record selezionati."
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
+msgid "Ir Actions Report"
+msgstr "Resoconto azioni ir"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_native_format
+msgid "Is Py3O Native Format"
+msgstr "È formato nativo Py3o"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_report_not_available
+msgid "Is Py3O Report Not Available"
+msgstr "Non è disponibile il resoconto Py3o"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_uid
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_date
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
+#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_report_view
+msgid "LibreOffice Template"
+msgstr "Modello LibreOffice"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__filetype
+msgid "LibreOffice Template File Type"
+msgstr "Tipo file modello LibreOffice"
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+#, python-format
+msgid "Libreoffice runtime not available. Please contact your administrator."
+msgstr "Runtime LibreOffice non disponibile. Contattare l'amministratore."
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__module
+msgid "Module"
+msgstr "Modulo"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__msg_py3o_report_not_available
+msgid "Msg Py3O Report Not Available"
+msgstr "Messaggio resoconto Py3o non disponibile"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_multi_in_one
+msgid "Multiple Records in a Single Report"
+msgstr "Record multipli in un singolo resoconto"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_py3o_template__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+#, python-format
+msgid "No template found. Aborting."
+msgstr "Nessun modello trovato. Annullamento."
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odp
+msgid "ODF Presentation"
+msgstr "Presentazione ODF"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodp
+msgid "ODF Presentation (Flat)"
+msgstr "Presentazione ODF (semplice)"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__ods
+msgid "ODF Spreadsheet"
+msgstr "Foglio di lavoro ODF"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fods
+msgid "ODF Spreadsheet (Flat)"
+msgstr "Foglio di lavoro ODF (semplice)"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odt
+msgid "ODF Text Document"
+msgstr "Documento di testo ODF"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodt
+msgid "ODF Text Document (Flat)"
+msgstr "Documento di testo ODF (semplice)"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_filetype
+msgid "Output Format"
+msgstr "Formato ODF"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__lo_bin_path
+msgid "Path to the libreoffice runtime"
+msgstr "Percorso al runtime LibreOffice"
+
+#. module: report_py3o
+#: model:ir.actions.report,name:report_py3o.res_users_report_py3o
+msgid "Py3o Demo Report"
+msgstr "Resoconto esempio Py3o"
+
+#. module: report_py3o
+#: model_terms:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
+msgid "Py3o Reports"
+msgstr "Resoconti Py3o"
+
+#. module: report_py3o
+#: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
+#: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
+msgid "Py3o Templates"
+msgstr "Mdelli Py3o"
+
+#. module: report_py3o
+#: model:ir.model,name:report_py3o.model_py3o_template
+msgid "Py3o template"
+msgstr "Modello Py3o"
+
+#. module: report_py3o
+#: model:ir.model,name:report_py3o.model_ir_actions_report
+msgid "Report Action"
+msgstr "Azione resoconto"
+
+#. module: report_py3o
+#: model:ir.model,name:report_py3o.model_py3o_report
+msgid "Report Py30"
+msgstr "Resoconto Py3o"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr "Tipo resoconto"
+
+#. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_id
+msgid "Template"
+msgstr "Modello"
+
+#. module: report_py3o
+#: model:ir.model.fields,help:report_py3o.field_ir_actions_report__module
+msgid "The implementer module that provides this report"
+msgstr "Il modulo implementatore che fornisce questo resoconto"
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"The libreoffice runtime is required to genereate the py3o report '%s' but is "
+"not found into the bin path. You must install the libreoffice runtime on the "
+"server. If the runtime is already installed and is not found by Odoo, you "
+"can provide the full path to the runtime by setting the key 'py3o."
+"conversion_command' into the configuration parameters."
+msgstr ""
+"È richiesto il runtime LibreOffice per generare il resoconto Py3o '%s' ma "
+"non è stato trovato nel percorso dei file bin. Bisogna installare il runtime "
+"LibreOffice nel server. Se il runtime è già installato e Odoo non lo trova, "
+"si può fornire il percorso completo al runtime impostando la chiave "
+"'py3o.conversion_command' nei parametri di configurazione."
+
+#. module: report_py3o
+#: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+"Il tipo di resoconto che verrà generato, ognuno avente il suo metodo di "
+"generazione. HTML vuol dire che il resoconto sarà aperto direttamente nel "
+"tuo browser mentre PDF vuol dire che il resoconto sarà generato usando "
+"Wkhtmltopdf e scaricato dall'utente."
+
+#. module: report_py3o
+#: model:ir.actions.report,print_report_name:report_py3o.res_users_report_py3o
+msgid "object.name.replace(' ', '_') + '-demo.odt'"
+msgstr "object.name.replace(' ', '_') + '-demo.odt'"
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
+msgstr "py3o"
