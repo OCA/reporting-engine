@@ -41,6 +41,10 @@ class SqlExport(models.Model):
         default="utf-8",
     )
 
+    keep_generated_file = fields.Boolean(
+        help="Check this to keep generated export files as attachments"
+    )
+
     def _compute_use_properties(self):
         for rec in self:
             rec.use_properties = bool(rec.query_properties_definition)
