@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 02:52+0000\n"
-"PO-Revision-Date: 2023-03-30 14:23+0000\n"
+"PO-Revision-Date: 2024-04-29 10:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,37 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<span>This is a sample report for testing PDF certificates.</span>"
 msgstr ""
+"<span>Questo è un semplice resoconto per testare la certificazione "
+"PDF.</span>"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<strong>Partner:</strong>"
-msgstr ""
+msgstr "<strong>Partner:</strong>"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__allow_only_one
 msgid "Allow only one document"
-msgstr ""
+msgstr "Consentire un solo documento"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__action_report_ids
 msgid "Allowed reports"
-msgstr ""
+msgstr "Resoconti consentiti"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
 msgid "Certificate file path"
-msgstr ""
+msgstr "Percorso file certificato"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_company_form
 msgid "Certificates (PDF signing)"
-msgstr ""
+msgstr "Certificato (firma PDF)"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_res_company
@@ -79,22 +81,22 @@ msgstr "Nome visualizzato"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__domain
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__domain
 msgid "Domain for filtering if sign or not the document"
-msgstr ""
+msgstr "Dominio per filtrare se documento firmato o meno"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "E-mail address to include in PDF digital signature."
-msgstr ""
+msgstr "Indirizzo e-mail da includere nella firma digitale PDF."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__endesive
 msgid "Endesive"
-msgstr ""
+msgstr "Endesive"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__attachment
@@ -102,6 +104,8 @@ msgid ""
 "Filename used to store signed document as attachment. Keep empty to not save "
 "signed document."
 msgstr ""
+"Nome file utilizzato per archiviare il documento firmato come allegato. "
+"Lasciare vuoto per non salvare il documento firmato."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__id
@@ -116,11 +120,13 @@ msgid ""
 "If True, this certificate can not be useb to sign a PDF from several "
 "documents."
 msgstr ""
+"Se vero, il certificato non puè essere usato per firmare un PDF da diversi "
+"documenti."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__java
 msgid "Java"
-msgstr ""
+msgstr "Java"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
@@ -143,6 +149,8 @@ msgstr "Ultimo aggiornamento il"
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Location to include in digital signature (typically, a city name). "
 msgstr ""
+"Località da includere nelle firma digitale (tipicamente, il nome di una "
+"città). "
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
@@ -152,7 +160,7 @@ msgstr "Modello"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__model_id
 msgid "Model where apply this certificate"
-msgstr ""
+msgstr "Modello a cui applicare questo certificato"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__name
@@ -163,48 +171,47 @@ msgstr "Nome"
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate
 #: model:ir.ui.menu,name:report_qweb_signer.menu_report_certificate
 msgid "PDF certificates"
-msgstr ""
+msgstr "Certificati PDF"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_form
 msgid "PDF report certificate"
-msgstr ""
+msgstr "Resoconto certificato PDF"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_res_company__report_certificate_ids
 msgid "PDF report certificates"
-msgstr ""
+msgstr "Resoconti certificato PDF"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__password_file
 msgid "Password file path"
-msgstr ""
+msgstr "Percorso file password"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__path
 msgid "Path to PKCS#12 certificate file"
-msgstr ""
+msgstr "Percorso al file certificato PKCS#12"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__password_file
 msgid "Path to certificate password file"
-msgstr ""
+msgstr "Percorso del file passowrd certificato"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Reason text to include in digital signature."
-msgstr ""
+msgstr "Testo motivazione da includere nella firma digitale."
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Report"
+msgstr "Azione resoconto"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report_certificate
 msgid "Report Certificate"
-msgstr ""
+msgstr "Certificato resoconto"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__action_report_ids
@@ -212,11 +219,13 @@ msgid ""
 "Reports to sign for the selected model.No report selected means all reports "
 "are allowed."
 msgstr ""
+"Resoconti da firmare per il modulo selezionato. Nessun resoconto selezionato "
+"significa che tutti i resoconti sono consentiti."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__attachment
 msgid "Save as attachment"
-msgstr ""
+msgstr "Salva come allaegato"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
@@ -225,6 +234,8 @@ msgid ""
 "Saving signed report (PDF): You do not have enough access rights to save "
 "attachments"
 msgstr ""
+"Salvataggio resoconto firmato (PDF); non si hanno sufficienti autorizzazioni "
+"per salvare allegati"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__sequence
@@ -234,28 +245,28 @@ msgstr "Sequenza"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "Signature e-mail"
-msgstr ""
+msgstr "E-mail firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Signature location"
-msgstr ""
+msgstr "Località firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Signature reason"
-msgstr ""
+msgstr "Motivo firma"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__signing_method
 msgid "Signing Method"
-msgstr ""
+msgstr "Metodo firma"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
 #, python-format
 msgid "Signing report (PDF): Certificate or password file not found"
-msgstr ""
+msgstr "Firma resoconto (PDF): file certificato o password non trovato"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
@@ -264,8 +275,10 @@ msgid ""
 "Signing report (PDF): jPdfSign failed (error code: %s). Message: %s. Output: "
 "%s"
 msgstr ""
+"Firma resoconto (PDF): jPdfSign fallito (codice errore: %s). Messaggio: %s. "
+"Risultato: %s"
 
 #. module: report_qweb_signer
 #: model:ir.actions.report,name:report_qweb_signer.partner_demo_report
 msgid "Test PDF certificate"
-msgstr ""
+msgstr "Tes certificato PDF"
