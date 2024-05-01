@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2023-11-12 17:37+0000\n"
+"PO-Revision-Date: 2024-05-02 01:35+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/OCA-"
-"reporting-engine-8-0/language/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (http://www.transifex.com/oca/"
+"OCA-reporting-engine-8-0/language/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,21 +24,21 @@ msgstr ""
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "#{field.model_name} (#{field.model})"
-msgstr ""
+msgstr "#{field.model_name} (#{field.model})"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "#{model}"
-msgstr ""
+msgstr "#{model}"
 
 #. module: bi_view_editor
 #. openerp-web
 #: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
 #, python-format
 msgid "#{name}"
-msgstr ""
+msgstr "#{name}"
 
 #. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
