@@ -20,6 +20,27 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
+#, python-format
+msgid "#{field.model_name} (#{field.model})"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
+#, python-format
+msgid "#{model}"
+msgstr ""
+
+#. module: bi_view_editor
+#. openerp-web
+#: code:addons/bi_view_editor/static/src/xml/bi_view_editor.xml:0
+#, python-format
+msgid "#{name}"
+msgstr ""
+
+#. module: bi_view_editor
 #: code:addons/bi_view_editor/models/bve_view.py:0
 #, python-format
 msgid ""
