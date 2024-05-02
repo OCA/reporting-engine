@@ -712,7 +712,8 @@ class ReportXlsxAbstract(models.AbstractModel):
                             msg = _(
                                 "%(__name__)s, _write_line : programming error "
                                 "detected while processing "
-                                "col_specs_section %(col_specs_section)s, column %(col)s"
+                                "col_specs_section %(col_specs_section)s, "
+                                "column %(col)s"
                             ) % {
                                 "__name__": __name__,
                                 "col_specs_section": col_specs_section,
