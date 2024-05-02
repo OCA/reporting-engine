@@ -533,7 +533,8 @@ class BiSQLView(models.Model):
                 lambda x: x.is_index is True
             ):
                 self._log_execute(
-                    f"CREATE INDEX {sql_field.index_name} ON {sql_view.view_name} ({sql_field.name});"
+                    f"CREATE INDEX {sql_field.index_name} ON {sql_view.view_name} "
+                    f"({sql_field.name});"
                 )
 
     def _create_model_and_fields(self):
