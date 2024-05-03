@@ -1,0 +1,19 @@
+- Xavier Jimenez \<<xavier.jimenez@qubiq.es>\>
+- Nicolas Bessi \<<nicolas.bessi@camptocamp.com>\>
+- Yannick Vaucher \<<yannick.vaucher@camptocamp.com>\>
+- Guewen Baconnier \<<guewen.baconnier@camptocamp.com>\>
+- Simone Rubino \<<simone.rubino@agilebg.com>\>
+- [DynApps](https://www.dynapps.be):
+  - Raf Ven \<<raf.ven@dynapps.be>\>
+- [Druidoo](https://www.druidoo.io):
+  - Iván Todorovich \<<ivan.todorovich@druidoo.io>\>
+- Pierre Verkest \<<pierreverkest84@gmail.com>\>
+- [NextERP Romania](https://www.nexterp.ro):
+  - Fekete Mihai \<<feketemihai@nexterp.ro>\>
+- [Tecnativa](https://www.tecnativa.com):
+  - Carlos Roca
+  - Víctor Martínez
+- [Jarsa](https://www.jarsa.com):
+  - Alan Ramos \<<alan.ramos@jarsa.com>\>
+- [Bloopark systems](https://www.bloopark.de/):
+  - Achraf Mhadhbi \<<machraf@bloopark.de>\>
