@@ -8,10 +8,11 @@
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 8954 2022-01-20 10:10:25Z milde $
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
 
 See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
 customize this style sheet.
@@ -274,7 +275,7 @@ pre.literal-block, pre.doctest-block, pre.math, pre.code {
   margin-left: 2em ;
   margin-right: 2em }
 
-pre.code .ln { color: grey; } /* line numbers */
+pre.code .ln { color: gray; } /* line numbers */
 pre.code, code { background-color: #eeeeee }
 pre.code .comment, code .comment { color: #5C6576 }
 pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
@@ -300,7 +301,7 @@ span.option {
 span.pre {
   white-space: pre }
 
-span.problematic {
+span.problematic, pre.problematic {
   color: red }
 
 span.section-subtitle {
@@ -368,20 +369,25 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:72251979ce578742037aa71ca933ba9c4ed9951b7e3f68951ca232766f72d000
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/base_comment_template"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-base_comment_template"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>Add a new mixin class to define templates of comments to print on documents.
-The comment templates can be defined like make templates, so you can use variables from linked models.</p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/17.0/base_comment_template"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-base_comment_template"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>Add a new mixin class to define templates of comments to print on
+documents. The comment templates can be defined like make templates, so
+you can use variables from linked models.</p>
 <p>Two positions are available for the comments:</p>
 <ul class="simple">
 <li>above document lines (before_lines)</li>
 <li>below document lines (after_lines)</li>
 </ul>
-<p>The template are general, and can be attached to any Model and based on some domain defined in the template.
-You can define one default template per Model and domain, which can be overwritten for any company and partners.
-It has a priority field (smaller number = higher priority)</p>
-<p>In existing reports, if you add this line will get the comment template if you created one like</p>
+<p>The template are general, and can be attached to any Model and based on
+some domain defined in the template. You can define one default template
+per Model and domain, which can be overwritten for any company and
+partners. It has a priority field (smaller number = higher priority)</p>
+<p>In existing reports, if you add this line will get the comment template
+if you created one like</p>
 <ul class="simple">
-<li>&lt;span t-out=”o.get_comment_template(‘position’,company_id=o.company_id, partner_id=o.parnter_id )”/&gt; ( or without any parameter)</li>
+<li>&lt;span
+t-out=”o.get_comment_template(‘position’,company_id=o.company_id,
+partner_id=o.parnter_id )”/&gt; ( or without any parameter)</li>
 </ul>
 <p>This module is the base module for following modules:</p>
 <ul class="simple">
@@ -406,7 +412,8 @@ It has a priority field (smaller number = higher priority)</p>
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
-<p>Go to <em>Settings &gt; Technical &gt; Reporting &gt; Comment Templates</em> and start designing you comment templates.</p>
+<p>Go to <em>Settings &gt; Technical &gt; Reporting &gt; Comment Templates</em> and start
+designing you comment templates.</p>
 <p>This module is the base module for following modules:</p>
 <ul class="simple">
 <li>sale_comment_template</li>
@@ -421,8 +428,10 @@ It has a priority field (smaller number = higher priority)</p>
 <li>Go to <em>Settings</em> and activate the developer mode.</li>
 <li>Go to <em>Settings &gt; Technical &gt; Reporting &gt; Comment Templates</em>.</li>
 <li>Create a new record.</li>
-<li>Define the Company the template is linked or leave default for all companies.</li>
-<li>Define the Partner the template is linked or leave default for all partners.</li>
+<li>Define the Company the template is linked or leave default for all
+companies.</li>
+<li>Define the Partner the template is linked or leave default for all
+partners.</li>
 <li>Define the Model, Domain the template is linked.</li>
 <li>Define the Position where the template will be printed:<ul>
 <li>above document lines</li>
@@ -430,33 +439,44 @@ It has a priority field (smaller number = higher priority)</p>
 </ul>
 </li>
 </ol>
-<p>You should have at least one template with Default field set, if you choose a Partner the template is deselected as a Default one.
-If you create a new template with the same configuration (Model, Domain, Position) and set it as Default, the previous one will be deselected as a default one.</p>
-<p>The template is a html field which will be rendered just like a mail template, so you can use variables like {{object}}, {{user}}, {{ctx}} to add dynamic content.</p>
-<p>Change the report related to the model from configuration and add a statement like:</p>
-<dl class="docutils">
-<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
-<dd>&lt;div t-out=”o.render_comment(comment_template_top)” /&gt;</dd>
-</dl>
+<p>You should have at least one template with Default field set, if you
+choose a Partner the template is deselected as a Default one. If you
+create a new template with the same configuration (Model, Domain,
+Position) and set it as Default, the previous one will be deselected as
+a default one.</p>
+<p>The template is a html field which will be rendered just like a mail
+template, so you can use variables like {{object}}, {{user}}, {{ctx}} to
+add dynamic content.</p>
+<p>Change the report related to the model from configuration and add a
+statement like:</p>
+<div class="line-block">
+<div class="line">&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position ==
+‘before_lines’)” t-as=”comment_template_top”&gt;</div>
+<div class="line">&lt;div t-out=”o.render_comment(comment_template_top)” /&gt;</div>
+</div>
 <p>&lt;/t&gt;</p>
-<dl class="docutils">
-<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘after_lines’)” t-as=”comment_template_bottom”&gt;</dt>
-<dd>&lt;div t-out=”o.render_comment(comment_template_bottom)” /&gt;</dd>
-</dl>
+<div class="line-block">
+<div class="line">&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position ==
+‘after_lines’)” t-as=”comment_template_bottom”&gt;</div>
+<div class="line">&lt;div t-out=”o.render_comment(comment_template_bottom)” /&gt;</div>
+</div>
 <p>&lt;/t&gt;</p>
-<p>You should always use t-if since the method returns False if no template is found.</p>
-<p>If you want to use Qweb templates, or different context, you can specify it just like in
-mail.render.mixin with parameters:</p>
+<p>You should always use t-if since the method returns False if no template
+is found.</p>
+<p>If you want to use Qweb templates, or different context, you can specify
+it just like in mail.render.mixin with parameters:</p>
 <ul class="simple">
 <li>engine: “inline_template”, “qweb” or “qweb_view”,</li>
 <li>add_context: dict with your own context,</li>
 <li>post_process: perform a post processing on rendered result</li>
 </ul>
 <p>so you could use it :</p>
-<dl class="docutils">
-<dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
-<dd>&lt;div t-out=”o.render_comment(comment_template_top, engine=’qweb’, add_context={my dict}, postprocess=True)” /&gt;</dd>
-</dl>
+<div class="line-block">
+<div class="line">&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position ==
+‘before_lines’)” t-as=”comment_template_top”&gt;</div>
+<div class="line">&lt;div t-out=”o.render_comment(comment_template_top, engine=’qweb’,
+add_context={my dict}, postprocess=True)” /&gt;</div>
+</div>
 <p>&lt;/t&gt;</p>
 </div>
 <div class="section" id="bug-tracker">
@@ -464,7 +484,7 @@ mail.render.mixin with parameters:</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20base_comment_template%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20base_comment_template%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -514,11 +534,13 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <div class="section" id="maintainers">
 <h2><a class="toc-backref" href="#toc-entry-7">Maintainers</a></h2>
 <p>This module is maintained by the OCA.</p>
-<a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/base_comment_template">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/17.0/base_comment_template">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
