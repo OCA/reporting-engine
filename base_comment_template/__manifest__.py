@@ -5,7 +5,7 @@
     "name": "Base Comments Templates",
     "summary": "Add conditional mako template to any report"
     "on models that inherits comment.template.",
-    "version": "16.0.2.2.1",
+    "version": "16.0.2.2.2",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, Odoo Community Association (OCA)",
