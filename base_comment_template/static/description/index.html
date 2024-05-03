@@ -8,10 +8,11 @@
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 8954 2022-01-20 10:10:25Z milde $
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
 
 See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
 customize this style sheet.
@@ -274,7 +275,7 @@ pre.literal-block, pre.doctest-block, pre.math, pre.code {
   margin-left: 2em ;
   margin-right: 2em }
 
-pre.code .ln { color: grey; } /* line numbers */
+pre.code .ln { color: gray; } /* line numbers */
 pre.code, code { background-color: #eeeeee }
 pre.code .comment, code .comment { color: #5C6576 }
 pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
@@ -300,7 +301,7 @@ span.option {
 span.pre {
   white-space: pre }
 
-span.problematic {
+span.problematic, pre.problematic {
   color: red }
 
 span.section-subtitle {
@@ -381,13 +382,13 @@ You can define one default template per Model and domain, which can be overwritt
 It has a priority field (smaller number = higher priority)</p>
 <p>In existing reports, if you add this line will get the comment template if you created one like</p>
 <ul class="simple">
-<li>&lt;span t-raw=”o.get_comment_template(‘position’,company_id=o.company_id, partner_id=o.parnter_id )”/&gt; ( or without any parameter)</li>
+<li>&lt;span t-out=”o.get_comment_template(‘position’,company_id=o.company_id, partner_id=o.parnter_id )”/&gt; ( or without any parameter)</li>
 </ul>
 <p>This module is the base module for following modules:</p>
 <ul class="simple">
 <li>sale_comment_template</li>
 <li>purchase_comment_template</li>
-<li>invoice_comment_template</li>
+<li>account_comment_template</li>
 <li>stock_picking_comment_template</li>
 </ul>
 <p><strong>Table of contents</strong></p>
@@ -436,12 +437,12 @@ If you create a new template with the same configuration (Model, Domain, Positio
 <p>Change the report related to the model from configuration and add a statement like:</p>
 <dl class="docutils">
 <dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
-<dd>&lt;div t-raw=”o.render_comment(comment_template_top)” /&gt;</dd>
+<dd>&lt;div t-out=”o.render_comment(comment_template_top)” /&gt;</dd>
 </dl>
 <p>&lt;/t&gt;</p>
 <dl class="docutils">
 <dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘after_lines’)” t-as=”comment_template_bottom”&gt;</dt>
-<dd>&lt;div t-raw=”o.render_comment(comment_template_bottom)” /&gt;</dd>
+<dd>&lt;div t-out=”o.render_comment(comment_template_bottom)” /&gt;</dd>
 </dl>
 <p>&lt;/t&gt;</p>
 <p>You should always use t-if since the method returns False if no template is found.</p>
@@ -455,7 +456,7 @@ mail.render.mixin with parameters:</p>
 <p>so you could use it :</p>
 <dl class="docutils">
 <dt>&lt;t t-foreach=”o.comment_template_ids.filtered(lambda x: x.position == ‘before_lines’)” t-as=”comment_template_top”&gt;</dt>
-<dd>&lt;div t-raw=”o.render_comment(comment_template_top, engine=’qweb’, add_context={my dict}, postprocess=True)” /&gt;</dd>
+<dd>&lt;div t-out=”o.render_comment(comment_template_top, engine=’qweb’, add_context={my dict}, postprocess=True)” /&gt;</dd>
 </dl>
 <p>&lt;/t&gt;</p>
 </div>
@@ -514,7 +515,9 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <div class="section" id="maintainers">
 <h2><a class="toc-backref" href="#toc-entry-7">Maintainers</a></h2>
 <p>This module is maintained by the OCA.</p>
-<a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
