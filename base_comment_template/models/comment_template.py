@@ -51,9 +51,7 @@ class CommentTemplate(models.AbstractModel):
                 if not domain or record.filtered_domain(domain):
                     record.comment_template_ids = [(4, template.id)]
 
-    def render_comment(
-        self, comment, engine=False, add_context=None, post_process=False
-    ):
+    def render_comment(self, comment, engine=False, add_context=None, options=None):
         self.ensure_one()
         comment_texts = self.env["mail.render.mixin"]._render_template(
             template_src=comment.text,
@@ -61,6 +59,6 @@ class CommentTemplate(models.AbstractModel):
             res_ids=[self.id],
             engine=engine or comment.engine,
             add_context=add_context,
-            post_process=post_process,
+            options=options,
         )
         return markupsafe.Markup(comment_texts[self.id]) or ""

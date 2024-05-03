@@ -44,7 +44,7 @@
                             name="web_ribbon"
                             title="Archived"
                             bg_color="bg-danger"
-                            attrs="{'invisible': [('active', '=', True)]}"
+                            invisible="active"
                         />
                         <button
                             class="oe_stat_button"

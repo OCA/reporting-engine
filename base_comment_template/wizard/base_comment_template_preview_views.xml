@@ -28,12 +28,9 @@
                             name="resource_ref"
                             class="oe_inline"
                             options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
-                            attrs="{'invisible': [('no_record', '=', True)]}"
+                            invisible="no_record"
                         />
-                        <span
-                            class="text-warning"
-                            attrs="{'invisible': [('no_record', '=', False)]}"
-                        >No records
+                        <span class="text-warning" invisible="not no_record">No records
                         </span>
                     </div>
                 </div>

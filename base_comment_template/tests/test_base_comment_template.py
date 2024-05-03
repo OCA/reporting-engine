@@ -47,7 +47,7 @@ class TestCommentTemplate(common.TransactionCase):
     @classmethod
     def tearDownClass(cls):
         teardown_test_model(cls.env, ResUsers)
-        return super(TestCommentTemplate, cls).tearDownClass()
+        return super().tearDownClass()
 
     def test_template_model_ids(self):
         self.assertIn(
@@ -70,7 +70,7 @@ class TestCommentTemplate(common.TransactionCase):
                 }
             )
 
-    def test_template_name_get(self):
+    def test_template_display_name(self):
         self.assertEqual(
             self.before_template_id.display_name,
             "Top template (Top)",

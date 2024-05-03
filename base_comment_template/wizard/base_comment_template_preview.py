@@ -33,7 +33,7 @@ class BaseCommentTemplatePreview(models.TransientModel):
         )
         res = self.env[model.model].search(domain, limit=1)
         if res:
-            result["resource_ref"] = "%s,%s" % (model.model, res.id)
+            result["resource_ref"] = f"{model.model},{res.id}"
         return result
 
     base_comment_template_id = fields.Many2one(
