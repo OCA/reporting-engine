@@ -80,7 +80,8 @@ class BaseCommentTemplate(models.Model):
         ],
         required=True,
         default="inline_template",
-        help="This field allows to select the engine to use for rendering the template.",
+        help="This field allows to select the engine to use for rendering the "
+        "template.",
     )
 
     def _get_ir_model_items(self, models):
@@ -114,17 +115,19 @@ class BaseCommentTemplate(models.Model):
             if not res or len(res) != len(models):
                 raise ValidationError(_("Some model (%s) not found") % item.models)
 
-    def name_get(self):
-        """Redefine the name_get method to show the template name with the position."""
-        res = []
-        for item in self:
-            name = "{} ({})".format(
-                item.name, dict(self._fields["position"].selection).get(item.position)
+    @api.depends("position", "model_ids")
+    def _compute_display_name(self):
+        for rec in self:
+            name = "{name} ({position})".format(
+                name=rec.name,
+                position=dict(self._fields["position"].selection).get(rec.position),
             )
             if self.env.context.get("comment_template_model_display"):
-                name += " (%s)" % ", ".join(item.model_ids.mapped("name"))
-            res.append((item.id, name))
-        return res
+                name = "{name} ({models})".format(
+                    name=name,
+                    models=", ".join(rec.model_ids.mapped("name")),
+                )
+            rec.display_name = name
 
     def _search_model_ids(self, operator, value):
         # We cannot use model_ids.model in search() method to avoid access errors
