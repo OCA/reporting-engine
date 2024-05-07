@@ -27,13 +27,14 @@ class OutstandingStatementWizard(models.TransientModel):
             report_name = "p_s.report_outstanding_statement_xlsx"
         else:
             report_name = "partner_statement.outstanding_statement"
+        partners = self.env["res.partner"].browse(self._context["active_ids"])
         return (
             self.env["ir.actions.report"]
             .search(
                 [("report_name", "=", report_name), ("report_type", "=", report_type)],
                 limit=1,
             )
-            .report_action(self, data=data)
+            .report_action(partners, data=data)
         )
 
     def _export(self, report_type):

@@ -30,11 +30,12 @@ class DetailedActivityStatementWizard(models.TransientModel):
             report_name = "p_s.report_detailed_activity_statement_xlsx"
         else:
             report_name = "partner_statement.detailed_activity_statement"
+        partners = self.env["res.partner"].browse(self._context["active_ids"])
         return (
             self.env["ir.actions.report"]
             .search(
                 [("report_name", "=", report_name), ("report_type", "=", report_type)],
                 limit=1,
             )
-            .report_action(self, data=data)
+            .report_action(partners, data=data)
         )
