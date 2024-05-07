@@ -42,7 +42,7 @@
                 <tr
                     t-foreach="currency['lines']"
                     t-as="line"
-                    t-att-class="('statement-blocked ' if line['blocked'] else '') + ('statement-reconciled' if line['reconciled_line'] else '')"
+                    t-att-class="('statement-blocked ' if line['blocked'] else '') + ('statement-reconciled ' if line['reconciled_line'] else '') + ('statement-outside-date-rank' if line['outside-date-rank'] else '')"
                 >
                     <td>
                         <span

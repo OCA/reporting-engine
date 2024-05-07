@@ -310,7 +310,7 @@ class ActivityStatementXslx(models.AbstractModel):
                 FORMATS["current_money_format"] = workbook.add_format(
                     {"align": "right", "num_format": money_string}
                 )
-                bg_grey = "#CCCCCC"
+                bg_grey = "#ADB5BD"
                 FORMATS["format_tcell_left_blocked"] = copy_format(
                     workbook, FORMATS["format_tcell_left"]
                 )

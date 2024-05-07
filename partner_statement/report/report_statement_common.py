@@ -476,6 +476,7 @@ class ReportStatementCommon(models.AbstractModel):
                     if not line["blocked"]:
                         line_currency["ending_balance"] += line[amount_field]
                     line["balance"] = line_currency["ending_balance"]
+                line["outside-date-rank"] = False
                 line["date"] = format_date(
                     line["date"], date_formats.get(partner_id, default_fmt)
                 )
@@ -491,6 +492,14 @@ class ReportStatementCommon(models.AbstractModel):
                 )
                 for line2 in reconciled_lines:
                     if line2["id"] in line["ids"]:
+                        line2["reconciled_line"] = True
+                        line2["applied_amount"] = line2["open_amount"]
+                        if line2["date"] >= date_start and line2["date"] <= date_end:
+                            line2["outside-date-rank"] = False
+                            if not line2["blocked"]:
+                                line["applied_amount"] += line2["open_amount"]
+                        else:
+                            line2["outside-date-rank"] = True
                         line2["date"] = format_date(
                             line2["date"], date_formats.get(partner_id, default_fmt)
                         )
@@ -498,9 +507,6 @@ class ReportStatementCommon(models.AbstractModel):
                             line2["date_maturity"],
                             date_formats.get(partner_id, default_fmt),
                         )
-                        line2["reconciled_line"] = True
-                        line2["applied_amount"] = line2["open_amount"]
-                        line["applied_amount"] += line2["open_amount"]
                         if is_detailed:
                             line_currency["lines"].extend(
                                 self._add_currency_line(
@@ -509,7 +515,8 @@ class ReportStatementCommon(models.AbstractModel):
                             )
                 if is_activity:
                     line["open_amount"] = line["amount"] + line["applied_amount"]
-                    line_currency["amount_due"] += line["open_amount"]
+                    if not line["blocked"]:
+                        line_currency["amount_due"] += line["open_amount"]
 
             if is_detailed:
                 for line_currency in currency_dict.values():

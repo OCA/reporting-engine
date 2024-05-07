@@ -3,6 +3,8 @@
 
 from datetime import date
 
+from freezegun import freeze_time
+
 from odoo import fields
 from odoo.tests import new_test_user
 from odoo.tests.common import TransactionCase
@@ -112,8 +114,10 @@ class TestActivityStatement(TransactionCase):
         )
         self.assertEqual(res, "30/09/2018")
 
+    @freeze_time("2024-05-01")
     def test_onchange_aging_type(self):
         """Test that partner data is filled accordingly"""
+        self.today = fields.Date.context_today(self.wiz)
         wiz_id = self.wiz.with_context(
             active_ids=[self.partner1.id, self.partner2.id]
         ).new()
@@ -126,4 +130,22 @@ class TestActivityStatement(TransactionCase):
         wiz_id.aging_type = "days"
         wiz_id.onchange_aging_type()
         self.assertEqual((wiz_id.date_end - wiz_id.date_start).days, 30)
+        self.assertTrue(wiz_id.date_end == self.today)
+
+    @freeze_time("2024-05-31")
+    def test_onchange_aging_type2(self):
+        """Test that partner data is filled accordingly"""
+        self.today = fields.Date.context_today(self.wiz)
+        wiz_id = self.wiz.with_context(
+            active_ids=[self.partner1.id, self.partner2.id]
+        ).new()
+        wiz_id.aging_type = "months"
+        wiz_id.onchange_aging_type()
+        self.assertEqual(wiz_id.date_end.month, wiz_id.date_start.month)
+        self.assertTrue(wiz_id.date_end.day > wiz_id.date_start.day)
+        self.assertTrue(wiz_id.date_end < self.today)
+
+        wiz_id.aging_type = "days"
+        wiz_id.onchange_aging_type()
+        self.assertEqual((wiz_id.date_end - wiz_id.date_start).days, 31)
         self.assertTrue(wiz_id.date_end == self.today)

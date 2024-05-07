@@ -100,12 +100,20 @@ class DetailedActivityStatementXslx(models.AbstractModel):
                 format_tcell_date_left = FORMATS["format_tcell_date_left_blocked"]
                 format_distributed = FORMATS["format_distributed_blocked"]
                 current_money_format = FORMATS["current_money_format_blocked"]
-            elif line.get("reconciled_line") and not line.get("blocked"):
+            elif (
+                line.get("reconciled_line")
+                and not line.get("blocked")
+                and not line.get("outside-date-rank")
+            ):
                 format_tcell_left = FORMATS["format_tcell_left_reconciled"]
                 format_tcell_date_left = FORMATS["format_tcell_date_left_reconciled"]
                 format_distributed = FORMATS["format_distributed_reconciled"]
                 current_money_format = FORMATS["current_money_format_reconciled"]
-            elif line.get("blocked") and line.get("reconciled_line"):
+            elif (
+                line.get("blocked")
+                and line.get("reconciled_line")
+                and not line.get("outside-date-rank")
+            ):
                 format_tcell_left = FORMATS["format_tcell_left_blocked_reconciled"]
                 format_tcell_date_left = FORMATS[
                     "format_tcell_date_left_blocked_reconciled"
@@ -113,6 +121,40 @@ class DetailedActivityStatementXslx(models.AbstractModel):
                 format_distributed = FORMATS["format_distributed_blocked_reconciled"]
                 current_money_format = FORMATS[
                     "current_money_format_blocked_reconciled"
+                ]
+            elif (
+                line.get("reconciled_line")
+                and not line.get("blocked")
+                and line.get("outside-date-rank")
+            ):
+                format_tcell_left = FORMATS[
+                    "format_tcell_left_reconciled_outside-date-rank"
+                ]
+                format_tcell_date_left = FORMATS[
+                    "format_tcell_date_left_reconciled_outside-date-rank"
+                ]
+                format_distributed = FORMATS[
+                    "format_distributed_reconciled_outside-date-rank"
+                ]
+                current_money_format = FORMATS[
+                    "current_money_format_reconciled_outside-date-rank"
+                ]
+            elif (
+                line.get("blocked")
+                and line.get("reconciled_line")
+                and line.get("outside-date-rank")
+            ):
+                format_tcell_left = FORMATS[
+                    "format_tcell_left_blocked_reconciled_outside-date-rank"
+                ]
+                format_tcell_date_left = FORMATS[
+                    "format_tcell_date_left_blocked_reconciled_outside-date-rank"
+                ]
+                format_distributed = FORMATS[
+                    "format_distributed_blocked_reconciled_outside-date-rank"
+                ]
+                current_money_format = FORMATS[
+                    "current_money_format_blocked_reconciled_outside-date-rank"
                 ]
             else:
                 format_tcell_left = FORMATS["format_tcell_left"]
@@ -491,7 +533,8 @@ class DetailedActivityStatementXslx(models.AbstractModel):
                 FORMATS["current_money_format"] = workbook.add_format(
                     {"align": "right", "num_format": money_string}
                 )
-                bg_grey = "#CCCCCC"
+                bg_grey = "#ADB5BD"
+                fc_red = "#DC3545"
                 FORMATS["format_tcell_left_blocked"] = copy_format(
                     workbook, FORMATS["format_tcell_left"]
                 )
@@ -530,32 +573,79 @@ class DetailedActivityStatementXslx(models.AbstractModel):
                 FORMATS["current_money_format_reconciled"].set_italic(True)
                 FORMATS["current_money_format_reconciled"].set_font_size(10)
                 FORMATS["format_tcell_left_blocked_reconciled"] = copy_format(
-                    workbook, FORMATS["format_tcell_left"]
+                    workbook, FORMATS["format_tcell_left_reconciled"]
                 )
                 FORMATS["format_tcell_left_blocked_reconciled"].set_bg_color(bg_grey)
-                FORMATS["format_tcell_left_blocked_reconciled"].set_italic(True)
-                FORMATS["format_tcell_left_blocked_reconciled"].set_font_size(10)
-                FORMATS["format_tcell_left_blocked_reconciled"].set_indent(1)
                 FORMATS["format_tcell_date_left_blocked_reconciled"] = copy_format(
-                    workbook, FORMATS["format_tcell_date_left"]
+                    workbook, FORMATS["format_tcell_date_left_reconciled"]
                 )
                 FORMATS["format_tcell_date_left_blocked_reconciled"].set_bg_color(
                     bg_grey
                 )
-                FORMATS["format_tcell_date_left_blocked_reconciled"].set_italic(True)
-                FORMATS["format_tcell_date_left_blocked_reconciled"].set_font_size(10)
                 FORMATS["format_distributed_blocked_reconciled"] = copy_format(
-                    workbook, FORMATS["format_distributed"]
+                    workbook, FORMATS["format_distributed_reconciled"]
                 )
                 FORMATS["format_distributed_blocked_reconciled"].set_bg_color(bg_grey)
-                FORMATS["format_distributed_blocked_reconciled"].set_italic(True)
-                FORMATS["format_distributed_blocked_reconciled"].set_font_size(10)
                 FORMATS["current_money_format_blocked_reconciled"] = copy_format(
-                    workbook, FORMATS["current_money_format"]
+                    workbook, FORMATS["current_money_format_reconciled"]
                 )
                 FORMATS["current_money_format_blocked_reconciled"].set_bg_color(bg_grey)
-                FORMATS["current_money_format_blocked_reconciled"].set_italic(True)
-                FORMATS["current_money_format_blocked_reconciled"].set_font_size(10)
+                FORMATS["format_tcell_left_reconciled_outside-date-rank"] = copy_format(
+                    workbook, FORMATS["format_tcell_left_reconciled"]
+                )
+                FORMATS[
+                    "format_tcell_left_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "format_tcell_date_left_reconciled_outside-date-rank"
+                ] = copy_format(workbook, FORMATS["format_tcell_date_left_reconciled"])
+                FORMATS[
+                    "format_tcell_date_left_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "format_distributed_reconciled_outside-date-rank"
+                ] = copy_format(workbook, FORMATS["format_distributed_reconciled"])
+                FORMATS[
+                    "format_distributed_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "current_money_format_reconciled_outside-date-rank"
+                ] = copy_format(workbook, FORMATS["current_money_format_reconciled"])
+                FORMATS[
+                    "current_money_format_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "format_tcell_left_blocked_reconciled_outside-date-rank"
+                ] = copy_format(
+                    workbook, FORMATS["format_tcell_left_blocked_reconciled"]
+                )
+                FORMATS[
+                    "format_tcell_left_blocked_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "format_tcell_date_left_blocked_reconciled_outside-date-rank"
+                ] = copy_format(
+                    workbook, FORMATS["format_tcell_date_left_blocked_reconciled"]
+                )
+                FORMATS[
+                    "format_tcell_date_left_blocked_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "format_distributed_blocked_reconciled_outside-date-rank"
+                ] = copy_format(
+                    workbook, FORMATS["format_distributed_blocked_reconciled"]
+                )
+                FORMATS[
+                    "format_distributed_blocked_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
+                FORMATS[
+                    "current_money_format_blocked_reconciled_outside-date-rank"
+                ] = copy_format(
+                    workbook, FORMATS["current_money_format_blocked_reconciled"]
+                )
+                FORMATS[
+                    "current_money_format_blocked_reconciled_outside-date-rank"
+                ].set_font_color(fc_red)
                 row_pos = self._write_currency_prior_lines(
                     row_pos, sheet, partner, currency, data
                 )

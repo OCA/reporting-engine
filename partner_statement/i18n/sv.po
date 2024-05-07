@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-02-23 10:33+0000\n"
+"PO-Revision-Date: 2024-06-18 15:36+0000\n"
 "Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -112,7 +112,7 @@ msgstr ""
 "uttryckt i\n"
 "        så att partnern kan granska hur mycket som är öppet, förfallet eller "
 "försenat.\n"
-"                    </span>."
+"                    </span>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
@@ -136,7 +136,9 @@ msgstr ""
 "kontoutdraget. Listan visas i\n"
 "                    visas i kronologisk ordning och är uppdelad efter "
 "valutor.\n"
-"                </span> </span"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.detailed_activity_statement_wizard_view
@@ -152,8 +154,9 @@ msgstr ""
 "transaktioner\n"
 "som har skett under perioden, och innehåller även en sektion för tidigare "
 "balans och en sektion för utgående balans.\n"
-"                </span>.\n"
-"                <br/> </span"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
@@ -172,8 +175,10 @@ msgstr ""
 "alla obetalda fakturor, ej utkrävda\n"
 "        återbetalningar och utestående betalningar. Listan visas i "
 "kronologisk ordning och är uppdelad\n"
-"        uppdelad efter valutor.\n"
-"                </span> </span"
+"        efter valutor.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -634,7 +639,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:partner_statement.activity_statement_wizard_action
 #: model:ir.model,name:partner_statement.model_report_partner_statement_activity_statement
 msgid "Partner Activity Statement"
-msgstr "Verksamhetsberättelse för partner"
+msgstr "Verksamhetsberättelse för kontakter"
 
 #. module: partner_statement
 #: model:ir.actions.act_window,name:partner_statement.detailed_activity_statement_wizard_action

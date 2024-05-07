@@ -28,3 +28,10 @@
         font-style: italic !important;
     }
 }
+
+.statement-outside-date-rank {
+    color: $red !important;
+    td:last-child {
+        color: $red !important;
+    }
+}
