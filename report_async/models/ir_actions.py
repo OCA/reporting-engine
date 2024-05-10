@@ -1,7 +1,7 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
-from odoo import api, models
+from odoo import SUPERUSER_ID, api, models
 
 
 class IrActionsActWindow(models.Model):
@@ -10,17 +10,17 @@ class IrActionsActWindow(models.Model):
     @api.model
     def name_search(self, name, args=None, operator="ilike", limit=100):
         if self._context.get("access_sudo", False):
-            self = self.sudo()
+            self = self.with_user(SUPERUSER_ID)
         return super().name_search(name, args, operator, limit)
 
     @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
+    def search(self, args, offset=0, limit=None, order=None):
         if self._context.get("access_sudo", False):
-            self = self.sudo()
-        return super().search(args, offset, limit, order, count)
+            self = self.with_user(SUPERUSER_ID)
+        return super().search(args, offset, limit, order)
 
-    def _read(self, fields):
+    def fetch(self, field_names):
         """Add permission to read analytic account for do something."""
         if self._context.get("access_sudo", False):
-            self = self.sudo()
-        return super()._read(fields)
+            self = self.with_user(SUPERUSER_ID)
+        return super().fetch(field_names)
