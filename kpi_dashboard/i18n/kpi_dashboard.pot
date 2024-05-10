@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -201,8 +201,6 @@ msgid "Dashboard Items"
 msgstr ""
 
 #. module: kpi_dashboard
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_actions_act_window_view__display_name
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_ui_view__display_name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__display_name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__display_name
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__display_name
@@ -293,8 +291,6 @@ msgid "History"
 msgstr ""
 
 #. module: kpi_dashboard
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_actions_act_window_view__id
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_ui_view__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item__id
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu__id
@@ -375,8 +371,6 @@ msgid "Kwargs"
 msgstr ""
 
 #. module: kpi_dashboard
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_actions_act_window_view____last_update
-#: model:ir.model.fields,field_description:kpi_dashboard.field_ir_ui_view____last_update
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard____last_update
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_item____last_update
 #: model:ir.model.fields,field_description:kpi_dashboard.field_kpi_dashboard_menu____last_update
