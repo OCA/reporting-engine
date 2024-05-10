@@ -11,7 +11,7 @@ class Report(models.Model):
     _inherit = "ir.actions.report"
 
     def report_action(self, docids, data=None, config=True):
-        res = super(Report, self).report_action(docids, data=data, config=config)
+        res = super().report_action(docids, data=data, config=config)
         if res["context"].get("async_process", False):
             rpt_async_id = res["context"]["active_id"]
             report_async = self.env["report.async"].browse(rpt_async_id)
