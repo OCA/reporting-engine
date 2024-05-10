@@ -3,7 +3,7 @@
 
 import base64
 
-from odoo import _, api, fields, models
+from odoo import SUPERUSER_ID, _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
@@ -102,8 +102,7 @@ class ReportAsync(models.Model):
 
     def run_now(self):
         self.ensure_one()
-        action = self.env.ref(self.action_id.xml_id)
-        result = action.sudo().read()[0]
+        result = self.env[self.action_id.type]._for_xml_id(self.action_id.xml_id)
         ctx = safe_eval(result.get("context", {}))
         ctx.update({"async_process": False})
         result["context"] = ctx
@@ -113,8 +112,7 @@ class ReportAsync(models.Model):
         self.ensure_one()
         if not self.allow_async:
             raise UserError(_("Background process not allowed."))
-        action = self.env.ref(self.action_id.xml_id)
-        result = action.sudo().read()[0]
+        result = self.env[self.action_id.type]._for_xml_id(self.action_id.xml_id)
         ctx = safe_eval(result.get("context", {}))
         ctx.update({"async_process": True})
         result["context"] = ctx
@@ -122,15 +120,17 @@ class ReportAsync(models.Model):
 
     def view_files(self):
         self.ensure_one()
-        action = self.env.ref("report_async.action_view_files")
-        result = action.sudo().read()[0]
+        result = self.env["ir.actions.act_window"]._for_xml_id(
+            "report_async.action_view_files"
+        )
         result["domain"] = [("id", "in", self.file_ids.ids)]
         return result
 
     def view_jobs(self):
         self.ensure_one()
-        action = self.env.ref("queue_job.action_queue_job")
-        result = action.sudo().read()[0]
+        result = self.env["ir.actions.act_window"]._for_xml_id(
+            "queue_job.action_queue_job"
+        )
         result["domain"] = [("id", "in", self.job_ids.ids)]
         result["context"] = {}
         return result
@@ -146,7 +146,7 @@ class ReportAsync(models.Model):
         # Save report to attachment
         attachment = (
             self.env["ir.attachment"]
-            .sudo()
+            .with_user(SUPERUSER_ID)
             .create(
                 {
                     "name": out_name,
