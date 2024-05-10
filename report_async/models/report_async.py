@@ -98,7 +98,7 @@ class ReportAsync(models.Model):
             order="id desc",
         )
         for rec in self:
-            rec.file_ids = files.filtered(lambda l: l.res_id == rec.id)
+            rec.file_ids = files.filtered(lambda file, rec=rec: file.res_id == rec.id)
 
     def run_now(self):
         self.ensure_one()
@@ -142,7 +142,7 @@ class ReportAsync(models.Model):
         # Run report
         out_file, file_ext = getattr(report, func)(report.xml_id, docids, data)
         out_file = base64.b64encode(out_file)
-        out_name = "{}.{}".format(report.name, file_ext)
+        out_name = f"{report.name}.{file_ext}"
         # Save report to attachment
         attachment = (
             self.env["ir.attachment"]

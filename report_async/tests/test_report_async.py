@@ -7,7 +7,7 @@ from odoo.tests.common import Form
 
 class TestJobChannel(common.TransactionCase):
     def setUp(self):
-        super(TestJobChannel, self).setUp()
+        super().setUp()
         self.print_doc = self.env.ref("report_async.report_async_print_document")
         self.test_rec = self.env.ref("base.module_mail")
         self.test_rpt = self.env.ref("base.ir_module_reference_print")
@@ -21,7 +21,7 @@ class TestJobChannel(common.TransactionCase):
                 async_process=res["context"].get("async_process"),
             )
         ) as form:
-            form.reference = "{},{}".format(self.test_rec._name, self.test_rec.id)
+            form.reference = f"{self.test_rec._name},{self.test_rec.id}"
             form.action_report_id = self.test_rpt
         print_wizard = form.save()
         return print_wizard
