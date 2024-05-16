@@ -67,6 +67,7 @@ class SqlFileWizard(models.TransientModel):
                 "file_name": f"{sql_export.name}_{date}.{extension}",
             }
         )
+        sql_export.write({"last_run": fields.Datetime.now()})
         return {
             "view_mode": "form",
             "res_model": "sql.file.wizard",
@@ -74,4 +75,3 @@ class SqlFileWizard(models.TransientModel):
             "type": "ir.actions.act_window",
             "target": "new",
             "context": self.env.context,
-        }

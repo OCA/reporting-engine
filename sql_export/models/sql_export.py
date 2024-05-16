@@ -19,6 +19,7 @@ class SqlExport(models.Model):
 
     use_properties = fields.Boolean(compute="_compute_use_properties")
     query_properties_definition = fields.PropertiesDefinition("Query Properties")
+    last_run = fields.Datetime()
 
     encoding = fields.Selection(
         [
