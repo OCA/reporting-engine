@@ -63,6 +63,7 @@ class SqlFileWizard(models.TransientModel):
                 % {"name": sql_export.name, "date": date, "extension": extension},
             }
         )
+        sql_export.write({"last_run": fields.Datetime.now()})
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",

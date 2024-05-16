@@ -72,6 +72,7 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <field name="state" position="after">
+                <field name="last_run" />
                 <button
                     name="export_sql_query"
                     string="Execute Query"
