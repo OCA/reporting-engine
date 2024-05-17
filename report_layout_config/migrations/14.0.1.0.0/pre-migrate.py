@@ -6,7 +6,6 @@ from openupgradelib.openupgrade import rename_xmlids
 
 
 def migrate(cr, version):
-
     rename_xmlids(
         cr,
         [
