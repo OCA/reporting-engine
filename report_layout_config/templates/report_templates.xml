@@ -45,7 +45,7 @@
     <template
         id="external_clean_layout_images_template"
         primary="True"
-        inherit_id="web.external_layout_clean"
+        inherit_id="web.external_layout_bold"
         priority="99"
     >
         <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
@@ -105,7 +105,7 @@
                     }
                 }
             </t>
-            <!-- next part is the same as in web/views/report_templates web.external_layout_clean -->
+            <!-- next part is the same as in web/views/report_templates web.external_layout_bold -->
             <t
                 t-elif="layout == 'report_layout_config.external_clean_layout_images_template'"
             >

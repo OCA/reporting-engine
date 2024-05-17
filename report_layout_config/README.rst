@@ -39,7 +39,7 @@ to replace header and footer.
 Usage
 =====
 
--  In Setting/General Setting/Business Documents:
+-  In Setting/General Setting/Document Layout:
 
    -  Click on Configure Document Layout
    -  On the wizard choose Layout images
@@ -68,6 +68,7 @@ Contributors
 
 -  Thomas Nowicki <thomas.nowicki@camptocamp.com>
 -  Iryna Vyshnevska <iryna.vyshnevska@camptocamp.com>
+-  Do Anh Duy <duyda@trobz.com>
 
 Maintainers
 -----------

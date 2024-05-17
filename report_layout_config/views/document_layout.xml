@@ -10,7 +10,12 @@
                 <field name="full_footer_img" widget="image" class="mb-4" />
             </xpath>
             <field name="preview" position="attributes">
-                <attribute name='style'>max-width: 450px;</attribute>
+                <attribute name='style'>
+                    max-width: 450px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                </attribute>
             </field>
         </field>
     </record>

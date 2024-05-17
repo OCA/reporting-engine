@@ -23,4 +23,4 @@ class BaseDocumentLayout(models.TransientModel):
         "full_header_img",
     )
     def _compute_preview(self):
-        super()._compute_preview()
+        return super()._compute_preview()

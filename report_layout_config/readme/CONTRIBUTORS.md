@@ -1,2 +1,3 @@
 - Thomas Nowicki \<<thomas.nowicki@camptocamp.com>\>
 - Iryna Vyshnevska \<<iryna.vyshnevska@camptocamp.com>\>
+- Do Anh Duy \<<duyda@trobz.com>\>
