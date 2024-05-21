@@ -58,11 +58,6 @@ msgid "ID"
 msgstr "ID"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_uid
 msgid "Last Updated by"
 msgstr "Paskutinį kartą atnaujino"
