@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-01-18 09:33+0000\n"
+"PO-Revision-Date: 2024-05-23 09:35+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -449,7 +449,7 @@ msgstr "Lavoro in coda"
 #: code:addons/report_async/static/src/js/components/action_menus.js:0
 #, python-format
 msgid "Report"
-msgstr "Stampa"
+msgstr "Resoconto"
 
 #. module: report_async
 #: model:ir.model,name:report_async.model_ir_actions_report
