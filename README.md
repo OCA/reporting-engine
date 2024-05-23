@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [bi_sql_editor](bi_sql_editor/) | 17.0.1.0.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
 [report_qweb_parameter](report_qweb_parameter/) | 17.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_substitute](report_substitute/) | 17.0.1.0.0 | [![sbejaoui](https://github.com/sbejaoui.png?size=30px)](https://github.com/sbejaoui) | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 17.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 17.0.1.0.0 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 17.0.1.0.1 |  | Report xlsx helpers
