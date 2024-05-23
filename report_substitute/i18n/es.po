@@ -47,19 +47,9 @@ msgid "Email Thread"
 msgstr "Hilo de correo electrónico"
 
 #. module: report_substitute
-#: model:ir.model,name:report_substitute.model_mail_compose_message
-msgid "Email composition wizard"
-msgstr "Asistente de redacción de correo electrónico"
-
-#. module: report_substitute
 #: model:ir.model.fields,field_description:report_substitute.field_ir_actions_report_substitution_rule__id
 msgid "ID"
 msgstr "ID(identificación)"
-
-#. module: report_substitute
-#: model:ir.model.fields,field_description:report_substitute.field_ir_actions_report_substitution_rule____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
 
 #. module: report_substitute
 #: model:ir.model.fields,field_description:report_substitute.field_ir_actions_report_substitution_rule__write_uid
@@ -124,3 +114,9 @@ msgstr "Reglas de sustitución"
 #, python-format
 msgid "Substitution infinite loop detected"
 msgstr "Detectado bucle infinito de sustitución"
+
+#~ msgid "Email composition wizard"
+#~ msgstr "Asistente de redacción de correo electrónico"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
