@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="act_report_xml_view" model="ir.ui.view">
+        <field name="name">ir.actions.report</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='report_type']" position="after">
+                <field
+                    name="text_encoding"
+                    attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
+                />
+                <field
+                    name="text_encode_error_handling"
+                    attrs="{'invisible': [('text_encoding', '=', False)]}"
+                />
+                <field
+                    name="line_ending"
+                    attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
