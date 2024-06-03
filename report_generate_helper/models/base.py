@@ -9,14 +9,17 @@ from odoo.tools.safe_eval import safe_eval, time
 class Base(models.AbstractModel):
     _inherit = "base"
 
-    def _get_report_converter(self):
-        return f"_render_{self.report_type.replace('-', '_')}"
+    def _generate_report(self, report_name):
+        """
+        Generate the report matching the report_name for the self object
 
-    def get_report(self, report_name):
+        The method will return a tuple with the name of the field and the content
+        return (filename, content)
+        """
         report = self.env["ir.actions.report"]._get_report(report_name)
 
         method_name = report._get_report_converter()
-        method = getattr(self.env["ir.actions.report"].sudo(), method_name)
+        method = getattr(self.env["ir.actions.report"], method_name)
         content, extension = method(report_name, self.ids)
 
         if report.print_report_name and len(self) == 1:
