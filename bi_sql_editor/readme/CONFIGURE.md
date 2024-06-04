@@ -34,5 +34,10 @@ to make reporting depending on the current companies of the user.
 
   ![](../static/description/04_materialized_view_setting.png)
 
+- Before applying the final step, you will need to add a specific Parent Menu to
+  use when creating the UI Menu for the report. By default, it will be set with
+  the `SQL Views` menu, which can be changed before creating the UI elements in
+  order to have the report accessible from a different place within Odoo.
+
 - Finally, click on 'Create UI', to create new menu, action, graph view
   and search view.
