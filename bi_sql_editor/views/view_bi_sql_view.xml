@@ -163,6 +163,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                             ('ttype', '=', 'many2one')]}"
                                     />
                                     <field
+                                        name="is_many2one_clickable"
+                                        attrs="{'invisible': ['|', ('field_description', '=', False), ('ttype', '!=', 'many2one')]}"
+                                    />
+                                    <field
                                         name="selection"
                                         attrs="{
                                         'invisible': [('ttype', '!=', 'selection')],

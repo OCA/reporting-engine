@@ -17,7 +17,8 @@ To configure this module, you need to:
 * Once the sql request checked, the module analyses the column of the view,
   and propose field mapping. For each field, you can decide to create an index
   and set if it will be displayed on the pivot graph as a column, a row or a
-  measure.
+  measure. On top of that, if the field is of type Many2one, you can also
+  select the option to be clickable on the list view.
 
   .. figure:: ../static/description/03_field_mapping.png
      :width: 800 px

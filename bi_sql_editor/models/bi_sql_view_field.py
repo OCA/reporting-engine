@@ -74,6 +74,12 @@ class BiSQLViewField(models.Model):
         " a 'group by' option in the search view",
     )
 
+    is_many2one_clickable = fields.Boolean(
+        default=True,
+        help="If the field is of type Many2one and the option is enabled, the"
+        "field will be clickable on the list view.",
+    )
+
     index_name = fields.Char(string="Index Name", compute="_compute_index_name")
 
     graph_type = fields.Selection(string="Graph Type", selection=_GRAPH_TYPE_SELECTION)
@@ -207,8 +213,13 @@ class BiSQLViewField(models.Model):
         self.ensure_one()
         res = ""
         if self.field_description and self.tree_visibility != "unavailable":
-            res = """<field name="{}" {}/>""".format(
-                self.name, self.tree_visibility == "hidden" and 'invisible="1"' or ""
+            res = """<field name="{}" {} {}/>""".format(
+                self.name,
+                self.tree_visibility == "hidden" and 'invisible="1"' or "",
+                self.ttype == "many2one"
+                and self.is_many2one_clickable
+                and 'widget="many2one"'
+                or "",
             )
         return res
 
