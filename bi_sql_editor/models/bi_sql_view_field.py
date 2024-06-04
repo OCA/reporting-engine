@@ -86,6 +86,12 @@ class BiSQLViewField(models.Model):
 
     index_name = fields.Char(compute="_compute_index_name")
 
+    is_many2one_clickable = fields.Boolean(
+        default=False,
+        help="If the field is of type Many2one and the option is enabled, the"
+        " field will be clickable on the list view.",
+    )
+
     graph_type = fields.Selection(
         selection=_GRAPH_TYPE_SELECTION,
     )
@@ -260,9 +266,12 @@ class BiSQLViewField(models.Model):
         elif self.group_operator == "avg":
             operator_text = f'avg="{self.env._("Average")}"'
 
+        options_text = ""
+        if self.ttype == "many2one" and self.is_many2one_clickable:
+            options_text = 'widget="many2one"'
         return (
-            f"""<field name="{self.name}" {visibility_text} {operator_text}"""
-            f""" context="{self.field_context}"/>\n"""
+            f"""<field name="{self.name}" {visibility_text} {operator_text} """
+            f"""{options_text} context="{self.field_context}"/>\n"""
         )
 
     def _prepare_graph_field(self):
