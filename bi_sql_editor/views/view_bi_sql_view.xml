@@ -214,12 +214,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             />
                                 </group>
                                 <group string="User Interface">
-                                    <field name="tree_view_id" />
-                                    <field name="graph_view_id" />
-                                    <field name="pivot_view_id" />
-                                    <field name="search_view_id" />
-                                    <field name="action_id" />
-                                    <field name="menu_id" />
+                                    <group string="UI Parameters">
+                                        <field
+                                    name="parent_menu_id"
+                                    readonly="state == 'ui_valid'"
+                                />
+                                    </group>
+                                    <group string="UI Instances">
+                                        <field name="tree_view_id" />
+                                        <field name="graph_view_id" />
+                                        <field name="pivot_view_id" />
+                                        <field name="search_view_id" />
+                                        <field name="action_id" />
+                                        <field name="menu_id" />
+                                    </group>
                                 </group>
                             </group>
                         </page>

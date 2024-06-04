@@ -117,6 +117,12 @@ to make reporting depending on the current companies of the user.
 
    |image4|
 
+-  Before applying the final step, you will need to add a specific
+   Parent Menu to use when creating the UI Menu for the report. By
+   default, it will be set with the ``SQL Views`` menu, which can be
+   changed before creating the UI elements in order to have the report
+   accessible from a different place within Odoo.
+
 -  Finally, click on 'Create UI', to create new menu, action, graph view
    and search view.
 
@@ -167,6 +173,8 @@ Contributors
 -  Richard deMeester, WilldooIT (http://www.willdooit.com/)
 
 -  David James, WilldooIT (http://www.willdooit.com/)
+
+-  Guillem Casassas guillem.casassas@forgeflow.com
 
 -  This module is highly inspired by the work of
 
