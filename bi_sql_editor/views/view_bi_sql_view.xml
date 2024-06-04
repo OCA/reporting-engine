@@ -129,6 +129,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 readonly="state in ('model_valid', 'ui_valid')"
                             />
                             <field
+                                name="is_many2one_clickable"
+                                invisible="not field_description or ttype != 'many2one'"
+                                optional="show"
+                            />
+                            <field
                                 name="selection"
                                 invisible="ttype != 'selection'"
                                 required="ttype == 'selection'"

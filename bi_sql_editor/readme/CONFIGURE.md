@@ -19,7 +19,8 @@ to make reporting depending on the current companies of the user.
 - Once the sql request checked, the module analyses the column of the
   view, and propose field mapping. For each field, you can decide to
   create an index and set if it will be displayed on the pivot graph as
-  a column, a row or a measure.
+  a column, a row or a measure. On top of that, if the field is of type
+  Many2one, you can also select the option to be clickable on the list view.
 
   ![](../static/description/03_field_mapping.png)
 
