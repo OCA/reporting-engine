@@ -4,7 +4,9 @@
 
 - David James, WilldooIT (<http://www.willdooit.com/>)
 
-- This module is highly inspired by the work of  
+- Guillem Casassas <guillem.casassas@forgeflow.com>
+
+- This module is highly inspired by the work of
   - Onestein: (<http://www.onestein.nl/>) Module:
     OCA/server-tools/bi_view_editor. Link:
     <https://github.com/OCA/reporting-engine/tree/9.0/bi_view_editor>
