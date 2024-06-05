@@ -22,7 +22,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[bi_sql_editor](bi_sql_editor/) | 12.0.1.3.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
+[bi_sql_editor](bi_sql_editor/) | 12.0.1.3.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
 [bi_sql_editor_aggregate](bi_sql_editor_aggregate/) | 12.0.1.1.0 |  | BI SQL Editor Aggregation
 [bi_view_editor](bi_view_editor/) | 12.0.1.1.1 |  | Graphical BI views builder for Odoo
 [kpi](kpi/) | 12.0.1.0.1 |  | Key Performance Indicator
