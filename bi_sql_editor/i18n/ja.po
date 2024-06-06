@@ -91,19 +91,29 @@ msgid "Bi SQL View Field"
 msgstr "BI SQL Viewフィールド"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__parent_menu_id
+msgid ""
+"By assigning a value to this field before manually creating the UI, you're "
+"overwriting the parent menu on which the menu related to the SQL report will "
+"be created."
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__group_operator
 msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
-msgstr "デフォルトでは、Odooはグループ化する際に値を合計します。挙動を変更したい場合"
+msgstr ""
+"デフォルトでは、Odooはグループ化する際に値を合計します。挙動を変更したい場合"
 "は、別のグループ演算子を選択してください"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
 msgid ""
 "Check this box if you want to create a 'group by' option in the search view"
-msgstr "検索ビューに 「グループ化」 "
-"オプションを作成したい場合はこのボックスをチェックしてください"
+msgstr ""
+"検索ビューに 「グループ化」 オプションを作成したい場合はこのボックスをチェッ"
+"クしてください"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_index
@@ -111,9 +121,9 @@ msgid ""
 "Check this box if you want to create an index on that field. This is "
 "recommended for searchable and groupable fields, to reduce duration"
 msgstr ""
-"フィールドにインデックスを作成したい場合はこのボックスをチェックしてください"
-"。検索可能やグループ化対象のフィールドには処理効率化の為、インデックス設定を"
-"推奨します"
+"フィールドにインデックスを作成したい場合はこのボックスをチェックしてくださ"
+"い。検索可能やグループ化対象のフィールドには処理効率化の為、インデックス設定"
+"を推奨します"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__col
@@ -123,7 +133,8 @@ msgstr "列"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
-msgstr "カンマ区切りテキスト。使用可能値 :「グラフ」、「ピボット」又は「ツリー」"
+msgstr ""
+"カンマ区切りテキスト。使用可能値 :「グラフ」、「ピボット」又は「ツリー」"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -140,7 +151,8 @@ msgstr "コンテキスト算出"
 msgid ""
 "Context value that will be inserted for this field in all the views. "
 "Important note : please write a context with single quote."
-msgstr "全てのビューでこのフィールドに挿入されるコンテキスト値。注意：コンテキストは"
+msgstr ""
+"全てのビューでこのフィールドに挿入されるコンテキスト値。注意：コンテキストは"
 "一重引用符で囲んで記述してください。"
 
 #. module: bi_sql_editor
@@ -184,7 +196,8 @@ msgstr "データベースサイズ"
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__action_context
 msgid ""
 "Define here a context that will be used by default, when creating the action."
-msgstr "アクションを作成する際に、デフォルトで使用されるコンテキストをここで定義しま"
+msgstr ""
+"アクションを作成する際に、デフォルトで使用されるコンテキストをここで定義しま"
 "す。"
 
 #. module: bi_sql_editor
@@ -197,10 +210,10 @@ msgid ""
 "False)]."
 msgstr ""
 "ここでデータへのアクセス制限を定義します。.\n"
-" フィールド名の先頭に'x_'をつけてください。 グローバルな「ir."
-"rule」が作成されます。典型的なマルチカンパニールールは以下の通り \n"
-" ['|', ('x_company_id','child_of', [user.company_id."
-"id]),('x_company_id','=',False)]."
+" フィールド名の先頭に'x_'をつけてください。 グローバルな「ir.rule」が作成され"
+"ます。典型的なマルチカンパニールールは以下の通り \n"
+" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
+"False)]."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -275,8 +288,8 @@ msgid ""
 "label) pairs. For example: [('blue','Blue'), ('yellow','Yellow')]"
 msgstr ""
 "Odoo フィールド'Selection' について、\n"
-"オプションのリストは、(key, label) のペアのリストを定義する Python "
-"式として指定されます。例：[('blue','Blue'), ('yellow','Yellow')]"
+"オプションのリストは、(key, label) のペアのリストを定義する Python 式として指"
+"定されます。例：[('blue','Blue'), ('yellow','Yellow')]"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__model_name
@@ -331,8 +344,9 @@ msgstr "チェックが入っている場合、一部のメッセージに送信
 msgid ""
 "Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
 "Valid'."
-msgstr "ビューの状態が「モデル有効」又は「UI有効」の場合はフィールドを削除できません"
-"。"
+msgstr ""
+"ビューの状態が「モデル有効」又は「UI有効」の場合はフィールドを削除できませ"
+"ん。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
@@ -369,7 +383,8 @@ msgstr "マテリアライズドビュー"
 msgid ""
 "It will delete the materialized view, and all the previous mapping realized "
 "with the columns"
-msgstr "マテリアライズドビューとカラムで実装されていたマッピングが全て削除されます"
+msgstr ""
+"マテリアライズドビューとカラムで実装されていたマッピングが全て削除されます"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view____last_update
@@ -545,6 +560,11 @@ msgid "Optional (shown)"
 msgstr "オプション (表示)"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__parent_menu_id
+msgid "Parent Odoo Menu"
+msgstr ""
+
+#. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
@@ -591,8 +611,8 @@ msgid ""
 "SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
 " %(error)s"
 msgstr ""
-"%(materialized_text)s ビュー %(view_name)s を作成中に "
-"SQLエラーが発生しました : \n"
+"%(materialized_text)s ビュー %(view_name)s を作成中に SQLエラーが発生しまし"
+"た : \n"
 "%(error)s"
 
 #. module: bi_sql_editor
@@ -616,8 +636,8 @@ msgid ""
 " * prefix the name of the selectable columns by 'x_';"
 msgstr ""
 "ビューとして挿入されるSQLリクエストについて、以下の点に注意してください：\n"
-" * 選択された全てのフィールドに名前を設定してください。SQL関数(like EXTRACT, "
-"...)を使用する場合は特にそうです;\n"
+" * 選択された全てのフィールドに名前を設定してください。SQL関数(like "
+"EXTRACT, ...)を使用する場合は特にそうです;\n"
 " * 'SELECT *' や 'SELECT table.*' は使用しないでください*';\n"
 " * 選択可能なカラム名の前に 'x_' を付けてください;"
 
@@ -682,9 +702,9 @@ msgid ""
 "'x_bi_sql_view_'. Syntax should follow: https://www.postgresql.org/docs/"
 "current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
-"SQLビューのサフィックス。SQLフルネームが算出'x_bi_sql_view_' "
-"が前置されます。構文は以下の通り： https://www.postgresql.org/docs/current/"
-"static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
+"SQLビューのサフィックス。SQLフルネームが算出'x_bi_sql_view_' が前置されます。"
+"構文は以下の通り： https://www.postgresql.org/docs/current/static/sql-syntax-"
+"lexical.html#SQL-SYNTAX-IDENTIFIERS"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__sum
@@ -701,7 +721,8 @@ msgstr "技術名称"
 msgid ""
 "Technical fields, used in modules that depends on this one to know if groups "
 "has changed, and that according access should be updated."
-msgstr "このモジュールに依存する他のモジュールがグループの変更を確認し、それに応じて"
+msgstr ""
+"このモジュールに依存する他のモジュールがグループの変更を確認し、それに応じて"
 "アクセス権を更新する為に使用するテクニカルフィールドです。"
 
 #. module: bi_sql_editor
@@ -719,7 +740,8 @@ msgstr "これはOdooのビュー、アクション及びメニューを作成�
 msgid ""
 "This will try to create an SQL View, based on the SQL request and the "
 "according Transient Model and fields, based on settings"
-msgstr "SQLリクエストと対応する過渡モデル及びフィールドに基づき、SQLビューを作成しよ"
+msgstr ""
+"SQLリクエストと対応する過渡モデル及びフィールドに基づき、SQLビューを作成しよ"
 "うとします"
 
 #. module: bi_sql_editor
@@ -739,6 +761,16 @@ msgstr ""
 "きません"
 
 #. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "UI Instances"
+msgstr ""
+
+#. module: bi_sql_editor
+#: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
+msgid "UI Parameters"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__unavailable
 msgid "Unavailable"
 msgstr "無効"
@@ -753,7 +785,8 @@ msgstr "モデルアクセスを更新"
 msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
-msgstr "モデルアクセスを更新してください。モデルを作成した後でグループリストを変更し"
+msgstr ""
+"モデルアクセスを更新してください。モデルを作成した後でグループリストを変更し"
 "た場合には必要です"
 
 #. module: bi_sql_editor
@@ -782,7 +815,8 @@ msgstr "ビュー、アクションとメニュー作成"
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
 #, python-format
 msgid "You can not create indexes on non materialized views"
-msgstr "マテリアライズドビュー以外のビューにインデックスを作成することはできません"
+msgstr ""
+"マテリアライズドビュー以外のビューにインデックスを作成することはできません"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -791,8 +825,9 @@ msgstr "マテリアライズドビュー以外のビューにインデックス
 msgid ""
 "You can only unlink draft views.If you want to delete them, first set them "
 "to draft."
-msgstr "ドラフトビューのみ削除可能。削除したい場合は、まずドラフトに設定してください"
-"。"
+msgstr ""
+"ドラフトビューのみ削除可能。削除したい場合は、まずドラフトに設定してくださ"
+"い。"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
