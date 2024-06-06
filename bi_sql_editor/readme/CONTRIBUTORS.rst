@@ -1,6 +1,7 @@
 * Sylvain LE GAL (https://twitter.com/legalsylvain)
 * Richard deMeester, WilldooIT (http://www.willdooit.com/)
 * David James, WilldooIT (http://www.willdooit.com/)
+* Guillem Casassas <guillem.casassas@forgeflow.com>
 
 * This module is highly inspired by the work of
     * Onestein: (http://www.onestein.nl/)
