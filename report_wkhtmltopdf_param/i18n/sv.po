@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 02:52+0000\n"
-"PO-Revision-Date: 2017-08-17 02:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2024-06-11 16:35+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_uid
@@ -31,17 +32,19 @@ msgstr "Skapad den"
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters"
-msgstr ""
+msgstr "Anpassade parametrar"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
 msgstr ""
+"Anpassade parametrar som skickas vidare som argument för wkhtmltopdf-"
+"kommandot"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__display_name
 msgid "Display Name"
-msgstr "Visa namn"
+msgstr "Visningsnamn"
 
 #. module: report_wkhtmltopdf_param
 #. odoo-python
@@ -49,6 +52,7 @@ msgstr "Visa namn"
 #, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
+"Det gick inte att skapa en PDF-fil med hjälp av de angivna parametrarna."
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__id
@@ -63,7 +67,7 @@ msgstr "Senast uppdaterad av"
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__write_date
 msgid "Last Updated on"
-msgstr "Senast uppdaterad"
+msgstr "Senast uppdaterad den"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
@@ -73,32 +77,34 @@ msgstr "Namn"
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__paperformat_id
 msgid "Paper Format"
-msgstr ""
+msgstr "Pappersformat"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
 msgid "Paper Format Config"
-msgstr ""
+msgstr "Konfigurera pappersformat"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Rapportera åtgärd"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
 msgid "The command argument name. Remember to add prefix -- or -"
 msgstr ""
+"Namnet på argumentet för kommandot. Kom ihåg att lägga till prefixet -- "
+"eller -"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__value
 msgid "Value"
-msgstr ""
+msgstr "Värde"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
 msgid "wkhtmltopdf parameters"
-msgstr ""
+msgstr "wkhtmltopdf parametrar"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Senast redigerad"
