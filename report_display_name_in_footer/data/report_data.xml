@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+    <record id="display_name_in_footer_models_param" model="ir.config_parameter">
+        <field name="key">report.display_name_in_footer_models</field>
+        <field name="value">all</field>
+    </record>
+</odoo>
