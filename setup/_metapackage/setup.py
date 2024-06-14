@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo-addon-report_company_details_translatable>=16.0dev,<16.1dev',
         'odoo-addon-report_context>=16.0dev,<16.1dev',
         'odoo-addon-report_csv>=16.0dev,<16.1dev',
+        'odoo-addon-report_display_name_in_footer>=16.0dev,<16.1dev',
         'odoo-addon-report_generate_helper>=16.0dev,<16.1dev',
         'odoo-addon-report_label>=16.0dev,<16.1dev',
         'odoo-addon-report_py3o>=16.0dev,<16.1dev',
