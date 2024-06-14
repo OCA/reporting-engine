@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="external_layout_striped_display_name_on_footer"
+        inherit_id="web.external_layout_striped"
+        priority="999"
+    >
+        <xpath
+            expr="//div[@t-field='company.report_footer']/../..//span[hasclass('topage')]/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-start" separator=" " />
+        </xpath>
+        <xpath
+            expr="//div[@t-field='company.report_footer']/../..//span[@t-field='o.name']/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-end" separator=" " />
+        </xpath>
+        <xpath expr="//div[@t-field='company.report_footer']/.." position="after">
+            <div>
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/../..//span[hasclass('topage')]/.."
+                    position="move"
+                />
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/../..//span[@t-field='o.name']/.."
+                    position="move"
+                />
+            </div>
+        </xpath>
+    </template>
+
+    <template
+        id="external_layout_boxed_display_name_on_footer"
+        inherit_id="web.external_layout_boxed"
+        priority="999"
+    >
+        <xpath
+            expr="//div[@t-field='company.report_footer']/..//span[hasclass('topage')]/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-start" separator=" " />
+        </xpath>
+        <xpath
+            expr="//div[@t-field='company.report_footer']/..//span[@t-field='o.name']/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-end" separator=" " />
+        </xpath>
+        <xpath expr="//div[@t-field='company.report_footer']/.." position="inside">
+            <div>
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/..//span[hasclass('topage')]/.."
+                    position="move"
+                />
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/..//span[@t-field='o.name']/.."
+                    position="move"
+                />
+            </div>
+        </xpath>
+    </template>
+
+    <template
+        id="external_layout_standard_display_name_on_footer"
+        inherit_id="web.external_layout_standard"
+        priority="999"
+    >
+        <xpath
+            expr="//div[@t-field='company.report_footer']/../..//span[hasclass('topage')]/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-start" separator=" " />
+        </xpath>
+        <xpath
+            expr="//div[@t-field='company.report_footer']/../..//span[@t-field='o.name']/.."
+            position="attributes"
+        >
+            <attribute name="class" add="float-end" separator=" " />
+        </xpath>
+        <xpath expr="//div[@t-field='company.report_footer']/.." position="after">
+            <div>
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/../..//span[hasclass('topage')]/.."
+                    position="move"
+                />
+                <xpath
+                    expr="//div[@t-field='company.report_footer']/../..//span[@t-field='o.name']/.."
+                    position="move"
+                />
+            </div>
+        </xpath>
+    </template>
+</odoo>
