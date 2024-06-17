@@ -72,6 +72,8 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <field name="state" position="after">
+                <field name="last_execution_date" optional="hide" />
+                <field name="last_execution_uid" optional="hide" />
                 <button
                     name="export_sql_query"
                     string="Execute Query"

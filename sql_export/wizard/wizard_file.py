@@ -63,6 +63,21 @@ class SqlFileWizard(models.TransientModel):
                 % {"name": sql_export.name, "date": date, "extension": extension},
             }
         )
+        # Bypass ORM to avoid changing the write_date/uid from sql query on a simple
+        # execution. This also avoid error if user has no update right on the
+        # sql.export object.
+        self.env.cr.execute(
+            """
+            UPDATE sql_export
+            SET last_execution_date = %s, last_execution_uid = %s
+            WHERE id = %s
+        """,
+            (
+                fields.Datetime.to_string(fields.Datetime.now()),
+                self.env.user.id,
+                sql_export.id,
+            ),
+        )
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",

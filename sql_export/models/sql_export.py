@@ -19,6 +19,10 @@ class SqlExport(models.Model):
 
     use_properties = fields.Boolean(compute="_compute_use_properties")
     query_properties_definition = fields.PropertiesDefinition("Query Properties")
+    last_execution_date = fields.Datetime(readonly=True)
+    last_execution_uid = fields.Many2one(
+        "res.users", string="Last execution User", readonly=True
+    )
 
     encoding = fields.Selection(
         [
