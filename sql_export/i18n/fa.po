@@ -168,6 +168,11 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_date
+msgid "Last Execution Date"
+msgstr ""
+
+#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export____last_update
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard____last_update
 msgid "Last Modified on"
@@ -184,6 +189,11 @@ msgstr "آخرین به روز رسانی توسط"
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
 msgid "Last Updated on"
 msgstr "آخرین به روز رسانی در"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_uid
+msgid "Last execution User"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_main_attachment_id
