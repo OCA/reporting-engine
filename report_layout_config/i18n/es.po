@@ -198,12 +198,6 @@ msgid "Company Document Layout"
 msgstr "Presentación de Documentos de Empresa"
 
 #. module: report_layout_config
-#: model:ir.model.fields,field_description:report_layout_config.field_base_document_layout__display_name
-#: model:ir.model.fields,field_description:report_layout_config.field_res_company__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_clean_layout_images_template
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_standard_layout_images_template
 msgid "Footer logo"
@@ -220,18 +214,6 @@ msgstr "Imagen completa del pie de página"
 #: model:ir.model.fields,field_description:report_layout_config.field_res_company__full_header_img
 msgid "Full header image"
 msgstr "Imagen de cabecera completa"
-
-#. module: report_layout_config
-#: model:ir.model.fields,field_description:report_layout_config.field_base_document_layout__id
-#: model:ir.model.fields,field_description:report_layout_config.field_res_company__id
-msgid "ID"
-msgstr "ID"
-
-#. module: report_layout_config
-#: model:ir.model.fields,field_description:report_layout_config.field_base_document_layout____last_update
-#: model:ir.model.fields,field_description:report_layout_config.field_res_company____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_clean_layout_images_template
@@ -265,3 +247,12 @@ msgstr "Sustituye toda la cabecera por una imagen"
 #: model:ir.model.fields,help:report_layout_config.field_res_company__full_header_img
 msgid "This image will replace all header."
 msgstr "Esta imagen sustituirá a todos los encabezados."
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
