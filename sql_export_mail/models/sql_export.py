@@ -92,7 +92,9 @@ class SqlExport(models.Model):
 
     @api.model
     def _run_all_sql_export_for_cron(self, cron_ids):
-        exports = self.search([("cron_ids", "in", cron_ids)])
+        exports = self.search(
+            [("cron_ids", "in", cron_ids), ("state", "=", "sql_valid")]
+        )
         for export in exports:
             if "%(company_id)s" in export.query and "%(user_id)s" not in export.query:
                 variable_dict = {}
