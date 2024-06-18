@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-06-18 17:37+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -24,6 +26,12 @@ msgid ""
 "                            tr:last-child td {\n"
 "                                border-bottom: 3px solid"
 msgstr ""
+"!important;\n"
+"                            }\n"
+"                        }\n"
+"                        tbody {\n"
+"                            tr:last-child td {\n"
+"                                border-bottom: 3px solid"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -31,6 +39,8 @@ msgid ""
 "&amp;.o_clean_footer {\n"
 "                        border-top: 3px solid"
 msgstr ""
+"&amp;.o_clean_footer {\n"
+"                        border-top: 3px solid"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -39,6 +49,9 @@ msgid ""
 "                    h2 {\n"
 "                        color:"
 msgstr ""
+"&amp;.o_report_layout_standard {\n"
+"                    h2 {\n"
+"                        color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -46,6 +59,8 @@ msgid ""
 ";\n"
 "                            background-color:"
 msgstr ""
+";\n"
+"                            background-color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -54,6 +69,9 @@ msgid ""
 "                            tr th {\n"
 "                                border-top: 3px solid"
 msgstr ""
+";\n"
+"                            tr th {\n"
+"                                border-top: 3px solid"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -66,6 +84,13 @@ msgid ""
 "                        strong {\n"
 "                            color:"
 msgstr ""
+";\n"
+"                            }\n"
+"                        }\n"
+"                    }\n"
+"                    #total {\n"
+"                        strong {\n"
+"                            color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -74,6 +99,9 @@ msgid ""
 "                        h4 {\n"
 "                            color:"
 msgstr ""
+";\n"
+"                        h4 {\n"
+"                            color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -83,6 +111,10 @@ msgid ""
 "                        .pagenumber {\n"
 "                            border: 3px solid"
 msgstr ""
+";\n"
+"                        }\n"
+"                        .pagenumber {\n"
+"                            border: 3px solid"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -94,6 +126,12 @@ msgid ""
 "                    h1, h2, h3 {\n"
 "                        color:"
 msgstr ""
+";\n"
+"                        }\n"
+"                    }\n"
+"                &amp;.o_report_layout_clean {\n"
+"                    h1, h2, h3 {\n"
+"                        color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -103,6 +141,10 @@ msgid ""
 "                    #informations strong {\n"
 "                        color:"
 msgstr ""
+";\n"
+"                    }\n"
+"                    #informations strong {\n"
+"                        color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -112,6 +154,10 @@ msgid ""
 "                    #total strong{\n"
 "                        color:"
 msgstr ""
+";\n"
+"                    }\n"
+"                    #total strong{\n"
+"                        color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -121,6 +167,10 @@ msgid ""
 "                    strong {\n"
 "                        color:"
 msgstr ""
+";\n"
+"                    }\n"
+"                    strong {\n"
+"                        color:"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.styles_company_report
@@ -131,63 +181,68 @@ msgid ""
 "                        thead {\n"
 "                            color:"
 msgstr ""
+";\n"
+"                    }\n"
+"                    table {\n"
+"                        thead {\n"
+"                            color:"
 
 #. module: report_layout_config
 #: model:ir.model,name:report_layout_config.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Aziende"
 
 #. module: report_layout_config
 #: model:ir.model,name:report_layout_config.model_base_document_layout
 msgid "Company Document Layout"
-msgstr ""
+msgstr "Schema documento azienda"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_clean_layout_images_template
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_standard_layout_images_template
 msgid "Footer logo"
-msgstr ""
+msgstr "Logo pie pagina"
 
 #. module: report_layout_config
 #: model:ir.model.fields,field_description:report_layout_config.field_base_document_layout__full_footer_img
 #: model:ir.model.fields,field_description:report_layout_config.field_res_company__full_footer_img
 msgid "Full footer image"
-msgstr ""
+msgstr "Immagine completa pie pagina"
 
 #. module: report_layout_config
 #: model:ir.model.fields,field_description:report_layout_config.field_base_document_layout__full_header_img
 #: model:ir.model.fields,field_description:report_layout_config.field_res_company__full_header_img
 msgid "Full header image"
-msgstr ""
+msgstr "Immagine piena testata"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_clean_layout_images_template
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_standard_layout_images_template
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #. module: report_layout_config
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_clean_layout_images_template
 #: model_terms:ir.ui.view,arch_db:report_layout_config.external_standard_layout_images_template
 msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
-msgstr ""
+msgstr "Pagina: <span class=\"page\"/> / <span class=\"topage\"/>"
 
 #. module: report_layout_config
 #: model:ir.model.fields,help:report_layout_config.field_base_document_layout__full_footer_img
 msgid "Replaces whole footer, disables footer logo"
-msgstr ""
+msgstr "Sostituisce il pie pagina completo, disabilita logo pie pagina"
 
 #. module: report_layout_config
 #: model:ir.model.fields,help:report_layout_config.field_base_document_layout__full_header_img
 msgid "Replaces whole header with image"
-msgstr ""
+msgstr "Sostituisce la testata completa con una immagine"
 
 #. module: report_layout_config
 #: model:ir.model.fields,help:report_layout_config.field_res_company__full_footer_img
 msgid "This image will replace all footer."
-msgstr ""
+msgstr "Questa immagine sostituirà tutti i pie pagina."
 
 #. module: report_layout_config
 #: model:ir.model.fields,help:report_layout_config.field_res_company__full_header_img
 msgid "This image will replace all header."
-msgstr ""
+msgstr "Questa immagine sostituirà tutte le testate."
