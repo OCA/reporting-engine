@@ -48,6 +48,15 @@ class ReportController(ReportController):
             return request.make_response(xlsx, headers=xlsxhttpheaders)
         return super().report_routes(reportname, docids, converter, **data)
 
+    def _get_filename_response(self, report_name, extension, context, response):
+        filename = "%s.%s" % (report_name, extension)
+        if not response.headers.get("Content-Disposition"):
+            response.headers.add("Content-Disposition", content_disposition(filename))
+        else:
+            response.headers.set("Content-Disposition", content_disposition(filename))
+
+        return response
+
     @route()
     def report_download(self, data, context=None, token=None):
         requestcontent = json.loads(data)
@@ -72,7 +81,7 @@ class ReportController(ReportController):
                         context, data_context = json.loads(context or "{}"), json.loads(
                             data.pop("context")
                         )
-                        context = json.dumps({**context, **data_context})
+                    context = json.dumps({**context, **data_context})
                     response = self.report_routes(
                         reportname, converter="xlsx", context=context, **data
                     )
@@ -80,7 +89,9 @@ class ReportController(ReportController):
                 report = request.env["ir.actions.report"]._get_report_from_name(
                     reportname
                 )
-                filename = "%s.%s" % (report.name, "xlsx")
+                response = self._get_filename_response(
+                    report.name, "xlsx", context, response
+                )
 
                 if docids:
                     ids = [int(x) for x in docids.split(",")]
@@ -89,11 +100,9 @@ class ReportController(ReportController):
                         report_name = safe_eval(
                             report.print_report_name, {"object": obj, "time": time}
                         )
-                        filename = "%s.%s" % (report_name, "xlsx")
-                if not response.headers.get("Content-Disposition"):
-                    response.headers.add(
-                        "Content-Disposition", content_disposition(filename)
-                    )
+                        response = self._get_filename_response(
+                            report_name, "xlsx", context, response
+                        )
                 return response
             except Exception as e:
                 _logger.exception("Error while generating report %s", reportname)
