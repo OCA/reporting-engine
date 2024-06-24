@@ -8,7 +8,9 @@ from odoo.tools.sql import column_exists
 
 @openupgrade.migrate()
 def migrate(env, version):
-    if not column_exists(env.cr, "base_comment_template", "models"):
+    if openupgrade.table_exists(
+        env.cr, "base_comment_template_ir_model_rel"
+    ) and not column_exists(env.cr, "base_comment_template", "models"):
         openupgrade.logged_query(
             env.cr,
             "ALTER TABLE base_comment_template ADD COLUMN IF NOT EXISTS models text",
