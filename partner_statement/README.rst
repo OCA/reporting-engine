@@ -17,33 +17,39 @@ Partner Statement
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--financial--reporting-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-financial-reporting/tree/16.0/partner_statement
+    :target: https://github.com/OCA/account-financial-reporting/tree/17.0/partner_statement
     :alt: OCA/account-financial-reporting
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-financial-reporting-16-0/account-financial-reporting-16-0-partner_statement
+    :target: https://translation.odoo-community.org/projects/account-financial-reporting-17-0/account-financial-reporting-17-0-partner_statement
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-financial-reporting&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-financial-reporting&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module extends the functionality of Invoicing to support the printing of customer and vendor statements.
-There are three types of statements: Activity, Detailed Activity, and Outstanding. Aging details can be shown
-in the reports, expressed in aging buckets, so the customer or vendor can review how much is open, due or overdue.
+This module extends the functionality of Invoicing to support the
+printing of customer and vendor statements. There are three types of
+statements: Activity, Detailed Activity, and Outstanding. Aging details
+can be shown in the reports, expressed in aging buckets, so the customer
+or vendor can review how much is open, due or overdue.
 
-The activity statement provides details of all activity on the partner receivables or payables
-between two selected dates. This includes all invoices, refunds and payments.
-Any outstanding balance dated prior to the chosen statement period will appear
-as a forward balance at the top of the statement. The list is displayed in chronological
-order and is split by currencies.
+The activity statement provides details of all activity on the partner
+receivables or payables between two selected dates. This includes all
+invoices, refunds and payments. Any outstanding balance dated prior to
+the chosen statement period will appear as a forward balance at the top
+of the statement. The list is displayed in chronological order and is
+split by currencies.
 
-The detailed activity statement is an extension of the previous statement, and intends to explain the transactions
-that have happened during the period, also providing with a Prior Balance section and an Ending Balance section.
+The detailed activity statement is an extension of the previous
+statement, and intends to explain the transactions that have happened
+during the period, also providing with a Prior Balance section and an
+Ending Balance section.
 
-The outstanding statement provides details of all outstanding partner receivables or payables
-up to a particular date. This includes all unpaid invoices, unclaimed refunds and
-outstanding payments. The list is displayed in chronological order and is split by currencies.
+The outstanding statement provides details of all outstanding partner
+receivables or payables up to a particular date. This includes all
+unpaid invoices, unclaimed refunds and outstanding payments. The list is
+displayed in chronological order and is split by currencies.
 
 **Table of contents**
 
@@ -53,18 +59,21 @@ outstanding payments. The list is displayed in chronological order and is split 
 Configuration
 =============
 
+Users willing to access to this report should have proper Accounting &
+Finance rights:
 
-Users willing to access to this report should have proper Accounting & Finance rights:
-
-#. Go to *Settings / Users* and edit your user to add the corresponding access rights as follows.
-#. In *Application / Accounting & Finance*, select *Billing* or *Billing Manager*
+1. Go to *Settings / Users* and edit your user to add the corresponding
+   access rights as follows.
+2. In *Application / Accounting & Finance*, select *Billing* or *Billing
+   Manager*
 
 To configure this module, you need to:
 
-#. Go to *Invoicing / Configuration / Settings*
-#. Under the *Partner Statements* of *Accounting* option select either or both of OCA Activity or Outstanding Statement
-#. Once selected, you may set default options for the reports.
-#. Click *Save*
+1. Go to *Invoicing / Configuration / Settings*
+2. Under the *Partner Statements* of *Accounting* option select either
+   or both of OCA Activity or Outstanding Statement
+3. Once selected, you may set default options for the reports.
+4. Click *Save*
 
 Removing the wizard from menus follows the same process.
 
@@ -73,33 +82,41 @@ Usage
 
 To use this module, you need to:
 
-#. Go to a list of Partners, Contacts, Customer or Vendors and select one or more.
-#. Press 'Action > Partner Activity Statement' or 'Action > Partner Outstanding Statement' respectively.
-#. Indicate if you want to display receivables or payables, and if you want to display aging buckets and the aging type.
-#. Optionally complete advanced options such as filtering non due or negative balance partners.
+1. Go to a list of Partners, Contacts, Customer or Vendors and select
+   one or more.
+2. Press 'Action > Partner Activity Statement' or 'Action > Partner
+   Outstanding Statement' respectively.
+3. Indicate if you want to display receivables or payables, and if you
+   want to display aging buckets and the aging type.
+4. Optionally complete advanced options such as filtering non due or
+   negative balance partners.
 
 Known issues / Roadmap
 ======================
 
-* Email template.
-* Expose reports (using defaults) to billing users while restricting the wizard to managers option.
-* Concept of statement run - to start an async job to send out all statements.
+-  Email template.
+-  Expose reports (using defaults) to billing users while restricting
+   the wizard to managers option.
+-  Concept of statement run - to start an async job to send out all
+   statements.
 
 Changelog
 =========
 
 12.0.1.0.0 (2018-11-08)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [BREAKING] Modules customer_activity_statement and customer_outstanding_statement merged to create partner_statement.
-* [ADD] New features.
-  * Age by months or days
-  * Filter negative balances
+-  [BREAKING] Modules customer_activity_statement and
+   customer_outstanding_statement merged to create partner_statement.
+-  [ADD] New features.
+
+   -  Age by months or days
+   -  Filter negative balances
 
 14.0.2.0.0 (2022-12-16)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-* [ADD] Detailed Activity Statement.
+-  [ADD] Detailed Activity Statement.
 
 Bug Tracker
 ===========
@@ -107,7 +124,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-financial-reporting/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-financial-reporting/issues/new?body=module:%20partner_statement%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-financial-reporting/issues/new?body=module:%20partner_statement%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -115,21 +132,21 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * ForgeFlow
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Miquel Raïch <miquel.raich@forgeflow.com>
-* Graeme Gellatly <graeme@o4sb.com>
-* Lois Rilo <lois.rilo@forgeflow.com>
-* Dhara Solanki <dhara.solanki@initos.com>
-* Danny Adair <danny@o4sb.com>
+-  Miquel Raïch <miquel.raich@forgeflow.com>
+-  Graeme Gellatly <graeme@o4sb.com>
+-  Lois Rilo <lois.rilo@forgeflow.com>
+-  Dhara Solanki <dhara.solanki@initos.com>
+-  Danny Adair <danny@o4sb.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -149,6 +166,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-MiquelRForgeFlow| 
 
-This module is part of the `OCA/account-financial-reporting <https://github.com/OCA/account-financial-reporting/tree/16.0/partner_statement>`_ project on GitHub.
+This module is part of the `OCA/account-financial-reporting <https://github.com/OCA/account-financial-reporting/tree/17.0/partner_statement>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

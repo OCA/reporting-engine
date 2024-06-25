@@ -123,15 +123,14 @@ class OutstandingStatement(models.AbstractModel):
         # pylint: disable=E8103
         self.env.cr.execute(
             """
-        WITH Q1 as (%s),
-             Q2 AS (%s),
-             Q3 AS (%s)
+        WITH Q1 as ({}),
+             Q2 AS ({}),
+             Q3 AS ({})
         SELECT partner_id, currency_id, move_id, date, date_maturity, debit,
             credit, amount, open_amount, COALESCE(name, '') as name,
             COALESCE(ref, '') as ref, blocked, id
         FROM Q3
-        ORDER BY date, date_maturity, move_id"""
-            % (
+        ORDER BY date, date_maturity, move_id""".format(
                 self._display_outstanding_lines_sql_q1(
                     partners, date_end, account_type
                 ),

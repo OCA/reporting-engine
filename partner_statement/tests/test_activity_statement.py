@@ -44,7 +44,6 @@ class TestActivityStatement(TransactionCase):
         cls.today = fields.Date.context_today(cls.wiz)
 
     def test_customer_activity_statement(self):
-
         wiz_id = self.wiz.with_context(
             active_ids=[self.partner1.id, self.partner2.id]
         ).create({})

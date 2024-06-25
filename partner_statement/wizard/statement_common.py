@@ -7,7 +7,6 @@ from odoo import api, fields, models
 
 
 class StatementCommon(models.AbstractModel):
-
     _name = "statement.common.wizard"
     _description = "Statement Reports Common Wizard"
 

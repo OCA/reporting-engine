@@ -25,8 +25,12 @@ class ActivityStatement(models.AbstractModel):
                     ELSE l.balance + sum(coalesce(pc.amount, 0.0))
                 END AS open_amount,
                 CASE WHEN l.balance > 0.0
-                    THEN l.amount_currency - sum(coalesce(pd.debit_amount_currency, 0.0))
-                    ELSE l.amount_currency + sum(coalesce(pc.credit_amount_currency, 0.0))
+                    THEN l.amount_currency - sum(coalesce(
+                        pd.debit_amount_currency, 0.0)
+                    )
+                    ELSE l.amount_currency + sum(coalesce(
+                        pc.credit_amount_currency, 0.0)
+                    )
                 END AS open_amount_currency
             FROM account_move_line l
             JOIN account_account aa ON (aa.id = l.account_id)
@@ -98,13 +102,12 @@ class ActivityStatement(models.AbstractModel):
         partners = tuple(partner_ids)
         # pylint: disable=E8103
         self.env.cr.execute(
-            """WITH Q1 AS (%s),
-                    Q2 AS (%s),
-                    Q3 AS (%s)
+            """WITH Q1 AS ({}),
+                    Q2 AS ({}),
+                    Q3 AS ({})
         SELECT partner_id, currency_id, sum(balance) as balance
         FROM Q3
-        GROUP BY partner_id, currency_id"""
-            % (
+        GROUP BY partner_id, currency_id""".format(
                 self._initial_balance_sql_q1(partners, date_start, account_type),
                 self._initial_balance_sql_q2("Q1"),
                 self._initial_balance_sql_q3("Q2", company_id),
@@ -193,14 +196,13 @@ class ActivityStatement(models.AbstractModel):
         # pylint: disable=E8103
         self.env.cr.execute(
             """
-        WITH Q1 AS (%s),
-             Q2 AS (%s)
+        WITH Q1 AS ({}),
+             Q2 AS ({})
         SELECT partner_id, move_id, date, date_maturity, ids,
             COALESCE(name, '') as name, COALESCE(ref, '') as ref,
             debit, credit, amount, blocked, currency_id
         FROM Q2
-        ORDER BY date, date_maturity, move_id"""
-            % (
+        ORDER BY date, date_maturity, move_id""".format(
                 self._display_activity_lines_sql_q1(
                     partners, date_start, date_end, account_type
                 ),
@@ -282,18 +284,17 @@ class ActivityStatement(models.AbstractModel):
         # pylint: disable=E8103
         self.env.cr.execute(
             """
-        WITH Q1 AS (%s),
-             Q2 AS (%s),
-             Q3 AS (%s),
-             Q4 AS (%s),
-             Q5 AS (%s),
-             Q6 AS (%s)
+        WITH Q1 AS ({}),
+             Q2 AS ({}),
+             Q3 AS ({}),
+             Q4 AS ({}),
+             Q5 AS ({}),
+             Q6 AS ({})
         SELECT partner_id, currency_id, move_id, date, date_maturity, debit,
                credit, amount, open_amount, COALESCE(name, '') as name,
                COALESCE(ref, '') as ref, blocked, id
         FROM Q6
-        ORDER BY date, date_maturity, move_id"""
-            % (
+        ORDER BY date, date_maturity, move_id""".format(
                 self._display_activity_lines_sql_q1(
                     partners, date_start, date_end, account_type
                 ),

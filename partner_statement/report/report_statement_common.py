@@ -233,18 +233,17 @@ class ReportStatementCommon(models.AbstractModel):
         # All input queries are properly escaped - false positive
         self.env.cr.execute(
             """
-            WITH Q1 AS (%s),
-                Q2 AS (%s),
-                Q3 AS (%s),
-                Q4 AS (%s)
+            WITH Q1 AS ({}),
+                Q2 AS ({}),
+                Q3 AS ({}),
+                Q4 AS ({})
             SELECT partner_id, currency_id, current, b_1_30, b_30_60, b_60_90,
                 b_90_120, b_over_120,
                 current+b_1_30+b_30_60+b_60_90+b_90_120+b_over_120
                 AS balance
             FROM Q4
             GROUP BY partner_id, currency_id, current, b_1_30, b_30_60,
-                b_60_90, b_90_120, b_over_120"""
-            % (
+                b_60_90, b_90_120, b_over_120""".format(
                 self._show_buckets_sql_q1(partners, date_end, account_type),
                 self._show_buckets_sql_q2(
                     full_dates["date_end"],

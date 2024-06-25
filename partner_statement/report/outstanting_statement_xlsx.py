@@ -29,7 +29,7 @@ class OutstandingStatementXslx(models.AbstractModel):
         report_name = _("Outstanding Statement")
         if company_id:
             company = self.env["res.company"].browse(company_id)
-            suffix = " - {} - {}".format(company.name, company.currency_id.name)
+            suffix = f" - {company.name} - {company.currency_id.name}"
             report_name = report_name + suffix
         return report_name
 
@@ -278,11 +278,12 @@ class OutstandingStatementXslx(models.AbstractModel):
             for currency_id in currencies:
                 currency = self.env["res.currency"].browse(currency_id)
                 if currency.position == "after":
-                    money_string = "#,##0.%s " % (
-                        "0" * currency.decimal_places
-                    ) + "[${}]".format(currency.symbol)
+                    money_string = (
+                        "#,##0.%s " % ("0" * currency.decimal_places)
+                        + f"[${currency.symbol}]"
+                    )
                 elif currency.position == "before":
-                    money_string = "[${}]".format(currency.symbol) + " #,##0.%s" % (
+                    money_string = f"[${currency.symbol}]" + " #,##0.%s" % (
                         "0" * currency.decimal_places
                     )
                 FORMATS["current_money_format"] = workbook.add_format(

@@ -38,7 +38,6 @@ class TestOutstandingStatement(TransactionCase):
         cls.report_title = "Outstanding Statement"
 
     def test_customer_outstanding_statement(self):
-
         wiz_id = self.wiz.with_context(
             active_ids=[self.partner1.id, self.partner2.id]
         ).create({})

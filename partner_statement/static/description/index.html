@@ -368,20 +368,26 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:77de87887c4a3ada88f9db6a00b25d47dd445dc8bb5c0da54a72841d3c2816a3
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/account-financial-reporting/tree/16.0/partner_statement"><img alt="OCA/account-financial-reporting" src="https://img.shields.io/badge/github-OCA%2Faccount--financial--reporting-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/account-financial-reporting-16-0/account-financial-reporting-16-0-partner_statement"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/account-financial-reporting&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module extends the functionality of Invoicing to support the printing of customer and vendor statements.
-There are three types of statements: Activity, Detailed Activity, and Outstanding. Aging details can be shown
-in the reports, expressed in aging buckets, so the customer or vendor can review how much is open, due or overdue.</p>
-<p>The activity statement provides details of all activity on the partner receivables or payables
-between two selected dates. This includes all invoices, refunds and payments.
-Any outstanding balance dated prior to the chosen statement period will appear
-as a forward balance at the top of the statement. The list is displayed in chronological
-order and is split by currencies.</p>
-<p>The detailed activity statement is an extension of the previous statement, and intends to explain the transactions
-that have happened during the period, also providing with a Prior Balance section and an Ending Balance section.</p>
-<p>The outstanding statement provides details of all outstanding partner receivables or payables
-up to a particular date. This includes all unpaid invoices, unclaimed refunds and
-outstanding payments. The list is displayed in chronological order and is split by currencies.</p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/account-financial-reporting/tree/17.0/partner_statement"><img alt="OCA/account-financial-reporting" src="https://img.shields.io/badge/github-OCA%2Faccount--financial--reporting-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/account-financial-reporting-17-0/account-financial-reporting-17-0-partner_statement"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/account-financial-reporting&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module extends the functionality of Invoicing to support the
+printing of customer and vendor statements. There are three types of
+statements: Activity, Detailed Activity, and Outstanding. Aging details
+can be shown in the reports, expressed in aging buckets, so the customer
+or vendor can review how much is open, due or overdue.</p>
+<p>The activity statement provides details of all activity on the partner
+receivables or payables between two selected dates. This includes all
+invoices, refunds and payments. Any outstanding balance dated prior to
+the chosen statement period will appear as a forward balance at the top
+of the statement. The list is displayed in chronological order and is
+split by currencies.</p>
+<p>The detailed activity statement is an extension of the previous
+statement, and intends to explain the transactions that have happened
+during the period, also providing with a Prior Balance section and an
+Ending Balance section.</p>
+<p>The outstanding statement provides details of all outstanding partner
+receivables or payables up to a particular date. This includes all
+unpaid invoices, unclaimed refunds and outstanding payments. The list is
+displayed in chronological order and is split by currencies.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -404,15 +410,19 @@ outstanding payments. The list is displayed in chronological order and is split 
 </div>
 <div class="section" id="configuration">
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
-<p>Users willing to access to this report should have proper Accounting &amp; Finance rights:</p>
+<p>Users willing to access to this report should have proper Accounting &amp;
+Finance rights:</p>
 <ol class="arabic simple">
-<li>Go to <em>Settings / Users</em> and edit your user to add the corresponding access rights as follows.</li>
-<li>In <em>Application / Accounting &amp; Finance</em>, select <em>Billing</em> or <em>Billing Manager</em></li>
+<li>Go to <em>Settings / Users</em> and edit your user to add the corresponding
+access rights as follows.</li>
+<li>In <em>Application / Accounting &amp; Finance</em>, select <em>Billing</em> or <em>Billing
+Manager</em></li>
 </ol>
 <p>To configure this module, you need to:</p>
 <ol class="arabic simple">
 <li>Go to <em>Invoicing / Configuration / Settings</em></li>
-<li>Under the <em>Partner Statements</em> of <em>Accounting</em> option select either or both of OCA Activity or Outstanding Statement</li>
+<li>Under the <em>Partner Statements</em> of <em>Accounting</em> option select either
+or both of OCA Activity or Outstanding Statement</li>
 <li>Once selected, you may set default options for the reports.</li>
 <li>Click <em>Save</em></li>
 </ol>
@@ -422,18 +432,24 @@ outstanding payments. The list is displayed in chronological order and is split 
 <h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
 <p>To use this module, you need to:</p>
 <ol class="arabic simple">
-<li>Go to a list of Partners, Contacts, Customer or Vendors and select one or more.</li>
-<li>Press ‘Action &gt; Partner Activity Statement’ or ‘Action &gt; Partner Outstanding Statement’ respectively.</li>
-<li>Indicate if you want to display receivables or payables, and if you want to display aging buckets and the aging type.</li>
-<li>Optionally complete advanced options such as filtering non due or negative balance partners.</li>
+<li>Go to a list of Partners, Contacts, Customer or Vendors and select
+one or more.</li>
+<li>Press ‘Action &gt; Partner Activity Statement’ or ‘Action &gt; Partner
+Outstanding Statement’ respectively.</li>
+<li>Indicate if you want to display receivables or payables, and if you
+want to display aging buckets and the aging type.</li>
+<li>Optionally complete advanced options such as filtering non due or
+negative balance partners.</li>
 </ol>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#toc-entry-3">Known issues / Roadmap</a></h1>
 <ul class="simple">
 <li>Email template.</li>
-<li>Expose reports (using defaults) to billing users while restricting the wizard to managers option.</li>
-<li>Concept of statement run - to start an async job to send out all statements.</li>
+<li>Expose reports (using defaults) to billing users while restricting
+the wizard to managers option.</li>
+<li>Concept of statement run - to start an async job to send out all
+statements.</li>
 </ul>
 </div>
 <div class="section" id="changelog">
@@ -441,10 +457,13 @@ outstanding payments. The list is displayed in chronological order and is split 
 <div class="section" id="section-1">
 <h2><a class="toc-backref" href="#toc-entry-5">12.0.1.0.0 (2018-11-08)</a></h2>
 <ul class="simple">
-<li>[BREAKING] Modules customer_activity_statement and customer_outstanding_statement merged to create partner_statement.</li>
-<li>[ADD] New features.
-* Age by months or days
-* Filter negative balances</li>
+<li>[BREAKING] Modules customer_activity_statement and
+customer_outstanding_statement merged to create partner_statement.</li>
+<li>[ADD] New features.<ul>
+<li>Age by months or days</li>
+<li>Filter negative balances</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="section-2">
@@ -459,7 +478,7 @@ outstanding payments. The list is displayed in chronological order and is split 
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/account-financial-reporting/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/account-financial-reporting/issues/new?body=module:%20partner_statement%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/account-financial-reporting/issues/new?body=module:%20partner_statement%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -489,7 +508,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/MiquelRForgeFlow"><img alt="MiquelRForgeFlow" src="https://github.com/MiquelRForgeFlow.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/account-financial-reporting/tree/16.0/partner_statement">OCA/account-financial-reporting</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/account-financial-reporting/tree/17.0/partner_statement">OCA/account-financial-reporting</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
