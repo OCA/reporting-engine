@@ -136,27 +136,23 @@ class BiSQLView(models.Model):
     tree_view_id = fields.Many2one(
         string="Odoo Tree View", comodel_name="ir.ui.view", readonly=True
     )
-
     graph_view_id = fields.Many2one(
         string="Odoo Graph View", comodel_name="ir.ui.view", readonly=True
     )
-
     pivot_view_id = fields.Many2one(
         string="Odoo Pivot View", comodel_name="ir.ui.view", readonly=True
     )
-
     search_view_id = fields.Many2one(
         string="Odoo Search View", comodel_name="ir.ui.view", readonly=True
     )
-
     action_id = fields.Many2one(
         string="Odoo Action", comodel_name="ir.actions.act_window", readonly=True
     )
-
     menu_id = fields.Many2one(
         string="Odoo Menu", comodel_name="ir.ui.menu", readonly=True
     )
 
+    # Scheduled Action related fields
     cron_id = fields.Many2one(
         string="Odoo Cron",
         comodel_name="ir.cron",
@@ -164,10 +160,27 @@ class BiSQLView(models.Model):
         help="Cron Task that will refresh the materialized view",
         ondelete="cascade",
     )
+    cron_interval_number = fields.Integer(
+        help="Scheduled Action interval number.", default=1, required=True
+    )
+    cron_interval_type = fields.Selection(
+        selection=lambda self: self._get_ir_cron_interval_type_selection(),
+        default="days",
+        required=True,
+        help="Scheduled Action interval type, same values as the ones "
+        "selectable in the Scheduled Action.",
+    )
 
     rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule", readonly=True)
 
     sequence = fields.Integer(string="sequence")
+
+    # Gets section
+    @api.model
+    def _get_ir_cron_interval_type_selection(self):
+        return self.env["ir.cron"].fields_get(allfields=["interval_type"])[
+            "interval_type"
+        ]["selection"]
 
     # Constrains Section
     @api.constrains("is_materialized")
@@ -387,7 +400,11 @@ class BiSQLView(models.Model):
         return res
 
     def _prepare_cron(self):
+        self.ensure_one()
         now = datetime.now()
+        interval_number = self.cron_interval_number
+        interval_type = self.cron_interval_type
+        date_interval_dict = {interval_type: interval_number}
         return {
             "name": _("Refresh Materialized View %s") % self.view_name,
             "user_id": SUPERUSER_ID,
@@ -397,9 +414,9 @@ class BiSQLView(models.Model):
             "state": "code",
             "code": "model._refresh_materialized_view_cron(%s)" % self.ids,
             "numbercall": -1,
-            "interval_number": 1,
-            "interval_type": "days",
-            "nextcall": now + timedelta(days=1),
+            "interval_number": interval_number,
+            "interval_type": interval_type,
+            "nextcall": now + timedelta(**date_interval_dict),
             "active": True,
         }
 
