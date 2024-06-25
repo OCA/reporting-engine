@@ -6,84 +6,73 @@
         <field name="priority" eval="40" />
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//div[@name='main_currency_setting_container']"
-                position="after"
-            >
-                <h2>Partner Statements</h2>
-                <div class="row mt16 o_settings_container" name="partner_statement">
-                    <div class="col-12 col-lg-6 o_setting_box">
-                        <div class="o_setting_left_pane">
-                            <field name="group_activity_statement" />
-                        </div>
-                        <div class="o_setting_right_pane">
-                            <label for="group_activity_statement" />
-                            <div class="text-muted">
-                                Activity Statements show all transactions between two dates.
+            <block id="print_vendor_checks_setting_container" position="after">
+                <block title="Partner Statements">
+                    <setting
+                        id="group_activity_statement"
+                        string="Activity Statements"
+                        help="Activity Statements show all transactions between two dates."
+                    >
+                        <field name="group_activity_statement" />
+                        <div
+                            class="content-group"
+                            invisible="group_activity_statement == False and group_outstanding_statement == False"
+                        >
+                            <div class="row mt16">
+                                <label
+                                    for="default_aging_type"
+                                    class="col-lg-3 o_light_label"
+                                />
+                                <field name="default_aging_type" />
                             </div>
-                            <div
-                                class="content-group"
-                                attrs="{'invisible': [('group_activity_statement', '=', False), ('group_outstanding_statement', '=', False)]}"
-                            >
-                                <div class="row mt16">
-                                    <label
-                                        for="default_aging_type"
-                                        class="col-lg-3 o_light_label"
-                                    />
-                                    <field name="default_aging_type" />
-                                </div>
-                                <div>
-                                    <field
-                                        name="default_show_aging_buckets"
-                                        class="oe_inline"
-                                    />
-                                    <label
-                                        for="default_show_aging_buckets"
-                                        class="o_light_label"
-                                    />
-                                </div>
-                                <div>
-                                    <field
-                                        name="default_filter_partners_non_due"
-                                        class="oe_inline"
-                                    />
-                                    <label
-                                        for="default_filter_partners_non_due"
-                                        class="o_light_label"
-                                    />
-                                </div>
-                                <div>
-                                    <field
-                                        name="default_filter_negative_balances"
-                                        class="oe_inline"
-                                    />
-                                    <label
-                                        for="default_filter_negative_balances"
-                                        class="o_light_label"
-                                    />
-                                </div>
+                            <div>
+                                <field
+                                    name="default_show_aging_buckets"
+                                    class="oe_inline"
+                                />
+                                <label
+                                    for="default_show_aging_buckets"
+                                    class="o_light_label"
+                                />
+                            </div>
+                            <div>
+                                <field
+                                    name="default_filter_partners_non_due"
+                                    class="oe_inline"
+                                />
+                                <label
+                                    for="default_filter_partners_non_due"
+                                    class="o_light_label"
+                                />
+                            </div>
+                            <div>
+                                <field
+                                    name="default_filter_negative_balances"
+                                    class="oe_inline"
+                                />
+                                <label
+                                    for="default_filter_negative_balances"
+                                    class="o_light_label"
+                                />
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-lg-6 o_setting_box">
-                        <div class="o_setting_left_pane">
-                            <field name="group_outstanding_statement" />
+                    </setting>
+
+                    <setting
+                        id="group_outstanding_statement"
+                        string="Outstanding Statement"
+                        help="Outstanding Statements show all transactions up to a date."
+                    >
+                        <field name="group_outstanding_statement" />
+                        <div
+                            class="text-muted"
+                            invisible="group_outstanding_statement == False"
+                        >
+                            Please set defaults under Activity Statements.
                         </div>
-                        <div class="o_setting_right_pane">
-                            <label for="group_outstanding_statement" />
-                            <div class="text-muted">
-                                Outstanding Statements show all transactions up to a date.
-                            </div>
-                            <div
-                                class="text-muted"
-                                attrs="{'invisible': [('group_outstanding_statement', '=', False)]}"
-                            >
-                                Please set defaults under Activity Statements.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </xpath>
+                    </setting>
+                </block>
+            </block>
         </field>
     </record>
 </odoo>

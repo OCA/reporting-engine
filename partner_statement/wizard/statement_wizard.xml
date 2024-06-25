@@ -48,8 +48,9 @@
                 <div style="text-align:justify" name="info">
                     <span
                         class="o_form_label"
-                    >Aging details can be shown in the report, expressed in aging
-        buckets, so the partner can review how much is open, due or overdue.
+                    >Aging details can be shown in the report, expressed in
+                        aging
+                        buckets, so the partner can review how much is open, due or overdue.
                     </span>
                 </div>
                 <hr />
@@ -76,11 +77,11 @@
                         <field name="number_partner_ids" readonly="1" invisible="1" />
                         <field
                             name="filter_partners_non_due"
-                            attrs="{'invisible': [('number_partner_ids', '=', 1)]}"
+                            invisible="number_partner_ids == 1"
                         />
                         <field
                             name="filter_negative_balances"
-                            attrs="{'invisible': [('number_partner_ids', '=', 1)]}"
+                            invisible="number_partner_ids == 1"
                         />
                     </group>
                 </group>
@@ -91,21 +92,15 @@
                         type="object"
                         default_focus="1"
                         class="oe_highlight"
-                    />
-                    or
-                    <button
+                    /> or <button
                         name="button_export_pdf"
                         string="Export PDF"
                         type="object"
-                    />
-                    or
-                    <button
+                    /> or <button
                         name="button_export_xlsx"
                         string="Export XLSX"
                         type="object"
-                    />
-                    or
-                    <button string="Cancel" class="oe_link" special="cancel" />
+                    /> or <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
             </form>
         </field>
@@ -119,10 +114,13 @@
             <xpath expr="//div[@name='info']/span" position="before">
                 <span
                     class="o_form_label"
-                >The outstanding statement provides details of all partner's outstanding
-        receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed
-        refunds and outstanding payments. The list is displayed in chronological order and is
-        split by currencies.
+                >The outstanding statement provides details of all partner's
+                    outstanding
+                    receivables and payables up to a particular date. This includes all unpaid
+                    invoices, unclaimed
+                    refunds and outstanding payments. The list is displayed in chronological order
+                    and is
+                    split by currencies.
                 </span>
                 <br />
                 <br />
@@ -139,8 +137,10 @@
                 <span
                     class="o_form_label"
                 >The activity statement provides details of all activity on
-                    a partner's receivables and payables between two selected dates. This includes all invoices,
-                    refunds and payments. Any outstanding balance dated prior to the chosen statement
+                    a partner's receivables and payables between two selected dates. This includes
+                    all invoices,
+                    refunds and payments. Any outstanding balance dated prior to the chosen
+                    statement
                     period will appear as a forward balance at the top of the statement. The list is
                     displayed in chronological order and is split by currencies.
                 </span>
@@ -161,8 +161,10 @@
             <xpath expr="//div[@name='info']/span" position="before">
                 <span
                     class="o_form_label"
-                >The detailed activity statement is an extension of the activity statement, and intends to explain the transactions
-that have happened during the period, also providing with a Prior Balance section and an Ending Balance section.
+                >The detailed activity statement is an extension of the
+                    activity statement, and intends to explain the transactions
+                    that have happened during the period, also providing with a Prior Balance
+                    section and an Ending Balance section.
                 </span>
                 <br />
                 <br />

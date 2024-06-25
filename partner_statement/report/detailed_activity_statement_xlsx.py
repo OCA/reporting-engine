@@ -4,7 +4,9 @@
 
 from odoo import _, models
 
-from odoo.addons.report_xlsx_helper.report.report_xlsx_format import FORMATS
+from odoo.addons.report_xlsx_helper.report.report_xlsx_format import (  # type: ignore
+    FORMATS,
+)
 
 
 def copy_format(book, fmt):

@@ -203,7 +203,7 @@ class ReportStatementCommon(models.AbstractModel):
 
     def _get_bucket_dates(self, date_end, aging_type):
         return getattr(
-            self, "_get_bucket_dates_%s" % aging_type, self._get_bucket_dates_days
+            self, f"_get_bucket_dates_{aging_type}", self._get_bucket_dates_days
         )(date_end)
 
     def _get_bucket_dates_days(self, date_end):
@@ -262,7 +262,7 @@ class ReportStatementCommon(models.AbstractModel):
 
     def _get_bucket_labels(self, date_end, aging_type):
         return getattr(
-            self, "_get_bucket_labels_%s" % aging_type, self._get_bucket_dates_days
+            self, f"_get_bucket_labels_{aging_type}", self._get_bucket_dates_days
         )(date_end)
 
     def _get_bucket_labels_days(self, date_end):
