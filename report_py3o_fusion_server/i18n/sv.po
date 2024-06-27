@@ -9,44 +9,47 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2018-01-16 08:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
+"PO-Revision-Date: 2024-06-27 09:55+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__open_bookmark_levels__10
+#, fuzzy
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__1200
+#, fuzzy
 msgid "1200 DPI"
-msgstr ""
+msgstr "1200 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__150
 msgid "150 DPI"
-msgstr ""
+msgstr "150 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__300
 msgid "300 DPI"
-msgstr ""
+msgstr "300 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__600
 msgid "600 DPI"
-msgstr ""
+msgstr "600 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__75
 msgid "75 DPI"
-msgstr ""
+msgstr "75 DPI"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
@@ -58,71 +61,75 @@ msgid ""
 "by Odoo, you can provide the full path to the runtime by setting the key "
 "'py3o.conversion_command' into the configuration parameters."
 msgstr ""
+"En fusion-server eller en libreoffice-körtid krävs för att generera py3o-"
+"rapporten \"%s\". Om libreofficeruntime redan är installerat och inte hittas "
+"av Odoo, kan du ange den fullständiga sökvägen till runtime genom att ange "
+"nyckeln \"py3o.conversion_command\" i konfigurationsparametrarna."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__is_active
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__open_bookmark_levels__-1
 msgid "All Levels"
-msgstr ""
+msgstr "Alla nivåer"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form_allow_duplicate
 msgid "Allow Duplicate Field Names"
-msgstr ""
+msgstr "Tillåt duplicerade fältnamn"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__4
 msgid "Any Except Extracting Pages"
-msgstr ""
+msgstr "Alla utom Extrahering av sidor"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdfa
 msgid "Archive PDF/A-1a (ISO 19005-1)"
-msgstr ""
+msgstr "Arkiv PDF/A-1a (ISO 19005-1)"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bokmärken"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__initial_view__1
 msgid "Bookmarks and Page"
-msgstr ""
+msgstr "Bokmärken och sida"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__center_window
 msgid "Center Window on Screen"
-msgstr ""
+msgstr "Centrera fönstret på skärmen"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__changes
 msgid "Changes"
-msgstr ""
+msgstr "Förändringar"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__3
 msgid "Commenting, Filling in Form Fields"
-msgstr ""
+msgstr "Kommentera, fylla i formulärfält"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__2
 msgid "Continuous"
-msgstr ""
+msgstr "Kontinuerlig"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__3
 msgid "Continuous Facing"
-msgstr ""
+msgstr "Kontinuerlig ytbeläggning"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__convert_doc_ref_to_pdf_target
 msgid "Convert Document References to PDF Targets"
-msgstr ""
+msgstr "Konvertera dokumentreferenser till PDF-mål"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
