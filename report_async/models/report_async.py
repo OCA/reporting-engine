@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 import base64
-from datetime import datetime, timedelta
 from odoo import api, fields, models, _
 from odoo.tools.safe_eval import safe_eval
 from odoo.exceptions import UserError
@@ -71,7 +70,7 @@ class ReportAsync(models.Model):
         help="List all files created by this report background process",
     )
 
-    schedule_time = fields.Char(string='Schedule time')
+    schedule_time = fields.Datetime(string='Schedule Time')
 
     @api.multi
     def _compute_job(self):
@@ -114,7 +113,7 @@ class ReportAsync(models.Model):
         ctx = safe_eval(result.get('context', {}))
         ctx.update({'async_process': True})
         if self.schedule_time:
-            ctx.update({'eta': self._get_next_schedule_time()})
+            ctx.update({'eta': self.schedule_time})
         result['context'] = ctx
         return result
 
@@ -166,10 +165,18 @@ class ReportAsync(models.Model):
                            notif_layout='mail.mail_notification_light',
                            force_send=False)
 
-    def _get_next_schedule_time(self):
-        target_time = datetime.strptime(self.schedule_time, "%H:%M").time()
-        now = fields.Datetime.now()
-        target_datetime = datetime.combine(now.date(), target_time)
-        if now.time() > target_time:
-            target_datetime += timedelta(days=1)
-        return target_datetime
+    @api.model
+    def create(self, vals):
+        if ('schedule_time' in vals and
+                fields.Datetime.from_string(vals['schedule_time'])
+                < fields.Datetime.now()):
+            raise UserError(_('The scheduled time must be in the future.'))
+        return super(ReportAsync, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        if ('schedule_time' in vals and
+                fields.Datetime.from_string(vals['schedule_time'])
+                < fields.Datetime.now()):
+            raise UserError(_('The scheduled time must be in the future.'))
+        return super(ReportAsync, self).write(vals)
