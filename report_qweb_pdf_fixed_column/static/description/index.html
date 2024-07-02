@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -369,13 +368,13 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:ba9f74f5aba3ef2acb4a5cd5be9a0d8249c62c476accb6bc27265234a32a1ceb
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/13.0/report_qweb_pdf_fixed_column"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-13-0/reporting-engine-13-0-report_qweb_pdf_fixed_column"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=13.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_pdf_fixed_column"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_qweb_pdf_fixed_column"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>In the generated reports, the fields relative to the order details are not
 correctly displayed: they are both “cut” from the view, or the general
 font size is scaled down to make all the element fit which is not the
 default behavior. The font size should remain fixed and all the element
 should be visible, eventually spanning over multiple lines.</p>
-<p>This is due to the broken bootstrap 4 support of QtWebKit, used by
+<p>This is due to the broken bootstrap 5 support of QtWebKit, used by
 wkhtmltopdf to generate pdf reports.
 In particular the new flexbox style introduced in the library is not
 supported and every element based on it will be ill-displayed.</p>
@@ -403,7 +402,7 @@ older Odoo versions.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/reporting-engine/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_fixed_column%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_fixed_column%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -433,7 +432,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/Tardo"><img alt="Tardo" src="https://github.com/Tardo.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/13.0/report_qweb_pdf_fixed_column">OCA/reporting-engine</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_pdf_fixed_column">OCA/reporting-engine</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
