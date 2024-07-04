@@ -47,9 +47,10 @@ class ReportAsync(models.Model):
         help="Only user in selected groups can use this report."
         "If left blank, everyone can use",
     )
-    job_ids = fields.Many2many(
+    job_ids = fields.One2many(
         comodel_name='queue.job',
-        compute='_compute_job',
+        inverse_name='report_async_id',
+        string='Jobs',
         help="List all jobs related to this running report",
     )
     job_status = fields.Selection(
@@ -58,11 +59,11 @@ class ReportAsync(models.Model):
                    ('started', 'Started'),
                    ('done', 'Done'),
                    ('failed', 'Failed')],
-        compute='_compute_job',
+        compute='_compute_job_status_info',
         help="Latest Job Status",
     )
     job_info = fields.Text(
-        compute='_compute_job',
+        compute='_compute_job_status_info',
         help="Latest Job Error Message",
     )
     file_ids = fields.Many2many(
@@ -74,16 +75,11 @@ class ReportAsync(models.Model):
     schedule_time = fields.Char(string='Schedule time')
 
     @api.multi
-    def _compute_job(self):
+    def _compute_job_status_info(self):
         for rec in self:
-            rec.job_ids = self.sudo().env['queue.job'].search(
-                [('func_string', 'like', 'report.async(%s,)' % rec.id),
-                 ('user_id', '=', self._uid)],
-                order='id desc')
-            rec.job_status = (rec.job_ids[0].sudo().state
-                              if rec.job_ids else False)
-            rec.job_info = (rec.job_ids[0].sudo().exc_info
-                            if rec.job_ids else False)
+            jobs = rec.sudo().job_ids
+            rec.job_status = (jobs[0].state if jobs else False)
+            rec.job_info = (jobs[0].exc_info if jobs else False)
 
     @api.multi
     def _compute_file(self):

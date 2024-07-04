@@ -17,10 +17,13 @@ class Report(models.Model):
             rpt_async_id = res["context"]["active_id"]
             report_async = self.env["report.async"].browse(rpt_async_id)
             if res["report_type"] in REPORT_TYPES:
-                report_async.with_delay(
+                job = report_async.with_delay(
                     eta=res["context"].get("eta", False)
                 ).run_report(
                     res["context"].get("active_ids", []), data, self.id, self._uid
                 )
+                if job:
+                    (self.env['queue.job'].search([('uuid', '=', job.uuid)])
+                     .write({'report_async_id': report_async.id}))
                 return {}
         return res
