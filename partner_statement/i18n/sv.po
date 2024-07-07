@@ -104,81 +104,66 @@ msgstr "91 - 120 dagar"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.statement_common_view
 msgid ""
-"<span class=\"o_form_label\">Aging details can be shown in the report, expressed in aging\n"
-"        buckets, so the partner can review how much is open, due or overdue.\n"
+"<span class=\"o_form_label\">Aging details can be shown in the report, "
+"expressed in\n"
+"                        aging\n"
+"                        buckets, so the partner can review how much is open, "
+"due or overdue.\n"
 "                    </span>"
 msgstr ""
-"<span class=\"o_form_label\">Detaljer om åldrande kan visas i rapporten, "
-"uttryckt i\n"
-"        så att partnern kan granska hur mycket som är öppet, förfallet eller "
-"försenat.\n"
-"                    </span>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
 msgid ""
-"<span class=\"o_form_label\">The activity statement provides details of all activity on\n"
-"                    a partner's receivables and payables between two selected dates. This includes all invoices,\n"
-"                    refunds and payments. Any outstanding balance dated prior to the chosen statement\n"
-"                    period will appear as a forward balance at the top of the statement. The list is\n"
-"                    displayed in chronological order and is split by currencies.\n"
+"<span class=\"o_form_label\">The activity statement provides details of all "
+"activity on\n"
+"                    a partner's receivables and payables between two "
+"selected dates. This includes\n"
+"                    all invoices,\n"
+"                    refunds and payments. Any outstanding balance dated "
+"prior to the chosen\n"
+"                    statement\n"
+"                    period will appear as a forward balance at the top of "
+"the statement. The list is\n"
+"                    displayed in chronological order and is split by "
+"currencies.\n"
 "                </span>\n"
 "                <br/>\n"
 "                <br/>"
 msgstr ""
-"<span class=\"o_form_label\">I aktivitetsrapporten finns information om all "
-"aktivitet\n"
-"                    en partners fordringar och skulder mellan två utvalda "
-"datum. Detta inkluderar alla fakturor,\n"
-"                    återbetalningar och betalningar. Eventuella utestående "
-"saldon som är daterade före den valda\n"
-"                    period visas som en saldobalans längst upp i "
-"kontoutdraget. Listan visas i\n"
-"                    visas i kronologisk ordning och är uppdelad efter "
-"valutor.\n"
-"                </span>\n"
-"                <br/>\n"
-"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.detailed_activity_statement_wizard_view
 msgid ""
-"<span class=\"o_form_label\">The detailed activity statement is an extension of the activity statement, and intends to explain the transactions\n"
-"that have happened during the period, also providing with a Prior Balance section and an Ending Balance section.\n"
+"<span class=\"o_form_label\">The detailed activity statement is an extension "
+"of the\n"
+"                    activity statement, and intends to explain the "
+"transactions\n"
+"                    that have happened during the period, also providing "
+"with a Prior Balance\n"
+"                    section and an Ending Balance section.\n"
 "                </span>\n"
 "                <br/>\n"
 "                <br/>"
 msgstr ""
-"<span class=\"o_form_label\">Den detaljerade aktivitetsrapporten är en "
-"förlängning av aktivitetsrapporten och syftar till att förklara de "
-"transaktioner\n"
-"som har skett under perioden, och innehåller även en sektion för tidigare "
-"balans och en sektion för utgående balans.\n"
-"                </span>\n"
-"                <br/>\n"
-"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
 msgid ""
-"<span class=\"o_form_label\">The outstanding statement provides details of all partner's outstanding\n"
-"        receivables and payables up to a particular date. This includes all unpaid invoices, unclaimed\n"
-"        refunds and outstanding payments. The list is displayed in chronological order and is\n"
-"        split by currencies.\n"
+"<span class=\"o_form_label\">The outstanding statement provides details of "
+"all partner's\n"
+"                    outstanding\n"
+"                    receivables and payables up to a particular date. This "
+"includes all unpaid\n"
+"                    invoices, unclaimed\n"
+"                    refunds and outstanding payments. The list is displayed "
+"in chronological order\n"
+"                    and is\n"
+"                    split by currencies.\n"
 "                </span>\n"
 "                <br/>\n"
 "                <br/>"
 msgstr ""
-"<span class=\"o_form_label\">Redovisningen av utestående fordringar "
-"innehåller information om alla\n"
-"        fordringar och skulder fram till ett visst datum. Detta inkluderar "
-"alla obetalda fakturor, ej utkrävda\n"
-"        återbetalningar och utestående betalningar. Listan visas i "
-"kronologisk ordning och är uppdelad\n"
-"        efter valutor.\n"
-"                </span>\n"
-"                <br/>\n"
-"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -219,7 +204,6 @@ msgstr "Kontotyp"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: model:ir.actions.report,name:partner_statement.action_print_activity_statement
 #: model:ir.actions.report,name:partner_statement.action_print_activity_statement_html
 #, python-format
@@ -240,6 +224,11 @@ msgstr "Aktivitetsbeskrivning XLSL rapport"
 #: model:ir.actions.report,name:partner_statement.action_print_activity_statement_xlsx
 msgid "Activity Statement XLSX"
 msgstr "Aktivitetsbeskrivning XLSX"
+
+#. module: partner_statement
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
+msgid "Activity Statements"
+msgstr ""
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
@@ -298,7 +287,6 @@ msgstr "Tillämpat belopp"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
 #, python-format
@@ -348,7 +336,6 @@ msgstr "Skapad den"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/report_statement_common.py:0
-#: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Current"
 msgstr "Nuvarande"
@@ -356,8 +343,6 @@ msgstr "Nuvarande"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_balance
@@ -393,8 +378,6 @@ msgstr "Datum:"
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_balance
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
@@ -418,7 +401,6 @@ msgstr ""
 
 #. module: partner_statement
 #. odoo-python
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: model:ir.actions.report,name:partner_statement.action_print_detailed_activity_statement
 #: model:ir.actions.report,name:partner_statement.action_print_detailed_activity_statement_html
@@ -459,7 +441,6 @@ msgstr "Visa inte kunder utan förfallna verifikat"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
 #, python-format
@@ -479,8 +460,6 @@ msgstr "Aktivera OCA Enastående Förklaringar"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_balance
@@ -529,13 +508,6 @@ msgid "Initial Balance"
 msgstr "Initial balans"
 
 #. module: partner_statement
-#: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_detailed_activity_statement_wizard____last_update
-#: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard____last_update
-msgid "Last Modified on"
-msgstr "Senast ändrad den"
-
-#. module: partner_statement
 #: model:ir.model.fields,field_description:partner_statement.field_activity_statement_wizard__write_uid
 #: model:ir.model.fields,field_description:partner_statement.field_detailed_activity_statement_wizard__write_uid
 #: model:ir.model.fields,field_description:partner_statement.field_outstanding_statement_wizard__write_uid
@@ -576,8 +548,6 @@ msgstr "Äldre"
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_balance
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
@@ -587,7 +557,6 @@ msgstr "Öppet belopp"
 
 #. module: partner_statement
 #. odoo-python
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
@@ -607,9 +576,9 @@ msgstr "Ursprungligt belopp"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
-#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement
 #: model:ir.actions.report,name:partner_statement.action_print_outstanding_statement_html
+#: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 #, python-format
 msgid "Outstanding Statement"
 msgstr "Utestående uttalande"
@@ -689,8 +658,6 @@ msgstr "Fordringar"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
@@ -775,8 +742,6 @@ msgstr "Leverantör"
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "Supplier "
@@ -784,7 +749,6 @@ msgstr "Leverantör "
 
 #. module: partner_statement
 #. odoo-python
-#: code:addons/partner_statement/report/report_statement_common.py:0
 #: code:addons/partner_statement/report/report_statement_common.py:0
 #, python-format
 msgid "Total"
@@ -803,10 +767,7 @@ msgstr "Använda utestående uttalanden"
 #. module: partner_statement
 #. odoo-python
 #: code:addons/partner_statement/report/activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/activity_statement_xlsx.py:0
 #: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/detailed_activity_statement_xlsx.py:0
-#: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #: code:addons/partner_statement/report/outstanting_statement_xlsx.py:0
 #, python-format
 msgid "VAT:"
@@ -838,3 +799,90 @@ msgstr "eller"
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_balance
 msgid "up to"
 msgstr "upp till"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">Aging details can be shown in the report, "
+#~ "expressed in aging\n"
+#~ "        buckets, so the partner can review how much is open, due or "
+#~ "overdue.\n"
+#~ "                    </span>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Detaljer om åldrande kan visas i rapporten, "
+#~ "uttryckt i\n"
+#~ "        så att partnern kan granska hur mycket som är öppet, förfallet "
+#~ "eller försenat.\n"
+#~ "                    </span>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">The activity statement provides details of "
+#~ "all activity on\n"
+#~ "                    a partner's receivables and payables between two "
+#~ "selected dates. This includes all invoices,\n"
+#~ "                    refunds and payments. Any outstanding balance dated "
+#~ "prior to the chosen statement\n"
+#~ "                    period will appear as a forward balance at the top of "
+#~ "the statement. The list is\n"
+#~ "                    displayed in chronological order and is split by "
+#~ "currencies.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">I aktivitetsrapporten finns information om "
+#~ "all aktivitet\n"
+#~ "                    en partners fordringar och skulder mellan två utvalda "
+#~ "datum. Detta inkluderar alla fakturor,\n"
+#~ "                    återbetalningar och betalningar. Eventuella "
+#~ "utestående saldon som är daterade före den valda\n"
+#~ "                    period visas som en saldobalans längst upp i "
+#~ "kontoutdraget. Listan visas i\n"
+#~ "                    visas i kronologisk ordning och är uppdelad efter "
+#~ "valutor.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">The detailed activity statement is an "
+#~ "extension of the activity statement, and intends to explain the "
+#~ "transactions\n"
+#~ "that have happened during the period, also providing with a Prior Balance "
+#~ "section and an Ending Balance section.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Den detaljerade aktivitetsrapporten är en "
+#~ "förlängning av aktivitetsrapporten och syftar till att förklara de "
+#~ "transaktioner\n"
+#~ "som har skett under perioden, och innehåller även en sektion för tidigare "
+#~ "balans och en sektion för utgående balans.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">The outstanding statement provides details "
+#~ "of all partner's outstanding\n"
+#~ "        receivables and payables up to a particular date. This includes "
+#~ "all unpaid invoices, unclaimed\n"
+#~ "        refunds and outstanding payments. The list is displayed in "
+#~ "chronological order and is\n"
+#~ "        split by currencies.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Redovisningen av utestående fordringar "
+#~ "innehåller information om alla\n"
+#~ "        fordringar och skulder fram till ett visst datum. Detta "
+#~ "inkluderar alla obetalda fakturor, ej utkrävda\n"
+#~ "        återbetalningar och utestående betalningar. Listan visas i "
+#~ "kronologisk ordning och är uppdelad\n"
+#~ "        efter valutor.\n"
+#~ "                </span>\n"
+#~ "                <br/>\n"
+#~ "                <br/>"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Senast ändrad den"
