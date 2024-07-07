@@ -70,8 +70,14 @@ class ReportAsync(models.Model):
         compute='_compute_file',
         help="List all files created by this report background process",
     )
-
-    schedule_time = fields.Char(string='Schedule time')
+    schedule_time = fields.Char(
+        string='Schedule Time',
+        help="Time when the job will be executed",
+    )
+    schedule_date = fields.Date(
+        string='Schedule Date',
+        help="Date when the job will be executed",
+        )
 
     @api.multi
     def _compute_job(self):
@@ -167,9 +173,17 @@ class ReportAsync(models.Model):
                            force_send=False)
 
     def _get_next_schedule_time(self):
-        target_time = datetime.strptime(self.schedule_time, "%H:%M").time()
         now = fields.Datetime.now()
-        target_datetime = datetime.combine(now.date(), target_time)
-        if now.time() > target_time:
-            target_datetime += timedelta(days=1)
+        target_time = datetime.strptime(self.schedule_time, "%H:%M").time() \
+            if self.schedule_time else now.time()
+
+        if self.schedule_date:
+            target_datetime = datetime.combine(self.schedule_date, target_time)
+            if now > target_datetime:
+                raise UserError(_('The scheduled time must be in the future.'))
+        else:
+            target_datetime = datetime.combine(now.date(), target_time)
+            if now > target_datetime:
+                target_datetime += timedelta(days=1)
+
         return target_datetime
