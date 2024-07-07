@@ -29,7 +29,7 @@ addon | version | maintainers | summary
 [kpi_dashboard](kpi_dashboard/) | 12.0.1.3.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
 [kpi_dashboard_altair](kpi_dashboard_altair/) | 12.0.1.0.3 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create dashboards using altair
 [kpi_dashboard_bokeh](kpi_dashboard_bokeh/) | 12.0.1.0.1 |  | Create dashboards using bokeh
-[report_async](report_async/) | 12.0.1.1.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
+[report_async](report_async/) | 12.0.2.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_context](report_context/) | 12.0.1.0.0 |  | Adding context to reports
 [report_csv](report_csv/) | 12.0.1.0.1 |  | Base module to create csv report
 [report_label](report_label/) | 12.0.1.0.0 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
