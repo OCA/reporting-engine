@@ -59,7 +59,7 @@ msgid "Allow Async"
 msgstr ""
 
 #. module: report_async
-#: code:addons/report_async/models/report_async.py:111
+#: code:addons/report_async/models/report_async.py:117
 #, python-format
 msgid "Background process not allowed."
 msgstr ""
@@ -79,6 +79,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__create_date
 #: model:ir.model.fields,field_description:report_async.field_report_async__create_date
 msgid "Created on"
+msgstr ""
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_date
+msgid "Date when the job will be executed"
 msgstr ""
 
 #. module: report_async
@@ -283,8 +288,13 @@ msgid "Run reports asyncronously"
 msgstr ""
 
 #. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__schedule_date
+msgid "Schedule Date"
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__schedule_time
-msgid "Schedule time"
+msgid "Schedule Time"
 msgstr ""
 
 #. module: report_async
@@ -317,8 +327,19 @@ msgid "The report will be running by <i class=\"fa fa-cogs\"/>\n"
 msgstr ""
 
 #. module: report_async
+#: code:addons/report_async/models/report_async.py:183
+#, python-format
+msgid "The scheduled time must be in the future."
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__allow_async
 msgid "This is not automatic field, please check if you want to allow this report in background process"
+msgstr ""
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_time
+msgid "Time when the job will be executed"
 msgstr ""
 
 #. module: report_async
