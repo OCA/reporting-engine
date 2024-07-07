@@ -29,9 +29,9 @@ msgid ""
 "width: 100%; border-collapse:separate;\">\n"
 "    <tr>\n"
 "        <td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width="
-"\"590\" style=\"padding: 16px; background-color: white; color: #454748; "
-"border-collapse:separate;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "                <tbody>\n"
 "                    <tr>\n"
 "                        <td align=\"center\" style=\"min-width: 590px;\">\n"
@@ -74,9 +74,9 @@ msgstr ""
 "width: 100%; border-collapse:separate;\">\n"
 "    <tr>\n"
 "        <td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width="
-"\"590\" style=\"padding: 16px; background-color: white; color: #454748; "
-"border-collapse:separate;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "                <tbody>\n"
 "                    <tr>\n"
 "                        <td align=\"center\" style=\"min-width: 590px;\">\n"
@@ -96,8 +96,8 @@ msgstr ""
 "partner_id.name or ''},\n"
 "                                           <br/><br/>\n"
 "                                            O seu relatório solicitado, "
-"${object.name}, está disponível para <b><a href="
-"\"${download_url}\">download</a></b>.\n"
+"${object.name}, está disponível para <b><a "
+"href=\"${download_url}\">download</a></b>.\n"
 "                                           <br/><br/>\n"
 "                                            Tenha um bom dia!<br/>\n"
 "                                            --<br/>${object.company_id."
@@ -121,7 +121,7 @@ msgid "Allow Async"
 msgstr "Permitir Assincronia"
 
 #. module: report_async
-#: code:addons/report_async/models/report_async.py:111
+#: code:addons/report_async/models/report_async.py:117
 #, python-format
 msgid "Background process not allowed."
 msgstr "Processo background não permitido."
@@ -142,6 +142,11 @@ msgstr "Criado por"
 #: model:ir.model.fields,field_description:report_async.field_report_async__create_date
 msgid "Created on"
 msgstr "Criado em"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_date
+msgid "Date when the job will be executed"
+msgstr ""
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__display_name
@@ -350,8 +355,13 @@ msgid "Run reports asyncronously"
 msgstr "Executar relatórios de forma assíncrona"
 
 #. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__schedule_date
+msgid "Schedule Date"
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__schedule_time
-msgid "Schedule time"
+msgid "Schedule Time"
 msgstr ""
 
 #. module: report_async
@@ -382,8 +392,8 @@ msgid ""
 msgstr ""
 "O último <i class=\"fa fa-cogs\"/> <b>trabalho em curso</b> foi bem "
 "sucedido.\n"
-"                        Pode verificar o resultado em <i class=\"fa fa-copy"
-"\"/><b> Ficheiros</b>"
+"                        Pode verificar o resultado em <i class=\"fa fa-"
+"copy\"/><b> Ficheiros</b>"
 
 #. module: report_async
 #: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
@@ -396,6 +406,12 @@ msgstr ""
 "estará disponível em <i class=\"fa fa-copy\"/><b> Arquivos</b>"
 
 #. module: report_async
+#: code:addons/report_async/models/report_async.py:183
+#, python-format
+msgid "The scheduled time must be in the future."
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__allow_async
 msgid ""
 "This is not automatic field, please check if you want to allow this report "
@@ -403,6 +419,11 @@ msgid ""
 msgstr ""
 "Este campo não é automático. Por favor, verifique se deseja permitir este "
 "relatório em processo background"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_time
+msgid "Time when the job will be executed"
+msgstr ""
 
 #. module: report_async
 #: model:mail.template,subject:report_async.async_report_delivery

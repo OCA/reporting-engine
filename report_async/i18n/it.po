@@ -29,9 +29,9 @@ msgid ""
 "width: 100%; border-collapse:separate;\">\n"
 "    <tr>\n"
 "        <td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width="
-"\"590\" style=\"padding: 16px; background-color: white; color: #454748; "
-"border-collapse:separate;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "                <tbody>\n"
 "                    <tr>\n"
 "                        <td align=\"center\" style=\"min-width: 590px;\">\n"
@@ -74,9 +74,9 @@ msgstr ""
 "width: 100%; border-collapse:separate;\">\n"
 "    <tr>\n"
 "        <td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width="
-"\"590\" style=\"padding: 16px; background-color: white; color: #454748; "
-"border-collapse:separate;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "                <tbody>\n"
 "                    <tr>\n"
 "                        <td align=\"center\" style=\"min-width: 590px;\">\n"
@@ -121,7 +121,7 @@ msgid "Allow Async"
 msgstr "Permetti asincrono"
 
 #. module: report_async
-#: code:addons/report_async/models/report_async.py:111
+#: code:addons/report_async/models/report_async.py:117
 #, python-format
 msgid "Background process not allowed."
 msgstr "Processo in background non permesso."
@@ -142,6 +142,11 @@ msgstr "Creato da"
 #: model:ir.model.fields,field_description:report_async.field_report_async__create_date
 msgid "Created on"
 msgstr "Creato il"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_date
+msgid "Date when the job will be executed"
+msgstr ""
 
 #. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_print_report_wizard__display_name
@@ -349,8 +354,13 @@ msgid "Run reports asyncronously"
 msgstr "Esegui resoconti in modo asincrono"
 
 #. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__schedule_date
+msgid "Schedule Date"
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,field_description:report_async.field_report_async__schedule_time
-msgid "Schedule time"
+msgid "Schedule Time"
 msgstr ""
 
 #. module: report_async
@@ -396,6 +406,12 @@ msgstr ""
 "                        <i class=\"fa fa-copy\"/><b> file</b>"
 
 #. module: report_async
+#: code:addons/report_async/models/report_async.py:183
+#, python-format
+msgid "The scheduled time must be in the future."
+msgstr ""
+
+#. module: report_async
 #: model:ir.model.fields,help:report_async.field_report_async__allow_async
 msgid ""
 "This is not automatic field, please check if you want to allow this report "
@@ -403,6 +419,11 @@ msgid ""
 msgstr ""
 "Questo non è un campo automatico, controllare se si vuole permettere quest "
 "resoconto nel processo in background"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__schedule_time
+msgid "Time when the job will be executed"
+msgstr ""
 
 #. module: report_async
 #: model:mail.template,subject:report_async.async_report_delivery
