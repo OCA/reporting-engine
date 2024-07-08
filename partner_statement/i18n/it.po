@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 23:13+0000\n"
-"PO-Revision-Date: 2024-06-15 19:37+0000\n"
+"PO-Revision-Date: 2024-07-08 09:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: partner_statement
 #. odoo-python
@@ -114,6 +114,12 @@ msgid ""
 "due or overdue.\n"
 "                    </span>"
 msgstr ""
+"<span class=\"o_form_label\">I dettagli scadenze possono esere visualizzati "
+"nel resoconto, espressi in \n"
+"                        gruppi\n"
+"                        scadenza, così il partner può verificare quanto è "
+"aperto, dovuto o scaduto.\n"
+"                    </span>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_wizard_view
@@ -134,6 +140,20 @@ msgid ""
 "                <br/>\n"
 "                <br/>"
 msgstr ""
+"<span class=\"o_form_label\">La dichiarazione di attività fornisce i "
+"dettagli di tutte le attività su\n"
+"                    i crediti e i debiti di un partner tra due date "
+"selezionate. Ciò include \n"
+"                    tutte le fatture,\n"
+"                    rimborsi e pagamenti. Qualsiasi saldo dovuto con data "
+"anteriore al periodo dell'estratto \n"
+"                    conto scelto apparirà come saldo in anticipo nella parte "
+"superiore dell'estratto conto. L'elenco è\n"
+"                    visualizzato in ordine cronologico ed è suddiviso per "
+"valute.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.detailed_activity_statement_wizard_view
@@ -149,6 +169,16 @@ msgid ""
 "                <br/>\n"
 "                <br/>"
 msgstr ""
+"<span class=\"o_form_label\">La dichiarazione dettagliata di attività è "
+"un'estensione \n"
+"                    della dichiarazione di attività e intende spiegare le "
+"transazioni\n"
+"                    avvenute nel corso del periodo, prevedendo inoltre una "
+"sezione saldo pregresso \n"
+"                    ed una sezione Saldo finale.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.outstanding_statement_wizard_view
@@ -167,6 +197,19 @@ msgid ""
 "                <br/>\n"
 "                <br/>"
 msgstr ""
+"<span class=\"o_form_label\">La dichiarazione in sospeso fornisce i dettagli "
+"di tutti i crediti e debiti \n"
+"                    del partner\n"
+"                    in sospeso fino ad una determinata data. Ciò include "
+"tutte le fatture \n"
+"                    non pagate, rimborsi non reclamati\n"
+"                    e pagamenti in sospeso. L'elenco viene visualizzato in "
+"ordine cronologico \n"
+"                    ed è\n"
+"                    diviso per valute.\n"
+"                </span>\n"
+"                <br/>\n"
+"                <br/>"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.activity_statement_document
@@ -231,7 +274,7 @@ msgstr "XLSX estratto conto attività"
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
 msgid "Activity Statements"
-msgstr ""
+msgstr "Estratti conto attività"
 
 #. module: partner_statement
 #: model_terms:ir.ui.view,arch_db:partner_statement.res_config_settings_view_form
