@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="py3o_report_view" model="ir.ui.view">
+        <field name="name">py3o_report_view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="report_py3o.py3o_report_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='py3o_template_fallback']" position="after">
+                <field name="py3o_has_index_fallback" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="act_report_xml_search_view" model="ir.ui.view">
+        <field name="name">py3o_report_search_view_py3o_index</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_search_view"/>
+        <field name="arch" type="xml">
+            <field name="model" position="after">
+                <filter name="py3o" string="Py3o Reports"
+                    domain="[('py3o_has_index_fallback', '=', True)]"/>
+            </field>
+        </field>
+    </record>
+</odoo>
