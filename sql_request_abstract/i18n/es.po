@@ -74,7 +74,6 @@ msgstr "Si está marcado, nuevos mensajes necesitan su atención."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
-#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si está marcado, algunos mensajes han tenido un error de entrega."
 
@@ -156,11 +155,6 @@ msgstr "Vista previa de los resultados"
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
 msgid "Query"
 msgstr "Consulta"
-
-#. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Error en la entrega de SMS"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
@@ -279,6 +273,9 @@ msgid ""
 msgstr ""
 "No puedes usar las siguientes palabras BORRAR, ELIMINAR, CREAR, INSERTAR, "
 "ALTERAR, TRUNCAR, EJECUTAR, ACTUALIZAR."
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Error en la entrega de SMS"
 
 #~ msgid "Main Attachment"
 #~ msgstr "Archivo adjunto principal"
