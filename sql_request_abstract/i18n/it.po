@@ -74,7 +74,6 @@ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
-#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
@@ -156,11 +155,6 @@ msgstr "Anteprima risulati"
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
 msgid "Query"
 msgstr "Query"
-
-#. module: sql_request_abstract
-#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Errore consegna SMS"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
@@ -279,6 +273,9 @@ msgid ""
 msgstr ""
 "Non si possono usare le segenti parole: DELETE, DROP, CREATE, INSERT, ALTER, "
 "TRUNCATE, EXECUTE, UPDATE."
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Errore consegna SMS"
 
 #~ msgid "Display Name"
 #~ msgstr "Nome da visualizzare"
