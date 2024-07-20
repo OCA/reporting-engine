@@ -28,7 +28,7 @@ addon | version | maintainers | summary
 [report_async](report_async/) | 16.0.1.0.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
 [report_company_details_translatable](report_company_details_translatable/) | 16.0.1.0.0 |  | Report Company Details Translatable
 [report_context](report_context/) | 16.0.1.0.0 |  | Adding context to reports
-[report_csv](report_csv/) | 16.0.2.0.0 |  | Base module to create csv report
+[report_csv](report_csv/) | 16.0.2.1.0 |  | Base module to create csv report
 [report_display_name_in_footer](report_display_name_in_footer/) | 16.0.1.1.0 | [![Shide](https://github.com/Shide.png?size=30px)](https://github.com/Shide) [![rafaelbn](https://github.com/rafaelbn.png?size=30px)](https://github.com/rafaelbn) | Show document name in report footer
 [report_generate_helper](report_generate_helper/) | 16.0.1.0.0 |  | Helper to easily generate report
 [report_label](report_label/) | 16.0.1.0.1 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
