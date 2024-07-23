@@ -200,6 +200,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <field name="parent_menu_id" />
                                     </group>
                                     <group string="UI Instances">
+                                        <field name="form_view_id" />
                                         <field name="tree_view_id" />
                                         <field name="graph_view_id" />
                                         <field name="pivot_view_id" />

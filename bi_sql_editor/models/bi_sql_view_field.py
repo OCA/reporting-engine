@@ -249,6 +249,10 @@ class BiSQLViewField(models.Model):
             or False,
         }
 
+    def _prepare_form_field(self):
+        self.ensure_one()
+        return f"""<field name="{self.name}" context="{self.field_context}"/>\n"""
+
     def _prepare_tree_field(self):
         self.ensure_one()
         if self.tree_visibility == "unavailable":
@@ -261,8 +265,14 @@ class BiSQLViewField(models.Model):
         elif self.tree_visibility == "optional_show":
             visibility_text = 'optional="show"'
 
+        operator_text = ""
+        if self.group_operator == "sum":
+            operator_text = f'sum="{_("Total")}"'
+        elif self.group_operator == "avg":
+            operator_text = f'avg="{_("Average")}"'
+
         return (
-            f"""<field name="{self.name}" {visibility_text}"""
+            f"""<field name="{self.name}" {visibility_text} {operator_text}"""
             f""" context="{self.field_context}"/>\n"""
         )
 
