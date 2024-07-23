@@ -129,7 +129,9 @@ msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
-msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
+msgid ""
+"Comma-separated text. Possible values: \"graph\", \"pivot\", \"tree\" or "
+"\"form\""
 msgstr ""
 
 #. module: bi_sql_editor
@@ -480,6 +482,11 @@ msgid "Odoo Cron"
 msgstr ""
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__form_view_id
+msgid "Odoo Form View"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
 msgstr ""
@@ -518,7 +525,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
-msgid "Only graph, pivot or tree views are supported"
+msgid "Only graph, pivot, tree or form views are supported"
 msgstr ""
 
 #. module: bi_sql_editor

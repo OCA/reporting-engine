@@ -129,9 +129,10 @@ msgstr "Columna"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
-msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
+msgid ""
+"Comma-separated text. Possible values: \"graph\", \"pivot\", \"tree\" or "
+"\"form\""
 msgstr ""
-"Text separat per comes. Valors possibles: \"gràfic\", \"pivot\" o \"arbre\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -494,6 +495,11 @@ msgid "Odoo Cron"
 msgstr "Cron Odoo"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__form_view_id
+msgid "Odoo Form View"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
 msgstr "Vista gràfica Odoo"
@@ -532,8 +538,8 @@ msgstr "Vista de llista Odoo"
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #, python-format
-msgid "Only graph, pivot or tree views are supported"
-msgstr "Només es suporten les vistes gràfica, pivot o llista"
+msgid "Only graph, pivot, tree or form views are supported"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -857,6 +863,16 @@ msgstr "selecció"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
 msgstr "seqüència"
+
+#~ msgid ""
+#~ "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
+#~ msgstr ""
+#~ "Text separat per comes. Valors possibles: \"gràfic\", \"pivot\" o "
+#~ "\"arbre\""
+
+#, python-format
+#~ msgid "Only graph, pivot or tree views are supported"
+#~ msgstr "Només es suporten les vistes gràfica, pivot o llista"
 
 #~ msgid ""
 #~ "Are you sure you want to set to draft this SQL View. It will delete the "
