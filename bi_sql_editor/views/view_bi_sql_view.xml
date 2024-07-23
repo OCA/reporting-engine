@@ -93,16 +93,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         name="technical_name"
                         attrs="{'readonly': [('state', '!=', 'draft')]}"
                     />
-                    <field name="view_order" />
                     <field name="is_materialized" />
                     <field
                         name="size"
-                        attrs="{'invisible': ['|', ('state', '=', 'draft'), ('is_materialized', '=', False)]}"
-                    />
-                    <field
-                        name="cron_id"
                         attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
                     />
+                </group>
+                <group>
+                    <field name="view_order" />
+                    <field name="parent_menu_id" />
                 </group>
             </group>
             <page name="page_sql" position="after">
@@ -188,6 +187,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <page string="Extras Information">
                             <group>
                                 <group string="Technical Details">
+                                    <field
+                                name="cron_id"
+                                attrs="{'invisible': ['|', ('state', 'in', ('draft', 'sql_valid')), ('is_materialized', '=', False)]}"
+                            />
                                     <field name="view_name" />
                                     <field name="model_name" />
                                     <field
@@ -195,19 +198,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 attrs="{'invisible': [('state', '=', 'draft')]}"
                             />
                                 </group>
-                                <group string="User Interface">
-                                    <group string="UI Parameters">
-                                        <field name="parent_menu_id" />
-                                    </group>
-                                    <group string="UI Instances">
-                                        <field name="form_view_id" />
-                                        <field name="tree_view_id" />
-                                        <field name="graph_view_id" />
-                                        <field name="pivot_view_id" />
-                                        <field name="search_view_id" />
-                                        <field name="action_id" />
-                                        <field name="menu_id" />
-                                    </group>
+                                <group string="UI Instances">
+                                    <field name="form_view_id" />
+                                    <field name="tree_view_id" />
+                                    <field name="graph_view_id" />
+                                    <field name="pivot_view_id" />
+                                    <field name="search_view_id" />
+                                    <field name="action_id" />
+                                    <field name="menu_id" />
                                 </group>
                             </group>
                         </page>
