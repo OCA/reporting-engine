@@ -23,13 +23,9 @@ msgstr ""
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid ""
-"<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
-"False)]}\">No records\n"
+"<span class=\"text-warning\" invisible=\"not no_record\">No records\n"
 "                        </span>"
 msgstr ""
-"<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
-"False)]}\">Sin registros\n"
-"                        </span>"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
@@ -193,12 +189,6 @@ msgstr "Plantilla en Línea"
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
 msgid "Inline template"
 msgstr "Plantilla en línea"
-
-#. module: base_comment_template
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
-#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
@@ -389,3 +379,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
 msgstr "registro:"
+
+#~ msgid ""
+#~ "<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
+#~ "False)]}\">No records\n"
+#~ "                        </span>"
+#~ msgstr ""
+#~ "<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
+#~ "False)]}\">Sin registros\n"
+#~ "                        </span>"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación en"
