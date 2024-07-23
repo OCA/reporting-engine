@@ -1,0 +1,370 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * base_comment_template
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-16 11:59+0000\n"
+"PO-Revision-Date: 2017-05-16 11:59+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Latvian (https://www.transifex.com/oca/teams/23907/lv/)\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid ""
+"<span class=\"text-warning\" attrs=\"{'invisible': [('no_record', '=', "
+"False)]}\">No records\n"
+"                        </span>"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
+msgid "Active"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Archived"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Base Comment Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
+msgid "Base Comment Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_base_comment_template_preview
+msgid "Base Comment Template Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Base Comment content"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
+msgid "Body"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
+msgid "Bottom"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose a language:"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose an engine:"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Choose an example"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Comment"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
+#: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
+msgid "Comment Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_res_partner__base_comment_template_ids
+#: model:ir.model.fields,field_description:base_comment_template.field_res_users__base_comment_template_ids
+#: model:ir.ui.menu,name:base_comment_template.reports_base_comment_template_menuitem
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_search
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
+msgid "Comment Templates"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_base_comment_template
+msgid "Comments Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
+msgid "Company"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__create_uid
+msgid "Created by"
+msgstr "Izveidoja"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__create_date
+msgid "Created on"
+msgstr "Izveidots"
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Discard"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__engine
+msgid "Engine"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
+msgid "Filter Domain"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__id
+msgid "ID"
+msgstr "ID"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_ids
+msgid "IR Model"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
+msgid ""
+"If set, the comment template will be available only for the selected company."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__partner_ids
+msgid ""
+"If set, the comment template will be available only for the selected partner."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__inline_template
+msgid "Inline Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
+msgid "Inline template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template____last_update
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__write_uid
+msgid "Last Updated by"
+msgstr "Pēdējo reizi atjaunoja"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_date
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__write_date
+msgid "Last Updated on"
+msgstr "Pēdējās izmaiņas"
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
+msgid "Model"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_ir_model
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__models
+msgid "Models"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
+msgid "Name"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__name
+msgid "Name/description of this comment template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
+msgid "No Record"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
+msgid "Partner"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
+msgid "Position on document"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
+msgid "Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "Preview of"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
+msgid "QWeb"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb_view
+msgid "QWeb View"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
+msgid "QWeb view"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
+msgid "Record reference"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: base_comment_template
+#. odoo-python
+#: code:addons/base_comment_template/models/base_comment_template.py:0
+#, python-format
+msgid "Some model (%s) not found"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
+#: model:ir.model.fields,help:base_comment_template.field_res_users__base_comment_template_ids
+msgid "Specific partner comments that can be included in reports"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
+msgid "Template"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
+msgid "Template Preview"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
+msgid "Template Preview Engine"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
+msgid "Template Preview Language"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
+msgid "The smaller number = The higher priority"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template_preview__model_ids
+msgid ""
+"This comment template will be available on this models. You can see here "
+"only models allowed to set the coment template."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__domain
+msgid ""
+"This comment template will be available only for objects that satisfy the "
+"condition"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__engine
+msgid ""
+"This field allows to select the engine to use for rendering the template."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
+msgid "This field allows to select the position of the comment on reports."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_base_comment_template__text
+msgid "This is the text template that will be inserted into reports."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
+msgid "Top"
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
+msgid "Whether this model supports in reports to add comment templates."
+msgstr ""
+
+#. module: base_comment_template
+#: model:ir.model,name:base_comment_template.model_comment_template
+msgid ""
+"base.comment.template to put header and footer in reports based on created "
+"comment templates"
+msgstr ""
+
+#. module: base_comment_template
+#: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
+msgid "record:"
+msgstr ""
