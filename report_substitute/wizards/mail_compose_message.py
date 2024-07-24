@@ -9,7 +9,7 @@ class MailComposeMessage(models.TransientModel):
     _inherit = "mail.compose.message"
 
     @api.onchange("template_id")
-    def onchange_template_id_wrapper(self):
+    def _onchange_template_id_wrapper(self):
         if self.template_id:
             report_template = self.template_id.report_template
             active_ids = []
