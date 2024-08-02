@@ -173,12 +173,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export____last_update
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard____last_update
-msgid "Last Modified on"
-msgstr "تاریخ آخرین به‌روزرسانی"
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_uid
 msgid "Last Updated by"
@@ -189,11 +183,6 @@ msgstr "آخرین به روز رسانی توسط"
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
 msgid "Last Updated on"
 msgstr "آخرین به روز رسانی در"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
@@ -299,6 +288,16 @@ msgid "Use Properties"
 msgstr ""
 
 #. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__query
 msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
@@ -359,3 +358,6 @@ msgstr ""
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "تاریخ آخرین به‌روزرسانی"
