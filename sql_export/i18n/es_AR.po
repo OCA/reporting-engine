@@ -1,0 +1,438 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sql_export
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-06 02:51+0000\n"
+"PO-Revision-Date: 2023-10-29 23:45+0000\n"
+"Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
+"23907/es_AR/)\n"
+"Language: es_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction
+msgid "Action Needed"
+msgstr "Acción Requerida"
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_file_wizard
+msgid "Allow the user to save the file with sql request's data"
+msgstr "Permite al usuario guardar el archivo con datos de la solicitud SQL"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
+msgid "Allowed Groups"
+msgstr "Grupos Permitidos"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
+msgid "Allowed Users"
+msgstr "Usuarios Permitidos"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_attachment_count
+msgid "Attachment Count"
+msgstr "Cuenta de Adjuntos"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__file_format__csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid "Configure Properties"
+msgstr "Configurar Propiedades"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
+msgid "Copy Options"
+msgstr "Opciones de Copia"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Csv File"
+msgstr "Archivo Csv"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__display_name
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__encoding
+msgid "Encoding"
+msgstr "Codificación"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
+msgid "Execute Query"
+msgstr "Ejecutar Consulta"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Export"
+msgstr "Exportar"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Export file"
+msgstr "Exportar archivo"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
+msgid "File"
+msgstr "Archivo"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__file_format
+msgid "File Format"
+msgstr "Formato del Archivo"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__file_name
+msgid "File Name"
+msgstr "Nombre del Archivo"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Contactos)"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_group_changed
+msgid "Has Group Changed"
+msgstr "Ha Cambiado de Grupo"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_message
+msgid "Has Message"
+msgstr "Tiene un Mensaje"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__id
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los nuevos mensajes requieren su atención."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid ""
+"In case of use of properties in the query, use this syntax : %(Property "
+"String)s. <br/>\n"
+"                                Example : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
+msgstr ""
+"En caso de utilizar propiedades en la query, utilice esta sintaxis : %("
+"Property String)s. <br/>\n"
+"                                Example : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
+msgid "Is Follower"
+msgstr "Es Seguidor"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export____last_update
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto Principal"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensajes"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__note
+msgid "Note"
+msgstr "Nota"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de Acciones"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: sql_export
+#. odoo-python
+#: code:addons/sql_export/wizard/wizard_file.py:0
+#, python-format
+msgid "Please enter a values for the following properties : %s"
+msgstr "Por favor ingrese un valor para las siguientes propiedades: %s"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__query_properties
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query
+msgid "Query"
+msgstr "Consulta"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
+msgid "Query Properties"
+msgstr "Propiedades de la Query"
+
+#. module: sql_export
+#: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
+msgid "SQL Exports"
+msgstr "Exportaciones SQL"
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_export
+msgid "SQL export"
+msgstr "Exportación SQL"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
+#: model:ir.ui.menu,name:sql_export.sql_export_menu_view
+msgid "Sql Export"
+msgstr "Exportación Sql"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__state
+msgid "State"
+msgstr "Estado"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__state
+msgid ""
+"State of the Request:\n"
+" * 'Draft': Not tested\n"
+" * 'SQL Valid': SQL Request has been checked and is valid"
+msgstr ""
+"Estado de la Solicitud:\n"
+" * 'Borrador': No probado\n"
+" * 'SQL Válido': La solicitud de SQL ha sido verificada y es válida"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+"Campos técnicos, utilizados en módulos que dependen de este para saber si "
+"los grupos han cambiado, y que según el acceso se debe actualizar."
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
+msgid "Use Properties"
+msgstr "Utilizar Propiedades"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__query
+msgid ""
+"You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+msgstr ""
+"No puede usar las siguientes palabras: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__big5
+msgid "big5"
+msgstr "big5"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__gb18030
+msgid "gb18030"
+msgstr "gb18030"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__koir8_r
+msgid "koir8_r"
+msgstr "koir8_r"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin1
+msgid "latin1"
+msgstr "latin1"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin2
+msgid "latin2"
+msgstr "latin2"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "or"
+msgstr "o"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
+msgid "shift_jis"
+msgstr "shift_jis"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-16
+msgid "utf-16"
+msgstr "utf-16"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-8
+msgid "utf-8"
+msgstr "utf-8"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1251
+msgid "windows-1251"
+msgstr "windows-1251"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
+msgid "windows-1252"
+msgstr "windows-1252"
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Error de Entrega de SMS"
+
+#~ msgid ""
+#~ "Before adding parameters, make sure you have created one that fill your "
+#~ "need in the dedicated menu with the right type and label. \n"
+#~ "Then, when you add a parameter here, you have to include it in the SQL "
+#~ "query in order to have dynamic values depending on the user choice.\n"
+#~ "The format of the parameters in the SQL query must be like this : "
+#~ "%(parameter_field_name)s. \n"
+#~ "Example : from the variable menu, create an variable with type 'char', "
+#~ "having field name 'x_name' and field label : 'Name' \n"
+#~ "Then, you can create a SQL query like this : SELECT * FROM res_partner "
+#~ "WHERE name =  %(x_name)s the variable can be used in any number of "
+#~ "different SQL queries. \n"
+#~ "In the SQL query, you can also include these 2 special parameters "
+#~ "%(user_id)s and %(company_id)s which will be replaced respectively by the "
+#~ "user executing the query and the company of the user executing the query."
+#~ msgstr ""
+#~ "Antes de agregar parámetros, asegúrese de haber creado uno que satisfaga "
+#~ "sus necesidades en el menú dedicado con el tipo y la etiqueta correctos.\n"
+#~ "Luego, cuando agregue un parámetro acá, debe incluirlo en la consulta SQL "
+#~ "para tener valores dinámicos según la elección del usuario.\n"
+#~ "El formato de los parámetros en la consulta SQL debe ser así: "
+#~ "%(parameter_field_name)s.\n"
+#~ "Ejemplo: desde el menú de variables, cree una variable con el tipo "
+#~ "'char', que tenga el nombre de campo 'x_name' y la etiqueta de campo: "
+#~ "'Nombre'\n"
+#~ "Luego, puede crear una consulta SQL como esta: SELECT * FROM res_partner "
+#~ "WHERE name = %(x_name)s la variable se puede usar en cualquier cantidad "
+#~ "de consultas SQL diferentes.\n"
+#~ "En la consulta SQL, también puede incluir estos 2 parámetros especiales "
+#~ "%(user_id)s y %(company_id)s que serán reemplazados respectivamente por "
+#~ "el usuario que ejecuta la consulta y la empresa del usuario que ejecuta "
+#~ "la consulta."
+
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "Parameters"
+#~ msgstr "Parámetros"
+
+#~ msgid "Partner Categories"
+#~ msgstr "Categorías de Contacto"
+
+#~ msgid "SQL Export Variables"
+#~ msgstr "Exportar Variables SQL"
+
+#~ msgid "SQL Parameter"
+#~ msgstr "Parámetro SQL"
+
+#, python-format
+#~ msgid "The export with parameters is not implemented in V16"
+#~ msgstr "La exportación con parámetros no está implementada en V16"
+
+#~ msgid "variables_placeholder"
+#~ msgstr "variables_placeholder"
+
+#~ msgid "x_ID"
+#~ msgstr "x_ID"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Número de mensajes que requieren una acción"

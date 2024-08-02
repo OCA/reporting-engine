@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sql_export_view_form" model="ir.ui.view">
+        <field name="model">sql.export</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_form"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="query" position="after">
+                <field name="use_properties" invisible="1" />
+            </field>
+            <button name="button_preview_sql_expression" position="attributes">
+                <attribute name="invisible">use_properties</attribute>
+            </button>
+            <xpath expr="//header" position="inside">
+                <button
+                    name="export_sql_query"
+                    string="Execute Query"
+                    invisible="state != 'sql_valid'"
+                    type="object"
+                    class="oe_highlight"
+                    icon="fa-arrow-right text-success"
+                />
+                <button
+                    name="configure_properties"
+                    invisible="state != 'draft'"
+                    string="Configure Properties"
+                    type="object"
+                    class="oe_highlight"
+                    icon="fa-arrow-right text-success"
+                />
+            </xpath>
+            <group name="group_main_info" position="inside">
+                <group name="option">
+                    <field name="file_format" readonly="state != 'draft'" />
+                    <field
+                        name="copy_options"
+                        invisible="file_format != 'csv'"
+                        required="file_format == 'csv'"
+                        readonly="state != 'draft'"
+                    />
+                    <field name="encoding" readonly="state != 'draft'" />
+                </group>
+            </group>
+            <field name="query" position="before">
+                <p
+                    colspan="2"
+                    invisible="not use_properties"
+                > In case of use of properties in the query, use this syntax : &#37;&#37;(Property String)s. <br
+                    />
+                                Example : SELECT id FROM sale_order WHERE create_date > &#37;&#37;(Start Date)s</p>
+            </field>
+        </field>
+    </record>
+    <record id="sql_export_view_tree" model="ir.ui.view">
+        <field name="model">sql.export</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_tree"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <button
+                    name="export_sql_query"
+                    string="Execute Query"
+                    invisible="state != 'sql_valid'"
+                    type="object"
+                    icon="fa-arrow-right text-success"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="sql_export_tree_action" model="ir.actions.act_window">
+        <field name="name">SQL Exports</field>
+        <field name="res_model">sql.export</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="sql_export_menu_view"
+        name="Sql Export"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        action="sql_export_tree_action"
+        sequence="15"
+    />
+</odoo>
