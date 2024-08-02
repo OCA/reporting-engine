@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
 "PO-Revision-Date: 2023-10-29 23:45+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
-"23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
+"teams/23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -168,8 +168,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"En caso de utilizar propiedades en la query, utilice esta sintaxis : %("
-"Property String)s. <br/>\n"
+"En caso de utilizar propiedades en la query, utilice esta sintaxis : "
+"%(Property String)s. <br/>\n"
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 
@@ -177,12 +177,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
 msgid "Is Follower"
 msgstr "Es Seguidor"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export____last_update
-#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
@@ -195,11 +189,6 @@ msgstr "Última actualización realizada por"
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
-
-#. module: sql_export
-#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Adjunto Principal"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
@@ -310,6 +299,16 @@ msgid "Use Properties"
 msgstr "Utilizar Propiedades"
 
 #. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__query
 msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
@@ -372,6 +371,12 @@ msgstr "windows-1251"
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
 msgstr "windows-1252"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación en"
+
+#~ msgid "Main Attachment"
+#~ msgstr "Adjunto Principal"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Error de Entrega de SMS"
