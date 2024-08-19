@@ -2,7 +2,7 @@
 <!-- Copyright 2012 -Now Savoir-faire Linux <https://www.savoirfairelinux.com/>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <data noupdate="0">
+    <data>
         <record id="group_kpi_manager" model="res.groups">
             <field name="name">Manage KPI's</field>
             <field name="category_id" ref="base.module_category_hidden" />

@@ -72,7 +72,7 @@
                     <separator orientation="vertical" />
                     <field name="name" />
                     <field name="category_id" />
-                    <field name="company_id" group="base.group_multi_company" />
+                    <field name="company_id" groups="base.group_multi_company" />
                 </group>
                 <newline />
                 <group expand="0" name="Group By...">
