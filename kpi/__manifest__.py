@@ -14,8 +14,6 @@
         "security/ir.model.access.csv",
         "views/kpi_category_views.xml",
         "views/kpi_history_views.xml",
-        "views/kpi_threshold_range_views.xml",
-        "views/kpi_threshold_views.xml",
         "views/kpi_views.xml",
         "views/menu.xml",
         "data/kpi_data.xml",
@@ -23,8 +21,6 @@
     "images": [
         "images/kpi_definition.png",
         "images/kpi_computation.png",
-        "images/kpi_threshold.png",
-        "images/kpi_range.png",
     ],
     "installable": True,
 }

@@ -8,10 +8,10 @@
         <field name="model">kpi.history</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" />
+                <!-- TODO a revisar el name en el history -->
+                <!-- <field name="name" /> -->
                 <field name="date" />
                 <field name="value" />
-                <field name="color" widget="color" />
                 <field name="company_id" groups="base.group_multi_company" />
             </tree>
         </field>
@@ -24,10 +24,9 @@
                 <sheet>
                     <group col="4" colspan="4">
                         <field name="kpi_id" />
-                        <field name="name" />
+                        <!-- <field name="name" /> -->
                         <field name="date" />
                         <field name="value" />
-                        <field name="color" widget="color" />
                         <field name="company_id" groups="base.group_multi_company" />
                     </group>
                 </sheet>

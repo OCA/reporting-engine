@@ -32,25 +32,4 @@
         parent="menu_configuration_kpi"
         sequence="20"
     />
-    <menuitem
-        id="menu_configuration_kpi_range"
-        name="Ranges"
-        action="open_threshold_range_list"
-        parent="menu_configuration_kpi"
-        sequence="30"
-    />
-    <menuitem
-        id="menu_configuration_kpi_dbsource"
-        name="Data Sources"
-        action="base_external_dbsource.action_dbsource"
-        parent="menu_configuration_kpi"
-        sequence="40"
-    />
-    <menuitem
-        id="menu_configuration_kpi_threshold"
-        name="Thresholds"
-        action="open_threshold_list"
-        parent="menu_configuration_kpi"
-        sequence="50"
-    />
 </odoo>

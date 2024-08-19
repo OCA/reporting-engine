@@ -10,7 +10,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-                <field name="value" widget="progressbar" />
+                <field name="value"/>
                 <field name="category_id" />
                 <field name="kpi_type" />
                 <field name="company_id" groups="base.group_multi_company" />
@@ -24,7 +24,6 @@
             <kanban class="o_kpi_kanban" create="false" edit="false" delete="false">
                 <field name="id" />
                 <field name="display_name" />
-                <field name="color" />
                 <field name="value" />
                 <field name="last_execution" />
                 <templates>
@@ -38,7 +37,6 @@
                                 </div>
                                 <div
                                     class="o_kanban_tags_section oe_kanban_partner_categories"
-                                    t-attf-style="color:#{record.color.raw_value}"
                                 >
                                     <strong>
                                         <field name="value" />
@@ -91,7 +89,6 @@
                     <group>
                         <group>
                             <field name="name" />
-                            <field name="threshold_id" />
                             <field name="category_id" />
                         </group>
                         <group>
@@ -122,11 +119,6 @@
                                 <separator string="KPI Computation" colspan="6" />
                                 <newline />
                                 <field name="kpi_type" colspan="2" />
-                                <field
-                                    name="dbsource_id"
-                                    colspan="2"
-                                    attrs="{'invisible' : [('kpi_type', '!=', 'external')]}"
-                                />
                                 <newline />
                                 <field name="kpi_code" colspan="6" />
                             </group>
@@ -142,7 +134,7 @@
     <record model="ir.actions.act_window" id="open_kpi_dashboard">
         <field name="name">KPI Dashboard</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">kanban,form</field>
+        <field name="view_mode">graph,pivot,kanban,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
     <record id="action_view_kpi_kanban" model="ir.actions.act_window.view">
@@ -154,7 +146,7 @@
     <record model="ir.actions.act_window" id="open_kpi_list">
         <field name="name">KPI Maintenance</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
     <record id="action_view_kpi_tree" model="ir.actions.act_window.view">

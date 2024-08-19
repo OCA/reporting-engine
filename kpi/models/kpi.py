@@ -57,12 +57,11 @@ class KPI(models.Model):
     name = fields.Char(required=True)
     description = fields.Text()
     category_id = fields.Many2one("kpi.category", required=True)
-    threshold_id = fields.Many2one("kpi.threshold", required=True)
     periodicity = fields.Integer(default=1)
 
     periodicity_uom = fields.Selection(
         [
-            ("minute", "Minute"),
+            # ("minute", "Minute"), Comentamos opción minuto por tema performance
             ("hour", "Hour"),
             ("day", "Day"),
             ("week", "Week"),
@@ -74,18 +73,15 @@ class KPI(models.Model):
 
     next_execution_date = fields.Datetime(readonly=True)
     value = fields.Float(compute="_compute_display_last_kpi_value")
-    color = fields.Text(compute="_compute_display_last_kpi_value")
     last_execution = fields.Datetime(compute="_compute_display_last_kpi_value")
     kpi_type = fields.Selection(
         [
             ("python", "Python"),
-            ("local", "SQL - Local DB"),
-            ("external", "SQL - External DB"),
+            ("sql", "SQL - Local DB"),
         ],
         "KPI Computation Type",
     )
 
-    dbsource_id = fields.Many2one("base.external.dbsource", "External DB Source")
     kpi_code = fields.Text(
         help=(
             "SQL code must return the result as 'value' " "(i.e. 'SELECT 5 AS value')."
@@ -110,40 +106,27 @@ class KPI(models.Model):
             if history_ids:
                 his = obj.history_ids[0]
                 obj.value = his.value
-                obj.color = his.color
                 obj.last_execution = his.date
             else:
                 obj.value = 0
-                obj.color = "#FFFFFF"
                 obj.last_execution = False
 
     def _get_kpi_value(self):
         self.ensure_one()
         kpi_value = 0
         if self.kpi_code:
-            if self.kpi_type == "local" and is_sql_or_ddl_statement(self.kpi_code):
+            if self.kpi_type == "sql" and is_sql_or_ddl_statement(self.kpi_code):
                 self.env.cr.execute(self.kpi_code)
                 dic = self.env.cr.dictfetchall()
                 if is_one_value(dic):
                     kpi_value = dic[0]["value"]
-            elif (
-                self.kpi_type == "external"
-                and self.dbsource_id.id
-                and is_sql_or_ddl_statement(self.kpi_code)
-            ):
-                dbsrc_obj = self.dbsource_id
-                res = dbsrc_obj.execute(self.kpi_code)
-                if is_one_value(res):
-                    kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
                 kpi_value = safe_eval(self.kpi_code, {"self": self})
         if isinstance(kpi_value, dict):
             res = kpi_value
         else:
-            threshold_obj = self.threshold_id
             res = {
                 "value": kpi_value,
-                "color": threshold_obj.get_color(kpi_value),
             }
         res.update({"kpi_id": self.id})
         return res
@@ -159,8 +142,8 @@ class KPI(models.Model):
         for obj in self:
             if obj.periodicity_uom == "hour":
                 delta = relativedelta(hours=obj.periodicity)
-            elif obj.periodicity_uom == "minute":
-                delta = relativedelta(minutes=obj.periodicity)
+            # elif obj.periodicity_uom == "minute":
+            #     delta = relativedelta(minutes=obj.periodicity)
             elif obj.periodicity_uom == "day":
                 delta = relativedelta(days=obj.periodicity)
             elif obj.periodicity_uom == "week":
