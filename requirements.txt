@@ -1,3 +1,4 @@
+genshi>=0.7,<0.7.7
 xlwt
 xlsxwriter
 py3o.template
