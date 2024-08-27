@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="act_report_xml_view" model="ir.ui.view">
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <field name="attachment" position="after">
+                <field
+                    name="use_front_cover"
+                    attrs="{'invisible': [('report_type', '!=', 'qweb-pdf')]}"
+                />
+                <field
+                    name="front_cover_overlap"
+                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_front_cover', '=', False)]}"
+                />
+                <field
+                    name="front_cover_pdf"
+                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_front_cover', '=', False)]}"
+                    widget="pdf_viewer"
+                />
+
+                <field
+                    name="use_back_cover"
+                    attrs="{'invisible': [('report_type', '!=', 'qweb-pdf')]}"
+                />
+                <field
+                    name="back_cover_overlap"
+                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_back_cover', '=', False)]}"
+                />
+                <field
+                    name="back_cover_pdf"
+                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_back_cover', '=', False)]}"
+                    widget="pdf_viewer"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
