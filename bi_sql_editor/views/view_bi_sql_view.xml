@@ -202,28 +202,39 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <group string="Context">
                                 <field name="action_context" nolabel="1" colspan="4" />
                             </group>
+                            <group
+                                name="ir_cron_settings"
+                                string="Scheduled Action settings"
+                            >
+                                <field
+                                    name="cron_interval_number"
+                                    attrs="{'readonly': [('state', '=', 'ui_valid')]}"
+                                />
+                                <field
+                                    name="cron_interval_type"
+                                    attrs="{'readonly': [('state', '=', 'ui_valid')]}"
+                                />
+                            </group>
                         </page>
                         <page string="Extras Information">
-                            <group>
-                                <group string="Model">
-                                    <field name="model_name" />
-                                    <field
-                                        name="model_id"
-                                        attrs="{'invisible': [('state', '=', 'draft')]}"
-                                    />
+                            <group string="Model">
+                                <field name="model_name" />
+                                <field
+                                    name="model_id"
+                                    attrs="{'invisible': [('state', '=', 'draft')]}"
+                                />
+                            </group>
+                            <group string="User Interface">
+                                <group string="UI Parameters">
+                                    <field name="parent_menu_id" />
                                 </group>
-                                <group string="User Interface">
-                                    <group string="UI Parameters">
-                                        <field name="parent_menu_id" />
-                                    </group>
-                                    <group string="UI Instances">
-                                        <field name="tree_view_id" />
-                                        <field name="graph_view_id" />
-                                        <field name="pivot_view_id" />
-                                        <field name="search_view_id" />
-                                        <field name="action_id" />
-                                        <field name="menu_id" />
-                                    </group>
+                                <group string="UI Instances">
+                                    <field name="tree_view_id" />
+                                    <field name="graph_view_id" />
+                                    <field name="pivot_view_id" />
+                                    <field name="search_view_id" />
+                                    <field name="action_id" />
+                                    <field name="menu_id" />
                                 </group>
                             </group>
                         </page>
