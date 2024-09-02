@@ -18,8 +18,9 @@ _logger = logging.getLogger(__name__)
 
 @api.model
 def _instanciate(self, model_data):
-    """ Return a class for the custom model given by
-    parameters ``model_data``. """
+    """Return a class for the custom model given by
+    parameters ``model_data``."""
+
     # This monkey patch is meant to avoid create/search tables for those
     # materialized views. Doing "super" doesn't work.
     class CustomModel(models.Model):
@@ -281,6 +282,8 @@ class BiSQLView(models.Model):
                     "If you want to delete them, first set them to draft."
                 )
             )
+        # Remove Scheduled Actions, as they were not removed in `button_set_draft`
+        self.mapped("cron_id").unlink()
         return super(BiSQLView, self).unlink()
 
     def copy(self, default=None):
@@ -310,9 +313,13 @@ class BiSQLView(models.Model):
             sql_view._create_index()
 
             if sql_view.is_materialized:
-                sql_view.cron_id = (
-                    self.env["ir.cron"].create(sql_view._prepare_cron()).id
-                )
+                # Create Cron only if it has not been created yet, otherwise unarchive it
+                if sql_view.cron_id and not sql_view.cron_id.active:
+                    sql_view.cron_id.write({"active": True})
+                else:
+                    sql_view.cron_id = (
+                        self.env["ir.cron"].create(sql_view._prepare_cron()).id
+                    )
             sql_view.state = "model_valid"
 
     def button_set_draft(self):
@@ -324,7 +331,7 @@ class BiSQLView(models.Model):
             sql_view.pivot_view_id.unlink()
             sql_view.search_view_id.unlink()
             if sql_view.cron_id:
-                sql_view.cron_id.unlink()
+                sql_view.cron_id.write({"active": False})
 
             if sql_view.state in ("model_valid", "ui_valid"):
                 # Drop SQL View (and indexes by cascade)
