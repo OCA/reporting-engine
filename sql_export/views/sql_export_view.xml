@@ -43,6 +43,11 @@
                         attrs="{'readonly': [('state', '!=', 'draft')]}"
                     />
                     <field
+                        name="keep_generated_file"
+                        attrs="{'invisible': [('file_format', '!=', 'csv')], 'required': [('file_format', '=', 'csv')], 'readonly': [('state', '!=', 'draft')]}"
+                        groups="base.group_no_one"
+                    />
+                    <field
                         name="copy_options"
                         attrs="{'invisible': [('file_format', '!=', 'csv')], 'required': [('file_format', '=', 'csv')], 'readonly': [('state', '!=', 'draft')]}"
                     />

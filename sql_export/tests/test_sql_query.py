@@ -101,3 +101,16 @@ class TestExportSqlQuery(TransactionCase):
         wizard.export_sql()
         export = base64.b64decode(wizard.binary_file)
         self.assertTrue(export)
+
+    def test_keep_generated_file(self):
+        """Test that we keep generated files"""
+        self.sql_report_demo.keep_generated_file = True
+        wizard = self.wizard_obj.create(
+            {
+                "sql_export_id": self.sql_report_demo.id,
+            }
+        )
+        wizard.export_sql()
+        attachment = wizard._get_field_attachment()
+        wizard.sudo().unlink()
+        self.assertTrue(attachment.exists())

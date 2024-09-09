@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
+from mimetypes import guess_type
 
 from odoo import _, fields, models
 from odoo.exceptions import UserError
@@ -78,6 +79,12 @@ class SqlFileWizard(models.TransientModel):
                 sql_export.id,
             ),
         )
+        self._get_field_attachment().write(
+            {
+                "name": self.file_name,
+                "mimetype": guess_type(self.file_name)[0],
+            }
+        )
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",
@@ -87,3 +94,24 @@ class SqlFileWizard(models.TransientModel):
             "target": "self",
         }
         return action
+
+    def _get_field_attachment(self):
+        """Return the attachment of the binary_file field"""
+        return self.env["ir.attachment"].search(
+            [
+                ("res_model", "=", self._name),
+                ("res_id", "in", self.ids),
+                ("res_field", "=", "binary_file"),
+            ],
+        )
+
+    def unlink(self):
+        for this in self.filtered("sql_export_id.keep_generated_file"):
+            this._get_field_attachment().write(
+                {
+                    "res_model": this.sql_export_id._name,
+                    "res_id": this.sql_export_id.id,
+                    "res_field": None,
+                }
+            )
+        return super().unlink()
