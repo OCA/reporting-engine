@@ -110,7 +110,7 @@ class IrActionsReport(models.Model):
         )
         try:
             lo_bin = find_in_path(lo_bin)
-        except IOError:
+        except OSError:
             lo_bin = None
         return lo_bin
 
@@ -163,7 +163,7 @@ class IrActionsReport(models.Model):
         if report.report_type != "py3o":
             raise RuntimeError(
                 "py3o rendition is only available on py3o report.\n"
-                "(current: '{}', expected 'py3o'".format(report.report_type)
+                f"(current: '{report.report_type}', expected 'py3o'"
             )
         return (
             self.env["py3o.report"]
@@ -178,7 +178,7 @@ class IrActionsReport(models.Model):
         if report.print_report_name and not len(res_ids) > 1:
             obj = self.env[self.model].browse(res_ids)
             return safe_eval(report.print_report_name, {"object": obj, "time": time})
-        return "{}.{}".format(self.name, self.py3o_filetype)
+        return f"{self.name}.{self.py3o_filetype}"
 
     def _get_attachments(self, res_ids):
         """Return the report already generated for the given res_ids"""

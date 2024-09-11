@@ -46,7 +46,7 @@ class ReportController(ReportController):
         res, filetype = ir_action._render(reportname, docids, data)
         filename = action_py3o_report.gen_report_download_filename(docids, data)
         if not filename.endswith(filetype):
-            filename = "{}.{}".format(filename, filetype)
+            filename = f"{filename}.{filetype}"
         content_type = mimetypes.guess_type("x." + filetype)[0]
         http_headers = [
             ("Content-Type", content_type),
