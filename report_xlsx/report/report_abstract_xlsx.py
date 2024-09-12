@@ -95,7 +95,7 @@ class ReportXlsxAbstract(models.AbstractModel):
         """Get the format to be used in cells (symbol included).
         Used in account_financial_report addon"""
         s_before = currency.symbol if currency.position == "before" else ""
-        s_after = " %s" % currency.symbol if currency.position == "after" else ""
+        s_after = f" {currency.symbol}" if currency.position == "after" else ""
         return f"{f'{s_before}'}#,##0.{'0' * currency.decimal_places}{f'{s_after}'}"
 
     def create_xlsx_report(self, docids, data):

@@ -19,7 +19,7 @@ class ReportAction(models.Model):
     @api.model
     def _render_xlsx(self, report_ref, docids, data):
         report_sudo = self._get_report(report_ref)
-        report_model_name = "report.%s" % report_sudo.report_name
+        report_model_name = f"report.{report_sudo.report_name}"
         report_model = self.env[report_model_name]
         ret = (
             report_model.with_context(active_model=report_sudo.model)
