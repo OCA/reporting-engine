@@ -1,9 +1,8 @@
-/** @odoo-module **/
-
 import {download} from "@web/core/network/download";
 import {registry} from "@web/core/registry";
+import {user} from "@web/core/user";
 
-function getReportUrl({report_name, context, data}, env) {
+function getReportUrl({report_name, context, data}) {
     // Rough copy of action_service.js _getReportUrl method.
     let url = `/report/xml/${report_name}`;
     const actionContext = context || {};
@@ -15,14 +14,14 @@ function getReportUrl({report_name, context, data}, env) {
     if (actionContext.active_ids) {
         url += `/${actionContext.active_ids.join(",")}`;
     }
-    const userContext = encodeURIComponent(JSON.stringify(env.services.user.context));
+    const userContext = encodeURIComponent(JSON.stringify(user.context));
     return `${url}?context=${userContext}`;
 }
 async function triggerDownload(action, {onClose}, env) {
     // Rough copy of action_service.js _triggerDownload method.
     env.services.ui.block();
-    const data = JSON.stringify([getReportUrl(action, env), action.report_type]);
-    const context = JSON.stringify(env.services.user.context);
+    const data = JSON.stringify([getReportUrl(action), action.report_type]);
+    const context = JSON.stringify(user.context);
     try {
         await download({url: "/report/download", data: {data, context}});
     } finally {

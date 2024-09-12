@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-     <record id="demo_xml_report" model="ir.actions.report">
+    <record id="demo_xml_report" model="ir.actions.report">
         <field name="name">Demo xml report</field>
         <field name="model">res.company</field>
         <field name="report_type">qweb-xml</field>
