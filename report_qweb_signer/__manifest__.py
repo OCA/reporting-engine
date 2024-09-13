@@ -6,7 +6,7 @@
 {
     "name": "Qweb PDF reports signer",
     "summary": "Sign Qweb PDFs usign a PKCS#12 certificate",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Tecnativa, " "Odoo Community Association (OCA)",
