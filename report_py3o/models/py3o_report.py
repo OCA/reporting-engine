@@ -10,10 +10,9 @@ import tempfile
 import warnings
 from base64 import b64decode
 from contextlib import closing
+from importlib.resources import files
 from io import BytesIO
 from zipfile import ZIP_DEFLATED, ZipFile
-
-import pkg_resources
 
 from odoo import _, api, fields, models, tools
 from odoo.exceptions import AccessError
@@ -129,8 +128,8 @@ class Py3oReport(models.TransientModel):
         flbk_filename = None
         if report_xml.module:
             # if the default is defined
-            flbk_filename = pkg_resources.resource_filename(
-                "odoo.addons.%s" % report_xml.module, tmpl_name
+            flbk_filename = files(f"odoo.addons.{report_xml.module}").joinpath(
+                tmpl_name
             )
         elif self._is_valid_template_path(tmpl_name):
             flbk_filename = os.path.realpath(tmpl_name)
