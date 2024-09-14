@@ -45,7 +45,7 @@ def temporary_copy(path):
 
 class TestReportPy3o(TransactionCase):
     def setUp(self):
-        super(TestReportPy3o, self).setUp()
+        super().setUp()
         self.env.user.image_1920 = PNG
         self.report = self.env.ref("report_py3o.res_users_report_py3o")
         self.py3o_report = self.env["py3o.report"].create(
@@ -234,7 +234,7 @@ class TestReportPy3o(TransactionCase):
         self.env["ir.config_parameter"].set_param(
             PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path"
         )
-        self.report.refresh()
+        self.report.invalidate_recordset()
         # no bin path available but the report is still available since
         # the output is into native format
         self.assertFalse(self.report.lo_bin_path)
@@ -255,7 +255,7 @@ class TestReportPy3o(TransactionCase):
         self.env["ir.config_parameter"].set_param(
             PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice"
         )
-        self.report.refresh()
+        self.report.invalidate_recordset()
         self.assertTrue(self.report.lo_bin_path)
         self.assertFalse(self.report.is_py3o_native_format)
         self.assertFalse(self.report.is_py3o_report_not_available)
