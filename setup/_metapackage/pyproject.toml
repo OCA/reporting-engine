@@ -1,9 +1,10 @@
 [project]
 name = "odoo-addons-oca-reporting-engine"
-version = "17.0.20240813.0"
+version = "17.0.20241001.0"
 dependencies = [
     "odoo-addon-base_comment_template>=17.0dev,<17.1dev",
     "odoo-addon-bi_sql_editor>=17.0dev,<17.1dev",
+    "odoo-addon-report_async>=17.0dev,<17.1dev",
     "odoo-addon-report_layout_config>=17.0dev,<17.1dev",
     "odoo-addon-report_qweb_element_page_visibility>=17.0dev,<17.1dev",
     "odoo-addon-report_qweb_parameter>=17.0dev,<17.1dev",
