@@ -1,0 +1,400 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_async
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-01-18 09:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: report_async
+#: model:mail.template,body_html:report_async.async_report_delivery
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                    % set base_url = object.env['ir.config_parameter'].sudo().get_param('web.base.url')\n"
+"                                    % set download_url = '%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )\n"
+"                                    <div>\n"
+"                                        Dear ${object.create_uid.partner_id.name or ''},\n"
+"                                        <br><br>\n"
+"                                        Your requested report, ${object.name}, is available for <b>\n"
+"                                                            <a href=\"%24%7Bdownload_url%7D\">download</a>\n"
+"                                                        </b>.\n"
+"                                        <br><br>\n"
+"                                        Have a nice day!<br>\n"
+"                                        --<br>${object.company_id.name}\n"
+"                                    </div>\n"
+"                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        "
+msgstr ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-"
+"color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width:"
+" 100%; border-collapse:separate;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0"
+"\" width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: "
+"590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\""
+" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: "
+"white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"top\" style"
+"=\"font-size: 13px;\">\n"
+"                                    % set base_url = object.env['ir."
+"config_parameter'].sudo().get_param('web.base.url')\n"
+"                                    % set download_url = '%s/web/content/ir."
+"attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )"
+"\n"
+"                                    <div>\n"
+"                                        Spettabile ${"
+"object.create_uid.partner_id.name or ''},\n"
+"                                        <br><br>\n"
+"                                        la sua richiesta resoconto, ${object."
+"name}, is available for <b>\n"
+"                                                            <a href=\""
+"%24%7Bdownload_url%7D\">scaricare</a>\n"
+"                                                        </b>.\n"
+"                                        <br><br>\n"
+"                                        Buona giornata!<br>\n"
+"                                        --<br>${object.company_id.name}\n"
+"                                    </div>\n"
+"                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        "
+
+#. module: report_async
+#: model:ir.model,name:report_async.model_ir_actions_act_window
+msgid "Action Window"
+msgstr "Azione finestra"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__allow_async
+msgid "Allow Async"
+msgstr "Permetti asincrono"
+
+#. module: report_async
+#. odoo-python
+#: code:addons/report_async/models/report_async.py:0
+#, python-format
+msgid "Background process not allowed."
+msgstr "Processo in background non permesso."
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.print_report_wizard
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__create_uid
+#: model:ir.model.fields,field_description:report_async.field_report_async__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__create_date
+#: model:ir.model.fields,field_description:report_async.field_report_async__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__display_name
+#: model:ir.model.fields,field_description:report_async.field_report_async__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__reference
+msgid "Document"
+msgstr "Documento"
+
+#. module: report_async
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__done
+msgid "Done"
+msgstr "Completato"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__email_notify
+msgid "Email Notification"
+msgstr "Notifica e-mail"
+
+#. module: report_async
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__enqueued
+msgid "Enqueued"
+msgstr "In coda"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.print_report_wizard
+msgid "Execute"
+msgstr "Esegui"
+
+#. module: report_async
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__failed
+msgid "Failed"
+msgstr "Fallito"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__file_ids
+msgid "File"
+msgstr "File"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
+msgid "Files"
+msgstr "File"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__group_ids
+msgid "Groups"
+msgstr "Gruppi"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__id
+#: model:ir.model.fields,field_description:report_async.field_report_async__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__job_ids
+msgid "Job"
+msgstr "Lavoro"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__job_info
+msgid "Job Info"
+msgstr "Info lavoro"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__job_status
+msgid "Job Status"
+msgstr "Stato lavoro"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid "Jobs"
+msgstr "Lavori"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard____last_update
+#: model:ir.model.fields,field_description:report_async.field_report_async____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid "Last Run Job Error"
+msgstr "Errore ultimo lavoro lanciato"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__write_uid
+#: model:ir.model.fields,field_description:report_async.field_report_async__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__write_date
+#: model:ir.model.fields,field_description:report_async.field_report_async__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__job_info
+msgid "Latest Job Error Message"
+msgstr "Messaggio errore ultimo lavoro"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__job_status
+msgid "Latest Job Status"
+msgstr "Stato ultimo lavoro"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__file_ids
+msgid "List all files created by this report background process"
+msgstr "Elenca tutti i files creati da questo processo in background di stampa"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__job_ids
+msgid "List all jobs related to this running report"
+msgstr "Elenca tutti i lavori relativi a questa stampa in corso"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: report_async
+#: model_terms:ir.actions.act_window,help:report_async.action_view_files
+msgid "No files found"
+msgstr "Nessun file trovato"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__group_ids
+msgid ""
+"Only user in selected groups can use this report.If left blank, everyone can"
+" use"
+msgstr ""
+"Solo gli utenti in certi gruppi possono usare questa stampa. Se lasciato "
+"vuoto, può essere usato da tutti"
+
+#. module: report_async
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__pending
+msgid "Pending"
+msgstr "In attesa"
+
+#. module: report_async
+#: model:ir.actions.act_window,name:report_async.action_print_report_wizard
+msgid "Print Document"
+msgstr "Stampa documento"
+
+#. module: report_async
+#: model:ir.model,name:report_async.model_print_report_wizard
+msgid "Print Report Wizard"
+msgstr "Procedura guidata stampa resoconto"
+
+#. module: report_async
+#: model:ir.model,name:report_async.model_ir_actions_report
+msgid "Report Action"
+msgstr "Azione resoconto"
+
+#. module: report_async
+#: model:ir.model,name:report_async.model_report_async
+msgid "Report Async"
+msgstr "Resoconto asincrono"
+
+#. module: report_async
+#: model:mail.template,name:report_async.async_report_delivery
+msgid "Report Async: New Report Available"
+msgstr "Resoconto asincrono: nuovo resoconto disponibile"
+
+#. module: report_async
+#: model:ir.actions.act_window,name:report_async.action_report_async
+#: model:ir.ui.menu,name:report_async.menu_report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_search
+msgid "Report Center"
+msgstr "Centro resoconti"
+
+#. module: report_async
+#: model:ir.actions.act_window,name:report_async.action_view_files
+msgid "Report Files"
+msgstr "File resoconti"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_print_report_wizard__action_report_id
+msgid "Report Template"
+msgstr "Modello resoconto"
+
+#. module: report_async
+#: model:ir.model.fields,field_description:report_async.field_report_async__action_id
+msgid "Reports"
+msgstr "Resoconti"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
+msgid "Run Background"
+msgstr "Lancia in background"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_tree
+msgid "Run Now"
+msgstr "Esegui adesso"
+
+#. module: report_async
+#: model_terms:ir.actions.act_window,help:report_async.action_report_async
+msgid "Run reports asyncronously"
+msgstr "Esegui resoconti in modo asincrono"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__email_notify
+msgid "Send email with link to report, when it is ready"
+msgstr "Invia una e-mail con il link al resoconto, quando è pronto"
+
+#. module: report_async
+#: model:ir.model.fields.selection,name:report_async.selection__report_async__job_status__started
+msgid "Started"
+msgstr "Iniziato"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid ""
+"The last <i class=\"fa fa-cogs\"/> <b>running job</b> was failed.\n"
+"                        Please contact your system administrator."
+msgstr ""
+"L'ultimo <i class=\"fa fa-cogs\"/> <b>lavoro lanciato</b> è fallito.\n"
+"                        Contattare l'amministratore di sistema."
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid ""
+"The last <i class=\"fa fa-cogs\"/> <b>running job</b> was succeed.\n"
+"                        You can check the result in <i class=\"fa fa-copy\"/><b> Files</b>"
+msgstr ""
+"L'ultimo <i class=\"fa fa-cogs\"/> <b>lavoro lanciato</b> è andato a buon "
+"fine.\n"
+"                        Si può verificare il risultato nei <i class=\"fa fa-"
+"copy\"/><b> file</b>"
+
+#. module: report_async
+#: model_terms:ir.ui.view,arch_db:report_async.view_report_async_form
+msgid ""
+"The report will be running by <i class=\"fa fa-cogs\"/>\n"
+"                        <b>job</b>, and will be available at\n"
+"                        <i class=\"fa fa-copy\"/><b> Files</b>"
+msgstr ""
+"Il resoconto verrà eseguito in un <i class=\"fa fa-cogs\"/>\n"
+"                        <b>lavoro</b>, e sarà disponibile nei\n"
+"                        <i class=\"fa fa-copy\"/><b> file</b>"
+
+#. module: report_async
+#: model:ir.model.fields,help:report_async.field_report_async__allow_async
+msgid ""
+"This is not automatic field, please check if you want to allow this report "
+"in background process"
+msgstr ""
+"Questo non è un campo automatico, controllare se si vuole permettere quest "
+"resoconto nel processo in background"
+
+#. module: report_async
+#: model:mail.template,subject:report_async.async_report_delivery
+msgid "Your report is available, ${object.name}"
+msgstr "Il tuo resoconto è ponto, ${object.name}"
