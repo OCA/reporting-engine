@@ -9,7 +9,7 @@ from psycopg2 import ProgrammingError
 
 from odoo import SUPERUSER_ID, _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import sql, table_columns
+from odoo.tools import sql
 from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
@@ -44,14 +44,12 @@ class BiSQLView(models.Model):
 
     view_name = fields.Char(
         compute="_compute_view_name",
-        readonly=True,
         store=True,
         help="Full name of the SQL view",
     )
 
     model_name = fields.Char(
         compute="_compute_model_name",
-        readonly=True,
         store=True,
         help="Full Qualified Name of the transient model that will" " be created.",
     )
@@ -65,7 +63,6 @@ class BiSQLView(models.Model):
 
     size = fields.Char(
         string="Database Size",
-        readonly=True,
         help="Size of the materialized view and its indexes",
     )
 
@@ -73,8 +70,8 @@ class BiSQLView(models.Model):
 
     view_order = fields.Char(
         required=True,
-        default="pivot,graph,tree",
-        help="Comma-separated text. Possible values:" ' "graph", "pivot" or "tree"',
+        default="pivot,graph,list",
+        help="Comma-separated text. Possible values:" ' "graph", "pivot" or "list"',
     )
 
     query = fields.Text(
@@ -111,9 +108,7 @@ class BiSQLView(models.Model):
         inverse_name="bi_sql_view_id",
     )
 
-    model_id = fields.Many2one(
-        string="Odoo Model", comodel_name="ir.model", readonly=True
-    )
+    model_id = fields.Many2one(string="Odoo Model", comodel_name="ir.model")
     # UI related fields
     # 1. Editable fields, which can be set by the user (optional) before
     # creating the UI elements
@@ -133,39 +128,30 @@ class BiSQLView(models.Model):
     )
 
     # 2. Readonly fields, non editable by the user
-    tree_view_id = fields.Many2one(
-        string="Odoo Tree View", comodel_name="ir.ui.view", readonly=True
-    )
+    tree_view_id = fields.Many2one(string="Odoo List View", comodel_name="ir.ui.view")
 
-    graph_view_id = fields.Many2one(
-        string="Odoo Graph View", comodel_name="ir.ui.view", readonly=True
-    )
+    graph_view_id = fields.Many2one(string="Odoo Graph View", comodel_name="ir.ui.view")
 
-    pivot_view_id = fields.Many2one(
-        string="Odoo Pivot View", comodel_name="ir.ui.view", readonly=True
-    )
+    pivot_view_id = fields.Many2one(string="Odoo Pivot View", comodel_name="ir.ui.view")
 
     search_view_id = fields.Many2one(
-        string="Odoo Search View", comodel_name="ir.ui.view", readonly=True
+        string="Odoo Search View", comodel_name="ir.ui.view"
     )
 
     action_id = fields.Many2one(
-        string="Odoo Action", comodel_name="ir.actions.act_window", readonly=True
+        string="Odoo Action", comodel_name="ir.actions.act_window"
     )
 
-    menu_id = fields.Many2one(
-        string="Odoo Menu", comodel_name="ir.ui.menu", readonly=True
-    )
+    menu_id = fields.Many2one(string="Odoo Menu", comodel_name="ir.ui.menu")
 
     cron_id = fields.Many2one(
         string="Odoo Cron",
         comodel_name="ir.cron",
-        readonly=True,
         help="Cron Task that will refresh the materialized view",
         ondelete="cascade",
     )
 
-    rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule", readonly=True)
+    rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule")
 
     sequence = fields.Integer(string="sequence")
 
@@ -183,9 +169,9 @@ class BiSQLView(models.Model):
         for rec in self:
             if rec.view_order:
                 for vtype in rec.view_order.split(","):
-                    if vtype not in ("graph", "pivot", "tree"):
+                    if vtype not in ("graph", "pivot", "list"):
                         raise UserError(
-                            _("Only graph, pivot or tree views are supported")
+                            _("Only graph, pivot or list views are supported")
                         )
 
     # Compute Section
@@ -244,15 +230,15 @@ class BiSQLView(models.Model):
                 rec.menu_id.sequence = rec.sequence
         return res
 
-    def unlink(self):
+    @api.ondelete(at_uninstall=False)
+    def _check_unlink_constraints(self):
         if any(view.state not in ("draft", "sql_valid") for view in self):
             raise UserError(
                 _(
-                    "You can only unlink draft views."
+                    "You can only unlink draft views. "
                     "If you want to delete them, first set them to draft."
                 )
             )
-        return super().unlink()
 
     def copy(self, default=None):
         self.ensure_one()
@@ -395,8 +381,7 @@ class BiSQLView(models.Model):
             .search([("model", "=", self._name)], limit=1)
             .id,
             "state": "code",
-            "code": "model._refresh_materialized_view_cron(%s)" % self.ids,
-            "numbercall": -1,
+            "code": f"model._refresh_materialized_view_cron({self.ids})",
             "interval_number": 1,
             "interval_type": "days",
             "nextcall": now + timedelta(days=1),
@@ -416,11 +401,11 @@ class BiSQLView(models.Model):
         self.ensure_one()
         return {
             "name": self.name,
-            "type": "tree",
+            "type": "list",
             "model": self.model_id.model,
             "arch": """<?xml version="1.0"?>"""
-            """<tree name="Analysis">{}"""
-            """</tree>""".format(
+            """<list name="Analysis">{}"""
+            """</list>""".format(
                 "".join([x._prepare_tree_field() for x in self.bi_sql_view_field_ids])
             ),
         }
@@ -477,7 +462,7 @@ class BiSQLView(models.Model):
         self.ensure_one()
         view_mode = self.view_order
         first_view = view_mode.split(",")[0]
-        if first_view == "tree":
+        if first_view == "list":
             view_id = self.tree_view_id.id
         elif first_view == "pivot":
             view_id = self.pivot_view_id.id
@@ -510,13 +495,13 @@ class BiSQLView(models.Model):
         return {
             "name": self.name,
             "parent_id": self.parent_menu_id.id,
-            "action": "ir.actions.act_window,%s" % self.action_id.id,
+            "action": f"ir.actions.act_window,{self.action_id.id}",
             "sequence": self.sequence,
         }
 
     # Custom Section
     def _log_execute(self, req):
-        _logger.info("Executing SQL Request %s ..." % req)
+        _logger.info(f"Executing SQL Request {req} ...")
         self.env.cr.execute(req)
 
     def _drop_view(self):
@@ -562,7 +547,7 @@ class BiSQLView(models.Model):
             sql_view.rule_id = self.env["ir.rule"].create(self._prepare_rule()).id
             # Drop table, created by the ORM
             if sql.table_exists(self._cr, sql_view.view_name):
-                req = "DROP TABLE %s" % sql_view.view_name
+                req = f"DROP TABLE {sql_view.view_name}"
                 self._log_execute(req)
 
     def _create_model_access(self):
@@ -585,18 +570,15 @@ class BiSQLView(models.Model):
 
     def _hook_executed_request(self):
         self.ensure_one()
-        req = (
-            """
+        req = f"""
             SELECT  attnum,
                     attname AS column,
                     format_type(atttypid, atttypmod) AS type
             FROM    pg_attribute
-            WHERE   attrelid = '%s'::regclass
+            WHERE   attrelid = '{self.view_name}'::regclass
             AND     NOT attisdropped
             AND     attnum > 0
             ORDER   BY attnum;"""
-            % self.view_name
-        )
         self._log_execute(req)
         return self.env.cr.fetchall()
 
@@ -606,8 +588,7 @@ class BiSQLView(models.Model):
 
     def _prepare_request_for_execution(self):
         self.ensure_one()
-        query = (
-            """
+        query = f"""
             SELECT
                 CAST(row_number() OVER () as integer) AS id,
                 CAST(Null as timestamp without time zone) as create_date,
@@ -616,10 +597,8 @@ class BiSQLView(models.Model):
                 CAST(Null as integer) as write_uid,
                 my_query.*
             FROM
-                (%s) as my_query
+                ({self.query}) as my_query
         """
-            % self.query
-        )
         return f"CREATE {self.materialized_text} VIEW {self.view_name} AS ({query});"
 
     def _check_execution(self):
@@ -689,9 +668,9 @@ class BiSQLView(models.Model):
 
     def _refresh_size(self):
         for sql_view in self:
-            req = "SELECT pg_size_pretty(pg_total_relation_size('%s'));" % (
-                sql_view.view_name
-            )
+            req = f"""SELECT pg_size_pretty(pg_total_relation_size(
+                '{sql_view.view_name}'
+            ));"""
             self._log_execute(req)
             sql_view.size = self.env.cr.fetchone()[0]
 
@@ -700,7 +679,7 @@ class BiSQLView(models.Model):
         # early on install / startup - particularly problematic during upgrade
         if model._name.startswith(
             self._model_prefix
-        ) and "group_operator" in table_columns(self.env.cr, "bi_sql_view_field"):
+        ) and "group_operator" in sql.table_columns(self.env.cr, "bi_sql_view_field"):
             # Use SQL instead of ORM, as ORM might not be fully initialised -
             # we have no control over the order that fields are defined!
             # We are not concerned about user security rules.

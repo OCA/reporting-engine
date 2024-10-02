@@ -73,7 +73,7 @@ class TestBiSqlViewEditor(SingleTransactionCase):
             [("name", "=", self.view.name)]
         )
         self.assertEqual(
-            len(bi), 1, "Bi Manager should have access to bi %s" % self.view.name
+            len(bi), 1, f"Bi Manager should have access to bi {self.view.name}"
         )
 
     def test_unlink(self):
