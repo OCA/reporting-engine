@@ -114,8 +114,8 @@ class SQLRequestMixin(models.AbstractModel):
                 raise ValidationError(
                     _(
                         "You can't use an external database as there are no such "
-                        "configuration about this. Please contact your Odoo administrator"
-                        " to solve this issue."
+                        "configuration about this. Please contact "
+                        "your Odoo administrator to solve this issue."
                     )
                 )
 
@@ -260,14 +260,14 @@ class SQLRequestMixin(models.AbstractModel):
     def _create_savepoint(self, cr):
         rollback_name = "{}_{}".format(self._name.replace(".", "_"), uuid.uuid1().hex)
         # pylint: disable=sql-injection
-        req = "SAVEPOINT %s" % (rollback_name)
+        req = f"SAVEPOINT {rollback_name}"
         cr.execute(req)
         return rollback_name
 
     @api.model
     def _rollback_savepoint(self, rollback_name, cr):
         # pylint: disable=sql-injection
-        req = "ROLLBACK TO SAVEPOINT %s" % (rollback_name)
+        req = f"ROLLBACK TO SAVEPOINT {rollback_name}"
         cr.execute(req)
         # close external database cursor
         if self.env.cr != cr:
@@ -300,7 +300,7 @@ class SQLRequestMixin(models.AbstractModel):
         self.ensure_one()
         query = self.query.lower()
         for word in self.PROHIBITED_WORDS:
-            expr = r"\b%s\b" % word
+            expr = rf"\b{word}\b"
             is_not_safe = re.search(expr, query)
             if is_not_safe:
                 raise UserError(

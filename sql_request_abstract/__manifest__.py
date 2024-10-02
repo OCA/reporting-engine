@@ -4,7 +4,7 @@
 
 {
     "name": "SQL Request Abstract",
-    "version": "17.0.1.0.1",
+    "version": "18.0.1.0.0",
     "author": "GRAP,Akretion,Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],
     "website": "https://github.com/OCA/reporting-engine",
