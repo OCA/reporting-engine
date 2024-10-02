@@ -5,17 +5,16 @@ Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
-
     <record id="view_sql_request_mixin_tree" model="ir.ui.view">
         <field name="model">sql.request.mixin</field>
         <field name="arch" type="xml">
-            <tree
+            <list
                 decoration-info="state=='draft'"
                 decoration-warning="state in ('sql_valid', 'model_valid')"
             >
                 <field name="name" />
                 <field name="state" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -62,7 +61,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <notebook>
                         <page name="page_sql" string="SQL Settings">
                             <group string="SQL Query" name="group_query">
-                            <field
+                                <field
                                     name="query"
                                     nolabel="1"
                                     colspan="2"
@@ -70,7 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     widget="ace"
                                     options="{'mode': 'pgsql'}"
                                 />
-                        </group>
+                            </group>
                         </page>
                         <page name="page_security" string="Security">
                             <group string="Allowed Groups" name="group_allowed_groups">
@@ -96,13 +95,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" />
-                    <field name="message_ids" />
-                </div>
+                <!-- Chatter -->
+                <chatter />
             </form>
-
         </field>
     </record>
-
 </odoo>

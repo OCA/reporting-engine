@@ -3,3 +3,4 @@
 - Alfadil Tabar (<alfadil.tabar@gmail.com>)
 - Helly kapatel \<<helly.kapatel@initos.com>\>
 - Nguyen Minh Chien \<<chien@trobz.com>\>
+- Vo Hong Thien \<<thienvh@trobz.com>\>
