@@ -6,6 +6,8 @@
 
 - Guillem Casassas <guillem.casassas@forgeflow.com>
 
+- Thien Vo <thienvh@trobz.com>
+
 - This module is highly inspired by the work of
   - Onestein: (<http://www.onestein.nl/>) Module:
     OCA/server-tools/bi_view_editor. Link:
