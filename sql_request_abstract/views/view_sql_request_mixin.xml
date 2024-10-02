@@ -9,13 +9,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_sql_request_mixin_tree" model="ir.ui.view">
         <field name="model">sql.request.mixin</field>
         <field name="arch" type="xml">
-            <tree
+            <list
                 decoration-info="state=='draft'"
                 decoration-warning="state in ('sql_valid', 'model_valid')"
             >
                 <field name="name" />
                 <field name="state" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -96,10 +96,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" />
-                    <field name="message_ids" />
-                </div>
+                <!-- Chatter -->
+                <chatter />
             </form>
 
         </field>
