@@ -1,0 +1,1 @@
+odoo-addon-sql_request_abstract @ git+https://github.com/oca/reporting-engine.git@refs/pull/937/head#subdirectory=sql_request_abstract
