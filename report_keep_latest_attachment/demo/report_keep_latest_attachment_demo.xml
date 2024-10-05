@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_keep_latest_attachment_demo_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>
+                            This is a sample report for testing keeping of the
+                            latest PDF Report.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="report_keep_latest_attachment_demo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t
+                    t-call="report_keep_latest_attachment.report_keep_latest_attachment_demo_document"
+                    t-lang="o.lang"
+                />
+            </t>
+        </t>
+    </template>
+    <record id="action_keep_latest_attachment_report" model="ir.actions.report">
+        <field name="name">Test PDF Latest Attachment</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >report_keep_latest_attachment.report_keep_latest_attachment_demo</field>
+        <field name="attachment">'%s.pdf' % object.name or ''</field>
+        <field name="attachment_use">True</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>
