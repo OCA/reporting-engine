@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="act_report_libreoffice_demo" model="ir.actions.report">
+        <field name="name">Hello Libreoffice</field>
+        <field name="report_name">hello</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">libreoffice</field>
+        <field name="report_name">report_libreoffice</field>
+        <field name="output_type">odt</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field
+            name="doc_template"
+            type="base64"
+            file="report_libreoffice/data/partners.odt"
+        />
+    </record>
+
+</odoo>
