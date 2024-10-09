@@ -73,7 +73,8 @@ class KPIThresholdRange(models.Model):
     min_code = fields.Text("Minimum Computation Code")
     min_error = fields.Char("Minimum Error", compute="_compute_min_value")
     min_dbsource_id = fields.Many2one(
-        "base.external.dbsource", "External DB Source Minimum",
+        "base.external.dbsource",
+        "External DB Source Minimum",
     )
     max_type = fields.Selection(
         selection="_selection_value_type", string="Max Type", required=True
@@ -83,7 +84,8 @@ class KPIThresholdRange(models.Model):
     max_code = fields.Text("Maximum Computation Code")
     max_error = fields.Char("Maximum Error", compute="_compute_max_value")
     max_dbsource_id = fields.Many2one(
-        "base.external.dbsource", "External DB Source Maximum",
+        "base.external.dbsource",
+        "External DB Source Maximum",
     )
 
     color = fields.Char(string="Color", help="Choose your color")
