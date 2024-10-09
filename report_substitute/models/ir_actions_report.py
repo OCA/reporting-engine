@@ -45,7 +45,7 @@ class IrActionReport(models.Model):
                 substitution_report = action_report._get_substitution_report(
                     action_report.model, active_ids
                 )
-            action.update(self._for_xml_id(action_report.xml_id))
+            action.update(action_report.read()[0])
 
         return action
 
