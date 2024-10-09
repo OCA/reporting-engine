@@ -34,7 +34,7 @@ class KPIThreshold(models.Model):
                     "Please make sure your ranges do not overlap."
                 )
 
-    name = fields.Char("Name", size=50, required=True)
+    name = fields.Char(required=True)
     range_ids = fields.Many2many(
         "kpi.threshold.range",
         "kpi_threshold_range_rel",
@@ -43,7 +43,6 @@ class KPIThreshold(models.Model):
         "Ranges",
     )
     valid = fields.Boolean(
-        string="Valid",
         required=True,
         compute="_compute_is_valid_threshold",
         default=True,
@@ -63,10 +62,11 @@ class KPIThreshold(models.Model):
         range_obj1 = self.env["kpi.threshold.range"]
         range_obj2 = self.env["kpi.threshold.range"]
         if data.get("range_ids"):
-            for range1 in data["range_ids"][0][2]:
-                range_obj1 = range_obj1.browse(range1)
-                for range2 in data["range_ids"][0][2]:
-                    range_obj2 = range_obj2.browse(range2)
+            for range1 in data["range_ids"]:
+                range_obj1 = range_obj1.browse(range1[1])
+                for range2 in data["range_ids"]:
+                    range_obj2 = range_obj2.browse(range2[1])
+
                     if (
                         range_obj1.valid
                         and range_obj2.valid
@@ -79,7 +79,7 @@ class KPIThreshold(models.Model):
                             )
                     range_obj2 = self.env["kpi.threshold.range"]
                 range_obj1 = self.env["kpi.threshold.range"]
-        return super(KPIThreshold, self).create(data)
+        return super().create(data)
 
     def get_color(self, kpi_value):
         color = "#FFFFFF"

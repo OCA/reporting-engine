@@ -7,7 +7,7 @@
         <field name="name">kpi.category.tree</field>
         <field name="model">kpi.category</field>
         <field name="arch" type="xml">
-            <tree string="Categories">
+            <tree>
                 <field name="name" />
             </tree>
         </field>
