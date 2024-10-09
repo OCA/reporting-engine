@@ -7,11 +7,11 @@
         <field name="name">kpi.threshold.range.tree</field>
         <field name="model">kpi.threshold.range</field>
         <field name="arch" type="xml">
-            <tree string="Ranges" decoration-danger="invalid_message">
+            <tree decoration-danger="invalid_message">
                 <field name="name" />
                 <field name="min_value" />
                 <field name="max_value" />
-                <field name="color" widget="color" />
+                <field name="color" widget="color" readonly="1" />
                 <field name="invalid_message" />
                 <field name="company_id" groups="base.group_multi_company" />
             </tree>
@@ -39,23 +39,19 @@
                         <field
                             name="min_fixed_value"
                             colspan="3"
-                            attrs="{'invisible' : [('min_type', '!=', 'static')]}"
+                            invisible="min_type != 'static'"
                         />
                         <field
                             name="min_dbsource_id"
+                            invisible="min_type != 'external'"
                             colspan="3"
-                            attrs="{'invisible' : [('min_type', '!=', 'external')]}"
                         />
                         <field
                             name="min_code"
                             colspan="6"
-                            attrs="{'invisible' : [('min_type', 'not in', ('local','external','python'))]}"
+                            invisible="min_type not in ('local', 'external', 'python')"
                         />
-                        <field
-                            name="min_error"
-                            colspan="6"
-                            attrs="{'invisible': [('min_error', '=', False)]}"
-                        />
+                        <field name="min_error" colspan="6" invisible="not min_error" />
                         <newline />
                         <separator string="Maximum" />
                         <newline />
@@ -63,25 +59,21 @@
                         <field
                             name="max_fixed_value"
                             colspan="3"
-                            attrs="{'invisible' : [('max_type', '!=', 'static')]}"
+                            invisible="max_type != 'static'"
                         />
                         <field
                             name="max_dbsource_id"
                             colspan="3"
-                            attrs="{'invisible' : [('max_type', '!=', 'external')]}"
+                            invisible="max_type != 'external'"
                         />
                         <newline />
                         <field
                             name="max_code"
                             colspan="6"
-                            attrs="{'invisible' : [('max_type', 'not in', ('local','external','python'))]}"
+                            invisible="max_type not in ('local', 'external', 'python')"
                         />
                         <newline />
-                        <field
-                            name="max_error"
-                            colspan="6"
-                            attrs="{'invisible': [('max_error', '=', False)]}"
-                        />
+                        <field name="max_error" colspan="6" invisible="not max_error" />
                         <newline />
                     </group>
                     <group col="6" colspan="6">
@@ -89,13 +81,13 @@
                         <field name="threshold_ids" nolabel="1" colspan="4" />
                         <separator
                             string="Errors"
-                            attrs="{'invisible' : [('invalid_message', '=', False)]}"
+                            invisible="not invalid_message"
                             colspan="4"
                         />
                         <field
                             name="invalid_message"
                             nolabel="1"
-                            attrs="{'invisible' : [('invalid_message', '=', False)]}"
+                            invisible="not invalid_message"
                             colspan="4"
                         />
                     </group>

@@ -11,14 +11,14 @@ msgstr ""
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
 "PO-Revision-Date: 2018-02-23 18:00+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Serbian (Latin) (https://www.transifex.com/oca/teams/23907/sr"
-"%40latin/)\n"
+"Language-Team: Serbian (Latin) (https://www.transifex.com/oca/teams/23907/"
+"sr%40latin/)\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__active
@@ -29,7 +29,6 @@ msgstr "Aktivno"
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_category_list
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_category
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_category_tree
 msgid "Categories"
 msgstr "Kategorije"
 
@@ -165,6 +164,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: kpi
+#: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid "KPI"
@@ -197,13 +197,7 @@ msgstr ""
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_tree
 msgid "KPI History"
-msgstr ""
-
-#. module: kpi
-#: model:ir.actions.act_window,name:kpi.open_kpi_list
-msgid "KPI Maintenance"
 msgstr ""
 
 #. module: kpi
@@ -232,18 +226,8 @@ msgstr ""
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_kpi
 #: model:ir.ui.menu,name:kpi.menu_kpi_dasboard
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_tree
 msgid "Key Performance Indicators"
 msgstr ""
-
-#. module: kpi
-#: model:ir.model.fields,field_description:kpi.field_kpi____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_category____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_history____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_threshold____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range____last_update
-msgid "Last Modified on"
-msgstr "Zadnja izmjena"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__write_uid
@@ -269,6 +253,7 @@ msgid "Last execution"
 msgstr ""
 
 #. module: kpi
+#. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
@@ -408,7 +393,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__range_ids
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_range
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_tree
 msgid "Ranges"
 msgstr ""
 
@@ -438,11 +422,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__threshold_ids
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_threshold
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_tree
 msgid "Thresholds"
 msgstr ""
 
 #. module: kpi
+#. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
@@ -450,8 +434,6 @@ msgstr ""
 
 #. module: kpi
 #: model:ir.actions.server,name:kpi.ir_cron_kpi_action_ir_actions_server
-#: model:ir.cron,cron_name:kpi.ir_cron_kpi_action
-#: model:ir.cron,name:kpi.ir_cron_kpi_action
 msgid "Update KPI values"
 msgstr ""
 
@@ -471,6 +453,9 @@ msgstr ""
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Zadnja izmjena"
 
 #~ msgid "Type"
 #~ msgstr "Tip"

@@ -29,7 +29,6 @@ msgstr "Ativo"
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_category_list
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_category
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_category_tree
 msgid "Categories"
 msgstr "Categorias"
 
@@ -165,6 +164,7 @@ msgid "ID"
 msgstr "Identificação"
 
 #. module: kpi
+#: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid "KPI"
@@ -197,14 +197,8 @@ msgstr "Painel de KPI"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_tree
 msgid "KPI History"
 msgstr "Historico  ICD"
-
-#. module: kpi
-#: model:ir.actions.act_window,name:kpi.open_kpi_list
-msgid "KPI Maintenance"
-msgstr "Manutenção KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_threshold
@@ -232,18 +226,8 @@ msgstr "Indicador Chave  Desempenho"
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_kpi
 #: model:ir.ui.menu,name:kpi.menu_kpi_dasboard
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_tree
 msgid "Key Performance Indicators"
 msgstr "Indicadores Chave de Desempenho"
-
-#. module: kpi
-#: model:ir.model.fields,field_description:kpi.field_kpi____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_category____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_history____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_threshold____last_update
-#: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range____last_update
-msgid "Last Modified on"
-msgstr "Última atualização em"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__write_uid
@@ -269,6 +253,7 @@ msgid "Last execution"
 msgstr "Última data de execução"
 
 #. module: kpi
+#. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
@@ -412,7 +397,6 @@ msgstr "Intervalo"
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__range_ids
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_range
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_tree
 msgid "Ranges"
 msgstr "Intervalos"
 
@@ -444,11 +428,11 @@ msgstr "Limiar"
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__threshold_ids
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_threshold
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_tree
 msgid "Thresholds"
 msgstr "Limites"
 
 #. module: kpi
+#. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
@@ -456,8 +440,6 @@ msgstr "Dois dos seus intervalos estão sobrepostos."
 
 #. module: kpi
 #: model:ir.actions.server,name:kpi.ir_cron_kpi_action_ir_actions_server
-#: model:ir.cron,cron_name:kpi.ir_cron_kpi_action
-#: model:ir.cron,name:kpi.ir_cron_kpi_action
 msgid "Update KPI values"
 msgstr "Atualizar valor KPI"
 
@@ -477,6 +459,12 @@ msgstr "Valor"
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
 msgstr "Semana"
+
+#~ msgid "KPI Maintenance"
+#~ msgstr "Manutenção KPI"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última atualização em"
 
 #~ msgid "Fixed value"
 #~ msgstr "Valor fixo"

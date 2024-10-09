@@ -4,8 +4,9 @@ from odoo.tests.common import TransactionCase
 
 
 class TestKPI(TransactionCase):
-    def setUp(self):
-        super(TestKPI, self).setUp()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
 
     def test_invalid_threshold_range(self):
         range1 = self.env["kpi.threshold.range"].create(
