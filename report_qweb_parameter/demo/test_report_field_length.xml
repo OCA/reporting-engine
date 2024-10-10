@@ -12,18 +12,18 @@
                 name="esc_length"
                 t-minlength="10"
                 t-length="10"
-                t-esc="docs[0].street"
+                t-out="docs[0].street"
                 t-if="docs[0].street"
             />
             <li
                 name="esc_conditional_length"
                 t-length="3"
-                t-esc="docs[0].name or docs[0].company_registry"
+                t-out="docs[0].name or docs[0].company_registry"
             />
             <li
                 name="esc_maxlength"
                 t-maxlength="10"
-                t-esc="docs[0].website"
+                t-out="docs[0].website"
                 t-if="docs[0].website"
             />
             <li
@@ -36,7 +36,7 @@
             <li
                 name="raw_conditional_length"
                 t-length="4"
-                t-raw="docs[0].name or docs[0].company_registry"
+                t-out="docs[0].name or docs[0].company_registry"
             />
             <li
                 name="raw_maxlength"
