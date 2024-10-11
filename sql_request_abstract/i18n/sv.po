@@ -1,0 +1,288 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sql_request_abstract
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-01 02:11+0000\n"
+"PO-Revision-Date: 2024-06-12 08:56+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
+"Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "Action Needed"
+msgstr "Åtgärder krävs"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__group_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Allowed Groups"
+msgstr "Tillåtna grupper"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__user_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Allowed Users"
+msgstr "Tillåtna användare"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_attachment_count
+msgid "Attachment Count"
+msgstr "Antal bifogade filer"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__draft
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
+msgid "Draft"
+msgstr "Preliminär"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_follower_ids
+msgid "Followers"
+msgstr "Följare"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Följare (Partners)"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid "Has Group Changed"
+msgstr "Har koncernen förändrats"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_message
+msgid "Has Message"
+msgstr "Har meddelande"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Om den är markerad kräver nya meddelanden din uppmärksamhet."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Om kryssrutan är markerad får vissa meddelanden ett leveransfel."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
+msgid "Is Follower"
+msgstr "Är följare"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+#, python-format
+msgid "It is not allowed to execute a not checked request."
+msgstr "Det är inte tillåtet att utföra en begäran som inte har kontrollerats."
+
+#. module: sql_request_abstract
+#: model:res.groups,name:sql_request_abstract.group_sql_request_manager
+msgid "Manager"
+msgstr "Chef"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+#, python-format
+msgid ""
+"Materialized View requires PostgreSQL 9.3 or greater but PostgreSQL %s is "
+"currently installed."
+msgstr ""
+"Materialiserad vy kräver PostgreSQL 9.3 eller högre men PostgreSQL %s är för "
+"närvarande installerat."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error
+msgid "Message Delivery error"
+msgstr "Fel vid leverans av meddelande"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_ids
+msgid "Messages"
+msgstr "Meddelanden"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__name
+msgid "Name"
+msgstr "Namn"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__note
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Note"
+msgstr "Notera"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Antal åtgärder"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of errors"
+msgstr "Antal fel"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Antal meddelanden som kräver åtgärder"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Antal meddelanden med leveransfel"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Preview Results"
+msgstr "Förhandsgranskning Resultat"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
+msgid "Query"
+msgstr "Fråga"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Query"
+msgstr "SQL-fråga"
+
+#. module: sql_request_abstract
+#: model:ir.module.category,name:sql_request_abstract.category_sql_abstract
+msgid "SQL Request"
+msgstr "SQL-förfrågan"
+
+#. module: sql_request_abstract
+#: model:ir.model,name:sql_request_abstract.model_sql_request_mixin
+msgid "SQL Request Mixin"
+msgstr "SQL Request Mixin"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Settings"
+msgstr "SQL-inställningar"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__sql_valid
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
+msgid "SQL Valid"
+msgstr "SQL giltig"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Security"
+msgstr "Säkerhet"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Set to Draft"
+msgstr "Ställ in till utkast"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__state
+msgid "State"
+msgstr "Status"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__state
+msgid ""
+"State of the Request:\n"
+" * 'Draft': Not tested\n"
+" * 'SQL Valid': SQL Request has been checked and is valid"
+msgstr ""
+"Status för begäran:\n"
+" * \"Utkast\": Ej testad\n"
+" * 'SQL giltig': SQL-begäran har kontrollerats och är giltig"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+"Tekniska fält, används i moduler som är beroende av denna för att veta om "
+"grupper har ändrats, och att motsvarande åtkomst bör uppdateras."
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+#, python-format
+msgid ""
+"The SQL query is not valid:\n"
+"\n"
+" %s"
+msgstr ""
+"SQL-frågan är inte giltig:\n"
+"\n"
+" %s"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+#, python-format
+msgid "The query is not allowed because it contains unsafe word '%s'"
+msgstr "Frågan är inte tillåten eftersom den innehåller det osäkra ordet '%s'"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+#, python-format
+msgid "Unimplemented mode : '%s'"
+msgstr "Oimplementerat läge : '%s'"
+
+#. module: sql_request_abstract
+#: model:res.groups,name:sql_request_abstract.group_sql_request_user
+msgid "User"
+msgstr "Användare"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Validate SQL Expression"
+msgstr "Validera SQL-uttryck"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr "Webbplatsmeddelanden"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
+msgstr "Webbplatsens kommunikationshistorik"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
+msgid ""
+"You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+msgstr ""
+"Du kan inte använda följande ord: RADERA, SLÄPPA, SKAPA, INFOGA, ÄNDRA, "
+"TRUNKERA, EXEKVERA, UPPDATERA."
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Fel vid leverans av SMS"
+
+#~ msgid "Display Name"
+#~ msgstr "Visa namn"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Senast redigerad"
