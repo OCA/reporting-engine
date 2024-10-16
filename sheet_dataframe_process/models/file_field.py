@@ -12,7 +12,7 @@ class FileField(models.Model):
         comodel_name="ir.model.fields",
         ondelete="cascade",
         required=True,
-        domain="[('model_id', '=', model_id)]"
+        domain="[('model_id', '=', model_id)]",
         # [('model_id', '=', model_id)]
     )
     model_id = fields.Many2one(
@@ -24,7 +24,8 @@ class FileField(models.Model):
         help="Prevent to import missing data if field is missing in some records",
     )
     on_fail = fields.Selection(
-        selection=[("skip", "Skip record"), ("stop", "Stop Process")],
+        selection=[("stop", "Stop Process"), ("skip", "Skip record (TODO)")],
+        default="stop",
         help="What should be the behavior in case of failure regarding constraint "
         "fields (required, format, etc)",
     )

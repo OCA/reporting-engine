@@ -4,7 +4,7 @@
     <field name="model">sheet.dataframe.transient</field>
     <field name="arch" type="xml">
         <form>
-            <group col="4">
+            <group col="2">
                 <group>
                     <field name="config_id" readonly="config_id" />
                     <field
@@ -23,8 +23,9 @@
             </group>
             <footer>
                 <button
-                        name="apply"
-                        string="Apply"
+                        name="process"
+                        string="Process"
+                        invisible="not config_id"
                         type="object"
                         class="btn-primary"
                     />
@@ -35,7 +36,7 @@
 </record>
 
 <record id="sheet_dataframe_transient_action" model="ir.actions.act_window">
-    <field name="name">Import Spreadsheet</field>
+    <field name="name">Process Spreadsheet</field>
     <field name="res_model">sheet.dataframe.transient</field>
     <field name="view_mode">form</field>
     <field name="target">new</field>

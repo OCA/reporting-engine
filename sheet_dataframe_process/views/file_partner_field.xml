@@ -16,7 +16,7 @@
     </field>
 </record>
 
-<record id="action_file_field" model="ir.actions.act_window">
+<record id="action_file_partner_field" model="ir.actions.act_window">
     <field name="name">File Partner Field</field>
     <field name="res_model">file.partner.field</field>
     <field name="view_mode">list</field>

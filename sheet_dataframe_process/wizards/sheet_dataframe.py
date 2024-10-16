@@ -19,15 +19,25 @@ class SheetDataframeTransient(models.TransientModel):
     def create(self, vals):
         res = super().create(vals)
         if res.config_id and res.file:
-            res.apply()
+            res._pre_process()
         return res
 
-    def apply(self):
+    def process(self):
+        """
+        - apply skip to record when required not respected
+        """
+
+    def _pre_process(self):
         self.ensure_one()
-        file = base64.b64decode(self.file)
-        df = pl.read_excel(source=file)
+        df = pl.read_excel(source=base64.b64decode(self.file))
+        self.sample = self._dataframe2html(df)
+        self._reload()
+
+    def _dataframe2html(self, df):
         sample = str(df.__repr__).replace("\n", "<br />").replace("┘&gt;", "")
-        self.sample = f"<html><pre>\n{sample}\n</pre></html>"
+        return f"<html><pre>\n{sample}\n</pre></html>"
+
+    def _reload(self):
         action = self.env.ref(
             f"{MODULE}.sheet_dataframe_transient_action"
         )._get_action_dict()

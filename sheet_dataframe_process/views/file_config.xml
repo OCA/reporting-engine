@@ -5,25 +5,34 @@
     <field name="arch" type="xml">
         <form>
             <header>
-<!--                 <button name="populate_match_lines" string="Populate" type="object" help="Populate matching lines with partners" />
+<button
+                        name="populate_match_lines"
+                        string="Populate"
+                        type="object"
+                        help="Populate matching lines with partners"
+                    />
+<!--
                 <button
-                        name="% (sheet_dataframe_transient_action) d"
+                        name="%(sheet_dataframe_transient_action)d"
                         type="action"
                         string="Import"
                         context="{'default_partner_id': partner_id}"
-                    /> -->
+                    />
+                     -->
             </header>
             <sheet>
                 <group>
                     <group>
                         <field name="model_id" />
-                        <field name="action" />
+                        <field name="action" widget="radio" />
                     </group>
                     <group>
                         <field name="code" />
                         <field name="partner_ids" widget="many2many_tags" />
                     </group>
+                    <separator string="Odoo field rules" />
                    <field name="field_ids" />
+                    <separator string="Matching file fields" />
                    <field name="field_match_ids" />
                 </group>
             </sheet>
@@ -37,6 +46,9 @@
     <field name="arch" type="xml">
         <list>
             <field name="model_id" />
+            <field name="code" />
+            <field name="action" />
+            <field name="partner_ids" />
         </list>
     </field>
 </record>
@@ -46,6 +58,22 @@
     <field name="arch" type="xml">
         <search>
             <field name="model_id" />
+            <field name="action" />
+            <field name="code" />
+            <group expand="0" string="Group By">
+                <filter
+                        string="Model"
+                        name="model_id"
+                        domain="[]"
+                        context="{'group_by': 'model_id'}"
+                    />
+                <filter
+                        string="Action"
+                        name="action"
+                        domain="[]"
+                        context="{'group_by': 'action'}"
+                    />
+            </group>
         </search>
     </field>
 </record>
@@ -57,20 +85,4 @@
     <field name="path">file-config</field>
 </record>
 
-<menuitem id="edi_menu" name="EDI" parent="contacts.menu_contacts" sequence="3" />
-
-<menuitem
-        id="file_config_menu"
-        action="action_file_config"
-        sequence="7"
-        parent="edi_menu"
-    />
-
-<!-- <menuitem
-        id="import_spreadsheet_wiz_menu"
-        action="import_spreadsheet_wiz_action"
-        parent="edi_menu"
-        sequence="9"
-    />
- -->
 </odoo>
