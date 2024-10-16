@@ -12,7 +12,7 @@
     "depends": ["web"],
     "external_dependencies": {
         "python": ["py3o.template", "py3o.formats"],
-        "deb": ["libreoffice"],
+        "bin": ["libreoffice"],
     },
     "assets": {
         "web.assets_backend": [
