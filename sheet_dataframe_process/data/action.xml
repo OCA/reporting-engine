@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<record id="refresh_conf" model="ir.actions.server">
+    <field name="name">📙 Mise à jour config</field>
+    <field name="model_id" ref="model_file_config" />
+    <field name="binding_model_id" ref="model_file_config" />
+    <field name="state">code</field>
+    <field name="code">env["file.config"]._refresh_conf()</field>
+</record>
+
+<record id="refresh_test" model="ir.actions.server">
+    <field name="name">📙 Mise à jour tests</field>
+    <field name="model_id" ref="model_test_file" />
+    <field name="binding_model_id" ref="model_test_file" />
+    <field name="state">code</field>
+    <field name="code">env["test.file"]._populate()</field>
+</record>
+
+</odoo>

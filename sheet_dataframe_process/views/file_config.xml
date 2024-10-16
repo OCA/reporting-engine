@@ -1,0 +1,76 @@
+<odoo>
+
+<record id="file_config_form" model="ir.ui.view">
+    <field name="model">file.config</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+<!--                 <button name="populate_match_lines" string="Populate" type="object" help="Populate matching lines with partners" />
+                <button
+                        name="% (sheet_dataframe_transient_action) d"
+                        type="action"
+                        string="Import"
+                        context="{'default_partner_id': partner_id}"
+                    /> -->
+            </header>
+            <sheet>
+                <group>
+                    <group>
+                        <field name="model_id" />
+                        <field name="action" />
+                    </group>
+                    <group>
+                        <field name="code" />
+                        <field name="partner_ids" widget="many2many_tags" />
+                    </group>
+                   <field name="field_ids" />
+                   <field name="field_match_ids" />
+                </group>
+            </sheet>
+            <chatter />
+        </form>
+    </field>
+</record>
+
+<record id="file_config_tree" model="ir.ui.view">
+    <field name="model">file.config</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="model_id" />
+        </list>
+    </field>
+</record>
+
+<record id="file_config_search" model="ir.ui.view">
+    <field name="model">file.config</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="model_id" />
+        </search>
+    </field>
+</record>
+
+<record id="action_file_config" model="ir.actions.act_window">
+    <field name="name">Configuration</field>
+    <field name="res_model">file.config</field>
+    <field name="view_mode">list,form</field>
+    <field name="path">file-config</field>
+</record>
+
+<menuitem id="edi_menu" name="EDI" parent="contacts.menu_contacts" sequence="3" />
+
+<menuitem
+        id="file_config_menu"
+        action="action_file_config"
+        sequence="7"
+        parent="edi_menu"
+    />
+
+<!-- <menuitem
+        id="import_spreadsheet_wiz_menu"
+        action="import_spreadsheet_wiz_action"
+        parent="edi_menu"
+        sequence="9"
+    />
+ -->
+</odoo>
