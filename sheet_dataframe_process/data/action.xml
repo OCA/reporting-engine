@@ -2,15 +2,15 @@
 <odoo>
 
 <record id="refresh_conf" model="ir.actions.server">
-    <field name="name">📙 Mise à jour config</field>
+    <field name="name">Update config</field>
     <field name="model_id" ref="model_file_config" />
     <field name="binding_model_id" ref="model_file_config" />
     <field name="state">code</field>
-    <field name="code">env["file.config"]._refresh_conf()</field>
+    <field name="code">env["file.config"]._refresh_conf_hook()</field>
 </record>
 
 <record id="refresh_file_example" model="ir.actions.server">
-    <field name="name">⚙ Populate file polars example</field>
+    <field name="name">🐻‍❄️ Populate file polars example</field>
     <field name="model_id" ref="model_test_polars_file" />
     <field name="binding_model_id" ref="model_test_polars_file" />
     <field name="state">code</field>

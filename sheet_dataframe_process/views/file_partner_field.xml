@@ -9,9 +9,9 @@
                     context="{'default_config_id': parent}"
                     optional="hide"
                 />
-            <field name="field_id" />
-            <field name="partner_id" />
-            <field name="matching_column" />
+            <field name="field_id" readonly="1" />
+            <field name="partner_id" readonly="1" />
+            <field name="matching_column" placeholder="Name in the spreadsheet" />
         </list>
     </field>
 </record>

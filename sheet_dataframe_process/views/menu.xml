@@ -2,7 +2,7 @@
 
 <menuitem
         id="dataframe_menu"
-        name="Dataframe 🐻‍❄️"
+        name="Dataframe"
         parent="contacts.menu_contacts"
         sequence="3"
     />

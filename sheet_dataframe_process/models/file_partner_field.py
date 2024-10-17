@@ -11,6 +11,5 @@ class FilePartnerField(models.Model):
     )
     partner_id = fields.Many2one(
         comodel_name="res.partner",
-        readonly=True,
     )
     matching_column = fields.Char(help="Field name in spreadsheet")
