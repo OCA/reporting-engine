@@ -1,0 +1,51 @@
+<odoo>
+    <record id="file_config_all" model="ir.model.access">
+        <field name="name">File Config</field>
+        <field name="model_id" ref="model_file_config" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="file_field_all" model="ir.model.access">
+        <field name="name">File Field</field>
+        <field name="model_id" ref="model_file_field" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="file_partner_field_all" model="ir.model.access">
+        <field name="name">File Partner Field</field>
+        <field name="model_id" ref="model_file_partner_field" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="sheet_dataframe_transient_all" model="ir.model.access">
+        <field name="name">sheet.dataframe.transient</field>
+        <field name="model_id" ref="model_sheet_dataframe_transient" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="try_file_all" model="ir.model.access">
+        <field name="name">try.file</field>
+        <field name="model_id" ref="model_try_file" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+</odoo>

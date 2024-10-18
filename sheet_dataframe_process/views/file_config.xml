@@ -1,0 +1,94 @@
+<odoo>
+    <record id="file_config_form" model="ir.ui.view">
+        <field name="model">file.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="populate_match_lines"
+                        string="Populate Matching Files"
+                        type="object"
+                        help="Populate matching lines with partners"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_id" readonly="field_ids" />
+                            <field name="code" />
+                            <field name="action" widget="radio" />
+                            <field name="on_fail" />
+                        </group>
+                        <group>
+                            <field name="partner_ids" nolabel="1">
+                                <list>
+                                    <button
+                                        name="sheet_dataframe_import"
+                                        type="object"
+                                        title="Import file"
+                                        class="fa fa-upload"
+                                        context="{'config_id': parent}"
+                                    />
+                                    <field name="name" string="Partner" readonly="1" />
+                                    <field name="city" />
+                                </list>
+                            </field>
+                        </group>
+                        <separator string="Field rules" />
+                        <field name="field_ids" />
+                        <separator
+                            string="Matching files - optional part"
+                            invisible="not partner_ids"
+                        />
+                        <field name="field_match_ids" invisible="not partner_ids" />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="file_config_tree" model="ir.ui.view">
+        <field name="model">file.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model_id" />
+                <field name="code" />
+                <field name="action" />
+                <field name="partner_ids" />
+            </list>
+        </field>
+    </record>
+
+    <record id="file_config_search" model="ir.ui.view">
+        <field name="model">file.config</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="model_id" />
+                <field name="action" />
+                <field name="code" />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Model"
+                        name="model_id"
+                        domain="[]"
+                        context="{'group_by': 'model_id'}"
+                    />
+                    <filter
+                        string="Action"
+                        name="action"
+                        domain="[]"
+                        context="{'group_by': 'action'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_file_config" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">file.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">file-config</field>
+    </record>
+</odoo>

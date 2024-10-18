@@ -1,0 +1,33 @@
+<odoo>
+    <menuitem
+        id="dataframe_menu"
+        name="Dataframe"
+        parent="contacts.menu_contacts"
+        sequence="3"
+    />
+    <menuitem
+        id="file_config_menu"
+        action="action_file_config"
+        sequence="2"
+        parent="dataframe_menu"
+    />
+    <menuitem
+        id="try_file_menu"
+        action="try_file_action"
+        parent="dataframe_menu"
+        sequence="5"
+    />
+    <menuitem
+        id="refresh_try_file_menu"
+        action="refresh_file_example"
+        sequence="9"
+        parent="dataframe_menu"
+    />
+
+    <menuitem
+        id="sheet_dataframe_transient_menu"
+        action="sheet_dataframe_transient_action"
+        parent="dataframe_menu"
+        sequence="7"
+    />
+</odoo>

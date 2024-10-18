@@ -1,0 +1,24 @@
+<odoo>
+    <record id="file_partner_field_tree" model="ir.ui.view">
+        <field name="model">file.partner.field</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field
+                    name="config_id"
+                    context="{'default_config_id': parent}"
+                    optional="hide"
+                />
+                <field name="field_id" context="{'technical_name': 1}" readonly="1" />
+                <field name="partner_id" readonly="1" />
+                <field name="matching_column" placeholder="Name in the spreadsheet" />
+            </list>
+        </field>
+    </record>
+
+    <record id="action_file_partner_field" model="ir.actions.act_window">
+        <field name="name">File Partner Field</field>
+        <field name="res_model">file.partner.field</field>
+        <field name="view_mode">list</field>
+        <field name="path">file-partner-field</field>
+    </record>
+</odoo>
