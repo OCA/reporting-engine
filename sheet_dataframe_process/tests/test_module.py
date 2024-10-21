@@ -6,10 +6,14 @@ class TestModule(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.env["try.file"]._populate()
+        cls.env.ref(
+            "sheet_dataframe_process.file_config_contact"
+        ).populate_match_lines()
         cls.file_records = cls.env["try.file"].search([])
 
     def test_missing(self):
         wiz = self.get_wizard(self.file_records, "missing_required")
+        self.assertTrue(wiz.partner_id)
         self.assertEqual(wiz.missing_cols, "['street']")
 
     def test_four_fields(self):
