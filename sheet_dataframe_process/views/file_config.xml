@@ -30,7 +30,8 @@
                                         context="{'config_id': parent}"
                                     />
                                     <field name="name" string="Partner" readonly="1" />
-                                    <field name="city" />
+                                    <field name="city" optional="hide" />
+                                    <field name="id" optional="hide" />
                                 </list>
                             </field>
                         </group>

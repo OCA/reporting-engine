@@ -30,13 +30,13 @@ class SheetDataframeTransient(models.TransientModel):
         self.ensure_one()
         comment = ""
         df = pl.read_excel(source=base64.b64decode(self.file))
-        match = self.config_id.field_match_ids.filtered(
+        spe_records = self.config_id.field_match_ids.filtered(
             lambda s, df_cols=df.columns: s.matching_column in df_cols
         )
-        partner, specific_names = self._guess_partner(df, match)
+        partner, specific_names = self._guess_partner(df, spe_records)
         if partner:
             self.partner_id = partner.id
-            self.missing_cols = self._get_missing_cols(df, match, partner)
+            self.missing_cols = self._check_missing_cols(df, spe_records, partner)
         if self.missing_cols:
             comment += _(f"\nMissing columns: {self.missing_cols}")
         self._dataframe2html(df)
@@ -48,10 +48,13 @@ class SheetDataframeTransient(models.TransientModel):
         - apply skip to record when required not respected
         """
 
-    def _get_missing_cols(self, df, match, partner):
+    def _check_missing_value(self, df):
+        df.rename({"foo": "apple"})
+
+    def _check_missing_cols(self, df, spe_records, partner):
         map_cols = {
             x.matching_column: x.field_id.name
-            for x in match.filtered(lambda s, part=partner: s.partner_id == part)
+            for x in spe_records.filtered(lambda s, part=partner: s.partner_id == part)
         }
         file_techn_name_cols = [map_cols.get(x, x) for x in df.columns]
         required = self.config_id.field_ids.filtered(lambda s: s.required).mapped(
@@ -60,16 +63,17 @@ class SheetDataframeTransient(models.TransientModel):
         missing = [x for x in required if x not in file_techn_name_cols]
         return missing or ""
 
-    def _guess_partner(self, df, match):
+    def _guess_partner(self, df, spe_records):
         cols_by_part = defaultdict(list)
-        for line in match:
+        for line in spe_records:
             cols_by_part[line.partner_id].append(line.matching_column)
         if len(cols_by_part) > 1:
             self._manage_several_partners(cols_by_part.keys())
         if cols_by_part:
-            # only csutom _columns of first partner
+            # only custom columns of first partner
             partner = list(cols_by_part.keys())[0]
             return partner, cols_by_part[partner]
+        # Not supported case
         return False, []
 
     def _dataframe2html(self, df):

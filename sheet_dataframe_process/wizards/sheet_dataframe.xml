@@ -6,20 +6,20 @@
                 <group col="2">
                     <group>
                         <field name="config_id" readonly="config_id" />
-                        <field
-                            name="file"
-                            widget="binary"
-                            filename="filename"
-                            readonly="file"
-                        />
                     </group>
                     <group>
                         <field name="partner_id" readonly="partner_id" />
                         <field name="filename" invisible="1" />
                     </group>
+                    <field
+                        name="file"
+                        widget="binary"
+                        filename="filename"
+                        readonly="file"
+                        options="{'accepted_file_extensions': '.xlsx'}"
+                    />
                 </group>
                 <group colspan="1">
-                    <field name="missing_cols" nolabel="1" />
                     <field name="sample" nolabel="1" />
                     <separator invisible="not comment" />
                     <field

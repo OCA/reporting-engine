@@ -9,8 +9,8 @@
                     optional="hide"
                 />
                 <field name="field_id" context="{'technical_name': 1}" readonly="1" />
-                <field name="partner_id" readonly="1" />
                 <field name="matching_column" placeholder="Name in the spreadsheet" />
+                <field name="partner_id" readonly="1" />
             </list>
         </field>
     </record>

@@ -3,6 +3,7 @@ from odoo import fields, models
 
 class FileField(models.Model):
     _name = "file.field"
+    _inherit = ["mail.thread"]
     _description = "Configuration de l'import de champ"
     _order = "field_id ASC"
 
@@ -21,6 +22,5 @@ class FileField(models.Model):
         readonly=True,
     )
     required = fields.Boolean(
-        tracking=True,
         help="Prevent to import missing data if field is missing in some records",
     )

@@ -11,7 +11,11 @@ class FileConfig(models.Model):
     _rec_name = "model_id"
 
     model_id = fields.Many2one(
-        comodel_name="ir.model", required=True, ondelete="cascade"
+        comodel_name="ir.model",
+        required=True,
+        copy=False,
+        ondelete="cascade",
+        tracking=True,
     )
     code = fields.Char(help="Allow to browse between several identical models")
     action = fields.Selection(
@@ -20,18 +24,22 @@ class FileConfig(models.Model):
             ("dataframe", "Dataframe"),
         ],
         default="display",
+        tracking=True,
         help="Some other behaviors can be implemented",
     )
     on_fail = fields.Selection(
         selection=[("stop", "Stop"), ("skip", "Skip record (TODO)")],
         default="stop",
+        tracking=True,
         help="What should be the behavior in case of failure regarding constraint "
         "fields (required, format, etc)\n\n"
         " - Stop: stop the process by raising an exception\n"
         " - Skip record: current line'll be ignored from the next process",
     )
     partner_ids = fields.Many2many(
-        comodel_name="res.partner", domain="[('active', 'in', (True, False))]"
+        comodel_name="res.partner",
+        domain="[('active', 'in', (True, False))]",
+        tracking=True,
     )
     field_ids = fields.One2many(
         comodel_name="file.field", inverse_name="config_id", copy=True
