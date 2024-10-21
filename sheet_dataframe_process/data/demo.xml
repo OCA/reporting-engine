@@ -1,0 +1,33 @@
+<odoo>
+    <record id="file_config_contact" model="file.config">
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="on_fail">stop</field>
+        <field
+            name="partner_ids"
+            eval="[ref('base.res_partner_18'), ref('base.res_partner_5')]"
+        />
+    </record>
+
+    <record id="file_config_contact_country" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__country_code" />
+    </record>
+    <record id="file_config_contact_name" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__name" />
+        <field name="required" eval="1" />
+    </record>
+    <record id="file_config_contact_street" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__street" />
+        <field name="required" eval="1" />
+    </record>
+    <record id="file_config_contact_street2" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__street2" />
+    </record>
+    <record id="file_config_contact_date" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__write_date" />
+    </record>
+</odoo>

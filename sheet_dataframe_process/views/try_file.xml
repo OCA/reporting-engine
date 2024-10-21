@@ -1,0 +1,24 @@
+<odoo>
+    <record id="try_file_list" model="ir.ui.view">
+        <field name="model">try.file</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field
+                    name="config_id"
+                    context="{'default_config_id': parent}"
+                    optional="hide"
+                />
+                <button name="try_import" type="object" string="Import" />
+                <field name="template" filename="name" widget="binary" />
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="try_file_action" model="ir.actions.act_window">
+        <field name="name">Files to test with polars</field>
+        <field name="res_model">try.file</field>
+        <field name="view_mode">list</field>
+        <field name="path">try-file</field>
+    </record>
+</odoo>

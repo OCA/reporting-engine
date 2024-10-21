@@ -1,0 +1,23 @@
+<odoo>
+    <record id="file_field_tree" model="ir.ui.view">
+        <field name="model">file.field</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field
+                    name="config_id"
+                    context="{'default_config_id': parent}"
+                    optional="hide"
+                />
+                <field name="field_id" context="{'technical_name': 1}" />
+                <field name="required" />
+            </list>
+        </field>
+    </record>
+
+    <record id="action_file_field" model="ir.actions.act_window">
+        <field name="name">File Field</field>
+        <field name="res_model">file.field</field>
+        <field name="view_mode">list</field>
+        <field name="path">file-field</field>
+    </record>
+</odoo>
