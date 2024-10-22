@@ -4,10 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0+e\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-27 08:08+0000\n"
-"PO-Revision-Date: 2024-08-27 08:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -102,8 +100,8 @@ msgstr ""
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
 msgid ""
 "When set, the back cover of the report will overlap with the contents of the"
-" last page of the report. This is useful to include some information of the"
-" report in the back cover."
+" last page of the report. This is useful to include some information of the "
+"report in the back cover."
 msgstr ""
 
 #. module: report_qweb_pdf_cover
