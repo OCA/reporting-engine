@@ -29,5 +29,10 @@
     <record id="file_config_contact_date" model="file.field">
         <field name="config_id" ref="file_config_contact" />
         <field name="field_id" ref="base.field_res_partner__write_date" />
+        <field name="check_type" eval="1" />
+    </record>
+    <record id="file_config_contact_color" model="file.field">
+        <field name="config_id" ref="file_config_contact" />
+        <field name="field_id" ref="base.field_res_partner__color" />
     </record>
 </odoo>

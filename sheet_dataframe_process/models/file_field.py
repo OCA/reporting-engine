@@ -24,3 +24,6 @@ class FileField(models.Model):
     required = fields.Boolean(
         help="Prevent to import missing data if field is missing in some records",
     )
+    check_type = fields.Boolean(
+        help="Check data type is compatible",
+    )

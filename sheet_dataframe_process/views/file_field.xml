@@ -10,6 +10,7 @@
                 />
                 <field name="field_id" context="{'technical_name': 1}" />
                 <field name="required" />
+                <field name="check_type" />
             </list>
         </field>
     </record>

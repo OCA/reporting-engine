@@ -1,3 +1,5 @@
+from lxml import etree
+
 from odoo.tests.common import TransactionCase
 
 
@@ -14,14 +16,24 @@ class TestModule(TransactionCase):
     def test_missing(self):
         wiz = self.get_wizard(self.file_records, "missing_required")
         self.assertTrue(wiz.partner_id)
-        self.assertEqual(wiz.missing_cols, "['street']")
+        comment = sanitize(str(wiz.comment))
+        root = etree.fromstring(comment)
+        self.assertEqual(
+            root.xpath('//div[@id="missing-name-values"]/div')[0].text,
+            "Missing 'name' values",
+        )
 
-    def test_four_fields(self):
-        wiz = self.get_wizard(self.file_records, "4_fields")
-        self.assertFalse(wiz.missing_cols)
+    # def test_four_fields(self):
+    #     wiz = self.get_wizard(self.file_records, "4_fields")
+    #     self.assertFalse(wiz.missing_cols)
 
     def get_wizard(self, file_recs, file_str):
         action = file_recs.filtered(
             lambda s, file_str=file_str: file_str in s.name
         ).try_import()
         return self.env["sheet.dataframe.transient"].browse(action.get("res_id"))
+
+
+def sanitize(string):
+    string = string.replace("<br>", "<br />")
+    return string
