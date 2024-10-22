@@ -27,7 +27,7 @@ def format_multiline_value(value):
 
 
 def display_address(address_record, without_company=False):
-    return address_record.display_address(without_company=without_company)
+    return address_record._display_address(without_company=without_company)
 
 
 class Py3oParserContext(object):
