@@ -2,9 +2,11 @@
 # Copyright 2013-2014 Nicolas Bessi (Camptocamp SA)
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021-2022 Tecnativa - Víctor Martínez
+# Copyright 2024 Simone Rubino - Aion Tech
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools import Query
 
 
 class BaseCommentTemplate(models.Model):
@@ -128,9 +130,16 @@ class BaseCommentTemplate(models.Model):
 
     def _search_model_ids(self, operator, value):
         # We cannot use model_ids.model in search() method to avoid access errors
-        allowed_items = (
-            self.sudo()
-            .search([])
-            .filtered(lambda x: value in x.model_ids.mapped("model"))
-        )
+        if isinstance(value, Query):
+            found_models = self.env["ir.model"].sudo().browse(value)
+            model_names = found_models.mapped("model")
+        else:
+            model_names = [value]
+
+        all_items = self.sudo().search([])
+        allowed_items = self.browse()
+        for model_name in model_names:
+            allowed_items |= all_items.filtered(
+                lambda x: model_name in x.models.split(",")
+            )
         return [("id", "in", allowed_items.ids)]
