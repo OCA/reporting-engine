@@ -1,0 +1,146 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_pdf_cover
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Back Cover PDF"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load back cover: %s"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load front cover: %s"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Front Cover PDF"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable back cover found."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable front cover found."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid "Overlap Back Cover"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid "Overlap Front Cover"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model,name:report_qweb_pdf_cover.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Upload an PDF file to use as a back cover on this report."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Upload an PDF file to use as a front cover on this report."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use Back Cover"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use Front Cover"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use a back cover when rendering the PDF report."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use a front cover when rendering the PDF report."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid ""
+"When set, the back cover of the report will overlap with the contents of the"
+" last page of the report. This is useful to include some information of the "
+"report in the back cover."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid ""
+"When set, the front cover of the report will overlap with the contents of "
+"the first page of the report. This is useful to include some information of "
+"the report in the front cover."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your back cover PDF contains more than one page, all but the first one will "
+"be ignored."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your back cover PDF does not contain any pages."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your front cover PDF contains more than one page, all but the first one will"
+" be ignored."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your front cover PDF does not contain any pages."
+msgstr ""
