@@ -77,3 +77,15 @@ class ReportAction(models.Model):
                 attachment_values["name"],
             )
         return attachment, record
+
+    def report_action(self, docids, data=None, config=True):
+        self.ensure_one()
+        res = super().report_action(docids, data=data, config=config)
+        if self.report_type == "xlsx" and len(docids) == 1:
+            # We have to do this, Otherwise, the Excel report will never get field
+            # print_report_name.
+            # Check code in file oca-reporting-engine/report_xlsx/controllers/main.py
+            # in report_download function to see that the report_name need to + / + id
+            # to get the value of print_report_name.
+            res.update({"report_name": self.report_name + "/" + str(docids[0])})
+        return res
