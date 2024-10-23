@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <record id="report_libreoffice_url" model="ir.config_parameter">
+        <field name="key">libreoffice_url</field>
+        <field name="value">http://localhost</field>
+    </record>
+
+    <record id="report_libreoffice_port" model="ir.config_parameter">
+        <field name="key">libreoffice_port</field>
+        <field name="value">8000</field>
+    </record>
+
+    <!-- Consider to manage with server_environment or analog system -->
+    <record id="report_libreoffice_secret" model="ir.config_parameter">
+        <field name="key">libreoffice_secret</field>
+        <field name="value">DEFAULT_KEY</field>
+    </record>
+
+</odoo>
