@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+    <record id="view_bi_sql_view_tree" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_tree"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle" />
+            </field>
+            <field name="name" position="after">
+                <field name="technical_name" />
+                <field name="size" readonly="1" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_bi_sql_view_form" model="ir.ui.view">
+        <field name="model">bi.sql.view</field>
+        <field
+            name="inherit_id"
+            ref="sql_request_abstract.view_sql_request_mixin_form"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="button_reset_to_sql_valid"
+                    type="object"
+                    invisible="state != 'model_valid'"
+                    string="Delete SQL Elements"
+                    groups="sql_request_abstract.group_sql_request_manager"
+                    confirm="It will delete the materialized view, and all the previous mapping realized with the columns"
+                />
+                <button
+                    name="button_reset_to_model_valid"
+                    type="object"
+                    invisible="state != 'ui_valid'"
+                    string="Delete UI"
+                    groups="sql_request_abstract.group_sql_request_manager"
+                />
+                <button
+                    name="button_create_sql_view_and_model"
+                    type="object"
+                    invisible="state != 'sql_valid'"
+                    string="Create SQL Elements"
+                    class="oe_highlight"
+                    help="This will try to create an SQL View, based on the SQL request and the according Transient Model and fields, based on settings"
+                />
+                <button
+                    name="button_update_model_access"
+                    type="object"
+                    string="Update Model Access"
+                    class="oe_highlight"
+                    invisible="state in ('draft', 'sql_valid') or not has_group_changed"
+                    help="Update Model Access. Required if you changed groups list after having created the model"
+                />
+                <button
+                    name="button_create_ui"
+                    type="object"
+                    invisible="state != 'model_valid'"
+                    string="Create UI"
+                    class="oe_highlight"
+                    help="This will create Odoo View, Action and Menu"
+                />
+                <button
+                    name="button_open_view"
+                    type="object"
+                    string="Open View"
+                    invisible="state != 'ui_valid'"
+                    class="oe_highlight"
+                />
+                <button
+                    name="button_refresh_materialized_view"
+                    type="object"
+                    string="Refresh"
+                    help="Refresh Materialized View"
+                    invisible="state in ('draft', 'sql_valid') or not is_materialized"
+                />
+            </xpath>
+            <group name="group_main_info" position="inside">
+                <group>
+                    <field name="technical_name" readonly="state != 'draft'" />
+                    <field name="view_name" readonly="1" />
+                    <field name="view_order" readonly="state == 'ui_valid'" />
+                    <field
+                        name="is_materialized"
+                        readonly="state not in ('draft', 'sql_valid')"
+                    />
+                    <field
+                        name="size"
+                        invisible="state == 'draft' or not is_materialized"
+                        readonly="1"
+                    />
+                    <field
+                        name="cron_id"
+                        invisible="state in ('draft', 'sql_valid') or not is_materialized"
+                        readonly="1"
+                    />
+                </group>
+            </group>
+            <page name="page_sql" position="after">
+                <page string="SQL Fields" invisible="state == 'draft'">
+                    <field name="bi_sql_view_field_ids" nolabel="1" colspan="4">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle" />
+                            <field name="name" />
+                            <field name="sql_type" />
+                            <field
+                                name="field_description"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name="ttype"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name="many2one_model_id"
+                                invisible="ttype != 'many2one'"
+                                required="ttype == 'many2one'"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name="selection"
+                                invisible="ttype != 'selection'"
+                                required="ttype == 'selection'"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name='group_operator'
+                                optional="hide"
+                                invisible="ttype not in ('float', 'integer')"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field
+                                name="is_index"
+                                optional="hide"
+                                readonly="state in ('model_valid', 'ui_valid')"
+                            />
+                            <field name="graph_type" readonly="state == 'ui_valid'" />
+                            <field
+                                name="is_group_by"
+                                optional="hide"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field
+                                name="tree_visibility"
+                                optional="hide"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field
+                                name="field_context"
+                                readonly="state == 'ui_valid'"
+                            />
+                            <field name="state" column_invisible="1" />
+                        </list>
+                    </field>
+                </page>
+            </page>
+            <page name="page_security" position="inside">
+                <group string="Rule Definition">
+                    <field
+                        name="domain_force"
+                        nolabel="1"
+                        colspan="2"
+                        widget="ace"
+                        options="{'mode': 'python'}"
+                        readonly="state not in ('draft', 'sql_valid')"
+                    />
+                </group>
+            </page>
+            <!-- user_ids are not used for the time being in bi_sql_editor module -->
+            <group name="group_allowed_users" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </group>
+            <field name="user_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <page name="page_security" position="after">
+                <page string="Action Settings">
+                    <group string="Computed Context">
+                        <field name="computed_action_context" nolabel="1" colspan="2" />
+                    </group>
+                    <group string="Custom Context">
+                        <field
+                            name="action_context"
+                            readonly="state not in ('draft', 'sql_valid', 'model_valid')"
+                            nolabel="1"
+                            colspan="2"
+                            widget="ace"
+                            options="{'mode': 'python'}"
+                        />
+                    </group>
+                </page>
+                <page string="Extras Information">
+                    <group>
+                        <group string="Model">
+                            <field name="model_name" readonly="1" />
+                            <field
+                                name="model_id"
+                                readonly="1"
+                                invisible="state == 'draft'"
+                            />
+                        </group>
+                        <group string="User Interface">
+                            <group string="UI Parameters">
+                                <field
+                                    name="parent_menu_id"
+                                    readonly="state == 'ui_valid'"
+                                />
+                            </group>
+                            <group string="UI Instances">
+                                <field name="tree_view_id" readonly="1" />
+                                <field name="graph_view_id" readonly="1" />
+                                <field name="pivot_view_id" readonly="1" />
+                                <field name="search_view_id" readonly="1" />
+                                <field name="action_id" readonly="1" />
+                                <field name="menu_id" readonly="1" />
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </page>
+
+            <field name="group_ids" position="attributes">
+                <attribute
+                    name="invisible"
+                >state not in ('draft', 'sql_valid')</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_bi_sql_view" model="ir.actions.act_window">
+        <field name="name">SQL Views</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bi.sql.view</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_bi_sql_view"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration"
+        groups="sql_request_abstract.group_sql_request_manager"
+        action="action_bi_sql_view"
+    />
+
+    <!-- Menu that will contain all the SQL report generated by this module -->
+    <menuitem
+        id="menu_bi_sql_editor"
+        name="SQL Reports"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        groups="sql_request_abstract.group_sql_request_user"
+        sequence="5"
+    />
+</odoo>
