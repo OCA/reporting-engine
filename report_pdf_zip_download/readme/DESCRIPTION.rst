@@ -1,0 +1,1 @@
+This module generates one PDF report per record, and the reports are compiled into a ZIP file if the user prints multiple records at once. If the user prints a single record, it will follow Odoo's standard behavior and will generate just a single PDF file.
