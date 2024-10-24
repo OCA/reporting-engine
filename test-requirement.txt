@@ -1,0 +1,1 @@
+odoo-addon-polars_process @ git+https://github.com/OCA/reporting-engine.git@refs/pull/943/head#subdirectory=polars_process
