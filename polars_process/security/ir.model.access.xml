@@ -1,0 +1,41 @@
+<odoo>
+    <record id="dataframe_all" model="ir.model.access">
+        <field name="name">Dataframe</field>
+        <field name="model_id" ref="model_dataframe" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="df_field_all" model="ir.model.access">
+        <field name="name">Df Field</field>
+        <field name="model_id" ref="model_df_field" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="df_process_wiz_all" model="ir.model.access">
+        <field name="name">df.process.wiz</field>
+        <field name="model_id" ref="model_df_process_wiz" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+    <record id="df_source_all" model="ir.model.access">
+        <field name="name">df.source</field>
+        <field name="model_id" ref="model_df_source" />
+        <field name="group_id" ref="base.group_user" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+</odoo>
