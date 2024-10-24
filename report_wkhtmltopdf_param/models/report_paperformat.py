@@ -4,7 +4,7 @@
 
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ class Paper(models.Model):
     )
 
     @api.constrains("custom_params")
-    def _check_recursion(self):
+    def _check_recursion_custom_params(self):
         for paperformat in self:
             sample_html = """
                 <!DOCTYPE html>
@@ -36,8 +36,8 @@ class Paper(models.Model):
             report = self.env["ir.actions.report"].new(
                 {"paperformat_id": paperformat.id}
             )
-            content = report._run_wkhtmltopdf(sample_html)
+            content = report._run_wkhtmltopdf([sample_html])
             if not content:
                 raise ValidationError(
-                    _("Failed to create a PDF using the provided parameters.")
+                    self.env._("Failed to create a PDF using the provided parameters.")
                 )
