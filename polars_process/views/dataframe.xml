@@ -1,0 +1,69 @@
+<odoo>
+    <record id="dataframe_form" model="ir.ui.view">
+        <field name="model">dataframe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header />
+                    <group>
+                        <group>
+                            <field name="model_id" readonly="field_ids" />
+                            <field name="action" widget="radio" />
+                            <field name="on_fail" />
+                            <field name="rename" />
+                        </group>
+                        <group name="right">
+                            <field name="code" />
+                        </group>
+                        <separator string="Field rules" />
+                        <field name="field_ids" />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="dataframe_tree" model="ir.ui.view">
+        <field name="model">dataframe</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="model_id" />
+                <field name="code" />
+                <field name="action" />
+            </list>
+        </field>
+    </record>
+
+    <record id="dataframe_search" model="ir.ui.view">
+        <field name="model">dataframe</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="model_id" />
+                <field name="action" />
+                <field name="code" />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Model"
+                        name="model_id"
+                        domain="[]"
+                        context="{'group_by': 'model_id'}"
+                    />
+                    <filter
+                        string="Action"
+                        name="action"
+                        domain="[]"
+                        context="{'group_by': 'action'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_dataframe" model="ir.actions.act_window">
+        <field name="name">Dataframe</field>
+        <field name="res_model">dataframe</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">dataframe</field>
+    </record>
+</odoo>
