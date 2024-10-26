@@ -1,0 +1,44 @@
+<odoo>
+    <record id="dataframe_contact" model="dataframe">
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="on_fail">stop</field>
+        <field name="code">import_preprocess</field>
+        <field name="rename" eval="1" />
+    </record>
+
+    <record id="dataframe_contact_country" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__country_code" />
+        <field name="name">Country</field>
+    </record>
+    <record id="dataframe_contact_name" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__name" />
+        <field name="name">Name</field>
+        <field name="required" eval="1" />
+    </record>
+    <record id="dataframe_contact_street" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__street" />
+        <field name="name">Street</field>
+        <field name="required" eval="1" />
+    </record>
+    <record id="dataframe_contact_street2" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__street2" />
+        <field name="name">2nd Street</field>
+        <field name="renamed">street2</field>
+    </record>
+    <record id="dataframe_contact_date" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__write_date" />
+        <field name="name">Date</field>
+        <field name="check_type" eval="1" />
+    </record>
+    <record id="dataframe_contact_color" model="df.field">
+        <field name="dataframe_id" ref="dataframe_contact" />
+        <field name="field_id" ref="base.field_res_partner__color" />
+        <field name="name">Colour</field>
+        <field name="renamed">Color</field>
+    </record>
+</odoo>

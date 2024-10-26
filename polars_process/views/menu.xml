@@ -1,0 +1,33 @@
+<odoo>
+    <menuitem
+        id="polars_menu"
+        name="Polars"
+        parent="contacts.menu_contacts"
+        sequence="3"
+    />
+    <menuitem
+        id="dataframe_menu"
+        action="action_dataframe"
+        sequence="2"
+        parent="polars_menu"
+    />
+    <menuitem
+        id="df_source_menu"
+        action="df_source_action"
+        parent="polars_menu"
+        sequence="5"
+    />
+    <menuitem
+        id="refresh_df_source_menu"
+        action="refresh_df_source_action"
+        sequence="9"
+        parent="polars_menu"
+    />
+
+    <menuitem
+        id="df_process_wiz_menu"
+        action="df_process_wiz_action"
+        parent="polars_menu"
+        sequence="7"
+    />
+</odoo>
