@@ -89,6 +89,13 @@ Authors
 
 * Akretion
 
+Contributors
+------------
+
+-  Akretion
+
+      -  David BEAL <david.beal@akretion.com>
+
 Maintainers
 -----------
 
