@@ -17,7 +17,7 @@ class ActionsReportSubstitutionRule(models.Model):
         required=True,
         ondelete="cascade",
     )
-    model = fields.Char(related="action_report_id.model", store=True)
+    model = fields.Char(related="action_report_id.model")
     domain = fields.Char(required=True, default="[]")
     substitution_action_report_id = fields.Many2one(
         comodel_name="ir.actions.report",

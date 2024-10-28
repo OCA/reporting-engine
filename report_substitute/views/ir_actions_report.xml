@@ -10,11 +10,11 @@
             <xpath expr="//page[@name='advanced']" position="after">
                 <page name="report_substitution_rule" string="Substitution Rules">
                     <field name="action_report_substitution_rule_ids">
-                        <tree>
+                        <list>
                             <field name="sequence" widget="handle" />
                             <field name="substitution_action_report_id" />
                             <field name="domain" />
-                        </tree>
+                        </list>
                         <form>
                             <sheet>
                                 <group>
