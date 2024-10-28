@@ -6,6 +6,7 @@ class Dataframe(models.Model):
     _inherit = "mail.thread"
     _description = "File Configuration"
     _rec_name = "code"
+    _rec_names_search = ["model_id", "code"]
 
     model_id = fields.Many2one(
         comodel_name="ir.model",

@@ -6,6 +6,8 @@ class FileField(models.Model):
     _inherit = ["mail.thread"]
     _description = "Configuration de l'import de champ"
     _order = "field_id ASC"
+    _rec_name = "field_id"
+    _rec_names_search = ["field_id"]
 
     dataframe_id = fields.Many2one(
         comodel_name="dataframe", required=True, ondelete="cascade"

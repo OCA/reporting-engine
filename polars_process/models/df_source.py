@@ -8,11 +8,13 @@ from odoo.modules.module import get_module_path
 class DfSource(models.Model):
     _name = "df.source"
     _description = "Dataframe data source"
+    _rec_name = "name"
+    _rec_names_search = ["name"]
 
     dataframe_id = fields.Many2one(
         comodel_name="dataframe", required=True, ondelete="cascade"
     )
-    name = fields.Char()
+    name = fields.Char(help="Supported files: .xlsx")
     sequence = fields.Integer()
     rename = fields.Boolean(help="Display renamed Dataframe in wizard")
     template = fields.Binary(string="File", attachment=False)
@@ -28,8 +30,7 @@ class DfSource(models.Model):
                     "readonly": True,
                     "rename": True,
                 }
-                if ".sql" in name:
-                    vals["query"] = self._get_file(name)
+                vals.update(self._file_hook(name))
                 self.env[self._name].sudo().create(vals)
 
         self.env[self._name].search([("template", "=", False)]).unlink()
@@ -50,8 +51,9 @@ class DfSource(models.Model):
             "filename": self.name,
             "df_source_id": self.id,
             "dataframe_id": self.dataframe_id.id,
-            "file": base64.b64encode(self._get_file()),
         }
+        if ".xlsx" in self.name:
+            vals["file"] = base64.b64encode(self._get_file())
         transient = self.env["df.process.wiz"].create(vals)
         action = self.env.ref("polars_process.df_process_wiz_action")._get_action_dict()
         action["res_id"] = transient.id
@@ -98,3 +100,7 @@ class DfSource(models.Model):
             "type": "ir.actions.act_window",
             "target": "current",
         }
+
+    def _file_hook(self, file):
+        "Overide me in your own module"
+        return {}

@@ -21,11 +21,14 @@ class DfProcessWiz(models.TransientModel):
 
     def create(self, vals):
         res = super().create(vals)
-        if res.dataframe_id and res.file:
-            res._pre_process()
+        res._pre_process()
         return res
 
     def _pre_process(self):
+        if self.dataframe_id and self.file:
+            self._pre_process_file()
+
+    def _pre_process_file(self):
         self.ensure_one()
         attribs = {}
         df = self._get_dataframe()
@@ -42,7 +45,7 @@ class DfProcessWiz(models.TransientModel):
             renamed_df, rdf = self._rename_df_columns(df)
             if renamed_df:
                 attribs["Renamed Columns"] = rdf
-        self._pre_process_hook(df, attribs)
+        self._pre_process_file_hook(df, attribs)
         comment = "\n".join(
             [
                 f'<div id="{self._slug_me(key)}"><div>{key}:</div>'
@@ -56,7 +59,7 @@ class DfProcessWiz(models.TransientModel):
             )
         self._reload()
 
-    def _pre_process_hook(self, df, attribs):
+    def _pre_process_file_hook(self, df, attribs):
         "Inherit for your own behavior"
         self.ensure_one()
 

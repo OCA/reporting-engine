@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="refresh_df_source_action" model="ir.actions.server">
-        <field name="name">🐻‍❄️ Populate file polars example</field>
+        <field name="name">Populate Polars data source</field>
         <field name="model_id" ref="model_df_source" />
         <field name="binding_model_id" ref="model_df_source" />
         <field name="state">code</field>

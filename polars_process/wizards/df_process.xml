@@ -44,7 +44,7 @@
     </record>
 
     <record id="df_process_wiz_action" model="ir.actions.act_window">
-        <field name="name">Process Dataframe</field>
+        <field name="name">Process Dataframe Wizard</field>
         <field name="res_model">df.process.wiz</field>
         <field name="view_mode">form</field>
         <field name="target">inline</field>
