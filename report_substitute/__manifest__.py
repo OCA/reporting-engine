@@ -6,7 +6,7 @@
     "summary": """
         This module allows to create substitution rules for report actions.
         """,
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV," "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
@@ -18,7 +18,7 @@
     "demo": ["demo/action_report.xml"],
     "assets": {
         "web.assets_backend": [
-            "report_substitute/static/src/js/action_manager.esm.js",
+            "report_substitute/static/src/js/action_manager.js",
         ],
     },
     "maintainers": ["sbejaoui"],
