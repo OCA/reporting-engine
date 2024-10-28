@@ -1,1 +1,48 @@
-<odoo />
+<odoo>
+    <record id="df_source_form" model="ir.ui.view">
+        <field name="model">df.source</field>
+        <field name="inherit_id" ref="polars_process.df_source_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <separator />
+                <group>
+                    <field name="db_id" invisible="template" />
+                    <field name="query" widget="code" invisible="template" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="df_source_list" model="ir.ui.view">
+        <field name="model">df.source</field>
+        <field name="inherit_id" ref="polars_process.df_source_list" />
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[last()]" position="after">
+                <field name="db_id" />
+            </xpath>
+            <xpath expr="//list/field[@name='template']" position="attributes">
+                <attribute
+                    name="options"
+                >{'accepted_file_extensions': '.xlsx,.sql'}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="df_source_search" model="ir.ui.view">
+        <field name="model">df.source</field>
+        <field name="inherit_id" ref="polars_process.df_source_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="db_id" />
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter
+                    string="Database"
+                    name="db_id"
+                    domain="[]"
+                    context="{'group_by': 'db_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

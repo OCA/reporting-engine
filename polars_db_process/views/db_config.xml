@@ -1,0 +1,59 @@
+<odoo>
+    <record id="db_config_form" model="ir.ui.view">
+        <field name="model">db.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        type="object"
+                        name="test_connexion"
+                        string="Test Connexion"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="password" password="1" />
+                        </group>
+                    </group>
+                    <group name="connexion">
+                        <field
+                            name="string_connexion"
+                            placeholder="postgres://username:PASSWORD@server:port/database"
+                        />
+                        <div>
+                            <b
+                            >PASSWORD in string connexion'll be replaced by password field</b>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dataframe_list" model="ir.ui.view">
+        <field name="model">db.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="db_config_action" model="ir.actions.act_window">
+        <field name="name">Database Config</field>
+        <field name="res_model">db.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">db-config</field>
+    </record>
+
+    <menuitem
+        id="db_config_menu"
+        action="db_config_action"
+        parent="polars_process.polars_menu"
+        sequence="7"
+    />
+</odoo>

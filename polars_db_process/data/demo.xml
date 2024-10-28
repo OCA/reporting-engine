@@ -1,1 +1,13 @@
-<odoo />
+<odoo noupdate="1">
+    <record id="sqlite_chinook" model="db.config">
+        <field name="name">Chinook</field>
+        <field
+            name="string_connexion"
+        >sqlite://.../polars_db_schema/tests/files/chinook.sqlite</field>
+    </record>
+
+    <record id="contact_chinook" model="dataframe">
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="code">Chinook Customers</field>
+    </record>
+</odoo>

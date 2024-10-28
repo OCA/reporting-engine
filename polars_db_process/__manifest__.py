@@ -3,7 +3,7 @@
 {
     "name": "Polars Database Process",
     "version": "18.0.1.0.0",
-    "summary": "Allow to create a Polars dataframe from database query and "
+    "summary": "Allow to create a Polars dataframe from db.query and "
     "check it and process it according to rules",
     "category": "Reporting",
     "license": "AGPL-3",
@@ -20,11 +20,16 @@
         ]
     },
     "data": [
-        "data/demo.xml",
+        "security/ir.model.access.xml",
         "wizards/df_process.xml",
         "views/dataframe.xml",
         "views/df_field.xml",
         "views/df_source.xml",
+        "views/db_config.xml",
+        "data/demo.xml",
+    ],
+    "demo": [
+        "data/demo.xml",
     ],
     "installable": True,
 }
