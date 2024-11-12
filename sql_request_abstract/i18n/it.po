@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-01 02:11+0000\n"
-"PO-Revision-Date: 2024-02-15 15:38+0000\n"
+"PO-Revision-Date: 2024-11-12 19:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
@@ -83,6 +83,8 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Se compilato, la query verrà eseguita su un database esterno, configurato "
+"nel file di configurazione principale di Odoo. "
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
@@ -254,7 +256,7 @@ msgstr "Modo non implementato: '%s'"
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Usa database esterno"
 
 #. module: sql_request_abstract
 #: model:res.groups,name:sql_request_abstract.group_sql_request_user
@@ -273,6 +275,9 @@ msgid ""
 "You can't use an external database as there are no such configuration about "
 "this. Please contact your Odoo administrator to solve this issue."
 msgstr ""
+"Non si può usare un database esterno perché non esiste una configurazione "
+"del genere. Contattare l'amministratore di Odoo per risolvere questo "
+"problema."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
