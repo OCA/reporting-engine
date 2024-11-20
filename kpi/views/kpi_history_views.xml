@@ -7,11 +7,11 @@
         <field name="name">kpi.history.tree</field>
         <field name="model">kpi.history</field>
         <field name="arch" type="xml">
-            <tree string="KPI History">
+            <tree>
                 <field name="name" />
-                <field name="date" />
-                <field name="value" />
-                <field name="color" widget="color" />
+                <field name="date" readonly="1" />
+                <field name="value" readonly="1" />
+                <field name="color" widget="color" readonly="1" />
                 <field name="company_id" groups="base.group_multi_company" />
             </tree>
         </field>
@@ -25,9 +25,9 @@
                     <group col="4" colspan="4">
                         <field name="kpi_id" />
                         <field name="name" />
-                        <field name="date" />
-                        <field name="value" />
-                        <field name="color" widget="color" />
+                        <field name="date" readonly="1" />
+                        <field name="value" readonly="1" />
+                        <field name="color" widget="color" readonly="1" />
                         <field name="company_id" groups="base.group_multi_company" />
                     </group>
                 </sheet>

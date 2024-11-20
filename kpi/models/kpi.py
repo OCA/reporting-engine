@@ -16,9 +16,9 @@ _logger = logging.getLogger(__name__)
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if type(result) is dict and "value" in result.dictfetchone():
+    if isinstance(result, dict) and "value" in result.dictfetchone():
         return True
-    elif type(result) is list and "value" in result[0]:
+    elif isinstance(result, list) and "value" in result[0]:
         return True
     else:
         return False
@@ -54,8 +54,8 @@ class KPI(models.Model):
     _name = "kpi"
     _description = "Key Performance Indicator"
 
-    name = fields.Char("Name", required=True)
-    description = fields.Text("Description")
+    name = fields.Char(required=True)
+    description = fields.Text()
     category_id = fields.Many2one(
         "kpi.category",
         "Category",
@@ -66,7 +66,7 @@ class KPI(models.Model):
         "Threshold",
         required=True,
     )
-    periodicity = fields.Integer("Periodicity", default=1)
+    periodicity = fields.Integer(default=1)
 
     periodicity_uom = fields.Selection(
         [
@@ -83,14 +83,11 @@ class KPI(models.Model):
 
     next_execution_date = fields.Datetime(
         "Next execution date",
-        readonly=True,
     )
     value = fields.Float(
-        string="Value",
         compute="_compute_display_last_kpi_value",
     )
     color = fields.Text(
-        "Color",
         compute="_compute_display_last_kpi_value",
     )
     last_execution = fields.Datetime(
@@ -122,7 +119,6 @@ class KPI(models.Model):
         "History",
     )
     active = fields.Boolean(
-        "Active",
         help=(
             "Only active KPIs will be updated by the scheduler based on"
             " the periodicity configuration."

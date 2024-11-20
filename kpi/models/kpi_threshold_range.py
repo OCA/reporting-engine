@@ -9,9 +9,9 @@ from odoo.tools.safe_eval import safe_eval
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if type(result) is dict and "value" in result.dictfetchone():
+    if isinstance(result, dict) and "value" in result.dictfetchone():
         return True
-    elif type(result) is list and "value" in result[0]:
+    elif isinstance(result, list) and "value" in result[0]:
         return True
     else:
         return False
@@ -58,16 +58,14 @@ class KPIThresholdRange(models.Model):
             ("external", "SQL - External DB"),
         ]
 
-    name = fields.Char("Name", size=50, required=True)
+    name = fields.Char(required=True)
     valid = fields.Boolean(
-        string="Valid", required=True, compute="_compute_is_valid_range", default=True
+        required=True, compute="_compute_is_valid_range", default=True
     )
     invalid_message = fields.Char(
         string="Message", size=100, compute="_compute_is_valid_range"
     )
-    min_type = fields.Selection(
-        selection="_selection_value_type", string="Min Type", required=True
-    )
+    min_type = fields.Selection(selection="_selection_value_type", required=True)
     min_value = fields.Float(string="Minimum Value", compute="_compute_min_value")
     min_fixed_value = fields.Float("Minimum Fixed Value")
     min_code = fields.Text("Minimum Computation Code")
@@ -76,9 +74,7 @@ class KPIThresholdRange(models.Model):
         "base.external.dbsource",
         "External DB Source Minimum",
     )
-    max_type = fields.Selection(
-        selection="_selection_value_type", string="Max Type", required=True
-    )
+    max_type = fields.Selection(selection="_selection_value_type", required=True)
     max_value = fields.Float(string="Maximum Value", compute="_compute_max_value")
     max_fixed_value = fields.Float("Maximum Fixed Value")
     max_code = fields.Text("Maximum Computation Code")
@@ -88,7 +84,7 @@ class KPIThresholdRange(models.Model):
         "External DB Source Maximum",
     )
 
-    color = fields.Char(string="Color", help="Choose your color")
+    color = fields.Char(help="Choose your color")
 
     threshold_ids = fields.Many2many(
         "kpi.threshold",

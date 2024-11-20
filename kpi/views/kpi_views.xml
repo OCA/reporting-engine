@@ -8,9 +8,9 @@
         <field name="model">kpi</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Key Performance Indicators">
+            <tree>
                 <field name="name" />
-                <field name="value" widget="progressbar" />
+                <field name="value" widget="progressbar" readonly="1" />
                 <field name="category_id" />
                 <field name="kpi_type" />
                 <field name="company_id" groups="base.group_multi_company" />
@@ -24,8 +24,8 @@
             <kanban class="o_kpi_kanban" create="false" edit="false" delete="false">
                 <field name="id" />
                 <field name="display_name" />
-                <field name="color" />
-                <field name="value" />
+                <field name="color" readonly="1" />
+                <field name="value" readonly="1" />
                 <field name="last_execution" />
                 <templates>
                     <t t-name="kanban-box">
@@ -41,7 +41,7 @@
                                     t-attf-style="color:#{record.color.raw_value}"
                                 >
                                     <strong>
-                                        <field name="value" />
+                                        <field name="value" readonly="1" />
                                     </strong>
                                 </div>
                                 <div
@@ -95,7 +95,7 @@
                             <field name="category_id" />
                         </group>
                         <group>
-                            <field name="value" colspan="2" />
+                            <field name="value" colspan="2" readonly="1" />
                             <field name="active" colspan="2" />
                             <field
                                 name="company_id"
@@ -115,20 +115,27 @@
                             <field name="history_ids" readonly="1" nolabel="1" />
                         </page>
                         <page string="Computation" groups="kpi.group_kpi_manager">
-                            <group col="6">
-                                <field name="periodicity" colspan="3" />
-                                <field name="periodicity_uom" colspan="3" />
-                                <field name="next_execution_date" colspan="3" />
-                                <separator string="KPI Computation" colspan="6" />
-                                <newline />
-                                <field name="kpi_type" colspan="2" />
-                                <field
-                                    name="dbsource_id"
-                                    colspan="2"
-                                    attrs="{'invisible' : [('kpi_type', '!=', 'external')]}"
-                                />
-                                <newline />
-                                <field name="kpi_code" colspan="6" />
+                            <field name="kpi_type" invisible="1" />
+                            <group>
+                                <group>
+                                    <field name="periodicity" />
+                                    <field name="next_execution_date" readonly="1" />
+                                </group>
+                                <group>
+                                    <field name="periodicity_uom" />
+                                </group>
+                            </group>
+                            <group string="KPI Computation">
+                                <group>
+                                    <field name="kpi_type" />
+                                    <field
+                                        name="dbsource_id"
+                                        invisible="kpi_type != 'external'"
+                                    />
+                                </group>
+                                <group>
+                                    <field name="kpi_code" />
+                                </group>
                             </group>
                         </page>
                         <page string="Description">
@@ -152,7 +159,7 @@
         <field name="act_window_id" ref="open_kpi_dashboard" />
     </record>
     <record model="ir.actions.act_window" id="open_kpi_list">
-        <field name="name">KPI Maintenance</field>
+        <field name="name">KPI</field>
         <field name="res_model">kpi</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
