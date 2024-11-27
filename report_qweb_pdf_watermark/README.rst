@@ -88,38 +88,38 @@ Changelog
 12.0.1.0.0 (2019-11-18)
 -----------------------
 
-- [MIG] Migration to V12.
+-  [MIG] Migration to V12.
 
 13.0.1.0.0 (2021-01-27)
 -----------------------
 
-- [MIG] Migration to V13.
+-  [MIG] Migration to V13.
 
 14.0.1.0.0 (2021-01-29)
 -----------------------
 
-- [MIG] Migration to V14.
+-  [MIG] Migration to V14.
 
 15.0.1.0.0 (2022-01-11)
 -----------------------
 
-- [MIG] Migration to V15.
-- Define pdf watermark in company settings
+-  [MIG] Migration to V15.
+-  Define pdf watermark in company settings
 
 16.0.1.0.0 (2023-03-13)
 -----------------------
 
-- [MIG] Migration to V16.
+-  [MIG] Migration to V16.
 
 17.0.1.0.0 (2024-01-12)
 -----------------------
 
-- [MIG] Migration to V17.
+-  [MIG] Migration to V17.
 
 18.0.1.0.0 (2025-01-06)
 -----------------------
 
-- [MIG] Migration to V18.
+-  [MIG] Migration to V18.
 
 Bug Tracker
 ===========
@@ -142,14 +142,14 @@ Authors
 Contributors
 ------------
 
-- Holger Brunn <hbrunn@therp.nl>
-- Stefan Rijnhart <stefan@opener.am>
-- Rod Schouteden <rod.schouteden@dynapps.be>
-- Robin Goots <robin.goots@dynapps.be>
-- Foram Shah <foram.shah@initos.com>
-- bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>
-- Sander Lienaerts <sander.lienaerts@codeforward.nl>
-- Anjeel Haria
+-  Holger Brunn <hbrunn@therp.nl>
+-  Stefan Rijnhart <stefan@opener.am>
+-  Rod Schouteden <rod.schouteden@dynapps.be>
+-  Robin Goots <robin.goots@dynapps.be>
+-  Foram Shah <foram.shah@initos.com>
+-  bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>
+-  Sander Lienaerts <sander.lienaerts@codeforward.nl>
+-  Anjeel Haria
 
 Maintainers
 -----------
@@ -163,6 +163,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-hbrunn| image:: https://github.com/hbrunn.png?size=40px
+    :target: https://github.com/hbrunn
+    :alt: hbrunn
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-hbrunn| 
 
 This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_pdf_watermark>`_ project on GitHub.
 
