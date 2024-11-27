@@ -19,10 +19,19 @@ except ImportError:
     logger.error("ImportError: The PdfImagePlugin could not be imported")
 
 try:
-    from PyPDF2 import PdfFileReader, PdfFileWriter  # pylint: disable=W0404
-    from PyPDF2.utils import PdfReadError  # pylint: disable=W0404
+    try:
+        from PyPDF2 import PdfReader, PdfWriter  # pylint: disable=W0404
+        from PyPDF2.errors import PdfReadError  # pypdf >= 2.0
+    except ImportError:
+        from PyPDF2 import (  # pylint: disable=W0404
+            PdfFileReader as PdfReader,
+        )
+        from PyPDF2 import (
+            PdfFileWriter as PdfWriter,
+        )
+        from PyPDF2.utils import PdfReadError  # pypdf < 2.0
 except ImportError:
-    logger.debug("Can not import PyPDF2")
+    logger.warning("Can not import PyPDF2")
 
 
 class Report(models.Model):
@@ -105,11 +114,11 @@ class Report(models.Model):
         if not watermark:
             return result
 
-        pdf = PdfFileWriter()
+        pdf = PdfWriter()
         pdf_watermark = None
         try:
-            pdf_watermark = PdfFileReader(BytesIO(watermark))
-        except PdfReadError:
+            pdf_watermark = PdfReader(BytesIO(watermark))
+        except (UnicodeDecodeError, PdfReadError):
             # let's see if we can convert this with pillow
             try:
                 Image.init()
@@ -121,7 +130,7 @@ class Report(models.Model):
                 if isinstance(resolution, tuple):
                     resolution = resolution[0]
                 image.save(pdf_buffer, "pdf", resolution=resolution)
-                pdf_watermark = PdfFileReader(pdf_buffer)
+                pdf_watermark = PdfReader(pdf_buffer)
             except Exception as e:
                 logger.exception("Failed to load watermark", e)
 
@@ -132,12 +141,16 @@ class Report(models.Model):
         if not self.pdf_has_usable_pages(pdf_watermark.numPages):
             return result
 
-        for page in PdfFileReader(BytesIO(result)).pages:
+        for page in PdfReader(BytesIO(result)).pages:
             watermark_page = pdf.addBlankPage(
                 page.mediaBox.getWidth(), page.mediaBox.getHeight()
             )
-            watermark_page.mergePage(pdf_watermark.getPage(0))
-            watermark_page.mergePage(page)
+            # merge_page is >= 2.0, mergePage < 2.0
+            merge_page = (
+                getattr(watermark_page, "merge_page", None) or watermark_page.mergePage
+            )
+            merge_page(pdf_watermark.getPage(0))
+            merge_page(page)
 
         pdf_content = BytesIO()
         pdf.write(pdf_content)
