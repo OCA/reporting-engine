@@ -42,6 +42,7 @@ msgid "Attachment Count"
 msgstr "recuento de archivos adjuntos"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
 msgid "Draft"
 msgstr "No suscrito"
@@ -187,6 +188,7 @@ msgid "SQL Settings"
 msgstr "Configuración SQL"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr "SQL Válido"
@@ -267,6 +269,16 @@ msgid "Validate SQL Expression"
 msgstr "Validar expresión SQL"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes de la Página Web"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de la comunicación del sitio web"
+
+#. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid ""
@@ -282,12 +294,6 @@ msgid ""
 msgstr ""
 "No puedes usar las siguientes palabras BORRAR, ELIMINAR, CREAR, INSERTAR, "
 "ALTERAR, TRUNCAR, EJECUTAR, ACTUALIZAR."
-
-#~ msgid "Website Messages"
-#~ msgstr "Mensajes de la Página Web"
-
-#~ msgid "Website communication history"
-#~ msgstr "Historial de la comunicación del sitio web"
 
 #~ msgid "Main Attachment"
 #~ msgstr "Archivo adjunto principal"
