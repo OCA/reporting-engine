@@ -42,6 +42,7 @@ msgid "Attachment Count"
 msgstr "Conteggio allegati"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
 msgid "Draft"
 msgstr "Bozza"
@@ -189,6 +190,7 @@ msgid "SQL Settings"
 msgstr "Impostazioni SQL"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr "SQL valido"
@@ -269,6 +271,16 @@ msgid "Validate SQL Expression"
 msgstr "Valida espressione SQL"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr "Messaggi sito web"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
+msgstr "Cronologia comunicazioni sito web"
+
+#. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid ""
@@ -287,12 +299,6 @@ msgid ""
 msgstr ""
 "Non si possono usare le segenti parole: DELETE, DROP, CREATE, INSERT, ALTER, "
 "TRUNCATE, EXECUTE, UPDATE."
-
-#~ msgid "Website Messages"
-#~ msgstr "Messaggi sito web"
-
-#~ msgid "Website communication history"
-#~ msgstr "Cronologia comunicazioni sito web"
 
 #~ msgid "Display Name"
 #~ msgstr "Nome da visualizzare"

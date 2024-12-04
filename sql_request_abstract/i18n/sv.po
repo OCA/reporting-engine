@@ -42,6 +42,7 @@ msgid "Attachment Count"
 msgstr "Antal bifogade filer"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
 msgid "Draft"
 msgstr "Preliminär"
@@ -187,6 +188,7 @@ msgid "SQL Settings"
 msgstr "SQL-inställningar"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr "SQL giltig"
@@ -266,6 +268,16 @@ msgid "Validate SQL Expression"
 msgstr "Validera SQL-uttryck"
 
 #. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr "Webbplatsmeddelanden"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
+msgstr "Webbplatsens kommunikationshistorik"
+
+#. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid ""
@@ -281,12 +293,6 @@ msgid ""
 msgstr ""
 "Du kan inte använda följande ord: RADERA, SLÄPPA, SKAPA, INFOGA, ÄNDRA, "
 "TRUNKERA, EXEKVERA, UPPDATERA."
-
-#~ msgid "Website Messages"
-#~ msgstr "Webbplatsmeddelanden"
-
-#~ msgid "Website communication history"
-#~ msgstr "Webbplatsens kommunikationshistorik"
 
 #~ msgid "Display Name"
 #~ msgstr "Visa namn"

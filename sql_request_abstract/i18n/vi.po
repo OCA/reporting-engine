@@ -41,6 +41,7 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
 msgid "Draft"
 msgstr "Dự thảo"
@@ -184,6 +185,7 @@ msgid "SQL Settings"
 msgstr ""
 
 #. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
 msgstr ""
@@ -252,6 +254,16 @@ msgstr "Người sử dụng"
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Validate SQL Expression"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
 msgstr ""
 
 #. module: sql_request_abstract
