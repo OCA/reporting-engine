@@ -22,21 +22,18 @@ msgstr ""
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid "%(model_name)s Access %(full_name)s"
 msgstr "%(model_name)s Access %(full_name)s"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid "%s (Copy)"
 msgstr "%s (kopia)"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid "Access %s"
 msgstr "Åtkomst %s"
 
@@ -134,9 +131,8 @@ msgstr "Kolumn"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
-msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
+msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
 msgstr ""
-"Kommaseparerad text. Möjliga värden: \"graf\", \"pivot\" eller \"träd\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -338,13 +334,20 @@ msgstr "Om den är markerad kräver nya meddelanden din uppmärksamhet."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Om kryssrutan är markerad får vissa meddelanden ett leveransfel."
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
+
+#. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
-#, python-format
 msgid ""
 "Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
 "Valid'."
@@ -453,7 +456,6 @@ msgstr "Namn"
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid ""
 "No Column was found.\n"
 "Columns name should be prefixed by 'x_'."
@@ -502,6 +504,11 @@ msgid "Odoo Graph View"
 msgstr "Odoo Graph View"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
+msgid "Odoo List View"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
 msgid "Odoo Menu"
 msgstr "Odoo Meny"
@@ -527,16 +534,10 @@ msgid "Odoo Search View"
 msgstr "Odoo Sök vy"
 
 #. module: bi_sql_editor
-#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
-msgid "Odoo Tree View"
-msgstr "Odoo trädvy"
-
-#. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
-msgid "Only graph, pivot or tree views are supported"
-msgstr "Endast graf-, pivot- eller trädvyer stöds"
+msgid "Only graph, pivot or list views are supported"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -561,7 +562,6 @@ msgstr "Överliggande Odoomeny"
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid "Please set related models on the following fields %s"
 msgstr "Vänligen ange relaterade modeller på följande fält %s"
 
@@ -583,7 +583,6 @@ msgstr "Uppdatera materialiserad vy"
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid "Refresh Materialized View %s"
 msgstr "Uppdatera materialiserad vy %s"
 
@@ -598,9 +597,13 @@ msgid "Rule Definition"
 msgstr "Definition av regel"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Fel vid leverans av SMS"
+
+#. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid ""
 "SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
 " %(error)s"
@@ -784,6 +787,11 @@ msgstr ""
 "skapat modellen"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__use_external_database
+msgid "Use External Database"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "User Interface"
 msgstr "Användargränssnitt"
@@ -817,20 +825,16 @@ msgstr "Webbplatsens kommunikationshistorik"
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
-#, python-format
 msgid "You can not create indexes on non materialized views"
 msgstr "Du kan inte skapa index på icke-materialiserade vyer"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-#, python-format
 msgid ""
-"You can only unlink draft views.If you want to delete them, first set them "
+"You can only unlink draft views. If you want to delete them, first set them "
 "to draft."
 msgstr ""
-"Du kan bara ta bort länkar till utkastvyer. Om du vill ta bort dem måste du "
-"först ange att de ska vara utkast."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
@@ -878,8 +882,25 @@ msgstr "urval"
 msgid "sequence"
 msgstr "sekvens"
 
-#~ msgid "SMS Delivery error"
-#~ msgstr "Fel vid leverans av SMS"
+#~ msgid ""
+#~ "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"tree\""
+#~ msgstr ""
+#~ "Kommaseparerad text. Möjliga värden: \"graf\", \"pivot\" eller \"träd\""
+
+#~ msgid "Odoo Tree View"
+#~ msgstr "Odoo trädvy"
+
+#, python-format
+#~ msgid "Only graph, pivot or tree views are supported"
+#~ msgstr "Endast graf-, pivot- eller trädvyer stöds"
+
+#, python-format
+#~ msgid ""
+#~ "You can only unlink draft views.If you want to delete them, first set "
+#~ "them to draft."
+#~ msgstr ""
+#~ "Du kan bara ta bort länkar till utkastvyer. Om du vill ta bort dem måste "
+#~ "du först ange att de ska vara utkast."
 
 #~ msgid "Last Modified on"
 #~ msgstr "Senast redigerad"
