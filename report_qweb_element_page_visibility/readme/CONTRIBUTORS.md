@@ -16,3 +16,5 @@
   - Hai Lang \<<hailn@trobz.com>\>
 
 - Ángel Tornero Hernández \<<angel.tornero@braintec.com>\>
+
+- Daniel Lagin \<<daniel.lagin@braintec.com>\>
