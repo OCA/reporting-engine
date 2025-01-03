@@ -348,10 +348,10 @@ class ReportXlsxAbstract(models.AbstractModel):
         FORMATS["format_theader_yellow_amount_conditional_left"] = workbook.add_format(
             dict(theader_yellow, num_format=num_format_conditional, align="left")
         )
-        FORMATS[
-            "format_theader_yellow_amount_conditional_center"
-        ] = workbook.add_format(
-            dict(theader_yellow, num_format=num_format_conditional, align="center")
+        FORMATS["format_theader_yellow_amount_conditional_center"] = (
+            workbook.add_format(
+                dict(theader_yellow, num_format=num_format_conditional, align="center")
+            )
         )
         FORMATS["format_theader_yellow_amount_conditional_right"] = workbook.add_format(
             dict(theader_yellow, num_format=num_format_conditional, align="right")
@@ -368,15 +368,15 @@ class ReportXlsxAbstract(models.AbstractModel):
         FORMATS["format_theader_yellow_percent_conditional_left"] = workbook.add_format(
             dict(theader_yellow, num_format=pct_format_conditional, align="left")
         )
-        FORMATS[
-            "format_theader_yellow_percent_conditional_center"
-        ] = workbook.add_format(
-            dict(theader_yellow, num_format=pct_format_conditional, align="center")
+        FORMATS["format_theader_yellow_percent_conditional_center"] = (
+            workbook.add_format(
+                dict(theader_yellow, num_format=pct_format_conditional, align="center")
+            )
         )
-        FORMATS[
-            "format_theader_yellow_percent_conditional_right"
-        ] = workbook.add_format(
-            dict(theader_yellow, num_format=pct_format_conditional, align="right")
+        FORMATS["format_theader_yellow_percent_conditional_right"] = (
+            workbook.add_format(
+                dict(theader_yellow, num_format=pct_format_conditional, align="right")
+            )
         )
         FORMATS["format_theader_yellow_integer_left"] = workbook.add_format(
             dict(theader_yellow, num_format=int_format, align="left")
@@ -390,15 +390,15 @@ class ReportXlsxAbstract(models.AbstractModel):
         FORMATS["format_theader_yellow_integer_conditional_left"] = workbook.add_format(
             dict(theader_yellow, num_format=int_format_conditional, align="left")
         )
-        FORMATS[
-            "format_theader_yellow_integer_conditional_center"
-        ] = workbook.add_format(
-            dict(theader_yellow, num_format=int_format_conditional, align="center")
+        FORMATS["format_theader_yellow_integer_conditional_center"] = (
+            workbook.add_format(
+                dict(theader_yellow, num_format=int_format_conditional, align="center")
+            )
         )
-        FORMATS[
-            "format_theader_yellow_integer_conditional_right"
-        ] = workbook.add_format(
-            dict(theader_yellow, num_format=int_format_conditional, align="right")
+        FORMATS["format_theader_yellow_integer_conditional_right"] = (
+            workbook.add_format(
+                dict(theader_yellow, num_format=int_format_conditional, align="right")
+            )
         )
 
         FORMATS["format_theader_blue_left"] = workbook.add_format(theader_blue)
@@ -735,7 +735,7 @@ class ReportXlsxAbstract(models.AbstractModel):
                 args = args_pos + args_data
                 ws.merge_range(*args)
             else:
-                ws_method = getattr(ws, "write_%s" % cell_type)
+                ws_method = getattr(ws, f"write_{cell_type}")
                 args = args_pos + args_data
                 ws_method(*args)
             pos += colspan
