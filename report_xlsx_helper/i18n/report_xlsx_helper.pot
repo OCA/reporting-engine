@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,7 +16,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "%(__name__)s, _write_line : programming error detected while processing "
 "col_specs_section %(col_specs_section)s, column %(col)s"
@@ -25,14 +24,12 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
-#, python-format
 msgid "%s model was not found"
 msgstr ""
 
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ", cellvalue %s"
 msgstr ""
 
@@ -44,7 +41,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
@@ -54,7 +50,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
@@ -64,7 +59,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
@@ -74,7 +68,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "Programming Error:\n"
 "\n"
@@ -84,7 +77,6 @@ msgstr ""
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
-#, python-format
 msgid ""
 "Programming Error:\n"
 "\n"

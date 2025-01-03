@@ -27,9 +27,12 @@ class TestPartnerXlsx(models.AbstractModel):
                 "data": {"value": self._render("len(partner.child_ids)")},
                 "width": 10,
             },
-            "date": {
-                "header": {"value": "Date"},
-                "data": {"value": self._render("partner.date")},
+            "create_date": {
+                "header": {"value": "Creation Date"},
+                "data": {
+                    "value": self._render("partner.create_date"),
+                    "format": FORMATS["format_date_right"],
+                },
                 "width": 13,
             },
         }
