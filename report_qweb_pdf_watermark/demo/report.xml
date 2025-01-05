@@ -6,7 +6,6 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">report_qweb_pdf_watermark.demo_report_view</field>
         <field name="report_file">report_qweb_pdf_watermark.demo_report_view</field>
-        <field name="paperformat_id" ref="base.paperformat_euro" />
         <field name="pdf_watermark_expression">docs[:1].company_id.logo</field>
         <field name="binding_model_id" ref="base.model_res_users" />
         <field name="binding_type">report</field>
