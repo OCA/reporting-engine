@@ -100,7 +100,6 @@ class BveView(models.Model):
     )
     query = fields.Text(compute="_compute_sql_query")
     over_condition = fields.Text(
-        states={"draft": [("readonly", False)]},
         readonly=True,
         help="Condition to be inserted in the OVER part "
         "of the ID's row_number function.\n"
@@ -111,7 +110,7 @@ class BveView(models.Model):
     er_diagram_image = fields.Binary(compute="_compute_er_diagram_image")
 
     _sql_constraints = [
-        ("name_uniq", "unique(name)", _("Custom BI View names must be unique!")),
+        ("name_uniq", "unique(name)", "Custom BI View names must be unique!"),
     ]
 
     @api.depends("line_ids")
@@ -190,7 +189,7 @@ class BveView(models.Model):
             res = attr and f'{attr}="{line.description}"' or ""
             return f'<field name="{line.name}" {res} />'
 
-        bve_field_lines = self.field_ids.filtered(lambda l: l.in_list)
+        bve_field_lines = self.field_ids.filtered(lambda line: line.in_list)
         return list(map(_get_field_attrs, bve_field_lines.sorted("sequence")))
 
     def _create_bve_view(self):
@@ -244,18 +243,16 @@ class BveView(models.Model):
         tree_view = View.create(
             {
                 "name": "Tree Analysis",
-                "type": "tree",
+                "type": "list",
                 "model": self.model_name,
                 "priority": 16,
-                "arch": """<?xml version="1.0"?>
-                       <tree create="false">
-                       {}
-                       </tree>
+                "arch": """<?xml version="1.0"?> <list create="false">
+                       {}</list>
                     """.format("".join(self._create_tree_view_arch())),
             }
         )
 
-        # set the Tree view as the default one
+        # set the List view as the default one
         action = (
             self.env["ir.actions.act_window"]
             .sudo()
@@ -264,9 +261,9 @@ class BveView(models.Model):
                     "name": self.name,
                     "res_model": self.model_name,
                     "type": "ir.actions.act_window",
-                    "view_mode": "tree,graph,pivot",
+                    "view_mode": "list,graph,pivot",
                     "view_id": tree_view.id,
-                    "context": "{'service_name': '%s'}" % self.name,
+                    "context": "{'service_name': '" + self.name + "'}",
                 }
             )
         )
@@ -357,17 +354,13 @@ class BveView(models.Model):
                     seen.add(line.table_alias)
                     from_str += "\n"
                     from_str += " LEFT" if line.left_join else ""
-                    from_str += f" JOIN {table_format} ON {line.join_node}.id = {line.table_alias}.{line.field_id.name}"
+                    from_str += f" JOIN {table_format} ON {line.join_node}.id = {line.table_alias}.{line.field_id.name}"  # noqa: E501
                 if line.join_node not in seen:
                     from_str += "\n"
                     seen.add(line.join_node)
                     from_str += " LEFT" if line.left_join else ""
-                    from_str += f" JOIN {tables_map[line.join_node]} AS {line.join_node} ON {line.table_alias}.{line.field_id.name} = {line.join_node}.id"
-            bve_view.query = """SELECT %s\n\nFROM %s
-                """ % (
-                AsIs(select_str),
-                AsIs(from_str),
-            )
+                    from_str += f" JOIN {tables_map[line.join_node]} AS {line.join_node} ON {line.table_alias}.{line.field_id.name} = {line.join_node}.id"  # noqa: E501
+            bve_view.query = f"""SELECT {AsIs(select_str)}\n\nFROM {AsIs(from_str)}"""
 
     def action_create(self):
         self.ensure_one()
@@ -383,7 +376,7 @@ class BveView(models.Model):
         self._create_sql_view()
 
         # create model and fields
-        bve_fields = self.line_ids.filtered(lambda l: not l.join_node)
+        bve_fields = self.line_ids.filtered(lambda line: not line.join_node)
         model = (
             self.env["ir.model"]
             .sudo()
@@ -440,7 +433,8 @@ class BveView(models.Model):
                 for group in access_records.mapped("group_id"):
                     group_list += f" * {group.full_name}\n"
                 msg_title = _(
-                    'The model "%s" cannot be accessed by users with the selected groups only.'
+                    'The model "%s" cannot be accessed '
+                    "by users with the selected groups only."
                 ) % (line_model.name,)
                 msg_details = _("At least one of the following groups must be added:")
                 raise UserError(
@@ -457,16 +451,17 @@ class BveView(models.Model):
         if not self.line_ids:
             raise ValidationError(_("No data to process."))
 
-        invalid_lines = self.line_ids.filtered(lambda l: not l.model_id)
+        invalid_lines = self.line_ids.filtered(lambda line: not line.model_id)
         if invalid_lines:
             missing_models = ", ".join(set(invalid_lines.mapped("model_name")))
             raise ValidationError(
                 _(
-                    "Following models are missing: %s.\nProbably some modules were uninstalled."
+                    "Following models are missing: %(missing_models)s.\n"
+                    "Probably some modules were uninstalled."
                 )
-                % (missing_models,)
+                % {"missing_models": missing_models}
             )
-        invalid_lines = self.line_ids.filtered(lambda l: not l.field_id)
+        invalid_lines = self.line_ids.filtered(lambda line: not line.field_id)
         if invalid_lines:
             missing_fields = ", ".join(set(invalid_lines.mapped("field_name")))
             raise ValidationError(
@@ -584,7 +579,7 @@ class BveView(models.Model):
     @api.model
     def get_clean_list(self, data_dict):
         serialized_data = data_dict
-        if type(data_dict) == str:
+        if isinstance(data_dict, str):
             serialized_data = json.loads(data_dict)
         table_alias_list = set()
         for item in serialized_data:

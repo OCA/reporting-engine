@@ -367,7 +367,7 @@ class TestBiViewEditor(TransactionCase):
             .search(
                 [
                     ("model", "=", self.company_model_name),
-                    ("name", "=", "base_onboarding_company_state"),
+                    ("name", "=", "font"),
                 ],
                 limit=1,
             )

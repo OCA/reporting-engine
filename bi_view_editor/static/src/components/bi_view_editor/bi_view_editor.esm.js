@@ -10,8 +10,17 @@ import {JoinNodeDialog} from "./join_node_dialog.esm";
 import {registry} from "@web/core/registry";
 import {standardFieldProps} from "@web/views/fields/standard_field_props";
 import {useService} from "@web/core/utils/hooks";
+import {uniqueId} from "@web/core/utils/functions";
 
 export class BiViewEditor extends Component {
+    static components = {
+        ModelList,
+        FieldList,
+    };
+    static template = "bi_view_editor.Frame";
+    static props = {
+        ...standardFieldProps,
+    };
     setup() {
         this.state = useState({
             models: [],
@@ -55,7 +64,7 @@ export class BiViewEditor extends Component {
         field.column = typeof field.column === "undefined" ? false : field.column;
         field.measure = typeof field.measure === "undefined" ? false : field.measure;
         field.list = typeof field.list === "undefined" ? true : field.list;
-        field._id = typeof field._id === "undefined" ? _.uniqueId("node_") : field._id;
+        field._id = typeof field._id === "undefined" ? uniqueId("node_") : field._id;
         if (field.join_node) {
             field.join_left =
                 typeof field.join_left === "undefined" ? false : field.join_left;
@@ -155,7 +164,7 @@ export class BiViewEditor extends Component {
         this.updateValue();
     }
     addField(field) {
-        const data = _.extend({}, field);
+        const data = {...field};
         const field_data = this.state.fields;
         this.orm
             .call("ir.model", "get_join_nodes", [field_data, data])
@@ -201,17 +210,13 @@ export class BiViewEditor extends Component {
         }
     }
     updateValue() {
-        this.props.update(JSON.stringify(this.state.fields));
+        // This.props.update(JSON.stringify(this.state.fields));
         this.updateModels();
     }
 }
-BiViewEditor.template = "bi_view_editor.Frame";
-BiViewEditor.components = {
-    ModelList,
-    FieldList,
-};
-BiViewEditor.props = {
-    ...standardFieldProps,
+
+export const BiViewEditorField = {
+    component: BiViewEditor,
 };
 
-registry.category("fields").add("BVEEditor", BiViewEditor);
+registry.category("fields").add("BVEEditor", BiViewEditorField);

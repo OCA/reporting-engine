@@ -44,11 +44,11 @@ class BveViewLine(models.Model):
     @api.constrains("row", "column", "measure")
     def _constrains_options_check(self):
         measure_types = ["float", "integer", "monetary"]
-        for line in self.filtered(lambda l: l.row or l.column):
+        for line in self.filtered(lambda x: x.row or x.column):
             if line.join_model_id or line.ttype in measure_types:
                 err_msg = _("This field cannot be a row or a column.")
                 raise ValidationError(err_msg)
-        for line in self.filtered(lambda l: l.measure):
+        for line in self.filtered(lambda x: x.measure):
             if line.join_model_id or line.ttype not in measure_types:
                 err_msg = _("This field cannot be a measure.")
                 raise ValidationError(err_msg)

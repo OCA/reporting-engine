@@ -9,14 +9,13 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Productivity",
-    "version": "16.0.1.1.0",
+    "version": "18.0.1.1.0",
     "development_status": "Beta",
     "depends": [
+        "spreadsheet_dashboard",
         "web",
     ],
-    "external_dependencies": {
-        "deb": ["graphviz"],
-    },
+    "external_dependencies": {"deb": ["graphviz"], "python": ["pydot"]},
     "data": [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
