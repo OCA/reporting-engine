@@ -111,10 +111,10 @@
                 <div class="checkbox">
                     <label>
                         <input
-                            type="checkbox"
-                            t-att-checked="props.field.join_left"
-                            t-on-change="(e) => this.onChange('join_left', e)"
-                        />
+                        type="checkbox"
+                        t-att-checked="props.field.join_left"
+                        t-on-change="(e) => this.onChange('join_left', e)"
+                    />
                         Join Left
                     </label>
                 </div>
@@ -140,15 +140,14 @@
             </td>
             <td>
                 <!-- a space is needed to separate the icons -->
+                <span t-if="props.field.column" class="fa fa-columns" title="Column" />
+                <span t-if="props.field.row" class="fa fa-bars" title="Row" />
                 <span
-                    t-if="props.field.column"
-                    class="fa fa-columns"
-                    title="Column"
-                /> <span t-if="props.field.row" class="fa fa-bars" title="Row" /> <span
                     t-if="props.field.measure"
                     class="fa fa-bar-chart-o"
                     title="Measure"
-                /> <span t-if="props.field.list" class="fa fa-list" title="List" />
+                />
+                <span t-if="props.field.list" class="fa fa-list" title="List" />
             </td>
             <td>
                 <button
@@ -166,16 +165,20 @@
                 <t t-if="props.field.join_node > props.field.table_alias">
                     <b>
                         <t t-out="props.field.model_name" />
-                    <!-- spaces around the icon are needed -->
-                    </b> <i class="fa fa-caret-right" /> <small>
+                        <!-- spaces around the icon are needed -->
+                    </b>
+                    <i class="fa fa-caret-right" />
+                    <small>
                         <t t-out="props.field.description" />
                     </small>
                 </t>
                 <t t-else="">
                     <small>
                         <t t-out="props.field.description" />
-                    <!-- spaces around the icon are needed -->
-                    </small> <i class="fa fa-caret-left" /> <b>
+                        <!-- spaces around the icon are needed -->
+                    </small>
+                    <i class="fa fa-caret-left" />
+                    <b>
                         <t t-out="props.field.model_name" />
                     </b>
                 </t>

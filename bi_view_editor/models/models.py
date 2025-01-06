@@ -18,7 +18,6 @@ _auto_init_orig = models.BaseModel._auto_init
 
 
 def _auto_init(self):
-
     # This monkey patch is meant to fix an error (probably
     # introduced by https://github.com/odoo/odoo/pull/15412), while
     # running an update all. The _auto_init() method invoked during

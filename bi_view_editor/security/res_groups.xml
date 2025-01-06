@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo noupdate="1">
-
     <record id="group_bve_manager" model="res.groups">
         <field name="name">BI View Editor Manager</field>
         <field name="category_id" ref="base.module_category_hidden" />
@@ -10,5 +9,4 @@
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
     </record>
-
 </odoo>

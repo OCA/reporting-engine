@@ -83,14 +83,14 @@ class BveViewLine(models.Model):
         for line in self:
             line.name = False
             if line.field_id:
-                line.name = "x_bve_{}_{}".format(line.table_alias, line.field_id.name)
+                line.name = f"x_bve_{line.table_alias}_{line.field_id.name}"
 
     @api.depends("field_id")
     def _compute_model_field_name(self):
         for line in self:
             line.field_name = False
             if line.field_id:
-                line.field_name = "{} ({})".format(line.description, line.model_name)
+                line.field_name = f"{line.description} ({line.model_name})"
 
     def _prepare_field_vals(self):
         vals_list = []

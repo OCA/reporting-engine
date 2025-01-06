@@ -8,9 +8,7 @@
             <p class="oe_view_nocontent_create">
                 Click to create a Custom Query Object.
             </p>
-            <p>
-
-            </p>
+            <p />
         </field>
     </record>
     <!--

@@ -17,13 +17,13 @@ BI View Editor
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/bi_view_editor
+    :target: https://github.com/OCA/reporting-engine/tree/18.0/bi_view_editor
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-bi_view_editor
+    :target: https://translation.odoo-community.org/projects/reporting-engine-18-0/reporting-engine-18-0-bi_view_editor
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -33,14 +33,12 @@ execute their own reports without the need to code.
 
 Purpose:
 
-* The BI View Editor is used to create reports not already contained in the
-  standard Odoo, combining data from existing sources.
-
-* It has been designed to be used by users with little or no knowledge of
-  the technical architecture of Odoo. Users visually link business objects
-  and select the fields to visualize.
-
-* The BI View Editor offers users different types of representations,
+- The BI View Editor is used to create reports not already contained in
+  the standard Odoo, combining data from existing sources.
+- It has been designed to be used by users with little or no knowledge
+  of the technical architecture of Odoo. Users visually link business
+  objects and select the fields to visualize.
+- The BI View Editor offers users different types of representations,
   including tree, graph, pivot views.
 
 **Table of contents**
@@ -54,19 +52,21 @@ Installation
 In the Odoo configuration file add ``bi_view_editor`` in the list
 ``server_wide_modules``:
 
-.. code-block:: ini
+.. code:: ini
 
-  [options]
-  (...)
-  server_wide_modules = web,bi_view_editor
-  (...)
+   [options]
+   (...)
+   server_wide_modules = web,bi_view_editor
+   (...)
 
-Alternatively specify ``--load=bi_view_editor`` when starting Odoo by command line.
+Alternatively specify ``--load=bi_view_editor`` when starting Odoo by
+command line.
 
-Optionally it is possible to enable the view of the ER Diagram. For this you
-need to install `Graphviz`, an open source graph visualization software:
+Optionally it is possible to enable the view of the ER Diagram. For this
+you need to install Graphviz, an open source graph visualization
+software:
 
-.. code-block:: bash
+.. code:: bash
 
    ``sudo apt-get install graphviz``
 
@@ -76,50 +76,53 @@ Usage
 To graphically design your analysis data-set:
 
 - From the Dashboards menu, select "Custom BI Views"
-- BI Views creation is restricted to members of "BI View Editor Manager" group.
-  You can add this group to a user in User form, Access Rights, Technical section.
+- BI Views creation is restricted to members of "BI View Editor Manager"
+  group. You can add this group to a user in User form, Access Rights,
+  Technical section.
 - Browse trough the business objects in the "Query Builder" tab
 - Pick the interesting fields (Drag & Drop)
-- For each selected field, right-click on the Options column and select whether
-  it's a row, column or measure; if you want to remove the field from the list
-  view, unflag the checkbox ´List´ in the Options column
+- For each selected field, right-click on the Options column and select
+  whether it's a row, column or measure; if you want to remove the field
+  from the list view, unflag the checkbox ´List´ in the Options column
 - Save and click "Generate BI View"
 - Click "Open BI View" to view the result
 
 To access the created BI View with a dedicated menu:
 
-- If module Dashboard (board) is installed, the standard "Add to My Dashboard"
-  functionality would be available
-- "Create a menu" is restricted to members of "BI View Editor Manager" group.
-- Click "Create a menu" to create a new menu item directly linked to your new
-  BI view (this feature is available in developer mode); when the BI view is
-  reset back to draft this menu will be removed, and you will need to re-create
-  the menu entry.
+- If module Dashboard (board) is installed, the standard "Add to My
+  Dashboard" functionality would be available
+- "Create a menu" is restricted to members of "BI View Editor Manager"
+  group.
+- Click "Create a menu" to create a new menu item directly linked to
+  your new BI view (this feature is available in developer mode); when
+  the BI view is reset back to draft this menu will be removed, and you
+  will need to re-create the menu entry.
 
-A more advanced UI is also available under the "Details" tab. It provides extra
-possibilities for more advanced users, like to use LEFT JOIN instead of the
-default INNER JOIN.
+A more advanced UI is also available under the "Details" tab. It
+provides extra possibilities for more advanced users, like to use LEFT
+JOIN instead of the default INNER JOIN.
 
-It also possible to improve the IDs generation for new views by adding an
-`Over Condition` in the "SQL" tab, see https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS
-for further details.
-For instance, an ORDER BY clause helps preventing unreliable behavior when
-filtering the generated views.
+It also possible to improve the IDs generation for new views by adding
+an Over Condition in the "SQL" tab, see
+https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS
+for further details. For instance, an ORDER BY clause helps preventing
+unreliable behavior when filtering the generated views.
 
 Known issues / Roadmap
 ======================
 
-* Non-stored fields and many2many fields are not supported.
-* Provide a tutorial (eg. a working example of usage).
-* Find better ways to extend the *_auto_init()* without override.
-* Possibly avoid the monkey patches.
-* Data the user has no access to (e.g. in a multi company situation) can be
-  viewed by making a view. Would be nice if models available to select when
-  creating a view are limited to the ones that have intersecting groups.
-* As of Odoo 16, translations of the name of a BI View and of the field
-  descriptions do not work as expected: the translated strings are selected
-  (by the user's language) when the view is generated (and stored as their
-  ``en_US`` value) instead of when it is displayed.
+- Non-stored fields and many2many fields are not supported.
+- Provide a tutorial (eg. a working example of usage).
+- Find better ways to extend the *\_auto_init()* without override.
+- Possibly avoid the monkey patches.
+- Data the user has no access to (e.g. in a multi company situation) can
+  be viewed by making a view. Would be nice if models available to
+  select when creating a view are limited to the ones that have
+  intersecting groups.
+- As of Odoo 16, translations of the name of a BI View and of the field
+  descriptions do not work as expected: the translated strings are
+  selected (by the user's language) when the view is generated (and
+  stored as their ``en_US`` value) instead of when it is displayed.
 
 Bug Tracker
 ===========
@@ -127,7 +130,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_view_editor%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20bi_view_editor%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -135,38 +138,39 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Onestein
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Simon Janssens <s.janssens@onestein.nl>
-* Diego Luis Neto <diegoluis.neto@gmail.com>
-* Dennis Sluijk <d.sluijk@onestein.nl>
-* Kevin Graveman <k.graveman@onestein.nl>
-* Richard Dijkstra <r.dijkstra@onestein.nl>
-* Andrea Stirpe <a.stirpe@onestein.nl>
-* Antonio Esposito <a.esposito@onestein.nl>
-* Jordi Ballester Alomar <jordi.ballester@eficent.com>
-* Italo LOPES <italo.lopes@camptocamp.com>
-* `Coop IT Easy SC <https://coopiteasy.be>`_:
+- Simon Janssens <s.janssens@onestein.nl>
+- Diego Luis Neto <diegoluis.neto@gmail.com>
+- Dennis Sluijk <d.sluijk@onestein.nl>
+- Kevin Graveman <k.graveman@onestein.nl>
+- Richard Dijkstra <r.dijkstra@onestein.nl>
+- Andrea Stirpe <a.stirpe@onestein.nl>
+- Antonio Esposito <a.esposito@onestein.nl>
+- Jordi Ballester Alomar <jordi.ballester@eficent.com>
+- Italo LOPES <italo.lopes@camptocamp.com>
+- `Coop IT Easy SC <https://coopiteasy.be>`__:
 
-  * hugues de keyzer
+  - hugues de keyzer
 
 Other credits
-~~~~~~~~~~~~~
+-------------
 
 Funders
--------
+~~~~~~~
 
-The development of this module for Odoo 11.0 has been financially supported by:
+The development of this module for Odoo 11.0 has been financially
+supported by:
 
-* IDEAL Connaissances SAS https://www.idealconnaissances.com
+- IDEAL Connaissances SAS https://www.idealconnaissances.com
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -178,6 +182,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/bi_view_editor>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/bi_view_editor>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

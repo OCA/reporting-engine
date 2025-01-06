@@ -177,7 +177,7 @@ class BveView(models.Model):
 
         def _get_field_def(line):
             field_type = line.view_field_type
-            return '<field name="{}" type="{}" />'.format(line.name, field_type)
+            return f'<field name="{line.name}" type="{field_type}" />'
 
         bve_field_lines = self.field_ids.filtered("view_field_type")
         return list(map(_get_field_def, bve_field_lines))
@@ -187,8 +187,8 @@ class BveView(models.Model):
 
         def _get_field_attrs(line):
             attr = line.list_attr
-            res = attr and '{}="{}"'.format(attr, line.description) or ""
-            return '<field name="{}" {} />'.format(line.name, res)
+            res = attr and f'{attr}="{line.description}"' or ""
+            return f'<field name="{line.name}" {res} />'
 
         bve_field_lines = self.field_ids.filtered(lambda l: l.in_list)
         return list(map(_get_field_attrs, bve_field_lines.sorted("sequence")))
@@ -212,9 +212,7 @@ class BveView(models.Model):
                        <pivot string="Pivot Analysis">
                        {}
                        </pivot>
-                    """.format(
-                        "".join(self._create_view_arch())
-                    ),
+                    """.format("".join(self._create_view_arch())),
                 },
                 {
                     "name": "Graph Analysis",
@@ -226,9 +224,7 @@ class BveView(models.Model):
                         type="bar" stacked="True">
                         {}
                        </graph>
-                    """.format(
-                        "".join(self._create_view_arch())
-                    ),
+                    """.format("".join(self._create_view_arch())),
                 },
                 {
                     "name": "Search BI View",
@@ -239,9 +235,7 @@ class BveView(models.Model):
                        <search>
                        {}
                        </search>
-                    """.format(
-                        "".join(self._create_view_arch())
-                    ),
+                    """.format("".join(self._create_view_arch())),
                 },
             ]
         )
@@ -257,9 +251,7 @@ class BveView(models.Model):
                        <tree create="false">
                        {}
                        </tree>
-                    """.format(
-                    "".join(self._create_tree_view_arch())
-                ),
+                    """.format("".join(self._create_tree_view_arch())),
             }
         )
 
@@ -344,7 +336,7 @@ class BveView(models.Model):
                 table = line.table_alias
                 select = line.field_id.name
                 as_name = line.name
-                select_str += ",\n {}.{} AS {}".format(table, select, as_name)
+                select_str += f",\n {table}.{select} AS {as_name}"
 
                 if line.table_alias not in tables_map:
                     table = self.env[line.field_id.model_id.model]._table
@@ -354,10 +346,10 @@ class BveView(models.Model):
             if not bve_view.relation_ids and bve_view.field_ids:
                 first_line = bve_view.field_ids[0]
                 table = tables_map[first_line.table_alias]
-                from_str = "{} AS {}".format(table, first_line.table_alias)
+                from_str = f"{table} AS {first_line.table_alias}"
             for line in bve_view.relation_ids:
                 table = tables_map[line.table_alias]
-                table_format = "{} AS {}".format(table, line.table_alias)
+                table_format = f"{table} AS {line.table_alias}"
                 if not from_str:
                     from_str += table_format
                     seen.add(line.table_alias)
@@ -365,23 +357,12 @@ class BveView(models.Model):
                     seen.add(line.table_alias)
                     from_str += "\n"
                     from_str += " LEFT" if line.left_join else ""
-                    from_str += " JOIN {} ON {}.id = {}.{}".format(
-                        table_format,
-                        line.join_node,
-                        line.table_alias,
-                        line.field_id.name,
-                    )
+                    from_str += f" JOIN {table_format} ON {line.join_node}.id = {line.table_alias}.{line.field_id.name}"
                 if line.join_node not in seen:
                     from_str += "\n"
                     seen.add(line.join_node)
                     from_str += " LEFT" if line.left_join else ""
-                    from_str += " JOIN {} AS {} ON {}.{} = {}.id".format(
-                        tables_map[line.join_node],
-                        line.join_node,
-                        line.table_alias,
-                        line.field_id.name,
-                        line.join_node,
-                    )
+                    from_str += f" JOIN {tables_map[line.join_node]} AS {line.join_node} ON {line.table_alias}.{line.field_id.name} = {line.join_node}.id"
             bve_view.query = """SELECT %s\n\nFROM %s
                 """ % (
                 AsIs(select_str),
@@ -457,7 +438,7 @@ class BveView(models.Model):
                 )
                 group_list = ""
                 for group in access_records.mapped("group_id"):
-                    group_list += " * {}\n".format(group.full_name)
+                    group_list += f" * {group.full_name}\n"
                 msg_title = _(
                     'The model "%s" cannot be accessed by users with the selected groups only.'
                 ) % (line_model.name,)

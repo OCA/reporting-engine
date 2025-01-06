@@ -20,11 +20,11 @@
                             >
                                 Use the field
                                 <b>
-                                    <t t-out="choice.model_name" />
+                                <t t-out="choice.model_name" />
                                 <!-- spaces around the icon are needed -->
-                                </b> <i class="fa fa-caret-right" /> <b>
-                                    <t t-out="choice.description" />
-                                </b>
+                            </b> <i class="fa fa-caret-right" /> <b>
+                                <t t-out="choice.description" />
+                            </b>
                                 <span class="badge">new</span>
                             </li>
                         </t>
@@ -35,11 +35,11 @@
                             >
                                 Use the field
                                 <b>
-                                    <t t-out="choice.model_name" />
+                                <t t-out="choice.model_name" />
                                 <!-- spaces around the icon are needed -->
-                                </b> <i class="fa fa-caret-right" /> <b>
-                                    <t t-out="choice.description" />
-                                </b>
+                            </b> <i class="fa fa-caret-right" /> <b>
+                                <t t-out="choice.description" />
+                            </b>
                             </li>
                         </t>
                     </t>
