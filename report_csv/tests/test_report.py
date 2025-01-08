@@ -96,6 +96,12 @@ class TestReport(common.TransactionCase):
         with self.assertRaises(UserError):
             rep = report._render_csv(self.report_name, self.docs.ids, {})
 
+    def test_report_docids_is_none(self):
+        """
+        Test when docids is None (should not raise TypeError)
+        """
+        self.report_object._render_csv(self.report_name, None, {})
+
 
 class TestCsvReport(common.HttpCase):
     """

@@ -55,7 +55,7 @@ class ReportAction(models.Model):
         report_sudo = self._get_report(report_ref)
         report_model_name = f"report.{report_sudo.report_name}"
         report_model = self.env[report_model_name]
-        res_id = len(docids) == 1 and docids[0]
+        res_id = docids[0] if docids and len(docids) == 1 else None
         if not res_id or not report_sudo.attachment or not report_sudo.attachment_use:
             return report_model.with_context(
                 **{
