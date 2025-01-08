@@ -10,7 +10,7 @@
                         nolabel="1"
                         context="{'comment_template_model_display': True}"
                     >
-                        <tree>
+                        <list>
                             <field name="display_name" string="Name" />
                             <field name="position" />
                             <field
@@ -19,7 +19,7 @@
                             />
                             <field name="model_ids" />
                             <field name="domain" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </page>

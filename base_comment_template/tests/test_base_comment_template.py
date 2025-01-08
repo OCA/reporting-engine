@@ -105,7 +105,7 @@ class TestCommentTemplate(common.TransactionCase):
             (4, self.before_template_id.id),
             (4, self.after_template_id.id),
         ]
-        self.before_template_id.domain = "[('id', 'in', %s)]" % self.user.ids
+        self.before_template_id.domain = f"[('id', 'in', {self.user.ids})]"
         self.assertTrue(
             self.before_template_id in self.partner2_id.base_comment_template_ids
         )
@@ -114,7 +114,7 @@ class TestCommentTemplate(common.TransactionCase):
         )
 
     def test_render_comment_text(self):
-        expected_text = "Test comment render %s" % self.user.name
+        expected_text = f"Test comment render {self.user.name}"
         self.before_template_id.text = "Test comment render {{object.name}}"
         with self.with_user(self.user.login):
             self.assertEqual(
