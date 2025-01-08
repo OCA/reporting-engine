@@ -7,20 +7,20 @@
             <form string="Base Comment Preview">
                 <h3>Preview of
                     <field
-                        name="base_comment_template_id"
-                        readonly="1"
-                        nolabel="1"
-                        class="oe_inline"
-                    />
+                    name="base_comment_template_id"
+                    readonly="1"
+                    nolabel="1"
+                    class="oe_inline"
+                />
                 </h3>
                 <field name="no_record" invisible="1" />
                 <field name="model_ids" />
                 <div class="o_row">
                     <span>Choose an example
                         <field
-                            name="model_id"
-                            domain="[('id', 'in', model_ids or False)]"
-                        />
+                        name="model_id"
+                        domain="[('id', 'in', model_ids or False)]"
+                    />
                         record:
                     </span>
                     <div>
