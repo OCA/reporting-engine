@@ -71,15 +71,13 @@ class Report(models.Model):
                 )
         return True
 
-    def load_covers(
-        self, report_sudo, front_cover, back_cover, use_front_cover, use_back_cover
-    ):
+    def load_covers(self, front_cover, back_cover, use_front_cover, use_back_cover):
         if use_front_cover:
-            front_cover_pdf = self.front_cover_pdf or report_sudo.front_cover_pdf
+            front_cover_pdf = self.front_cover_pdf
             if front_cover_pdf:
                 front_cover = b64decode(front_cover_pdf)
         if use_back_cover:
-            back_cover_pdf = self.back_cover_pdf or report_sudo.back_cover_pdf
+            back_cover_pdf = self.back_cover_pdf
             if back_cover_pdf:
                 back_cover = b64decode(back_cover_pdf)
         return front_cover, back_cover
@@ -147,7 +145,6 @@ class Report(models.Model):
     def _run_wkhtmltopdf(
         self,
         bodies,
-        report_ref=False,
         header=None,
         footer=None,
         landscape=False,
@@ -156,7 +153,6 @@ class Report(models.Model):
     ):
         result = super()._run_wkhtmltopdf(
             bodies,
-            report_ref=report_ref,
             header=header,
             footer=footer,
             landscape=landscape,
@@ -164,20 +160,17 @@ class Report(models.Model):
             set_viewport_size=set_viewport_size,
         )
 
-        report_sudo = self._get_report(report_ref)
         front_cover = False
         back_cover = False
-        use_front_cover = self.use_front_cover or report_sudo.use_front_cover
-        use_back_cover = self.use_back_cover or report_sudo.use_back_cover
-        front_cover_overlap = (
-            self.front_cover_overlap or report_sudo.front_cover_overlap
-        )
-        back_cover_overlap = self.back_cover_overlap or report_sudo.back_cover_overlap
+        use_front_cover = self.use_front_cover
+        use_back_cover = self.use_back_cover
+        front_cover_overlap = self.front_cover_overlap
+        back_cover_overlap = self.back_cover_overlap
         if not use_front_cover and not use_back_cover:
             return result
 
         front_cover, back_cover = self.load_covers(
-            report_sudo, front_cover, back_cover, use_front_cover, use_back_cover
+            front_cover, back_cover, use_front_cover, use_back_cover
         )
         if not front_cover and not back_cover:
             return result
