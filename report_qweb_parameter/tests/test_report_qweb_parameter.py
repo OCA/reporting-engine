@@ -24,9 +24,18 @@ class TestReportQWebParameter(common.TransactionCase):
         docs.website = "1234567890"  # for avoding that Odoo adds http://
         rep = report_object._render(report_name, docs.ids, False)
         root = ET.fromstring(rep[0])
+
+        # test length
         self.assertEqual(root[0].text, "1234567890")
-        self.assertEqual(root[2].text, "1234567890")
-        self.assertEqual(root[4].text, "1234567890")
+        self.assertEqual(root[3].text, "1234567890")
+        self.assertEqual(root[6].text, "1234567890")
+
+        # test condicional length
+        self.assertEqual(root[1].text, "Tes")
+        self.assertEqual(root[4].text, "Test")
+        self.assertEqual(root[7].text, "Test ")
+
+        # test maxlength
         docs.update({"street": "123456789"})
         with self.assertRaises(QWebException):
             report_object._render(report_name, docs.ids, False)
