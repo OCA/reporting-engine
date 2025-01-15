@@ -274,13 +274,6 @@ msgid "Sequence"
 msgstr ""
 
 #. module: base_comment_template
-#. odoo-python
-#: code:addons/base_comment_template/models/base_comment_template.py:0
-#, python-format
-msgid "Some model (%s) not found"
-msgstr ""
-
-#. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
 #: model:ir.model.fields,help:base_comment_template.field_res_users__base_comment_template_ids
 msgid "Specific partner comments that can be included in reports"
