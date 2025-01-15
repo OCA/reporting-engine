@@ -49,7 +49,7 @@ class IrQWeb(models.AbstractModel):
             )
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
-            el.attrib["t-out"] = el.attrib["t-out"] + "[:" + tlength + "]"
+            el.attrib["t-out"] = "(" + el.attrib["t-out"] + ")[:" + tlength + "]"
         return super()._compile_directive_out(el, compile_context, level)
 
     def _compile_directive_raw(self, el, compile_context, level):
@@ -68,5 +68,5 @@ class IrQWeb(models.AbstractModel):
             )
         if "t-length" in el.attrib:
             tlength = el.attrib.pop("t-length")
-            el.attrib["t-raw"] = el.attrib["t-raw"] + "[:" + tlength + "]"
+            el.attrib["t-raw"] = "(" + el.attrib["t-raw"] + ")[:" + tlength + "]"
         return super()._compile_directive_raw(el, compile_context, level)

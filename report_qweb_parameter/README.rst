@@ -72,13 +72,17 @@ Authors
 Contributors
 ------------
 
--  Enric Tobella <etobella@creublanca.es>
+- Enric Tobella <etobella@creublanca.es>
 
--  `Tecnativa <https://www.tecnativa.com>`__:
+- `Tecnativa <https://www.tecnativa.com>`__:
 
-      -  Carlos Roca
+     - Carlos Roca
 
--  Iván Antón <ozono@ozonomultimedia.com>
+- Iván Antón <ozono@ozonomultimedia.com>
+
+- `Sygel Technology <https://www.sygel.es>`__:
+
+     - Valentin Vinagre
 
 Maintainers
 -----------
