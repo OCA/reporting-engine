@@ -4,9 +4,9 @@
 
 {
     "name": "SQL Export",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "author": "Akretion,GRAP,Odoo Community Association (OCA)",
-    "maintainers": ["legalsylvain"],
+    "maintainers": ["legalsylvain", "florian-dacosta"],
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Generic Modules/Others",

@@ -58,7 +58,7 @@ class SqlFileWizard(models.TransientModel):
 
         # Call different method depending on file_type since the logic will be
         # different
-        method_name = "%s_get_data_from_query" % sql_export.file_format
+        method_name = f"{sql_export.file_format}_get_data_from_query"
         data = getattr(sql_export, method_name)(variable_dict)
         extension = sql_export._get_file_extension()
         self.write(
