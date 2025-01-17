@@ -49,7 +49,7 @@
                     colspan="2"
                     invisible="not use_properties"
                 > In case of use of properties in the query, use this syntax : &#37;&#37;(Property String)s. <br
-                    />
+                />
                                 Example : SELECT id FROM sale_order WHERE create_date > &#37;&#37;(Start Date)s</p>
             </field>
         </field>
