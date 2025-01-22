@@ -49,7 +49,6 @@ msgstr "Visningsnamn"
 #. module: report_wkhtmltopdf_param
 #. odoo-python
 #: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
-#, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
 "Det gick inte att skapa en PDF-fil med hjälp av de angivna parametrarna."

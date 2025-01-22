@@ -47,7 +47,6 @@ msgstr "Nome a Apresentar"
 #. module: report_wkhtmltopdf_param
 #. odoo-python
 #: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
-#, python-format
 msgid "Failed to create a PDF using the provided parameters."
 msgstr ""
 
