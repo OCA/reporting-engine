@@ -159,8 +159,16 @@ msgstr "Si está marcado, nuevos mensajes necesitan su atención."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "si está marcada, algunos mensajes tienen un error de entrega."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
@@ -235,7 +243,6 @@ msgstr "número de mensajes con error de entrega"
 #. module: sql_export
 #. odoo-python
 #: code:addons/sql_export/wizard/wizard_file.py:0
-#, python-format
 msgid "Please enter a values for the following properties : %s"
 msgstr "Por favor, introduzca un valor para las siguientes propiedades : %s"
 
@@ -253,6 +260,11 @@ msgstr "Consulta"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Propiedades de Consulta"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error en la entrega de SMS"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -294,6 +306,11 @@ msgid ""
 msgstr ""
 "Campos técnicos, utilizados en módulos que dependen de este para saber si "
 "los grupos han cambiado, y que según el acceso debe ser actualizado."
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
+msgid "Use External Database"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
@@ -379,9 +396,6 @@ msgstr "windows-1252"
 
 #~ msgid "Main Attachment"
 #~ msgstr "Archivo adjunto principal"
-
-#~ msgid "SMS Delivery error"
-#~ msgstr "Error en la entrega de SMS"
 
 #~ msgid ""
 #~ "Before adding parameters, make sure you have created one that fill your "
