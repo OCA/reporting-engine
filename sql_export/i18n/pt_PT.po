@@ -158,7 +158,15 @@ msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
 msgstr ""
 
 #. module: sql_export
@@ -230,7 +238,6 @@ msgstr ""
 #. module: sql_export
 #. odoo-python
 #: code:addons/sql_export/wizard/wizard_file.py:0
-#, python-format
 msgid "Please enter a values for the following properties : %s"
 msgstr ""
 
@@ -247,6 +254,11 @@ msgstr ""
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
 msgstr ""
 
 #. module: sql_export
@@ -283,6 +295,11 @@ msgstr ""
 msgid ""
 "Technical fields, used in modules that depends on this one to know if groups "
 "has changed, and that according access should be updated."
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
+msgid "Use External Database"
 msgstr ""
 
 #. module: sql_export

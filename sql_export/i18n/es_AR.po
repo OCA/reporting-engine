@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
 "PO-Revision-Date: 2024-09-17 02:06+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
-"23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
+"teams/23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,8 +157,16 @@ msgstr "Si está marcado, los nuevos mensajes requieren su atención."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
@@ -233,7 +241,6 @@ msgstr "Número de mensajes con error de entrega"
 #. module: sql_export
 #. odoo-python
 #: code:addons/sql_export/wizard/wizard_file.py:0
-#, python-format
 msgid "Please enter a values for the following properties : %s"
 msgstr "Por favor ingrese un valor para las siguientes propiedades: %s"
 
@@ -251,6 +258,11 @@ msgstr "Consulta"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Propiedades de la Query"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de Entrega de SMS"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -292,6 +304,11 @@ msgid ""
 msgstr ""
 "Campos técnicos, utilizados en módulos que dependen de este para saber si "
 "los grupos han cambiado, y que según el acceso se debe actualizar."
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
+msgid "Use External Database"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
@@ -377,9 +394,6 @@ msgstr "windows-1252"
 
 #~ msgid "Main Attachment"
 #~ msgstr "Adjunto Principal"
-
-#~ msgid "SMS Delivery error"
-#~ msgstr "Error de Entrega de SMS"
 
 #~ msgid ""
 #~ "Before adding parameters, make sure you have created one that fill your "

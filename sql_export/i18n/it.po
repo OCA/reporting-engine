@@ -157,8 +157,16 @@ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
@@ -168,8 +176,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : %("
-"Property String)s. <br/>\n"
+"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : "
+"%(Property String)s. <br/>\n"
 "                                Esempio : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 
@@ -233,7 +241,6 @@ msgstr "Numero di messaggi con errore di consegna"
 #. module: sql_export
 #. odoo-python
 #: code:addons/sql_export/wizard/wizard_file.py:0
-#, python-format
 msgid "Please enter a values for the following properties : %s"
 msgstr "Inserire un valore per le segenti proprietà: %s"
 
@@ -251,6 +258,11 @@ msgstr "Query"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Proprietà query"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -293,6 +305,11 @@ msgstr ""
 "Campo tecnico utilizzato nei moduli che dipendono da questo per sapere se i "
 "gruppi sono cambiati e che le atorizzazoni di accesso devono essere "
 "aggiornate."
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
+msgid "Use External Database"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
