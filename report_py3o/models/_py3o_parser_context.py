@@ -51,7 +51,21 @@ class Py3oParserContext(object):
             "format_multiline_value": format_multiline_value,
             "html_sanitize": mail.html2plaintext,
             "b64decode": b64decode,
+            "o_format_lang_selection": self._format_lang_selection,
         }
+
+    def _format_lang_selection(self, model, field, value, lang_code=False):
+        env = self._env
+        if lang_code:
+            context = dict(env.context, lang=lang_code)
+            env = env(context=context)
+        values = env["ir.translation"].get_field_selection(model, field)
+        formatted_value = value
+        for val in values:
+            if val[0] == value:
+                formatted_value = val[1]
+                break
+        return formatted_value
 
     def _format_lang(
         self,
