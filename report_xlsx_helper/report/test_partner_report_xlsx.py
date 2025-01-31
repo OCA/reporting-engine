@@ -29,7 +29,7 @@ class TestPartnerXlsx(models.AbstractModel):
             },
             "date": {
                 "header": {"value": "Date"},
-                "data": {"value": self._render("partner.date")},
+                "data": {"value": self._render("partner.create_date")},
                 "width": 13,
             },
         }
