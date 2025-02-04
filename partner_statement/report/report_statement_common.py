@@ -352,7 +352,7 @@ class ReportStatementCommon(models.AbstractModel):
         aging_type = data["aging_type"]
         is_activity = data.get("is_activity")
         is_detailed = data.get("is_detailed")
-        today = fields.Date.today()
+        today = fields.Date.context_today(self)
         amount_field = data.get("amount_field", "amount")
 
         # There should be relatively few of these, so to speed performance
