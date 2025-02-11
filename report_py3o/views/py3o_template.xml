@@ -34,16 +34,16 @@
         <field name="name">py3o.template.configuration.tree.view</field>
         <field name="model">py3o.template</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="filetype" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="py3o_template_configuration_action" model="ir.actions.act_window">
         <field name="name">Py3o Templates</field>
         <field name="res_model">py3o.template</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
     <menuitem
         id="py3o_template_configuration_menu"

@@ -12,7 +12,13 @@ from importlib.resources import as_file, files
 from unittest import mock
 
 from PyPDF2 import PdfFileWriter
-from PyPDF2.pdf import PageObject
+
+try:
+    # For PyPDF2 <= 1.26.0
+    from PyPDF2.pdf import PageObject
+except ImportError:
+    # For PyPDF2 >= 2.0.0
+    from PyPDF2 import PageObject
 
 from odoo import tools
 from odoo.exceptions import ValidationError
@@ -206,7 +212,7 @@ class TestReportPy3o(TransactionCase):
             self.assertTrue(self.py3o_report._get_template_from_path(tmp_filename))
         # check security
         self.assertFalse(
-            self.py3o_report._get_template_from_path("rm -rf . & %s" % flbk_filename)
+            self.py3o_report._get_template_from_path(f"rm -rf . & {flbk_filename}")
         )
         # a file in a non native LibreOffice format is not a valid template
         with tempfile.NamedTemporaryFile(suffix=".toto") as f:

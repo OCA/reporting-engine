@@ -1,7 +1,7 @@
 For example, to replace the native invoice report by a custom py3o
 report, add the following XML file in your custom module:
 
-``` 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
@@ -23,7 +23,7 @@ It's also possible to reference a template located in a trusted path of
 your Odoo server. In this case you must let the *module* entry empty and
 specify the path to the template as *py3o_template_fallback*.
 
-``` 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
@@ -40,7 +40,7 @@ Moreover, you must also modify the Odoo server configuration file to
 declare the allowed root directory for your py3o templates. Only
 templates located into this directory can be loaded by py3o report.
 
-``` 
+```
 [options]
 ...
 
@@ -51,7 +51,7 @@ root_tmpl_path=/odoo/templates/py3o
 If you want an invoice in PDF format instead of ODT format, the XML file
 should look like:
 
-``` 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
@@ -68,7 +68,7 @@ should look like:
 If you want to add a new py3o PDF report (and not replace a native
 report), the XML file should look like this:
 
-``` 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
@@ -90,7 +90,7 @@ report), the XML file should look like this:
 
 ## Configuration parameters
 
-py3o.conversion_command  
+py3o.conversion_command
 The command to be used to run the conversion, `libreoffice` by default.
 If you change this, whatever you set here must accept the parameters
 `--headless --convert-to $ext $file` and put the resulting file into

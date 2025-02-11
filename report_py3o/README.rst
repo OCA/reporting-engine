@@ -192,12 +192,11 @@ report), the XML file should look like this:
 Configuration parameters
 ------------------------
 
-| py3o.conversion_command
-| The command to be used to run the conversion, ``libreoffice`` by
-  default. If you change this, whatever you set here must accept the
-  parameters ``--headless --convert-to $ext $file`` and put the
-  resulting file into ``$file``'s directory with extension ``$ext``. The
-  command will be started in ``$file``'s directory.
+py3o.conversion_command The command to be used to run the conversion,
+``libreoffice`` by default. If you change this, whatever you set here
+must accept the parameters ``--headless --convert-to $ext $file`` and
+put the resulting file into ``$file``'s directory with extension
+``$ext``. The command will be started in ``$file``'s directory.
 
 Usage
 =====
@@ -210,36 +209,31 @@ also call functions.
 Available functions and objects
 -------------------------------
 
-| user
-| Browse record of current user
+user Browse record of current user
 
-| lang
-| The user's company's language as string (ISO code)
+lang The user's company's language as string (ISO code)
 
-| b64decode
-| ``base64.b64decode``
+b64decode ``base64.b64decode``
 
-| format_multiline_value(string)
-| Generate the ODF equivalent of ``<br/>`` and ``&nbsp;`` for multiline
-  fields (ODF is XML internally, so those would be skipped otherwise)
+format_multiline_value(string) Generate the ODF equivalent of ``<br/>``
+and ``&nbsp;`` for multiline fields (ODF is XML internally, so those
+would be skipped otherwise)
 
-| html_sanitize(string)
-| Sanitize HTML string
+html_sanitize(string) Sanitize HTML string
 
-| time
-| Python's ``time`` module
+time Python's ``time`` module
 
-| display_address(partner)
-| Return a formatted string of the partner's address
+display_address(partner) Return a formatted string of the partner's
+address
 
-| o_format_lang(value, lang_code=False, digits=None, grouping=True,
-  monetary=False, dp=False, currency_obj=False, no_break_space=True)
-| Return a formatted numeric or monetary value according to the context
-  language and timezone
+o_format_lang(value, lang_code=False, digits=None, grouping=True,
+monetary=False, dp=False, currency_obj=False, no_break_space=True)
+Return a formatted numeric or monetary value according to the context
+language and timezone
 
-| o_format_date(value, lang_code=False, date_format=False)
-| Return a formatted date or time value according to the context
-  language and timezone
+o_format_date(value, lang_code=False, date_format=False) Return a
+formatted date or time value according to the context language and
+timezone
 
 Sample report templates
 -----------------------

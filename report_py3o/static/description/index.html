@@ -533,14 +533,11 @@ report), the XML file should look like this:</p>
 </pre>
 <div class="section" id="configuration-parameters">
 <h2><a class="toc-backref" href="#toc-entry-3">Configuration parameters</a></h2>
-<div class="line-block">
-<div class="line">py3o.conversion_command</div>
-<div class="line">The command to be used to run the conversion, <tt class="docutils literal">libreoffice</tt> by
-default. If you change this, whatever you set here must accept the
-parameters <tt class="docutils literal"><span class="pre">--headless</span> <span class="pre">--convert-to</span> $ext $file</tt> and put the
-resulting file into <tt class="docutils literal">$file</tt>’s directory with extension <tt class="docutils literal">$ext</tt>. The
-command will be started in <tt class="docutils literal">$file</tt>’s directory.</div>
-</div>
+<p>py3o.conversion_command The command to be used to run the conversion,
+<tt class="docutils literal">libreoffice</tt> by default. If you change this, whatever you set here
+must accept the parameters <tt class="docutils literal"><span class="pre">--headless</span> <span class="pre">--convert-to</span> $ext $file</tt> and
+put the resulting file into <tt class="docutils literal">$file</tt>’s directory with extension
+<tt class="docutils literal">$ext</tt>. The command will be started in <tt class="docutils literal">$file</tt>’s directory.</p>
 </div>
 </div>
 <div class="section" id="usage">
@@ -551,46 +548,23 @@ the records are exposed in libreoffice as <tt class="docutils literal">objects</
 also call functions.</p>
 <div class="section" id="available-functions-and-objects">
 <h2><a class="toc-backref" href="#toc-entry-5">Available functions and objects</a></h2>
-<div class="line-block">
-<div class="line">user</div>
-<div class="line">Browse record of current user</div>
-</div>
-<div class="line-block">
-<div class="line">lang</div>
-<div class="line">The user’s company’s language as string (ISO code)</div>
-</div>
-<div class="line-block">
-<div class="line">b64decode</div>
-<div class="line"><tt class="docutils literal">base64.b64decode</tt></div>
-</div>
-<div class="line-block">
-<div class="line">format_multiline_value(string)</div>
-<div class="line">Generate the ODF equivalent of <tt class="docutils literal">&lt;br/&gt;</tt> and <tt class="docutils literal">&amp;nbsp;</tt> for multiline
-fields (ODF is XML internally, so those would be skipped otherwise)</div>
-</div>
-<div class="line-block">
-<div class="line">html_sanitize(string)</div>
-<div class="line">Sanitize HTML string</div>
-</div>
-<div class="line-block">
-<div class="line">time</div>
-<div class="line">Python’s <tt class="docutils literal">time</tt> module</div>
-</div>
-<div class="line-block">
-<div class="line">display_address(partner)</div>
-<div class="line">Return a formatted string of the partner’s address</div>
-</div>
-<div class="line-block">
-<div class="line">o_format_lang(value, lang_code=False, digits=None, grouping=True,
-monetary=False, dp=False, currency_obj=False, no_break_space=True)</div>
-<div class="line">Return a formatted numeric or monetary value according to the context
-language and timezone</div>
-</div>
-<div class="line-block">
-<div class="line">o_format_date(value, lang_code=False, date_format=False)</div>
-<div class="line">Return a formatted date or time value according to the context
-language and timezone</div>
-</div>
+<p>user Browse record of current user</p>
+<p>lang The user’s company’s language as string (ISO code)</p>
+<p>b64decode <tt class="docutils literal">base64.b64decode</tt></p>
+<p>format_multiline_value(string) Generate the ODF equivalent of <tt class="docutils literal">&lt;br/&gt;</tt>
+and <tt class="docutils literal">&amp;nbsp;</tt> for multiline fields (ODF is XML internally, so those
+would be skipped otherwise)</p>
+<p>html_sanitize(string) Sanitize HTML string</p>
+<p>time Python’s <tt class="docutils literal">time</tt> module</p>
+<p>display_address(partner) Return a formatted string of the partner’s
+address</p>
+<p>o_format_lang(value, lang_code=False, digits=None, grouping=True,
+monetary=False, dp=False, currency_obj=False, no_break_space=True)
+Return a formatted numeric or monetary value according to the context
+language and timezone</p>
+<p>o_format_date(value, lang_code=False, date_format=False) Return a
+formatted date or time value according to the context language and
+timezone</p>
 </div>
 <div class="section" id="sample-report-templates">
 <h2><a class="toc-backref" href="#toc-entry-6">Sample report templates</a></h2>
