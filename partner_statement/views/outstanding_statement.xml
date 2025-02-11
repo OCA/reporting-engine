@@ -113,7 +113,7 @@
                 />: <span t-field="o.vat" /></div>
             </t>
             <div class="page">
-                <div class="oe_structure" />
+                <div id="oe_structure" class="oe_structure" />
                 <h2>Statement of Account</h2>
                 <div id="informations" class="row mt32 mb32">
                     <div class="col-3 bm-2">

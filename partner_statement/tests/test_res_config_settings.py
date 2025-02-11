@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests import TransactionCase, users
 
 
 class TestResConfigSettings(TransactionCase):
@@ -27,6 +27,7 @@ class TestResConfigSettings(TransactionCase):
         cls.account_user = cls.cr.fetchone()[0]
         cls.user_obj = cls.env["res.users"].with_user(cls.account_user)
 
+    @users("admin")
     def test_groups(self):
         conf = self.config.create(
             {
@@ -36,11 +37,12 @@ class TestResConfigSettings(TransactionCase):
             }
         )
         conf.set_values()
+        self.admin_user = self.env.ref("base.user_admin")
         self.assertFalse(
-            self.user_obj._has_group("partner_statement.group_outstanding_statement")
+            self.admin_user._has_group("partner_statement.group_outstanding_statement")
         )
         self.assertTrue(
-            self.user_obj._has_group("partner_statement.group_activity_statement")
+            self.admin_user._has_group("partner_statement.group_activity_statement")
         )
         res = (
             self.env["activity.statement.wizard"]
