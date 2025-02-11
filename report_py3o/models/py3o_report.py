@@ -270,10 +270,7 @@ class Py3oReport(models.TransientModel):
                 result_path, result_filename = os.path.split(result_path)
                 result_path = os.path.join(
                     result_path,
-                    "{}.{}".format(
-                        os.path.splitext(result_filename)[0],
-                        self.ir_actions_report_id.py3o_filetype,
-                    ),
+                    f"{os.path.splitext(result_filename)[0]}.{self.ir_actions_report_id.py3o_filetype}",
                 )
         return result_path
 
@@ -297,7 +294,7 @@ class Py3oReport(models.TransientModel):
             result_path,
         ]
         if user_installation:
-            cmd.append("-env:UserInstallation=file:%s" % user_installation)
+            cmd.append(f"-env:UserInstallation=file:{user_installation}")
         return cmd
 
     def _get_or_create_single_report(
@@ -366,7 +363,7 @@ class Py3oReport(models.TransientModel):
             try:
                 os.unlink(temporary_file)
             except OSError:
-                logger.error("Error when trying to remove file %s" % temporary_file)
+                logger.error(f"Error when trying to remove file {temporary_file}")
 
     def create_report(self, res_ids, data):
         """Override this function to handle our py3o report"""

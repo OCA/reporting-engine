@@ -6,7 +6,7 @@
         <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
-            <xpath expr="/form/field[1]" position="before">
+            <xpath expr="//sheet" position="before">
                 <field name="is_py3o_report_not_available" invisible="1" />
                 <div class="alert alert-danger" role="alert" style="margin-bottom:0px;">
                     <field

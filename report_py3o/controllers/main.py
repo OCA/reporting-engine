@@ -2,17 +2,18 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import json
 import mimetypes
+from urllib.parse import parse_qs
 
 from werkzeug import exceptions
-from werkzeug.urls import url_decode
+from werkzeug.datastructures import MultiDict
 
 from odoo.http import content_disposition, request, route, serialize_exception
 from odoo.tools import html_escape
 
-from odoo.addons.web.controllers.report import ReportController
+from odoo.addons.web.controllers.report import ReportController as ReportControllerBase
 
 
-class ReportController(ReportController):
+class ReportController(ReportControllerBase):
     @route()
     def report_routes(self, reportname, docids=None, converter=None, **data):
         if converter != "py3o":
@@ -41,7 +42,7 @@ class ReportController(ReportController):
         if not action_py3o_report:
             raise exceptions.HTTPException(
                 description="Py3o action report not found for report_name "
-                "%s" % reportname
+                f"{reportname}"
             )
         res, filetype = ir_action._render(reportname, docids, data)
         filename = action_py3o_report.gen_report_download_filename(docids, data)
@@ -82,7 +83,7 @@ class ReportController(ReportController):
             else:
                 # Particular report:
                 # decoding the args represented in JSON
-                data = list(url_decode(url.split("?")[1]).items())
+                data = list(MultiDict(parse_qs(url.split("?")[1])).items())
                 response = self.report_routes(
                     reportname, converter="py3o", **dict(data)
                 )

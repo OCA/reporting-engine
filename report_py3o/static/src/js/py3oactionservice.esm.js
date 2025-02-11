@@ -34,7 +34,7 @@ registry
                     url: "/report/download",
                     data: {
                         data: JSON.stringify([url, action.report_type]),
-                        context: JSON.stringify(env.services.user.context),
+                        context: JSON.stringify(action.context),
                     },
                 });
             } finally {
