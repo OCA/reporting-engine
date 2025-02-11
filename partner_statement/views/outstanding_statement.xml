@@ -5,10 +5,10 @@
     <template id="outstanding_balance">
         <p>
             <span
-                t-out="'' if  account_type == 'asset_receivable' else 'Supplier '"
-            /><span t-out="title_name" /> up to <span t-out="ending_date" /> in <span
-                t-out="display_currency.name"
-            />
+            t-out="'' if  account_type == 'asset_receivable' else 'Supplier '"
+        /><span t-out="title_name" /> up to <span t-out="ending_date" /> in <span
+            t-out="display_currency.name"
+        />
         </p>
         <table class="table table-sm table-statement">
             <thead>
@@ -109,8 +109,8 @@
                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
                 />
                 <div t-if="o.vat" class="mt16"><t
-                        t-out="company.country_id.vat_label or 'Tax ID'"
-                    />: <span t-field="o.vat" /></div>
+                    t-out="company.country_id.vat_label or 'Tax ID'"
+                />: <span t-field="o.vat" /></div>
             </t>
             <div class="page">
                 <div class="oe_structure" />

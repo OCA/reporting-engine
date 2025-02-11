@@ -5,8 +5,8 @@
     <template id="aging_buckets">
         <p>
             Aging Report at <span t-out="d['end']" /> in <span
-                t-out="display_currency.name"
-            />:
+            t-out="display_currency.name"
+        />:
         </p>
         <table class="table table-sm table-statement">
             <thead>

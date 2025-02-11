@@ -8,7 +8,7 @@
     "summary": "OCA Financial Reports",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "maintainers": ["MiquelRForgeFlow"],
-    "website": "https://github.com/OCA/account-financial-reporting",
+    "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "depends": ["account", "report_xlsx", "report_xlsx_helper"],
     "data": [

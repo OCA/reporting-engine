@@ -6,10 +6,10 @@
         <p>
             <span t-if="is_detailed">Detailed </span>
             <span
-                t-if="account_type == 'liability_payable'"
-            >Supplier </span>Statement between <span t-out="d['start']" /> and <span
-                t-out="d['end']"
-            /> in <span t-out="display_currency.name" />
+            t-if="account_type == 'liability_payable'"
+        >Supplier </span>Statement between <span t-out="d['start']" /> and <span
+            t-out="d['end']"
+        /> in <span t-out="display_currency.name" />
         </p>
         <table class="table table-condensed table-statement">
             <thead>
@@ -48,7 +48,8 @@
                         <span
                             t-if="line['reconciled_line']"
                             style="padding-left: 11px;"
-                        /><span t-out="line['move_id']" />
+                        />
+                        <span t-out="line['move_id']" />
                     </td>
                     <td>
                         <span t-out="line['date']" />
@@ -124,8 +125,8 @@
                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
                 />
                 <div t-if="o.vat" class="mt16"><t
-                        t-out="company.country_id.vat_label or 'Tax ID'"
-                    />: <span t-field="o.vat" /></div>
+                    t-out="company.country_id.vat_label or 'Tax ID'"
+                />: <span t-field="o.vat" /></div>
             </t>
             <div class="page">
                 <h2>Statement of Account</h2>
