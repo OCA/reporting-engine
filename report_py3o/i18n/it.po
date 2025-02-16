@@ -1,23 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_py3o
+# 	* report_py3o
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2025-01-28 15:06+0000\n"
-"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
-"Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"Plural-Forms: \n"
 
 #. module: report_py3o
 #. odoo-python
@@ -86,8 +82,9 @@ msgstr ""
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_multi_in_one
 msgid ""
 "If you execute a report on several records, by default Odoo will generate a "
-"ZIP file that contains as many files as selected records. If you enable this "
-"option, Odoo will generate instead a single report for the selected records."
+"ZIP file that contains as many files as selected records. If you enable this"
+" option, Odoo will generate instead a single report for the selected "
+"records."
 msgstr ""
 "Se si esegue un resoconto su diversi record, Odoo genererà in modo "
 "predefinito un file ZIP che contiene diversi file quanti sono i record "
@@ -263,16 +260,16 @@ msgstr "Il modulo implementatore che fornisce questo resoconto"
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid ""
-"The libreoffice runtime is required to genereate the py3o report '%s' but is "
-"not found into the bin path. You must install the libreoffice runtime on the "
-"server. If the runtime is already installed and is not found by Odoo, you "
-"can provide the full path to the runtime by setting the key 'py3o."
-"conversion_command' into the configuration parameters."
+"The libreoffice runtime is required to genereate the py3o report '%s' but is"
+" not found into the bin path. You must install the libreoffice runtime on "
+"the server. If the runtime is already installed and is not found by Odoo, "
+"you can provide the full path to the runtime by setting the key "
+"'py3o.conversion_command' into the configuration parameters."
 msgstr ""
 "È richiesto il runtime LibreOffice per generare il resoconto Py3o '%s' ma "
-"non è stato trovato nel percorso dei file bin. Bisogna installare il runtime "
-"LibreOffice nel server. Se il runtime è già installato e Odoo non lo trova, "
-"si può fornire il percorso completo al runtime impostando la chiave "
+"non è stato trovato nel percorso dei file bin. Bisogna installare il runtime"
+" LibreOffice nel server. Se il runtime è già installato e Odoo non lo trova,"
+" si può fornire il percorso completo al runtime impostando la chiave "
 "'py3o.conversion_command' nei parametri di configurazione."
 
 #. module: report_py3o

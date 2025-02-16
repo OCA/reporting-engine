@@ -1,47 +1,39 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_xlsx
+# 	* report_xlsx
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-31 03:52+0000\n"
-"PO-Revision-Date: 2017-05-31 03:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
-"Language: tr\n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: \n"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr ""
+msgstr "Özet XLSX Raporu"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "Partner XLSX Report"
-msgstr ""
-
-#. module: report_xlsx
-#: model:ir.actions.report,name:report_xlsx.partner_xlsx
-msgid "Print to XLSX"
-msgstr ""
+msgstr "İş Ortağı XLSX Raporu"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Rapor İşlemi"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Çıktı Türü"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
@@ -51,12 +43,12 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Her biri kendi oluşturma yöntemine sahip olarak oluşturulacak raporun türü. "
+"HTML, raporun doğrudan tarayıcınızda açılacağı anlamına gelir PDF, raporun "
+"Wkhtmltopdf kullanılarak oluşturulacağı ve kullanıcı tarafından indirileceği"
+" anlamına gelir."
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
 msgid "XLSX"
-msgstr ""
-
-#, fuzzy
-#~ msgid "ir.actions.report"
-#~ msgstr "ir.actions.report.xml"
+msgstr "XLSX"

@@ -6,15 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-06-07 12:34+0000\n"
-"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
-"Language-Team: none\n"
-"Language: it\n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"Plural-Forms: \n"
 
 #. module: report_text_format_option
 #: model:ir.model.fields.selection,name:report_text_format_option.selection__ir_actions_report__line_ending__cr
@@ -24,24 +23,12 @@ msgstr "CR (\\r)"
 #. module: report_text_format_option
 #: model:ir.model.fields.selection,name:report_text_format_option.selection__ir_actions_report__line_ending__crlf
 msgid "CRLF (\\r\\n)"
-msgstr ""
-"CRLF (\\r\\n"
-")"
-
-#. module: report_text_format_option
-#: model:ir.actions.report,name:report_text_format_option.action_report_demo
-msgid "Demo Text Report"
-msgstr "Resoconto testo demo"
+msgstr "CRLF (\\r\\a)"
 
 #. module: report_text_format_option
 #: model:ir.model.fields,help:report_text_format_option.field_ir_actions_report__text_encoding
 msgid "Encoding to be applied to the generated Text file. e.g. cp932"
 msgstr "Codifica da applicare al file testo generato. Es. cp932"
-
-#. module: report_text_format_option
-#: model_terms:ir.ui.view,arch_db:report_text_format_option.demo_report_template
-msgid "Hello,"
-msgstr "Salve,"
 
 #. module: report_text_format_option
 #: model:ir.model.fields,help:report_text_format_option.field_ir_actions_report__text_encode_error_handling
@@ -81,6 +68,11 @@ msgid ""
 msgstr ""
 "Selezionare il tipo di fine riga nel caso il resoconto richieda di essere "
 "emesso con fine riga diverso da 'LF'."
+
+#. module: report_text_format_option
+#: model:ir.model.fields,field_description:report_text_format_option.field_ir_actions_report__smart_search
+msgid "Smart Search"
+msgstr "Ricerca intelligente"
 
 #. module: report_text_format_option
 #: model:ir.model.fields,field_description:report_text_format_option.field_ir_actions_report__text_encode_error_handling

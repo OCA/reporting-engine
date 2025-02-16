@@ -1,29 +1,26 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_py3o
+# 	* report_py3o
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2018-01-16 08:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Hungarian (https://www.transifex.com/oca/teams/23907/hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "(Native)"
-msgstr ""
+msgstr "(Anyanyelvi)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_uid
@@ -46,24 +43,24 @@ msgstr "Név megjelenítése"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
 msgid "Fallback"
-msgstr ""
+msgstr "Visszalépés"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
-msgstr ""
+msgstr "A Py3O jelentéshez a 'Kimeneti formátum' mezőre van szükség."
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "File Type"
-msgstr ""
+msgstr "Fájltípus"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "Group By"
-msgstr ""
+msgstr "Csoport"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
@@ -77,29 +74,37 @@ msgid ""
 "If the user does not provide a template this will be used it should be a "
 "relative path to root of YOUR module or an absolute path on your server."
 msgstr ""
+"Ha a felhasználó nem ad meg egy sablont, akkor ezt fogja használni, akkor "
+"annak egy relatív elérési útnak kell lennie az ÖN moduljának gyökeréhez, "
+"vagy egy abszolút elérési útnak a szerveren."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_multi_in_one
 msgid ""
 "If you execute a report on several records, by default Odoo will generate a "
-"ZIP file that contains as many files as selected records. If you enable this "
-"option, Odoo will generate instead a single report for the selected records."
+"ZIP file that contains as many files as selected records. If you enable this"
+" option, Odoo will generate instead a single report for the selected "
+"records."
 msgstr ""
+"Ha egy jelentést több rekordon hajt végre, az Odoo alapértelmezés szerint "
+"egy ZIP-fájlt generál, amely annyi fájlt tartalmaz, ahány rekordot "
+"kiválasztott. Ha engedélyezi ezt az opciót, az Odoo ehelyett egyetlen "
+"jelentést fog generálni a kiválasztott rekordokra."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
 msgid "Ir Actions Report"
-msgstr ""
+msgstr "Ir Akciók jelentése"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_native_format
 msgid "Is Py3O Native Format"
-msgstr ""
+msgstr "A Py3O natív formátum"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_report_not_available
 msgid "Is Py3O Report Not Available"
-msgstr ""
+msgstr "A Py3O jelentés nem érhető el"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
@@ -123,12 +128,12 @@ msgstr "Utoljára frissítve "
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_report_view
 msgid "LibreOffice Template"
-msgstr ""
+msgstr "LibreOffice sablon"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__filetype
 msgid "LibreOffice Template File Type"
-msgstr ""
+msgstr "LibreOffice sablon fájltípus"
 
 #. module: report_py3o
 #. odoo-python
@@ -136,21 +141,23 @@ msgstr ""
 #, python-format
 msgid "Libreoffice runtime not available. Please contact your administrator."
 msgstr ""
+"Libreoffice futtatási idő nem áll rendelkezésre. Kérjük, lépjen kapcsolatba "
+"a rendszergazdával."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__module
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__msg_py3o_report_not_available
 msgid "Msg Py3O Report Not Available"
-msgstr ""
+msgstr "Msg Py3O jelentés nem elérhető"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_multi_in_one
 msgid "Multiple Records in a Single Report"
-msgstr ""
+msgstr "Több rekord egyetlen jelentésben"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__name
@@ -162,105 +169,111 @@ msgstr "Név"
 #: code:addons/report_py3o/models/py3o_report.py:0
 #, python-format
 msgid "No template found. Aborting."
-msgstr ""
+msgstr "Nem találtunk sablont. Megszakítás."
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odp
 msgid "ODF Presentation"
-msgstr ""
+msgstr "ODF bemutató"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodp
 msgid "ODF Presentation (Flat)"
-msgstr ""
+msgstr "ODF prezentáció (lapos)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__ods
 msgid "ODF Spreadsheet"
-msgstr ""
+msgstr "ODF táblázat"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fods
 msgid "ODF Spreadsheet (Flat)"
-msgstr ""
+msgstr "ODF táblázat (lapos)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odt
 msgid "ODF Text Document"
-msgstr ""
+msgstr "ODF szöveges dokumentum"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodt
 msgid "ODF Text Document (Flat)"
-msgstr ""
+msgstr "ODF szöveges dokumentum (lapos)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_filetype
 msgid "Output Format"
-msgstr ""
+msgstr "Kimeneti formátum"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__lo_bin_path
 msgid "Path to the libreoffice runtime"
-msgstr ""
+msgstr "A libreoffice futtatási idejének elérési útvonala"
 
 #. module: report_py3o
 #: model:ir.actions.report,name:report_py3o.res_users_report_py3o
 msgid "Py3o Demo Report"
-msgstr ""
+msgstr "Py3o Demo Report"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
 msgid "Py3o Reports"
-msgstr ""
+msgstr "Py3o jelentések"
 
 #. module: report_py3o
 #: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 msgid "Py3o Templates"
-msgstr ""
+msgstr "Py3o sablonok"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
 msgid "Py3o template"
-msgstr ""
+msgstr "Py3o sablon"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Kimutatás művelet"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
 msgid "Report Py30"
-msgstr ""
+msgstr "Py30 jelentés"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Kimutatás típus"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_id
 msgid "Template"
-msgstr ""
+msgstr "Sablon"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__module
 msgid "The implementer module that provides this report"
-msgstr ""
+msgstr "Az implementáló modul, amely ezt a jelentést biztosítja"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid ""
-"The libreoffice runtime is required to genereate the py3o report '%s' but is "
-"not found into the bin path. You must install the libreoffice runtime on the "
-"server. If the runtime is already installed and is not found by Odoo, you "
-"can provide the full path to the runtime by setting the key 'py3o."
-"conversion_command' into the configuration parameters."
+"The libreoffice runtime is required to genereate the py3o report '%s' but is"
+" not found into the bin path. You must install the libreoffice runtime on "
+"the server. If the runtime is already installed and is not found by Odoo, "
+"you can provide the full path to the runtime by setting the key "
+"'py3o.conversion_command' into the configuration parameters."
 msgstr ""
+"A libreoffice futtatási idő szükséges a '%s' py3o jelentés genereálásához, "
+"de nem található a bin elérési útvonalban. A libreoffice runtime-ot "
+"telepítenie kell a kiszolgálóra. Ha a futtatóprogram már telepítve van, de "
+"az Odoo nem találja, akkor a konfigurációs paraméterek között a "
+"'py3o.conversion_command' kulcs megadásával megadhatja a futtatóprogram "
+"teljes elérési útvonalát."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
@@ -270,13 +283,17 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"A megjelenítendő jelentés típusa, mindegyiknek saját megjelenítési módszere "
+"van. HTML azt jelenti, hogy a jelentés közvetlenül a böngészőben nyílik meg "
+"PDF azt jelenti, hogy a jelentés a Wkhtmltopdf segítségével kerül "
+"megjelenítésre és a felhasználó letölti."
 
 #. module: report_py3o
 #: model:ir.actions.report,print_report_name:report_py3o.res_users_report_py3o
 msgid "object.name.replace(' ', '_') + '-demo.odt'"
-msgstr ""
+msgstr "object.name.replace(' ' ', '_') + '-demo.odt'"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 msgid "py3o"
-msgstr ""
+msgstr "py3o"

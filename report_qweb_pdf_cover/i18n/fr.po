@@ -1,0 +1,209 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_pdf_cover
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Back Cover PDF"
+msgstr "Quatrième de couverture PDF"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_change_ids
+msgid "Changeset Changes"
+msgstr "Changeset Changes"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_ids
+msgid "Changesets"
+msgstr "Changements"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "Count Changesets"
+msgstr "Comptez les modifications"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "Count Pending Changeset Changes"
+msgstr "Comptez les modifications en cours du jeu de modifications"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "Count Pending Changesets"
+msgstr "Comptez les jeux de modifications en attente"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load back cover: %s"
+msgstr "Échec du chargement de la quatrième de couverture : %s"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load front cover: %s"
+msgstr "Échec du chargement de la page de garde : %s"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Front Cover PDF"
+msgstr "Couverture PDF"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable back cover found."
+msgstr "Aucune couverture arrière utilisable n'a été trouvée."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable front cover found."
+msgstr "Aucune couverture utilisable n'a été trouvée."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid "Overlap Back Cover"
+msgstr "Couverture arrière à chevauchement"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid "Overlap Front Cover"
+msgstr "Recouvrement de la page de couverture"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model,name:report_qweb_pdf_cover.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapport"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__smart_search
+msgid "Smart Search"
+msgstr "Smart Search"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "The number of pending changes of this record"
+msgstr "Le nombre de modifications en attente de cet enregistrement"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "The number of pending changesets of this record"
+msgstr "Le nombre de jeux de modifications en attente pour cet enregistrement"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "The overall number of changesets of this record"
+msgstr "Le nombre total de modifications de cet enregistrement"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Upload an PDF file to use as a back cover on this report."
+msgstr ""
+"Téléchargez un fichier PDF à utiliser comme quatrième de couverture de ce "
+"rapport."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Upload an PDF file to use as a front cover on this report."
+msgstr "Téléchargez un fichier PDF à utiliser comme couverture de ce rapport."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use Back Cover"
+msgstr "Utilisez la quatrième de couverture"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use Front Cover"
+msgstr "Utilisez la page de couverture"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use a back cover when rendering the PDF report."
+msgstr "Utilisez une couverture arrière lors de l'affichage du rapport PDF."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use a front cover when rendering the PDF report."
+msgstr "Utilisez une couverture lors de l'affichage du rapport PDF."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__user_can_see_changeset
+msgid "User Can See Changeset"
+msgstr "L'utilisateur peut voir le jeu de modifications"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid ""
+"When set, the back cover of the report will overlap with the contents of the"
+" last page of the report. This is useful to include some information of the "
+"report in the back cover."
+msgstr ""
+"Lorsqu'elle est définie, la quatrième de couverture du rapport se superpose "
+"au contenu de la dernière page du rapport. Cette fonction est utile pour "
+"inclure certaines informations du rapport dans la quatrième de couverture."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid ""
+"When set, the front cover of the report will overlap with the contents of "
+"the first page of the report. This is useful to include some information of "
+"the report in the front cover."
+msgstr ""
+"Lorsqu'elle est définie, la couverture du rapport se superpose au contenu de"
+" la première page du rapport. Cette fonction est utile pour inclure "
+"certaines informations du rapport dans la couverture."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your back cover PDF contains more than one page, all but the first one will "
+"be ignored."
+msgstr ""
+"Votre PDF de quatrième de couverture contient plus d'une page, toutes les "
+"pages seront ignorées à l'exception de la première."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your back cover PDF does not contain any pages."
+msgstr "Votre PDF de quatrième de couverture ne contient aucune page."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your front cover PDF contains more than one page, all but the first one will"
+" be ignored."
+msgstr ""
+"Votre PDF de couverture contient plus d'une page, toutes les pages sauf la "
+"première seront ignorées."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your front cover PDF does not contain any pages."
+msgstr "Votre PDF de couverture ne contient aucune page."

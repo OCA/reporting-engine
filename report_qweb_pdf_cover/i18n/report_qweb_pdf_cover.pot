@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +18,31 @@ msgstr ""
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
 msgid "Back Cover PDF"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_change_ids
+msgid "Changeset Changes"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_ids
+msgid "Changesets"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "Count Changesets"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "Count Pending Changeset Changes"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "Count Pending Changesets"
 msgstr ""
 
 #. module: report_qweb_pdf_cover
@@ -67,6 +94,26 @@ msgid "Report Action"
 msgstr ""
 
 #. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__smart_search
+msgid "Smart Search"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "The number of pending changes of this record"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "The number of pending changesets of this record"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "The overall number of changesets of this record"
+msgstr ""
+
+#. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
 msgid "Upload an PDF file to use as a back cover on this report."
 msgstr ""
@@ -94,6 +141,11 @@ msgstr ""
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
 msgid "Use a front cover when rendering the PDF report."
+msgstr ""
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__user_can_see_changeset
+msgid "User Can See Changeset"
 msgstr ""
 
 #. module: report_qweb_pdf_cover

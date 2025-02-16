@@ -1,22 +1,54 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * report_wkhtmltopdf_param
+# 	* report_wkhtmltopdf_param
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-22 01:45+0000\n"
-"PO-Revision-Date: 2017-11-22 01:45+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2025-02-14 19:27+0000\n"
+"PO-Revision-Date: 2025-02-14 19:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: \n"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__changeset_change_ids
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__changeset_change_ids
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__changeset_change_ids
+msgid "Changeset Changes"
+msgstr "Changeset Changes"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__changeset_ids
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__changeset_ids
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__changeset_ids
+msgid "Changesets"
+msgstr "Changements"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_changesets
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_changesets
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_changesets
+msgid "Count Changesets"
+msgstr "Comptez les modifications"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changeset_changes
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changeset_changes
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changeset_changes
+msgid "Count Pending Changeset Changes"
+msgstr "Comptez les modifications en cours du jeu de modifications"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changesets
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changesets
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changesets
+msgid "Count Pending Changesets"
+msgstr "Comptez les jeux de modifications en attente"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_uid
@@ -31,12 +63,14 @@ msgstr "Date"
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters"
-msgstr ""
+msgstr "Paramètres personnalisés"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__custom_params
 msgid "Custom Parameters passed forward as wkhtmltopdf command arguments"
 msgstr ""
+"Paramètres personnalisés transmis en tant qu'arguments de la commande "
+"wkhtmltopdf"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__display_name
@@ -48,7 +82,7 @@ msgstr "Nom à afficher"
 #: code:addons/report_wkhtmltopdf_param/models/report_paperformat.py:0
 #, python-format
 msgid "Failed to create a PDF using the provided parameters."
-msgstr ""
+msgstr "Échec de la création d'un PDF à l'aide des paramètres fournis."
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__id
@@ -78,30 +112,66 @@ msgstr "Nom"
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__paperformat_id
 msgid "Paper Format"
-msgstr ""
+msgstr "Format du papier"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat
 msgid "Paper Format Config"
-msgstr ""
+msgstr "Configuration du format papier"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
 msgstr "Rapport"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__smart_search
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__smart_search
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__smart_search
+msgid "Smart Search"
+msgstr "Smart Search"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
 msgid "The command argument name. Remember to add prefix -- or -"
 msgstr ""
+"Le nom de l'argument de la commande. N'oubliez pas d'ajouter le préfixe -- "
+"ou -"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changeset_changes
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changeset_changes
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changeset_changes
+msgid "The number of pending changes of this record"
+msgstr "Le nombre de modifications en attente de cet enregistrement"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changesets
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changesets
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changesets
+msgid "The number of pending changesets of this record"
+msgstr "Le nombre de jeux de modifications en attente pour cet enregistrement"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_changesets
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_changesets
+#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_changesets
+msgid "The overall number of changesets of this record"
+msgstr "Le nombre total de modifications de cet enregistrement"
+
+#. module: report_wkhtmltopdf_param
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__user_can_see_changeset
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__user_can_see_changeset
+#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__user_can_see_changeset
+msgid "User Can See Changeset"
+msgstr "L'utilisateur peut voir le jeu de modifications"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__value
 msgid "Value"
-msgstr ""
+msgstr "Valeur"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model,name:report_wkhtmltopdf_param.model_report_paperformat_parameter
 msgid "wkhtmltopdf parameters"
-msgstr ""
+msgstr "Paramètres wkhtmltopdf"

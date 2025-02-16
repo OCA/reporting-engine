@@ -1,0 +1,209 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_pdf_cover
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-14 19:26+0000\n"
+"PO-Revision-Date: 2025-02-14 19:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Back Cover PDF"
+msgstr "Задна корица PDF"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_change_ids
+msgid "Changeset Changes"
+msgstr "Промени в набора от промени"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__changeset_ids
+msgid "Changesets"
+msgstr "Промени"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "Count Changesets"
+msgstr "Промени в броя"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "Count Pending Changeset Changes"
+msgstr "Отчитане на чакащите промени в набора от промени"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "Count Pending Changesets"
+msgstr "Брой чакащи промени"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load back cover: %s"
+msgstr "Неуспешно зареждане на задната корица: %s"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Failed to load front cover: %s"
+msgstr "Неуспешно зареждане на предната корица: %s"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Front Cover PDF"
+msgstr "Предна корица PDF"
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable back cover found."
+msgstr "Не е намерена използваема задна корица."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "No usable front cover found."
+msgstr "Не е намерен използваем преден капак."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid "Overlap Back Cover"
+msgstr "Застъпване на задната корица"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid "Overlap Front Cover"
+msgstr "Припокриване на предната корица"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model,name:report_qweb_pdf_cover.model_ir_actions_report
+msgid "Report Action"
+msgstr "Действие на доклада"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__smart_search
+msgid "Smart Search"
+msgstr "Smart Search"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changeset_changes
+msgid "The number of pending changes of this record"
+msgstr "Брой на предстоящите промени на този запис"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_pending_changesets
+msgid "The number of pending changesets of this record"
+msgstr "Броят на чакащите промени в този запис"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__count_changesets
+msgid "The overall number of changesets of this record"
+msgstr "Общ брой на промените в този запис"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+msgid "Upload an PDF file to use as a back cover on this report."
+msgstr ""
+"Качете PDF файл, който да използвате като задна корица на този доклад."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+msgid "Upload an PDF file to use as a front cover on this report."
+msgstr ""
+"Качете PDF файл, който да използвате като предна корица на този доклад."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use Back Cover"
+msgstr "Използване на задната корица"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use Front Cover"
+msgstr "Използване на предната корица"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+msgid "Use a back cover when rendering the PDF report."
+msgstr "Използвайте задната корица при визуализиране на отчета в PDF формат."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+msgid "Use a front cover when rendering the PDF report."
+msgstr "Използвайте предна корица при визуализиране на отчета в PDF формат."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__user_can_see_changeset
+msgid "User Can See Changeset"
+msgstr "Потребителят може да види набора от промени"
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+msgid ""
+"When set, the back cover of the report will overlap with the contents of the"
+" last page of the report. This is useful to include some information of the "
+"report in the back cover."
+msgstr ""
+"Когато е зададена, задната корица на отчета ще се припокрива със "
+"съдържанието на последната страница на отчета. Това е полезно, за да "
+"включите част от информацията на отчета в задната корица."
+
+#. module: report_qweb_pdf_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+msgid ""
+"When set, the front cover of the report will overlap with the contents of "
+"the first page of the report. This is useful to include some information of "
+"the report in the front cover."
+msgstr ""
+"Когато е зададена, предната корица на отчета ще се припокрива със "
+"съдържанието на първата страница на отчета. Това е полезно, за да включите "
+"част от информацията на отчета в предната корица."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your back cover PDF contains more than one page, all but the first one will "
+"be ignored."
+msgstr ""
+"Вашият PDF файл за задната корица съдържа повече от една страница, всички "
+"освен първата ще бъдат игнорирани."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your back cover PDF does not contain any pages."
+msgstr "Вашият PDF файл със задната корица не съдържа никакви страници."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid ""
+"Your front cover PDF contains more than one page, all but the first one will"
+" be ignored."
+msgstr ""
+"Вашият PDF файл с предна корица съдържа повече от една страница, всички "
+"освен първата ще бъдат игнорирани."
+
+#. module: report_qweb_pdf_cover
+#. odoo-python
+#: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
+#, python-format
+msgid "Your front cover PDF does not contain any pages."
+msgstr "Вашият PDF файл с предна корица не съдържа никакви страници."
