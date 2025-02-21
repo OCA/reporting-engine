@@ -17,13 +17,13 @@ Base report csv
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_csv
+    :target: https://github.com/OCA/reporting-engine/tree/17.0/report_csv
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_csv
+    :target: https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_csv
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -38,57 +38,65 @@ This module provides a basic report class to generate csv report.
 Configuration
 =============
 
-In case the exported CSV report should be encoded in another system than UTF-8, following
-fields of the report record (*Settings > Technical > Reports*) should be populated accordingly.
+In case the exported CSV report should be encoded in another system than
+UTF-8, following fields of the report record (*Settings > Technical >
+Reports*) should be populated accordingly.
 
-* Encoding: set an encoding system (such as cp932)
-* Encode Error Handling: select 'Ignore' or 'Replace' as necessary.
+-  Encoding: set an encoding system (such as cp932)
+-  Encode Error Handling: select 'Ignore' or 'Replace' as necessary.
 
-  * 'Ignore': in case of an encoding error, the problematic character will be removed from the exported file.
-  * 'Replace': in case of an encoding error, the problematic character will be replaced with '?' symbol.
-  * Leaving the field blank: in case of an encoding error, the report generation fails with an error message.
+   -  'Ignore': in case of an encoding error, the problematic character
+      will be removed from the exported file.
+   -  'Replace': in case of an encoding error, the problematic character
+      will be replaced with '?' symbol.
+   -  Leaving the field blank: in case of an encoding error, the report
+      generation fails with an error message.
 
 Usage
 =====
 
-An example of CSV report for partners on a module called `module_name`:
+An example of CSV report for partners on a module called
+\`module_name\`:
 
-A python class ::
+A python class :
 
-    from odoo import models
+::
 
-    class PartnerCSV(models.AbstractModel):
-        _name = 'report.report_csv.partner_csv'
-        _inherit = 'report.report_csv.abstract'
+   from odoo import models
 
-        def generate_csv_report(self, writer, data, partners):
-            writer.writeheader()
-            for obj in partners:
-                writer.writerow({
-                    'name': obj.name,
-                    'email': obj.email,
-                })
+   class PartnerCSV(models.AbstractModel):
+       _name = 'report.report_csv.partner_csv'
+       _inherit = 'report.report_csv.abstract'
 
-        def csv_report_options(self):
-            res = super().csv_report_options()
-            res['fieldnames'].append('name')
-            res['fieldnames'].append('email')
-            res['delimiter'] = ';'
-            res['quoting'] = csv.QUOTE_ALL
-            return res
+       def generate_csv_report(self, writer, data, partners):
+           writer.writeheader()
+           for obj in partners:
+               writer.writerow({
+                   'name': obj.name,
+                   'email': obj.email,
+               })
 
+       def csv_report_options(self):
+           res = super().csv_report_options()
+           res['fieldnames'].append('name')
+           res['fieldnames'].append('email')
+           res['delimiter'] = ';'
+           res['quoting'] = csv.QUOTE_ALL
+           return res
 
-A report XML record ::
+A report XML record :
 
-    <report
-        id="partner_csv"
-        model="res.partner"
-        string="Print to CSV"
-        report_type="csv"
-        name="module_name.report_name"
-        file="res_partner"
-        attachment_use="False"
-    />
+::
+
+   <report
+       id="partner_csv"
+       model="res.partner"
+       string="Print to CSV"
+       report_type="csv"
+       name="module_name.report_name"
+       file="res_partner"
+       attachment_use="False"
+   />
 
 Update encoding with an appropriate value (e.g. cp932) as necessary.
 
@@ -98,7 +106,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_csv%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_csv%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -106,22 +114,22 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Creu Blanca
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Enric Tobella <etobella@creublanca.es>
-* Jaime Arroyo <jaime.arroyo@creublanca.es>
-* Rattapong Chokmasermkul <rattapongc@ecosoft.co.th>
-* `Quartile <https://www.quartile.co>`__:
+-  Enric Tobella <etobella@creublanca.es>
+-  Jaime Arroyo <jaime.arroyo@creublanca.es>
+-  Rattapong Chokmasermkul <rattapongc@ecosoft.co.th>
+-  `Quartile <https://www.quartile.co>`__:
 
-  * Aung Ko Ko Lin
+   -  Aung Ko Ko Lin
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -133,6 +141,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_csv>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/17.0/report_csv>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

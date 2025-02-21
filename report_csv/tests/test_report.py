@@ -62,7 +62,6 @@ class TestReport(common.TransactionCase):
         self.assertTupleEqual(rep, rep_from_attachment)
 
     def test_id_retrieval(self):
-
         # Typical call from WebUI with wizard
         objs = self.csv_report._get_objs_for_report(
             False, {"context": {"active_ids": self.docs.ids}}

@@ -1,6 +1,7 @@
-An example of CSV report for partners on a module called `module_name`:
+An example of CSV report for partners on a module called
+\`module_name\`:
 
-A python class ::
+A python class :
 
     from odoo import models
 
@@ -24,8 +25,7 @@ A python class ::
             res['quoting'] = csv.QUOTE_ALL
             return res
 
-
-A report XML record ::
+A report XML record :
 
     <report
         id="partner_csv"
