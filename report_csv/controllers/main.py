@@ -11,6 +11,8 @@ from odoo.http import (
     content_disposition,
     request,
     route,
+)
+from odoo.http import (
     serialize_exception as _serialize_exception,
 )
 from odoo.tools import html_escape
@@ -47,9 +49,7 @@ class ReportController(report.ReportController):
                 ("Content-Length", len(csv)),
             ]
             return request.make_response(csv, headers=csvhttpheaders)
-        return super(ReportController, self).report_routes(
-            reportname, docids, converter, **data
-        )
+        return super().report_routes(reportname, docids, converter, **data)
 
     @route()
     def report_download(self, data, context=None):
@@ -73,8 +73,9 @@ class ReportController(report.ReportController):
                         url_decode(url.split("?")[1]).items()
                     )  # decoding the args represented in JSON
                     if "context" in data:
-                        context, data_context = json.loads(context or "{}"), json.loads(
-                            data.pop("context")
+                        context, data_context = (
+                            json.loads(context or "{}"),
+                            json.loads(data.pop("context")),
                         )
                         context = json.dumps({**context, **data_context})
                     response = self.report_routes(
@@ -99,7 +100,7 @@ class ReportController(report.ReportController):
                 )
                 return response
             else:
-                return super(ReportController, self).report_download(data, context)
+                return super().report_download(data, context)
         except Exception as e:
             _logger.exception("Error while generating report %s", reportname)
             se = _serialize_exception(e)
