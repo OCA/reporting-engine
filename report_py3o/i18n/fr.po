@@ -1,19 +1,24 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* report_py3o
+# * report_py3o
 #
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Quentin THEURET <odoo@kerpeo.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:26+0000\n"
-"PO-Revision-Date: 2025-02-14 19:26+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2018-12-04 16:55+0000\n"
+"PO-Revision-Date: 2018-07-18 08:55+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #. module: report_py3o
 #. odoo-python
@@ -75,36 +80,36 @@ msgid ""
 "relative path to root of YOUR module or an absolute path on your server."
 msgstr ""
 "Si l'utilisateur ne fournit pas de modèle, celui-ci sera utilisé. Il doit "
-"s'agir d'un chemin relatif à la racine de VOTRE module ou d'un chemin absolu"
-" sur votre serveur."
+"s'agir d'un chemin relatif à la racine de VOTRE module ou d'un chemin absolu "
+"sur votre serveur."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_multi_in_one
 msgid ""
 "If you execute a report on several records, by default Odoo will generate a "
-"ZIP file that contains as many files as selected records. If you enable this"
-" option, Odoo will generate instead a single report for the selected "
-"records."
+"ZIP file that contains as many files as selected records. If you enable this "
+"option, Odoo will generate instead a single report for the selected records."
 msgstr ""
-"Si vous exécutez un rapport sur plusieurs enregistrements, Odoo générera par"
-" défaut un fichier ZIP contenant autant de fichiers que d'enregistrements "
-"sélectionnés. Si vous activez cette option, Odoo générera à la place un seul"
-" rapport pour les enregistrements sélectionnés."
+"Si vous exécutez un rapport sur plusieurs enregistrements, Odoo générera par "
+"défaut un fichier ZIP contenant autant de fichiers que d'enregistrements "
+"sélectionnés. Si vous activez cette option, Odoo générera à la place un seul "
+"rapport pour les enregistrements sélectionnés."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
+#, fuzzy
 msgid "Ir Actions Report"
 msgstr "Ir actions report xml id"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_native_format
 msgid "Is Py3O Native Format"
-msgstr "Py3O est-il un format natif ?"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_report_not_available
 msgid "Is Py3O Report Not Available"
-msgstr "Le rapport Py3O n'est pas disponible"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
@@ -141,8 +146,6 @@ msgstr "Type de fichier modèle de LibreOffice"
 #, python-format
 msgid "Libreoffice runtime not available. Please contact your administrator."
 msgstr ""
-"Le runtime de Libreoffice n'est pas disponible. Veuillez contacter votre "
-"administrateur."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__module
@@ -152,7 +155,7 @@ msgstr "Module"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__msg_py3o_report_not_available
 msgid "Msg Py3O Report Not Available"
-msgstr "Msg Py3O Rapport non disponible"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_multi_in_one
@@ -209,7 +212,7 @@ msgstr "Format de sortie"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__lo_bin_path
 msgid "Path to the libreoffice runtime"
-msgstr "Chemin d'accès au runtime libreoffice"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.actions.report,name:report_py3o.res_users_report_py3o
@@ -225,15 +228,17 @@ msgstr "Rapports Py3o"
 #: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 msgid "Py3o Templates"
-msgstr "Modèles Py3o"
+msgstr "Py3o Templates"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
+#, fuzzy
 msgid "Py3o template"
 msgstr "Py3o Templates"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report
+#, fuzzy
 msgid "Report Action"
 msgstr "Rapport"
 
@@ -244,36 +249,31 @@ msgstr "Rapport Py3O"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
+#, fuzzy
 msgid "Report Type"
-msgstr "Type de rapport"
+msgstr "Rapport Py3O"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_id
 msgid "Template"
-msgstr "Modèle"
+msgstr "Template"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__module
 msgid "The implementer module that provides this report"
-msgstr "Le module d'implémentation qui fournit ce rapport"
+msgstr "The implementer module that provides this report"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid ""
-"The libreoffice runtime is required to genereate the py3o report '%s' but is"
-" not found into the bin path. You must install the libreoffice runtime on "
-"the server. If the runtime is already installed and is not found by Odoo, "
-"you can provide the full path to the runtime by setting the key "
-"'py3o.conversion_command' into the configuration parameters."
+"The libreoffice runtime is required to genereate the py3o report '%s' but is "
+"not found into the bin path. You must install the libreoffice runtime on the "
+"server. If the runtime is already installed and is not found by Odoo, you "
+"can provide the full path to the runtime by setting the key 'py3o."
+"conversion_command' into the configuration parameters."
 msgstr ""
-"Le runtime libreoffice est nécessaire pour générer le rapport py3o '%s' mais"
-" ne se trouve pas dans le chemin bin. Vous devez installer le runtime "
-"libreoffice sur le serveur. Si le runtime est déjà installé et n'est pas "
-"trouvé par Odoo, vous pouvez fournir le chemin complet du runtime en "
-"définissant la clé 'py3o.conversion_command' dans les paramètres de "
-"configuration."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
@@ -283,17 +283,22 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
-"Type de rapport qui sera généré, chacun ayant sa propre méthode de "
-"génération de rapports. HTML signifie que le rapport sera ouvert directement"
-" dans votre navigateur PDF signifie que le rapport sera généré à l'aide de "
-"Wkhtmltopdf et téléchargé par l'utilisateur."
 
 #. module: report_py3o
 #: model:ir.actions.report,print_report_name:report_py3o.res_users_report_py3o
 msgid "object.name.replace(' ', '_') + '-demo.odt'"
-msgstr "object.name.replace(' ', '_') + '-demo.odt'"
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 msgid "py3o"
-msgstr "Py3o"
+msgstr ""
+
+#~ msgid "Py3o"
+#~ msgstr "Py3o"
+
+#~ msgid "ir.actions.report.xml"
+#~ msgstr "ir.actions.report.xml"
+
+#~ msgid "py3o.template"
+#~ msgstr "py3o.template"

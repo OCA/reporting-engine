@@ -1,54 +1,23 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* report_wkhtmltopdf_param
+# * report_wkhtmltopdf_param
 #
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:27+0000\n"
-"PO-Revision-Date: 2025-02-14 19:27+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2017-08-17 02:52+0000\n"
+"PO-Revision-Date: 2019-08-14 13:44+0000\n"
+"Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>\n"
+"Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__changeset_change_ids
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__changeset_change_ids
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__changeset_change_ids
-msgid "Changeset Changes"
-msgstr "Alterações do conjunto de alterações"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__changeset_ids
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__changeset_ids
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__changeset_ids
-msgid "Changesets"
-msgstr "Conjunto de alterações"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_changesets
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_changesets
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_changesets
-msgid "Count Changesets"
-msgstr "Contagem de conjuntos de alterações"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changeset_changes
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changeset_changes
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changeset_changes
-msgid "Count Pending Changeset Changes"
-msgstr "Conte as alterações pendentes do conjunto de alterações"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changesets
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changesets
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changesets
-msgid "Count Pending Changesets"
-msgstr "Conte os conjuntos de alterações pendentes"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__create_uid
@@ -123,46 +92,10 @@ msgid "Report Action"
 msgstr "Ação do Relatório"
 
 #. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__smart_search
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__smart_search
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__smart_search
-msgid "Smart Search"
-msgstr "Pesquisa inteligente"
-
-#. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__name
 msgid "The command argument name. Remember to add prefix -- or -"
 msgstr ""
-"O nome do argumento do comando. Não se esqueça de adicionar o prefixo -- ou "
-"-"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changeset_changes
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changeset_changes
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changeset_changes
-msgid "The number of pending changes of this record"
-msgstr "O número de alterações pendentes deste registo"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_pending_changesets
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_pending_changesets
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_pending_changesets
-msgid "The number of pending changesets of this record"
-msgstr "O número de conjuntos de alterações pendentes deste registo"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_ir_actions_report__count_changesets
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat__count_changesets
-#: model:ir.model.fields,help:report_wkhtmltopdf_param.field_report_paperformat_parameter__count_changesets
-msgid "The overall number of changesets of this record"
-msgstr "O número total de conjuntos de alterações deste registo"
-
-#. module: report_wkhtmltopdf_param
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_ir_actions_report__user_can_see_changeset
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat__user_can_see_changeset
-#: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__user_can_see_changeset
-msgid "User Can See Changeset"
-msgstr "O utilizador pode ver o conjunto de alterações"
+"O nome do argumento do comando. Não se esqueça de adicionar o prefixo -- ou -"
 
 #. module: report_wkhtmltopdf_param
 #: model:ir.model.fields,field_description:report_wkhtmltopdf_param.field_report_paperformat_parameter__value

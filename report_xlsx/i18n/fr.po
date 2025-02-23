@@ -1,19 +1,23 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* report_xlsx
+# * report_xlsx
 #
+# Translators:
+# Nicolas JEUDY <njeudy@panda-chi.io>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:26+0000\n"
-"PO-Revision-Date: 2025-02-14 19:26+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2018-01-05 17:53+0000\n"
+"PO-Revision-Date: 2024-12-31 15:06+0000\n"
+"Last-Translator: samibc2c <sami.bouzidi@camptocamp.com>\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
@@ -26,9 +30,14 @@ msgid "Partner XLSX Report"
 msgstr "Rapport XLSX du partenaire"
 
 #. module: report_xlsx
+#: model:ir.actions.report,name:report_xlsx.partner_xlsx
+msgid "Print to XLSX"
+msgstr "Imprimer en XLSX"
+
+#. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr "Rapport"
+msgstr "Action rapport"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
@@ -44,11 +53,33 @@ msgid ""
 "downloaded by the user."
 msgstr ""
 "Type de rapport qui sera généré, chacun ayant sa propre méthode de "
-"génération de rapports. HTML signifie que le rapport sera ouvert directement"
-" dans votre navigateur PDF signifie que le rapport sera généré à l'aide de "
+"génération de rapports. HTML signifie que le rapport sera ouvert directement "
+"dans votre navigateur PDF signifie que le rapport sera généré à l'aide de "
 "Wkhtmltopdf et téléchargé par l'utilisateur."
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
 msgid "XLSX"
 msgstr "XLSX"
+
+#, python-format
+#~ msgid "%s model was not found"
+#~ msgstr "model '%s' n'a pas été trouvé"
+
+#~ msgid "Display Name"
+#~ msgstr "Nom"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Dernière modification le"
+
+#~ msgid "report.report_xlsx.partner_xlsx"
+#~ msgstr "report.report_xlsx.partner_xlsx"
+
+#~ msgid "ir.actions.report"
+#~ msgstr "ir.actions.report"
+
+#~ msgid "report.report_xlsx.abstract"
+#~ msgstr "report.report_xlsx.abstract"

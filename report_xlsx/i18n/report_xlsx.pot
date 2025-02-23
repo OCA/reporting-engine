@@ -6,8 +6,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:26+0000\n"
-"PO-Revision-Date: 2025-02-14 19:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +21,11 @@ msgstr ""
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "Partner XLSX Report"
+msgstr ""
+
+#. module: report_xlsx
+#: model:ir.actions.report,name:report_xlsx.partner_xlsx
+msgid "Print to XLSX"
 msgstr ""
 
 #. module: report_xlsx

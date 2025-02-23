@@ -6,8 +6,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:26+0000\n"
-"PO-Revision-Date: 2025-02-14 19:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,8 +24,18 @@ msgid "CRLF (\\r\\n)"
 msgstr ""
 
 #. module: report_text_format_option
+#: model:ir.actions.report,name:report_text_format_option.action_report_demo
+msgid "Demo Text Report"
+msgstr ""
+
+#. module: report_text_format_option
 #: model:ir.model.fields,help:report_text_format_option.field_ir_actions_report__text_encoding
 msgid "Encoding to be applied to the generated Text file. e.g. cp932"
+msgstr ""
+
+#. module: report_text_format_option
+#: model_terms:ir.ui.view,arch_db:report_text_format_option.demo_report_template
+msgid "Hello,"
 msgstr ""
 
 #. module: report_text_format_option
@@ -62,11 +70,6 @@ msgstr ""
 msgid ""
 "Select the type of line ending in case the report needs to be output with "
 "other line ending than 'LF'."
-msgstr ""
-
-#. module: report_text_format_option
-#: model:ir.model.fields,field_description:report_text_format_option.field_ir_actions_report__smart_search
-msgid "Smart Search"
 msgstr ""
 
 #. module: report_text_format_option
