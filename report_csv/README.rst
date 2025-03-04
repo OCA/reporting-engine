@@ -10,9 +10,9 @@ Base report csv
    !! source digest: sha256:9ecdbfd97f39e757a65514e63f51b8b09fe93f2cbb4ff0c4cd878b72e8633958
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-.. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
+.. |badge1| image:: https://img.shields.io/badge/maturity-Production%2FStable-green.png
     :target: https://odoo-community.org/page/development-status
-    :alt: Beta
+    :alt: Production/Stable
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
@@ -42,15 +42,15 @@ In case the exported CSV report should be encoded in another system than
 UTF-8, following fields of the report record (*Settings > Technical >
 Reports*) should be populated accordingly.
 
-- Encoding: set an encoding system (such as cp932)
-- Encode Error Handling: select 'Ignore' or 'Replace' as necessary.
+-  Encoding: set an encoding system (such as cp932)
+-  Encode Error Handling: select 'Ignore' or 'Replace' as necessary.
 
-  - 'Ignore': in case of an encoding error, the problematic character
-    will be removed from the exported file.
-  - 'Replace': in case of an encoding error, the problematic character
-    will be replaced with '?' symbol.
-  - Leaving the field blank: in case of an encoding error, the report
-    generation fails with an error message.
+   -  'Ignore': in case of an encoding error, the problematic character
+      will be removed from the exported file.
+   -  'Replace': in case of an encoding error, the problematic character
+      will be replaced with '?' symbol.
+   -  Leaving the field blank: in case of an encoding error, the report
+      generation fails with an error message.
 
 Usage
 =====
@@ -121,12 +121,12 @@ Authors
 Contributors
 ------------
 
-- Enric Tobella <etobella@creublanca.es>
-- Jaime Arroyo <jaime.arroyo@creublanca.es>
-- Rattapong Chokmasermkul <rattapongc@ecosoft.co.th>
-- `Quartile <https://www.quartile.co>`__:
+-  Enric Tobella <etobella@creublanca.es>
+-  Jaime Arroyo <jaime.arroyo@creublanca.es>
+-  Rattapong Chokmasermkul <rattapongc@ecosoft.co.th>
+-  `Quartile <https://www.quartile.co>`__:
 
-  - Aung Ko Ko Lin
+   -  Aung Ko Ko Lin
 
 Maintainers
 -----------
