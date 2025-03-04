@@ -16,5 +16,6 @@
             "report_csv/static/src/js/report/qwebactionmanager.esm.js"
         ]
     },
+    "development_status": "Production/Stable",
     "installable": True,
 }
