@@ -7,7 +7,7 @@ from logging import getLogger
 
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 logger = getLogger(__name__)
 
@@ -50,21 +50,25 @@ class Report(models.Model):
     def pdf_check_pages(self, num_pages, front=True):
         if num_pages < 1:
             if front:
-                logger.error(_("Your front cover PDF does not contain any pages."))
+                logger.error(
+                    self.env._("Your front cover PDF does not contain any pages.")
+                )
             else:
-                logger.error(_("Your back cover PDF does not contain any pages."))
+                logger.error(
+                    self.env._("Your back cover PDF does not contain any pages.")
+                )
             return False
         elif num_pages > 1:
             if front:
                 logger.info(
-                    _(
+                    self.env._(
                         "Your front cover PDF contains more than one page, "
                         "all but the first one will be ignored."
                     )
                 )
             else:
                 logger.info(
-                    _(
+                    self.env._(
                         "Your back cover PDF contains more than one page, "
                         "all but the first one will be ignored."
                     )
@@ -93,19 +97,19 @@ class Report(models.Model):
                 pdf_front_cover = PdfFileReader(BytesIO(front_cover))
                 if not pdf_front_cover:
                     use_front_cover = False
-                    logger.error(_("No usable front cover found."))
+                    logger.error(self.env._("No usable front cover found."))
             except Exception as e:
                 use_front_cover = False
-                logger.exception(_("Failed to load front cover: %s", e))
+                logger.exception(self.env._("Failed to load front cover: %s", e))
         if use_back_cover:
             try:
                 pdf_back_cover = PdfFileReader(BytesIO(back_cover))
                 if not pdf_back_cover:
                     use_back_cover = False
-                    logger.error(_("No usable back cover found."))
+                    logger.error(self.env._("No usable back cover found."))
             except Exception as e:
                 use_back_cover = False
-                logger.exception(_("Failed to load back cover: %s", e))
+                logger.exception(self.env._("Failed to load back cover: %s", e))
         return use_front_cover, pdf_front_cover, use_back_cover, pdf_back_cover
 
     @api.model

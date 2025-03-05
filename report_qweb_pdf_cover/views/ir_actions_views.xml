@@ -1,35 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version='1.0' encoding='utf-8' ?>
 <odoo>
     <record id="act_report_xml_view" model="ir.ui.view">
         <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
             <field name="attachment" position="after">
-                <field
-                    name="use_front_cover"
-                    attrs="{'invisible': [('report_type', '!=', 'qweb-pdf')]}"
-                />
+                <field name="use_front_cover" invisible="report_type != 'qweb-pdf'" />
                 <field
                     name="front_cover_overlap"
-                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_front_cover', '=', False)]}"
+                    invisible="report_type != 'qweb-pdf' or not use_front_cover"
                 />
                 <field
                     name="front_cover_pdf"
-                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_front_cover', '=', False)]}"
+                    invisible="report_type != 'qweb-pdf' or not use_front_cover"
                     widget="pdf_viewer"
                 />
 
-                <field
-                    name="use_back_cover"
-                    attrs="{'invisible': [('report_type', '!=', 'qweb-pdf')]}"
-                />
+                <field name="use_back_cover" invisible="report_type != 'qweb-pdf'" />
                 <field
                     name="back_cover_overlap"
-                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_back_cover', '=', False)]}"
+                    invisible="report_type != 'qweb-pdf' or not use_back_cover"
                 />
                 <field
                     name="back_cover_pdf"
-                    attrs="{'invisible': ['|', ('report_type', '!=', 'qweb-pdf'),('use_back_cover', '=', False)]}"
+                    invisible="report_type != 'qweb-pdf' or not use_back_cover"
                     widget="pdf_viewer"
                 />
             </field>
