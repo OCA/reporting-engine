@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -113,11 +113,6 @@ msgid "Java"
 msgstr ""
 
 #. module: report_qweb_signer
-#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__write_uid
 msgid "Last Updated by"
 msgstr ""
@@ -134,6 +129,7 @@ msgstr ""
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
+#: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_name
 msgid "Model"
 msgstr ""
 
@@ -151,11 +147,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:report_qweb_signer.action_report_certificate
 #: model:ir.ui.menu,name:report_qweb_signer.menu_report_certificate
 msgid "PDF certificates"
-msgstr ""
-
-#. module: report_qweb_signer
-#: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_report_certificate_form
-msgid "PDF report certificate"
 msgstr ""
 
 #. module: report_qweb_signer
