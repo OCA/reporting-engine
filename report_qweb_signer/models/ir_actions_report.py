@@ -26,7 +26,7 @@ def _normalize_filepath(path):
     path = path.strip()
     if not os.path.isabs(path):
         me = os.path.dirname(__file__)
-        path = "{}/../static/certificate/".format(me) + path
+        path = f"{me}/../static/certificate/" + path
     path = os.path.normpath(path)
     return path if os.path.exists(path) else False
 
@@ -138,10 +138,8 @@ class IrActionsReport(models.Model):
         java_position_param = irc_param.get_param(
             "report_qweb_signer.java_position_parameters"
         )
-        jar = "{}/../static/jar/JSignPdf.jar".format(me)
-        return "{} {} {} {} {}".format(
-            java_bin, java_param, jar, opts, java_position_param
-        )
+        jar = f"{me}/../static/jar/JSignPdf.jar"
+        return f"{java_bin} {java_param} {jar} {opts} {java_position_param}"
 
     def _get_endesive_params(self, certificate):
         date = datetime.datetime.utcnow() - datetime.timedelta(hours=12)
@@ -161,7 +159,7 @@ class IrActionsReport(models.Model):
 
     def _signer_endesive(self, params, p12filepath, pdfpath, pdfsigned, passwd):
         stringpassword = ""
-        with open(passwd, "r") as pw:
+        with open(passwd) as pw:
             for line in pw:
                 stringpassword += line.rstrip()
         password = stringpassword.encode("utf-8")
@@ -190,7 +188,7 @@ class IrActionsReport(models.Model):
             passwd_f = open(passwd, "tr")
             passwd = passwd_f.read().strip()
             passwd_f.close()
-            signer_opts = ' "{}" -ksf "{}" -ksp "{}" -d "/tmp"'.format(pdf, p12, passwd)
+            signer_opts = f' "{pdf}" -ksf "{p12}" -ksp "{passwd}" -d "/tmp"'
             signer = self._signer_bin(signer_opts)
             process = subprocess.Popen(
                 signer, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
