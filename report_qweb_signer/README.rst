@@ -17,19 +17,19 @@ Qweb PDF reports signer
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_signer
+    :target: https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_signer
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_qweb_signer
+    :target: https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_qweb_signer
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module extends the functionality of report module to sign
-PDFs using a PKCS#12 certificate.
+This module extends the functionality of report module to sign PDFs
+using a PKCS#12 certificate.
 
 **Table of contents**
 
@@ -41,71 +41,78 @@ Installation
 
 To install this module, you need to install Java JDK Headlees, e.g.:
 
-  apt-get install default-jre-headless
+   apt-get install default-jre-headless
 
 Configuration
 =============
 
-In order to start signing PDF documents you need to configure certificate(s)
-to use in your company.
+In order to start signing PDF documents you need to configure
+certificate(s) to use in your company.
 
-* Go to ``Settings > Companies > Companies > Your company``
-* Go to ``Report configuration`` tab
-* Click ``Edit``
-* Add a new item in ``PDF report certificates`` list
-* Click ``Create``
-* Set name, certificate file, password file and model
-* Optionally you can set a domain and filename pattern for saving as attachment
+- Go to ``Settings > Companies > Companies > Your company``
+- Go to ``Report configuration`` tab
+- Click ``Edit``
+- Add a new item in ``PDF report certificates`` list
+- Click ``Create``
+- Set name, certificate file, password file and model
+- Optionally you can set a domain and filename pattern for saving as
+  attachment
 
 For example, if you want to sign only customer invoices in posted state:
 
-* Model: ``account.move``
-* Domain: ``[('move_type','=','out_invoice'), ('state', '=', 'posted')]``
-* Save as attachment: ``(object.name or '').replace('/','_') + '.signed.pdf'``
+- Model: ``account.move``
+- Domain:
+  ``[('move_type','=','out_invoice'), ('state', '=', 'posted')]``
+- Save as attachment:
+  ``(object.name or '').replace('/','_') + '.signed.pdf'``
 
-**Note**: Linux user that executes Odoo server process must have
-read access to certificate file and password file
+**Note**: Linux user that executes Odoo server process must have read
+access to certificate file and password file
 
 Java Memory Settings
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
-If you are signing large amounts of reports at the same time, or if you have a
-lower worker memory size than the JVM defaults, you may need to tune the JVM
-heap memory limits. Do so by adding a ``$JVM_ARGS`` environment variable that
-contains the required flags. Check out these links too:
+If you are signing large amounts of reports at the same time, or if you
+have a lower worker memory size than the JVM defaults, you may need to
+tune the JVM heap memory limits. Do so by adding a ``$JVM_ARGS``
+environment variable that contains the required flags. Check out these
+links too:
 
-- `StackOverflow answer <https://stackoverflow.com/a/14763095/1468388>`_.
-- `Java docs <https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161>`_.
+- `StackOverflow
+  answer <https://stackoverflow.com/a/14763095/1468388>`__.
+- `Java
+  docs <https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161>`__.
 
 Usage
 =====
 
-User just prints PDF documents (only Qweb PDF reports supported) as usual,
-but signed PDF is automatically downloaded if this document model is configured
-as indicated above.
+User just prints PDF documents (only Qweb PDF reports supported) as
+usual, but signed PDF is automatically downloaded if this document model
+is configured as indicated above.
 
-If 'Save as attachment' is configured, signed PDF is saved as attachment and
-next time saved one is downloaded without signing again. This is appropiate
-when signing date is important, for example, when signing customer invoices.
+If 'Save as attachment' is configured, signed PDF is saved as attachment
+and next time saved one is downloaded without signing again. This is
+appropiate when signing date is important, for example, when signing
+customer invoices.
 
-You can try the signing with the demo report that is included for customers
-called "Test PDF certificate".
+You can try the signing with the demo report that is included for
+customers called "Test PDF certificate".
 
 You can set extra parameters of JSignPdf library in the system parameter
-named 'report_qweb_signer.java_position_parameters', for example '-V' to
-visible signature into pdf. You can also set extra parameters for Java in the
-system parameter named 'report_qweb_signer.java_parameters'.
+named 'reportqweb_signer.java_position_parameters', for example '-V' to
+visible signature into pdf. You can also set extra parameters for Java
+in the system parameter named 'reportqweb_signer.java_parameters'.
 
 Known issues / Roadmap
 ======================
 
-* When signing multiple documents (if 'Allow only one document' is disable)
-  then 'Save as attachment' is not applied and signed result is not
-  saved as attachment.
-* Add tests.
-* Why not taking the occasion to add the whole configuration at report level
-  (if to be signed or not, the domain, etc...)?
-  See https://github.com/OCA/reporting-engine/pull/533#issuecomment-898321161
+- When signing multiple documents (if 'Allow only one document' is
+  disable) then 'Save as attachment' is not applied and signed result is
+  not saved as attachment.
+- Add tests.
+- Why not taking the occasion to add the whole configuration at report
+  level (if to be signed or not, the domain, etc...)? See
+  https://github.com/OCA/reporting-engine/pull/533#issuecomment-898321161
 
 Bug Tracker
 ===========
@@ -113,7 +120,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -121,41 +128,47 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Tecnativa
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Tecnativa <https://www.tecnativa.com>`_:
+- `Tecnativa <https://www.tecnativa.com>`__:
 
-    * Rafael Blasco
-    * Antonio Espinosa
-    * Pedro M. Baeza
-    * Jairo Llopis
-    * David Vidal
-* Santi Argüeso <santi@comunitea.com>
-* Omar Castiñeira <omar@comunitea.com>
-* `Punt Sistemes <https://www.puntsistemes.es>`_:
+     - Rafael Blasco
+     - Antonio Espinosa
+     - Pedro M. Baeza
+     - Jairo Llopis
+     - David Vidal
 
-    * Isaac Gallart <igallart@puntsistemes.es>
+- Santi Argüeso <santi@comunitea.com>
+
+- Omar Castiñeira <omar@comunitea.com>
+
+- `Punt Sistemes <https://www.puntsistemes.es>`__:
+
+     - Isaac Gallart <igallart@puntsistemes.es>
 
 Other credits
-~~~~~~~~~~~~~
+-------------
 
 External utilities
-++++++++++++++++++
+~~~~~~~~~~~~~~~~~~
 
-* JSignPdf: © Josef Cacek - License `MPL <http://www.mozilla.org/MPL>`__ or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__ - http://jsignpdf.sourceforge.net/
+- JSignPdf: © Josef Cacek - License `MPL <http://www.mozilla.org/MPL>`__
+  or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__
+  - http://jsignpdf.sourceforge.net/
 
 Icon
-++++
+~~~~
 
-`Created by Anton Noskov from the Noun Project <https://thenounproject.com/search/?q=signed+contract&i=65694>`__
+`Created by Anton Noskov from the Noun
+Project <https://thenounproject.com/search/?q=signed+contract&i=65694>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -167,6 +180,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_signer>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_signer>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
