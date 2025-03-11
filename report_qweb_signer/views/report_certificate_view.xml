@@ -9,8 +9,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">report.certificate.form</field>
         <field name="model">report.certificate</field>
         <field name="arch" type="xml">
-            <form string="PDF report certificate">
-                <sheet string="PDF report certificate">
+            <form>
+                <sheet>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
                         <h1>
@@ -25,7 +25,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="signing_method" />
                         </group>
                         <group>
-                            <field name="domain" />
+                            <field
+                                name="domain"
+                                widget="domain"
+                                options="{'model': 'model_name', 'in_dialog': True}"
+                                context="{'skip_search_count': 1}"
+                            />
+                            <field name="model_name" invisible="1" />
                             <field name="allow_only_one" />
                             <field name="attachment" />
                             <field
@@ -35,20 +41,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             />
                             <field name="action_report_ids" widget="many2many_tags" />
                         </group>
-                        <group
-                            attrs="{'invisible': [('signing_method', '!=', 'endesive')]}"
-                        >
+                        <group invisible="signing_method != 'endesive'">
                             <field
                                 name="endesive_certificate_mail"
-                                attrs="{'required': [('signing_method', '=', 'endesive')]}"
+                                required="signing_method == 'endesive'"
                             />
                             <field
                                 name="endesive_certificate_location"
-                                attrs="{'required': [('signing_method', '=', 'endesive')]}"
+                                required="signing_method == 'endesive'"
                             />
                             <field
                                 name="endesive_certificate_reason"
-                                attrs="{'required': [('signing_method', '=', 'endesive')]}"
+                                required="signing_method == 'endesive'"
                             />
                         </group>
                     </group>
@@ -60,7 +64,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">report.certificate.tree</field>
         <field name="model">report.certificate</field>
         <field name="arch" type="xml">
-            <tree name="PDF report certificates">
+            <tree>
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="path" />

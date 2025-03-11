@@ -197,7 +197,8 @@ class IrActionsReport(models.Model):
             if process.returncode:
                 raise UserError(
                     _(
-                        "Signing report (PDF): jPdfSign failed (error code: %(error_code)s). "
+                        "Signing report (PDF): "
+                        "jPdfSign failed (error code: %(error_code)s). "
                         "Message: %(message)s. Output: %(output)s",
                         error_code=process.returncode,
                         message=err,
