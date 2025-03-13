@@ -1,0 +1,157 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_field_option
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,help:report_qweb_field_option.field_qweb_field_options__field_options
+msgid ""
+"A string representation of a dictionary to specify field formatting options. Examples:\n"
+"{'widget': 'date'}\n"
+"{'widget': 'monetary'}\n"
+"{'widget': 'contact', 'fields': ['name', 'phone']}"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__company_id
+msgid "Company"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_field_id
+msgid "Currency Field"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__digits
+msgid "Digits"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_id
+msgid "Field"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_name
+msgid "Field Name"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_type
+msgid "Field Type"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Group By"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__id
+msgid "ID"
+msgstr ""
+
+#. module: report_qweb_field_option
+#. odoo-python
+#: code:addons/report_qweb_field_option/models/qweb_field_options.py:0
+#, python-format
+msgid ""
+"Invalid string for the Options field: %(field_options)s.\n"
+"Error: %(error)s"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_id
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Model"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_name
+msgid "Model Name"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_options
+msgid "Options"
+msgstr ""
+
+#. module: report_qweb_field_option
+#. odoo-python
+#: code:addons/report_qweb_field_option/models/qweb_field_options.py:0
+#, python-format
+msgid "Options must be a dictionary, but got %s"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model,name:report_qweb_field_option.model_ir_qweb
+msgid "Qweb"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.actions.act_window,name:report_qweb_field_option.action_qweb_field_options_view
+#: model:ir.model,name:report_qweb_field_option.model_qweb_field_options
+#: model:ir.ui.menu,name:report_qweb_field_option.menu_qweb_field_options
+msgid "Qweb Field Options"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Qweb Field Options Search"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_id
+msgid "UoM"
+msgstr ""
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_field_id
+msgid "UoM Field"
+msgstr ""
