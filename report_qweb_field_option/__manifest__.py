@@ -8,9 +8,6 @@
     "author": "Quartile, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["uom"],
-    "external_dependencies": {
-        "python": ["odoo_test_helper"],
-    },
     "data": [
         "security/ir.model.access.csv",
         "security/qweb_field_options_security.xml",
