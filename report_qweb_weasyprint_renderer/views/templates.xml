@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="html_wrapper">
+        <html t-att-lang="user.env.context.get('lang') or 'en'">
+            <head>
+                <title t-out="report.name" />
+                <meta name="author" t-att-content="user.name" />
+                <meta name="generator" content="Odoo" />
+                <meta
+                    name="dcterms.created"
+                    t-att-content="time.strftime('%Y-%m-%dT%H:%M:%S%z')"
+                />
+                <t t-call-assets="weasyprint_report_assets" t-js="false" />
+                <style type="text/css">
+                    <t
+                        t-set="paperformat"
+                        t-value="report.paperformat_id or env.ref('base.paperformat_euro')"
+                    />
+                    @page {
+                        size: <t
+                        t-out="'%smm %smm' % (paperformat.print_page_width, paperformat.print_page_height)"
+                    />;
+                        margin-top: <t
+                        t-out="paperformat.margin_top + report.weasyprint_header_height"
+                    />mm;
+                        margin-left: <t t-out="report.paperformat_id.margin_left" />mm;
+                        margin-right: <t t-out="paperformat.margin_right" />mm;
+                        margin-bottom: <t
+                        t-out="paperformat.margin_bottom + report.weasyprint_footer_height"
+                    />mm;
+                        padding: 0;
+                        @top-center {
+                            content: element(header);
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                            vertical-align: bottom;
+                        }
+                        @bottom-center {
+                            content: element(footer);
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                            vertical-align: top;
+                        }
+                    }
+                    body {
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                    .header {
+                        position: running(header);
+                        margin: 0!important;
+                        padding: 0!important;
+                    }
+                    .footer {
+                        position: running(footer);
+                        margin: 0!important;
+                        padding: 0!important;
+                    }
+                    .page:before {
+                        content: counter(page);
+                    }
+                    .topage:before {
+                        content: counter(pages);
+                    }
+                </style>
+            </head>
+            <body t-out="0" />
+        </html>
+    </template>
+    <template
+        id="html_wrapper_wkhtml_compat"
+        inherit_id="html_wrapper"
+        primary="True"
+        priority="100"
+    >
+        <t t-call-assets="weasyprint_report_assets" position="replace">
+            <t t-call-assets="web.report_assets_pdf" t-js="false" />
+            <t t-call-assets="web.report_assets_common" t-js="false" />
+        </t>
+        <body position="attributes">
+            <attribute name="t-out">body</attribute>
+        </body>
+    </template>
+</odoo>

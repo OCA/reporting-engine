@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="view_demo_report_external_layout">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="this">
+                <h1>
+                    <img
+                        t-attf-src="data:img/*;base64,{{this.icon_image}}"
+                        style="max-height: 1em"
+                    />
+                    <span t-out="this.shortdesc" />
+                </h1>
+                <div
+                    t-if="not is_html_empty(this.description_html)"
+                    t-out="this.description_html"
+                />
+                <div t-else="">[No description]</div>
+            </t>
+        </t>
+    </template>
+    <record id="demo_report_external_layout" model="ir.actions.report">
+        <field name="name">WeasyPrint demo report (external_layout)</field>
+        <field name="model">ir.module.module</field>
+        <field name="binding_model_id" ref="base.model_ir_module_module" />
+        <field name="binding_view_types">list,form</field>
+        <field
+            name="report_name"
+        >report_qweb_weasyprint_renderer.view_demo_report_external_layout</field>
+        <field name="qweb_pdf_engine">weasyprint</field>
+        <field name="paperformat_id" ref="base.paperformat_euro" />
+        <field name="weasyprint_header_height">10</field>
+        <field name="weasyprint_footer_height">-20</field>
+    </record>
+
+    <template
+        id="view_demo_report_internal_layout"
+        inherit_id="view_demo_report_external_layout"
+        primary="True"
+    >
+        <t t-call="web.external_layout" position="attributes">
+            <attribute name="t-call">web.internal_layout</attribute>
+        </t>
+    </template>
+    <record id="demo_report_internal_layout" model="ir.actions.report">
+        <field name="name">WeasyPrint demo report (internal_layout)</field>
+        <field name="model">ir.module.module</field>
+        <field name="binding_model_id" ref="base.model_ir_module_module" />
+        <field name="binding_view_types">list,form</field>
+        <field
+            name="report_name"
+        >report_qweb_weasyprint_renderer.view_demo_report_internal_layout</field>
+        <field name="qweb_pdf_engine">weasyprint</field>
+        <field name="paperformat_id" ref="base.paperformat_euro" />
+    </record>
+
+    <template
+        id="view_demo_report_html_wrapper"
+        inherit_id="view_demo_report_external_layout"
+        primary="True"
+    >
+        <t t-call="web.external_layout" position="attributes">
+            <attribute
+                name="t-call"
+            >report_qweb_weasyprint_renderer.html_wrapper</attribute>
+        </t>
+    </template>
+    <record id="demo_report_html_wrapper" model="ir.actions.report">
+        <field name="name">WeasyPrint demo report (html_wrapper)</field>
+        <field name="model">ir.module.module</field>
+        <field name="binding_model_id" ref="base.model_ir_module_module" />
+        <field name="binding_view_types">list,form</field>
+        <field
+            name="report_name"
+        >report_qweb_weasyprint_renderer.view_demo_report_html_wrapper</field>
+        <field name="qweb_pdf_engine">weasyprint</field>
+        <field name="paperformat_id" ref="base.paperformat_euro" />
+        <field name="weasyprint_header_height">0</field>
+        <field name="weasyprint_footer_height">0</field>
+    </record>
+
+    <template id="view_demo_report_custom">
+        <html>
+            <head>
+                <style type="text/css">
+                    @page {
+                        size: A4;
+                        padding: 20px;
+                        @top-center {
+                            content: '<t t-out="env.user.name" /> - ' string(title);
+                        }
+                        @bottom-center {
+                            content: counter(page) ' of ' counter(pages);
+                        }
+                    }
+                    @page:nth(2) { background-image: radial-gradient(white, lightgreen) }
+                    h1 {
+                        string-set: title content();
+                        page-break-before: always;
+                    }
+                    h1:first-of-type {
+                        page-break-before: avoid;
+                    }
+                    .index {
+                        list-style: none;
+                        padding-left: 0em;
+                    }
+                    .index li a {
+                        text-decoration: none;
+                        color: inherit;
+                    }
+                    .index li a::after {
+                        content: target-counter(attr(href), page);
+                        float: right;
+                    }
+                    .img {
+                        margin: .1em;
+                        max-height: 1em;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>WeasyPrint demo</h1>
+                <p>This report is supposed to show off a few <a
+                        href="https://doc.courtbouillon.org/weasyprint/stable/api_reference.html#supported-features"
+                    >features of weasyprint</a>. You see the headers and footers already, and the <a
+                        href="#index"
+                    >next page</a> contains a table of contents with internal links.</p>
+                <p
+                >Also observe that the next page has a different background than the other pages.</p>
+                <div>
+                    <p>It is also possible to embed forms</p>
+                    <form>
+                        <div>
+                        <label for="like_weasyprint">Do you like weasyprint?</label>
+                        <input
+                                type="checkbox"
+                                id="like_weasyprint"
+                                name="like_weasyprint"
+                            />
+                        </div>
+                        <div>
+                        <label for="comment">Comment</label>
+                        <textarea id="comment" name="comment" />
+                        </div>
+                    </form>
+                </div>
+                <h1 id="index">Index</h1>
+                <ul class="index">
+                    <li t-foreach="docs" t-as="this">
+                        <a t-attf-href="#chapter{{this.id}}" t-out="this.shortdesc" />
+                    </li>
+                </ul>
+                <t t-foreach="docs" t-as="this">
+                    <h1 t-attf-id="chapter{{this.id}}">
+                        <img
+                            class="img"
+                            t-attf-src="data:img/*;base64,{{this.icon_image}}"
+                        />
+                        <span t-out="this.shortdesc" />
+                    </h1>
+                    <div
+                        t-if="not is_html_empty(this.description_html)"
+                        t-out="this.description_html"
+                    />
+                    <div t-else="">[No description]</div>
+                </t>
+            </body>
+        </html>
+    </template>
+    <record id="demo_report_custom" model="ir.actions.report">
+        <field name="name">WeasyPrint demo report (full custom)</field>
+        <field name="model">ir.module.module</field>
+        <field name="binding_model_id" ref="base.model_ir_module_module" />
+        <field name="binding_view_types">list,form</field>
+        <field
+            name="report_name"
+        >report_qweb_weasyprint_renderer.view_demo_report_custom</field>
+        <field name="qweb_pdf_engine">weasyprint</field>
+    </record>
+</odoo>

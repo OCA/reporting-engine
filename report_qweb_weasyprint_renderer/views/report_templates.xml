@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+        move footer div before content div - doesn't matter for wkhtmltopdf, but
+        weasyprint needs it
+    -->
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="./div[starts-with(@t-attf-class, 'header')]" position="after">
+            <xpath expr="./div[starts-with(@t-attf-class, 'footer')]" position="move" />
+        </xpath>
+    </template>
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+        <xpath expr="./div[starts-with(@t-attf-class, 'header')]" position="after">
+            <xpath expr="./div[starts-with(@t-attf-class, 'footer')]" position="move" />
+        </xpath>
+    </template>
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="./div[starts-with(@t-attf-class, 'header')]" position="after">
+            <xpath expr="./div[starts-with(@t-attf-class, 'footer')]" position="move" />
+        </xpath>
+    </template>
+    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
+        <xpath expr="./div[contains(@t-attf-class, 'header')]" position="after">
+            <xpath expr="./div[contains(@t-attf-class, 'footer')]" position="move" />
+        </xpath>
+    </template>
+</odoo>
