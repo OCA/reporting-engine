@@ -1,13 +1,11 @@
-<odoo noupdate="1">
-    <record forcecreate="True" id="ir_cron_kpi_action" model="ir.cron">
+<odoo>
+    <record id="ir_cron_kpi_action" model="ir.cron">
         <field name="name">Update KPI values</field>
         <field name="user_id" ref="base.user_root" />
         <field name="interval_number">1</field>
         <field name="interval_type">hours</field>
-        <field name="numbercall">-1</field>
-        <field name="doall" eval="False" />
         <field name="model_id" ref="model_kpi" />
         <field name="state">code</field>
-        <field name="code">model.update_kpi_value()</field>
+        <field name="code">model.cron_update_kpi_value()</field>
     </record>
 </odoo>

@@ -4,13 +4,13 @@
         <field name="name">kpi.history.tree</field>
         <field name="model">kpi.history</field>
         <field name="arch" type="xml">
-            <tree string="KPI History">
+            <list string="KPI History">
                 <field name="name" />
                 <field name="date" />
                 <field name="value" />
                 <field name="color" widget="color" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
 

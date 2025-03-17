@@ -5,13 +5,13 @@
         <field name="model">kpi</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Key Performance Indicators">
+            <list string="Key Performance Indicators">
                 <field name="name" />
                 <field name="value" widget="progressbar" />
                 <field name="category_id" />
                 <field name="kpi_type" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -26,7 +26,7 @@
                 <field name="value" />
                 <field name="last_execution" />
                 <templates>
-                    <t t-name="kanban-box">
+                    <t t-name="card">
                         <div class="oe_kanban_global_click o_kpi_kanban">
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_record_title oe_partner_heading">
@@ -71,7 +71,7 @@
                     <separator orientation="vertical" />
                     <field name="name" />
                     <field name="category_id" />
-                    <field name="company_id" group="base.group_multi_company" />
+                    <field name="company_id" groups="base.group_multi_company" />
                 </group>
                 <newline />
                 <group expand="0" name="Group By...">
@@ -87,48 +87,57 @@
         <field name="model">kpi</field>
         <field name="arch" type="xml">
             <form string="Key Performance Indicator">
+                <header>
+                    <button
+                        name="compute_kpi_value"
+                        string="Compute KPI Now"
+                        type="object"
+                        groups="kpi.group_kpi_manager"
+                    />
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" required="True" />
+                    </h1>
                     <group>
                         <group>
-                            <field name="name" />
                             <field name="threshold_id" />
                             <field name="category_id" />
                         </group>
                         <group>
-                            <field name="value" colspan="2" />
-                            <field name="active" colspan="2" />
+                            <field name="value" />
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"
                             />
-                            <button
-                                name="compute_kpi_value"
-                                string="Compute KPI Now"
-                                colspan="2"
-                                type="object"
-                                groups="kpi.group_kpi_manager"
-                            />
                         </group>
                     </group>
-                    <notebook colspan="6">
+                    <notebook>
                         <page string="History">
                             <field name="history_ids" readonly="1" nolabel="1" />
                         </page>
                         <page string="Computation" groups="kpi.group_kpi_manager">
-                            <group col="6">
-                                <field name="periodicity" colspan="3" />
-                                <field name="periodicity_uom" colspan="3" />
-                                <field name="next_execution_date" colspan="3" />
-                                <separator string="KPI Computation" colspan="6" />
-                                <newline />
-                                <field name="kpi_type" colspan="2" />
-                                <field
-                                    name="dbsource_id"
-                                    colspan="2"
-                                    attrs="{'invisible' : [('kpi_type', '!=', 'external')]}"
-                                />
-                                <newline />
-                                <field name="kpi_code" colspan="6" />
+                            <group string="Periodicity">
+                                <div class="w-100" style="white-space: pre;">
+                                    Every <field
+                                name="periodicity"
+                                class="oe_inline"
+                            /> <field
+                                name="periodicity_uom"
+                                class="oe_inline"
+                                options="{'no_create': True}"
+                            />.
+                                </div>
+                                <field name="next_execution_date" />.
+                            </group>
+                            <group string="Computation">
+                                <group>
+                                    <field name="kpi_type" />
+                                </group>
+                                <group />
+                                <field name="kpi_code" />
                             </group>
                         </page>
                         <page string="Description">
@@ -143,11 +152,11 @@
     <record model="ir.actions.act_window" id="open_kpi_dashboard">
         <field name="name">KPI Dashboard</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">kanban,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
 
-    <record id="action_view_kpi_kanban" model="ir.actions.act_window.view">
+    <record model="ir.actions.act_window.view" id="action_view_kpi_kanban">
         <field eval="1" name="sequence" />
         <field name="view_mode">kanban</field>
         <field name="view_id" ref="view_kpi_kanban" />
@@ -155,17 +164,9 @@
     </record>
 
     <record model="ir.actions.act_window" id="open_kpi_list">
-        <field name="name">KPI Maintenance</field>
+        <field name="name">KPIs</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
-
-    <record id="action_view_kpi_tree" model="ir.actions.act_window.view">
-        <field eval="2" name="sequence" />
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_kpi_tree" />
-        <field name="act_window_id" ref="open_kpi_list" />
-    </record>
-
 </odoo>

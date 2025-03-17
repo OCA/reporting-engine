@@ -54,12 +54,19 @@ class KPI(models.Model):
     _name = "kpi"
     _description = "Key Performance Indicator"
 
-    name = fields.Char("Name", required=True)
-    description = fields.Text("Description")
-    category_id = fields.Many2one("kpi.category", "Category", required=True,)
-    threshold_id = fields.Many2one("kpi.threshold", "Threshold", required=True,)
-    periodicity = fields.Integer("Periodicity", default=1)
-
+    name = fields.Char(required=True)
+    description = fields.Text()
+    category_id = fields.Many2one(
+        "kpi.category",
+        "Category",
+        required=True,
+    )
+    threshold_id = fields.Many2one(
+        "kpi.threshold",
+        "Threshold",
+        required=True,
+    )
+    periodicity = fields.Integer(default=1)
     periodicity_uom = fields.Selection(
         [
             ("minute", "Minute"),
@@ -72,12 +79,18 @@ class KPI(models.Model):
         required=True,
         default="day",
     )
-
-    next_execution_date = fields.Datetime("Next execution date", readonly=True,)
-    value = fields.Float(string="Value", compute="_compute_display_last_kpi_value",)
-    color = fields.Text("Color", compute="_compute_display_last_kpi_value",)
+    next_execution_date = fields.Datetime(
+        "Next execution date",
+        readonly=True,
+    )
+    value = fields.Float(
+        compute="_compute_display_last_kpi_value",
+    )
+    color = fields.Text(
+        compute="_compute_display_last_kpi_value",
+    )
     last_execution = fields.Datetime(
-        "Last execution", compute="_compute_display_last_kpi_value",
+        compute="_compute_display_last_kpi_value",
     )
     kpi_type = fields.Selection(
         [
@@ -85,6 +98,7 @@ class KPI(models.Model):
             ("local", "SQL - Local DB"),
         ],
         "KPI Computation Type",
+        default="python",
     )
     kpi_code = fields.Text(
         "KPI Code",
@@ -92,9 +106,12 @@ class KPI(models.Model):
             "SQL code must return the result as 'value' " "(i.e. 'SELECT 5 AS value')."
         ),
     )
-    history_ids = fields.One2many("kpi.history", "kpi_id", "History",)
+    history_ids = fields.One2many(
+        "kpi.history",
+        "kpi_id",
+        "History",
+    )
     active = fields.Boolean(
-        "Active",
         help=(
             "Only active KPIs will be updated by the scheduler based on"
             " the periodicity configuration."
@@ -163,14 +180,12 @@ class KPI(models.Model):
             else:
                 delta = relativedelta()
             new_date = datetime.now() + delta
-
             obj.next_execution_date = new_date.strftime(DATETIME_FORMAT)
-
         return True
 
     # Method called by the scheduler
     @api.model
-    def update_kpi_value(self):
+    def cron_update_kpi_value(self):
         filters = [
             "&",
             "|",
@@ -182,12 +197,10 @@ class KPI(models.Model):
             filters.extend(self.env.context["filters"])
         obj_ids = self.search(filters)
         res = None
-
         try:
             for obj in obj_ids:
                 obj.compute_kpi_value()
                 obj.update_next_execution_date()
         except Exception:
             _logger.exception("Failed updating KPI values")
-
         return res

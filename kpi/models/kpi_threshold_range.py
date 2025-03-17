@@ -3,7 +3,8 @@
 
 import re
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -57,30 +58,21 @@ class KPIThresholdRange(models.Model):
             ("local", "SQL - Local DB"),
         ]
 
-    name = fields.Char("Name", size=50, required=True)
-    valid = fields.Boolean(
-        string="Valid", required=True, compute="_compute_is_valid_range", default=True
-    )
-    invalid_message = fields.Char(
-        string="Message", size=100, compute="_compute_is_valid_range"
-    )
+    name = fields.Char(required=True)
     min_type = fields.Selection(
-        selection="_selection_value_type", string="Min Type", required=True
+        selection="_selection_value_type", required=True, default="static"
     )
-    min_value = fields.Float(string="Minimum Value", compute="_compute_min_value")
+    min_value = fields.Float(string="Minimum Value", compute="_compute_range")
     min_fixed_value = fields.Float("Minimum Fixed Value")
     min_code = fields.Text("Minimum Computation Code")
-    min_error = fields.Char("Minimum Error", compute="_compute_min_value")
     max_type = fields.Selection(
-        selection="_selection_value_type", string="Max Type", required=True
+        selection="_selection_value_type", required=True, default="static"
     )
-    max_value = fields.Float(string="Maximum Value", compute="_compute_max_value")
+    max_value = fields.Float(string="Maximum Value", compute="_compute_range")
     max_fixed_value = fields.Float("Maximum Fixed Value")
     max_code = fields.Text("Maximum Computation Code")
-    max_error = fields.Char("Maximum Error", compute="_compute_max_value")
-
-    color = fields.Char(string="Color", help="Choose your color")
-
+    error = fields.Char("Maximum Error", compute="_compute_range")
+    color = fields.Char(help="Choose your color")
     threshold_ids = fields.Many2many(
         "kpi.threshold",
         "kpi_threshold_range_rel",
@@ -92,60 +84,49 @@ class KPIThresholdRange(models.Model):
         "res.company", "Company", default=lambda self: self.env.company
     )
 
-    def _compute_min_value(self):
-        for obj in self:
-            value = None
-            error = None
+    def _compute_range(self):
+        for record in self:
+            min_value = max_value = None
+            error = ""
             try:
-                if obj.min_type == "local" and is_sql_or_ddl_statement(obj.min_code):
-                    self.env.cr.execute(obj.min_code)
+                if record.min_type == "local" and is_sql_or_ddl_statement(
+                    record.min_code
+                ):
+                    self.env.cr.execute(record.min_code)
                     dic = self.env.cr.dictfetchall()
                     if is_one_value(dic):
-                        value = dic[0]["value"]
-                elif obj.min_type == "python":
-                    value = safe_eval(obj.min_code)
+                        min_value = dic[0]["value"]
+                elif record.min_type == "python":
+                    min_value = safe_eval(record.min_code)
                 else:
-                    value = obj.min_fixed_value
-            except Exception as e:
-                value = None
-                error = str(e)
-            obj.min_value = value
-            obj.min_error = error
-
-    def _compute_max_value(self):
-        for obj in self:
-            value = None
-            error = None
-            try:
-                if obj.max_type == "local" and is_sql_or_ddl_statement(obj.max_code):
-                    self.env.cr.execute(obj.max_code)
+                    min_value = record.min_fixed_value
+                if record.max_type == "local" and is_sql_or_ddl_statement(
+                    record.max_code
+                ):
+                    self.env.cr.execute(record.max_code)
                     dic = self.env.cr.dictfetchall()
                     if is_one_value(dic):
-                        value = dic[0]["value"]
-                elif obj.max_type == "python":
-                    value = safe_eval(obj.max_code)
+                        max_value = dic[0]["value"]
+                elif record.min_type == "python":
+                    max_value = safe_eval(record.max_code)
                 else:
-                    value = obj.max_fixed_value
+                    max_value = record.max_fixed_value
             except Exception as e:
-                value = None
+                min_value = max_value = None
                 error = str(e)
-            obj.max_value = value
-            obj.max_error = error
+            record.min_value = min_value
+            record.max_value = max_value
+            record.error = error
+            record._check_valid_range()
 
-    def _compute_is_valid_range(self):
-        for obj in self:
-            if obj.min_error or obj.max_error:
-                obj.valid = False
-                obj.invalid_message = (
-                    "Either minimum or maximum value has "
-                    "computation errors. Please fix them."
+    def _check_valid_range(self):
+        for record in self:
+            if record.max_value < record.min_value:
+                raise ValidationError(
+                    _(
+                        "Minimum value is greater than the maximum value. "
+                        "Please adjust them."
+                    )
                 )
-            elif obj.max_value < obj.min_value:
-                obj.valid = False
-                obj.invalid_message = (
-                    "Minimum value is greater than the maximum "
-                    "value! Please adjust them."
-                )
-            else:
-                obj.valid = True
-                obj.invalid_message = ""
+            for threshold in record.threshold_ids:
+                threshold._check_overlap()

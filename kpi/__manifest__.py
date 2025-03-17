@@ -5,11 +5,12 @@
     "name": "Key Performance Indicators",
     "version": "18.0.1.0.0",
     "author": "Savoir-faire Linux, "
-              "Open Source Integrators, "
-              "Odoo Community Association (OCA)",
+    "Open Source Integrators, "
+    "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Report",
+    "depends": ["spreadsheet_dashboard"],
     "data": [
         "security/kpi_security.xml",
         "security/ir.model.access.csv",
@@ -19,7 +20,7 @@
         "views/kpi_threshold_views.xml",
         "views/kpi_views.xml",
         "views/menu.xml",
-        "data/kpi_data.xml",
+        "data/ir_cron.xml",
     ],
     "images": [
         "images/kpi_definition.png",
@@ -28,5 +29,5 @@
         "images/kpi_range.png",
     ],
     "development_status": "Beta",
-    "maintainers": ["max3903"]
+    "maintainers": ["max3903"],
 }

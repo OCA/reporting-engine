@@ -1,22 +1,25 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
 class TestKPI(TransactionCase):
     def setUp(self):
-        super(TestKPI, self).setUp()
+        super().setUp()
 
     def test_invalid_threshold_range(self):
-        range1 = self.env["kpi.threshold.range"].create(
-            {
-                "name": "Range1",
-                "min_type": "static",
-                "max_type": "static",
-                "min_fixed_value": 3,
-                "max_fixed_value": 1,
-            }
-        )
+        with self.assertRaises(ValidationError):
+            range1 = self.env["kpi.threshold.range"].create(
+                {
+                    "name": "Range1",
+                    "min_type": "static",
+                    "max_type": "static",
+                    "min_fixed_value": 3,
+                    "max_fixed_value": 1,
+                }
+            )
+            range1._check_valid_range()
+
         range2 = self.env["kpi.threshold.range"].create(
             {
                 "name": "Range2",
@@ -26,8 +29,7 @@ class TestKPI(TransactionCase):
                 "max_fixed_value": 10,
             }
         )
-        self.assertFalse(range1.valid)
-        self.assertTrue(range2.valid)
+        self.assertIsNone(range2._check_valid_range())
 
     def test_invalid_threshold(self):
         range1 = self.env["kpi.threshold.range"].create(
@@ -36,7 +38,7 @@ class TestKPI(TransactionCase):
                 "min_type": "static",
                 "max_type": "static",
                 "min_fixed_value": 1,
-                "max_fixed_value": 4,
+                "max_fixed_value": 5,
             }
         )
         range2 = self.env["kpi.threshold.range"].create(
@@ -67,24 +69,25 @@ class TestKPI(TransactionCase):
             }
         )
 
-        threshold1 = self.env["kpi.threshold"].create(
-            {"name": "Threshold1", "range_ids": [(6, 0, [range1.id, range2.id])]}
-        )
+        with self.assertRaises(ValidationError):
+            threshold1 = self.env["kpi.threshold"].create(
+                {"name": "Threshold1", "range_ids": [(6, 0, [range1.id, range2.id])]}
+            )
+            threshold1._check_overlap()
 
         threshold2 = self.env["kpi.threshold"].create(
-            {"name": "Threshold1", "range_ids": [(6, 0, [range3.id, range2.id])]}
+            {"name": "Threshold2", "range_ids": [(6, 0, [range3.id, range2.id])]}
         )
+        self.assertIsNone(threshold2._check_overlap())
 
-        threshold3 = self.env["kpi.threshold"].create(
-            {
-                "name": "Threshold1",
-                "range_ids": [(6, 0, [range_invalid.id, range2.id])],
-            }
-        )
-
-        self.assertFalse(threshold1.valid)
-        self.assertTrue(threshold2.valid)
-        self.assertFalse(threshold3.valid)
+        with self.assertRaises(ValidationError):
+            threshold3 = self.env["kpi.threshold"].create(
+                {
+                    "name": "Threshold3",
+                    "range_ids": [(6, 0, [range_invalid.id, range2.id])],
+                }
+            )
+            threshold3._check_overlap()
 
     def test_invalid_threshold_range_exception(self):
         range_error = self.env["kpi.threshold.range"].create(
@@ -96,7 +99,7 @@ class TestKPI(TransactionCase):
                 "max_fixed_value": 1,
             }
         )
-        self.assertFalse(range_error.valid)
+        self.assertFalse(range_error._check_valid_range())
 
     def test_kpi_python(self):
         kpi_category = self.env["kpi.category"].create({"name": "Dynamic KPIs"})
@@ -121,7 +124,7 @@ class TestKPI(TransactionCase):
                 "kpi_code": kpi_code,
             }
         )
-        kpi.update_kpi_value()
+        kpi.cron_update_kpi_value()
         kpi_history = self.env["kpi.history"].search([("kpi_id", "=", kpi.id)])
         self.assertEqual(len(kpi_history), 1)
         self.assertEqual(kpi_history.color, "#00FF00")
