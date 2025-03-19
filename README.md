@@ -30,7 +30,7 @@ addon | version | maintainers | summary
 [report_context](report_context/) | 14.0.1.0.3 |  | Adding context to reports
 [report_csv](report_csv/) | 14.0.1.1.0 |  | Base module to create csv report
 [report_fillpdf](report_fillpdf/) | 14.0.1.0.1 |  | Base module that fills PDFs
-[report_label](report_label/) | 14.0.1.0.3 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
+[report_label](report_label/) | 14.0.1.0.4 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
 [report_layout_config](report_layout_config/) | 14.0.1.0.1 |  | Add possibility to easily modify the global report layout
 [report_py3o](report_py3o/) | 14.0.1.0.4 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.1 |  | Let the fusion server handle format conversion.
