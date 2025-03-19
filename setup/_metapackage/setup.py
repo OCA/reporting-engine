@@ -25,6 +25,7 @@ setuptools.setup(
         'odoo-addon-report_qweb_decimal_place>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_element_page_visibility>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_encrypt>=16.0dev,<16.1dev',
+        'odoo-addon-report_qweb_field_option>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_parameter>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_pdf_cover>=16.0dev,<16.1dev',
         'odoo-addon-report_qweb_pdf_watermark>=16.0dev,<16.1dev',

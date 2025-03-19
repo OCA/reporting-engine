@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="qweb_field_options_company_rule" model="ir.rule">
+        <field name="name">Qweb Field Options Multi-company</field>
+        <field name="model_id" ref="model_qweb_field_options" />
+        <field
+            name="domain_force"
+        >['|', ('company_id', 'in', company_ids), ('company_id', '=', False)]</field>
+    </record>
+</odoo>

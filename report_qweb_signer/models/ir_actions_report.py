@@ -211,9 +211,8 @@ class IrActionsReport(models.Model):
             self._signer_endesive(params, p12, pdf, pdfsigned, passwd)
         return pdfsigned
 
-    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
-        report = self._get_report(report_ref)
-        certificate = self._certificate_get(report, res_ids)
+    def _read_attached_signed_content(self, report, res_ids, certificate):
+        signed_content, ext = False, False
         if certificate and certificate.attachment:
             signed_content = self._attach_signed_read(res_ids, certificate)
             if signed_content:
@@ -223,29 +222,43 @@ class IrActionsReport(models.Model):
                     res_ids,
                 )
                 return signed_content, "pdf"
+        return signed_content, ext
+
+    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        report = self._get_report(report_ref)
+        certificate = self._certificate_get(report, res_ids)
+        signed_content, ext = self._read_attached_signed_content(
+            report, res_ids, certificate
+        )
+        if signed_content:
+            return signed_content, "pdf"
         content, ext = super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
         if certificate:
-            # Creating temporary origin PDF
-            pdf_fd, pdf = tempfile.mkstemp(suffix=".pdf", prefix="report.tmp.")
-            with closing(os.fdopen(pdf_fd, "wb")) as pf:
-                pf.write(content)
-            _logger.debug(
-                "Signing PDF document '%s' for IDs %s with certificate '%s'",
-                self.report_name,
-                res_ids,
-                certificate.name,
-            )
-            signed = self.pdf_sign(pdf, certificate)
-            # Read signed PDF
-            if os.path.exists(signed):
-                with open(signed, "rb") as pf:
-                    content = pf.read()
-            # Manual cleanup of the temporary files
-            for fname in (pdf, signed):
-                try:
-                    os.unlink(fname)
-                except OSError:
-                    _logger.error("Error when trying to remove file %s", fname)
-            if certificate.attachment:
-                self._attach_signed_write(res_ids, certificate, content)
+            content = self._sign_pdf_and_attach(res_ids, certificate, content)
         return content, ext
+
+    def _sign_pdf_and_attach(self, res_ids, certificate, content):
+        # Creating temporary origin PDF
+        pdf_fd, pdf = tempfile.mkstemp(suffix=".pdf", prefix="report.tmp.")
+        with closing(os.fdopen(pdf_fd, "wb")) as pf:
+            pf.write(content)
+        _logger.debug(
+            "Signing PDF document '%s' for IDs %s with certificate '%s'",
+            self.report_name,
+            res_ids,
+            certificate.name,
+        )
+        signed = self.pdf_sign(pdf, certificate)
+        # Read signed PDF
+        if os.path.exists(signed):
+            with open(signed, "rb") as pf:
+                content = pf.read()
+        # Manual cleanup of the temporary files
+        for fname in (pdf, signed):
+            try:
+                os.unlink(fname)
+            except OSError:
+                _logger.error("Error when trying to remove file %s", fname)
+        if certificate.attachment:
+            self._attach_signed_write(res_ids, certificate, content)
+        return content
