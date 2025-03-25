@@ -12,7 +12,7 @@
     "depends": ["web"],
     "external_dependencies": {
         "python": ["py3o.template", "py3o.formats"],
-        "bin": ["libreoffice"],
+        "deb": ["libreoffice"],
     },
     "assets": {
         "web.assets_backend": [
@@ -23,6 +23,8 @@
         "security/ir.model.access.csv",
         "views/py3o_template.xml",
         "views/ir_actions_report.xml",
+    ],
+    "demo": [
         "demo/report_py3o.xml",
     ],
     "installable": True,
