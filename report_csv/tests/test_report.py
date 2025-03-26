@@ -119,11 +119,12 @@ class TestCsvReport(common.HttpCase):
 
     @mute_logger("odoo.addons.web.controllers.report")
     def test_pdf_error(self):
-        with mock.patch.object(
-            ReportController, "report_routes"
-        ) as route_patch, self.assertLogs(
-            "odoo.addons.report_csv.controllers.main", level=logging.ERROR
-        ) as cm:
+        with (
+            mock.patch.object(ReportController, "report_routes") as route_patch,
+            self.assertLogs(
+                "odoo.addons.report_csv.controllers.main", level=logging.ERROR
+            ) as cm,
+        ):
             route_patch.side_effect = TestCsvException("Test")
             self.get_report_headers(
                 suffix="/report/pdf/test/10", f_type="qweb-pdf"
