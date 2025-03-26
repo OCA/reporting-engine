@@ -53,7 +53,7 @@ class ReportAction(models.Model):
     @api.model
     def _render_csv(self, report_ref, docids, data):
         report_sudo = self._get_report(report_ref)
-        report_model_name = "report.%s" % report_sudo.report_name
+        report_model_name = f"report.{report_sudo.report_name}"
         report_model = self.env[report_model_name]
         res_id = len(docids) == 1 and docids[0]
         if not res_id or not report_sudo.attachment or not report_sudo.attachment_use:

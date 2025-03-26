@@ -52,7 +52,7 @@ class ReportController(report.ReportController):
         return super().report_routes(reportname, docids, converter, **data)
 
     @route()
-    def report_download(self, data, context=None, token=None):
+    def report_download(self, data, context=None, token=None, readonly=True):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         reportname = ""
@@ -100,7 +100,9 @@ class ReportController(report.ReportController):
                 )
                 return response
             else:
-                return super().report_download(data, context, token=token)
+                return super().report_download(
+                    data, context, token=token, readonly=readonly
+                )
         except Exception as e:
             _logger.exception("Error while generating report %s", reportname)
             se = _serialize_exception(e)

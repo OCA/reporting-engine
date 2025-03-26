@@ -10,7 +10,7 @@ from odoo.exceptions import UserError
 from odoo.tests import common
 from odoo.tools import mute_logger
 
-from odoo.addons.web.controllers.report import ReportController
+from odoo.addons.report_csv.controllers.main import ReportController
 
 _logger = logging.getLogger(__name__)
 try:
