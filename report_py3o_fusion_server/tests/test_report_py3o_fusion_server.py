@@ -39,7 +39,7 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
         with self.assertRaises(ValidationError) as e:
             self.report.write({"py3o_server_id": None, "py3o_is_local_fusion": False})
         self.assertEqual(
-            e.exception.name,
+            str(e.exception),
             "You can not use remote fusion without Fusion server. "
             "Please specify a Fusion Server",
         )
@@ -71,7 +71,7 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
             PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path"
         )
         self.report.py3o_filetype = "pdf"
-        self.report.refresh()
+        self.report.invalidate_recordset()
         # no native and no bin path, everything is still OK since a fusion
         # server is specified.
         self.assertFalse(self.report.lo_bin_path)
@@ -89,7 +89,7 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
         self.env["ir.config_parameter"].set_param(
             PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice"
         )
-        self.report.refresh()
+        self.report.invalidate_recordset()
         self.assertTrue(self.report.lo_bin_path)
         self.assertFalse(self.report.is_py3o_report_not_available)
         self.assertFalse(self.report.msg_py3o_report_not_available)
