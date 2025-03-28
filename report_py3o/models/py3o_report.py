@@ -164,10 +164,16 @@ class Py3oReport(models.TransientModel):
         if report_xml.py3o_template_id.py3o_template_data:
             # if a user gave a report template
             tmpl_data = b64decode(report_xml.py3o_template_id.py3o_template_data)
-
         else:
             tmpl_data = self._get_template_fallback(model_instance)
-
+            if (
+                not tmpl_data
+                and "py3o_template_id" in model_instance._fields
+                and model_instance.py3o_template_id
+            ):
+                tmpl_data = b64decode(
+                    model_instance.py3o_template_id.py3o_template_data
+                )
         if tmpl_data is None:
             # if for any reason the template is not found
             raise TemplateNotFound(_("No template found. Aborting."), sys.exc_info())

@@ -6,3 +6,7 @@
 * Holger Brunn <hbrunn@therp.nl>
 * Phuc Tran Thanh <phuc@trobz.com>
 * Alexandre D. Díaz (`Grupo Isonor <alexandrediaz@grupoisonor.es>`_)
+* `Tecnativa <https://www.tecnativa.com>`_
+
+  * Pilar Vargas
+

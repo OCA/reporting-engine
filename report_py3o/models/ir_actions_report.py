@@ -24,7 +24,8 @@ class IrActionsReport(models.Model):
     The list is configurable in the configuration tab, see py3o_template.py
     """
 
-    _inherit = "ir.actions.report"
+    _name = "ir.actions.report"
+    _inherit = ["ir.actions.report", "py3o.template.mixin"]
 
     @api.constrains("py3o_filetype", "report_type")
     def _check_py3o_filetype(self):
@@ -57,7 +58,6 @@ class IrActionsReport(models.Model):
         selection="_get_py3o_filetypes", string="Output Format"
     )
     is_py3o_native_format = fields.Boolean(compute="_compute_is_py3o_native_format")
-    py3o_template_id = fields.Many2one("py3o.template", "Template")
     module = fields.Char(help="The implementer module that provides this report")
     py3o_template_fallback = fields.Char(
         "Fallback",

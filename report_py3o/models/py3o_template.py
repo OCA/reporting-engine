@@ -1,4 +1,5 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
+# Copyright 2025 Tecnativa - Pilar Vargas
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields, models
 
@@ -22,3 +23,12 @@ class Py3oTemplate(models.Model):
         required=True,
         default="odt",
     )
+
+
+class Py3oTemplateMixin(models.AbstractModel):
+    _name = "py3o.template.mixin"
+    _description = "Py3o template mixin"
+
+    # Extending a model with this mixin allows to establish a py3o template at model
+    # and record level.
+    py3o_template_id = fields.Many2one("py3o.template", "Template")
