@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-03-30 21:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.2\n"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,help:report_qweb_field_option.field_qweb_field_options__field_options
@@ -22,66 +24,71 @@ msgid ""
 "{'widget': 'monetary'}\n"
 "{'widget': 'contact', 'fields': ['name', 'phone']}"
 msgstr ""
+"Una stringa che rappresenta un dizionario per indicare le opzioni di "
+"formattazione dei campi. Esempi:\n"
+"{'widget': 'date'}\n"
+"{'widget': 'monetary'}\n"
+"{'widget': 'contact', 'fields': ['name', 'phone']}"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__company_id
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_field_id
 msgid "Currency Field"
-msgstr ""
+msgstr "Campo valuta"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__digits
 msgid "Digits"
-msgstr ""
+msgstr "Cifre"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_id
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_name
 msgid "Field Name"
-msgstr ""
+msgstr "Nome campo"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_type
 msgid "Field Type"
-msgstr ""
+msgstr "Tipo campo"
 
 #. module: report_qweb_field_option
 #: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
 msgid "Group By"
-msgstr ""
+msgstr "Raggruppa per"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_qweb_field_option
 #. odoo-python
@@ -91,68 +98,70 @@ msgid ""
 "Invalid string for the Options field: %(field_options)s.\n"
 "Error: %(error)s"
 msgstr ""
+"Stringa non valida per il campo opzioni: %(field_options)s.\n"
+"Errore: %(error)s"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_id
 #: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_name
 msgid "Model Name"
-msgstr ""
+msgstr "Nome modello"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_options
 msgid "Options"
-msgstr ""
+msgstr "Opzioni"
 
 #. module: report_qweb_field_option
 #. odoo-python
 #: code:addons/report_qweb_field_option/models/qweb_field_options.py:0
 #, python-format
 msgid "Options must be a dictionary, but got %s"
-msgstr ""
+msgstr "Le opzioni devono essere un dizionario, ma sono %s"
 
 #. module: report_qweb_field_option
 #: model:ir.model,name:report_qweb_field_option.model_ir_qweb
 msgid "Qweb"
-msgstr ""
+msgstr "Qweb"
 
 #. module: report_qweb_field_option
 #: model:ir.actions.act_window,name:report_qweb_field_option.action_qweb_field_options_view
 #: model:ir.model,name:report_qweb_field_option.model_qweb_field_options
 #: model:ir.ui.menu,name:report_qweb_field_option.menu_qweb_field_options
 msgid "Qweb Field Options"
-msgstr ""
+msgstr "Opzioni campo Qweb"
 
 #. module: report_qweb_field_option
 #: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
 msgid "Qweb Field Options Search"
-msgstr ""
+msgstr "Ricerca opzioni campo Qweb"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_id
 msgid "UoM"
-msgstr ""
+msgstr "UdM"
 
 #. module: report_qweb_field_option
 #: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_field_id
 msgid "UoM Field"
-msgstr ""
+msgstr "Campo UdM"
