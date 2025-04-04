@@ -39,7 +39,10 @@ class ReportController(report.ReportController):
             report_name = report.name
             if report.print_report_name and not len(docids) > 1:
                 obj = request.env[report.model].browse(docids[0])
-                report_name = safe_eval(report.print_report_name, {"object": obj})
+                lang = obj.lang if hasattr(obj, "lang") else request.env.user.lang
+                report_name = safe_eval(
+                    report.with_context(lang=lang).print_report_name, {"object": obj}
+                )
             xlsxhttpheaders = [
                 (
                     "Content-Type",
