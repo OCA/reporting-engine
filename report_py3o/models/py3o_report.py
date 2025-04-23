@@ -270,10 +270,7 @@ class Py3oReport(models.TransientModel):
                 result_path, result_filename = os.path.split(result_path)
                 result_path = os.path.join(
                     result_path,
-                    "{}.{}".format(
-                        os.path.splitext(result_filename)[0],
-                        self.ir_actions_report_id.py3o_filetype,
-                    ),
+                    f"{os.path.splitext(result_filename)[0]}.{self.ir_actions_report_id.py3o_filetype}",
                 )
         return result_path
 
