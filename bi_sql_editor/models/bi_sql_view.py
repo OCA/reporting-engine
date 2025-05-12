@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from psycopg2 import ProgrammingError
 from psycopg2.sql import SQL, Identifier
@@ -90,7 +90,7 @@ class BiSQLView(models.Model):
         help="Define here access restriction to data.\n"
         " Take care to use field name prefixed by 'x_'."
         " A global 'ir.rule' will be created."
-        " A typical Multi Company rule is for exemple \n"
+        " A typical Multi Company rule is for example \n"
         " ['|', ('x_company_id','child_of', [user.company_id.id]),"
         "('x_company_id','=',False)].",
     )
@@ -489,7 +489,7 @@ class BiSQLView(models.Model):
             return self.name
         return "{} ({})".format(
             self.name,
-            datetime.utcnow().strftime("%m/%d/%Y %H:%M:%S UTC"),
+            datetime.now(timezone.utc).strftime("%m/%d/%Y %H:%M:%S UTC"),
         )
 
     def _prepare_menu(self):
