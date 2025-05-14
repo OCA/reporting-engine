@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="report_pdf_form_form" model="ir.ui.view">
+        <field name="name">report.pdf.form.form</field>
+        <field name="model">report.pdf.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name" />
+                    </h1>
+                    <group>
+                        <field name="model_id" />
+                        <field name="report_id" />
+                        <field name="pdf_attachment_id" />
+                    </group>
+                    <notebook>
+                        <page string="Field mapping">
+                            <group>
+                                <field name="field_mapping_ids">
+                                    <list editable="bottom">
+                                        <field name="pdf_field_name" />
+                                        <field name="odoo_field_evaluation" />
+                                        <field name="odoo_field_value" />
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="variables" string="Variables">
+                            <group>
+                                <field name="field_variable_ids">
+                                    <list editable="bottom">
+                                        <field name="name" />
+                                        <field name="code" />
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="help" string="Help">
+                            <p>There are two ways to fetch value from the object:</p>
+                            <ul>
+                                <li
+                                >Dotted field path: Can be used to access atomic fields and go through Many2one relations with automatic formatting.</li>
+                                <li
+                                >Python code: Can be used to acces what you cannot using the Dotted field path. Following variables can be used:
+                                    <ul>
+                                    <li><code
+                                    >env</code>: environment from the record on which the report is printed</li>
+                                    <li><code
+                                    >record</code>: record on which the report is printed</li>
+                                    <li><code>time</code>, <code>datetime</code>, <code
+                                    >dateutil</code>, <code
+                                    >timezone</code>: useful Python libraries</li>
+                                    <li><code
+                                    >float_compare()</code>: utility function to compare floats based on a specific precision</li>
+                                </ul>
+                                </li>
+                            </ul>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="report_pdf_form_action" model="ir.actions.act_window">
+        <field name="name">PDF Form Reports</field>
+        <field name="res_model">report.pdf.form</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="report_pdf_form_menu"
+        name="PDF Form Reports"
+        action="report_pdf_form_action"
+        parent="base.reporting_menuitem"
+        sequence="99"
+    />
+</odoo>
