@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_pdf_form_manager,report.pdf.form.manager,model_report_pdf_form,base.group_system,1,1,1,1
+access_report_pdf_form_user,report.pdf.form.user,model_report_pdf_form,base.group_user,1,0,0,0
+access_report_pdf_form_field_manager,report.pdf.form.field.manager,model_report_pdf_form_field,base.group_system,1,1,1,1
+access_report_pdf_form_field_user,report.pdf.form.field.user,model_report_pdf_form_field,base.group_user,1,0,0,0
+access_report_pdf_form_variable_manager,report.pdf.form.variable.manager,model_report_pdf_form_variable,base.group_system,1,1,1,1
+access_report_pdf_form_variable_user,report.pdf.form.variable.user,model_report_pdf_form_variable,base.group_user,1,0,0,0
