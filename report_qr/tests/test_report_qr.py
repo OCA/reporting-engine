@@ -7,7 +7,7 @@ from odoo.tests.common import HttpCase
 class TestReportQr(HttpCase):
     def test_qr_generation(self):
         data = "TEST"
-        image = self.url_open("/report/qr?value=%s" % data)
+        image = self.url_open(f"/report/qr?value={data}")
         self.assertEqual(image.headers["Content-type"], "image/png")
 
     def test_qr_overflow(self):
