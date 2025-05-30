@@ -5,3 +5,4 @@
 - Why not taking the occasion to add the whole configuration at report
   level (if to be signed or not, the domain, etc...)? See
   <https://github.com/OCA/reporting-engine/pull/533#issuecomment-898321161>
+- This module is incompatible with the `account_edi_ubl_cii` module, because the PDF content is altered after rendering. See: https://github.com/odoo/odoo/blob/5977da2c93d522ece984d2fa8a31624f4b612eca/addons/account_edi_ubl_cii/models/account_move_send.py#L131C9-L140
