@@ -22,21 +22,21 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_comment_template](base_comment_template/) | 14.0.4.0.2 |  | Add conditional mako template to any reporton models that inherits comment.template.
-[bi_sql_editor](bi_sql_editor/) | 14.0.1.1.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | BI Views builder, based on Materialized or Normal SQL Views
+[bi_sql_editor](bi_sql_editor/) | 14.0.1.1.0 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | BI Views builder, based on Materialized or Normal SQL Views
 [bi_view_editor](bi_view_editor/) | 14.0.1.0.0 |  | Graphical BI views builder for Odoo
-[kpi_dashboard](kpi_dashboard/) | 14.0.1.2.1 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
+[kpi_dashboard](kpi_dashboard/) | 14.0.1.2.1 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Create Dashboards using kpis
 [kpi_dashboard_bokeh](kpi_dashboard_bokeh/) | 14.0.1.0.0 |  | Create dashboards using bokeh
-[report_async](report_async/) | 14.0.1.1.1 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
+[report_async](report_async/) | 14.0.1.1.1 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Central place to run reports live or async
 [report_context](report_context/) | 14.0.1.0.3 |  | Adding context to reports
 [report_csv](report_csv/) | 14.0.1.1.0 |  | Base module to create csv report
 [report_fillpdf](report_fillpdf/) | 14.0.1.0.1 |  | Base module that fills PDFs
-[report_label](report_label/) | 14.0.1.0.4 | [![ivantodorovich](https://github.com/ivantodorovich.png?size=30px)](https://github.com/ivantodorovich) | Print configurable self-adhesive labels reports
+[report_label](report_label/) | 14.0.1.0.4 | <a href='https://github.com/ivantodorovich'><img src='https://github.com/ivantodorovich.png' width='32' height='32' style='border-radius:50%;' alt='ivantodorovich'/></a> | Print configurable self-adhesive labels reports
 [report_layout_config](report_layout_config/) | 14.0.1.0.1 |  | Add possibility to easily modify the global report layout
 [report_py3o](report_py3o/) | 14.0.1.0.4 |  | Reporting engine based on Libreoffice (ODT -> ODT, ODT -> PDF, ODT -> DOC, ODT -> DOCX, ODS -> ODS, etc.)
 [report_py3o_fusion_server](report_py3o_fusion_server/) | 14.0.1.0.1 |  | Let the fusion server handle format conversion.
 [report_qr](report_qr/) | 14.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 14.0.1.1.2 |  | Report Qweb Element Page Visibility
-[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.1.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Allow to encrypt qweb pdfs
+[report_qweb_encrypt](report_qweb_encrypt/) | 14.0.1.1.0 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Allow to encrypt qweb pdfs
 [report_qweb_parameter](report_qweb_parameter/) | 14.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 14.0.1.0.2 |  | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 14.0.2.0.3 |  | Sign Qweb PDFs usign a PKCS#12 certificate
