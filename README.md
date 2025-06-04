@@ -27,11 +27,11 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [base_comment_template](base_comment_template/) | 13.0.3.0.3 |  | Add conditional mako template to any report on models that inherits comment.template.
 [bi_sql_editor](bi_sql_editor/) | 13.0.1.2.0 |  | BI Views builder, based on Materialized or Normal SQL Views
-[bi_sql_editor_server_actions](bi_sql_editor_server_actions/) | 13.0.1.0.1 | [![vnahaulogy](https://github.com/vnahaulogy.png?size=30px)](https://github.com/vnahaulogy) | Add server actions on BI Views builder module
+[bi_sql_editor_server_actions](bi_sql_editor_server_actions/) | 13.0.1.0.1 | <a href='https://github.com/vnahaulogy'><img src='https://github.com/vnahaulogy.png' width='32' height='32' style='border-radius:50%;' alt='vnahaulogy'/></a> | Add server actions on BI Views builder module
 [kpi](kpi/) | 13.0.1.0.1 |  | Key Performance Indicator
-[kpi_dashboard](kpi_dashboard/) | 13.0.1.1.0 | [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Create Dashboards using kpis
-[report_async](report_async/) | 13.0.1.0.0 | [![kittiu](https://github.com/kittiu.png?size=30px)](https://github.com/kittiu) | Central place to run reports live or async
-[report_batch](report_batch/) | 13.0.1.0.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Ability to print multiple QWeb reports in a single batch.
+[kpi_dashboard](kpi_dashboard/) | 13.0.1.1.0 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Create Dashboards using kpis
+[report_async](report_async/) | 13.0.1.0.0 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Central place to run reports live or async
+[report_batch](report_batch/) | 13.0.1.0.1 | <a href='https://github.com/bodedra'><img src='https://github.com/bodedra.png' width='32' height='32' style='border-radius:50%;' alt='bodedra'/></a> | Ability to print multiple QWeb reports in a single batch.
 [report_context](report_context/) | 13.0.1.0.0 |  | Adding context to reports
 [report_csv](report_csv/) | 13.0.1.0.3 |  | Base module to create csv report
 [report_layout_config](report_layout_config/) | 13.0.1.0.1 |  | Add possibility to easily modify the global report layout
@@ -40,10 +40,10 @@ addon | version | maintainers | summary
 [report_qr](report_qr/) | 13.0.1.0.1 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 13.0.1.1.0 |  | Report Qweb Element Page Visibility
 [report_qweb_parameter](report_qweb_parameter/) | 13.0.1.0.2 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
-[report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | [![Tardo](https://github.com/Tardo.png?size=30px)](https://github.com/Tardo) | Fix auto-col to not change report font size caused by a boundary overflow
+[report_qweb_pdf_fixed_column](report_qweb_pdf_fixed_column/) | 13.0.1.0.0 | <a href='https://github.com/Tardo'><img src='https://github.com/Tardo.png' width='32' height='32' style='border-radius:50%;' alt='Tardo'/></a> | Fix auto-col to not change report font size caused by a boundary overflow
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 13.0.1.0.3 |  | Add watermarks to your QWEB PDF reports
 [report_qweb_signer](report_qweb_signer/) | 13.0.3.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
-[report_substitute](report_substitute/) | 13.0.1.0.0 | [![sbejaoui](https://github.com/sbejaoui.png?size=30px)](https://github.com/sbejaoui) | This module allows to create substitution rules for report actions.
+[report_substitute](report_substitute/) | 13.0.1.0.0 | <a href='https://github.com/sbejaoui'><img src='https://github.com/sbejaoui.png' width='32' height='32' style='border-radius:50%;' alt='sbejaoui'/></a> | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 13.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 13.0.1.1.1 |  | Base module to create xlsx report
 [report_xlsx_boilerplate](report_xlsx_boilerplate/) | 13.0.1.0.0 |  | Module extending Base Report XLSX to add Boilerplate on XLSX reports.
