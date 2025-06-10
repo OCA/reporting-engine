@@ -25,6 +25,9 @@ odoo.define("report_xlsx.report", function (require) {
                 if (cloned_action.context.active_ids) {
                     url += "/" + cloned_action.context.active_ids.join(',');
                 }
+                if (cloned_action.context) {
+                    url += "?context=" + encodeURIComponent(JSON.stringify(cloned_action.context));
+                }
             } else {
                 url += "?options=" + encodeURIComponent(JSON.stringify(cloned_action.data));
                 url += "&context=" + encodeURIComponent(JSON.stringify(cloned_action.context));
