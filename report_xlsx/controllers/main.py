@@ -30,6 +30,9 @@ class ReportController(report.ReportController):
                     data['context'] = json.loads(data['context'])
                     if data['context'].get('lang'):
                         del data['context']['lang']
+                    # Allow forcing languange explicitly
+                    if data['context'].get('force_lang'):
+                        data['context']['lang'] = data['context']['force_lang']
                     context.update(data['context'])
                 xlsx = report.with_context(context).render_xlsx(
                     docids, data=data
