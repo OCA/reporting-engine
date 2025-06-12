@@ -18,7 +18,7 @@
     "demo": ["demo/action_report.xml"],
     "assets": {
         "web.assets_backend": [
-            "report_substitute/static/src/js/action_manager.js",
+            "report_substitute/static/src/js/action_manager.esm.js",
         ],
     },
     "maintainers": ["sbejaoui"],

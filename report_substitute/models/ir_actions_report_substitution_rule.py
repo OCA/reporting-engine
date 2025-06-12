@@ -1,7 +1,7 @@
 # Copyright 2019 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -31,7 +31,7 @@ class ActionsReportSubstitutionRule(models.Model):
     def _check_substitution_infinite_loop(self):
         def _check_infinite_loop(original_report, substitution_report):
             if original_report == substitution_report:
-                raise ValidationError(_("Substitution infinite loop detected"))
+                raise ValidationError(self.env._("Substitution infinite loop detected"))
             for (
                 substitution_rule
             ) in substitution_report.action_report_substitution_rule_ids:

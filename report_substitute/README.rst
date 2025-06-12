@@ -55,8 +55,8 @@ substitution in with a domain that matches all records.
 Known issues / Roadmap
 ======================
 
-- The document name result should take the name of the substitution
-  report.
+-  The document name result should take the name of the substitution
+   report.
 
 Bug Tracker
 ===========
@@ -79,7 +79,7 @@ Authors
 Contributors
 ------------
 
-- Bejaoui Souheil <souheil.bejaoui@acsone.eu>
+-  Bejaoui Souheil <souheil.bejaoui@acsone.eu>
 
 Maintainers
 -----------
