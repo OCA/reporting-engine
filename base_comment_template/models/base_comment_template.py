@@ -42,6 +42,7 @@ class BaseCommentTemplate(models.Model):
         help="If set, the comment template will be available only for the selected "
         "company.",
     )
+    global_template = fields.Boolean()
     partner_ids = fields.Many2many(
         comodel_name="res.partner",
         relation="base_comment_template_res_partner_rel",

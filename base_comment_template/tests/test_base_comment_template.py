@@ -87,6 +87,23 @@ class TestCommentTemplate(common.TransactionCase):
         self.assertTrue(self.before_template_id in self.user.comment_template_ids)
         self.assertTrue(self.after_template_id in self.user.comment_template_ids)
 
+    def test_global_template(self):
+        # Need to force _compute because only trigger when partner_id have changed
+        global_template = self.env["base.comment.template"].create(
+            {
+                "name": "Top template",
+                "text": "Text before lines",
+                "models": self.user_obj.model,
+                "company_id": self.company.id,
+            }
+        )
+        self.user._compute_comment_template_ids()
+        # Check getting default comment template
+        self.assertNotIn(global_template, self.user.comment_template_ids)
+        global_template.global_template = True
+        self.user._compute_comment_template_ids()
+        self.assertIn(global_template, self.user.comment_template_ids)
+
     def test_partner_template(self):
         self.partner2_id.base_comment_template_ids = [
             (4, self.before_template_id.id),

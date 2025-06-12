@@ -41,7 +41,11 @@ class CommentTemplate(models.AbstractModel):
             templates = template_model.search(
                 expression.AND(
                     [
-                        [("id", "in", partner.base_comment_template_ids.ids)],
+                        [
+                            "|",
+                            ("id", "in", partner.base_comment_template_ids.ids),
+                            ("global_template", "=", True),
+                        ],
                         template_domain,
                     ]
                 )

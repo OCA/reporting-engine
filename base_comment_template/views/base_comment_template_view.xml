@@ -10,6 +10,7 @@
                 <field name="position" />
                 <field name="company_id" groups="base.group_multi_company" />
                 <field name="partner_ids" />
+                <field name="global_template" />
                 <field name="models" />
                 <field name="model_ids" groups="base.group_erp_manager" />
                 <field name="domain" />
@@ -75,6 +76,7 @@
                                 widget="many2many_tags"
                                 readonly="1"
                             />
+                            <field name="global_template" />
                             <field name="engine" groups="base.group_no_one" />
                         </group>
                     </group>
