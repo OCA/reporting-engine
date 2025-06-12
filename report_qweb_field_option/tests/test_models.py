@@ -5,6 +5,7 @@ from odoo import fields, models
 
 class TestQwebFieldModel(models.Model):
     _name = "test.qweb.field.options"
+    _description = "Test Qweb Field Options"
 
     name = fields.Char()
     value = fields.Float(string="Rounding Factor")

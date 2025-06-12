@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_qweb_field_options_tree" model="ir.ui.view">
-        <field name="name">qweb.field.options.tree</field>
+        <field name="name">qweb.field.options.list</field>
         <field name="model">qweb.field.options</field>
-        <field name="type">tree</field>
+        <field name="type">list</field>
         <field name="arch" type="xml">
-            <tree create="1" editable="bottom">
+            <list create="1" editable="bottom">
                 <field name="res_model_id" />
-                <field
-                    name="field_id"
-                    attrs="{'readonly':[('res_model_id','=',False)]}"
-                />
-                <field name="field_type" invisible="1" />
+                <field name="field_id" readonly="res_model_id == False" />
+                <field name="field_type" column_invisible="True" />
                 <field
                     name="uom_id"
-                    attrs="{'readonly':['|', ('currency_id','!=',False), ('field_type','!=', 'float')]}"
+                    readonly="currency_id !=False or field_type != 'float'"
                 />
                 <field
                     name="uom_field_id"
-                    attrs="{'readonly':[('uom_id','=',False)],'required':[('uom_id','!=',False)]}"
+                    readonly="uom_id == False"
+                    required="uom_id != False"
                 />
                 <field
                     name="currency_id"
-                    attrs="{'readonly':['|', ('uom_id','!=',False), ('field_type','!=', 'float')]}"
+                    readonly="uom_id != False or field_type != 'float'"
                 />
                 <field
                     name="currency_field_id"
-                    attrs="{'readonly':[('currency_id','=',False)],'required':[('currency_id','!=',False)]}"
+                    readonly="currency_id == False"
+                    required="currency_id != False"
                 />
                 <field
                     name="company_id"
@@ -34,11 +33,8 @@
                     optional="show"
                 />
                 <field name="field_options" />
-                <field
-                    name="digits"
-                    attrs="{'readonly':[('field_type','!=', 'float')]}"
-                />
-            </tree>
+                <field name="digits" readonly="field_type != 'float'" />
+            </list>
         </field>
     </record>
     <record id="view_qweb_field_options_searh" model="ir.ui.view">
@@ -65,7 +61,7 @@
     <record id="action_qweb_field_options_view" model="ir.actions.act_window">
         <field name="name">Qweb Field Options</field>
         <field name="res_model">qweb.field.options</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="view_id" ref="view_qweb_field_options_tree" />
     </record>
     <menuitem
