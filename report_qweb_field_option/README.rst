@@ -17,20 +17,20 @@ Report Qweb Field Option
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_field_option
+    :target: https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_field_option
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_qweb_field_option
+    :target: https://translation.odoo-community.org/projects/reporting-engine-18-0/reporting-engine-18-0-report_qweb_field_option
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows administrators to define the decimal precision of float fields and
-add option values to fields (e.g., adding a date widget option to datetime fields) for
-QWeb report and view presentation.
+This module allows administrators to define the decimal precision of
+float fields and add option values to fields (e.g., adding a date widget
+option to datetime fields) for QWeb report and view presentation.
 
 **Table of contents**
 
@@ -40,40 +40,44 @@ QWeb report and view presentation.
 Configuration
 =============
 
-Go to *Settings > Technical > Reporting > Qweb Field Options*, and create records
-according to your needs.
+Go to *Settings > Technical > Reporting > Qweb Field Options*, and
+create records according to your needs.
 
 For each record:
 
-- Set **Model** and **Field** (required)
-- Set **UoM** and **UoM Field**, or **Currency** and **Currency Field** only for fields
-  of float type (optional)
-- Set **Company** (optional)
-- Set **Options** as a string representation of a dictionary. E.g., ``{"widget": "date"}``,
-  ``{"widget": "monetary"}``, or ``{'widget': 'contact', 'fields': ['name', 'phone']}``
-- Set **Digits** (only for float-type fields). The value is ignored if Options is set
+-  Set **Model** and **Field** (required)
+-  Set **UoM** and **UoM Field**, or **Currency** and **Currency Field**
+   only for fields of float type (optional)
+-  Set **Company** (optional)
+-  Set **Options** as a string representation of a dictionary. E.g.,
+   ``{"widget": "date"}``, ``{"widget": "monetary"}``, or
+   ``{'widget': 'contact', 'fields': ['name', 'phone']}``
+-  Set **Digits** (only for float-type fields). The value is ignored if
+   Options is set
 
 Usage
 =====
 
-Print a QWeb report (quotation, invoice, purchase order, etc.), and the value
-presentation for fields like line quantity, price unit and date order are adjusted
-according to the Qweb Field Options configuration.
+Print a QWeb report (quotation, invoice, purchase order, etc.), and the
+value presentation for fields like line quantity, price unit and date
+order are adjusted according to the Qweb Field Options configuration.
 
-Note that among matching configuration records, the one with the strictest condition will be
-applied.
+Note that among matching configuration records, the one with the
+strictest condition will be applied.
 
 Known issues / Roadmap
 ======================
 
-Assigning Options in a QWeb Field Options record can cause UI issues if a field is
-defined twice with different widgets in a view.
+Assigning Options in a QWeb Field Options record can cause UI issues if
+a field is defined twice with different widgets in a view.
 
-For example, adding ``{"widget": "date"}`` to the date_approve field in a purchase order
-can result in two dates appearing under the Confirmation Date column in the portal view.
-This occurs because the field is defined twice with different widgets.
+For example, adding ``{"widget": "date"}`` to the date_approve field in
+a purchase order can result in two dates appearing under the
+Confirmation Date column in the portal view. This occurs because the
+field is defined twice with different widgets.
 
-Reference: https://github.com/odoo/odoo/blob/5eec379/addons/purchase/views/portal_templates.xml#L101-L102
+Reference:
+https://github.com/odoo/odoo/blob/5eec379/addons/purchase/views/portal_templates.xml#L101-L102
 
 Bug Tracker
 ===========
@@ -81,7 +85,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_field_option%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_field_option%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -89,20 +93,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Quartile
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Quartile <https://www.quartile.co>`_:
+-  `Quartile <https://www.quartile.co>`__:
 
-  * Yoshi Tashiro
-  * Aung Ko Ko Lin
+   -  Yoshi Tashiro
+   -  Aung Ko Ko Lin
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -114,6 +118,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/16.0/report_qweb_field_option>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_field_option>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
