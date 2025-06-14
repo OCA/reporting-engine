@@ -41,7 +41,7 @@
         <field name="widget">meter</field>
         <field
             name="code"
-        >result = {"min": 0, "total": 200, "used": 90, showvalue: True}</field>
+        >result = {"min": 0, "total": 200, "used": 90, "showvalue": True}</field>
     </record>
     <function
         model="kpi.kpi"
