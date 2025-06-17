@@ -79,7 +79,7 @@ class ReportAsync(models.Model):
                 .env["queue.job"]
                 .search(
                     [
-                        ("func_string", "like", "report.async(%s,)" % rec.id),
+                        ("func_string", "like", f"report.async{rec.id}"),
                         ("user_id", "=", self._uid),
                     ],
                     order="id desc",
