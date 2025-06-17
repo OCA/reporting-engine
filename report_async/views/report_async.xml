@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_report_async_tree" model="ir.ui.view">
         <field name="name">report.async.tree</field>
@@ -38,10 +38,9 @@
                     invisible="not allow_async or (job_status in ['done', 'failed', False])"
                     style="margin-bottom:0px;"
                 >
-                    <p>
-                        The report will be running by <i class="fa fa-cogs" />
-                        <b>job</b>, and will be available at
-                        <i class="fa fa-copy" /><b> Files</b>
+                    <p> The report will be running by <i class="fa fa-cogs" />
+                        <b>job</b>, and will
+                        be available at <i class="fa fa-copy" /><b> Files</b>
                     </p>
                 </div>
                 <div
@@ -50,10 +49,8 @@
                     invisible="not allow_async or job_status != 'failed'"
                     style="margin-bottom:0px;"
                 >
-                    <p>
-                        The last <i class="fa fa-cogs" /> <b>running job</b> was failed.
-                        Please contact your system administrator.
-                    </p>
+                    <p> The last <i class="fa fa-cogs" /> <b>running job</b> was failed. Please
+                        contact your system administrator. </p>
                 </div>
                 <div
                     class="alert alert-success"
@@ -61,11 +58,8 @@
                     invisible="not allow_async or job_status != 'done'"
                     style="margin-bottom:0px;"
                 >
-                    <p>
-                        The last <i class="fa fa-cogs" /> <b
-                        >running job</b> was succeed.
-                        You can check the result in <i class="fa fa-copy" /><b
-                        > Files</b>
+                    <p> The last <i class="fa fa-cogs" /> <b>running job</b> was succeed. You can
+                        check the result in <i class="fa fa-copy" /><b> Files</b>
                     </p>
                 </div>
                 <sheet>
