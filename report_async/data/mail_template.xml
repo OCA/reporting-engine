@@ -50,10 +50,10 @@
                                                         Your requested report, ${object.name}, is
                                                                     available for
                                                         <b>
-                                                        <a href="${download_url}">
-                                                            download
-                                                        </a>
-                                                        </b>
+                                                    <a href="${download_url}">
+                                                             download
+                                                         </a>
+                                                </b>
                                                         .
                                                         <br />
                                                         <br />
