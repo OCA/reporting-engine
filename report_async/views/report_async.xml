@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_report_async_tree" model="ir.ui.view">
         <field name="name">report.async.tree</field>

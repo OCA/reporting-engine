@@ -42,18 +42,15 @@
                                                     % set download_url =
                                                     '%s/web/content/ir.attachment/%s/datas/%s?download=true'
                                                     % (base_url, object.id, object.name, ) <div>
-                                                    Dear ${object.create_uid.partner_id.name or ''}, <br /><br />
+                                                    Dear ${object.create_uid.partner_id.name or ''},<br /><br />
                                                     Your requested report, ${object.name}, is
                                                     available for <b>
                                                             <a
                                                                 href='${download_url}'
                                                             >download</a>
                                                         </b>
-                                                    .
-                                        <br /><br />
-                                                    Have a nice day!<br /> --<br />
-                                                    ${object.company_id.name}
-                                    </div>
+                                                    . <br /><br /> Have a nice day!<br /> --<br />
+                                                    ${object.company_id.name} </div>
                                                 </td>
                                             </tr>
                                         </table>
