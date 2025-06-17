@@ -31,7 +31,7 @@
                                             cellpadding="0"
                                             cellspacing="0"
                                             width="590"
-                                           style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
+                                            style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
                                         >
                                             <tr>
                                                 <td
@@ -50,9 +50,9 @@
                                                         Your requested report, ${object.name}, is
                                                                     available for
                                                         <b>
-                                                            <a href="${download_url}">
-                                                                    download
-                                                            </a>
+                                                        <a href="${download_url}">
+                                                                download
+                                                        </a>
                                                         </b>
                                                         .
                                                         <br />
