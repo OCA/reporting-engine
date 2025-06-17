@@ -49,8 +49,10 @@
                     invisible="not allow_async or job_status != 'failed'"
                     style="margin-bottom:0px;"
                 >
-                    <p> The last <i class="fa fa-cogs" /> <b>running job</b> was failed. Please
-                        contact your system administrator. </p>
+                    <p> The last <i class="fa fa-cogs" />
+                         <b>running job</b>
+                         was failed. Please contact your system administrator.
+                    </p>
                 </div>
                 <div
                     class="alert alert-success"
@@ -58,8 +60,11 @@
                     invisible="not allow_async or job_status != 'done'"
                     style="margin-bottom:0px;"
                 >
-                    <p> The last <i class="fa fa-cogs" /> <b>running job</b> was succeed. You can
-                        check the result in <i class="fa fa-copy" /><b> Files</b>
+                    <p> The last <i class="fa fa-cogs" />
+                        <b>running job</b>
+                        was succeed. You can check the result in
+                        <i class="fa fa-copy" />
+                        <b> Files</b>
                     </p>
                 </div>
                 <sheet>
