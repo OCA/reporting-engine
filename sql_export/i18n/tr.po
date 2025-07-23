@@ -105,11 +105,6 @@ msgid "Export"
 msgstr "Dışa aktar"
 
 #. module: sql_export
-#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
-msgid "Export file"
-msgstr ""
-
-#. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
 msgid "File"
 msgstr "Dosya"
