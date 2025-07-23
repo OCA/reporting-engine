@@ -19,6 +19,12 @@ class TestQwebFieldOptions(TransactionCase):
         cls.test_model = cls.env.ref(
             "report_qweb_field_option.model_test_qweb_field_options"
         )
+        cls.quantity_field = cls.env["ir.model.fields"]._get(
+            "test.qweb.field.options", "quantity"
+        )
+        cls.uom_field = cls.env["ir.model.fields"]._get(
+            "test.qweb.field.options", "uom_id"
+        )
         cls.value_field = cls.env["ir.model.fields"]._get(
             "test.qweb.field.options", "value"
         )
@@ -29,9 +35,11 @@ class TestQwebFieldOptions(TransactionCase):
         cls.test_currency = cls.env["res.currency"].create(
             {"name": "Test Currency", "symbol": "$"}
         )
+        cls.unit_uom = cls.env.ref("uom.product_uom_unit")
         cls.test_record = cls.env["test.qweb.field.options"].create(
             {
                 "name": "Test",
+                "quantity": 1.00,
                 "value": 1.00,
                 "currency_id": cls.test_currency.id,
                 "company_id": cls.env.company.id,
@@ -44,6 +52,15 @@ class TestQwebFieldOptions(TransactionCase):
                 "currency_id": cls.test_currency.id,
                 "currency_field_id": cls.currency_field.id,
                 "digits": 0,
+            }
+        )
+        cls.env["qweb.field.options"].create(
+            {
+                "res_model_id": cls.test_model.id,
+                "field_id": cls.quantity_field.id,
+                "uom_id": cls.unit_uom.id,
+                "uom_field_id": cls.uom_field.id,
+                "digits": 3,
             }
         )
 
@@ -123,3 +140,16 @@ class TestQwebFieldOptions(TransactionCase):
         )
         self.assertNotEqual(content, "1.0")
         self.assertNotIn("$", content)
+
+    def test_qweb_field_option_with_uom(self):
+        values = {"report_type": "pdf"}
+        self.test_record.uom_id = self.unit_uom.id
+        _, content, _ = self.IrQweb._get_field(
+            self.test_record, "quantity", False, False, {}, values
+        )
+        self.assertEqual(content, "1.000")
+        self.test_record.uom_id = self.env.ref("uom.product_uom_dozen").id
+        _, content, _ = self.IrQweb._get_field(
+            self.test_record, "quantity", False, False, {}, values
+        )
+        self.assertEqual(content, "1.0")

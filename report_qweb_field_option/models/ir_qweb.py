@@ -22,6 +22,7 @@ class IrQweb(models.AbstractModel):
                     ("company_id", "=", False),
                 ]
             )
+            options_recs = [r for r in options_recs if r._get_score(record) > 0]
             if options_recs:
                 options_rec = max(
                     options_recs, default=None, key=lambda r: r._get_score(record)
