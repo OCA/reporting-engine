@@ -30,10 +30,10 @@ class IrActionsReport(models.Model):
 
     def _render(self, report_ref, res_ids, data=None):
         return super(IrActionsReport, self.with_context(**self._get_context()))._render(
-            report_ref, res_ids, data=data
+            report_ref=report_ref, res_ids=res_ids, data=data
         )
 
     def report_action(self, docids, data=None, config=True):
         return super(
             IrActionsReport, self.with_context(**self._get_context())
-        ).report_action(docids, data=data, config=config)
+        ).report_action(docids=docids, data=data, config=config)

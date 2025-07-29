@@ -16,5 +16,5 @@ class ReportController(report.ReportController):
             report.with_context(**original_context)._get_context()
         )
         return super().report_routes(
-            reportname, docids=docids, converter=converter, **data
+            reportname=reportname, docids=docids, converter=converter, **data
         )
