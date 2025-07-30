@@ -3,8 +3,9 @@
 
 import base64
 
-from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo import SUPERUSER_ID, api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import SQL
 from odoo.tools.safe_eval import safe_eval
 
 # Define all supported report_type
@@ -13,7 +14,7 @@ REPORT_TYPES_FUNC = {
     "qweb-text": "_render_qweb_text",
     "qweb-xml": "_render_qweb_xml",
     "csv": "_render_csv",
-    "excel": "render_excel",
+    "excel": "_render_excel",
     "xlsx": "_render_xlsx",
 }
 
@@ -79,7 +80,7 @@ class ReportAsync(models.Model):
                 .env["queue.job"]
                 .search(
                     [
-                        ("func_string", "like", "report.async(%s,)" % rec.id),
+                        ("func_string", "like", f"report.async({rec.id},)"),
                         ("user_id", "=", self._uid),
                     ],
                     order="id desc",
@@ -111,7 +112,7 @@ class ReportAsync(models.Model):
     def run_async(self):
         self.ensure_one()
         if not self.allow_async:
-            raise UserError(_("Background process not allowed."))
+            raise UserError(self.env._("Background process not allowed."))
         result = self.env[self.action_id.type]._for_xml_id(self.action_id.xml_id)
         ctx = safe_eval(result.get("context", {}))
         ctx.update({"async_process": True})
@@ -157,11 +158,16 @@ class ReportAsync(models.Model):
                 }
             )
         )
-        self._cr.execute(
-            """
-            UPDATE ir_attachment SET create_uid = %s, write_uid = %s
-            WHERE id = %s""",
-            (self._uid, self._uid, attachment.id),
+        self.env.execute_query(
+            SQL(
+                """
+                UPDATE ir_attachment
+                SET create_uid = %(create_uid)s, write_uid = %(write_uid)s
+                WHERE id = %(attachment_id)s""",
+                create_uid=self._uid,
+                write_uid=self._uid,
+                attachment_id=attachment.id,
+            )
         )
         # Send email
         if self.email_notify:

@@ -10,7 +10,7 @@
         <field name="perm_unlink" eval="False" />
         <field
             name="domain_force"
-        >['|', ('group_ids', '=', False), ('group_ids', 'in', [g.id for g in user.groups_id])]</field>
+        >[('group_ids', 'in', user.groups_id.ids + [False])]</field>
     </record>
     <record id="rule_report_async_access_all" model="ir.rule">
         <field name="name">Report Async by Groups</field>

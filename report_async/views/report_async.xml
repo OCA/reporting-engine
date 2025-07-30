@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_report_async_tree" model="ir.ui.view">
-        <field name="name">report.async.tree</field>
+        <field name="name">report.async.list</field>
         <field name="model">report.async</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="action_id" context="{'access_sudo': True}" />
                 <button type="object" name="run_now" string="Run Now" icon="fa-bolt" />
                 <button
@@ -24,7 +24,7 @@
                 <field name="allow_async" column_invisible="1" />
                 <field name="job_status" optional="hide" />
                 <field name="email_notify" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="view_report_async_form" model="ir.ui.view">
@@ -153,7 +153,7 @@
         <field name="res_model">ir.attachment</field>
         <field name="view_id" eval="False" />
         <field name="search_view_id" ref="base.view_attachment_search" />
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field
             name="domain"
         >[('res_model', '=', 'report.async'), ('create_uid', '=', uid)]</field>

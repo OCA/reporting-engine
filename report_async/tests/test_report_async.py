@@ -1,16 +1,16 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 from odoo.exceptions import UserError
-from odoo.tests import common
-from odoo.tests.common import Form
+from odoo.tests import Form, common
 
 
 class TestJobChannel(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.print_doc = self.env.ref("report_async.report_async_print_document")
-        self.test_rec = self.env.ref("base.module_mail")
-        self.test_rpt = self.env.ref("base.ir_module_reference_print")
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.print_doc = cls.env.ref("report_async.report_async_print_document")
+        cls.test_rec = cls.env.ref("base.module_mail")
+        cls.test_rpt = cls.env.ref("base.ir_module_reference_print")
 
     def _print_wizard(self, res):
         obj = self.env[res["res_model"]]

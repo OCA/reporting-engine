@@ -10,7 +10,6 @@
                         <field name="reference" />
                     </group>
                     <group>
-                        <field name="reference_model" invisible="1" />
                         <field
                             name="action_report_id"
                             options="{'no_open': True, 'no_create_edit': True}"

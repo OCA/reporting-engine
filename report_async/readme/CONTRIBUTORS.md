@@ -5,3 +5,5 @@
 - Opensourceintegrators
   - Daniel Reis \<<dreis@opensourceintegrators.com>\>
   - Nikul Chaudhary \<<nchaudhary@opensourceintegrators.com>\>
+- [Trobz](https://trobz.com):
+  - Do Anh Duy \<<duyda@trobz.com>\>
