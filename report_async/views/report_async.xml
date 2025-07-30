@@ -63,9 +63,9 @@
                 >
                     <p>
                         The last <i class="fa fa-cogs" /> <b
-                        >running job</b> was succeed.
+                    >running job</b> was succeed.
                         You can check the result in <i class="fa fa-copy" /><b
-                        > Files</b>
+                    > Files</b>
                     </p>
                 </div>
                 <sheet>

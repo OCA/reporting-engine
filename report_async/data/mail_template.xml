@@ -38,31 +38,31 @@
                                                     valign="top"
                                                     style="font-size: 13px;"
                                                 >
-                                                <t
+                                                    <t
                                                         t-set="base_url"
                                                         t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"
                                                     />
-                                                <t
+                                                    <t
                                                         t-set="download_url"
                                                         t-value="'%s/web/content/ir.attachment/%s/datas/%s?download=true' % (base_url, object.id, object.name, )"
                                                     />
-                                    <div>
+                                                    <div>
                                         Dear <t
-                                                            t-out="object.create_uid.partner_id.name or ''"
-                                                        />,
+                                                        t-out="object.create_uid.partner_id.name or ''"
+                                                    />,
                                         <br /><br />
                                         Your requested report, <t
-                                                            t-out="object.name"
-                                                        />, is available for <b>
-                                                            <a
-                                                                t-attf-href="{{ download_url }}"
-                                                            >download</a>
-                                                        </b>.
+                                                        t-out="object.name"
+                                                    />, is available for <b>
+                                                        <a
+                                                            t-attf-href="{{ download_url }}"
+                                                        >download</a>
+                                                    </b>.
                                         <br /><br />
                                         Have a nice day!<br />
                                         --<br /><t t-out="object.company_id.name" />
                                     </div>
-                                </td>
+                                                </td>
                                             </tr>
                                         </table>
                                     </td>
