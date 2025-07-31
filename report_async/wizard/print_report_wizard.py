@@ -13,6 +13,7 @@ class PrintReportWizard(models.TransientModel):
         selection="_reference_models",
         required=True,
     )
+    reference_model = fields.Char(compute="_compute_reference_model")
     action_report_id = fields.Many2one(
         comodel_name="ir.actions.report",
         string="Report Template",
@@ -31,14 +32,18 @@ class PrintReportWizard(models.TransientModel):
         )
         return [(model.model, model.name) for model in models]
 
+    @api.depends("reference")
+    def _compute_reference_model(self):
+        for record in self:
+            if record.reference:
+                record.reference_model = record.reference._name
+            else:
+                record.reference_model = False
+
     @api.onchange("reference")
     def _onchange_reference(self):
         self.ensure_one()
-        domain = [("id", "in", [])]
         self.action_report_id = False
-        if self.reference:
-            domain = [("model", "=", self.reference._name)]
-        return {"domain": {"action_report_id": domain}}
 
     def print_report(self):
         self.ensure_one()
