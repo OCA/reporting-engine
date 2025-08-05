@@ -724,7 +724,7 @@ WHERE
                     and sql_field[1] in ("integer", "float")
                     and sql_field[2]
                 ):
-                    model._fields[sql_field[0]].group_operator = sql_field[2]
+                    model._fields[sql_field[0]].aggregator = sql_field[2]
 
     def button_preview_sql_expression(self):
         self.button_validate_sql_expression()
