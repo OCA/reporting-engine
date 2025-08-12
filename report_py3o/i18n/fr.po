@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-04 16:55+0000\n"
-"PO-Revision-Date: 2018-07-18 08:55+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
+"PO-Revision-Date: 2025-08-12 14:25+0000\n"
+"Last-Translator: Hughes Damry <hughes@damry.org>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: report_py3o
 #. odoo-python
@@ -31,7 +31,7 @@ msgstr "(Natif)"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__create_uid
 msgid "Created by"
-msgstr "Cr???? par"
+msgstr "Créé par"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_date
@@ -43,12 +43,12 @@ msgstr "Date"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
 msgid "Display Name"
-msgstr "Nom ?? afficher"
+msgstr "Nom à afficher"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
 msgid "Fallback"
-msgstr "Proc??dure de recours"
+msgstr "Procédure de recours"
 
 #. module: report_py3o
 #. odoo-python
@@ -79,8 +79,8 @@ msgid ""
 "If the user does not provide a template this will be used it should be a "
 "relative path to root of YOUR module or an absolute path on your server."
 msgstr ""
-"Si l'utilisateur ne fournit pas de mod??le, celui-ci sera utilis??. Il doit "
-"s'agir d'un chemin relatif ?? la racine de VOTRE module ou d'un chemin absolu "
+"Si l'utilisateur ne fournit pas de modèle, celui-ci sera utilis?é Il doit "
+"s'agir d'un chemin relatif à la racine de VOTRE module ou d'un chemin absolu "
 "sur votre serveur."
 
 #. module: report_py3o
@@ -90,10 +90,10 @@ msgid ""
 "ZIP file that contains as many files as selected records. If you enable this "
 "option, Odoo will generate instead a single report for the selected records."
 msgstr ""
-"Si vous ex??cutez un rapport sur plusieurs enregistrements, Odoo g??n??rera par "
-"d??faut un fichier ZIP contenant autant de fichiers que d'enregistrements "
-"s??lectionn??s. Si vous activez cette option, Odoo g??n??rera ?? la place un seul "
-"rapport pour les enregistrements s??lectionn??s."
+"Si vous exécutez un rapport sur plusieurs enregistrements, Odoo génèrera par "
+"défaut un fichier ZIP contenant autant de fichiers que d'enregistrements "
+"sélectionnés. Si vous activez cette option, Odoo génèrera à la place un seul "
+"rapport pour les enregistrements sélectionnés."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
@@ -115,30 +115,30 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template____last_update
 msgid "Last Modified on"
-msgstr "Derni??re modification le"
+msgstr "Dernière modification le"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_uid
 msgid "Last Updated by"
-msgstr "Derni??re mise ?? jour par"
+msgstr "Dernière mise à jour par"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_date
 msgid "Last Updated on"
-msgstr "Derni??re mise ?? jour le"
+msgstr "Dernière mise à jour le"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_report_view
 msgid "LibreOffice Template"
-msgstr "Mod??le LibreOffice"
+msgstr "Modèle LibreOffice"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__filetype
 msgid "LibreOffice Template File Type"
-msgstr "Type de fichier mod??le de LibreOffice"
+msgstr "Type de fichier modèle de LibreOffice"
 
 #. module: report_py3o
 #. odoo-python
@@ -172,17 +172,17 @@ msgstr "Nom"
 #: code:addons/report_py3o/models/py3o_report.py:0
 #, python-format
 msgid "No template found. Aborting."
-msgstr "Pas de mod??le trouv??. Annulation."
+msgstr "Pas de modèle trouvé. Annulation."
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odp
 msgid "ODF Presentation"
-msgstr "Pr??sentation ODF"
+msgstr "Présentation ODF"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodp
 msgid "ODF Presentation (Flat)"
-msgstr "Pr??sentation ODF (?? plat)"
+msgstr "Présentation ODF (à plat)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__ods
@@ -192,7 +192,7 @@ msgstr "Tableur ODF"
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fods
 msgid "ODF Spreadsheet (Flat)"
-msgstr "Tableur ODF (?? plat)"
+msgstr "Tableur ODF (à plat)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odt
@@ -202,7 +202,7 @@ msgstr "Document texte ODF"
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodt
 msgid "ODF Text Document (Flat)"
-msgstr "Document Texte ODF (?? plat)"
+msgstr "Document Texte ODF (à plat)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_filetype
@@ -217,7 +217,7 @@ msgstr ""
 #. module: report_py3o
 #: model:ir.actions.report,name:report_py3o.res_users_report_py3o
 msgid "Py3o Demo Report"
-msgstr "Rapport de d??mo Py3o"
+msgstr "Rapport de démo Py3o"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
