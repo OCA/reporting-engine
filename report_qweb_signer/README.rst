@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =======================
 Qweb PDF reports signer
 =======================
@@ -17,23 +13,23 @@ Qweb PDF reports signer
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_signer
+    :target: https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_signer
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-17-0/reporting-engine-17-0-report_qweb_signer
+    :target: https://translation.odoo-community.org/projects/reporting-engine-18-0/reporting-engine-18-0-report_qweb_signer
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=17.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module extends the functionality of report module to sign PDFs
-using a PKCS#12 certificate.
+This module extends the functionality of reports to sign PDFs using a
+PKCS#12 certificate.
 
 **Table of contents**
 
@@ -43,49 +39,36 @@ using a PKCS#12 certificate.
 Installation
 ============
 
-To install this module, you need to install Java JDK Headlees, e.g.:
+To install this module, you need to install pyhanko-cli, e.g.:
 
-   apt-get install default-jre-headless
+   pipx install pyhanko-cli
 
 Configuration
 =============
 
-In order to start signing PDF documents you need to configure
-certificate(s) to use in your company.
+To start signing PDF reports you'll need first to configure your desired
+certificate. To do so:
 
-- Go to ``Settings > Companies > Companies > Your company``
-- Go to ``Report configuration`` tab
-- Click ``Edit``
-- Add a new item in ``PDF report certificates`` list
-- Click ``Create``
-- Set name, certificate file, password file and model
-- Optionally you can set a domain and filename pattern for saving as
-  attachment
+- Go to *Settings > General Settings* and then to the section
+  *Certificates and Keys*. Then click on **Certificates**.
+- Add the cert you want to use: upload the file and set the password.
 
-For example, if you want to sign only customer invoices in posted state:
+Now you need to configure the reports using this certificate:
 
-- Model: ``account.move``
-- Domain:
-  ``[('move_type','=','out_invoice'), ('state', '=', 'posted')]``
-- Save as attachment:
-  ``(object.name or '').replace('/','_') + '.signed.pdf'``
+- Go to *Settings > Thecnical > Reporting > Reports*.
+- Search for the pdf report you want to sign.
+- In the report form, open the **Sign** tab.
+- Choose the **Certificate** you created before.
+- Optionally, you can set:
 
-**Note**: Linux user that executes Odoo server process must have read
-access to certificate file and password file
-
-Java Memory Settings
---------------------
-
-If you are signing large amounts of reports at the same time, or if you
-have a lower worker memory size than the JVM defaults, you may need to
-tune the JVM heap memory limits. Do so by adding a ``$JVM_ARGS``
-environment variable that contains the required flags. Check out these
-links too:
-
-- `StackOverflow
-  answer <https://stackoverflow.com/a/14763095/1468388>`__.
-- `Java
-  docs <https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161>`__.
+  - **Allow to sign only one document**: disallow signing a pdf that
+    contains multiple docs.
+  - **Save as attachment**: Set the signed document report file name
+    pattern. Example:
+    ``(object.name or '').replace('/','_') + '.signed.pdf'``
+  - **Signing domain**: Filter the document that will be signed.
+    Example:
+    ``[('move_type','=','out_invoice'), ('state', '=', 'posted')]``
 
 Usage
 =====
@@ -102,21 +85,22 @@ customer invoices.
 You can try the signing with the demo report that is included for
 customers called "Test PDF certificate".
 
-You can set extra parameters of JSignPdf library in the system parameter
-named 'reportqweb_signer.java_position_parameters', for example '-V' to
-visible signature into pdf. You can also set extra parameters for Java
-in the system parameter named 'reportqweb_signer.java_parameters'.
-
 Known issues / Roadmap
 ======================
 
-- When signing multiple documents (if 'Allow only one document' is
-  disable) then 'Save as attachment' is not applied and signed result is
-  not saved as attachment.
-- Add tests.
-- Why not taking the occasion to add the whole configuration at report
-  level (if to be signed or not, the domain, etc...)? See
-  https://github.com/OCA/reporting-engine/pull/533#issuecomment-898321161
+- This version 18.0 depends on pyhanko-cli for signing the documents,
+  which isn't ideal at all but avoids the dependency hell coming from
+  cryptography requisites.
+- In Odoo 19.0 Odoo implemented their own signing mechanism. We could
+  backport it but it depends on python 12 which supports the proper
+  cryptography library version and that would leave out any
+  infrastructure using lower versions. So: for v19 we should get rid of
+  all that external stuff and just use the core one. (ref:
+  https://github.com/odoo/odoo/pull/194698)
+- When signing multiple documents (if *Allow only one document* is
+  disabled) then *Save as attachment* is not applied and signed result
+  is not saved as attachment.
+- Add more tests.
 - This module is incompatible with the ``account_edi_ubl_cii`` module,
   because the PDF content is altered after rendering. See:
   https://github.com/odoo/odoo/blob/5977da2c93d522ece984d2fa8a31624f4b612eca/addons/account_edi_ubl_cii/models/account_move_send.py#L131C9-L140
@@ -127,7 +111,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_signer%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -161,13 +145,6 @@ Contributors
 Other credits
 -------------
 
-External utilities
-~~~~~~~~~~~~~~~~~~
-
-- JSignPdf: © Josef Cacek - License `MPL <http://www.mozilla.org/MPL>`__
-  or `LGPL2 <http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html>`__
-  - http://jsignpdf.sourceforge.net/
-
 Icon
 ~~~~
 
@@ -187,6 +164,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/17.0/report_qweb_signer>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_signer>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

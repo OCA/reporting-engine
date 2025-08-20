@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+    <record id="demo_db_certificate" model="certificate.certificate">
+        <field name="name">Demo Certificate Qweb</field>
+        <field
+            name="content"
+            type="base64"
+            file="report_qweb_signer/static/certificate/test.p12"
+        />
+        <field name="pkcs12_password">admin</field>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+</odoo>

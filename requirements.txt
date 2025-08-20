@@ -1,7 +1,4 @@
 # generated from manifests external_dependencies
-cryptography
-endesive ; python_version >= '3.12'
-endesive<=2.18.5 ; python_version < '3.12'
 lxml
 mock
 openpyxl
