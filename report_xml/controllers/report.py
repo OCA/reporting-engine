@@ -48,12 +48,14 @@ class ReportController(report.ReportController):
         return request.make_response(xml, headers=xmlhttpheaders)
 
     @route()
-    def report_download(self, data, context=None, token=None):
+    def report_download(self, data, context=None, token=None, readonly=True):
         requestcontent = json.loads(data)
         url, report_type = requestcontent[0], requestcontent[1]
         reportname = "???"
         if report_type != "qweb-xml":
-            return super().report_download(data, context=context, token=token)
+            return super().report_download(
+                data, context, token=token, readonly=readonly
+            )
         try:
             reportname = url.split("/report/xml/")[1].split("?")[0]
             docids = None
