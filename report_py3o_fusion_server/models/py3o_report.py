@@ -2,26 +2,31 @@
 # © 2016 ACSONE SA/NV
 # © 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-import json
+
 import logging
-import os
 import tempfile
-from contextlib import closing
 from datetime import datetime
-from io import BytesIO
 
-import requests
-
-from odoo import _, models
-from odoo.exceptions import UserError
+from odoo import models
 
 logger = logging.getLogger(__name__)
 
 try:
-    from py3o.template import Template
-    from py3o.template.helpers import Py3oConvertor
+    pass
 except ImportError:
     logger.debug("Cannot import py3o.template")
+try:
+    from py3o.formats import Formats
+except ImportError:
+    logger.debug("Cannot import py3o.formats")
+try:
+    import uno
+except ImportError:
+    logger.debug("Cannot import uno")
+try:
+    from com.sun.star.beans import PropertyValue
+except ImportError:
+    logger.debug("Cannot import com.sun.star.beans")
 
 
 class Py3oReport(models.TransientModel):
@@ -30,77 +35,133 @@ class Py3oReport(models.TransientModel):
     def _create_single_report(self, model_instance, data):
         """This function to generate our py3o report"""
         self.ensure_one()
-        report_xml = self.ir_actions_report_id
-        filetype = report_xml.py3o_filetype
-        if not report_xml.py3o_server_id:
+        report = self.ir_actions_report_id
+        py3o_server = report.py3o_server_id
+        if not py3o_server:
             return super()._create_single_report(model_instance, data)
-        elif report_xml.py3o_is_local_fusion:
-            result_path = super(
-                Py3oReport, self.with_context(report_py3o_skip_conversion=True)
-            )._create_single_report(model_instance, data)
-            with closing(open(result_path, "rb")) as out_stream:
-                tmpl_data = out_stream.read()
-            datadict = {}
-        else:
-            result_fd, result_path = tempfile.mkstemp(
-                suffix="." + filetype, prefix="p3o.report.tmp."
-            )
-            tmpl_data = self.get_template(model_instance)
-
-            in_stream = BytesIO(tmpl_data)
-            with closing(os.fdopen(result_fd, "wb+")) as out_stream:
-                template = Template(in_stream, out_stream, escape_false=True)
-                localcontext = self._get_parser_context(model_instance, data)
-                expressions = template.get_all_user_python_expression()
-                py_expression = template.convert_py3o_to_python_ast(expressions)
-                convertor = Py3oConvertor()
-                data_struct = convertor(py_expression)
-                datadict = data_struct.render(localcontext)
-
-        # Call py3o.server to render the template in the desired format
-        files = {"tmpl_file": tmpl_data}
-        fields = {
-            "targetformat": filetype,
-            "datadict": json.dumps(datadict),
-            "image_mapping": "{}",
-            "escape_false": "on",
-        }
-        if report_xml.py3o_is_local_fusion:
-            fields["skipfusion"] = "1"
-        url = report_xml.py3o_server_id.url
-        logger.info(
-            "Connecting to %s to convert report %s to %s",
-            url,
-            report_xml.report_name,
-            filetype,
-        )
+        filetype = report.py3o_filetype
+        uno_filter_data = []
         if filetype == "pdf":
-            options = (
-                report_xml.pdf_options_id or report_xml.py3o_server_id.pdf_options_id
-            )
+            options = report.pdf_options_id or py3o_server.pdf_options_id
             if options:
                 pdf_options_dict = options.odoo2libreoffice_options()
-                fields["pdf_options"] = json.dumps(pdf_options_dict)
-                logger.debug("PDF Export options: %s", pdf_options_dict)
-        start_chrono = datetime.now()
-        r = requests.post(url, data=fields, files=files, timeout=10)
-        if r.status_code != 200:
-            # server says we have an issue... let's tell that to enduser
-            logger.error("Py3o fusion server error: %s", r.text)
-            raise UserError(_("Fusion server error %s") % r.text)
+                logger.debug("PDF export options: %s", pdf_options_dict)
+                for pdf_opt_key, pdf_opt_val in pdf_options_dict.items():
+                    if isinstance(pdf_opt_val, (bool, int, str)) and isinstance(
+                        pdf_opt_key, str
+                    ):
+                        uno_filter_data.append(
+                            PropertyValue(Name=pdf_opt_key, Value=pdf_opt_val)
+                        )
 
-        chunk_size = 1024
-        with open(result_path, "w+b") as fd:
-            for chunk in r.iter_content(chunk_size):
-                fd.write(chunk)
+        logger.info(
+            "Connecting to LibreOffice on %s to convert report %s to %s",
+            py3o_server.display_name,
+            report.report_name,
+            filetype,
+        )
+        start_chrono = datetime.now()
+        uno_local_ctx = uno.getComponentContext()
+        uno_resolver = uno_local_ctx.ServiceManager.createInstanceWithContext(
+            "com.sun.star.bridge.UnoUrlResolver", uno_local_ctx
+        )
+        uno_url = (
+            f"uno:socket,host={py3o_server.host.strip()},"
+            f"port={py3o_server.port};urp;StarOffice.ComponentContext"
+        )
+        logger.debug("uno_url=%s", uno_url)
+        try:
+            uno_ctx = uno_resolver.resolve(uno_url)
+            logger.info(
+                "Connection to LibreOffice established on %s", py3o_server.display_name
+            )
+        except Exception as e:
+            logger.warning(
+                "Failed to connect to LibreOffice on %s. Error: %s",
+                py3o_server.display_name,
+                e,
+            )
+            return super()._create_single_report(model_instance, data)
+
+        uno_desktop = uno_ctx.getByName("/singletons/com.sun.star.frame.theDesktop")
+        result_path = super(
+            Py3oReport, self.with_context(report_py3o_skip_conversion=True)
+        )._create_single_report(model_instance, data)
+        logger.debug("Input result_path=%s", result_path)
+
+        uno_import_url = uno.systemPathToFileUrl(result_path)
+        uno_input_properties = [PropertyValue(Name="ReadOnly", Value=True)]
+
+        try:
+            # API doc: https://api.libreoffice.org/docs/idl/ref/
+            # interfacecom_1_1sun_1_1star_1_1frame_1_1XComponentLoader.html
+            uno_document = uno_desktop.loadComponentFromURL(
+                uno_import_url, "_default", 0, uno_input_properties
+            )
+            logger.info("LibreOffice successfully loaded the document")
+        except Exception as e:
+            logger.warning(
+                "LibreOffice failed to load the document from %s. Error: %s",
+                uno_import_url,
+                e,
+            )
+            return super()._create_single_report(model_instance, data)
+        if not uno_document:
+            logger.warning(
+                "LibreOffice failed to load the document from %s. No specific error.",
+                uno_import_url,
+            )
+            return super()._create_single_report(model_instance, data)
+        # It doesn't work when the same path is used as input and output,
+        # so we create a file dedicated to the output
+        _out_fd, out_result_path = tempfile.mkstemp(
+            prefix="py3o.report.tmp.", suffix=f".{filetype}"
+        )
+        logger.debug("out_result_path=%s", out_result_path)
+        uno_out_url = uno.systemPathToFileUrl(out_result_path)
+        # py3o.formats doesn't take into account the source format to decide
+        # the right filter. For pdf, il will always give "writer_pdf_Export"
+        # although we should use "calc_pdf_Export" if source document is ODS
+        # TODO stop using py3o.formats and re-write this mess
+        uno_filtername = Formats()._formats[filetype].odfname
+        logger.debug("uno_filtername=%s uno_out_url=%s", uno_filtername, uno_out_url)
+        uno_output_properties = [
+            PropertyValue(Name="FilterName", Value=uno_filtername),
+            PropertyValue(Name="Overwrite", Value=True),
+            PropertyValue(
+                Name="FilterData",
+                Value=uno.Any("[]com.sun.star.beans.PropertyValue", uno_filter_data),
+            ),
+        ]
+        try:
+            uno_document.storeToURL(uno_out_url, uno_output_properties)
+        except Exception as err:
+            logger.warning(
+                "Conversion of report %s to %s with LibreOffice failed. Error: %s",
+                report.report_name,
+                filetype,
+                err,
+            )
+            logger.warning(
+                "Make sure the source format can really be converted to %s.", filetype
+            )
+            return super()._create_single_report(model_instance, data)
+        finally:
+            # Should we call uno_desktop.terminate() ??
+            uno_document.close(True)
+            logger.debug("document has been closed.")
+
+        # TODO: test that the output has the right format
+        # by analysing the beginning of the file
+        # To trigger the bug: change "FilterName" by "toto" in uno_output_properties
         end_chrono = datetime.now()
         convert_seconds = (end_chrono - start_chrono).total_seconds()
         logger.info(
             "Report %s converted to %s in %s seconds",
-            report_xml.report_name,
+            report.report_name,
             filetype,
             convert_seconds,
         )
         if len(model_instance) == 1:
-            self._postprocess_report(model_instance, result_path)
-        return result_path
+            self._postprocess_report(model_instance, out_result_path)
+        return out_result_path

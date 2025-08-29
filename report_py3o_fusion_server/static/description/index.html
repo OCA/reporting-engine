@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -9,10 +8,11 @@
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 8954 2022-01-20 10:10:25Z milde $
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
 
 See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
 customize this style sheet.
@@ -275,7 +275,7 @@ pre.literal-block, pre.doctest-block, pre.math, pre.code {
   margin-left: 2em ;
   margin-right: 2em }
 
-pre.code .ln { color: grey; } /* line numbers */
+pre.code .ln { color: gray; } /* line numbers */
 pre.code, code { background-color: #eeeeee }
 pre.code .comment, code .comment { color: #5C6576 }
 pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
@@ -301,7 +301,7 @@ span.option {
 span.pre {
   white-space: pre }
 
-span.problematic {
+span.problematic, pre.problematic {
   color: red }
 
 span.section-subtitle {
@@ -370,9 +370,9 @@ ul.auto-toc {
 !! source digest: sha256:ce9546831300e0c5d41211fac8272f14abfb1207bed3bf9acafc2653c5de68b6
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/reporting-engine/tree/16.0/report_py3o_fusion_server"><img alt="OCA/reporting-engine" src="https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/reporting-engine-16-0/reporting-engine-16-0-report_py3o_fusion_server"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module was written to let a py3o fusion server handle format conversion instead of local libreoffice. If you install this module above the <em>report_py3o</em> module, you will have to deploy additionnal software components and run 3 daemons (libreoffice, py3o.fusion and py3o.renderserver). This additionnal complexiy comes with several advantages:</p>
+<p>This module was written to connect to a local LibreOffice daemon that handle format conversion instead of spawning a new LibreOffice for each conversion. It has several advantages:</p>
 <ul class="simple">
-<li>much better performances: Libreoffice runs permanently in the background, no need to spawn a new Libreoffice instance upon every document conversion.</li>
+<li>much better performances: LibreOffice runs permanently in the background, no need to spawn a new LibreOffice instance for every document conversion.</li>
 <li>ability to configure PDF export options in Odoo. This brings many new possibilities such as the ability to generate:<ul>
 <li>PDF forms</li>
 <li>PDF/A documents (required by some electronic invoicing standards such as <a class="reference external" href="http://fnfe-mpe.org/factur-x/factur-x_en/">Factur-X</a>)</li>
@@ -398,61 +398,62 @@ ul.auto-toc {
 </div>
 <div class="section" id="installation">
 <h1><a class="toc-backref" href="#toc-entry-1">Installation</a></h1>
-<p>Install several additional components and Python libs:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://bitbucket.org/faide/py3o.fusion">Py3o Fusion server</a>,</li>
-<li><a class="reference external" href="https://bitbucket.org/faide/py3o.renderserver">Py3o render server</a>,</li>
-<li>a Java Runtime Environment (JRE), which can be OpenJDK,</li>
-<li>Libreoffice started in the background in headless mode,</li>
-<li>the Java driver for Libreoffice (Juno).</li>
-</ul>
-<p>It is also possible to use the Python driver for Libreoffice (PyUNO), but it is recommended to use the Java driver because it is more stable.</p>
-<p>The installation procedure below uses the Java driver. It has been successfully tested on Ubuntu 18.04 LTS ; if you use another OS, you may have to change a few details.</p>
-<p>Installation of Libreoffice, JRE and required Java libs on Debian/Ubuntu:</p>
+<p>Installation of Libreoffice:</p>
 <pre class="code literal-block">
-sudo apt-get install default-jre ure libgoogle-gson-java libreoffice-java-common libreoffice-writer
+sudo apt install libreoffice-writer python3-uno
 </pre>
 <p>You may have to install additionnal fonts. For example, to have the special unicode symbols for phone/fax/email in the PDF reports generated by Py3o, you should install the following package:</p>
 <pre class="code literal-block">
-sudo apt-get install fonts-symbola
+sudo apt install fonts-symbola
 </pre>
-<p>Installation of py3o.fusion:</p>
-<pre class="code literal-block">
-pip3 install py3o.fusion
-pip3 install service-identity
-</pre>
-<p>Installation of py3o.renderserver:</p>
-<pre class="code literal-block">
-pip3 install py3o.renderserver
-</pre>
-<p>At the end, with the dependencies, you should have the following py3o python libs:</p>
-<pre class="code literal-block">
-% pip3 freeze | grep py3o
-py3o.formats==0.3
-py3o.fusion==0.8.9
-py3o.renderclient==0.3
-py3o.renderers.juno==0.8.1
-py3o.renderserver==0.5.2
-py3o.template==0.10.0
-py3o.types==0.1.1
-</pre>
-<p>Start the Py3o Fusion server:</p>
-<pre class="code literal-block">
-start-py3o-fusion --debug -s localhost -i localhost
-</pre>
-<p>Start the Py3o render server:</p>
-<pre class="code literal-block">
-start-py3o-renderserver --java=/usr/lib/jvm/default-java/lib/server/libjvm.so --ure=/usr/share --office=/usr/lib/libreoffice --driver=juno --sofficeport=8997 -i localhost
-</pre>
-<p>On the output of the Py3o render server, the first line looks like:</p>
-<pre class="code literal-block">
-DEBUG:root:Starting JVM: /usr/lib/jvm/default-java/lib/server/libjvm.so with options: -Djava.class.path=/usr/local/lib/python2.7/dist-packages/py3o/renderers/juno/py3oconverter.jar:/usr/share/java/juh.jar:/usr/share/java/jurt.jar:/usr/share/java/ridl.jar:/usr/share/java/unoloader.jar:/usr/share/java/java_uno.jar:/usr/lib/libreoffice/program/classes/unoil.jar -Xmx150M
-</pre>
-<p>After <strong>-Djava.class.path</strong>, there is a list of Java libs with <em>.jar</em> extension ; check that each JAR file is really present on your filesystem. If one of the jar files is present in another directory, create a symlink that points to the real location of the file. If all the jar files are present on another directory, adapt the <em>–ure=</em> argument on the command line of Py3o render server.</p>
-<p>To check that the Py3o Fusion server is running fine, visit the URL <a class="reference external" href="http:/">http:/</a>/&lt;IP_address&gt;:8765/form. On this web page, under the section <em>Target format</em>, make sure that you have a line <em>This server currently supports these formats: ods, odt, docx, doc, html, docbook, pdf, xls.</em>.</p>
 <p>If you want to produce valid PDF/A documents with this module, activating the corresponding option in the PDF Export Options may not be enough, you also have to make sure that all the fonts used in the document template are installed on the Odoo server, so that they can be embedded in the PDF/A document. For example, if your document template uses the Arial font, you should install that font on your Odoo server:</p>
 <pre class="code literal-block">
-sudo apt-get install msttcorefonts
+sudo apt install msttcorefonts
+</pre>
+<p>The python libs <strong>py3o.formats</strong> and <strong>py3o.template</strong> are required (they should already be installed for the module <em>report_py3o</em>). In the virtualenv of your Odoo server, run:</p>
+<pre class="code literal-block">
+% pip install --upgrade py3o.formats py3o.template
+</pre>
+<p>Odoo will connect to the LibreOffice via the <strong>uno</strong> python lib which is linked to LibreOffice. So you cannot install the uno lib in Odoo’s virtualenv like you do for all the other python libs required by Odoo. Use the following procedure to make the uno lib installed by the package of your Linux distribution available in Odoo’s virtualenv. In the virtualenv of your Odoo server, run:</p>
+<pre class="code literal-block">
+% pip install oooenv
+% oooenv cmd-link -a
+</pre>
+<p>Libreoffice must be run as a daemon. For that, create a file <strong>/etc/systemd/system/libreoffice.service</strong> with the following content:</p>
+<pre class="code literal-block">
+[Unit]
+Description=Libreoffice headless for Py3o
+After=network.target
+
+[Service]
+Type=simple
+User=odoo
+Group=odoo
+ExecStart=nice -n 10 /usr/lib/libreoffice/program/soffice.bin --nologo --norestore --invisible --headless --nolockcheck --nodefault --accept=&quot;socket,host=localhost,port=8997;urp;&quot;
+stdout_logfile=/var/log/odoo/libreoffice.log
+KillMode=mixed
+Restart=always
+# number of seconds to attempt restart after failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<p>The file content above is an example. You must adapt:</p>
+<ul class="simple">
+<li>the system user and group that will be used to run libreoffice as a daemon (<em>odoo</em> in the exemple)</li>
+<li>the path of the LibreOffice binary (<em>/usr/lib/libreoffice/program/soffice.bin</em> in the example)</li>
+<li>the log file (<em>/var/log/odoo/libreoffice.log</em> in the example)</li>
+<li>the TCP port on which LibreOffice listens (<em>8997</em> in the example)</li>
+</ul>
+<p>Then enable this service and start it:</p>
+<pre class="code literal-block">
+sudo systemctl enable libreoffice
+sudo systemctl start libreoffice
+</pre>
+<p>Check that LibreOffice runs in the background:</p>
+<pre class="code literal-block">
+ps aux | grep soffice.bin
 </pre>
 </div>
 <div class="section" id="configuration">
@@ -501,7 +502,9 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <div class="section" id="maintainers">
 <h2><a class="toc-backref" href="#toc-entry-8">Maintainers</a></h2>
 <p>This module is maintained by the OCA.</p>
-<a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>

@@ -5,7 +5,6 @@
         <field name="inherit_id" ref="report_py3o.py3o_report_view" />
         <field name="arch" type="xml">
             <field name="py3o_multi_in_one" position="after">
-                <field name="py3o_is_local_fusion" />
                 <field name="py3o_server_id" />
                 <field
                     name="pdf_options_id"

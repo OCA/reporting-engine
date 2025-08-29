@@ -233,7 +233,7 @@ class Py3oReport(models.TransientModel):
         """This function to generate our py3o report"""
         self.ensure_one()
         result_fd, result_path = tempfile.mkstemp(
-            suffix=".ods", prefix="p3o.report.tmp."
+            suffix=".odt", prefix="py3o.report.tmp."
         )
         tmpl_data = self.get_template(model_instance)
 

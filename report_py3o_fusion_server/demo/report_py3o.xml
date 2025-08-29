@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="report_py3o.res_users_report_py3o" model="ir.actions.report">
-        <field name="py3o_is_local_fusion" eval="1" />
+    <record id="demo_py3o_server" model="py3o.server">
+        <field name="host">localhost</field>
     </record>
+    <record id="demo_py3o_pdf_options" model="py3o.pdf.options">
+        <field name="name">Watermark for demo</field>
+        <field name="watermark" eval="True" />
+        <field name="watermark_text">DEMO</field>
+    </record>
+    <record id="res_users_report_py3o_pdf" model="ir.actions.report">
+        <field name="name">Py3o Demo Report PDF</field>
+        <field name="model">res.users</field>
+        <field name="report_name">py3o_user_info_pdf</field>
+        <field name="report_type">py3o</field>
+        <field name="py3o_filetype">pdf</field>
+        <field name="module">report_py3o</field>
+        <field name="py3o_template_fallback">demo/res_user.odt</field>
+        <field name="py3o_server_id" ref="demo_py3o_server" />
+        <field name="pdf_options_id" ref="demo_py3o_pdf_options" />
+        <field
+            name="print_report_name"
+        >object.name.replace(' ', '_') + '-demo.pdf'</field>
+        <field name="binding_model_id" ref="base.model_res_users" />
+    </record>
+
 </odoo>
