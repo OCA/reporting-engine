@@ -6,3 +6,4 @@ mock
 openpyxl
 py3o.formats
 py3o.template
+pypdf

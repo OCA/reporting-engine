@@ -11,8 +11,7 @@ from contextlib import contextmanager
 from unittest import mock
 
 import pkg_resources
-from PyPDF2 import PdfFileWriter
-from PyPDF2.pdf import PageObject
+from pypdf import PageObject, PdfWriter
 
 from odoo import tools
 from odoo.exceptions import ValidationError
@@ -44,12 +43,14 @@ def temporary_copy(path):
 
 
 class TestReportPy3o(TransactionCase):
-    def setUp(self):
-        super(TestReportPy3o, self).setUp()
-        self.env.user.image_1920 = PNG
-        self.report = self.env.ref("report_py3o.res_users_report_py3o")
-        self.py3o_report = self.env["py3o.report"].create(
-            {"ir_actions_report_id": self.report.id}
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls.env.user.image_1920 = PNG
+        cls.report = cls.env.ref("report_py3o.res_users_report_py3o")
+        cls.py3o_report = cls.env["py3o.report"].create(
+            {"ir_actions_report_id": cls.report.id}
         )
 
     def test_required_py3_filetype(self):
@@ -101,8 +102,8 @@ class TestReportPy3o(TransactionCase):
         reports_path = []
         for _i in range(0, 3):
             result = tempfile.mktemp(".txt")
-            writer = PdfFileWriter()
-            writer.addPage(PageObject.createBlankPage(width=100, height=100))
+            writer = PdfWriter()
+            writer.add_page(PageObject.create_blank_page(width=100, height=100))
             with open(result, "wb") as fp:
                 writer.write(fp)
             reports_path.append(result)

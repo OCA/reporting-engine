@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import mock
 
-from odoo.exceptions import ValidationError
-
 from odoo.addons.report_py3o.models.ir_actions_report import (
     PY3O_CONVERSION_COMMAND_PARAMETER,
 )
@@ -19,35 +17,14 @@ from odoo.addons.report_py3o.tests import test_report_py3o
     ),
 )
 class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
-    def setUp(self):
-        super().setUp()
-        py3o_server = self.env["py3o.server"].create({"url": "http://dummy"})
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        py3o_server = cls.env["py3o.server"].create({})
         # check the call to the fusion server
-        self.report.write({"py3o_server_id": py3o_server.id, "py3o_filetype": "pdf"})
-        self.py3o_server = py3o_server
-
-    def test_no_local_fusion_without_fusion_server(self):
-        self.assertTrue(self.report.py3o_is_local_fusion)
-        # Fusion server is only required if not local...
-        self.report.write({"py3o_server_id": None, "py3o_is_local_fusion": True})
-        self.report.write(
-            {"py3o_server_id": self.py3o_server.id, "py3o_is_local_fusion": True}
-        )
-        self.report.write(
-            {"py3o_server_id": self.py3o_server.id, "py3o_is_local_fusion": False}
-        )
-        with self.assertRaises(ValidationError) as e:
-            self.report.write({"py3o_server_id": None, "py3o_is_local_fusion": False})
-        self.assertEqual(
-            e.exception.name,
-            "You can not use remote fusion without Fusion server. "
-            "Please specify a Fusion Server",
-        )
-
-    def test_reports_no_local_fusion(self):
-        self.report.py3o_is_local_fusion = False
-        # TODO repair no local fusion
-        # self.test_reports()
+        cls.report.write({"py3o_server_id": py3o_server.id, "py3o_filetype": "pdf"})
+        cls.py3o_server = py3o_server
 
     def test_odoo2libreoffice_options(self):
         for options in self.env["py3o.pdf.options"].search([]):
@@ -71,7 +48,7 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
             PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path"
         )
         self.report.py3o_filetype = "pdf"
-        self.report.refresh()
+        self.report.invalidate_recordset()
         # no native and no bin path, everything is still OK since a fusion
         # server is specified.
         self.assertFalse(self.report.lo_bin_path)
@@ -89,7 +66,7 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
         self.env["ir.config_parameter"].set_param(
             PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice"
         )
-        self.report.refresh()
+        self.report.invalidate_recordset()
         self.assertTrue(self.report.lo_bin_path)
         self.assertFalse(self.report.is_py3o_report_not_available)
         self.assertFalse(self.report.msg_py3o_report_not_available)

@@ -23,6 +23,7 @@ try:
     import uno
 except ImportError:
     logger.debug("Cannot import uno")
+    uno = False
 try:
     from com.sun.star.beans import PropertyValue
 except ImportError:
@@ -37,7 +38,7 @@ class Py3oReport(models.TransientModel):
         self.ensure_one()
         report = self.ir_actions_report_id
         py3o_server = report.py3o_server_id
-        if not py3o_server:
+        if not py3o_server or not uno:
             return super()._create_single_report(model_instance, data)
         filetype = report.py3o_filetype
         uno_filter_data = []
