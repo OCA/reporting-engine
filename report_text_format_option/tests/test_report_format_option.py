@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 class TestReportFormatOption(TransactionCase):
     @classmethod
     def setUpClass(cls):
-        super(TestReportFormatOption, cls).setUpClass()
+        super().setUpClass()
         cls.demo_report = cls.env.ref(
             "report_text_format_option.action_report_demo"
         ).with_context(lang="en_US")
