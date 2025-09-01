@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_latex_template_user,access_latex_template_user,model_latex_template,base.group_user,1,1,1,1
+access_latex_source_user,access_latex_source_user,model_latex_source,base.group_user,1,1,1,1

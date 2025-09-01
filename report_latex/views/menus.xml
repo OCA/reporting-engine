@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <menuitem
+        id="menu_latex_main"
+        name="LaTeX Reports"
+        sequence="100"
+        web_icon="report_latex,static/description/icon.png"
+    />
+    <menuitem
+        id="menu_latex_templates"
+        name="Templates"
+        parent="menu_latex_main"
+        action="latex_template_action"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_latex_sources"
+        name="Sources"
+        parent="menu_latex_main"
+        action="latex_source_action"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_latex_reports"
+        name="Reports"
+        parent="menu_latex_main"
+        action="action_latex_reports_action"
+        sequence="30"
+    />
+</odoo>

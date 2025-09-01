@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="latex_source_view_list" model="ir.ui.view">
+        <field name="name">latex.source.list</field>
+        <field name="model">latex.source</field>
+        <field name="arch" type="xml">
+            <list string="LaTeX Sources">
+                <field name="name" />
+                <field name="template_id" />
+                <field name="res_model" />
+                <field name="res_id" />
+                <field name="reference" />
+            </list>
+        </field>
+    </record>
+    <record id="latex_source_view_form" model="ir.ui.view">
+        <field name="name">latex.source.form</field>
+        <field name="model">latex.source</field>
+        <field name="arch" type="xml">
+            <form string="LaTeX Source">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="template_id" />
+                        </group>
+                        <group>
+                            <field name="res_model_id" />
+                            <field name="res_model" invisible="1" />
+                            <field name="res_id" />
+                            <field name="reference" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Source Content">
+                            <field
+                                name="content"
+                                widget="ace"
+                                options="{'mode': 'latex'}"
+                            />
+                        </page>
+                        <page string="Attachments">
+                            <group>
+                                <group>
+                                    <field name="pdf_attachment_id" readonly="1" />
+                                    <field name="assets_attachment_id" readonly="1" />
+                                </group>
+                                <group>
+                                    <field name="version" readonly="1" />
+                                    <field name="modified_content" readonly="1" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_compile_to_pdf"
+                            type="object"
+                            class="oe_highlight"
+                            string="Compile to PDF"
+                        />
+                        <button
+                            name="action_download_zip"
+                            type="object"
+                            string="Download Assets"
+                            invisible="not assets_attachment_id"
+                        />
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="latex_source_view_search" model="ir.ui.view">
+        <field name="name">latex.source.search</field>
+        <field name="model">latex.source</field>
+        <field name="arch" type="xml">
+            <search string="LaTeX Sources">
+                <field name="name" />
+                <field name="template_id" />
+                <field name="res_model" />
+                <field name="content" />
+                <filter
+                    string="My Sources"
+                    name="my_sources"
+                    domain="[('create_uid', '=', uid)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Template"
+                        name="group_by_template"
+                        context="{'group_by': 'template_id'}"
+                    />
+                    <filter
+                        string="Related Model"
+                        name="group_by_res_model"
+                        context="{'group_by': 'res_model'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="latex_source_action" model="ir.actions.act_window">
+        <field name="name">LaTeX Sources</field>
+        <field name="res_model">latex.source</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first LaTeX source!
+            </p>
+            <p>
+                LaTeX sources are generated content based on templates and linked to specific records.
+                They contain the compiled LaTeX code ready for PDF generation.
+            </p>
+        </field>
+    </record>
+</odoo>

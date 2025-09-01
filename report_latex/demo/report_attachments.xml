@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- note that it does not matter on which record the attachments are -->
+    <!-- since we explicitly refer to them in the template -->
+    <record id="demo_image_line" model="ir.attachment">
+        <field name="name">lambdao_line.png</field>
+        <field
+            name="datas"
+            type="base64"
+            file="report_latex/static/demo/lambdao_line.png"
+        />
+        <field name="res_model">res.users</field>
+        <field name="res_id" ref="base.user_admin" />
+    </record>
+    <record id="demo_image_logo" model="ir.attachment">
+        <field name="name">lambdao_logo.png</field>
+        <field
+            name="datas"
+            type="base64"
+            file="report_latex/static/demo/lambdao_logo.png"
+        />
+        <field name="res_model">res.users</field>
+        <field name="res_id" ref="base.user_admin" />
+    </record>
+</odoo>

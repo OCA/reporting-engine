@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="ir_actions_report_view_form_latex" model="ir.ui.view">
+        <field name="name">ir.actions.report.form.latex</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <field name="report_type" position="after">
+                <field
+                    name="latex_template_id"
+                    invisible="report_type != 'latex'"
+                    required="report_type == 'latex'"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="ir_actions_report_view_search_latex" model="ir.ui.view">
+        <field name="name">ir.actions.report.search.latex</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='model']" position="after">
+                <field name="latex_template_id" />
+                <filter
+                    string="Latex Reports"
+                    name="report_type_latex"
+                    domain="[('report_type', '=', 'latex')]"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="action_latex_reports_action" model="ir.actions.act_window">
+        <field name="name">LaTeX Reports</field>
+        <field name="res_model">ir.actions.report</field>
+        <field name="view_mode">list,form</field>
+        <field
+            name="context"
+        >{'default_report_type': 'latex', 'search_default_report_type_latex': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first LaTeX Report.
+            </p>
+        </field>
+    </record>
+</odoo>
