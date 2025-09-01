@@ -32,7 +32,8 @@ class IrActionReport(models.Model):
             content_str = content_str.replace("\n", "\r\n")
         elif report.line_ending == "cr":
             content_str = content_str.replace("\n", "\r")
-        # If specific encoding is set on the report, use it; otherwise, fallback to utf-8
+        # If specific encoding is set on the report,
+        # use it; otherwise, fallback to utf-8
         encoding = report.text_encoding or "utf-8"
         encode_options = {}
         if report.text_encode_error_handling:

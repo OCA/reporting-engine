@@ -6,18 +6,12 @@
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='report_type']" position="after">
-                <field
-                    name="text_encoding"
-                    attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
-                />
+                <field name="text_encoding" invisible="report_type != 'qweb-text'" />
                 <field
                     name="text_encode_error_handling"
-                    attrs="{'invisible': [('text_encoding', '=', False)]}"
+                    invisible="not text_encoding"
                 />
-                <field
-                    name="line_ending"
-                    attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
-                />
+                <field name="line_ending" invisible="report_type != 'qweb-text'" />
             </xpath>
         </field>
     </record>
