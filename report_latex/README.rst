@@ -28,7 +28,7 @@ LaTeX reports
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Provides a Latex reports for Odoo.
+Provides Latex reports for Odoo.
 
 Features:
 

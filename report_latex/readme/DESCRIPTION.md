@@ -1,4 +1,4 @@
-Provides a Latex reports for Odoo.
+Provides Latex reports for Odoo.
 
 Features:
 - Syntax highlighting for Latex in the Ace code editor.

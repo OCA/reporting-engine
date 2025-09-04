@@ -24,7 +24,7 @@ class LatexTemplate(models.Model):
     attachment_ids = fields.Many2many(
         comodel_name="ir.attachment", string="Attachments"
     )
-    content = fields.Text(required=True)
+    content = fields.Text(required=True, translate=True)
 
     @api.depends("name")
     def _compute_file_name(self):

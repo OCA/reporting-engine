@@ -6,6 +6,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+import pypandoc
 from jinja2 import Environment, FileSystemLoader
 
 from odoo import _, api, fields, models
@@ -104,6 +105,9 @@ class IrActionsReport(models.Model):
 
     def _render_latex_template(self, content, res_ids):
         """Render LaTeX template using Jinja2."""
+        latex_escape = lambda s: pypandoc.convert_text(  # noqa: E731
+            s or "", to="latex", format="html"
+        )
         env = Environment(
             loader=FileSystemLoader("."),
             block_start_string="%{",
@@ -117,6 +121,8 @@ class IrActionsReport(models.Model):
             trim_blocks=True,
             autoescape=True,
         )
+        env.filters["latex_escape"] = latex_escape
+        env.filters["xx"] = latex_escape
         objects = self.env[self.model].browse(res_ids)
         main_object = objects[0] if objects else None
         context = {

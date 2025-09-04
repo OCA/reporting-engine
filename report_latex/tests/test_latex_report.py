@@ -1,6 +1,8 @@
 # Copyright 2025 Lambdao
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import os
+import unittest
 
 from odoo.tests.common import TransactionCase
 
@@ -12,6 +14,7 @@ class TestLatexReport(TransactionCase):
         self.template = self.env.ref("report_latex.demo_res_users_latex_template")
         self.report = self.env.ref("report_latex.demo_res_users_latex_report")
 
+    @unittest.skipIf(not os.getenv("LaTeX"), "Compilation needs LaTeX packages")
     def test_latex_report(self):
         """Test LaTeX report generation."""
         data = {"options": None}

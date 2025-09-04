@@ -11,8 +11,8 @@
     "summary": """Create LaTeX reports.""",
     "depends": ["web", "mail"],
     "external_dependencies": {
-        "python": ["jinja2"],
-        "deb": ["texlive", "texlive-latex-extra"],  # pdflatex, latexpand
+        "python": ["jinja2", "pypandoc"],
+        "deb": ["texlive", "texlive-extra-utils", "pandoc"],  # pdflatex, latexpand
     },
     "installable": True,
     "auto_install": False,

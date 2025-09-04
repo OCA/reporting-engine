@@ -97,6 +97,10 @@ $$Pr[\mathcal{G}(n,1/2) \models \neg \textup{Ext}_{r,s}] \leq {n \choose r}{n-r 
      }}}
 }
 
+\usepackage{xcolor}
+\definecolor{orange}{RGB}{255,165,0}
+\newcommand{\VAR}[1]{\textcolor{orange}{\texttt{\detokenize{#1}}}}
+
 \begin{document}
 
 \title{User Report for \VAR{object.name}}
