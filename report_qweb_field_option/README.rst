@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ========================
 Report Qweb Field Option
 ========================
@@ -17,7 +13,7 @@ Report Qweb Field Option
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
@@ -55,7 +51,7 @@ For each record:
 - Set **Company** (optional)
 - Set **Options** as a string representation of a dictionary. E.g.,
   ``{"widget": "date"}``, ``{"widget": "monetary"}``, or
-  ``{'widget': 'contact', 'fields': ['name', 'phone']}``
+  ``{"widget": "contact", "fields": ["name", "phone"]}``
 - Set **Digits** (only for float-type fields). The value is ignored if
   Options is set
 
@@ -72,8 +68,19 @@ strictest condition will be applied.
 Known issues / Roadmap
 ======================
 
-Assigning Options in a QWeb Field Options record can cause UI issues if
-a field is defined twice with different widgets in a view.
+| #. QWeb field option settings only apply to fields rendered with
+  ``t-field``.
+| They don’t work with ``t-esc`` or other expressions not using
+  ``t-field``.
+
+As a workaround, you could create a module that adds a computed field
+holding the same value currently computed and displayed in the QWeb
+report using ``t-esc``, and adjust the report template to display the
+field value using ``t-field``. This would allow you to adjust the
+decimal precision as needed.
+
+#. Assigning Options in a QWeb Field Options record can cause UI issues
+if a field is defined twice with different widgets in a view.
 
 For example, adding ``{"widget": "date"}`` to the date_approve field in
 a purchase order can result in two dates appearing under the
