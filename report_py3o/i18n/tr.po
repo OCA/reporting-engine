@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2025-09-10 11:42+0000\n"
+"PO-Revision-Date: 2025-09-11 23:42+0000\n"
 "Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "(Native)"
-msgstr ""
+msgstr "(Yerli)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_uid
@@ -47,24 +47,24 @@ msgstr "Görünen İsim"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
 msgid "Fallback"
-msgstr ""
+msgstr "Yedek"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/ir_actions_report.py:0
 #, python-format
 msgid "Field 'Output Format' is required for Py3O report"
-msgstr ""
+msgstr "'Çıktı Formatı' alanı Py3O raporu için gereklidir"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "File Type"
-msgstr ""
+msgstr "Dosya tipi"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
 msgid "Group By"
-msgstr ""
+msgstr "Grupla"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
@@ -78,6 +78,8 @@ msgid ""
 "If the user does not provide a template this will be used it should be a "
 "relative path to root of YOUR module or an absolute path on your server."
 msgstr ""
+"Kullanıcı bir şablon sağlamazsa bu, SİZİN modülünüzün bulunduğu dizine "
+"göreceli bir yol, veya sunucunuzdaki mutlak bir yol olmalıdır."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__py3o_multi_in_one
@@ -86,22 +88,24 @@ msgid ""
 "ZIP file that contains as many files as selected records. If you enable this "
 "option, Odoo will generate instead a single report for the selected records."
 msgstr ""
+"Birçok kayıt üzerinde bir rapor çalıştırırsanız, varsayılan olarak Odoo "
+"seçili kayıtlar kadar dosya içeren bir ZIP dosyası oluşturur. Bu seçeneği "
+"etkinleştirirseniz, Odoo seçili kayıtlar için tek bir rapor oluşturur."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__ir_actions_report_id
-#, fuzzy
 msgid "Ir Actions Report"
-msgstr "ir.actions.report.xml"
+msgstr "Ir Eylemleri Raporu"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_native_format
 msgid "Is Py3O Native Format"
-msgstr ""
+msgstr "Py3O Yerli Formatı mı"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__is_py3o_report_not_available
 msgid "Is Py3O Report Not Available"
-msgstr ""
+msgstr "Py3O Raporu Ulaşılamıyor mu"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
@@ -125,12 +129,12 @@ msgstr "Son g??ncelleme"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_report_view
 msgid "LibreOffice Template"
-msgstr ""
+msgstr "LibreOffice Şablonu"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__filetype
 msgid "LibreOffice Template File Type"
-msgstr ""
+msgstr "LibreOffice Şablon Dosya Tipi"
 
 #. module: report_py3o
 #. odoo-python
@@ -138,21 +142,23 @@ msgstr ""
 #, python-format
 msgid "Libreoffice runtime not available. Please contact your administrator."
 msgstr ""
+"Libreoffice çalışma ortamı kullanılamıyor. Lütfen yöneticinizle iletişime "
+"geçin."
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__module
 msgid "Module"
-msgstr ""
+msgstr "Modül"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__msg_py3o_report_not_available
 msgid "Msg Py3O Report Not Available"
-msgstr ""
+msgstr "Py3O Reporu Kullanılamıyor Mesajı"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_multi_in_one
 msgid "Multiple Records in a Single Report"
-msgstr ""
+msgstr "Tek Raporda Çoklu Kayıt"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__name
@@ -164,93 +170,93 @@ msgstr "Ad??"
 #: code:addons/report_py3o/models/py3o_report.py:0
 #, python-format
 msgid "No template found. Aborting."
-msgstr ""
+msgstr "Şablon bulunamadı. İptal ediliyor."
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odp
 msgid "ODF Presentation"
-msgstr ""
+msgstr "ODF Sunumu"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodp
 msgid "ODF Presentation (Flat)"
-msgstr ""
+msgstr "ODF Presentation (Düz)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__ods
 msgid "ODF Spreadsheet"
-msgstr ""
+msgstr "ODF Hesaptablosu"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fods
 msgid "ODF Spreadsheet (Flat)"
-msgstr ""
+msgstr "ODF Hesaptablosu (Düz)"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__odt
 msgid "ODF Text Document"
-msgstr ""
+msgstr "ODF Metin Belgesi"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__py3o_template__filetype__fodt
 msgid "ODF Text Document (Flat)"
-msgstr ""
+msgstr "ODF Metin Belgesi (Düz)"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_filetype
 msgid "Output Format"
-msgstr ""
+msgstr "Çıktı Formatı"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__lo_bin_path
 msgid "Path to the libreoffice runtime"
-msgstr ""
+msgstr "Libreoffice çalışma ortamının konumu"
 
 #. module: report_py3o
 #: model:ir.actions.report,name:report_py3o.res_users_report_py3o
 msgid "Py3o Demo Report"
-msgstr ""
+msgstr "Py3O Demo Raporu"
 
 #. module: report_py3o
 #: model_terms:ir.ui.view,arch_db:report_py3o.act_report_xml_search_view
 msgid "Py3o Reports"
-msgstr ""
+msgstr "Py3O Raporları"
 
 #. module: report_py3o
 #: model:ir.actions.act_window,name:report_py3o.py3o_template_configuration_action
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 msgid "Py3o Templates"
-msgstr ""
+msgstr "Py3o Şablonları"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_template
 msgid "Py3o template"
-msgstr ""
+msgstr "Py3o şablonu"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Rapor Eylemi"
 
 #. module: report_py3o
 #: model:ir.model,name:report_py3o.model_py3o_report
 msgid "Report Py30"
-msgstr ""
+msgstr "Rapor Py30"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Rapor Tipi"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_id
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__module
 msgid "The implementer module that provides this report"
-msgstr ""
+msgstr "Bu raporu sunan uygulayıcı modül"
 
 #. module: report_py3o
 #. odoo-python
@@ -263,6 +269,12 @@ msgid ""
 "can provide the full path to the runtime by setting the key 'py3o."
 "conversion_command' into the configuration parameters."
 msgstr ""
+"'%s' py3o raporunu oluşturmak için Libreoffice çalışma ortamı gerekiyor, "
+"ancak 'bin' yolunda bulunmuyor. Libreoffice çalışma ortamını sunucuya "
+"yüklemeniz gerekiyor. Çalışma ortamı zaten yüklüyse ve Odoo tarafından "
+"bulunamıyorsa, yapılandırma parametrelerine 'py3o.conversion_command' "
+"parametresini ekleyerek çalışma ortamının bulunduğu konumun tam yolunu "
+"belirtebilirsiniz."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
@@ -272,13 +284,17 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Oluşturulacak raporun türü; her biri kendine özel bir görselleştirme "
+"yöntemne sahiptir. HTML, raporun doğrudan tarayıcınızda açılacağı anlamına "
+"gelir. PDF, raporun Wkhtmltopdf kullanılarak oluşturulacağı ve kullanıcı "
+"tarafından indirileceği anlamına gelir."
 
 #. module: report_py3o
 #: model:ir.actions.report,print_report_name:report_py3o.res_users_report_py3o
 msgid "object.name.replace(' ', '_') + '-demo.odt'"
-msgstr ""
+msgstr "object.name.replace(' ', '_') + '-demo.odt'"
 
 #. module: report_py3o
 #: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 msgid "py3o"
-msgstr ""
+msgstr "py3o"
