@@ -11,44 +11,45 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
-"PO-Revision-Date: 2017-06-06 02:51+0000\n"
-"Last-Translator: Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2017\n"
+"PO-Revision-Date: 2025-09-15 23:33+0000\n"
+"Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Eylem Gerekiyor"
 
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_file_wizard
 msgid "Allow the user to save the file with sql request's data"
-msgstr ""
+msgstr "Kullanıcının dosyayı sql isteğinin verileriyle kaydetmesine izin ver"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Yetkili Gruplar"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
 msgid "Allowed Users"
-msgstr ""
+msgstr "Yetkili Kullanıcılar"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Ek Sayısı"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__file_format__csv
 msgid "CSV"
-msgstr ""
+msgstr "CSV"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
@@ -58,12 +59,12 @@ msgstr "Vazgeç"
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 msgid "Configure Properties"
-msgstr ""
+msgstr "Özellikleri Yapılandır"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
 msgid "Copy Options"
-msgstr ""
+msgstr "Seçenekleri Kopyala"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
@@ -80,7 +81,7 @@ msgstr "Oluşturuldu"
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
 msgid "Csv File"
-msgstr ""
+msgstr "Csv Dosyası"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__display_name
@@ -91,13 +92,13 @@ msgstr "Görünen İsim"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__encoding
 msgid "Encoding"
-msgstr ""
+msgstr "Kodlama"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
 msgid "Execute Query"
-msgstr ""
+msgstr "Sorguyu Çalıştır"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
@@ -112,7 +113,7 @@ msgstr "Dosya"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__file_format
 msgid "File Format"
-msgstr ""
+msgstr "Dosya Formatı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__file_name
@@ -122,22 +123,22 @@ msgstr "Dosya adı"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Takipciler"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Takipçiler (İş Ortakları)"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__has_group_changed
 msgid "Has Group Changed"
-msgstr ""
+msgstr "Grup Değişti mi"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Mesaj Var mı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__id
@@ -148,12 +149,12 @@ msgstr "ID"
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "İşaretliyse, yeni mesajlar ilgilenmenizi bekliyor."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "İşaretliyse, bazı mesajlarda teslim hatası var."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
@@ -161,6 +162,8 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Doluysa, sorgu Odoo ana yapılandırma dosyasında tanımlanmış bir dış "
+"veritabanında çalıştırılacak. "
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
@@ -170,16 +173,20 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
+"Sorguda parametrelerin kullanılması durumunda, bu sözdizimini kullanın : %("
+"Property String)s. <br/>\n"
+"                                Örnek : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Takipçi mi"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_date
 msgid "Last Execution Date"
-msgstr ""
+msgstr "Son Çalıştırma Tarihi"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
@@ -196,17 +203,17 @@ msgstr "Son güncelleme"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_uid
 msgid "Last execution User"
-msgstr ""
+msgstr "Son çalıştıran Kullanıcı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Mesaj İletimi hatası"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Mesajlar"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__name
@@ -216,27 +223,27 @@ msgstr "Adı"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__note
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Eylem Sayısı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Hata sayısı"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Eylem gerektiren mesaj sayısı"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Teslim hatası olan mesaj sayısı"
 
 #. module: sql_export
 #. odoo-python
