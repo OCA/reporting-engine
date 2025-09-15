@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
-"PO-Revision-Date: 2025-09-15 23:33+0000\n"
+"PO-Revision-Date: 2025-09-16 01:42+0000\n"
 "Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "Language: tr\n"
@@ -249,38 +249,38 @@ msgstr "Teslim hatası olan mesaj sayısı"
 #. odoo-python
 #: code:addons/sql_export/wizard/wizard_file.py:0
 msgid "Please enter a values for the following properties : %s"
-msgstr ""
+msgstr "Lütfen izleyen özellikler için deger girin: %s"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__query_properties
 msgid "Properties"
-msgstr ""
+msgstr "Özellikler"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query
 msgid "Query"
-msgstr ""
+msgstr "Sorgu"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
-msgstr ""
+msgstr "Sorgu Özellikleri"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
 msgid "SQL Exports"
-msgstr ""
+msgstr "SQL Dışarı Aktarımları"
 
 #. module: sql_export
 #: model:ir.model,name:sql_export.model_sql_export
 msgid "SQL export"
-msgstr ""
+msgstr "SQL dışarı aktarımı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
 #: model:ir.ui.menu,name:sql_export.sql_export_menu_view
 msgid "Sql Export"
-msgstr ""
+msgstr "Sql Dışarı Aktarımı"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__state
@@ -294,6 +294,9 @@ msgid ""
 " * 'Draft': Not tested\n"
 " * 'SQL Valid': SQL Request has been checked and is valid"
 msgstr ""
+"İsteğin Durumu:\n"
+" * 'Taslak': Test edilmedi\n"
+" * 'SQL Geçerli': SQL İsteği kontrol edildi ve doğrulandı"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__has_group_changed
@@ -301,26 +304,29 @@ msgid ""
 "Technical fields, used in modules that depends on this one to know if groups "
 "has changed, and that according access should be updated."
 msgstr ""
+"Grupların değişip değişmediğini ve buna bağlı olarak erişimin güncellenmesi "
+"gerektiğini bilmek için buna bağımlı olan modüllerde kullanılan Teknik "
+"alanlar."
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Dış Veritabanı Kullan"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
 msgid "Use Properties"
-msgstr ""
+msgstr "Özellikleri Kullan"
 
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Web Sitesi Mesajları"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Web sitesi iletişim geçmişi"
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__query
@@ -328,31 +334,33 @@ msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
 "TRUNCATE, EXECUTE, UPDATE."
 msgstr ""
+"İzleyen sözcükleri kullanamazsınız: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__big5
 msgid "big5"
-msgstr ""
+msgstr "big5"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__gb18030
 msgid "gb18030"
-msgstr ""
+msgstr "gb18030"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__koir8_r
 msgid "koir8_r"
-msgstr ""
+msgstr "koir8_r"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin1
 msgid "latin1"
-msgstr ""
+msgstr "latin1"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin2
 msgid "latin2"
-msgstr ""
+msgstr "latin2"
 
 #. module: sql_export
 #: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
@@ -362,27 +370,27 @@ msgstr "ya da"
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
 msgid "shift_jis"
-msgstr ""
+msgstr "shift_jis"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-16
 msgid "utf-16"
-msgstr ""
+msgstr "utf-16"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-8
 msgid "utf-8"
-msgstr ""
+msgstr "utf-8"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1251
 msgid "windows-1251"
-msgstr ""
+msgstr "windows-1251"
 
 #. module: sql_export
 #: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
 msgid "windows-1252"
-msgstr ""
+msgstr "windows-1252"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Son değişiklik"
