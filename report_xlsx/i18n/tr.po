@@ -9,20 +9,21 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-31 03:52+0000\n"
-"PO-Revision-Date: 2017-05-31 03:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2025-09-17 08:42+0000\n"
+"Last-Translator: Betül Öğmen <betulo@eska.biz>\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: report_xlsx
 #: code:addons/report_xlsx/models/ir_report.py:0
 #, python-format
 msgid "%s model was not found"
-msgstr ""
+msgstr "%s modeli bulunamadı"
 
 #. module: report_xlsx
 #. openerp-web
@@ -32,18 +33,20 @@ msgid ""
 "A popup window with your report was blocked. You may need to change your "
 "browser settings to allow popup windows for this page."
 msgstr ""
+"Çıktınızın açılan penceresi engellendi. Tarayıcı ayarlarınızı buna izin "
+"verecek şekilde değiştirmeniz gerekir."
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr ""
+msgstr "Temel XLSX Çıktısı"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract__display_name
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Görünüm Adı"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__id
@@ -57,27 +60,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_abstract____last_update
 #: model:ir.model.fields,field_description:report_xlsx.field_report_report_xlsx_partner_xlsx____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Son Düzenleme"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_report_report_xlsx_partner_xlsx
 msgid "Partner XLSX Report"
-msgstr ""
+msgstr "İş Ortağı XLSX Raporu"
 
 #. module: report_xlsx
 #: model:ir.actions.report,name:report_xlsx.partner_xlsx
 msgid "Print to XLSX"
-msgstr ""
+msgstr "XLSX Yazdır"
 
 #. module: report_xlsx
 #: model:ir.model,name:report_xlsx.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Rapor İşlemi"
 
 #. module: report_xlsx
 #: model:ir.model.fields,field_description:report_xlsx.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Çıktı Türü"
 
 #. module: report_xlsx
 #: model:ir.model.fields,help:report_xlsx.field_ir_actions_report__report_type
@@ -87,13 +90,16 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Hazırlanacak her çıktı türünün ayrı hazırlanma yöntemi vardır. HTML tarayıcı "
+"içinde açılacak, PDF ise Wkhtmltopdf ile hazırlanacak ve kullanıcı "
+"tarafından indirilecek demektir."
 
 #. module: report_xlsx
 #. openerp-web
 #: code:addons/report_xlsx/static/src/js/report/action_manager_report.js:0
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #. module: report_xlsx
 #: model:ir.model.fields.selection,name:report_xlsx.selection__ir_actions_report__report_type__xlsx
