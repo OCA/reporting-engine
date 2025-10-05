@@ -7,9 +7,31 @@ from lxml import etree
 
 from odoo import http
 from odoo.tests import common
+from odoo.tools import convert_file
 
 
 class TestXmlReport(common.HttpCase):
+    @classmethod
+    def setUpClass(cls):
+        result = super().setUpClass()
+        convert_file(
+            cls.env,
+            module="report_xml",
+            filename="demo/report.xml",
+            idref={},
+            mode="init",
+            noupdate=True,
+        )
+        convert_file(
+            cls.env,
+            module="report_xml",
+            filename="demo/demo_report.xml",
+            idref={},
+            mode="init",
+            noupdate=True,
+        )
+        return result
+
     def test_xml(self):
         report_object = self.env["ir.actions.report"]
         report_name = "report_xml.demo_report_xml_view"

@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,8 +26,9 @@ msgid ""
 msgstr ""
 
 #. module: report_xml
-#: model:ir.actions.report,name:report_xml.demo_xml_report
-msgid "Demo xml report"
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__display_name
+#: model:ir.model.fields,field_description:report_xml.field_report_report_xml_abstract__display_name
+msgid "Display Name"
 msgstr ""
 
 #. module: report_xml
@@ -47,6 +48,12 @@ msgstr ""
 msgid ""
 "File with XSD Schema for checking content of result report. Can be empty if "
 "validation is not required."
+msgstr ""
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__id
+#: model:ir.model.fields,field_description:report_xml.field_report_report_xml_abstract__id
+msgid "ID"
 msgstr ""
 
 #. module: report_xml
