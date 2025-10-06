@@ -28,24 +28,21 @@ Py3o Report Engine - Fusion server support
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module was written to let a py3o fusion server handle format
-conversion instead of local libreoffice. If you install this module
-above the *report_py3o* module, you will have to deploy additionnal
-software components and run 3 daemons (libreoffice, py3o.fusion and
-py3o.renderserver). This additionnal complexiy comes with several
-advantages:
+This module was written to connect to a local LibreOffice daemon that
+handle format conversion instead of spawning a new LibreOffice for each
+conversion. It has several advantages:
 
-- much better performances: Libreoffice runs permanently in the
-  background, no need to spawn a new Libreoffice instance upon every
-  document conversion.
-- ability to configure PDF export options in Odoo. This brings many new
-  possibilities such as the ability to generate:
+-  much better performances: Libreoffice runs permanently in the
+   background, no need to spawn a new Libreoffice instance upon every
+   document conversion.
+-  ability to configure PDF export options in Odoo. This brings many new
+   possibilities such as the ability to generate:
 
-  - PDF forms
-  - PDF/A documents (required by some electronic invoicing standards
-    such as `Factur-X <http://fnfe-mpe.org/factur-x/factur-x_en/>`__)
-  - watermarked PDF documents
-  - password-protected PDF documents
+   -  PDF forms
+   -  PDF/A documents (required by some electronic invoicing standards
+      such as `Factur-X <http://fnfe-mpe.org/factur-x/factur-x_en/>`__)
+   -  watermarked PDF documents
+   -  password-protected PDF documents
 
 **Table of contents**
 
@@ -55,28 +52,11 @@ advantages:
 Installation
 ============
 
-Install several additional components and Python libs:
-
-- `Py3o Fusion server <https://bitbucket.org/faide/py3o.fusion>`__,
-- `Py3o render
-  server <https://bitbucket.org/faide/py3o.renderserver>`__,
-- a Java Runtime Environment (JRE), which can be OpenJDK,
-- Libreoffice started in the background in headless mode,
-- the Java driver for Libreoffice (Juno).
-
-It is also possible to use the Python driver for Libreoffice (PyUNO),
-but it is recommended to use the Java driver because it is more stable.
-
-The installation procedure below uses the Java driver. It has been
-successfully tested on Ubuntu 18.04 LTS ; if you use another OS, you may
-have to change a few details.
-
-Installation of Libreoffice, JRE and required Java libs on
-Debian/Ubuntu:
+Installation of Libreoffice:
 
 ::
 
-   sudo apt-get install default-jre ure libgoogle-gson-java libreoffice-java-common libreoffice-writer
+   sudo apt install libreoffice-writer python3-uno
 
 You may have to install additionnal fonts. For example, to have the
 special unicode symbols for phone/fax/email in the PDF reports generated
@@ -84,64 +64,7 @@ by Py3o, you should install the following package:
 
 ::
 
-   sudo apt-get install fonts-symbola
-
-Installation of py3o.fusion:
-
-::
-
-   pip3 install py3o.fusion
-   pip3 install service-identity
-
-Installation of py3o.renderserver:
-
-::
-
-   pip3 install py3o.renderserver
-
-At the end, with the dependencies, you should have the following py3o
-python libs:
-
-::
-
-   % pip3 freeze | grep py3o
-   py3o.formats==0.3
-   py3o.fusion==0.8.9
-   py3o.renderclient==0.3
-   py3o.renderers.juno==0.8.1
-   py3o.renderserver==0.5.2
-   py3o.template==0.10.0
-   py3o.types==0.1.1
-
-Start the Py3o Fusion server:
-
-::
-
-   start-py3o-fusion --debug -s localhost -i localhost
-
-Start the Py3o render server:
-
-::
-
-   start-py3o-renderserver --java=/usr/lib/jvm/default-java/lib/server/libjvm.so --ure=/usr/share --office=/usr/lib/libreoffice --driver=juno --sofficeport=8997 -i localhost
-
-On the output of the Py3o render server, the first line looks like:
-
-::
-
-   DEBUG:root:Starting JVM: /usr/lib/jvm/default-java/lib/server/libjvm.so with options: -Djava.class.path=/usr/local/lib/python2.7/dist-packages/py3o/renderers/juno/py3oconverter.jar:/usr/share/java/juh.jar:/usr/share/java/jurt.jar:/usr/share/java/ridl.jar:/usr/share/java/unoloader.jar:/usr/share/java/java_uno.jar:/usr/lib/libreoffice/program/classes/unoil.jar -Xmx150M
-
-After **-Djava.class.path**, there is a list of Java libs with *.jar*
-extension ; check that each JAR file is really present on your
-filesystem. If one of the jar files is present in another directory,
-create a symlink that points to the real location of the file. If all
-the jar files are present on another directory, adapt the *--ure=*
-argument on the command line of Py3o render server.
-
-To check that the Py3o Fusion server is running fine, visit the URL
-http://\ <IP_address>:8765/form. On this web page, under the section
-*Target format*, make sure that you have a line *This server currently
-supports these formats: ods, odt, docx, doc, html, docbook, pdf, xls.*.
+   sudo apt install fonts-symbola
 
 If you want to produce valid PDF/A documents with this module,
 activating the corresponding option in the PDF Export Options may not be
@@ -152,7 +75,72 @@ uses the Arial font, you should install that font on your Odoo server:
 
 ::
 
-   sudo apt-get install msttcorefonts
+   sudo apt install msttcorefonts
+
+The python libs **py3o.formats** and **py3o.template** are required
+(they should already be installed for the module *report_py3o*). In the
+virtualenv of your Odoo server, run:
+
+::
+
+   % pip install --upgrade py3o.formats py3o.template
+
+Odoo will connect to the LibreOffice via the **uno** python lib which is
+linked to LibreOffice. So you cannot install the uno lib in Odoo's
+virtualenv like you do for all the other python libs required by Odoo.
+Use the following procedure to make the uno lib installed by the package
+of your Linux distribution available in Odoo's virtualenv. In the
+virtualenv of your Odoo server, run:
+
+::
+
+   % pip install oooenv
+   % oooenv cmd-link -a
+
+Libreoffice must be run as a daemon. For that, create a file
+**/etc/systemd/system/libreoffice.service** with the following content:
+
+::
+
+   [Unit]
+   Description=Libreoffice headless for Py3o
+   After=network.target
+
+   [Service]
+   Type=simple
+   User=odoo
+   Group=odoo
+   ExecStart=nice -n 10 /usr/lib/libreoffice/program/soffice.bin --nologo --norestore --invisible --headless --nolockcheck --nodefault --accept="socket,host=localhost,port=8997;urp;"
+   stdout_logfile=/var/log/odoo/libreoffice.log
+   KillMode=mixed
+   Restart=always
+   # number of seconds to attempt restart after failure
+   RestartSec=5
+
+   [Install]
+   WantedBy=multi-user.target
+
+The file content above is an example. You must adapt:
+
+-  the system user and group that will be used to run libreoffice as a
+   daemon (*odoo* in the exemple)
+-  the path of the LibreOffice binary
+   (*/usr/lib/libreoffice/program/soffice.bin* in the example)
+-  the log file (*/var/log/odoo/libreoffice.log* in the example)
+-  the TCP port on which LibreOffice listens (*8997* in the example)
+
+Then enable this service and start it:
+
+::
+
+   sudo systemctl enable libreoffice
+   sudo systemctl start libreoffice
+
+Check that LibreOffice runs in the background:
+
+::
+
+   ps aux | grep soffice.bin
 
 Configuration
 =============
@@ -169,8 +157,8 @@ To configure the PDF export options:
 Known issues / Roadmap
 ======================
 
-- Add support for PDF signatures (possible, but no easy because the
-  signature certificate is a very particular PDF export option)
+-  Add support for PDF signatures (possible, but no easy because the
+   signature certificate is a very particular PDF export option)
 
 Bug Tracker
 ===========
@@ -195,12 +183,12 @@ Authors
 Contributors
 ------------
 
-- Florent Aide (`XCG Consulting <http://odoo.consulting/>`__)
-- Laurent Mignon <laurent.mignon@acsone.eu>,
-- Alexis de Lattre <alexis.delattre@akretion.com>,
-- Guewen Baconnier <guewen.baconnier@camptocamp.com>
-- Omar Castiñeira <omar@comunitea.com>
-- Holger Brunn <hbrunn@therp.nl>
+-  Florent Aide (`XCG Consulting <http://odoo.consulting/>`__)
+-  Laurent Mignon <laurent.mignon@acsone.eu>,
+-  Alexis de Lattre <alexis.delattre@akretion.com>,
+-  Guewen Baconnier <guewen.baconnier@camptocamp.com>
+-  Omar Castiñeira <omar@comunitea.com>
+-  Holger Brunn <hbrunn@therp.nl>
 
 Maintainers
 -----------
