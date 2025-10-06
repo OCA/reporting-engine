@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <form>
                 <group name="main">
-                    <field name="url" widget="url" />
+                    <field name="host" />
+                    <field name="port" />
                     <field name="pdf_options_id" />
                     <field name="is_active" />
                 </group>
@@ -18,14 +19,15 @@
         <field name="model">py3o.server</field>
         <field name="arch" type="xml">
             <list>
-                <field name="url" />
+                <field name="host" />
+                <field name="port" />
                 <field name="pdf_options_id" />
                 <field name="is_active" />
             </list>
         </field>
     </record>
     <record id="py3o_server_configuration_action" model="ir.actions.act_window">
-        <field name="name">Py3o Servers</field>
+        <field name="name">LibreOffice for Py3o</field>
         <field name="res_model">py3o.server</field>
         <field name="view_mode">list,form</field>
     </record>

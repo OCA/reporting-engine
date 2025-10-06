@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ==================
 Py3o Report Engine
 ==================
@@ -17,7 +13,7 @@ Py3o Report Engine
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
@@ -35,29 +31,29 @@ Py3o Report Engine
 The py3o reporting engine is a reporting engine for Odoo based on
 [Libreoffice](http://www.libreoffice.org/):
 
-- the report is created with Libreoffice (ODT or ODS),
-- the report is stored on the server in OpenDocument format (.odt or
-  .ods file)
-- the report is sent to the user in OpenDocument format or in any output
-  format supported by Libreoffice (PDF, HTML, DOC, DOCX, Docbook, XLS,
-  etc.)
+-  the report is created with Libreoffice (ODT or ODS),
+-  the report is stored on the server in OpenDocument format (.odt or
+   .ods file)
+-  the report is sent to the user in OpenDocument format or in any
+   output format supported by Libreoffice (PDF, HTML, DOC, DOCX,
+   Docbook, XLS, etc.)
 
 The key advantages of a Libreoffice based reporting engine are:
 
-- no need to be a developer to create or modify a report: the report is
-  created and modified with Libreoffice. So this reporting engine has a
-  full WYSIWYG report development tool!
-- For a PDF report in A4/Letter format, it's easier to develop it with a
-  tool such as Libreoffice that is designed to create A4/Letter
-  documents than to develop it in HTML/CSS, also some print
-  peculiarities (backgrounds, margin boxes) are not very well supported
-  by the HTML/CSS based solutions.
-- If you want your users to be able to modify the document after its
-  generation by Odoo, just configure the document with ODT output (or
-  DOC or DOCX) and the user will be able to modify the document with
-  Libreoffice (or Word) after its generation by Odoo.
-- Easy development of spreadsheet reports in ODS format (XLS output
-  possible).
+-  no need to be a developer to create or modify a report: the report is
+   created and modified with Libreoffice. So this reporting engine has a
+   full WYSIWYG report development tool!
+-  For a PDF report in A4/Letter format, it's easier to develop it with
+   a tool such as Libreoffice that is designed to create A4/Letter
+   documents than to develop it in HTML/CSS, also some print
+   peculiarities (backgrounds, margin boxes) are not very well supported
+   by the HTML/CSS based solutions.
+-  If you want your users to be able to modify the document after its
+   generation by Odoo, just configure the document with ODT output (or
+   DOC or DOCX) and the user will be able to modify the document with
+   Libreoffice (or Word) after its generation by Odoo.
+-  Easy development of spreadsheet reports in ODS format (XLS output
+   possible).
 
 This module *report_py3o* is the base module for the Py3o reporting
 engine. If used alone, it will spawn a libreoffice process for each ODT
@@ -183,9 +179,9 @@ project
 Known issues / Roadmap
 ======================
 
-- generate barcode ?
-- add more detailed example in demo file to showcase features
-- add migration guide aeroo -> py3o
+-  generate barcode ?
+-  add more detailed example in demo file to showcase features
+-  add migration guide aeroo -> py3o
 
 Bug Tracker
 ===========
@@ -209,14 +205,14 @@ Authors
 Contributors
 ------------
 
-- Florent Aide ([XCG Consulting](http://odoo.consulting/))
-- Laurent Mignon <<laurent.mignon@acsone.eu>>,
-- Alexis de Lattre <<alexis.delattre@akretion.com>>,
-- Guewen Baconnier <<guewen.baconnier@camptocamp.com>>
-- Omar Casti??eira <<omar@comunitea.com>>
-- Holger Brunn <<hbrunn@therp.nl>>
-- Phuc Tran Thanh <<phuc@trobz.com>>
-- Souheil Bejaoui <<souheil.bejaoui@acsone.eu>>,
+-  Florent Aide ([XCG Consulting](http://odoo.consulting/))
+-  Laurent Mignon <<laurent.mignon@acsone.eu>>,
+-  Alexis de Lattre <<alexis.delattre@akretion.com>>,
+-  Guewen Baconnier <<guewen.baconnier@camptocamp.com>>
+-  Omar Casti??eira <<omar@comunitea.com>>
+-  Holger Brunn <<hbrunn@therp.nl>>
+-  Phuc Tran Thanh <<phuc@trobz.com>>
+-  Souheil Bejaoui <<souheil.bejaoui@acsone.eu>>,
 
 Maintainers
 -----------

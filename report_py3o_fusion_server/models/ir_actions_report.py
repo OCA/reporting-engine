@@ -4,7 +4,6 @@
 import logging
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -12,27 +11,7 @@ logger = logging.getLogger(__name__)
 class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
-    @api.constrains("py3o_is_local_fusion", "py3o_server_id")
-    def _check_py3o_server_id(self):
-        for report in self:
-            if report.report_type != "py3o":
-                continue
-            if not report.py3o_is_local_fusion and not report.py3o_server_id:
-                raise ValidationError(
-                    _(
-                        "You can not use remote fusion without Fusion server. "
-                        "Please specify a Fusion Server"
-                    )
-                )
-
-    py3o_is_local_fusion = fields.Boolean(
-        "Local Fusion",
-        help="Native formats will be processed without a server. "
-        "You must use this mode if you call methods on your model into "
-        "the template.",
-        default=True,
-    )
-    py3o_server_id = fields.Many2one("py3o.server", "Fusion Server")
+    py3o_server_id = fields.Many2one("py3o.server", "LibreOffice for Py3o")
     pdf_options_id = fields.Many2one(
         "py3o.pdf.options",
         string="PDF Options",
