@@ -12,10 +12,6 @@ from odoo import models
 logger = logging.getLogger(__name__)
 
 try:
-    pass
-except ImportError:
-    logger.debug("Cannot import py3o.template")
-try:
     from py3o.formats import Formats
 except ImportError:
     logger.debug("Cannot import py3o.formats")
