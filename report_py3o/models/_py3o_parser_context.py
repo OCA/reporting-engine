@@ -59,7 +59,6 @@ class Py3oParserContext:
         lang_code=False,
         digits=None,
         grouping=True,
-        monetary=False,
         dp=False,
         currency_obj=False,
         no_break_space=True,
@@ -73,7 +72,6 @@ class Py3oParserContext:
             value,
             digits=digits,
             grouping=grouping,
-            monetary=monetary,
             dp=dp,
             currency_obj=currency_obj,
         )
@@ -104,7 +102,6 @@ class Py3oParserContext:
         date=False,
         date_time=False,
         grouping=True,
-        monetary=False,
         dp=False,
         currency_obj=False,
     ):
@@ -130,7 +127,6 @@ class Py3oParserContext:
                 value,
                 digits=digits,
                 grouping=grouping,
-                monetary=monetary,
                 dp=dp,
                 currency_obj=currency_obj,
                 no_break_space=True,
