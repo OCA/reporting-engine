@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
-"PO-Revision-Date: 2024-12-02 10:06+0000\n"
+"PO-Revision-Date: 2025-10-07 10:43+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Azione richiesta"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__active
@@ -33,27 +33,27 @@ msgstr "Attivo"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Decorazione eccezione attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Stato attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Icona tipo attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Conteggio allegati"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_category_list
@@ -170,22 +170,22 @@ msgstr "Minimo sorgente DB esterna"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Seguito da"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Seguito da (partner)"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Icona Font Awesome es. fa-tasks"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Ha un messaggio"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
@@ -215,27 +215,27 @@ msgstr "ID"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Icona"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icona per indicare un'attività eccezione."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Segue"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_list
@@ -377,12 +377,12 @@ msgstr "Messaggio"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Errore di consegna messaggio"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Messaggi"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_type
@@ -427,7 +427,7 @@ msgstr "Mese"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Scadenza mia attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__name
@@ -441,17 +441,17 @@ msgstr "Nome"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Scadenza prossima attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Riepilogo prossima attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Tipo prossima attività"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__next_execution_date
@@ -461,22 +461,22 @@ msgstr "Data prossima esecuzione"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Numero di azioni"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Numero di errori"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Numero di messaggi che richiedono un'azione"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Numero di messaggi con errore di consegna"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
@@ -527,7 +527,7 @@ msgstr "Intervalli"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Utente responsabile"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
@@ -554,6 +554,10 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Stato in base alle attività\n"
+"Scaduto: la data richiesta è trascorsa\n"
+"Oggi: la data attività è oggi\n"
+"Pianificato: attività future."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__threshold_id
@@ -579,7 +583,7 @@ msgstr "Due intervalli si sovrappongono."
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Tipo di attività eccezione sul record."
 
 #. module: kpi
 #: model:ir.actions.server,name:kpi.ir_cron_kpi_action_ir_actions_server
@@ -601,12 +605,12 @@ msgstr "Valore"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Messaggi sito web"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Cronologia comunicazioni sito web"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
