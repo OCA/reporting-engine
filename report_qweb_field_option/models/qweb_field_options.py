@@ -4,7 +4,7 @@
 import ast
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -63,15 +63,18 @@ class QwebFieldOptions(models.Model):
                 field_options = ast.literal_eval(rec.field_options)
             except Exception as e:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "Invalid string for the Options field: %(field_options)s.\n"
-                        "Error: %(error)s"
+                        "Error: %(error)s",
+                        field_options=rec.field_options,
+                        error=e,
                     )
-                    % {"field_options": rec.field_options, "error": e}
                 ) from e
             if not isinstance(field_options, dict):
                 raise ValidationError(
-                    _("Options must be a dictionary, but got %s") % type(field_options)
+                    self.env._(
+                        "Options must be a dictionary, but got %s", type(field_options)
+                    )
                 )
 
     def _get_score(self, record):

@@ -48,7 +48,7 @@
                 <field name="currency_id" />
                 <field name="company_id" />
                 <separator />
-                <group expand="1" string="Group By">
+                <group>
                     <filter
                         string="Model"
                         name="res_model_id"
