@@ -1,5 +1,5 @@
 - Miku Laitinen \<<miku@avoin.systems>\>
-- Jordi Ballester \<<jordi.ballester@eficent.com>\>
+- Jordi Ballester \<<jordi.ballester@forgeflow.com>\>
 - Saran Lim. \<<saranl@ecosoft.co.th>\>
 - Foram Shah \<<foramshah@initos.com>\>
 - [Trobz](https://www.trobz.com):

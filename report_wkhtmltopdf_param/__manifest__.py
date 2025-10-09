@@ -10,7 +10,7 @@
         Add new parameters for a paper format to be used by wkhtmltopdf
         command as arguments.
     """,
-    "author": "Avoin.Systems, Eficent, Odoo Community Association (OCA)",
+    "author": "Avoin.Systems, ForgeFlow, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Technical Settings",
     "depends": ["web"],
