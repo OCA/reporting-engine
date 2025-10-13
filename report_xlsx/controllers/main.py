@@ -42,8 +42,7 @@ class ReportController(ReportController):
             xlsxhttpheaders = [
                 (
                     "Content-Type",
-                    "application/vnd.openxmlformats-"
-                    "officedocument.spreadsheetml.sheet",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 ),
                 ("Content-Length", len(xlsx)),
             ]
