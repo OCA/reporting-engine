@@ -1,6 +1,7 @@
 # Copyright 2017 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import io
 import logging
 
 from odoo.tests import common
@@ -8,33 +9,41 @@ from odoo.tests import common
 _logger = logging.getLogger(__name__)
 
 try:
-    from xlrd import open_workbook
+    from openpyxl import load_workbook
 except ImportError:
-    _logger.debug("Can not import xlrd`.")
+    _logger.debug("Can not import openpyxl`.")
 
 
 class TestReport(common.TransactionCase):
     def setUp(self):
         super().setUp()
         self.report_object = self.env["ir.actions.report"]
+        vals = {
+            "name": "Print to XLSX",
+            "model": "res.partner",
+            "report_type": "xlsx",
+            "report_name": "report_xlsx.partner_xlsx",
+            "report_file": "res_partner",
+        }
         self.xlsx_report = self.env["report.report_xlsx.abstract"].with_context(
             active_model="res.partner"
         )
         self.report_name = "report_xlsx.partner_xlsx"
-        self.report = self.report_object._get_report_from_name(self.report_name)
+        self.report = self.report_object.create(vals)
         self.docs = self.env["res.company"].search([], limit=1).partner_id
 
     def test_report(self):
         report = self.report
         self.assertEqual(report.report_type, "xlsx")
-        rep = self.report_object._render(self.report_name, self.docs.ids, {})
-        wb = open_workbook(file_contents=rep[0])
-        sheet = wb.sheet_by_index(0)
-        self.assertEqual(sheet.cell(0, 0).value, self.docs.name)
+        rep = self.report_object._render(self.report, self.docs.ids, {})
+        file = io.BytesIO(rep[0])
+        wb = load_workbook(file)
+        sheet = wb.active
+        self.assertEqual(sheet.cell(1, 1).value, self.docs.name)
 
     def test_save_attachment(self):
         self.report.attachment = 'object.name + ".xlsx"'
-        self.report_object._render(self.report_name, self.docs.ids, {})
+        self.report_object._render(self.report, self.docs.ids, {})
         attachment = self.env["ir.attachment"].search(
             [("res_id", "=", self.docs.id), ("res_model", "=", self.docs._name)]
         )
