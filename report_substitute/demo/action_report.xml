@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="substitution_report">
-        <div class="page">Substitution Report</div>
+        <t t-call="web.html_container">
+            <div class="page">Substitution Report</div>
+        </t>
     </template>
     <record id="substitution_report_print" model="ir.actions.report">
         <field name="name">Substitution For Technical guide</field>
@@ -19,7 +21,9 @@
         />
     </record>
     <template id="substitution_report_2">
-        <div class="page">Substitution Report 2</div>
+        <t t-call="web.html_container">
+            <div class="page">Substitution Report 2</div>
+        </t>
     </template>
     <record id="substitution_report_print_2" model="ir.actions.report">
         <field name="name">Substitution 2 For Technical guide</field>
