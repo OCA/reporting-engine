@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2022-06-15 18:05+0000\n"
+"PO-Revision-Date: 2025-10-29 15:20+0000\n"
 "Last-Translator: jabelchi <jabelchi@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -45,7 +45,7 @@ msgstr "Context d'acció"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "És necessària una acció"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -65,7 +65,7 @@ msgstr "Usuaris permesos"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Comptador adjunts"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__available
@@ -75,7 +75,7 @@ msgstr "Disponible"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__avg
 msgid "Average"
-msgstr ""
+msgstr "Mitjana"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
@@ -94,6 +94,9 @@ msgid ""
 "overwriting the parent menu on which the menu related to the SQL report will "
 "be created."
 msgstr ""
+"Si assigneu un valor a aquest camp abans de crear manualment la IU, "
+"sobreescriureu el menú pare en el que es crearà el menú relacionat a "
+"l'informe SQL."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__group_operator
@@ -101,6 +104,8 @@ msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
 msgstr ""
+"Per defecte, Odoo suma els valors agrupats. Si voleu alterar el "
+"comportament, escolliu un operador de grup alternatiu"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
@@ -128,6 +133,7 @@ msgstr "Columna"
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
 msgstr ""
+"Text separat per comes. Valors possibles: \"graph\", \"pivot\" o \"list\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -137,7 +143,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Computed Context"
-msgstr ""
+msgstr "Context calculat"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_context
