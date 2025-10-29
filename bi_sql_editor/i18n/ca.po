@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2025-10-29 15:53+0000\n"
+"PO-Revision-Date: 2025-10-29 18:28+0000\n"
 "Last-Translator: jabelchi <jabelchi@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 msgid "%(model_name)s Access %(full_name)s"
-msgstr ""
+msgstr "%(model_name)s Accès %(full_name)s"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -138,7 +138,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
 msgid "Computed Action Context"
-msgstr ""
+msgstr "Context d'acció calculat"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -207,10 +207,10 @@ msgid ""
 "False)]."
 msgstr ""
 "Definiu aquí la restricció d'accés a les dades.\n"
-" Tingueu cura d'utilitzar el nom del camp amb el prefix 'x_'. Es crearà una "
+"Tingueu cura d'utilitzar el nom del camp amb el prefix 'x_'. Es crearà una "
 "\"ir.rule\" global. Per exemple, una regla típica de múltiples empreses és\n"
-"  ['|', ('x_company_id','fill_de', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+"['|', ('x_company_id','fill_de', [user.company_id.id]"
+"),('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -275,7 +275,7 @@ msgid ""
 " Comodel of the field."
 msgstr ""
 "Pel camp Odoo 'Many2one'.\n"
-"  Comodel del camp."
+"Comodel del camp."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -567,7 +567,7 @@ msgstr "Establiu els models relacionats als camps següents %s"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
 msgid "Query"
-msgstr "Consulta "
+msgstr "Consulta"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -768,7 +768,7 @@ msgstr "No disponible"
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Update Model Access"
-msgstr ""
+msgstr "Actualitzar accés al model"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -776,11 +776,13 @@ msgid ""
 "Update Model Access. Required if you changed groups list after having "
 "created the model"
 msgstr ""
+"Actualitzar accés al model. Necessari si heu canviat la llista de grups "
+"desprès de crear el model"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Usar base de dades externa"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -795,7 +797,7 @@ msgstr "Nom a mostrar"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_order
 msgid "View Order"
-msgstr ""
+msgstr "Ordre de la vista"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__ui_valid
@@ -805,12 +807,12 @@ msgstr "Vistes, acció i menú creats"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Missatges del lloc web"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Historial de comunicació del lloc web"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -826,6 +828,8 @@ msgid ""
 "You can only unlink draft views. If you want to delete them, first set them "
 "to draft."
 msgstr ""
+"Només podeu eliminar vistes en esborrany. Si voleu esborrar-les, primer "
+"passeu-les a esborrany."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
