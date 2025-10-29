@@ -41,10 +41,10 @@ class ExtendedReportController(ReportController):
                     report_name = safe_eval(report.print_report_name,
                                             {'object': obj, 'time': time})
                 report_name = report_name.replace('/', '_')
-                pdf_name = f'{report_name}.pdf'
+                pdf_name = '%s.pdf' % report_name
                 attachments.append((pdf_name, pdf_content))
             # Generate the ZIP file
-            zip_filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip"
+            zip_filename = "%s.zip" % datetime.now().strftime('%Y%m%d_%H%M%S')
             bitIO = BytesIO()
             with zipfile.ZipFile(bitIO, "w", zipfile.ZIP_DEFLATED) as zip_file:
                 for pdf_name, pdf_content in attachments:
