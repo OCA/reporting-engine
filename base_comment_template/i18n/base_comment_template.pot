@@ -146,6 +146,11 @@ msgid "Filter Domain"
 msgstr ""
 
 #. module: base_comment_template
+#: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__global_template
+msgid "Global Template"
+msgstr ""
+
+#. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__id
 msgid "ID"
