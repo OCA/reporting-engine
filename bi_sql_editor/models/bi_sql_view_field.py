@@ -105,6 +105,7 @@ class BiSQLViewField(models.Model):
     field_description = fields.Char(
         help="This will be used as the name of the Odoo field, displayed for users",
         required=True,
+        translate=True,
     )
 
     ttype = fields.Selection(
