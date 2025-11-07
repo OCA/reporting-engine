@@ -2,16 +2,21 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
+from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 
 
+@tagged("post_install", "-at_install")
 class TestReportXlsxHelper(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        p1 = cls.env.ref("base.res_partner_1")
-        p2 = cls.env.ref("base.res_partner_2")
-        cls.partners = p1 + p2
+        cls.partners = cls.env["res.partner"].create(
+            [
+                {"name": "Test Partner 1"},
+                {"name": "Test Partner 2"},
+            ]
+        )
         ctx = {
             "report_name": "report_xlsx_helper.test_partner_xlsx",
             "active_model": "res.partner",
