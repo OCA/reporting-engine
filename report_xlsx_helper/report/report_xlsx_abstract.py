@@ -7,7 +7,7 @@ from types import CodeType
 
 from xlsxwriter.utility import xl_rowcol_to_cell
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 
 from .report_xlsx_format import FORMATS, XLS_HEADERS
@@ -36,22 +36,22 @@ class ReportXlsxAbstract(models.AbstractModel):
         else:
             if len(name) > max_chars:
                 raise UserError(
-                    _(
+                    self.env._(
                         "Programming Error:\n\n"
                         "Excel Sheet name '%(name)s' should not exceed %(max_chars)s "
-                        "characters."
+                        "characters.",
+                        {"name": name, "max_chars": max_chars},
                     )
-                    % {"name": name, "max_chars": max_chars}
                 )
             special_chars = pattern.findall(name)
             if special_chars:
                 raise UserError(
-                    _(
+                    self.env._(
                         "Programming Error:\n\n"
                         "Excel Sheet name '%(name)s' contains unsupported special "
-                        "characters: '%(special_chars)s'."
+                        "characters: '%(special_chars)s'.",
+                        {"name": name, "special_chars": special_chars},
                     )
-                    % {"name": name, "special_chars": special_chars}
                 )
         return name
 
@@ -615,12 +615,12 @@ class ReportXlsxAbstract(models.AbstractModel):
         for pos, col in enumerate(wl):
             if col not in col_specs:
                 raise UserError(
-                    _(
+                    self.env._(
                         "Programming Error:\n\n"
                         "The '%s' column is not defined in the worksheet "
-                        "column specifications."
+                        "column specifications.",
+                        col,
                     )
-                    % col
                 )
             ws.set_column(pos, pos, col_specs[col]["width"])
 
@@ -633,7 +633,7 @@ class ReportXlsxAbstract(models.AbstractModel):
         title = ws_params.get("title")
         if not title:
             raise UserError(
-                _(
+                self.env._(
                     "Programming Error:\n\n"
                     "The 'title' parameter is mandatory "
                     "when calling the '_write_ws_title' method."
@@ -672,12 +672,12 @@ class ReportXlsxAbstract(models.AbstractModel):
         for col in wl:
             if col not in col_specs:
                 raise UserError(
-                    _(
+                    self.env._(
                         "Programming Error:\n\n"
                         "The '%s' column is not defined the worksheet "
-                        "column specifications."
+                        "column specifications.",
+                        col,
                     )
-                    % col
                 )
             colspan = col_specs[col].get("colspan") or 1
             cell_spec = col_specs[col].get(col_specs_section) or {}
@@ -709,18 +709,19 @@ class ReportXlsxAbstract(models.AbstractModel):
                         if not cell_value:
                             cell_type = "blank"
                         else:
-                            msg = _(
+                            msg = self.env._(
                                 "%(__name__)s, _write_line : programming error "
                                 "detected while processing "
                                 "col_specs_section %(col_specs_section)s, "
-                                "column %(col)s"
-                            ) % {
-                                "__name__": __name__,
-                                "col_specs_section": col_specs_section,
-                                "col": col,
-                            }
+                                "column %(col)s",
+                                {
+                                    "__name__": __name__,
+                                    "col_specs_section": col_specs_section,
+                                    "col": col,
+                                },
+                            )
                             if cell_value:
-                                msg += _(", cellvalue %s") % cell_value
+                                msg += self.env._(", cellvalue %s", cell_value)
                             raise UserError(msg)
             colspan = cell_spec.get("colspan") or colspan
             args_pos = [row_pos, pos]
@@ -763,7 +764,7 @@ class ReportXlsxAbstract(models.AbstractModel):
             render_space["datetime"] = datetime
         # the use of eval is not a security thread as long as the
         # col_specs template is defined in a python module
-        return eval(val, render_space)  # pylint: disable=W0123,W8112
+        return eval(val, render_space)  # pylint: disable=W0123
 
     @staticmethod
     def _rowcol_to_cell(row, col, row_abs=False, col_abs=False):
