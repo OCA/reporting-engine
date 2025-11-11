@@ -8,8 +8,14 @@ registry
         if (action.report_type === "xlsx") {
             const type = action.report_type;
             let url = `/report/${type}/${action.report_name}`;
+            for (const key_data in action.data) {
+                action.context[key_data] = action.data[key_data];
+            }
             const actionContext = action.context || {};
             if (action.data && JSON.stringify(action.data) !== "{}") {
+                if (!url.includes(`/${actionContext.active_id}`)) {
+                    url += `/${actionContext.active_id}`;
+                }
                 // Build a query string with `action.data` (it's the place where reports
                 // using a wizard to customize the output traditionally put their options)
                 const action_options = encodeURIComponent(JSON.stringify(action.data));
@@ -30,7 +36,7 @@ registry
                     url: "/report/download",
                     data: {
                         data: JSON.stringify([url, action.report_type]),
-                        context: JSON.stringify(user.context),
+                        context: JSON.stringify(actionContext),
                     },
                 });
             } finally {
