@@ -5,7 +5,7 @@
 
 You should reuse or create a Paperformat.
 
-![image](../static/description/report_paperformat_label_form.png)
+![conf_image_1](../static/description/report_paperformat_label_form.png)
 
 **Configure your Server action**
 
@@ -19,7 +19,7 @@ Create your label report :
 - In the 'Label Qweb Template' create or reuse a QWeb template for your
   label.
 
-![image](../static/description/ir_actions_server.png)
+![conf_image_2](../static/description/ir_actions_server.png)
 
 **Importante Note**
 

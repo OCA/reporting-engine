@@ -14,12 +14,10 @@ class IrActionsServer(models.Model):
         comodel_name="ir.ui.view",
         domain=[("type", "=", "qweb")],
         help="The QWeb template key to render the labels",
-        states={"report_label": [("required", True)]},
     )
     label_paperformat_id = fields.Many2one(
         "report.paperformat.label",
         "Label Paper Format",
-        states={"report_label": [("required", True)]},
     )
 
     def _run_action_report_label_multi(self, eval_context=None):

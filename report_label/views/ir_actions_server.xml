@@ -4,16 +4,20 @@
         <field name="model">ir.actions.server</field>
         <field name="inherit_id" ref="base.view_server_action_form" />
         <field name="arch" type="xml">
-            <field name="type" position="after">
-                <field
-                    name="label_paperformat_id"
-                    attrs="{'invisible': [('state', '!=', 'report_label')]}"
-                />
-                <field
-                    name="label_template_view_id"
-                    attrs="{'invisible': [('state', '!=', 'report_label')]}"
-                />
-            </field>
+            <xpath expr="//div[field[@name='state']]" position="after">
+                <group>
+                    <field
+                        name="label_paperformat_id"
+                        invisible="state != 'report_label'"
+                        required="state == 'report_label'"
+                    />
+                    <field
+                        name="label_template_view_id"
+                        invisible="state != 'report_label'"
+                        required="state == 'report_label'"
+                    />
+                </group>
+            </xpath>
         </field>
     </record>
 </odoo>

@@ -24,6 +24,7 @@ class ReportLabelWizardLine(models.TransientModel):
         wizard.ensure_one()
         res_model = wizard.model_id.sudo().model
         res_ids = self.mapped("res_id")
-        names_map = dict(self.env[res_model].browse(res_ids).name_get())
+        records = self.env[res_model].browse(res_ids)
+        names_map = {r.id: r.display_name for r in records}
         for rec in self:
             rec.res_name = names_map.get(rec.res_id)
