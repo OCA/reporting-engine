@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_server_action_form" model="ir.ui.view">
         <field name="model">ir.actions.server</field>
         <field name="inherit_id" ref="base.view_server_action_form" />
@@ -17,5 +16,4 @@
             </field>
         </field>
     </record>
-
 </odoo>

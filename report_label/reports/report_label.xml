@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="report_label_template">
-
         <t t-call="web.report_layout">
             <style type="text/css">
 html, body {
@@ -56,5 +54,4 @@ html, body {
         <field name="report_name">report_label.report_label_template</field>
         <field name="report_file">report_label.report_label_template</field>
     </record>
-
 </odoo>
