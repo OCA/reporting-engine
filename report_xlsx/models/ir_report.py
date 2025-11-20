@@ -64,7 +64,7 @@ class ReportAction(models.Model):
             "type": "binary",
         }
         try:
-            attachment = self.env["ir.attachment"].create(attachment_values)
+            attachment = self.env["ir.attachment"].sudo().create(attachment_values)
         except exceptions.AccessError:
             _logger.info(
                 "Cannot save XLSX report %r attachment for user %r",
