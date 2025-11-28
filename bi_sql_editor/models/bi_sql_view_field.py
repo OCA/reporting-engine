@@ -4,7 +4,7 @@
 
 import re
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -143,7 +143,7 @@ class BiSQLViewField(models.Model):
         for rec in self.filtered(lambda x: x.is_index):
             if not rec.bi_sql_view_id.is_materialized:
                 raise UserError(
-                    _("You can not create indexes on non materialized views")
+                    self.env._("You can not create indexes on non materialized views")
                 )
 
     # Compute Section
@@ -191,15 +191,15 @@ class BiSQLViewField(models.Model):
             )
         return super().create(vals_list)
 
-    def unlink(self):
+    @api.ondelete(at_uninstall=False)
+    def _check_unlink_constraints(self):
         if self.filtered(lambda x: x.state in ("model_valid", "ui_valid")):
             raise UserError(
-                _(
+                self.env._(
                     "Impossible to delete fields if the view"
                     " is in the state 'Model Valid' or 'UI Valid'."
                 )
             )
-        return super().unlink()
 
     # Custom Section
     @api.model
