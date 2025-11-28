@@ -1,13 +1,14 @@
 # Copyright 2017 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from odoo import Command
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.tests import tagged
-from odoo.tests.common import SingleTransactionCase
+from odoo.tests import new_test_user, tagged
+from odoo.tests.common import TransactionCase
 
 
 @tagged("-at_install", "post_install")
-class TestBiSqlViewEditor(SingleTransactionCase):
+class TestBiSqlViewEditor(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -17,15 +18,35 @@ class TestBiSqlViewEditor(SingleTransactionCase):
             "sql_request_abstract.group_sql_request_manager"
         )
         cls.group_bi_no_access = cls.env.ref("base.group_user")
-        cls.demo_user = cls.env.ref("base.user_demo")
-        cls.view = cls.env.ref("bi_sql_editor.partner_sql_view")
+        cls.demo_user = new_test_user(
+            cls.env,
+            login="demo_bi_sql",
+            groups="base.group_user",
+            name="Demo User",
+            email="demo@example.com",
+        )
+        cls.view = cls.bi_sql_view.create(
+            {
+                "name": "Partners View",
+                "technical_name": "partners_view",
+                "is_materialized": True,
+                "query": """SELECT
+    name as x_name,
+    street as x_street,
+    company_id as x_company_id
+FROM res_partner
+ORDER BY name""",
+            }
+        )
 
     @classmethod
     def _get_user(cls, access_level=False):
         if access_level == "manager":
-            cls.demo_user.write({"groups_id": [(6, 0, cls.group_bi_manager.ids)]})
+            cls.demo_user.write({"group_ids": [Command.set(cls.group_bi_manager.ids)]})
         else:
-            cls.demo_user.write({"groups_id": [(6, 0, cls.group_bi_no_access.ids)]})
+            cls.demo_user.write(
+                {"group_ids": [Command.set(cls.group_bi_no_access.ids)]}
+            )
         return cls.demo_user
 
     def test_process_view(self):
@@ -58,7 +79,8 @@ class TestBiSqlViewEditor(SingleTransactionCase):
         copy_view.button_update_model_access()
         self.assertEqual(copy_view.has_group_changed, False)
         # Check that cron works correctly
-        copy_view.cron_id.method_direct_trigger()
+        with self.enter_registry_test_mode():
+            copy_view.cron_id.method_direct_trigger()
 
     def test_copy(self):
         copy_view = self.view.copy(default={"technical_name": "test_copy"})
@@ -67,13 +89,15 @@ class TestBiSqlViewEditor(SingleTransactionCase):
     def test_security(self):
         with self.assertRaises(AccessError):
             self.bi_sql_view.with_user(self._get_user()).search(
-                [("name", "=", self.view.name)]
+                [("id", "=", self.view.id)]
             )
         bi = self.bi_sql_view.with_user(self._get_user("manager")).search(
-            [("name", "=", self.view.name)]
+            [("id", "=", self.view.id)]
         )
         self.assertEqual(
-            len(bi), 1, f"Bi Manager should have access to bi {self.view.name}"
+            len(bi),
+            1,
+            f"BI Manager should have access to the specific record: {self.view.name}",
         )
 
     def test_unlink(self):
