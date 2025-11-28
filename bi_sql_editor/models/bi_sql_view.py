@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 from psycopg2 import ProgrammingError
 from psycopg2.sql import SQL, Identifier
 
-from odoo import SUPERUSER_ID, _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools import sql
 from odoo.tools.safe_eval import safe_eval
@@ -163,7 +163,7 @@ class BiSQLView(models.Model):
         for rec in self.filtered(lambda x: not x.is_materialized):
             if rec.bi_sql_view_field_ids.filtered(lambda x: x.is_index):
                 raise UserError(
-                    _("You can not create indexes on non materialized views")
+                    self.env._("You can not create indexes on non materialized views")
                 )
 
     @api.constrains("view_order")
@@ -173,7 +173,7 @@ class BiSQLView(models.Model):
                 for vtype in rec.view_order.split(","):
                     if vtype not in ("graph", "pivot", "list"):
                         raise UserError(
-                            _("Only graph, pivot or list views are supported")
+                            self.env._("Only graph, pivot or list views are supported")
                         )
 
     # Compute Section
@@ -236,7 +236,7 @@ class BiSQLView(models.Model):
     def _check_unlink_constraints(self):
         if any(view.state not in ("draft", "sql_valid") for view in self):
             raise UserError(
-                _(
+                self.env._(
                     "You can only unlink draft views. "
                     "If you want to delete them, first set them to draft."
                 )
@@ -246,7 +246,7 @@ class BiSQLView(models.Model):
         self.ensure_one()
         default = dict(default or {})
         if "name" not in default:
-            default["name"] = _("%s (Copy)") % self.name
+            default["name"] = self.env._("%s (Copy)", self.name)
         if "technical_name" not in default:
             default["technical_name"] = f"{self.technical_name}_copy"
         return super().copy(default=default)
@@ -260,8 +260,10 @@ class BiSQLView(models.Model):
             )
             if bad_fields:
                 raise ValidationError(
-                    _("Please set related models on the following fields %s")
-                    % ",".join(bad_fields.mapped("name"))
+                    self.env._(
+                        "Please set related models on the following fields %s",
+                        ",".join(bad_fields.mapped("name")),
+                    )
                 )
             # Create ORM and access
             sql_view._create_model_and_fields()
@@ -362,8 +364,11 @@ class BiSQLView(models.Model):
         for group in self.group_ids:
             res.append(
                 {
-                    "name": _("%(model_name)s Access %(full_name)s")
-                    % {"model_name": self.model_name, "full_name": group.full_name},
+                    "name": self.env._(
+                        "%(model_name)s Access %(full_name)s",
+                        model_name=self.model_name,
+                        full_name=group.full_name,
+                    ),
                     "model_id": self.model_id.id,
                     "group_id": group.id,
                     "perm_read": True,
@@ -377,8 +382,8 @@ class BiSQLView(models.Model):
     def _prepare_cron(self):
         now = datetime.now()
         return {
-            "name": _("Refresh Materialized View %s") % self.view_name,
-            "user_id": SUPERUSER_ID,
+            "name": self.env._("Refresh Materialized View %s", self.view_name),
+            "user_id": api.SUPERUSER_ID,
             "model_id": self.env["ir.model"]
             .search([("model", "=", self._name)], limit=1)
             .id,
@@ -393,7 +398,7 @@ class BiSQLView(models.Model):
     def _prepare_rule(self):
         self.ensure_one()
         return {
-            "name": _("Access %s") % self.name,
+            "name": self.env._("Access %s", self.name),
             "model_id": self.model_id.id,
             "domain_force": self.domain_force,
             "global": True,
@@ -446,7 +451,7 @@ class BiSQLView(models.Model):
             "model": self.model_id.model,
             "arch": """<?xml version="1.0"?>"""
             """<search string="Analysis">{}"""
-            """<group expand="1" string="Group By">{}</group>"""
+            """<group>{}</group>"""
             """</search>""".format(
                 "".join(
                     [x._prepare_search_field() for x in self.bi_sql_view_field_ids]
@@ -524,15 +529,13 @@ class BiSQLView(models.Model):
                 sql_view._refresh_size()
             except ProgrammingError as e:
                 raise UserError(
-                    _(
+                    self.env._(
                         "SQL Error while creating %(materialized_text)s"
-                        " VIEW %(view_name)s :\n %(error)s"
+                        " VIEW %(view_name)s :\n %(error)s",
+                        materialized_text=sql_view.materialized_text,
+                        view_name=sql_view.view_name,
+                        error=str(e),
                     )
-                    % {
-                        "materialized_text": sql_view.materialized_text,
-                        "view_name": sql_view.view_name,
-                        "error": str(e),
-                    }
                 ) from e
 
     def _create_index(self):
@@ -554,7 +557,7 @@ class BiSQLView(models.Model):
             sql_view.model_id = self.env["ir.model"].create(self._prepare_model()).id
             sql_view.rule_id = self.env["ir.rule"].create(self._prepare_rule()).id
             # Drop table, created by the ORM
-            if sql.table_exists(self._cr, sql_view.view_name):
+            if sql.table_exists(self.env.cr, sql_view.view_name):
                 req = SQL("DROP TABLE {}").format(Identifier(sql_view.view_name))
                 self._log_execute(req)
 
@@ -656,7 +659,9 @@ class BiSQLView(models.Model):
 
         if not self.bi_sql_view_field_ids:
             raise UserError(
-                _("No Column was found.\nColumns name should be prefixed by 'x_'.")
+                self.env._(
+                    "No Column was found.\nColumns name should be prefixed by 'x_'."
+                )
             )
 
         return columns
