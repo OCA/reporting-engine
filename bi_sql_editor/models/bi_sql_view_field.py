@@ -122,7 +122,7 @@ class BiSQLViewField(models.Model):
     many2one_model_id = fields.Many2one(
         comodel_name="ir.model",
         string="Model",
-        help="For 'Many2one' Odoo field.\n" " Comodel of the field.",
+        help="For 'Many2one' Odoo field.\n Comodel of the field.",
     )
 
     group_operator = fields.Selection(
