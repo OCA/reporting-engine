@@ -1,5 +1,5 @@
 This module provides an abstract model to manage SQL Select requests on
-database. It is not usefull for itself. You can see an exemple of
+database. It is not usefull for itself. You can see an example of
 implementation in the 'sql_export' module. (same repository).
 
 ## Implemented features
@@ -14,7 +14,7 @@ implementation in the 'sql_export' module. (same repository).
   the request has to be cleaned, checked and tested. All of this
   operations can be disabled in the inherited modules.
 
-- This module two new groups:  
+- This module adds two new groups:  
   - SQL Request / User : Can see all the sql requests by default and
     execute them, if they are valid.
   - SQL Request / Manager : has full access on sql requests.
