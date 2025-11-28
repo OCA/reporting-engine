@@ -12,7 +12,7 @@ from io import BytesIO
 from psycopg2 import ProgrammingError
 from psycopg2.sql import SQL
 
-from odoo import _, api, fields, models, tools
+from odoo import api, fields, models, tools
 from odoo.exceptions import UserError, ValidationError
 
 from ..sql_db import get_external_cursor
@@ -87,7 +87,7 @@ class SQLRequestMixin(models.AbstractModel):
         relation=_sql_request_groups_relation,
         column1="sql_id",
         column2="group_id",
-        default=_default_group_ids,
+        default=lambda self: self._default_group_ids(),
     )
 
     user_ids = fields.Many2many(
@@ -96,7 +96,7 @@ class SQLRequestMixin(models.AbstractModel):
         relation=_sql_request_users_relation,
         column1="sql_id",
         column2="user_id",
-        default=_default_user_ids,
+        default=lambda self: self._default_user_ids(),
     )
     use_external_database = fields.Boolean(
         help=(
@@ -112,7 +112,7 @@ class SQLRequestMixin(models.AbstractModel):
             external_db_name = tools.config.get("external_db_name")
             if not external_db_name:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "You can't use an external database as there are no such "
                         "configuration about this. Please contact "
                         "your Odoo administrator to solve this issue."
@@ -200,7 +200,9 @@ class SQLRequestMixin(models.AbstractModel):
         res = False
         # Check if the request is in a valid state
         if self.state == "draft":
-            raise UserError(_("It is not allowed to execute a not checked request."))
+            raise UserError(
+                self.env._("It is not allowed to execute a not checked request.")
+            )
 
         # Disable rollback if a creation of a view is asked
         if mode in ("view", "materialized_view"):
@@ -222,7 +224,7 @@ class SQLRequestMixin(models.AbstractModel):
                 SQL(query), SQL(view_name)
             )
         else:
-            raise UserError(_("Unimplemented mode : '%s'") % mode)
+            raise UserError(self.env._("Unimplemented mode : '%s'", mode))
 
         query_cr = self._get_cr_for_query()
 
@@ -280,11 +282,11 @@ class SQLRequestMixin(models.AbstractModel):
         minor_version = float(".".join(res[:2]))
         if minor_version < 9.3:
             raise UserError(
-                _(
+                self.env._(
                     "Materialized View requires PostgreSQL 9.3 or greater but"
-                    " PostgreSQL %s is currently installed."
+                    " PostgreSQL %s is currently installed.",
+                    minor_version,
                 )
-                % (minor_version)
             )
 
     def _clean_query(self):
@@ -304,8 +306,10 @@ class SQLRequestMixin(models.AbstractModel):
             is_not_safe = re.search(expr, query)
             if is_not_safe:
                 raise UserError(
-                    _("The query is not allowed because it contains unsafe word '%s'")
-                    % (word)
+                    self.env._(
+                        "The query is not allowed because it contains unsafe word '%s'",
+                        word,
+                    )
                 )
 
     def _check_execution(self):
@@ -321,7 +325,7 @@ class SQLRequestMixin(models.AbstractModel):
             res = self._hook_executed_request()
         except ProgrammingError as e:
             logger.exception("Failed query: %s", query)
-            raise UserError(_("The SQL query is not valid:\n\n %s") % e) from e
+            raise UserError(self.env._("The SQL query is not valid:\n\n %s", e)) from e
         finally:
             self._rollback_savepoint(rollback_name, query_cr)
         return res

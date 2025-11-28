@@ -3,4 +3,9 @@
     <record model="ir.module.category" id="category_sql_abstract">
         <field name="name">SQL Request</field>
     </record>
+
+    <record model="res.groups.privilege" id="privilege_sql_request">
+        <field name="name">SQL Request</field>
+        <field name="category_id" ref="category_sql_abstract" />
+    </record>
 </odoo>
