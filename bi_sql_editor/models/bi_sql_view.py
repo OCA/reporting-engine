@@ -52,7 +52,7 @@ class BiSQLView(models.Model):
     model_name = fields.Char(
         compute="_compute_model_name",
         store=True,
-        help="Full Qualified Name of the transient model that will" " be created.",
+        help="Full Qualified Name of the transient model that will be created.",
     )
 
     is_materialized = fields.Boolean(
@@ -72,7 +72,7 @@ class BiSQLView(models.Model):
     view_order = fields.Char(
         required=True,
         default="pivot,graph,list",
-        help="Comma-separated text. Possible values:" ' "graph", "pivot" or "list"',
+        help='Comma-separated text. Possible values: "graph", "pivot" or "list"',
     )
 
     query = fields.Text(
@@ -81,7 +81,7 @@ class BiSQLView(models.Model):
         " SQL function (like EXTRACT, ...);\n"
         " * Do not use 'SELECT *' or 'SELECT table.*';\n"
         " * prefix the name of the selectable columns by 'x_';",
-        default="SELECT\n" "    my_field as x_my_field\n" "FROM my_table",
+        default="SELECT\n    my_field as x_my_field\nFROM my_table",
     )
 
     domain_force = fields.Text(
@@ -656,7 +656,7 @@ class BiSQLView(models.Model):
 
         if not self.bi_sql_view_field_ids:
             raise UserError(
-                _("No Column was found.\n" "Columns name should be prefixed by 'x_'.")
+                _("No Column was found.\nColumns name should be prefixed by 'x_'.")
             )
 
         return columns
