@@ -304,10 +304,7 @@ class SQLRequestMixin(models.AbstractModel):
             is_not_safe = re.search(expr, query)
             if is_not_safe:
                 raise UserError(
-                    _(
-                        "The query is not allowed because it contains unsafe word"
-                        " '%s'"
-                    )
+                    _("The query is not allowed because it contains unsafe word '%s'")
                     % (word)
                 )
 
