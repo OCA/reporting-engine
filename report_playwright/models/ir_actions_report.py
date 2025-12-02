@@ -290,6 +290,13 @@ class IrActionsReport(models.Model):
             html = self.with_context(**additional_context)._render_qweb_html(
                 report_ref, res_ids_wo_stream, data=data
             )[0]
+            if "path" not in data:
+                report_xml_id = (
+                    report_ref.xml_id if hasattr(report_ref, "xml_id") else report_ref
+                )
+                data["path"] = (
+                    f"/report/html/{report_xml_id}/{','.join([str(r) for r in res_ids])}"
+                )
             url = self._get_report_url() + data["path"]
 
             (
