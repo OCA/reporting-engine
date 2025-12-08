@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_ir_actions_report_form_inherit" model="ir.ui.view">
+        <field name="name">ir.actions.report.form.inherit</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+
+            <page name="advanced" position="inside">
+                <group string="Text Control Options">
+                    <field
+                        name="text_control_enabled"
+                        attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
+                    />
+                    <div
+                        class="text-muted"
+                        attrs="{'invisible': [('report_type', '!=', 'qweb-text')]}"
+                    >
+                        Enable whitespace control and field formatting functions (A, N, M, D, T, DT) for text reports.
+                    </div>
+                </group>
+            </page>
+
+        </field>
+    </record>
+</odoo>

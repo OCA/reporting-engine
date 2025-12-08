@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Text Report for Partners -->
+        <record id="action_report_partner_text" model="ir.actions.report">
+            <field name="name">Partner Text Report</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-text</field>
+            <field name="text_control_enabled" eval="True" />
+            <field
+                name="report_name"
+            >report_qweb_text_control.report_partner_text</field>
+            <field name="binding_model_id" ref="base.model_res_partner" />
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- QWeb Template for Partner Text Report -->
+        <template id="report_partner_text">
+            <t t-foreach="docs" t-as="partner">
+                <span t-esc="A(partner.name, 40)" />
+                <span t-esc="A(partner.email, 30)" />
+                <span t-esc="A(partner.phone, 20)" />
+                <span t-esc="A(partner.country_id.name, 20)" />
+                <span t-esc="M(partner.company_type == 'company' and 100 or 0, 8)" />
+                <span t-esc="M(partner.credit_limit, 12)" />
+                <CRLF />
+            </t>
+        </template>
+    </data>
+</odoo>
