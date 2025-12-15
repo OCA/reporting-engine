@@ -19,6 +19,14 @@ class SqlExport(models.Model):
         help="Add the users who want to receive the report by e-mail. You "
         "need to link the sql query with a cron to send mail automatically",
     )
+    mail_partner_ids = fields.Many2many(
+        "res.partner",
+        "mail_partner_sqlquery_rel",
+        "sql_id",
+        "partner_id",
+        help="Add the partners who wants to receive the report by e-mail. You "
+        "need to link the sql query with a cron to send a mail automatically",
+    )
     cron_ids = fields.Many2many(
         "ir.cron",
         "cron_sqlquery_rel",
@@ -136,13 +144,43 @@ class SqlExport(models.Model):
                 if not user.email:
                     raise UserError(_("The user does not have any e-mail address."))
 
+    @api.constrains("mail_partner_ids", "query")
+    def _check_mail_partner(self):
+        for export in self:
+            if export.mail_partner_ids and (
+                "%(company_id)s" in export.query or "%(user_id)s" in export.query
+            ):
+                raise UserError(
+                    _(
+                        "A query that uses the company_id or user_id parameter "
+                        "cannot be directly sent to a partner."
+                    )
+                )
+            missing_email_partners = export.mail_partner_ids.filtered(
+                lambda partner: not partner.email
+            )
+            if missing_email_partners:
+                raise UserError(
+                    _(
+                        "Missing email address for partner(s): %(names)s",
+                        names=", ".join(missing_email_partners.mapped("name")),
+                    )
+                )
+
     def get_email_address_for_template(self):
         """
-        Called from mail template
+        Called from mail template.
+        Collects email addresses from both users and partners.
         """
         self.ensure_one()
         if self.env.context.get("mail_to"):
             mail_users = self.env["res.users"].browse(self.env.context.get("mail_to"))
+            mail_partners = self.env["res.partner"]
         else:
             mail_users = self.mail_user_ids
-        return ",".join([x.email for x in mail_users if x.email])
+            mail_partners = self.mail_partner_ids
+        email_addresses = set(
+            mail_users.mapped("email") + mail_partners.mapped("email")
+        )
+        email_addresses.discard(False)
+        return ",".join(email_addresses)
