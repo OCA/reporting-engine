@@ -251,6 +251,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_server_id
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_server_id
 msgid "Fusion Server"
 msgstr ""
 
@@ -369,6 +370,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_is_local_fusion
 msgid "Local Fusion"
 msgstr ""
 
@@ -395,6 +397,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_report_pdf_form__py3o_is_local_fusion
 msgid ""
 "Native formats will be processed without a server. You must use this mode if"
 " you call methods on your model into the template."
@@ -429,6 +432,7 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__pdf_options_id
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__pdf_options_id
 msgid "PDF Options"
 msgstr ""
 
@@ -441,6 +445,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_report_pdf_form__pdf_options_id
 msgid ""
 "PDF options can be set per report, but also per Py3o Server. If both are "
 "defined, the options on the report are used."
