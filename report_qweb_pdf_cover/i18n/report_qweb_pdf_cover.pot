@@ -15,6 +15,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__back_cover_pdf
 msgid "Back Cover PDF"
 msgstr ""
 
@@ -32,6 +33,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__front_cover_pdf
 msgid "Front Cover PDF"
 msgstr ""
 
@@ -49,11 +51,13 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__back_cover_overlap
 msgid "Overlap Back Cover"
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__front_cover_overlap
 msgid "Overlap Front Cover"
 msgstr ""
 
@@ -64,36 +68,43 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__back_cover_pdf
 msgid "Upload an PDF file to use as a back cover on this report."
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__front_cover_pdf
 msgid "Upload an PDF file to use as a front cover on this report."
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__use_back_cover
 msgid "Use Back Cover"
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__use_front_cover
 msgid "Use Front Cover"
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__use_back_cover
 msgid "Use a back cover when rendering the PDF report."
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__use_front_cover
 msgid "Use a front cover when rendering the PDF report."
 msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__back_cover_overlap
 msgid ""
 "When set, the back cover of the report will overlap with the contents of the"
 " last page of the report. This is useful to include some information of the "
@@ -102,6 +113,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__front_cover_overlap
 msgid ""
 "When set, the front cover of the report will overlap with the contents of "
 "the first page of the report. This is useful to include some information of "
