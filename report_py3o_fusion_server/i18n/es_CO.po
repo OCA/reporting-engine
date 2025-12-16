@@ -52,7 +52,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:0
-#, python-format
 msgid ""
 "A fusion server or a libreoffice runtime are required to genereate the py3o "
 "report '%s'. If the libreofficeruntime is already installed and is not found "
@@ -259,13 +258,13 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_server_id
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_server_id
 msgid "Fusion Server"
 msgstr ""
 
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_report.py:0
-#, python-format
 msgid "Fusion server error %s"
 msgstr ""
 
@@ -360,12 +359,6 @@ msgid "JPEG Compression"
 msgstr ""
 
 #. module: report_py3o_fusion_server
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options____last_update
-#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
-
-#. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__write_uid
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__write_uid
 msgid "Last Updated by"
@@ -384,6 +377,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_is_local_fusion
 msgid "Local Fusion"
 msgstr ""
 
@@ -410,6 +404,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_report_pdf_form__py3o_is_local_fusion
 msgid ""
 "Native formats will be processed without a server. You must use this mode if "
 "you call methods on your model into the template."
@@ -444,6 +439,7 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__pdf_options_id
+#: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__pdf_options_id
 msgid "PDF Options"
 msgstr ""
 
@@ -456,6 +452,7 @@ msgstr ""
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
+#: model:ir.model.fields,help:report_py3o_fusion_server.field_report_pdf_form__pdf_options_id
 msgid ""
 "PDF options can be set per report, but also per Py3o Server. If both are "
 "defined, the options on the report are used."
@@ -567,7 +564,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
-#, python-format
 msgid ""
 "The PDF/A option is not compatible with 'Cross-document Links' = 'Open with "
 "PDF Reader Application'."
@@ -576,7 +572,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
-#, python-format
 msgid ""
 "The initial page parameter must be strictly positive (current value: %d)"
 msgstr ""
@@ -584,7 +579,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
-#, python-format
 msgid ""
 "The parameter Image JPEG Quality must be between 1 %% and 100 %% (current "
 "value: %s %%)"
@@ -600,7 +594,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
-#, python-format
 msgid ""
 "The value of the zoom factor must be between 50 and 1600 (current value: %d)"
 msgstr ""
@@ -648,7 +641,6 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/ir_actions_report.py:0
-#, python-format
 msgid ""
 "You can not use remote fusion without Fusion server. Please specify a Fusion "
 "Server"
@@ -663,3 +655,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__zoom
 msgid "Zoom Factor"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
