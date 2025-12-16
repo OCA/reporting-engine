@@ -104,6 +104,7 @@ msgstr "Azione resoconto sostituzione"
 
 #. module: report_substitute
 #: model:ir.model.fields,field_description:report_substitute.field_ir_actions_report__action_report_substitution_rule_ids
+#: model:ir.model.fields,field_description:report_substitute.field_report_pdf_form__action_report_substitution_rule_ids
 #: model_terms:ir.ui.view,arch_db:report_substitute.ir_actions_report_form_view
 msgid "Substitution Rules"
 msgstr "Regole sostituzione"
@@ -111,6 +112,5 @@ msgstr "Regole sostituzione"
 #. module: report_substitute
 #. odoo-python
 #: code:addons/report_substitute/models/ir_actions_report_substitution_rule.py:0
-#, python-format
 msgid "Substitution infinite loop detected"
 msgstr "Rilevato ciclo infinito sostituzione"
