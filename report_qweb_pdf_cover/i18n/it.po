@@ -18,49 +18,49 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__back_cover_pdf
 msgid "Back Cover PDF"
 msgstr "Retrocopertina PDF"
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "Failed to load back cover: %s"
 msgstr "Caricamento retrocopertina fallito: %s"
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "Failed to load front cover: %s"
 msgstr "Caricamento copertina fallito: %s"
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__front_cover_pdf
 msgid "Front Cover PDF"
 msgstr "Copertina PDF"
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "No usable back cover found."
 msgstr "Trovata retrocopertina non utilizzabile."
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "No usable front cover found."
 msgstr "Trovata copertina non usabile."
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__back_cover_overlap
 msgid "Overlap Back Cover"
 msgstr "Sovrapponi retrocopertina"
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__front_cover_overlap
 msgid "Overlap Front Cover"
 msgstr "Sovrapponi copertina"
 
@@ -71,39 +71,46 @@ msgstr "Azione resoconto"
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_pdf
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__back_cover_pdf
 msgid "Upload an PDF file to use as a back cover on this report."
 msgstr "Carica un file PDF da usare come retrocopertina in questo resoconto."
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_pdf
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__front_cover_pdf
 msgid "Upload an PDF file to use as a front cover on this report."
 msgstr "Carica un file PDF da usare come copertina in questo resoconto."
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__use_back_cover
 msgid "Use Back Cover"
 msgstr "Utilizza retrocopertina"
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+#: model:ir.model.fields,field_description:report_qweb_pdf_cover.field_report_pdf_form__use_front_cover
 msgid "Use Front Cover"
 msgstr "Utilizza copertina"
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_back_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__use_back_cover
 msgid "Use a back cover when rendering the PDF report."
 msgstr "Utilizza retrocopertina nella produzione del resoconto PDF."
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__use_front_cover
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__use_front_cover
 msgid "Use a front cover when rendering the PDF report."
 msgstr "Utilizza copertina nella produzione del resoconto PDF."
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__back_cover_overlap
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__back_cover_overlap
 msgid ""
-"When set, the back cover of the report will overlap with the contents of the"
-" last page of the report. This is useful to include some information of the "
+"When set, the back cover of the report will overlap with the contents of the "
+"last page of the report. This is useful to include some information of the "
 "report in the back cover."
 msgstr ""
 "Se impostato, la retrocopertina del resoconto si sovrapporrà al contenuto "
@@ -112,6 +119,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_cover
 #: model:ir.model.fields,help:report_qweb_pdf_cover.field_ir_actions_report__front_cover_overlap
+#: model:ir.model.fields,help:report_qweb_pdf_cover.field_report_pdf_form__front_cover_overlap
 msgid ""
 "When set, the front cover of the report will overlap with the contents of "
 "the first page of the report. This is useful to include some information of "
@@ -124,7 +132,6 @@ msgstr ""
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid ""
 "Your back cover PDF contains more than one page, all but the first one will "
 "be ignored."
@@ -135,23 +142,20 @@ msgstr ""
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "Your back cover PDF does not contain any pages."
 msgstr "La retrocopertina PDF non contiene alcuna pagina."
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid ""
-"Your front cover PDF contains more than one page, all but the first one will"
-" be ignored."
+"Your front cover PDF contains more than one page, all but the first one will "
+"be ignored."
 msgstr ""
 "La copertina PDF contiene più di una pagina, verrà considerata solo la prima."
 
 #. module: report_qweb_pdf_cover
 #. odoo-python
 #: code:addons/report_qweb_pdf_cover/models/ir_actions_report.py:0
-#, python-format
 msgid "Your front cover PDF does not contain any pages."
 msgstr "La copertina PDF non contiene alcuna pagina."
