@@ -22,6 +22,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark_expression
 msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
@@ -52,6 +53,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 msgid "Upload an pdf file to use as an watermark on this report."
 msgstr ""
 "Caricare un file PDF da utilizzare come watermark da utilizzare in questo "
@@ -59,16 +61,20 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use Company Watermark"
 msgstr "Usare watermark azienda"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use the pdf watermark defined globally in the company settings."
-msgstr "Usare il watermark PDF definito globalmente nelle impostazioni azienda."
+msgstr ""
+"Usare il watermark PDF definito globalmente nelle impostazioni azienda."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
 msgid "Watermark"
 msgstr "Watermark"
@@ -80,6 +86,7 @@ msgstr "Resoconto esempio watermark"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark_expression
 msgid "Watermark expression"
 msgstr "Espressione watermark"
 

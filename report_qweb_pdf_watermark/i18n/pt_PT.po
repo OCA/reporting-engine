@@ -22,6 +22,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark_expression
 msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
@@ -47,21 +48,25 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 msgid "Upload an pdf file to use as an watermark on this report."
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use Company Watermark"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use the pdf watermark defined globally in the company settings."
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
 msgid "Watermark"
 msgstr ""
@@ -73,6 +78,7 @@ msgstr ""
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark_expression
 msgid "Watermark expression"
 msgstr ""
 
