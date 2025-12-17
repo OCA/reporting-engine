@@ -1,3 +1,3 @@
-To install this module, you need to install Java JDK Headlees, e.g.:
+To install this module, you need to install pyhanko-cli, e.g.:
 
-> apt-get install default-jre-headless
+> pipx install pyhanko-cli

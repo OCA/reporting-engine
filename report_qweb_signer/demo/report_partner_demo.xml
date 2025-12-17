@@ -41,7 +41,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field
             name="attachment"
         >'test_' + (object.name or '').replace(' ', '_').lower() + '.pdf'</field>
+        <field name="certificate_id" ref="report_qweb_signer.demo_db_certificate" />
+        <field
+            name="signed_attachment"
+        >'test_' + (object.name or '').replace(' ', '_').lower() + '.signed.pdf'</field>
         <field name="attachment_use">True</field>
+        <field name="signing_allow_only_one">True</field>
         <field name="binding_model_id" ref="base.model_res_partner" />
         <field name="binding_type">report</field>
     </record>
