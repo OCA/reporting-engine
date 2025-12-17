@@ -1,33 +1,15 @@
-In order to start signing PDF documents you need to configure
-certificate(s) to use in your company.
+To start signing PDF reports you'll need first to configure your desired certificate. To do so:
 
-- Go to `Settings > Companies > Companies > Your company`
-- Go to `Report configuration` tab
-- Click `Edit`
-- Add a new item in `PDF report certificates` list
-- Click `Create`
-- Set name, certificate file, password file and model
-- Optionally you can set a domain and filename pattern for saving as
-  attachment
+- Go to *Settings > General Settings* and then to the section *Certificates and Keys*. Then click on **Certificates**.
+- Add the cert you want to use: upload the file and set the password.
 
-For example, if you want to sign only customer invoices in posted state:
+Now you need to configure the reports using this certificate:
 
-- Model: `account.move`
-- Domain: `[('move_type','=','out_invoice'), ('state', '=', 'posted')]`
-- Save as attachment:
-  `(object.name or '').replace('/','_') + '.signed.pdf'`
-
-**Note**: Linux user that executes Odoo server process must have read
-access to certificate file and password file
-
-## Java Memory Settings
-
-If you are signing large amounts of reports at the same time, or if you
-have a lower worker memory size than the JVM defaults, you may need to
-tune the JVM heap memory limits. Do so by adding a `$JVM_ARGS`
-environment variable that contains the required flags. Check out these
-links too:
-
-- [StackOverflow answer](https://stackoverflow.com/a/14763095/1468388).
-- [Java
-  docs](https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161).
+- Go to *Settings > Thecnical > Reporting > Reports*.
+- Search for the pdf report you want to sign.
+- In the report form, open the **Sign** tab.
+- Choose the **Certificate** you created before.
+- Optionally, you can set:
+  - **Allow to sign only one document**: disallow signing a pdf that contains multiple docs.
+  - **Save as attachment**: Set the signed document report file name pattern. Example: `(object.name or '').replace('/','_') + '.signed.pdf'`
+  - **Signing domain**: Filter the document that will be signed. Example: `[('move_type','=','out_invoice'), ('state', '=', 'posted')]`
