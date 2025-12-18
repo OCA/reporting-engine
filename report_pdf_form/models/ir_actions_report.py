@@ -149,8 +149,12 @@ class IrActionsReport(models.Model):
                     formatted_value_ = dict(field_._description_selection(self.env))[
                         value_
                     ]
-                elif field_type_ in {"one2many", "many2one", "many2many"}:
-                    formatted_value_ = ", ".join([v.display_name for v in value_])
+                elif field_type_ == "many2one" and value_:
+                    formatted_value_ = value_.display_name
+                elif field_type_ in {"one2many", "many2many"}:
+                    formatted_value_ = (
+                        ", ".join([v.display_name for v in value_]) if value_ else ""
+                    )
                 else:
                     formatted_value_ = str(value_)
 
