@@ -20,4 +20,7 @@
         "security/ir.model.access.csv",
         "views/report_pdf_form.xml",
     ],
+    "demo": [
+        "demo/report_pdf_form_demo.xml",
+    ],
 }
