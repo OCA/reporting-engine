@@ -24,7 +24,7 @@ class IrActionsReport(models.Model):
 
     def _render_qweb_pdf_prepare_streams(self, report_ref, data, res_ids=None):
         pdf_form_report = self.env["report.pdf.form"].search(
-            [("report_name", "=", report_ref)]
+            [("report_name", "=", report_ref)], limit=1
         )
 
         if not pdf_form_report:
