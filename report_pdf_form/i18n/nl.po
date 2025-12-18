@@ -1,0 +1,496 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_pdf_form
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-12-18 10:42+0000\n"
+"Last-Translator: Bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid ""
+"<code>env</code>: environment from the record on which the report is printed"
+msgstr ""
+"<code>env</code>: omgeving van het record waarop het rapport wordt afgedrukt"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid ""
+"<code>float_compare()</code>: utility function to compare floats based on a "
+"specific precision"
+msgstr ""
+"<code>float_compare()</code>: hulpfunctie om floats te vergelijken op basis "
+"van een specifieke precisie"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid "<code>record</code>: record on which the report is printed"
+msgstr "<code>record</code>: record waarop het rapport wordt afgedrukt"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid ""
+"<code>time</code>, <code>datetime</code>, <code>dateutil</code>, "
+"<code>timezone</code>: useful Python libraries"
+msgstr ""
+"<code>time</code>, <code>datetime</code>, <code>dateutil</code>, "
+"<code>timezone</code>: nuttige Python-bibliotheken"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__help
+msgid "Action Description"
+msgstr "Beschrijving actie"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__name
+msgid "Action Name"
+msgstr "Naam actie"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__type
+msgid "Action Type"
+msgstr "Soort actie"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__binding_model_id
+msgid "Binding Model"
+msgstr "Bindend model"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__binding_type
+msgid "Binding Type"
+msgstr "Bindingstype"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__binding_view_types
+msgid "Binding View Types"
+msgstr "Binding weergavetypes"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__code
+msgid "Code"
+msgstr "Code"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__context
+msgid "Context Value"
+msgstr "Contextwaarde"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__context
+msgid ""
+"Context dictionary as Python expression, empty by default (Default: {})"
+msgstr "Context dictionary als Python expressie, standaard leeg (Standaard: {})"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__create_uid
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__create_uid
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__create_date
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__create_date
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__display_name
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__display_name
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__display_name
+msgid "Display Name"
+msgstr "Schermnaam"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form_field__odoo_field_value
+msgid ""
+"Dot-separated path to field from the record, e.g. partner_id.name, or python"
+" code"
+msgstr ""
+"Pad naar veld gescheiden door punten, bijv. partner_id.name, of python code"
+
+#. module: report_pdf_form
+#: model:ir.model.fields.selection,name:report_pdf_form.selection__report_pdf_form_field__odoo_field_evaluation__dotted_path
+msgid "Dotted field path"
+msgstr "Veldpad met punten"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid ""
+"Dotted field path: Can be used to access atomic fields and go through "
+"Many2one relations with automatic formatting."
+msgstr ""
+"Veldpad met punten: Kan worden gebruikt om toegang te krijgen tot "
+"individuele velden en door Many2one-relaties te navigeren met automatische "
+"opmaak."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__encode_error_handling
+msgid "Encode Error Handling"
+msgstr "Foutafhandeling bij codering"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__encoding
+msgid "Encoding"
+msgstr "Codering"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__encoding
+msgid "Encoding to be applied to the generated CSV file. e.g. cp932"
+msgstr ""
+"Codering die moet worden toegepast op het gegenereerde CSV-bestand, bijv. "
+"cp932"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__xml_id
+msgid "External ID"
+msgstr "Externe ID"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__footer_html
+msgid "Extra Footer"
+msgstr "Extra voettekst"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__field_mapping_ids
+msgid "Field Mapping"
+msgstr "Veldmapping"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__field_variable_ids
+msgid "Field Variable"
+msgstr "Veldvariabele"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid "Field mapping"
+msgstr "Veldmapping"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__domain
+msgid "Filter domain"
+msgstr "Filterdomein"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__groups_id
+msgid "Groups"
+msgstr "Groepen"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid "Help"
+msgstr "Hulp"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__id
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__id
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__attachment_use
+msgid ""
+"If enabled, then the second time the user prints with same attachment name, "
+"it returns the previous report."
+msgstr ""
+"Indien ingeschakeld, wordt bij een tweede afdrukpoging met dezelfde "
+"bijlagenaam het eerdere rapport geretourneerd."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__encode_error_handling
+msgid ""
+"If nothing is selected, CSV export will fail with an error message when "
+"there is a character that fail to be encoded."
+msgstr ""
+"Indien niets is geselecteerd, zal de CSV-export mislukken met een "
+"foutmelding wanneer een teken niet kan worden gecodeerd."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__multi
+msgid ""
+"If set to true, the action will not be displayed on the right toolbar of a "
+"form view."
+msgstr ""
+"Indien aangevinkt, wordt de actie niet weergegeven in de rechter werkbalk "
+"van een formulierweergave."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__domain
+msgid ""
+"If set, the action will only appear on records that matches the domain."
+msgstr ""
+"Indien ingesteld, verschijnt de actie alleen bij records die aan het domein "
+"voldoen."
+
+#. module: report_pdf_form
+#. odoo-python
+#: code:addons/report_pdf_form/models/ir_actions_report.py:0
+msgid "Invalid evaluation for Odoo field"
+msgstr "Ongeldige evaluatie voor Odoo-veld"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__write_uid
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__write_uid
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__write_date
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__write_date
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: report_pdf_form
+#: model:ir.model,name:report_pdf_form.model_report_pdf_form_field
+msgid "Mapping of Odoo field to PDF form field"
+msgstr "Mapping van Odoo-veld naar PDF-formulierveld"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__model_id
+msgid "Model"
+msgstr "Model"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__model
+msgid "Model Name"
+msgstr "Modelnaam"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: report_pdf_form
+#. odoo-python
+#: code:addons/report_pdf_form/models/ir_actions_report.py:0
+msgid "No"
+msgstr "Nee"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__odoo_field_evaluation
+msgid "Odoo Field Evaluation"
+msgstr "Odoo-veld evaluatie"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__odoo_field_value
+msgid "Odoo Field Value"
+msgstr "Odoo-veldwaarde"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__multi
+msgid "On Multiple Doc."
+msgstr "Op meerdere doc."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__help
+msgid ""
+"Optional help text for the users with a description of the target view, such"
+" as its usage and purpose."
+msgstr ""
+"Optionele helptekst voor de gebruikers met een beschrijving van de "
+"doelweergave, zoals het gebruik en het doel ervan."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__pdf_field_name
+msgid "PDF Form Field Name"
+msgstr "PDF-formulierveld naam"
+
+#. module: report_pdf_form
+#: model:ir.model,name:report_pdf_form.model_report_pdf_form
+msgid "PDF Form Report Template"
+msgstr "Sjabloon voor PDF-formulierrapport"
+
+#. module: report_pdf_form
+#: model:ir.actions.act_window,name:report_pdf_form.report_pdf_form_action
+#: model:ir.ui.menu,name:report_pdf_form.report_pdf_form_menu
+msgid "PDF Form Reports"
+msgstr "PDF-formulierrapporten"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__paperformat_id
+msgid "Paper Format"
+msgstr "Papierformaat"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__path
+msgid "Path to show in the URL"
+msgstr "Pad om in de URL te tonen"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__print_report_name
+msgid "Printed Report Name"
+msgstr "Naam afgedrukt rapport"
+
+#. module: report_pdf_form
+#: model:ir.model.fields.selection,name:report_pdf_form.selection__report_pdf_form_field__odoo_field_evaluation__code
+msgid "Python code"
+msgstr "Python-code"
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid ""
+"Python code: Can be used to acces what you cannot using the Dotted field "
+"path. Following variables can be used:"
+msgstr ""
+"Python-code: Kan worden gebruikt om toegang te krijgen tot zaken die niet "
+"via het veldpad met punten bereikbaar zijn. De volgende variabelen kunnen "
+"worden gebruikt:"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__pdf_attachment_id
+msgid "Related attachment"
+msgstr "Gerelateerde bijlage"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__attachment_use
+msgid "Reload from Attachment"
+msgstr "Opnieuw laden van bijlage"
+
+#. module: report_pdf_form
+#: model:ir.model.fields.selection,name:report_pdf_form.selection__report_pdf_form_field__odoo_field_evaluation__repeat_field
+msgid "Repeat field"
+msgstr "Veld herhalen"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__report_id
+msgid "Report"
+msgstr "Rapport"
+
+#. module: report_pdf_form
+#: model:ir.model,name:report_pdf_form.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapportactie"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__report_file
+msgid "Report File"
+msgstr "Rapportbestand"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__report_form_id
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__report_form_id
+msgid "Report Form"
+msgstr "Rapportformulier"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__report_type
+msgid "Report Type"
+msgstr "Rapporttype"
+
+#. module: report_pdf_form
+#: model:ir.model,name:report_pdf_form.model_report_pdf_form_variable
+msgid "Reusable variable to be evaluated in form fields code"
+msgstr ""
+"Herbruikbare variabele die moet worden geëvalueerd in de code van "
+"formuliervelden"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__attachment
+msgid "Save as Attachment Prefix"
+msgstr "Opslaan als bijlage voorvoegsel"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__binding_model_id
+msgid ""
+"Setting a value makes this action available in the sidebar for the given "
+"model."
+msgstr ""
+"Door een waarde in te stellen wordt deze actie beschikbaar in de zijbalk "
+"voor het opgegeven model."
+
+#. module: report_pdf_form
+#: model:ir.model.fields.selection,name:report_pdf_form.selection__report_pdf_form_field__odoo_field_evaluation__text
+msgid "Static text"
+msgstr "Statische tekst"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__report_name
+msgid "Template Name"
+msgstr "Sjabloonnaam"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__report_file
+msgid ""
+"The path to the main report file (depending on Report Type) or empty if the "
+"content is in another field"
+msgstr ""
+"Het pad naar het hoofdrapportbestand (afhankelijk van het rapporttype) of "
+"leeg als de inhoud in een ander veld staat"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+"Het type rapport dat wordt gerenderd, elk met een eigen rendermethode. HTML "
+"betekent dat het rapport direct in je browser wordt geopend. PDF betekent "
+"dat het rapport wordt gerenderd met Wkhtmltopdf en wordt gedownload door de "
+"gebruiker."
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid "There are two ways to fetch value from the object:"
+msgstr "Er zijn twee manieren om een waarde uit het object op te halen:"
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__footer_html
+msgid ""
+"This HTML will be displayed in the footer of this report.\n"
+"It's recommended to change Paper Format to a new one that fits correctly to this report by adjusting 'Bottom Margin (mm)' accordingly."
+msgstr ""
+"Deze HTML wordt weergegeven in de voettekst van dit rapport.\n"
+"Het wordt aanbevolen om het papierformaat te wijzigen naar een formaat dat "
+"goed bij dit rapport past door de 'Ondermarge (mm)' dienovereenkomstig aan "
+"te passen."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__attachment
+msgid ""
+"This is the filename of the attachment used to store the printing result. "
+"Keep empty to not save the printed reports. You can use a python expression "
+"with the object and time variables."
+msgstr ""
+"Dit is de bestandsnaam van de bijlage die wordt gebruikt om het "
+"afdrukresultaat op te slaan. Laat leeg om de afgedrukte rapporten niet op te "
+"slaan. Je kunt een python-expressie gebruiken met de variabelen 'object' en "
+"'time'."
+
+#. module: report_pdf_form
+#: model:ir.model.fields,help:report_pdf_form.field_report_pdf_form__print_report_name
+msgid ""
+"This is the filename of the report going to download. Keep empty to not "
+"change the report filename. You can use a python expression with the "
+"'object' and 'time' variables."
+msgstr ""
+"Dit is de bestandsnaam van het rapport dat wordt gedownload. Laat leeg om de "
+"bestandsnaam niet te wijzigen. Je kunt een python-expressie gebruiken met de "
+"variabelen 'object' en 'time'."
+
+#. module: report_pdf_form
+#: model_terms:ir.ui.view,arch_db:report_pdf_form.report_pdf_form_form
+msgid "Variables"
+msgstr "Variabelen"
+
+#. module: report_pdf_form
+#. odoo-python
+#: code:addons/report_pdf_form/models/ir_actions_report.py:0
+msgid "Yes"
+msgstr "Ja"
