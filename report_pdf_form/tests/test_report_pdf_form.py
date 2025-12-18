@@ -81,7 +81,14 @@ class TestReportPDFForm(common.TransactionCase):
                 ],
             }
         )
-        cls.azure_partner = cls.env.ref("base.res_partner_12")
+        cls.azure_partner = cls.env["res.partner"].create(
+            {
+                "name": "Azure Partner",
+                "child_ids": [
+                    Command.create({"name": "Child 1"}),
+                ],
+            }
+        )
 
     @classmethod
     def _get_fields_values_from_reader(cls, reader):
