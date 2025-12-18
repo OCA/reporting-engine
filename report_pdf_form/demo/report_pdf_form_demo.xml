@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Demo PDF attachment -->
+    <record id="demo_pdf_attachment" model="ir.attachment">
+        <field name="name">demo_form.pdf</field>
+        <field name="type">binary</field>
+        <field
+            name="datas"
+            type="base64"
+            file="report_pdf_form/demo/form_example.pdf"
+        />
+        <field name="mimetype">application/pdf</field>
+    </record>
+
+    <!-- Demo report for partner model -->
+    <record id="demo_partner_report" model="ir.actions.report">
+        <field name="name">Demo Partner Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">demo_partner_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="print_report_name">object.name</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Demo PDF form configuration -->
+    <record id="demo_pdf_form" model="report.pdf.form">
+        <field name="name">Demo PDF Form</field>
+        <field name="report_id" ref="demo_partner_report" />
+        <field name="pdf_attachment_id" ref="demo_pdf_attachment" />
+        <field name="model_id" ref="base.model_res_partner" />
+    </record>
+
+    <!-- Demo field mappings -->
+    <record id="demo_field_name" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">partner_name</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">name</field>
+    </record>
+
+    <record id="demo_field_email" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">partner_email</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">email</field>
+    </record>
+
+    <record id="demo_field_phone" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">partner_phone</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">phone</field>
+    </record>
+
+    <!-- Demo field mappings with deeper dotted paths -->
+    <record id="demo_field_company_name" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">company_name</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">company_id.name</field>
+    </record>
+
+    <record id="demo_field_user_login" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">user_login</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">user_id.login</field>
+    </record>
+
+    <record id="demo_field_country_name" model="report.pdf.form.field">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="pdf_field_name">country_name</field>
+        <field name="odoo_field_evaluation">dotted_path</field>
+        <field name="odoo_field_value">country_id.name</field>
+    </record>
+
+    <!-- Demo variable -->
+    <record id="demo_variable_current_date" model="report.pdf.form.variable">
+        <field name="report_form_id" ref="demo_pdf_form" />
+        <field name="name">current_date</field>
+        <field name="code">datetime.datetime.now().strftime('%Y-%m-%d')</field>
+    </record>
+</odoo>
