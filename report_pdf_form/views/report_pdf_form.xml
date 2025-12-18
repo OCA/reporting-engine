@@ -21,7 +21,7 @@
                                     <list editable="bottom">
                                         <field name="pdf_field_name" />
                                         <field name="odoo_field_evaluation" />
-                                        <field name="odoo_field_value" />
+                                        <field name="odoo_field_value" widget="code" />
                                     </list>
                                 </field>
                             </group>
@@ -31,7 +31,7 @@
                                 <field name="field_variable_ids">
                                     <list editable="bottom">
                                         <field name="name" />
-                                        <field name="code" />
+                                        <field name="code" widget="code" />
                                     </list>
                                 </field>
                             </group>
