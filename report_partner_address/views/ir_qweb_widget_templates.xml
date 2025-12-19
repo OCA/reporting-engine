@@ -1,0 +1,9 @@
+<odoo>
+    <template id="contact_name_hide" inherit_id="base.contact_name">
+        <xpath expr="//div[1]" position="attributes">
+            <attribute
+                name="t-if"
+            >'name' in fields and not object.address_details</attribute>
+        </xpath>
+    </template>
+</odoo>
