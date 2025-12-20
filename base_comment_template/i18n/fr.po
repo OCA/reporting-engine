@@ -23,62 +23,62 @@ msgstr ""
 msgid ""
 "<span class=\"text-warning\" invisible=\"not no_record\">No records\n"
 "                        </span>"
-msgstr ""
+msgstr "<span class=\"text-warning\" invisible=\"not no_record\">Aucun enregistrement\n                        </span>"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Archived"
-msgstr ""
+msgstr "Archivé"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment Preview"
-msgstr ""
+msgstr "Aperçu du modèle de commentaire"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
 msgid "Base Comment Template"
-msgstr ""
+msgstr "Modèle de commentaire de base"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template_preview
 msgid "Base Comment Template Preview"
-msgstr ""
+msgstr "Aperçu du modèle de commentaire de base"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment content"
-msgstr ""
+msgstr "Contenu du commentaire de base"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
 msgid "Body"
-msgstr ""
+msgstr "Contenu"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
-msgstr ""
+msgstr "En bas"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose a language:"
-msgstr ""
+msgstr "Choisissez une langue: "
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an engine:"
-msgstr ""
+msgstr "Choisissez un moteur: "
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an example"
-msgstr ""
+msgstr "Choisissez un exemple"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -89,7 +89,7 @@ msgstr "Commentaire"
 #: model:ir.model.fields,field_description:base_comment_template.field_comment_template__comment_template_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_ir_model__is_comment_template
 msgid "Comment Template"
-msgstr ""
+msgstr "Modèle de commentaire"
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.action_base_comment_template
@@ -105,17 +105,17 @@ msgstr "Modèles de commentaires"
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template
 msgid "Comments Template"
-msgstr ""
+msgstr "Modèle de commentaires"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
 msgid "Company"
-msgstr ""
+msgstr "Société"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__create_uid
@@ -132,7 +132,7 @@ msgstr "Créé le"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Discard"
-msgstr ""
+msgstr "Annuler"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__display_name
@@ -143,17 +143,17 @@ msgstr "Nom affiché"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__engine
 msgid "Engine"
-msgstr ""
+msgstr "Moteur"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
 msgid "Filter Domain"
-msgstr ""
+msgstr "Domaine de filtre"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__global_template
 msgid "Global Template"
-msgstr ""
+msgstr "Modèle global"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
@@ -165,29 +165,29 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_ids
 msgid "IR Model"
-msgstr ""
+msgstr "Modèle IR"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
 msgid ""
 "If set, the comment template will be available only for the selected company."
-msgstr ""
+msgstr "Si défini, le modèle de commentaire sera disponible uniquement pour la société sélectionnée."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__partner_ids
 msgid ""
 "If set, the comment template will be available only for the selected partner."
-msgstr ""
+msgstr "Si défini, le modèle de commentaire sera disponible uniquement pour le partenaire sélectionné."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__inline_template
 msgid "Inline Template"
-msgstr ""
+msgstr "Modèle intégré"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
 msgid "Inline template"
-msgstr ""
+msgstr "Modèle intégré"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
@@ -204,35 +204,35 @@ msgstr "Dernière mise-à-jour le"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_id
 msgid "Model"
-msgstr ""
+msgstr "Modèle"
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_ir_model
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__models
 msgid "Models"
-msgstr ""
+msgstr "Modèles"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__name
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_partner_form
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__name
 msgid "Name/description of this comment template"
-msgstr ""
+msgstr "Nom/description de ce modèle de commentaire"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "Aucun enregistrement"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
 msgid "Partner"
-msgstr ""
+msgstr "Partenaire"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__position
@@ -242,76 +242,76 @@ msgstr "Position sur le document"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
 msgid "Preview"
-msgstr ""
+msgstr "Aperçu"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Preview of"
-msgstr ""
+msgstr "Aperçu de"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb
 msgid "QWeb"
-msgstr ""
+msgstr "QWeb"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb_view
 msgid "QWeb View"
-msgstr ""
+msgstr "QWeb View"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
 msgid "QWeb view"
-msgstr ""
+msgstr "QWeb view"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
 msgid "Record reference"
-msgstr ""
+msgstr "Record reference"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Séquence"
 
 #. module: base_comment_template
 #. odoo-python
 #: code:addons/base_comment_template/models/base_comment_template.py:0
 #, python-format
 msgid "Some model (%s) not found"
-msgstr ""
+msgstr "Un modèle (%s) n'a pas été trouvé"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
 #: model:ir.model.fields,help:base_comment_template.field_res_users__base_comment_template_ids
 msgid "Specific partner comments that can be included in reports"
-msgstr ""
+msgstr "Commentaires spécifiques aux partenaires qui peuvent être inclus dans les rapports"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
 msgid "Template"
-msgstr ""
+msgstr "Modèle"
 
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
 msgid "Template Preview"
-msgstr ""
+msgstr "Aperçu du modèle"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
 msgid "Template Preview Engine"
-msgstr ""
+msgstr "Moteur d'aperçu du modèle"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
 msgid "Template Preview Language"
-msgstr ""
+msgstr "Langue d'aperçu du modèle"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
 msgid "The smaller number = The higher priority"
-msgstr ""
+msgstr "Le plus petit nombre = La priorité la plus haute"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
@@ -319,52 +319,54 @@ msgstr ""
 msgid ""
 "This comment template will be available on this models. You can see here "
 "only models allowed to set the coment template."
-msgstr ""
+msgstr "Ce modèle de commentaire sera disponible sur ces modèles. Vous pouvez voir ici "
+"seulement les modèles autorisés à définir le modèle de commentaire."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__domain
 msgid ""
 "This comment template will be available only for objects that satisfy the "
 "condition"
-msgstr ""
+msgstr "Ce modèle de commentaire sera disponible uniquement pour les objets qui "
+"satisfont la condition"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__engine
-msgid ""
-"This field allows to select the engine to use for rendering the template."
-msgstr ""
+msgid "This field allows to select the engine to use for rendering the template."
+msgstr "Ce champ permet de sélectionner le moteur à utiliser pour rendre le modèle."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
 msgid "This field allows to select the position of the comment on reports."
-msgstr ""
+msgstr "Ce champ permet de sélectionner la position du commentaire sur les rapports."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__text
 msgid "This is the text template that will be inserted into reports."
-msgstr ""
+msgstr "C'est le modèle de texte qui sera inséré dans les rapports."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
 msgid "Top"
-msgstr ""
+msgstr "En haut"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
 msgid "Whether this model supports in reports to add comment templates."
-msgstr ""
+msgstr "Si ce modèle supporte l'ajout de modèles de commentaires dans les rapports."
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_comment_template
 msgid ""
 "base.comment.template to put header and footer in reports based on created "
 "comment templates"
-msgstr ""
+msgstr "base.comment.template pour ajouter des en-têtes et des pieds de page "
+"aux rapports basés sur les modèles de commentaires créés"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
-msgstr ""
+msgstr "record: "
 
 #~ msgid "Last Modified on"
 #~ msgstr "Dernière mise-à-jour le"
