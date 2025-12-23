@@ -12,6 +12,7 @@ class ResPartner(models.Model):
         store=True,
         readonly=False,
         translate=True,
+        recursive=True,
         help="Custom address format used in reports and portal pages. "
         "When set, this replaces the standard address format for external display.",
     )
