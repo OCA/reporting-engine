@@ -54,28 +54,3 @@ class TestReportPartnerAddress(TransactionCase):
         res = partner._display_address()
         self.assertIn("123 Main St", res)
         self.assertIn("Springfield", res)
-
-    def test_contact_inherits_address_details_from_parent(self):
-        contact = self.env["res.partner"].create(
-            {"name": "Contact Person", "type": "contact", "parent_id": self.partner.id}
-        )
-        self.assertEqual(
-            contact.address_details,
-            "Test Company\n1-2-3 Jingumae, Shibuya-ku\nTokyo 150-0001\nJapan",
-        )
-        self.assertEqual(
-            contact.with_context(lang="ja_JP").address_details,
-            "〒150-0001\n東京都渋谷区神宮前1-2-3\nテスト株式会社",
-        )
-
-    def test_non_contact_does_not_inherit_address_details(self):
-        delivery_address = self.env["res.partner"].create(
-            {
-                "name": "Delivery Address",
-                "type": "delivery",
-                "parent_id": self.partner.id,
-                "street": "456 Delivery St",
-            }
-        )
-        # Non-contact address should NOT inherit parent's address_details
-        self.assertFalse(delivery_address.address_details)

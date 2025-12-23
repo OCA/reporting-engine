@@ -55,6 +55,9 @@ Details.
 
 If Address Details is left blank, the standard address format is used.
 
+Note: Unlike standard address fields, Address Details is not inherited
+by child contacts.
+
 Bug Tracker
 ===========
 
