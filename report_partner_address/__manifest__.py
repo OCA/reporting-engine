@@ -3,7 +3,7 @@
 {
     "name": "Report Partner Address",
     "summary": "Translatable partner address details for reports and portal",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "author": "Quartile, Odoo Community Association (OCA)",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",

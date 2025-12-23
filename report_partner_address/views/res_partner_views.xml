@@ -7,7 +7,7 @@
             <xpath expr="//div[@class='o_address_format']" position="after">
                 <field
                     name="address_details"
-                    attrs="{'readonly':[('type','=','contact'),('parent_id','!=',False)]}"
+                    readonly="type =='contact' and parent_id != False"
                 />
             </xpath>
         </field>
