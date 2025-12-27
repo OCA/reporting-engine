@@ -69,3 +69,9 @@ class TestReportPy3oFusionServer(test_report_py3o.TestReportPy3o):
         self.assertTrue(self.report.lo_bin_path)
         self.assertFalse(self.report.is_py3o_report_not_available)
         self.assertFalse(self.report.msg_py3o_report_not_available)
+
+    def test_odoo_color_map(self):
+        color_map = self.env["py3o.pdf.options"]._get_odoo_color_map()
+        # check extreme values
+        self.assertEqual(color_map[1], int("ee2d2d", 16))
+        self.assertEqual(color_map[11], int("9872e6", 16))

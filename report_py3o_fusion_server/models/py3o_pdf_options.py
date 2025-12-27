@@ -6,6 +6,7 @@ import logging
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools import file_open
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +44,15 @@ class Py3oPdfOptions(models.Model):
     watermark = fields.Boolean("Sign With Watermark")
     # Watermark (string)
     watermark_text = fields.Char("WaterMark Text")
+    watermark_color = fields.Integer(string="Color")
+    watermark_font_size = fields.Integer(default=30, string="Font Size")
+    watermark_rotate_angle = fields.Integer(
+        default=90,
+        string="Rotate Angle",
+        help="Rotate angle in degree. 0 is horizontal. 90 is vertical.",
+    )
+    watermark_repeat = fields.Boolean(string="Repeat")
+
     # UseTaggedPDF (bool)
     tagged_pdf = fields.Boolean("Tagged PDF (add document structure)")
     # SelectPdfVersion (int)
@@ -227,6 +237,7 @@ class Py3oPdfOptions(models.Model):
         "cross_doc_link_action",
         "magnification",
         "zoom",
+        "watermark_font_size",
     )
     def check_pdf_options(self):
         for opt in self:
@@ -262,6 +273,14 @@ class Py3oPdfOptions(models.Model):
                     )
                     % opt.zoom
                 )
+            if opt.watermark_font_size < 1:
+                raise ValidationError(
+                    _(
+                        "The watermark font size must be strictly positive "
+                        "(current value: %s).",
+                        opt.watermark_font_size,
+                    )
+                )
 
     @api.onchange("encrypt")
     def encrypt_change(self):
@@ -295,7 +314,28 @@ class Py3oPdfOptions(models.Model):
         else:
             options["ReduceImageResolution"] = False
         if self.watermark and self.watermark_text:
-            options["Watermark"] = self.watermark_text
+            if self.watermark_repeat:
+                options["TiledWatermark"] = self.watermark_text
+            else:
+                options.update(
+                    {
+                        "Watermark": self.watermark_text,
+                        "WatermarkFontHeight": self.watermark_font_size,
+                        "WatermarkRotateAngle": self.watermark_rotate_angle * 10,
+                        # WatermarkRotateAngle value is tenth of a degree
+                    }
+                )
+
+                if self.watermark_color:
+                    color_map = self._get_odoo_color_map()
+                    if color_map and self.watermark_color in color_map:
+                        options["WatermarkColor"] = color_map[self.watermark_color]
+                else:
+                    # if no color has been set, we use color #192022 (grey)
+                    # which is the color used for TiledWatermark
+                    # cf https://git.libreoffice.org/core/+/refs/heads/master/filter/source/pdf/pdfexport.cxx#1513
+                    options["WatermarkColor"] = int("192022", 16)
+
         if self.pdfa:
             options["SelectPdfVersion"] = 1
             options["UseTaggedPDF"] = self.tagged_pdf
@@ -378,3 +418,28 @@ class Py3oPdfOptions(models.Model):
 
         logger.debug("Py3o PDF options ID %s converted to %s", self.id, options)
         return options
+
+    @api.model
+    def _get_odoo_color_map(self):
+        """return a dict where key is the odoo color index and value is
+        the decimal color value as expected by LibreOffice"""
+        res = {}
+        # The 3 variables below must be updated if odoo changes the color map definition
+        scss_path = "web/static/src/scss/secondary_variables.scss"
+        start_string = "$o-colors: "
+        end_string = "!default;"
+        with file_open(scss_path, "r") as f:
+            scss_content = f.read()
+        position = scss_content.find(start_string)
+        cutstart = scss_content[position + len(start_string) :]
+        end_position = cutstart.find(end_string)
+        cut = cutstart[:end_position]
+        index = 0
+        for value in cut.split(","):
+            value = value.strip()
+            if value and value.startswith("#") and len(value) == 7:
+                res[index] = int(value[1:], 16)
+                index += 1
+        # remove first value, see comment in secondary_variables.scss
+        res.pop(0)
+        return res

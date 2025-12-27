@@ -42,6 +42,23 @@
                                         invisible="not watermark"
                                         required="watermark"
                                     />
+                                    <field
+                                        name="watermark_repeat"
+                                        invisible="not watermark"
+                                    />
+                                    <field
+                                        name="watermark_font_size"
+                                        invisible="not watermark or watermark_repeat"
+                                    />
+                                    <field
+                                        name="watermark_color"
+                                        invisible="not watermark or watermark_repeat"
+                                        widget="color_picker"
+                                    />
+                                    <field
+                                        name="watermark_rotate_angle"
+                                        invisible="not watermark or watermark_repeat"
+                                    />
                                 </group>
                             </group>
                             <group name="general-right" string="General">
