@@ -45,6 +45,23 @@
                                         name="watermark_text"
                                         attrs="{'invisible': [('watermark', '!=', True)], 'required': [('watermark', '=', True)]}"
                                     />
+                                    <field
+                                        name="watermark_repeat"
+                                        attrs="{'invisible': [('watermark', '!=', True)]}"
+                                    />
+                                    <field
+                                        name="watermark_font_size"
+                                        attrs="{'invisible': ['|', ('watermark', '!=', True), ('watermark_repeat', '=', True)]}"
+                                    />
+                                    <field
+                                        name="watermark_color"
+                                        attrs="{'invisible': ['|', ('watermark', '!=', True), ('watermark_repeat', '=', True)]}"
+                                        widget="color_picker"
+                                    />
+                                    <field
+                                        name="watermark_rotate_angle"
+                                        attrs="{'invisible': ['|', ('watermark', '!=', True), ('watermark_repeat', '=', True)]}"
+                                    />
                                 </group>
                             </group>
                             <group name="general-right" string="General">
