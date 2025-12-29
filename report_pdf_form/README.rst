@@ -44,11 +44,11 @@ Creating PDF Form Fields
 To create PDFs with form fields for use with this module, you can use
 various tools:
 
-- **docfly.com**: An online tool for adding form fields to PDFs
-- **LibreOffice Draw**: Part of the LibreOffice suite, can add form
-  fields to PDFs
-- **Scribus**: A desktop publishing application that can create PDFs
-  with form fields
+-  **docfly.com**: An online tool for adding form fields to PDFs
+-  **LibreOffice Draw**: Part of the LibreOffice suite, can add form
+   fields to PDFs
+-  **Scribus**: A desktop publishing application that can create PDFs
+   with form fields
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -87,7 +87,7 @@ Authors
 Contributors
 ------------
 
-- Akim Juillerat akim.juillerat@camptocamp.com
+-  Akim Juillerat akim.juillerat@camptocamp.com
 
 Maintainers
 -----------
