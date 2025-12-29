@@ -101,11 +101,11 @@ class ReportPDFFormField(models.Model):
             }
         else:
             message = self.env._(
-                'The dotted path "%(path)s" is invalid for model "%(model)s".'
-            ) % {
-                'path': self.odoo_field_value,
-                'model': self.report_form_id.model_id.name,
-            }
+                'The dotted path "{path}" is invalid for model "{model}".'
+            ).format(
+                path=self.odoo_field_value,
+                model=self.report_form_id.model_id.name,
+            )
             return {
                 "type": "ir.actions.client",
                 "tag": "display_notification",
@@ -122,9 +122,9 @@ class ReportPDFFormField(models.Model):
         for record in self:
             if not record._validate_dotted_path():
                 message = self.env._(
-                    "The dotted path '%(path)s' is not valid for model '%(model)s'."
-                ) % {
-                    'path': record.odoo_field_value,
-                    'model': record.report_form_id.model_id.name
-                }
+                    "The dotted path '{path}' is not valid for model '{model}'."
+                ).format(
+                    path=record.odoo_field_value,
+                    model=record.report_form_id.model_id.name,
+                )
                 raise ValidationError(message)
