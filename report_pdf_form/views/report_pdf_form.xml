@@ -13,15 +13,34 @@
                         <field name="model_id" />
                         <field name="report_id" />
                         <field name="pdf_attachment_id" />
+                        <button
+                            name="action_preview_pdf"
+                            type="object"
+                            string="Preview PDF"
+                            class="btn-primary"
+                            icon="fa-file-pdf-o"
+                        />
                     </group>
                     <notebook>
                         <page string="Field mapping">
                             <group>
                                 <field name="field_mapping_ids">
-                                    <list editable="bottom">
+                                    <list
+                                        editable="bottom"
+                                        decoration-success="is_valid"
+                                        decoration-danger="not is_valid"
+                                    >
                                         <field name="pdf_field_name" />
                                         <field name="odoo_field_evaluation" />
                                         <field name="odoo_field_value" widget="code" />
+                                        <field name="is_valid" column_invisible="1" />
+                                        <button
+                                            name="action_validate_field"
+                                            type="object"
+                                            icon="fa-check-circle"
+                                            invisible="odoo_field_evaluation != 'dotted_path'"
+                                            help="Validate field mapping"
+                                        />
                                     </list>
                                 </field>
                             </group>
