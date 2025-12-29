@@ -74,8 +74,8 @@ class ReportPDFForm(models.Model):
         sample_record = self.env[model_name].search([], limit=1)
         if not sample_record:
             message = self.env._(
-                "No records found for model %s. Cannot generate preview."
-            ) % model_name
+                "No records found for model {model}. Cannot generate preview."
+            ).format(model=model_name)
             raise UserError(message)
 
         # Generate the PDF using the same logic as the report
@@ -150,6 +150,7 @@ class ReportPDFForm(models.Model):
                 "target": "new",
             }
         except Exception as e:
-            raise UserError(
-                self.env._("Could not generate PDF preview: %s") % str(e)
-            ) from e
+            message = self.env._("Could not generate PDF preview: {error}").format(
+                error=str(e)
+            )
+            raise UserError(message) from e
