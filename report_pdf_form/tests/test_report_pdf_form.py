@@ -42,6 +42,7 @@ class TestReportPDFForm(common.TransactionCase):
                 "name": "PDF Form Example",
                 "report_id": cls.empty_report.id,
                 "pdf_attachment_id": cls.pdf_attachment.id,
+                "model_id": cls.env.ref("base.model_res_partner").id,
                 "field_mapping_ids": [
                     Command.create(
                         {
