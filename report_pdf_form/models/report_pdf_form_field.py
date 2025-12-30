@@ -56,17 +56,21 @@ class ReportPDFFormField(models.Model):
             return True  # Not a dotted path or empty, considered valid
 
         # Get the model from the parent report form
+        if (
+            not self.report_form_id
+            or not self.report_form_id.model_id
+            or not self.report_form_id.model_id.model
+        ):
+            return True  # Model not available yet, skip validation during creation
         model_name = self.report_form_id.model_id.model
-        if not model_name:
-            return False
+        if not model_name or model_name not in self.env:
+            return True  # Model not set or not in registry, skip validation
 
         # Split the dotted path
         path_parts = self.odoo_field_value.split(".")
 
         # Start with the base model
         current_model = self.env[model_name]
-        if not current_model:
-            return False
 
         # Traverse the path
         for i, field_name in enumerate(path_parts):
@@ -78,9 +82,9 @@ class ReportPDFFormField(models.Model):
                 if field.type not in ["many2one", "one2many", "many2many"]:
                     return False  # Can't traverse further on non-relation field
                 # Move to the related model
+                if not field.comodel_name or field.comodel_name not in self.env:
+                    return False  # comodel not found
                 current_model = self.env[field.comodel_name]
-                if not current_model:
-                    return False
 
         return True
 
@@ -94,15 +98,17 @@ class ReportPDFFormField(models.Model):
                 "tag": "display_notification",
                 "params": {
                     "title": "Success",
-                    "message": f'The dotted path "{self.odoo_field_value}" is valid.',
+                    "message": self.env._(
+                        'The dotted path "%(path)s" is valid.',
+                        path=self.odoo_field_value,
+                    ),
                     "type": "success",
                     "sticky": False,
                 },
             }
         else:
             message = self.env._(
-                'The dotted path "{path}" is invalid for model "{model}".'
-            ).format(
+                'The dotted path "%(path)s" is invalid for model "%(model)s".',
                 path=self.odoo_field_value,
                 model=self.report_form_id.model_id.name,
             )
@@ -120,11 +126,24 @@ class ReportPDFFormField(models.Model):
     @api.constrains("odoo_field_evaluation", "odoo_field_value", "report_form_id")
     def _check_dotted_path(self):
         for record in self:
+            # Skip validation if model is not available (during creation/updates)
+            if (
+                not record.report_form_id
+                or not record.report_form_id.model_id
+                or not record.report_form_id.model_id.model
+            ):
+                continue  # Skip validation when model is not yet available
             if not record._validate_dotted_path():
-                message = self.env._(
-                    "The dotted path '{path}' is not valid for model '{model}'."
-                ).format(
-                    path=record.odoo_field_value,
-                    model=record.report_form_id.model_id.name,
+                model_name = (
+                    record.report_form_id.model_id.name
+                    if record.report_form_id.model_id
+                    else "Unknown"
                 )
-                raise ValidationError(message)
+                raise ValidationError(
+                    self.env._(
+                        "The dotted path '%(path)s' is not valid "
+                        "for model '%(model)s'.",
+                        path=record.odoo_field_value,
+                        model=model_name,
+                    )
+                )

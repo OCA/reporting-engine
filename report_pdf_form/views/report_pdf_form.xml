@@ -39,7 +39,7 @@
                                             type="object"
                                             icon="fa-check-circle"
                                             invisible="odoo_field_evaluation != 'dotted_path'"
-                                            help="Validate field mapping"
+                                            title="Validate field mapping"
                                         />
                                     </list>
                                 </field>

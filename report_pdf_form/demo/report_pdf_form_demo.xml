@@ -19,8 +19,6 @@
         <field name="report_name">demo_partner_report</field>
         <field name="report_type">qweb-pdf</field>
         <field name="print_report_name">object.name</field>
-        <field name="binding_model_id" ref="base.model_res_partner" />
-        <field name="binding_type">report</field>
     </record>
 
     <!-- Demo PDF form configuration -->
@@ -29,6 +27,8 @@
         <field name="report_id" ref="demo_partner_report" />
         <field name="pdf_attachment_id" ref="demo_pdf_attachment" />
         <field name="model_id" ref="base.model_res_partner" />
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_type">report</field>
     </record>
 
     <!-- Demo field mappings -->

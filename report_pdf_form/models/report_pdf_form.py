@@ -51,6 +51,17 @@ class ReportPDFForm(models.Model):
         required=True,
     )
     model_id = fields.Many2one("ir.model", ondelete="cascade", required=True)
+
+    @api.onchange("report_id")
+    def _onchange_report_id(self):
+        """Auto-set model_id based on report_id's model."""
+        if self.report_id and self.report_id.model:
+            model = self.env["ir.model"].search(
+                [("model", "=", self.report_id.model)], limit=1
+            )
+            if model:
+                self.model_id = model.id
+
     # TODO:
     field_mapping_ids = fields.One2many(
         "report.pdf.form.field",
@@ -73,10 +84,13 @@ class ReportPDFForm(models.Model):
         model_name = self.model_id.model
         sample_record = self.env[model_name].search([], limit=1)
         if not sample_record:
-            message = self.env._(
-                "No records found for model {model}. Cannot generate preview."
-            ).format(model=model_name)
-            raise UserError(message)
+            raise UserError(
+                self.env._(
+                    "No records found for model %(model_name)s. "
+                    "Cannot generate preview.",
+                    model_name=model_name,
+                )
+            )
 
         # Generate the PDF using the same logic as the report
         try:
@@ -150,7 +164,9 @@ class ReportPDFForm(models.Model):
                 "target": "new",
             }
         except Exception as e:
-            message = self.env._("Could not generate PDF preview: {error}").format(
-                error=str(e)
-            )
-            raise UserError(message) from e
+            raise UserError(
+                self.env._(
+                    "Could not generate PDF preview: %(error)s",
+                    error=str(e),
+                )
+            ) from e
