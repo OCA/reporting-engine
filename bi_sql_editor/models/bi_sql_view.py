@@ -528,8 +528,26 @@ class BiSQLView(models.Model):
 
         relkind = result[0]
         if self.is_materialized:
+            if relkind == "v":
+                raise UserError(
+                    self.env._(
+                        "View '%(view_name)s' exists but is a regular view, "
+                        "not a materialized view. "
+                        "Please drop it first or uncheck 'Is Materialized View'.",
+                        view_name=self.view_name,
+                    )
+                )
             return relkind == "m"
         else:
+            if relkind == "m":
+                raise UserError(
+                    self.env._(
+                        "View '%(view_name)s' exists but is a materialized view, "
+                        "not a regular view. "
+                        "Please drop it first or check 'Is Materialized View'.",
+                        view_name=self.view_name,
+                    )
+                )
             return relkind == "v"
 
     def _drop_view(self, raise_if_not_exists=True):
