@@ -511,8 +511,41 @@ class BiSQLView(models.Model):
         _logger.info(f"Executing SQL Request {req} ...")
         self.env.cr.execute(req)
 
-    def _drop_view(self):
+    def _view_exists(self):
+        self.ensure_one()
+        query = """
+            SELECT c.relkind
+            FROM pg_class c
+            JOIN pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relname = %s
+            AND n.nspname = current_schema()
+        """
+        self.env.cr.execute(query, (self.view_name,))
+        result = self.env.cr.fetchone()
+
+        if not result:
+            return False
+
+        relkind = result[0]
+        if self.is_materialized:
+            return relkind == "m"
+        else:
+            return relkind == "v"
+
+    def _drop_view(self, raise_if_not_exists=True):
         for sql_view in self:
+            if not sql_view._view_exists():
+                if raise_if_not_exists:
+                    raise UserError(
+                        self.env._(
+                            "Cannot drop %(view_type)s view '%(view_name)s'. "
+                            "The view does not exist in the database.",
+                            view_type=sql_view.materialized_text.lower() or "regular",
+                            view_name=sql_view.view_name,
+                        )
+                    )
+                continue
+
             self._log_execute(
                 SQL("DROP {materialized_text} VIEW IF EXISTS {view_name}").format(
                     materialized_text=SQL(sql_view.materialized_text),
@@ -523,7 +556,7 @@ class BiSQLView(models.Model):
 
     def _create_view(self):
         for sql_view in self:
-            sql_view._drop_view()
+            sql_view._drop_view(raise_if_not_exists=False)
             try:
                 self._log_execute(sql_view._prepare_request_for_execution())
                 sql_view._refresh_size()
@@ -679,6 +712,15 @@ class BiSQLView(models.Model):
 
     def _refresh_materialized_view(self):
         for sql_view in self.filtered(lambda x: x.is_materialized):
+            if not sql_view._view_exists():
+                raise UserError(
+                    self.env._(
+                        "Cannot refresh materialized view '%(view_name)s'. "
+                        "The view does not exist in the database.",
+                        view_name=sql_view.view_name,
+                    )
+                )
+
             req = f"REFRESH {sql_view.materialized_text} VIEW {sql_view.view_name}"
             self._log_execute(req)
             sql_view._refresh_size()
