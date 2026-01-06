@@ -1,32 +1,57 @@
 # Copyright 2020 NextERP Romania SRL
 # Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 from odoo import Command
 from odoo.exceptions import ValidationError
+from odoo.orm.model_classes import add_to_registry
 from odoo.tests import common
 from odoo.tools.misc import mute_logger
-
-from .fake_models import ResUsers, setup_test_model, teardown_test_model
 
 
 class TestCommentTemplate(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        setup_test_model(cls.env, ResUsers)
-        cls.user_obj = cls.env.ref("base.model_res_users")
-        cls.user = cls.env.ref("base.user_demo")
-        cls.user2 = cls.env.ref("base.demo_user0")
-        cls.partner_id = cls.env.ref("base.res_partner_12")
-        cls.partner2_id = cls.env.ref("base.res_partner_10")
-        cls.ResPartnerTitle = cls.env["res.partner.title"]
+
+        from .fake_models import TestResUsers
+
+        add_to_registry(cls.registry, TestResUsers)
+        cls.registry._setup_models__(cls.env.cr, ["test.res.users"])
+        cls.registry.init_models(
+            cls.env.cr,
+            ["test.res.users"],
+            {"models_to_check": True},
+        )
+        cls.addClassCleanup(cls.registry.__delitem__, "test.res.users")
+
+        cls.test_user_obj = cls.env["ir.model"].search(
+            [("model", "=", "test.res.users")], limit=1
+        )
+        cls.user = cls.env["test.res.users"].create(
+            {
+                "name": "Test User",
+                "login": "test_user",
+                "email": "test_user@example.com",
+            }
+        )
+        cls.user2 = cls.env["test.res.users"].create(
+            {
+                "name": "Test User 2",
+                "login": "test_user_2",
+                "email": "test_user_2@example.com",
+            }
+        )
+        cls.partner_id = cls.env["res.partner"].create({"name": "Test Partner"})
+        cls.partner2_id = cls.env["res.partner"].create({"name": "Test Partner 2"})
+        cls.ResPartnerCategory = cls.env["res.partner.category"]
         cls.main_company = cls.env.ref("base.main_company")
         cls.company = cls.env["res.company"].create({"name": "Test company"})
         cls.before_template_id = cls.env["base.comment.template"].create(
             {
                 "name": "Top template",
                 "text": "Text before lines",
-                "models": cls.user_obj.model,
+                "models": cls.test_user_obj.model,
                 "company_id": cls.company.id,
             }
         )
@@ -35,7 +60,7 @@ class TestCommentTemplate(common.TransactionCase):
                 "name": "Bottom template",
                 "position": "after_lines",
                 "text": "Text after lines",
-                "models": cls.user_obj.model,
+                "models": cls.test_user_obj.model,
                 "company_id": cls.company.id,
             }
         )
@@ -44,18 +69,13 @@ class TestCommentTemplate(common.TransactionCase):
             (4, cls.after_template_id.id),
         ]
 
-    @classmethod
-    def tearDownClass(cls):
-        teardown_test_model(cls.env, ResUsers)
-        return super().tearDownClass()
-
     def test_template_model_ids(self):
         self.assertIn(
-            self.user_obj.model, self.before_template_id.mapped("model_ids.model")
+            self.test_user_obj.model, self.before_template_id.mapped("model_ids.model")
         )
         self.assertEqual(len(self.before_template_id.model_ids), 1)
         self.assertIn(
-            self.user_obj.model, self.after_template_id.mapped("model_ids.model")
+            self.test_user_obj.model, self.after_template_id.mapped("model_ids.model")
         )
         self.assertEqual(len(self.after_template_id.model_ids), 1)
 
@@ -93,7 +113,7 @@ class TestCommentTemplate(common.TransactionCase):
             {
                 "name": "Top template",
                 "text": "Text before lines",
-                "models": self.user_obj.model,
+                "models": self.test_user_obj.model,
                 "company_id": self.company.id,
             }
         )
@@ -133,10 +153,9 @@ class TestCommentTemplate(common.TransactionCase):
     def test_render_comment_text(self):
         expected_text = f"Test comment render {self.user.name}"
         self.before_template_id.text = "Test comment render {{object.name}}"
-        with self.with_user(self.user.login):
-            self.assertEqual(
-                self.user.render_comment(self.before_template_id), expected_text
-            )
+        self.assertEqual(
+            self.user.render_comment(self.before_template_id), expected_text
+        )
 
     def test_render_comment_text_(self):
         ro_RO_lang = (
@@ -157,27 +176,22 @@ class TestCommentTemplate(common.TransactionCase):
         po_file = export.data
         self.assertIsNotNone(po_file)
 
-        partner_title = self.ResPartnerTitle.create(
-            {"name": "Ambassador", "shortcut": "Amb."}
-        )
+        partner_category = self.ResPartnerCategory.create({"name": "Ambassador"})
         # Adding translated terms
         ctx = dict(lang="ro_RO")
-        partner_title.with_context(**ctx).write(
-            {"name": "Ambasador", "shortcut": "Amb."}
-        )
-        self.user.partner_id.title = partner_title
-        self.before_template_id.text = "Test comment render {{object.title.name}}"
+        partner_category.with_context(**ctx).write({"name": "Ambasador"})
+        self.user.partner_id.category_id = partner_category
+        self.before_template_id.text = "Test comment render {{object.category_id.name}}"
 
         expected_en_text = "Test comment render Ambassador"
         expected_ro_text = "Test comment render Ambasador"
-        with self.with_user(self.user.login):
-            self.assertEqual(
-                self.user.render_comment(self.before_template_id), expected_en_text
-            )
-            self.assertEqual(
-                self.user.with_context(**ctx).render_comment(self.before_template_id),
-                expected_ro_text,
-            )
+        self.assertEqual(
+            self.user.render_comment(self.before_template_id), expected_en_text
+        )
+        self.assertEqual(
+            self.user.with_context(**ctx).render_comment(self.before_template_id),
+            expected_ro_text,
+        )
 
     def test_partner_template_wizaard(self):
         partner_preview = (

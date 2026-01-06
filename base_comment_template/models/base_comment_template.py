@@ -114,7 +114,10 @@ class BaseCommentTemplate(models.Model):
             res = self._get_ir_model_items(item.models.split(","))
             if not res or len(res) != len(models):
                 raise ValidationError(
-                    self.env._(f"Some model ({item.models}) not found")
+                    self.env._(
+                        "Some model (%s) not found",
+                        item.models,
+                    )
                 )
 
     @api.depends("position", "model_ids")

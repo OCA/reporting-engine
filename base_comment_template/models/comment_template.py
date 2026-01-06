@@ -6,7 +6,7 @@
 import markupsafe
 
 from odoo import Command, api, fields, models
-from odoo.osv import expression
+from odoo.fields import Domain
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -39,7 +39,7 @@ class CommentTemplate(models.AbstractModel):
             partner = record[self._comment_template_partner_field_name]
             record.comment_template_ids = [(5,)]
             templates = template_model.search(
-                expression.AND(
+                Domain.AND(
                     [
                         [
                             "|",
