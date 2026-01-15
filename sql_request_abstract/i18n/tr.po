@@ -1,0 +1,306 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sql_request_abstract
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-01 02:11+0000\n"
+"PO-Revision-Date: 2025-09-15 13:19+0000\n"
+"Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "Action Needed"
+msgstr "Eylem Gerekiyor"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__group_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Allowed Groups"
+msgstr "Yetkili Gruplar"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__user_ids
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Allowed Users"
+msgstr "Yetkili Kullanıcılar"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_attachment_count
+msgid "Attachment Count"
+msgstr "Ek Sayısı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__draft
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__draft
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__draft
+msgid "Draft"
+msgstr "Taslak"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_follower_ids
+msgid "Followers"
+msgstr "Takipciler"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Takipçiler (İş Ortakları)"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid "Has Group Changed"
+msgstr "Grup Değişti mi"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_message
+msgid "Has Message"
+msgstr "Mesaj Var mı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "İşaretliyse, yeni mesajlar ilgilenmenizi bekliyor."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "İşaretliyse, bazı mesajlarda teslim hatası var."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
+"Doluysa, sorgu Odoo ana yapılandırma dosyasında tanımlanmış bir dış "
+"veritabanında çalıştırılacak. "
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
+msgid "Is Follower"
+msgstr "Takipçi mi"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid "It is not allowed to execute a not checked request."
+msgstr "Kontrol edilmemiş bir isteği çalıştırmaya izin verilmez."
+
+#. module: sql_request_abstract
+#: model:res.groups,name:sql_request_abstract.group_sql_request_manager
+msgid "Manager"
+msgstr "Yönetici"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid ""
+"Materialized View requires PostgreSQL 9.3 or greater but PostgreSQL %s is "
+"currently installed."
+msgstr ""
+"'Materialized View' kullanımı için PostgreSQL 9.3 veya üzeri gereklidir "
+"ancak şu anda PostgreSQL %s yüklüdür."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error
+msgid "Message Delivery error"
+msgstr "Mesaj Teslimat hatası"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_ids
+msgid "Messages"
+msgstr "Mesajlar"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__name
+msgid "Name"
+msgstr "Adı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__note
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Note"
+msgstr "Not"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Eylem Sayısı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hata sayısı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Eylem gerektiren mesaj sayısı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Teslimat hatası olan mesaj sayısı"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Preview Results"
+msgstr "Önizleme Sorunçları"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
+msgid "Query"
+msgstr "Sorgu"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Query"
+msgstr "SQL Sorgusu"
+
+#. module: sql_request_abstract
+#: model:ir.module.category,name:sql_request_abstract.category_sql_abstract
+msgid "SQL Request"
+msgstr "SQL İsteği"
+
+#. module: sql_request_abstract
+#: model:ir.model,name:sql_request_abstract.model_sql_request_mixin
+msgid "SQL Request Mixin"
+msgstr "SQL İsteği Parçası"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "SQL Settings"
+msgstr "SQL Ayarları"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_export__state__sql_valid
+#: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
+msgid "SQL Valid"
+msgstr "SQL Geçerli"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Security"
+msgstr "Güvenlik"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Set to Draft"
+msgstr "Taslak Olarak Ayarlayın"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__state
+msgid "State"
+msgstr "Durum"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__state
+msgid ""
+"State of the Request:\n"
+" * 'Draft': Not tested\n"
+" * 'SQL Valid': SQL Request has been checked and is valid"
+msgstr ""
+"İsteğin Durumu:\n"
+" * 'Taslak': Test edilmedi\n"
+" * 'SQL Geçerli': SQL İsteği kontrol edildi ve doğrulandı"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+"Grupların değişip değişmediğini ve buna bağlı olarak erişimin güncellenmesi "
+"gerektiğini bilmek için buna bağımlı olan modüllerde kullanılan Teknik "
+"alanlar."
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid ""
+"The SQL query is not valid:\n"
+"\n"
+" %s"
+msgstr ""
+"SQL sorgusu geçerli değil::\n"
+"\n"
+" %s"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid "The query is not allowed because it contains unsafe word '%s'"
+msgstr "Sorguya izin verilmiyor çünkü güvenli olmayan kelime içeriyor '%s'"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid "Unimplemented mode : '%s'"
+msgstr "Gerçeklenmemiş mod : '%s'"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__use_external_database
+msgid "Use External Database"
+msgstr "Dış Veritabanı Kullan"
+
+#. module: sql_request_abstract
+#: model:res.groups,name:sql_request_abstract.group_sql_request_user
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: sql_request_abstract
+#: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
+msgid "Validate SQL Expression"
+msgstr "SQL İfadesini Doğrula"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website Messages"
+msgstr "Web Sitesi Mesajları"
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
+msgid "Website communication history"
+msgstr "Web sitesi iletişim geçmişi"
+
+#. module: sql_request_abstract
+#. odoo-python
+#: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
+msgid ""
+"You can't use an external database as there are no such configuration about "
+"this. Please contact your Odoo administrator to solve this issue."
+msgstr ""
+"Bu konuda herhangi bir yapılandırma olmadığından harici bir veritabanı "
+"kullanamazsınız. Bu sorunu çözmek için lütfen Odoo yöneticinizle iletişime "
+"geçin."
+
+#. module: sql_request_abstract
+#: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
+msgid ""
+"You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+msgstr ""
+"İzleyen sözcükleri kullanamazsınız: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+
+#~ msgid "Display Name"
+#~ msgstr "Görünen İsim"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Son değişiklik"
