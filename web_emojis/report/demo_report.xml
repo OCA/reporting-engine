@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Lambdao
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <template id="report_emoji_demo_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Emoji Demo Report</h1>
+                    <p>This report demonstrates emoji rendering in PDF reports.</p>
+
+                    <h2>Flags</h2>
+                    <table class="table table-sm">
+                        <tr><td>France</td><td>🇫🇷</td></tr>
+                        <tr><td>United States</td><td>🇺🇸</td></tr>
+                        <tr><td>Germany</td><td>🇩🇪</td></tr>
+                        <tr><td>Japan</td><td>🇯🇵</td></tr>
+                        <tr><td>United Kingdom</td><td>🇬🇧</td></tr>
+                        <tr><td>Canada</td><td>🇨🇦</td></tr>
+                        <tr><td>Brazil</td><td>🇧🇷</td></tr>
+                        <tr><td>Australia</td><td>🇦🇺</td></tr>
+                    </table>
+
+                    <h2>Common Emojis</h2>
+                    <table class="table table-sm">
+                        <tr><td>Smileys</td><td>😀 😃 😄 😁 😆 😅 🤣 😂</td></tr>
+                        <tr><td>Hearts</td><td>❤️ 🧡 💛 💚 💙 💜 🖤 🤍</td></tr>
+                        <tr><td>Hands</td><td>👍 👎 👏 🙌 🤝 🙏 ✌️ 🤞</td></tr>
+                        <tr><td>Animals</td><td>🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼</td></tr>
+                        <tr><td>Food</td><td>🍎 🍐 🍊 🍋 🍌 🍉 🍇 🍓</td></tr>
+                        <tr><td>Weather</td><td>☀️ 🌤️ ⛅ 🌦️ 🌧️ ⛈️ 🌩️ 🌨️</td></tr>
+                        <tr><td>Objects</td><td>📱 💻 🖥️ 🖨️ ⌨️ 🖱️ 💾 💿</td></tr>
+                        <tr><td>Symbols</td><td>✅ ❌ ⭐ 🔴 🟢 🔵 ⚠️ ℹ️</td></tr>
+                    </table>
+
+                    <h2>Inline Text</h2>
+                    <p>Emojis can be used inline: The weather is ☀️ sunny today!</p>
+                    <p>Status: ✅ Completed | Priority: ⭐⭐⭐ | Location: 🇫🇷 France</p>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_emoji_demo" model="ir.actions.report">
+        <field name="name">Emoji Demo</field>
+        <field name="model">res.company</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">web_emojis.report_emoji_demo_document</field>
+        <field name="report_file">web_emojis.report_emoji_demo_document</field>
+        <field name="binding_model_id" ref="base.model_res_company" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
