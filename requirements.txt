@@ -1,8 +1,10 @@
 # generated from manifests external_dependencies
 cryptography
+emoji_data_python
 endesive ; python_version >= '3.12'
 endesive<=2.18.5 ; python_version < '3.12'
 mock
 openpyxl
 py3o.formats
 py3o.template
+twemoji_api
