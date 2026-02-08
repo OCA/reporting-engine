@@ -4,7 +4,7 @@
 
 from datetime import datetime
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
@@ -31,10 +31,11 @@ class SqlFileWizard(models.TransientModel):
         bad_props = [x for x in properties if not x["value"]]
         if bad_props:
             raise UserError(
-                _("Please enter a values for the following properties : %s")
-                % (",".join([x["string"] for x in bad_props]))
+                self.env._(
+                    "Please enter a values for the following properties : %(props)s",
+                    {"props": ", ".join([x["string"] for x in bad_props])},
+                )
             )
-
         sql_export = self.sql_export_id
 
         # Manage Params
@@ -73,21 +74,22 @@ class SqlFileWizard(models.TransientModel):
         self.env.cr.execute(
             """
             UPDATE sql_export
-            SET last_execution_date = %s, last_execution_uid = %s
-            WHERE id = %s
+            SET last_execution_date = %(last_date)s, last_execution_uid = %(last_uid)s
+            WHERE id = %(id)s
         """,
-            (
-                fields.Datetime.to_string(fields.Datetime.now()),
-                self.env.user.id,
-                sql_export.id,
-            ),
+            {
+                "last_date": fields.Datetime.to_string(fields.Datetime.now()),
+                "last_uid": self.env.user.id,
+                "id": sql_export.id,
+            },
         )
+        url = f"""web/content/?model={self._name}&id={self.id}&
+            filename_field=file_name&"field=binary_file&download=true&
+            filename={self.file_name}"""
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",
-            "url": "web/content/?model=%s&id=%d&filename_field=filename&"
-            "field=binary_file&download=true&filename=%s"
-            % (self._name, self.id, self.file_name),
+            "url": url,
             "target": "self",
         }
         return action

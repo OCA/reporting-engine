@@ -15,12 +15,55 @@ class TestExportSqlQuery(TransactionCase):
         super().setUpClass()
         cls.sql_export_obj = cls.env["sql.export"]
         cls.wizard_obj = cls.env["sql.file.wizard"]
-        cls.sql_report_demo = cls.env.ref("sql_export.sql_export_partner")
+        cls.sql_export_partner = cls.sql_export_obj.create(
+            {
+                "name": "Export Partners",
+                "query": "SELECT name, street FROM res_partner",
+            }
+        )
+        cls.sql_export_partner.button_validate_sql_expression()
+        cls.sql_export_partner_variables = cls.sql_export_obj.create(
+            {
+                "name": "Export Partners with variables",
+                "query": """
+SELECT p.id
+FROM res_partner p
+LEFT JOIN res_partner_res_partner_category_rel rel
+    ON rel.partner_id = p.id
+WHERE create_date > %(Date)s
+    AND id = %(ID)s
+    AND rel.category_id in %(Categories)s
+                """,
+                "query_properties_definition": [
+                    {
+                        "name": "630eca383bc142e6",
+                        "string": "Date",
+                        "type": "date",
+                        "default": "",
+                    },
+                    {
+                        "name": "ec0556e22932334b",
+                        "string": "Categories",
+                        "type": "many2many",
+                        "default": False,
+                        "comodel": "res.partner.category",
+                        "domain": False,
+                    },
+                    {
+                        "name": "907ac618eccbab74",
+                        "string": "ID",
+                        "type": "integer",
+                        "default": False,
+                    },
+                ],
+            }
+        )
+        cls.sql_export_partner_variables.button_validate_sql_expression()
 
     def test_sql_query(self):
         wizard = self.wizard_obj.create(
             {
-                "sql_export_id": self.sql_report_demo.id,
+                "sql_export_id": self.sql_export_partner.id,
             }
         )
         wizard.export_sql()
@@ -61,12 +104,15 @@ class TestExportSqlQuery(TransactionCase):
             )
 
     def test_sql_query_with_params(self):
-        query = self.env.ref("sql_export.sql_export_partner_with_variables")
-        query.write({"state": "sql_valid"})
-        categ_id = self.env.ref("base.res_partner_category_0").id
+        categ = self.env["res.partner.category"].search([], limit=1)
+        if not categ:
+            categ = self.env["res.partner.category"].create(
+                {"name": "Consulting Services"}
+            )
+        categ_id = categ.id
         wizard = self.wizard_obj.create(
             {
-                "sql_export_id": query.id,
+                "sql_export_id": self.sql_export_partner_variables.id,
             }
         )
         wizard.write(
