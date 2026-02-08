@@ -38,13 +38,12 @@ class SqlExport(models.Model):
     )
     row_position = fields.Integer(
         default=1,
-        help="Indicate from which row the result of the query should be " "injected.",
+        help="Indicate from which row the result of the query should be injected.",
     )
     col_position = fields.Integer(
         string="Column Position",
         default=1,
-        help="Indicate from which column the result of the query should be "
-        "injected.",
+        help="Indicate from which column the result of the query should be injected.",
     )
 
     @api.constrains("sheet_position")
