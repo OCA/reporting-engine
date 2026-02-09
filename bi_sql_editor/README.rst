@@ -182,6 +182,8 @@ Contributors
 
 - Thien Vo thienvh@trobz.com
 
+- Baptiste P. baptiste@newlogic.com
+
 - This module is highly inspired by the work of
 
   - Onestein: (http://www.onestein.nl/) Module:
