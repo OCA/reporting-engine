@@ -8,6 +8,8 @@
 
 - Thien Vo <thienvh@trobz.com>
 
+- Baptiste P. <baptiste@newlogic.com>
+
 - This module is highly inspired by the work of
   - Onestein: (<http://www.onestein.nl/>) Module:
     OCA/server-tools/bi_view_editor. Link:

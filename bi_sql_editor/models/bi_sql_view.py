@@ -116,7 +116,9 @@ class BiSQLView(models.Model):
 
     @api.model
     def _default_parent_menu_id(self):
-        return self.env.ref("bi_sql_editor.menu_bi_sql_editor")
+        return self.env.ref(
+            "bi_sql_editor.menu_bi_sql_editor", raise_if_not_found=False
+        )
 
     parent_menu_id = fields.Many2one(
         string="Parent Odoo Menu",
