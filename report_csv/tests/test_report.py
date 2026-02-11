@@ -35,7 +35,15 @@ class TestReport(common.TransactionCase):
             active_model="res.partner"
         )
         self.report_name = "report_csv.partner_csv"
-        self.report = self.report_object._get_report_from_name(self.report_name)
+        self.report = self.report_object.create(
+            {
+                "name": "Print to CSV",
+                "report_name": self.report_name,
+                "model": "res.partner",
+                "report_file": "res_partner",
+                "report_type": "csv",
+            }
+        )
         self.docs = self.env["res.company"].search([], limit=1).partner_id
 
     def test_report(self):
@@ -115,7 +123,15 @@ class TestCsvReport(common.HttpCase):
             active_model="res.partner"
         )
         self.report_name = "report_csv.partner_csv"
-        self.report = self.report_object._get_report_from_name(self.report_name)
+        self.report = self.report_object.create(
+            {
+                "name": "Print to CSV",
+                "report_name": self.report_name,
+                "model": "res.partner",
+                "report_file": "res_partner",
+                "report_type": "csv",
+            }
+        )
         self.docs = self.env["res.company"].search([], limit=1).partner_id
         self.session = self.authenticate("admin", "admin")
 
