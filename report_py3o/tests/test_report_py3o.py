@@ -19,9 +19,9 @@ from odoo.tests.common import TransactionCase
 
 from odoo.addons.base.tests.test_mimetypes import PNG
 
-from ..models._py3o_parser_context import format_multiline_value
 from ..models.ir_actions_report import PY3O_CONVERSION_COMMAND_PARAMETER
-from ..models.py3o_report import TemplateNotFound
+from ..wizard._py3o_parser_context import format_multiline_value
+from ..wizard.py3o_report import TemplateNotFound
 
 logger = logging.getLogger(__name__)
 
@@ -85,8 +85,17 @@ class TestReportPy3o(TransactionCase):
 
     def test_reports_merge_zip(self):
         self.report.py3o_filetype = "odt"
-        users = self.env["res.users"].search([])
-        self.assertTrue(len(users) > 0)
+        users = self.env["res.users"].search([], limit=2)
+        if len(users) < 2:
+            users |= self.env["res.users"].create(
+                {
+                    "name": "Test User 2",
+                    "login": f"test_user_2_{self.env.cr.dbname}",
+                    "email": f"test_user_2_{self.env.cr.dbname}@example.com",
+                }
+            )
+        self.assertGreaterEqual(len(users), 2)
+        users.write({"image_1920": PNG})
         py3o_report = self.env["py3o.report"]
         _zip_results = self.py3o_report._zip_results
         with mock.patch.object(
@@ -141,7 +150,7 @@ class TestReportPy3o(TransactionCase):
         self.assertEqual(self.env.user.id, attachements.res_id)
         self.assertEqual(b"test result", b64decode(attachements.datas))
 
-    @tools.misc.mute_logger("odoo.addons.report_py3o.models.py3o_report")
+    @tools.misc.mute_logger("odoo.addons.report_py3o.wizard.py3o_report")
     def test_report_template_configs(self):
         # the demo template is specified with a relative path in in the module
         # path
@@ -163,9 +172,9 @@ class TestReportPy3o(TransactionCase):
             self.report._render(self.report.id, self.env.user.ids)
         with temporary_copy(flbk_filename) as tmp_filename:
             self.report.py3o_template_fallback = tmp_filename
-            tools.config.misc["report_py3o"] = {
-                "root_tmpl_path": os.path.realpath(os.path.dirname(tmp_filename))
-            }
+            tools.config["root_tmpl_path"] = os.path.realpath(
+                os.path.dirname(tmp_filename)
+            )
             res = self.report._render(self.report.id, self.env.user.ids)
             self.assertTrue(res)
 
@@ -186,7 +195,7 @@ class TestReportPy3o(TransactionCase):
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertTrue(res)
 
-    @tools.misc.mute_logger("odoo.addons.report_py3o.models.py3o_report")
+    @tools.misc.mute_logger("odoo.addons.report_py3o.wizard.py3o_report")
     def test_report_template_fallback_validity(self):
         tmpl_name = self.report.py3o_template_fallback
         with as_file(files(f"odoo.addons.{self.report.module}")) as _asf:

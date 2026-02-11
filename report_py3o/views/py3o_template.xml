@@ -7,13 +7,11 @@
             <search>
                 <field name="name" />
                 <field name="filetype" />
-                <group string="Group By" name="groupby">
-                    <filter
-                        name="filetype_groupby"
-                        string="File Type"
-                        context="{'group_by': 'filetype'}"
-                    />
-                </group>
+                <filter
+                    name="filetype_groupby"
+                    string="File Type"
+                    context="{'group_by': 'filetype'}"
+                />
             </search>
         </field>
     </record>

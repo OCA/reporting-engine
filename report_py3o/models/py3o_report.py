@@ -9,18 +9,39 @@ import sys
 import tempfile
 import warnings
 from base64 import b64decode
+from configparser import ConfigParser
 from contextlib import closing
 from importlib.resources import files
 from io import BytesIO
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from odoo import _, api, fields, models, tools
+from odoo import api, fields, models
 from odoo.exceptions import AccessError
+from odoo.tools import config
 from odoo.tools.safe_eval import safe_eval, time
 
 from ._py3o_parser_context import Py3oParserContext
 
 logger = logging.getLogger(__name__)
+
+try:
+    # Preferred source when available: structured [report_py3o] section provided
+    # by OCA's server_environment addon.
+    from odoo.addons.server_environment import serv_config
+
+    if serv_config.has_section("report_py3o"):
+        report_py3o_config = serv_config["report_py3o"]
+    else:
+        report_py3o_config = {}
+except ImportError:
+    # No server_environment: try to read a [report_py3o] section from odoo.conf
+    report_py3o_config = {}
+    cfg_path = config.get("config")
+    if cfg_path:
+        cp = ConfigParser(interpolation=None)
+        cp.read(cfg_path)
+        if cp.has_section("report_py3o"):
+            report_py3o_config = dict(cp["report_py3o"])
 
 try:
     # workaround for https://github.com/edgewall/genshi/issues/15
@@ -86,7 +107,11 @@ class Py3oReport(models.TransientModel):
     def _is_valid_template_path(self, path):
         """Check if the path is a trusted path for py3o templates."""
         real_path = os.path.realpath(path)
-        root_path = tools.config.get_misc("report_py3o", "root_tmpl_path")
+        root_path = report_py3o_config.get("root_tmpl_path") or config.get(
+            "root_tmpl_path"
+        )
+        if root_path:
+            root_path = os.path.realpath(root_path.strip()).rstrip(os.path.sep)
         if not root_path:
             logger.warning(
                 "You must provide a root template path into odoo.cfg to be "
@@ -95,7 +120,10 @@ class Py3oReport(models.TransientModel):
                 real_path,
             )
             return False
-        is_valid = real_path.startswith(root_path + os.path.sep)
+        try:
+            is_valid = os.path.commonpath([root_path, real_path]) == root_path
+        except ValueError:
+            is_valid = False
         if not is_valid:
             logger.warning(
                 "Py3o template path is not valid. %s is not a child of root path %s",
