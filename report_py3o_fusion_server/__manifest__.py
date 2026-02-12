@@ -6,10 +6,7 @@
     "version": "18.0.1.0.0",
     "category": "Reporting",
     "license": "AGPL-3",
-    "author": "XCG Consulting,"
-    "ACSONE SA/NV,"
-    "Akretion,"
-    "Odoo Community Association (OCA)",
+    "author": "XCG Consulting,ACSONE SA/NV,Akretion,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "depends": ["report_py3o"],
     "external_dependencies": {
