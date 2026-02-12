@@ -4,7 +4,7 @@
 
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
@@ -232,23 +232,23 @@ class Py3oPdfOptions(models.Model):
         for opt in self:
             if opt.image_jpeg_quality > 100 or opt.image_jpeg_quality < 1:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "The parameter Image JPEG Quality must be between 1 %%"
-                        " and 100 %% (current value: %s %%)"
+                        " and 100 %% (current value: %(val)s %%)",
+                        val=opt.image_jpeg_quality,
                     )
-                    % opt.image_jpeg_quality
                 )
             if opt.initial_page < 1:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "The initial page parameter must be strictly positive "
-                        "(current value: %d)"
+                        "(current value: %(val)s)",
+                        val=opt.initial_page,
                     )
-                    % opt.initial_page
                 )
             if opt.pdfa and opt.cross_doc_link_action == "1":
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "The PDF/A option is not compatible with "
                         "'Cross-document Links' = "
                         "'Open with PDF Reader Application'."
@@ -256,11 +256,11 @@ class Py3oPdfOptions(models.Model):
                 )
             if opt.magnification == "4" and (opt.zoom < 50 or opt.zoom > 1600):
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "The value of the zoom factor must be between 50 and 1600 "
-                        "(current value: %d)"
+                        "(current value: %(val)s)",
+                        val=opt.zoom,
                     )
-                    % opt.zoom
                 )
 
     @api.onchange("encrypt")

@@ -12,7 +12,7 @@ from io import BytesIO
 
 import requests
 
-from odoo import _, models
+from odoo import models
 from odoo.exceptions import UserError
 
 logger = logging.getLogger(__name__)
@@ -87,7 +87,7 @@ class Py3oReport(models.TransientModel):
         if r.status_code != 200:
             # server says we have an issue... let's tell that to enduser
             logger.error("Py3o fusion server error: %s", r.text)
-            raise UserError(_("Fusion server error %s") % r.text)
+            raise UserError(self.env._("Fusion server error %(error)s", error=r.text))
 
         chunk_size = 1024
         with open(result_path, "w+b") as fd:

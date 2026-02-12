@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ class IrActionsReport(models.Model):
                 continue
             if not report.py3o_is_local_fusion and not report.py3o_server_id:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "You can not use remote fusion without Fusion server. "
                         "Please specify a Fusion Server"
                     )
@@ -56,14 +56,12 @@ class IrActionsReport(models.Model):
                 and not rec.py3o_server_id
             ):
                 rec.is_py3o_report_not_available = True
-                rec.msg_py3o_report_not_available = (
-                    _(
-                        "A fusion server or a libreoffice runtime are required "
-                        "to genereate the py3o report '%s'. If the libreoffice"
-                        "runtime is already installed and is not found by "
-                        "Odoo, you can provide the full path to the runtime by "
-                        "setting the key 'py3o.conversion_command' into the "
-                        "configuration parameters."
-                    )
-                    % rec.name
+                rec.msg_py3o_report_not_available = self.env._(
+                    "A fusion server or a libreoffice runtime are required "
+                    "to genereate the py3o report '%(report)s'. If the libreoffice"
+                    "runtime is already installed and is not found by "
+                    "Odoo, you can provide the full path to the runtime by "
+                    "setting the key 'py3o.conversion_command' into the "
+                    "configuration parameters.",
+                    report=rec.name,
                 )
