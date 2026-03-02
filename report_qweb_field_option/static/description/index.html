@@ -402,6 +402,9 @@ create records according to your needs.</p>
 <li>Set <strong>Model</strong> and <strong>Field</strong> (required)</li>
 <li>Set <strong>UoM</strong> and <strong>UoM Field</strong>, or <strong>Currency</strong> and <strong>Currency Field</strong>
 only for fields of float type (optional)</li>
+<li>Set <strong>Domain</strong> to specify a domain for more specific filtering (e.g.,
+<tt class="docutils literal"><span class="pre">[('secondary_uom_id',</span> <span class="pre">'=',</span> 1)]</tt> to apply only when a specific
+secondary UoM is used) (optional)</li>
 <li>Set <strong>Company</strong> (optional)</li>
 <li>Set <strong>Options</strong> as a string representation of a dictionary. E.g.,
 <tt class="docutils literal">{&quot;widget&quot;: &quot;date&quot;}</tt>, <tt class="docutils literal">{&quot;widget&quot;: &quot;monetary&quot;}</tt>, or

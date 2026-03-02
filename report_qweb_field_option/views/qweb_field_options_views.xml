@@ -27,6 +27,13 @@
                     readonly="currency_id == False"
                     required="currency_id != False"
                 />
+                <field name="res_model_name" column_invisible="1" />
+                <field
+                    name="domain"
+                    widget="domain"
+                    options="{'model': 'res_model_name'}"
+                    optional="hide"
+                />
                 <field
                     name="company_id"
                     groups="base.group_multi_company"
