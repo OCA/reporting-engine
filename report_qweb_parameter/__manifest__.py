@@ -3,7 +3,7 @@
 
 {
     "name": "Report QWeb Parameter",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "summary": """
         Add new parameters for qweb templates in order to reduce field length
@@ -13,6 +13,5 @@
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Technical Settings",
     "depends": ["web"],
-    "demo": ["demo/test_report_field_length.xml"],
     "installable": True,
 }
