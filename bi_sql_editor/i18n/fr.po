@@ -194,15 +194,15 @@ msgid ""
 "Define here access restriction to data.\n"
 " Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
 "created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),"
+"('x_company_id','=',False)]."
 msgstr ""
 "Définir ici les règles de restrictions d'accès aux données.\n"
-" Faite attention à utilliser des noms de champs préfixés par 'x_'. Un 'ir."
-"rule' global sera créé. Une règle classique en multi-companie est, par "
+" Faite attention à utilliser des noms de champs préfixés par 'x_'. Un "
+"'ir.rule' global sera créé. Une règle classique en multi-companie est, par "
 "exemple : \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),"
+"('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -217,6 +217,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__display_name
+#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__display_name
 msgid "Display Name"
 msgstr "Nom à afficher"
 
@@ -314,6 +315,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__id
+#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__id
 msgid "ID"
 msgstr ""
 
