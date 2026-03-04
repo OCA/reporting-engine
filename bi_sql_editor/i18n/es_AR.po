@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
 "PO-Revision-Date: 2023-04-07 20:23+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
-"teams/23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
+"23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -197,14 +197,14 @@ msgid ""
 "Define here access restriction to data.\n"
 " Take care to use field name prefixed by 'x_'. A global 'ir.rule' will be "
 "created. A typical Multi Company rule is for exemple \n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),"
+"('x_company_id','=',False)]."
 msgstr ""
 "Defina aquí la restricción de acceso a los datos.\n"
 " Tenga cuidado de usar el nombre de campo con el prefijo 'x_'. Se creará una "
 "'ir.rule' global. Una regla típica de varias compañías es, por ejemplo,\n"
-" ['|', ('x_company_id','child_of', [user.company_id.id]),('x_company_id','=',"
-"False)]."
+" ['|', ('x_company_id','child_of', [user.company_id.id]),"
+"('x_company_id','=',False)]."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -219,6 +219,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__display_name
+#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
 
@@ -316,6 +317,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__id
+#: model:ir.model.fields,field_description:bi_sql_editor.field_ir_model_fields__id
 msgid "ID"
 msgstr "ID"
 
@@ -679,8 +681,9 @@ msgid ""
 "current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
 "Sufijo de la vista SQL. El nombre completo de SQL se calculará y tendrá el "
-"prefijo 'x_bi_sql_view_'. La sintaxis debe seguir: https://www.postgresql."
-"org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
+"prefijo 'x_bi_sql_view_'. La sintaxis debe seguir: https://"
+"www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-"
+"IDENTIFIERS"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__sum
