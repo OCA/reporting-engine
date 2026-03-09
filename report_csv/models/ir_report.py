@@ -60,8 +60,8 @@ class ReportAction(models.Model):
             return report_model.with_context(
                 **{
                     "active_model": report_sudo.model,
-                    "encoding": self.encoding,
-                    "encode_error_handling": self.encode_error_handling,
+                    "encoding": report_sudo.encoding,
+                    "encode_error_handling": report_sudo.encode_error_handling,
                 }
             ).create_csv_report(docids, data)
         record = self.env[report_sudo.model].browse(res_id)
@@ -71,8 +71,8 @@ class ReportAction(models.Model):
         data, ext = report_model.with_context(
             **{
                 "active_model": report_sudo.model,
-                "encoding": self.encoding,
-                "encode_error_handling": self.encode_error_handling,
+                "encoding": report_sudo.encoding,
+                "encode_error_handling": report_sudo.encode_error_handling,
             }
         ).create_csv_report(docids, data)
         report_sudo._create_csv_attachment(record, data)
