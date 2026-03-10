@@ -11,8 +11,7 @@ class IrActionsReport(models.Model):
         string="Context Value",
         default={},
         required=True,
-        help="Context dictionary as Python expression, empty by default "
-        "(Default: {})",
+        help="Context dictionary as Python expression, empty by default (Default: {})",
     )
 
     def _get_context(self):
