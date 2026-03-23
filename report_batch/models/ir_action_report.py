@@ -26,22 +26,13 @@ class IrActionsReport(models.Model):
     subreport_ids = fields.One2many("ir.actions.report.subreport", "parent_report_id")
 
     def generate_top_part(self):
-        return (
-            """<?xml version="1.0"?>\n\t<t t-name="%s">\n\t
-        """
-            % self.report_name
-        )
+        return f"""<?xml version="1.0"?>\n\t<t t-name="{self.report_name}">\n\t"""
 
     def generate_bottom_part(self):
-        return """\n
-        \t\t</t>\n\t\t"""
+        return """\n\t\t</t>\n\t\t"""
 
     def generate_custom_content(self, report_name):
-        return (
-            """\n
-        \t<t t-call="%s"/>"""
-            % report_name
-        )
+        return f"""\n\t<t t-call="{report_name}"/>"""
 
     def _generate_batch_qweb_report(self, update_batch_qweb=False):
         report_name = self.report_name
@@ -93,9 +84,9 @@ class IrActionsReport(models.Model):
                 self.create_action()
         return True
 
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
         for report in res:
             report._generate_batch_qweb_report()
         return res
