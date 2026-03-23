@@ -51,7 +51,7 @@ class IrActionsReport(models.Model):
         else:
             # Generate random number to avoid IntegrityError
             module = random.randint(1, 1000000)
-            self.report_name = "{}.{}".format(module, report_name)
+            self.report_name = f"{module}.{report_name}"
         if self.subreport_ids:
             if update_batch_qweb:
                 report_name = self.report_name.split(".")[1]
@@ -70,7 +70,7 @@ class IrActionsReport(models.Model):
                 template_content += self.generate_custom_content(
                     subreport.subreport_id.report_name
                 )
-            data = "{}{}{}".format(template_header, template_content, template_footer)
+            data = f"{template_header}{template_content}{template_footer}"
             ui_view = self.env["ir.ui.view"].create(
                 {
                     "name": report_name,
@@ -95,13 +95,13 @@ class IrActionsReport(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super(IrActionsReport, self).create(vals)
+        res = super().create(vals)
         for report in res:
             report._generate_batch_qweb_report()
         return res
 
     def write(self, vals):
-        res = super(IrActionsReport, self).write(vals)
+        res = super().write(vals)
         if "subreport_ids" in vals or "model" in vals:
             for report in self:
                 report._generate_batch_qweb_report(update_batch_qweb=True)

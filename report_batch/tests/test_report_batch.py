@@ -7,7 +7,7 @@ import odoo.tests.common as test_common
 
 class TestReportBatch(test_common.SingleTransactionCase):
     def setUp(self):
-        super(TestReportBatch, self).setUp()
+        super().setUp()
         self.report_picking_operations = self.env.ref("stock.action_report_picking")
         self.report_deliveryslip = self.env.ref("stock.report_deliveryslip")
 
