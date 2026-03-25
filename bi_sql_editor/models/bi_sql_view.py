@@ -757,7 +757,7 @@ WHERE
             for sql_field in sql_fields:
                 if (
                     sql_field[0] in model._fields
-                    and sql_field[1] in ("integer", "float")
+                    and sql_field[1] in ("integer", "float", "date", "datetime")
                     and sql_field[2]
                 ):
                     model._fields[sql_field[0]].group_operator = sql_field[2]

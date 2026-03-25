@@ -153,7 +153,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <field
                                         name='group_operator'
                                         attrs="{
-                                        'invisible': ['!', ('ttype', 'in', ('float', 'integer'))]}"
+                                        'invisible': ['!', ('ttype', 'in', ('float', 'integer', 'date', 'datetime'))],}"
                                     />
                                     <field
                                         name="ttype"
