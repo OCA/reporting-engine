@@ -18,6 +18,7 @@ from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 from odoo.addons.base.tests.test_mimetypes import PNG
+from odoo.addons.report_py3o.controllers.main import ReportController
 
 from ..models.ir_actions_report import PY3O_CONVERSION_COMMAND_PARAMETER
 from ..wizard._py3o_parser_context import format_multiline_value
@@ -269,3 +270,29 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.msg_py3o_report_not_available)
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertTrue(res)
+
+    def test_portal_user_report_access(self):
+        group_portal = self.env.ref("base.group_portal")
+        group_user = self.env.ref("base.group_user")
+
+        portal_user = self.env["res.users"].create(
+            {
+                "name": "Portal Test User",
+                "login": "portal_test_user_unique",
+                "email": "portal@test.com",
+                "group_ids": [(3, group_user.id), (4, group_portal.id)],
+            }
+        )
+
+        mock_request = mock.MagicMock(env=self.env(user=portal_user))
+        mock_request.make_response.return_value.status_code = 200
+        target_path = "odoo.addons.report_py3o.controllers.main.request"
+        with mock.patch(target_path, mock_request):
+            response = ReportController().report_routes.__wrapped__(
+                ReportController(),
+                reportname=self.report.report_name,
+                docids=str(portal_user.id),
+                converter="py3o",
+            )
+            # portal user should not get 403
+            self.assertEqual(response.status_code, 200)

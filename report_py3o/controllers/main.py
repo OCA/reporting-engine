@@ -35,7 +35,7 @@ class ReportController(ReportControllerBase):
                 del data["context"]["lang"]
             context.update(data["context"])
 
-        ir_action = request.env["ir.actions.report"]
+        ir_action = request.env["ir.actions.report"].sudo()
         action_py3o_report = ir_action.get_from_report_name(
             reportname, "py3o"
         ).with_context(**context)
