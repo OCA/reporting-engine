@@ -83,9 +83,7 @@ class SqlFileWizard(models.TransientModel):
                 "id": sql_export.id,
             },
         )
-        url = f"""web/content/?model={self._name}&id={self.id}&
-            filename_field=file_name&"field=binary_file&download=true&
-            filename={self.file_name}"""
+        url = f"""web/content/?model={self._name}&id={self.id}&filename_field=file_name&field=binary_file&download=true&filename={self.file_name}"""  # noqa: E501
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",
