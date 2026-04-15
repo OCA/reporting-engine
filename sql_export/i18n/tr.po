@@ -153,6 +153,7 @@ msgstr "İşaretliyse, yeni mesajlar ilgilenmenizi bekliyor."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "İşaretliyse, bazı mesajlarda teslim hatası var."
 
@@ -173,8 +174,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"Sorguda parametrelerin kullanılması durumunda, bu sözdizimini kullanın : %("
-"Property String)s. <br/>\n"
+"Sorguda parametrelerin kullanılması durumunda, bu sözdizimini kullanın : %"
+"(Property String)s. <br/>\n"
 "                                Örnek : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 
@@ -265,6 +266,11 @@ msgstr "Sorgu"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Sorgu Özellikleri"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action

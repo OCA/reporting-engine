@@ -154,6 +154,7 @@ msgstr "Si está marcado, nuevos mensajes necesitan su atención."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "si está marcada, algunos mensajes tienen un error de entrega."
 
@@ -172,8 +173,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"En caso de utilizar propiedades en la consulta, utilice esta sintaxis: "
-"%(Property String)s. <br/>\n"
+"En caso de utilizar propiedades en la consulta, utilice esta sintaxis: %"
+"(Property String)s. <br/>\n"
 "                                Ejemplo: SELECCIONE la identificación DE "
 "sale_order DONDE create_date &gt; %(Start Date)s"
 
@@ -264,6 +265,11 @@ msgstr "Consulta"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Propiedades de Consulta"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error en la entrega de SMS"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -393,9 +399,6 @@ msgstr "windows-1252"
 #~ msgid "Export file"
 #~ msgstr "Exportar archivo"
 
-#~ msgid "SMS Delivery error"
-#~ msgstr "Error en la entrega de SMS"
-
 #~ msgid "Last Modified on"
 #~ msgstr "Última modificación en"
 
@@ -407,15 +410,15 @@ msgstr "windows-1252"
 #~ "need in the dedicated menu with the right type and label. \n"
 #~ "Then, when you add a parameter here, you have to include it in the SQL "
 #~ "query in order to have dynamic values depending on the user choice.\n"
-#~ "The format of the parameters in the SQL query must be like this : "
-#~ "%(parameter_field_name)s. \n"
+#~ "The format of the parameters in the SQL query must be like this : %"
+#~ "(parameter_field_name)s. \n"
 #~ "Example : from the variable menu, create an variable with type 'char', "
 #~ "having field name 'x_name' and field label : 'Name' \n"
 #~ "Then, you can create a SQL query like this : SELECT * FROM res_partner "
 #~ "WHERE name =  %(x_name)s the variable can be used in any number of "
 #~ "different SQL queries. \n"
-#~ "In the SQL query, you can also include these 2 special parameters "
-#~ "%(user_id)s and %(company_id)s which will be replaced respectively by the "
+#~ "In the SQL query, you can also include these 2 special parameters %"
+#~ "(user_id)s and %(company_id)s which will be replaced respectively by the "
 #~ "user executing the query and the company of the user executing the query."
 #~ msgstr ""
 #~ "Antes de añadir parámetros, asegúrese de haber creado uno que satisfaga "
@@ -423,15 +426,15 @@ msgstr "windows-1252"
 #~ "Después, cuando añada un parámetro aquí, tendrá que incluirlo en la "
 #~ "consulta SQL para tener valores dinámicos en función de la elección del "
 #~ "usuario.\n"
-#~ "El formato de los parámetros en la consulta SQL debe ser el siguiente: "
-#~ "%(nombre_campo_parámetro)s. \n"
+#~ "El formato de los parámetros en la consulta SQL debe ser el siguiente: %"
+#~ "(nombre_campo_parámetro)s. \n"
 #~ "Ejemplo: en el menú de variables, cree una variable de tipo \"char\", con "
 #~ "el nombre de campo \"x_name\" y la etiqueta de campo \"Nombre\". \n"
 #~ "A continuación, puede crear una consulta SQL como esta : SELECT * FROM "
 #~ "res_partner WHERE name = %(x_name)s la variable se puede utilizar en "
 #~ "cualquier número de consultas SQL diferentes. \n"
-#~ "En la consulta SQL, también puede incluir estos 2 parámetros especiales "
-#~ "%(user_id)s y %(company_id)s que serán sustituidos respectivamente por el "
+#~ "En la consulta SQL, también puede incluir estos 2 parámetros especiales %"
+#~ "(user_id)s y %(company_id)s que serán sustituidos respectivamente por el "
 #~ "usuario que ejecuta la consulta y la empresa del usuario que ejecuta la "
 #~ "consulta."
 

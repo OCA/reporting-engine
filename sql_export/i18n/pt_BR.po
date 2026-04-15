@@ -12,8 +12,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
 "PO-Revision-Date: 2019-09-02 22:23+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
-"teams/23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -153,6 +153,7 @@ msgstr ""
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -258,6 +259,11 @@ msgstr "Consulta"
 #. module: sql_export
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
+msgstr ""
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
 msgstr ""
 
 #. module: sql_export

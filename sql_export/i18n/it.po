@@ -152,6 +152,7 @@ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: sql_export
 #: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
@@ -172,8 +173,8 @@ msgid ""
 "                                Example : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 msgstr ""
-"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : "
-"%(Property String)s. <br/>\n"
+"Nel caso di utilizzo di roprietà nella query, utilizzare questa sintassi : %"
+"(Property String)s. <br/>\n"
 "                                Esempio : SELECT id FROM sale_order WHERE "
 "create_date &gt; %(Start Date)s"
 
@@ -264,6 +265,11 @@ msgstr "Query"
 #: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
 msgid "Query Properties"
 msgstr "Proprietà query"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Errore consegna SMS"
 
 #. module: sql_export
 #: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
@@ -393,9 +399,6 @@ msgstr "windows-1251"
 
 #~ msgid "Export file"
 #~ msgstr "Esporta file"
-
-#~ msgid "SMS Delivery error"
-#~ msgstr "Errore consegna SMS"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Ultima modifica il"
