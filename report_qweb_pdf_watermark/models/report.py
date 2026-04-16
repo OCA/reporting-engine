@@ -51,6 +51,22 @@ class Report(models.Model):
         "You have access to variables `env` and `docs`",
     )
 
+    def _get_watermark_company(self, docids, report_sudo):
+        """Return the company to use for the company watermark.
+
+        When printing a document in a multi-company environment, the
+        watermark should match the company of the document being printed,
+        not the company selected in the UI switcher.  Falls back to
+        ``self.env.company`` when no document or no ``company_id`` field
+        is available.
+        """
+        if docids:
+            model_name = self.model or report_sudo.model
+            docs = self.env[model_name].browse(docids)
+            if docs and "company_id" in docs._fields and docs[:1].company_id:
+                return docs[:1].company_id
+        return self.env.company
+
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
             self = self.with_context(res_ids=res_ids)
@@ -94,10 +110,10 @@ class Report(models.Model):
         watermark = None
         if self.pdf_watermark or report_sudo.pdf_watermark:
             watermark = b64decode(self.pdf_watermark or report_sudo.pdf_watermark)
-        elif (
-            self.use_company_watermark or report_sudo.use_company_watermark
-        ) and self.env.company.pdf_watermark:
-            watermark = b64decode(self.env.company.pdf_watermark)
+        elif self.use_company_watermark or report_sudo.use_company_watermark:
+            company = self._get_watermark_company(docids, report_sudo)
+            if company.pdf_watermark:
+                watermark = b64decode(company.pdf_watermark)
         elif docids:
             watermark = safe_eval(
                 self.pdf_watermark_expression
