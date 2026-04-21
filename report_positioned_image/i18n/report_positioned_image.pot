@@ -1,0 +1,191 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_positioned_image
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__company_id
+msgid "Company"
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Company Assignment"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_res_company__report_positioned_image_ids
+msgid "Company Images"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__first_page_only
+msgid "First Page Only"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__height
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Height (mm)"
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Height must be greater than zero."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__id
+msgid "ID"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_ir_actions_report__include_company_images
+#: model:ir.model.fields,help:report_positioned_image.field_report_pdf_form__include_company_images
+msgid ""
+"If checked, company-level images will be shown in addition to report-"
+"specific images."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__image
+msgid "Image"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_ir_actions_report__include_company_images
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_pdf_form__include_company_images
+msgid "Include Company Images"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_report_positioned_image__company_id
+msgid ""
+"Leave empty to apply to all companies. Set a specific company to restrict "
+"this image to that company only."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__pos_left
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Left (mm)"
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Left position must be a positive value."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__name
+msgid "Name"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_ir_actions_report__report_positioned_image_ids
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_pdf_form__report_positioned_image_ids
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Report Images"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_report_positioned_image
+msgid "Report Positioned Image"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__respect_image_ratio
+msgid "Respect Image Ratio"
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__pos_top
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Top (mm)"
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Top position must be a positive value."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_report_positioned_image__respect_image_ratio
+msgid ""
+"When enabled, changing width or height will automatically adjust the other "
+"dimension to maintain the original image aspect ratio."
+msgstr ""
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__width
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Width (mm)"
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Width must be greater than zero."
+msgstr ""
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid ""
+"You cannot assign this image to a different company. Please use the "
+"dedicated wizard to assign images to other companies."
+msgstr ""
