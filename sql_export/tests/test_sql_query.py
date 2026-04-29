@@ -25,7 +25,7 @@ class TestExportSqlQuery(TransactionCase):
         )
         cls.sql_export_partner = cls.env.ref("sql_export.sql_export_partner")
         cls.sql_export_partner_variables = cls.env.ref(
-            "sql_export.query_properties_definition"
+            "sql_export.sql_export_partner_with_variables"
         )
         cls.sql_export_partner_variables.button_validate_sql_expression()
 
