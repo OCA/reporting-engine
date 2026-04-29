@@ -6,6 +6,7 @@ import base64
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase, tagged
+from odoo.tools import convert
 
 
 @tagged("post_install", "-at_install")
@@ -15,48 +16,16 @@ class TestExportSqlQuery(TransactionCase):
         super().setUpClass()
         cls.sql_export_obj = cls.env["sql.export"]
         cls.wizard_obj = cls.env["sql.file.wizard"]
-        cls.sql_export_partner = cls.sql_export_obj.create(
-            {
-                "name": "Export Partners",
-                "query": "SELECT name, street FROM res_partner",
-            }
+        convert.convert_file(
+            env=cls.env,
+            module="sql_export",
+            filename="demo/sql_export.xml",
+            idref=None,
+            mode="init",
         )
-        cls.sql_export_partner.button_validate_sql_expression()
-        cls.sql_export_partner_variables = cls.sql_export_obj.create(
-            {
-                "name": "Export Partners with variables",
-                "query": """
-SELECT p.id
-FROM res_partner p
-LEFT JOIN res_partner_res_partner_category_rel rel
-    ON rel.partner_id = p.id
-WHERE create_date > %(Date)s
-    AND id = %(ID)s
-    AND rel.category_id in %(Categories)s
-                """,
-                "query_properties_definition": [
-                    {
-                        "name": "630eca383bc142e6",
-                        "string": "Date",
-                        "type": "date",
-                        "default": "",
-                    },
-                    {
-                        "name": "ec0556e22932334b",
-                        "string": "Categories",
-                        "type": "many2many",
-                        "default": False,
-                        "comodel": "res.partner.category",
-                        "domain": False,
-                    },
-                    {
-                        "name": "907ac618eccbab74",
-                        "string": "ID",
-                        "type": "integer",
-                        "default": False,
-                    },
-                ],
-            }
+        cls.sql_export_partner = cls.env.ref("sql_export.sql_export_partner")
+        cls.sql_export_partner_variables = cls.env.ref(
+            "sql_export.sql_export_partner_variables"
         )
         cls.sql_export_partner_variables.button_validate_sql_expression()
 
