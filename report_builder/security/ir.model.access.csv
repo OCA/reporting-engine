@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_instance,access_report_instance,model_report_instance,base.group_user,1,0,0,0
+manage_report_instance,manage_report_instance,model_report_instance,base.group_system,1,1,1,1
+access_report_instance_column,access_report_instance_columns,model_report_instance_column,base.group_user,1,0,0,0
+manage_report_instance_column,manage_report_instance_columns,model_report_instance_column,base.group_system,1,1,1,1
+access_report_template,access_report_template,model_report_template,base.group_user,1,0,0,0
+manage_report_template,manage_report_template,model_report_template,base.group_system,1,1,1,1
+access_report_template_kpi,access_report_template_kpi,model_report_template_kpi,base.group_user,1,0,0,0
+manage_report_template_kpi,manage_report_template_kpi,model_report_template_kpi,base.group_system,1,1,1,1
+access_report_template_kpi_item,access_report_template_kpi_item,model_report_template_kpi_item,base.group_user,1,0,0,0
+manage_report_template_kpi_item,manage_report_template_kpi_item,model_report_template_kpi_item,base.group_system,1,1,1,1
+access_report_style,access_report_style,model_report_style,base.group_user,1,0,0,0
+manage_report_style,manage_report_style,model_report_style,base.group_system,1,1,1,1
+access_report_template_kpi_query_kind,access_report_template_kpi_query_kind,model_report_template_kpi_query_kind,base.group_system,1,0,0,0
