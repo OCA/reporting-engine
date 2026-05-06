@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_report_printed_flag_root"
+        name="Printed Flag"
+        parent="base.reporting_menuitem"
+        sequence="90"
+    />
+    <menuitem
+        id="menu_report_printed_config"
+        name="Configurations"
+        parent="menu_report_printed_flag_root"
+        action="action_report_printed_config"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_report_printed_log"
+        name="Logs"
+        parent="menu_report_printed_flag_root"
+        action="action_report_printed_log"
+        sequence="11"
+    />
+</odoo>
