@@ -22,4 +22,8 @@
             </field>
         </field>
     </record>
+
+    <record id="web.action_report_externalpreview" model="ir.actions.report">
+        <field name="use_company_watermark" eval="True" />
+    </record>
 </odoo>

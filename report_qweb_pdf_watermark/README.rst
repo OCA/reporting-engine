@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =============
 Pdf watermark
 =============
@@ -17,7 +13,7 @@ Pdf watermark
 .. |badge1| image:: https://img.shields.io/badge/maturity-Production%2FStable-green.png
     :target: https://odoo-community.org/page/development-status
     :alt: Production/Stable
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
@@ -154,6 +150,7 @@ Contributors
 - bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>
 - Sander Lienaerts <sander.lienaerts@codeforward.nl>
 - Anjeel Haria
+- Dennis Sluijk <d.sluijk@onestein.nl>
 
 Maintainers
 -----------

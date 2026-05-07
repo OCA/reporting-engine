@@ -14,6 +14,7 @@
     "data": [
         "views/ir_actions_report_xml.xml",
         "views/res_company.xml",
+        "wizards/base_document_layout.xml",
     ],
     "assets": {
         "web.report_assets_pdf": [

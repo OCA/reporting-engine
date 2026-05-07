@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_base_document_layout" model="ir.ui.view">
+        <field name="model">base.document.layout</field>
+        <field name="inherit_id" ref="web.view_base_document_layout" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='layout_background']" position="after">
+                <field name="pdf_watermark" widget="pdf_viewer" />
+                <div
+                    role="alert"
+                    class="alert alert-info"
+                    invisible="not pdf_watermark"
+                >
+                    Note that the watermark is not reflected in the preview to the right.
+                    Use the <b
+                >Preview Document</b> button to see the watermark in the generated PDF.
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

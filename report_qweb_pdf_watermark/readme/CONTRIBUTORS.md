@@ -6,3 +6,4 @@
 - bosd \<<c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>\>
 - Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
 - Anjeel Haria
+- Dennis Sluijk \<<d.sluijk@onestein.nl>\>
