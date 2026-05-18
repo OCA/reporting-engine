@@ -33,6 +33,19 @@ msgid "Companies"
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_base_document_layout
+msgid "Company Document Layout"
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
+#: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_base_document_layout
+msgid ""
+"Note that the watermark is not reflected in the preview to the right.\n"
+"                    Use the <b>Preview Document</b> button to see the "
+"watermark in the generated PDF."
+msgstr ""
+
+#. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
 #, fuzzy
 msgid "Report Action"
@@ -64,6 +77,7 @@ msgid "Use the pdf watermark defined globally in the company settings."
 msgstr ""
 
 #. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_base_document_layout__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
