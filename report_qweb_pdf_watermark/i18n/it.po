@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-10 03:40+0000\n"
-"PO-Revision-Date: 2024-11-27 12:06+0000\n"
+"PO-Revision-Date: 2026-05-19 13:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
@@ -39,7 +39,7 @@ msgstr "Aziende"
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_base_document_layout
 msgid "Company Document Layout"
-msgstr ""
+msgstr "Schema documento azienda"
 
 #. module: report_qweb_pdf_watermark
 #: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_base_document_layout
@@ -48,6 +48,9 @@ msgid ""
 "                    Use the <b>Preview Document</b> button to see the "
 "watermark in the generated PDF."
 msgstr ""
+"Si noti che la filigrana non è visibile nell'anteprima a destra.\n"
+"                    Utilizzare il pulsante <b>Anteprima documento</b> per "
+"visualizzare la filigrana nel PDF generato."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
