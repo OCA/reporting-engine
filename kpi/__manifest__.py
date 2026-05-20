@@ -3,7 +3,7 @@
 
 {
     "name": "Key Performance Indicator",
-    "version": "17.0.1.1.0",
+    "version": "17.0.1.1.1",
     "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
