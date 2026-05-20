@@ -163,7 +163,9 @@ class KPI(models.Model):
                 if is_one_value(res):
                     kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
-                kpi_value = safe_eval(self.kpi_code, {"self": self})
+                kpi_value = safe_eval(
+                    self.kpi_code, {"self": self, "datetime": fields.datetime}
+                )
         if isinstance(kpi_value, dict):
             res = kpi_value
         else:
