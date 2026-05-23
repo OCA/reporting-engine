@@ -6,32 +6,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 18:47+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_qweb_parameter
 #: model:ir.actions.report,name:report_qweb_parameter.test_report_length_report_id
 msgid "Length Report"
-msgstr ""
+msgstr "Lonxitude do informe"
 
 #. module: report_qweb_parameter
 #: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be less than %s"
-msgstr ""
+msgstr "A lonxitude non pode ser menor a %s"
 
 #. module: report_qweb_parameter
 #: code:addons/report_qweb_parameter/models/ir_qweb.py:0
 #, python-format
 msgid "Length cannot be more than %s"
-msgstr ""
+msgstr "A lonxitude non pode ser maior a %s"
 
 #. module: report_qweb_parameter
 #: model:ir.model,name:report_qweb_parameter.model_ir_qweb
 msgid "Qweb"
-msgstr ""
+msgstr "Qweb"
