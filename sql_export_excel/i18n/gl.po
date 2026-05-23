@@ -6,38 +6,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 18:47+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__col_position
 msgid "Column Position"
-msgstr ""
+msgstr "Posición da columna"
 
 #. module: sql_export_excel
 #: model:ir.model.fields.selection,name:sql_export_excel.selection__sql_export__file_format__excel
 msgid "Excel"
-msgstr ""
+msgstr "Excel"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__attachment_id
 msgid "Excel Template"
-msgstr ""
+msgstr "Modelo Excel"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__file_format
 msgid "File Format"
-msgstr ""
+msgstr "Formato de arquivo"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__header
 msgid "Header"
-msgstr ""
+msgstr "Encabezado"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,help:sql_export_excel.field_sql_export__attachment_id
@@ -45,21 +47,25 @@ msgid ""
 "If you configure an excel file (in xlsx format) here, the result of the query will be injected in it.\n"
 "It is usefull to feed data in a excel file pre-configured with calculation"
 msgstr ""
+"Se configura aquí un ficheiro excel (en formato xlsx), o resultado da "
+"consulta inxectarase nel.\n"
+"É útil para alimentar os datos nun arquivo excel preconfigurado con cálculo"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,help:sql_export_excel.field_sql_export__col_position
 msgid "Indicate from which column the result of the query should be injected."
 msgstr ""
+"Indique a partir de que columna debe inxectarse o resultado da consulta."
 
 #. module: sql_export_excel
 #: model:ir.model.fields,help:sql_export_excel.field_sql_export__row_position
 msgid "Indicate from which row the result of the query should be injected."
-msgstr ""
+msgstr "Indica a partir de que fila debe inxectarse o resultado da consulta."
 
 #. module: sql_export_excel
 #: model:ir.model.fields,help:sql_export_excel.field_sql_export__header
 msgid "Indicate if the header should be exported to the file."
-msgstr ""
+msgstr "Indique se a cabeceira debe exportarse ao ficheiro."
 
 #. module: sql_export_excel
 #: model:ir.model.fields,help:sql_export_excel.field_sql_export__sheet_position
@@ -67,21 +73,23 @@ msgid ""
 "Indicate the sheet's position of the excel template where the result of the "
 "sql query should be injected."
 msgstr ""
+"Indique a posición da folla do modelo excel onde debe inxectarse o resultado "
+"da consulta sql."
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__row_position
 msgid "Row Position"
-msgstr ""
+msgstr "Posición da fila"
 
 #. module: sql_export_excel
 #: model:ir.model,name:sql_export_excel.model_sql_export
 msgid "SQL export"
-msgstr ""
+msgstr "Exportar SQL"
 
 #. module: sql_export_excel
 #: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__sheet_position
 msgid "Sheet Position"
-msgstr ""
+msgstr "Posición da folla"
 
 #. module: sql_export_excel
 #: code:addons/sql_export_excel/models/sql_export.py:0
@@ -90,21 +98,23 @@ msgid ""
 "The Excel Template file contains less than %s sheets Please, adjust the "
 "Sheet Position parameter."
 msgstr ""
+"O arquivo Modelo Excel contén menos de %s follas Por favor, axuste o "
+"parámetro Posición da Folla."
 
 #. module: sql_export_excel
 #: code:addons/sql_export_excel/models/sql_export.py:0
 #, python-format
 msgid "The column position can't be less than 1."
-msgstr ""
+msgstr "A posición da columna non pode ser inferior a 1."
 
 #. module: sql_export_excel
 #: code:addons/sql_export_excel/models/sql_export.py:0
 #, python-format
 msgid "The row position can't be less than 1."
-msgstr ""
+msgstr "A posición da fila non pode ser inferior a 1."
 
 #. module: sql_export_excel
 #: code:addons/sql_export_excel/models/sql_export.py:0
 #, python-format
 msgid "The sheet position can't be less than 1."
-msgstr ""
+msgstr "A posición da folla non pode ser inferior a 1."
