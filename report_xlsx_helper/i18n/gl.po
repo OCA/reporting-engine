@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 18:47+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -21,23 +23,25 @@ msgid ""
 "%(__name__)s, _write_line : programming error detected while processing "
 "col_specs_section %(col_specs_section)s, column %(col)s"
 msgstr ""
+"%(__name__)s, _write_line : erro de programación detectado ao procesar "
+"col_specs_section %(col_specs_section)s, columna %(col)s"
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
 #, python-format
 msgid "%s model was not found"
-msgstr ""
+msgstr "%s modelo non foi atopado"
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 #, python-format
 msgid ", cellvalue %s"
-msgstr ""
+msgstr ", valor de cela %s"
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr ""
+msgstr "Informe XLSX en abstracto"
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -47,6 +51,10 @@ msgid ""
 "\n"
 "Excel Sheet name '%(name)s' contains unsupported special characters: '%(special_chars)s'."
 msgstr ""
+"Erro de programación:\n"
+"\n"
+"O nome da folla Excel '%(name)s' contén caracteres especiais non admitidos: "
+"'%(special_chars)s'."
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -56,6 +64,9 @@ msgid ""
 "\n"
 "Excel Sheet name '%(name)s' should not exceed %(max_chars)s characters."
 msgstr ""
+"Erro de programación:\n"
+"\n"
+"O nome da folla Excel '%(name)s' non debe exceder %(max_chars)s caracteres."
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -65,6 +76,10 @@ msgid ""
 "\n"
 "The '%s' column is not defined in the worksheet column specifications."
 msgstr ""
+"Erro de programación:\n"
+"\n"
+"A columna '%s' non está definida nas especificacións de columna da folla de "
+"cálculo."
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -74,6 +89,10 @@ msgid ""
 "\n"
 "The '%s' column is not defined the worksheet column specifications."
 msgstr ""
+"Erro de programación:\n"
+"\n"
+"A columna '%s' non está definida nas especificacións de columna da folla de "
+"cálculo."
 
 #. module: report_xlsx_helper
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
@@ -83,13 +102,16 @@ msgid ""
 "\n"
 "The 'title' parameter is mandatory when calling the '_write_ws_title' method."
 msgstr ""
+"Erro de programación:\n"
+"\n"
+"O parámetro 'title' é obrigatorio ao chamar ao método '_write_ws_title'."
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Informar Acción"
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_helper_test_partner_xlsx
 msgid "Test Partner XLSX Report"
-msgstr ""
+msgstr "Informe XLSX do socio de proba"
