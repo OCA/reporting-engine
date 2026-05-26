@@ -101,6 +101,7 @@ class ReportInstance(models.Model):
         return {}
 
     def get_xlsx_report_action(self, pivot_date, domain=None):
-        # TODO: implement the method to return the action for XLSX report generation
         self.ensure_one()
-        return {}
+        return self.env.ref("report_builder.xlsx_report").report_action(
+            self, data={"pivot_date": pivot_date, "domain": domain}
+        )

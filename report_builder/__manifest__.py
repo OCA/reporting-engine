@@ -21,6 +21,7 @@
         "views/report_template.xml",
         "views/report_template_kpi.xml",
         "views/report_style.xml",
+        "reports/report_instance_reports.xml",
     ],
     "demo": [],
     "assets": {

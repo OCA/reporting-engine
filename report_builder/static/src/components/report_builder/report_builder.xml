@@ -24,7 +24,7 @@
                             <span class="fa fa-refresh" /> Refresh </button>
                         <button t-on-click="printPdf" class="btn">
                             <span class="fa fa-print" /> Print </button>
-                        <button t-on-click="exportXlsx" class="btn">
+                        <button t-on-click="printXlsx" class="btn">
                             <span class="fa fa-download" /> Export </button>
                         <button
                             t-on-click="displaySettings"

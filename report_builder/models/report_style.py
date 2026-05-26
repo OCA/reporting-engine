@@ -1,7 +1,7 @@
 # Copyright 2025 Dixmit
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ReportStyle(models.Model):
@@ -37,15 +37,8 @@ class ReportStyle(models.Model):
     )
     font_weight_inherit = fields.Boolean(default=True)
     font_size = fields.Selection(
-        [
-            ("xx-small", "XX-Small"),
-            ("x-small", "X-Small"),
-            ("small", "Small"),
-            ("medium", "Medium"),
-            ("large", "Large"),
-            ("x-large", "X-Large"),
-            ("xx-large", "XX-Large"),
-            ("xxx-large", "XXX-Large"),
+        selection=lambda self: [
+            (k, v[0]) for k, v in self._get_font_size_info().items()
         ]
     )
     font_size_inherit = fields.Boolean(default=True)
@@ -73,6 +66,18 @@ class ReportStyle(models.Model):
     hide_empty_inherit = fields.Boolean(default=True)
     hide_always = fields.Boolean(default=False)
     hide_always_inherit = fields.Boolean(default=True)
+
+    @api.model
+    def _get_font_size_info(self):
+        return {
+            "xx-small": ["XX-Small", 5],
+            "x-small": ["X-Small", 7],
+            "small": ["Small", 9],
+            "medium": ["Medium", 11],
+            "large": ["Large", 13],
+            "x-large": ["X-Large", 15],
+            "xx-large": ["XX-Large", 17],
+        }
 
     def _get_style(self, style=None):
         """Get style values from the current style or the given style."""
@@ -124,3 +129,34 @@ class ReportStyle(models.Model):
                 if parse_style(css_style[key]):
                     computed_style.append(f"{key}: {parse_style(css_style.get(key))}")
         return ";".join(computed_style), css_style
+
+    @api.model
+    def _get_style_xlsx(self, value_type, style_vals, no_indent=False):
+        xlsx_attributes = [
+            ("italic", style_vals.get("font-style") == "italic"),
+            ("bold", style_vals.get("font-weight") == "bold"),
+            (
+                "font_size",
+                self._get_font_size_info().get(
+                    style_vals.get("font-size"), [False, 11]
+                )[1],
+            ),
+            ("font_color", style_vals.get("color")),
+            ("bg_color", style_vals.get("background-color")),
+        ]
+        if value_type == "number":
+            num_format = "#,##0"
+            if style_vals.get("dp"):
+                num_format += "."
+                num_format += "0" * style_vals.get("dp")
+            if style_vals.get("prefix"):
+                num_format = f'"{style_vals.get("prefix")} "{num_format}'
+            if style_vals.get("suffix"):
+                num_format = f'{num_format}" {style_vals.get("suffix")}"'
+            xlsx_attributes.append(("num_format", num_format))
+        elif value_type == "percentage":
+            num_format = "0%"
+            xlsx_attributes.append(("num_format", num_format))
+        if style_vals.get("indent_level") is not None and not no_indent:
+            xlsx_attributes.append(("indent", style_vals.get("indent_level")))
+        return dict([a for a in xlsx_attributes if a[1] is not None])
