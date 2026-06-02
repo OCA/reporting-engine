@@ -5,6 +5,7 @@ import base64
 import logging
 import os
 import shutil
+import subprocess
 import tempfile
 from base64 import b64decode, b64encode
 from contextlib import contextmanager
@@ -20,11 +21,15 @@ except ImportError:
     # For PyPDF2 >= 2.0.0
     from PyPDF2 import PageObject
 
-from odoo import tools
-from odoo.exceptions import ValidationError
+import json
+
+from odoo import http, tools
+from odoo.exceptions import UserError, ValidationError
+from odoo.tests import common
 from odoo.tests.common import TransactionCase
 
 from odoo.addons.base.tests.test_mimetypes import PNG
+from odoo.addons.report_py3o.controllers.main import ReportController
 
 from ..models._py3o_parser_context import format_multiline_value
 from ..models.ir_actions_report import PY3O_CONVERSION_COMMAND_PARAMETER
@@ -75,9 +80,8 @@ class TestReportPy3o(TransactionCase):
             result = tempfile.mktemp(".txt")
             with open(result, "w") as fp:
                 fp.write(result_text)
-            patched_pdf.side_effect = (
-                lambda record, data: py3o_report_obj._postprocess_report(record, result)
-                or result
+            patched_pdf.side_effect = lambda record, data: (
+                py3o_report_obj._postprocess_report(record, result) or result
             )
             # test the call the the create method inside our custom parser
             self.report._render(self.report.id, self.env.user.ids)
@@ -252,7 +256,7 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.is_py3o_native_format)
         self.assertTrue(self.report.is_py3o_report_not_available)
         self.assertTrue(self.report.msg_py3o_report_not_available)
-        with self.assertRaises(RuntimeError):
+        with self.assertRaises(UserError):
             self.report._render(self.report.id, self.env.user.ids)
 
         # if we reset the wrong path, everything should work
@@ -266,3 +270,53 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.msg_py3o_report_not_available)
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertTrue(res)
+
+    @tools.misc.mute_logger("odoo.addons.report_py3o.models.py3o_report")
+    def test_convert_single_report_called_process_error(self):
+        self.report.py3o_filetype = "pdf"
+        py3o_report = self.env["py3o.report"].create(
+            {"ir_actions_report_id": self.report.id}
+        )
+        result_path = tempfile.mkstemp(suffix=".odt")[1]
+        self.addCleanup(os.unlink, result_path)
+        with mock.patch("subprocess.check_output") as mock_co:
+            mock_co.side_effect = subprocess.CalledProcessError(
+                returncode=1, cmd="libreoffice", output=b"test error output"
+            )
+            with self.assertRaises(UserError):
+                py3o_report._convert_single_report(result_path, self.env.user, {})
+
+
+class TestReportPy3oController(common.HttpCase):
+    def setUp(self):
+        super().setUp()
+        self.session = self.authenticate("admin", "admin")
+
+    @tools.misc.mute_logger("odoo.addons.web.controllers.report")
+    def test_report_download_error_logging(self):
+        with (
+            mock.patch.object(ReportController, "report_routes") as route_patch,
+            self.assertLogs(
+                "odoo.addons.report_py3o.controllers.main", level=logging.ERROR
+            ) as cm,
+        ):
+            route_patch.side_effect = Exception("Test error")
+            self.get_report_headers(
+                suffix="/report/py3o/report_py3o.res_users_report_py3o/1",
+                f_type="py3o",
+            )
+            [msg] = cm.output
+            self.assertIn("Error while generating py3o report", msg)
+
+    def get_report_headers(
+        self,
+        suffix="/report/py3o/report_py3o.res_users_report_py3o/1",
+        f_type="py3o",
+    ):
+        return self.url_open(
+            url="/report/download",
+            data={
+                "data": json.dumps([suffix, f_type]),
+                "csrf_token": http.Request.csrf_token(self),
+            },
+        )
