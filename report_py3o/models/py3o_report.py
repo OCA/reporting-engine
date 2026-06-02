@@ -15,7 +15,7 @@ from io import BytesIO
 from zipfile import ZIP_DEFLATED, ZipFile
 
 from odoo import _, api, fields, models, tools
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, UserError
 from odoo.tools.safe_eval import safe_eval, time
 
 from ._py3o_parser_context import Py3oParserContext
@@ -98,7 +98,7 @@ class Py3oReport(models.TransientModel):
         is_valid = real_path.startswith(root_path + os.path.sep)
         if not is_valid:
             logger.warning(
-                "Py3o template path is not valid. %s is not a child of root " "path %s",
+                "Py3o template path is not valid. %s is not a child of root path %s",
                 real_path,
                 root_path,
             )
@@ -262,9 +262,35 @@ class Py3oReport(models.TransientModel):
                     user_installation=tmp_user_installation,
                 )
                 logger.debug("Running command %s", command)
-                output = subprocess.check_output(
-                    command, cwd=os.path.dirname(result_path)
-                )
+                try:
+                    output = subprocess.check_output(
+                        command,
+                        cwd=os.path.dirname(result_path),
+                        stderr=subprocess.STDOUT,
+                    )
+                except FileNotFoundError:
+                    raise UserError(
+                        _(
+                            "LibreOffice binary not found: %s.\n"
+                            "Please check the py3o conversion command "
+                            "configuration."
+                        )
+                        % command[0]
+                    ) from None
+                except subprocess.CalledProcessError as exc:
+                    logger.error(
+                        "LibreOffice conversion failed.\n"
+                        "Exit code: %d\nCommand: %s\nOutput: %s",
+                        exc.returncode,
+                        " ".join(command),
+                        exc.output.decode("utf-8", errors="replace"),
+                    )
+                    raise UserError(
+                        _(
+                            "The report could not be generated. "
+                            "Please contact your administrator."
+                        )
+                    ) from exc
                 logger.debug("Output was %s", output)
                 self._cleanup_tempfiles([result_path])
                 result_path, result_filename = os.path.split(result_path)
@@ -272,6 +298,20 @@ class Py3oReport(models.TransientModel):
                     result_path,
                     f"{os.path.splitext(result_filename)[0]}.{self.ir_actions_report_id.py3o_filetype}",
                 )
+                if not os.path.exists(result_path):
+                    logger.error(
+                        "LibreOffice reported success but output file not found: %s.\n"
+                        "Stderr output: %s",
+                        result_path,
+                        output.decode("utf-8", errors="replace")[-2000:],
+                    )
+                    raise UserError(
+                        _(
+                            "The report could not be generated. "
+                            "The template may contain unsupported content. "
+                            "Please contact your administrator."
+                        )
+                    )
         return result_path
 
     def _convert_single_report_cmd(
@@ -280,7 +320,7 @@ class Py3oReport(models.TransientModel):
         """Return a command list suitable for use in subprocess.call"""
         lo_bin = self.ir_actions_report_id.lo_bin_path
         if not lo_bin:
-            raise RuntimeError(
+            raise UserError(
                 _(
                     "Libreoffice runtime not available. "
                     "Please contact your administrator."
