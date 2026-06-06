@@ -4,7 +4,7 @@
     "name": "Report PDF Form",
     "summary": "Fill custom PDF form reports ",
     "version": "19.0.1.0.0",
-    "development_status": "Alpha",
+    "development_status": "Beta",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Camptocamp, Odoo Community Association (OCA)",
