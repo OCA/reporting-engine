@@ -16,14 +16,20 @@ class ReportPDFForm(models.Model):
     }
 
     def write(self, vals):
-        # Ensure report_id is unique by checking before write
+        res = super().write(vals)
+        # Ensure report_id stays unique across PDF form reports
         if "report_id" in vals:
-            existing = self.search([("report_id", "=", vals["report_id"])])
-            if len(existing) > 1:  # If there would be duplicates after update
-                raise ValidationError(
-                    self.env._("The report must be unique for a PDF form report.")
-                )
-        return super().write(vals)
+            for record in self:
+                if record.report_id and self.search_count(
+                    [
+                        ("report_id", "=", record.report_id.id),
+                        ("id", "!=", record.id),
+                    ]
+                ):
+                    raise ValidationError(
+                        self.env._("The report must be unique for a PDF form report.")
+                    )
+        return res
 
     @api.model_create_multi
     def create(self, vals_list):
