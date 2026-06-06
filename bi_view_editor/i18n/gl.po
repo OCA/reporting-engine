@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 04:34+0000\n"
-"PO-Revision-Date: 2026-05-23 04:51+0000\n"
+"PO-Revision-Date: 2026-06-06 01:03+0000\n"
 "Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: Galician (http://www.transifex.com/oca/OCA-reporting-engine-8-"
 "0/language/gl/)\n"
@@ -155,7 +155,7 @@ msgid ""
 "t1's IDs; otherwise IDs are assigned with no specific order."
 msgstr ""
 "Condición a inserir na parte OVER da función row_number do ID.\n"
-"Por exemplo, 'ORDER BY t1.ide' crearía IDs ordenados da mesma forma que os "
+"Por exemplo, 'ORDER BY t1.id' crearía IDs ordenados da mesma forma que os "
 "IDs de t1; pola contra, os IDs asígnanse sen unha orde específica."
 
 #. module: bi_view_editor
@@ -247,7 +247,7 @@ msgid ""
 "{error}"
 msgstr ""
 "Erro ao crear a vista '{query}':\n"
-"{erro}"
+"{error}"
 
 #. module: bi_view_editor
 #: model:ir.model.fields,field_description:bi_view_editor.field_bve_view_line__field_id
