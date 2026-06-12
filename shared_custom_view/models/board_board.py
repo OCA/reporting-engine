@@ -15,7 +15,7 @@ class Board(models.AbstractModel):
         @return: Dictionary of Fields, arch and toolbar.
         """
 
-        res = super(Board, self).fields_view_get(
+        res = super().fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
         )
 
