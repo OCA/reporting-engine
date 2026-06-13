@@ -20,10 +20,11 @@ class KPIHistory(models.Model):
     date = fields.Datetime(
         "Execution Date",
         required=True,
+        readonly=True,
         default=lambda r: fields.Datetime.now(),
     )
-    value = fields.Float(required=True)
-    color = fields.Text(required=True, default="#FFFFFF")
+    value = fields.Float(required=True, readonly=True)
+    color = fields.Text(required=True, readonly=True, default="#FFFFFF")
     company_id = fields.Many2one(
         "res.company", "Company", default=lambda self: self.env.company
     )

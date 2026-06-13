@@ -7,6 +7,7 @@ class TestKPI(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
 
     def test_invalid_threshold_range(self):
         range1 = self.env["kpi.threshold.range"].create(
@@ -73,12 +74,12 @@ class TestKPI(TransactionCase):
         )
 
         threshold2 = self.env["kpi.threshold"].create(
-            {"name": "Threshold1", "range_ids": [(6, 0, [range3.id, range2.id])]}
+            {"name": "Threshold2", "range_ids": [(6, 0, [range3.id, range2.id])]}
         )
 
         threshold3 = self.env["kpi.threshold"].create(
             {
-                "name": "Threshold1",
+                "name": "Threshold3",
                 "range_ids": [(6, 0, [range_invalid.id, range2.id])],
             }
         )
@@ -98,6 +99,75 @@ class TestKPI(TransactionCase):
             }
         )
         self.assertFalse(range_error.valid)
+
+    def test_threshold_get_color(self):
+        threshold_range = self.env["kpi.threshold.range"].create(
+            {
+                "name": "Green range",
+                "min_type": "static",
+                "max_type": "static",
+                "min_fixed_value": 0,
+                "max_fixed_value": 10,
+                "color": "#00FF00",
+            }
+        )
+        threshold = self.env["kpi.threshold"].create(
+            {"name": "Threshold", "range_ids": [(6, 0, [threshold_range.id])]}
+        )
+        self.assertEqual(threshold.get_color(5), "#00FF00")
+        self.assertEqual(threshold.get_color(15), "#FFFFFF")
+
+    def test_kpi_python_scalar(self):
+        kpi_category = self.env["kpi.category"].create({"name": "Scalar KPIs"})
+        threshold_range = self.env["kpi.threshold.range"].create(
+            {
+                "name": "Range",
+                "min_type": "static",
+                "max_type": "static",
+                "min_fixed_value": 0,
+                "max_fixed_value": 10,
+                "color": "#FF0000",
+            }
+        )
+        kpi_threshold = self.env["kpi.threshold"].create(
+            {
+                "name": "KPI Threshold for scalar KPIs",
+                "range_ids": [(6, 0, [threshold_range.id])],
+            }
+        )
+        kpi = self.env["kpi"].create(
+            {
+                "name": "Scalar python kpi",
+                "category_id": kpi_category.id,
+                "threshold_id": kpi_threshold.id,
+                "periodicity": 1,
+                "periodicity_uom": "day",
+                "kpi_type": "python",
+                "kpi_code": "5.0",
+            }
+        )
+        history_vals = kpi._get_kpi_value()
+        self.assertEqual(history_vals["value"], 5.0)
+        self.assertEqual(history_vals["color"], "#FF0000")
+
+    def test_kpi_local_sql(self):
+        kpi_category = self.env["kpi.category"].create({"name": "SQL KPIs"})
+        kpi_threshold = self.env["kpi.threshold"].create(
+            {"name": "KPI Threshold for SQL KPIs"}
+        )
+        kpi = self.env["kpi"].create(
+            {
+                "name": "SQL kpi",
+                "category_id": kpi_category.id,
+                "threshold_id": kpi_threshold.id,
+                "periodicity": 1,
+                "periodicity_uom": "day",
+                "kpi_type": "local",
+                "kpi_code": "SELECT 7 AS value",
+            }
+        )
+        history_vals = kpi._get_kpi_value()
+        self.assertEqual(history_vals["value"], 7)
 
     def test_kpi_python(self):
         kpi_category = self.env["kpi.category"].create({"name": "Dynamic KPIs"})

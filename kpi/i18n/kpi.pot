@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -223,6 +223,7 @@ msgstr ""
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error
+#: model:ir.model.fields,help:kpi.field_kpi__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -234,7 +235,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid "KPI"
 msgstr ""
 
@@ -318,13 +318,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__last_execution
 msgid "Last execution"
-msgstr ""
-
-#. module: kpi
-#. odoo-python
-#: code:addons/kpi/models/kpi_threshold.py:0
-#, python-format
-msgid "Make sure your ranges do not overlap!"
 msgstr ""
 
 #. module: kpi
@@ -520,6 +513,11 @@ msgid "Responsible User"
 msgstr ""
 
 #. module: kpi
+#: model:ir.model.fields,field_description:kpi.field_kpi__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
 msgstr ""
@@ -560,8 +558,8 @@ msgstr ""
 #. module: kpi
 #. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
-#, python-format
-msgid "Two of your ranges are overlapping."
+msgid ""
+"Two of your ranges are overlapping. Make sure your ranges do not overlap!"
 msgstr ""
 
 #. module: kpi

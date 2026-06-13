@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2012 - Now Savoir-faire Linux <https://www.savoirfairelinux.com/>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- KPI -->
     <record id="view_kpi_tree" model="ir.ui.view">
@@ -8,13 +5,13 @@
         <field name="model">kpi</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="value" widget="progressbar" readonly="1" />
                 <field name="category_id" />
                 <field name="kpi_type" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="view_kpi_kanban" model="ir.ui.view">
@@ -28,7 +25,7 @@
                 <field name="value" readonly="1" />
                 <field name="last_execution" />
                 <templates>
-                    <t t-name="kanban-box">
+                    <t t-name="card">
                         <div class="oe_kanban_global_click o_kpi_kanban">
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_record_title oe_partner_heading">
@@ -60,7 +57,7 @@
         <field name="name">kpi.filter</field>
         <field name="model">kpi</field>
         <field name="arch" type="xml">
-            <search string="KPI">
+            <search>
                 <group>
                     <filter
                         name="active"
@@ -72,10 +69,10 @@
                     <separator orientation="vertical" />
                     <field name="name" />
                     <field name="category_id" />
-                    <field name="company_id" group="base.group_multi_company" />
+                    <field name="company_id" groups="base.group_multi_company" />
                 </group>
                 <newline />
-                <group expand="0" name="Group By...">
+                <group name="Group By...">
                     <filter name="Category" context="{'group_by':'category_id'}" />
                     <filter name="Type" context="{'group_by':'kpi_type'}" />
                 </group>
@@ -143,22 +140,14 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers" />
-                    <field name="activity_ids" widget="mail_activity" />
-                    <field
-                        name="message_ids"
-                        widget="mail_thread"
-                        options="{'post_refresh': 'recipients'}"
-                    />
-                </div>
+                <chatter />
             </form>
         </field>
     </record>
     <record model="ir.actions.act_window" id="open_kpi_dashboard">
         <field name="name">KPI Dashboard</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">kanban,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
     <record id="action_view_kpi_kanban" model="ir.actions.act_window.view">
@@ -170,12 +159,12 @@
     <record model="ir.actions.act_window" id="open_kpi_list">
         <field name="name">KPI</field>
         <field name="res_model">kpi</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_kpi_filter" />
     </record>
     <record id="action_view_kpi_tree" model="ir.actions.act_window.view">
         <field eval="2" name="sequence" />
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="view_id" ref="view_kpi_tree" />
         <field name="act_window_id" ref="open_kpi_list" />
     </record>
