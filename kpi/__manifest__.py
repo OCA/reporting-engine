@@ -2,9 +2,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Key Performance Indicator",
-    "version": "17.0.1.1.1",
-    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+    "name": "Key Performance Indicators",
+    "version": "18.0.1.0.0",
+    "author": "Savoir-faire Linux, "
+    "Open Source Integrators, "
+    "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Report",
@@ -18,7 +20,7 @@
         "views/kpi_threshold_views.xml",
         "views/kpi_views.xml",
         "views/menu.xml",
-        "data/kpi_data.xml",
+        "data/ir_cron.xml",
     ],
     "images": [
         "images/kpi_definition.png",
@@ -26,5 +28,6 @@
         "images/kpi_threshold.png",
         "images/kpi_range.png",
     ],
-    "installable": True,
+    "development_status": "Beta",
+    "maintainers": ["max3903"],
 }

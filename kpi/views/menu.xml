@@ -1,25 +1,22 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2012 - Now  Savoir-faire Linux <https://www.savoirfairelinux.com/>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-<!--        Change parent-->
     <menuitem
         id="menu_kpi_dasboard"
         name="Key Performance Indicators"
         action="open_kpi_dashboard"
         sequence="15"
-        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_dashboard"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
         groups="base.group_user"
     />
+
     <!-- CONFIGURATION -->
-<!--        Change parent-->
     <menuitem
         id="menu_configuration_kpi"
-        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration"
         name="Key Performance Indicators"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration"
         groups="kpi.group_kpi_manager"
         sequence="10"
     />
+
     <menuitem
         id="menu_configuration_kpi_kpi"
         name="Key Performance Indicators"
@@ -27,6 +24,7 @@
         sequence="10"
         parent="menu_configuration_kpi"
     />
+
     <menuitem
         id="menu_configuration_kpi_category"
         name="Categories"
@@ -34,6 +32,7 @@
         parent="menu_configuration_kpi"
         sequence="20"
     />
+
     <menuitem
         id="menu_configuration_kpi_range"
         name="Ranges"
@@ -41,6 +40,7 @@
         parent="menu_configuration_kpi"
         sequence="30"
     />
+
     <menuitem
         id="menu_configuration_kpi_dbsource"
         name="Data Sources"
@@ -48,6 +48,7 @@
         parent="menu_configuration_kpi"
         sequence="40"
     />
+
     <menuitem
         id="menu_configuration_kpi_threshold"
         name="Thresholds"

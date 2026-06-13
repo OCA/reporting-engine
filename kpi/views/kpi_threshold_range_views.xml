@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2012 - Now  Savoir-faire Linux <https://www.savoirfairelinux.com/>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- Ranges -->
     <record id="view_kpi_threshold_range_tree" model="ir.ui.view">
         <field name="name">kpi.threshold.range.tree</field>
         <field name="model">kpi.threshold.range</field>
         <field name="arch" type="xml">
-            <tree decoration-danger="invalid_message">
+            <list decoration-danger="invalid_message">
                 <field name="name" />
                 <field name="min_value" />
                 <field name="max_value" />
                 <field name="color" widget="color" readonly="1" />
                 <field name="invalid_message" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="view_kpi_threshold_range_form" model="ir.ui.view">
@@ -98,7 +95,7 @@
     <record model="ir.actions.act_window" id="open_threshold_range_list">
         <field name="name">Ranges</field>
         <field name="res_model">kpi.threshold.range</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_kpi_threshold_range_tree" />
     </record>
 </odoo>
