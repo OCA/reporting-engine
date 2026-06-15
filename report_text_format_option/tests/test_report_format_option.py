@@ -9,9 +9,31 @@ class TestReportFormatOption(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.demo_report = cls.env.ref(
-            "report_text_format_option.action_report_demo"
-        ).with_context(lang="en_US")
+        cls.env["ir.ui.view"].create(
+            {
+                "name": "report_text_format_option test template",
+                "type": "qweb",
+                "key": "report_text_format_option.test_report_template",
+                "arch": (
+                    "<t t-foreach='docs' t-as='doc'>\n"
+                    "    <p>Hello, <t t-esc='doc.name'/>!</p>\n"
+                    "</t>"
+                ),
+            }
+        )
+        cls.demo_report = (
+            cls.env["ir.actions.report"]
+            .create(
+                {
+                    "name": "Test Text Report",
+                    "model": "res.partner",
+                    "report_type": "qweb-text",
+                    "report_name": "report_text_format_option.test_report_template",
+                    "report_file": "report_text_format_option.test_report_template",
+                }
+            )
+            .with_context(lang="en_US")
+        )
         cls.partner = cls.env["res.partner"].create({"name": "Odoo Test Partner"})
 
     def test_report_default_encoding(self):

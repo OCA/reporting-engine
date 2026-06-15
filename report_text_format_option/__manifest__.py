@@ -5,7 +5,7 @@
     "author": "Quartile, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Reporting",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "LGPL-3",
     "depends": ["base"],
     "data": ["views/ir_actions_report_views.xml"],
