@@ -53,7 +53,7 @@ class ReportLabelWizard(models.TransientModel):
         "report.label.wizard.line",
         "wizard_id",
         "Lines",
-        default=_default_line_ids,
+        default=lambda self: self._default_line_ids(),
         required=True,
     )
 
