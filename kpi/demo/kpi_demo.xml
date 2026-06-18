@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="kpi_category_demo_sales" model="kpi.category">
+        <field name="name">Sales</field>
+        <field
+            name="description"
+        >Sample category for sales and customer-related KPIs.</field>
+    </record>
+
+    <record id="kpi_range_demo_red" model="kpi.threshold.range">
+        <field name="name">Critical</field>
+        <field name="min_type">static</field>
+        <field name="max_type">static</field>
+        <field name="min_fixed_value">0</field>
+        <field name="max_fixed_value">50</field>
+        <field name="color">#FF0000</field>
+    </record>
+    <record id="kpi_range_demo_yellow" model="kpi.threshold.range">
+        <field name="name">Warning</field>
+        <field name="min_type">static</field>
+        <field name="max_type">static</field>
+        <field name="min_fixed_value">51</field>
+        <field name="max_fixed_value">79</field>
+        <field name="color">#FFFF00</field>
+    </record>
+    <record id="kpi_range_demo_green" model="kpi.threshold.range">
+        <field name="name">Good</field>
+        <field name="min_type">static</field>
+        <field name="max_type">static</field>
+        <field name="min_fixed_value">80</field>
+        <field name="max_fixed_value">100</field>
+        <field name="color">#00FF00</field>
+    </record>
+
+    <record id="kpi_threshold_demo_performance" model="kpi.threshold">
+        <field name="name">Performance Threshold</field>
+        <field
+            name="range_ids"
+            eval="[(6, 0, [ref('kpi_range_demo_red'), ref('kpi_range_demo_yellow'), ref('kpi_range_demo_green')])]"
+        />
+    </record>
+
+    <record id="kpi_demo_satisfaction" model="kpi">
+        <field name="name">Customer Satisfaction</field>
+        <field
+            name="description"
+        >Demo KPI using a Python expression returning a fixed score.</field>
+        <field name="category_id" ref="kpi_category_demo_sales" />
+        <field name="threshold_id" ref="kpi_threshold_demo_performance" />
+        <field name="periodicity">1</field>
+        <field name="periodicity_uom">day</field>
+        <field name="kpi_type">python</field>
+        <field name="kpi_code">85.0</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="kpi_demo_partner_count" model="kpi">
+        <field name="name">Active Partners Count</field>
+        <field
+            name="description"
+        >Demo KPI using a local SQL query on the Odoo database.</field>
+        <field name="category_id" ref="kpi_category_demo_sales" />
+        <field name="threshold_id" ref="kpi_threshold_demo_performance" />
+        <field name="periodicity">1</field>
+        <field name="periodicity_uom">day</field>
+        <field name="kpi_type">local</field>
+        <field
+            name="kpi_code"
+        >SELECT COUNT(*) AS value FROM res_partner WHERE active = true</field>
+        <field name="active" eval="True" />
+    </record>
+</odoo>

@@ -7,3 +7,5 @@
 - Adrià Gil \<<adria.gil@eficent.com>\>
 - [Guadaltech](https://www.guadaltech.es):
   - Fernando La Chica \<<fernando.lachica@guadaltech.es>\>
+- [Gray Matter Logic](https://www.graymatterlogic.com):
+  - Maxime Chambreuil \<<maxime.chambreuil@graymatterlogic.com>\>
