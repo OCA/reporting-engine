@@ -3,10 +3,8 @@
 
 {
     "name": "Key Performance Indicators",
-    "version": "18.0.1.0.0",
-    "author": "Savoir-faire Linux, "
-    "Open Source Integrators, "
-    "Odoo Community Association (OCA)",
+    "version": "19.0.1.0.0",
+    "author": "Savoir-faire Linux, Gray Matter Logic, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
     "category": "Report",
@@ -21,6 +19,9 @@
         "views/kpi_views.xml",
         "views/menu.xml",
         "data/ir_cron.xml",
+    ],
+    "demo": [
+        "demo/kpi_demo.xml",
     ],
     "images": [
         "images/kpi_definition.png",

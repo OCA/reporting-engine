@@ -110,9 +110,7 @@ class KPI(models.Model):
     )
     kpi_code = fields.Text(
         "KPI Code",
-        help=(
-            "SQL code must return the result as 'value' " "(i.e. 'SELECT 5 AS value')."
-        ),
+        help=("SQL code must return the result as 'value' (i.e. 'SELECT 5 AS value')."),
     )
     history_ids = fields.One2many(
         "kpi.history",
@@ -164,7 +162,7 @@ class KPI(models.Model):
                     kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
                 kpi_value = safe_eval(
-                    self.kpi_code, {"self": self, "datetime": fields.datetime}
+                    self.kpi_code, {"self": self, "datetime": fields.Datetime}
                 )
         if isinstance(kpi_value, dict):
             res = kpi_value

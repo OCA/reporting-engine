@@ -56,33 +56,48 @@ class KPIThreshold(models.Model):
         "res.company", "Company", default=lambda self: self.env.company
     )
 
-    @api.model
-    def create(self, data):
-        # check if ranges overlap
-        # TODO: This code can be done better
-        range_obj1 = self.env["kpi.threshold.range"]
-        range_obj2 = self.env["kpi.threshold.range"]
-        if data.get("range_ids"):
-            for range1 in data["range_ids"]:
-                range_obj1 = range_obj1.browse(range1[1])
-                for range2 in data["range_ids"]:
-                    range_obj2 = range_obj2.browse(range2[1])
+    def _range_ids_from_commands(self, commands):
+        range_ids = []
+        for command in commands:
+            if command[0] == 6:
+                range_ids = list(command[2])
+            elif command[0] == 4:
+                range_ids.append(command[1])
+            elif command[0] == 3:
+                range_ids = [
+                    range_id for range_id in range_ids if range_id != command[1]
+                ]
+            elif command[0] == 5:
+                range_ids = []
+        return range_ids
 
-                    if (
-                        range_obj1.valid
-                        and range_obj2.valid
-                        and range_obj1.min_value < range_obj2.min_value
-                    ):
-                        if range_obj1.max_value > range_obj2.min_value:
-                            raise ValidationError(
-                                self.env._(
-                                    "Two of your ranges are overlapping. "
-                                    "Make sure your ranges do not overlap!"
-                                ),
-                            )
-                    range_obj2 = self.env["kpi.threshold.range"]
-                range_obj1 = self.env["kpi.threshold.range"]
-        return super().create(data)
+    def _check_range_overlap(self, range_ids_commands):
+        range_ids = self._range_ids_from_commands(range_ids_commands)
+        if not range_ids:
+            return
+        ranges = self.env["kpi.threshold.range"].browse(range_ids)
+        for range1 in ranges:
+            if not range1.valid:
+                continue
+            for range2 in ranges - range1:
+                if (
+                    range2.valid
+                    and range1.min_value < range2.min_value
+                    and range1.max_value > range2.min_value
+                ):
+                    raise ValidationError(
+                        self.env._(
+                            "Two of your ranges are overlapping. "
+                            "Make sure your ranges do not overlap!"
+                        ),
+                    )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("range_ids"):
+                self._check_range_overlap(vals["range_ids"])
+        return super().create(vals_list)
 
     def get_color(self, kpi_value):
         color = "#FFFFFF"

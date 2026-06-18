@@ -17,35 +17,28 @@
         <field name="arch" type="xml">
             <form string="Threshold">
                 <sheet>
-                    <group col="6" colspan="6">
-                        <field name="name" colspan="2" />
-                        <field
-                            name="company_id"
-                            groups="base.group_multi_company"
-                            colspan="2"
-                        />
-                        <newline />
-                        <separator string="Ranges" colspan="6" />
-                        <newline />
-                        <field name="range_ids" nolabel="1" colspan="6" />
-                        <newline />
-                        <separator string="KPIs" colspan="6" />
-                        <newline />
-                        <field name="kpi_ids" nolabel="1" colspan="6" />
-                        <newline />
-                        <separator
-                            string="Errors"
-                            invisible="not invalid_message"
-                            colspan="4"
-                        />
-                        <field
-                            name="invalid_message"
-                            nolabel="1"
-                            invisible="not invalid_message"
-                            colspan="4"
-                        />
-                        <newline />
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                        </group>
                     </group>
+                    <group invisible="not invalid_message">
+                        <field name="invalid_message" nolabel="1" colspan="2" />
+                    </group>
+                    <notebook>
+                        <page string="Ranges">
+                            <field name="range_ids" nolabel="1" />
+                        </page>
+                        <page string="KPI">
+                            <field name="kpi_ids" nolabel="1" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
