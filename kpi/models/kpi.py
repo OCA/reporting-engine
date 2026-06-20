@@ -9,6 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
+from odoo.tools.safe_eval import datetime as safe_eval_datetime
 from odoo.tools.safe_eval import safe_eval
 
 _logger = logging.getLogger(__name__)
@@ -128,11 +129,12 @@ class KPI(models.Model):
         "res.company", "Company", default=lambda self: self.env.company
     )
 
+    @api.depends(
+        "history_ids", "history_ids.value", "history_ids.color", "history_ids.date"
+    )
     def _compute_display_last_kpi_value(self):
-        history_obj = self.env["kpi.history"]
         for obj in self:
-            history_ids = history_obj.search([("kpi_id", "=", obj.id)])
-            if history_ids:
+            if obj.history_ids:
                 his = obj.history_ids[0]
                 obj.value = his.value
                 obj.color = his.color
@@ -162,7 +164,7 @@ class KPI(models.Model):
                     kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
                 kpi_value = safe_eval(
-                    self.kpi_code, {"self": self, "datetime": fields.Datetime}
+                    self.kpi_code, {"self": self, "datetime": safe_eval_datetime}
                 )
         if isinstance(kpi_value, dict):
             res = kpi_value
@@ -178,8 +180,10 @@ class KPI(models.Model):
     def compute_kpi_value(self):
         for obj in self:
             history_vals = obj._get_kpi_value()
-            history_obj = self.env["kpi.history"]
-            history_obj.sudo().create(history_vals)
+            self.env["kpi.history"].sudo().create(history_vals)
+            obj.invalidate_recordset(
+                ["history_ids", "value", "color", "last_execution"]
+            )
         return True
 
     def update_next_execution_date(self):
@@ -209,7 +213,11 @@ class KPI(models.Model):
             "&",
             "|",
             ("active", "=", True),
-            ("next_execution_date", "<=", datetime.now().strftime(DATETIME_FORMAT)),
+            (
+                "next_execution_date",
+                "<=",
+                datetime.now().strftime(DATETIME_FORMAT),
+            ),
             ("next_execution_date", "=", False),
         ]
         if "filters" in self.env.context:

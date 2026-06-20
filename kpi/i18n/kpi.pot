@@ -136,7 +136,6 @@ msgid "Display Name"
 msgstr ""
 
 #. module: kpi
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Errors"
 msgstr ""
@@ -223,7 +222,6 @@ msgstr ""
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error
-#: model:ir.model.fields,help:kpi.field_kpi__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -235,6 +233,7 @@ msgstr ""
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
+#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "KPI"
 msgstr ""
 
@@ -280,7 +279,6 @@ msgstr ""
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__kpi_ids
-#: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "KPIs"
 msgstr ""
 
@@ -294,6 +292,7 @@ msgstr ""
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_kpi
 #: model:ir.ui.menu,name:kpi.menu_kpi_dasboard
+#: model:res.groups.privilege,name:kpi.privilege_kpi
 msgid "Key Performance Indicators"
 msgstr ""
 
@@ -510,11 +509,6 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_user_id
 msgid "Responsible User"
-msgstr ""
-
-#. module: kpi
-#: model:ir.model.fields,field_description:kpi.field_kpi__message_has_sms_error
-msgid "SMS Delivery error"
 msgstr ""
 
 #. module: kpi
