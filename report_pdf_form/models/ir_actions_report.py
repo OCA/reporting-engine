@@ -23,10 +23,12 @@ class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
     def _render_qweb_pdf_prepare_streams(self, report_ref, data, res_ids=None):
-        pdf_form_report = self.env["report.pdf.form"].search(
-            [("report_name", "=", report_ref)], limit=1
+        ReportPdfFormSudo = self.env["report.pdf.form"].sudo()
+        report = self._get_report(report_ref)
+        pdf_form_report = ReportPdfFormSudo.search(
+            [("report_id", "=", report.id)],
+            limit=1,
         )
-
         if not pdf_form_report:
             return super()._render_qweb_pdf_prepare_streams(
                 report_ref, data, res_ids=res_ids

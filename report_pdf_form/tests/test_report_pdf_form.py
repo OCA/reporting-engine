@@ -100,7 +100,7 @@ class TestReportPDFForm(common.TransactionCase):
             res[pdf_object["/T"].split("__")[1]] = pdf_object["/V"]
         return res
 
-    def test_fill_pdf_form(self):
+    def test_fill_pdf_form_by_name(self):
         streams_dict = self.env["ir.actions.report"]._render_qweb_pdf_prepare_streams(
             "pdf_form.example", {}, res_ids=self.azure_partner.ids
         )
@@ -117,6 +117,22 @@ class TestReportPDFForm(common.TransactionCase):
                 self.assertEqual(pdf_field_value, self.azure_partner.child_ids[0].name)
             elif pdf_field_name == "form_line_2":
                 self.assertEqual(pdf_field_value, "")
+
+    def test_fill_pdf_form_by_id(self):
+        """report_ref passed as int (report id) must not raise AssertionError."""
+        streams_dict = self.env["ir.actions.report"]._render_qweb_pdf_prepare_streams(
+            self.empty_report.id, {}, res_ids=self.azure_partner.ids
+        )
+        self.assertIn(self.azure_partner.id, streams_dict)
+        self.assertIsNotNone(streams_dict[self.azure_partner.id]["stream"])
+
+    def test_fill_pdf_form_by_record(self):
+        """report_ref passed as models.Model recordset must not raise AssertionError."""
+        streams_dict = self.env["ir.actions.report"]._render_qweb_pdf_prepare_streams(
+            self.empty_report, {}, res_ids=self.azure_partner.ids
+        )
+        self.assertIn(self.azure_partner.id, streams_dict)
+        self.assertIsNotNone(streams_dict[self.azure_partner.id]["stream"])
 
     # ------------------------------------------------------------------
     # Helpers
