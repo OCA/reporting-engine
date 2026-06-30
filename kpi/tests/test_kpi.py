@@ -149,3 +149,25 @@ class TestKPI(TransactionCase):
         kpi_history = self.env["kpi.history"].search([("kpi_id", "=", kpi.id)])
         self.assertEqual(len(kpi_history), 1)
         self.assertEqual(kpi_history.value, 1.0)
+
+    def test_kpi_python_mean(self):
+        kpi_category = self.env["kpi.category"].create({"name": "Dynamic KPIs"})
+        kpi_threshold = self.env["kpi.threshold"].create(
+            {"name": "KPI Threshold for dynamic KPIs"}
+        )
+        kpi = self.env["kpi"].create(
+            {
+                "name": "KPI with mean",
+                "description": "KPI using mean in python code",
+                "category_id": kpi_category.id,
+                "threshold_id": kpi_threshold.id,
+                "periodicity": 1,
+                "periodicity_uom": "day",
+                "kpi_type": "python",
+                "kpi_code": "mean([1.0, 2.0, 3.0])",
+            }
+        )
+        kpi.update_kpi_value()
+        kpi_history = self.env["kpi.history"].search([("kpi_id", "=", kpi.id)])
+        self.assertEqual(len(kpi_history), 1)
+        self.assertEqual(kpi_history.value, 2.0)

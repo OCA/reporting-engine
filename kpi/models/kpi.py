@@ -4,6 +4,7 @@
 import logging
 import re
 from datetime import datetime
+from statistics import mean
 
 from dateutil.relativedelta import relativedelta
 
@@ -165,7 +166,12 @@ class KPI(models.Model):
             elif self.kpi_type == "python":
                 kpi_value = safe_eval(
                     self.kpi_code,
-                    {"self": self, "datetime": fields.datetime, "dateutil": dateutil},
+                    {
+                        "self": self,
+                        "datetime": fields.datetime,
+                        "dateutil": dateutil,
+                        "mean": mean,
+                    },
                 )
         if isinstance(kpi_value, dict):
             res = kpi_value
