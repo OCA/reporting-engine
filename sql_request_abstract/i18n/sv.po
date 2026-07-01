@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-01 02:11+0000\n"
-"PO-Revision-Date: 2024-06-12 08:56+0000\n"
-"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
+"PO-Revision-Date: 2026-07-01 14:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
@@ -93,6 +93,8 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Om ifyllt körs frågan mot en extern databas, konfigurerad i Odoos "
+"huvudkonfigurationsfil. "
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
@@ -260,7 +262,7 @@ msgstr "Oimplementerat läge : '%s'"
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Använd extern databas"
 
 #. module: sql_request_abstract
 #: model:res.groups,name:sql_request_abstract.group_sql_request_user
@@ -289,6 +291,8 @@ msgid ""
 "You can't use an external database as there are no such configuration about "
 "this. Please contact your Odoo administrator to solve this issue."
 msgstr ""
+"Du kan inte använda en extern databas eftersom det saknas konfiguration för "
+"detta. Kontakta din Odoo-administratör för att lösa problemet."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
