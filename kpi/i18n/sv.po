@@ -9,19 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
-"PO-Revision-Date: 2018-02-23 18:00+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"PO-Revision-Date: 2026-07-01 14:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Åtgärd krävs"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__active
@@ -32,27 +33,27 @@ msgstr "Aktiv"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Aktiviteter"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Utsmyckning för aktivitetsundantag"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Aktivitetsstatus"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Ikon för aktivitetstyp"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Antal bilagor"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_category_list
@@ -69,14 +70,14 @@ msgstr "Kategori"
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi_threshold_range__color
 msgid "Choose your color"
-msgstr ""
+msgstr "Välj din färg"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__color
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__color
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__color
 msgid "Color"
-msgstr ""
+msgstr "Färg"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__company_id
@@ -89,12 +90,12 @@ msgstr "Bolag"
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "Computation"
-msgstr ""
+msgstr "Beräkning"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "Compute KPI Now"
-msgstr ""
+msgstr "Beräkna KPI nu"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__create_uid
@@ -117,12 +118,12 @@ msgstr "Skapad den"
 #. module: kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_dbsource
 msgid "Data Sources"
-msgstr ""
+msgstr "Datakällor"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__day
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__description
@@ -144,47 +145,47 @@ msgstr "Visa namn"
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Errors"
-msgstr ""
+msgstr "Fel"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__date
 msgid "Execution Date"
-msgstr ""
+msgstr "Körningsdatum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__dbsource_id
 msgid "External DB Source"
-msgstr ""
+msgstr "Extern DB-källa"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
 msgid "External DB Source Maximum"
-msgstr ""
+msgstr "Extern DB-källa maximum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
 msgid "External DB Source Minimum"
-msgstr ""
+msgstr "Extern DB-källa minimum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Följare"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Följare (partner)"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Font awesome-ikon t.ex. fa-tasks"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Har meddelande"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
@@ -195,12 +196,12 @@ msgstr "Historia"
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_history
 msgid "History of the KPI"
-msgstr ""
+msgstr "KPI-historik"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__hour
 msgid "Hour"
-msgstr ""
+msgstr "Timme"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__id
@@ -214,93 +215,93 @@ msgstr "ID"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Ikon för att indikera en undantagsaktivitet."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Om markerat kräver nya meddelanden din uppmärksamhet."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Om markerat har vissa meddelanden ett leveransfel."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Är följare"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid "KPI"
-msgstr ""
+msgstr "KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_category
 msgid "KPI Category"
-msgstr ""
+msgstr "KPI-kategori"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__kpi_code
 msgid "KPI Code"
-msgstr ""
+msgstr "KPI-kod"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "KPI Computation"
-msgstr ""
+msgstr "KPI-beräkning"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__kpi_type
 msgid "KPI Computation Type"
-msgstr ""
+msgstr "KPI-beräkningstyp"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_dashboard
 msgid "KPI Dashboard"
-msgstr ""
+msgstr "KPI-instrumentpanel"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_form
 msgid "KPI History"
-msgstr ""
+msgstr "KPI-historik"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_threshold
 msgid "KPI Threshold"
-msgstr ""
+msgstr "KPI-tröskel"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_threshold_range
 msgid "KPI Threshold Range"
-msgstr ""
+msgstr "KPI-tröskelintervall"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__kpi_ids
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "KPIs"
-msgstr ""
+msgstr "KPI:er"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "Key Performance Indicator"
-msgstr ""
+msgstr "Nyckelprestandaindikator"
 
 #. module: kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_kpi
 #: model:ir.ui.menu,name:kpi.menu_kpi_dasboard
 msgid "Key Performance Indicators"
-msgstr ""
+msgstr "Nyckelprestandaindikatorer"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__write_uid
@@ -323,110 +324,110 @@ msgstr "Senast uppdaterad"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__last_execution
 msgid "Last execution"
-msgstr ""
+msgstr "Senaste körning"
 
 #. module: kpi
 #. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
-msgstr ""
+msgstr "Se till att dina intervall inte överlappar varandra!"
 
 #. module: kpi
 #: model:res.groups,name:kpi.group_kpi_manager
 msgid "Manage KPI's"
-msgstr ""
+msgstr "Hantera KPI:er"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_type
 msgid "Max Type"
-msgstr ""
+msgstr "Maxtyp"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Maximum"
-msgstr ""
+msgstr "Maximum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_code
 msgid "Maximum Computation Code"
-msgstr ""
+msgstr "Beräkningskod för maximum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
 msgid "Maximum Error"
-msgstr ""
+msgstr "Maximumfel"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_fixed_value
 msgid "Maximum Fixed Value"
-msgstr ""
+msgstr "Fast maximumvärde"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
 msgid "Maximum Value"
-msgstr ""
+msgstr "Maximumvärde"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__invalid_message
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__invalid_message
 msgid "Message"
-msgstr ""
+msgstr "Meddelande"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Meddelandeleveransfel"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Meddelanden"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_type
 msgid "Min Type"
-msgstr ""
+msgstr "Mintyp"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_code
 msgid "Minimum Computation Code"
-msgstr ""
+msgstr "Beräkningskod för minimum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
 msgid "Minimum Error"
-msgstr ""
+msgstr "Minimumfel"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_fixed_value
 msgid "Minimum Fixed Value"
-msgstr ""
+msgstr "Fast minimumvärde"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
 msgid "Minimum Value"
-msgstr ""
+msgstr "Minimumvärde"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__minute
 msgid "Minute"
-msgstr ""
+msgstr "Minut"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__month
 msgid "Month"
-msgstr ""
+msgstr "Månad"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Min aktivitetsfrist"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__name
@@ -440,42 +441,42 @@ msgstr "Namn"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Nästa aktivitetsfrist"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Nästa aktivitetssammanfattning"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Nästa aktivitetstyp"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__next_execution_date
 msgid "Next execution date"
-msgstr ""
+msgstr "Nästa körningsdatum"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Antal åtgärder"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Antal fel"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Antal meddelanden som kräver åtgärd"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Antal meddelanden med leveransfel"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
@@ -483,6 +484,8 @@ msgid ""
 "Only active KPIs are computed by the scheduler based on the periodicity "
 "configuration."
 msgstr ""
+"Endast aktiva KPI:er beräknas av schemaläggaren baserat på "
+"periodicitetsknfigurationen."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__active
@@ -490,26 +493,28 @@ msgid ""
 "Only active KPIs will be updated by the scheduler based on the periodicity "
 "configuration."
 msgstr ""
+"Endast aktiva KPI:er uppdateras av schemaläggaren baserat på "
+"periodicitetskonfigurationen."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__periodicity
 msgid "Periodicity"
-msgstr ""
+msgstr "Periodicitet"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__periodicity_uom
 msgid "Periodicity UoM"
-msgstr ""
+msgstr "Periodicitetsenhet"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__python
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Range"
-msgstr ""
+msgstr "Intervall"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_threshold_range_list
@@ -517,27 +522,28 @@ msgstr ""
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_range
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "Ranges"
-msgstr ""
+msgstr "Intervall"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Ansvarig användare"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
-msgstr ""
+msgstr "SQL – extern databas"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__local
 msgid "SQL - Local DB"
-msgstr ""
+msgstr "SQL – lokal databas"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__kpi_code
 msgid "SQL code must return the result as 'value' (i.e. 'SELECT 5 AS value')."
 msgstr ""
+"SQL-koden måste returnera resultatet som 'value' (dvs. 'SELECT 5 AS value')."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_state
@@ -547,12 +553,16 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Status baserat på aktiviteter\n"
+"Försenad: Förfallodatumet har passerat\n"
+"Idag: Aktivitetsdatumet är idag\n"
+"Planerad: Framtida aktiviteter."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__threshold_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "Threshold"
-msgstr ""
+msgstr "Tröskel"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_threshold_list
@@ -560,51 +570,51 @@ msgstr ""
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_threshold
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Thresholds"
-msgstr ""
+msgstr "Trösklar"
 
 #. module: kpi
 #. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
-msgstr ""
+msgstr "Två av dina intervall överlappar varandra."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Typ av undantagsaktivitet för posten."
 
 #. module: kpi
 #: model:ir.actions.server,name:kpi.ir_cron_kpi_action_ir_actions_server
 msgid "Update KPI values"
-msgstr ""
+msgstr "Uppdatera KPI-värden"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__valid
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__valid
 msgid "Valid"
-msgstr ""
+msgstr "Giltig"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__value
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__value
 msgid "Value"
-msgstr ""
+msgstr "Värde"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Webbplatsmeddelanden"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Webbplatskommunikationshistorik"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
 msgid "Week"
-msgstr ""
+msgstr "Vecka"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Senast redigerad"
