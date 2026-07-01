@@ -9,36 +9,37 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-06 02:51+0000\n"
-"PO-Revision-Date: 2017-06-06 02:51+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2026-07-01 14:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Danish (https://www.transifex.com/oca/teams/23907/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Handling nødvendig"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__group_ids
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Allowed Groups"
-msgstr ""
+msgstr "Tilladte grupper"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__user_ids
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Allowed Users"
-msgstr ""
+msgstr "Tilladte brugere"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Antal vedhæftninger"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__display_name
@@ -54,22 +55,22 @@ msgstr "Udkast"
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Følgere"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Følgere (partnere)"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_group_changed
 msgid "Has Group Changed"
-msgstr ""
+msgstr "Gruppe ændret"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Har besked"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__id
@@ -79,12 +80,12 @@ msgstr "Id"
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Hvis markeret, kræver nye beskeder din opmærksomhed."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Hvis markeret, har nogle beskeder en leveringsfejl."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__use_external_database
@@ -92,22 +93,24 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Hvis udfyldt, udføres forespørgslen mod en ekstern database, der er "
+"konfigureret i Odoos hovedkonfigurationsfil. "
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Er følger"
 
 #. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid "It is not allowed to execute a not checked request."
-msgstr ""
+msgstr "Det er ikke tilladt at udføre en ikke-godkendt anmodning."
 
 #. module: sql_request_abstract
 #: model:res.groups,name:sql_request_abstract.group_sql_request_manager
 msgid "Manager"
-msgstr ""
+msgstr "Administrator"
 
 #. module: sql_request_abstract
 #. odoo-python
@@ -116,16 +119,18 @@ msgid ""
 "Materialized View requires PostgreSQL 9.3 or greater but PostgreSQL %s is "
 "currently installed."
 msgstr ""
+"Materialiseret visning kræver PostgreSQL 9.3 eller nyere, men PostgreSQL %s "
+"er i øjeblikket installeret."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Leveringsfejl i besked"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Beskeder"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__name
@@ -136,74 +141,74 @@ msgstr "Navn"
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__note
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Note"
-msgstr ""
+msgstr "Bemærkning"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Antal handlinger"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Antal fejl"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Antal beskeder, der kræver handling"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Antal beskeder med leveringsfejl"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Preview Results"
-msgstr ""
+msgstr "Forhåndsvis resultater"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__query
 msgid "Query"
-msgstr ""
+msgstr "Forespørgsel"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "SQL Query"
-msgstr ""
+msgstr "SQL-forespørgsel"
 
 #. module: sql_request_abstract
 #: model:ir.module.category,name:sql_request_abstract.category_sql_abstract
 #: model:res.groups.privilege,name:sql_request_abstract.privilege_sql_request
 msgid "SQL Request"
-msgstr ""
+msgstr "SQL-anmodning"
 
 #. module: sql_request_abstract
 #: model:ir.model,name:sql_request_abstract.model_sql_request_mixin
 msgid "SQL Request Mixin"
-msgstr ""
+msgstr "SQL-anmodnings-mixin"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "SQL Settings"
-msgstr ""
+msgstr "SQL-indstillinger"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__bi_sql_view__state__sql_valid
 #: model:ir.model.fields.selection,name:sql_request_abstract.selection__sql_request_mixin__state__sql_valid
 msgid "SQL Valid"
-msgstr ""
+msgstr "SQL-gyldig"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Security"
-msgstr ""
+msgstr "Sikkerhed"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Set to Draft"
-msgstr ""
+msgstr "Sæt til kladde"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__state
@@ -217,6 +222,9 @@ msgid ""
 " * 'Draft': Not tested\n"
 " * 'SQL Valid': SQL Request has been checked and is valid"
 msgstr ""
+"Status for anmodningen:\n"
+" * 'Kladde': Ikke testet\n"
+" * 'SQL-gyldig': SQL-anmodningen er kontrolleret og gyldig"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__has_group_changed
@@ -224,6 +232,8 @@ msgid ""
 "Technical fields, used in modules that depends on this one to know if groups "
 "has changed, and that according access should be updated."
 msgstr ""
+"Tekniske felter, der bruges i moduler, der er afhængige af dette, for at "
+"registrere gruppeændringer og opdatere adgange tilsvarende."
 
 #. module: sql_request_abstract
 #. odoo-python
@@ -233,43 +243,46 @@ msgid ""
 "\n"
 " %s"
 msgstr ""
+"SQL-forespørgslen er ugyldig:\n"
+"\n"
+" %s"
 
 #. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid "The query is not allowed because it contains unsafe word '%s'"
-msgstr ""
+msgstr "Forespørgslen er ikke tilladt, da den indeholder det usikre ord '%s'"
 
 #. module: sql_request_abstract
 #. odoo-python
 #: code:addons/sql_request_abstract/models/sql_request_mixin.py:0
 msgid "Unimplemented mode : '%s'"
-msgstr ""
+msgstr "Ikke-implementeret tilstand: '%s'"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Brug ekstern database"
 
 #. module: sql_request_abstract
 #: model:res.groups,name:sql_request_abstract.group_sql_request_user
 msgid "User"
-msgstr ""
+msgstr "Bruger"
 
 #. module: sql_request_abstract
 #: model_terms:ir.ui.view,arch_db:sql_request_abstract.view_sql_request_mixin_form
 msgid "Validate SQL Expression"
-msgstr ""
+msgstr "Valider SQL-udtryk"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,field_description:sql_request_abstract.field_sql_request_mixin__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Webstedsmeddelelser"
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Webstedets kommunikationshistorik"
 
 #. module: sql_request_abstract
 #. odoo-python
@@ -278,6 +291,8 @@ msgid ""
 "You can't use an external database as there are no such configuration about "
 "this. Please contact your Odoo administrator to solve this issue."
 msgstr ""
+"Der kan ikke bruges en ekstern database, da der ikke er nogen konfiguration "
+"herfor. Kontakt venligst din Odoo-administrator for at løse dette problem."
 
 #. module: sql_request_abstract
 #: model:ir.model.fields,help:sql_request_abstract.field_sql_request_mixin__query
@@ -285,6 +300,8 @@ msgid ""
 "You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
 "TRUNCATE, EXECUTE, UPDATE."
 msgstr ""
+"Du må ikke bruge følgende ord: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
 
 #~ msgid "Last Modified on"
 #~ msgstr "Sidst ændret den"
