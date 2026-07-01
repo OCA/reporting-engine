@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-12 02:51+0000\n"
-"PO-Revision-Date: 2024-06-11 16:35+0000\n"
-"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
+"PO-Revision-Date: 2026-07-01 14:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -133,6 +133,7 @@ msgstr "Kolumn"
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
 msgstr ""
+"Kommaavgränsad text. Möjliga värden: \"graph\", \"pivot\" eller \"list\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -345,6 +346,8 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Om ifyllt körs frågan mot en extern databas, konfigurerad i Odoos "
+"huvudkonfigurationsfil. "
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -507,7 +510,7 @@ msgstr "Odoo Graph View"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
 msgid "Odoo List View"
-msgstr ""
+msgstr "Odoo-listvy"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
@@ -538,7 +541,7 @@ msgstr "Odoo Sök vy"
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 msgid "Only graph, pivot or list views are supported"
-msgstr ""
+msgstr "Endast vyerna graph, pivot och list stöds"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -785,7 +788,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Använd extern databas"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -831,6 +834,8 @@ msgid ""
 "You can only unlink draft views. If you want to delete them, first set them "
 "to draft."
 msgstr ""
+"Du kan bara ta bort utkastsvyer. Om du vill ta bort dem, ange dem som utkast "
+"först."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
