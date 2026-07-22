@@ -15,7 +15,14 @@ class TestExportSqlQuery(TransactionCase):
         super().setUpClass()
         cls.sql_export_obj = cls.env["sql.export"]
         cls.wizard_obj = cls.env["sql.file.wizard"]
-        cls.sql_report_demo = cls.env.ref("sql_export.sql_export_partner")
+        # Do not rely on demo data: OCA CI runs tests without it.
+        cls.sql_report_demo = cls.sql_export_obj.create(
+            {
+                "name": "Export Partners (Test)",
+                "query": "SELECT name, street\nFROM res_partner;",
+            }
+        )
+        cls.sql_report_demo.button_validate_sql_expression()
 
     def test_sql_query(self):
         wizard = self.wizard_obj.create(
@@ -61,9 +68,45 @@ class TestExportSqlQuery(TransactionCase):
             )
 
     def test_sql_query_with_params(self):
-        query = self.env.ref("sql_export.sql_export_partner_with_variables")
+        # Do not rely on demo data: OCA CI runs tests without it.
+        query = self.sql_export_obj.create(
+            {
+                "name": "Export Partners With Variables (Test)",
+                "query": (
+                    "SELECT p.id\n"
+                    "FROM res_partner p\n"
+                    "LEFT JOIN res_partner_res_partner_category_rel rel\n"
+                    "    ON rel.partner_id = p.id\n"
+                    "WHERE create_date > %(Date)s\n"
+                    "AND id = %(ID)s\n"
+                    "AND rel.category_id in %(Categories)s\n"
+                ),
+                "query_properties_definition": [
+                    {
+                        "name": "630eca383bc142e6",
+                        "type": "date",
+                        "string": "Date",
+                    },
+                    {
+                        "name": "907ac618eccbab74",
+                        "type": "integer",
+                        "string": "ID",
+                    },
+                    {
+                        "name": "ec0556e22932334b",
+                        "string": "Categories",
+                        "type": "many2many",
+                        "default": False,
+                        "comodel": "res.partner.category",
+                        "domain": False,
+                    },
+                ],
+            }
+        )
         query.write({"state": "sql_valid"})
-        categ_id = self.env.ref("base.res_partner_category_0").id
+        categ_id = (
+            self.env["res.partner.category"].create({"name": "Consulting Services"}).id
+        )
         wizard = self.wizard_obj.create(
             {
                 "sql_export_id": query.id,
