@@ -9,6 +9,6 @@
         <field eval="0" name="perm_unlink" />
         <field
             name="domain_force"
-        >['|', ('user_ids','=',user.id), ('group_ids','in', [x.id for x in user.groups_id])]</field>
+        >['|', ('user_ids','=',user.id), ('group_ids','in', [x.id for x in user.all_group_ids])]</field>
     </record>
 </odoo>

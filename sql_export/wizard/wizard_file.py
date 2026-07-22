@@ -4,7 +4,7 @@
 
 from datetime import datetime
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import UserError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
@@ -31,8 +31,10 @@ class SqlFileWizard(models.TransientModel):
         bad_props = [x for x in properties if not x["value"]]
         if bad_props:
             raise UserError(
-                _("Please enter a values for the following properties : %s")
-                % (",".join([x["string"] for x in bad_props]))
+                self.env._(
+                    "Please enter a values for the following properties : %s",
+                    ",".join([x["string"] for x in bad_props]),
+                )
             )
 
         sql_export = self.sql_export_id
@@ -85,9 +87,11 @@ class SqlFileWizard(models.TransientModel):
         action = {
             "name": "SQL Export",
             "type": "ir.actions.act_url",
-            "url": "web/content/?model=%s&id=%d&filename_field=filename&"
-            "field=binary_file&download=true&filename=%s"
-            % (self._name, self.id, self.file_name),
+            "url": (
+                f"web/content/?model={self._name}&id={self.id}"
+                "&filename_field=filename&field=binary_file&download=true"
+                f"&filename={self.file_name}"
+            ),
             "target": "self",
         }
         return action
