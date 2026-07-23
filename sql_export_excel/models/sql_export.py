@@ -5,7 +5,7 @@ import base64
 import logging
 from io import BytesIO
 
-from odoo import _, api, exceptions, fields, models
+from odoo import api, exceptions, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -38,13 +38,12 @@ class SqlExport(models.Model):
     )
     row_position = fields.Integer(
         default=1,
-        help="Indicate from which row the result of the query should be " "injected.",
+        help="Indicate from which row the result of the query should be injected.",
     )
     col_position = fields.Integer(
         string="Column Position",
         default=1,
-        help="Indicate from which column the result of the query should be "
-        "injected.",
+        help="Indicate from which column the result of the query should be injected.",
     )
 
     @api.constrains("sheet_position")
@@ -52,7 +51,7 @@ class SqlExport(models.Model):
         for export in self:
             if export.sheet_position < 1:
                 raise exceptions.ValidationError(
-                    _("The sheet position can't be less than 1.")
+                    self.env._("The sheet position can't be less than 1.")
                 )
 
     @api.constrains("row_position")
@@ -60,7 +59,7 @@ class SqlExport(models.Model):
         for export in self:
             if export.row_position < 1:
                 raise exceptions.ValidationError(
-                    _("The row position can't be less than 1.")
+                    self.env._("The row position can't be less than 1.")
                 )
 
     @api.constrains("col_position")
@@ -68,7 +67,7 @@ class SqlExport(models.Model):
         for export in self:
             if export.col_position < 1:
                 raise exceptions.ValidationError(
-                    _("The column position can't be less than 1.")
+                    self.env._("The column position can't be less than 1.")
                 )
 
     def _get_file_extension(self):
@@ -95,9 +94,10 @@ class SqlExport(models.Model):
                 ws = sheets[self.sheet_position - 1]
             except IndexError as err:
                 raise exceptions.ValidationError(
-                    _(
-                        "The Excel Template file contains less than %s sheets "
-                        "Please, adjust the Sheet Position parameter."
+                    self.env._(
+                        "The Excel Template file contains less than %s sheets. "
+                        "Please, adjust the Sheet Position parameter.",
+                        self.sheet_position,
                     )
                 ) from err
             row_position = self.row_position or 1
