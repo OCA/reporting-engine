@@ -3,7 +3,7 @@
 
 {
     "name": "SQL Export Excel",
-    "version": "18.0.1.0.1",
+    "version": "19.0.1.0.1",
     "author": "Akretion,Odoo Community Association (OCA)",
     "maintainers": ["florian-dacosta"],
     "website": "https://github.com/OCA/reporting-engine",
