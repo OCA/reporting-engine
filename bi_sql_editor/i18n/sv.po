@@ -131,9 +131,10 @@ msgstr "Kolumn"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
-msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
+msgid ""
+"Comma-separated text. Possible values: \"graph\", \"pivot\", \"list\" or "
+"\"form\""
 msgstr ""
-"Kommaavgränsad text. Möjliga värden: \"graph\", \"pivot\" eller \"list\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
@@ -350,6 +351,13 @@ msgstr ""
 "huvudkonfigurationsfil. "
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_many2one_clickable
+msgid ""
+"If the field is of type Many2one and the option is enabled, the field will "
+"be clickable on the list view."
+msgstr ""
+
+#. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
 msgid ""
@@ -383,6 +391,11 @@ msgstr "Är grupperad av"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_index
 msgid "Is Index"
 msgstr "Är Index"
+
+#. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_many2one_clickable
+msgid "Is Many2One Clickable"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__is_materialized
@@ -503,6 +516,11 @@ msgid "Odoo Cron"
 msgstr "Odoo Cron"
 
 #. module: bi_sql_editor
+#: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__form_view_id
+msgid "Odoo Form View"
+msgstr ""
+
+#. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__graph_view_id
 msgid "Odoo Graph View"
 msgstr "Odoo Graph View"
@@ -540,8 +558,8 @@ msgstr "Odoo Sök vy"
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
-msgid "Only graph, pivot or list views are supported"
-msgstr "Endast vyerna graph, pivot och list stöds"
+msgid "Only graph, pivot, list or form views are supported"
+msgstr ""
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -882,6 +900,14 @@ msgstr "urval"
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__sequence
 msgid "sequence"
 msgstr "sekvens"
+
+#~ msgid ""
+#~ "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
+#~ msgstr ""
+#~ "Kommaavgränsad text. Möjliga värden: \"graph\", \"pivot\" eller \"list\""
+
+#~ msgid "Only graph, pivot or list views are supported"
+#~ msgstr "Endast vyerna graph, pivot och list stöds"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Fel vid leverans av SMS"
