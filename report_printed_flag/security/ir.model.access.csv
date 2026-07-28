@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_printed_config_system,report.printed.config system,model_report_printed_config,base.group_system,1,1,1,1
+access_report_printed_config_line_system,report.printed.config.line system,model_report_printed_config_line,base.group_system,1,1,1,1
+access_report_printed_log,report.printed.log,model_report_printed_log,,1,0,0,0
