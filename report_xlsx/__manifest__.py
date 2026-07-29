@@ -9,7 +9,6 @@
     "version": "15.0.1.1.5",
     "development_status": "Mature",
     "license": "AGPL-3",
-    "external_dependencies": {"python": ["xlsxwriter", "xlrd"]},
     "depends": ["base", "web"],
     "demo": ["demo/report.xml"],
     "installable": True,
