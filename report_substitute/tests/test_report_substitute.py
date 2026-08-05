@@ -2,22 +2,84 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, tagged
 
 
+@tagged("post_install", "-at_install")
 class TestReportSubstitute(TransactionCase):
-    def setUp(self):
-        # In the demo file we create a new report for ir.module.module model
-        # with a substation rule from the original report action
-        super().setUp()
-        self.action_report = self.env.ref("base.ir_module_reference_print")
-        self.res_ids = self.env.ref("base.module_base").ids
-        self.substitution_rule = self.env.ref(
-            "report_substitute.substitution_rule_demo_1"
-        )
-        self.env.company.external_report_layout_id = self.env.ref(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.action_report = cls.env.ref("base.ir_module_reference_print")
+        cls.res_ids = cls.env.ref("base.module_base").ids
+        cls.env.company.external_report_layout_id = cls.env.ref(
             "web.external_layout_standard"
         ).id
+
+        cls.substitution_report_test_view = cls.env["ir.ui.view"].create(
+            {
+                "name": "substitution_report_test",
+                "key": "substitution_report_test",
+                "type": "qweb",
+                "arch": '<t t-name="report_substitute.substitution_report_test">'
+                '   <div class="page">Substitution Report</div>'
+                "</t>",
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {
+                "model": "ir.ui.view",
+                "module": "report_substitute",
+                "name": "substitution_report_test",
+                "res_id": cls.substitution_report_test_view.id,
+            }
+        )
+
+        cls.substitution_report_2_test_view = cls.env["ir.ui.view"].create(
+            {
+                "key": "substitution_report_2_test",
+                "name": "substitution_report_2_test",
+                "type": "qweb",
+                "arch": '<t t-name="report_substitute.substitution_report_2_test">'
+                '   <div class="page">Substitution Report 2</div>'
+                "</t>",
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {
+                "model": "ir.ui.view",
+                "module": "report_substitute",
+                "name": "substitution_report_2_test",
+                "res_id": cls.substitution_report_2_test_view.id,
+            }
+        )
+
+        cls.substitution_report = cls.env["ir.actions.report"].create(
+            {
+                "name": "Substitution For Technical guide",
+                "model": "ir.module.module",
+                "report_type": "qweb-pdf",
+                "report_name": "report_substitute.substitution_report_test",
+                "report_file": "report_substitute.substitution_report_test",
+                "binding_type": "report",
+            }
+        )
+        cls.substitution_report_2 = cls.env["ir.actions.report"].create(
+            {
+                "name": "Substitution 2 For Technical guide",
+                "model": "ir.module.module",
+                "report_type": "qweb-pdf",
+                "report_name": "report_substitute.substitution_report_2_test",
+                "report_file": "report_substitute.substitution_report_2_test",
+                "binding_type": "report",
+            }
+        )
+        cls.substitution_rule = cls.env["ir.actions.report.substitution.rule"].create(
+            {
+                "action_report_id": cls.action_report.id,
+                "substitution_action_report_id": cls.substitution_report.id,
+            }
+        )
 
     def test_substitution(self):
         res = str(
@@ -44,12 +106,8 @@ class TestReportSubstitute(TransactionCase):
         self.assertNotIn('<div class="page">Substitution Report 2</div>', res)
         self.env["ir.actions.report.substitution.rule"].create(
             {
-                "substitution_action_report_id": self.env.ref(
-                    "report_substitute.substitution_report_print_2"
-                ).id,
-                "action_report_id": self.env.ref(
-                    "report_substitute.substitution_report_print"
-                ).id,
+                "substitution_action_report_id": self.substitution_report_2.id,
+                "action_report_id": self.substitution_report.id,
             }
         )
         res = str(
@@ -95,11 +153,7 @@ class TestReportSubstitute(TransactionCase):
         with self.assertRaises(ValidationError):
             self.env["ir.actions.report.substitution.rule"].create(
                 {
-                    "action_report_id": self.env.ref(
-                        "report_substitute.substitution_report_print"
-                    ).id,
-                    "substitution_action_report_id": self.env.ref(
-                        "base.ir_module_reference_print"
-                    ).id,
+                    "action_report_id": self.substitution_report.id,
+                    "substitution_action_report_id": self.action_report.id,
                 }
             )

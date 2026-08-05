@@ -15,7 +15,7 @@ registry
             action_report_substitution_rule_ids &&
             action_report_substitution_rule_ids.length !== 0
         ) {
-            var active_ids = action.context.active_ids;
+            const active_ids = action.context.active_ids;
             const substitution = await orm.call(
                 "ir.actions.report",
                 "get_substitution_report_action",

@@ -27,17 +27,17 @@ class MailThread(models.AbstractModel):
                 self.with_context(default_report_template_ids=new_report_template_ids),
             ).message_post_with_source(
                 source_ref,
-                render_values,
-                message_type,
-                subtype_xmlid,
-                subtype_id,
+                render_values=render_values,
+                message_type=message_type,
+                subtype_xmlid=subtype_xmlid,
+                subtype_id=subtype_id,
                 **kwargs,
             )
         return super().message_post_with_source(
             source_ref,
-            render_values,
-            message_type,
-            subtype_xmlid,
-            subtype_id,
+            render_values=render_values,
+            message_type=message_type,
+            subtype_xmlid=subtype_xmlid,
+            subtype_id=subtype_id,
             **kwargs,
         )
