@@ -6,7 +6,7 @@ from io import BytesIO
 
 from PIL import Image
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -41,13 +41,17 @@ class ReportPositionedImage(models.Model):
         """Ensure position and dimension fields have positive values."""
         for record in self:
             if record.pos_top < 0:
-                raise ValidationError(_("Top position must be a positive value."))
+                raise ValidationError(
+                    self.env._("Top position must be a positive value.")
+                )
             if record.pos_left < 0:
-                raise ValidationError(_("Left position must be a positive value."))
+                raise ValidationError(
+                    self.env._("Left position must be a positive value.")
+                )
             if record.width <= 0:
-                raise ValidationError(_("Width must be greater than zero."))
+                raise ValidationError(self.env._("Width must be greater than zero."))
             if record.height <= 0:
-                raise ValidationError(_("Height must be greater than zero."))
+                raise ValidationError(self.env._("Height must be greater than zero."))
 
     def _get_aspect_ratio(self):
         """Get image aspect ratio (width/height)."""
@@ -72,7 +76,7 @@ class ReportPositionedImage(models.Model):
 
     @api.onchange("width", "respect_image_ratio")
     def _onchange_width(self):
-        if self._context.get("from_height_onchange"):
+        if self.env.context.get("from_height_onchange"):
             return
         if not (self.respect_image_ratio and self.width):
             return
@@ -85,7 +89,7 @@ class ReportPositionedImage(models.Model):
 
     @api.onchange("height")
     def _onchange_height(self):
-        if self._context.get("from_width_onchange"):
+        if self.env.context.get("from_width_onchange"):
             return
         if not (self.respect_image_ratio and self.height):
             return
@@ -106,8 +110,8 @@ class ReportPositionedImage(models.Model):
             self.company_id = default_company_id
             return {
                 "warning": {
-                    "title": _("Company Assignment"),
-                    "message": _(
+                    "title": self.env._("Company Assignment"),
+                    "message": self.env._(
                         "You cannot assign this image to a different company. "
                         "Please use the dedicated wizard to assign images to other "
                         "companies."

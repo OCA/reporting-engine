@@ -21,13 +21,13 @@ Report Positioned Image
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/18.0/report_positioned_image
+    :target: https://github.com/OCA/reporting-engine/tree/19.0/report_positioned_image
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-18-0/reporting-engine-18-0-report_positioned_image
+    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-report_positioned_image
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=18.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -39,10 +39,11 @@ they appear on all pages or only the first page.
 
 The module supports two types of images:
 
-- *Company-level Images*: Define images at the company level that can be
-  included in reports by enabling the *Include Company Images* option
-- *Report-specific Images*: Configure specific images for individual
-  reports, filtered by company context and always shown when configured
+-  *Company-level Images*: Define images at the company level that can
+   be included in reports by enabling the *Include Company Images*
+   option
+-  *Report-specific Images*: Configure specific images for individual
+   reports, filtered by company context and always shown when configured
 
 Images can be assigned to a specific company or left as shared records
 (without company assignment) for use across multiple companies
@@ -62,20 +63,20 @@ To configure company-level images:
 3. Navigate to the *Report Images* tab
 4. Add images with position settings:
 
-   - Upload an image - width defaults to 50mm and height is
-     automatically calculated to maintain the original aspect ratio
-   - *Top (mm)*: Distance from the top of the page
-   - *Left (mm)*: Distance from the left edge of the page
-   - *Width (mm)*: Width of the image (changing this auto-adjusts
-     height)
-   - *Height (mm)*: Height of the image (changing this auto-adjusts
-     width)
-   - *Respect Image Ratio*: When enabled (default), changing width or
-     height automatically adjusts the other dimension to maintain aspect
-     ratio. Uncheck for manual control of both dimensions.
-   - *First Page Only*: Check to show only on the first page
-   - *Company*: Automatically set to the current company when creating
-     from the company form. To create shared images, leave empty.
+   -  Upload an image - width defaults to 50mm and height is
+      automatically calculated to maintain the original aspect ratio
+   -  *Top (mm)*: Distance from the top of the page
+   -  *Left (mm)*: Distance from the left edge of the page
+   -  *Width (mm)*: Width of the image (changing this auto-adjusts
+      height)
+   -  *Height (mm)*: Height of the image (changing this auto-adjusts
+      width)
+   -  *Respect Image Ratio*: When enabled (default), changing width or
+      height automatically adjusts the other dimension to maintain
+      aspect ratio. Uncheck for manual control of both dimensions.
+   -  *First Page Only*: Check to show only on the first page
+   -  *Company*: Automatically set to the current company when creating
+      from the company form. To create shared images, leave empty.
 
 To configure report-specific images:
 
@@ -98,7 +99,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_positioned_image%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_positioned_image%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -113,10 +114,10 @@ Authors
 Contributors
 ------------
 
-- Quartile <https://www.quartile.co>
+-  Quartile <https://www.quartile.co>
 
-  - Tatsuki Kanda
-  - Aung Ko Ko Lin
+   -  Tatsuki Kanda
+   -  Aung Ko Ko Lin
 
 Maintainers
 -----------
@@ -131,6 +132,17 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/report_positioned_image>`_ project on GitHub.
+.. |maintainer-AungKoKoLin1997| image:: https://github.com/AungKoKoLin1997.png?size=40px
+    :target: https://github.com/AungKoKoLin1997
+    :alt: AungKoKoLin1997
+.. |maintainer-kanda999| image:: https://github.com/kanda999.png?size=40px
+    :target: https://github.com/kanda999
+    :alt: kanda999
+
+Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-AungKoKoLin1997| |maintainer-kanda999| 
+
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/report_positioned_image>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

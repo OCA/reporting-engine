@@ -5,10 +5,11 @@ from markupsafe import Markup
 
 from odoo import Command
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestReportPositionedImage(TransactionCase):
+class TestReportPositionedImage(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
