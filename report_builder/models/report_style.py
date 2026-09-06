@@ -132,14 +132,15 @@ class ReportStyle(models.Model):
 
     @api.model
     def _get_style_xlsx(self, value_type, style_vals, no_indent=False):
+        font_size = self._get_font_size_info().get(
+            style_vals.get("font-size"), [False, 11]
+        )[1]
         xlsx_attributes = [
             ("italic", style_vals.get("font-style") == "italic"),
             ("bold", style_vals.get("font-weight") == "bold"),
             (
                 "font_size",
-                self._get_font_size_info().get(
-                    style_vals.get("font-size"), [False, 11]
-                )[1],
+                font_size,
             ),
             ("font_color", style_vals.get("color")),
             ("bg_color", style_vals.get("background-color")),
@@ -159,4 +160,4 @@ class ReportStyle(models.Model):
             xlsx_attributes.append(("num_format", num_format))
         if style_vals.get("indent_level") is not None and not no_indent:
             xlsx_attributes.append(("indent", style_vals.get("indent_level")))
-        return dict([a for a in xlsx_attributes if a[1] is not None])
+        return dict([a for a in xlsx_attributes if a[1] is not None]), font_size

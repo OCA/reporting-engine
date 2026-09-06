@@ -30,6 +30,9 @@
             "report_builder/static/src/components/**/*.xml",
             "report_builder/static/src/components/**/*.scss",
         ],
+        "web.report_assets_common": [
+            "report_builder/static/src/scss/report_styles.scss",
+        ],
         "web.assets_unit_tests": [
             "report_builder/static/tests/**/*.test.js",
         ],

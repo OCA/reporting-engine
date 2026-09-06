@@ -48,6 +48,7 @@ class ReportInstance(models.Model):
                     "is_currency": kpi.is_currency,
                     "style": kpi_style,
                     "parameters": kpi_parameters,
+                    "invisible": kpi.invisible,
                 }
             )
         columns = self.column_ids._get_data()
@@ -98,10 +99,12 @@ class ReportInstance(models.Model):
     def get_pdf_report_action(self, pivot_date, domain=None):
         # TODO: implement the method to return the action for PDF report generation
         self.ensure_one()
-        return {}
+        return self.env.ref("report_builder.qweb_pdf_export").report_action(
+            self, data={"pivot_date": pivot_date, "domain": domain}
+        )
 
     def get_xlsx_report_action(self, pivot_date, domain=None):
         self.ensure_one()
-        return self.env.ref("report_builder.xlsx_report").report_action(
+        return self.env.ref("report_builder.xlsx_export").report_action(
             self, data={"pivot_date": pivot_date, "domain": domain}
         )

@@ -58,6 +58,7 @@
                             t-as="key"
                             t-key="key_index"
                             t-att-style="key.style"
+                            t-if="!key.invisible"
                         >
                             <td>
                                 <span t-esc="key.name" />
