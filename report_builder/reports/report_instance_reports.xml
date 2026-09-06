@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+    Copyright 2026 Dixmit
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+    -->
+    <record id="xlsx_export" model="ir.actions.report">
+        <field name="name">XLSX report</field>
+        <field name="model">report.instance</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">report_builder.report_instance_xlsx</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_file">report_instance_xlsx</field>
+    </record>
+    <record id="qweb_pdf_export" model="ir.actions.report">
+        <field name="name">Report Instance PDF report</field>
+        <field name="model">report.instance</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_name">report_builder.report_instance_pdf</field>
+        <field name="report_type">qweb-html</field>
+    </record>
+
+    <template id="report_instance_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <t t-set="columns_data" t-value="o.data" />
+                    <t
+                        t-set="values"
+                        t-value="o.process_information(pivot_date, domain)"
+                    />
+
+                    <div class="page">
+                        <h3>
+                            <span t-field="o.name" />
+                        </h3>
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th />
+                                    <t t-foreach="columns_data['columns']" t-as="col">
+                                        <th>
+                                            <t t-out="col['name']" />
+                                            <t t-if="col.get('description')">
+                                                <br />
+                                                <t t-out="col['description']" />
+                                            </t>
+                                        </th>
+                                    </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="columns_data['rows']" t-as="row">
+                                    <tr
+                                        t-att-style="row['style']"
+                                        t-if="not row['invisible']"
+                                    >
+                                        <td>
+                                            <t t-out="row['name']" />
+                                            <t t-if="row.get('description')">
+                                                <br />
+                                                <t t-out="row['description']" />
+                                            </t>
+                                        </td>
+                                        <t
+                                            t-foreach="columns_data['columns']"
+                                            t-as="column"
+                                        >
+                                            <td
+                                                t-att-style="row['style']"
+                                                class="report_value"
+                                            >
+                                                <t
+                                                    t-out="values.get(row['id'], {}).get(column['id'], {}).get('total', '')"
+                                                />
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
