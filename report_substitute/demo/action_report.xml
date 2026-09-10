@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="substitution_report">
+        <div class="page">Substitution Report</div>
+    </template>
+    <record id="substitution_report_print" model="ir.actions.report">
+        <field name="name">Substitution For Technical guide</field>
+        <field name="model">ir.module.module</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_substitute.substitution_report</field>
+        <field name="report_file">report_substitute.substitution_report</field>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="substitution_rule_demo_1" model="ir.actions.report.substitution.rule">
+        <field name="action_report_id" ref="base.ir_module_reference_print" />
+        <field
+            name="substitution_action_report_id"
+            ref="report_substitute.substitution_report_print"
+        />
+    </record>
+    <template id="substitution_report_2">
+        <div class="page">Substitution Report 2</div>
+    </template>
+    <record id="substitution_report_print_2" model="ir.actions.report">
+        <field name="name">Substitution 2 For Technical guide</field>
+        <field name="model">ir.module.module</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_substitute.substitution_report_2</field>
+        <field name="report_file">report_substitute.substitution_report_2</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
