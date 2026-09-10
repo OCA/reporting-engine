@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_act_report_form_positioned_image" model="ir.ui.view">
+        <field name="name">ir.actions.report.positioned.image</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Report Images" name="report_images">
+                    <group>
+                        <field name="include_company_images" />
+                    </group>
+                    <field name="report_positioned_image_ids" nolabel="1">
+                        <list editable="bottom">
+                            <field name="name" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                            <field
+                                name="image"
+                                widget="image"
+                                options="{'size': [38, 38]}"
+                            />
+                            <field name="pos_top" string="Top (mm)" />
+                            <field name="pos_left" string="Left (mm)" />
+                            <field name="width" string="Width (mm)" />
+                            <field name="height" string="Height (mm)" />
+                            <field name="respect_image_ratio" />
+                            <field name="first_page_only" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

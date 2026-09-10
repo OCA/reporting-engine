@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_company_form_positioned_image" model="ir.ui.view">
+        <field name="name">res.company.form.positioned.image</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='branches']" position="after">
+                <page string="Report Images" name="report_images">
+                    <field
+                        name="report_positioned_image_ids"
+                        nolabel="1"
+                        context="{'default_company_id': id}"
+                        domain="['|', ('company_id', '=', id), ('company_id', '=', False)]"
+                    >
+                        <list editable="bottom">
+                            <field name="name" />
+                            <field
+                                name="image"
+                                widget="image"
+                                options="{'size': [38, 38]}"
+                            />
+                            <field name="pos_top" string="Top (mm)" />
+                            <field name="pos_left" string="Left (mm)" />
+                            <field name="width" string="Width (mm)" />
+                            <field name="height" string="Height (mm)" />
+                            <field name="respect_image_ratio" />
+                            <field name="first_page_only" />
+                            <field name="company_id" column_invisible="1" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

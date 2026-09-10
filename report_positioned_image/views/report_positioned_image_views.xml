@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="report_positioned_image_view_form" model="ir.ui.view">
+        <field name="name">report.positioned.image.view.form</field>
+        <field name="model">report.positioned.image</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar" />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                        </group>
+                        <group>
+                            <field name="pos_top" />
+                            <field name="pos_left" />
+                            <field name="width" />
+                            <field name="height" />
+                            <field name="respect_image_ratio" />
+                            <field name="first_page_only" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="report_positioned_image_view_tree" model="ir.ui.view">
+        <field name="name">report.positioned.image.view.tree</field>
+        <field name="model">report.positioned.image</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="first_page_only" />
+            </list>
+        </field>
+    </record>
+</odoo>
