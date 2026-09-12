@@ -41,9 +41,9 @@ class Py3oPdfOptions(models.Model):
         string="Reduce Image Resolution",
         default="300",
     )
-    watermark = fields.Boolean("Sign With Watermark")
+    watermark = fields.Boolean(string="Sign With Watermark")
     # Watermark (string)
-    watermark_text = fields.Char("WaterMark Text")
+    watermark_text = fields.Char(string="WaterMark Text")
     watermark_color = fields.Integer(string="Color")
     watermark_font_size = fields.Integer(default=30, string="Font Size")
     watermark_rotate_angle = fields.Integer(
@@ -54,17 +54,29 @@ class Py3oPdfOptions(models.Model):
     watermark_repeat = fields.Boolean(string="Repeat")
 
     # UseTaggedPDF (bool)
-    tagged_pdf = fields.Boolean("Tagged PDF (add document structure)")
+    tagged_pdf = fields.Boolean(
+        string="Tagged PDF (add document structure)",
+        compute="_compute_tagged_pdf",
+        store=True,
+        readonly=False,
+    )
     # SelectPdfVersion (int)
     # 0 = PDF 1.4 (default selection).
     # 1 = PDF/A-1 (ISO 19005-1:2005)
-    pdfa = fields.Boolean(
-        "Archive PDF/A-1a (ISO 19005-1)",
+    pdfa = fields.Selection(
+        [
+            ("1", "PDF/A-1b"),
+            ("2", "PDF/A-2b"),
+            ("3", "PDF/A-3b"),
+        ],
+        string="Archival (PDF/A, ISO 19005)",
         help="If you enable this option, you will not be able to "
         "password-protect the document or apply other security settings.",
     )
+    # PDFUACompliance
+    pdfua = fields.Boolean(string="Universal Accessibility (PDF/UA)")
     #  ExportFormFields (bool)
-    pdf_form = fields.Boolean("Create PDF Form", default=True)
+    pdf_form = fields.Boolean(string="Create PDF Form", default=True)
     # FormsType (int)
     pdf_form_format = fields.Selection(
         [("0", "FDF"), ("1", "PDF"), ("2", "HTML"), ("3", "XML")],
@@ -72,15 +84,31 @@ class Py3oPdfOptions(models.Model):
         default="0",
     )
     # AllowDuplicateFieldNames (bool)
-    pdf_form_allow_duplicate = fields.Boolean("Allow Duplicate Field Names")
+    pdf_form_allow_duplicate = fields.Boolean(string="Allow Duplicate Field Names")
     # ExportBookmarks (bool)
-    export_bookmarks = fields.Boolean(default=True)
+    export_bookmarks = fields.Boolean(
+        string="Export Outlines",
+        compute="_compute_export_bookmarks",
+        store=True,
+        readonly=False,
+    )
     # ExportPlaceholders (bool)
     export_placeholders = fields.Boolean(default=True)
     # ExportNotes (bool)
-    export_comments = fields.Boolean()
-    # ExportHiddenSlides (bool) ??
-    export_hidden_slides = fields.Boolean("Export Automatically Insered Blank Pages")
+    export_comments = fields.Boolean(string="Comments as PDF Annotations")
+    # ExportNotesInMargin (bool)
+    export_comments_in_margin = fields.Boolean(string="Comments in Margin")
+    # IsSkipEmptyPages (bool INVERSE)
+    export_auto_inserted_blank_pages = fields.Boolean(
+        string="Export Automatically Inserted Blank Pages"
+    )
+    # UseReferenceXObjects
+    use_reference_xobjects = fields.Boolean(
+        string="Use Reference XObjects",
+        compute="_compute_use_reference_xobjects",
+        store=True,
+        readonly=False,
+    )
     # Doesn't make sense to have the option "View PDF after export" ! :)
     # INITIAL VIEW TAB
     # InitialView (int)
@@ -90,7 +118,7 @@ class Py3oPdfOptions(models.Model):
         default="0",
     )
     # InitialPage (int)
-    initial_page = fields.Integer(default=1)
+    initial_page = fields.Integer(default=1, string="Open on Page")
     # Magnification (int)
     magnification = fields.Selection(
         [
@@ -127,6 +155,8 @@ class Py3oPdfOptions(models.Model):
     open_fullscreen = fields.Boolean(string="Open in Full Screen Mode")
     # DisplayPDFDocumentTitle (bool)
     display_document_title = fields.Boolean()
+    # UseTransitionEffects
+    use_transition_effects = fields.Boolean()
     # HideViewerMenubar (bool)
     hide_menubar = fields.Boolean()
     # HideViewerToolbar (bool)
@@ -165,7 +195,7 @@ class Py3oPdfOptions(models.Model):
     # PDFViewSelection -> mnDefaultLinkAction (int)
     cross_doc_link_action = fields.Selection(
         [
-            ("0", "Default"),
+            ("0", "Default Mode"),
             ("1", "Open with PDF Reader Application"),
             ("2", "Open with Internet Browser"),
         ],
@@ -174,13 +204,19 @@ class Py3oPdfOptions(models.Model):
     )
     # SECURITY TAB
     # EncryptFile (bool)
-    encrypt = fields.Boolean()
+    encrypt = fields.Boolean(compute="_compute_encrypt", store=True, readonly=False)
     # DocumentOpenPassword (char)
-    document_password = fields.Char()
+    document_password = fields.Char(
+        compute="_compute_document_password", store=True, readonly=False
+    )
     # RestrictPermissions (bool)
-    restrict_permissions = fields.Boolean()
+    restrict_permissions = fields.Boolean(
+        compute="_compute_restrict_permissions", store=True, readonly=False
+    )
     # PermissionPassword (char)
-    permission_password = fields.Char()
+    permission_password = fields.Char(
+        compute="_compute_permission_password", store=True, readonly=False
+    )
     # TODO PreparedPasswords  + PreparedPermissionPassword
     # I don't see those fields in the LO interface !
     # But they are used in the LO code...
@@ -210,7 +246,10 @@ class Py3oPdfOptions(models.Model):
     )
     # EnableTextAccessForAccessibilityTools (bool)
     text_access_accessibility_tools_allowed = fields.Boolean(
-        string="Enable Text Access for Accessibility Tools", default=True
+        string="Enable Text Access for Accessibility Tools",
+        compute="_compute_text_access_accessibility_tools_allowed",
+        store=True,
+        readonly=False,
     )
 
     """
@@ -282,22 +321,53 @@ class Py3oPdfOptions(models.Model):
                     )
                 )
 
-    @api.onchange("encrypt")
-    def encrypt_change(self):
-        if not self.encrypt:
-            self.document_password = False
+    @api.depends("pdfua")
+    def _compute_use_reference_xobjects(self):
+        for options in self:
+            if options.pdfua:
+                options.use_reference_xobjects = False
 
-    @api.onchange("restrict_permissions")
-    def restrict_permissions_change(self):
-        if not self.restrict_permissions:
-            self.permission_password = False
+    @api.depends("pdfua")
+    def _compute_export_bookmarks(self):
+        for options in self:
+            if options.pdfua:
+                options.export_bookmarks = True
 
-    @api.onchange("pdfa")
-    def pdfa_change(self):
-        if self.pdfa:
-            self.pdf_form = False
-            self.encrypt = False
-            self.restrict_permissions = False
+    @api.depends("pdfua")
+    def _compute_text_access_accessibility_tools_allowed(self):
+        for options in self:
+            if options.pdfua:
+                options.text_access_accessibility_tools_allowed = True
+
+    @api.depends("pdfa")
+    def _compute_encrypt(self):
+        for options in self:
+            if options.pdfa:
+                options.encrypt = False
+
+    @api.depends("encrypt")
+    def _compute_document_password(self):
+        for options in self:
+            if not options.encrypt:
+                options.document_password = False
+
+    @api.depends("pdfa")
+    def _compute_restrict_permissions(self):
+        for options in self:
+            if options.pdfa:
+                options.restrict_permissions = False
+
+    @api.depends("restrict_permissions")
+    def _compute_permission_password(self):
+        for options in self:
+            if not options.restrict_permissions:
+                options.permission_password = False
+
+    @api.depends("pdfa", "pdfua")
+    def _compute_tagged_pdf(self):
+        for options in self:
+            if options.pdfa or options.pdfua:
+                options.tagged_pdf = True
 
     def odoo2libreoffice_options(self):
         self.ensure_one()
@@ -337,8 +407,7 @@ class Py3oPdfOptions(models.Model):
                     options["WatermarkColor"] = int("192022", 16)
 
         if self.pdfa:
-            options["SelectPdfVersion"] = 1
-            options["UseTaggedPDF"] = self.tagged_pdf
+            options["SelectPdfVersion"] = int(self.pdfa)
         else:
             options["SelectPdfVersion"] = 0
         if self.pdf_form and self.pdf_form_format and not self.pdfa:
@@ -350,10 +419,14 @@ class Py3oPdfOptions(models.Model):
 
         options.update(
             {
+                "PDFUACompliance": self.pdfua,
+                "UseTaggedPDF": self.tagged_pdf,
                 "ExportBookmarks": self.export_bookmarks,
                 "ExportPlaceholders": self.export_placeholders,
                 "ExportNotes": self.export_comments,
-                "ExportHiddenSlides": self.export_hidden_slides,
+                "ExportNotesInMargin": self.export_comments_in_margin,
+                "IsSkipEmptyPages": not self.export_auto_inserted_blank_pages,
+                "UseReferenceXObjects": self.use_reference_xobjects,
             }
         )
 
@@ -377,6 +450,7 @@ class Py3oPdfOptions(models.Model):
                 "CenterWindow": self.center_window,
                 "OpenInFullScreenMode": self.open_fullscreen,
                 "DisplayPDFDocumentTitle": self.display_document_title,
+                "UseTransitionEffects": self.use_transition_effects,
                 "HideViewerMenubar": self.hide_menubar,
                 "HideViewerToolbar": self.hide_toolbar,
                 "HideViewerWindowControls": self.hide_window_controls,
