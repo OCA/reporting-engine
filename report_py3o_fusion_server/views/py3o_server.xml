@@ -29,6 +29,7 @@
     <record id="py3o_server_configuration_action" model="ir.actions.act_window">
         <field name="name">LibreOffice for Py3o</field>
         <field name="res_model">py3o.server</field>
+        <field name="path">py3o-server</field>
         <field name="view_mode">list,form</field>
     </record>
     <menuitem

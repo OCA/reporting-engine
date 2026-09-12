@@ -70,23 +70,39 @@
                                     </div>
                                 </group>
                             </group>
-                            <group name="general-right" string="General">
-                                <field name="pdfa" />
-                                <field name="tagged_pdf" invisible="pdfa" />
-                                <field name="pdf_form" invisible="pdfa" />
-                                <field
-                                    name="pdf_form_format"
-                                    invisible="not pdf_form"
-                                    required="pdf_form"
-                                />
-                                <field
-                                    name="pdf_form_allow_duplicate"
-                                    invisible="not pdf_form"
-                                />
-                                <field name="export_bookmarks" />
-                                <field name="export_placeholders" />
-                                <field name="export_comments" />
-                                <field name="export_hidden_slides" />
+                            <group name="general-right" col="1">
+                                <group name="general-right-general" string="General">
+                                    <field name="pdfa" />
+                                    <field name="pdfua" />
+                                    <field name="tagged_pdf" readonly="pdfa or pdfua" />
+                                    <!-- For some reason that I can't explain
+                                            pdf_form is displayed with "Date" label
+                                    unless I force a string -->
+                                    <field name="pdf_form" string="Create PDF Form" />
+                                    <field
+                                        name="pdf_form_format"
+                                        readonly="not pdf_form"
+                                        required="pdf_form"
+                                    />
+                                    <field
+                                        name="pdf_form_allow_duplicate"
+                                        readonly="not pdf_form"
+                                    />
+                                </group>
+                                <group
+                                    name="general-right-structure"
+                                    string="Structure"
+                                >
+                                    <field name="export_bookmarks" readonly="pdfua" />
+                                    <field name="export_placeholders" />
+                                    <field name="export_comments" />
+                                    <field name="export_comments_in_margin" />
+                                    <field name="export_auto_inserted_blank_pages" />
+                                    <field
+                                        name="use_reference_xobjects"
+                                        readonly="pdfua"
+                                    />
+                                </group>
                             </group>
                         </group>
                     </page>
@@ -122,6 +138,9 @@
                                     <field name="open_fullscreen" />
                                     <field name="display_document_title" />
                                 </group>
+                                <group name="transitions-options" string="Transitions">
+                                    <field name="use_transition_effects" />
+                                </group>
                             </group>
                             <group name="user_intf-right" col="1">
                                 <group
@@ -152,42 +171,55 @@
                     </page>
                     <page string="Security" name="security">
                         <group name="security">
-                            <group name="security-left" invisible="pdfa">
-                                <field name="encrypt" />
+                            <group name="security-left">
+                                <field name="encrypt" readonly="pdfa" />
                                 <field
                                     name="document_password"
                                     password="True"
                                     invisible="not encrypt"
                                     required="encrypt"
+                                    readonly="pdfa"
                                 />
-                                <field name="restrict_permissions" />
+                                <field name="restrict_permissions" readonly="pdfa" />
                                 <field
                                     name="permission_password"
                                     password="True"
                                     invisible="not restrict_permissions"
                                     required="restrict_permissions"
+                                    readonly="pdfa"
                                 />
                             </group>
-                            <group
-                                name="security-right"
-                                invisible="pdfa or not restrict_permissions"
-                            >
-                                <field name="printing" widget="radio" />
-                                <field name="changes" widget="radio" />
-                                <field name="content_copying_allowed" />
-                                <field name="text_access_accessibility_tools_allowed" />
-                            </group>
-                            <group
-                                name="security-pdfa"
-                                invisible="not pdfa"
-                                colspan="2"
-                            >
-                                <div>
-                                    <p
-                                    >The security settings are incompatible with the <b
-                                    >PDF/A-1a</b> option in the <em
-                                    >General</em> tab.</p>
-                                </div>
+                            <group name="security-right" col="1">
+                                <group
+                                    name="security-right-top"
+                                    readonly="pdfa or not restrict_permissions"
+                                >
+                                    <field name="printing" widget="radio" />
+                                    <field name="changes" widget="radio" />
+                                </group>
+                                <group
+                                    name="security-content"
+                                    string="Content"
+                                    readonly="pdfa or not restrict_permissions"
+                                >
+                                    <field name="content_copying_allowed" />
+                                    <field
+                                        name="text_access_accessibility_tools_allowed"
+                                        readonly="pdfua"
+                                    />
+                                </group>
+                                <group
+                                    name="security-pdfa"
+                                    invisible="not pdfa"
+                                    colspan="2"
+                                >
+                                    <div>
+                                        <p
+                                        >The security settings are incompatible with the <b
+                                        >PDF/A</b> option in the <em
+                                        >General</em> tab.</p>
+                                    </div>
+                                </group>
                             </group>
                         </group>
                     </page>
@@ -207,6 +239,7 @@
     <record id="py3o_pdf_options_action" model="ir.actions.act_window">
         <field name="name">Py3o PDF Export Options</field>
         <field name="res_model">py3o.pdf.options</field>
+        <field name="path">py3o-pdf-options</field>
         <field name="view_mode">list,form</field>
     </record>
     <menuitem
