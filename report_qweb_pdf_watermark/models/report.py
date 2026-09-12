@@ -68,6 +68,30 @@ class Report(models.Model):
             )
         return True
 
+    def _get_watermark(self, report_ref, docids=False):
+        """Return the binary watermark for the given report and documents."""
+        report_sudo = self._get_report(report_ref)
+        watermark = None
+        if self.pdf_watermark or report_sudo.pdf_watermark:
+            watermark = b64decode(self.pdf_watermark or report_sudo.pdf_watermark)
+        elif (
+            self.use_company_watermark or report_sudo.use_company_watermark
+        ) and self.env.company.pdf_watermark:
+            watermark = b64decode(self.env.company.pdf_watermark)
+        elif docids:
+            watermark = safe_eval(
+                self.pdf_watermark_expression
+                or report_sudo.pdf_watermark_expression
+                or "None",
+                dict(
+                    env=self.env,
+                    docs=self.env[self.model or report_sudo.model].browse(docids),
+                ),
+            )
+            if watermark:
+                watermark = b64decode(watermark)
+        return watermark
+
     @api.model
     def _run_wkhtmltopdf(
         self,
@@ -90,26 +114,7 @@ class Report(models.Model):
         )
 
         docids = self.env.context.get("res_ids", False)
-        report_sudo = self._get_report(report_ref)
-        watermark = None
-        if self.pdf_watermark or report_sudo.pdf_watermark:
-            watermark = b64decode(self.pdf_watermark or report_sudo.pdf_watermark)
-        elif (
-            self.use_company_watermark or report_sudo.use_company_watermark
-        ) and self.env.company.pdf_watermark:
-            watermark = b64decode(self.env.company.pdf_watermark)
-        elif docids:
-            watermark = safe_eval(
-                self.pdf_watermark_expression
-                or report_sudo.pdf_watermark_expression
-                or "None",
-                dict(
-                    env=self.env,
-                    docs=self.env[self.model or report_sudo.model].browse(docids),
-                ),
-            )
-            if watermark:
-                watermark = b64decode(watermark)
+        watermark = self._get_watermark(report_ref, docids=docids)
 
         if not watermark:
             return result
