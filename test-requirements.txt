@@ -1,1 +1,2 @@
 openpyxl
+git+https://github.com/kopeyev/reporting-engine@19.0-mig-report_py3o#subdirectory=report_py3o
