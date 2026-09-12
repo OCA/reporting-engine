@@ -34,6 +34,9 @@ class Py3oReport(models.TransientModel):
         report = self.ir_actions_report_id
         py3o_server = report.py3o_server_id
         if not py3o_server or not uno:
+            if not uno:
+                logger.warning(
+                    "UNO is not loaded: falling back to spawning Libreoffice")
             return super()._create_single_report(model_instance, data)
         filetype = report.py3o_filetype
         uno_filter_data = []
