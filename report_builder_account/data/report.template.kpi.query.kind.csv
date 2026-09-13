@@ -1,0 +1,10 @@
+id,name,code,source
+kpi_kind_balp,Balance in Period,balp,account
+kpi_kind_bali,Balance Initial,bali,account
+kpi_kind_bale,Balance at End,bale,account
+kpi_kind_crdp,Credit in Period,crdp,account
+kpi_kind_crdi,Credit Initial,crdi,account
+kpi_kind_crde,Credit at End,crde,account
+kpi_kind_debp,Debit in Period,debp,account
+kpi_kind_debi,Debit Initial,debi,account
+kpi_kind_debe,Debit at End,debe,account

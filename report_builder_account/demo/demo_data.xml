@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="demo_report_style_default" model="report.style">
+        <field name="name">Account default</field>
+        <field name="font_size_inherit" eval="False" />
+        <field name="font_size">medium</field>
+    </record>
+    <record id="demo_report_style_italic" model="report.style">
+        <field name="name">Account italic</field>
+        <field name="font_style_inherit" eval="False" />
+        <field name="font_style">italic</field>
+    </record>
+    <record id="demo_report_style_big" model="report.style">
+        <field name="name">Account big</field>
+        <field name="font_size_inherit" eval="False" />
+        <field name="font_size">large</field>
+    </record>
+    <record id="demo_report_template" model="report.template">
+        <field name="name">Account demo Report Template</field>
+        <field name="source">account</field>
+        <field name="style_id" ref="demo_report_style_default" />
+        <field name="search_model_id" ref="account.model_account_move_line" />
+        <field name="search_view_id" ref="account.view_account_move_line_filter" />
+    </record>
+    <record id="demo_report_template_kpi_1" model="report.template.kpi">
+        <field name="name">Account demo KPI 1</field>
+        <field name="code">account_demo_kpi_1</field>
+        <field name="template_id" ref="demo_report_template" />
+    </record>
+    <record id="demo_report_template_kpi_item_1" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_1" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">1%</field>
+    </record>
+    <record id="demo_report_template_kpi_2" model="report.template.kpi">
+        <field name="name">Account demo KPI 2</field>
+        <field name="code">account_demo_kpi_2</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="style_id" ref="demo_report_style_italic" />
+    </record>
+    <record id="demo_report_template_kpi_item_2" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_2" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">2%</field>
+        <field name="positive" eval="False" />
+    </record>
+    <record id="demo_report_template_kpi_3" model="report.template.kpi">
+        <field name="name">Account demo KPI 3</field>
+        <field name="code">account_demo_kpi_3</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="is_currency" eval="True" />
+    </record>
+    <record id="demo_report_template_kpi_item_3" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_3" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">3%</field>
+        <field name="positive" eval="False" />
+    </record>
+    <record id="demo_report_template_kpi_4" model="report.template.kpi">
+        <field name="name">Account demo KPI 4</field>
+        <field name="code">account_demo_kpi_4</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="is_currency" eval="True" />
+    </record>
+    <record id="demo_report_template_kpi_item_4" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_4" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">4%</field>
+        <field name="positive" eval="False" />
+    </record>
+    <record id="demo_report_template_kpi_5" model="report.template.kpi">
+        <field name="name">Account demo KPI 5</field>
+        <field name="code">account_demo_kpi_5</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="is_currency" eval="True" />
+    </record>
+    <record id="demo_report_template_kpi_item_5" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_5" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">5%</field>
+        <field name="positive" eval="False" />
+    </record>
+    <record id="demo_report_template_kpi_6" model="report.template.kpi">
+        <field name="name">Account demo KPI 6</field>
+        <field name="code">account_demo_kpi_6</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="is_currency" eval="True" />
+    </record>
+    <record id="demo_report_template_kpi_item_6" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_6" />
+        <field name="kind">query</field>
+        <field name="query_kind_id" ref="kpi_kind_balp" />
+        <field name="code">6%</field>
+        <field name="positive" eval="False" />
+    </record>
+    <record id="demo_report_template_kpi_benefits" model="report.template.kpi">
+        <field name="name">Account demo KPI Benefits</field>
+        <field name="code">account_demo_kpi_benefits</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="style_id" ref="demo_report_style_big" />
+        <field name="is_currency" eval="True" />
+    </record>
+    <record id="demo_report_template_kpi_benefits_1" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_benefits" />
+        <field name="kind">kpi</field>
+        <field name="kpi_id" ref="demo_report_template_kpi_4" />
+    </record>
+    <record id="demo_report_template_kpi_benefits_2" model="report.template.kpi.item">
+        <field name="parent_kpi_id" ref="demo_report_template_kpi_benefits" />
+        <field name="kind">kpi</field>
+        <field name="kpi_id" ref="demo_report_template_kpi_6" />
+        <field name="positive" eval="False" />
+    </record>
+    <record model="report.instance" id="demo_report_instance">
+        <field name="name">Account demo Report Instance</field>
+        <field name="source">account</field>
+        <field name="template_id" ref="demo_report_template" />
+        <field name="currency_id" ref="base.USD" />
+        <field name="show_search_bar" eval="True" />
+        <field name="show_settings" eval="True" />
+        <field name="show_pivot_date" eval="True" />
+    </record>
+    <record model="report.instance.column" id="demo_report_instance_column_1">
+        <field name="name">Current Year</field>
+        <field name="sequence">1</field>
+        <field name="instance_id" ref="demo_report_instance" />
+        <field name="is_ytd" eval="True" />
+    </record>
+    <record model="report.instance.column" id="demo_report_instance_column_2">
+        <field name="name">Previous Year</field>
+        <field name="sequence">2</field>
+        <field name="instance_id" ref="demo_report_instance" />
+        <field name="is_ytd" eval="True" />
+        <field name="offset" eval="-13" />
+    </record>
+</odoo>
