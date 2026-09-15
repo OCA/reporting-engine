@@ -114,13 +114,13 @@ msgstr "Py3O Raporu Ulaşılamıyor mu"
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_uid
 msgid "Last Updated by"
-msgstr "Son g??ncelleyen"
+msgstr "Son güncelleyen"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_date
 msgid "Last Updated on"
-msgstr "Son g??ncelleme"
+msgstr "Son güncelleme"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
@@ -162,7 +162,7 @@ msgstr "Tek Raporda Çoklu Kayıt"
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__name
 msgid "Name"
-msgstr "Ad??"
+msgstr "Adı"
 
 #. module: report_py3o
 #. odoo-python
@@ -303,4 +303,4 @@ msgid "py3o"
 msgstr "py3o"
 
 #~ msgid "Last Modified on"
-#~ msgstr "Son de??i??iklik"
+#~ msgstr "Son değişiklik"

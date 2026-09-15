@@ -29,19 +29,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__create_uid
 msgid "Created by"
-msgstr "Olu??turan"
+msgstr "Oluşturan"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__create_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__create_date
 msgid "Created on"
-msgstr "Olu??turulma tarihi"
+msgstr "Oluşturulma tarihi"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
 msgid "Display Name"
-msgstr "G??r??nen ad"
+msgstr "Görünen ad"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
@@ -109,13 +109,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_uid
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_uid
 msgid "Last Updated by"
-msgstr "En son g??ncelleyen "
+msgstr "En son güncelleyen "
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__write_date
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__write_date
 msgid "Last Updated on"
-msgstr "En son g??ncelleme tarihi"
+msgstr "En son güncelleme tarihi"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__py3o_template_data
@@ -288,4 +288,4 @@ msgid "py3o"
 msgstr ""
 
 #~ msgid "Last Modified on"
-#~ msgstr "En son g??ncelleme tarihi"
+#~ msgstr "En son güncelleme tarihi"
