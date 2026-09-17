@@ -91,3 +91,22 @@ class TestReport(common.TransactionCase):
         self.assertEqual(
             self.xlsx_report._report_xlsx_currency_format(eur), "#,##0.00 €"
         )
+
+    def test_sanitize_sheetname(self):
+        from io import BytesIO
+
+        import xlsxwriter
+
+        workbook = xlsxwriter.Workbook(BytesIO(), {"constant_memory": True})
+        sanitize = workbook._sanitize_sheetname
+        # It must not end with an apostrophe.
+        self.assertEqual("VAT Report - Company", sanitize("VAT Report - Company'"))
+        self.assertEqual("VAT Report - Company", sanitize("VAT Report - Company''"))
+        # It must not start with an apostrophe.
+        self.assertEqual("VAT Report - Company", sanitize("'VAT Report - Company"))
+        # Forbidden characters are removed.
+        self.assertEqual("VAT Report draft  Q1", sanitize("VAT Report [draft] : Q1"))
+        self.assertEqual("WeeklyExportColumn", sanitize("Weekly\\Export/Column:?"))
+        # Longer than 31 chars is truncated.
+        self.assertEqual("X" * 31, sanitize("X" * 40))
+        workbook.close()
