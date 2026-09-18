@@ -15,12 +15,16 @@ class Board(models.AbstractModel):
 
         res = super().get_view(view_id=view_id, view_type=view_type, **options)
 
-        custom_view = self.env["ir.ui.view.custom"].search(
-            [("user_id", "=", self.env.uid), ("ref_id", "=", view_id)], limit=1
+        custom_view = (
+            self.env["ir.ui.view.custom"]
+            .sudo()
+            .search([("user_id", "=", self.env.uid), ("ref_id", "=", view_id)], limit=1)
         )
         if not custom_view:
-            shared_custom_view = self.env["ir.ui.view.custom"].search(
-                [("user_id", "=", False), ("ref_id", "=", view_id)], limit=1
+            shared_custom_view = (
+                self.env["ir.ui.view.custom"]
+                .sudo()
+                .search([("user_id", "=", False), ("ref_id", "=", view_id)], limit=1)
             )
             if shared_custom_view:
                 res.update(

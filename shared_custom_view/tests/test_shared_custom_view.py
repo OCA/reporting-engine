@@ -1,6 +1,5 @@
 # Copyright 2026 Camptocamp SA
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
-from odoo.exceptions import AccessError
 from odoo.tests import new_test_user
 from odoo.tests.common import TransactionCase
 
@@ -99,11 +98,9 @@ class TestSharedCustomView(TransactionCase):
         ir.model.access.csv), which is why core's own
         ``board.board.get_view()`` and the ``/board/add_to_dashboard``
         controller both use ``sudo()`` for it. ``board_board.py`` in this
-        module performs the same kind of lookup without ``sudo()``, so a
-        regular user is expected to hit an ``AccessError`` here -- this
-        test documents that regression rather than asserting it is fine.
+        module does the same for its own lookups.
         """
-        self.env["ir.ui.view.custom"].create(
+        shared = self.env["ir.ui.view.custom"].create(
             {
                 "user_id": False,
                 "ref_id": self.board_view.id,
@@ -114,5 +111,6 @@ class TestSharedCustomView(TransactionCase):
             self.env, login="shared_view_demo3", groups="base.group_user"
         )
         board = self.env["board.board"].with_user(demo_user)
-        with self.assertRaises(AccessError):
-            board.get_view(view_id=self.board_view.id, view_type="form")
+        result = board.get_view(view_id=self.board_view.id, view_type="form")
+        self.assertEqual(result["custom_view_id"], shared.id)
+        self.assertIn("Shared", result["arch"])
