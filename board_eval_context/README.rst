@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==================
 Board Eval Context
 ==================
@@ -13,34 +17,35 @@ Board Eval Context
 .. |badge1| image:: https://img.shields.io/badge/maturity-Alpha-red.png
     :target: https://odoo-community.org/page/development-status
     :alt: Alpha
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/15.0/board_eval_context
+    :target: https://github.com/OCA/reporting-engine/tree/19.0/board_eval_context
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-15-0/reporting-engine-15-0-board_eval_context
+    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-board_eval_context
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=15.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module adds some useful keys in the evaluation context of board.board
-records, which can be useful when creating generic boards for all the users of
-an instance.
+This module adds some useful keys in the evaluation context of
+board.board records, which can be useful when creating generic boards
+for all the users of an instance.
 
-At the moment it allows using the following values in the domains of a board.board record:
+At the moment it allows using the following values in the domains of a
+board.board record:
 
-* datetime: the datetime.datetime class
-* date: the datetime.date class
-* timedelta: the datetime.timedelta class
-* timezone: the datetime.timezone class
-* tzinfo: the datetime.tzinfo class
-* relativedelta: the dateutil.relativedelta.relativedelta class
-* uid: the ID of the current user
+-  datetime: the datetime.datetime class
+-  date: the datetime.date class
+-  timedelta: the datetime.timedelta class
+-  timezone: the datetime.timezone class
+-  tzinfo: the datetime.tzinfo class
+-  relativedelta: the dateutil.relativedelta.relativedelta class
+-  uid: the ID of the current user
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -58,7 +63,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20board_eval_context%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20board_eval_context%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -66,12 +71,12 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Camptocamp
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -91,6 +96,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-gurneyalex| 
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/15.0/board_eval_context>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/board_eval_context>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
