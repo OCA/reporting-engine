@@ -68,9 +68,9 @@ class Report(models.Model):
             )
         return True
 
-    def _get_watermark(self, report_ref, docids=False):
+    def _get_watermark(self, report, docids=False):
         """Return the binary watermark for the given report and documents."""
-        report_sudo = self._get_report(report_ref)
+        report_sudo = report.sudo()
         watermark = None
         if self.pdf_watermark or report_sudo.pdf_watermark:
             watermark = b64decode(self.pdf_watermark or report_sudo.pdf_watermark)
@@ -114,8 +114,8 @@ class Report(models.Model):
         )
 
         docids = self.env.context.get("res_ids", False)
-        watermark = self._get_watermark(report_ref, docids=docids)
-
+        report_sudo = self._get_report(report_ref)
+        watermark = self._get_watermark(report_sudo, docids=docids)
         if not watermark:
             return result
 
