@@ -2,6 +2,8 @@
 # Copyright 2018 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
+from collections import OrderedDict
+from io import BytesIO
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -170,6 +172,36 @@ class IrActionsReport(models.Model):
             .create({"ir_actions_report_id": report.id})
             .create_report(res_ids, data)
         )
+
+    def _pre_render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        report = self._get_report(report_ref)
+        if report.report_type != "py3o":
+            return super()._pre_render_qweb_pdf(
+                report_ref,
+                res_ids=res_ids,
+                data=data,
+            )
+
+        if isinstance(res_ids, int):
+            res_ids = [res_ids]
+
+        collected_streams = OrderedDict()
+        for res_id in res_ids or []:
+            content, report_type = self._render(report_ref, [res_id], data=data)
+            if report_type != "pdf":
+                raise ValidationError(
+                    _(
+                        "Py3O report '%(report)s' must generate PDF output for "
+                        "invoice sending. Current output format: %(format)s"
+                    )
+                    % {"report": report.display_name, "format": report_type}
+                )
+            collected_streams[res_id] = {
+                "stream": BytesIO(content),
+                "attachment": None,
+            }
+
+        return collected_streams, "pdf"
 
     def gen_report_download_filename(self, res_ids, data):
         """Override this function to change the name of the downloaded report"""
