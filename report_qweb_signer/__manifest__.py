@@ -12,6 +12,8 @@
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": ["certificate", "account"],
+    "external_dependencies": {
+        "python": ["cryptography>=41.0.7", "asn1crypto"],
+    },
     "data": ["views/ir_actions_report_views.xml"],
-    "demo": ["demo/certificate_demo.xml", "demo/report_partner_demo.xml"],
 }

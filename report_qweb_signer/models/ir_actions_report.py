@@ -2,13 +2,13 @@
 # Copyright 2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import base64
+import io
 import logging
 
 from odoo import fields, models
 from odoo.exceptions import AccessError, UserError
+from odoo.tools.pdf.signature import PdfSigner
 from odoo.tools.safe_eval import safe_eval, time
-
-from .signature import PdfSigner
 
 _logger = logging.getLogger(__name__)
 
@@ -111,6 +111,28 @@ class IrActionsReport(models.Model):
             ) from exc
         return attachment
 
+    def _sign_pdf(self, content):
+        """Sign the given PDF ``content`` (bytes) using Odoo's standard
+        :class:`~odoo.tools.pdf.signature.PdfSigner`.
+
+        The core signer loads the key/certificate from
+        ``company.signing_certificate_id``. This module lets the certificate be
+        configured per report, so we feed the report's ``certificate_id`` to the
+        signer instead.
+        """
+        self.ensure_one()
+        signer = PdfSigner(io.BytesIO(content), company=self.env.company)
+        signer._load_key_and_certificate = (
+            self.certificate_id._load_signing_key_and_cert
+        )
+        signed_stream = signer.sign_pdf()
+        if not signed_stream:
+            _logger.warning(
+                "The PDF for report '%s' could not be signed", self.report_name
+            )
+            return content
+        return signed_stream.getvalue()
+
     def _read_attached_signed_content(self, report, res_ids):
         signed_content, ext = False, False
         if self.signed_attachment:
@@ -132,8 +154,7 @@ class IrActionsReport(models.Model):
             return signed_content, "pdf"
         content, ext = super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
         if should_be_signed:
-            sign = PdfSigner(content, report.certificate_id)
-            content = sign.sign_pdf()
+            content = report._sign_pdf(content)
             if report.signed_attachment:
                 report._attach_signed_write(res_ids, content)
         return content, ext
@@ -141,6 +162,8 @@ class IrActionsReport(models.Model):
     def _pre_render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         # Evaluate signature id by id so we can use it later in the report splitting
         content, report_type = super()._pre_render_qweb_pdf(report_ref, res_ids, data)
+        if report_type != "pdf":
+            return content, report_type
         report = self._get_report(report_ref)
         should_be_signed = report.with_context(
             pre_render_qweb_pdf=True
@@ -162,6 +185,5 @@ class IrActionsReport(models.Model):
         for res_id, content in res.items():
             if res_id not in should_be_signed:
                 continue
-            sign = PdfSigner(content, report.certificate_id)
-            res[res_id] = sign.sign_pdf()
+            res[res_id] = report._sign_pdf(content)
         return res

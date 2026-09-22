@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =======================
 Qweb PDF reports signer
 =======================
@@ -13,7 +17,7 @@ Qweb PDF reports signer
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
@@ -39,9 +43,8 @@ PKCS#12 certificate.
 Installation
 ============
 
-To install this module, you need to install pyhanko-cli, e.g.:
-
-   pipx install pyhanko-cli
+This module requires cryptography >= 41.0.7 which implies Python >=
+3.12. This requirement comes from the Odoo's PdfSigner tool.
 
 Configuration
 =============
@@ -88,15 +91,6 @@ customers called "Test PDF certificate".
 Known issues / Roadmap
 ======================
 
-- This version 18.0 depends on pyhanko-cli for signing the documents,
-  which isn't ideal at all but avoids the dependency hell coming from
-  cryptography requisites.
-- In Odoo 19.0 Odoo implemented their own signing mechanism. We could
-  backport it but it depends on python 12 which supports the proper
-  cryptography library version and that would leave out any
-  infrastructure using lower versions. So: for v19 we should get rid of
-  all that external stuff and just use the core one. (ref:
-  https://github.com/odoo/odoo/pull/194698)
 - When signing multiple documents (if *Allow only one document* is
   disabled) then *Save as attachment* is not applied and signed result
   is not saved as attachment.

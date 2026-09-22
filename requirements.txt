@@ -1,4 +1,6 @@
 # generated from manifests external_dependencies
+asn1crypto
+cryptography>=41.0.7
 py3o.formats
 py3o.template
 xlrd
