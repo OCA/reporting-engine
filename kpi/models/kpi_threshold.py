@@ -52,9 +52,7 @@ class KPIThreshold(models.Model):
         string="Message", size=100, compute="_compute_is_valid_threshold"
     )
     kpi_ids = fields.One2many("kpi", "threshold_id", "KPIs")
-    company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.company
-    )
+    company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     def _range_ids_from_commands(self, commands):
         range_ids = []
