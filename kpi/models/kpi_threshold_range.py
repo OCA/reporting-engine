@@ -93,9 +93,7 @@ class KPIThresholdRange(models.Model):
         "threshold_id",
         "Thresholds",
     )
-    company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.company
-    )
+    company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     def _compute_min_value(self):
         for obj in self:

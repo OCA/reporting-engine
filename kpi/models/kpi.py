@@ -60,12 +60,10 @@ class KPI(models.Model):
     description = fields.Text()
     category_id = fields.Many2one(
         "kpi.category",
-        "Category",
         required=True,
     )
     threshold_id = fields.Many2one(
         "kpi.threshold",
-        "Threshold",
         required=True,
     )
     periodicity = fields.Integer(default=1)
@@ -116,7 +114,6 @@ class KPI(models.Model):
     history_ids = fields.One2many(
         "kpi.history",
         "kpi_id",
-        "History",
     )
     active = fields.Boolean(
         help=(
@@ -125,9 +122,7 @@ class KPI(models.Model):
         ),
         default=True,
     )
-    company_id = fields.Many2one(
-        "res.company", "Company", default=lambda self: self.env.company
-    )
+    company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     @api.depends(
         "history_ids", "history_ids.value", "history_ids.color", "history_ids.date"
