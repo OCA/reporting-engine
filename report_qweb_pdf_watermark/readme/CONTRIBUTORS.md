@@ -1,0 +1,9 @@
+- Holger Brunn \<<hbrunn@therp.nl>\>
+- Stefan Rijnhart \<<stefan@opener.am>\>
+- Rod Schouteden \<<rod.schouteden@dynapps.be>\>
+- Robin Goots \<<robin.goots@dynapps.be>\>
+- Foram Shah \<<foram.shah@initos.com>\>
+- bosd \<<c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>\>
+- Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
+- Anjeel Haria
+- Antonio Ruban \<<antonodavid8@gmail.com>\>
