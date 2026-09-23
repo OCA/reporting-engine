@@ -24,7 +24,6 @@ class QwebFieldOptions(models.Model):
     field_id = fields.Many2one(
         "ir.model.fields",
         domain="[('model_id', '=', res_model_id)]",
-        string="Field",
         ondelete="cascade",
         required=True,
     )
@@ -37,11 +36,10 @@ class QwebFieldOptions(models.Model):
         string="UoM Field",
         ondelete="cascade",
     )
-    currency_id = fields.Many2one("res.currency", string="Currency", ondelete="cascade")
+    currency_id = fields.Many2one("res.currency", ondelete="cascade")
     currency_field_id = fields.Many2one(
         "ir.model.fields",
         domain="[('model_id', '=', res_model_id), ('relation', '=', 'res.currency')]",
-        string="Currency Field",
         ondelete="cascade",
     )
     field_options = fields.Char(
@@ -53,7 +51,7 @@ class QwebFieldOptions(models.Model):
         "{'widget': 'contact', 'fields': ['name', 'phone']}",
     )
     digits = fields.Integer()
-    company_id = fields.Many2one("res.company", string="Company")
+    company_id = fields.Many2one("res.company")
     domain = fields.Char(
         help="Optional domain for additional filtering conditions.\n"
         "This is evaluated in addition to UoM/Currency conditions.\n"
