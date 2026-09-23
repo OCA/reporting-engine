@@ -115,7 +115,7 @@ class ReportAsync(models.Model):
             raise UserError(self.env._("Background process not allowed."))
         result = self.env[self.action_id.type]._for_xml_id(self.action_id.xml_id)
         ctx = safe_eval(result.get("context", {}))
-        ctx.update({"async_process": True})
+        ctx.update({"async_process": True, "report_async_id": self.id})
         result["context"] = ctx
         return result
 
