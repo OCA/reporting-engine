@@ -1,0 +1,126 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sql_export_excel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-01-18 09:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__col_position
+msgid "Column Position"
+msgstr "Posizione colonna"
+
+#. module: sql_export_excel
+#: model:ir.model.fields.selection,name:sql_export_excel.selection__sql_export__file_format__excel
+msgid "Excel"
+msgstr "Excel"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__attachment_id
+msgid "Excel Template"
+msgstr "Modello Excel"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__file_format
+msgid "File Format"
+msgstr "Formato file"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__header
+msgid "Header"
+msgstr "Intestazione"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,help:sql_export_excel.field_sql_export__attachment_id
+msgid ""
+"If you configure an excel file (in xlsx format) here, the result of the query will be injected in it.\n"
+"It is usefull to feed data in a excel file pre-configured with calculation"
+msgstr ""
+"Se si configura qui un file Excel (in formato xlsx), il risultato della "
+"query verrà inserito in esso.\n"
+"È utile per passare dati in un file Excel preconfigurato con dei calcoli"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,help:sql_export_excel.field_sql_export__col_position
+msgid "Indicate from which column the result of the query should be injected."
+msgstr ""
+"Indica a partire da quale colonna deve essere inserito il risultato della "
+"query."
+
+#. module: sql_export_excel
+#: model:ir.model.fields,help:sql_export_excel.field_sql_export__row_position
+msgid "Indicate from which row the result of the query should be injected."
+msgstr ""
+"Indica a partire da quale riga deve essere inserito il risultato della query."
+
+#. module: sql_export_excel
+#: model:ir.model.fields,help:sql_export_excel.field_sql_export__header
+msgid "Indicate if the header should be exported to the file."
+msgstr "Indica se l'intestazione deve essere esportata nel file."
+
+#. module: sql_export_excel
+#: model:ir.model.fields,help:sql_export_excel.field_sql_export__sheet_position
+msgid ""
+"Indicate the sheet's position of the excel template where the result of the "
+"sql query should be injected."
+msgstr ""
+"Indica la posizione del foglio del modello Excel dove il risultato della "
+"query deve esse inserito."
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__row_position
+msgid "Row Position"
+msgstr "Posizione riga"
+
+#. module: sql_export_excel
+#: model:ir.model,name:sql_export_excel.model_sql_export
+msgid "SQL export"
+msgstr "Esporta SQL"
+
+#. module: sql_export_excel
+#: model:ir.model.fields,field_description:sql_export_excel.field_sql_export__sheet_position
+msgid "Sheet Position"
+msgstr "Posizione foglio"
+
+#. module: sql_export_excel
+#. odoo-python
+#: code:addons/sql_export_excel/models/sql_export.py:0
+#, python-format
+msgid ""
+"The Excel Template file contains less than %s sheets Please, adjust the "
+"Sheet Position parameter."
+msgstr ""
+"Il file modello Excel contiene meno di %s fogli. Correggere il parametro "
+"posizione foglio."
+
+#. module: sql_export_excel
+#. odoo-python
+#: code:addons/sql_export_excel/models/sql_export.py:0
+#, python-format
+msgid "The column position can't be less than 1."
+msgstr "La posizione della colonna non può essere inferiore a 1."
+
+#. module: sql_export_excel
+#. odoo-python
+#: code:addons/sql_export_excel/models/sql_export.py:0
+#, python-format
+msgid "The row position can't be less than 1."
+msgstr "La posizione della riga non può essere inferiore a 1."
+
+#. module: sql_export_excel
+#. odoo-python
+#: code:addons/sql_export_excel/models/sql_export.py:0
+#, python-format
+msgid "The sheet position can't be less than 1."
+msgstr "La posizione del foglio non può essere inferiore a 1."
