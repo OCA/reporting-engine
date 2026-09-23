@@ -25,7 +25,6 @@ class CommentTemplate(models.AbstractModel):
         compute="_compute_comment_template_ids",
         compute_sudo=True,
         comodel_name="base.comment.template",
-        string="Comment Template",
         domain=lambda self: self.env["base.comment.template"]._search_model_ids(
             "in", self._name
         ),

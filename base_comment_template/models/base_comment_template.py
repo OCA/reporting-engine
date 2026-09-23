@@ -36,7 +36,6 @@ class BaseCommentTemplate(models.Model):
     )
     company_id = fields.Many2one(
         comodel_name="res.company",
-        string="Company",
         ondelete="cascade",
         index=True,
         help="If set, the comment template will be available only for the selected "
@@ -48,7 +47,6 @@ class BaseCommentTemplate(models.Model):
         relation="base_comment_template_res_partner_rel",
         column1="base_comment_template_id",
         column2="res_partner_id",
-        string="Partner",
         help="If set, the comment template will be available only for the selected "
         "partner.",
     )
