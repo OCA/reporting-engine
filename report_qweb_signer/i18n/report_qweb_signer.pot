@@ -1,0 +1,99 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_signer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-22 16:23+0000\n"
+"PO-Revision-Date: 2026-09-22 16:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<span>This is a sample report for testing PDF certificates.</span>"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
+msgid "<strong>Partner:</strong>"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__signing_allow_only_one
+msgid "Allow to sign only one document"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model,name:report_qweb_signer.model_certificate_certificate
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__certificate_id
+msgid "Certificate"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_ir_actions_report__signing_allow_only_one
+msgid "Disallow to sign a pdf composed of several documents"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_certificate_certificate__display_name
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_ir_actions_report__signing_domain
+msgid "Domain for filtering if sign or not the document"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,help:report_qweb_signer.field_ir_actions_report__signed_attachment
+msgid ""
+"Filename used to store signed document as attachment. Keep empty to not save"
+" signed document."
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_certificate_certificate__id
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__id
+msgid "ID"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model,name:report_qweb_signer.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__signed_attachment
+msgid "Save as attachment"
+msgstr ""
+
+#. module: report_qweb_signer
+#. odoo-python
+#: code:addons/report_qweb_signer/models/ir_actions_report.py:0
+msgid ""
+"Saving signed report (PDF): You do not have enough access rights to save "
+"attachments"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model_terms:ir.ui.view,arch_db:report_qweb_signer.act_report_xml_view
+msgid "Sign"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report__signing_domain
+msgid "Signing Domain"
+msgstr ""
+
+#. module: report_qweb_signer
+#: model:ir.actions.report,name:report_qweb_signer.partner_demo_report
+msgid "Test PDF certificate"
+msgstr ""

@@ -1,0 +1,22 @@
+<odoo>
+    <record id="act_report_xml_view" model="ir.ui.view">
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="sign" string="Sign">
+                    <group>
+                        <field name="certificate_id" />
+                        <field name="signing_allow_only_one" />
+                        <field name="signed_attachment" />
+                        <field
+                            name="signing_domain"
+                            widget="domain"
+                            options="{'model': 'model'}"
+                        />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
