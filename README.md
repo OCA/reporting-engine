@@ -22,9 +22,9 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[base_comment_template](base_comment_template/) | 19.0.0.0.1 |  | Add conditional mako template to any reporton models that inherits comment.template.
+[base_comment_template](base_comment_template/) | 19.0.0.0.2 |  | Add conditional mako template to any reporton models that inherits comment.template.
 [bi_sql_editor](bi_sql_editor/) | 19.0.2.0.1 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | BI Views builder, based on Materialized or Normal SQL Views
-[kpi](kpi/) | 19.0.1.0.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Key Performance Indicators
+[kpi](kpi/) | 19.0.1.0.1 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Key Performance Indicators
 [pdf_xml_attachment](pdf_xml_attachment/) | 19.0.1.0.0 | <a href='https://github.com/simahawk'><img src='https://github.com/simahawk.png' width='32' height='32' style='border-radius:50%;' alt='simahawk'/></a> <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> | Provides helpers to work w/ PDFs and XML attachments
 [report_async](report_async/) | 19.0.1.0.0 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Central place to run reports live or async
 [report_context](report_context/) | 19.0.1.0.0 |  | Adding context to reports
@@ -35,7 +35,7 @@ addon | version | maintainers | summary
 [report_qr](report_qr/) | 19.0.1.0.0 |  | Web QR Manager
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 19.0.1.0.0 |  | Report Qweb Element Page Visibility
 [report_qweb_encrypt](report_qweb_encrypt/) | 19.0.1.0.1 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Allow to encrypt qweb pdfs
-[report_qweb_field_option](report_qweb_field_option/) | 19.0.1.0.0 |  | Report Qweb Field Option
+[report_qweb_field_option](report_qweb_field_option/) | 19.0.1.0.1 |  | Report Qweb Field Option
 [report_qweb_parameter](report_qweb_parameter/) | 19.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_substitute](report_substitute/) | 19.0.1.0.0 | <a href='https://github.com/sbejaoui'><img src='https://github.com/sbejaoui.png' width='32' height='32' style='border-radius:50%;' alt='sbejaoui'/></a> | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 19.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
