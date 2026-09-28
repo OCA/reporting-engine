@@ -4,7 +4,7 @@
 import io
 import logging
 
-from odoo.tests import common
+from odoo.addons.base.tests.common import BaseCommon
 
 _logger = logging.getLogger(__name__)
 
@@ -14,23 +14,24 @@ except ImportError:
     _logger.debug("Can not import openpyxl`.")
 
 
-class TestReport(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.report_object = self.env["ir.actions.report"]
+class TestReport(BaseCommon):
+    # Report actions can only be created and modified by administrators
+    _test_user_groups = ("base.group_system",)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.report_object = cls.env["ir.actions.report"]
         vals = {
             "name": "Print to XLSX",
             "model": "res.partner",
             "report_type": "xlsx",
             "report_name": "report_xlsx.partner_xlsx",
-            "report_file": "res_partner",
         }
-        self.xlsx_report = self.env["report.report_xlsx.abstract"].with_context(
-            active_model="res.partner"
-        )
-        self.report_name = "report_xlsx.partner_xlsx"
-        self.report = self.report_object.create(vals)
-        self.docs = self.env["res.company"].search([], limit=1).partner_id
+        cls.xlsx_report = cls.env["report.report_xlsx.abstract"]
+        cls.report_name = "report_xlsx.partner_xlsx"
+        cls.report = cls.report_object.create(vals)
+        cls.docs = cls.company.partner_id
 
     def test_report(self):
         report = self.report
@@ -51,26 +52,28 @@ class TestReport(common.TransactionCase):
         self.assertEqual(attachment.name, f"{self.docs.name}.xlsx")
 
     def test_id_retrieval(self):
+        # BaseCommon gives each test its own environment: set the context here
+        xlsx_report = self.xlsx_report.with_context(active_model="res.partner")
         # Typical call from WebUI with wizard
-        objs = self.xlsx_report._get_objs_for_report(
+        objs = xlsx_report._get_objs_for_report(
             False, {"context": {"active_ids": self.docs.ids}}
         )
         self.assertEqual(objs, self.docs)
 
         # Typical call from within code not to report_action
-        objs = self.xlsx_report.with_context(
-            active_ids=self.docs.ids
-        )._get_objs_for_report(False, False)
+        objs = xlsx_report.with_context(active_ids=self.docs.ids)._get_objs_for_report(
+            False, False
+        )
         self.assertEqual(objs, self.docs)
 
         # Typical call from WebUI
-        objs = self.xlsx_report._get_objs_for_report(
+        objs = xlsx_report._get_objs_for_report(
             self.docs.ids, {"data": [self.report_name, self.report.report_type]}
         )
         self.assertEqual(objs, self.docs)
 
         # Typical call from render
-        objs = self.xlsx_report._get_objs_for_report(self.docs.ids, {})
+        objs = xlsx_report._get_objs_for_report(self.docs.ids, {})
         self.assertEqual(objs, self.docs)
 
     def test_currency_format(self):

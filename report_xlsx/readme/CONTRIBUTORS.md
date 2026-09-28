@@ -9,3 +9,4 @@
 - Christopher Ormaza \<<chris.ormaza@forgeflow.com>\>
 - Houzéfa Abbasbhay \<<houzefa.abba@xcg-consulting.fr>\>
 - Le Dinh Tien \<<tien-ld@komit-consulting.com>\>
+- Marc Frankard \<<support@propublisher.be>\>

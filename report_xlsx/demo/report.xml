@@ -9,6 +9,5 @@
         <field name="model">res.partner</field>
         <field name="report_type">xlsx</field>
         <field name="report_name">report_xlsx.partner_xlsx</field>
-        <field name="report_file">res_partner</field>
     </record>
 </odoo>
