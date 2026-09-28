@@ -23,7 +23,6 @@ class TestReport(common.TransactionCase):
             "model": "res.partner",
             "report_type": "xlsx",
             "report_name": "report_xlsx.partner_xlsx",
-            "report_file": "res_partner",
         }
         self.xlsx_report = self.env["report.report_xlsx.abstract"].with_context(
             active_model="res.partner"
