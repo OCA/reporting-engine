@@ -1,0 +1,190 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_positioned_image
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 10:13+0000\n"
+"PO-Revision-Date: 2026-09-29 10:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__company_id
+msgid "Company"
+msgstr "会社"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Company Assignment"
+msgstr "会社の割当"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_res_company__report_positioned_image_ids
+msgid "Company Images"
+msgstr "会社画像"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__first_page_only
+msgid "First Page Only"
+msgstr "1ページ目のみ"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__height
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Height (mm)"
+msgstr "高さ (mm)"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Height must be greater than zero."
+msgstr "高さは0より大きい値である必要があります。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_ir_actions_report__include_company_images
+msgid ""
+"If checked, company-level images will be shown in addition to report-"
+"specific images."
+msgstr "チェックすると、レポート固有の画像に加えて会社レベルの画像も表示されます。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__image
+msgid "Image"
+msgstr "画像"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_ir_actions_report__include_company_images
+msgid "Include Company Images"
+msgstr "会社画像を含める"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_report_positioned_image__company_id
+msgid ""
+"Leave empty to apply to all companies. Set a specific company to restrict "
+"this image to that company only."
+msgstr "空欄の場合はすべての会社に適用されます。特定の会社を設定すると、この画像はその会社のみに制限されます。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__pos_left
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Left (mm)"
+msgstr "左端 (mm)"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Left position must be a positive value."
+msgstr "左位置は正の値である必要があります。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__name
+msgid "Name"
+msgstr "名称"
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_ir_actions_report
+msgid "Report Action"
+msgstr "レポートアクション"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_ir_actions_report__report_positioned_image_ids
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Report Images"
+msgstr "レポート画像"
+
+#. module: report_positioned_image
+#: model:ir.model,name:report_positioned_image.model_report_positioned_image
+msgid "Report Positioned Image"
+msgstr "レポート配置画像"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__respect_image_ratio
+msgid "Respect Image Ratio"
+msgstr "画像の縦横比を維持"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__pos_top
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Top (mm)"
+msgstr "上端 (mm)"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Top position must be a positive value."
+msgstr "上位置は正の値である必要があります。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,help:report_positioned_image.field_report_positioned_image__respect_image_ratio
+msgid ""
+"When enabled, changing width or height will automatically adjust the other "
+"dimension to maintain the original image aspect ratio."
+msgstr "有効にすると、幅または高さを変更した際に、元の画像の縦横比を維持するようもう一方の寸法が自動的に調整されます。"
+
+#. module: report_positioned_image
+#: model:ir.model.fields,field_description:report_positioned_image.field_report_positioned_image__width
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_act_report_form_positioned_image
+#: model_terms:ir.ui.view,arch_db:report_positioned_image.view_company_form_positioned_image
+msgid "Width (mm)"
+msgstr "幅 (mm)"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid "Width must be greater than zero."
+msgstr "幅は0より大きい値である必要があります。"
+
+#. module: report_positioned_image
+#. odoo-python
+#: code:addons/report_positioned_image/models/report_positioned_image.py:0
+msgid ""
+"You cannot assign this image to a different company. Please use the "
+"dedicated wizard to assign images to other companies."
+msgstr "この画像を別の会社に割り当てることはできません。他の会社に画像を割り当てるには専用のウィザードを使用してください。"
