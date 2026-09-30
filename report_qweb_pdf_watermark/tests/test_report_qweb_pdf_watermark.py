@@ -3,7 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from PIL import Image
 
-from odoo.tests.common import HttpCase
+from odoo import Command
+from odoo.tests.common import HttpCase, TransactionCase, tagged
 
 
 class TestReportQwebPdfWatermark(HttpCase):
@@ -98,3 +99,68 @@ class TestReportQwebPdfWatermark(HttpCase):
         # test 2
         numpages = 2
         self.assertTrue(self.env["ir.actions.report"].pdf_has_usable_pages(numpages))
+
+
+# post_install, so that auto-installed modules such as iap are available
+@tagged("post_install", "-at_install")
+class TestReportQwebPdfWatermarkCompany(TransactionCase):
+    def _create_report(self, model):
+        return self.env["ir.actions.report"].create(
+            {
+                "name": f"Test Watermark Report {model}",
+                "model": model,
+                "report_type": "qweb-pdf",
+                "report_name": "report_qweb_pdf_watermark.test_report_view",
+            }
+        )
+
+    def test_get_watermark_company(self):
+        other_company = self.env["res.company"].create({"name": "Watermark Co"})
+        self.assertNotEqual(self.env.company, other_company)
+        report = self._create_report("res.partner")
+        partner = self.env["res.partner"].create(
+            {"name": "Partner", "company_id": other_company.id}
+        )
+        shared_partner = self.env["res.partner"].create({"name": "Shared"})
+
+        # no documents: company from the environment
+        self.assertEqual(report._get_watermark_company([], report), self.env.company)
+        # document company_id wins over the environment company
+        self.assertEqual(
+            report._get_watermark_company(partner.ids, report), other_company
+        )
+        # the first document carrying a company is used
+        self.assertEqual(
+            report._get_watermark_company((shared_partner | partner).ids, report),
+            other_company,
+        )
+        # document without a company: company from the environment
+        self.assertEqual(
+            report._get_watermark_company(shared_partner.ids, report),
+            self.env.company,
+        )
+
+    def test_get_watermark_company_ids(self):
+        # iap.account only has company_ids; iap is auto-installed with web
+        if "iap.account" not in self.env:
+            self.skipTest("iap is not installed")
+        other_company = self.env["res.company"].create({"name": "Watermark Co"})
+        report = self._create_report("iap.account")
+        service = self.env["iap.service"].create(
+            {
+                "name": "Watermark",
+                "technical_name": "report_qweb_pdf_watermark_test",
+                "description": "Watermark test service",
+                "unit_name": "Credits",
+                "integer_balance": True,
+            }
+        )
+        account = self.env["iap.account"].create(
+            {
+                "service_id": service.id,
+                "company_ids": [Command.set(other_company.ids)],
+            }
+        )
+        self.assertEqual(
+            report._get_watermark_company(account.ids, report), other_company
+        )

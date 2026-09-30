@@ -44,16 +44,19 @@ class Report(models.Model):
 
         When printing a document in a multi-company environment, the
         watermark should match the company of the document being printed,
-        not the company selected in the UI switcher.  Falls back to
-        ``self.env.company`` when no document or no ``company_id`` field
-        is available.
+        not the company selected in the UI switcher.  Follows the core
+        pattern of ``company_id``, then ``company_ids``, and falls back to
+        ``self.env.company`` when the documents carry no company.
         """
+        company = self.env["res.company"]
         if docids:
             model_name = self.model or report_sudo.model
             docs = self.env[model_name].browse(docids)
-            if docs and "company_id" in docs._fields and docs[:1].company_id:
-                return docs[:1].company_id
-        return self.env.company
+            if "company_id" in docs._fields:
+                company = docs.company_id[:1]
+            elif "company_ids" in docs._fields:
+                company = docs.company_ids[:1]
+        return company or self.env.company
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
