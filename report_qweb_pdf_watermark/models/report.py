@@ -8,6 +8,9 @@ from logging import getLogger
 from PIL import Image
 
 from odoo import api, fields, models
+from odoo.tools.pdf import PdfFileReader as PdfReader
+from odoo.tools.pdf import PdfFileWriter as PdfWriter
+from odoo.tools.pdf import PdfReadError
 from odoo.tools.safe_eval import safe_eval
 
 logger = getLogger(__name__)
@@ -17,21 +20,6 @@ try:
     from PIL import PdfImagePlugin  # noqa: F401
 except ImportError:
     logger.error("ImportError: The PdfImagePlugin could not be imported")
-
-try:
-    try:
-        from PyPDF2 import PdfReader, PdfWriter  # pylint: disable=W0404
-        from PyPDF2.errors import PdfReadError  # pypdf >= 2.0
-    except ImportError:
-        from PyPDF2 import (  # pylint: disable=W0404
-            PdfFileReader as PdfReader,
-        )
-        from PyPDF2 import (
-            PdfFileWriter as PdfWriter,
-        )
-        from PyPDF2.utils import PdfReadError  # pypdf < 2.0
-except ImportError:
-    logger.warning("Can not import PyPDF2")
 
 
 class Report(models.Model):
