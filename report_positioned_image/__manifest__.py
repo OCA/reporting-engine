@@ -3,7 +3,7 @@
 {
     "name": "Report Positioned Image",
     "summary": "Add positioned images to PDF reports.",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "category": "Reporting",
     "author": "Quartile, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
