@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="module_category_report_printed_flag" model="ir.module.category">
+        <field name="name">Report Printed Flag</field>
+        <field name="description">Report printed flag configuration</field>
+        <field name="sequence">36</field>
+    </record>
+</odoo>
