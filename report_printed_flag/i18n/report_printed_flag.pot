@@ -6,11 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 09:43+0000\n"
-"PO-Revision-Date: 2026-04-01 09:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -20,24 +17,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__active
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 msgid "Active"
-msgstr "Activo"
+msgstr ""
 
 #. module: report_printed_flag
 #. odoo-python
 #: code:addons/report_printed_flag/models/report_printed_config.py:0
 #, python-format
 msgid "All selected reports must belong to model '%s'."
-msgstr "Todos los informes seleccionados deben pertenecer al modelo '%s'."
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__allowed_model_ids
 msgid "Allowed Model"
-msgstr "Modelo permitido"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 msgid "Archived"
-msgstr "Archivado"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,help:report_printed_flag.field_report_printed_mixin__printed_report_names
@@ -52,59 +49,59 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Company"
-msgstr "Compañía"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__config_id
 msgid "Config"
-msgstr "Configuración"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.ui.menu,name:report_printed_flag.menu_report_printed_config
 msgid "Configurations"
-msgstr "Configuraciones"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__create_uid
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__create_uid
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__create_date
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__create_date
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__create_date
 msgid "Created on"
-msgstr "Impreso el"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__display_name
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__display_name
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__display_name
 msgid "Display Name"
-msgstr "Nombre para mostrar"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__domain
 msgid "Domain"
-msgstr "Dominio"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__report_printed_log_active
 msgid "Enable Printed Logs"
-msgstr "Habilitar registros impresos"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__report_printed_names_active
 msgid "Enable Printed Report Names"
-msgstr "Habilitar nombres de informes impresos"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Group By"
-msgstr "Agrupar por"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__id
@@ -123,103 +120,100 @@ msgstr ""
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_form
 msgid "Internal notes..."
-msgstr "Notas internas..."
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__write_uid
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__write_uid
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__write_date
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__write_date
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__write_date
 msgid "Last Updated on"
-msgstr "Última actualización el"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.ui.menu,name:report_printed_flag.menu_report_printed_log
 msgid "Logs"
-msgstr "Historial"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__model_id
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Model"
-msgstr "Modelo"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__name
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__name
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__note
 msgid "Note"
-msgstr "Nota"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_form
 msgid "Notes"
-msgstr "Notas"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.constraint,message:report_printed_flag.constraint_report_printed_config_report_printed_config_unique_model_company
 msgid "Only one configuration per model and company is allowed."
-msgstr "Solo se permite una configuración por modelo y compañía."
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Print Date"
-msgstr "Fecha de Impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_mixin__printed_log_ids
-#, fuzzy
 msgid "Print Logs"
-msgstr "Historial de indicadores de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_mixin__printed
-#, fuzzy
 msgid "Printed"
-msgstr "Indicador impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model,name:report_printed_flag.model_report_printed_config_line
 msgid "Printed Config Line"
-msgstr "Línea de configuración impresa"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.ui.menu,name:report_printed_flag.menu_report_printed_flag_root
 msgid "Printed Flag"
-msgstr "Indicador impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_form
 msgid "Printed Flag Configuration"
-msgstr "Configuración del indicador de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.actions.act_window,name:report_printed_flag.action_report_printed_config
 msgid "Printed Flag Configurations"
-msgstr "Configuraciones del indicador de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.actions.act_window,name:report_printed_flag.action_report_printed_log
 msgid "Printed Flag Logs"
-msgstr "Historial de indicadores de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_mixin__printed_report_names
-#, fuzzy
 msgid "Printed Reports Names"
-msgstr "Habilitar nombres de informes impresos"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__res_id
@@ -230,48 +224,47 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config_line__report_id
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__report_id
 msgid "Report"
-msgstr "Informe"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model,name:report_printed_flag.model_ir_actions_report
 msgid "Report Action"
-msgstr "Acción de informe"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.module.category,name:report_printed_flag.module_category_report_printed_flag
 msgid "Report Printed Flag"
-msgstr "Informe indicador de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model,name:report_printed_flag.model_report_printed_config
 msgid "Report Printed Flag Configuration"
-msgstr "Configuración del indicador de impresión del informe"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model,name:report_printed_flag.model_report_printed_log
 msgid "Report Printed Log"
-msgstr "Registro de impresión de informes"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model,name:report_printed_flag.model_report_printed_mixin
-#, fuzzy
 msgid "Report Printed Mixin"
-msgstr "Registro de impresión de informes"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__line_ids
 msgid "Report Rules"
-msgstr "Reglas de informe"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.module.category,description:report_printed_flag.module_category_report_printed_flag
 msgid "Report printed flag configuration"
-msgstr "Configuración del indicador de impresión del informe"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_form
 msgid "Reports"
-msgstr "Informes"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__res_model
@@ -281,24 +274,24 @@ msgstr ""
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_config_search
 msgid "Search Printed Flag Configurations"
-msgstr "Buscar configuraciones del indicador de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "Search Printed Flag Logs"
-msgstr "Búsqueda en historial de indicadores de impresión"
+msgstr ""
 
 #. module: report_printed_flag
 #. odoo-python
 #: code:addons/report_printed_flag/models/report_printed_config.py:0
 #, python-format
 msgid "Selected model must have a 'printed' field."
-msgstr "Modelo seleccionado debe tener un campo 'printed'."
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_config__model
 msgid "Technical Model"
-msgstr "Modelo Técnico"
+msgstr ""
 
 #. module: report_printed_flag
 #: model:ir.model.fields,help:report_printed_flag.field_report_printed_mixin__printed_log_ids
@@ -311,7 +304,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_printed_flag.field_report_printed_log__user_id
 #: model_terms:ir.ui.view,arch_db:report_printed_flag.view_report_printed_log_search
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 #. module: report_printed_flag
 #. odoo-python
@@ -319,8 +312,3 @@ msgstr "Usuario"
 #, python-format
 msgid "You must enable logs to use printed report names."
 msgstr ""
-"Debe habilitar los registros para usar los nombres de los informes impresos."
-
-#, python-format
-#~ msgid "Invalid domain syntax: %s"
-#~ msgstr "Sintaxis de dominio no válida: %s"
