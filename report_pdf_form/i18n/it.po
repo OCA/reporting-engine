@@ -254,6 +254,11 @@ msgid "Invalid evaluation for Odoo field"
 msgstr "Valutazione errata per il campo Odoo"
 
 #. module: report_pdf_form
+#: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__is_invoice_report
+msgid "Invoice report"
+msgstr ""
+
+#. module: report_pdf_form
 #: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__write_uid
 #: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_field__write_uid
 #: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form_variable__write_uid
