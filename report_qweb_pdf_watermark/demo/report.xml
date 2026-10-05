@@ -16,7 +16,7 @@
                 <div class="page">
                     <ul>
                         <li t-foreach="docs" t-as="doc">
-                            <t t-esc="doc.name" />
+                            <t t-out="doc.name" />
                         </li>
                     </ul>
                 </div>

@@ -53,7 +53,9 @@ class Report(models.Model):
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
-            self = self.with_context(res_ids=res_ids)
+            return super(Report, self.with_context(res_ids=res_ids))._render_qweb_pdf(
+                report_ref, res_ids=res_ids, data=data
+            )
         return super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
 
     @staticmethod
@@ -103,10 +105,10 @@ class Report(models.Model):
                 self.pdf_watermark_expression
                 or report_sudo.pdf_watermark_expression
                 or "None",
-                dict(
-                    env=self.env,
-                    docs=self.env[self.model or report_sudo.model].browse(docids),
-                ),
+                {
+                    "env": self.env,
+                    "docs": self.env[self.model or report_sudo.model].browse(docids),
+                },
             )
             if watermark:
                 watermark = b64decode(watermark)
@@ -131,8 +133,8 @@ class Report(models.Model):
                     resolution = resolution[0]
                 image.save(pdf_buffer, "pdf", resolution=resolution)
                 pdf_watermark = PdfReader(pdf_buffer)
-            except Exception as e:
-                logger.exception("Failed to load watermark", e)
+            except Exception:
+                logger.exception("Failed to load watermark")
 
         if not pdf_watermark:
             logger.error("No usable watermark found, got %s...", watermark[:100])
