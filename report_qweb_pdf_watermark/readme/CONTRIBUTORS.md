@@ -7,3 +7,5 @@
 - Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
 - Anjeel Haria
 - Dennis Sluijk \<<d.sluijk@onestein.nl>\>
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia
