@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="act_report_xml_view" model="ir.ui.view">
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="arch" type="xml">
+            <!-- The core "attachment" field is only visible when "Save as
+                 attachment" is set, so the watermark gets its own setting -->
+            <setting name="attachment_setting" position="after">
+                <setting
+                    name="pdf_watermark_setting"
+                    string="PDF Watermark"
+                    help="Use the company watermark or a specific one for this report"
+                    invisible="report_type != 'qweb-pdf'"
+                >
+                    <field name="use_company_watermark" />
+                    <div class="content-group" invisible="use_company_watermark">
+                        <div class="mt16 d-flex">
+                            <label
+                                for="pdf_watermark_expression"
+                                class="o_light_label mr8"
+                                groups="base.group_no_one"
+                            />
+                            <field
+                                name="pdf_watermark_expression"
+                                groups="base.group_no_one"
+                            />
+                        </div>
+                        <div class="mt16">
+                            <label for="pdf_watermark" class="o_light_label" />
+                            <field name="pdf_watermark" widget="pdf_viewer" />
+                        </div>
+                    </div>
+                </setting>
+            </setting>
+        </field>
+    </record>
+
+    <record id="web.action_report_externalpreview" model="ir.actions.report">
+        <field name="use_company_watermark" eval="True" />
+    </record>
+</odoo>
