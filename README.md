@@ -45,6 +45,7 @@ addon | version | maintainers | summary
 [report_qweb_parameter](report_qweb_parameter/) | 18.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_qweb_pdf_cover](report_qweb_pdf_cover/) | 18.0.1.0.0 |  | Add front and back covers to your QWeb PDF reports
 [report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 18.0.1.1.0 | <a href='https://github.com/hbrunn'><img src='https://github.com/hbrunn.png' width='32' height='32' style='border-radius:50%;' alt='hbrunn'/></a> | Add watermarks to your QWEB PDF reports
+[report_qweb_signer](report_qweb_signer/) | 18.0.1.0.0 |  | Sign Qweb PDFs usign a PKCS#12 certificate
 [report_substitute](report_substitute/) | 18.0.1.0.0 | <a href='https://github.com/sbejaoui'><img src='https://github.com/sbejaoui.png' width='32' height='32' style='border-radius:50%;' alt='sbejaoui'/></a> | This module allows to create substitution rules for report actions.
 [report_text_format_option](report_text_format_option/) | 18.0.1.0.0 | <a href='https://github.com/yostashiro'><img src='https://github.com/yostashiro.png' width='32' height='32' style='border-radius:50%;' alt='yostashiro'/></a> <a href='https://github.com/aungkokolin1997'><img src='https://github.com/aungkokolin1997.png' width='32' height='32' style='border-radius:50%;' alt='aungkokolin1997'/></a> | Report Text Format Option
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 18.0.1.0.1 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.

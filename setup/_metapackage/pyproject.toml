@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-reporting-engine"
-version = "18.0.20260618.0"
+version = "18.0.20261005.0"
 dependencies = [
     "odoo-addon-base_comment_template==18.0.*",
     "odoo-addon-bi_sql_editor==18.0.*",
@@ -25,6 +25,7 @@ dependencies = [
     "odoo-addon-report_qweb_parameter==18.0.*",
     "odoo-addon-report_qweb_pdf_cover==18.0.*",
     "odoo-addon-report_qweb_pdf_watermark==18.0.*",
+    "odoo-addon-report_qweb_signer==18.0.*",
     "odoo-addon-report_substitute==18.0.*",
     "odoo-addon-report_text_format_option==18.0.*",
     "odoo-addon-report_wkhtmltopdf_param==18.0.*",
