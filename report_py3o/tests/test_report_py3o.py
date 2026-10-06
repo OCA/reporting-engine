@@ -266,3 +266,34 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.msg_py3o_report_not_available)
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertTrue(res)
+
+    def test_pre_render_qweb_pdf_py3o_streams(self):
+        with mock.patch.object(
+            self.report.__class__,
+            "_render",
+            return_value=(b"pdf-content", "pdf"),
+        ) as mocked_render:
+            streams, report_type = self.report._pre_render_qweb_pdf(
+                self.report.report_name,
+                res_ids=self.env.user.ids,
+            )
+
+        self.assertEqual(report_type, "pdf")
+        self.assertEqual(set(streams.keys()), set(self.env.user.ids))
+        for stream_data in streams.values():
+            self.assertEqual(stream_data["stream"].getvalue(), b"pdf-content")
+            stream_data["stream"].close()
+
+        self.assertEqual(mocked_render.call_count, len(self.env.user.ids))
+
+    def test_pre_render_qweb_pdf_py3o_non_pdf(self):
+        with mock.patch.object(
+            self.report.__class__,
+            "_render",
+            return_value=(b"odt-content", "odt"),
+        ):
+            with self.assertRaises(ValidationError):
+                self.report._pre_render_qweb_pdf(
+                    self.report.report_name,
+                    res_ids=[self.env.user.id],
+                )
