@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-23 08:14+0000\n"
+"PO-Revision-Date: 2026-10-06 09:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -256,7 +256,7 @@ msgstr "Valutazione errata per il campo Odoo"
 #. module: report_pdf_form
 #: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__is_invoice_report
 msgid "Invoice report"
-msgstr ""
+msgstr "Resoconto fattura"
 
 #. module: report_pdf_form
 #: model:ir.model.fields,field_description:report_pdf_form.field_report_pdf_form__write_uid
