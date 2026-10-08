@@ -160,12 +160,12 @@ Credits
 Authors
 -------
 
-* Binhex Systems Solutions S.L
+* Binhex
 
 Contributors
 ------------
 
-- `Binhex Systems Solutions S.L. <https://www.binhex.cloud>`__:
+- `Binhex <https://www.binhex.cloud>`__:
 
   - Ariel Torres
   - Rolando Pérez Rebollo
