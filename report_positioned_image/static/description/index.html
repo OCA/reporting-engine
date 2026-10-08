@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
-<title>README.rst</title>
+<title>Report Positioned Image</title>
 <style type="text/css">
 
 /*
@@ -381,13 +381,19 @@ using millimeter coordinates (top, left) and you can control whether
 they appear on all pages or only the first page.</p>
 <p>The module supports two types of images:</p>
 <ul class="simple">
-<li><em>Company-level Images</em>: Define images at the company level that can be
-included in reports by enabling the <em>Include Company Images</em> option</li>
+<li><em>Company-level Images</em>: Define images at the company level that can
+be included in reports by enabling the <em>Include Company Images</em>
+option</li>
 <li><em>Report-specific Images</em>: Configure specific images for individual
 reports, filtered by company context and always shown when configured</li>
 </ul>
 <p>Images can be assigned to a specific company or left as shared records
 (without company assignment) for use across multiple companies</p>
+<p>An image can also be made <em>conditional</em> by giving it a domain: it is
+then printed only on the records matching that domain. This is how one
+report can carry, say, a signature stamp for some customers and not for
+others. The domain is evaluated against the model of the report being
+printed, so a single image can guard several reports.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -418,8 +424,8 @@ height)</li>
 <li><em>Height (mm)</em>: Height of the image (changing this auto-adjusts
 width)</li>
 <li><em>Respect Image Ratio</em>: When enabled (default), changing width or
-height automatically adjusts the other dimension to maintain aspect
-ratio. Uncheck for manual control of both dimensions.</li>
+height automatically adjusts the other dimension to maintain
+aspect ratio. Uncheck for manual control of both dimensions.</li>
 <li><em>First Page Only</em>: Check to show only on the first page</li>
 <li><em>Company</em>: Automatically set to the current company when creating
 from the company form. To create shared images, leave empty.</li>
@@ -440,6 +446,27 @@ settings as above</li>
 upload an image, it’s automatically sized to 50mm width with
 proportional height. You can then adjust either dimension and the other
 will update automatically to prevent distortion.</p>
+<p>To show an image on some records only:</p>
+<ol class="arabic simple">
+<li>Open the image in the report’s or the company’s <em>Report Images</em> tab</li>
+<li>Fill in <em>Condition</em> with a domain selecting the records that should
+carry the image, for example
+<tt class="docutils literal"><span class="pre">[('partner_id.country_id.code',</span> <span class="pre">'=',</span> <span class="pre">'JP')]</span></tt></li>
+</ol>
+<p>The condition is evaluated against whichever model the printed report
+renders, so it is not tied to one report: the same image can guard an
+invoice, a quotation and a delivery slip at once, as long as those
+models share the field paths the domain uses. For an image on a report’s
+<em>Report Images</em> tab, the domain is checked against the model of every
+report the image is placed on, so a field path that does not exist there
+is refused when you save. For an image on the company’s <em>Report Images</em>
+tab, the condition is only checked at print time.</p>
+<p><strong>Note</strong>: An image whose condition cannot be evaluated on the model
+being printed is left out of that report rather than printed unguarded,
+and a warning is logged.</p>
+<p><strong>Note</strong>: An image with a condition is printed only on reports whose
+layout has a header for each record, such as <tt class="docutils literal">web.external_layout</tt>.
+Reports without one (e.g. built on <tt class="docutils literal">web.basic_layout</tt>) leave it out.</p>
 </div>
 <div class="section" id="bug-tracker">
 <h2><a class="toc-backref" href="#toc-entry-2">Bug Tracker</a></h2>
