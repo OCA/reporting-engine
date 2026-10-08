@@ -164,7 +164,7 @@ Contributors
 
 - `Binhex <https://binhex.cloud>`__:
 
-  - Antonio Ruban <a.ruban@binhex.com>
+  - Antonio Ruban <a.ruban@binhex.cloud>
 
 Other credits
 -------------
