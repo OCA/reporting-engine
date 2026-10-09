@@ -14,7 +14,7 @@ from importlib.resources import files
 from io import BytesIO
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from odoo import _, api, fields, models, tools
+from odoo import api, fields, models, tools
 from odoo.exceptions import AccessError, UserError
 from odoo.tools.safe_eval import safe_eval, time
 
@@ -171,7 +171,9 @@ class Py3oReport(models.TransientModel):
 
         if tmpl_data is None:
             # if for any reason the template is not found
-            raise TemplateNotFound(_("No template found. Aborting."), sys.exc_info())
+            raise TemplateNotFound(
+                self.env._("No template found. Aborting."), sys.exc_info()
+            )
 
         return tmpl_data
 
