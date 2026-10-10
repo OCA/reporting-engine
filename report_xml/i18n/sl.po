@@ -9,20 +9,21 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-13 02:43+0000\n"
-"PO-Revision-Date: 2017-07-13 02:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_report_report_xml_abstract
 msgid "Abstract XML Report"
-msgstr ""
+msgstr "Abstraktno XML poročilo"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_declaration
@@ -31,24 +32,26 @@ msgid ""
 "Add `<?xml encoding=\"...\" version=\"...\"?>` at the start of final report "
 "file."
 msgstr ""
+"Dodaj `<?xml encoding=\"...\" version=\"...\"?>` na začetek končne datoteke "
+"poročila."
 
 #. module: report_xml
 #: model:ir.actions.report,name:report_xml.demo_xml_report
 msgid "Demo xml report"
-msgstr ""
+msgstr "Vzorčno XML poročilo"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_encoding
 #: model:ir.model.fields,help:report_xml.field_report_pdf_form__xml_encoding
 msgid ""
 "Encoding for XML reports. If nothing is selected, then UTF-8 will be applied."
-msgstr ""
+msgstr "Kodiranje za XML poročila. Če ni izbrano nič, bo uporabljeno UTF-8."
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_extension
 #: model:ir.model.fields,help:report_xml.field_report_pdf_form__xml_extension
 msgid "Extension for XML Reports, by default is `xml`"
-msgstr ""
+msgstr "Končnica XML poročil; privzeto je `xml`"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__xsd_schema
@@ -57,19 +60,19 @@ msgid ""
 "File with XSD Schema for checking content of result report. Can be empty if "
 "validation is not required."
 msgstr ""
+"Datoteka s shemo XSD za preverjanje vsebine končnega poročila. Lahko je "
+"prazno, če preverjanje ni potrebno."
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Poročilo"
+msgstr "Dejanje poročila"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
 #: model:ir.model.fields,field_description:report_xml.field_report_pdf_form__report_type
-#, fuzzy
 msgid "Report Type"
-msgstr "Poročilo"
+msgstr "Tip poročila"
 
 #. module: report_xml
 #: model:ir.model.fields,help:report_xml.field_ir_actions_report__report_type
@@ -80,43 +83,45 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Tip poročila, ki bo izrisano; vsak ima svoj način izrisa. HTML pomeni, da se "
+"poročilo odpre neposredno v brskalniku. PDF pomeni, da se poročilo izriše z "
+"Wkhtmltopdf in ga uporabnik prenese."
 
 #. module: report_xml
 #: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__xml_encoding__utf-8
 msgid "UTF-8"
-msgstr ""
+msgstr "UTF-8"
 
 #. module: report_xml
 #: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__report_type__qweb-xml
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_declaration
 #: model:ir.model.fields,field_description:report_xml.field_report_pdf_form__xml_declaration
 msgid "XML Declaration"
-msgstr ""
+msgstr "Deklaracija XML"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_encoding
 #: model:ir.model.fields,field_description:report_xml.field_report_pdf_form__xml_encoding
 msgid "XML Encoding"
-msgstr ""
+msgstr "Kodiranje XML"
 
 #. module: report_xml
 #: model_terms:ir.ui.view,arch_db:report_xml.ir_actions_report_view_form_report_xml
-#, fuzzy
 msgid "XML Rreport Settings"
-msgstr "Poročilo"
+msgstr "Nastavitve XML poročila"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
 #: model:ir.model.fields,field_description:report_xml.field_report_pdf_form__xsd_schema
 msgid "XSD Validation Schema"
-msgstr ""
+msgstr "Shema XSD za preverjanje"
 
 #. module: report_xml
 #: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_extension
 #: model:ir.model.fields,field_description:report_xml.field_report_pdf_form__xml_extension
 msgid "Xml Extension"
-msgstr ""
+msgstr "Končnica XML"
