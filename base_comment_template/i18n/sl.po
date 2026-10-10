@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-16 11:59+0000\n"
-"PO-Revision-Date: 2026-09-12 05:37+0000\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -43,7 +43,7 @@ msgstr "Arhivirano"
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment Preview"
-msgstr ""
+msgstr "Predogled osnovnega komentarja"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__base_comment_template_id
@@ -53,37 +53,37 @@ msgstr "Osnovna predloga za komentarje"
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template_preview
 msgid "Base Comment Template Preview"
-msgstr ""
+msgstr "Predogled predloge osnovnega komentarja"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Base Comment content"
-msgstr ""
+msgstr "Vsebina osnovnega komentarja"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__body
 msgid "Body"
-msgstr ""
+msgstr "Vsebina"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__after_lines
 msgid "Bottom"
-msgstr ""
+msgstr "Spodaj"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose a language:"
-msgstr ""
+msgstr "Izberite jezik:"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an engine:"
-msgstr ""
+msgstr "Izberite mehanizem izrisa:"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "Choose an example"
-msgstr ""
+msgstr "Izberite primer"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.view_base_comment_template_form
@@ -110,7 +110,7 @@ msgstr "Predloge komentarjev"
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_base_comment_template
 msgid "Comments Template"
-msgstr ""
+msgstr "Predloga komentarjev"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__company_id
@@ -148,7 +148,7 @@ msgstr "Prikazani naziv"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__engine
 msgid "Engine"
-msgstr ""
+msgstr "Mehanizem izrisa"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__domain
@@ -158,7 +158,7 @@ msgstr "Domena filtra"
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__global_template
 msgid "Global Template"
-msgstr ""
+msgstr "Globalna predloga"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__id
@@ -170,29 +170,30 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__model_ids
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__model_ids
 msgid "IR Model"
-msgstr ""
+msgstr "Model IR"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__company_id
 msgid ""
 "If set, the comment template will be available only for the selected company."
-msgstr ""
+msgstr "Če je določeno, bo predloga komentarja na voljo le za izbrano družbo."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__partner_ids
 msgid ""
 "If set, the comment template will be available only for the selected partner."
 msgstr ""
+"Če je določeno, bo predloga komentarja na voljo le za izbranega partnerja."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__inline_template
 msgid "Inline Template"
-msgstr ""
+msgstr "Vgrajena predloga"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__inline_template
 msgid "Inline template"
-msgstr ""
+msgstr "Vgrajena predloga"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__write_uid
@@ -227,12 +228,12 @@ msgstr "Naziv"
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__name
 msgid "Name/description of this comment template"
-msgstr ""
+msgstr "Naziv/opis te predloge komentarja"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__no_record
 msgid "No Record"
-msgstr ""
+msgstr "Ni zapisa"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__partner_ids
@@ -263,17 +264,17 @@ msgstr "QWeb"
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__engine__qweb_view
 msgid "QWeb View"
-msgstr ""
+msgstr "QWeb prikaz"
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template_preview__engine__qweb_view
 msgid "QWeb view"
-msgstr ""
+msgstr "QWeb prikaz"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__resource_ref
 msgid "Record reference"
-msgstr ""
+msgstr "Sklic na zapis"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__sequence
@@ -284,7 +285,7 @@ msgstr "Zaporedje"
 #: model:ir.model.fields,help:base_comment_template.field_res_partner__base_comment_template_ids
 #: model:ir.model.fields,help:base_comment_template.field_res_users__base_comment_template_ids
 msgid "Specific partner comments that can be included in reports"
-msgstr ""
+msgstr "Posebni komentarji partnerja, ki jih je mogoče vključiti v poročila"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template__text
@@ -294,22 +295,22 @@ msgstr "Predloga"
 #. module: base_comment_template
 #: model:ir.actions.act_window,name:base_comment_template.base_comment_template_preview_action
 msgid "Template Preview"
-msgstr ""
+msgstr "Predogled predloge"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__engine
 msgid "Template Preview Engine"
-msgstr ""
+msgstr "Mehanizem izrisa predogleda predloge"
 
 #. module: base_comment_template
 #: model:ir.model.fields,field_description:base_comment_template.field_base_comment_template_preview__lang
 msgid "Template Preview Language"
-msgstr ""
+msgstr "Jezik predogleda predloge"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__sequence
 msgid "The smaller number = The higher priority"
-msgstr ""
+msgstr "Manjša številka = višja prednost"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__model_ids
@@ -318,39 +319,41 @@ msgid ""
 "This comment template will be available on this models. You can see here "
 "only models allowed to set the coment template."
 msgstr ""
+"Ta predloga komentarja bo na voljo za te modele. Tu so prikazani le modeli, "
+"ki omogočajo določitev predloge komentarja."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__domain
 msgid ""
 "This comment template will be available only for objects that satisfy the "
 "condition"
-msgstr ""
+msgstr "Ta predloga komentarja bo na voljo le za objekte, ki izpolnjujejo pogoj"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__engine
 msgid ""
 "This field allows to select the engine to use for rendering the template."
-msgstr ""
+msgstr "To polje omogoča izbiro mehanizma za izris predloge."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__position
 msgid "This field allows to select the position of the comment on reports."
-msgstr ""
+msgstr "To polje omogoča izbiro položaja komentarja na poročilih."
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_base_comment_template__text
 msgid "This is the text template that will be inserted into reports."
-msgstr ""
+msgstr "To je besedilna predloga, ki bo vstavljena v poročila."
 
 #. module: base_comment_template
 #: model:ir.model.fields.selection,name:base_comment_template.selection__base_comment_template__position__before_lines
 msgid "Top"
-msgstr ""
+msgstr "Zgoraj"
 
 #. module: base_comment_template
 #: model:ir.model.fields,help:base_comment_template.field_ir_model__is_comment_template
 msgid "Whether this model supports in reports to add comment templates."
-msgstr ""
+msgstr "Ali ta model podpira dodajanje predlog komentarjev v poročila."
 
 #. module: base_comment_template
 #: model:ir.model,name:base_comment_template.model_comment_template
@@ -358,11 +361,13 @@ msgid ""
 "base.comment.template to put header and footer in reports based on created "
 "comment templates"
 msgstr ""
+"base.comment.template za dodajanje glave in noge poročil na podlagi "
+"ustvarjenih predlog komentarjev"
 
 #. module: base_comment_template
 #: model_terms:ir.ui.view,arch_db:base_comment_template.base_comment_template_preview_form
 msgid "record:"
-msgstr ""
+msgstr "zapis:"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Zadnjič spremenjeno"
