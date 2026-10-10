@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="report_instance_column_form_view">
+        <field name="model">report.instance.column</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!-- TODO -->
+                </header>
+                <sheet>
+                    <!-- TODO -->
+                    <group>
+                        <field name="name" />
+                        <field name="mode" />
+                    </group>
+                    <group invisible="mode != 'date'">
+                        <field name="date_from" />
+                        <field name="date_to" />
+                    </group>
+                    <group invisible="mode != 'relative'">
+                        <group>
+                            <field name="date_type" />
+                            <field name="offset" />
+                            <field name="duration_type" />
+                            <field name="duration" />
+                            <field name="is_ytd" />
+                        </group>
+                        <group>
+                            <field name="compute_date_from" />
+                            <field name="compute_date_to" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="report_instance_column_tree_view">
+        <field name="model">report.instance.column</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="compute_date_from" />
+                <field name="compute_date_to" />
+            </list>
+        </field>
+    </record>
+</odoo>

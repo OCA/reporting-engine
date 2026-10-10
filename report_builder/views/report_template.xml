@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="report_template_form_view">
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="source" />
+                        <field name="style_id" />
+                        <field name="search_model_id" />
+                        <field name="search_view_id" />
+                    </group>
+                    <notebook>
+                        <page name="kpi" string="KPIs">
+                            <field name="kpi_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="report_template_search_view">
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="source" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="report_template_tree_view">
+        <field name="model">report.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="source" />
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="report_template_act_window">
+        <field name="name">Template</field>
+        <field name="res_model">report.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">report_builder_template</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="report_template_menu">
+        <field name="name">Report Template</field>
+        <field name="parent_id" ref="report_builder_menu" />
+        <field name="action" ref="report_template_act_window" />
+        <field name="sequence" eval="16" />
+    </record>
+</odoo>
