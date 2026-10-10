@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-31 11:56+0000\n"
-"PO-Revision-Date: 2023-04-11 13:24+0000\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 msgid "%(model_name)s Access %(full_name)s"
-msgstr ""
+msgstr "%(model_name)s Dostop %(full_name)s"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -41,18 +41,17 @@ msgstr "Dostop %s"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_context
 msgid "Action Context"
-msgstr ""
+msgstr "Kontekst dejanja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Potrebno je ukrepanje"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-#, fuzzy
 msgid "Action Settings"
-msgstr "Opcije izbire"
+msgstr "Nastavitve dejanja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__group_ids
@@ -67,7 +66,7 @@ msgstr "Dovoljeni uporabniki"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Število prilog"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__available
@@ -77,19 +76,17 @@ msgstr "Na voljo"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__avg
 msgid "Average"
-msgstr ""
+msgstr "Povprečje"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view
-#, fuzzy
 msgid "BI SQL View"
-msgstr "SQL prikaz"
+msgstr "SQL prikaz za poslovno obveščanje"
 
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_bi_sql_view_field
-#, fuzzy
 msgid "Bi SQL View Field"
-msgstr "SQL polja"
+msgstr "Polje SQL prikaza za poslovno obveščanje"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__parent_menu_id
@@ -98,6 +95,9 @@ msgid ""
 "overwriting the parent menu on which the menu related to the SQL report will "
 "be created."
 msgstr ""
+"Če temu polju določite vrednost pred ročnim ustvarjanjem uporabniškega "
+"vmesnika, spremenite nadrejeni meni, v katerem bo ustvarjen meni za SQL "
+"poročilo."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__group_operator
@@ -105,6 +105,8 @@ msgid ""
 "By default, Odoo will sum the values when grouping. If you wish to alter the "
 "behaviour, choose an alternate Group Operator"
 msgstr ""
+"Odoo pri združevanju privzeto sešteje vrednosti. Če želite spremeniti to "
+"vedenje, izberite drug operator združevanja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__is_group_by
@@ -131,16 +133,18 @@ msgstr "Stolpec"
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__view_order
 msgid "Comma-separated text. Possible values: \"graph\", \"pivot\" or \"list\""
 msgstr ""
+"Besedilo, ločeno z vejicami. Možne vrednosti: \"graph\", \"pivot\" ali "
+"\"list\""
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__computed_action_context
 msgid "Computed Action Context"
-msgstr ""
+msgstr "Izračunani kontekst dejanja"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Computed Context"
-msgstr ""
+msgstr "Izračunani kontekst"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_context
@@ -148,11 +152,13 @@ msgid ""
 "Context value that will be inserted for this field in all the views. "
 "Important note : please write a context with single quote."
 msgstr ""
+"Vrednost konteksta, ki bo vstavljena za to polje v vseh prikazih. Pomembno: "
+"kontekst zapišite z enojnimi narekovaji."
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Create SQL Elements"
-msgstr ""
+msgstr "Ustvari SQL elemente"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -179,7 +185,7 @@ msgstr "Cron opravilo, ki bo osvežilo materializirani prikaz"
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Custom Context"
-msgstr ""
+msgstr "Kontekst po meri"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__size
@@ -191,6 +197,7 @@ msgstr "Velikost podatkovne baze"
 msgid ""
 "Define here a context that will be used by default, when creating the action."
 msgstr ""
+"Tu določite kontekst, ki bo privzeto uporabljen pri ustvarjanju dejanja."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__domain_force
@@ -211,12 +218,12 @@ msgstr ""
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Delete SQL Elements"
-msgstr ""
+msgstr "Izbriši SQL elemente"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Delete UI"
-msgstr ""
+msgstr "Izbriši uporabniški vmesnik"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__display_name
@@ -237,7 +244,7 @@ msgstr "Dodatne informacije"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_context
 msgid "Field Context"
-msgstr ""
+msgstr "Kontekst polja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__field_description
@@ -252,17 +259,17 @@ msgstr "Tip polja"
 #. module: bi_sql_editor
 #: model:ir.model,name:bi_sql_editor.model_ir_model_fields
 msgid "Fields"
-msgstr ""
+msgstr "Polja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Sledilci"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Sledilci (partnerji)"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
@@ -270,6 +277,8 @@ msgid ""
 "For 'Many2one' Odoo field.\n"
 " Comodel of the field."
 msgstr ""
+"Za Odoo polje 'Many2one'.\n"
+" Povezani model polja."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__selection
@@ -300,18 +309,17 @@ msgstr "Tip grafa"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__group_operator
 msgid "Group Operator"
-msgstr ""
+msgstr "Operator združevanja"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_group_changed
-#, fuzzy
 msgid "Has Group Changed"
 msgstr "Se je skupina spremenila"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Ima sporočilo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__id
@@ -322,13 +330,13 @@ msgstr "ID"
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Če je označeno, nova sporočila zahtevajo vašo pozornost."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Če je označeno, je pri dostavi nekaterih sporočil prišlo do napake."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__use_external_database
@@ -336,6 +344,8 @@ msgid ""
 "If filled, the query will be executed against an external database, "
 "configured in Odoo main configuration file. "
 msgstr ""
+"Če je izpolnjeno, bo poizvedba izvedena v zunanji podatkovni bazi, "
+"nastavljeni v glavni konfiguracijski datoteki Odoo. "
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -344,6 +354,8 @@ msgid ""
 "Impossible to delete fields if the view is in the state 'Model Valid' or 'UI "
 "Valid'."
 msgstr ""
+"Polj ni mogoče izbrisati, če je prikaz v stanju 'Model veljaven' ali "
+"'Uporabniški vmesnik veljaven'."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__index_name
@@ -353,12 +365,12 @@ msgstr "Naziv indeksa"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__invisible
 msgid "Invisible"
-msgstr ""
+msgstr "Nevidno"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Je sledilec"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__is_group_by
@@ -380,7 +392,7 @@ msgstr "Je materializirani prikaz"
 msgid ""
 "It will delete the materialized view, and all the previous mapping realized "
 "with the columns"
-msgstr ""
+msgstr "Izbrisan bo materializirani prikaz in vse predhodne preslikave stolpcev"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__write_uid
@@ -396,14 +408,13 @@ msgstr "Zadnjič posodobljeno"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__materialized_text
-#, fuzzy
 msgid "Materialized Text"
 msgstr "Materializirano besedilo"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__max
 msgid "Maximum"
-msgstr ""
+msgstr "Največja vrednost"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__graph_type__measure
@@ -413,17 +424,17 @@ msgstr "Izmera"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Napaka pri dostavi sporočila"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__min
 msgid "Minimum"
-msgstr ""
+msgstr "Najmanjša vrednost"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__many2one_model_id
@@ -455,27 +466,27 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__note
 msgid "Note"
-msgstr ""
+msgstr "Opomba"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Število dejanj"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Število napak"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Število sporočil, ki zahtevajo ukrepanje"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Število sporočil z napako pri dostavi"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__action_id
@@ -495,7 +506,7 @@ msgstr "Odoo grafični prikaz"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__tree_view_id
 msgid "Odoo List View"
-msgstr ""
+msgstr "Odoo seznamski prikaz"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__menu_id
@@ -510,7 +521,7 @@ msgstr "Odoo model"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__pivot_view_id
 msgid "Odoo Pivot View"
-msgstr ""
+msgstr "Odoo vrtilni prikaz"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__rule_id
@@ -526,7 +537,7 @@ msgstr "Odoo iskalni prikaz"
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 msgid "Only graph, pivot or list views are supported"
-msgstr ""
+msgstr "Podprti so le grafični, vrtilni ali seznamski prikazi"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -536,23 +547,23 @@ msgstr "Odoo prikaz"
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__optional_hide
 msgid "Optional (hidden)"
-msgstr ""
+msgstr "Izbirno (skrito)"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__optional_show
 msgid "Optional (shown)"
-msgstr ""
+msgstr "Izbirno (prikazano)"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__parent_menu_id
 msgid "Parent Odoo Menu"
-msgstr ""
+msgstr "Nadrejeni Odoo meni"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 msgid "Please set related models on the following fields %s"
-msgstr ""
+msgstr "Določite povezane modele za naslednja polja %s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__query
@@ -562,7 +573,7 @@ msgstr "Poizvedba"
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "Refresh"
-msgstr ""
+msgstr "Osveži"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -588,7 +599,7 @@ msgstr "Definicija pravila"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Napaka pri dostavi SMS sporočila"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -597,6 +608,8 @@ msgid ""
 "SQL Error while creating %(materialized_text)s VIEW %(view_name)s :\n"
 " %(error)s"
 msgstr ""
+"SQL napaka pri ustvarjanju %(materialized_text)s VIEW %(view_name)s :\n"
+" %(error)s"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__bi_sql_view_field_ids
@@ -685,11 +698,14 @@ msgid ""
 "'x_bi_sql_view_'. Syntax should follow: https://www.postgresql.org/docs/"
 "current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 msgstr ""
+"Pripona SQL prikaza. Polni SQL naziv bo izračunan in bo imel predpono "
+"'x_bi_sql_view_'. Skladnja mora slediti: https://www.postgresql.org/docs/"
+"current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__group_operator__sum
 msgid "Sum"
-msgstr ""
+msgstr "Vsota"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__technical_name
@@ -702,6 +718,9 @@ msgid ""
 "Technical fields, used in modules that depends on this one to know if groups "
 "has changed, and that according access should be updated."
 msgstr ""
+"Tehnična polja, ki jih uporabljajo moduli, odvisni od tega modula, da "
+"ugotovijo, ali so se skupine spremenile in je treba posodobiti ustrezne "
+"pravice dostopa."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__field_description
@@ -725,7 +744,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view_field__tree_visibility
 msgid "Tree Visibility"
-msgstr ""
+msgstr "Vidnost v seznamskem prikazu"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view_field__ttype
@@ -734,16 +753,19 @@ msgid ""
 "create a new field. If empty, this field will not be displayed neither "
 "available for search or group by function"
 msgstr ""
+"Tip Odoo polja, ki bo ustvarjeno. Pustite prazno, če ne želite ustvariti "
+"novega polja. Če je prazno, to polje ne bo prikazano niti na voljo za "
+"iskanje ali združevanje"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "UI Instances"
-msgstr ""
+msgstr "Primerki uporabniškega vmesnika"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
 msgid "UI Parameters"
-msgstr ""
+msgstr "Parametri uporabniškega vmesnika"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__tree_visibility__unavailable
@@ -752,7 +774,6 @@ msgstr "Ni na voljo"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
-#, fuzzy
 msgid "Update Model Access"
 msgstr "Posodobi dostope modela"
 
@@ -768,7 +789,7 @@ msgstr ""
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__use_external_database
 msgid "Use External Database"
-msgstr ""
+msgstr "Uporabi zunanjo podatkovno bazo"
 
 #. module: bi_sql_editor
 #: model_terms:ir.ui.view,arch_db:bi_sql_editor.view_bi_sql_view_form
@@ -783,30 +804,29 @@ msgstr "Naziv prikaza"
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__view_order
 msgid "View Order"
-msgstr ""
+msgstr "Vrstni red prikazov"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view__state__ui_valid
 msgid "Views, Action and Menu Created"
-msgstr ""
+msgstr "Prikazi, dejanje in meni ustvarjeni"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,field_description:bi_sql_editor.field_bi_sql_view__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Sporočila spletne strani"
 
 #. module: bi_sql_editor
 #: model:ir.model.fields,help:bi_sql_editor.field_bi_sql_view__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Zgodovina komunikacije na spletni strani"
 
 #. module: bi_sql_editor
 #. odoo-python
 #: code:addons/bi_sql_editor/models/bi_sql_view.py:0
 #: code:addons/bi_sql_editor/models/bi_sql_view_field.py:0
-#, fuzzy
 msgid "You can not create indexes on non materialized views"
-msgstr "Cron opravilo, ki bo osvežilo materializirani prikaz"
+msgstr "Indeksov ni mogoče ustvariti na nematerializiranih prikazih"
 
 #. module: bi_sql_editor
 #. odoo-python
@@ -815,6 +835,8 @@ msgid ""
 "You can only unlink draft views. If you want to delete them, first set them "
 "to draft."
 msgstr ""
+"Izbrišete lahko le osnutke prikazov. Če jih želite izbrisati, jih najprej "
+"nastavite v stanje osnutka."
 
 #. module: bi_sql_editor
 #: model:ir.model.fields.selection,name:bi_sql_editor.selection__bi_sql_view_field__ttype__boolean
