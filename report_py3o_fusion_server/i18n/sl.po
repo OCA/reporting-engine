@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2026-01-22 19:50+0000\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -23,27 +23,27 @@ msgstr ""
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__1200
 msgid "1200 DPI"
-msgstr ""
+msgstr "1200 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__150
 msgid "150 DPI"
-msgstr ""
+msgstr "150 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__300
 msgid "300 DPI"
-msgstr ""
+msgstr "300 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__600
 msgid "600 DPI"
-msgstr ""
+msgstr "600 DPI"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__75
 msgid "75 DPI"
-msgstr ""
+msgstr "75 DPI"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
@@ -54,77 +54,80 @@ msgid ""
 "by Odoo, you can provide the full path to the runtime by setting the key "
 "'py3o.conversion_command' into the configuration parameters."
 msgstr ""
+"Za ustvarjanje poročila py3o '%s' je potreben strežnik Fusion ali izvajalno "
+"okolje LibreOffice. Če je izvajalno okolje LibreOffice že nameščeno in ga "
+"Odoo ne najde, lahko v konfiguracijskih parametrih s ključem "
+"'py3o.conversion_command' določite celotno pot do njega."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__is_active
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__open_bookmark_levels__-1
 msgid "All Levels"
-msgstr ""
+msgstr "Vse ravni"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form_allow_duplicate
 msgid "Allow Duplicate Field Names"
-msgstr ""
+msgstr "Dovoli podvojene nazive polj"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__4
 msgid "Any Except Extracting Pages"
-msgstr ""
+msgstr "Vse razen izločanja strani"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdfa
 msgid "Archive PDF/A-1a (ISO 19005-1)"
-msgstr ""
+msgstr "Arhivski PDF/A-1a (ISO 19005-1)"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zaznamki"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__initial_view__1
 msgid "Bookmarks and Page"
-msgstr ""
+msgstr "Zaznamki in stran"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__center_window
 msgid "Center Window on Screen"
-msgstr ""
+msgstr "Postavi okno na sredino zaslona"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__changes
 msgid "Changes"
-msgstr ""
+msgstr "Spremembe"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__3
 msgid "Commenting, Filling in Form Fields"
-msgstr ""
+msgstr "Komentiranje in izpolnjevanje polj obrazca"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__2
 msgid "Continuous"
-msgstr ""
+msgstr "Neprekinjeno"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__3
 msgid "Continuous Facing"
-msgstr ""
+msgstr "Neprekinjeno s stranmi drugo ob drugi"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__convert_doc_ref_to_pdf_target
 msgid "Convert Document References to PDF Targets"
-msgstr ""
+msgstr "Pretvori sklice na dokumente v cilje PDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form
-#, fuzzy
 msgid "Create PDF Form"
-msgstr "Ustvarjeno"
+msgstr "Ustvari PDF obrazec"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__create_uid
@@ -142,29 +145,29 @@ msgstr "Ustvarjeno"
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__cross_doc_link_action
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Cross-document Links"
-msgstr ""
+msgstr "Povezave med dokumenti"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__cross_doc_link_action__0
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__magnification__0
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__0
 msgid "Default"
-msgstr ""
+msgstr "Privzeto"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_pdf_options
 msgid "Define PDF export options for Libreoffice"
-msgstr ""
+msgstr "Določitev možnosti izvoza PDF za LibreOffice"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_reduce_resolution__none
 msgid "Disable"
-msgstr ""
+msgstr "Onemogoči"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__display_document_title
 msgid "Display Document Title"
-msgstr ""
+msgstr "Prikaži naslov dokumenta"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__display_name
@@ -175,129 +178,129 @@ msgstr "Prikazani naziv"
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__document_password
 msgid "Document Password"
-msgstr ""
+msgstr "Geslo dokumenta"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__content_copying_allowed
 msgid "Enable Copying of Content"
-msgstr ""
+msgstr "Omogoči kopiranje vsebine"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__text_access_accessibility_tools_allowed
 msgid "Enable Text Access for Accessibility Tools"
-msgstr ""
+msgstr "Omogoči dostop do besedila za pripomočke za dostopnost"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__encrypt
 msgid "Encrypt"
-msgstr ""
+msgstr "Šifriraj"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_py3o_pdf_options__image_jpeg_quality
 msgid "Enter a percentage between 0 and 100."
-msgstr ""
+msgstr "Vnesite odstotek med 0 in 100."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_hidden_slides
 msgid "Export Automatically Insered Blank Pages"
-msgstr ""
+msgstr "Izvozi samodejno vstavljene prazne strani"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_bookmarks
 msgid "Export Bookmarks"
-msgstr ""
+msgstr "Izvozi zaznamke"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_bookmarks_named_dest
 msgid "Export Bookmarks as Named Destinations"
-msgstr ""
+msgstr "Izvozi zaznamke kot poimenovane cilje"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_comments
 msgid "Export Comments"
-msgstr ""
+msgstr "Izvozi komentarje"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_placeholders
 msgid "Export Placeholders"
-msgstr ""
+msgstr "Izvozi ograde"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__export_filesystem_urls
 msgid "Export URLs Relative to Filesystem"
-msgstr ""
+msgstr "Izvozi URL naslove relativno glede na datotečni sistem"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__pdf_form_format__0
 msgid "FDF"
-msgstr ""
+msgstr "FDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__2
 msgid "Filling in Form Fields"
-msgstr ""
+msgstr "Izpolnjevanje polj obrazca"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__magnification__3
 msgid "Fit Visible"
-msgstr ""
+msgstr "Prilagodi vidni vsebini"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__magnification__2
 msgid "Fit Width"
-msgstr ""
+msgstr "Prilagodi širini"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__magnification__1
 msgid "Fit in Window"
-msgstr ""
+msgstr "Prilagodi oknu"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_server_id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_server_id
 msgid "Fusion Server"
-msgstr ""
+msgstr "Strežnik Fusion"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_report.py:0
 msgid "Fusion server error %s"
-msgstr ""
+msgstr "Napaka strežnika Fusion %s"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "General"
-msgstr ""
+msgstr "Splošno"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Give a name to the set of PDF export options"
-msgstr ""
+msgstr "Določite naziv za nabor možnosti izvoza PDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__pdf_form_format__2
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__hide_menubar
 msgid "Hide Menubar"
-msgstr ""
+msgstr "Skrij menijsko vrstico"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__hide_toolbar
 msgid "Hide Toolbar"
-msgstr ""
+msgstr "Skrij orodno vrstico"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__hide_window_controls
 msgid "Hide Windows Controls"
-msgstr ""
+msgstr "Skrij gumbe za upravljanje okna"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__printing__2
 msgid "High Resolution"
-msgstr ""
+msgstr "Visoka ločljivost"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__id
@@ -311,6 +314,8 @@ msgid ""
 "If you enable this option, you will not be able to password-protect the "
 "document or apply other security settings."
 msgstr ""
+"Če omogočite to možnost, dokumenta ne boste mogli zaščititi z geslom ali "
+"uporabiti drugih varnostnih nastavitev."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_py3o_server__url
@@ -318,41 +323,43 @@ msgid ""
 "If your Py3o Fusion server is on the same machine and runs on the default "
 "port, the URL is http://localhost:8765/form"
 msgstr ""
+"Če je strežnik Py3o Fusion na istem računalniku in uporablja privzeta vrata, "
+"je URL naslov http://localhost:8765/form"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Image"
-msgstr ""
+msgstr "Slika"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__image_compression
 msgid "Image Compression"
-msgstr ""
+msgstr "Stiskanje slik"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__image_jpeg_quality
 msgid "Image JPEG Quality"
-msgstr ""
+msgstr "Kakovost slik JPEG"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__initial_page
 msgid "Initial Page"
-msgstr ""
+msgstr "Začetna stran"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Initial View"
-msgstr ""
+msgstr "Začetni prikaz"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__1
 msgid "Inserting, Deleting and Rotating Pages"
-msgstr ""
+msgstr "Vstavljanje, brisanje in vrtenje strani"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_compression__jpeg
 msgid "JPEG Compression"
-msgstr ""
+msgstr "Stiskanje JPEG"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__write_uid
@@ -369,34 +376,34 @@ msgstr "Zadnjič posodobljeno"
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Links"
-msgstr ""
+msgstr "Povezave"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__py3o_is_local_fusion
 msgid "Local Fusion"
-msgstr ""
+msgstr "Lokalni Fusion"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__image_compression__lossless
 msgid "Lossless Compression"
-msgstr ""
+msgstr "Stiskanje brez izgub"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__printing__1
 msgid "Low Resolution (150 dpi)"
-msgstr ""
+msgstr "Nizka ločljivost (150 dpi)"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__magnification
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Magnification"
-msgstr ""
+msgstr "Povečava"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__py3o_is_local_fusion
@@ -405,39 +412,41 @@ msgid ""
 "Native formats will be processed without a server. You must use this mode if "
 "you call methods on your model into the template."
 msgstr ""
+"Izvorni formati bodo obdelani brez strežnika. Ta način morate uporabiti, če "
+"v predlogi kličete metode svojega modela."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__changes__0
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__printing__0
 msgid "Not Permitted"
-msgstr ""
+msgstr "Ni dovoljeno"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__open_fullscreen
 msgid "Open in Full Screen Mode"
-msgstr ""
+msgstr "Odpri v celozaslonskem načinu"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__cross_doc_link_action__2
 msgid "Open with Internet Browser"
-msgstr ""
+msgstr "Odpri s spletnim brskalnikom"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__cross_doc_link_action__1
 msgid "Open with PDF Reader Application"
-msgstr ""
+msgstr "Odpri z aplikacijo za branje PDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__pdf_form_format__1
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__pdf_options_id
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_report_pdf_form__pdf_options_id
 msgid "PDF Options"
-msgstr ""
+msgstr "Možnosti PDF"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_py3o_server__pdf_options_id
@@ -445,6 +454,8 @@ msgid ""
 "PDF options can be set per Py3o Server but also per report. If both are "
 "defined, the options on the report are used."
 msgstr ""
+"Možnosti PDF je mogoče določiti za strežnik Py3o in za posamezno poročilo. "
+"Če so določene na obeh mestih, se uporabijo možnosti poročila."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_ir_actions_report__pdf_options_id
@@ -453,109 +464,111 @@ msgid ""
 "PDF options can be set per report, but also per Py3o Server. If both are "
 "defined, the options on the report are used."
 msgstr ""
+"Možnosti PDF je mogoče določiti za posamezno poročilo in za strežnik Py3o. "
+"Če so določene na obeh mestih, se uporabijo možnosti poročila."
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__page_layout
 msgid "Page Layout"
-msgstr ""
+msgstr "Postavitev strani"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__initial_view__0
 msgid "Page Only"
-msgstr ""
+msgstr "Samo stran"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__initial_view
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Panes"
-msgstr ""
+msgstr "Podokna"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__permission_password
 msgid "Permission Password"
-msgstr ""
+msgstr "Geslo za dovoljenja"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,help:report_py3o_fusion_server.field_py3o_pdf_options__zoom
 msgid "Possible values: from 50 to 1600"
-msgstr ""
+msgstr "Možne vrednosti: od 50 do 1600"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__printing
 msgid "Printing"
-msgstr ""
+msgstr "Tiskanje"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_server__url
 msgid "Py3o Fusion Server URL"
-msgstr ""
+msgstr "URL naslov strežnika Py3o Fusion"
 
 #. module: report_py3o_fusion_server
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_pdf_options_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_pdf_options_menu
 msgid "Py3o PDF Export Options"
-msgstr ""
+msgstr "Možnosti izvoza PDF za Py3o"
 
 #. module: report_py3o_fusion_server
 #: model:ir.actions.act_window,name:report_py3o_fusion_server.py3o_server_configuration_action
 #: model:ir.ui.menu,name:report_py3o_fusion_server.py3o_server_configuration_menu
 msgid "Py3o Servers"
-msgstr ""
+msgstr "Strežniki Py3o"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_server
 msgid "Py3o server"
-msgstr ""
+msgstr "Strežnik Py3o"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__image_reduce_resolution
 msgid "Reduce Image Resolution"
-msgstr ""
+msgstr "Zmanjšaj ločljivost slik"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Dejanje poročila"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model,name:report_py3o_fusion_server.model_py3o_report
 msgid "Report Py30"
-msgstr ""
+msgstr "Poročilo Py30"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__resize_windows_initial_page
 msgid "Resize Windows to Initial Page"
-msgstr ""
+msgstr "Prilagodi velikost okna začetni strani"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__restrict_permissions
 msgid "Restrict Permissions"
-msgstr ""
+msgstr "Omeji dovoljenja"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Security"
-msgstr ""
+msgstr "Varnost"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__watermark
 msgid "Sign With Watermark"
-msgstr ""
+msgstr "Označi z vodnim žigom"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__page_layout__1
 msgid "Single Page"
-msgstr ""
+msgstr "Posamezna stran"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__pdf_form_format
 msgid "Submit Format"
-msgstr ""
+msgstr "Format oddaje"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__tagged_pdf
 msgid "Tagged PDF (add document structure)"
-msgstr ""
+msgstr "Označeni PDF (dodaj strukturo dokumenta)"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
@@ -564,13 +577,15 @@ msgid ""
 "The PDF/A option is not compatible with 'Cross-document Links' = 'Open with "
 "PDF Reader Application'."
 msgstr ""
+"Možnost PDF/A ni združljiva z nastavitvijo 'Povezave med dokumenti' = 'Odpri "
+"z aplikacijo za branje PDF'."
 
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 msgid ""
 "The initial page parameter must be strictly positive (current value: %d)"
-msgstr ""
+msgstr "Parameter začetne strani mora biti večji od nič (trenutna vrednost: %d)"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
@@ -579,6 +594,8 @@ msgid ""
 "The parameter Image JPEG Quality must be between 1 %% and 100 %% (current "
 "value: %s %%)"
 msgstr ""
+"Parameter kakovosti slik JPEG mora biti med 1 %% in 100 %% (trenutna "
+"vrednost: %s %%)"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
@@ -586,53 +603,55 @@ msgid ""
 "The security settings are incompatible with the <b>PDF/A-1a</b> option in "
 "the <em>General</em> tab."
 msgstr ""
+"Varnostne nastavitve niso združljive z možnostjo <b>PDF/A-1a</b> na zavihku "
+"<em>Splošno</em>."
 
 #. module: report_py3o_fusion_server
 #. odoo-python
 #: code:addons/report_py3o_fusion_server/models/py3o_pdf_options.py:0
 msgid ""
 "The value of the zoom factor must be between 50 and 1600 (current value: %d)"
-msgstr ""
+msgstr "Faktor povečave mora biti med 50 in 1600 (trenutna vrednost: %d)"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__initial_view__2
 msgid "Thumbnails and Page"
-msgstr ""
+msgstr "Sličice in stran"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "User Interface"
-msgstr ""
+msgstr "Uporabniški vmesnik"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "User Interface Options"
-msgstr ""
+msgstr "Možnosti uporabniškega vmesnika"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__open_bookmark_levels
 msgid "Visible Bookmark Levels"
-msgstr ""
+msgstr "Vidne ravni zaznamkov"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__watermark_text
 msgid "WaterMark Text"
-msgstr ""
+msgstr "Besedilo vodnega žiga"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Watermark"
-msgstr ""
+msgstr "Vodni žig"
 
 #. module: report_py3o_fusion_server
 #: model_terms:ir.ui.view,arch_db:report_py3o_fusion_server.py3o_pdf_options_form
 msgid "Window Options"
-msgstr ""
+msgstr "Možnosti okna"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__pdf_form_format__3
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #. module: report_py3o_fusion_server
 #. odoo-python
@@ -641,16 +660,18 @@ msgid ""
 "You can not use remote fusion without Fusion server. Please specify a Fusion "
 "Server"
 msgstr ""
+"Oddaljenega načina Fusion ne morete uporabiti brez strežnika Fusion. "
+"Določite strežnik Fusion"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields.selection,name:report_py3o_fusion_server.selection__py3o_pdf_options__magnification__4
 msgid "Zoom"
-msgstr ""
+msgstr "Povečava"
 
 #. module: report_py3o_fusion_server
 #: model:ir.model.fields,field_description:report_py3o_fusion_server.field_py3o_pdf_options__zoom
 msgid "Zoom Factor"
-msgstr ""
+msgstr "Faktor povečave"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Zadnjič spremenjeno"
