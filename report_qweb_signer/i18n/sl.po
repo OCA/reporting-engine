@@ -9,26 +9,26 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-17 02:52+0000\n"
-"PO-Revision-Date: 2023-04-11 13:23+0000\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 4.14.1\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<span>This is a sample report for testing PDF certificates.</span>"
-msgstr ""
+msgstr "<span>To je vzorčno poročilo za preizkušanje PDF certifikatov.</span>"
 
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.report_partner_demo_document
 msgid "<strong>Partner:</strong>"
-msgstr ""
+msgstr "<strong>Partner:</strong>"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__allow_only_one
@@ -38,7 +38,7 @@ msgstr "Dovoli le en dokument"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__action_report_ids
 msgid "Allowed reports"
-msgstr ""
+msgstr "Dovoljena poročila"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__path
@@ -48,7 +48,7 @@ msgstr "Pot do datoteke certifikata"
 #. module: report_qweb_signer
 #: model_terms:ir.ui.view,arch_db:report_qweb_signer.view_company_form
 msgid "Certificates (PDF signing)"
-msgstr ""
+msgstr "Certifikati (podpisovanje PDF)"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_res_company
@@ -90,12 +90,12 @@ msgstr "Domena, ki določa če naj se dokument podpiše ali ne"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "E-mail address to include in PDF digital signature."
-msgstr ""
+msgstr "E-poštni naslov, ki bo vključen v digitalni podpis PDF."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__endesive
 msgid "Endesive"
-msgstr ""
+msgstr "Endesive"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__attachment
@@ -125,7 +125,7 @@ msgstr ""
 #. module: report_qweb_signer
 #: model:ir.model.fields.selection,name:report_qweb_signer.selection__report_certificate__signing_method__java
 msgid "Java"
-msgstr ""
+msgstr "Java"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_ir_actions_report____last_update
@@ -147,7 +147,7 @@ msgstr "Zadnjič posodobljeno"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Location to include in digital signature (typically, a city name). "
-msgstr ""
+msgstr "Kraj, ki bo vključen v digitalni podpis (običajno ime mesta). "
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__model_id
@@ -198,19 +198,17 @@ msgstr "Pot do datoteke gesla certifikata"
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Reason text to include in digital signature."
-msgstr ""
+msgstr "Besedilo razloga, ki bo vključeno v digitalni podpis."
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Poročilo"
+msgstr "Dejanje poročila"
 
 #. module: report_qweb_signer
 #: model:ir.model,name:report_qweb_signer.model_report_certificate
-#, fuzzy
 msgid "Report Certificate"
-msgstr "Certifikat PDF poročila"
+msgstr "Certifikat poročila"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,help:report_qweb_signer.field_report_certificate__action_report_ids
@@ -218,6 +216,8 @@ msgid ""
 "Reports to sign for the selected model.No report selected means all reports "
 "are allowed."
 msgstr ""
+"Poročila za podpisovanje za izbrani model. Če ni izbrano nobeno poročilo, so "
+"dovoljena vsa poročila."
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__attachment
@@ -231,6 +231,8 @@ msgid ""
 "Saving signed report (PDF): You do not have enough access rights to save "
 "attachments"
 msgstr ""
+"Shranjevanje podpisanega poročila (PDF): nimate zadostnih pravic dostopa za "
+"shranjevanje prilog"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__sequence
@@ -240,22 +242,22 @@ msgstr "Zaporedje"
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_mail
 msgid "Signature e-mail"
-msgstr ""
+msgstr "E-poštni naslov podpisnika"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_location
 msgid "Signature location"
-msgstr ""
+msgstr "Kraj podpisa"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__endesive_certificate_reason
 msgid "Signature reason"
-msgstr ""
+msgstr "Razlog podpisa"
 
 #. module: report_qweb_signer
 #: model:ir.model.fields,field_description:report_qweb_signer.field_report_certificate__signing_method
 msgid "Signing Method"
-msgstr ""
+msgstr "Način podpisovanja"
 
 #. module: report_qweb_signer
 #: code:addons/report_qweb_signer/models/ir_actions_report.py:0
