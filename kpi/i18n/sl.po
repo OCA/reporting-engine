@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 18:00+0000\n"
-"PO-Revision-Date: 2026-06-24 05:42+0000\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Potrebno je ukrepanje"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__active
@@ -34,27 +34,27 @@ msgstr "Aktivno"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Oznaka izjeme pri aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Stanje aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Ikona tipa aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Število prilog"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_category_list
@@ -71,14 +71,14 @@ msgstr "Kategorija"
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi_threshold_range__color
 msgid "Choose your color"
-msgstr ""
+msgstr "Izberite barvo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__color
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__color
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__color
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__company_id
@@ -96,7 +96,7 @@ msgstr "Obdelava"
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "Compute KPI Now"
-msgstr ""
+msgstr "Izračunaj KPI zdaj"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__create_uid
@@ -119,7 +119,7 @@ msgstr "Ustvarjeno"
 #. module: kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_dbsource
 msgid "Data Sources"
-msgstr ""
+msgstr "Viri podatkov"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__day
@@ -146,12 +146,12 @@ msgstr "Prikazani naziv"
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Errors"
-msgstr ""
+msgstr "Napake"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__date
 msgid "Execution Date"
-msgstr ""
+msgstr "Datum izvedbe"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__dbsource_id
@@ -160,35 +160,33 @@ msgstr "Vir zunanje podatkovne baze"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_dbsource_id
-#, fuzzy
 msgid "External DB Source Maximum"
-msgstr "Vir zunanje podatkovne baze"
+msgstr "Vir zunanje podatkovne baze za največjo vrednost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_dbsource_id
-#, fuzzy
 msgid "External DB Source Minimum"
-msgstr "Vir zunanje podatkovne baze"
+msgstr "Vir zunanje podatkovne baze za najmanjšo vrednost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Sledilci"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Sledilci (partnerji)"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Ikona Font Awesome, npr. fa-tasks"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Ima sporočilo"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__history_ids
@@ -199,7 +197,7 @@ msgstr "Zgodovina"
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_history
 msgid "History of the KPI"
-msgstr ""
+msgstr "Zgodovina KPI"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__hour
@@ -218,93 +216,93 @@ msgstr "ID"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Ikona za označevanje izjeme pri aktivnosti."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Če je označeno, nova sporočila zahtevajo vašo pozornost."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Če je označeno, je pri dostavi nekaterih sporočil prišlo do napake."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Je sledilec"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_list
 #: model:ir.model.fields,field_description:kpi.field_kpi_history__kpi_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid "KPI"
-msgstr ""
+msgstr "KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_category
 msgid "KPI Category"
-msgstr ""
+msgstr "Kategorija KPI"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__kpi_code
 msgid "KPI Code"
-msgstr ""
+msgstr "Koda KPI"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "KPI Computation"
-msgstr ""
+msgstr "Izračun KPI"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__kpi_type
 msgid "KPI Computation Type"
-msgstr ""
+msgstr "Tip izračuna KPI"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_kpi_dashboard
 msgid "KPI Dashboard"
-msgstr ""
+msgstr "Nadzorna plošča KPI"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_history_form
 msgid "KPI History"
-msgstr ""
+msgstr "Zgodovina KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_threshold
 msgid "KPI Threshold"
-msgstr ""
+msgstr "Prag KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi_threshold_range
 msgid "KPI Threshold Range"
-msgstr ""
+msgstr "Območje praga KPI"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__kpi_ids
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "KPIs"
-msgstr ""
+msgstr "KPI"
 
 #. module: kpi
 #: model:ir.model,name:kpi.model_kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_form
 msgid "Key Performance Indicator"
-msgstr ""
+msgstr "Ključni kazalnik uspešnosti"
 
 #. module: kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_kpi
 #: model:ir.ui.menu,name:kpi.menu_kpi_dasboard
 msgid "Key Performance Indicators"
-msgstr ""
+msgstr "Ključni kazalniki uspešnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__write_uid
@@ -327,24 +325,24 @@ msgstr "Zadnjič posodobljeno"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__last_execution
 msgid "Last execution"
-msgstr ""
+msgstr "Zadnja izvedba"
 
 #. module: kpi
 #. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Make sure your ranges do not overlap!"
-msgstr ""
+msgstr "Prepričajte se, da se območja ne prekrivajo!"
 
 #. module: kpi
 #: model:res.groups,name:kpi.group_kpi_manager
 msgid "Manage KPI's"
-msgstr ""
+msgstr "Upravljanje KPI"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_type
 msgid "Max Type"
-msgstr ""
+msgstr "Tip največje vrednosti"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
@@ -354,24 +352,22 @@ msgstr "Maksimum"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_code
 msgid "Maximum Computation Code"
-msgstr ""
+msgstr "Koda za izračun največje vrednosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_error
-#, fuzzy
 msgid "Maximum Error"
-msgstr "Maksimum"
+msgstr "Napaka pri izračunu največje vrednosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_fixed_value
 msgid "Maximum Fixed Value"
-msgstr ""
+msgstr "Največja fiksna vrednost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__max_value
-#, fuzzy
 msgid "Maximum Value"
-msgstr "Maksimum"
+msgstr "Največja vrednost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__invalid_message
@@ -382,17 +378,17 @@ msgstr "Sporočilo"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Napaka pri dostavi sporočila"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_type
 msgid "Min Type"
-msgstr ""
+msgstr "Tip najmanjše vrednosti"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
@@ -402,29 +398,27 @@ msgstr "Minimum"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_code
 msgid "Minimum Computation Code"
-msgstr ""
+msgstr "Koda za izračun najmanjše vrednosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_error
-#, fuzzy
 msgid "Minimum Error"
-msgstr "Minimum"
+msgstr "Napaka pri izračunu najmanjše vrednosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_fixed_value
 msgid "Minimum Fixed Value"
-msgstr ""
+msgstr "Najmanjša fiksna vrednost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold_range__min_value
-#, fuzzy
 msgid "Minimum Value"
-msgstr "Minimum"
+msgstr "Najmanjša vrednost"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__minute
 msgid "Minute"
-msgstr ""
+msgstr "Minuta"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__month
@@ -434,7 +428,7 @@ msgstr "Mesec"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Rok moje aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__name
@@ -448,49 +442,49 @@ msgstr "Naziv"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Rok naslednje aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Povzetek naslednje aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Tip naslednje aktivnosti"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__next_execution_date
 msgid "Next execution date"
-msgstr ""
+msgstr "Datum naslednje izvedbe"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Število dejanj"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Število napak"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Število sporočil, ki zahtevajo ukrepanje"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Število sporočil z napako pri dostavi"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_filter
 msgid ""
 "Only active KPIs are computed by the scheduler based on the periodicity "
 "configuration."
-msgstr ""
+msgstr "Razporejevalnik izračuna le aktivne KPI glede na nastavljeno pogostost."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__active
@@ -498,21 +492,22 @@ msgid ""
 "Only active KPIs will be updated by the scheduler based on the periodicity "
 "configuration."
 msgstr ""
+"Razporejevalnik bo posodabljal le aktivne KPI glede na nastavljeno pogostost."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__periodicity
 msgid "Periodicity"
-msgstr ""
+msgstr "Pogostost"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__periodicity_uom
 msgid "Periodicity UoM"
-msgstr ""
+msgstr "Enota pogostosti"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__python
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. module: kpi
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
@@ -525,27 +520,27 @@ msgstr "Območje"
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_range
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "Ranges"
-msgstr ""
+msgstr "Območja"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Odgovorni uporabnik"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__external
 msgid "SQL - External DB"
-msgstr ""
+msgstr "SQL - zunanja podatkovna baza"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__kpi_type__local
 msgid "SQL - Local DB"
-msgstr ""
+msgstr "SQL - lokalna podatkovna baza"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__kpi_code
 msgid "SQL code must return the result as 'value' (i.e. 'SELECT 5 AS value')."
-msgstr ""
+msgstr "SQL koda mora vrniti rezultat kot 'value' (npr. 'SELECT 5 AS value')."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_state
@@ -555,12 +550,16 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Stanje glede na aktivnosti\n"
+"Zamujeno: rok je že potekel\n"
+"Danes: datum aktivnosti je danes\n"
+"Načrtovano: prihodnje aktivnosti."
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__threshold_id
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_form
 msgid "Threshold"
-msgstr ""
+msgstr "Prag"
 
 #. module: kpi
 #: model:ir.actions.act_window,name:kpi.open_threshold_list
@@ -568,24 +567,24 @@ msgstr ""
 #: model:ir.ui.menu,name:kpi.menu_configuration_kpi_threshold
 #: model_terms:ir.ui.view,arch_db:kpi.view_kpi_threshold_range_form
 msgid "Thresholds"
-msgstr ""
+msgstr "Pragi"
 
 #. module: kpi
 #. odoo-python
 #: code:addons/kpi/models/kpi_threshold.py:0
 #, python-format
 msgid "Two of your ranges are overlapping."
-msgstr ""
+msgstr "Dve območji se prekrivata."
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Tip izjeme pri aktivnosti na zapisu."
 
 #. module: kpi
 #: model:ir.actions.server,name:kpi.ir_cron_kpi_action_ir_actions_server
 msgid "Update KPI values"
-msgstr ""
+msgstr "Posodobi vrednosti KPI"
 
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi_threshold__valid
@@ -602,12 +601,12 @@ msgstr "Vrednost"
 #. module: kpi
 #: model:ir.model.fields,field_description:kpi.field_kpi__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Sporočila spletne strani"
 
 #. module: kpi
 #: model:ir.model.fields,help:kpi.field_kpi__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Zgodovina komunikacije na spletni strani"
 
 #. module: kpi
 #: model:ir.model.fields.selection,name:kpi.selection__kpi__periodicity_uom__week
