@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import find_in_path
 from odoo.tools.safe_eval import safe_eval, time
@@ -31,7 +31,7 @@ class IrActionsReport(models.Model):
         for report in self:
             if report.report_type == "py3o" and not report.py3o_filetype:
                 raise ValidationError(
-                    _("Field 'Output Format' is required for Py3O report")
+                    self.env._("Field 'Output Format' is required for Py3O report")
                 )
 
     @api.model
@@ -42,7 +42,7 @@ class IrActionsReport(models.Model):
         for name in names:
             description = name
             if formats.get_format(name).native:
-                description = description + " " + _("(Native)")
+                description = description + " " + self.env._("(Native)")
             selections.append((name, description))
         return selections
 
@@ -138,17 +138,15 @@ class IrActionsReport(models.Model):
                 continue
             if not rec.is_py3o_native_format and not rec.lo_bin_path:
                 rec.is_py3o_report_not_available = True
-                rec.msg_py3o_report_not_available = (
-                    _(
-                        "The libreoffice runtime is required to genereate the "
-                        "py3o report '%s' but is not found into the bin path. You "
-                        "must install the libreoffice runtime on the server. If "
-                        "the runtime is already installed and is not found by "
-                        "Odoo, you can provide the full path to the runtime by "
-                        "setting the key 'py3o.conversion_command' into the "
-                        "configuration parameters."
-                    )
-                    % rec.name
+                rec.msg_py3o_report_not_available = self.env._(
+                    "The libreoffice runtime is required to genereate the "
+                    "py3o report '%s' but is not found into the bin path. You "
+                    "must install the libreoffice runtime on the server. If "
+                    "the runtime is already installed and is not found by "
+                    "Odoo, you can provide the full path to the runtime by "
+                    "setting the key 'py3o.conversion_command' into the "
+                    "configuration parameters.",
+                    rec.name,
                 )
 
     @api.model
