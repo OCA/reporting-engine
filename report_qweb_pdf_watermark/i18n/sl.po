@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-10 03:40+0000\n"
-"PO-Revision-Date: 2017-01-10 03:40+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2017\n"
+"PO-Revision-Date: 2026-10-10 11:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
@@ -26,16 +27,18 @@ msgid ""
 "An expression yielding the base64 encoded data to be used as watermark. \n"
 "You have access to variables `env` and `docs`"
 msgstr ""
+"Izraz, ki vrne podatke, kodirane z base64, za uporabo kot vodni žig. \n"
+"Na voljo sta spremenljivki `env` in `docs`"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Družbe"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_base_document_layout
 msgid "Company Document Layout"
-msgstr ""
+msgstr "Postavitev dokumentov družbe"
 
 #. module: report_qweb_pdf_watermark
 #: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_base_document_layout
@@ -44,12 +47,14 @@ msgid ""
 "                    Use the <b>Preview Document</b> button to see the "
 "watermark in the generated PDF."
 msgstr ""
+"Vodni žig ni prikazan v predogledu na desni.\n"
+"                    Za ogled vodnega žiga v ustvarjenem PDF uporabite gumb "
+"<b>Predogled dokumenta</b>."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
-#, fuzzy
 msgid "Report Action"
-msgstr "Poročilo"
+msgstr "Dejanje poročila"
 
 #. module: report_qweb_pdf_watermark
 #: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_company_form
@@ -57,24 +62,26 @@ msgid ""
 "Upload an pdf file to use as an Company watermark. You need to activate the "
 "setting 'use company watermark' on the reports where you want to use it."
 msgstr ""
+"Naložite PDF datoteko za uporabo kot vodni žig družbe. V poročilih, kjer ga "
+"želite uporabiti, morate omogočiti nastavitev 'Uporabi vodni žig družbe'."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 msgid "Upload an pdf file to use as an watermark on this report."
-msgstr ""
+msgstr "Naložite PDF datoteko za uporabo kot vodni žig v tem poročilu."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use Company Watermark"
-msgstr ""
+msgstr "Uporabi vodni žig družbe"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
 #: model:ir.model.fields,help:report_qweb_pdf_watermark.field_report_pdf_form__use_company_watermark
 msgid "Use the pdf watermark defined globally in the company settings."
-msgstr ""
+msgstr "Uporabi PDF vodni žig, določen globalno v nastavitvah družbe."
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_base_document_layout__pdf_watermark
@@ -82,15 +89,15 @@ msgstr ""
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
 msgid "Watermark"
-msgstr ""
+msgstr "Vodni žig"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
 msgid "Watermark Demo report"
-msgstr ""
+msgstr "Vzorčno poročilo z vodnim žigom"
 
 #. module: report_qweb_pdf_watermark
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
 #: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_report_pdf_form__pdf_watermark_expression
 msgid "Watermark expression"
-msgstr ""
+msgstr "Izraz za vodni žig"
