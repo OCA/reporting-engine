@@ -127,3 +127,29 @@ class TestKPI(TransactionCase):
         self.assertEqual(len(kpi_history), 1)
         self.assertEqual(kpi_history.color, "#00FF00")
         self.assertEqual(kpi_history.value, 1.0)
+
+    def test_kpi_eval_context(self):
+        kpi_category = self.env["kpi.category"].create({"name": "Dynamic KPIs"})
+        kpi_threshold = self.env["kpi.threshold"].create(
+            {"name": "KPI Threshold for dynamic KPIs"}
+        )
+        kpi = self.env["kpi"].create(
+            {
+                "name": "KPI eval context",
+                "description": "KPI to test eval context",
+                "category_id": kpi_category.id,
+                "threshold_id": kpi_threshold.id,
+                "periodicity": 1,
+                "periodicity_uom": "day",
+                "kpi_type": "python",
+                "kpi_code": "self.name == 'KPI eval context' and 1.0 or 0.0",
+            }
+        )
+        ctx = kpi._get_eval_context()
+        self.assertIn("self", ctx)
+        self.assertIn("datetime", ctx)
+        self.assertEqual(ctx["self"], kpi)
+        kpi.update_kpi_value()
+        kpi_history = self.env["kpi.history"].search([("kpi_id", "=", kpi.id)])
+        self.assertEqual(len(kpi_history), 1)
+        self.assertEqual(kpi_history.value, 1.0)

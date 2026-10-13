@@ -144,6 +144,15 @@ class KPI(models.Model):
                 obj.color = "#FFFFFF"
                 obj.last_execution = False
 
+    def _get_eval_context(self):
+        """Return the evaluation context used for Python KPI expressions.
+
+        This method is meant to be extended by other modules to inject
+        additional safe globals into KPI formulas.
+        """
+        self.ensure_one()
+        return {"self": self, "datetime": fields.datetime}
+
     def _get_kpi_value(self):
         self.ensure_one()
         kpi_value = 0
@@ -163,9 +172,7 @@ class KPI(models.Model):
                 if is_one_value(res):
                     kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
-                kpi_value = safe_eval(
-                    self.kpi_code, {"self": self, "datetime": fields.datetime}
-                )
+                kpi_value = safe_eval(self.kpi_code, self._get_eval_context())
         if isinstance(kpi_value, dict):
             res = kpi_value
         else:
