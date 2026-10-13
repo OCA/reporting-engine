@@ -51,6 +51,20 @@ class Report(models.Model):
         "You have access to variables `env` and `docs`",
     )
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("use_company_watermark"):
+                vals["pdf_watermark"] = False
+                vals["pdf_watermark_expression"] = False
+        return super().create(vals_list)
+
+    def write(self, vals):
+        if vals.get("use_company_watermark"):
+            vals["pdf_watermark"] = False
+            vals["pdf_watermark_expression"] = False
+        return super().write(vals)
+
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         if not self.env.context.get("res_ids"):
             self = self.with_context(res_ids=res_ids)
