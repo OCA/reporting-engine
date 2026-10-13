@@ -3,7 +3,8 @@
 
 import json
 
-from odoo.http import content_disposition, request, route
+from odoo.http import request, route
+from odoo.http.stream import content_disposition
 
 from odoo.addons.report_xlsx.controllers.main import ReportController
 

@@ -82,7 +82,7 @@ class ReportXlsxAbstract(models.AbstractModel):
         }
         XLS_HEADERS["xls_headers"] = {"standard": ""}
         report_date = fields.Datetime.context_timestamp(
-            self.env.user, datetime.now()
+            self.env.user, fields.Datetime.now()
         ).strftime("%Y-%m-%d %H:%M")
         XLS_HEADERS["xls_footers"] = {
             "standard": (
