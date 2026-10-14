@@ -5,9 +5,8 @@ from base64 import b64decode
 from io import BytesIO
 from logging import getLogger
 
-from PyPDF2 import PdfFileReader, PdfFileWriter
-
 from odoo import api, fields, models
+from odoo.tools.pdf import PdfReader, PdfWriter
 
 logger = getLogger(__name__)
 
@@ -94,7 +93,7 @@ class Report(models.Model):
         pdf_back_cover = False
         if use_front_cover:
             try:
-                pdf_front_cover = PdfFileReader(BytesIO(front_cover))
+                pdf_front_cover = PdfReader(BytesIO(front_cover))
                 if not pdf_front_cover:
                     use_front_cover = False
                     logger.error(self.env._("No usable front cover found."))
@@ -103,7 +102,7 @@ class Report(models.Model):
                 logger.exception(self.env._("Failed to load front cover: %s", e))
         if use_back_cover:
             try:
-                pdf_back_cover = PdfFileReader(BytesIO(back_cover))
+                pdf_back_cover = PdfReader(BytesIO(back_cover))
                 if not pdf_back_cover:
                     use_back_cover = False
                     logger.error(self.env._("No usable back cover found."))
@@ -131,20 +130,20 @@ class Report(models.Model):
             if index == 0 and use_front_cover:
                 if not front_cover_overlap:
                     front_cover_page = report_page
-                    front_cover_page.mergePage(pdf_front_cover.getPage(0))
+                    front_cover_page.mergePage(pdf_front_cover.pages[0])
                     report_page = pdf.addBlankPage(
                         page.mediaBox.getWidth(), page.mediaBox.getHeight()
                     )
                 else:
-                    report_page.mergePage(pdf_front_cover.getPage(0))
+                    report_page.mergePage(pdf_front_cover.pages[0])
             if index == len(pages) - 1 and use_back_cover:
                 if not back_cover_overlap:
                     back_cover_page = pdf.addBlankPage(
                         page.mediaBox.getWidth(), page.mediaBox.getHeight()
                     )
-                    back_cover_page.mergePage(pdf_back_cover.getPage(0))
+                    back_cover_page.mergePage(pdf_back_cover.pages[0])
                 else:
-                    report_page.mergePage(pdf_back_cover.getPage(0))
+                    report_page.mergePage(pdf_back_cover.pages[0])
             report_page.mergePage(page)
 
     @api.model
@@ -186,7 +185,7 @@ class Report(models.Model):
         if not front_cover and not back_cover:
             return result
 
-        pdf = PdfFileWriter()
+        pdf = PdfWriter()
         (
             use_front_cover,
             pdf_front_cover,
@@ -196,15 +195,15 @@ class Report(models.Model):
             front_cover, back_cover, use_front_cover, use_back_cover
         )
         if use_front_cover and not self.pdf_check_pages(
-            pdf_front_cover.numPages, front=True
+            len(pdf_front_cover.pages), front=True
         ):
             use_front_cover = False
         if use_back_cover and not self.pdf_check_pages(
-            pdf_back_cover.numPages, front=False
+            len(pdf_back_cover.pages), front=False
         ):
             use_back_cover = False
 
-        pages = PdfFileReader(BytesIO(result)).pages
+        pages = PdfReader(BytesIO(result)).pages
         self.insert_cover_pages(
             pdf,
             pages,

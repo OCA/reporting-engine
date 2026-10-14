@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================
 Report QWeb PDF Cover
 =====================
@@ -13,17 +17,17 @@ Report QWeb PDF Cover
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_pdf_cover
+    :target: https://github.com/OCA/reporting-engine/tree/19.0/report_qweb_pdf_cover
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-18-0/reporting-engine-18-0-report_qweb_pdf_cover
+    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-report_qweb_pdf_cover
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=18.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -47,17 +51,17 @@ you will find two checkboxes, one for the front cover and another for
 the back cover. They both work the same, so let's focus on the front
 cover with an example.
 
-- You must check the Use Front Cover checkbox to enable the front cover.
-  You will see that a new checkbox and a PDF file widget appear.
-- If you want the front cover to overlap with the first page of the PDF
-  report, you should also check the Overlap Front Cover checkbox. Leave
-  it unchecked if you don't want the front cover to overlap with the
-  first page.
-- The last step would be to upload the PDF file that will be used as the
-  front cover. You can do this by clicking on the PDF file widget and
-  selecting the file.
-- Important! The file must be a PDF file, and it should have only one
-  page. If it has more pages, only the first one will be used.
+-  You must check the Use Front Cover checkbox to enable the front
+   cover. You will see that a new checkbox and a PDF file widget appear.
+-  If you want the front cover to overlap with the first page of the PDF
+   report, you should also check the Overlap Front Cover checkbox. Leave
+   it unchecked if you don't want the front cover to overlap with the
+   first page.
+-  The last step would be to upload the PDF file that will be used as
+   the front cover. You can do this by clicking on the PDF file widget
+   and selecting the file.
+-  Important! The file must be a PDF file, and it should have only one
+   page. If it has more pages, only the first one will be used.
 
 Bug Tracker
 ===========
@@ -65,7 +69,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_cover%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_pdf_cover%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -80,7 +84,7 @@ Authors
 Contributors
 ------------
 
-- Laura Cazorla <laura.cazorla@forgeflow.com>
+-  Laura Cazorla <laura.cazorla@forgeflow.com>
 
 Maintainers
 -----------
@@ -95,6 +99,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/18.0/report_qweb_pdf_cover>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/report_qweb_pdf_cover>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
