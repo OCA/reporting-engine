@@ -1,6 +1,7 @@
 # Copyright 2017 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 import json
+import logging
 import mimetypes
 from urllib.parse import parse_qs
 
@@ -11,6 +12,8 @@ from odoo.http import content_disposition, request, route, serialize_exception
 from odoo.tools import html_escape
 
 from odoo.addons.web.controllers.report import ReportController as ReportControllerBase
+
+logger = logging.getLogger(__name__)
 
 
 class ReportController(ReportControllerBase):
@@ -91,6 +94,7 @@ class ReportController(ReportControllerBase):
             response.set_cookie("fileToken", context)
             return response
         except Exception as e:
+            logger.exception("Error while generating py3o report: %s", url)
             se = serialize_exception(e)
             error = {"code": 200, "message": "Odoo Server Error", "data": se}
             return request.make_response(html_escape(json.dumps(error)))
