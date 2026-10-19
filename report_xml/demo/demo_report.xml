@@ -3,9 +3,9 @@
     <template id="demo_report_xml_view">
         <root>
             <user t-foreach="docs" t-as="doc">
-                <id t-esc="doc.id" />
-                <name t-esc="doc.name" />
-                <vat t-esc="doc.vat" />
+                <id t-out="doc.id" />
+                <name t-out="doc.name" />
+                <vat t-out="doc.vat" />
             </user>
         </root>
     </template>
