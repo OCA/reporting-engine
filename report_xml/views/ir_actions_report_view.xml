@@ -10,7 +10,7 @@
                     report_type not in ['qweb-pdf', 'qweb-html', 'qweb-text', 'qweb-xml']
                 </attribute>
             </button>
-            <xpath expr="//page[@name='advanced']/group" position="after">
+            <xpath expr="//page[@name='advanced']/div[last()]" position="after">
                 <group
                     name="xml_reports"
                     string="XML Rreport Settings"

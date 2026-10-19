@@ -21,13 +21,13 @@ XML Reports
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/19.0/report_xml
+    :target: https://github.com/OCA/reporting-engine/tree/20.0/report_xml
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-report_xml
+    :target: https://translation.odoo-community.org/projects/reporting-engine-20-0/reporting-engine-20-0-report_xml
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -55,9 +55,9 @@ Installation
 
 To install this module, you need to:
 
-- Install `lxml <http://lxml.de/>`__ in Odoo's ``$PYTHONPATH``.
-- Install the repository
-  `reporting-engine <https://github.com/OCA/reporting-engine>`__.
+-  Install `lxml <http://lxml.de/>`__ in Odoo's ``$PYTHONPATH``.
+-  Install the repository
+   `reporting-engine <https://github.com/OCA/reporting-engine>`__.
 
 But this module does nothing for the end user by itself, so if you have
 it installed it's probably because there is another module that depends
@@ -79,12 +79,12 @@ companies views.
 
 To develop with this module, you need to:
 
-- Create a module.
-- Make it depend on this one.
-- Follow `instructions to create
-  reports <https://www.odoo.com/documentation/13.0/reference/reports.html>`__
-  having in mind that the ``report_type`` field in your
-  ``ir.actions.report`` record must be ``qweb-xml``.
+-  Create a module.
+-  Make it depend on this one.
+-  Follow `instructions to create
+   reports <https://www.odoo.com/documentation/13.0/reference/reports.html>`__
+   having in mind that the ``report_type`` field in your
+   ``ir.actions.report`` record must be ``qweb-xml``.
 
 In case you want to create a `custom
 report <https://www.odoo.com/documentation/13.0/reference/reports.html#custom-reports>`__,
@@ -109,8 +109,8 @@ your XML report online as a web page.
 
 For further information, please visit:
 
-- https://www.odoo.com/forum/help-1
-- https://github.com/OCA/reporting-engine
+-  https://www.odoo.com/forum/help-1
+-  https://github.com/OCA/reporting-engine
 
 Bug Tracker
 ===========
@@ -118,7 +118,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xml%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_xml%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -134,24 +134,24 @@ Authors
 Contributors
 ------------
 
-- `Dixmit <https://www.dixmit.com>`__
+-  `Dixmit <https://www.dixmit.com>`__
 
-  - Enric Tobella
+   -  Enric Tobella
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Jairo Llopis
+   -  Jairo Llopis
 
-- `Avoin.Systems <https://avoin.systems/>`__:
+-  `Avoin.Systems <https://avoin.systems/>`__:
 
-  - Tatiana Deribina
+   -  Tatiana Deribina
 
-- Iván Antón <ozono@ozonomultimedia.com>
+-  Iván Antón <ozono@ozonomultimedia.com>
 
 Other credits
 -------------
 
-- Icon taken from http://commons.wikimedia.org/wiki/File:Text-xml.svg
+-  Icon taken from http://commons.wikimedia.org/wiki/File:Text-xml.svg
 
 Maintainers
 -----------
@@ -166,6 +166,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/report_xml>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/20.0/report_xml>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

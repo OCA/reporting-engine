@@ -93,7 +93,9 @@ class ReportXmlAbstract(models.AbstractModel):
         """
         if xsd_schema_doc:
             # create validation parser
-            decoded_xsd_schema_doc = b64decode(xsd_schema_doc)
+            decoded_xsd_schema_doc = getattr(xsd_schema_doc, "content", None)
+            if decoded_xsd_schema_doc is None:
+                decoded_xsd_schema_doc = b64decode(xsd_schema_doc)
             parsed_xsd_schema = etree.XML(decoded_xsd_schema_doc)
             xsd_schema = etree.XMLSchema(parsed_xsd_schema)
             parser = etree.XMLParser(schema=xsd_schema)
