@@ -2,8 +2,9 @@
 
 from unittest import mock
 
-from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+from odoo import fields
+from odoo.exceptions import AccessError, ValidationError
+from odoo.tests.common import TransactionCase, new_test_user
 
 
 class TestKPI(TransactionCase):
@@ -282,8 +283,50 @@ class TestKPI(TransactionCase):
     def test_update_next_execution_date(self):
         kpi = self._create_kpi(periodicity=2, periodicity_uom="day")
         self.assertFalse(kpi.next_execution_date)
-        kpi.update_next_execution_date()
-        self.assertTrue(kpi.next_execution_date)
+        now = fields.Datetime.to_datetime("2026-01-15 12:00:00")
+        with mock.patch.object(fields.Datetime, "now", return_value=now):
+            kpi.update_next_execution_date()
+        self.assertEqual(
+            kpi.next_execution_date,
+            fields.Datetime.to_datetime("2026-01-17 12:00:00"),
+        )
+
+    def test_kpi_user_read_only(self):
+        kpi = self._create_kpi()
+        user = new_test_user(
+            self.env,
+            login="kpi_reader",
+            groups="base.group_user",
+            company_id=self.env.company.id,
+            company_ids=[(6, 0, self.env.company.ids)],
+        )
+        user_kpi = kpi.with_user(user).with_context(
+            allowed_company_ids=self.env.company.ids
+        )
+        self.assertEqual(user_kpi.name, kpi.name)
+        with self.assertRaises(AccessError):
+            user_kpi.write({"name": "Forbidden update"})
+
+    def test_kpi_manager_company_restriction(self):
+        kpi = self._create_kpi()
+        other_company = self.env["res.company"].create({"name": "Other KPI Company"})
+        other_kpi = self._create_kpi(company_id=other_company.id)
+        manager = new_test_user(
+            self.env,
+            login="kpi_manager",
+            groups="base.group_user,kpi.group_kpi_manager",
+            company_id=self.env.company.id,
+            company_ids=[(6, 0, self.env.company.ids)],
+        )
+        kpis = (
+            self.env["kpi"]
+            .with_user(manager)
+            .with_context(allowed_company_ids=self.env.company.ids)
+        )
+        self.assertEqual(kpis.search([("id", "in", (kpi | other_kpi).ids)]), kpi)
+        kpis.browse(kpi.id).write({"name": "Allowed update"})
+        with self.assertRaises(AccessError):
+            kpis.browse(other_kpi.id).read(["name"])
 
     def test_update_kpi_value_scheduler(self):
         kpi = self._create_kpi(kpi_code="3.0", active=True)

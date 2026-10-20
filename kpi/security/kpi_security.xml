@@ -15,37 +15,37 @@
     </data>
     <data noupdate="1">
         <!-- Rule -->
-        <record id="kpi_rule" model="ir.rule">
+        <record id="kpi_rule" model="ir.access">
             <field name="name">kpi multi-company</field>
             <field name="model_id" ref="model_kpi" />
-            <field name="global" eval="True" />
             <field
-                name="domain_force"
+                name="domain"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="operation">crud</field>
         </record>
-        <record id="kpi_threshold_range_rule" model="ir.rule">
+        <record id="kpi_threshold_range_rule" model="ir.access">
             <field name="name">kpi_threshold_range multi-company</field>
             <field name="model_id" ref="model_kpi_threshold_range" />
-            <field name="global" eval="True" />
             <field
-                name="domain_force"
+                name="domain"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="operation">crud</field>
         </record>
-        <record id="kpi_threshold_rule" model="ir.rule">
+        <record id="kpi_threshold_rule" model="ir.access">
             <field name="name">kpi_threshold multi-company</field>
             <field name="model_id" ref="model_kpi_threshold" />
-            <field name="global" eval="True" />
             <field
-                name="domain_force"
+                name="domain"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="operation">crud</field>
         </record>
-        <record id="kpi_history_rule" model="ir.rule">
+        <record id="kpi_history_rule" model="ir.access">
             <field name="name">kpi_history multi-company</field>
             <field name="model_id" ref="model_kpi_history" />
-            <field name="global" eval="True" />
             <field
-                name="domain_force"
+                name="domain"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="operation">crud</field>
         </record>
     </data>
 </odoo>

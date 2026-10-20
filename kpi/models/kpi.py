@@ -3,12 +3,11 @@
 
 import logging
 import re
-from datetime import datetime
+from typing import ClassVar
 
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 from odoo.tools.safe_eval import datetime as safe_eval_datetime
 from odoo.tools.safe_eval import safe_eval
 
@@ -17,33 +16,16 @@ _logger = logging.getLogger(__name__)
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if (
+    return (
         isinstance(result, dict)
         and "value" in result.dictfetchone()
         or isinstance(result, list)
         and "value" in result[0]
-    ):
-        return True
-    else:
-        return False
+    )
 
 
 RE_SELECT_QUERY = re.compile(
-    ".*("
-    + "|".join(
-        (
-            "INSERT",
-            "UPDATE",
-            "DELETE",
-            "CREATE",
-            "ALTER",
-            "DROP",
-            "GRANT",
-            "REVOKE",
-            "INDEX",
-        )
-    )
-    + ")"
+    ".*(INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|GRANT|REVOKE|INDEX)"
 )
 
 
@@ -57,7 +39,7 @@ class KPI(models.Model):
 
     _name = "kpi"
     _description = "Key Performance Indicator"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _inherit: ClassVar[list[str]] = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char(required=True)
     description = fields.Text()
@@ -198,9 +180,7 @@ class KPI(models.Model):
                 delta = relativedelta(months=obj.periodicity)
             else:
                 delta = relativedelta()
-            new_date = datetime.now() + delta
-
-            obj.next_execution_date = new_date.strftime(DATETIME_FORMAT)
+            obj.next_execution_date = fields.Datetime.now() + delta
 
         return True
 
@@ -214,7 +194,7 @@ class KPI(models.Model):
             (
                 "next_execution_date",
                 "<=",
-                datetime.now().strftime(DATETIME_FORMAT),
+                fields.Datetime.now(),
             ),
             ("next_execution_date", "=", False),
         ]
