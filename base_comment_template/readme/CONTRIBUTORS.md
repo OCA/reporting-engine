@@ -17,3 +17,5 @@
   - Alan Ramos \<<alan.ramos@jarsa.com>\>
 - [Bloopark systems](https://www.bloopark.de/):
   - Achraf Mhadhbi \<<machraf@bloopark.de>\>
+- Versada <https://versada.eu>:
+  - Asta Kasinskaitė

@@ -168,7 +168,7 @@ class TestCommentTemplate(common.TransactionCase):
                 {"overwrite": True, "lang_ids": [(6, 0, [ro_RO_lang.id])]}
             ).lang_install()
 
-        module = self.env.ref("base.module_test_translation_import")
+        module = self.env.ref("base.module_base_comment_template")
         export = self.env["base.language.export"].create(
             {"lang": "ro_RO", "format": "po", "modules": [Command.set([module.id])]}
         )
@@ -178,7 +178,7 @@ class TestCommentTemplate(common.TransactionCase):
 
         partner_category = self.ResPartnerCategory.create({"name": "Ambassador"})
         # Adding translated terms
-        ctx = dict(lang="ro_RO")
+        ctx = {"lang": "ro_RO"}
         partner_category.with_context(**ctx).write({"name": "Ambasador"})
         self.user.partner_id.category_id = partner_category
         self.before_template_id.text = "Test comment render {{object.category_id.name}}"

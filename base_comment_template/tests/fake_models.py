@@ -9,8 +9,8 @@ from odoo import fields, models
 class TestResUsers(models.Model):
     _name = "test.res.users"
     _description = "Test User"
-    _inherits = {"res.partner": "partner_id"}
-    _inherit = ["comment.template"]
+    _inherits = {"res.partner": "partner_id"}  # noqa: RUF012
+    _inherit = "comment.template"
 
     partner_id = fields.Many2one(
         "res.partner",
