@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Ranges -->
+    <record id="view_kpi_threshold_range_tree" model="ir.ui.view">
+        <field name="name">kpi.threshold.range.tree</field>
+        <field name="model">kpi.threshold.range</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="invalid_message">
+                <field name="name" />
+                <field name="min_value" />
+                <field name="max_value" />
+                <field name="color" widget="color" readonly="1" />
+                <field name="invalid_message" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </list>
+        </field>
+    </record>
+    <record id="view_kpi_threshold_range_form" model="ir.ui.view">
+        <field name="name">kpi.threshold.range.form</field>
+        <field name="model">kpi.threshold.range</field>
+        <field name="arch" type="xml">
+            <form string="Range">
+                <sheet>
+                    <group col="6" colspan="6">
+                        <field name="name" colspan="2" />
+                        <field name="color" colspan="2" widget="color" />
+                        <field
+                            name="company_id"
+                            groups="base.group_multi_company"
+                            colspan="2"
+                        />
+                    </group>
+                    <group col="6">
+                        <separator string="Minimum" />
+                        <newline />
+                        <field name="min_type" colspan="3" />
+                        <field
+                            name="min_fixed_value"
+                            colspan="3"
+                            invisible="min_type != 'static'"
+                        />
+                        <field
+                            name="min_dbsource_id"
+                            invisible="min_type != 'external'"
+                            colspan="3"
+                        />
+                        <field
+                            name="min_code"
+                            colspan="6"
+                            invisible="min_type not in ('local', 'external', 'python')"
+                        />
+                        <field name="min_error" colspan="6" invisible="not min_error" />
+                        <newline />
+                        <separator string="Maximum" />
+                        <newline />
+                        <field name="max_type" colspan="3" />
+                        <field
+                            name="max_fixed_value"
+                            colspan="3"
+                            invisible="max_type != 'static'"
+                        />
+                        <field
+                            name="max_dbsource_id"
+                            colspan="3"
+                            invisible="max_type != 'external'"
+                        />
+                        <newline />
+                        <field
+                            name="max_code"
+                            colspan="6"
+                            invisible="max_type not in ('local', 'external', 'python')"
+                        />
+                        <newline />
+                        <field name="max_error" colspan="6" invisible="not max_error" />
+                        <newline />
+                    </group>
+                    <group col="6" colspan="6">
+                        <separator string="Thresholds" colspan="4" />
+                        <field name="threshold_ids" nolabel="1" colspan="4" />
+                        <separator
+                            string="Errors"
+                            invisible="not invalid_message"
+                            colspan="4"
+                        />
+                        <field
+                            name="invalid_message"
+                            nolabel="1"
+                            invisible="not invalid_message"
+                            colspan="4"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="open_threshold_range_list" model="ir.actions.act_window">
+        <field name="name">Ranges</field>
+        <field name="res_model">kpi.threshold.range</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_kpi_threshold_range_tree" />
+    </record>
+</odoo>

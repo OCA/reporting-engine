@@ -1,0 +1,1 @@
+odoo-addon-base_external_dbsource @ git+https://github.com/OCA/server-backend@refs/pull/495/head#subdirectory=base_external_dbsource
