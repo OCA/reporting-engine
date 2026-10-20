@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_xml
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-13 02:43+0000\n"
+"PO-Revision-Date: 2025-09-11 12:42+0000\n"
+"Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: report_xml
+#: model:ir.model,name:report_xml.model_report_report_xml_abstract
+msgid "Abstract XML Report"
+msgstr "Soyut XML Raporu"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_declaration
+msgid ""
+"Add `<?xml encoding=\"...\" version=\"...\"?>` at the start of final report "
+"file."
+msgstr ""
+"Son rapor dosyasının başına `<?xml encoding=\"...\" version=\"...\"?>` "
+"ekleyin."
+
+#. module: report_xml
+#: model:ir.actions.report,name:report_xml.demo_xml_report
+msgid "Demo xml report"
+msgstr "Demo xml raporu"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_encoding
+msgid ""
+"Encoding for XML reports. If nothing is selected, then UTF-8 will be applied."
+msgstr "XML raporları için kodlama. Hiçbir şey seçilmezse UTF-8 uygulanacaktır."
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xml_extension
+msgid "Extension for XML Reports, by default is `xml`"
+msgstr "XML Raporları için varsayılan uzantı 'xml' şeklindedir"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__xsd_schema
+msgid ""
+"File with XSD Schema for checking content of result report. Can be empty if "
+"validation is not required."
+msgstr ""
+"Sonuç raporunun içeriğini kontrol etmek için XSD Şemalı dosya. Doğrulama "
+"gerekmiyorsa boş olabilir."
+
+#. module: report_xml
+#: model:ir.model,name:report_xml.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapor Eylemi"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__report_type
+msgid "Report Type"
+msgstr "Rapor Tipi"
+
+#. module: report_xml
+#: model:ir.model.fields,help:report_xml.field_ir_actions_report__report_type
+msgid ""
+"The type of the report that will be rendered, each one having its own "
+"rendering method. HTML means the report will be opened directly in your "
+"browser PDF means the report will be rendered using Wkhtmltopdf and "
+"downloaded by the user."
+msgstr ""
+"Her biri kendi oluşturma yöntemine sahip olarak oluşturulacak raporun türü. "
+"HTML, raporun doğrudan tarayıcınızda açılacağı anlamına gelir PDF, raporun "
+"Wkhtmltopdf kullanılarak oluşturulacağı ve kullanıcı tarafından indirileceği "
+"anlamına gelir."
+
+#. module: report_xml
+#: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__xml_encoding__utf-8
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. module: report_xml
+#: model:ir.model.fields.selection,name:report_xml.selection__ir_actions_report__report_type__qweb-xml
+msgid "XML"
+msgstr "XML"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_declaration
+msgid "XML Declaration"
+msgstr "XML Bildirimi"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_encoding
+msgid "XML Encoding"
+msgstr "XML Kodlama"
+
+#. module: report_xml
+#: model_terms:ir.ui.view,arch_db:report_xml.ir_actions_report_view_form_report_xml
+msgid "XML Rreport Settings"
+msgstr "XML Rapor Ayarları"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xsd_schema
+msgid "XSD Validation Schema"
+msgstr "XSD Doğrulama Şeması"
+
+#. module: report_xml
+#: model:ir.model.fields,field_description:report_xml.field_ir_actions_report__xml_extension
+msgid "Xml Extension"
+msgstr "XML Uzantısı"
+
+#, fuzzy
+#~ msgid "ir.actions.report"
+#~ msgstr "ir.actions.report.xml"
