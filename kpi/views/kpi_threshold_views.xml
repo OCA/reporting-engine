@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Thresholds -->
     <record id="view_kpi_threshold_tree" model="ir.ui.view">
@@ -43,7 +44,7 @@
             </form>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="open_threshold_list">
+    <record id="open_threshold_list" model="ir.actions.act_window">
         <field name="name">Thresholds</field>
         <field name="res_model">kpi.threshold</field>
         <field name="view_mode">list,form</field>

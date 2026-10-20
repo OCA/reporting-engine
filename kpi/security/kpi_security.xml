@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2012 -Now Savoir-faire Linux <https://www.savoirfairelinux.com/>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <data noupdate="0">
-        <record model="res.groups.privilege" id="privilege_kpi">
+        <record id="privilege_kpi" model="res.groups.privilege">
             <field name="name">Key Performance Indicators</field>
             <field name="category_id" ref="base.module_category_hidden" />
         </record>
@@ -15,7 +15,7 @@
     </data>
     <data noupdate="1">
         <!-- Rule -->
-        <record model="ir.rule" id="kpi_rule">
+        <record id="kpi_rule" model="ir.rule">
             <field name="name">kpi multi-company</field>
             <field name="model_id" ref="model_kpi" />
             <field name="global" eval="True" />
@@ -23,7 +23,7 @@
                 name="domain_force"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
         </record>
-        <record model="ir.rule" id="kpi_threshold_range_rule">
+        <record id="kpi_threshold_range_rule" model="ir.rule">
             <field name="name">kpi_threshold_range multi-company</field>
             <field name="model_id" ref="model_kpi_threshold_range" />
             <field name="global" eval="True" />
@@ -31,7 +31,7 @@
                 name="domain_force"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
         </record>
-        <record model="ir.rule" id="kpi_threshold_rule">
+        <record id="kpi_threshold_rule" model="ir.rule">
             <field name="name">kpi_threshold multi-company</field>
             <field name="model_id" ref="model_kpi_threshold" />
             <field name="global" eval="True" />
@@ -39,7 +39,7 @@
                 name="domain_force"
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
         </record>
-        <record model="ir.rule" id="kpi_history_rule">
+        <record id="kpi_history_rule" model="ir.rule">
             <field name="name">kpi_history multi-company</field>
             <field name="model_id" ref="model_kpi_history" />
             <field name="global" eval="True" />
