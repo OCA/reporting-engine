@@ -17,9 +17,12 @@ _logger = logging.getLogger(__name__)
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if isinstance(result, dict) and "value" in result.dictfetchone():
-        return True
-    elif isinstance(result, list) and "value" in result[0]:
+    if (
+        isinstance(result, dict)
+        and "value" in result.dictfetchone()
+        or isinstance(result, list)
+        and "value" in result[0]
+    ):
         return True
     else:
         return False

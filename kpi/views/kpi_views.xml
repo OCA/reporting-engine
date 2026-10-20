@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- KPI -->
     <record id="view_kpi_tree" model="ir.ui.view">
@@ -144,7 +145,7 @@
             </form>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="open_kpi_dashboard">
+    <record id="open_kpi_dashboard" model="ir.actions.act_window">
         <field name="name">KPI Dashboard</field>
         <field name="res_model">kpi</field>
         <field name="view_mode">kanban,list,form</field>
@@ -156,7 +157,7 @@
         <field name="view_id" ref="view_kpi_kanban" />
         <field name="act_window_id" ref="open_kpi_dashboard" />
     </record>
-    <record model="ir.actions.act_window" id="open_kpi_list">
+    <record id="open_kpi_list" model="ir.actions.act_window">
         <field name="name">KPI</field>
         <field name="res_model">kpi</field>
         <field name="view_mode">list,form</field>

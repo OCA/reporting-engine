@@ -9,9 +9,12 @@ from odoo.tools.safe_eval import safe_eval
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if isinstance(result, dict) and "value" in result.dictfetchone():
-        return True
-    elif isinstance(result, list) and "value" in result[0]:
+    if (
+        isinstance(result, dict)
+        and "value" in result.dictfetchone()
+        or isinstance(result, list)
+        and "value" in result[0]
+    ):
         return True
     else:
         return False
