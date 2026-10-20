@@ -21,13 +21,13 @@ Key Performance Indicators
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/19.0/kpi
+    :target: https://github.com/OCA/reporting-engine/tree/20.0/kpi
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-kpi
+    :target: https://translation.odoo-community.org/projects/reporting-engine-20-0/reporting-engine-20-0-kpi
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -42,11 +42,11 @@ the periodicity of each KPI. KPI computation can also be done manually.
 
 A threshold is a list of ranges and a range is:
 
-- a name (like Good, Warning, Bad)
-- a minimum value (fixed, sql query or python code)
-- a maximum value (fixed, sql query or python code)
-- color (RGB code like #00FF00 for green, #FFA500 for orange, #FF0000
-  for red)
+-  a name (like Good, Warning, Bad)
+-  a minimum value (fixed, sql query or python code)
+-  a maximum value (fixed, sql query or python code)
+-  color (RGB code like #00FF00 for green, #FFA500 for orange, #FF0000
+   for red)
 
 **Table of contents**
 
@@ -64,7 +64,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20kpi%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20kpi%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -80,20 +80,20 @@ Authors
 Contributors
 ------------
 
-- Daniel Reis <dreis.pt@hotmail.com>
-- Glen Dromgoole <gdromgoole@tier1engineering.com>
-- Loic Lacroix <loic.lacroix@savoirfairelinux.com>
-- Sandy Carter <sandy.carter@savoirfairelinux.com>
-- Gervais Naoussi <gervaisnaoussi@gmail.com>
-- Iván Todorovich <ivan.todorovich@gmail.com>
-- Adrià Gil <adria.gil@eficent.com>
-- `Guadaltech <https://www.guadaltech.es>`__:
+-  Daniel Reis <dreis.pt@hotmail.com>
+-  Glen Dromgoole <gdromgoole@tier1engineering.com>
+-  Loic Lacroix <loic.lacroix@savoirfairelinux.com>
+-  Sandy Carter <sandy.carter@savoirfairelinux.com>
+-  Gervais Naoussi <gervaisnaoussi@gmail.com>
+-  Iván Todorovich <ivan.todorovich@gmail.com>
+-  Adrià Gil <adria.gil@eficent.com>
+-  `Guadaltech <https://www.guadaltech.es>`__:
 
-  - Fernando La Chica <fernando.lachica@guadaltech.es>
+   -  Fernando La Chica <fernando.lachica@guadaltech.es>
 
-- `Gray Matter Logic <https://www.graymatterlogic.com>`__:
+-  `Gray Matter Logic <https://www.graymatterlogic.com>`__:
 
-  - Maxime Chambreuil <maxime.chambreuil@graymatterlogic.com>
+   -  Maxime Chambreuil <maxime.chambreuil@graymatterlogic.com>
 
 Maintainers
 -----------
@@ -116,6 +116,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-max3903| 
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/kpi>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/20.0/kpi>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

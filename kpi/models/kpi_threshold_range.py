@@ -3,39 +3,24 @@
 
 import re
 
+import psycopg2
+
 from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
 
 
 def is_one_value(result):
     # check if sql query returns only one value
-    if (
+    return (
         isinstance(result, dict)
         and "value" in result.dictfetchone()
         or isinstance(result, list)
         and "value" in result[0]
-    ):
-        return True
-    else:
-        return False
+    )
 
 
 RE_SELECT_QUERY = re.compile(
-    ".*("
-    + "|".join(
-        (
-            "INSERT",
-            "UPDATE",
-            "DELETE",
-            "CREATE",
-            "ALTER",
-            "DROP",
-            "GRANT",
-            "REVOKE",
-            "INDEX",
-        )
-    )
-    + ")"
+    ".*(INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|GRANT|REVOKE|INDEX)"
 )
 
 
@@ -121,7 +106,7 @@ class KPIThresholdRange(models.Model):
                     value = safe_eval(obj.min_code)
                 else:
                     value = obj.min_fixed_value
-            except Exception as e:
+            except (SyntaxError, TypeError, ValueError, psycopg2.Error) as e:
                 value = None
                 error = str(e)
             obj.min_value = value
@@ -150,7 +135,7 @@ class KPIThresholdRange(models.Model):
                     value = safe_eval(obj.max_code)
                 else:
                     value = obj.max_fixed_value
-            except Exception as e:
+            except (SyntaxError, TypeError, ValueError, psycopg2.Error) as e:
                 value = None
                 error = str(e)
             obj.max_value = value

@@ -3,7 +3,7 @@
 
 {
     "name": "Key Performance Indicators",
-    "version": "19.0.1.0.1",
+    "version": "20.0.1.0.0",
     "author": "Savoir-faire Linux, Gray Matter Logic, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/reporting-engine",
     "license": "AGPL-3",
@@ -11,7 +11,7 @@
     "depends": ["base_external_dbsource", "spreadsheet_dashboard"],
     "data": [
         "security/kpi_security.xml",
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/kpi_category_views.xml",
         "views/kpi_history_views.xml",
         "views/kpi_threshold_range_views.xml",
