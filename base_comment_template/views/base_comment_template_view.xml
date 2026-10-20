@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.ui.view" id="view_base_comment_template_tree">
+    <record id="view_base_comment_template_tree" model="ir.ui.view">
         <field name="name">base.comment.template.search</field>
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
@@ -17,7 +17,7 @@
             </list>
         </field>
     </record>
-    <record model="ir.ui.view" id="view_base_comment_template_search">
+    <record id="view_base_comment_template_search" model="ir.ui.view">
         <field name="name">base.comment.template.search</field>
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
@@ -34,7 +34,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_base_comment_template_form">
+    <record id="view_base_comment_template_form" model="ir.ui.view">
         <field name="name">base.comment.template.form</field>
         <field name="model">base.comment.template</field>
         <field name="arch" type="xml">
@@ -89,7 +89,7 @@
             </form>
         </field>
     </record>
-    <record model="ir.actions.act_window" id="action_base_comment_template">
+    <record id="action_base_comment_template" model="ir.actions.act_window">
         <field name="name">Comment Templates</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">base.comment.template</field>
