@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.module.category" id="category_sql_abstract">
+    <record id="category_sql_abstract" model="ir.module.category">
         <field name="name">SQL Request</field>
     </record>
 
-    <record model="res.groups.privilege" id="privilege_sql_request">
+    <record id="privilege_sql_request" model="res.groups.privilege">
         <field name="name">SQL Request</field>
         <field name="category_id" ref="category_sql_abstract" />
     </record>

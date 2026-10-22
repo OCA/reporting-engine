@@ -5,11 +5,11 @@ Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
-    <record model="res.groups" id="group_sql_request_user">
+    <record id="group_sql_request_user" model="res.groups">
         <field name="name">User</field>
         <field name="privilege_id" ref="privilege_sql_request" />
     </record>
-    <record model="res.groups" id="group_sql_request_manager">
+    <record id="group_sql_request_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="privilege_id" ref="privilege_sql_request" />
         <field name="user_ids" eval="[Command.link(ref('base.user_admin'))]" />
