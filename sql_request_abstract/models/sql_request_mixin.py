@@ -8,6 +8,7 @@ import logging
 import re
 import uuid
 from io import BytesIO
+from typing import ClassVar
 
 from psycopg2 import ProgrammingError
 from psycopg2.sql import SQL
@@ -22,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 class SQLRequestMixin(models.AbstractModel):
     _name = "sql.request.mixin"
-    _inherit = ["mail.thread"]
+    _inherit = ["mail.thread"]  # noqa: RUF012
 
     _description = "SQL Request Mixin"
 
@@ -36,9 +37,12 @@ class SQLRequestMixin(models.AbstractModel):
 
     _sql_request_users_relation = False
 
-    STATE_SELECTION = [("draft", "Draft"), ("sql_valid", "SQL Valid")]
+    STATE_SELECTION: ClassVar[list[tuple[str, str]]] = [
+        ("draft", "Draft"),
+        ("sql_valid", "SQL Valid"),
+    ]
 
-    PROHIBITED_WORDS = [
+    PROHIBITED_WORDS: ClassVar[list[str]] = [
         "delete",
         "drop",
         "insert",
@@ -346,4 +350,4 @@ class SQLRequestMixin(models.AbstractModel):
     def button_preview_sql_expression(self):
         self.button_validate_sql_expression()
         res = self._execute_sql_request()
-        raise UserError("\n".join(map(lambda x: str(x), res[:100])))
+        raise UserError("\n".join(str(x) for x in res[:100]))
