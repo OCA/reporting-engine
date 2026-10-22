@@ -1,7 +1,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import tools
-from odoo.sql_db import Connection, ConnectionPool, _Pool  # noqa
+from odoo.sql_db import Connection, ConnectionPool, _Pool
 
 
 def connection_info_for_external_database():
