@@ -36,7 +36,10 @@ class SQLRequestMixin(models.AbstractModel):
 
     _sql_request_users_relation = False
 
-    STATE_SELECTION = [("draft", "Draft"), ("sql_valid", "SQL Valid")]
+    STATE_SELECTION = [
+        ("draft", "Draft"),
+        ("sql_valid", "SQL Valid"),
+    ]
 
     PROHIBITED_WORDS = [
         "delete",
@@ -346,4 +349,4 @@ class SQLRequestMixin(models.AbstractModel):
     def button_preview_sql_expression(self):
         self.button_validate_sql_expression()
         res = self._execute_sql_request()
-        raise UserError("\n".join(map(lambda x: str(x), res[:100])))
+        raise UserError("\n".join(str(x) for x in res[:100]))
