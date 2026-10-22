@@ -1,0 +1,6 @@
+- Florian da Costa \<<florian.dacosta@akretion.com>\>
+- Sylvain LE GAL (<https://twitter.com/legalsylvain>)
+- Alfadil Tabar (<alfadil.tabar@gmail.com>)
+- Helly kapatel \<<helly.kapatel@initos.com>\>
+- Nguyen Minh Chien \<<chien@trobz.com>\>
+- Vo Hong Thien \<<thienvh@trobz.com>\>
