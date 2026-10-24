@@ -9,6 +9,13 @@ on:
       - "18.0"
       - "18.0-ocabot-*"
 
+<<<<<<< before updating
+=======
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+>>>>>>> after updating
 jobs:
   unreleased-deps:
     runs-on: ubuntu-latest
@@ -55,6 +62,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+<<<<<<< before updating
       - name: Install pipx for pyhanko isolation
         run: python -m pip install --upgrade pip pipx
       - name: Install isolated pyhanko
@@ -63,6 +71,8 @@ jobs:
         run: pipx ensurepath
       - name: pyHanko test run
         run: pyhanko --version
+=======
+>>>>>>> after updating
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Check licenses
