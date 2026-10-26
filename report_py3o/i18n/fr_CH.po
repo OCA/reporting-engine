@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
 "PO-Revision-Date: 2018-01-16 08:52+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: French (Switzerland) (https://www.transifex.com/oca/"
-"teams/23907/fr_CH/)\n"
+"Language-Team: French (Switzerland) (https://www.transifex.com/oca/teams/"
+"23907/fr_CH/)\n"
 "Language: fr_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -261,8 +261,28 @@ msgid ""
 "The libreoffice runtime is required to genereate the py3o report '%s' but is "
 "not found into the bin path. You must install the libreoffice runtime on the "
 "server. If the runtime is already installed and is not found by Odoo, you "
-"can provide the full path to the runtime by setting the key 'py3o."
-"conversion_command' into the configuration parameters."
+"can provide the full path to the runtime by setting the key "
+"'py3o.conversion_command' into the configuration parameters."
+msgstr ""
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid "The py3o conversion command could not be executed: %s"
+msgstr ""
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid "The report could not be generated. Please contact your administrator."
+msgstr ""
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid ""
+"The report could not be generated. The template may contain unsupported "
+"content. Please contact your administrator."
 msgstr ""
 
 #. module: report_py3o

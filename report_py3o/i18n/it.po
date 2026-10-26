@@ -268,14 +268,34 @@ msgid ""
 "The libreoffice runtime is required to genereate the py3o report '%s' but is "
 "not found into the bin path. You must install the libreoffice runtime on the "
 "server. If the runtime is already installed and is not found by Odoo, you "
-"can provide the full path to the runtime by setting the key 'py3o."
-"conversion_command' into the configuration parameters."
+"can provide the full path to the runtime by setting the key "
+"'py3o.conversion_command' into the configuration parameters."
 msgstr ""
 "?? richiesto il runtime LibreOffice per generare il resoconto Py3o '%s' ma "
 "non ?? stato trovato nel percorso dei file bin. Bisogna installare il "
 "runtime LibreOffice nel server. Se il runtime ?? gi?? installato e Odoo non "
 "lo trova, si pu?? fornire il percorso completo al runtime impostando la "
 "chiave 'py3o.conversion_command' nei parametri di configurazione."
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid "The py3o conversion command could not be executed: %s"
+msgstr ""
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid "The report could not be generated. Please contact your administrator."
+msgstr ""
+
+#. module: report_py3o
+#. odoo-python
+#: code:addons/report_py3o/models/py3o_report.py:0
+msgid ""
+"The report could not be generated. The template may contain unsupported "
+"content. Please contact your administrator."
+msgstr ""
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
