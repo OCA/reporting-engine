@@ -58,22 +58,18 @@ class ReportAction(models.Model):
         res_id = docids[0] if docids and len(docids) == 1 else None
         if not res_id or not report_sudo.attachment or not report_sudo.attachment_use:
             return report_model.with_context(
-                **{
-                    "active_model": report_sudo.model,
-                    "encoding": self.encoding,
-                    "encode_error_handling": self.encode_error_handling,
-                }
+                active_model=report_sudo.model,
+                encoding=self.encoding,
+                encode_error_handling=self.encode_error_handling,
             ).create_csv_report(docids, data)
         record = self.env[report_sudo.model].browse(res_id)
         attachment = report_sudo.retrieve_attachment(record)
         if attachment:
             return attachment.raw.decode(), "csv"
         data, ext = report_model.with_context(
-            **{
-                "active_model": report_sudo.model,
-                "encoding": self.encoding,
-                "encode_error_handling": self.encode_error_handling,
-            }
+            active_model=report_sudo.model,
+            encoding=self.encoding,
+            encode_error_handling=self.encode_error_handling,
         ).create_csv_report(docids, data)
         report_sudo._create_csv_attachment(record, data)
         return data, ext
