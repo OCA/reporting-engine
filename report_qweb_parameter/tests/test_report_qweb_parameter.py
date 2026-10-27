@@ -26,7 +26,7 @@ class TestReportQWebParameter(common.TransactionCase):
                         t-if="docs[0].street"/>
                     <li id="esc_conditional_length"
                         t-length="3"
-                        t-out="docs[0].name or docs[0].company_registry"/>
+                        t-out="docs[0].name or docs[0].phone"/>
                     <li id="esc_maxlength"
                         t-maxlength="10"
                         t-out="docs[0].website"
@@ -38,11 +38,11 @@ class TestReportQWebParameter(common.TransactionCase):
                         t-if="docs[0].vat"/>
                     <li id="raw_conditional_length"
                         t-length="4"
-                        t-out="docs[0].name or docs[0].company_registry"/>
+                        t-out="docs[0].name or docs[0].phone"/>
                     <li id="raw_maxlength"
                         t-maxlength="10"
-                        t-out="docs[0].company_registry"
-                        t-if="docs[0].company_registry"/>
+                        t-out="docs[0].phone"
+                        t-if="docs[0].phone"/>
                     <li id="out_length"
                         t-minlength="10"
                         t-length="10"
@@ -50,11 +50,11 @@ class TestReportQWebParameter(common.TransactionCase):
                         t-if="docs[0].vat"/>
                     <li id="out_conditional_length"
                         t-length="5"
-                        t-out="docs[0].name or docs[0].company_registry"/>
+                        t-out="docs[0].name or docs[0].phone"/>
                     <li id="out_maxlength"
                         t-maxlength="10"
-                        t-out="docs[0].company_registry"
-                        t-if="docs[0].company_registry"/>
+                        t-out="docs[0].phone"
+                        t-if="docs[0].phone"/>
                 </data>
             """,
             }
@@ -90,7 +90,7 @@ class TestReportQWebParameter(common.TransactionCase):
                 "name": "Test company",
                 "street": "12345678901",
                 "vat": "12345678901",
-                "company_registry": "1234567890",
+                "phone": "1234567890",
             }
         )
         docs.website = "1234567890"
@@ -117,6 +117,6 @@ class TestReportQWebParameter(common.TransactionCase):
         docs.update({"vat": "1234567890", "website": "12345678901"})
         with self.assertRaises(ValidationError):
             self.report._render(self.full_report_name, docs.ids, False)
-        docs.update({"website": "1234567890", "company_registry": "12345678901"})
+        docs.update({"website": "1234567890", "phone": "12345678901"})
         with self.assertRaises(ValidationError):
             self.report._render(self.full_report_name, docs.ids, False)
