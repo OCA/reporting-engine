@@ -1,3 +1,3 @@
-- [Binhex Systems Solutions S.L.](https://www.binhex.cloud):
+- [Binhex](https://www.binhex.cloud):
   - Ariel Torres
   - Rolando Pérez Rebollo

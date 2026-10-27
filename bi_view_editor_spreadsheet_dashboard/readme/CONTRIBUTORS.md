@@ -1,4 +1,4 @@
 - [Coop IT Easy SC](https://coopiteasy.be):
   - hugues de keyzer
 - [Binhex](https://binhex.cloud):
-  - Antonio Ruban \<a.ruban@binhex.com\>
+  - Antonio Ruban \<a.ruban@binhex.cloud\>
