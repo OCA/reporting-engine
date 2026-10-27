@@ -1,0 +1,28 @@
+.o_web_client {
+    .o_field_report_builder {
+        width: 100%;
+
+        .o_report_builder {
+            width: 100%;
+            .o_report_builder_table {
+                a {
+                    // we don't want the link color, to respect user styles
+                    color: inherit;
+                    &:hover {
+                        // underline links on hover to give a visual cue
+                        text-decoration: underline;
+                    }
+                }
+                .report_builder_amount {
+                    text-align: right;
+                }
+                .report_builder_collabel {
+                    text-align: center;
+                }
+                .report_builder_rowlabel {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

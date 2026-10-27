@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+        id="report_builder_menu"
+        name="Report Builder"
+        sequence="10"
+        groups="base.group_system"
+    />
+</odoo>

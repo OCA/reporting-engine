@@ -1,0 +1,46 @@
+.report_table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+
+    .mis_row {
+        display: table-row;
+        page-break-inside: avoid;
+        border-color: grey;
+        border-bottom: 1px solid lightGrey;
+    }
+
+    .mis_cell {
+        display: table-cell;
+        page-break-inside: avoid;
+
+        &.report_collabel {
+            font-weight: bold;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        &.report_rowlabel {
+            text-align: left;
+            /* white-space: nowrap; */
+        }
+
+        &.report_amount {
+            text-align: right;
+        }
+    }
+    &,
+    .report_row {
+        border-left: 0;
+        border-right: 0;
+        text-align: left;
+        padding: 2px 3px;
+        border-collapse: collapse;
+    }
+}
+.report_thead {
+    display: table-header-group;
+}
+.report_tbody {
+    display: table-row-group;
+}
