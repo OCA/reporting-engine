@@ -8,7 +8,7 @@ from odoo.exceptions import ValidationError
 class IrQWeb(models.AbstractModel):
     _inherit = "ir.qweb"
 
-    def check_length(self, value, min_length=False, max_length=False):  # noqa
+    def check_length(self, value, min_length=False, max_length=False):
         """No use staticmethod because self is needed to translate exception messages"""
         if min_length and len(value) < min_length:
             raise ValidationError(
