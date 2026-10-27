@@ -9,6 +9,5 @@
         <field name="model">res.partner</field>
         <field name="report_type">csv</field>
         <field name="report_name">report_csv.partner_csv</field>
-        <field name="report_file">res_partner</field>
     </record>
 </odoo>

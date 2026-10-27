@@ -33,7 +33,8 @@ class ReportAction(models.Model):
         if record and data:
             attachment = {
                 "name": attachment_name,
-                "raw": data,
+                # A str would be read as base64 by the binary field
+                "raw": data.encode() if isinstance(data, str) else data,
                 "res_model": self.model,
                 "res_id": record.id,
                 "type": "binary",
@@ -59,17 +60,20 @@ class ReportAction(models.Model):
         if not res_id or not report_sudo.attachment or not report_sudo.attachment_use:
             return report_model.with_context(
                 active_model=report_sudo.model,
-                encoding=self.encoding,
-                encode_error_handling=self.encode_error_handling,
+                encoding=report_sudo.encoding,
+                encode_error_handling=report_sudo.encode_error_handling,
             ).create_csv_report(docids, data)
         record = self.env[report_sudo.model].browse(res_id)
         attachment = report_sudo.retrieve_attachment(record)
         if attachment:
+            # Same type as a fresh render: bytes when an encoding is set
+            if report_sudo.encoding:
+                return attachment.raw, "csv"
             return attachment.raw.decode(), "csv"
         data, ext = report_model.with_context(
             active_model=report_sudo.model,
-            encoding=self.encoding,
-            encode_error_handling=self.encode_error_handling,
+            encoding=report_sudo.encoding,
+            encode_error_handling=report_sudo.encode_error_handling,
         ).create_csv_report(docids, data)
         report_sudo._create_csv_attachment(record, data)
         return data, ext

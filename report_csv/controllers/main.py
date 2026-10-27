@@ -5,16 +5,11 @@ import json
 import logging
 
 from werkzeug.exceptions import InternalServerError
-from werkzeug.urls import url_decode
+from werkzeug.urls import url_parse
 
-from odoo.http import (
-    content_disposition,
-    request,
-    route,
-)
-from odoo.http import (
-    serialize_exception as _serialize_exception,
-)
+from odoo.http import request, route
+from odoo.http.dispatcher import serialize_exception
+from odoo.http.stream import content_disposition
 from odoo.tools import html_escape
 from odoo.tools.safe_eval import safe_eval, time
 
@@ -69,9 +64,8 @@ class ReportController(report.ReportController):
                     )
                 else:
                     # Particular report:
-                    data = dict(
-                        url_decode(url.split("?")[1]).items()
-                    )  # decoding the args represented in JSON
+                    # decoding the args represented in JSON
+                    data = url_parse(url).decode_query(cls=dict)
                     if "context" in data:
                         context, data_context = (
                             json.loads(context or "{}"),
@@ -105,7 +99,7 @@ class ReportController(report.ReportController):
                 )
         except Exception as e:
             _logger.exception("Error while generating report %s", reportname)
-            se = _serialize_exception(e)
+            se = serialize_exception(e)
             error = {"code": 200, "message": "Odoo Server Error", "data": se}
             res = request.make_response(html_escape(json.dumps(error)))
             raise InternalServerError(response=res) from e

@@ -3,3 +3,5 @@
 - Rattapong Chokmasermkul \<<rattapongc@ecosoft.co.th>\>
 - [Quartile](https://www.quartile.co):
   - Aung Ko Ko Lin
+- [Tecnativa](https://www.tecnativa.com):
+  - Carlos Dauden

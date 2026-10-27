@@ -3,28 +3,16 @@
 import json
 import logging
 from io import StringIO
-from unittest import mock
 
-from odoo import http
 from odoo.exceptions import UserError
 from odoo.tests import common
 from odoo.tools import mute_logger
-
-from odoo.addons.report_csv.controllers.main import ReportController
 
 _logger = logging.getLogger(__name__)
 try:
     import csv
 except ImportError:
     _logger.debug("Can not import csv.")
-
-
-class TestCsvException(Exception):
-    def __init__(self, message):
-        """
-        :param message: exception message and frontend modal content
-        """
-        super().__init__(message)
 
 
 class TestReport(common.TransactionCase):
@@ -40,7 +28,6 @@ class TestReport(common.TransactionCase):
                 "name": "Print to CSV",
                 "report_name": self.report_name,
                 "model": "res.partner",
-                "report_file": "res_partner",
                 "report_type": "csv",
             }
         )
@@ -50,7 +37,7 @@ class TestReport(common.TransactionCase):
         # Test if not res:
         report = self.report
         self.assertEqual(report.report_type, "csv")
-        rep = self.report_object._render(self.report_name, self.docs.ids, {})
+        rep = self.report_object._render(self.report, self.docs.ids, {})
         str_io = StringIO(rep[0])
         dict_report = list(csv.DictReader(str_io, delimiter=";", quoting=csv.QUOTE_ALL))
         self.assertEqual(self.docs.name, dict(dict_report[0])["name"])
@@ -58,15 +45,13 @@ class TestReport(common.TransactionCase):
     def test_attachment_use(self):
         self.report.attachment = "object.name+'.csv'"
         self.report.attachment_use = True
-        rep = self.report_object._render(self.report_name, self.docs.ids, {})
+        rep = self.report_object._render(self.report, self.docs.ids, {})
         attachment = self.env["ir.attachment"].search(
             [("name", "=", self.docs.name + ".csv")]
         )
         self.assertTrue(attachment)
         self.assertEqual(attachment.raw.decode(), rep[0])
-        rep_from_attachment = self.report_object._render(
-            self.report_name, self.docs.ids, {}
-        )
+        rep_from_attachment = self.report_object._render(self.report, self.docs.ids, {})
         self.assertTupleEqual(rep, rep_from_attachment)
 
     def test_id_retrieval(self):
@@ -95,20 +80,24 @@ class TestReport(common.TransactionCase):
     def test_report_with_encoding(self):
         report = self.report
         report.write({"encoding": "cp932"})
-        rep = report._render_csv(self.report_name, self.docs.ids, {})
+        rep = report._render_csv(self.report, self.docs.ids, {})
         str_io = StringIO(rep[0].decode())
         dict_report = list(csv.DictReader(str_io, delimiter=";", quoting=csv.QUOTE_ALL))
         self.assertEqual(self.docs.name, dict(dict_report[0])["name"])
 
+        # Printing goes through _render on the report model
+        rep = self.report_object._render(self.report, self.docs.ids, {})
+        self.assertIsInstance(rep[0], bytes)
+
         report.write({"encoding": "xyz"})
         with self.assertRaises(UserError):
-            rep = report._render_csv(self.report_name, self.docs.ids, {})
+            rep = report._render_csv(self.report, self.docs.ids, {})
 
     def test_report_docids_is_none(self):
         """
         Test when docids is None (should not raise TypeError)
         """
-        self.report_object._render_csv(self.report_name, None, {})
+        self.report_object._render_csv(self.report, None, {})
 
 
 class TestCsvReport(common.HttpCase):
@@ -128,7 +117,6 @@ class TestCsvReport(common.HttpCase):
                 "name": "Print to CSV",
                 "report_name": self.report_name,
                 "model": "res.partner",
-                "report_file": "res_partner",
                 "report_type": "csv",
             }
         )
@@ -141,18 +129,13 @@ class TestCsvReport(common.HttpCase):
 
     @mute_logger("odoo.addons.web.controllers.report")
     def test_pdf_error(self):
-        with (
-            mock.patch.object(ReportController, "report_routes") as route_patch,
-            self.assertLogs(
-                "odoo.addons.report_csv.controllers.main", level=logging.ERROR
-            ) as cm,
-        ):
-            route_patch.side_effect = TestCsvException("Test")
-            self.get_report_headers(
-                suffix="/report/pdf/test/10", f_type="qweb-pdf"
-            ).headers.get("Content-Disposition")
-            [msg] = cm.output
-            self.assertIn("Error while generating report", msg)
+        # "test" is not a report: the core download fails and report_csv logs it
+        with self.assertLogs(
+            "odoo.addons.report_csv.controllers.main", level=logging.ERROR
+        ) as cm:
+            self.get_report_headers(suffix="/report/pdf/test/10", f_type="qweb-pdf")
+        [msg] = cm.output
+        self.assertIn("Error while generating report", msg)
 
     def get_report_headers(
         self, suffix="/report/csv/report_csv.partner_csv/1", f_type="csv"
@@ -161,6 +144,6 @@ class TestCsvReport(common.HttpCase):
             url="/report/download",
             data={
                 "data": json.dumps([suffix, f_type]),
-                "csrf_token": http.Request.csrf_token(self),
+                "csrf_token": self.csrf_token(),
             },
         )

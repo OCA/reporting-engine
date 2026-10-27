@@ -4,7 +4,7 @@ import {user} from "@web/core/user";
 
 registry
     .category("ir.actions.report handlers")
-    .add("csv_handler", async function (action, options, env) {
+    .add("csv_handler", async function (action, _options, env) {
         if (action.report_type === "csv") {
             const type = action.report_type;
             let url = `/report/${type}/${action.report_name}`;
@@ -36,16 +36,9 @@ registry
             } finally {
                 env.services.ui.unblock();
             }
-            const onClose = options.onClose;
-            if (action.close_on_report_download) {
-                return env.services.action.doAction(
-                    {type: "ir.actions.act_window_close"},
-                    {onClose}
-                );
-            } else if (onClose) {
-                onClose();
-            }
-            return Promise.resolve(true);
+            // The action manager closes the dialog or calls onClose itself
+            // when a handler returns true
+            return true;
         }
-        return Promise.resolve(false);
+        return false;
     });
