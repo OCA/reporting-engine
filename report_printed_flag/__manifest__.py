@@ -1,7 +1,7 @@
 {
     "name": "Report Printed Flag",
     "summary": "Configure reports that mark records as printed",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "category": "Tools",
     "license": "AGPL-3",
     "author": "Binhex, Odoo Community Association (OCA)",

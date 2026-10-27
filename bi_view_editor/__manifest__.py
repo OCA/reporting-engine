@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/reporting-engine",
     "category": "Productivity",
-    "version": "17.0.1.1.0",
+    "version": "17.0.1.1.1",
     "development_status": "Beta",
     "depends": ["web", "spreadsheet_dashboard"],
     "external_dependencies": {
