@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="minimal_layout" inherit_id="web.minimal_layout" priority="100">
         <script t-if="subst" position="replace">
