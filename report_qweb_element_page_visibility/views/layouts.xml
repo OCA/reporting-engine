@@ -46,7 +46,7 @@
                             elt.style.display = (vars.sitepage === vars.sitepages) ? "inherit" : "none";
                         },
                         'single-page': function (elt) {
-                            elt.style.display = (vars.sitepages === 1) ? "inherit" : "none";
+                            elt.style.display = (parseInt(vars.sitepages, 10) === 1) ? "inherit" : "none";
                         },
                         'multi-page': function (elt) {
                             elt.style.display = (vars.sitepages > 1) ? "inherit" : "none";

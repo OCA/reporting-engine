@@ -12,9 +12,12 @@
 
 - Tharathip Chaweewongphan \<<tharathipc@ecosoft.co.th>\>
 
-- [Trobz](https://trobz.com):  
+- [Trobz](https://trobz.com):
   - Hai Lang \<<hailn@trobz.com>\>
 
 - Ángel Tornero Hernández \<<angel.tornero@braintec.com>\>
 
 - Daniel Lagin \<<daniel.lagin@braintec.com>\>
+
+- [Studio73](https://www.studio73.es/):
+  - Arantxa Gandia \<<arantxa@studio73.es>\>
