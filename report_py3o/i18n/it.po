@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2025-12-17 10:42+0000\n"
+"PO-Revision-Date: 2026-10-27 14:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_py3o
 #. odoo-python
@@ -281,13 +281,13 @@ msgstr ""
 #. odoo-python
 #: code:addons/report_py3o/models/py3o_report.py:0
 msgid "The py3o conversion command could not be executed: %s"
-msgstr ""
+msgstr "Il comando di conversione py3o non può essere eseguito: %s"
 
 #. module: report_py3o
 #. odoo-python
 #: code:addons/report_py3o/models/py3o_report.py:0
 msgid "The report could not be generated. Please contact your administrator."
-msgstr ""
+msgstr "Il resoconto non può essere generato. Contattare l'amministratore."
 
 #. module: report_py3o
 #. odoo-python
@@ -296,6 +296,8 @@ msgid ""
 "The report could not be generated. The template may contain unsupported "
 "content. Please contact your administrator."
 msgstr ""
+"Il resoconto non può essere generato. Il modello può contenere contenuto non "
+"supportato. Contattare l'amministratore."
 
 #. module: report_py3o
 #: model:ir.model.fields,help:report_py3o.field_ir_actions_report__report_type
