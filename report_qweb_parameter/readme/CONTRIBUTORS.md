@@ -3,6 +3,7 @@
 - [Tecnativa](https://www.tecnativa.com):
 
   > - Carlos Roca
+  > - Carlos Dauden
 
 - Iván Antón \<<ozono@ozonomultimedia.com>\>
 
