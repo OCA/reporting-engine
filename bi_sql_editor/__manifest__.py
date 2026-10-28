@@ -5,7 +5,7 @@
 {
     "name": "BI SQL Editor",
     "summary": "BI Views builder, based on Materialized or Normal SQL Views",
-    "version": "19.0.2.0.1",
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "category": "Reporting",
     "author": "GRAP,Odoo Community Association (OCA)",
@@ -15,7 +15,7 @@
         "sql_request_abstract",
     ],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/view_bi_sql_view.xml",
     ],
     "demo": ["demo/res_groups_demo.xml", "demo/bi_sql_view_demo.xml"],
