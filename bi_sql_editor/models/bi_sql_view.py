@@ -90,7 +90,7 @@ class BiSQLView(models.Model):
         default="[]",
         help="Define here access restriction to data.\n"
         " Take care to use field name prefixed by 'x_'."
-        " A global 'ir.rule' will be created."
+        " A global restriction ('ir.access') will be created."
         " A typical Multi Company rule is for exemple \n"
         " ['|', ('x_company_id','child_of', [user.company_id.id]),"
         "('x_company_id','=',False)].",
@@ -159,7 +159,7 @@ class BiSQLView(models.Model):
         copy=False,
     )
 
-    rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.rule")
+    rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.access")
 
     sequence = fields.Integer(string="sequence")
 
@@ -381,16 +381,13 @@ class BiSQLView(models.Model):
                     ),
                     "model_id": self.model_id.id,
                     "group_id": group.id,
-                    "perm_read": True,
-                    "perm_create": False,
-                    "perm_write": False,
-                    "perm_unlink": False,
+                    "operation": "r",
                 }
             )
         return res
 
     def _prepare_cron(self):
-        now = datetime.now()
+        now = fields.Datetime.now()
         return {
             "name": self.env._("Refresh Materialized View %s", self.view_name),
             "user_id": api.SUPERUSER_ID,
@@ -410,8 +407,8 @@ class BiSQLView(models.Model):
         return {
             "name": self.env._("Access %s", self.name),
             "model_id": self.model_id.id,
-            "domain_force": self.domain_force,
-            "global": True,
+            "domain": self.domain_force,
+            "operation": "crud",
         }
 
     def _prepare_form_view(self):
@@ -580,7 +577,7 @@ class BiSQLView(models.Model):
         for sql_view in self:
             # Create model
             sql_view.model_id = self.env["ir.model"].create(self._prepare_model()).id
-            sql_view.rule_id = self.env["ir.rule"].create(self._prepare_rule()).id
+            sql_view.rule_id = self.env["ir.access"].create(self._prepare_rule()).id
             # Drop table, created by the ORM
             if sql.table_exists(self.env.cr, sql_view.view_name):
                 req = SQL("DROP TABLE {}").format(Identifier(sql_view.view_name))
@@ -589,12 +586,16 @@ class BiSQLView(models.Model):
     def _create_model_access(self):
         for sql_view in self:
             for item in sql_view._prepare_model_access():
-                self.env["ir.model.access"].create(item)
+                self.env["ir.access"].create(item)
 
     def _drop_model_access(self):
         for sql_view in self:
-            self.env["ir.model.access"].search(
-                [("model_id", "=", sql_view.model_name)]
+            # Keep the global restriction (rule_id), only drop group permissions
+            self.env["ir.access"].search(
+                [
+                    ("model_id", "=", sql_view.model_id.id),
+                    ("group_id", "!=", False),
+                ]
             ).unlink()
 
     def _drop_model_and_fields(self):
@@ -759,4 +760,4 @@ WHERE
     def button_preview_sql_expression(self):
         self.button_validate_sql_expression()
         res = self._execute_sql_request()
-        raise UserError("\n".join(map(lambda x: str(x), res[:100])))
+        raise UserError("\n".join(str(x) for x in res[:100]))
