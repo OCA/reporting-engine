@@ -8,11 +8,13 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <field name="is_py3o_report_not_available" invisible="1" />
-                <div class="alert alert-danger" role="alert" style="margin-bottom:0px;">
-                    <field
-                        name="msg_py3o_report_not_available"
-                        invisible="not is_py3o_report_not_available"
-                    />
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    style="margin-bottom:0px;"
+                    invisible="not is_py3o_report_not_available"
+                >
+                    <field name="msg_py3o_report_not_available" />
                 </div>
             </xpath>
             <xpath expr="//page[@name='security']" position="before">
