@@ -346,8 +346,10 @@ class BiSQLView(models.Model):
         self._refresh_materialized_view()
 
     def button_open_view(self):
+        self.ensure_one()
         return {
             "type": "ir.actions.act_window",
+            "name": self.name,
             "res_model": self.model_id.model,
             "search_view_id": self.search_view_id.id,
             "view_mode": self.action_id.view_mode,

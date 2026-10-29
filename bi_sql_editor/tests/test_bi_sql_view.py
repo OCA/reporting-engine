@@ -145,6 +145,8 @@ ORDER BY name""",
                 "arch": '<list><field name="x_name"/></list>',
             }
         )
+        action = copy_view.button_open_view()
+        self.assertEqual(action["name"], copy_view.name)
         copy_view.button_set_draft()
         self.assertEqual(copy_view.state, "draft")
         self.assertFalse(self.env["ir.model"].search([("model", "=", model_name)]))
