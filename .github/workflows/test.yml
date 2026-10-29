@@ -9,12 +9,23 @@ on:
       - "18.0"
       - "18.0-ocabot-*"
 
+<<<<<<< before updating
+=======
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+>>>>>>> after updating
 jobs:
   unreleased-deps:
     runs-on: ubuntu-latest
     name: Detect unreleased dependencies
     steps:
+<<<<<<< before updating
       - uses: actions/checkout@v4
+=======
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+>>>>>>> after updating
       - run: |
           for reqfile in requirements.txt test-requirements.txt ; do
               if [ -f ${reqfile} ] ; then
@@ -52,6 +63,7 @@ jobs:
     env:
       OCA_ENABLE_CHECKLOG_ODOO: "1"
     steps:
+<<<<<<< before updating
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -63,6 +75,11 @@ jobs:
         run: pipx ensurepath
       - name: pyHanko test run
         run: pyhanko --version
+=======
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+>>>>>>> after updating
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Check licenses
@@ -74,13 +91,21 @@ jobs:
       - name: Run tests
         run: oca_run_tests
       - name: Upload screenshots from JS tests
+<<<<<<< before updating
         uses: actions/upload-artifact@v4
+=======
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+>>>>>>> after updating
         if: ${{ failure() }}
         with:
           name: Screenshots of failed JS tests - ${{ matrix.name }}${{ join(matrix.include) }}
           path: /tmp/odoo_tests/${{ env.PGDATABASE }}
           if-no-files-found: ignore
+<<<<<<< before updating
       - uses: codecov/codecov-action@v4
+=======
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+>>>>>>> after updating
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Update .pot files
