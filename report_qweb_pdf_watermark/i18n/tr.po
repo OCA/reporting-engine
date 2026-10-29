@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * report_qweb_pdf_watermark
+#
+# Translators:
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-10 03:40+0000\n"
+"PO-Revision-Date: 2025-09-11 12:42+0000\n"
+"Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+msgid ""
+"An expression yielding the base64 encoded data to be used as watermark. \n"
+"You have access to variables `env` and `docs`"
+msgstr ""
+"Filigran olarak kullanılacak base64 kodlu verileri üreten bir ifade.\n"
+"`env` ve `docs` değişkenlerine erişiminiz var"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_res_company
+msgid "Companies"
+msgstr "Şirketler"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model,name:report_qweb_pdf_watermark.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapor Eylemi"
+
+#. module: report_qweb_pdf_watermark
+#: model_terms:ir.ui.view,arch_db:report_qweb_pdf_watermark.view_company_form
+msgid ""
+"Upload an pdf file to use as an Company watermark. You need to activate the "
+"setting 'use company watermark' on the reports where you want to use it."
+msgstr ""
+"Şirket filigranı olarak kullanmak üzere bir PDF dosyası yükleyin. Kullanmak "
+"istediğiniz raporlarda \"Şirket filigranı kullan\" ayarını etkinleştirmeniz "
+"gerekmektedir."
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+msgid "Upload an pdf file to use as an watermark on this report."
+msgstr "Bu raporda filigran olarak kullanmak üzere bir pdf dosyası yükleyin."
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use Company Watermark"
+msgstr "Şirket Filigranını Kullan"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,help:report_qweb_pdf_watermark.field_ir_actions_report__use_company_watermark
+msgid "Use the pdf watermark defined globally in the company settings."
+msgstr "Şirket ayarlarında global olarak tanımlanan pdf filigranını kullanın."
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_res_company__pdf_watermark
+msgid "Watermark"
+msgstr "Filigran"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.actions.report,name:report_qweb_pdf_watermark.demo_report
+msgid "Watermark Demo report"
+msgstr "Filigran Demo raporu"
+
+#. module: report_qweb_pdf_watermark
+#: model:ir.model.fields,field_description:report_qweb_pdf_watermark.field_ir_actions_report__pdf_watermark_expression
+msgid "Watermark expression"
+msgstr "Filigran ifadesi"
+
+#~ msgid "ir.actions.report"
+#~ msgstr "ir.actions.report"
