@@ -101,3 +101,23 @@ class TestExportSqlQuery(TransactionCase):
         wizard.export_sql()
         export = base64.b64decode(wizard.binary_file)
         self.assertTrue(export)
+
+    def test_sql_query_with_unchecked_boolean_param(self):
+        query = self.sql_export_obj.create(
+            {
+                "name": "Export Archived Partners",
+                "query": "SELECT name FROM res_partner WHERE active = %(Active)s",
+                "query_properties_definition": [
+                    {"name": "a1b2c3d4e5f60718", "string": "Active", "type": "boolean"}
+                ],
+            }
+        )
+        query.button_validate_sql_expression()
+        archived = self.env["res.partner"].create(
+            {"name": "Archived Partner", "active": False}
+        )
+        wizard = self.wizard_obj.create({"sql_export_id": query.id})
+        wizard.query_properties = {"a1b2c3d4e5f60718": False}
+        wizard.export_sql()
+        export = base64.b64decode(wizard.binary_file).decode("utf-8")
+        self.assertIn(archived.name, export)
