@@ -147,7 +147,12 @@ ORDER BY name""",
         )
         action = copy_view.button_open_view()
         self.assertEqual(action["name"], copy_view.name)
-        copy_view.button_set_draft()
+        # The fields are force-deleted, Odoo warns that the view might be broken
+        with self.assertLogs(
+            "odoo.addons.base.models.ir_model", level="WARNING"
+        ) as logs:
+            copy_view.button_set_draft()
+        self.assertIn("force-deleted", logs.output[0])
         self.assertEqual(copy_view.state, "draft")
         self.assertFalse(self.env["ir.model"].search([("model", "=", model_name)]))
 
