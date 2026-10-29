@@ -37,6 +37,7 @@ addon | version | maintainers | summary
 [report_qweb_encrypt](report_qweb_encrypt/) | 19.0.1.0.1 | <a href='https://github.com/kittiu'><img src='https://github.com/kittiu.png' width='32' height='32' style='border-radius:50%;' alt='kittiu'/></a> | Allow to encrypt qweb pdfs
 [report_qweb_field_option](report_qweb_field_option/) | 19.0.1.0.1 |  | Report Qweb Field Option
 [report_qweb_parameter](report_qweb_parameter/) | 19.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
+[report_qweb_pdf_watermark](report_qweb_pdf_watermark/) | 19.0.1.0.1 | <a href='https://github.com/hbrunn'><img src='https://github.com/hbrunn.png' width='32' height='32' style='border-radius:50%;' alt='hbrunn'/></a> | Add watermarks to your QWEB PDF reports
 [report_substitute](report_substitute/) | 19.0.1.0.0 | <a href='https://github.com/sbejaoui'><img src='https://github.com/sbejaoui.png' width='32' height='32' style='border-radius:50%;' alt='sbejaoui'/></a> | This module allows to create substitution rules for report actions.
 [report_wkhtmltopdf_param](report_wkhtmltopdf_param/) | 19.0.1.0.0 |  | Add new parameters for a paper format to be used by wkhtmltopdf command as arguments.
 [report_xlsx](report_xlsx/) | 19.0.1.0.2 |  | Base module to create xlsx report
