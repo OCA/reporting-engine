@@ -125,6 +125,30 @@ ORDER BY name""",
         res = self.bi_sql_view.search([("name", "=", view_name)])
         self.assertEqual(len(res), 0, "View not deleted")
 
+    def test_set_draft_with_customized_view(self):
+        copy_view = self.view.copy(
+            default={
+                "name": "Test Customized View",
+                "technical_name": "test_customized_view",
+            }
+        )
+        copy_view.button_validate_sql_expression()
+        copy_view.button_create_sql_view_and_model()
+        copy_view.button_create_ui()
+        model_name = copy_view.model_id.model
+        # A view customized by a user, still referencing a generated field
+        self.env["ir.ui.view"].create(
+            {
+                "name": "Customized view",
+                "type": "list",
+                "model": model_name,
+                "arch": '<list><field name="x_name"/></list>',
+            }
+        )
+        copy_view.button_set_draft()
+        self.assertEqual(copy_view.state, "draft")
+        self.assertFalse(self.env["ir.model"].search([("model", "=", model_name)]))
+
     def test_many2one_not_found(self):
         copy_view = self.view.copy(
             default={"technical_name": "test_many2one_not_found"}

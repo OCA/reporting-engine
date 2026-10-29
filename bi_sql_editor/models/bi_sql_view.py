@@ -603,7 +603,7 @@ class BiSQLView(models.Model):
             if sql_view.rule_id:
                 sql_view.rule_id.unlink()
             if sql_view.model_id:
-                sql_view.model_id.with_context(_force_unlink=True).unlink()
+                sql_view.model_id.with_context(force_delete=True).unlink()
 
     def _hook_executed_request(self):
         self.ensure_one()
