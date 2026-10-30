@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Demo report action -->
+    <record id="action_report_demo" model="ir.actions.report">
+        <field name="name">Demo Text Report</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-text</field>
+        <field name="report_name">report_text_format_option.demo_report_template</field>
+        <field name="report_file">report_text_format_option.demo_report_template</field>
+        <field name="binding_model_id" ref="base.model_res_partner" />
+    </record>
+
+    <!-- Demo report template -->
+    <template id="demo_report_template">
+        <t t-foreach="docs" t-as="doc">
+            <p>Hello, <t t-esc="doc.name" />!</p>
+        </t>
+    </template>
+</odoo>
