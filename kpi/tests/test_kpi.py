@@ -1,5 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from freezegun import freeze_time
+
 from odoo.tests.common import TransactionCase
 
 
@@ -149,6 +151,26 @@ class TestKPI(TransactionCase):
         history_vals = kpi._get_kpi_value()
         self.assertEqual(history_vals["value"], 5.0)
         self.assertEqual(history_vals["color"], "#FF0000")
+
+    def test_kpi_history_name(self):
+        # Each history line is named after the time it was computed, not the
+        # time the server was started
+        kpi = self.env["kpi"].create(
+            {
+                "name": "Scalar python kpi",
+                "category_id": self.env["kpi.category"].create({"name": "KPIs"}).id,
+                "threshold_id": self.env["kpi.threshold"]
+                .create({"name": "KPI Threshold"})
+                .id,
+                "periodicity": 1,
+                "periodicity_uom": "day",
+                "kpi_type": "python",
+                "kpi_code": "5.0",
+            }
+        )
+        with freeze_time("2030-02-15 08:00:00"):
+            kpi.compute_kpi_value()
+        self.assertEqual(kpi.history_ids.name, "2030-02-15 08:00:00")
 
     def test_kpi_local_sql(self):
         kpi_category = self.env["kpi.category"].create({"name": "SQL KPIs"})
