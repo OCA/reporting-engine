@@ -124,3 +124,19 @@ class TestReportPDFForm(common.TransactionCase):
         )
         self.assertIn(self.azure_partner.id, streams_dict)
         self.assertIsNotNone(streams_dict[self.azure_partner.id]["stream"])
+
+    def test_fill_pdf_form_zero_number(self):
+        """A number field equal to 0 is printed, not left empty"""
+        mapping = self.report_pdf_form.field_mapping_ids.filtered(
+            lambda m: m.pdf_field_name == "form_line_2"
+        )
+        mapping.write(
+            {"odoo_field_evaluation": "dotted_path", "odoo_field_value": "color"}
+        )
+        self.azure_partner.color = 0
+        streams_dict = self.env["ir.actions.report"]._render_qweb_pdf_prepare_streams(
+            "pdf_form.example", {}, res_ids=self.azure_partner.ids
+        )
+        reader = PdfFileReader(streams_dict[self.azure_partner.id]["stream"])
+        fields_values = self._get_fields_values_from_reader(reader)
+        self.assertEqual(fields_values["form_line_2"], "0")
