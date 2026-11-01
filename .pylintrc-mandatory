@@ -3,6 +3,9 @@
 load-plugins=pylint_odoo
 score=n
 
+[IMPORTS]
+deprecated-modules=pdb,pudb,ipdb,bs4
+
 [ODOOLINT]
 readme-template-url="https://github.com/OCA/maintainer-tools/blob/master/template/module/README.rst"
 manifest-required-authors=Odoo Community Association (OCA)
@@ -33,6 +36,7 @@ enable=anomalous-backslash-in-string,
     assignment-from-none,
     attribute-deprecated,
     dangerous-default-value,
+    deprecated-module,
     development-status-allowed,
     duplicate-key,
     eval-used,
