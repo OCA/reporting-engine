@@ -48,7 +48,7 @@ repos:
     hooks:
       - id: whool-init
   - repo: https://github.com/oca/maintainer-tools
-    rev: 31bdbd8e4cb94be6534f0e82b1cafb84a455f671
+    rev: b8311a95009805a6e5593f0390f52c0fa350117f
     hooks:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
@@ -128,7 +128,7 @@ repos:
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
   - repo: https://github.com/OCA/pylint-odoo
-    rev: v10.0.6
+    rev: v10.0.8
     hooks:
       - id: pylint_odoo
         name: pylint with optional checks
