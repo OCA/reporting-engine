@@ -21,7 +21,7 @@ exclude: |
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)
 default_language_version:
-  python: python3
+  python: python3.12
   node: "22.9.0"
 repos:
   - repo: local
@@ -48,7 +48,7 @@ repos:
     hooks:
       - id: whool-init
   - repo: https://github.com/oca/maintainer-tools
-    rev: b89f767503be6ab2b11e4f50a7557cb20066e667
+    rev: 31bdbd8e4cb94be6534f0e82b1cafb84a455f671
     hooks:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
