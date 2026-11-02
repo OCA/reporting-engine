@@ -4,12 +4,13 @@
 import logging
 import re
 from datetime import datetime
+from statistics import mean
 
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
-from odoo.tools.safe_eval import safe_eval
+from odoo.tools.safe_eval import dateutil, safe_eval
 
 _logger = logging.getLogger(__name__)
 
@@ -164,7 +165,13 @@ class KPI(models.Model):
                     kpi_value = res[0]["value"]
             elif self.kpi_type == "python":
                 kpi_value = safe_eval(
-                    self.kpi_code, {"self": self, "datetime": fields.datetime}
+                    self.kpi_code,
+                    {
+                        "self": self,
+                        "datetime": fields.datetime,
+                        "dateutil": dateutil,
+                        "mean": mean,
+                    },
                 )
         if isinstance(kpi_value, dict):
             res = kpi_value
