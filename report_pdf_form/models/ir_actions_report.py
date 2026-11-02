@@ -120,9 +120,12 @@ class IrActionsReport(models.Model):
             records = base_record.sudo().mapped(
                 ".".join(path[:-1])
             )  # product.product(id1, id2, ...)
-        except AttributeError:
+        except (AttributeError, KeyError):
+            # Unknown field in the path: mapped() raises KeyError since 19.0
             records = base_record.browse()
         field_name = path[-1]  # 'name'
+        if field_name not in records._fields:
+            return ""
 
         def _get_formatted_value(self):
             # self must be named so to be considered in the translation logic
