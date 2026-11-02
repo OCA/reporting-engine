@@ -2,6 +2,7 @@
 <odoo>
     <record id="py3o_pdf_options_pdfa" model="py3o.pdf.options">
         <field name="name">PDF/A (for Factur-X invoices)</field>
-        <field name="pdfa" eval="True" />
+        <field name="pdfa">3</field>
+        <field name="pdfua" eval="True" />
     </record>
 </odoo>
