@@ -10,7 +10,9 @@ def migrate(cr, version):
     )
     for view in views:
         # Include archived restrictions, so that a rule archived in 19.0
-        # is relinked instead of being recreated as an active one
+        # is relinked instead of being recreated as an active one.
+        # The former rule_id (ids of the 'ir.rule' table) is not migrated:
+        # its column is dropped with the field at the end of the update.
         restrictions = (
             env["ir.access"]
             .with_context(active_test=False)
@@ -23,5 +25,5 @@ def migrate(cr, version):
             or restrictions[:1]
         )
         if not restriction:
-            restriction = env["ir.access"].create(view._prepare_rule())
-        view.rule_id = restriction
+            restriction = env["ir.access"].create(view._prepare_access())
+        view.access_id = restriction

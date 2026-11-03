@@ -159,7 +159,7 @@ class BiSQLView(models.Model):
         copy=False,
     )
 
-    rule_id = fields.Many2one(string="Odoo Rule", comodel_name="ir.access")
+    access_id = fields.Many2one(string="Odoo Access", comodel_name="ir.access")
 
     sequence = fields.Integer(string="sequence")
 
@@ -404,7 +404,7 @@ class BiSQLView(models.Model):
             "active": True,
         }
 
-    def _prepare_rule(self):
+    def _prepare_access(self):
         self.ensure_one()
         return {
             "name": self.env._("Access %s", self.name),
@@ -579,7 +579,7 @@ class BiSQLView(models.Model):
         for sql_view in self:
             # Create model
             sql_view.model_id = self.env["ir.model"].create(self._prepare_model()).id
-            sql_view.rule_id = self.env["ir.access"].create(self._prepare_rule()).id
+            sql_view.access_id = self.env["ir.access"].create(self._prepare_access()).id
             # Drop table, created by the ORM
             if sql.table_exists(self.env.cr, sql_view.view_name):
                 req = SQL("DROP TABLE {}").format(Identifier(sql_view.view_name))
@@ -592,7 +592,7 @@ class BiSQLView(models.Model):
 
     def _drop_model_access(self):
         for sql_view in self:
-            # Keep the global restriction (rule_id), only drop group permissions
+            # Keep the global restriction (access_id), only drop group permissions
             self.env["ir.access"].search(
                 [
                     ("model_id", "=", sql_view.model_id.id),
@@ -602,8 +602,8 @@ class BiSQLView(models.Model):
 
     def _drop_model_and_fields(self):
         for sql_view in self:
-            if sql_view.rule_id:
-                sql_view.rule_id.unlink()
+            if sql_view.access_id:
+                sql_view.access_id.unlink()
             if sql_view.model_id:
                 sql_view.model_id.with_context(force_delete=True).unlink()
 
