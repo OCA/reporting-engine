@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="category_sql_abstract" model="ir.module.category">
+        <field name="name">SQL Request</field>
+    </record>
+
+    <record id="privilege_sql_request" model="res.groups.privilege">
+        <field name="name">SQL Request</field>
+        <field name="category_id" ref="category_sql_abstract" />
+    </record>
+</odoo>
