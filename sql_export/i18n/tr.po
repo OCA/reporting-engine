@@ -1,0 +1,402 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sql_export
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Ivan BARAYEV <ivanbarayev@hotmail.com>, 2017
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-06 02:51+0000\n"
+"PO-Revision-Date: 2025-09-16 01:42+0000\n"
+"Last-Translator: Tamer Sezgin <tamer.sezgin@gmail.com>\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction
+msgid "Action Needed"
+msgstr "Eylem Gerekiyor"
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_file_wizard
+msgid "Allow the user to save the file with sql request's data"
+msgstr "Kullanıcının dosyayı sql isteğinin verileriyle kaydetmesine izin ver"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__group_ids
+msgid "Allowed Groups"
+msgstr "Yetkili Gruplar"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__user_ids
+msgid "Allowed Users"
+msgstr "Yetkili Kullanıcılar"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_attachment_count
+msgid "Attachment Count"
+msgstr "Ek Sayısı"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__file_format__csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Cancel"
+msgstr "Vazgeç"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid "Configure Properties"
+msgstr "Özellikleri Yapılandır"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__copy_options
+msgid "Copy Options"
+msgstr "Seçenekleri Kopyala"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__create_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__create_date
+msgid "Created on"
+msgstr "Oluşturuldu"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Csv File"
+msgstr "Csv Dosyası"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__display_name
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__display_name
+msgid "Display Name"
+msgstr "Görünen İsim"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__encoding
+msgid "Encoding"
+msgstr "Kodlama"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_tree
+msgid "Execute Query"
+msgstr "Sorguyu Çalıştır"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "Export"
+msgstr "Dışa aktar"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__binary_file
+msgid "File"
+msgstr "Dosya"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__file_format
+msgid "File Format"
+msgstr "Dosya Formatı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__file_name
+msgid "File Name"
+msgstr "Dosya adı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_follower_ids
+msgid "Followers"
+msgstr "Takipciler"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Takipçiler (İş Ortakları)"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_group_changed
+msgid "Has Group Changed"
+msgstr "Grup Değişti mi"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__has_message
+msgid "Has Message"
+msgstr "Mesaj Var mı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__id
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "İşaretliyse, yeni mesajlar ilgilenmenizi bekliyor."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "İşaretliyse, bazı mesajlarda teslim hatası var."
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__use_external_database
+msgid ""
+"If filled, the query will be executed against an external database, "
+"configured in Odoo main configuration file. "
+msgstr ""
+"Doluysa, sorgu Odoo ana yapılandırma dosyasında tanımlanmış bir dış "
+"veritabanında çalıştırılacak. "
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_export_view_form
+msgid ""
+"In case of use of properties in the query, use this syntax : %(Property "
+"String)s. <br/>\n"
+"                                Example : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
+msgstr ""
+"Sorguda parametrelerin kullanılması durumunda, bu sözdizimini kullanın : %("
+"Property String)s. <br/>\n"
+"                                Örnek : SELECT id FROM sale_order WHERE "
+"create_date &gt; %(Start Date)s"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_is_follower
+msgid "Is Follower"
+msgstr "Takipçi mi"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_date
+msgid "Last Execution Date"
+msgstr "Son Çalıştırma Tarihi"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_uid
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Son güncelleyen"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__write_date
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__write_date
+msgid "Last Updated on"
+msgstr "Son güncelleme"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__last_execution_uid
+msgid "Last execution User"
+msgstr "Son çalıştıran Kullanıcı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error
+msgid "Message Delivery error"
+msgstr "Mesaj İletimi hatası"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_ids
+msgid "Messages"
+msgstr "Mesajlar"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__name
+msgid "Name"
+msgstr "Adı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__note
+msgid "Note"
+msgstr "Not"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Eylem Sayısı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hata sayısı"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Eylem gerektiren mesaj sayısı"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Teslim hatası olan mesaj sayısı"
+
+#. module: sql_export
+#. odoo-python
+#: code:addons/sql_export/wizard/wizard_file.py:0
+msgid "Please enter a values for the following properties : %s"
+msgstr "Lütfen izleyen özellikler için deger girin: %s"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__query_properties
+msgid "Properties"
+msgstr "Özellikler"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query
+msgid "Query"
+msgstr "Sorgu"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__query_properties_definition
+msgid "Query Properties"
+msgstr "Sorgu Özellikleri"
+
+#. module: sql_export
+#: model:ir.actions.act_window,name:sql_export.sql_export_tree_action
+msgid "SQL Exports"
+msgstr "SQL Dışarı Aktarımları"
+
+#. module: sql_export
+#: model:ir.model,name:sql_export.model_sql_export
+msgid "SQL export"
+msgstr "SQL dışarı aktarımı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_file_wizard__sql_export_id
+#: model:ir.ui.menu,name:sql_export.sql_export_menu_view
+msgid "Sql Export"
+msgstr "Sql Dışarı Aktarımı"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__state
+msgid "State"
+msgstr "Durum"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__state
+msgid ""
+"State of the Request:\n"
+" * 'Draft': Not tested\n"
+" * 'SQL Valid': SQL Request has been checked and is valid"
+msgstr ""
+"İsteğin Durumu:\n"
+" * 'Taslak': Test edilmedi\n"
+" * 'SQL Geçerli': SQL İsteği kontrol edildi ve doğrulandı"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__has_group_changed
+msgid ""
+"Technical fields, used in modules that depends on this one to know if groups "
+"has changed, and that according access should be updated."
+msgstr ""
+"Grupların değişip değişmediğini ve buna bağlı olarak erişimin güncellenmesi "
+"gerektiğini bilmek için buna bağımlı olan modüllerde kullanılan Teknik "
+"alanlar."
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_external_database
+msgid "Use External Database"
+msgstr "Dış Veritabanı Kullan"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__use_properties
+msgid "Use Properties"
+msgstr "Özellikleri Kullan"
+
+#. module: sql_export
+#: model:ir.model.fields,field_description:sql_export.field_sql_export__website_message_ids
+msgid "Website Messages"
+msgstr "Web Sitesi Mesajları"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__website_message_ids
+msgid "Website communication history"
+msgstr "Web sitesi iletişim geçmişi"
+
+#. module: sql_export
+#: model:ir.model.fields,help:sql_export.field_sql_export__query
+msgid ""
+"You can't use the following words: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+msgstr ""
+"İzleyen sözcükleri kullanamazsınız: DELETE, DROP, CREATE, INSERT, ALTER, "
+"TRUNCATE, EXECUTE, UPDATE."
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__big5
+msgid "big5"
+msgstr "big5"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__gb18030
+msgid "gb18030"
+msgstr "gb18030"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__koir8_r
+msgid "koir8_r"
+msgstr "koir8_r"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin1
+msgid "latin1"
+msgstr "latin1"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__latin2
+msgid "latin2"
+msgstr "latin2"
+
+#. module: sql_export
+#: model_terms:ir.ui.view,arch_db:sql_export.sql_file_wizard_view_form
+msgid "or"
+msgstr "ya da"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__shift_jis
+msgid "shift_jis"
+msgstr "shift_jis"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-16
+msgid "utf-16"
+msgstr "utf-16"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__utf-8
+msgid "utf-8"
+msgstr "utf-8"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1251
+msgid "windows-1251"
+msgstr "windows-1251"
+
+#. module: sql_export
+#: model:ir.model.fields.selection,name:sql_export.selection__sql_export__encoding__windows-1252
+msgid "windows-1252"
+msgstr "windows-1252"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Son değişiklik"
+
+#~ msgid "Set to Draft"
+#~ msgstr "Taslak Olarak Ayarlayın"
+
+#~ msgid "Draft"
+#~ msgstr "Taslak"
