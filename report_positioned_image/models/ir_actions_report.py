@@ -61,6 +61,22 @@ class IrActionsReport(models.Model):
             )
         return header + html_to_inject
 
+    def _render_empty_header(self, body_count):
+        """Render the header document core skips for reports without a header."""
+        layout = self._get_layout()
+        headers = Markup('<div class="header">&nbsp;</div>') * body_count
+        return self.env["ir.qweb"]._render(
+            layout.id,
+            {
+                "subst": True,
+                "body": Markup('<div id="minimal_layout_report_headers">%s</div>')
+                % headers,
+                "base_url": self._get_report_url(layout=layout),
+                "report_xml_id": self.xml_id,
+                "debug": self.env.context.get("debug"),
+            },
+        )
+
     def _inject_images_into_header(self, header, image_configs):
         image_html = self._build_image_html(image_configs)
         return self._insert_html_into_header(header, image_html)
@@ -187,15 +203,17 @@ class IrActionsReport(models.Model):
         if not isinstance(result, tuple):
             return result
         bodies, res_ids, header, footer, specific_paperformat_args = result
-        image_configs = self._get_positioned_image_configs()
-        if image_configs:
-            header = self._inject_images_into_header(header, image_configs)
         conditional_images = self._get_conditional_positioned_images()
-        if conditional_images:
+        if header is not None and conditional_images:
             matched_ids = self._get_condition_matches(res_ids, conditional_images)
             header = self._inject_conditional_images_into_header(
                 header, res_ids, conditional_images, matched_ids
             )
+        image_configs = self._get_positioned_image_configs()
+        if image_configs:
+            if header is None:
+                header = self._render_empty_header(len(bodies))
+            header = self._inject_images_into_header(header, image_configs)
         return bodies, res_ids, header, footer, specific_paperformat_args
 
     def _get_report_company(self, res_ids):

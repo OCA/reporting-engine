@@ -432,3 +432,19 @@ class TestReportPositionedImage(BaseCommon):
         self.assertEqual(res_ids, [matching.id, other.id])
         self.assertNotIn("<img", str(header))
         self.assertFalse(any("<img" in str(body) for body in bodies))
+
+    def test_prepare_html_places_plain_images_without_header(self):
+        """A layout without a header still gets the plain images."""
+        report, matching, other = self._setup_condition()
+        report.report_positioned_image_ids = [Command.link(self.global_image.id)]
+        bodies, _res_ids, header, _footer, _args = report._prepare_html(
+            self._make_report_html(matching | other, with_header=False),
+            report_model="res.partner",
+        )
+        root = lxml.html.fromstring(header)
+        self.assertEqual(len(root.xpath("//img")), 1)
+        headers = root.xpath("//*[@id='minimal_layout_report_headers']")[0]
+        self.assertEqual(len(headers), len(bodies))
+        self.assertTrue(all(node.text_content() for node in headers))
+        self.assertFalse(headers.xpath(".//img"))
+        self.assertFalse(any("<img" in str(body) for body in bodies))
