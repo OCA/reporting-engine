@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="py3o_pdf_options_form" model="ir.ui.view">
+        <field name="name">py3o.pdf.options.form</field>
+        <field name="model">py3o.pdf.options</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <label for="name" />
+                    <h1>
+                        <field
+                            name="name"
+                            placeholder="Give a name to the set of PDF export options"
+                        />
+                    </h1>
+                </div>
+                <notebook>
+                    <page name="general" string="General">
+                        <group name="general">
+                            <group name="general-left" col="1">
+                                <group name="general-image" string="Image">
+                                    <field name="image_compression" widget="radio" />
+                                    <label
+                                        for="image_jpeg_quality"
+                                        invisible="image_compression != 'jpeg'"
+                                    />
+                                    <div
+                                        name="image_jpeg_quality"
+                                        invisible="image_compression != 'jpeg'"
+                                    >
+                                        <field
+                                            name="image_jpeg_quality"
+                                            class="oe_inline"
+                                        />
+                                    </div>
+                                    <field name="image_reduce_resolution" />
+                                </group>
+                                <group name="general-watermark" string="Watermark">
+                                    <field name="watermark" />
+                                    <field
+                                        name="watermark_text"
+                                        invisible="not watermark"
+                                        required="watermark"
+                                    />
+                                </group>
+                            </group>
+                            <group name="general-right" string="General">
+                                <field name="pdfa" />
+                                <field name="tagged_pdf" invisible="pdfa" />
+                                <field name="pdf_form" invisible="pdfa" />
+                                <field
+                                    name="pdf_form_format"
+                                    invisible="not pdf_form"
+                                    required="pdf_form"
+                                />
+                                <field
+                                    name="pdf_form_allow_duplicate"
+                                    invisible="not pdf_form"
+                                />
+                                <field name="export_bookmarks" />
+                                <field name="export_placeholders" />
+                                <field name="export_comments" />
+                                <field name="export_hidden_slides" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="initial_view" string="Initial View">
+                        <group name="initial_view">
+                            <group name="initial_view-left" col="1">
+                                <group name="panes" string="Panes">
+                                    <field name="initial_view" widget="radio" />
+                                    <field name="initial_page" />
+                                </group>
+                                <group name="magnification" string="Magnification">
+                                    <field name="magnification" widget="radio" />
+                                    <field
+                                        name="zoom"
+                                        invisible="magnification != '4'"
+                                    />
+                                </group>
+                            </group>
+                            <group name="initial_view-right">
+                                <field name="page_layout" widget="radio" />
+                            </group>
+                        </group>
+                    </page>
+                    <page name="user_intf" string="User Interface">
+                        <group name="user_intf">
+                            <group name="user_intf-left" col="1">
+                                <group
+                                    name="user_intf-window-options"
+                                    string="Window Options"
+                                >
+                                    <field name="resize_windows_initial_page" />
+                                    <field name="center_window" />
+                                    <field name="open_fullscreen" />
+                                    <field name="display_document_title" />
+                                </group>
+                            </group>
+                            <group name="user_intf-right" col="1">
+                                <group
+                                    name="user_intf-options"
+                                    string="User Interface Options"
+                                >
+                                    <field name="hide_menubar" />
+                                    <field name="hide_toolbar" />
+                                    <field name="hide_window_controls" />
+                                </group>
+                                <group string="Bookmarks" name="bookmarks">
+                                    <field name="open_bookmark_levels" />
+                                </group>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Links" name="links">
+                        <group name="links" col="1">
+                            <group name="links-general" string="General">
+                                <field name="export_bookmarks_named_dest" />
+                                <field name="convert_doc_ref_to_pdf_target" />
+                                <field name="export_filesystem_urls" />
+                            </group>
+                            <group name="links-cross-doc" string="Cross-document Links">
+                                <field name="cross_doc_link_action" widget="radio" />
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Security" name="security">
+                        <group name="security">
+                            <group name="security-left" invisible="pdfa">
+                                <field name="encrypt" />
+                                <field
+                                    name="document_password"
+                                    password="True"
+                                    invisible="not encrypt"
+                                    required="encrypt"
+                                />
+                                <field name="restrict_permissions" />
+                                <field
+                                    name="permission_password"
+                                    password="True"
+                                    invisible="not restrict_permissions"
+                                    required="restrict_permissions"
+                                />
+                            </group>
+                            <group
+                                name="security-right"
+                                invisible="pdfa or not restrict_permissions"
+                            >
+                                <field name="printing" widget="radio" />
+                                <field name="changes" widget="radio" />
+                                <field name="content_copying_allowed" />
+                                <field name="text_access_accessibility_tools_allowed" />
+                            </group>
+                            <group
+                                name="security-pdfa"
+                                invisible="not pdfa"
+                                colspan="2"
+                            >
+                                <div>
+                                    <p
+                                    >The security settings are incompatible with the <b
+                                    >PDF/A-1a</b> option in the <em
+                                    >General</em> tab.</p>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="py3o_pdf_options_tree" model="ir.ui.view">
+        <field name="name">py3o.pdf.options.tree</field>
+        <field name="model">py3o.pdf.options</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+    <record id="py3o_pdf_options_action" model="ir.actions.act_window">
+        <field name="name">Py3o PDF Export Options</field>
+        <field name="res_model">py3o.pdf.options</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem
+        id="py3o_pdf_options_menu"
+        parent="base.reporting_menuitem"
+        action="py3o_pdf_options_action"
+        sequence="120"
+    />
+</odoo>
