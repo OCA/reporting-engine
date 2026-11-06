@@ -164,6 +164,7 @@ class ReportAsync(models.Model):
             WHERE id = %s""",
             (self.env.uid, self.env.uid, attachment.id),
         )
+        attachment.invalidate_recordset(["create_uid", "write_uid"])
         # Send email
         if self.email_notify:
             self._send_email(attachment)
