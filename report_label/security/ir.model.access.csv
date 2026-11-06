@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_paperformat_label_all,report.paperformat.label all,model_report_paperformat_label,base.group_user,1,0,0,0
+access_report_label_layout_admin,report.paperformat.label admin,model_report_paperformat_label,base.group_system,1,1,1,1
+access_report_label_wizard,report.label.wizard,model_report_label_wizard,base.group_user,1,1,1,1
+access_report_label_wizard_line,report.label.wizard.line,model_report_label_wizard_line,base.group_user,1,1,1,1
