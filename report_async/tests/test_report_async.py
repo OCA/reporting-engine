@@ -1,8 +1,11 @@
 # Copyright 2019 Ecosoft Co., Ltd (http://ecosoft.co.th/)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
+from lxml import etree
+
 from odoo.exceptions import UserError
 from odoo.tests import tagged
 from odoo.tests.common import Form, TransactionCase
+from odoo.tools.safe_eval import safe_eval
 
 
 @tagged("post_install", "-at_install")
@@ -33,6 +36,19 @@ class TestJobChannel(TransactionCase):
             form.action_report_id = self.test_rpt
         print_wizard = form.save()
         return print_wizard
+
+    def test_report_templates_of_the_document(self):
+        """Only the report templates of the document's model can be chosen"""
+        wizard = self.env["print.report.wizard"].new(
+            {"reference": f"{self.test_rec._name},{self.test_rec.id}"}
+        )
+        arch = etree.fromstring(wizard.get_view()["arch"])
+        domain = arch.xpath("//field[@name='action_report_id']")[0].get("domain")
+        reports = self.env["ir.actions.report"].search(
+            safe_eval(domain, {"reference_model": wizard.reference_model})
+        )
+        self.assertIn(self.test_rpt, reports)
+        self.assertEqual(set(reports.mapped("model")), {self.test_rec._name})
 
     def test_1_run_now(self):
         """Run now will return report action as normal"""
