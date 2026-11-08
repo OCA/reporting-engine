@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-reporting-engine"
+version = "20.0.20261108.0"
+dependencies = [
+    "odoo-addon-report_xlsx==20.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 20.0",
+]
