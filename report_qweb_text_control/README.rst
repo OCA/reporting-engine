@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =================
 QWeb Text Control
 =================
@@ -13,42 +17,78 @@ QWeb Text Control
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Freporting--engine-lightgray.png?logo=github
-    :target: https://github.com/OCA/reporting-engine/tree/14.0/report_qweb_text_control
+    :target: https://github.com/OCA/reporting-engine/tree/19.0/report_qweb_text_control
     :alt: OCA/reporting-engine
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/reporting-engine-14-0/reporting-engine-14-0-report_qweb_text_control
+    :target: https://translation.odoo-community.org/projects/reporting-engine-19-0/reporting-engine-19-0-report_qweb_text_control
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=14.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/reporting-engine&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Allow text reports to generate positional text files by providing 
-precise control over whitespace, special characters, and field formatting.
+Allow text reports to generate positional text files by providing
+precise control over whitespace, special characters, and field
+formatting.
 
 Use Case
 --------
 
-Generate fixed-width text files for legacy systems, bank transfers, or any interface 
-requiring exact positional formatting with specific characters and spacing.
+Generate fixed-width text files for legacy systems, bank transfers, or
+any interface requiring exact positional formatting with specific
+characters and spacing.
 
 Example
 -------
 
-Template::
+Template:
 
-    <span t-esc="A(partner.name, 20)"/>
-    <span t-esc="N(partner.id, 10)"/>
-    <span t-esc="M(partner.credit_limit, 12)"/>
+::
 
-Output::
+   <span t-esc="A(partner.name, 20)"/>
+   <span t-esc="N(partner.id, 10)"/>
+   <span t-esc="M(partner.partner_latitude, 12)"/>
 
-    John Doe           00000012340000015000+
+Output:
+
+::
+
+   John Doe            00000012340000004158+
+
+Differences with ``report_csv``
+-------------------------------
+
+The key difference is how reports are defined: this module uses dynamic
+QWeb templates, so no custom Python code is required — only a report
+record and a template. ``report_csv`` generates files through custom
+code (an ``AbstractModel`` defining rows and columns).
+
++-------------------+------------------------+------------------------------+
+|                   | ``report_csv``         | ``report_qweb_text_control`` |
++===================+========================+==============================+
+| Report definition | Custom Python code     | QWeb template                |
++-------------------+------------------------+------------------------------+
+| Output            | CSV (delimited,        | Fixed-width positional text  |
+|                   | quoted)                |                              |
++-------------------+------------------------+------------------------------+
+| Layout            | Rows and columns       | Formatter functions in the   |
+|                   | defined in Python      | template                     |
++-------------------+------------------------+------------------------------+
+| Control           | Standard CSV semantics | Exact spacing, padding,      |
+|                   |                        | signs, control characters    |
++-------------------+------------------------+------------------------------+
+| Encoding          | Configurable on the    | UTF-8 text                   |
+|                   | report                 |                              |
++-------------------+------------------------+------------------------------+
+
+Use ``report_csv`` when the target system parses delimited files. Use
+this module when the layout must be positional and every character
+counts, such as legacy fixed-width or banking interfaces.
 
 **Table of contents**
 
@@ -59,39 +99,41 @@ Configuration
 =============
 
 Default Replacement Elements
------------------------------
+----------------------------
 
 The module provides these default replacement elements:
 
-* ``<CR>`` → Carriage return (``\r``)
-* ``<LF>`` → Line feed (``\n``)
-* ``<CRLF>`` → Windows line ending (``\r\n``)
-* ``<TAB>`` → Tab character (``\t``)
-* ``<SEMICOLON>`` → Semicolon (``;``)
-* ``<SPAN>`` → Removed (empty string)
-* ``<DIV>`` → Removed (empty string)
+- ``<CR>`` → Carriage return (``\r``)
+- ``<LF>`` → Line feed (``\n``)
+- ``<CRLF>`` → Windows line ending (``\r\n``)
+- ``<TAB>`` → Tab character (``\t``)
+- ``<SEMICOLON>`` → Semicolon (``;``)
+- ``<SPAN>`` → Removed (empty string)
+- ``<DIV>`` → Removed (empty string)
 
 Field Formatting Functions
 --------------------------
 
 The module includes these field formatting functions:
 
-* ``A(value, length=None)`` - Alphanumeric: left-aligned, space-padded
-* ``N(value, length=None, digits=None, sign=False)`` - Numeric: right-aligned, 
-  zero-padded, optional sign at the end
-* ``M(value, length=None)`` - Monetary: calls ``N`` with ``digits=2`` and ``sign=True``
-* ``T(value, length=None, digits=2)`` - Tax: calls ``N`` with ``digits=2`` and ``sign=False``
-* ``D(value, length=8, dtformat="%Y%m%d")`` - Date: formats dates with 
+- ``A(value, length=None)`` - Alphanumeric: left-aligned, space-padded
+- ``N(value, length=None, digits=None, sign=False)`` - Numeric:
+  right-aligned, zero-padded, optional sign at the end
+- ``M(value, length=None)`` - Monetary: calls ``N`` with ``digits=2``
+  and ``sign=True``
+- ``T(value, length=None, digits=2)`` - Tax: calls ``N`` with
+  ``digits=2`` and ``sign=False``
+- ``D(value, length=8, dtformat="%Y%m%d")`` - Date: formats dates with
   customizable format, defaults to yyyymmdd
-* ``H(value, length=4, dtformat="%H%M")`` - Time: formats times with 
+- ``H(value, length=4, dtformat="%H%M")`` - Time: formats times with
   customizable format, defaults to hhmm
-* ``DT(value, length=12, dtformat="%Y%m%d%H%M")`` - Datetime: formats 
+- ``DT(value, length=12, dtformat="%Y%m%d%H%M")`` - Datetime: formats
   datetime with customizable format, defaults to yyyyMMddhhmm
 
 Post-processing Behavior
 ------------------------
 
-The module automatically performs the following post-processing on text 
+The module automatically performs the following post-processing on text
 content:
 
 1. Strips whitespace from each line
@@ -100,110 +142,110 @@ content:
 4. Replaces special elements with their defined characters
 5. Returns single-line output with controlled formatting
 
-This ensures clean, consistent text output regardless of QWeb template 
+This ensures clean, consistent text output regardless of QWeb template
 formatting or HTML elements.
 
 Usage
 =====
 
-To create a text-controlled QWeb report, define a report with 
+To create a text-controlled QWeb report, define a report with
 ``report_type="qweb-text"`` and enable the "Enable Text Control" option:
 
-.. code-block:: xml
+.. code:: xml
 
-    <record id="action_report_custom_text" model="ir.actions.report">
-        <field name="name">Custom Text Report</field>
-        <field name="model">your.model</field>
-        <field name="report_type">qweb-text</field>
-        <field name="text_control_enabled" eval="True"/>
-        <field name="report_name">your_module.report_custom_text</field>
-        <field name="binding_model_id" ref="model_your_model"/>
-        <field name="binding_type">report</field>
-    </record>
+   <record id="action_report_custom_text" model="ir.actions.report">
+       <field name="name">Custom Text Report</field>
+       <field name="model">your.model</field>
+       <field name="report_type">qweb-text</field>
+       <field name="text_control_enabled" eval="True"/>
+       <field name="report_name">your_module.report_custom_text</field>
+       <field name="binding_model_id" ref="model_your_model"/>
+       <field name="binding_type">report</field>
+   </record>
 
 Special Elements in Templates
-------------------------------
+-----------------------------
 
-In your QWeb template, use special elements for controlled output. HTML elements 
-like SPAN and DIV are automatically removed:
+In your QWeb template, use special elements for controlled output. HTML
+elements like SPAN and DIV are automatically removed:
 
-.. code-block:: xml
+.. code:: xml
 
-    <template id="report_custom_text">
-        <t t-foreach="docs" t-as="doc">
-            <span t-esc="doc.name"/>,<span t-esc="doc.email"/><LF/>
-            <span t-esc="doc.phone"/>,<span t-esc="doc.address"/><CRLF/>
-            <span t-esc="doc.field1"/><TAB/><span t-esc="doc.field2"/><SEMICOLON/><span t-esc="doc.field3"/>
-        </t>
-    </template>
+   <template id="report_custom_text">
+       <t t-foreach="docs" t-as="doc">
+           <span t-esc="doc.name"/>,<span t-esc="doc.email"/><LF/>
+           <span t-esc="doc.phone"/>,<span t-esc="doc.address"/><CRLF/>
+           <span t-esc="doc.field1"/><TAB/><span t-esc="doc.field2"/><SEMICOLON/><span t-esc="doc.field3"/>
+       </t>
+   </template>
 
 Field Formatting
------------------
+----------------
 
 The module provides field formatting functions available in templates:
 
-.. code-block:: xml
+.. code:: xml
 
-    <!-- Alphanumeric (A): left-aligned, space-padded -->
-    <span t-esc="A(doc.name, 10)"/>
+   <!-- Alphanumeric (A): left-aligned, space-padded -->
+   <span t-esc="A(doc.name, 10)"/>
 
-    <!-- Numeric (N): right-aligned, zero-padded -->
-    <span t-esc="N(doc.amount, 8)"/>
+   <!-- Numeric (N): right-aligned, zero-padded -->
+   <span t-esc="N(doc.amount, 8)"/>
 
-    <!-- Numeric with decimals and sign (sign at the end) -->
-    <span t-esc="N(doc.amount, 12, digits=2, sign=True)"/>
+   <!-- Numeric with decimals and sign (sign at the end) -->
+   <span t-esc="N(doc.amount, 12, digits=2, sign=True)"/>
 
-    <!-- Monetary (M): calls N with digits=2 and sign=True -->
-    <span t-esc="M(doc.total, 12)"/>
+   <!-- Monetary (M): calls N with digits=2 and sign=True -->
+   <span t-esc="M(doc.total, 12)"/>
 
-    <!-- Date (D): formats dates, defaults to yyyymmdd -->
-    <span t-esc="D(doc.date)"/>
+   <!-- Date (D): formats dates, defaults to yyyymmdd -->
+   <span t-esc="D(doc.date)"/>
 
-    <!-- Date with custom format -->
-    <span t-esc="D(doc.date, dtformat='%Y-%m-%d')"/>
+   <!-- Date with custom format -->
+   <span t-esc="D(doc.date, dtformat='%Y-%m-%d')"/>
 
-    <!-- Date with length padding -->
-    <span t-esc="D(doc.date, 12, dtformat='%Y%m%d')"/>
+   <!-- Date with length padding -->
+   <span t-esc="D(doc.date, 12, dtformat='%Y%m%d')"/>
 
-    <!-- Time (T): formats times, defaults to hhmm -->
-    <span t-esc="T(doc.time)"/>
+   <!-- Time (T): formats times, defaults to hhmm -->
+   <span t-esc="T(doc.time)"/>
 
-    <!-- Time with custom format -->
-    <span t-esc="T(doc.time, dtformat='%H:%M')"/>
+   <!-- Time with custom format -->
+   <span t-esc="T(doc.time, dtformat='%H:%M')"/>
 
-    <!-- Time with length padding -->
-    <span t-esc="T(doc.time, 6, dtformat='%H:%M:%S')"/>
+   <!-- Time with length padding -->
+   <span t-esc="T(doc.time, 6, dtformat='%H:%M:%S')"/>
 
-    <!-- Datetime (DT): formats datetime, defaults to yyyyMMddhhmm -->
-    <span t-esc="DT(doc.datetime)"/>
+   <!-- Datetime (DT): formats datetime, defaults to yyyyMMddhhmm -->
+   <span t-esc="DT(doc.datetime)"/>
 
-    <!-- Datetime with custom format -->
-    <span t-esc="DT(doc.datetime, dtformat='%Y-%m-%d %H:%M')"/>
+   <!-- Datetime with custom format -->
+   <span t-esc="DT(doc.datetime, dtformat='%Y-%m-%d %H:%M')"/>
 
-    <!-- Datetime with length padding -->
-    <span t-esc="DT(doc.datetime, 20, dtformat='%Y-%m-%d %H:%M:%S')"/>
+   <!-- Datetime with length padding -->
+   <span t-esc="DT(doc.datetime, 20, dtformat='%Y-%m-%d %H:%M:%S')"/>
 
 Customization
 -------------
 
-Override the ``_get_replacement_elements()`` method to define your own special 
-elements:
+Override the ``_get_replacement_elements()`` method to define your own
+special elements:
 
-.. code-block:: python
+.. code:: python
 
-    from odoo import models
+   from odoo import models
 
-    class CustomTextReport(models.Model):
-        _inherit = "ir.actions.report"
-        
-        def _get_replacement_elements(self):
-            """Override to customize replacement elements"""
-            elements = super()._get_replacement_elements()
-            elements.update({
-                "CUSTOM": "CustomValue",
-                "NEWLINE": "\r\n",
-            })
-            return elements
+   class CustomTextReport(models.Model):
+       _inherit = "ir.actions.report"
+
+       def _get_replacement_elements(self):
+           """Override to customize replacement elements"""
+           elements = super()._get_replacement_elements()
+           elements.update({
+               "CUSTOM": "CustomValue",
+               "NEWLINE": "\r\n",
+           })
+           return elements
 
 Bug Tracker
 ===========
@@ -211,7 +253,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/reporting-engine/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_text_control%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/reporting-engine/issues/new?body=module:%20report_qweb_text_control%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -219,21 +261,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Open Source Integrators
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-This module was developed with AI assistance under close guidance and supervision 
-from experienced Odoo developers. The development utilized Cascade (SWE-1.5) for 
-code implementation and testing, with Claude AI providing architectural guidance 
-and code quality review. All AI-generated code was thoroughly reviewed, validated, 
-and approved by human supervisors.
+- Daniel Reis (dreis.pt@gmail.com)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -245,6 +283,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/14.0/report_qweb_text_control>`_ project on GitHub.
+This module is part of the `OCA/reporting-engine <https://github.com/OCA/reporting-engine/tree/19.0/report_qweb_text_control>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

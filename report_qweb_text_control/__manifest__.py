@@ -3,7 +3,7 @@
 {
     "name": "QWeb Text Control",
     "summary": "Controls whitespace and special characters in text QWeb reports",
-    "version": "14.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Reporting",
     "website": "https://github.com/OCA/reporting-engine",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",

@@ -3,7 +3,7 @@
 
 import re
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 from . import field_formatter
 
@@ -16,10 +16,11 @@ class IrActionsReport(models.Model):
         help="Enable whitespace control and field formatting for text reports",
     )
 
-    def _get_rendering_context(self, docids, data):
+    @api.model
+    def _get_rendering_context(self, report, docids, data):
         # Add field formatters to rendering context only when text control is enabled
-        if self.text_control_enabled:
-            context = super()._get_rendering_context(docids, data)
+        context = super()._get_rendering_context(report, docids, data)
+        if report.text_control_enabled:
             context.update(
                 {
                     "A": field_formatter.A,
@@ -31,16 +32,18 @@ class IrActionsReport(models.Model):
                     "H": field_formatter.H,
                 }
             )
-            return context
-        return super()._get_rendering_context(docids, data)
+        return context
 
-    def _render_qweb_text(self, docids, data=None):
-        # Extend standard text rendering with post-processing only when text control is enabled
-        if self.text_control_enabled:
-            content, format_type = super()._render_qweb_text(docids, data)
-            processed_content = self._postprocess_text(content)
-            return processed_content, format_type
-        return super()._render_qweb_text(docids, data)
+    @api.model
+    def _render_qweb_text(self, report_ref, docids, data=None):
+        # Extend text rendering with post-processing when text control is enabled
+        content, format_type = super()._render_qweb_text(report_ref, docids, data=data)
+        report = self._get_report(report_ref)
+        if report.text_control_enabled:
+            is_bytes = isinstance(content, bytes)
+            processed_content = report._postprocess_text(content)
+            content = processed_content.encode() if is_bytes else processed_content
+        return content, format_type
 
     def _postprocess_text(self, content):
         """Post-process text content to control whitespace and replace elements."""
@@ -77,6 +80,7 @@ class IrActionsReport(models.Model):
             "LF": "\n",
             "CRLF": "\r\n",
             "TAB": "\t",
+            "PIPE": "|",
             "SEMICOLON": ";",
             "SPAN": "",
             "DIV": "",
