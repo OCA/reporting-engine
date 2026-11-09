@@ -98,7 +98,7 @@ class Py3oReport(models.TransientModel):
         is_valid = real_path.startswith(root_path + os.path.sep)
         if not is_valid:
             logger.warning(
-                "Py3o template path is not valid. %s is not a child of root " "path %s",
+                "Py3o template path is not valid. %s is not a child of root path %s",
                 real_path,
                 root_path,
             )

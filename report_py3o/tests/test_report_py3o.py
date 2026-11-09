@@ -70,9 +70,8 @@ class TestReportPy3o(TransactionCase):
             result = tempfile.mktemp(".txt")
             with open(result, "w") as fp:
                 fp.write(result_text)
-            patched_pdf.side_effect = (
-                lambda record, data: py3o_report_obj._postprocess_report(record, result)
-                or result
+            patched_pdf.side_effect = lambda record, data: (
+                py3o_report_obj._postprocess_report(record, result) or result
             )
             # test the call the the create method inside our custom parser
             self.report._render(self.report.id, self.env.user.ids)
@@ -100,7 +99,7 @@ class TestReportPy3o(TransactionCase):
 
     def test_reports_merge_pdf(self):
         reports_path = []
-        for _i in range(0, 3):
+        for _i in range(3):
             result = tempfile.mktemp(".txt")
             writer = PdfWriter()
             writer.add_page(PageObject.create_blank_page(width=100, height=100))
