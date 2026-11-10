@@ -6,18 +6,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-10 23:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid ", which in turn is used by <em>docxtpl</em>."
-msgstr ""
+msgstr ", che a sua volta è usata da <em>docxtpl</em>."
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
@@ -26,11 +28,14 @@ msgid ""
 "                <code>...</code>\n"
 "                <code>{%p endfor %}</code>"
 msgstr ""
+"<code>{%p for object in docs %}</code>\n"
+"                <code>...</code>\n"
+"                <code>{%p endfor %}</code>"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "Check out the existing demo report templates:"
-msgstr ""
+msgstr "Consultare i modelli di report demo esistenti:"
 
 #. module: report_docx
 #. odoo-python
@@ -40,11 +45,13 @@ msgid ""
 "Checks if an html field is empty, ie "
 "<code>is_html_empty('&lt;p/&gt;')</code> returns <code>True</code>"
 msgstr ""
+"Controlla se un campo html è vuoto, ad es. <code>is_html_empty('&lt;p/&gt;')"
+"</code> restituisce <code>True</code>"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_expression_test_code
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 #. module: report_docx
 #. odoo-python
@@ -54,59 +61,61 @@ msgid ""
 "Converts a number to a string, ie <code>num2words(42)</code> returns "
 "<code>&quot;fourty-two&quot;</code>"
 msgstr ""
+"Converte un numero in una stringa, ad es. <code>num2words(42)</code> "
+"restituisce <code>&quot;quarantadue&quot;</code>"
 
 #. module: report_docx
 #: model:ir.model.fields.selection,name:report_docx.selection__ir_actions_report__report_type__docx
 #: model_terms:ir.ui.view,arch_db:report_docx.act_report_xml_view
 msgid "DOCX"
-msgstr ""
+msgstr "DOCX"
 
 #. module: report_docx
 #: model:ir.actions.report,name:report_docx.report_ir_module_multi_mode_template
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "DOCX (one file)"
-msgstr ""
+msgstr "DOCX (un file)"
 
 #. module: report_docx
 #: model:ir.actions.report,name:report_docx.report_ir_module_multi_mode_zip
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "DOCX (zip if multiple)"
-msgstr ""
+msgstr "DOCX (zip se multipli)"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_expression_test_model_id
 msgid "Docx Expression Test Model"
-msgstr ""
+msgstr "Modello test espressione Docx"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_help
 msgid "Docx Help"
-msgstr ""
+msgstr "Aiuto Docx"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_template_filename
 msgid "Docx Template Filename"
-msgstr ""
+msgstr "Nome file modello Docx"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "Examples"
-msgstr ""
+msgstr "Esempi"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.act_report_xml_view
 msgid "Expression Tester"
-msgstr ""
+msgstr "Tester espressioni"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.act_report_xml_view
 msgid "Expression, eg object.display_name"
-msgstr ""
+msgstr "Espressione, es. object.display_name"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "For background information, read the documentation of"
-msgstr ""
+msgstr "Per informazioni di base, leggere la documentazione di"
 
 #. module: report_docx
 #. odoo-python
@@ -116,6 +125,8 @@ msgid ""
 "Formats a date according to the current language, ie "
 "<code>format_date(object.create_date)</code>"
 msgstr ""
+"Formatta una data secondo la lingua corrente, ad es. <code>format_date"
+"(object.create_date)</code>"
 
 #. module: report_docx
 #. odoo-python
@@ -125,6 +136,8 @@ msgid ""
 "Formats a date and time according to the current language, ie "
 "<code>format_datetime(object.create_date)</code>"
 msgstr ""
+"Formatta data e ora secondo la lingua corrente, ad es. <code>format_datetime"
+"(object.create_date)</code>"
 
 #. module: report_docx
 #. odoo-python
@@ -134,6 +147,8 @@ msgid ""
 "Formats a number as a time interval, ie <code>format_duration(1.5)</code> "
 "returns <code>01:30</code>"
 msgstr ""
+"Formatta un numero come intervallo di tempo, ad es. <code>format_duration"
+"(1.5)</code> restituisce <code>01:30</code>"
 
 #. module: report_docx
 #. odoo-python
@@ -143,6 +158,8 @@ msgid ""
 "Formats a time according to the current language, ie "
 "<code>format_time(object.create_date)</code>"
 msgstr ""
+"Formatta un'ora secondo la lingua corrente, ad es. <code>format_time"
+"(object.create_date)</code>"
 
 #. module: report_docx
 #. odoo-python
@@ -155,21 +172,25 @@ msgid ""
 "the company currency by using "
 "<code>object.env.company.currency_id.format(42)</code>"
 msgstr ""
+"Formatta un importo secondo una valuta, di solito chiamata come <code>"
+"format_amount(object.amount_field, object.currency_id)</code>.<br/>Nota: è "
+"possibile formattare qualsiasi numero secondo la valuta dell'azienda usando "
+"<code>object.env.company.currency_id.format(42)</code>"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "Further reading"
-msgstr ""
+msgstr "Ulteriori letture"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.act_report_xml_view
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_multi_mode
 msgid "Multi records"
-msgstr ""
+msgstr "Più record"
 
 #. module: report_docx
 #. odoo-python
@@ -179,6 +200,8 @@ msgid ""
 "Python datetime module. Ie <code>datetime.datetime.now()</code> returns the "
 "current date"
 msgstr ""
+"Modulo Python datetime. Ad es. <code>datetime.datetime.now()</code> "
+"restituisce la data corrente"
 
 #. module: report_docx
 #. odoo-python
@@ -190,33 +213,37 @@ msgid ""
 "relativedelta(days=1)</code> which returns the date of the last day of the "
 "next month"
 msgstr ""
+"Modulo Python relativedelta. Consente calcoli di date complessi come <code>"
+"datetime.date.today() + relativedelta(months=2, day=1) - relativedelta"
+"(days=1)</code> che restituisce la data dell'ultimo giorno del mese "
+"successivo"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_expression_test_record
 msgid "Record"
-msgstr ""
+msgstr "Record"
 
 #. module: report_docx
 #: model:ir.model,name:report_docx.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Azione report"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__report_type
 msgid "Report Type"
-msgstr ""
+msgstr "Tipo report"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_expression_test_result
 msgid "Result"
-msgstr ""
+msgstr "Risultato"
 
 #. module: report_docx
 #. odoo-python
 #: code:addons/report_docx/models/ir_actions_report.py:0
 #, python-format
 msgid "Returns the absolute value of a number"
-msgstr ""
+msgstr "Restituisce il valore assoluto di un numero"
 
 #. module: report_docx
 #. odoo-python
@@ -226,6 +253,8 @@ msgid ""
 "Returns the maximum of the arguments passed. <code>max(0, 42, 41)</code> "
 "returns <code>42</code>"
 msgstr ""
+"Restituisce il massimo degli argomenti passati. <code>max(0, 42, 41)</code> "
+"restituisce <code>42</code>"
 
 #. module: report_docx
 #. odoo-python
@@ -235,18 +264,20 @@ msgid ""
 "Returns the minimum of the arguments passed. <code>min(0, 42, 41)</code> "
 "returns <code>0</code>"
 msgstr ""
+"Restituisce il minimo degli argomenti passati. <code>min(0, 42, 41)</code> "
+"restituisce <code>0</code>"
 
 #. module: report_docx
 #. odoo-python
 #: code:addons/report_docx/models/ir_actions_report.py:0
 #, python-format
 msgid "Select a record and fill in an expression"
-msgstr ""
+msgstr "Selezionare un record e compilare un'espressione"
 
 #. module: report_docx
 #: model:ir.model.fields,help:report_docx.field_ir_actions_report__docx_multi_mode
 msgid "Select the behavior when the user selected multiple records"
-msgstr ""
+msgstr "Selezionare il comportamento quando l'utente ha selezionato più record"
 
 #. module: report_docx
 #. odoo-python
@@ -257,17 +288,19 @@ msgid ""
 "<code>sum(docs.mapped('some_field'))</code> returns the sum of the values of"
 " <em>some_field</em>"
 msgstr ""
+"Somma la collezione di argomenti, ad es. <code>sum(docs.mapped('some_field'))"
+"</code> restituisce la somma dei valori di <em>some_field</em>"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_template
 #: model:ir.model.fields.selection,name:report_docx.selection__ir_actions_report__docx_multi_mode__template
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
 #. module: report_docx
 #: model:ir.model.fields,field_description:report_docx.field_ir_actions_report__docx_expression_test_expression
 msgid "Test expression"
-msgstr ""
+msgstr "Testa espressione"
 
 #. module: report_docx
 #: model:ir.model.fields,help:report_docx.field_ir_actions_report__report_type
@@ -277,6 +310,10 @@ msgid ""
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
 msgstr ""
+"Il tipo di report che verrà generato, ciascuno con il proprio metodo di "
+"rendering. HTML significa che il report verrà aperto direttamente nel "
+"browser, PDF significa che il report verrà generato usando Wkhtmltopdf e "
+"scaricato dall'utente."
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
@@ -284,6 +321,8 @@ msgid ""
 "Use variable <code>docs</code> to iterate through the records selected by "
 "the user. Most likely your template should contain something like:"
 msgstr ""
+"Usare la variabile <code>docs</code> per iterare sui record selezionati "
+"dall'utente. Molto probabilmente il modello dovrebbe contenere qualcosa come:"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
@@ -293,44 +332,48 @@ msgid ""
 " applied to each of them separately, and the resulting files will be "
 "delivered as a zip file."
 msgstr ""
+"Usare la variabile <code>object</code> (o <code>o</code> in breve) nelle "
+"espressioni. Se l'utente ha selezionato più record, il modello verrà "
+"applicato a ciascuno separatamente e i file risultanti verranno consegnati "
+"come file zip."
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "Variables and Functions"
-msgstr ""
+msgstr "Variabili e funzioni"
 
 #. module: report_docx
 #: model:ir.model.fields.selection,name:report_docx.selection__ir_actions_report__docx_multi_mode__zip
 msgid "Zip file"
-msgstr ""
+msgstr "File zip"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "docxtpl"
-msgstr ""
+msgstr "docxtpl"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "jinja2"
-msgstr ""
+msgstr "jinja2"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
 msgid "no explanation available"
-msgstr ""
+msgstr "nessuna spiegazione disponibile"
 
 #. module: report_docx
 #: model:ir.actions.report,print_report_name:report_docx.report_ir_module_multi_mode_template
 #: model:ir.actions.report,print_report_name:report_docx.report_ir_module_multi_mode_zip
 msgid "object.name"
-msgstr ""
+msgstr "object.name"
 
 #. module: report_docx
 #. odoo-python
 #: code:addons/report_docx/models/ir_actions_report.py:0
 #, python-format
 msgid "template.docx"
-msgstr ""
+msgstr "template.docx"
 
 #. module: report_docx
 #: model_terms:ir.ui.view,arch_db:report_docx.template_help
@@ -338,3 +381,5 @@ msgid ""
 "which is the library used for templating docx files, and for even more "
 "background, read the documentation"
 msgstr ""
+"che è la libreria usata per i modelli dei file docx, e per ulteriori "
+"informazioni, leggere la documentazione"
