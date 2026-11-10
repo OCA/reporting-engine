@@ -84,6 +84,14 @@ class IrActionsReport(models.Model):
     msg_py3o_report_not_available = fields.Char(
         compute="_compute_py3o_report_not_available"
     )
+    py3o_server_id = fields.Many2one("py3o.server", string="LibreOffice for Py3o")
+    pdf_options_id = fields.Many2one(
+        "py3o.pdf.options",
+        string="PDF Options",
+        ondelete="restrict",
+        help="PDF options can be set per report, but also per Py3o Server. "
+        "If both are defined, the options on the report are used.",
+    )
 
     @api.model
     def _register_hook(self):
@@ -129,20 +137,25 @@ class IrActionsReport(models.Model):
         for rec in self:
             rec.lo_bin_path = lo_bin
 
-    @api.depends("lo_bin_path", "is_py3o_native_format", "report_type")
+    @api.depends(
+        "lo_bin_path", "is_py3o_native_format", "report_type", "py3o_server_id"
+    )
     def _compute_py3o_report_not_available(self):
         for rec in self:
             rec.is_py3o_report_not_available = False
             rec.msg_py3o_report_not_available = ""
             if rec.report_type != "py3o":
                 continue
-            if not rec.is_py3o_native_format and not rec.lo_bin_path:
+            if (
+                not rec.is_py3o_native_format
+                and not rec.lo_bin_path
+                and not rec.py3o_server_id
+            ):
                 rec.is_py3o_report_not_available = True
                 rec.msg_py3o_report_not_available = self.env._(
-                    "The libreoffice runtime is required to genereate the "
-                    "py3o report '%s' but is not found into the bin path. You "
-                    "must install the libreoffice runtime on the server. If "
-                    "the runtime is already installed and is not found by "
+                    "A py3o server or a LibreOffice runtime is required to generate "
+                    "the py3o report '%s'. If the LibreOffice "
+                    "runtime is already installed and is not found by "
                     "Odoo, you can provide the full path to the runtime by "
                     "setting the key 'py3o.conversion_command' into the "
                     "configuration parameters.",

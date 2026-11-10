@@ -1,4 +1,0 @@
-# generated from manifests external_dependencies
-mock
-py3o.formats
-py3o.template

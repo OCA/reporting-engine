@@ -25,18 +25,12 @@ The key advantages of a Libreoffice based reporting engine are:
 - Easy development of spreadsheet reports in ODS format (XLS output
   possible).
 
-This module *report_py3o* is the base module for the Py3o reporting
-engine. If used alone, it will spawn a libreoffice process for each ODT
-to PDF (or ODT to DOCX, ..) document conversion. This is slow and can
-become a problem if you have a lot of reports to convert from ODT to
-another format. In this case, you should consider the additionnal module
-*report_py3o_fusion_server* which is designed to work with a libreoffice
-daemon. With *report_py3o_fusion_server*, the technical environnement is
-more complex to setup because you have to install additionnal software
-components and run 2 daemons, but you have much better performances and
-you can configure the libreoffice PDF export options in Odoo (allows to
-generate PDF forms, PDF/A documents, password-protected PDFs,
-watermarked PDFs, etc.).
+If all the py3o reports are configured to be sent to the user in OpenDocument format (.odt or .ods), LibreOffice is not needed on the Odoo server. If some py3o reports are configured to be sent to the user in PDF, DOCX, XLS or any other non-OpenDocument format, LibreOffice must be installed on the Odoo server.
+
+For the generation of non-OpenDocument formats, the link between this module *report_py3o* and LibreOffice can be setup in 2 different ways:
+
+1. LibreOffice is started and closed upon each py3o report generation. Advantage: easy to setup. Drawback: slow.
+2. LibreOffice runs in headless mode in the background and listens on the localhost interface. Advantage: faster. Drawback: a bit more technical to setup.
 
 This reporting engine is an alternative to
 \[Aeroo\](<https://github.com/aeroo-community/aeroo_reports>): these two

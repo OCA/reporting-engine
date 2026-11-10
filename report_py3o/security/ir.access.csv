@@ -2,3 +2,7 @@ id,name,model_id,group_id/id,operation,domain
 access_py3o_template_admin,Full access on py3o.template to admin,py3o.template,base.group_system,crud,
 access_py3o_template_user,Read access on py3o.template to users,py3o.template,base.group_user,r,
 access_py3o_report_user,Full access on py3o.report wizard to users,py3o.report,base.group_user,crud,
+access_py3o_server_admin,Full access on py3o.server to admin,py3o.server,base.group_system,crud,
+access_py3o_server_user,Read access on py3o.server_user to employees,py3o.server,base.group_user,r,
+access_py3o_pdf_options_admin,Full access to PDF options to admin,py3o.pdf.options,base.group_system,crud,
+access_py3o_pdf_options_user,Read-only access to PDF options to employees,py3o.pdf.options,base.group_user,r,

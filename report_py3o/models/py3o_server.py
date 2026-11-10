@@ -3,7 +3,7 @@
 # @author: Alexis de Lattre <alexis.delattre@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -36,10 +36,10 @@ class Py3oServer(models.Model):
         for rec in self:
             if rec.port < 1 or rec.port > 65535:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "The port cannot be set to %(port)s. The value of a TCP port "
                         "must be between 1 and 65535.",
-                        rec.port,
+                        port=rec.port,
                     )
                 )
 

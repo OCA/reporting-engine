@@ -59,18 +59,20 @@ The key advantages of a Libreoffice based reporting engine are:
 -  Easy development of spreadsheet reports in ODS format (XLS output
    possible).
 
-This module *report_py3o* is the base module for the Py3o reporting
-engine. If used alone, it will spawn a libreoffice process for each ODT
-to PDF (or ODT to DOCX, ..) document conversion. This is slow and can
-become a problem if you have a lot of reports to convert from ODT to
-another format. In this case, you should consider the additionnal module
-*report_py3o_fusion_server* which is designed to work with a libreoffice
-daemon. With *report_py3o_fusion_server*, the technical environnement is
-more complex to setup because you have to install additionnal software
-components and run 2 daemons, but you have much better performances and
-you can configure the libreoffice PDF export options in Odoo (allows to
-generate PDF forms, PDF/A documents, password-protected PDFs,
-watermarked PDFs, etc.).
+If all the py3o reports are configured to be sent to the user in
+OpenDocument format (.odt or .ods), LibreOffice is not needed on the
+Odoo server. If some py3o reports are configured to be sent to the user
+in PDF, DOCX, XLS or any other non-OpenDocument format, LibreOffice must
+be installed on the Odoo server.
+
+For the generation of non-OpenDocument formats, the link between this
+module *report_py3o* and LibreOffice can be setup in 2 different ways:
+
+1. LibreOffice is started and closed upon each py3o report generation.
+   Advantage: easy to setup. Drawback: slow.
+2. LibreOffice runs in headless mode in the background and listens on
+   the localhost interface. Advantage: faster. Drawback: a bit more
+   technical to setup.
 
 This reporting engine is an alternative to
 [Aeroo](https://github.com/aeroo-community/aeroo_reports): these two
@@ -86,14 +88,84 @@ replacement though, you'll have to change a few details.
 Installation
 ============
 
-Install the required python libs:
+Install the required python libs in the virtualenv of the Odoo server:
 
 :literal:``  pip install py3o.template pip install py3o.formats`\ \`
 
 To allow the conversion of ODT or ODS reports to other formats (PDF,
 DOC, DOCX, etc.), install libreoffice:
 
-:literal:``  apt-get --no-install-recommends install libreoffice`\ \`
+:literal:``  sudo apt --no-install-recommends install libreoffice`\ \`
+
+If you want to setup the second method where LibreOffice runs in the
+background in headless mode:
+
+.. code:: -
+
+   sudo apt install python3-uno
+
+You may have to install additionnal fonts. For example, to have the
+special unicode symbols for phone/fax/email in the PDF reports generated
+by Py3o, you should install the following package:
+
+.. code:: -
+
+   sudo apt install fonts-symbola
+
+If you want to produce valid PDF/A documents with this module,
+activating the corresponding option in the PDF Export Options may not be
+enough, you also have to make sure that all the fonts used in the
+document template are installed on the Odoo server, so that they can be
+embedded in the PDF/A document. For example, if your document template
+uses the Arial font, you should install that font on your Odoo server:
+
+.. code:: -
+
+   sudo apt install msttcorefonts
+
+Odoo will connect to the LibreOffice via the **uno** python lib which is
+linked to LibreOffice. So you cannot install the uno lib in Odoo's
+virtualenv like you do for all the other python libs required by Odoo.
+Use the following procedure to make the uno lib installed by the package
+of your Linux distribution available in Odoo's virtualenv. In the
+virtualenv of your Odoo server, run:
+
+.. code:: -
+
+   % pip install oooenv
+   % oooenv cmd-link -a
+
+LibreOffice must be run as a daemon. For that, create a file
+**/etc/systemd/system/libreoffice.service** with the following content:
+
+.. code:: -
+
+   [Unit]
+   Description=Libreoffice headless for Py3o
+   After=network.target
+
+   [Service]
+   Type=simple
+   User=odoo
+   Group=odoo
+   ExecStart=nice -n 10 /usr/lib/libreoffice/program/soffice.bin --nologo --norestore --invisible --headless --nolockcheck --nodefault --accept="socket,host=localhost,port=8997;urp;"
+   stdout_logfile=/var/log/odoo/libreoffice.log
+   KillMode=mixed
+   Restart=always
+   # number of seconds to attempt restart after failure
+   RestartSec=5
+
+   [Install]
+   WantedBy=multi-user.target
+
+The file content above is an example. You must adapt:
+
+-  the system user and group that will be used to run libreoffice as a
+   daemon (*odoo* in the exemple)
+-  the path of the LibreOffice binary
+   (*/usr/lib/libreoffice/program/soffice.bin* in the example)
+-  the log file (*/var/log/odoo/libreoffice.log* in the example)
+-  the TCP port on which LibreOffice listens (*8997* in the example)
 
 Configuration
 =============
@@ -136,6 +208,15 @@ libreoffice by default. If you change this, whatever you set here must
 accept the parameters --headless --convert-to $ext $file and put the
 resulting file into $file's directory with extension $ext. The command
 will be started in $file's directory.
+
+To configure the PDF export options:
+
+1. Go to the menu *Settings > Technical > Reporting > Py3o > Py3o PDF
+   Export Options* and create a PDF export options profile.
+2. Set the PDF export options profile on the Py3o Server (menu *Settings
+   > Technical > Reporting > Py3o > Py3o Servers*) or on a particular
+   Py3o report with PDF output format (menu *Settings > Technical >
+   Actions > Reports*).
 
 Usage
 =====
@@ -185,7 +266,8 @@ Known issues / Roadmap
 
 -  generate barcode ?
 -  add more detailed example in demo file to showcase features
--  add migration guide aeroo -> py3o
+-  Add support for PDF signatures (possible, but no easy because the
+   signature certificate is a very particular PDF export option)
 
 Bug Tracker
 ===========
@@ -213,7 +295,7 @@ Contributors
 -  Laurent Mignon <<laurent.mignon@acsone.eu>>,
 -  Alexis de Lattre <<alexis.delattre@akretion.com>>,
 -  Guewen Baconnier <<guewen.baconnier@camptocamp.com>>
--  Omar Casti??eira <<omar@comunitea.com>>
+-  Omar Castiñeira <<omar@comunitea.com>>
 -  Holger Brunn <<hbrunn@therp.nl>>
 -  Phuc Tran Thanh <<phuc@trobz.com>>
 -  Souheil Bejaoui <<souheil.bejaoui@acsone.eu>>,

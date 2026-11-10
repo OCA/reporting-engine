@@ -2,7 +2,7 @@
 - Laurent Mignon \<\<<laurent.mignon@acsone.eu>\>\>,
 - Alexis de Lattre \<\<<alexis.delattre@akretion.com>\>\>,
 - Guewen Baconnier \<\<<guewen.baconnier@camptocamp.com>\>\>
-- Omar Casti??eira \<\<<omar@comunitea.com>\>\>
+- Omar Castiñeira \<\<<omar@comunitea.com>\>\>
 - Holger Brunn \<\<<hbrunn@therp.nl>\>\>
 - Phuc Tran Thanh \<\<<phuc@trobz.com>\>\>
 - Souheil Bejaoui \<\<<souheil.bejaoui@acsone.eu>\>\>,

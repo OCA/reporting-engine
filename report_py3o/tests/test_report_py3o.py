@@ -1,4 +1,5 @@
 # Copyright 2016 ACSONE SA/NV
+# Copyright 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
 import logging
@@ -58,7 +59,7 @@ class TestReportPy3o(TransactionCase):
         with self.assertRaises(ValidationError) as e:
             self.report.py3o_filetype = False
         self.assertEqual(
-            e.exception.args[0], "Field 'Output Format' is required for Py3O report"
+            e.exception.args[0], "Field 'Output Format' is required for Py3o report"
         )
 
     def _render_patched(self, result_text="test result", call_count=1):
@@ -231,7 +232,7 @@ class TestReportPy3o(TransactionCase):
             format_multiline_value("<>\n&test;"),
         )
 
-    def test_py3o_report_availability(self):
+    def test_py3o_report_availability_py3o_server(self):
         # This test could fails if libreoffice is not available on the server
         self.report.py3o_filetype = "odt"
         self.assertTrue(self.report.lo_bin_path)
@@ -297,3 +298,56 @@ class TestReportPy3o(TransactionCase):
             )
             # portal user should not get 403
             self.assertEqual(response.status_code, 200)
+
+    def test_odoo2libreoffice_options(self):
+        for options in self.env["py3o.pdf.options"].search([]):
+            options_dict = options.odoo2libreoffice_options()
+            self.assertIsInstance(options_dict, dict)
+
+    def test_odoo_color_map(self):
+        color_map = self.env["py3o.pdf.options"]._get_odoo_color_map()
+        # check extreme values
+        self.assertEqual(color_map[1], int("ee2d2d", 16))
+        self.assertEqual(color_map[11], int("9872e6", 16))
+
+    def test_py3o_report_availability(self):
+        # if the report is not into a native format, we must have at least
+        # a libreoffice runtime or a py3o server. Otherwise the report is
+        # not usable and will fail at rutime.
+        # This test could fails if libreoffice is not available on the server
+        py3o_server = self.env["py3o.server"].create({})
+        self.report.write({"py3o_server_id": py3o_server.id})
+        self.report.py3o_filetype = "odt"
+        self.assertTrue(self.report.lo_bin_path)
+        self.assertTrue(self.report.py3o_server_id)
+        self.assertTrue(self.report.is_py3o_native_format)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)
+
+        # specify a wrong lo bin path and a non native format.
+        self.env["ir.config_parameter"].set_str(
+            PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path"
+        )
+        self.report.py3o_filetype = "pdf"
+        self.report.invalidate_recordset()
+        # no native and no bin path, everything is still OK since a py3o
+        # server is specified.
+        self.assertFalse(self.report.lo_bin_path)
+        self.assertTrue(self.report.py3o_server_id)
+        self.assertFalse(self.report.is_py3o_native_format)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)
+
+        # if we remove the py3o server, the report becomes unavailable
+        self.report.py3o_server_id = False
+        self.assertTrue(self.report.is_py3o_report_not_available)
+        self.assertTrue(self.report.msg_py3o_report_not_available)
+
+        # if we set a libreffice runtime, the report is available again
+        self.env["ir.config_parameter"].set_str(
+            PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice"
+        )
+        self.report.invalidate_recordset()
+        self.assertTrue(self.report.lo_bin_path)
+        self.assertFalse(self.report.is_py3o_report_not_available)
+        self.assertFalse(self.report.msg_py3o_report_not_available)

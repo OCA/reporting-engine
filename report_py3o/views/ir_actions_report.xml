@@ -25,6 +25,11 @@
                         <field name="lo_bin_path" />
                         <field name="py3o_filetype" />
                         <field name="py3o_multi_in_one" />
+                        <field name="py3o_server_id" />
+                        <field
+                            name="pdf_options_id"
+                            invisible="py3o_filetype != 'pdf'"
+                        />
                         <field name="py3o_template_id" />
                         <field name="module" />
                         <field name="py3o_template_fallback" />

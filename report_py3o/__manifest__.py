@@ -19,11 +19,13 @@
             "report_py3o/static/src/js/py3oactionservice.esm.js",
         ],
     },
+    "demo": ["demo/report_py3o.xml", "demo/py3o_pdf_options.xml"],
     "data": [
         "security/ir.access.csv",
         "views/py3o_template.xml",
         "views/ir_actions_report.xml",
-        "demo/report_py3o.xml",
+        "views/py3o_pdf_options.xml",
+        "views/py3o_server.xml",
     ],
     "installable": True,
 }
