@@ -2,4 +2,3 @@
 mock
 py3o.formats
 py3o.template
-pypdf

@@ -1,12 +1,10 @@
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).).
 
-import base64
 import logging
 import os
 import shutil
 import tempfile
-from base64 import b64decode, b64encode
 from contextlib import contextmanager
 from importlib.resources import as_file, files
 from unittest import mock
@@ -16,13 +14,14 @@ from pypdf import PageObject, PdfWriter
 from odoo import tools
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
+from odoo.tools.binary import BinaryBytes
 
-from odoo.addons.base.tests.test_mimetypes import PNG
+from odoo.addons.base.tests.files import PNG_RAW
 from odoo.addons.report_py3o.controllers.main import ReportController
 
+from ..models._py3o_parser_context import format_multiline_value
 from ..models.ir_actions_report import PY3O_CONVERSION_COMMAND_PARAMETER
-from ..wizard._py3o_parser_context import format_multiline_value
-from ..wizard.py3o_report import TemplateNotFound
+from ..wizards.py3o_report import TemplateNotFound
 
 logger = logging.getLogger(__name__)
 
@@ -34,8 +33,8 @@ except ImportError:
 
 @contextmanager
 def temporary_copy(path):
-    filname, ext = os.path.splitext(path)
-    tmp_filename = tempfile.mktemp(suffix="." + ext)
+    _filename, ext = os.path.splitext(path)
+    tmp_filename = tempfile.mktemp(suffix=ext)
     try:
         shutil.copy2(path, tmp_filename)
         yield tmp_filename
@@ -48,7 +47,7 @@ class TestReportPy3o(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
-        cls.env.user.image_1920 = PNG
+        cls.env.user.image_1920 = BinaryBytes(PNG_RAW, filename="myface.png")
         cls.report = cls.env.ref("report_py3o.res_users_report_py3o")
         cls.py3o_report = cls.env["py3o.report"].create(
             {"ir_actions_report_id": cls.report.id}
@@ -96,14 +95,14 @@ class TestReportPy3o(TransactionCase):
                 }
             )
         self.assertGreaterEqual(len(users), 2)
-        users.write({"image_1920": PNG})
+        users.write({"image_1920": BinaryBytes(PNG_RAW, filename="myface.png")})
         py3o_report = self.env["py3o.report"]
         _zip_results = self.py3o_report._zip_results
         with mock.patch.object(
             py3o_report.__class__, "_zip_results"
         ) as patched_zip_results:
             patched_zip_results.side_effect = _zip_results
-            content, filetype = self.report._render(self.report.id, users.ids)
+            _content, filetype = self.report._render(self.report.id, users.ids)
             self.assertEqual(1, patched_zip_results.call_count)
             self.assertEqual(filetype, "zip")
 
@@ -126,12 +125,11 @@ class TestReportPy3o(TransactionCase):
         new_attachments = self.env["ir.attachment"].search([])
         created_attachement = new_attachments - attachments
         self.assertEqual(1, len(created_attachement))
-        content = b64decode(created_attachement.datas)
-        self.assertEqual(b"test result", content)
+        self.assertEqual(b"test result", created_attachement.raw.content)
         # put a new content into tha attachement and check that the next
         # time we ask the report we received the saved attachment not a newly
         # generated document
-        created_attachement.datas = base64.b64encode(b"new content")
+        created_attachement.write({"raw": b"new content"})
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertEqual((b"new content", self.report.py3o_filetype), res)
 
@@ -149,12 +147,11 @@ class TestReportPy3o(TransactionCase):
         self.assertEqual(self.env.user.name + ".txt", attachements.name)
         self.assertEqual(self.env.user._name, attachements.res_model)
         self.assertEqual(self.env.user.id, attachements.res_id)
-        self.assertEqual(b"test result", b64decode(attachements.datas))
+        self.assertEqual(b"test result", attachements.raw.content)
 
     @tools.misc.mute_logger("odoo.addons.report_py3o.wizard.py3o_report")
     def test_report_template_configs(self):
-        # the demo template is specified with a relative path in in the module
-        # path
+        # the demo template is specified with a relative path in the module path
         tmpl_name = self.report.py3o_template_fallback
         with as_file(files(f"odoo.addons.{self.report.module}")) as _asf:
             flbk_filename = _asf.joinpath(tmpl_name)
@@ -183,16 +180,20 @@ class TestReportPy3o(TransactionCase):
         self.report.py3o_template_fallback = False
 
         with open(flbk_filename, "rb") as tmpl_file:
-            tmpl_data = b64encode(tmpl_file.read())
+            tmpl_data = tmpl_file.read()
         py3o_template = self.env["py3o.template"].create(
             {
                 "name": "test_template",
-                "py3o_template_data": tmpl_data,
+                "py3o_template_data": BinaryBytes(tmpl_data, filename="testme.odt"),
                 "filetype": "odt",
             }
         )
-        self.report.py3o_template_id = py3o_template
-        self.report.py3o_template_fallback = flbk_filename
+        self.report.write(
+            {
+                "py3o_template_id": py3o_template.id,
+                "py3o_template_fallback": False,
+            }
+        )
         res = self.report._render(self.report.id, self.env.user.ids)
         self.assertTrue(res)
 
@@ -239,7 +240,7 @@ class TestReportPy3o(TransactionCase):
         self.assertFalse(self.report.msg_py3o_report_not_available)
 
         # specify a wrong lo bin path
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             PY3O_CONVERSION_COMMAND_PARAMETER, "/wrong_path"
         )
         self.report.invalidate_recordset()
@@ -260,7 +261,7 @@ class TestReportPy3o(TransactionCase):
             self.report._render(self.report.id, self.env.user.ids)
 
         # if we reset the wrong path, everything should work
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             PY3O_CONVERSION_COMMAND_PARAMETER, "libreoffice"
         )
         self.report.invalidate_recordset()

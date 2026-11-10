@@ -7,7 +7,9 @@ from urllib.parse import parse_qs
 from werkzeug import exceptions
 from werkzeug.datastructures import MultiDict
 
-from odoo.http import content_disposition, request, route, serialize_exception
+from odoo.http import request, route
+from odoo.http.dispatcher import serialize_exception
+from odoo.http.stream import content_disposition
 from odoo.tools import html_escape
 
 from odoo.addons.web.controllers.report import ReportController as ReportControllerBase

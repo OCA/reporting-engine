@@ -1,14 +1,12 @@
 # Copyright 2013 XCG Consulting (http://odoo.consulting)
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-import base64
 import logging
 import os
 import subprocess
 import sys
 import tempfile
 import warnings
-from base64 import b64decode
 from configparser import ConfigParser
 from contextlib import closing
 from importlib.resources import files
@@ -20,7 +18,7 @@ from odoo.exceptions import AccessError
 from odoo.tools import config
 from odoo.tools.safe_eval import safe_eval, time
 
-from ._py3o_parser_context import Py3oParserContext
+from ..models._py3o_parser_context import Py3oParserContext
 
 logger = logging.getLogger(__name__)
 
@@ -57,9 +55,9 @@ try:
 except ImportError:
     logger.debug("Cannot import py3o.formats")
 try:
-    from PyPDF2 import PdfFileReader, PdfFileWriter
+    from pypdf import PdfReader, PdfWriter
 except ImportError:
-    logger.debug("Cannot import PyPDF2")
+    logger.debug("Cannot import pypdf")
 
 _extender_functions = {}
 
@@ -135,7 +133,7 @@ class Py3oReport(models.TransientModel):
     def _is_valid_template_filename(self, filename):
         """Check if the filename can be used as py3o template"""
         if filename and os.path.isfile(filename):
-            fname, ext = os.path.splitext(filename)
+            _fname, ext = os.path.splitext(filename)
             ext = ext.replace(".", "")
             try:
                 fformat = Formats().get_format(ext)
@@ -192,14 +190,16 @@ class Py3oReport(models.TransientModel):
         report_xml = self.ir_actions_report_id
         if report_xml.py3o_template_id.py3o_template_data:
             # if a user gave a report template
-            tmpl_data = b64decode(report_xml.py3o_template_id.py3o_template_data)
+            tmpl_data = report_xml.py3o_template_id.py3o_template_data.content
 
         else:
             tmpl_data = self._get_template_fallback(model_instance)
 
         if tmpl_data is None:
             # if for any reason the template is not found
-            raise TemplateNotFound(_("No template found. Aborting."), sys.exc_info())
+            raise TemplateNotFound(
+                self.env._("No template found. Aborting."), sys.exc_info()
+            )
 
         return tmpl_data
 
@@ -309,7 +309,7 @@ class Py3oReport(models.TransientModel):
         lo_bin = self.ir_actions_report_id.lo_bin_path
         if not lo_bin:
             raise RuntimeError(
-                _(
+                self.env._(
                     "Libreoffice runtime not available. "
                     "Please contact your administrator."
                 )
@@ -331,7 +331,7 @@ class Py3oReport(models.TransientModel):
         self.ensure_one()
         attachment = existing_reports_attachment.get(model_instance.id)
         if attachment and self.ir_actions_report_id.attachment_use:
-            content = base64.b64decode(attachment.datas)
+            content = attachment.raw.content
             fd, report_file = tempfile.mkstemp(
                 "." + self.ir_actions_report_id.py3o_filetype
             )
@@ -343,7 +343,7 @@ class Py3oReport(models.TransientModel):
 
     def _zip_results(self, reports_path):
         self.ensure_one()
-        fd, result_path = tempfile.mkstemp(suffix="zip", prefix="py3o-zip-result")
+        fd, result_path = tempfile.mkstemp(suffix=".zip", prefix="py3o-zip-result")
         os.close(fd)
         with ZipFile(result_path, "w", ZIP_DEFLATED) as zf:
             for report_instance, report in reports_path.items():
@@ -360,10 +360,10 @@ class Py3oReport(models.TransientModel):
         :param reports_path: list of path of pdf files
         :returns: path of the merged pdf
         """
-        writer = PdfFileWriter()
+        writer = PdfWriter()
         for path in reports_path:
-            reader = PdfFileReader(path)
-            writer.appendPagesFromReader(reader)
+            reader = PdfReader(path)
+            writer.append_pages_from_reader(reader)
         merged_file_fd, merged_file_path = tempfile.mkstemp(
             suffix=".pdf", prefix="report.merged.tmp."
         )

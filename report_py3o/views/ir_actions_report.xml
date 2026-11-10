@@ -38,13 +38,13 @@
         <field name="model">ir.actions.report</field>
         <field name="inherit_id" ref="base.act_report_xml_search_view" />
         <field name="arch" type="xml">
-            <field name="model" position="after">
+            <filter name="report_text" position="after">
                 <filter
                     name="py3o"
                     string="Py3o Reports"
                     domain="[('report_type', '=', 'py3o')]"
                 />
-            </field>
+            </filter>
         </field>
     </record>
 </odoo>

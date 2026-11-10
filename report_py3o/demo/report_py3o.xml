@@ -4,7 +4,6 @@
 <odoo>
     <record id="res_users_report_py3o" model="ir.actions.report">
         <field name="name">Py3o Demo Report</field>
-        <field name="type">ir.actions.report</field>
         <field name="model">res.users</field>
         <field name="report_name">py3o_user_info</field>
         <field name="report_type">py3o</field>
