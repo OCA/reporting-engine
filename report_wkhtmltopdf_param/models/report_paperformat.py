@@ -36,7 +36,9 @@ class Paper(models.Model):
             report = self.env["ir.actions.report"].new(
                 {"paperformat_id": paperformat.id}
             )
-            content = report._run_wkhtmltopdf([sample_html])
+            content = report._run_pdf_engine_without_processing(
+                "wkhtmltopdf", [sample_html]
+            )
             if not content:
                 raise ValidationError(
                     self.env._("Failed to create a PDF using the provided parameters.")
