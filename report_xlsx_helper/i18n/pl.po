@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-11 10:46+0000\n"
+"Last-Translator: leszekszczepkowski <leszekszczepkowski@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -22,37 +24,39 @@ msgid ""
 "%(__name__)s, _write_line : programming error detected while processing "
 "col_specs_section %(col_specs_section)s, column %(col)s"
 msgstr ""
+"%(__name__)s, _write_line: wykryto błąd programistyczny podczas "
+"przetwarzania col_specs_section %(col_specs_section)s, kolumna %(col)s"
 
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/models/ir_actions_report.py:0
 msgid "%s model was not found"
-msgstr ""
+msgstr "Nie znaleziono modelu %s"
 
 #. module: report_xlsx_helper
 #. odoo-python
 #: code:addons/report_xlsx_helper/report/report_xlsx_abstract.py:0
 msgid ", cellvalue %s"
-msgstr ""
+msgstr ", wartość komórki %s"
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_abstract
 msgid "Abstract XLSX Report"
-msgstr ""
+msgstr "Abstrakcyjny raport XLSX"
 
 #. module: report_xlsx_helper
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__display_name
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nazwa wyświetlana"
 
 #. module: report_xlsx_helper
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_abstract__id
 #: model:ir.model.fields,field_description:report_xlsx_helper.field_report_report_xlsx_helper_test_partner_xlsx__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -62,6 +66,10 @@ msgid ""
 "\n"
 "Excel Sheet name '%(name)s' contains unsupported special characters: '%(special_chars)s'."
 msgstr ""
+"Błąd programistyczny:\n"
+"\n"
+"Nazwa arkusza Excel '%(name)s' zawiera nieobsługiwane znaki specjalne: '%"
+"(special_chars)s'."
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -71,6 +79,9 @@ msgid ""
 "\n"
 "Excel Sheet name '%(name)s' should not exceed %(max_chars)s characters."
 msgstr ""
+"Błąd programistyczny:\n"
+"\n"
+"Nazwa arkusza Excel '%(name)s' nie może przekraczać %(max_chars)s znaków."
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -80,6 +91,9 @@ msgid ""
 "\n"
 "The '%s' column is not defined in the worksheet column specifications."
 msgstr ""
+"Błąd programistyczny:\n"
+"\n"
+"Kolumna '%s' nie jest zdefiniowana w specyfikacji kolumn arkusza."
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -89,6 +103,9 @@ msgid ""
 "\n"
 "The '%s' column is not defined the worksheet column specifications."
 msgstr ""
+"Błąd programistyczny:\n"
+"\n"
+"Kolumna '%s' nie jest zdefiniowana w specyfikacji kolumn arkusza."
 
 #. module: report_xlsx_helper
 #. odoo-python
@@ -98,13 +115,16 @@ msgid ""
 "\n"
 "The 'title' parameter is mandatory when calling the '_write_ws_title' method."
 msgstr ""
+"Błąd programistyczny:\n"
+"\n"
+"Parametr 'title' jest wymagany przy wywołaniu metody '_write_ws_title'."
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_ir_actions_report
 msgid "Report Action"
-msgstr ""
+msgstr "Akcja raportu"
 
 #. module: report_xlsx_helper
 #: model:ir.model,name:report_xlsx_helper.model_report_report_xlsx_helper_test_partner_xlsx
 msgid "Test Partner XLSX Report"
-msgstr ""
+msgstr "Testowy raport XLSX kontrahenta"
