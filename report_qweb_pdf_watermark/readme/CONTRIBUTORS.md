@@ -7,3 +7,5 @@
 - Sander Lienaerts \<<sander.lienaerts@codeforward.nl>\>
 - Anjeel Haria
 - Dennis Sluijk \<<d.sluijk@onestein.nl>\>
+- [CIT-Services](cit-services.eu)
+  - Prayag \<<prayag.k@cit-services.eu>\>
