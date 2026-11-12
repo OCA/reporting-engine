@@ -19,6 +19,7 @@ class BiSQLViewField(models.Model):
         ("date", "date"),
         ("datetime", "datetime"),
         ("float", "float"),
+        ("html", "html"),
         ("integer", "integer"),
         ("many2one", "many2one"),
         ("selection", "selection"),
@@ -247,7 +248,11 @@ class BiSQLViewField(models.Model):
 
     def _prepare_form_field(self):
         self.ensure_one()
-        return f"""<field name="{self.name}" context="{self.field_context}"/>\n"""
+        options_text = ""
+        if self.ttype == "html":
+            options_text = 'widget="html"'
+        return f"""<field name="{self.name}" {options_text} context="{self.field_context}"/>\n"""
+
 
     def _prepare_tree_field(self):
         self.ensure_one()
@@ -270,6 +275,8 @@ class BiSQLViewField(models.Model):
         options_text = ""
         if self.ttype == "many2one" and self.is_many2one_clickable:
             options_text = 'widget="many2one"'
+        elif self.ttype == "html":
+            options_text = 'widget="html"'
         return (
             f"""<field name="{self.name}" {visibility_text} {operator_text} """
             f"""{options_text} context="{self.field_context}"/>\n"""
