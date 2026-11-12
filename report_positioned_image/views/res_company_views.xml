@@ -26,6 +26,7 @@
                             <field name="height" string="Height (mm)" />
                             <field name="respect_image_ratio" />
                             <field name="first_page_only" />
+                            <field name="domain" optional="show" />
                             <field name="company_id" column_invisible="1" />
                         </list>
                     </field>
