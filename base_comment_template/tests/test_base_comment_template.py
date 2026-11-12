@@ -5,7 +5,7 @@
 from odoo import Command
 from odoo.exceptions import ValidationError
 from odoo.orm.model_classes import add_to_registry
-from odoo.tests import common
+from odoo.tests import common, new_test_user
 from odoo.tools.misc import mute_logger
 
 
@@ -78,6 +78,23 @@ class TestCommentTemplate(common.TransactionCase):
             self.test_user_obj.model, self.after_template_id.mapped("model_ids.model")
         )
         self.assertEqual(len(self.after_template_id.model_ids), 1)
+
+    def test_search_model_ids_without_ir_model_access(self):
+        user = new_test_user(
+            self.env,
+            login="comment_template_reader",
+            groups="base.group_user,base.group_no_one",
+            company_id=self.company.id,
+            company_ids=[Command.set(self.company.ids)],
+        )
+        template_model = self.env["base.comment.template"].with_user(user)
+        expected = self.before_template_id | self.after_template_id
+        for domain in (
+            [("model_ids", "=", self.test_user_obj.model)],
+            [("model_ids.model", "=", self.test_user_obj.model)],
+        ):
+            with self.subTest(domain=domain):
+                self.assertEqual(template_model.search(domain), expected)
 
     def test_template_models_constrains(self):
         with self.assertRaises(ValidationError):

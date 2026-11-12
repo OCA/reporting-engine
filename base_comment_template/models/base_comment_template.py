@@ -55,6 +55,7 @@ class BaseCommentTemplate(models.Model):
         comodel_name="ir.model",
         compute="_compute_model_ids",
         compute_sudo=True,
+        bypass_search_access=True,
         string="IR Model",
         help="This comment template will be available on this models. "
         "You can see here only models allowed to set the coment template.",
@@ -133,10 +134,21 @@ class BaseCommentTemplate(models.Model):
             rec.display_name = name
 
     def _search_model_ids(self, operator, value):
-        # We cannot use model_ids.model in search() method to avoid access errors
+        # ir.model is only readable by the "Access Rights" group: resolve the
+        # models as superuser, then match their technical names against the
+        # stored `models` field.
+        if operator == "in" and isinstance(value, str):
+            # comment.template calls this directly with a technical model name
+            model_names = {value}
+        else:
+            if operator == "in":
+                value = [("id", "in", value)]
+            elif operator not in ("any", "any!"):
+                return NotImplemented
+            model_names = set(self.env["ir.model"].sudo().search(value).mapped("model"))
         allowed_items = (
             self.sudo()
             .search([])
-            .filtered(lambda x: value in x.model_ids.mapped("model"))
+            .filtered(lambda x: model_names & set(x.models.split(",")))
         )
         return [("id", "in", allowed_items.ids)]
