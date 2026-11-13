@@ -3,7 +3,7 @@
 
 {
     "name": "Key Performance Indicators",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "author": "Savoir-faire Linux, "
     "Open Source Integrators, "
     "Odoo Community Association (OCA)",
