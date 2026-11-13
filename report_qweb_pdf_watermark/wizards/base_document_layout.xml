@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_base_document_layout" model="ir.ui.view">
+        <field name="model">base.document.layout</field>
+        <field name="inherit_id" ref="web.view_base_document_layout" />
+        <field name="arch" type="xml">
+            <!-- Odoo 20 removed the layout background, keep the watermark with
+                 the other branding settings, after the logo. The pdf_viewer
+                 widget cannot preview a value on this unsaved wizard record. -->
+            <xpath expr="//field[@name='logo']" position="after">
+                <field name="pdf_watermark" widget="binary" />
+                <div
+                    role="alert"
+                    class="alert alert-info"
+                    colspan="2"
+                    invisible="not pdf_watermark"
+                >
+                    Note that the watermark is not reflected in the preview to the right.
+                    Print a report to see the watermark in the generated PDF.
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
