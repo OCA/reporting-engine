@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="demo_xml_report" model="ir.actions.report">
+        <field name="name">Demo xml report</field>
+        <field name="model">res.company</field>
+        <field name="report_type">qweb-xml</field>
+        <field name="report_name">report_xml.demo_report_xml_view</field>
+        <field name="binding_model_id" ref="base.model_res_company" />
+        <field name="binding_type">report</field>
+        <field name="xsd_schema" type="bytes" file="report_xml/demo/demo_report.xsd" />
+    </record>
+</odoo>
