@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t t-name="report_builder.ReportBuilderValue">
+        <span t-esc="formattedValue" class="o_report_builder_value" />
+    </t>
+    <t t-name="report_builder.ReportBuilder">
+        <div class="o_report_builder">
+            <div class="oe_mis_builder_cp">
+                <div class="oe_mis_builder_cp_right_top">
+                    <SearchBar t-if="showSearchBar" />
+                </div>
+                <div class="oe_mis_builder_cp_right_bottom">
+                    <div class="oe_mis_builder_filter_buttons">
+                        <DateTimeInput
+                            value="state.pivot_date"
+                            placeholder="'Base date...'"
+                            type="'date'"
+                            t-if="props.record.data.show_pivot_date"
+                            onChange.bind="onPivotDateChanged"
+                        />
+                    </div>
+                    <div class="oe_mis_builder_action_buttons">
+                        <button t-on-click="refresh" class="btn">
+                            <span class="fa fa-refresh" /> Refresh </button>
+                        <button t-on-click="printPdf" class="btn">
+                            <span class="fa fa-print" /> Print </button>
+                        <button t-on-click="printXlsx" class="btn">
+                            <span class="fa fa-download" /> Export </button>
+                        <button
+                            t-on-click="displaySettings"
+                            t-if="props.record.data.show_settings"
+                            class="btn"
+                        >
+                            <span class="fa fa-cog" /> Settings </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table
+                    class="table table-sm table-hover table-striped o_report_builder_table"
+                >
+                    <thead>
+                        <tr>
+                            <th class="oe_list_header_char" />
+                            <th
+                                class="oe_list_header_char"
+                                t-foreach="props.record.data.data.columns"
+                                t-as="column"
+                                t-key="column.id"
+                            >
+                                <span t-esc="column.name" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            t-foreach="props.record.data.data.rows"
+                            t-as="key"
+                            t-key="key_index"
+                            t-att-style="key.style"
+                            t-if="!key.invisible"
+                        >
+                            <td>
+                                <span t-esc="key.name" />
+                            </td>
+                            <td
+                                t-foreach="props.record.data.data.columns"
+                                t-as="column"
+                                t-key="column.id"
+                            >
+                                <ReportBuilderValue
+                                    value="state.data[key.id][column.id]"
+                                    currency_id="props.record.data.currency_id"
+                                    t-if="state.data and state.data[key.id] and state.data[key.id][column.id]"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>

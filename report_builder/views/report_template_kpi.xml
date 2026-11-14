@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="report_template_kpi_form_view">
+        <field name="model">report.template.kpi</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <h2>
+                        <field name="name" />
+                    </h2>
+                    <group>
+                        <field name="code" required="1" />
+                        <field name="style_id" />
+                        <field name="sequence" />
+                        <field name="is_currency" />
+                        <field name="invisible" />
+                        <field name="mis_builder_formula" />
+                        <field name="template_id" invisible="1" />
+                    </group>
+                    <notebook>
+                        <page name="items" string="Items">
+                            <field name="item_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle" />
+                                    <field name="parent_kpi_id" column_invisible="1" />
+                                    <field name="kind" />
+                                    <field
+                                        name="kpi_id"
+                                        required="kind == 'kpi'"
+                                        invisible="kind != 'kpi'"
+                                        options="{'no_create': True}"
+                                    />
+                                    <field name="template_id" column_invisible="1" />
+                                    <field
+                                        name="source"
+                                        optional="hide"
+                                        invisible="kind != 'query'"
+                                    />
+                                    <field
+                                        name="query_kind_id"
+                                        invisible="kind != 'query'"
+                                        required="kind == 'query'"
+                                    />
+                                    <field
+                                        name="code"
+                                        invisible="kind != 'query'"
+                                        required="kind == 'query'"
+                                    />
+                                    <field name="domain" invisible="kind != 'query'" />
+                                    <field name="positive" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="report_template_kpi_tree_view">
+        <field name="model">report.template.kpi</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="code" />
+                <field name="mis_builder_formula" />
+                <field name="invisible" />
+            </list>
+        </field>
+    </record>
+</odoo>
