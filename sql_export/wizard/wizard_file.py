@@ -27,8 +27,8 @@ class SqlFileWizard(models.TransientModel):
 
         properties = self.read(["query_properties"])[0]["query_properties"]
 
-        # Check properties
-        bad_props = [x for x in properties if not x["value"]]
+        # Check properties (an unchecked checkbox is a value too)
+        bad_props = [x for x in properties if x["type"] != "boolean" and not x["value"]]
         if bad_props:
             raise UserError(
                 _("Please enter a values for the following properties : %s")
