@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_sql_request_mixin_user,access_sql_request_mixin_user,sql.request.mixin,sql_request_abstract.group_sql_request_user,r,
+access_sql_request_mixin_manager,access_sql_request_mixin_manager,sql.request.mixin,sql_request_abstract.group_sql_request_manager,crud,
