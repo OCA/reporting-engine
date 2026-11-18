@@ -24,6 +24,12 @@ try:
             hard to debug the original issue. Even so, different names can become the
             same one as their strings are trimmed to those 31 character limit.
 
+            In order to avoid the library raising InvalidWorksheetName because the
+            report name contains invalid characters, or starts/ends with one of
+            them, we sanitize the name here. The sanitization is applied before
+            the library check and before the duplicate check so it can never
+            leave a name that errors again.
+
             This way, once we come across with a duplicated, we set that final 3
             characters with a sequence that we evaluate on the fly. So for instance:
 
@@ -37,6 +43,7 @@ try:
               the strings too much and keeping in mind that this issue don't usually
               ocurrs.
             """
+            sheetname = self._sanitize_sheetname(sheetname)
             try:
                 return super()._check_sheetname(sheetname, is_chartsheet=is_chartsheet)
             except xlsxwriter.exceptions.DuplicateWorksheetName:
@@ -56,6 +63,20 @@ try:
                     sheetname = sheetname[:28] + deduplicated_secuence
             # Refeed the method until we get an unduplicated name
             return self._check_sheetname(sheetname, is_chartsheet=is_chartsheet)
+
+        def _sanitize_sheetname(self, sheetname):
+            """Return a sheet name that xlsxwriter accepts.
+
+            Excel worksheet names are limited to 31 characters, cannot contain
+            ``[]:*?/\\`` and cannot start or end with an apostrophe. Those
+            constraints are not guaranteed by report names, so we normalize the
+            name accordingly.
+            """
+            if not sheetname:
+                return sheetname
+            sheetname = re.sub(r"[\[\]:*?/\\]", "", sheetname)
+            sheetname = sheetname[:31]
+            return sheetname.strip("'")
 
     # "Short string"
 
