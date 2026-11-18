@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+paperformat_parameter_access_portal,ir_actions_report_paperformat_parameter group_portal,report.paperformat.parameter,base.group_portal,r,
+paperformat_parameter_access_employee,ir_actions_report_paperformat_parameter group_hr_user,report.paperformat.parameter,base.group_user,cr,
+paperformat_parameter_access_administration,ir_actions_report_paperformat_parameter group_system,report.paperformat.parameter,base.group_system,crud,
