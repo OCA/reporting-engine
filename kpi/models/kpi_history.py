@@ -14,7 +14,7 @@ class KPIHistory(models.Model):
     name = fields.Char(
         size=150,
         required=True,
-        default=fields.Datetime.now(),
+        default=lambda self: fields.Datetime.to_string(fields.Datetime.now()),
     )
     kpi_id = fields.Many2one("kpi", "KPI", required=True)
     date = fields.Datetime(
