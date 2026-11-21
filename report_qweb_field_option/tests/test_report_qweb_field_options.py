@@ -1,9 +1,9 @@
 # Copyright 2024 Quartile (https://www.quartile.co)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo.exceptions import ValidationError
+from odoo.exceptions import AccessError, ValidationError
 from odoo.orm.model_classes import add_to_registry
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, new_test_user
 
 
 class TestQwebFieldOptions(TransactionCase):
@@ -184,3 +184,21 @@ class TestQwebFieldOptions(TransactionCase):
             self.test_record, "value", False, False, {}, values
         )
         self.assertEqual(content, "1")
+
+    def test_access_rights(self):
+        other_company = self.env["res.company"].create({"name": "Other Company"})
+        other_rec = self.env["qweb.field.options"].create(
+            {
+                "res_model_id": self.test_model.id,
+                "field_id": self.value_field.id,
+                "company_id": other_company.id,
+                "digits": 4,
+            }
+        )
+        user = new_test_user(self.env, login="qweb_opts_user", groups="base.group_user")
+        options = self.env["qweb.field.options"].with_user(user)
+        visible = options.search([])
+        self.assertIn(self.qweb_options_rec, visible)
+        self.assertNotIn(other_rec, visible)
+        with self.assertRaises(AccessError):
+            self.qweb_options_rec.with_user(user).digits = 5

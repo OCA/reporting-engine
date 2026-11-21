@@ -3,6 +3,7 @@
 
 import ast
 import logging
+from zoneinfo import ZoneInfo
 
 from odoo import api, fields, models, tools
 from odoo.exceptions import ValidationError
@@ -90,7 +91,7 @@ class QwebFieldOptions(models.Model):
             "time": tools.safe_eval.time,
             "datetime": tools.safe_eval.datetime,
             "dateutil": tools.safe_eval.dateutil,
-            "timezone": tools.safe_eval.pytz.timezone,
+            "timezone": ZoneInfo,
             "context_today": lambda: fields.Date.context_today(self),
         }
 
@@ -133,7 +134,7 @@ class QwebFieldOptions(models.Model):
                 if not record.filtered_domain(domain):
                     return -1
                 score += 1
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 _logger.warning(
                     "Failed to evaluate domain %s for record %s: %s",
                     self.domain,
@@ -156,7 +157,7 @@ class QwebFieldOptions(models.Model):
                         or self.env.company.currency_id
                     )
                 field_options.update(extra_options)
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 _logger.error(
                     "Failed to parse field options as a dictionary: "
                     f"{self.field_options}. Error: {e}"

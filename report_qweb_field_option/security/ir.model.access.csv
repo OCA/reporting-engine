@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_qweb_field_options_public,access.qweb.field.options.public,model_qweb_field_options,base.group_public,1,0,0,0
-access_qweb_field_options_portal,access.qweb.field.options.portal,model_qweb_field_options,base.group_portal,1,0,0,0
-access_qweb_field_options_user,access.qweb.field.options.user,model_qweb_field_options,base.group_user,1,0,0,0
-access_qweb_field_options_admin,access.qweb.field.options.admin,model_qweb_field_options,base.group_system,1,1,1,1

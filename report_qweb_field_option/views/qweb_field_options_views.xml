@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="view_qweb_field_options_tree" model="ir.ui.view">
         <field name="name">qweb.field.options.list</field>
