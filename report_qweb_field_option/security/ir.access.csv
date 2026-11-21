@@ -1,0 +1,6 @@
+id,name,model_id,group_id/id,operation,domain
+access_qweb_field_options_public,access.qweb.field.options.public,qweb.field.options,base.group_public,r,
+access_qweb_field_options_portal,access.qweb.field.options.portal,qweb.field.options,base.group_portal,r,
+access_qweb_field_options_user,access.qweb.field.options.user,qweb.field.options,base.group_user,r,
+access_qweb_field_options_admin,access.qweb.field.options.admin,qweb.field.options,base.group_system,crud,
+qweb_field_options_company_rule,Qweb Field Options Multi-company,qweb.field.options,,crud,"['|', ('company_id', 'in', company_ids), ('company_id', '=', False)]"
