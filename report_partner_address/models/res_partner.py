@@ -13,10 +13,10 @@ class ResPartner(models.Model):
         "When set, this replaces the standard address format for external display.",
     )
 
-    def _prepare_display_address(self, without_company=False):
+    def _prepare_display_address(self, without_name=False):
         self.ensure_one()
         address_format, args = super()._prepare_display_address(
-            without_company=without_company
+            without_name=without_name
         )
         if self.address_details:
             address_format = self.address_details

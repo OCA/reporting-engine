@@ -54,3 +54,13 @@ class TestReportPartnerAddress(TransactionCase):
         res = partner._display_address()
         self.assertIn("123 Main St", res)
         self.assertIn("Springfield", res)
+
+    def test_contact_widget_hides_name_with_address_details(self):
+        contact = self.env["ir.qweb.field.contact"]
+        opts = {"fields": ["name", "address"]}
+        res = contact.with_context(lang="en_US").value_to_html(self.partner, opts)
+        self.assertNotIn('itemprop="name"', res)
+        self.assertIn("1-2-3 Jingumae, Shibuya-ku", res)
+        self.partner.with_context(lang="en_US").address_details = False
+        res = contact.with_context(lang="en_US").value_to_html(self.partner, opts)
+        self.assertIn('itemprop="name"', res)

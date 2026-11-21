@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="contact_name_hide" inherit_id="base.contact_name">
         <xpath expr="//div[1]" position="attributes">
