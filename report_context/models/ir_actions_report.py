@@ -18,7 +18,7 @@ class IrActionsReport(models.Model):
         context = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("report.default.context", "{}")
+            .get_str("report.default.context", "{}")
         )
         # We must transform it to a dictionary
         context = safe_eval(context or "{}")

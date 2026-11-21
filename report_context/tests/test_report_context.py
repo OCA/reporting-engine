@@ -7,7 +7,7 @@ class TestReportContext(TransactionCase):
     def test_report_01(self):
         company = self.browse_ref("base.main_company")
         report = self.browse_ref("web.action_report_internalpreview")
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "report.default.context", '{"test_parameter": 1}'
         )
         report.write({"context": '{"test_parameter": 2}'})
@@ -19,7 +19,7 @@ class TestReportContext(TransactionCase):
     def test_report_02(self):
         company = self.browse_ref("base.main_company")
         report = self.browse_ref("web.action_report_internalpreview")
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "report.default.context", '{"test_parameter": 1}'
         )
         report.write({"context": '{"test_parameter": 2}'})
@@ -31,7 +31,7 @@ class TestReportContext(TransactionCase):
     def test_report_03(self):
         company = self.browse_ref("base.main_company")
         report = self.browse_ref("web.action_report_internalpreview")
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "report.default.context", '{"test_parameter": 1}'
         )
         action = report.with_context(test_parameter=3).report_action(company)
@@ -51,7 +51,7 @@ class TestReportContext(TransactionCase):
     def test_report_05(self):
         company = self.browse_ref("base.main_company")
         report = self.browse_ref("web.action_report_internalpreview")
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "report.default.context", '{"test_parameter": 1}'
         )
         action = report.report_action(company)

@@ -4,7 +4,7 @@ import json
 
 from odoo.http import request, route
 
-from odoo.addons.web.controllers import report as report
+from odoo.addons.web.controllers import report
 
 
 class ReportController(report.ReportController):
