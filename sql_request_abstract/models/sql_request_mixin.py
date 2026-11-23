@@ -9,7 +9,7 @@ import re
 import uuid
 from io import BytesIO
 
-from psycopg2 import ProgrammingError
+from psycopg2.errors import InvalidTextRepresentation, ProgrammingError
 from psycopg2.sql import SQL
 
 from odoo import _, api, fields, models
@@ -287,7 +287,7 @@ class SQLRequestMixin(models.AbstractModel):
         try:
             self.env.cr.execute(query)
             res = self._hook_executed_request()
-        except ProgrammingError as e:
+        except (ProgrammingError, InvalidTextRepresentation) as e:
             logger.exception("Failed query: %s", query)
             raise UserError(_("The SQL query is not valid:\n\n %s") % e) from e
         finally:
