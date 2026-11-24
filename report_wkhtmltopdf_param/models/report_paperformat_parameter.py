@@ -11,6 +11,7 @@ class ReportPaperformatParameter(models.Model):
     paperformat_id = fields.Many2one(
         "report.paperformat",
         "Paper Format",
+        ondelete="cascade",
         required=True,
     )
 
