@@ -28,6 +28,7 @@
                             <field name="height" string="Height (mm)" />
                             <field name="respect_image_ratio" />
                             <field name="first_page_only" />
+                            <field name="domain" optional="show" />
                         </list>
                     </field>
                 </page>

@@ -2,12 +2,17 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
+import logging
+from ast import literal_eval
 from io import BytesIO
 
 from PIL import Image
 
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.fields import Domain
+
+_logger = logging.getLogger(__name__)
 
 
 class ReportPositionedImage(models.Model):
@@ -32,6 +37,24 @@ class ReportPositionedImage(models.Model):
         help="Leave empty to apply to all companies. Set a specific company to "
         "restrict this image to that company only.",
     )
+    report_ids = fields.Many2many(
+        comodel_name="ir.actions.report",
+        relation="ir_actions_report_positioned_image_rel",
+        column1="image_id",
+        column2="report_id",
+        string="Reports",
+        help="Reports this image is placed on. The condition is validated "
+        "against the models they render.",
+    )
+    domain = fields.Char(
+        string="Condition",
+        help="Leave empty to print this image on every page of every record. "
+        "When set, the image is printed only on the records matching it. The "
+        "domain is evaluated against whichever model the printed report "
+        "renders, so one image can guard several reports as long as they share "
+        "the field paths it uses. "
+        "Example: [('partner_id.country_id.code', '=', 'JP')]",
+    )
 
     def _default_company_id(self):
         return self.env.context.get("default_company_id")
@@ -52,6 +75,62 @@ class ReportPositionedImage(models.Model):
                 raise ValidationError(self.env._("Width must be greater than zero."))
             if record.height <= 0:
                 raise ValidationError(self.env._("Height must be greater than zero."))
+
+    @api.constrains("domain", "report_ids")
+    def _check_domain(self):
+        """Reject a condition that a report using this image cannot evaluate.
+
+        The condition carries no model of its own: it is evaluated at print
+        time against whatever the printed report renders. Checking it against
+        every linked report's model turns a typo into a write-time error
+        instead of an image that silently drops out of a print run.
+        """
+        for record in self.filtered("domain"):
+            for model_name in set(record.report_ids.mapped("model")):
+                if model_name and model_name in self.env:
+                    record._validate_domain(self.env[model_name])
+
+    def _validate_domain(self, model):
+        """Raise unless this image's condition is valid for ``model``."""
+        self.ensure_one()
+        try:
+            Domain(literal_eval(self.domain)).validate(model)
+        except Exception as e:
+            raise ValidationError(
+                self.env._(
+                    "The condition of %(image)s cannot be evaluated on "
+                    "%(model)s: %(error)s",
+                    image=self.name,
+                    model=model._name,
+                    error=e,
+                )
+            ) from e
+
+    def _get_condition_matched_ids(self, model, res_ids):
+        """Return the subset of ``res_ids`` matching this image's condition.
+
+        A condition that does not fit ``model`` matches nothing rather than
+        everything: an image is printed only where it was meant to be. Run as
+        sudo so that the output does not depend on the record rules of the user
+        requesting the report, and on archived records too since they can be
+        printed as well.
+        """
+        self.ensure_one()
+        model = model.sudo().with_context(active_test=False)
+        try:
+            domain = Domain(literal_eval(self.domain))
+            domain.validate(model)
+        except Exception:
+            _logger.warning(
+                "Skipping positioned image %s: its condition %r could not be "
+                "checked on %s.",
+                self.display_name,
+                self.domain,
+                model._name,
+                exc_info=True,
+            )
+            return set()
+        return set(model.search(Domain("id", "in", res_ids) & domain).ids)
 
     def _get_aspect_ratio(self):
         """Get image aspect ratio (width/height)."""
