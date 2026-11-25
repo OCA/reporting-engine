@@ -13,7 +13,7 @@ class Report(models.Model):
     def report_action(self, docids, data=None, config=True):
         res = super().report_action(docids, data=data, config=config)
         if res["context"].get("async_process", False):
-            rpt_async_id = res["context"]["active_id"]
+            rpt_async_id = res["context"]["report_async_id"]
             report_async = self.env["report.async"].browse(rpt_async_id)
             if res["report_type"] in REPORT_TYPES:
                 report_async.with_delay().run_report(

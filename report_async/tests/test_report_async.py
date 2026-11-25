@@ -27,6 +27,7 @@ class TestJobChannel(TransactionCase):
                 active_model=self.print_doc._name,
                 active_id=self.print_doc.id,
                 async_process=res["context"].get("async_process"),
+                report_async_id=res["context"].get("report_async_id"),
             )
         ) as form:
             form.reference = f"{self.test_rec._name},{self.test_rec.id}"
