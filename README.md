@@ -23,6 +23,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [report_qweb_element_page_visibility](report_qweb_element_page_visibility/) | 20.0.1.0.0 |  | Report Qweb Element Page Visibility
+[report_qweb_parameter](report_qweb_parameter/) | 20.0.1.0.0 |  | Add new parameters for qweb templates in order to reduce field length and check minimal length
 [report_xlsx](report_xlsx/) | 20.0.1.0.1 |  | Base module to create xlsx report
 [report_xlsx_helper](report_xlsx_helper/) | 20.0.1.0.0 |  | Report xlsx helpers
 
