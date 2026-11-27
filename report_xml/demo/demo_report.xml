@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="demo_report_xml_view">
+        <root>
+            <user t-foreach="docs" t-as="doc">
+                <id t-out="doc.id" />
+                <name t-out="doc.name" />
+                <vat t-out="doc.vat" />
+            </user>
+        </root>
+    </template>
+</odoo>
