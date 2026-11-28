@@ -1,0 +1,160 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_qweb_field_option
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-09-11 09:42+0000\n"
+"Last-Translator: Bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>\n"
+"Language-Team: none\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,help:report_qweb_field_option.field_qweb_field_options__field_options
+msgid ""
+"A string representation of a dictionary to specify field formatting options. Examples:\n"
+"{'widget': 'date'}\n"
+"{'widget': 'monetary'}\n"
+"{'widget': 'contact', 'fields': ['name', 'phone']}"
+msgstr ""
+"Een stringweergave van een woordenboek om veldopmaakopties te specificeren. "
+"Voorbeelden:\n"
+"{'widget': 'date'}\n"
+"{'widget': 'monetary'}\n"
+"{'widget': 'contact', 'fields': ['name', 'phone']}"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__company_id
+msgid "Company"
+msgstr "Bedrijf"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_id
+msgid "Currency"
+msgstr "Valuta"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__currency_field_id
+msgid "Currency Field"
+msgstr "Valutaveld"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__digits
+msgid "Digits"
+msgstr "Cijfers"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_id
+msgid "Field"
+msgstr "Veld"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_name
+msgid "Field Name"
+msgstr "Veldnaam"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_type
+msgid "Field Type"
+msgstr "Veldtype"
+
+#. module: report_qweb_field_option
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Group By"
+msgstr "Groeperen op"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_qweb_field_option
+#. odoo-python
+#: code:addons/report_qweb_field_option/models/qweb_field_options.py:0
+msgid ""
+"Invalid string for the Options field: %(field_options)s.\n"
+"Error: %(error)s"
+msgstr ""
+"Ongeldige string voor het veld Opties: %(field_options)s.\n"
+"Fout: %(error)s"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_id
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Model"
+msgstr "Model"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__res_model_name
+msgid "Model Name"
+msgstr "Modelnaam"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__field_options
+msgid "Options"
+msgstr "Opties"
+
+#. module: report_qweb_field_option
+#. odoo-python
+#: code:addons/report_qweb_field_option/models/qweb_field_options.py:0
+msgid "Options must be a dictionary, but got %s"
+msgstr "Opties moeten een woordenboek zijn, maar kregen %s"
+
+#. module: report_qweb_field_option
+#: model:ir.model,name:report_qweb_field_option.model_ir_qweb
+msgid "Qweb"
+msgstr "Qweb"
+
+#. module: report_qweb_field_option
+#: model:ir.actions.act_window,name:report_qweb_field_option.action_qweb_field_options_view
+#: model:ir.model,name:report_qweb_field_option.model_qweb_field_options
+#: model:ir.ui.menu,name:report_qweb_field_option.menu_qweb_field_options
+msgid "Qweb Field Options"
+msgstr "Qweb Veldopties"
+
+#. module: report_qweb_field_option
+#: model_terms:ir.ui.view,arch_db:report_qweb_field_option.view_qweb_field_options_searh
+msgid "Qweb Field Options Search"
+msgstr "Zoeken in Qweb Veldopties"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_id
+msgid "UoM"
+msgstr "Eenheid"
+
+#. module: report_qweb_field_option
+#: model:ir.model.fields,field_description:report_qweb_field_option.field_qweb_field_options__uom_field_id
+msgid "UoM Field"
+msgstr "Eenheid Veld"

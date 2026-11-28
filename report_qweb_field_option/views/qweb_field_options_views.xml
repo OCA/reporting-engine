@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_qweb_field_options_tree" model="ir.ui.view">
+        <field name="name">qweb.field.options.list</field>
+        <field name="model">qweb.field.options</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list create="1" editable="bottom">
+                <field name="res_model_id" />
+                <field name="field_id" readonly="res_model_id == False" />
+                <field name="field_type" column_invisible="True" />
+                <field
+                    name="uom_id"
+                    readonly="currency_id !=False or field_type != 'float'"
+                />
+                <field
+                    name="uom_field_id"
+                    readonly="uom_id == False"
+                    required="uom_id != False"
+                />
+                <field
+                    name="currency_id"
+                    readonly="uom_id != False or field_type != 'float'"
+                />
+                <field
+                    name="currency_field_id"
+                    readonly="currency_id == False"
+                    required="currency_id != False"
+                />
+                <field name="res_model_name" column_invisible="1" />
+                <field
+                    name="domain"
+                    widget="domain"
+                    options="{'model': 'res_model_name'}"
+                    optional="hide"
+                />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="show"
+                />
+                <field name="field_options" />
+                <field name="digits" readonly="field_type != 'float'" />
+            </list>
+        </field>
+    </record>
+    <record id="view_qweb_field_options_searh" model="ir.ui.view">
+        <field name="name">qweb.field.options.search</field>
+        <field name="model">qweb.field.options</field>
+        <field name="arch" type="xml">
+            <search string="Qweb Field Options Search">
+                <field name="res_model_id" />
+                <field name="field_id" />
+                <field name="uom_id" />
+                <field name="currency_id" />
+                <field name="company_id" />
+                <separator />
+                <group>
+                    <filter
+                        string="Model"
+                        name="res_model_id"
+                        context="{'group_by': 'res_model_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_qweb_field_options_view" model="ir.actions.act_window">
+        <field name="name">Qweb Field Options</field>
+        <field name="res_model">qweb.field.options</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_qweb_field_options_tree" />
+    </record>
+    <menuitem
+        id="menu_qweb_field_options"
+        parent="base.reporting_menuitem"
+        action="action_qweb_field_options_view"
+        sequence="10"
+    />
+</odoo>
