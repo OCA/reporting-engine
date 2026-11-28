@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_partner_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-03-23 10:45+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: report_partner_address
+#: model:ir.model.fields,field_description:report_partner_address.field_res_partner__address_details
+#: model:ir.model.fields,field_description:report_partner_address.field_res_users__address_details
+msgid "Address Details"
+msgstr "Dettagli indirizzo"
+
+#. module: report_partner_address
+#: model:ir.model,name:report_partner_address.model_res_partner
+msgid "Contact"
+msgstr "Contatto"
+
+#. module: report_partner_address
+#: model:ir.model.fields,help:report_partner_address.field_res_partner__address_details
+#: model:ir.model.fields,help:report_partner_address.field_res_users__address_details
+msgid ""
+"Custom address format used in reports and portal pages. When set, this "
+"replaces the standard address format for external display."
+msgstr ""
+"Formato indirizzo cliente utilizzato nei resoconti e nella pagine portale. "
+"Quando impostato, sostituisce il formato standard indirizzo per "
+"visualizzazione esterna."
+
+#. module: report_partner_address
+#: model:ir.model.fields,field_description:report_partner_address.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: report_partner_address
+#: model:ir.model.fields,field_description:report_partner_address.field_res_partner__id
+msgid "ID"
+msgstr "ID"

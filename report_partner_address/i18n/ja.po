@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_partner_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-21 08:50+0000\n"
+"PO-Revision-Date: 2025-12-21 08:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_partner_address
+#: model:ir.model.fields,field_description:report_partner_address.field_res_partner__address_details
+#: model:ir.model.fields,field_description:report_partner_address.field_res_users__address_details
+msgid "Address Details"
+msgstr "アドレス詳細"
+
+#. module: report_partner_address
+#: model:ir.model,name:report_partner_address.model_res_partner
+msgid "Contact"
+msgstr "連絡先"
+
+#. module: report_partner_address
+#: model:ir.model.fields,help:report_partner_address.field_res_partner__address_details
+#: model:ir.model.fields,help:report_partner_address.field_res_users__address_details
+msgid ""
+"Custom address format used in reports and portal pages. When set, this "
+"replaces the standard address format for external display."
+msgstr ""
+"レポートやポータルページに適用されるアドレスフォーマット。設定されている場"
+"合、対外表示用に標準のアドレスフォーマットがその内容で置き換えられます。"
